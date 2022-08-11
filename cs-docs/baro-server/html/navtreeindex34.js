@@ -1,5 +1,6 @@
 var NAVTREEINDEX34 =
 {
+"class_barotrauma_1_1_pos_info.html#a32019b121c922fd052fdab800242d7b5":[4,0,0,349,8],
 "class_barotrauma_1_1_pos_info.html#a39d95cb68624f3ef007be7a811218e94":[4,0,0,349,9],
 "class_barotrauma_1_1_pos_info.html#a4cda1c6e8dbe5c431ddc020efd33e067":[4,0,0,349,2],
 "class_barotrauma_1_1_pos_info.html#a50e0bc19ec0bf6bc24cb813ccccf9e82":[4,0,0,349,11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX34 =
 "class_barotrauma_1_1_ragdoll_params.html#a6b373206cd23d6c6e78cbf75d8154c6a":[4,0,0,360,42],
 "class_barotrauma_1_1_ragdoll_params.html#a6ba3f800a2e50cf5e05ffdc3ac28a0ac":[4,0,0,360,44],
 "class_barotrauma_1_1_ragdoll_params.html#a6d2a90dd13db2a0c3fcbc3d794fb1d55":[4,0,0,360,14],
-"class_barotrauma_1_1_ragdoll_params.html#a78ed050a42cd3503325b9aebcbf30908":[4,0,0,360,18],
-"class_barotrauma_1_1_ragdoll_params.html#a7a6f7ac9fbb111bd4afe05d315e341d5":[4,0,0,360,16]
+"class_barotrauma_1_1_ragdoll_params.html#a78ed050a42cd3503325b9aebcbf30908":[4,0,0,360,18]
 };

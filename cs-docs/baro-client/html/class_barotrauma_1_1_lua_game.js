@@ -40,6 +40,7 @@ var class_barotrauma_1_1_lua_game =
     [ "updatePriorityItems", "class_barotrauma_1_1_lua_game.html#aac1f4e689dfa86eb977cace651c701e6", null ],
     [ "characterUpdateInterval", "class_barotrauma_1_1_lua_game.html#a9dec38cb6f235bca4a012a8d3b4a8690", null ],
     [ "ChatBox", "class_barotrauma_1_1_lua_game.html#a0331076d435c0f95fead556acf08788e", null ],
+    [ "Client", "class_barotrauma_1_1_lua_game.html#a8f89f785df4b75c2d519286bd1b11d99", null ],
     [ "GameScreen", "class_barotrauma_1_1_lua_game.html#a174b125ae3c65115fb135a6062d6ae87", null ],
     [ "GameSession", "class_barotrauma_1_1_lua_game.html#a88701a5f3616ca80ef578b1638a6e5fd", null ],
     [ "gapUpdateInterval", "class_barotrauma_1_1_lua_game.html#aa34abe8c1dc21aa5a7c140da8a6055c6", null ],
@@ -50,6 +51,7 @@ var class_barotrauma_1_1_lua_game =
     [ "Peer", "class_barotrauma_1_1_lua_game.html#a97b9672dfef7f8462c2bc4effd8ab51d", null ],
     [ "poweredUpdateInterval", "class_barotrauma_1_1_lua_game.html#a5806e1e066f64dcef9d19f4a39e6d83a", null ],
     [ "RoundStarted", "class_barotrauma_1_1_lua_game.html#a17310da6534706e4ad9fb414fe1f16ba", null ],
+    [ "ServerSettings", "class_barotrauma_1_1_lua_game.html#aff6ae3e6e342ff84cd2a3562db8c831b", null ],
     [ "SoundManager", "class_barotrauma_1_1_lua_game.html#a250eb491267d8a0c7f220fd52070875e", null ],
     [ "SubEditorScreen", "class_barotrauma_1_1_lua_game.html#a414c83425535d82810cd91ac59b3f9e2", null ],
     [ "World", "class_barotrauma_1_1_lua_game.html#ac718c8666bccaed58399de6cc8cac26c", null ]

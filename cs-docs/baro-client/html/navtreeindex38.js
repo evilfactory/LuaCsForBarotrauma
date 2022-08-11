@@ -1,5 +1,7 @@
 var NAVTREEINDEX38 =
 {
+"class_barotrauma_1_1_networking_1_1_client.html#a4ae96ce713d3545fa670c32326487602":[4,0,0,8,3,36],
+"class_barotrauma_1_1_networking_1_1_client.html#a4bc29d866927023d4bc513e708ceeff4":[4,0,0,8,3,27],
 "class_barotrauma_1_1_networking_1_1_client.html#a4e916f160ec2e413baa742709d66da44":[4,0,0,8,3,15],
 "class_barotrauma_1_1_networking_1_1_client.html#a52b1daed3f31e50ab9846d6d55124b6d":[4,0,0,8,3,19],
 "class_barotrauma_1_1_networking_1_1_client.html#a58746d51e83cc209ca94845c06dee4fb":[4,0,0,8,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX38 =
 "class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7":[4,0,0,8,19,0],
 "class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7a3f8337da71958b5485090c194398cf9b":[4,0,0,8,19,0,2],
 "class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7a93e94971b139797a434f76f8444fb275":[4,0,0,8,19,0,1],
-"class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7ae232198d6d774679a00f6d43ad57358d":[4,0,0,8,19,0,0],
-"class_barotrauma_1_1_networking_1_1_network_connection.html":[4,0,0,8,20],
-"class_barotrauma_1_1_networking_1_1_network_connection.html#a2452c276ba3c6b2a2a57a9115b422747":[4,0,0,8,20,4]
+"class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7ae232198d6d774679a00f6d43ad57358d":[4,0,0,8,19,0,0]
 };

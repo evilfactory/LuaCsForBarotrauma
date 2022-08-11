@@ -1,5 +1,7 @@
 var NAVTREEINDEX56 =
 {
+"struct_barotrauma_1_1_level_1_1_cluster_location.html":[4,0,0,322,2],
+"struct_barotrauma_1_1_level_1_1_cluster_location.html#a184a8206c56d9520815d92ced6d32856":[4,0,0,322,2,5],
 "struct_barotrauma_1_1_level_1_1_cluster_location.html#a198c25473b6e3b3fa8db51ba1e0dfd46":[4,0,0,322,2,1],
 "struct_barotrauma_1_1_level_1_1_cluster_location.html#a19a10a1570bf4309f79dbe826bcd3e60":[4,0,0,322,2,3],
 "struct_barotrauma_1_1_level_1_1_cluster_location.html#a7bd91b5b3b8babb7e91703efac18a284":[4,0,0,322,2,7],

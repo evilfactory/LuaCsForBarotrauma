@@ -1,5 +1,7 @@
 var NAVTREEINDEX37 =
 {
+"class_barotrauma_1_1_multi_player_campaign.html#a80aa42d68955e9a97ed3c81964258277":[4,0,0,399,23],
+"class_barotrauma_1_1_multi_player_campaign.html#a867e810e3edae6014ca430e633b18ee9":[4,0,0,399,10],
 "class_barotrauma_1_1_multi_player_campaign.html#a946d86a549486a23ba6cba76d36aaad0":[4,0,0,399,0],
 "class_barotrauma_1_1_multi_player_campaign.html#a946d86a549486a23ba6cba76d36aaad0a1b7ec41d66c159c838bb32fb1f349bf3":[4,0,0,399,0,2],
 "class_barotrauma_1_1_multi_player_campaign.html#a946d86a549486a23ba6cba76d36aaad0a40199e1d4ea124786683e777e21eb5d3":[4,0,0,399,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX37 =
 "class_barotrauma_1_1_networking_1_1_client.html#a11d37601a530ba3e21d58c75e1cb9c00":[4,0,0,8,3,43],
 "class_barotrauma_1_1_networking_1_1_client.html#a16230fc8c5bcc81d0673f85972a6a0d7":[4,0,0,8,3,13],
 "class_barotrauma_1_1_networking_1_1_client.html#a42c23c36ba26eaa6cf03a77a8da29bae":[4,0,0,8,3,31],
-"class_barotrauma_1_1_networking_1_1_client.html#a4631902c9d6f71356558be6445af28f4":[4,0,0,8,3,6],
-"class_barotrauma_1_1_networking_1_1_client.html#a4ae96ce713d3545fa670c32326487602":[4,0,0,8,3,36],
-"class_barotrauma_1_1_networking_1_1_client.html#a4bc29d866927023d4bc513e708ceeff4":[4,0,0,8,3,27]
+"class_barotrauma_1_1_networking_1_1_client.html#a4631902c9d6f71356558be6445af28f4":[4,0,0,8,3,6]
 };

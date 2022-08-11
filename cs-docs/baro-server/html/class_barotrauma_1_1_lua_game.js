@@ -32,7 +32,6 @@ var class_barotrauma_1_1_lua_game =
     [ "overrideRespawnSub", "class_barotrauma_1_1_lua_game.html#a776b4a84e41e59c741e9e97adf166fce", null ],
     [ "overrideSignalRadio", "class_barotrauma_1_1_lua_game.html#abe94d3a3da7d91d13d682d74456398e7", null ],
     [ "overrideTraitors", "class_barotrauma_1_1_lua_game.html#afefcd84cb074a26c5b573fa8fe2b2255", null ],
-    [ "ServerSettings", "class_barotrauma_1_1_lua_game.html#aff6ae3e6e342ff84cd2a3562db8c831b", null ],
     [ "Settings", "class_barotrauma_1_1_lua_game.html#a0aa7181767ab0aaba8669b7beeb1d6fa", null ],
     [ "updatePriorityCharacters", "class_barotrauma_1_1_lua_game.html#aa2e8a90ef70567ea55c64eb807a5f86f", null ],
     [ "updatePriorityItems", "class_barotrauma_1_1_lua_game.html#aac1f4e689dfa86eb977cace651c701e6", null ],
@@ -46,5 +45,7 @@ var class_barotrauma_1_1_lua_game =
     [ "Peer", "class_barotrauma_1_1_lua_game.html#ab2a52ec11ba2da573dc5f4285d5d123f", null ],
     [ "poweredUpdateInterval", "class_barotrauma_1_1_lua_game.html#a5806e1e066f64dcef9d19f4a39e6d83a", null ],
     [ "RoundStarted", "class_barotrauma_1_1_lua_game.html#a17310da6534706e4ad9fb414fe1f16ba", null ],
+    [ "Server", "class_barotrauma_1_1_lua_game.html#a75aab07f3ba46bb15c27ab4fdc41f639", null ],
+    [ "ServerSettings", "class_barotrauma_1_1_lua_game.html#aff6ae3e6e342ff84cd2a3562db8c831b", null ],
     [ "World", "class_barotrauma_1_1_lua_game.html#ac718c8666bccaed58399de6cc8cac26c", null ]
 ];

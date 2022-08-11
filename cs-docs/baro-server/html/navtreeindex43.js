@@ -1,9 +1,10 @@
 var NAVTREEINDEX43 =
 {
 "namespace_barotrauma_1_1_ruin_generation.html":[4,0,0,5],
+"namespace_barotrauma_1_1_ruin_generation.html":[3,0,0,6],
 "namespace_barotrauma_1_1_steam.html":[3,0,0,7],
-"namespace_voronoi2.html":[3,0,1],
 "namespace_voronoi2.html":[4,0,1],
+"namespace_voronoi2.html":[3,0,1],
 "namespacemembers.html":[3,1,0],
 "namespacemembers_enum.html":[3,1,2],
 "namespacemembers_func.html":[3,1,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX43 =
 "struct_barotrauma_1_1_lua_int32.html#a03b1bc902ad6ede54397242a85809c94":[4,0,0,285,1],
 "struct_barotrauma_1_1_lua_int32.html#adcbdee2c803e94370fe65a6019421614":[4,0,0,285,0],
 "struct_barotrauma_1_1_lua_int64.html":[4,0,0,286],
-"struct_barotrauma_1_1_lua_int64.html#a2ae53e03415a40065b5d3b147e783b8c":[4,0,0,286,1],
-"struct_barotrauma_1_1_lua_int64.html#a896c4c9c783fe40bad0d2af64da5768d":[4,0,0,286,0]
+"struct_barotrauma_1_1_lua_int64.html#a2ae53e03415a40065b5d3b147e783b8c":[4,0,0,286,1]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX32 =
 {
+"class_barotrauma_1_1_networking_1_1_server_settings.html#aebb3d0a123250ddaf48af8853e48edaba4c2a8fe7eaf24721cc7a9f0175115bd4":[4,0,0,4,30,1,2],
 "class_barotrauma_1_1_networking_1_1_server_settings.html#aebb3d0a123250ddaf48af8853e48edaba6adf97f83acf6453d4a6a4b1070f3754":[4,0,0,4,30,1,0],
 "class_barotrauma_1_1_networking_1_1_server_settings.html#aebb3d0a123250ddaf48af8853e48edaba74248c725e00bf9fe04df4e35b249a19":[4,0,0,4,30,1,4],
 "class_barotrauma_1_1_networking_1_1_server_settings.html#aebb3d0a123250ddaf48af8853e48edaba9fc2d28c05ed9eb1d75ba4465abf15a9":[4,0,0,4,30,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX32 =
 "class_barotrauma_1_1_order_prefab.html#a8d09010f766239e2f3c50e734803347b":[4,0,0,332,11],
 "class_barotrauma_1_1_order_prefab.html#a8faf198ac42068be0fdd50cb1ec179e8":[4,0,0,332,20],
 "class_barotrauma_1_1_order_prefab.html#a91d4105bd4be62314850824e7ef4853e":[4,0,0,332,12],
-"class_barotrauma_1_1_order_prefab.html#a931ccdc299c9f816ab4f507324411af1":[4,0,0,332,33],
-"class_barotrauma_1_1_order_prefab.html#a959628baa05e5722d195515a1152acbb":[4,0,0,332,52]
+"class_barotrauma_1_1_order_prefab.html#a931ccdc299c9f816ab4f507324411af1":[4,0,0,332,33]
 };

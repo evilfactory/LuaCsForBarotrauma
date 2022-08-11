@@ -1,5 +1,6 @@
 var NAVTREEINDEX44 =
 {
+"struct_barotrauma_1_1_lua_int64.html#a896c4c9c783fe40bad0d2af64da5768d":[4,0,0,286,0],
 "struct_barotrauma_1_1_lua_int64.html#ac8f58ee555e28118aa4f1b7465237738":[4,0,0,286,2],
 "struct_barotrauma_1_1_lua_s_byte.html":[4,0,0,288],
 "struct_barotrauma_1_1_lua_s_byte.html#a39e68f560620575e1037142bf6bbf45c":[4,0,0,288,0],

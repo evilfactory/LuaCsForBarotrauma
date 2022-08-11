@@ -1,5 +1,7 @@
 var NAVTREEINDEX48 =
 {
+"class_barotrauma_1_1_split_l_string.html":[4,0,0,512],
+"class_barotrauma_1_1_split_l_string.html#a9085c76fca282fbb287830136ce91fe3":[4,0,0,512,1],
 "class_barotrauma_1_1_split_l_string.html#aaa702caa8e43f1eca22215d819d6e012":[4,0,0,512,0],
 "class_barotrauma_1_1_split_l_string.html#af5995063b8ab299fde43a34bed655551":[4,0,0,512,2],
 "class_barotrauma_1_1_spreadsheet_export.html":[4,0,0,513],
@@ -247,7 +249,5 @@ var NAVTREEINDEX48 =
 "class_barotrauma_1_1_status_effect_1_1_give_skill.html#a7277fd513a502ca80ba2bf8afef5ae06":[4,0,0,519,2,1],
 "class_barotrauma_1_1_status_effect_1_1_give_skill.html#afdfa281f75708707b06df44950ef8009":[4,0,0,519,2,2],
 "class_barotrauma_1_1_status_effect_1_1_give_talent_info.html":[4,0,0,519,3],
-"class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#a2652ccb6ea2fe9d5920cc541236a0c6a":[4,0,0,519,3,0],
-"class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#a3e952da3d95bd1552e8d58f6c2aa7322":[4,0,0,519,3,2],
-"class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#ade55aacfabab81a49a11e55c2ea0e1dd":[4,0,0,519,3,1]
+"class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#a2652ccb6ea2fe9d5920cc541236a0c6a":[4,0,0,519,3,0]
 };

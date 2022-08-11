@@ -1,5 +1,6 @@
 var NAVTREEINDEX40 =
 {
+"class_barotrauma_1_1_traitor_1_1_modifier.html#a33026632eb5200378ab30deb12b03997":[4,0,0,439,17,7],
 "class_barotrauma_1_1_traitor_1_1_modifier.html#a3319e317673040c09ab59be4e5f61d87":[4,0,0,439,17,20],
 "class_barotrauma_1_1_traitor_1_1_modifier.html#a46e8404b3d97add6b0f319c1c314056f":[4,0,0,439,17,5],
 "class_barotrauma_1_1_traitor_1_1_modifier.html#a50b733ceb571ca146c78a0a268983723":[4,0,0,439,17,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX40 =
 "class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748a5bda814c4aedb126839228f1a3d92f09":[4,0,0,454,3,2],
 "class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748a6adf97f83acf6453d4a6a4b1070f3754":[4,0,0,454,3,0],
 "class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748a8428552d86c0d262a542a528af490afa":[4,0,0,454,3,1],
-"class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748aa0d0628f6b4e4d78d2ffef4d4d1c4b15":[4,0,0,454,3,3],
-"class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748ad7c8c85bf79bbe1b7188497c32c3b0ca":[4,0,0,454,3,4]
+"class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748aa0d0628f6b4e4d78d2ffef4d4d1c4b15":[4,0,0,454,3,3]
 };

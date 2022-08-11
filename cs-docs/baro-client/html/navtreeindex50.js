@@ -1,5 +1,7 @@
 var NAVTREEINDEX50 =
 {
+"class_barotrauma_1_1_submarine.html":[4,0,0,529],
+"class_barotrauma_1_1_submarine.html#a00ddbb3822167e6850a246835084c627":[4,0,0,529,54],
 "class_barotrauma_1_1_submarine.html#a0131306548a27c458ac73fc71e969611":[4,0,0,529,69],
 "class_barotrauma_1_1_submarine.html#a041697ba7af693867f92db324facc88a":[4,0,0,529,45],
 "class_barotrauma_1_1_submarine.html#a08345419961cd5db03d4d57f07bc435d":[4,0,0,529,39],
@@ -247,7 +249,5 @@ var NAVTREEINDEX50 =
 "class_barotrauma_1_1_talent_prefab.html#a858a39ed606f9d0617af52c81491b34f":[4,0,0,545,0],
 "class_barotrauma_1_1_talent_prefab.html#acc072383a27baea6084dc0c4b2cca9bf":[4,0,0,545,5],
 "class_barotrauma_1_1_talent_prefab.html#ad991af9ed0d6d82941d87beda3c6148e":[4,0,0,545,1],
-"class_barotrauma_1_1_talent_prefab.html#af764d7bea67de348a9f5930b8444e661":[4,0,0,545,3],
-"class_barotrauma_1_1_talent_prefab.html#afd739724b38b89aed84ee5b351992e9c":[4,0,0,545,4],
-"class_barotrauma_1_1_talent_sub_tree.html":[4,0,0,547]
+"class_barotrauma_1_1_talent_prefab.html#af764d7bea67de348a9f5930b8444e661":[4,0,0,545,3]
 };
