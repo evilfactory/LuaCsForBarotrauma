@@ -8,7 +8,7 @@ var class_barotrauma_1_1_a_i_objective_fix_leaks =
     [ "TargetEvaluation", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#afb9817c6b7f96844c8e9301389f141ee", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#aec29cd9c28529d86fed64bad31acde26", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#afba75aed773988329546449f4072999c", null ],
-    [ "Identifier", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#aab9525b84856f36106aa0bc6bb20068c", null ],
     [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#a9d768ca2a562b05729f6258fccee54c9", null ],
+    [ "Identifier", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#aab9525b84856f36106aa0bc6bb20068c", null ],
     [ "PrioritizedHull", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#aa5c2475151711c467662a001f84329cf", null ]
 ];

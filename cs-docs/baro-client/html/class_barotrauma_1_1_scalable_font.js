@@ -15,8 +15,8 @@ var class_barotrauma_1_1_scalable_font =
     [ "WrapText", "class_barotrauma_1_1_scalable_font.html#a3d1510a6feba10bddd4fb1d8349a6953", null ],
     [ "WrapText", "class_barotrauma_1_1_scalable_font.html#a234706f25c4dc032b0ac7cdb7cb97c03", null ],
     [ "ForceUpperCase", "class_barotrauma_1_1_scalable_font.html#a7286f83662048bae1d488d4d87296eba", null ],
+    [ "LineHeight", "class_barotrauma_1_1_scalable_font.html#a1385d7f06a6db5962060fec3878d0704", null ],
     [ "DynamicLoading", "class_barotrauma_1_1_scalable_font.html#a2fd4693ccaea7e5aedf515e02006acee", null ],
     [ "IsCJK", "class_barotrauma_1_1_scalable_font.html#ae656d397463b8ba0ecc0b775b5424110", null ],
-    [ "LineHeight", "class_barotrauma_1_1_scalable_font.html#a1385d7f06a6db5962060fec3878d0704", null ],
     [ "Size", "class_barotrauma_1_1_scalable_font.html#a6172c09ac19de94ff0de8837477787c7", null ]
 ];

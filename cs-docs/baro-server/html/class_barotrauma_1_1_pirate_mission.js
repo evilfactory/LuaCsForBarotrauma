@@ -7,7 +7,7 @@ var class_barotrauma_1_1_pirate_mission =
     [ "SetLevel", "class_barotrauma_1_1_pirate_mission.html#a9d06feae89c4da99cdf85538493f8f70", null ],
     [ "StartMissionSpecific", "class_barotrauma_1_1_pirate_mission.html#a71170801e2269571820baf55b0897753", null ],
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_pirate_mission.html#a8e400de7dc470a7793e250841022c143", null ],
+    [ "TeamCount", "class_barotrauma_1_1_pirate_mission.html#af338fcdc882063bb9766119e3fe5a7c9", null ],
     [ "EnemySubmarineInfo", "class_barotrauma_1_1_pirate_mission.html#abb51b9a84200a0eb1e26e903725fdc85", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_pirate_mission.html#a2587e1c952ccb1b667f9d342ce1ffa71", null ],
-    [ "TeamCount", "class_barotrauma_1_1_pirate_mission.html#af338fcdc882063bb9766119e3fe5a7c9", null ]
+    [ "SonarPositions", "class_barotrauma_1_1_pirate_mission.html#a2587e1c952ccb1b667f9d342ce1ffa71", null ]
 ];

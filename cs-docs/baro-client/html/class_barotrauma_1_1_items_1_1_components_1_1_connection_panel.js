@@ -6,7 +6,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab5834a3978adf575268d5d4cb65686dc", null ],
     [ "InitializeLinks", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a14e0608c749e574b1f64ed2824e9e53a", null ],
     [ "Load", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a43c67fa050a43168974a771604f0a804", null ],
-    [ "Move", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a6191192dc3eceb1f1fcec3613c0a8c18", null ],
+    [ "Move", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a4976d32d7d36a74135c9866059b42c27", null ],
     [ "MoveConnectedWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a40a5e57dbdbc14208e13e16532175e8e", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a063ec150b2cb22a55fec803b32c760d6", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9273cf410c6667817a76e267fed51e73", null ],
@@ -28,6 +28,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
     [ "IsActive", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#adb749229a52ecd90c037f57aeb692893", null ],
     [ "Locked", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a2b01ba87c2c2a6a2501be3b979d0d4b4", null ],
     [ "Scale", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a3901dafadd6366de4d011705bb3105de", null ],
-    [ "TemporarilyLocked", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ae70c6bfa5842dbd570d64f0bdf2232cb", null ],
+    [ "TemporarilyLocked", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a8884e5ca15f0ae445397e8f9af83f4fe", null ],
     [ "User", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#aba55b58a8f3569ccc92b6c4fa89a9030", null ]
 ];

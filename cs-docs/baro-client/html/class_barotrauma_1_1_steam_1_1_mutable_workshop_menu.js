@@ -9,6 +9,5 @@ var class_barotrauma_1_1_steam_1_1_mutable_workshop_menu =
     [ "Apply", "class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c", null ],
     [ "PopulateInstalledModLists", "class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a4f2c32e88683e582f202fb312c0e5e43", null ],
     [ "SelectTab", "class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a0f73d14e58408a56c15c9b42e118d528", null ],
-    [ "UpdateModListItemVisibility", "class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#ad9cdb810dfac8dddf9ae0a3b34a08ea2", null ],
-    [ "EnabledCorePackage", "class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#ad36859d0a35917c0bb2e7c94ab8d5065", null ]
+    [ "UpdateModListItemVisibility", "class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#ad9cdb810dfac8dddf9ae0a3b34a08ea2", null ]
 ];

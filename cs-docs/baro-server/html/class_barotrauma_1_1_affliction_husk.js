@@ -11,10 +11,6 @@ var class_barotrauma_1_1_affliction_husk =
     [ "ActivateHusk", "class_barotrauma_1_1_affliction_husk.html#ae4245fac2732ebaf263112c708698c01", null ],
     [ "UnsubscribeFromDeathEvent", "class_barotrauma_1_1_affliction_husk.html#aff527d529f36a359caca3b0d2d044778", null ],
     [ "Update", "class_barotrauma_1_1_affliction_husk.html#a1a2dc0c2463d82a477b8b99504cf8fde", null ],
-    [ "ActiveThreshold", "class_barotrauma_1_1_affliction_husk.html#aa898282373188e8e128195ac0405fa09", null ],
-    [ "DormantThreshold", "class_barotrauma_1_1_affliction_husk.html#ac2e00853a370273ae1bb2c101b73689f", null ],
     [ "State", "class_barotrauma_1_1_affliction_husk.html#ae833d4b0f48a303e22f4cd8c9a12b16a", null ],
-    [ "Strength", "class_barotrauma_1_1_affliction_husk.html#aa9065aab1015ec4aa66318efe08fae2f", null ],
-    [ "TransformThresholdOnDeath", "class_barotrauma_1_1_affliction_husk.html#ac3a9888fb9781f200cf6d466ba9ab23f", null ],
-    [ "TransitionThreshold", "class_barotrauma_1_1_affliction_husk.html#a0f8c93e24a5cc870b597d576d85290ae", null ]
+    [ "Strength", "class_barotrauma_1_1_affliction_husk.html#aa9065aab1015ec4aa66318efe08fae2f", null ]
 ];

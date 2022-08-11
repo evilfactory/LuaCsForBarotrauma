@@ -1,5 +1,6 @@
 var class_barotrauma_1_1_outpost_generation_params =
 [
+    [ "ModuleCount", "class_barotrauma_1_1_outpost_generation_params_1_1_module_count.html", "class_barotrauma_1_1_outpost_generation_params_1_1_module_count" ],
     [ "OutpostGenerationParams", "class_barotrauma_1_1_outpost_generation_params.html#a11d9998312041dae3877e8adc49229b9", null ],
     [ "Dispose", "class_barotrauma_1_1_outpost_generation_params.html#a27056f7ec3741304b443681fd1b37d23", null ],
     [ "GetHumanPrefabs", "class_barotrauma_1_1_outpost_generation_params.html#a716c730eb5dc77e85d624f5532450972", null ],
@@ -15,7 +16,7 @@ var class_barotrauma_1_1_outpost_generation_params =
     [ "MaxWaterPercentage", "class_barotrauma_1_1_outpost_generation_params.html#ac0a734b7089a87cc95c66cfb02c44751", null ],
     [ "MinHallwayLength", "class_barotrauma_1_1_outpost_generation_params.html#aa1700458883c234538a6853abef5bf35", null ],
     [ "MinWaterPercentage", "class_barotrauma_1_1_outpost_generation_params.html#a02bdabb3f2628ed215756d785d0bf594", null ],
-    [ "ModuleCounts", "class_barotrauma_1_1_outpost_generation_params.html#a4a2aead14680d7647509d9af135929cb", null ],
+    [ "ModuleCounts", "class_barotrauma_1_1_outpost_generation_params.html#aad983edb41e3fa7cd000aa6724ed4695", null ],
     [ "Name", "class_barotrauma_1_1_outpost_generation_params.html#a4563dbd3ca7a0195a8a9fa93ebfa3dcb", null ],
     [ "RemoveUnusedGaps", "class_barotrauma_1_1_outpost_generation_params.html#a7211eaff5522a6f4228e4ccee83c3c4b", null ],
     [ "ReplaceInRadiation", "class_barotrauma_1_1_outpost_generation_params.html#a687f842cafa076aa3b7953f7525e3896", null ],

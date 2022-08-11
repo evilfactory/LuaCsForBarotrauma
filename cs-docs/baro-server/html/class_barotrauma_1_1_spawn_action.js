@@ -18,11 +18,13 @@ var class_barotrauma_1_1_spawn_action =
     [ "LootingIsStealing", "class_barotrauma_1_1_spawn_action.html#a81a47554b9d6a653fdaa6989973e5920", null ],
     [ "NPCIdentifier", "class_barotrauma_1_1_spawn_action.html#a386947edc8f6cf1fd8f35ebebd4584c2", null ],
     [ "NPCSetIdentifier", "class_barotrauma_1_1_spawn_action.html#a5d8675f130d2c211c89f53777ebb789d", null ],
+    [ "RequireSpawnPointTag", "class_barotrauma_1_1_spawn_action.html#a147f0af19dd5c8b3aed682da300957c6", null ],
     [ "SpawnLocation", "class_barotrauma_1_1_spawn_action.html#af6fe2fc556b86261609a217e7a4327d2", null ],
     [ "SpawnPointTag", "class_barotrauma_1_1_spawn_action.html#a37355ae45ae4c0b039d069789a15daa1", null ],
     [ "SpawnPointType", "class_barotrauma_1_1_spawn_action.html#a1811d1852df0633e1868284610f6fe7b", null ],
     [ "SpeciesName", "class_barotrauma_1_1_spawn_action.html#a28da5a09530f4ae9740044b587926145", null ],
     [ "TargetInventory", "class_barotrauma_1_1_spawn_action.html#af118ea40575e72389c0a78368fa70c98", null ],
     [ "TargetModuleTags", "class_barotrauma_1_1_spawn_action.html#a2a61a53d13dc44cf3da3d2cf911fafc5", null ],
-    [ "TargetTag", "class_barotrauma_1_1_spawn_action.html#a5fcdf5337feeb5ed5b29d28fa3ad72c1", null ]
+    [ "TargetTag", "class_barotrauma_1_1_spawn_action.html#a5fcdf5337feeb5ed5b29d28fa3ad72c1", null ],
+    [ "Team", "class_barotrauma_1_1_spawn_action.html#aa1ca1f9f7ab9f4900f5a73b2752b3b73", null ]
 ];

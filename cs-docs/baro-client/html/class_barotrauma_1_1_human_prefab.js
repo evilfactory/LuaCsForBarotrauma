@@ -3,7 +3,7 @@ var class_barotrauma_1_1_human_prefab =
     [ "HumanPrefab", "class_barotrauma_1_1_human_prefab.html#a40ea6fa54512ef5f35dad822df9cb3cf", null ],
     [ "Dispose", "class_barotrauma_1_1_human_prefab.html#a5392e0fcc9c10367b2391f55d60dbd01", null ],
     [ "GetCharacterInfo", "class_barotrauma_1_1_human_prefab.html#acc626ccb509fb04fdb86804dfbff09f4", null ],
-    [ "GetJobPrefab", "class_barotrauma_1_1_human_prefab.html#a29109028b530b74a83b9237da5cd2a34", null ],
+    [ "GetJobPrefab", "class_barotrauma_1_1_human_prefab.html#a7dd1f676fee9d7e0e9f82211ba3c999a", null ],
     [ "GetModuleFlags", "class_barotrauma_1_1_human_prefab.html#a8be5f3f94bc42a74cc61f0e9b2987a2b", null ],
     [ "GetSpawnPointTags", "class_barotrauma_1_1_human_prefab.html#a01995d10ca3f2d5716b04013529ea3c6", null ],
     [ "GiveItems", "class_barotrauma_1_1_human_prefab.html#a08286df1cc943c048c6113d6b00f6ecc", null ],

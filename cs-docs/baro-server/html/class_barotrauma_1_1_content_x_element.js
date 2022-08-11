@@ -46,12 +46,12 @@ var class_barotrauma_1_1_content_x_element =
     [ "Remove", "class_barotrauma_1_1_content_x_element.html#add8e74ebb49e2b6469bac64c6e31244f", null ],
     [ "SetAttributeValue", "class_barotrauma_1_1_content_x_element.html#af6eb9ff46163bf37a8177ebd0e356d88", null ],
     [ "VariantOf", "class_barotrauma_1_1_content_x_element.html#a6bd103f6294482af337e07628287c8fb", null ],
-    [ "Element", "class_barotrauma_1_1_content_x_element.html#aa95bcc3525de0ebfabb7ccfc73e0e2f8", null ],
-    [ "T1", "class_barotrauma_1_1_content_x_element.html#afd1f1cf1db6dd4d1082d6c7442c80bea", null ],
     [ "BaseUri", "class_barotrauma_1_1_content_x_element.html#a3b8de5205f03c49bcc0c3f2b418a7f97", null ],
-    [ "ContentPackage", "class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b", null ],
-    [ "Document", "class_barotrauma_1_1_content_x_element.html#a2d62d4a9212a1786a7e849083fa5af3d", null ],
+    [ "Document", "class_barotrauma_1_1_content_x_element.html#add3a081d2896c1832754db57bbe3db11", null ],
+    [ "Element", "class_barotrauma_1_1_content_x_element.html#aa95bcc3525de0ebfabb7ccfc73e0e2f8", null ],
     [ "HasElements", "class_barotrauma_1_1_content_x_element.html#a3b2b0509b6b5656280d0a9075e76c920", null ],
     [ "Name", "class_barotrauma_1_1_content_x_element.html#a8370edefe488cc9ee1f3db10b76f9d40", null ],
-    [ "Parent", "class_barotrauma_1_1_content_x_element.html#ade5df254342b54ee5a65d55938ee5c9d", null ]
+    [ "Parent", "class_barotrauma_1_1_content_x_element.html#ade5df254342b54ee5a65d55938ee5c9d", null ],
+    [ "T1", "class_barotrauma_1_1_content_x_element.html#afd1f1cf1db6dd4d1082d6c7442c80bea", null ],
+    [ "ContentPackage", "class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b", null ]
 ];

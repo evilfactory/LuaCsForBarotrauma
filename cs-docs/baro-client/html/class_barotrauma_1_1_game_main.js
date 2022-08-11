@@ -2,7 +2,7 @@ var class_barotrauma_1_1_game_main =
 [
     [ "LoadingException", "class_barotrauma_1_1_game_main_1_1_loading_exception.html", "class_barotrauma_1_1_game_main_1_1_loading_exception" ],
     [ "GameMain", "class_barotrauma_1_1_game_main.html#af675975c8f1fb671be9f66ca3ac96f73", null ],
-    [ "ApplyGraphicsSettings", "class_barotrauma_1_1_game_main.html#acb23e9b2b723a00b3100bdea18a2a235", null ],
+    [ "ApplyGraphicsSettings", "class_barotrauma_1_1_game_main.html#aa220608e6e4d2a1e408c5c0b317ba7ff", null ],
     [ "Draw", "class_barotrauma_1_1_game_main.html#a4e799400d06ddd3349f6e22bbba5cbfc", null ],
     [ "Initialize", "class_barotrauma_1_1_game_main.html#ad98496815da59b97a71f3829badcc00f", null ],
     [ "LoadContent", "class_barotrauma_1_1_game_main.html#ae2758b713c5572668f3adff220300bea", null ],
@@ -13,7 +13,6 @@ var class_barotrauma_1_1_game_main =
     [ "ResetViewPort", "class_barotrauma_1_1_game_main.html#a2798a5cd6350e8bcb7a6ae9b5565c547", null ],
     [ "SetWindowMode", "class_barotrauma_1_1_game_main.html#aa0609df794dda7d9ee8481c92d411dc3", null ],
     [ "ShowBugReporter", "class_barotrauma_1_1_game_main.html#a9f21ff406136c1fcc6ba6b934535274a", null ],
-    [ "ShowCampaignDisclaimer", "class_barotrauma_1_1_game_main.html#aef0785c324b5589252a8d398d15469c6", null ],
     [ "ShowEditorDisclaimer", "class_barotrauma_1_1_game_main.html#a270975f503d533b806281402828ac0ec", null ],
     [ "ShowLoading", "class_barotrauma_1_1_game_main.html#a3206f5b40f0f4e947618086734964f3c", null ],
     [ "ShowOpenUrlInWebBrowserPrompt", "class_barotrauma_1_1_game_main.html#a8fee9b7eb80a40daa0271f6ecdf7aa98", null ],

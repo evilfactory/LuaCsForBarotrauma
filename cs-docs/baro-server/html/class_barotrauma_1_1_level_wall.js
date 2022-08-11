@@ -3,7 +3,6 @@ var class_barotrauma_1_1_level_wall =
     [ "LevelWall", "class_barotrauma_1_1_level_wall.html#accadbd5219faa8da18799ef6be05a865", null ],
     [ "LevelWall", "class_barotrauma_1_1_level_wall.html#a175846cc26002106e5033a3930a6e2fa", null ],
     [ "Dispose", "class_barotrauma_1_1_level_wall.html#a007d66632ab3f18eeb0e8aaf18b0256c", null ],
-    [ "Dispose", "class_barotrauma_1_1_level_wall.html#a91a2b5a48b2a85c80913bcdb76742bec", null ],
     [ "IsPointInside", "class_barotrauma_1_1_level_wall.html#ac6ef57350bd168955d800c961a2ccf3a", null ],
     [ "Update", "class_barotrauma_1_1_level_wall.html#ae69a4dddb468e617f58e17e2466cde5a", null ],
     [ "level", "class_barotrauma_1_1_level_wall.html#a7874943ae7dc1f6667498ff9e3ef676c", null ],

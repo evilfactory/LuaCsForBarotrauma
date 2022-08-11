@@ -6,6 +6,5 @@ var class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer =
     [ "SendMsgInternal", "class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a174452b161cc91f5f188e7aa074c965e", null ],
     [ "SendPassword", "class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed", null ],
     [ "Start", "class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4eb4b0fa9079c2711c3dd8fba28569bf", null ],
-    [ "Update", "class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aeb7f7f2aa3a5b3c552b1c9fc390e78d3", null ],
-    [ "ownerKey64", "class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a48c525b9aa397a4879c9d04368fb1d9b", null ]
+    [ "Update", "class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aeb7f7f2aa3a5b3c552b1c9fc390e78d3", null ]
 ];

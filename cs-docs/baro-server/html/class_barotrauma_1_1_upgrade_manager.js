@@ -16,9 +16,8 @@ var class_barotrauma_1_1_upgrade_manager =
     [ "Save", "class_barotrauma_1_1_upgrade_manager.html#a71854c3246f80bd30f13726ec341c0fe", null ],
     [ "SetPendingUpgrades", "class_barotrauma_1_1_upgrade_manager.html#ac2eeefd430b29a095a8631b0c92491dc", null ],
     [ "CanUpgrade", "class_barotrauma_1_1_upgrade_manager.html#abb90b672467a85652d7771181db9d785", null ],
+    [ "OnUpgradesChanged", "class_barotrauma_1_1_upgrade_manager.html#a8693ebfe889ca1cd1064ac3567e6491a", null ],
     [ "PendingUpgrades", "class_barotrauma_1_1_upgrade_manager.html#a1aa01943cccffdf52b86210c4136b3e1", null ],
     [ "PurchasedItemSwaps", "class_barotrauma_1_1_upgrade_manager.html#ad7c253ecbd00f49af8a06e7d985d7313", null ],
-    [ "PurchasedUpgrades", "class_barotrauma_1_1_upgrade_manager.html#afcc166ed50cb7a9994015cd5f1a818a1", null ],
-    [ "Metadata", "class_barotrauma_1_1_upgrade_manager.html#a77fe6ed6a2709509e3b380ca9642c552", null ],
-    [ "OnUpgradesChanged", "class_barotrauma_1_1_upgrade_manager.html#ace82f4d224bce91b8ae078488aed6803", null ]
+    [ "PurchasedUpgrades", "class_barotrauma_1_1_upgrade_manager.html#afcc166ed50cb7a9994015cd5f1a818a1", null ]
 ];

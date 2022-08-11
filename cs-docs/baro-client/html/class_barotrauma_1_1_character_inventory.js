@@ -34,8 +34,5 @@ var class_barotrauma_1_1_character_inventory =
     [ "AccessibleByOwner", "class_barotrauma_1_1_character_inventory.html#a77dd83c060ad3c4c0acb82a13c5ceb0a", null ],
     [ "AccessibleWhenAlive", "class_barotrauma_1_1_character_inventory.html#a31eb575ff5d6d066731fd4f215952f46", null ],
     [ "CurrentLayout", "class_barotrauma_1_1_character_inventory.html#acff6a244872bdf6b4029e3e039c27631", null ],
-    [ "Hidden", "class_barotrauma_1_1_character_inventory.html#a1d87aebdac3f78b33af1adaf72424659", null ],
-    [ "HidePersonalSlots", "class_barotrauma_1_1_character_inventory.html#a1e2c69a01b0dece6abc551f3edd6730d", null ],
-    [ "PersonalSlotArea", "class_barotrauma_1_1_character_inventory.html#a84814a9fabed86bf9b8a6d95b5040e68", null ],
     [ "SlotTypes", "class_barotrauma_1_1_character_inventory.html#a59366fc4b5746d0737f2bfeb6567f78b", null ]
 ];

@@ -10,6 +10,6 @@ var class_barotrauma_1_1_traitor_manager =
     [ "Start", "class_barotrauma_1_1_traitor_manager.html#ae6959f26c05980c638d44d0ccf1204ba", null ],
     [ "Update", "class_barotrauma_1_1_traitor_manager.html#a548c2bf733fc37f0d4b396592b5197fd", null ],
     [ "Missions", "class_barotrauma_1_1_traitor_manager.html#accacaf8a9ba41771c1d1aaaad83d4314", null ],
-    [ "ShouldEndRound", "class_barotrauma_1_1_traitor_manager.html#a0f2263d2ed010e0d883e86ff2c737200", null ],
-    [ "Traitors", "class_barotrauma_1_1_traitor_manager.html#a9f5ef2d6d4275608c6c3450810ab784d", null ]
+    [ "Traitors", "class_barotrauma_1_1_traitor_manager.html#a9f5ef2d6d4275608c6c3450810ab784d", null ],
+    [ "ShouldEndRound", "class_barotrauma_1_1_traitor_manager.html#a0f2263d2ed010e0d883e86ff2c737200", null ]
 ];

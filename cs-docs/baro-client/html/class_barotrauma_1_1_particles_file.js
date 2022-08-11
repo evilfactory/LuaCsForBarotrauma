@@ -5,5 +5,5 @@ var class_barotrauma_1_1_particles_file =
     [ "CreatePrefab", "class_barotrauma_1_1_particles_file.html#a17085a70533fbac347e79dfb2f23f311", null ],
     [ "MatchesPlural", "class_barotrauma_1_1_particles_file.html#aeb903a540400810e086a6b4b2771d813", null ],
     [ "MatchesSingular", "class_barotrauma_1_1_particles_file.html#a550d842e05473311a74f16f714627908", null ],
-    [ "prefabs", "class_barotrauma_1_1_particles_file.html#a91a28899b784acc381fe3e95fa88d384", null ]
+    [ "Prefabs", "class_barotrauma_1_1_particles_file.html#a2d96ee404fc13f34abf92fb3916146c3", null ]
 ];

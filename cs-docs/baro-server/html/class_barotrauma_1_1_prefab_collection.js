@@ -15,8 +15,8 @@ var class_barotrauma_1_1_prefab_collection =
     [ "SortAll", "class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e", null ],
     [ "TryGet", "class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502", null ],
     [ "TryGet", "class_barotrauma_1_1_prefab_collection.html#af64719cbdf9b6092ac41f49d7df2400e", null ],
-    [ "AllPrefabs", "class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2", null ],
     [ "Keys", "class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d", null ],
+    [ "AllPrefabs", "class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2", null ],
     [ "this[Identifier identifier]", "class_barotrauma_1_1_prefab_collection.html#af0c6e2d6dfa043189234eea993ce1c10", null ],
     [ "this[string identifier]", "class_barotrauma_1_1_prefab_collection.html#a2c9b1c298e0150c46b6549b98a430edd", null ]
 ];

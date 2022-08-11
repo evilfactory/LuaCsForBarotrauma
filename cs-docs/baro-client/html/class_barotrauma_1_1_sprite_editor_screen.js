@@ -11,6 +11,5 @@ var class_barotrauma_1_1_sprite_editor_screen =
     [ "Update", "class_barotrauma_1_1_sprite_editor_screen.html#a0e3704f15b752241b342dcc8a5869274", null ],
     [ "Cam", "class_barotrauma_1_1_sprite_editor_screen.html#ab9efaa6f482f39001ff9d7754acf5d1a", null ],
     [ "GetViewArea", "class_barotrauma_1_1_sprite_editor_screen.html#a8449abfe0fa0aa54f1937c2e6d1ea9be", null ],
-    [ "SelectedTexture", "class_barotrauma_1_1_sprite_editor_screen.html#a87339d0ab2e81f9d3bff4cc57f28b221", null ],
     [ "TopPanel", "class_barotrauma_1_1_sprite_editor_screen.html#aef4e72c19b93047739354043ed5ab2f1", null ]
 ];

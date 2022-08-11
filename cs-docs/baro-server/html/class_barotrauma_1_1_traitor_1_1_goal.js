@@ -14,14 +14,14 @@ var class_barotrauma_1_1_traitor_1_1_goal =
     [ "StatusText", "class_barotrauma_1_1_traitor_1_1_goal.html#a32bba8d72d6dbdcae873d3901606bfe0", null ],
     [ "StatusTextValues", "class_barotrauma_1_1_traitor_1_1_goal.html#ae1c48c022ddd647befd4c8f2bf026856", null ],
     [ "Update", "class_barotrauma_1_1_traitor_1_1_goal.html#a77bbb41c834d94208b67ada486544314", null ],
-    [ "CompletedTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#a83df890c42fbb90e72286aeb717c3eee", null ],
     [ "CompletedTextKeys", "class_barotrauma_1_1_traitor_1_1_goal.html#abf2836babf12573a7160c60514362183", null ],
-    [ "InfoTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#a67a5ae4e2cbbf1269e8c712bf3c9806b", null ],
     [ "InfoTextKeys", "class_barotrauma_1_1_traitor_1_1_goal.html#a8b0623e48c13b6817ec926ee9bba7092", null ],
+    [ "StatusTextKeys", "class_barotrauma_1_1_traitor_1_1_goal.html#aebb6befaaca53c137c6b9bfbb74e008d", null ],
+    [ "StatusValueTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#acc34c58e9c970c40977ff5bf5a7c6913", null ],
+    [ "CompletedTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#a83df890c42fbb90e72286aeb717c3eee", null ],
+    [ "InfoTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#a67a5ae4e2cbbf1269e8c712bf3c9806b", null ],
     [ "IsCompleted", "class_barotrauma_1_1_traitor_1_1_goal.html#a0860571168eb1d9307650ac1b51d6585", null ],
     [ "Mission", "class_barotrauma_1_1_traitor_1_1_goal.html#a519f83531a1162f7ca202587826b9b8e", null ],
     [ "StatusTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#a5827cd91e8c735c4d7bdae2edcb4a15e", null ],
-    [ "StatusTextKeys", "class_barotrauma_1_1_traitor_1_1_goal.html#aebb6befaaca53c137c6b9bfbb74e008d", null ],
-    [ "StatusValueTextId", "class_barotrauma_1_1_traitor_1_1_goal.html#acc34c58e9c970c40977ff5bf5a7c6913", null ],
     [ "Traitors", "class_barotrauma_1_1_traitor_1_1_goal.html#a9f8a345f22a7f696edde5ac35a168bae", null ]
 ];

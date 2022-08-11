@@ -9,6 +9,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_docking_port =
     ] ],
     [ "DockingPort", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a513a0917a07e2e527790d98b047ebd68", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a939eb07a28fae9d4f027ad494ca2c0a6", null ],
+    [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a5fc7bb2968d35cfbdffcc6de1ab1ba22", null ],
     [ "Dock", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#af7f88fefe9ee3a373a424cd77802f536", null ],
     [ "Draw", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a1ad6a32ddd32ade7e94a1e4adea5581f", null ],
     [ "FlipX", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#aa562c6979b1a936c8684f8e000504394", null ],

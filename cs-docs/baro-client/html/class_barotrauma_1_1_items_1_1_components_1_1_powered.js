@@ -14,12 +14,13 @@ var class_barotrauma_1_1_items_1_1_components_1_1_powered =
     [ "currPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a95bcebbdcc7d41dafe340c01f687e950", null ],
     [ "powerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a4dbfb0ab227f1b0b6724e83cdc341e1e", null ],
     [ "powerIn", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a517e4c14ea87934cda457d518f7f4165", null ],
+    [ "RelativeVoltage", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a01c3f2c990daabd77dee32269c6bf0f9", null ],
     [ "CurrPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a070320c7310a2ac69be0cff86a786fca", null ],
     [ "IsActive", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a34a8f3a04353cce553dd6f52329424e3", null ],
     [ "MinVoltage", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#ab61b6297498a4a9eb4dd3677a4f00da0", null ],
     [ "PowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a04ff91773ea44add5a53afac06973424", null ],
     [ "PoweredByTinkering", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a6d8dc97a95eedad923c0d447fd76e680", null ],
     [ "Priority", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a6d9ebfdca9eed20e008003e75617cda3", null ],
-    [ "Voltage", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a0dc553d6c951be1bce201d1013b03a50", null ],
+    [ "Voltage", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#aebb0d09104b1ff5edc76ddd467a73933", null ],
     [ "VulnerableToEMP", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#acbf1deacf7132c3ec12552a36efd85d2", null ]
 ];

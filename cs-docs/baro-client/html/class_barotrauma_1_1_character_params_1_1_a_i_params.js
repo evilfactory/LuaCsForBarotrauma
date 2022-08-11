@@ -13,6 +13,8 @@ var class_barotrauma_1_1_character_params_1_1_a_i_params =
     [ "TryGetTarget", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#ab34d786f913037ded568da5a7d5a3acf", null ],
     [ "TryGetTarget", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#aee97bd6a9bcad8b6d780ef5f83e05f31", null ],
     [ "TryGetTarget", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a472b5fdc53d08cc559accaed008ecc70", null ],
+    [ "Name", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#ad9d4885a9663aa00cf97b0049ae9e3ee", null ],
+    [ "Targets", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a818479a6196248562766d3cc71705a50", null ],
     [ "targets", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a439d312411de1251913c6433d017259b", null ],
     [ "AggressionCumulation", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#af8a5833fe2f88d609ce96ea2b0f611dc", null ],
     [ "AggressionGreed", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a6d9bc602974b81d7e4fb496215a2b7f9", null ],
@@ -31,7 +33,6 @@ var class_barotrauma_1_1_character_params_1_1_a_i_params =
     [ "KeepDoorsClosed", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a82170f6a18427f97db217640f6d8d848", null ],
     [ "MaxAggression", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#ac4269dd0caacafcacdd25b502058a87f", null ],
     [ "MinFleeTime", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#adf9fccc813d443877b983d9887d988cc", null ],
-    [ "Name", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#ad9d4885a9663aa00cf97b0049ae9e3ee", null ],
     [ "PatrolDry", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a7453bd90e2046150fc00b07f3cd7b329", null ],
     [ "PatrolFlooded", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a17a4cafa33b482a9d990ae0049229801", null ],
     [ "RandomAttack", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a59c2750e4a88bc462f896467b8fec959", null ],
@@ -39,6 +40,5 @@ var class_barotrauma_1_1_character_params_1_1_a_i_params =
     [ "StartAggression", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#afb2de08b10bef253f04a16247313bd5e", null ],
     [ "StayInAbyss", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a3f7479ec6e8163e656588d69963baf44", null ],
     [ "TargetOuterWalls", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#af49ec62c5de6b5372b777f7fa87a181b", null ],
-    [ "Targets", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a818479a6196248562766d3cc71705a50", null ],
     [ "WallTargetingMethod", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a5cbada0adbe4af6ca3a3d252237cae5d", null ]
 ];

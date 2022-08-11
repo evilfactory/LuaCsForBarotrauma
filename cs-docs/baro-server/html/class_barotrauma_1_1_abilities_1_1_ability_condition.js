@@ -14,8 +14,8 @@ var class_barotrauma_1_1_abilities_1_1_ability_condition =
     [ "MatchesCondition", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#a848ebdbcf57d466033892d2a0d0b69c7", null ],
     [ "MatchesCondition", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#abc403f4294bdf89fbe7399ae5a3609d5", null ],
     [ "ParseTargetTypes", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#a272d9771939a5e6aaee428012911bbc3", null ],
+    [ "AllowClientSimulation", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#a41712a10234ea6fe59e7d54088066fae", null ],
     [ "character", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#ae6c5638bf85c080d66432645a605d8da", null ],
     [ "characterTalent", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#afeda4c9cc3ea19fd047fd02f8f28a2e5", null ],
-    [ "invert", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#ad9f3455fb4d3ea85537b141ff35fbb3b", null ],
-    [ "AllowClientSimulation", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#a41712a10234ea6fe59e7d54088066fae", null ]
+    [ "invert", "class_barotrauma_1_1_abilities_1_1_ability_condition.html#ad9f3455fb4d3ea85537b141ff35fbb3b", null ]
 ];

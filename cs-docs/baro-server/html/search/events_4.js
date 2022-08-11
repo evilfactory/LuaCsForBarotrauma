@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['ondocked_15187',['OnDocked',['../class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#af45664d1c2b1da87cb829f76dde26d3d',1,'Barotrauma::Items::Components::DockingPort']]],
-  ['onundocked_15188',['OnUnDocked',['../class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#aeb14f8ead67b02be8cc959abb770ec97',1,'Barotrauma::Items::Components::DockingPort']]],
-  ['onupgradeschanged_15189',['OnUpgradesChanged',['../class_barotrauma_1_1_upgrade_manager.html#ace82f4d224bce91b8ae078488aed6803',1,'Barotrauma::UpgradeManager']]]
+  ['finished_15289',['Finished',['../class_barotrauma_1_1_event.html#a203fe58097292513d3b795276e280cbb',1,'Barotrauma::Event']]]
 ];

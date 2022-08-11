@@ -5,5 +5,5 @@ var class_barotrauma_1_1_sounds_file =
     [ "CreatePrefab", "class_barotrauma_1_1_sounds_file.html#aa1add855d1e11928482e9e6d9a440770", null ],
     [ "MatchesPlural", "class_barotrauma_1_1_sounds_file.html#acaf9dc341eb605711b1c26ebc66dfbfc", null ],
     [ "MatchesSingular", "class_barotrauma_1_1_sounds_file.html#aca48771f454793a6eb07998bded5e081", null ],
-    [ "prefabs", "class_barotrauma_1_1_sounds_file.html#a426124a914b95c11d67a864d2149dfec", null ]
+    [ "Prefabs", "class_barotrauma_1_1_sounds_file.html#a1aef63d0c812c170bf9540a53f9c686d", null ]
 ];

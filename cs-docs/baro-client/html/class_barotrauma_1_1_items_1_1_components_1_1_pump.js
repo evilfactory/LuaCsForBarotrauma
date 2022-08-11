@@ -10,15 +10,15 @@ var class_barotrauma_1_1_items_1_1_components_1_1_pump =
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#aa2a489cb092686f38e2a289f8ac9a619", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a769c74eb5e26ac7fa06e52273c0f620d", null ],
     [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a193f50d83507d21800417e4fdbed9799", null ],
+    [ "HasPower", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#ac11cdcaab5977b3dd6f3fdef94cb4e55", null ],
+    [ "IsAutoControlled", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a6aa003937a99fa5ae822cf6c8f8a37ff", null ],
     [ "TargetLevel", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a522866a431aa581019e8030ce521caf3", null ],
+    [ "UpdateWhenInactive", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#af2182a567d7444e7a443c39efed802fc", null ],
     [ "CurrentBrokenVolume", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a7d94e668317477b20335a5ae113a172a", null ],
     [ "CurrFlow", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#aa8f98861a08903a584391e1fb2d4ca59", null ],
     [ "FlowPercentage", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a1bb7198c5e2959f44f2f134b01170c95", null ],
-    [ "HasPower", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#ac11cdcaab5977b3dd6f3fdef94cb4e55", null ],
     [ "Hijacked", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a65879cdf272cd472b9d7d8b2fdab56ad", null ],
-    [ "IsAutoControlled", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a6aa003937a99fa5ae822cf6c8f8a37ff", null ],
     [ "IsOn", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#ab230141416f1abc7f7ac7cacaeeff0b7", null ],
     [ "MaxFlow", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a58da0a5c6524cae9105855612dca6115", null ],
-    [ "PowerButton", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#aff1334844be9fd2edb210c2ad9dd3db8", null ],
-    [ "UpdateWhenInactive", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#af2182a567d7444e7a443c39efed802fc", null ]
+    [ "PowerButton", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#aff1334844be9fd2edb210c2ad9dd3db8", null ]
 ];

@@ -9,13 +9,13 @@ var class_barotrauma_1_1_indoors_steering_manager =
     [ "SteeringSeekSimple", "class_barotrauma_1_1_indoors_steering_manager.html#acd81ff37a0d203f8e6c00e83d4d47191", null ],
     [ "Update", "class_barotrauma_1_1_indoors_steering_manager.html#a9582ef96fd21cd277b9dec6351d1eab3", null ],
     [ "Wander", "class_barotrauma_1_1_indoors_steering_manager.html#a0656f709ae9d0a0bf4bdc2b483f58130", null ],
+    [ "InStairs", "class_barotrauma_1_1_indoors_steering_manager.html#a3925ab15cb76e62979301a7cbb63a97b", null ],
+    [ "IsCurrentNodeLadder", "class_barotrauma_1_1_indoors_steering_manager.html#aa681e96bb90a4b5ff4cbdde229350b06", null ],
+    [ "IsNextNodeLadder", "class_barotrauma_1_1_indoors_steering_manager.html#a982722805e2fef1dc59b13d48d389b3f", null ],
     [ "CanBreakDoors", "class_barotrauma_1_1_indoors_steering_manager.html#a5b448bb2885d0ef23d7ef0c67ea09a40", null ],
     [ "CurrentPath", "class_barotrauma_1_1_indoors_steering_manager.html#ad57557a70977f4db56cf0aedfb920014", null ],
     [ "CurrentTarget", "class_barotrauma_1_1_indoors_steering_manager.html#aa8254b3fb96588113e05bc15829d68f6", null ],
-    [ "InStairs", "class_barotrauma_1_1_indoors_steering_manager.html#a3925ab15cb76e62979301a7cbb63a97b", null ],
-    [ "IsCurrentNodeLadder", "class_barotrauma_1_1_indoors_steering_manager.html#aa681e96bb90a4b5ff4cbdde229350b06", null ],
     [ "IsNextLadderSameAsCurrent", "class_barotrauma_1_1_indoors_steering_manager.html#a503526fa24d6a40ad3267d4d685b1428", null ],
-    [ "IsNextNodeLadder", "class_barotrauma_1_1_indoors_steering_manager.html#a982722805e2fef1dc59b13d48d389b3f", null ],
     [ "IsPathDirty", "class_barotrauma_1_1_indoors_steering_manager.html#a1f665eefa911b9f82d3247221fbc284a", null ],
     [ "PathFinder", "class_barotrauma_1_1_indoors_steering_manager.html#adaeca842a7b36f6bfaea05ae87f038f1", null ]
 ];

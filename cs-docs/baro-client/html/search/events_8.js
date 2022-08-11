@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['resized_19730',['Resized',['../class_barotrauma_1_1_map_entity.html#a98caeb0fc159fb209147e5d8c251810c',1,'Barotrauma::MapEntity']]],
-  ['resolutionchanged_19731',['ResolutionChanged',['../class_barotrauma_1_1_game_main.html#a694d7f1d01fb9708d1abe71f71484f93',1,'Barotrauma::GameMain']]]
+  ['parentchanged_19818',['ParentChanged',['../class_barotrauma_1_1_rect_transform.html#aea8a2a005f89dec85e39864c1f38c825',1,'Barotrauma::RectTransform']]],
+  ['postdraw_19819',['PostDraw',['../class_barotrauma_1_1_widget.html#aaaf436ca9bbdd95d95c4b86e8113e1eb',1,'Barotrauma::Widget']]],
+  ['postupdate_19820',['PostUpdate',['../class_barotrauma_1_1_widget.html#a76ae0c1f75aa2490d148529e7cf985b4',1,'Barotrauma::Widget']]],
+  ['predraw_19821',['PreDraw',['../class_barotrauma_1_1_widget.html#ae8ab734f9704f20aa2d7ac59432b1144',1,'Barotrauma::Widget']]],
+  ['preupdate_19822',['PreUpdate',['../class_barotrauma_1_1_widget.html#abe7cf11a351f7cec0408051191ccf875',1,'Barotrauma::Widget']]]
 ];

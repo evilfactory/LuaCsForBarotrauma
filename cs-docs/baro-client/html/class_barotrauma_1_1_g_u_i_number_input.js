@@ -1,9 +1,5 @@
 var class_barotrauma_1_1_g_u_i_number_input =
 [
-    [ "NumberType", "class_barotrauma_1_1_g_u_i_number_input.html#ae02b76b3cacaccb7814c2bab56e751e0", [
-      [ "Int", "class_barotrauma_1_1_g_u_i_number_input.html#ae02b76b3cacaccb7814c2bab56e751e0a1686a6c336b71b36d77354cea19a8b52", null ],
-      [ "Float", "class_barotrauma_1_1_g_u_i_number_input.html#ae02b76b3cacaccb7814c2bab56e751e0a22ae0e2b89e5e3d477f988cc36d3272b", null ]
-    ] ],
     [ "GUINumberInput", "class_barotrauma_1_1_g_u_i_number_input.html#a069937e21678567ca1d612147a2ca7dc", null ],
     [ "OnValueChangedHandler", "class_barotrauma_1_1_g_u_i_number_input.html#a20190bec77c1545e22cb27a194d92348", null ],
     [ "OnValueEnteredHandler", "class_barotrauma_1_1_g_u_i_number_input.html#a91a01978eb5c0c0ba1c70fa6b0c55729", null ],

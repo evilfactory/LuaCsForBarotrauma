@@ -10,9 +10,9 @@ var class_barotrauma_1_1_job =
     [ "IncreaseSkillLevel", "class_barotrauma_1_1_job.html#afd6d58bd7e96ae525dea1c2e1af50670", null ],
     [ "OverrideSkills", "class_barotrauma_1_1_job.html#a9c206024ec1e6484863582117437b16b", null ],
     [ "Save", "class_barotrauma_1_1_job.html#a4fd3de3f3751e6eb2c9820f5a68adbcb", null ],
-    [ "Variant", "class_barotrauma_1_1_job.html#a345ab5593aa79c66b026f7ba5d527fdf", null ],
     [ "Description", "class_barotrauma_1_1_job.html#a48875314b40499e634a56d284d8097a6", null ],
     [ "Name", "class_barotrauma_1_1_job.html#acb09848aba0cb0f432005412c611f8c2", null ],
     [ "Prefab", "class_barotrauma_1_1_job.html#af4cb0732f2e3b7f6c9832f70415ba14d", null ],
+    [ "Variant", "class_barotrauma_1_1_job.html#a345ab5593aa79c66b026f7ba5d527fdf", null ],
     [ "PrimarySkill", "class_barotrauma_1_1_job.html#a05edf9fa5df8d2d204f2d723ee48993d", null ]
 ];

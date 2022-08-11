@@ -3,7 +3,7 @@ var class_barotrauma_1_1_scripted_event =
     [ "ScriptedEvent", "class_barotrauma_1_1_scripted_event.html#a26ba81eb5b3cb0000d6b766c6c27c147", null ],
     [ "AddTarget", "class_barotrauma_1_1_scripted_event.html#ae59cea1d0265ab15e86a49cf4ad6cf41", null ],
     [ "AddTargetPredicate", "class_barotrauma_1_1_scripted_event.html#a685558319d0d5a515af39871f3ae3f9b", null ],
-    [ "Finished", "class_barotrauma_1_1_scripted_event.html#a5c19410d21680d1d763a51df730bd18e", null ],
+    [ "Finish", "class_barotrauma_1_1_scripted_event.html#a7f4ce31a7b69f1a713d4e1e1edf2affd", null ],
     [ "GetTargets", "class_barotrauma_1_1_scripted_event.html#aefb29933c37f8b407acdbed993b6a839", null ],
     [ "LevelMeetsRequirements", "class_barotrauma_1_1_scripted_event.html#ae5fb4755ca45cdf54ca5adc973b367a3", null ],
     [ "RemoveTag", "class_barotrauma_1_1_scripted_event.html#abe3bdd05998d73eb099343bec87409b1", null ],

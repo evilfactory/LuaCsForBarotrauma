@@ -7,7 +7,7 @@ var class_barotrauma_1_1_reputation =
     [ "SetReputation", "class_barotrauma_1_1_reputation.html#a827a230ee8cb93b5fec4a31daa5b3e68", null ],
     [ "Faction", "class_barotrauma_1_1_reputation.html#adc300e88af409e859bb26b626b30f9e9", null ],
     [ "Location", "class_barotrauma_1_1_reputation.html#aa3bbeb798b03687ce805ab4d9e897af5", null ],
-    [ "OnReputationValueChanged", "class_barotrauma_1_1_reputation.html#a520b9c784f2e67f501756d322657270b", null ],
+    [ "OnReputationValueChanged", "class_barotrauma_1_1_reputation.html#a9a1e0534db5da0073bfcc77903102dd7", null ],
     [ "Identifier", "class_barotrauma_1_1_reputation.html#a68f03331e22bc12cff9483e38997b56b", null ],
     [ "InitialReputation", "class_barotrauma_1_1_reputation.html#aea38b992b0bfdd22e994fbdcf1a40694", null ],
     [ "MaxReputation", "class_barotrauma_1_1_reputation.html#a0d9975c9d6855285b43d652c4c92cce6", null ],

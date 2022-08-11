@@ -26,5 +26,6 @@ var class_barotrauma_1_1_event_set =
     [ "OncePerOutpost", "class_barotrauma_1_1_event_set.html#a8821a8896ac89f6fd455bb9a80413f71", null ],
     [ "OverrideCommonness", "class_barotrauma_1_1_event_set.html#a985c698ca55dd133fea918ea1293d8d1", null ],
     [ "PerRuin", "class_barotrauma_1_1_event_set.html#a37fa0a286d81dc9295ab6c781c336c1c", null ],
+    [ "ResetTime", "class_barotrauma_1_1_event_set.html#a620e6a2a9c8be2a03607e36e3f15cf1b", null ],
     [ "TriggerEventCooldown", "class_barotrauma_1_1_event_set.html#a2fdaf64b4af201069e480ef1b12d3cfb", null ]
 ];

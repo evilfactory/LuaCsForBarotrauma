@@ -13,7 +13,9 @@ var class_barotrauma_1_1_traitor_1_1_traitor_mission =
     [ "Start", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a90c7c6ef6f4958d7e856d75ac7d0c692", null ],
     [ "TraitorWinHandler", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a53ee91ff7f60e2d1a2fac66f2aded9f6", null ],
     [ "Update", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a06d9fa814e8db18b51ac647bc59950b8", null ],
+    [ "GlobalEndMessageKeys", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a9b99169741c4279c90574aee55b4abc1", null ],
     [ "Identifier", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#ac7486a7df3b5d5c3212da7e3c544c711", null ],
+    [ "IsCompleted", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a9a43d0e0d6c112e4a5401f7ad1caea34", null ],
     [ "Roles", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a07fa99960f124466510621da9cd4b2bc", null ],
     [ "Traitors", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#aabfea3377c9ce73d709215e925005507", null ],
     [ "CodeResponse", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#ad82d118a7bfa19015d1ee24342a2d640", null ],
@@ -22,11 +24,9 @@ var class_barotrauma_1_1_traitor_1_1_traitor_mission =
     [ "GlobalEndMessageFailureDeadTextId", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a255bfd13db899bbc07c1b94f058f7c28", null ],
     [ "GlobalEndMessageFailureDetainedTextId", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#af96df634bddbefb7b0a72fa06c537038", null ],
     [ "GlobalEndMessageFailureTextId", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#abf3ddbaad78ecbea8448bc860dd8e23a", null ],
-    [ "GlobalEndMessageKeys", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a9b99169741c4279c90574aee55b4abc1", null ],
     [ "GlobalEndMessageSuccessDeadTextId", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#ab11c038eccf938d8b083f71eedcb9239", null ],
     [ "GlobalEndMessageSuccessDetainedTextId", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#af856d67e0f919e82a4a00cfcde695b58", null ],
     [ "GlobalEndMessageSuccessTextId", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#abfa88ad9fc487d7e71d57ad2fdfca75d", null ],
     [ "GlobalEndMessageValues", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a3f2dc5e2a060af9f9df605857cb82ea6", null ],
-    [ "IsCompleted", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a9a43d0e0d6c112e4a5401f7ad1caea34", null ],
     [ "StartText", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html#a30949878df5d62b81c16b02fc8576182", null ]
 ];

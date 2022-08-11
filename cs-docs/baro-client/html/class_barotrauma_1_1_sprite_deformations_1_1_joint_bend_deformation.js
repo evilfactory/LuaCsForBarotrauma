@@ -11,6 +11,5 @@ var class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation =
     [ "BendDown", "class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation.html#aaafda7610c2265bf586ddf79dad55da7", null ],
     [ "BendLeft", "class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation.html#a952726e3dfd374f93e4a972f3e31c5c6", null ],
     [ "BendRight", "class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation.html#a42aaf4955fce9278017a99df0bee0d54", null ],
-    [ "BendUp", "class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation.html#a808350bc30e2bb79039ed0f404758d3c", null ],
-    [ "MaxRotationInRadians", "class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation.html#af1b6331b806e040f7346807645eaacd3", null ]
+    [ "BendUp", "class_barotrauma_1_1_sprite_deformations_1_1_joint_bend_deformation.html#a808350bc30e2bb79039ed0f404758d3c", null ]
 ];

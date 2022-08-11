@@ -1,6 +1,5 @@
 var class_barotrauma_1_1_location_type =
 [
-    [ "StoreBalanceStatus", "struct_barotrauma_1_1_location_type_1_1_store_balance_status.html", "struct_barotrauma_1_1_location_type_1_1_store_balance_status" ],
     [ "LocationType", "class_barotrauma_1_1_location_type.html#a7a48d1490612dcd7b8e44756fb7c055a", null ],
     [ "Dispose", "class_barotrauma_1_1_location_type.html#af7c35bcbce0a4cc630aea746e8a987dc", null ],
     [ "GetPortrait", "class_barotrauma_1_1_location_type.html#ad36a296d6ee127a8208630f81a5d4e6d", null ],
@@ -28,7 +27,6 @@ var class_barotrauma_1_1_location_type =
     [ "RequestGoodPriceModifier", "class_barotrauma_1_1_location_type.html#a13c19214958fb962fe12d4791c32d1a7", null ],
     [ "Sprite", "class_barotrauma_1_1_location_type.html#a4da4ba41994e2c7420fc3257f85cdc1b", null ],
     [ "SpriteColor", "class_barotrauma_1_1_location_type.html#a5c5617dd2aee6cb2efe474e38d89092c", null ],
-    [ "StoreBalanceStatuses", "class_barotrauma_1_1_location_type.html#a8e7133045f24003f990669c9871e4041", null ],
     [ "StoreInitialBalance", "class_barotrauma_1_1_location_type.html#a1fc9cb78e55e44bc9232813ca5b3ec3c", null ],
     [ "StoreMaxReputationModifier", "class_barotrauma_1_1_location_type.html#a8933b315e35e5a5b7995c5a628e740ab", null ],
     [ "StorePriceModifierRange", "class_barotrauma_1_1_location_type.html#ab61df6b37beddc6525929687a5ef9618", null ],

@@ -11,11 +11,12 @@ var class_barotrauma_1_1_items_1_1_components_1_1_power_container =
     [ "ServerEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a382356c203ea303c3f6d97146fd90257", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a2f64fec048f49e536fa259010f4ed519", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a8cbbe346cc6575598a597bcb081e73ee", null ],
+    [ "ChargePercentage", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#ad1ef8667d8dc54e7f97c91f221511de3", null ],
     [ "indicatorPosition", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a68ad09dbbdb8c43e2e1192e966598ba1", null ],
     [ "isHorizontal", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#aab10ad8e221f84b5e04826f11acff748", null ],
+    [ "RechargeRatio", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#abcec1e2dfdd648ad72ce848b8a69efce", null ],
     [ "Capacity", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#af6517a1f165e036bb74a68cbe787aa70", null ],
     [ "Charge", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a4f72a731f09427e2029ead7ec540ae86", null ],
-    [ "ChargePercentage", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#ad1ef8667d8dc54e7f97c91f221511de3", null ],
     [ "CurrPowerOutput", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a68fc35fa517873571dada09ee20955d2", null ],
     [ "Efficiency", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a5b4ef724f4e88ec0847a897f0c1fe2f1", null ],
     [ "ExponentialRechargeSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a40d8ed5c553bb122869dcbb9975bb967", null ],
@@ -27,6 +28,5 @@ var class_barotrauma_1_1_items_1_1_components_1_1_power_container =
     [ "MaxRechargeSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a47f8cadb1c9c3a8553168960286f7dd4", null ],
     [ "Priority", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a215755b83fba975e9a605ea1ca077dd3", null ],
     [ "RechargeAdjustSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#adcfe67cb326a9f253ddc3466862bb8dd", null ],
-    [ "RechargeRatio", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#abcec1e2dfdd648ad72ce848b8a69efce", null ],
     [ "RechargeSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a224c06a67465f6494bc5e0b058a28aa8", null ]
 ];

@@ -5,5 +5,5 @@ var class_barotrauma_1_1_cargo_mission =
     [ "GetReward", "class_barotrauma_1_1_cargo_mission.html#afc31d8c2df9f9d5de492e9f25375fd31", null ],
     [ "ServerWriteInitial", "class_barotrauma_1_1_cargo_mission.html#af6b518b7fcaf120408feb4b8ab31746e", null ],
     [ "StartMissionSpecific", "class_barotrauma_1_1_cargo_mission.html#a0471429c5cd94ffee5866cef7c73f7d4", null ],
-    [ "Description", "class_barotrauma_1_1_cargo_mission.html#a5b13b09def3c10051e24e6ab15fc5a21", null ]
+    [ "Description", "class_barotrauma_1_1_cargo_mission.html#acbab52464d6b1fcbe5da9b39aa240f51", null ]
 ];

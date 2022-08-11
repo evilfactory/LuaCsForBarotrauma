@@ -4,5 +4,5 @@ var class_barotrauma_1_1_structure_file =
     [ "CreatePrefab", "class_barotrauma_1_1_structure_file.html#a4f2576cc349436ac0a4886cdab9dea8c", null ],
     [ "MatchesPlural", "class_barotrauma_1_1_structure_file.html#a2489610343d57c964fa1a0d82d98894a", null ],
     [ "MatchesSingular", "class_barotrauma_1_1_structure_file.html#a97330cfabd7b65d129f28ae4fb9c5e78", null ],
-    [ "prefabs", "class_barotrauma_1_1_structure_file.html#a334bccbaf70a998ae148338b515d4792", null ]
+    [ "Prefabs", "class_barotrauma_1_1_structure_file.html#a0ab8aecebf7a027dcc6130df052daf35", null ]
 ];

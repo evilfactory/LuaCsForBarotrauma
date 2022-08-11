@@ -2,9 +2,9 @@ var class_barotrauma_1_1_skill_settings =
 [
     [ "SkillSettings", "class_barotrauma_1_1_skill_settings.html#a8f738d8ab48259100426be2383285553", null ],
     [ "Dispose", "class_barotrauma_1_1_skill_settings.html#ad0d682385872a5fdda9206dea2d33dfa", null ],
+    [ "Name", "class_barotrauma_1_1_skill_settings.html#a4aad57e16d2b0f0139e4717da35b96c1", null ],
     [ "AssistantSkillIncreaseMultiplier", "class_barotrauma_1_1_skill_settings.html#acf495f7495194bacd2264cd968c9488f", null ],
     [ "MaximumSkillWithTalents", "class_barotrauma_1_1_skill_settings.html#a40e88d4eb495cced90477568248c2d59", null ],
-    [ "Name", "class_barotrauma_1_1_skill_settings.html#a4aad57e16d2b0f0139e4717da35b96c1", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_skill_settings.html#a512639a75cdcc2cc232664c6ffd25b98", null ],
     [ "SingleRoundSkillGainMultiplier", "class_barotrauma_1_1_skill_settings.html#ae51bdfc3a9ed4ebb6775c3978a61e2ee", null ],
     [ "SkillIncreasePerCprRevive", "class_barotrauma_1_1_skill_settings.html#a6c3de33770c8ac50eb5fd25c7a226db3", null ],

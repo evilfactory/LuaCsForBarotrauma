@@ -16,6 +16,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_docking_port =
     [ "OnMapLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a4b3d347bf9e2ff4528f1af25105c3a79", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#ad9b0a20e3bb0f579e6f475293fc1d141", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a6fe7bc2dadc8585ebad604a6e07cdf49", null ],
+    [ "ServerEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a2044d3556c0189caeaa783d904943ead", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#ad90d7db4400c5a5fd320345daa45191f", null ],
     [ "Undock", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a66cd88db4607e9fc417116686db8c3f1", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a0278b1108d8360379ac0e6a3b4098889", null ],

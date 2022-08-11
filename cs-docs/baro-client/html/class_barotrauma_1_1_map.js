@@ -1,7 +1,8 @@
 var class_barotrauma_1_1_map =
 [
+    [ "LocationChangeInfo", "struct_barotrauma_1_1_map_1_1_location_change_info.html", "struct_barotrauma_1_1_map_1_1_location_change_info" ],
     [ "Map", "class_barotrauma_1_1_map.html#a293cef0e3256a2bd084bb553bbfb9c96", null ],
-    [ "Map", "class_barotrauma_1_1_map.html#a00022efa9f703812c062301c9552b8a0", null ],
+    [ "Map", "class_barotrauma_1_1_map.html#abd1ead9846cace23bb132075b165ff38", null ],
     [ "DistanceToClosestLocationWithOutpost", "class_barotrauma_1_1_map.html#a07125f74d1eca9b452c44a5ecbb3718f", null ],
     [ "Draw", "class_barotrauma_1_1_map.html#a5560a809f8a0ead533e64deb3bd30055", null ],
     [ "GetBiome", "class_barotrauma_1_1_map.html#af9a27589c149a5cd4697fbd8d0bf313f", null ],
@@ -20,7 +21,7 @@ var class_barotrauma_1_1_map =
     [ "Update", "class_barotrauma_1_1_map.html#a611e19180ee82bea41d3047582b0c648", null ],
     [ "AllowDebugTeleport", "class_barotrauma_1_1_map.html#afcd2e96a3ab9bd2a2f6b25af6126cf7d", null ],
     [ "DrawOffset", "class_barotrauma_1_1_map.html#aa02e30ab13bb3b980f3f81cc76ce8c10", null ],
-    [ "OnLocationChanged", "class_barotrauma_1_1_map.html#a53282461c2f7caa8d8ebe7407253775c", null ],
+    [ "OnLocationChanged", "class_barotrauma_1_1_map.html#a1bccef47c148150bd915dc7022210a3f", null ],
     [ "OnLocationSelected", "class_barotrauma_1_1_map.html#a2801d212222efcdfb877f2c8a6dbf1b8", null ],
     [ "OnMissionsSelected", "class_barotrauma_1_1_map.html#a9b623ead023eec59b39d34d9db7f5967", null ],
     [ "Radiation", "class_barotrauma_1_1_map.html#a904ac326d457295a01d46499300f4ecb", null ],

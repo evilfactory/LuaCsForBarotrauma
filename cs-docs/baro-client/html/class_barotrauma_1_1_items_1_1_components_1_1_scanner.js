@@ -8,7 +8,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_scanner =
     [ "AlwaysDisplayProgressBar", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#aba8e08aebf0885aa8334fc9ee64c622f", null ],
     [ "DisplayProgressBar", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#a247a14af80162a89fa589d3fc3f9ca02", null ],
     [ "Holdable", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#a4e514e521af1b1fd1d73bb737eacbd02", null ],
-    [ "IsScanCompleted", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#aab0ea8682ac6f065e7f8f8173bb34c9d", null ],
     [ "ScanDuration", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#a0cec37f6f7cb32b94567fed8f5d2cd81", null ],
     [ "ScanRadius", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#a4048e29862d31920317175502e649b3a", null ],
     [ "ScanTimer", "class_barotrauma_1_1_items_1_1_components_1_1_scanner.html#aaab47b8570c3027d678d58a189925287", null ]

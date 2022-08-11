@@ -11,6 +11,7 @@ var class_barotrauma_1_1_voting =
       [ "Failed", "class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748ad7c8c85bf79bbe1b7188497c32c3b0ca", null ]
     ] ],
     [ "HighestVoted< T >", "class_barotrauma_1_1_voting.html#a15100a5a60c103604be170a7a787a33b", null ],
+    [ "RegisterRejectedVote", "class_barotrauma_1_1_voting.html#a5b4a4e39c473350ebbaeadc51e8fce37", null ],
     [ "ResetVotes", "class_barotrauma_1_1_voting.html#a924e0ef2bd09372d6a3259d1363f351d", null ],
     [ "ServerRead", "class_barotrauma_1_1_voting.html#afee2fd3ce0268d6d733e1523b855d382", null ],
     [ "ServerWrite", "class_barotrauma_1_1_voting.html#a0275733eaa678c9d0308fbaec4310386", null ],

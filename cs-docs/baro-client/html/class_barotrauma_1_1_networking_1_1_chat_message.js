@@ -11,6 +11,7 @@ var class_barotrauma_1_1_networking_1_1_chat_message =
     [ "SenderName", "class_barotrauma_1_1_networking_1_1_chat_message.html#a84a354c804f8e25d6ef223a868d12ef9", null ],
     [ "Text", "class_barotrauma_1_1_networking_1_1_chat_message.html#a6b2f10e1c4b21152ac11ad476af66a1f", null ],
     [ "Type", "class_barotrauma_1_1_networking_1_1_chat_message.html#a12995392d9d035bfcdc1ed758639a2fa", null ],
+    [ "ChatMode", "class_barotrauma_1_1_networking_1_1_chat_message.html#a90033b2baa3309cfa34ea98a18c472e6", null ],
     [ "Color", "class_barotrauma_1_1_networking_1_1_chat_message.html#a81682be45489050d99eb3e674e77e4b6", null ],
     [ "NetStateID", "class_barotrauma_1_1_networking_1_1_chat_message.html#a59b6b480fd46bbe1934302129c05162e", null ],
     [ "TextWithSender", "class_barotrauma_1_1_networking_1_1_chat_message.html#a5f3c474958dd620c9525930ae2e6933c", null ],

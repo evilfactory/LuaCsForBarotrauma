@@ -7,6 +7,7 @@ var class_barotrauma_1_1_character_health =
     [ "ApplyAfflictionStatusEffects", "class_barotrauma_1_1_character_health.html#afd97a69e6961b165ead57133756bc3af", null ],
     [ "ApplyDamage", "class_barotrauma_1_1_character_health.html#aaba54fc3138872bb9d3d25d0595d3616", null ],
     [ "CalculateVitality", "class_barotrauma_1_1_character_health.html#afb3b95ae02bbcfd07e38751301c8cfc9", null ],
+    [ "ForceUpdateVisuals", "class_barotrauma_1_1_character_health.html#a10b20da660b2056f06c508e234d903fb", null ],
     [ "GetActiveAfflictionTags", "class_barotrauma_1_1_character_health.html#a8b5dec0cd734e129c3202d378d6c53d3", null ],
     [ "GetActiveAfflictionTags", "class_barotrauma_1_1_character_health.html#a251c573b40e3d6981634761623257066", null ],
     [ "GetAffliction", "class_barotrauma_1_1_character_health.html#ad058a10c3338db4402123efa777f55a0", null ],
@@ -40,6 +41,7 @@ var class_barotrauma_1_1_character_health =
     [ "Update", "class_barotrauma_1_1_character_health.html#a7b50a5f899affe714dae308bdb369aca", null ],
     [ "Character", "class_barotrauma_1_1_character_health.html#a0c2b435644ae6c025a9a4bdeeb150a11", null ],
     [ "DefaultFaceTint", "class_barotrauma_1_1_character_health.html#acf8903ea8da03091f7a615087e9a9865", null ],
+    [ "HealthPercentage", "class_barotrauma_1_1_character_health.html#ad8ef93388c3b4e2845dbc568d90aa53b", null ],
     [ "minVitality", "class_barotrauma_1_1_character_health.html#a63142cf396f2b789f2616f68be9e2e3d", null ],
     [ "type", "class_barotrauma_1_1_character_health.html#ae753785e285d2a4db0c91a615f6121d9", null ],
     [ "Unkillable", "class_barotrauma_1_1_character_health.html#a90b367e2443c91aa9d6044d9759c4f34", null ],
@@ -49,7 +51,6 @@ var class_barotrauma_1_1_character_health =
     [ "CrushDepth", "class_barotrauma_1_1_character_health.html#a43601ed804e719870ed87235ff2aa8a1", null ],
     [ "DoesBleed", "class_barotrauma_1_1_character_health.html#aebb23376efa7f1da9423c0be501f5f31", null ],
     [ "FaceTint", "class_barotrauma_1_1_character_health.html#a6a846031e78146ea0a786f0b80cf9c89", null ],
-    [ "HealthPercentage", "class_barotrauma_1_1_character_health.html#ad8ef93388c3b4e2845dbc568d90aa53b", null ],
     [ "IsUnconscious", "class_barotrauma_1_1_character_health.html#ad7363b6c6d5574f120100725259bf20b", null ],
     [ "MaxVitality", "class_barotrauma_1_1_character_health.html#a100e0c633d0b43dd50a3cb37613745c0", null ],
     [ "MinVitality", "class_barotrauma_1_1_character_health.html#a41818822a0c584968740c4c0ca4e72a4", null ],
@@ -60,5 +61,5 @@ var class_barotrauma_1_1_character_health =
     [ "StunTimer", "class_barotrauma_1_1_character_health.html#a4e29580d4c1943534d8bba3cfb4ca706", null ],
     [ "UnmodifiedMaxVitality", "class_barotrauma_1_1_character_health.html#aad3487f5571268b25ef2e1e96c9832af", null ],
     [ "UseHealthWindow", "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9", null ],
-    [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ]
+    [ "Vitality", "class_barotrauma_1_1_character_health.html#aab37e716cb234b818c9df3710f4dfc3f", null ]
 ];

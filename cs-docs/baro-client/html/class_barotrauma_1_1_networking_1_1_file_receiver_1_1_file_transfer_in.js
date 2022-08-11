@@ -2,7 +2,6 @@ var class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in =
 [
     [ "FileTransferIn", "class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#afe4114d3be1492be644af9eb55becba5", null ],
     [ "Dispose", "class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4bfcf54c74d65e2f1dea533e70b59d54", null ],
-    [ "Dispose", "class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a01172653ffc5d54b3c1527f8ccdfafe4", null ],
     [ "OpenStream", "class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a817c420f0a784ce4c98abc3a3220b2ec", null ],
     [ "ReadBytes", "class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a746f393e6f94392a77e60272d17b8822", null ],
     [ "RecordOffsetAckTime", "class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#af1c81a2e9bedd2be9a49fb885b648b31", null ],

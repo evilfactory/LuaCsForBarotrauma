@@ -24,5 +24,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_quality =
     ] ],
     [ "Quality", "class_barotrauma_1_1_items_1_1_components_1_1_quality.html#aff553fc2398afbff6d1a846a622ef148", null ],
     [ "GetValue", "class_barotrauma_1_1_items_1_1_components_1_1_quality.html#ac2ba4239a56cef18d4be660b72305717", null ],
+    [ "SetValue", "class_barotrauma_1_1_items_1_1_components_1_1_quality.html#a900fa2550f60353cdb012d0f79246fbd", null ],
     [ "QualityLevel", "class_barotrauma_1_1_items_1_1_components_1_1_quality.html#acfc80cf17bdc5862e91c6cfc609c6ba6", null ]
 ];

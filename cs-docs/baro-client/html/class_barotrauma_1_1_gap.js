@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_gap =
 [
-    [ "Gap", "class_barotrauma_1_1_gap.html#a7877e2cfff001ead564e8b3b682c3a56", null ],
+    [ "Gap", "class_barotrauma_1_1_gap.html#a42f05abf5ff4735efb6a8361c7c15bb8", null ],
     [ "Gap", "class_barotrauma_1_1_gap.html#ae7fc5ef7169aa4288f523be3faf26d40", null ],
     [ "Gap", "class_barotrauma_1_1_gap.html#a689923035f3228f73367a0b7f61d6ddc", null ],
     [ "AutoOrient", "class_barotrauma_1_1_gap.html#a12b51e9b7ce416f6924b97c2c78149b8", null ],
@@ -8,7 +8,7 @@ var class_barotrauma_1_1_gap =
     [ "Draw", "class_barotrauma_1_1_gap.html#a3e7d9160101cef04445221a157da10b6", null ],
     [ "IsMouseOn", "class_barotrauma_1_1_gap.html#a2809e9d8c4190b3e1fa8e6c682c52539", null ],
     [ "IsVisible", "class_barotrauma_1_1_gap.html#a854455d883c3d606bb4a913afe5224ab", null ],
-    [ "Move", "class_barotrauma_1_1_gap.html#afbc197d4a8463bcb82a46f662183d8d0", null ],
+    [ "Move", "class_barotrauma_1_1_gap.html#a53d600cf72168bc0618504925dd8427b", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_gap.html#a32e54a51ae332b287e42f0891d286714", null ],
     [ "RefreshOutsideCollider", "class_barotrauma_1_1_gap.html#a11f1d77ab43cf9aa4382688dfd62ed75", null ],
     [ "Remove", "class_barotrauma_1_1_gap.html#a7ccd516d87c8bb51e81079d0abb089a6", null ],
@@ -18,6 +18,7 @@ var class_barotrauma_1_1_gap =
     [ "ConnectedWall", "class_barotrauma_1_1_gap.html#a3cb4fbeaeaa80ef0f1043d507b53e118", null ],
     [ "DisableHullRechecks", "class_barotrauma_1_1_gap.html#aaa31eea70f7ac243fb02e4e5d7a66e51", null ],
     [ "PassAmbientLight", "class_barotrauma_1_1_gap.html#a42879c84cfeaaca15785f70f03ea2b28", null ],
+    [ "Size", "class_barotrauma_1_1_gap.html#a6390c203f57861735b15c8b552c2acea", null ],
     [ "ConnectedDoor", "class_barotrauma_1_1_gap.html#a61af1acef2cd8e6dbe7e448c855baeaf", null ],
     [ "FlowTargetHull", "class_barotrauma_1_1_gap.html#ae1f06dcbf8ecbc281dec12ddf79b4178", null ],
     [ "IsHorizontal", "class_barotrauma_1_1_gap.html#a26f52080609a4115b782f62c3bbe0a01", null ],
@@ -26,6 +27,5 @@ var class_barotrauma_1_1_gap =
     [ "Name", "class_barotrauma_1_1_gap.html#a50d08580b5158837a930b1fff7277d8d", null ],
     [ "Open", "class_barotrauma_1_1_gap.html#a6c3604c368ea80310fcb285700f5fe2b", null ],
     [ "Rect", "class_barotrauma_1_1_gap.html#af4b6015d12be7eb91dc005b0c7ed267c", null ],
-    [ "SelectableInEditor", "class_barotrauma_1_1_gap.html#a1dc7fe9d634977599a22abb646b287db", null ],
-    [ "Size", "class_barotrauma_1_1_gap.html#a6390c203f57861735b15c8b552c2acea", null ]
+    [ "SelectableInEditor", "class_barotrauma_1_1_gap.html#a1dc7fe9d634977599a22abb646b287db", null ]
 ];

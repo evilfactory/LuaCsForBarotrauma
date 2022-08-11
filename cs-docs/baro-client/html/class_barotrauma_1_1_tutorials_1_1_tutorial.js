@@ -22,6 +22,7 @@ var class_barotrauma_1_1_tutorials_1_1_tutorial =
     [ "TriggerTutorialSegment", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a64f154674d1b823707bc5833669be5bf", null ],
     [ "Update", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#ac791b8d517a9e5b5999c002c58e61a85", null ],
     [ "UpdateState", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a25e6478ab4bdb8bbf5de36f33a79789b", null ],
+    [ "activeContentSegment", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a97e292500b812c93d0c140459f559714", null ],
     [ "activeContentSegmentIndex", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a7f2c49788d468ad7341cbb0937ce14d2", null ],
     [ "Identifier", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a8604c5c7d30ac9ee3bd4fab491331376", null ],
     [ "infoBox", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a0ede747d0d08029f8daace4472811a44", null ],
@@ -30,7 +31,6 @@ var class_barotrauma_1_1_tutorials_1_1_tutorial =
     [ "segments", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#ae31d74bf376a06c3a8a8c3c48d8f30d3", null ],
     [ "videoPlayer", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a88c6ea75f82805024defb546151e719a", null ],
     [ "windowMode", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a3c38e5f567db9a4c283666a2d75bc2af", null ],
-    [ "activeContentSegment", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a97e292500b812c93d0c140459f559714", null ],
     [ "Completed", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#af7df1693eb39892c98012142a1bce799", null ],
     [ "ContentRunning", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a19cc1f9efdc80377a9507f9c42c1f716", null ],
     [ "DisplayName", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a898c855d4b210e15d1491f6dd0d6e70f", null ]

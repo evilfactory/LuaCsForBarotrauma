@@ -13,15 +13,15 @@ var class_barotrauma_1_1_fire_source =
     [ "hull", "class_barotrauma_1_1_fire_source.html#ae9f59b1a680bd70fc0dcca75b6c4194b", null ],
     [ "position", "class_barotrauma_1_1_fire_source.html#af2a5b685e76e7dd3112676298699b30e", null ],
     [ "removed", "class_barotrauma_1_1_fire_source.html#ad571c98701fe2ef9894011b9f70be5bc", null ],
+    [ "SimPosition", "class_barotrauma_1_1_fire_source.html#af0bd6eda32cb76e3bbe8df44502af90b", null ],
     [ "size", "class_barotrauma_1_1_fire_source.html#aaaad34da330e1ac8f2475915360920d7", null ],
+    [ "Submarine", "class_barotrauma_1_1_fire_source.html#a14a029d907b0fb951654c19fb8280632", null ],
     [ "DamageRange", "class_barotrauma_1_1_fire_source.html#a7b270a2bcbaf5b5aa678435e458c1842", null ],
     [ "DamagesCharacters", "class_barotrauma_1_1_fire_source.html#ae65b8d264bb28c2d216cdeaf87781de4", null ],
     [ "DamagesItems", "class_barotrauma_1_1_fire_source.html#a226930229b4293ff41afa623a039918e", null ],
     [ "Hull", "class_barotrauma_1_1_fire_source.html#a27ceda1150991052596a066e15a76c14", null ],
     [ "Position", "class_barotrauma_1_1_fire_source.html#a4a24d6e47269667ef979fc730e092392", null ],
     [ "Removed", "class_barotrauma_1_1_fire_source.html#a1202dd40bfd9965f18a4917fd2fb4fe4", null ],
-    [ "SimPosition", "class_barotrauma_1_1_fire_source.html#af0bd6eda32cb76e3bbe8df44502af90b", null ],
     [ "Size", "class_barotrauma_1_1_fire_source.html#a847d7d885af6ab57637d190e5ce174f7", null ],
-    [ "Submarine", "class_barotrauma_1_1_fire_source.html#a14a029d907b0fb951654c19fb8280632", null ],
     [ "WorldPosition", "class_barotrauma_1_1_fire_source.html#a33a0b28fdb3eb601a11a2ef325215b68", null ]
 ];

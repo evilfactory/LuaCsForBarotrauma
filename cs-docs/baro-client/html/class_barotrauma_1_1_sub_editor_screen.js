@@ -24,6 +24,7 @@ var class_barotrauma_1_1_sub_editor_screen =
     [ "ClearBackedUpSubInfo", "class_barotrauma_1_1_sub_editor_screen.html#a421e93dbabd2611d27169a831b3fed7d", null ],
     [ "DeselectEditorSpecific", "class_barotrauma_1_1_sub_editor_screen.html#a918c2a1ddbd836ad9c3b51e3de041e6e", null ],
     [ "Draw", "class_barotrauma_1_1_sub_editor_screen.html#a03a2fa5ba460fb5b7c337d3f7e1d5ca1", null ],
+    [ "IsMouseOnEditorGUI", "class_barotrauma_1_1_sub_editor_screen.html#a3f557fec9f9914dadc26969bb64df81b", null ],
     [ "IsSubcategoryHidden", "class_barotrauma_1_1_sub_editor_screen.html#a476e9fdee151e3da746c8a65f001015e", null ],
     [ "LoadSub", "class_barotrauma_1_1_sub_editor_screen.html#a8931cdeb4cb268abd8d02b00ebf4c6ec", null ],
     [ "OnFileDropped", "class_barotrauma_1_1_sub_editor_screen.html#acb3870e0121f1e78308362c6f9e03694", null ],
@@ -33,11 +34,11 @@ var class_barotrauma_1_1_sub_editor_screen =
     [ "SetMode", "class_barotrauma_1_1_sub_editor_screen.html#a04144b61cf0acfb31cb1e48463cdcb20", null ],
     [ "Update", "class_barotrauma_1_1_sub_editor_screen.html#a0824144d61f7f0077406b8f81322e442", null ],
     [ "UpdateUndoHistoryPanel", "class_barotrauma_1_1_sub_editor_screen.html#a2b5a94e595c9bd2e1c32caffd791d888", null ],
+    [ "Cam", "class_barotrauma_1_1_sub_editor_screen.html#a19ae9693b4181216c34ac2ebbeb15f38", null ],
     [ "EntityMenu", "class_barotrauma_1_1_sub_editor_screen.html#a8c1e8c76fd59cfa1f3d0466f1fc7d96f", null ],
     [ "showEntitiesPanel", "class_barotrauma_1_1_sub_editor_screen.html#ae00aab7960dc9f9718faaf0fa7b215f1", null ],
-    [ "TopPanel", "class_barotrauma_1_1_sub_editor_screen.html#aa2e95b3fc88341addb88344ef4928938", null ],
-    [ "Cam", "class_barotrauma_1_1_sub_editor_screen.html#a19ae9693b4181216c34ac2ebbeb15f38", null ],
-    [ "ShowThalamus", "class_barotrauma_1_1_sub_editor_screen.html#a3f2a58c0838a786847c49e4ecd670c1e", null ],
     [ "ToggleEntityMenuButton", "class_barotrauma_1_1_sub_editor_screen.html#a0cc530e7e5d41d3d13fe651dad0c86d0", null ],
-    [ "WiringMode", "class_barotrauma_1_1_sub_editor_screen.html#ae428f4469f34c32f3f4dcf6126aea30a", null ]
+    [ "TopPanel", "class_barotrauma_1_1_sub_editor_screen.html#aa2e95b3fc88341addb88344ef4928938", null ],
+    [ "WiringMode", "class_barotrauma_1_1_sub_editor_screen.html#ae428f4469f34c32f3f4dcf6126aea30a", null ],
+    [ "ShowThalamus", "class_barotrauma_1_1_sub_editor_screen.html#a3f2a58c0838a786847c49e4ecd670c1e", null ]
 ];

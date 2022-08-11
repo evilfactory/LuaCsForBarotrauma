@@ -34,13 +34,13 @@ var class_barotrauma_1_1_a_i_objective_manager =
     [ "SetOrder", "class_barotrauma_1_1_a_i_objective_manager.html#a0aa4f65f0e52bf16d13eb016385a78e2", null ],
     [ "SortObjectives", "class_barotrauma_1_1_a_i_objective_manager.html#ac39880bf754dda4f0e86e904922c3aa0", null ],
     [ "UpdateObjectives", "class_barotrauma_1_1_a_i_objective_manager.html#a7dc88fcdd5e082f92ad1b6a7c7a91e28", null ],
+    [ "HumanAIController", "class_barotrauma_1_1_a_i_objective_manager.html#a55ed2c19ed153da2c3d80ff92ca329d2", null ],
     [ "CurrentObjective", "class_barotrauma_1_1_a_i_objective_manager.html#a7e65395fc1a6a5a2b948e5b00dd49902", null ],
     [ "CurrentOrder", "class_barotrauma_1_1_a_i_objective_manager.html#a90c9703815d4f56c7782a6984f5aed95", null ],
     [ "CurrentOrders", "class_barotrauma_1_1_a_i_objective_manager.html#a92b60b8c97caa74d754c830c3c2a37e3", null ],
     [ "DelayedObjectives", "class_barotrauma_1_1_a_i_objective_manager.html#a32a936c8c45198b275dc31d59f9d406d", null ],
     [ "FailedAutonomousObjectives", "class_barotrauma_1_1_a_i_objective_manager.html#a2c1919465475d8c9e234b0f838f7fe69", null ],
     [ "ForcedOrder", "class_barotrauma_1_1_a_i_objective_manager.html#aebddd25429d17342330d2fd5e40db357", null ],
-    [ "HumanAIController", "class_barotrauma_1_1_a_i_objective_manager.html#a55ed2c19ed153da2c3d80ff92ca329d2", null ],
     [ "Objectives", "class_barotrauma_1_1_a_i_objective_manager.html#a4d7ff8e097e5ec619d1cce72c8ee781c", null ],
     [ "WaitTimer", "class_barotrauma_1_1_a_i_objective_manager.html#afacfd3279fa1e7898f50c3f81373acdd", null ]
 ];

@@ -22,6 +22,7 @@ var class_barotrauma_1_1_a_i_target =
     [ "Entity", "class_barotrauma_1_1_a_i_target.html#a7ba9aa9ca23c144dc3533e38b3b1b43a", null ],
     [ "FadeOutTime", "class_barotrauma_1_1_a_i_target.html#a49cd7966aa68fccd2d13d91fd73c72d3", null ],
     [ "InDetectable", "class_barotrauma_1_1_a_i_target.html#ada326072d5978f94a64dfad4915f7b57", null ],
+    [ "NeedsUpdate", "class_barotrauma_1_1_a_i_target.html#a40d48f02b203ef98ec46d99e919e54d1", null ],
     [ "SectorDegrees", "class_barotrauma_1_1_a_i_target.html#a4ad3b4d5e03ab65d2a2764462eb89044", null ],
     [ "SectorDir", "class_barotrauma_1_1_a_i_target.html#a1e2235c204857823a54ef0f75a579db9", null ],
     [ "SightRange", "class_barotrauma_1_1_a_i_target.html#afa4b794e43b91a36cb995b88a9fa4738", null ],

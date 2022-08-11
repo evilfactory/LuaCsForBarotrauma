@@ -16,10 +16,10 @@ var class_barotrauma_1_1_items_1_1_components_1_1_fabricator =
     [ "ServerGetEventData", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a87ba5a46a432078cc03576d967e3ca96", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#ae3b722339201481313593cd35ef7e4e5", null ],
     [ "ValidateEventData", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a5b7af6db9ec37faf1f42b6c7e777dfa1", null ],
+    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a98b44462dc320a2b0fc2e3c4a77f5978", null ],
     [ "FabricationSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a05b04b77cc500be92d63563a32b33e87", null ],
     [ "InputContainer", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#aefaa235bb6fe68b86d9c93156674e8a7", null ],
     [ "OutputContainer", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a1309387ea6f7e603cf2bb7663a091412", null ],
-    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a98b44462dc320a2b0fc2e3c4a77f5978", null ],
     [ "SkillRequirementMultiplier", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a7dd727fe4614111dc309991484cf689a", null ],
     [ "State", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#acaca2052f8cb9d3bef33a3f79d5764d9", null ]
 ];

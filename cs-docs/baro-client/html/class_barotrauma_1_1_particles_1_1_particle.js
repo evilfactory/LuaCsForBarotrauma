@@ -5,7 +5,7 @@ var class_barotrauma_1_1_particles_1_1_particle =
       [ "Delete", "class_barotrauma_1_1_particles_1_1_particle.html#a8f0025405fa03b455eb5cdc7250b27abaf2a6c498fb90ee345d997f888fce3b18", null ]
     ] ],
     [ "Draw", "class_barotrauma_1_1_particles_1_1_particle.html#a8476e230a545b9c9376acc4a82bc3985", null ],
-    [ "Init", "class_barotrauma_1_1_particles_1_1_particle.html#aa91dcf4a99a358f7966667466ec9d2ba", null ],
+    [ "Init", "class_barotrauma_1_1_particles_1_1_particle.html#a8849fa0bcd5bd23ecc94e1e84e9faa5f", null ],
     [ "OnChangeHullHandler", "class_barotrauma_1_1_particles_1_1_particle.html#a79e1540c3c6b22e8e9a95aed56986881", null ],
     [ "ToString", "class_barotrauma_1_1_particles_1_1_particle.html#a3377d60ff1cb5769f5900d72892e4ec6", null ],
     [ "Update", "class_barotrauma_1_1_particles_1_1_particle.html#a3eb83c37d071eae290cb8e9d73897677", null ],

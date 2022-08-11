@@ -10,7 +10,7 @@ var class_barotrauma_1_1_lights_1_1_convex_hull =
     [ "RefreshWorldPositions", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a3435e4d935ec037234b00667ceaf06fd", null ],
     [ "Remove", "class_barotrauma_1_1_lights_1_1_convex_hull.html#aa0605028a83a28e60720fd0f63aec0f9", null ],
     [ "Rotate", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a6524709499d08b33cfaf4a5c6efda8cd", null ],
-    [ "SetVertices", "class_barotrauma_1_1_lights_1_1_convex_hull.html#afdadaea3e6e6c0919ce8dd88301235a1", null ],
+    [ "SetVertices", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a6488fa3aa81ba817ccd797db5c997a2d", null ],
     [ "BoundingBox", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a7f76c9cf6bf69dc5511a8ea6b1d25ed8", null ],
     [ "Enabled", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a244a9488ba4e84ee8af8633bb7386846", null ],
     [ "LastVertexChangeTime", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a7b0af7543721c2d5663a67146da6ff99", null ],

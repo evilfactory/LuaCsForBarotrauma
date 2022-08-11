@@ -16,11 +16,11 @@ var class_barotrauma_1_1_a_i_objective_idle =
     [ "Reset", "class_barotrauma_1_1_a_i_objective_idle.html#a96225fbe30a3139e3ef5efcefdda385b", null ],
     [ "Update", "class_barotrauma_1_1_a_i_objective_idle.html#aaebdb31cecb7b2592d27fd2d4f111806", null ],
     [ "Wander", "class_barotrauma_1_1_a_i_objective_idle.html#ad04bc11d997ecf1f661d559d18663e27", null ],
-    [ "PreferredOutpostModuleTypes", "class_barotrauma_1_1_a_i_objective_idle.html#a6d672ef3deb671513c84e592bb63d1d9", null ],
     [ "AllowAutomaticItemUnequipping", "class_barotrauma_1_1_a_i_objective_idle.html#a525294a81f6b8eebd78be2a88231b611", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_idle.html#aaa03df6c18b7eb6131eefa2c566b76a6", null ],
-    [ "Behavior", "class_barotrauma_1_1_a_i_objective_idle.html#afa78c1c03e3a7c1c3f2003247b6e0fef", null ],
     [ "CanBeCompleted", "class_barotrauma_1_1_a_i_objective_idle.html#a97a89f73137593f656d1b82c7b1332ef", null ],
+    [ "PreferredOutpostModuleTypes", "class_barotrauma_1_1_a_i_objective_idle.html#a6d672ef3deb671513c84e592bb63d1d9", null ],
+    [ "Behavior", "class_barotrauma_1_1_a_i_objective_idle.html#afa78c1c03e3a7c1c3f2003247b6e0fef", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_idle.html#a1d59379d4d7099bde8ca5a37bdd719a2", null ],
     [ "IsLoop", "class_barotrauma_1_1_a_i_objective_idle.html#ae8cdb2d98288a662080efbf8158840bf", null ],
     [ "TargetHull", "class_barotrauma_1_1_a_i_objective_idle.html#a306449a8f4ab1269ed91975bb1f5721c", null ]

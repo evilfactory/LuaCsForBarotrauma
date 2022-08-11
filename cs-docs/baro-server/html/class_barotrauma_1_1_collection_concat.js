@@ -7,8 +7,8 @@ var class_barotrauma_1_1_collection_concat =
     [ "CopyTo", "class_barotrauma_1_1_collection_concat.html#ac2d5d12e6d55d30bb06e21ee35d47c57", null ],
     [ "GetEnumerator", "class_barotrauma_1_1_collection_concat.html#a2f79637278dacfe7a4c08ccaf6099cd5", null ],
     [ "Remove", "class_barotrauma_1_1_collection_concat.html#a23bdf7f62e414ab9d447675673ebed72", null ],
+    [ "Count", "class_barotrauma_1_1_collection_concat.html#a7b97ade150aa038a4592762cc05cef36", null ],
     [ "enumerableA", "class_barotrauma_1_1_collection_concat.html#a8d667e5fac6e4c7a4588dedced839d01", null ],
     [ "enumerableB", "class_barotrauma_1_1_collection_concat.html#ae0be16ce7f9433de4ea650b1f3f71347", null ],
-    [ "Count", "class_barotrauma_1_1_collection_concat.html#a7b97ade150aa038a4592762cc05cef36", null ],
     [ "IsReadOnly", "class_barotrauma_1_1_collection_concat.html#a4de997d3a14e4ea03d7f2a81b52674c8", null ]
 ];

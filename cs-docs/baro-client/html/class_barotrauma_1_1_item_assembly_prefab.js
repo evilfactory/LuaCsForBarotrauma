@@ -8,13 +8,13 @@ var class_barotrauma_1_1_item_assembly_prefab =
     [ "Dispose", "class_barotrauma_1_1_item_assembly_prefab.html#a280805ff71ecad7724520d150a12faa7", null ],
     [ "DrawIcon", "class_barotrauma_1_1_item_assembly_prefab.html#a458a5c6af62804b338eb0d5ab1db6981", null ],
     [ "DrawPlacing", "class_barotrauma_1_1_item_assembly_prefab.html#ac2dd1562b5de66e21260a71540f0e458", null ],
-    [ "Bounds", "class_barotrauma_1_1_item_assembly_prefab.html#ae1c1b22ab79ecc42208d123c5ce55731", null ],
-    [ "DisplayEntities", "class_barotrauma_1_1_item_assembly_prefab.html#a8bbc21d1f7ff139a57e914f757e7e3dd", null ],
     [ "Aliases", "class_barotrauma_1_1_item_assembly_prefab.html#ac9e14a3ae3cb2b545aab3ca16ac4a123", null ],
     [ "AllowedLinks", "class_barotrauma_1_1_item_assembly_prefab.html#aa42cefb3f5af9ae2df554eaaabf72bb6", null ],
+    [ "Bounds", "class_barotrauma_1_1_item_assembly_prefab.html#ae1c1b22ab79ecc42208d123c5ce55731", null ],
     [ "Category", "class_barotrauma_1_1_item_assembly_prefab.html#a8443a2234702909cba092a9b8add9658", null ],
-    [ "Name", "class_barotrauma_1_1_item_assembly_prefab.html#a45c04306530d059d69bcaabd625108e5", null ],
+    [ "DisplayEntities", "class_barotrauma_1_1_item_assembly_prefab.html#a8bbc21d1f7ff139a57e914f757e7e3dd", null ],
     [ "OriginalName", "class_barotrauma_1_1_item_assembly_prefab.html#ad4f4148a5dc7bdce03fb501732239cb4", null ],
     [ "Sprite", "class_barotrauma_1_1_item_assembly_prefab.html#a052247ce440356d744350f54676e09b2", null ],
+    [ "Name", "class_barotrauma_1_1_item_assembly_prefab.html#a45c04306530d059d69bcaabd625108e5", null ],
     [ "Tags", "class_barotrauma_1_1_item_assembly_prefab.html#a3fa9b4fd2143c21c10b610f5218895a4", null ]
 ];

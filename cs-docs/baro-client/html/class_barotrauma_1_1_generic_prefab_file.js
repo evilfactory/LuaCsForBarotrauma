@@ -7,5 +7,5 @@ var class_barotrauma_1_1_generic_prefab_file =
     [ "MatchesSingular", "class_barotrauma_1_1_generic_prefab_file.html#ae2896a5ee3baccefa236da1ff4882048", null ],
     [ "Sort", "class_barotrauma_1_1_generic_prefab_file.html#a0978107984080db60b2be3b7b102035e", null ],
     [ "UnloadFile", "class_barotrauma_1_1_generic_prefab_file.html#a499ec1d440c82e1c5d9813c10616d6f2", null ],
-    [ "prefabs", "class_barotrauma_1_1_generic_prefab_file.html#ab2acd9c8d79b2ab23298f7dd57b3a005", null ]
+    [ "Prefabs", "class_barotrauma_1_1_generic_prefab_file.html#af0ae08f116ddc117dd4d2e5affab7f13", null ]
 ];

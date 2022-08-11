@@ -9,6 +9,6 @@ var class_barotrauma_1_1_a_i_objective_rescue_all =
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a0aace631253e749289bc3bcd3540f80f", null ],
     [ "AllowOutsideSubmarine", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a107c9b564d1b836e83d0acd1c0a35f16", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a2f3ddc6b0879077ee1ff755db328ace5", null ],
-    [ "Identifier", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a482b815542bea4bd8d03cda1ee8b7eaf", null ],
-    [ "InverseTargetEvaluation", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a06a32b310fc0f444799fc945f967f961", null ]
+    [ "InverseTargetEvaluation", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a06a32b310fc0f444799fc945f967f961", null ],
+    [ "Identifier", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a482b815542bea4bd8d03cda1ee8b7eaf", null ]
 ];

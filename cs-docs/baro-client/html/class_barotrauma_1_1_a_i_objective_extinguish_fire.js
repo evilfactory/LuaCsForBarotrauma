@@ -8,6 +8,6 @@ var class_barotrauma_1_1_a_i_objective_extinguish_fire =
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#a2384c2e727a3b45863fa1a1bb23258be", null ],
     [ "ConcurrentObjectives", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#ac9ada9fe94583a7422db6a229a9cb6bc", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#adbf57cc8909fdf685a33492600153684", null ],
-    [ "Identifier", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#ac3e6e6bf0d5002cd5328ef765bbc47d4", null ],
-    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#aadbd1cb68e76606d7acdfccbc6059660", null ]
+    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#aadbd1cb68e76606d7acdfccbc6059660", null ],
+    [ "Identifier", "class_barotrauma_1_1_a_i_objective_extinguish_fire.html#ac3e6e6bf0d5002cd5328ef765bbc47d4", null ]
 ];

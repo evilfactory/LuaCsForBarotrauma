@@ -12,6 +12,7 @@ var class_barotrauma_1_1_character_health =
     [ "ClientRead", "class_barotrauma_1_1_character_health.html#adee88bfaa550ca814faf62c71b367db8", null ],
     [ "DrawHUD", "class_barotrauma_1_1_character_health.html#acb2d217ebba8524b092762f90ad24ab8", null ],
     [ "DrawStatusHUD", "class_barotrauma_1_1_character_health.html#a3e3453b5687e422ea29fd1600eba41f5", null ],
+    [ "ForceUpdateVisuals", "class_barotrauma_1_1_character_health.html#a10b20da660b2056f06c508e234d903fb", null ],
     [ "GetActiveAfflictionTags", "class_barotrauma_1_1_character_health.html#a8b5dec0cd734e129c3202d378d6c53d3", null ],
     [ "GetActiveAfflictionTags", "class_barotrauma_1_1_character_health.html#a251c573b40e3d6981634761623257066", null ],
     [ "GetAffliction", "class_barotrauma_1_1_character_health.html#ad058a10c3338db4402123efa777f55a0", null ],
@@ -50,6 +51,7 @@ var class_barotrauma_1_1_character_health =
     [ "Character", "class_barotrauma_1_1_character_health.html#a0c2b435644ae6c025a9a4bdeeb150a11", null ],
     [ "DefaultFaceTint", "class_barotrauma_1_1_character_health.html#acf8903ea8da03091f7a615087e9a9865", null ],
     [ "DisplayedVitality", "class_barotrauma_1_1_character_health.html#af7ecc6fe53ca65260f0efc827628a30a", null ],
+    [ "HealthPercentage", "class_barotrauma_1_1_character_health.html#ad8ef93388c3b4e2845dbc568d90aa53b", null ],
     [ "minVitality", "class_barotrauma_1_1_character_health.html#a63142cf396f2b789f2616f68be9e2e3d", null ],
     [ "type", "class_barotrauma_1_1_character_health.html#ae753785e285d2a4db0c91a615f6121d9", null ],
     [ "Unkillable", "class_barotrauma_1_1_character_health.html#a90b367e2443c91aa9d6044d9759c4f34", null ],
@@ -63,7 +65,6 @@ var class_barotrauma_1_1_character_health =
     [ "DoesBleed", "class_barotrauma_1_1_character_health.html#aebb23376efa7f1da9423c0be501f5f31", null ],
     [ "FaceTint", "class_barotrauma_1_1_character_health.html#a6a846031e78146ea0a786f0b80cf9c89", null ],
     [ "HealthBarPulsateTimer", "class_barotrauma_1_1_character_health.html#ac691767d11cd9e249116f13b90dfdc65", null ],
-    [ "HealthPercentage", "class_barotrauma_1_1_character_health.html#ad8ef93388c3b4e2845dbc568d90aa53b", null ],
     [ "InventorySlotContainer", "class_barotrauma_1_1_character_health.html#a72ed5631cc9d981fc1a73807345d4e59", null ],
     [ "IsUnconscious", "class_barotrauma_1_1_character_health.html#ad7363b6c6d5574f120100725259bf20b", null ],
     [ "MaxVitality", "class_barotrauma_1_1_character_health.html#a100e0c633d0b43dd50a3cb37613745c0", null ],
@@ -77,5 +78,5 @@ var class_barotrauma_1_1_character_health =
     [ "SuicideButton", "class_barotrauma_1_1_character_health.html#a33f3da2f1c3fa9301b7a90f382c409ef", null ],
     [ "UnmodifiedMaxVitality", "class_barotrauma_1_1_character_health.html#aad3487f5571268b25ef2e1e96c9832af", null ],
     [ "UseHealthWindow", "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9", null ],
-    [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ]
+    [ "Vitality", "class_barotrauma_1_1_character_health.html#aab37e716cb234b818c9df3710f4dfc3f", null ]
 ];

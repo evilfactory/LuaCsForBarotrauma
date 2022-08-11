@@ -2,7 +2,6 @@ var class_barotrauma_1_1_water_renderer =
 [
     [ "WaterRenderer", "class_barotrauma_1_1_water_renderer.html#ae26b96482c2d61287ee182f5ef610946", null ],
     [ "Dispose", "class_barotrauma_1_1_water_renderer.html#a60c8cbd7c748749dca52678f4113e539", null ],
-    [ "Dispose", "class_barotrauma_1_1_water_renderer.html#a2ba46a2fb276c023ce98ac2161732cf2", null ],
     [ "RenderAir", "class_barotrauma_1_1_water_renderer.html#a082f81fac29bf1fdb31a292d7a6492ad", null ],
     [ "RenderWater", "class_barotrauma_1_1_water_renderer.html#a66b29d325bbf2b1fd0ec67abac8a8796", null ],
     [ "ResetBuffers", "class_barotrauma_1_1_water_renderer.html#ac84b99150a721e1fb462b7ec85db354c", null ],

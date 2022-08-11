@@ -2,7 +2,7 @@ var class_barotrauma_1_1_particles_1_1_particle_manager =
 [
     [ "ParticleManager", "class_barotrauma_1_1_particles_1_1_particle_manager.html#a7cd3f81e524b4a7e35b8717e68b1ad45", null ],
     [ "CountActiveParticles", "class_barotrauma_1_1_particles_1_1_particle_manager.html#a1a96ee1c9284c2c7aa860c4c1f4717c5", null ],
-    [ "CreateParticle", "class_barotrauma_1_1_particles_1_1_particle_manager.html#acb2e85f4a579c5d20356f023927ba3f6", null ],
+    [ "CreateParticle", "class_barotrauma_1_1_particles_1_1_particle_manager.html#a5354153adab6b26bb491313b12f61af8", null ],
     [ "CreateParticle", "class_barotrauma_1_1_particles_1_1_particle_manager.html#a02077f43ef64421b66b2639653bb9632", null ],
     [ "CreateParticle", "class_barotrauma_1_1_particles_1_1_particle_manager.html#a57f6f755c8333fc56136ba6f1c8584af", null ],
     [ "Draw", "class_barotrauma_1_1_particles_1_1_particle_manager.html#ad0c5b69e3beb484830ad15a8aa1889d8", null ],
