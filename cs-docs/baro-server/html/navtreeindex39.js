@@ -1,5 +1,6 @@
 var NAVTREEINDEX39 =
 {
+"class_barotrauma_1_1_success.html#ac3fe5d785d62b9fb165e1ed6f2892c9f":[4,0,0,425,1],
 "class_barotrauma_1_1_success.html#adb265db8a16b422e0d7f5a1dfc17f515":[4,0,0,425,0],
 "class_barotrauma_1_1_success.html#aeef47b7052ea8598af8f1c973ec0304c":[4,0,0,425,2],
 "class_barotrauma_1_1_swappable_item.html":[4,0,0,426],
@@ -248,6 +249,5 @@ var NAVTREEINDEX39 =
 "class_barotrauma_1_1_traitor_1_1_humanoid_goal.html":[4,0,0,439,16],
 "class_barotrauma_1_1_traitor_1_1_humanoid_goal.html#a4543deaa9068d1a4038b965795bbc26e":[4,0,0,439,16,0],
 "class_barotrauma_1_1_traitor_1_1_modifier.html":[4,0,0,439,17],
-"class_barotrauma_1_1_traitor_1_1_modifier.html#a17e4bba6b125b066c80844ed7b145de6":[4,0,0,439,17,13],
-"class_barotrauma_1_1_traitor_1_1_modifier.html#a1fe981e957e5d811854e17a7a7038238":[4,0,0,439,17,15]
+"class_barotrauma_1_1_traitor_1_1_modifier.html#a17e4bba6b125b066c80844ed7b145de6":[4,0,0,439,17,13]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX28 =
 {
+"class_barotrauma_1_1_map_entity.html#a76eca7fc0e23a06c7568bff1b2f55e93":[4,0,0,297,23],
 "class_barotrauma_1_1_map_entity.html#a7b8a197092aba41eb67c7afe9eecbf8d":[4,0,0,297,0],
 "class_barotrauma_1_1_map_entity.html#a7c6b6e46a9c34e1c559354dcaa645aaf":[4,0,0,297,39],
 "class_barotrauma_1_1_map_entity.html#a7e4ab63e6f0c29fa73593ed39ffbff24":[4,0,0,297,47],
@@ -248,6 +249,5 @@ var NAVTREEINDEX28 =
 "class_barotrauma_1_1_monster_event.html#a109b445b0b5257a4c0fa74cd24e0886d":[4,0,0,312,4],
 "class_barotrauma_1_1_monster_event.html#a2144bafebbb62b117787f34da1fd5c51":[4,0,0,312,2],
 "class_barotrauma_1_1_monster_event.html#a24a755089c45dddfe86b0c89cde045ed":[4,0,0,312,11],
-"class_barotrauma_1_1_monster_event.html#a4861e4aa049b7480d544855c5b5925ff":[4,0,0,312,9],
-"class_barotrauma_1_1_monster_event.html#a6e5001d1d6340ff5d13affa965cf9887":[4,0,0,312,6]
+"class_barotrauma_1_1_monster_event.html#a4861e4aa049b7480d544855c5b5925ff":[4,0,0,312,9]
 };

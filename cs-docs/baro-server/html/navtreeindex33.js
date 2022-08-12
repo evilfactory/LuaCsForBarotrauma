@@ -1,5 +1,6 @@
 var NAVTREEINDEX33 =
 {
+"class_barotrauma_1_1_order_prefab.html#a931ccdc299c9f816ab4f507324411af1":[4,0,0,332,33],
 "class_barotrauma_1_1_order_prefab.html#a959628baa05e5722d195515a1152acbb":[4,0,0,332,52],
 "class_barotrauma_1_1_order_prefab.html#a9aac6bf56ba1928074816ec49b4c33a7":[4,0,0,332,9],
 "class_barotrauma_1_1_order_prefab.html#a9adb7ee9f06ef820523311eb0547025f":[4,0,0,332,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX33 =
 "class_barotrauma_1_1_pirate_mission.html#aee67dd917e8488bccb2d94b57b5e41d4":[4,0,0,348,1],
 "class_barotrauma_1_1_pirate_mission.html#af338fcdc882063bb9766119e3fe5a7c9":[4,0,0,348,7],
 "class_barotrauma_1_1_pirate_mission.html#af68cb1c318941b81d2598937f3727f4d":[4,0,0,348,0],
-"class_barotrauma_1_1_pos_info.html":[4,0,0,349],
-"class_barotrauma_1_1_pos_info.html#a0b49ece94249af775d9ca203e1ab4f94":[4,0,0,349,1]
+"class_barotrauma_1_1_pos_info.html":[4,0,0,349]
 };

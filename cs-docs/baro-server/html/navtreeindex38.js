@@ -1,5 +1,6 @@
 var NAVTREEINDEX38 =
 {
+"class_barotrauma_1_1_structure.html#a1eaba3a2f6be7494d6b46a364fe9554b":[4,0,0,418,58],
 "class_barotrauma_1_1_structure.html#a202727c695684b0d5ec379a400c3a974":[4,0,0,418,3],
 "class_barotrauma_1_1_structure.html#a22b5386a1595f4887a7958ea62cd1041":[4,0,0,418,44],
 "class_barotrauma_1_1_structure.html#a235ea93d901cd16850f5fca8d8169aa1":[4,0,0,418,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX38 =
 "class_barotrauma_1_1_submarine_info.html#afd31c6f8ad3810c629d536d1e0bba970":[4,0,0,424,43],
 "class_barotrauma_1_1_submarine_info.html#afd42145561e8f5794c9c63f29bbd5dfc":[4,0,0,424,52],
 "class_barotrauma_1_1_submarine_info.html#afebff3bf83f0d1c1c016e6302f317512":[4,0,0,424,26],
-"class_barotrauma_1_1_success.html":[4,0,0,425],
-"class_barotrauma_1_1_success.html#ac3fe5d785d62b9fb165e1ed6f2892c9f":[4,0,0,425,1]
+"class_barotrauma_1_1_success.html":[4,0,0,425]
 };

@@ -364,14 +364,26 @@ article p {
   line-height: calc(var(--font-normal) + 4px);
 }
 
-article p + p,
-article h2 + p,
-article pre + p {
+article ul,
+article ol {
+  padding-left: 2em;
+}
+
+article li + li {
+  margin-top: 0.25em;
+}
+
+article p + *,
+article pre + *,
+article ol + *,
+article ul + *,
+article iframe + *,
+article h2 + * {
   margin-top: var(--padding-small);
 }
 
-article h3 + p,
-article h4 + p {
+article h3 + *,
+article h4 + * {
   margin-top: var(--padding-tiny);
 }
 

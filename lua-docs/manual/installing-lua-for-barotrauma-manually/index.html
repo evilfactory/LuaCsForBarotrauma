@@ -10,13 +10,13 @@
 
       <meta property="og:description" content="
 
- Notice: Using the LuaForBarotrauma package is not required if it&#39;s installed manually, but you may use it anyway if you wish to support the mod, since players automatically download packages when joining the server.
+**Notice**: the &quot;Lua For Barotrauma&quot; content package is not required if installed manually, but you may use it anyway if you wish to support the mod, since players automatically download packages when joining the server.
 
- If you are getting TextManager err..." />
+If you get TextManager errors, ..." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=d203ecf" />
-    <link rel="stylesheet" href="../../highlight.css?v=7b04dd5" />
+    <link rel="stylesheet" href="../../ldoc.css?v=23ea9a3" />
+    <link rel="stylesheet" href="../../highlight.css?v=7d96daf" />
   </head>
 
   <body>
@@ -9476,96 +9476,46 @@
 
 <h1>Installing Lua For Barotrauma Manually</h1>
 
-<h2>Notice: Using the LuaForBarotrauma package is not required if it's installed manually, but you may use it anyway if you wish to support the mod, since players automatically download packages when joining the server.<a name="Notice__Using_the_LuaForBarotrauma_package_is_not_required_if_it_s_installed_manually__but_you_may_use_it_anyway_if_you_wish_to_support_the_mod__since_players_automatically_download_packages_when_joining_the_server_"></a></h2>
+<p><strong>Notice</strong>: the "Lua For Barotrauma" content package is not required if installed manually, but you may use it anyway if you wish to support the mod, since players automatically download packages when joining the server.</p>
 
-<h2>If you are getting TextManager errors, open config_player.xml in your server and change the language from None to English<a name="If_you_are_getting_TextManager_errors__open_config_player_xml_in_your_server_and_change_the_language_from_None_to_English"></a></h2>
+<p>If you get TextManager errors, open <code>config_player.xml</code> in your server folder and change the language from "None" to "English"</p>
 
-<h2>Adding Lua For Barotrauma to an existing server<a name="Adding_Lua_For_Barotrauma_to_an_existing_server"></a></h2>
-<p>1 - Download <a href="https://github.com/evilfactory/Barotrauma-lua-attempt/releases/tag/latest">latest version of LuaForBarotrauma</a>, choose the correct platform in the assets drop down.<br>
-2 - Extract the zip file<br>
-3 - Copy the following files inside the extracted zip:<br></p>
+<h2>Adding to an existing server<a name="Adding_to_an_existing_server"></a></h2>
 
-<ul>
-    <li><strong>DedicatedServer.deps.json</strong></li>
-    <li><strong>DedicatedServer.dll</strong></li>
-    <li><strong>DedicatedServer.pdb</strong></li>
-    <li><strong>0Harmony.dll</strong></li>
-    <li><strong>Sigil.dll</strong></li>
-    <li><strong>MoonSharp.Interpreter.dll</strong></li>
-    <li><strong>MonoMod.Common.dll</strong></li>
-    <li><strong>Mono.Cecil.dll</strong></li>
-    <li><strong>Mono.Cecil.Mdb.dll</strong></li>
-    <li><strong>Mono.Cecil.Pdb.dll</strong></li>
-    <li><strong>Mono.Cecil.Rocks.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.CSharp.Scripting.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.CSharp.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.Scripting.dll</strong></li>
-    <li><strong>System.Collections.Immutable.dll</strong></li>
-    <li><strong>System.Reflection.Metadata.dll</strong></li>
-    <li><strong>System.Runtime.CompilerServices.Unsafe.dll</strong></li>
-    <li>file that starts with <strong>mscordaccore_amd64_amd64_</strong></li>
-    <li>and the <strong>Lua/</strong> folder</li>
-</ul>
+<ol>
+    <li><p>Download <a href="https://github.com/evilfactory/LuaCsForBarotrauma/releases/tag/latest">the latest server patch</a> (make sure to download the "patch" zip for your platform, e.g. <code>luacsforbarotrauma_patch_windows_server.zip</code>)</p></li>
+    <li><p>Extract the zip archive into your existing server folder and replace files as necessary</p></li>
+</ol>
 
-<p>4 - Paste them to your existing server, and let it replace the files<br></p>
+<h2>Adding to an existing client<a name="Adding_to_an_existing_client"></a></h2>
 
-<h2>Adding Lua For Barotrauma to an existing client<a name="Adding_Lua_For_Barotrauma_to_an_existing_client"></a></h2>
+<ol>
+    <li><p>Download <a href="https://github.com/evilfactory/LuaCsForBarotrauma/releases/tag/latest">the latest client patch</a> (make sure to download the "patch" zip for your platform, e.g. <code>luacsforbarotrauma_patch_windows_client.zip</code>)</p></li>
+    <li><p>Extract the zip archive into your game folder and replace files as necessary</p></li>
+</ol>
 
-<p>Same as above, but instead you need to copy/replace the following files:</p>
-
-<ul>
-    <li><strong>Barotrauma.deps.json</strong></li>
-    <li><strong>Barotrauma.dll</strong></li>
-    <li><strong>Barotrauma.pdb</strong></li>
-    <li><strong>0Harmony.dll</strong></li>
-    <li><strong>Sigil.dll</strong></li>
-    <li><strong>MoonSharp.Interpreter.dll</strong></li>
-    <li><strong>MonoMod.Common.dll</strong></li>
-    <li><strong>Mono.Cecil.dll</strong></li>
-    <li><strong>Mono.Cecil.Mdb.dll</strong></li>
-    <li><strong>Mono.Cecil.Pdb.dll</strong></li>
-    <li><strong>Mono.Cecil.Rocks.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.CSharp.Scripting.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.CSharp.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.dll</strong></li>
-    <li><strong>Microsoft.CodeAnalysis.Scripting.dll</strong></li>
-    <li><strong>System.Collections.Immutable.dll</strong></li>
-    <li><strong>System.Reflection.Metadata.dll</strong></li>
-    <li><strong>System.Runtime.CompilerServices.Unsafe.dll</strong></li>
-    <li>file that starts with <strong>mscordaccore_amd64_amd64_</strong></li>
-    <li>and the <strong>Lua/</strong> folder</li>
-</ul>
-
-
-<h2>Using Lua For Barotrauma from scratch<a name="Using_Lua_For_Barotrauma_from_scratch"></a></h2>
+<h2>Installing from scratch<a name="Installing_from_scratch"></a></h2>
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ov0MUOUVB7A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-<p>1 - Download <a href="https://github.com/evilfactory/Barotrauma-lua-attempt/releases/tag/latest">latest version of LuaForBarotrauma</a>, choose the correct platform in the assets drop down.<br></p>
-
-<p>2 - Extract the zip file<br></p>
-
-<p>3 - Find the Content folder in your original Barotrauma game: <br></p>
-
-<p> <img src="https://cdn.discordapp.com/attachments/799752463619325968/833120013149929492/unknown.png" alt=""/>
- <img src="https://cdn.discordapp.com/attachments/799752463619325968/833120379378991104/unknown.png" alt=""/>
- <img src="https://cdn.discordapp.com/attachments/799752463619325968/833120841277374464/unknown.png" alt=""/></p>
-
-<p>4 - Copy the Content folder to the extracted folder <br></p>
-
-<p><img src="https://cdn.discordapp.com/attachments/799752463619325968/833133217300742154/unknown.png" alt=""/></p>
-
-<p>6 - Optional: Copy config_player.xml from your original game so it retains your configurations.</p>
-
-<p>7 - Done! Now run DedicatedServer.exe to run the modded server or run Barotrauma.exe to run the modded client.<br></p>
+<ol>
+    <li>Download <a href="https://github.com/evilfactory/LuaCsForBarotrauma/releases/tag/latest">the latest build</a> (make sure to download the "build" zip for your platform, e.g <code>luacsforbarotrauma_build_windows.zip</code>)</li>
+    <li>Extract the zip file</li>
+    <li>Find the Content folder in your original Barotrauma game:<br/>
+    <img src="https://cdn.discordapp.com/attachments/799752463619325968/833120013149929492/unknown.png" width="500" /><br/>
+    <img src="https://cdn.discordapp.com/attachments/799752463619325968/833120379378991104/unknown.png" width="500" /><br/>
+    <img src="https://cdn.discordapp.com/attachments/799752463619325968/833120841277374464/unknown.png" width="500" /></li>
+    <li>Copy the Content folder to the extracted folder:<br/>
+    <img src="https://cdn.discordapp.com/attachments/799752463619325968/833133217300742154/unknown.png" width="500" /></li>
+    <li><strong>Optional</strong>: Copy <code>config_player.xml</code> from your original game so it retains your configurations</li>
+    <li>Done! Now run DedicatedServer.exe to run the modded server or run Barotrauma.exe to run the modded client</li>
+</ol>
 
 <h3>Linux notice</h3>
-<p>Sometimes you will get steam initialization errors, most of the time it's because it's missing the linux64/steamclient.so binary, so you can just copy the binary from your steam instalation over to the folder and it should work.</p>
 
-
+<p>Sometimes you will get steam initialization errors, most of the time it's because it's missing the <code>linux64/steamclient.so</code> binary, so you can just copy the binary from your steam installation over to the folder and it should work.</p>
 
 <h2>Checking if everything is working<a name="Checking_if_everything_is_working"></a></h2>
 
@@ -9575,8 +9525,8 @@
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=e8e662c"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=d07567b"></script>
+    <script type="text/javascript" src="../../app.js?v=71be60a"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=5ae8aa0"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 

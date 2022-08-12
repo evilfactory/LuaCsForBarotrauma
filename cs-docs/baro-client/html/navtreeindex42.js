@@ -1,5 +1,6 @@
 var NAVTREEINDEX42 =
 {
+"class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a62e15c7fd8fc1e09fb3ee6ab5f3bd6b7":[4,0,0,9,3,4],
 "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a73b34642cda4d4513bb03294a736512b":[4,0,0,9,3,25],
 "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a7ebe6e5f0b9cdb80374624bd4e585530":[4,0,0,9,3,6],
 "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a837425c31dc3c5435805e43af6ad41b1":[4,0,0,9,3,20],
@@ -248,6 +249,5 @@ var NAVTREEINDEX42 =
 "class_barotrauma_1_1_polygon.html#a6372f20939204db5adb7bb9c34bf98a1":[4,0,0,438,13],
 "class_barotrauma_1_1_polygon.html#a7ddcd0814a6d80fb005f41943dd00dab":[4,0,0,438,11],
 "class_barotrauma_1_1_polygon.html#a85475d41d82c7e16bc7db72495a5ee20":[4,0,0,438,5],
-"class_barotrauma_1_1_polygon.html#a85710749f90093582373253547d2b201":[4,0,0,438,3],
-"class_barotrauma_1_1_polygon.html#a8634e7aefcba679b23e828930f7aff06":[4,0,0,438,14]
+"class_barotrauma_1_1_polygon.html#a85710749f90093582373253547d2b201":[4,0,0,438,3]
 };
