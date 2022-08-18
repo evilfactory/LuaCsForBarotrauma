@@ -22,7 +22,7 @@ var searchData=
   ['unsafehulls_15823',['UnsafeHulls',['../class_barotrauma_1_1_human_a_i_controller.html#a9b96cc3bca4ee7a43db80c0d3b922c8d',1,'Barotrauma::HumanAIController']]],
   ['unused_15824',['Unused',['../class_open_a_l_1_1_al.html#aade956af1f9b5fcfe951d515f7d9d58b',1,'OpenAL::Al']]],
   ['updateelapsedtime_15825',['UpdateElapsedTime',['../class_barotrauma_1_1_lua_cs_performance_counter.html#ac01a7197a244556aade450daed1c7e85',1,'Barotrauma::LuaCsPerformanceCounter']]],
-  ['updateinterval_15826',['updateInterval',['../class_barotrauma_1_1_networking_1_1_network_member.html#ae8d05dbf7f8659b6e9b187f8bcd1034b',1,'Barotrauma.Networking.NetworkMember.updateInterval()'],['../class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a85cb399f40c4719821e8eb33d146698b',1,'Barotrauma.Items.Components.Powered.UpdateInterval()']]],
+  ['updateinterval_15826',['UpdateInterval',['../class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a85cb399f40c4719821e8eb33d146698b',1,'Barotrauma.Items.Components.Powered.UpdateInterval()'],['../class_barotrauma_1_1_networking_1_1_network_member.html#ae8d05dbf7f8659b6e9b187f8bcd1034b',1,'Barotrauma.Networking.NetworkMember.updateInterval()']]],
   ['updateprioritycharacters_15827',['updatePriorityCharacters',['../class_barotrauma_1_1_lua_game.html#aa2e8a90ef70567ea55c64eb807a5f86f',1,'Barotrauma::LuaGame']]],
   ['updatepriorityitems_15828',['updatePriorityItems',['../class_barotrauma_1_1_lua_game.html#aac1f4e689dfa86eb977cace651c701e6',1,'Barotrauma::LuaGame']]],
   ['updatetimer_15829',['updateTimer',['../class_barotrauma_1_1_networking_1_1_network_member.html#ac786f855051753ff2946bd11bc8415b0',1,'Barotrauma::Networking::NetworkMember']]],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX51 =
 {
+"class_barotrauma_1_1_talent_prefab.html#ad991af9ed0d6d82941d87beda3c6148e":[4,0,0,545,1],
 "class_barotrauma_1_1_talent_prefab.html#af764d7bea67de348a9f5930b8444e661":[4,0,0,545,3],
 "class_barotrauma_1_1_talent_prefab.html#afd739724b38b89aed84ee5b351992e9c":[4,0,0,545,4],
 "class_barotrauma_1_1_talent_sub_tree.html":[4,0,0,547],
@@ -248,6 +249,5 @@ var NAVTREEINDEX51 =
 "class_barotrauma_1_1_upgrade_manager.html#a44d817e63051de9a03cf86dfcc1c9182":[4,0,0,565,3],
 "class_barotrauma_1_1_upgrade_manager.html#a5060c93552b5edccf591f66e678d6849":[4,0,0,565,4],
 "class_barotrauma_1_1_upgrade_manager.html#a66d75521119262615ffc83730077a6fa":[4,0,0,565,5],
-"class_barotrauma_1_1_upgrade_manager.html#a71854c3246f80bd30f13726ec341c0fe":[4,0,0,565,13],
-"class_barotrauma_1_1_upgrade_manager.html#a7f0e2f1dde00102d5bd31d10e6b55ad0":[4,0,0,565,0]
+"class_barotrauma_1_1_upgrade_manager.html#a71854c3246f80bd30f13726ec341c0fe":[4,0,0,565,13]
 };

@@ -2,7 +2,7 @@ var searchData=
 [
   ['objective_15002',['Objective',['../class_barotrauma_1_1_order.html#ab9796b9879292fd62126bfd93c6062a5',1,'Barotrauma.Order.Objective()'],['../class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#aab755ed40d223a3b565f5d219d1e1261',1,'Barotrauma.Tutorials.Tutorial.Segment.Objective()']]],
   ['objectiveiconcolor_15003',['ObjectiveIconColor',['../class_barotrauma_1_1_a_i_objective.html#a806653fda6192ebbe22a0015572702c3',1,'Barotrauma::AIObjective']]],
-  ['objectivemanager_15004',['ObjectiveManager',['../class_barotrauma_1_1_human_a_i_controller.html#a8720e1713c9a5408bcc0387dfffecee0',1,'Barotrauma.HumanAIController.ObjectiveManager()'],['../class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27',1,'Barotrauma.AIObjective.objectiveManager()']]],
+  ['objectivemanager_15004',['objectiveManager',['../class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27',1,'Barotrauma.AIObjective.objectiveManager()'],['../class_barotrauma_1_1_human_a_i_controller.html#a8720e1713c9a5408bcc0387dfffecee0',1,'Barotrauma.HumanAIController.ObjectiveManager()']]],
   ['objectivetype_15005',['ObjectiveType',['../struct_barotrauma_1_1_character_1_1_objective_manager_state_event_data.html#a9a6dc42058e8dd76b6ce37921b7270bc',1,'Barotrauma::Character::ObjectiveManagerStateEventData']]],
   ['obstructvision_15006',['ObstructVision',['../class_barotrauma_1_1_lights_1_1_light_manager.html#ab5e23b95f0f5ee15acb4188dd676e85d',1,'Barotrauma::Lights::LightManager']]],
   ['offset_15007',['offset',['../class_barotrauma_1_1_sprite.html#a68bea694195cbc41f113aa1bd045d219',1,'Barotrauma.Sprite.offset()'],['../class_barotrauma_1_1_broken_item_sprite.html#a42fa5bb56bb7a14d32637ca42d24d806',1,'Barotrauma.BrokenItemSprite.Offset()']]],

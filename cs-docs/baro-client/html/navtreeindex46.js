@@ -1,5 +1,6 @@
 var NAVTREEINDEX46 =
 {
+"class_barotrauma_1_1_scripted_event.html#ae59cea1d0265ab15e86a49cf4ad6cf41":[4,0,0,476,1],
 "class_barotrauma_1_1_scripted_event.html#ae5fb4755ca45cdf54ca5adc973b367a3":[4,0,0,476,5],
 "class_barotrauma_1_1_scripted_event.html#aea679abca01a5087682f825a3848a6b1":[4,0,0,476,10],
 "class_barotrauma_1_1_scripted_event.html#aefb29933c37f8b407acdbed993b6a839":[4,0,0,476,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX46 =
 "class_barotrauma_1_1_skill_settings.html#a4aad57e16d2b0f0139e4717da35b96c1":[4,0,0,504,2],
 "class_barotrauma_1_1_skill_settings.html#a512639a75cdcc2cc232664c6ffd25b98":[4,0,0,504,5],
 "class_barotrauma_1_1_skill_settings.html#a52cde33f7bd0d786be566422f25788c6":[4,0,0,504,12],
-"class_barotrauma_1_1_skill_settings.html#a624e8f52a64611068bdd95846209abab":[4,0,0,504,11],
-"class_barotrauma_1_1_skill_settings.html#a675ae6b4834d586773e841de1cf51a9b":[4,0,0,504,9]
+"class_barotrauma_1_1_skill_settings.html#a624e8f52a64611068bdd95846209abab":[4,0,0,504,11]
 };

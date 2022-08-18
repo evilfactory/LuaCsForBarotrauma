@@ -45,6 +45,7 @@ var class_barotrauma_1_1_lua_game =
     [ "NetLobbyScreen", "class_barotrauma_1_1_lua_game.html#a074d9212a2cd200a770063bcb0241b37", null ],
     [ "Peer", "class_barotrauma_1_1_lua_game.html#ab2a52ec11ba2da573dc5f4285d5d123f", null ],
     [ "poweredUpdateInterval", "class_barotrauma_1_1_lua_game.html#a5806e1e066f64dcef9d19f4a39e6d83a", null ],
+    [ "RespawnManager", "class_barotrauma_1_1_lua_game.html#a8f2d17aa79067be437a56ba8c2d392bc", null ],
     [ "RoundStarted", "class_barotrauma_1_1_lua_game.html#a17310da6534706e4ad9fb414fe1f16ba", null ],
     [ "Server", "class_barotrauma_1_1_lua_game.html#a75aab07f3ba46bb15c27ab4fdc41f639", null ],
     [ "ServerSettings", "class_barotrauma_1_1_lua_game.html#aff6ae3e6e342ff84cd2a3562db8c831b", null ],

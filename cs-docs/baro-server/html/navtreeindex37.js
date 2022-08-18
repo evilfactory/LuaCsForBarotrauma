@@ -1,5 +1,6 @@
 var NAVTREEINDEX37 =
 {
+"class_barotrauma_1_1_skill_prefab.html":[4,0,0,402],
 "class_barotrauma_1_1_skill_prefab.html#a07dd877fbeb5d8359f7f74819f59ccc1":[4,0,0,402,2],
 "class_barotrauma_1_1_skill_prefab.html#a2f08ed1e37055396c46642205e53f2ce":[4,0,0,402,0],
 "class_barotrauma_1_1_skill_prefab.html#a5f6dd1044571a668456c92d643afc643":[4,0,0,402,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX37 =
 "class_barotrauma_1_1_structure.html#a0d7ad153d03c18d85b1fa01b4fc8463b":[4,0,0,418,61],
 "class_barotrauma_1_1_structure.html#a0e375cdf186d2f7161bb2178b35dd53e":[4,0,0,418,6],
 "class_barotrauma_1_1_structure.html#a12088ab961837d33270bfbd68bf2f2eb":[4,0,0,418,59],
-"class_barotrauma_1_1_structure.html#a1d5e5597779f767e740b5beabece673f":[4,0,0,418,51],
-"class_barotrauma_1_1_structure.html#a1e545e5e6e285612ccc49c769c34db2e":[4,0,0,418,42]
+"class_barotrauma_1_1_structure.html#a1d5e5597779f767e740b5beabece673f":[4,0,0,418,51]
 };

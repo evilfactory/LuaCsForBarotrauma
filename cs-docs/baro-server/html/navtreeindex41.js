@@ -1,5 +1,6 @@
 var NAVTREEINDEX41 =
 {
+"class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748a8428552d86c0d262a542a528af490afa":[4,0,0,454,3,1],
 "class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748aa0d0628f6b4e4d78d2ffef4d4d1c4b15":[4,0,0,454,3,3],
 "class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748ad7c8c85bf79bbe1b7188497c32c3b0ca":[4,0,0,454,3,4],
 "class_barotrauma_1_1_voting.html#a924e0ef2bd09372d6a3259d1363f351d":[4,0,0,454,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX41 =
 "functions_func_j.html":[4,3,1,9],
 "functions_func_k.html":[4,3,1,10],
 "functions_func_l.html":[4,3,1,11],
-"functions_func_m.html":[4,3,1,12],
-"functions_func_n.html":[4,3,1,13]
+"functions_func_m.html":[4,3,1,12]
 };

@@ -91,7 +91,7 @@ var searchData=
   ['resourcetags_14740',['ResourceTags',['../struct_barotrauma_1_1_level_1_1_path_point.html#ad882ed80d4b6f9d43b3b2b20c713eb14',1,'Barotrauma::Level::PathPoint']]],
   ['respawncountdownstarted_14741',['RespawnCountdownStarted',['../class_barotrauma_1_1_networking_1_1_respawn_manager.html#a710b5015c9409769ffe918f104bfea41',1,'Barotrauma::Networking::RespawnManager']]],
   ['respawninterval_14742',['RespawnInterval',['../class_barotrauma_1_1_networking_1_1_server_settings.html#af8d153e59e797ebe750c7bcf45db6d4d',1,'Barotrauma::Networking::ServerSettings']]],
-  ['respawnmanager_14743',['RespawnManager',['../class_barotrauma_1_1_networking_1_1_network_member.html#a3a683959f1035e3775b8bd9cf4ff2fbc',1,'Barotrauma::Networking::NetworkMember']]],
+  ['respawnmanager_14743',['RespawnManager',['../class_barotrauma_1_1_lua_game.html#a8f2d17aa79067be437a56ba8c2d392bc',1,'Barotrauma.LuaGame.RespawnManager()'],['../class_barotrauma_1_1_networking_1_1_network_member.html#a3a683959f1035e3775b8bd9cf4ff2fbc',1,'Barotrauma.Networking.NetworkMember.RespawnManager()']]],
   ['respawnshuttle_14744',['RespawnShuttle',['../class_barotrauma_1_1_networking_1_1_respawn_manager.html#aea64d4181d7d60173c5881f7f4b3bd68',1,'Barotrauma::Networking::RespawnManager']]],
   ['respawntime_14745',['RespawnTime',['../class_barotrauma_1_1_networking_1_1_respawn_manager.html#a2af3cd62768a7819e99167782663de26',1,'Barotrauma::Networking::RespawnManager']]],
   ['restitution_14746',['Restitution',['../class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a834186b6e3f5c8ff0bff3165fb77995e',1,'Barotrauma::RagdollParams::LimbParams']]],

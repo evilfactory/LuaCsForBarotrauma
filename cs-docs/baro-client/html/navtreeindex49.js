@@ -1,5 +1,6 @@
 var NAVTREEINDEX49 =
 {
+"class_barotrauma_1_1_status_effect_1_1_give_talent_info.html":[4,0,0,519,3],
 "class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#a2652ccb6ea2fe9d5920cc541236a0c6a":[4,0,0,519,3,0],
 "class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#a3e952da3d95bd1552e8d58f6c2aa7322":[4,0,0,519,3,2],
 "class_barotrauma_1_1_status_effect_1_1_give_talent_info.html#ade55aacfabab81a49a11e55c2ea0e1dd":[4,0,0,519,3,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX49 =
 "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7abce3c7ec548da4fb186b8b5dd8472ba6":[4,0,0,528,1,6],
 "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7ac7e7a0c849e9f3ecc1afe33d17fd877a":[4,0,0,528,1,0],
 "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7af731291af299140e875d10cbb379fbf1":[4,0,0,528,1,3],
-"class_barotrauma_1_1_sub_editor_screen.html#acb3870e0121f1e78308362c6f9e03694":[4,0,0,528,11],
-"class_barotrauma_1_1_sub_editor_screen.html#ae00aab7960dc9f9718faaf0fa7b215f1":[4,0,0,528,20]
+"class_barotrauma_1_1_sub_editor_screen.html#acb3870e0121f1e78308362c6f9e03694":[4,0,0,528,11]
 };

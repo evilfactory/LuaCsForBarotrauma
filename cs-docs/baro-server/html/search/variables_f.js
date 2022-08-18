@@ -1,7 +1,7 @@
 var searchData=
 [
   ['objective_11534',['Objective',['../class_barotrauma_1_1_order.html#ab9796b9879292fd62126bfd93c6062a5',1,'Barotrauma::Order']]],
-  ['objectivemanager_11535',['objectiveManager',['../class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27',1,'Barotrauma.AIObjective.objectiveManager()'],['../class_barotrauma_1_1_human_a_i_controller.html#a8720e1713c9a5408bcc0387dfffecee0',1,'Barotrauma.HumanAIController.ObjectiveManager()']]],
+  ['objectivemanager_11535',['ObjectiveManager',['../class_barotrauma_1_1_human_a_i_controller.html#a8720e1713c9a5408bcc0387dfffecee0',1,'Barotrauma.HumanAIController.ObjectiveManager()'],['../class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27',1,'Barotrauma.AIObjective.objectiveManager()']]],
   ['objectives_11536',['Objectives',['../class_barotrauma_1_1_traitor_mission_prefab.html#a67899b8bca856f5ba5e5ae6933979852',1,'Barotrauma::TraitorMissionPrefab']]],
   ['objectivetype_11537',['ObjectiveType',['../struct_barotrauma_1_1_character_1_1_objective_manager_state_event_data.html#a9a6dc42058e8dd76b6ce37921b7270bc',1,'Barotrauma::Character::ObjectiveManagerStateEventData']]],
   ['offset_11538',['offset',['../class_barotrauma_1_1_sprite.html#a68bea694195cbc41f113aa1bd045d219',1,'Barotrauma::Sprite']]],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX36 =
 {
+"class_barotrauma_1_1_md5_hash.html#a0cd55f230a4904dd2c8ccb94b1fd12fca0671cad22ba8185c469fc54c7bb8b327":[4,0,0,382,0,0],
 "class_barotrauma_1_1_md5_hash.html#a0cd55f230a4904dd2c8ccb94b1fd12fca37c903d9b43d2f21b2ad8ea520914e7a":[4,0,0,382,0,1],
 "class_barotrauma_1_1_md5_hash.html#a0cd55f230a4904dd2c8ccb94b1fd12fcaa3c0be78b06614de6dbe426b1dd677dc":[4,0,0,382,0,2],
 "class_barotrauma_1_1_md5_hash.html#a50b5eb01e78aae7fa4936f558cd8b20f":[4,0,0,382,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX36 =
 "class_barotrauma_1_1_multi_player_campaign.html#a57f6220284190dbeac3d57001112ea94":[4,0,0,399,1],
 "class_barotrauma_1_1_multi_player_campaign.html#a5fedcdcbe5bf9b7579b83455553e3fd0":[4,0,0,399,12],
 "class_barotrauma_1_1_multi_player_campaign.html#a601ee9a506e93d6ee687f62100ac077f":[4,0,0,399,5],
-"class_barotrauma_1_1_multi_player_campaign.html#a6d461998113efd0d841d5b8eec0e469d":[4,0,0,399,16],
-"class_barotrauma_1_1_multi_player_campaign.html#a6eee2bdfe431350e121540c4c20b8ff8":[4,0,0,399,7]
+"class_barotrauma_1_1_multi_player_campaign.html#a6d461998113efd0d841d5b8eec0e469d":[4,0,0,399,16]
 };

@@ -10,15 +10,12 @@
 
       <meta property="og:description" content="
 
-```
-Hook.Add(&#39;chatMessage&#39;, &#39;suicide_mod&#39;, function(msg, client)
-    if msg == &#39;!suicide&#39; and client.Character ~= nil then
-        client.Character.Kill(CauseOfDeathType.Unknown)
-        Game.SendMessage(client.name .. &#39; killed himself!&#39;, ChatMessageTyp..." />
+ All  can be found in this github repository:
+ [https:&#47;&#47;github.com&#47;evilfactory&#47;Misc-Barotrauma-Lua-Scripts&#47;tree&#47;main&#47;LuaExamples&#47;Lua&#47;Autorun](https:&#47;&#47;github.com&#47;evilfactory&#47;Misc-Barotrauma-Lua-Scripts&#47;tree&#47;main&#47;LuaExamples&#47;Lua&#47;Autorun)..." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=23ea9a3" />
-    <link rel="stylesheet" href="../../highlight.css?v=7d96daf" />
+    <link rel="stylesheet" href="../../ldoc.css?v=585e0a6" />
+    <link rel="stylesheet" href="../../highlight.css?v=4a0964d" />
   </head>
 
   <body>
@@ -9478,98 +9475,15 @@ Hook.Add(&#39;chatMessage&#39;, &#39;suicide_mod&#39;, function(msg, client)
 
 <h1>Lua Examples</h1>
 
-<pre><code> Hook.Add('chatMessage', 'suicide_mod', function(msg, client)
-     if msg == '!suicide' and client.Character ~= nil then
-         client.Character.Kill(CauseOfDeathType.Unknown)
-         Game.SendMessage(client.name .. ' killed himself!', ChatMessageType.Server)
-         return true -- hide message
-     end
- end)
-</code></pre>
-
-
-<p><br></p>
-
-<pre><code> Hook.Add("itemApplyTreatment", "testItemApplyTreatment", function (item, user, character, targetlimb)
-     if item.Prefab.Identifier == "antibleeding1" then
-         local pos = character.WorldPosition
-         Game.Explode(pos, 1, 500, 5000, 5000, 5000)
-
-         Game.RemoveItem(item)
-     end
- end)
-</code></pre>
-
-
-<p><br></p>
-
-
-<pre><code> -- for example: create an item in xml named RandomComponent and add the wiring inputs/outputs trigger_random and random_out
- Hook.Add("signalReceived", "signalReceivedTest", function (signal, connection)
-     if connection.Item.Prefab.Identifier == "RandomComponent" and connection.Name == "trigger_random" then
-         connection.Item.SendSignal(tostring(Random.Range(0, 100)), "random_out")
-     end
- end)
-</code></pre>
-
-
-<p><br></p>
-
-<pre><code> local discordWebHook = "your discord webhook here"
-
- local function escapeQuotes(str)
-     return str:gsub("\"", "\\\"")
- end
-
- Hook.Add("chatMessage", "discordIntegration", function (msg, client)
-     local escapedName = escapeQuotes(client.name)
-     local escapedMessage = escapeQuotes(msg)
-
-     Networking.RequestPostHTTP(discordWebHook, function(result) end, '{\"content\": \"'..escapedMessage..'\", \"username\": \"'..escapedName..'\"}')
- end)
-</code></pre>
-
-
-<p><br></p>
-
-
-<pre><code> -- by jimmyl
- Hook.Add("chatMessage","controlhuskcommand",function(msg, client)
-     if msg == "!controlhusk" then
-         if client.Character ~= nil then
-             if not client.Character.IsDead then
-                 return true
-             end
-         end
-         if not client.InGame then
-             return true
-         end
-
-         local chars = Character.CharacterList
-         local suitablechars = {}
-         for i = 1, #chars, 1 do
-             local charat = chars[i]
-             if not charat.IsDead and string.match(string.lower(charat.SpeciesName.Value), "husk") and not charat.IsRemotelyControlled then
-                 table.insert(suitablechars, charat)
-             end
-         end
-
-         if #suitablechars &gt;= 1 then
-             client.SetClientCharacter(suitablechars[Random.Range(1, #suitablechars)])
-         end
-
-         return true -- hide message
-     end
- end)
-</code></pre>
-
+<h1>All Lua Examples can be found in this github repository:</h1>
+<h1><a href="https://github.com/evilfactory/Misc-Barotrauma-Lua-Scripts/tree/main/LuaExamples/Lua/Autorun">https://github.com/evilfactory/Misc-Barotrauma-Lua-Scripts/tree/main/LuaExamples/Lua/Autorun</a></h1>
 
           </div>
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=71be60a"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=5ae8aa0"></script>
+    <script type="text/javascript" src="../../app.js?v=0b2f868"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=44e36e9"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 
