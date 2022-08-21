@@ -138,35 +138,43 @@ $(document).ready(function(){initNavTree('_lua_cs_update_checker_8cs_source.html
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> file <span class="keywordflow">in</span> filesToUpdate)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        File.Move(file, file + <span class="stringliteral">&quot;.todelete&quot;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        File.Copy(Path.Combine(luaCsPath, <span class="stringliteral">&quot;Binary&quot;</span>, file), file, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    File.WriteAllText(LuaCsSetup.VersionFile, workshopVersion);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    <span class="keyword">new</span> GUIMessageBox(<span class="stringliteral">&quot;Failed&quot;</span>, $<span class="stringliteral">&quot;Failed to update, error: {e}&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                            File.Move(file, file + <span class="stringliteral">&quot;.todelete&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                            File.Copy(Path.Combine(luaCsPath, <span class="stringliteral">&quot;Binary&quot;</span>, file), file, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                            DebugConsole.ThrowError($<span class="stringliteral">&quot;Failed to update file {e}&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    msg.Close();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keyword">new</span> GUIMessageBox(<span class="stringliteral">&quot;Restart&quot;</span>, $<span class="stringliteral">&quot;Lua{additional} updated! Restart your game to apply the changes.&quot;</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                msg.Close();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            };</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            msg.Buttons[1].OnClicked = (GUIButton button, <span class="keywordtype">object</span> obj) =&gt;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                msg.Close();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            };</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    File.WriteAllText(LuaCsSetup.VersionFile, workshopVersion);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <span class="keyword">new</span> GUIMessageBox(<span class="stringliteral">&quot;Failed&quot;</span>, $<span class="stringliteral">&quot;Failed to update, error: {e}&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    msg.Close();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keyword">new</span> GUIMessageBox(<span class="stringliteral">&quot;Restart&quot;</span>, $<span class="stringliteral">&quot;Lua{additional} updated! Restart your game to apply the changes.&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                msg.Close();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            msg.Buttons[1].OnClicked = (GUIButton button, <span class="keywordtype">object</span> obj) =&gt;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                msg.Close();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            };</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:3</a></div></div>

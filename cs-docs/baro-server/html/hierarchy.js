@@ -1045,8 +1045,8 @@ var hierarchy =
     [ "Barotrauma.Networking.NetworkMember", "class_barotrauma_1_1_networking_1_1_network_member.html", [
       [ "Barotrauma.Networking.GameServer", "class_barotrauma_1_1_networking_1_1_game_server.html", null ]
     ] ],
-    [ "Barotrauma.PrefabCollection< T >.InheritanceTreeCollection.Node", "class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html", null ],
     [ "Barotrauma.Items.Components.ElectricalDischarger.Node", "struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node.html", null ],
+    [ "Barotrauma.PrefabCollection< T >.InheritanceTreeCollection.Node", "class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html", null ],
     [ "Barotrauma.NPCConversation", "class_barotrauma_1_1_n_p_c_conversation.html", null ],
     [ "Barotrauma.NPCPersonalityTrait", "class_barotrauma_1_1_n_p_c_personality_trait.html", null ],
     [ "Barotrauma.Traitor.Objective", "class_barotrauma_1_1_traitor_1_1_objective.html", null ],
