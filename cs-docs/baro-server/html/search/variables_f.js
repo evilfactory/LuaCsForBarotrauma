@@ -1,7 +1,7 @@
 var searchData=
 [
   ['objective_11532',['Objective',['../class_barotrauma_1_1_order.html#ab9796b9879292fd62126bfd93c6062a5',1,'Barotrauma::Order']]],
-  ['objectivemanager_11533',['objectiveManager',['../class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27',1,'Barotrauma.AIObjective.objectiveManager()'],['../class_barotrauma_1_1_human_a_i_controller.html#a8720e1713c9a5408bcc0387dfffecee0',1,'Barotrauma.HumanAIController.ObjectiveManager()']]],
+  ['objectivemanager_11533',['ObjectiveManager',['../class_barotrauma_1_1_human_a_i_controller.html#a8720e1713c9a5408bcc0387dfffecee0',1,'Barotrauma.HumanAIController.ObjectiveManager()'],['../class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27',1,'Barotrauma.AIObjective.objectiveManager()']]],
   ['objectives_11534',['Objectives',['../class_barotrauma_1_1_traitor_mission_prefab.html#a67899b8bca856f5ba5e5ae6933979852',1,'Barotrauma::TraitorMissionPrefab']]],
   ['objectivetype_11535',['ObjectiveType',['../struct_barotrauma_1_1_character_1_1_objective_manager_state_event_data.html#a9a6dc42058e8dd76b6ce37921b7270bc',1,'Barotrauma::Character::ObjectiveManagerStateEventData']]],
   ['offset_11536',['offset',['../class_barotrauma_1_1_sprite.html#a68bea694195cbc41f113aa1bd045d219',1,'Barotrauma::Sprite']]],
@@ -86,7 +86,7 @@ var searchData=
   ['ownerclientendpoint_11615',['OwnerClientEndPoint',['../class_barotrauma_1_1_character.html#ac022ee43b887e6844d4214c7c46b2c35',1,'Barotrauma::Character']]],
   ['ownerclientname_11616',['OwnerClientName',['../class_barotrauma_1_1_character.html#a3121c4dfee725c879f341684016fa8bc',1,'Barotrauma::Character']]],
   ['ownerjob_11617',['OwnerJob',['../class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#ae89c44ff2147ad03a9289e4de5f0364d',1,'Barotrauma::Items::Components::IdCard']]],
-  ['ownerkey_11618',['OwnerKey',['../class_barotrauma_1_1_networking_1_1_server_peer_1_1_pending_client.html#a4d627cc67d73059d05085698b4cc5fd4',1,'Barotrauma.Networking.ServerPeer.PendingClient.OwnerKey()'],['../class_barotrauma_1_1_networking_1_1_server_peer.html#a78f91dc82876cda874adaf7135d32628',1,'Barotrauma.Networking.ServerPeer.ownerKey()']]],
+  ['ownerkey_11618',['ownerKey',['../class_barotrauma_1_1_networking_1_1_server_peer.html#a78f91dc82876cda874adaf7135d32628',1,'Barotrauma.Networking.ServerPeer.ownerKey()'],['../class_barotrauma_1_1_networking_1_1_server_peer_1_1_pending_client.html#a4d627cc67d73059d05085698b4cc5fd4',1,'Barotrauma.Networking.ServerPeer.PendingClient.OwnerKey()']]],
   ['ownersteamid_11619',['OwnerSteamID',['../class_barotrauma_1_1_networking_1_1_client.html#ac86aa17be789831cf82767ac93ccbb4f',1,'Barotrauma.Networking.Client.OwnerSteamID()'],['../class_barotrauma_1_1_networking_1_1_previous_player.html#aa7d1ea505caec9cdee1acad30f06d58c',1,'Barotrauma.Networking.PreviousPlayer.OwnerSteamID()']]],
   ['oxygen_5fsource_11620',['OXYGEN_SOURCE',['../class_barotrauma_1_1_a_i_objective_find_diving_gear.html#ac612ab4675e347f75233619073da6206',1,'Barotrauma::AIObjectiveFindDivingGear']]],
   ['oxygenavailable_11621',['oxygenAvailable',['../class_barotrauma_1_1_character.html#afdf966ce2bdadb141aa42b6da7952d3e',1,'Barotrauma::Character']]],

@@ -14,7 +14,7 @@ var searchData=
   ['networkfiresource_7530',['NetworkFireSource',['../struct_barotrauma_1_1_hull_1_1_network_fire_source.html',1,'Barotrauma::Hull']]],
   ['networkmember_7531',['NetworkMember',['../class_barotrauma_1_1_networking_1_1_network_member.html',1,'Barotrauma::Networking']]],
   ['networkserialize_7532',['NetworkSerialize',['../class_barotrauma_1_1_network_serialize.html',1,'Barotrauma']]],
-  ['node_7533',['Node',['../struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node.html',1,'Barotrauma.Items.Components.ElectricalDischarger.Node'],['../class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html',1,'Barotrauma.PrefabCollection&lt; T &gt;.InheritanceTreeCollection.Node']]],
+  ['node_7533',['Node',['../class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html',1,'Barotrauma.PrefabCollection&lt; T &gt;.InheritanceTreeCollection.Node'],['../struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node.html',1,'Barotrauma.Items.Components.ElectricalDischarger.Node']]],
   ['none_7534',['None',['../class_barotrauma_1_1_none.html',1,'Barotrauma']]],
   ['notcomponent_7535',['NotComponent',['../class_barotrauma_1_1_items_1_1_components_1_1_not_component.html',1,'Barotrauma::Items::Components']]],
   ['notsyncedinmultiplayer_7536',['NotSyncedInMultiplayer',['../class_barotrauma_1_1_not_synced_in_multiplayer.html',1,'Barotrauma']]],
