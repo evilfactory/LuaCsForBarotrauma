@@ -27,6 +27,5 @@ var class_barotrauma_1_1_items_1_1_components_1_1_power_container =
     [ "MaxOutPut", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a263ff1b04b8fc612440e658eb63aec28", null ],
     [ "MaxRechargeSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a47f8cadb1c9c3a8553168960286f7dd4", null ],
     [ "Priority", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a215755b83fba975e9a605ea1ca077dd3", null ],
-    [ "RechargeAdjustSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#adcfe67cb326a9f253ddc3466862bb8dd", null ],
     [ "RechargeSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a224c06a67465f6494bc5e0b058a28aa8", null ]
 ];

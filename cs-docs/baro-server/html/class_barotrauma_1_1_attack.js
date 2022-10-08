@@ -70,6 +70,7 @@ var class_barotrauma_1_1_attack =
     [ "SecondaryCoolDownTimer", "class_barotrauma_1_1_attack.html#a2068009dd8dfb1d8a73950d826c8102b", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_attack.html#a305955b987193f73aed4e8dc335bed6a", null ],
     [ "SeverLimbsProbability", "class_barotrauma_1_1_attack.html#af588af1c0d19799552fc620f479ee98b", null ],
+    [ "SnapRopeOnNewAttack", "class_barotrauma_1_1_attack.html#a8549ffaac20a5a646a31994d438076f4", null ],
     [ "SourceItem", "class_barotrauma_1_1_attack.html#ab37123792135c9e5878501906ac8be2f", null ],
     [ "StatusEffects", "class_barotrauma_1_1_attack.html#ad68bf75d181db5aca49701ab963433d7", null ],
     [ "StructureDamage", "class_barotrauma_1_1_attack.html#a9f61a8373efc5a1665cef7f6131afd9a", null ],

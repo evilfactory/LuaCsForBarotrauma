@@ -107,48 +107,49 @@ $(document).ready(function(){initNavTree('_screen_8cs_source.html',''); initResi
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <a class="code" href="class_barotrauma_1_1_screen.html#a45c5bab8117378841bb3a09acd6bd3b6">Selected</a>.<a class="code" href="class_barotrauma_1_1_screen.html#ad80699e1317d48fa7b6f9346748de0b9">Deselect</a>();</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#if CLIENT</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                GUIContextMenu.CurrentContextMenu = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                GUI.ClearCursorWait();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="comment">//make sure any textbox in the previously selected screen doesn&#39;t stay selected</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">if</span> (GUI.KeyboardDispatcher.Subscriber != DebugConsole.TextBox)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    GUI.KeyboardDispatcher.Subscriber = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    GUI.ScreenChanged = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                SubmarinePreview.Close();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="comment">// Make sure the saving indicator is disabled when returning to main menu or lobby</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordflow">if</span> (<span class="keyword">this</span> == <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.MainMenuScreen || <span class="keyword">this</span> == <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a22bbdfd66bfac08109f00ec3422ba746">NetLobbyScreen</a>)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    GUI.DisableSavingIndicatorDelayed();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#if CLIENT</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            GUI.SettingsMenuOpen = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="class_barotrauma_1_1_screen.html#a45c5bab8117378841bb3a09acd6bd3b6">Selected</a> = <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">   46</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="class_barotrauma_1_1_camera.html">Camera</a> <a class="code" href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">Cam</a> =&gt; <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_screen.html#a030255d7d8e5ea33d5ed62f68bf46d37">   48</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_screen.html#a030255d7d8e5ea33d5ed62f68bf46d37">IsEditor</a> =&gt; <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_screen.html#aa0cf0d0cd07e66377e3380e25d11c427">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_screen.html#aa0cf0d0cd07e66377e3380e25d11c427">Update</a>(<span class="keywordtype">double</span> deltaTime)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.ParticleManager.ClearParticles();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                GUIContextMenu.CurrentContextMenu = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                GUI.ClearCursorWait();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="comment">//make sure any textbox in the previously selected screen doesn&#39;t stay selected</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keywordflow">if</span> (GUI.KeyboardDispatcher.Subscriber != DebugConsole.TextBox)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    GUI.KeyboardDispatcher.Subscriber = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    GUI.ScreenChanged = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                SubmarinePreview.Close();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="comment">// Make sure the saving indicator is disabled when returning to main menu or lobby</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">if</span> (<span class="keyword">this</span> == <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.MainMenuScreen || <span class="keyword">this</span> == <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a22bbdfd66bfac08109f00ec3422ba746">NetLobbyScreen</a>)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    GUI.DisableSavingIndicatorDelayed();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#if CLIENT</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            GUI.SettingsMenuOpen = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="class_barotrauma_1_1_screen.html#a45c5bab8117378841bb3a09acd6bd3b6">Selected</a> = <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">   47</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="class_barotrauma_1_1_camera.html">Camera</a> <a class="code" href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">Cam</a> =&gt; <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_screen.html#a030255d7d8e5ea33d5ed62f68bf46d37">   49</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_screen.html#a030255d7d8e5ea33d5ed62f68bf46d37">IsEditor</a> =&gt; <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_screen.html#aa0cf0d0cd07e66377e3380e25d11c427">   51</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_screen.html#aa0cf0d0cd07e66377e3380e25d11c427">Update</a>(<span class="keywordtype">double</span> deltaTime)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00019">GameMain.cs:19</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_screen_html_ad80699e1317d48fa7b6f9346748de0b9"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#ad80699e1317d48fa7b6f9346748de0b9">Barotrauma.Screen.Deselect</a></div><div class="ttdeci">virtual void Deselect()</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00012">Screen.cs:12</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_screen_html_aa0cf0d0cd07e66377e3380e25d11c427"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#aa0cf0d0cd07e66377e3380e25d11c427">Barotrauma.Screen.Update</a></div><div class="ttdeci">virtual void Update(double deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00050">Screen.cs:50</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_screen_html_aa0cf0d0cd07e66377e3380e25d11c427"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#aa0cf0d0cd07e66377e3380e25d11c427">Barotrauma.Screen.Update</a></div><div class="ttdeci">virtual void Update(double deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00051">Screen.cs:51</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_screen_html_a45c5bab8117378841bb3a09acd6bd3b6"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a45c5bab8117378841bb3a09acd6bd3b6">Barotrauma.Screen.Selected</a></div><div class="ttdeci">static Screen Selected</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00005">Screen.cs:5</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_screen_html_a521b3e666e78be22518fe0aab848e22d"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">Barotrauma.Screen.Cam</a></div><div class="ttdeci">virtual Camera Cam</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00046">Screen.cs:46</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_screen_html_a521b3e666e78be22518fe0aab848e22d"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">Barotrauma.Screen.Cam</a></div><div class="ttdeci">virtual Camera Cam</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00047">Screen.cs:47</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_screen_html_a6fbb9f2ee3aa8a35e5ece6ad1b684553"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a6fbb9f2ee3aa8a35e5ece6ad1b684553">Barotrauma.Screen.Select</a></div><div class="ttdeci">virtual void Select()</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00016">Screen.cs:16</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_screen_html_a030255d7d8e5ea33d5ed62f68bf46d37"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a030255d7d8e5ea33d5ed62f68bf46d37">Barotrauma.Screen.IsEditor</a></div><div class="ttdeci">virtual bool IsEditor</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00048">Screen.cs:48</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_screen_html_a030255d7d8e5ea33d5ed62f68bf46d37"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a030255d7d8e5ea33d5ed62f68bf46d37">Barotrauma.Screen.IsEditor</a></div><div class="ttdeci">virtual bool IsEditor</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00049">Screen.cs:49</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_screen_html_a8b3236a8e682922d1f98ab057aa4dbeb"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a8b3236a8e682922d1f98ab057aa4dbeb">Barotrauma.Screen.SelectNull</a></div><div class="ttdeci">static void SelectNull()</div><div class="ttdef"><b>Definition:</b> <a href="_screen_8cs_source.html#l00007">Screen.cs:7</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:3</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a22bbdfd66bfac08109f00ec3422ba746"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a22bbdfd66bfac08109f00ec3422ba746">Barotrauma.GameMain.NetLobbyScreen</a></div><div class="ttdeci">static NetLobbyScreen NetLobbyScreen</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00057">GameMain.cs:57</a></div></div>

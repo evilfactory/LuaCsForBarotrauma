@@ -105,6 +105,8 @@ Inheritance diagram for Barotrauma.GUIFont:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aac1f69dc89b57a98e190473ac757348e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#aac1f69dc89b57a98e190473ac757348e">GUIFont</a> (string identifier)</td></tr>
 <tr class="separator:aac1f69dc89b57a98e190473ac757348e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5bfa41c74b243877e63bd3958838d4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_scalable_font.html">ScalableFont</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#ab5bfa41c74b243877e63bd3958838d4c">GetFontForStr</a> (string str)</td></tr>
+<tr class="separator:ab5bfa41c74b243877e63bd3958838d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4706dd62f55f3c410f50e8f2d5422654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a4706dd62f55f3c410f50e8f2d5422654">DrawString</a> (SpriteBatch sb, <a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a> text, Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects se, float layerDepth)</td></tr>
 <tr class="separator:a4706dd62f55f3c410f50e8f2d5422654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a1f9854d2aa1552f901549282b2feb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a3a1f9854d2aa1552f901549282b2feb1">DrawString</a> (SpriteBatch sb, string text, Vector2 position, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects se, float layerDepth)</td></tr>
@@ -140,11 +142,11 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a698d7e65b638dc076f4e46d9bee75cce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a698d7e65b638dc076f4e46d9bee75cce">HasValue</a> =&gt; Prefabs.Any()</td></tr>
+<tr class="memitem:a698d7e65b638dc076f4e46d9bee75cce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a698d7e65b638dc076f4e46d9bee75cce">HasValue</a> =&gt; !Prefabs.IsEmpty</td></tr>
 <tr class="separator:a698d7e65b638dc076f4e46d9bee75cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c2ea30bc7e6695725d184d99e175522"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_scalable_font.html">ScalableFont</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a2c2ea30bc7e6695725d184d99e175522">Value</a> =&gt; Prefabs.ActivePrefab.Font</td></tr>
 <tr class="separator:a2c2ea30bc7e6695725d184d99e175522"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa19afd90ae13eac199afb8cf0974a8fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#aa19afd90ae13eac199afb8cf0974a8fa">ForceUpperCase</a> =&gt; <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a698d7e65b638dc076f4e46d9bee75cce">HasValue</a> &amp;&amp; Value.ForceUpperCase</td></tr>
+<tr class="memitem:aa19afd90ae13eac199afb8cf0974a8fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#aa19afd90ae13eac199afb8cf0974a8fa">ForceUpperCase</a> =&gt; Prefabs.ActivePrefab?.Font is { ForceUpperCase: true }</td></tr>
 <tr class="separator:aa19afd90ae13eac199afb8cf0974a8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf46e4cd04cf1ef80f11ae6fc0b7d4f6"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_font.html#abf46e4cd04cf1ef80f11ae6fc0b7d4f6">Size</a> =&gt; <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a698d7e65b638dc076f4e46d9bee75cce">HasValue</a> ? Value.Size : 0</td></tr>
 <tr class="separator:abf46e4cd04cf1ef80f11ae6fc0b7d4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -691,6 +693,24 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab5bfa41c74b243877e63bd3958838d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5bfa41c74b243877e63bd3958838d4c">&#9670;&nbsp;</a></span>GetFontForStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_scalable_font.html">ScalableFont</a> Barotrauma.GUIFont.GetFontForStr </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a9cabc2fd5c976f52cf1a5564e286fbfa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9cabc2fd5c976f52cf1a5564e286fbfa">&#9670;&nbsp;</a></span>MeasureChar()</h2>
 
@@ -877,7 +897,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Barotrauma.GUIFont.ForceUpperCase =&gt; <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a698d7e65b638dc076f4e46d9bee75cce">HasValue</a> &amp;&amp; Value.ForceUpperCase</td>
+          <td class="memname">bool Barotrauma.GUIFont.ForceUpperCase =&gt; Prefabs.ActivePrefab?.Font is { ForceUpperCase: true }</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -893,7 +913,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Barotrauma.GUIFont.HasValue =&gt; Prefabs.Any()</td>
+          <td class="memname">bool Barotrauma.GUIFont.HasValue =&gt; !Prefabs.IsEmpty</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -4,6 +4,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor =
       [ "Human", "class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor.html#a9d8f8152bfc6dda5bdd2224ec1bd61b3ac1bb19b27818343c1926119b958741b5", null ],
       [ "Monster", "class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor.html#a9d8f8152bfc6dda5bdd2224ec1bd61b3a243a3afa44aed85d504dbd53fd9804e9", null ],
       [ "Wall", "class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor.html#a9d8f8152bfc6dda5bdd2224ec1bd61b3a94e8a499539d1a472f3b5dbbb85508c0", null ],
+      [ "Pet", "class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor.html#a9d8f8152bfc6dda5bdd2224ec1bd61b3a7c986af4cf8f6e55a1f846dc498ce91d", null ],
       [ "Any", "class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor.html#a9d8f8152bfc6dda5bdd2224ec1bd61b3aed36a1ef76a59ee3f15180e0441188ad", null ]
     ] ],
     [ "MotionSensor", "class_barotrauma_1_1_items_1_1_components_1_1_motion_sensor.html#a44d5c0d50aade18f356163d07e5a30fe", null ],

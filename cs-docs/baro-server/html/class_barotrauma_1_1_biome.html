@@ -98,8 +98,8 @@ Inheritance diagram for Barotrauma.Biome:</div>
  <div class="center">
   <img src="class_barotrauma_1_1_biome.png" usemap="#Barotrauma.Biome_map" alt=""/>
   <map id="Barotrauma.Biome_map" name="Barotrauma.Biome_map">
-<area href="class_barotrauma_1_1_prefab_with_uint_identifier.html" title="Prefab that has a property serves as a deterministic hash of a prefab&#39;s identifier...." alt="Barotrauma.PrefabWithUintIdentifier" shape="rect" coords="0,112,213,136"/>
-<area href="class_barotrauma_1_1_prefab.html" alt="Barotrauma.Prefab" shape="rect" coords="0,56,213,80"/>
+<area href="class_barotrauma_1_1_prefab_with_uint_identifier.html" title="Prefab that has a property serves as a deterministic hash of a prefab&#39;s identifier...." alt="Barotrauma.PrefabWithUintIdentifier" shape="rect" coords="0,56,213,80"/>
+<area href="class_barotrauma_1_1_prefab.html" alt="Barotrauma.Prefab" shape="rect" coords="0,0,213,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -135,8 +135,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a1e7d04817af3fa90d35b69c7ead39f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a977373d47908b93372581b9c417a4f70"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_biome.html#a977373d47908b93372581b9c417a4f70">MinDifficulty</a></td></tr>
 <tr class="separator:a977373d47908b93372581b9c417a4f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a214689001c4714ac4d6badb6586f82cc"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_biome.html#a214689001c4714ac4d6badb6586f82cc">MaxDifficulty</a></td></tr>
-<tr class="separator:a214689001c4714ac4d6badb6586f82cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad325d2e98bd089a2a513150ba7d9fd00"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_biome.html#ad325d2e98bd089a2a513150ba7d9fd00">ActualMaxDifficulty</a> =&gt; maxDifficulty</td></tr>
+<tr class="separator:ad325d2e98bd089a2a513150ba7d9fd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa07e841b8c8999e4ac16d32ae86a87"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_biome.html#a9aa07e841b8c8999e4ac16d32ae86a87">AdjustedMaxDifficulty</a> =&gt; maxDifficulty - 0.1f</td></tr>
+<tr class="separator:a9aa07e841b8c8999e4ac16d32ae86a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15bf3002b1e7b01eae5146579e3008ce"><td class="memItemLeft" align="right" valign="top">readonly ImmutableHashSet&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_biome.html#a15bf3002b1e7b01eae5146579e3008ce">AllowedZones</a></td></tr>
 <tr class="separator:a15bf3002b1e7b01eae5146579e3008ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_barotrauma_1_1_prefab"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_barotrauma_1_1_prefab')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_prefab.html">Barotrauma.Prefab</a></td></tr>
@@ -201,7 +203,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00019">19</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00021">21</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
 
 </div>
 </div>
@@ -231,7 +233,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_prefab.html#ac11d7436e34c175f914299ca110e0c57">Barotrauma.Prefab</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00048">48</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00050">50</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
 
 </div>
 </div>
@@ -259,11 +261,43 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00037">37</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00039">39</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad325d2e98bd089a2a513150ba7d9fd00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad325d2e98bd089a2a513150ba7d9fd00">&#9670;&nbsp;</a></span>ActualMaxDifficulty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Biome.ActualMaxDifficulty =&gt; maxDifficulty</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00016">16</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
+
+</div>
+</div>
+<a id="a9aa07e841b8c8999e4ac16d32ae86a87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa07e841b8c8999e4ac16d32ae86a87">&#9670;&nbsp;</a></span>AdjustedMaxDifficulty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Biome.AdjustedMaxDifficulty =&gt; maxDifficulty - 0.1f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00017">17</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
+
+</div>
+</div>
 <a id="a15bf3002b1e7b01eae5146579e3008ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15bf3002b1e7b01eae5146579e3008ce">&#9670;&nbsp;</a></span>AllowedZones</h2>
 
@@ -276,7 +310,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00017">17</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00019">19</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
 
 </div>
 </div>
@@ -325,22 +359,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00013">13</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
-
-</div>
-</div>
-<a id="a214689001c4714ac4d6badb6586f82cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a214689001c4714ac4d6badb6586f82cc">&#9670;&nbsp;</a></span>MaxDifficulty</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly float Barotrauma.Biome.MaxDifficulty</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_biome_8cs_source.html#l00015">15</a> of file <a class="el" href="_biome_8cs_source.html">Biome.cs</a>.</p>
 
 </div>
 </div>

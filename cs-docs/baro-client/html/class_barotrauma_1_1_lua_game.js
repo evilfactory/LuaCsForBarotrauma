@@ -36,6 +36,7 @@ var class_barotrauma_1_1_lua_game =
     [ "overrideTraitors", "class_barotrauma_1_1_lua_game.html#afefcd84cb074a26c5b573fa8fe2b2255", null ],
     [ "Paused", "class_barotrauma_1_1_lua_game.html#aba3c730e4fb21f9350f92a4c73f99f47", null ],
     [ "SaveFolder", "class_barotrauma_1_1_lua_game.html#a32ca6e06a9a5b0df2692e71cda6d1546", null ],
+    [ "SessionId", "class_barotrauma_1_1_lua_game.html#a9535280905e301cc52bde7afbcf29851", null ],
     [ "Settings", "class_barotrauma_1_1_lua_game.html#a0aa7181767ab0aaba8669b7beeb1d6fa", null ],
     [ "updatePriorityCharacters", "class_barotrauma_1_1_lua_game.html#aa2e8a90ef70567ea55c64eb807a5f86f", null ],
     [ "updatePriorityItems", "class_barotrauma_1_1_lua_game.html#aac1f4e689dfa86eb977cace651c701e6", null ],

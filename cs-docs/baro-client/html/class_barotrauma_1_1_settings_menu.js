@@ -9,5 +9,6 @@ var class_barotrauma_1_1_settings_menu =
     ] ],
     [ "Close", "class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e", null ],
     [ "SelectTab", "class_barotrauma_1_1_settings_menu.html#a7b0f51ef9ad5d308c299110fd0c9c204", null ],
-    [ "WorkshopMenu", "class_barotrauma_1_1_settings_menu.html#a029b69e5ceb0a3e808a6fb1a228a7f20", null ]
+    [ "WorkshopMenu", "class_barotrauma_1_1_settings_menu.html#a029b69e5ceb0a3e808a6fb1a228a7f20", null ],
+    [ "CurrentTab", "class_barotrauma_1_1_settings_menu.html#a6a0fb5f949933b13f67b46aa2ba21f6d", null ]
 ];

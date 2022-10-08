@@ -13,9 +13,9 @@ var class_barotrauma_1_1_voting =
     [ "GetVoteCountNo", "class_barotrauma_1_1_voting.html#a6af0e9824a568afaa70791e3febcb885", null ],
     [ "GetVoteCountYes", "class_barotrauma_1_1_voting.html#aeb113f5fce898d8be571c1b0657f4f2c", null ],
     [ "HighestVoted< T >", "class_barotrauma_1_1_voting.html#a15100a5a60c103604be170a7a787a33b", null ],
-    [ "ResetVotes", "class_barotrauma_1_1_voting.html#a924e0ef2bd09372d6a3259d1363f351d", null ],
+    [ "ResetVotes", "class_barotrauma_1_1_voting.html#a8e90c6b82da55bb0f44acab6241aca9d", null ],
     [ "SetVoteCountMax", "class_barotrauma_1_1_voting.html#a6da5de93418e925dbfa1b141811954c4", null ],
     [ "SetVoteCountNo", "class_barotrauma_1_1_voting.html#aeb8aff63988b2d929b9ec48e62c48c1a", null ],
     [ "SetVoteCountYes", "class_barotrauma_1_1_voting.html#a9ce4b3c88efbea4b76c56c3f39087949", null ],
-    [ "UpdateVoteTexts", "class_barotrauma_1_1_voting.html#a09b390e54424dcb9022dc42599e3fde0", null ]
+    [ "UpdateVoteTexts", "class_barotrauma_1_1_voting.html#adb33bc90c87051867bb58cfb2d40f635", null ]
 ];

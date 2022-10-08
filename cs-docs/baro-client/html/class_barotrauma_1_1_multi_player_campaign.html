@@ -87,7 +87,6 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_multi_player_camp
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_barotrauma_1_1_multi_player_campaign-members.html">List of all members</a>  </div>
@@ -133,11 +132,10 @@ Public Types</h2></td></tr>
 <br />
 &#160;&#160;<a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efeae2eb313ebe80eedde70387f31c96bd8c">InteractionType.Crew</a>, 
 <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efeafdb0c388de01d545017cdf9ccf00eb72">InteractionType.Store</a>, 
-<a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efea0493d27e20d11e356e53e0a730b0ad08">InteractionType.Repair</a>, 
 <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efeaf683581d3e75f05f9d9215f9b4696cef">InteractionType.Upgrade</a>, 
+<a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efea2dbdcf4ed70cc63fc3b9ebc202887503">InteractionType.PurchaseSub</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efea2dbdcf4ed70cc63fc3b9ebc202887503">InteractionType.PurchaseSub</a>, 
-<a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efeaeba52419b560e2efc6018e6aa5b261d3">InteractionType.MedicalClinic</a>, 
+&#160;&#160;<a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efeaeba52419b560e2efc6018e6aa5b261d3">InteractionType.MedicalClinic</a>, 
 <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efeae9769d75d750d246328fa96e996a5650">InteractionType.Cargo</a>
 <br />
  }</td></tr>
@@ -171,6 +169,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6eee2bdfe431350e121540c4c20b8ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a867e810e3edae6014ca430e633b18ee9"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#ac6d19696e800d5dd81614b90862997f0">Wallet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#a867e810e3edae6014ca430e633b18ee9">GetWallet</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client=null)</td></tr>
 <tr class="separator:a867e810e3edae6014ca430e633b18ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49ad0b71c9c98018d8bab0163fe8b3ac"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#a49ad0b71c9c98018d8bab0163fe8b3ac">HUDScaleChanged</a> ()</td></tr>
+<tr class="separator:a49ad0b71c9c98018d8bab0163fe8b3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a63346decf29a2c8dba087a73fa39e0"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#a2a63346decf29a2c8dba087a73fa39e0">Start</a> ()</td></tr>
 <tr class="separator:a2a63346decf29a2c8dba087a73fa39e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53f39543969a49c2cd46641133daeabf"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#a53f39543969a49c2cd46641133daeabf">Update</a> (float deltaTime)</td></tr>
@@ -197,6 +197,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8cb33bd9c0e137ec212517044301cb0c inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd22c923cfcfdb1ea218612452c488f8 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#abd22c923cfcfdb1ea218612452c488f8">GetSubsToLeaveBehind</a> (<a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> leavingSub)</td></tr>
 <tr class="separator:abd22c923cfcfdb1ea218612452c488f8 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6af325bfd913bad203bb4fbd107c24d5 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a6af325bfd913bad203bb4fbd107c24d5">GetHullRepairCost</a> ()</td></tr>
+<tr class="separator:a6af325bfd913bad203bb4fbd107c24d5 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6266d1c49e7da7591b3c99602ded091 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#ad6266d1c49e7da7591b3c99602ded091">GetItemRepairCost</a> ()</td></tr>
+<tr class="separator:ad6266d1c49e7da7591b3c99602ded091 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31fa098d10dbd8c22b3085bb40a130e4 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a31fa098d10dbd8c22b3085bb40a130e4">InitCampaignData</a> ()</td></tr>
 <tr class="separator:a31fa098d10dbd8c22b3085bb40a130e4 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1e1297863a3be7ea7791ea9319ac4e3 inherit pub_methods_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#af1e1297863a3be7ea7791ea9319ac4e3">AddExtraMissions</a> (<a class="el" href="class_barotrauma_1_1_level_data.html">LevelData</a> levelData)</td></tr>
@@ -306,6 +310,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a66194158db70cd7b8c871ee58c038dd8 inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fd826f8299bb1249110e24fcab50a8a inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a5e79175f4f44fbcbcb8ea5a3ce61f51e">Wallet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a9fd826f8299bb1249110e24fcab50a8a">Bank</a></td></tr>
 <tr class="separator:a9fd826f8299bb1249110e24fcab50a8a inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36a2bfa3568cd4f80d7689cc19158fae inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a36a2bfa3568cd4f80d7689cc19158fae">PurchasedLostShuttlesInLatestSave</a></td></tr>
+<tr class="separator:a36a2bfa3568cd4f80d7689cc19158fae inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9111db0705af48e307d2c3f45342caef inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a9111db0705af48e307d2c3f45342caef">ReadyCheckButton</a></td></tr>
 <tr class="separator:a9111db0705af48e307d2c3f45342caef inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71a15d59d149aeb0369d6c478cb8144f inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a71a15d59d149aeb0369d6c478cb8144f">EndRoundButton</a> =&gt; <a class="el" href="class_barotrauma_1_1_campaign_mode.html#aec8c28ba5952bfa23018f8456c0bb37c">endRoundButton</a></td></tr>
@@ -315,21 +321,6 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a5e79175f4f44fbcbcb8ea5a3ce61f51e inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">virtual Wallet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a5e79175f4f44fbcbcb8ea5a3ce61f51e">Wallet</a> =&gt; <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a5dd5b83e4a4b93b862f0364b6b721f54">GetWallet</a>()</td></tr>
 <tr class="memdesc:a5e79175f4f44fbcbcb8ea5a3ce61f51e inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current personal wallet In singleplayer this is the campaign bank and in multiplayer this is the personal wallet  <a href="class_barotrauma_1_1_campaign_mode.html#a5e79175f4f44fbcbcb8ea5a3ce61f51e">More...</a><br /></td></tr>
 <tr class="separator:a5e79175f4f44fbcbcb8ea5a3ce61f51e inherit pub_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a2c18405273d08bc868cbf6c040b98ec1"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#a2c18405273d08bc868cbf6c040b98ec1">MinimumInitialMoney</a> = 500</td></tr>
-<tr class="separator:a2c18405273d08bc868cbf6c040b98ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_campaign_mode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_campaign_mode.html">Barotrauma.CampaignMode</a></td></tr>
-<tr class="memitem:a98eb771884cf9f5fa8d95f7b142357f7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a98eb771884cf9f5fa8d95f7b142357f7">MaxMoney</a> = int.MaxValue / 2</td></tr>
-<tr class="separator:a98eb771884cf9f5fa8d95f7b142357f7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5dde2bd5933cf6911d40015601ed694 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#af5dde2bd5933cf6911d40015601ed694">InitialMoney</a> = 8500</td></tr>
-<tr class="separator:af5dde2bd5933cf6911d40015601ed694 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc814e064bb27a866ae0aca4c685300f inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#abc814e064bb27a866ae0aca4c685300f">HullRepairCost</a> = 500</td></tr>
-<tr class="separator:abc814e064bb27a866ae0aca4c685300f inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_game_mode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_game_mode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_game_mode.html">Barotrauma.GameMode</a></td></tr>
-<tr class="memitem:a3234b823d3dadfcd501510fd6d18eadc inherit pub_static_attribs_class_barotrauma_1_1_game_mode"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_barotrauma_1_1_game_mode_preset.html">GameModePreset</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_mode.html#a3234b823d3dadfcd501510fd6d18eadc">PresetList</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_game_mode_preset.html">GameModePreset</a>&gt;()</td></tr>
-<tr class="separator:a3234b823d3dadfcd501510fd6d18eadc inherit pub_static_attribs_class_barotrauma_1_1_game_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -412,6 +403,20 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_campaign_mode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_campaign_mode.html">Barotrauma.CampaignMode</a></td></tr>
+<tr class="memitem:a98eb771884cf9f5fa8d95f7b142357f7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a98eb771884cf9f5fa8d95f7b142357f7">MaxMoney</a> = int.MaxValue / 2</td></tr>
+<tr class="separator:a98eb771884cf9f5fa8d95f7b142357f7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5dde2bd5933cf6911d40015601ed694 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#af5dde2bd5933cf6911d40015601ed694">InitialMoney</a> = 8500</td></tr>
+<tr class="separator:af5dde2bd5933cf6911d40015601ed694 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78e728d84d9066ca2fc24706c24db67 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#ae78e728d84d9066ca2fc24706c24db67">HullRepairCostPerDamage</a> = 0.5f</td></tr>
+<tr class="separator:ae78e728d84d9066ca2fc24706c24db67 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad128d8cc28dbf323e4d054ff112a94d7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#ad128d8cc28dbf323e4d054ff112a94d7">ShuttleReplaceCost</a> = 1000</td></tr>
+<tr class="separator:ad128d8cc28dbf323e4d054ff112a94d7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c73392d12e5e0058e8774c808a28ff5 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a3c73392d12e5e0058e8774c808a28ff5">MaxHullRepairCost</a> = 2000</td></tr>
+<tr class="separator:a3c73392d12e5e0058e8774c808a28ff5 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_game_mode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_game_mode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_game_mode.html">Barotrauma.GameMode</a></td></tr>
+<tr class="memitem:a3234b823d3dadfcd501510fd6d18eadc inherit pub_static_attribs_class_barotrauma_1_1_game_mode"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_barotrauma_1_1_game_mode_preset.html">GameModePreset</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_mode.html#a3234b823d3dadfcd501510fd6d18eadc">PresetList</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_game_mode_preset.html">GameModePreset</a>&gt;()</td></tr>
+<tr class="separator:a3234b823d3dadfcd501510fd6d18eadc inherit pub_static_attribs_class_barotrauma_1_1_game_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_barotrauma_1_1_campaign_mode"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_barotrauma_1_1_campaign_mode')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_barotrauma_1_1_campaign_mode.html">Barotrauma.CampaignMode</a></td></tr>
 <tr class="memitem:abe73d2b6b622d069c6e3b57c2f9ae4d8 inherit pro_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">XElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#abe73d2b6b622d069c6e3b57c2f9ae4d8">petsElement</a></td></tr>
 <tr class="separator:abe73d2b6b622d069c6e3b57c2f9ae4d8 inherit pro_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -484,7 +489,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="a946d86a549486a23ba6cba76d36aaad0a5905bf546ca13b6927c84c695c1b23fe"></a>CharacterInfo&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00016">16</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00014">14</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -513,7 +518,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00577">577</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00578">578</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -533,7 +538,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00941">941</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00943">943</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -553,7 +558,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00995">995</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00997">997</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -573,7 +578,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00538">538</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00539">539</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -631,7 +636,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a2dc29c4a8a3a17ddb6e01c0aacf72ea5">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00324">324</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00326">326</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -661,7 +666,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_game_mode.html#ad55e37997cc23b59b416356df69c23bf">Barotrauma.GameMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00468">468</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00470">470</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -690,7 +695,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_campaign_mode.html#ab1b6d00174f9293520d16422afc73b88">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00497">497</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00498">498</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -747,7 +752,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00265">265</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00263">263</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -766,7 +771,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00144">144</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -794,7 +799,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00139">139</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00137">137</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -814,7 +819,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00032">32</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00030">30</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -848,6 +853,35 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a49ad0b71c9c98018d8bab0163fe8b3ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49ad0b71c9c98018d8bab0163fe8b3ac">&#9670;&nbsp;</a></span>HUDScaleChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void Barotrauma.MultiPlayerCampaign.HUDScaleChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_game_mode.html#adc1b9dae6fb89d13128f142133b1f892">Barotrauma.GameMode</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00121">121</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+
+</div>
+</div>
 <a id="a3c9a0ce78ff34c23e0e8a49767c5c602"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c9a0ce78ff34c23e0e8a49767c5c602">&#9670;&nbsp;</a></span>IncrementAllLastUpdateIds()</h2>
 
@@ -863,7 +897,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00049">49</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00047">47</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -883,7 +917,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00043">43</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00041">41</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -914,7 +948,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_campaign_mode.html#abdea286e64e8f0d59010b54c0cea77d9">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00191">191</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00193">193</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -942,7 +976,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00128">128</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00126">126</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -962,7 +996,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l01062">1062</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l01064">1064</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -992,7 +1026,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_campaign_mode.html#acc956c2fc4feb5730349bbaa624dea1f">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l01057">1057</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l01059">1059</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -1022,7 +1056,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00037">37</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00035">35</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -1051,7 +1085,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a35914c3e2ea3ccfbdd2299efdbdc677c">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00185">185</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00187">187</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1151,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00115">115</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00113">113</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -1157,7 +1191,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a1e1ef016f473e9b0a0ab086cdc50d3d4">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l01032">1032</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l01034">1034</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -1187,35 +1221,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a764d2de2251e3456121ce717d8c041fd">Barotrauma.CampaignMode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00398">398</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00400">400</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaClient/ClientSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2c18405273d08bc868cbf6c040b98ec1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c18405273d08bc868cbf6c040b98ec1">&#9670;&nbsp;</a></span>MinimumInitialMoney</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int Barotrauma.MultiPlayerCampaign.MinimumInitialMoney = 500</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00013">13</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
-
-</div>
-</div>
 <a id="a0ceadd43a41247d7a2f7133db5bd8ee7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ceadd43a41247d7a2f7133db5bd8ee7">&#9670;&nbsp;</a></span>PersonalWallet</h2>
 
@@ -1285,7 +1295,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00092">92</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00090">90</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>
@@ -1309,7 +1319,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00071">71</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html#l00069">69</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_multi_player_campaign_8cs_source.html">BarotraumaShared/SharedSource/GameSession/GameModes/MultiPlayerCampaign.cs</a>.</p>
 
 </div>
 </div>

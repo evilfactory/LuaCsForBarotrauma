@@ -23,6 +23,8 @@ var class_barotrauma_1_1_items_1_1_components_1_1_steering =
     [ "AIRamTimer", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a00e9b51a5ee98f3bdad2d99329696b9d", null ],
     [ "AITacticalTarget", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a325b992def9e23d0a92d6b085d5dc6f1", null ],
     [ "AutoPilot", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a7496cc6164aee22cfee12be3f691fb7c", null ],
+    [ "ControlContainer", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a101c3a52a5cf1e27582f0d7f6743ea89", null ],
+    [ "DisableControls", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a7051a1c4711b7e4c6ddbf439b6a77430", null ],
     [ "DockingAssistThreshold", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aa19920c70ae4955269d622adb2a8ff15", null ],
     [ "DockingModeEnabled", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a9909953bdd84306b4aa87b429768cd0a", null ],
     [ "LevelEndSelected", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a7c71d9472ee43c1b774433866094c979", null ],

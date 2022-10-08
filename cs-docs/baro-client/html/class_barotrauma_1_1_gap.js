@@ -2,7 +2,7 @@ var class_barotrauma_1_1_gap =
 [
     [ "Gap", "class_barotrauma_1_1_gap.html#a42f05abf5ff4735efb6a8361c7c15bb8", null ],
     [ "Gap", "class_barotrauma_1_1_gap.html#ae7fc5ef7169aa4288f523be3faf26d40", null ],
-    [ "Gap", "class_barotrauma_1_1_gap.html#a689923035f3228f73367a0b7f61d6ddc", null ],
+    [ "Gap", "class_barotrauma_1_1_gap.html#a6a637ef2112bd0b5e05ec96119397e9d", null ],
     [ "AutoOrient", "class_barotrauma_1_1_gap.html#a12b51e9b7ce416f6924b97c2c78149b8", null ],
     [ "Clone", "class_barotrauma_1_1_gap.html#a006cad58e483a26c6d0007cd8d491daa", null ],
     [ "Draw", "class_barotrauma_1_1_gap.html#a3e7d9160101cef04445221a157da10b6", null ],
@@ -21,6 +21,7 @@ var class_barotrauma_1_1_gap =
     [ "Size", "class_barotrauma_1_1_gap.html#a6390c203f57861735b15c8b552c2acea", null ],
     [ "ConnectedDoor", "class_barotrauma_1_1_gap.html#a61af1acef2cd8e6dbe7e448c855baeaf", null ],
     [ "FlowTargetHull", "class_barotrauma_1_1_gap.html#ae1f06dcbf8ecbc281dec12ddf79b4178", null ],
+    [ "IsDiagonal", "class_barotrauma_1_1_gap.html#a57e09152aa3ddeecc11bb2ac9fd166b2", null ],
     [ "IsHorizontal", "class_barotrauma_1_1_gap.html#a26f52080609a4115b782f62c3bbe0a01", null ],
     [ "IsRoomToRoom", "class_barotrauma_1_1_gap.html#afda6b73f22dd43f585b341a9d31335cf", null ],
     [ "LerpedFlowForce", "class_barotrauma_1_1_gap.html#a3c5271a1e352ff56b710a17896f19ba3", null ],

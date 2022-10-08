@@ -109,7 +109,8 @@ Inheritance diagram for Barotrauma.GUIListBox:</div>
 Public Types</h2></td></tr>
 <tr class="memitem:a0670f628c80f7d376de144f148b76757"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757">SelectMode</a> { <a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a6e36a6e5a09deb955da2bb35917064c9">SelectMode.SelectSingle</a>, 
 <a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757aff7095f3301e578ab0ff1cebe08a3bc5">SelectMode.SelectMultiple</a>, 
-<a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a2d1ba96ef2c19512053c7e37d8fdb213">SelectMode.RequireShiftToSelectMultiple</a>
+<a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a2d1ba96ef2c19512053c7e37d8fdb213">SelectMode.RequireShiftToSelectMultiple</a>, 
+<a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a6adf97f83acf6453d4a6a4b1070f3754">SelectMode.None</a>
  }</td></tr>
 <tr class="separator:a0670f628c80f7d376de144f148b76757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1583cd67e1071165147a6a8fabc1e3a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#ac1583cd67e1071165147a6a8fabc1e3a">DragMode</a> { <a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#ac1583cd67e1071165147a6a8fabc1e3aa9bd5a1786d9104ec7a361fe56fc48ae4">DragMode.NoDragging</a>, 
@@ -264,8 +265,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae34742d209eea02bab6123eed5b41130 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44c105cd2604ea51a381b9d4b47a964d inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a44c105cd2604ea51a381b9d4b47a964d">Flash</a> (<a class="el" href="class_barotrauma_1_1_g_u_i_component.html#acee5d4a2dd219926576b1da4763cecbe">Color</a>? <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a0b8bee9d8f87c754a02cd2901495e694">color</a>=null, float <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a17d14b4fcf62f07f901371135b02346c">flashDuration</a>=1.5f, bool useRectangleFlash=false, bool useCircularFlash=false, Vector2? flashRectInflate=null)</td></tr>
 <tr class="separator:a44c105cd2604ea51a381b9d4b47a964d inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36b0460c29eb15e761e4c8f7c7a3aee0 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a36b0460c29eb15e761e4c8f7c7a3aee0">FadeOut</a> (float duration, bool removeAfter, float wait=0.0f)</td></tr>
-<tr class="separator:a36b0460c29eb15e761e4c8f7c7a3aee0 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12f440ece4cbe65b1724e7d2f32cb357 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a12f440ece4cbe65b1724e7d2f32cb357">ImmediateFlash</a> (<a class="el" href="class_barotrauma_1_1_g_u_i_component.html#acee5d4a2dd219926576b1da4763cecbe">Color</a>? <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a0b8bee9d8f87c754a02cd2901495e694">color</a>=null)</td></tr>
+<tr class="separator:a12f440ece4cbe65b1724e7d2f32cb357 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f92e199be921d581179973bbc711a5 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_component.html#ab9f92e199be921d581179973bbc711a5">FadeOut</a> (float duration, bool removeAfter, float wait=0.0f, Action onRemove=null)</td></tr>
+<tr class="separator:ab9f92e199be921d581179973bbc711a5 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ba180acccac41538c379020512f0c18 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a6ba180acccac41538c379020512f0c18">FadeIn</a> (float wait, float duration)</td></tr>
 <tr class="separator:a6ba180acccac41538c379020512f0c18 inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f3f197a6966179c1471b16eeeefc93e inherit pub_methods_class_barotrauma_1_1_g_u_i_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a1f3f197a6966179c1471b16eeeefc93e">SlideIn</a> (float wait, float duration, int amount, <a class="el" href="namespace_barotrauma.html#a4ba84131390d71f2e51e0220cf753ffe">SlideDirection</a> direction)</td></tr>
@@ -291,6 +294,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:adabd698cd5714aaeda155402483e6623"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b2e57c916bbf1bfe0ad1d2754249074"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a6b2e57c916bbf1bfe0ad1d2754249074">HideChildrenOutsideFrame</a> = true</td></tr>
 <tr class="separator:a6b2e57c916bbf1bfe0ad1d2754249074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a494428bd01133d9567f5098e21c85956"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a494428bd01133d9567f5098e21c85956">ResizeContentToMakeSpaceForScrollBar</a> = true</td></tr>
+<tr class="separator:a494428bd01133d9567f5098e21c85956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab38dcc141cef8ee0e592cc0fb48a1bd5"><td class="memItemLeft" align="right" valign="top">IReadOnlyList&lt; <a class="el" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#ab38dcc141cef8ee0e592cc0fb48a1bd5">AllSelected</a> =&gt; <a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a1b7038c9504f071a6152a2b5b25db6ba">selected</a></td></tr>
 <tr class="separator:ab38dcc141cef8ee0e592cc0fb48a1bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a145ad4599ad2f94bed679e6f5e1ff166"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_g_u_i_list_box.html#a145ad4599ad2f94bed679e6f5e1ff166">HideDraggedElement</a> = false</td></tr>
@@ -570,7 +575,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="a8ba1f0763d49748653f53af6bd9dfd86ab9f5c797ebbf55adccdd8539a65a0241"></a>Disabled&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00327">327</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00330">330</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -599,7 +604,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="ac1583cd67e1071165147a6a8fabc1e3aab1086929fff6a56950e645647a54eb42"></a>DragOutsideBox&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00236">236</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00239">239</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -627,7 +632,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="a783b27e1e37ada7382bacc0da7538e0aabafd7322c6e97d25b6299b5d6fe8920b"></a>No&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00321">321</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00324">324</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -655,7 +660,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="af8c887ef7fe46ca3ea89163748275d82abafd7322c6e97d25b6299b5d6fe8920b"></a>No&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00339">339</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00342">342</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -682,6 +687,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0670f628c80f7d376de144f148b76757a6e36a6e5a09deb955da2bb35917064c9"></a>SelectSingle&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0670f628c80f7d376de144f148b76757aff7095f3301e578ab0ff1cebe08a3bc5"></a>SelectMultiple&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0670f628c80f7d376de144f148b76757a2d1ba96ef2c19512053c7e37d8fdb213"></a>RequireShiftToSelectMultiple&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0670f628c80f7d376de144f148b76757a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00056">56</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
@@ -712,7 +718,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="a85e6235f7c6378771cdeb90609d9a740abafd7322c6e97d25b6299b5d6fe8920b"></a>No&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00333">333</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00336">336</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -775,7 +781,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00352">352</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00355">355</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -835,7 +841,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00456">456</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00459">459</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -881,7 +887,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a9e5820c37fac2ed33e04f6697357b15e">Barotrauma.GUIComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01242">1242</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01243">1243</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -900,7 +906,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01164">1164</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01165">1165</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -930,7 +936,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#aa03dc5b4bf3c54d14cbecd3dcf4ca865">Barotrauma.GUIComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01263">1263</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01264">1264</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -972,7 +978,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a5f076a94bffb8c3187a301a99c63956d">Barotrauma.GUIComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01257">1257</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01258">1258</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1104,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_event_input_1_1_i_keyboard_subscriber.html#ae23af5ecb638b1ff68f9b6893ea37599">EventInput.IKeyboardSubscriber</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01349">1349</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01350">1350</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1126,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_event_input_1_1_i_keyboard_subscriber.html#a9555e380badd9dc0c6e77668af01f8fe">EventInput.IKeyboardSubscriber</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01351">1351</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01352">1352</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1142,7 +1148,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_event_input_1_1_i_keyboard_subscriber.html#a32c13fb022e7aa56648ee8ed015fa268">EventInput.IKeyboardSubscriber</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01344">1344</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01345">1345</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1164,7 +1170,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_event_input_1_1_i_keyboard_subscriber.html#acd60390698d8a62b3ef9140f64824796">EventInput.IKeyboardSubscriber</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01348">1348</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01349">1349</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1200,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a4033afef7bb0a062ab434671f52d08da">Barotrauma.GUIComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01248">1248</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01249">1249</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1232,7 +1238,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00557">557</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00560">560</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1252,7 +1258,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00590">590</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00593">593</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1356,7 +1362,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00438">438</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00441">441</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1489,7 +1495,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00418">418</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00421">421</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1508,7 +1514,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01174">1174</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l01175">1175</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1525,7 +1531,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00157">157</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00160">160</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1557,7 +1563,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00063">63</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00064">64</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1573,7 +1579,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00074">74</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00075">75</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1589,7 +1595,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00294">294</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00297">297</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1622,6 +1628,22 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00017">17</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+
+</div>
+</div>
+<a id="a494428bd01133d9567f5098e21c85956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a494428bd01133d9567f5098e21c85956">&#9670;&nbsp;</a></span>ResizeContentToMakeSpaceForScrollBar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.GUIListBox.ResizeContentToMakeSpaceForScrollBar = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00077">77</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1670,7 +1692,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00082">82</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00085">85</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1694,7 +1716,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00080">80</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00083">83</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1720,7 +1742,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Automatically hides the scroll bar when the content fits in. </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00233">233</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00236">236</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1744,7 +1766,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00177">177</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00180">180</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1768,7 +1790,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00183">183</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00186">186</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1794,7 +1816,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Setting this to true and CanBeFocused to false allows the list background to be unfocusable while the elements can still be interacted with. </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00301">301</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00304">304</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1818,7 +1840,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00214">214</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00217">217</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1844,7 +1866,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Whether to only allow scrolling from one element to the next when smooth scrolling is enabled </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00092">92</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00095">95</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1868,7 +1890,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00195">195</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00198">198</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1944,7 +1966,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00245">245</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00248">248</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1968,7 +1990,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00267">267</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00270">270</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -1994,7 +2016,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>When set to true elements at the bottom of the list are gradually faded </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00097">97</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00100">100</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2018,7 +2040,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00264">264</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00267">267</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2042,7 +2064,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00212">212</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00215">215</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2066,7 +2088,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00304">304</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00307">307</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2092,7 +2114,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Adds enough extra padding to the bottom so the end of the scroll will only contain the last element </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00102">102</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00105">105</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2116,7 +2138,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00128">128</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00131">131</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2140,7 +2162,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00314">314</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00317">317</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2164,7 +2186,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00312">312</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00315">315</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2214,7 +2236,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Disables the scroll bar without hiding it. </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00211">211</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00214">214</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2238,7 +2260,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00217">217</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00220">220</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2262,7 +2284,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00152">152</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00155">155</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2286,7 +2308,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00143">143</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00146">146</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2310,7 +2332,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00160">160</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00163">163</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2334,7 +2356,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00168">168</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00171">171</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2358,7 +2380,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00066">66</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00067">67</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2384,7 +2406,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>When set to true always selects the topmost item on the list </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00107">107</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00110">110</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2410,7 +2432,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Scrolls the list smoothly </p>
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00087">87</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00090">90</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2434,7 +2456,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00316">316</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00319">319</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2458,7 +2480,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00318">318</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00321">321</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2482,7 +2504,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00192">192</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00195">195</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2506,7 +2528,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00188">188</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00191">191</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>
@@ -2530,7 +2552,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00110">110</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_u_i_list_box_8cs_source.html#l00113">113</a> of file <a class="el" href="_g_u_i_list_box_8cs_source.html">GUIListBox.cs</a>.</p>
 
 </div>
 </div>

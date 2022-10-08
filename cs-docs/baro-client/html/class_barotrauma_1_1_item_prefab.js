@@ -1,5 +1,6 @@
 var class_barotrauma_1_1_item_prefab =
 [
+    [ "CommonnessInfo", "struct_barotrauma_1_1_item_prefab_1_1_commonness_info.html", "struct_barotrauma_1_1_item_prefab_1_1_commonness_info" ],
     [ "FixedQuantityResourceInfo", "struct_barotrauma_1_1_item_prefab_1_1_fixed_quantity_resource_info.html", "struct_barotrauma_1_1_item_prefab_1_1_fixed_quantity_resource_info" ],
     [ "ItemPrefab", "class_barotrauma_1_1_item_prefab.html#a7645c6f2d60644f51c6c55722cbce5b7", null ],
     [ "CanBeBoughtFrom", "class_barotrauma_1_1_item_prefab.html#a231f8df66a9d7c6a834904fae936cc6c", null ],
@@ -10,6 +11,7 @@ var class_barotrauma_1_1_item_prefab =
     [ "DrawPlacing", "class_barotrauma_1_1_item_prefab.html#a2fa749e37714e58f6fe81db2954d8210", null ],
     [ "DrawPlacing", "class_barotrauma_1_1_item_prefab.html#a54eb1c16d4fb4982f2a2b3d330062546", null ],
     [ "GetBuyPricesUnder", "class_barotrauma_1_1_item_prefab.html#a76622d2091f542d63b7f839f0956aa43", null ],
+    [ "GetCommonnessInfo", "class_barotrauma_1_1_item_prefab.html#a4e0cb6c58894c83adaf28e174a1e9aec", null ],
     [ "GetMinPrice", "class_barotrauma_1_1_item_prefab.html#aa9ac26311b19cde190468adfdbe5b4d5", null ],
     [ "GetPriceInfo", "class_barotrauma_1_1_item_prefab.html#a8d4c2740e34ffa324515db1fb7f82863", null ],
     [ "GetSellPricesOver", "class_barotrauma_1_1_item_prefab.html#a9585ec301e20564b0abe8e5174ece396", null ],
@@ -77,7 +79,7 @@ var class_barotrauma_1_1_item_prefab =
     [ "InventoryIcon", "class_barotrauma_1_1_item_prefab.html#a6a0f29c914e857add107892ae96f21d5", null ],
     [ "InventoryIconColor", "class_barotrauma_1_1_item_prefab.html#a693cd709aa878c0424dbd6ed89410c68", null ],
     [ "IsDangerous", "class_barotrauma_1_1_item_prefab.html#aee332f4832cc4d8214611f63c5239adf", null ],
-    [ "LevelCommonness", "class_barotrauma_1_1_item_prefab.html#a345f5caf1046cca4486df7da45645104", null ],
+    [ "LevelCommonness", "class_barotrauma_1_1_item_prefab.html#a7ff25f81ba0da7a511091b493c962e87", null ],
     [ "LevelQuantity", "class_barotrauma_1_1_item_prefab.html#a4cb91691f6dd94c8000d0062b173d624", null ],
     [ "MaxStackSize", "class_barotrauma_1_1_item_prefab.html#a109a69d507e265e12f568e764c99ca68", null ],
     [ "MinimapIcon", "class_barotrauma_1_1_item_prefab.html#a59c3da35d0f08eae0abcf25ecb73f1a3", null ],

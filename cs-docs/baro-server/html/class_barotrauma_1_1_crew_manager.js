@@ -13,6 +13,7 @@ var class_barotrauma_1_1_crew_manager =
     [ "GetCharacters", "class_barotrauma_1_1_crew_manager.html#a2b3b31aea9ccc0d7b269e86885840768", null ],
     [ "InitRound", "class_barotrauma_1_1_crew_manager.html#a547b857d69415d63688da7214899cee0", null ],
     [ "LoadActiveOrders", "class_barotrauma_1_1_crew_manager.html#ac5a27325b25d346c67ba70568394b35c", null ],
+    [ "RemoveCharacter", "class_barotrauma_1_1_crew_manager.html#a081474009dc9ed8c4ec47573934ece69", null ],
     [ "RemoveCharacterInfo", "class_barotrauma_1_1_crew_manager.html#a31cc70af2c8bea251a70bb71cbc46910", null ],
     [ "RenameCharacter", "class_barotrauma_1_1_crew_manager.html#acfa9b3fa4fce2571c80f83bb3432f714", null ],
     [ "SaveActiveOrders", "class_barotrauma_1_1_crew_manager.html#af0bb5f39a278d07f02bbf801b169df61", null ],

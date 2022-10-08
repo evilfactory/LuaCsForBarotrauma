@@ -2,6 +2,7 @@ var class_barotrauma_1_1_g_u_i_tick_box =
 [
     [ "GUITickBox", "class_barotrauma_1_1_g_u_i_tick_box.html#ace5272b9ebfb41b05c3f98aed58027cd", null ],
     [ "OnSelectedHandler", "class_barotrauma_1_1_g_u_i_tick_box.html#a47d6527979333dc1f869002c51e91dd3", null ],
+    [ "ResizeBox", "class_barotrauma_1_1_g_u_i_tick_box.html#ab35d7f8efcb0ef002b1ec0c91b868a5c", null ],
     [ "SetRadioButtonGroup", "class_barotrauma_1_1_g_u_i_tick_box.html#afd46c26e2e42f167d5697923ccd0b855", null ],
     [ "Update", "class_barotrauma_1_1_g_u_i_tick_box.html#af40150dad12f89e7d8269e46b342db09", null ],
     [ "OnSelected", "class_barotrauma_1_1_g_u_i_tick_box.html#a79dc50638cb9307825ead87ba8d9d099", null ],

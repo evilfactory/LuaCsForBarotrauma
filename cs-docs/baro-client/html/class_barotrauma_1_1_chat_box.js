@@ -6,6 +6,7 @@ var class_barotrauma_1_1_chat_box =
     [ "ApplySelectionInputs", "class_barotrauma_1_1_chat_box.html#a2e8938e3643b8035e5a37e4a7f57ed4d", null ],
     [ "ApplySelectionInputs", "class_barotrauma_1_1_chat_box.html#ad96f88ff1cc7b354ee6b32563e575a8b", null ],
     [ "SetVisibility", "class_barotrauma_1_1_chat_box.html#a63870c600ced408cbe8f9eff7a2a895b", null ],
+    [ "Toggle", "class_barotrauma_1_1_chat_box.html#a57cd5fedadd7f94879d066e5e42e34c2", null ],
     [ "TypingChatMessage", "class_barotrauma_1_1_chat_box.html#af9a86348f28f5c05518c3254121236ed", null ],
     [ "Update", "class_barotrauma_1_1_chat_box.html#a79ef8714c07456fa25f16fa3077fc21a", null ],
     [ "ChatManager", "class_barotrauma_1_1_chat_box.html#aaeca5bfc142a2f65b66aa6a03da35f07", null ],

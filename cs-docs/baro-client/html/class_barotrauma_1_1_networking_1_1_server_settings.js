@@ -16,7 +16,6 @@ var class_barotrauma_1_1_networking_1_1_server_settings =
     [ "ClientAdminRead", "class_barotrauma_1_1_networking_1_1_server_settings.html#ac2cdcc154c05a6e9a2627225e5af27ae", null ],
     [ "ClientAdminWrite", "class_barotrauma_1_1_networking_1_1_server_settings.html#a04b182521f3b953fac13651cc862c4a8", null ],
     [ "ClientRead", "class_barotrauma_1_1_networking_1_1_server_settings.html#a306d1ae7de92c07da480ed6fc4ed310a", null ],
-    [ "GetServerListInfo", "class_barotrauma_1_1_networking_1_1_server_settings.html#a723183fedd806b37f27912bdaa559745", null ],
     [ "IsPasswordCorrect", "class_barotrauma_1_1_networking_1_1_server_settings.html#a1f6f463c88a4fe0fb48cc18f7bf99aaf", null ],
     [ "ReadExtraCargo", "class_barotrauma_1_1_networking_1_1_server_settings.html#a4befcb5abdf1f49402279983a5fb417a", null ],
     [ "ReadHiddenSubs", "class_barotrauma_1_1_networking_1_1_server_settings.html#a44c8e7995d627281e2bce5310d4adb2d", null ],
@@ -60,6 +59,7 @@ var class_barotrauma_1_1_networking_1_1_server_settings =
     [ "ClientPermissions", "class_barotrauma_1_1_networking_1_1_server_settings.html#a878317368fe38b8c5a8eb7cf86a84d4e", null ],
     [ "DestructibleOutposts", "class_barotrauma_1_1_networking_1_1_server_settings.html#a58775f3cdbec053f31b19b4c202b2109", null ],
     [ "DisableBotConversations", "class_barotrauma_1_1_networking_1_1_server_settings.html#ab33302d3663bd74c45745796b4359608", null ],
+    [ "DisallowKickVoteTime", "class_barotrauma_1_1_networking_1_1_server_settings.html#a8f44b0f6cd8c67b82d73ae5aeef8cbd1", null ],
     [ "EndVoteRequiredRatio", "class_barotrauma_1_1_networking_1_1_server_settings.html#abdd65383e22566f1bc4d63db71a19557", null ],
     [ "ExtraCargo", "class_barotrauma_1_1_networking_1_1_server_settings.html#aeb47538e59b87cf93640067db4a924a7", null ],
     [ "GameModeIdentifier", "class_barotrauma_1_1_networking_1_1_server_settings.html#ae4504e0a09240f8a15f6b48d514fd429", null ],
@@ -109,6 +109,5 @@ var class_barotrauma_1_1_networking_1_1_server_settings =
     [ "UseRespawnShuttle", "class_barotrauma_1_1_networking_1_1_server_settings.html#a785b5c63140c8b14ecaee36821648348", null ],
     [ "VoiceChatEnabled", "class_barotrauma_1_1_networking_1_1_server_settings.html#a379b70d389cd0871dc7e430b9e96a2e6", null ],
     [ "VoteRequiredRatio", "class_barotrauma_1_1_networking_1_1_server_settings.html#a6daac6dbbb8a6419623454b087375a5f", null ],
-    [ "VoteTimeout", "class_barotrauma_1_1_networking_1_1_server_settings.html#af4f69f6110f2c4f33a946f46cec838da", null ],
-    [ "Whitelist", "class_barotrauma_1_1_networking_1_1_server_settings.html#ac03f81e4b86e46c7f41cc1e7c0077f91", null ]
+    [ "VoteTimeout", "class_barotrauma_1_1_networking_1_1_server_settings.html#af4f69f6110f2c4f33a946f46cec838da", null ]
 ];

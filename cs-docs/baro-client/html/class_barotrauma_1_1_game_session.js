@@ -15,6 +15,7 @@ var class_barotrauma_1_1_game_session =
     [ "EnforceMissionOrder", "class_barotrauma_1_1_game_session.html#a80925825fba3e65ee7bcfc89e0eb0684", null ],
     [ "GetMission", "class_barotrauma_1_1_game_session.html#a09ad3571eed513dd5180158919867648", null ],
     [ "GetMissionIndex", "class_barotrauma_1_1_game_session.html#ad690a43ea79fbcda095c2080d5a78b30", null ],
+    [ "HUDScaleChanged", "class_barotrauma_1_1_game_session.html#ad76108814b8fe7f4507a497df920ce5a", null ],
     [ "IsCurrentLocationRadiated", "class_barotrauma_1_1_game_session.html#a9e316a52f75ea25a0033cf2b1ac00fa5", null ],
     [ "IsSubmarineOwned", "class_barotrauma_1_1_game_session.html#a6e675ed7a864cd69a8bac6c9ad8c86f9", null ],
     [ "KillCharacter", "class_barotrauma_1_1_game_session.html#abe136b2ef501d06725f0eb04e77c6c1c", null ],

@@ -6,5 +6,6 @@ var class_barotrauma_1_1_god_mode_action =
     [ "ToDebugString", "class_barotrauma_1_1_god_mode_action.html#a9dc04e06e4ee678f52ff2f6528f82b2e", null ],
     [ "Update", "class_barotrauma_1_1_god_mode_action.html#aec23f52324358701950b2edeff078e03", null ],
     [ "Enabled", "class_barotrauma_1_1_god_mode_action.html#a26e5f0c367511d03b85b3db52e38ae32", null ],
-    [ "TargetTag", "class_barotrauma_1_1_god_mode_action.html#aebef2dbf256c40e4902851b73425f656", null ]
+    [ "TargetTag", "class_barotrauma_1_1_god_mode_action.html#aebef2dbf256c40e4902851b73425f656", null ],
+    [ "UpdateAfflictions", "class_barotrauma_1_1_god_mode_action.html#aa325d775b8b7fe2d82ebe965c7bab672", null ]
 ];

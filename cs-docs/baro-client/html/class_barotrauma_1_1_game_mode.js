@@ -5,6 +5,7 @@ var class_barotrauma_1_1_game_mode =
     [ "AddToGUIUpdateList", "class_barotrauma_1_1_game_mode.html#a55db997f64a97f972262589a2e01b2f3", null ],
     [ "Draw", "class_barotrauma_1_1_game_mode.html#a4499a9fdc6a810dafbed9b270029bb1f", null ],
     [ "End", "class_barotrauma_1_1_game_mode.html#ad55e37997cc23b59b416356df69c23bf", null ],
+    [ "HUDScaleChanged", "class_barotrauma_1_1_game_mode.html#adc1b9dae6fb89d13128f142133b1f892", null ],
     [ "Remove", "class_barotrauma_1_1_game_mode.html#ae45dd77ab1ebe33e423842eeca3b8eac", null ],
     [ "ShowStartMessage", "class_barotrauma_1_1_game_mode.html#a168d8fa2e229cdeb4cd6bcbd1808c824", null ],
     [ "Start", "class_barotrauma_1_1_game_mode.html#a6b6aad2a4be0d102383b6500e65f0707", null ],

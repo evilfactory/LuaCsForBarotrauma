@@ -16,7 +16,6 @@ var class_barotrauma_1_1_submarine_info =
     [ "CreateSpecsWindow", "class_barotrauma_1_1_submarine_info.html#a90aa6e15dbf3def5e90b4c8503d0f0b0", null ],
     [ "Dispose", "class_barotrauma_1_1_submarine_info.html#a9aea8bd9980cb462b2c6e31bdcb87253", null ],
     [ "GetRealWorldCrushDepth", "class_barotrauma_1_1_submarine_info.html#a5bf7de39bbf373cbeb61925c2ff0c15d", null ],
-    [ "GetRealWorldCrushDepthMultiplier", "class_barotrauma_1_1_submarine_info.html#a46ca4d844e91e93fbfaa245bf7a57509", null ],
     [ "HasTag", "class_barotrauma_1_1_submarine_info.html#ae9f97d09336d1f0c1f9f2f6c47c5fd0d", null ],
     [ "IsVanillaSubmarine", "class_barotrauma_1_1_submarine_info.html#a09f307c3f485181ffe409b1f8ed39323", null ],
     [ "Reload", "class_barotrauma_1_1_submarine_info.html#ad996f8805750015cb96b15df15f01a8d", null ],
@@ -65,5 +64,6 @@ var class_barotrauma_1_1_submarine_info =
     [ "SubmarineElement", "class_barotrauma_1_1_submarine_info.html#a26a2069a2e94def89fc54594b89a12de", null ],
     [ "SubsLeftBehind", "class_barotrauma_1_1_submarine_info.html#ac18cd6d64ed05ccad0d0c167fc9d4bac", null ],
     [ "Tags", "class_barotrauma_1_1_submarine_info.html#abdfd6c081eb387cc56788c99ba3a379b", null ],
+    [ "Tier", "class_barotrauma_1_1_submarine_info.html#a3fed7313cc50e1f5fae3d2543bcb20d9", null ],
     [ "Type", "class_barotrauma_1_1_submarine_info.html#a032bc1bffdab6c486d5362633961980b", null ]
 ];

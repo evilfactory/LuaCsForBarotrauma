@@ -7,7 +7,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#aaf780a20ff99fbd78a5a0b555f17bc30", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#af3a87a2fbfa4be557feff0b32a9385f6", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a15fd4f9beee4cb872637e59751c3c134", null ],
-    [ "PreferredContainedItems", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#ac753a315a8c428a40d7a3a7ca3ecb9af", null ],
+    [ "PreferredContainedItems", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a193d683071f9d1bb932806614b93d54b", null ],
     [ "AllowHitMultiple", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#aa0ed5ec4ded64fdb2c845f7965ee50f1", null ],
     [ "Attack", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#ac830c34c0fd969d1b1b78998d5ee2067", null ],
     [ "Hitting", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a607728445463b67f118e2e065ca06be6", null ],

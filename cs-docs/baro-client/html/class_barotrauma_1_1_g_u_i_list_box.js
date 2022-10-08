@@ -20,7 +20,8 @@ var class_barotrauma_1_1_g_u_i_list_box =
     [ "SelectMode", "class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757", [
       [ "SelectSingle", "class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a6e36a6e5a09deb955da2bb35917064c9", null ],
       [ "SelectMultiple", "class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757aff7095f3301e578ab0ff1cebe08a3bc5", null ],
-      [ "RequireShiftToSelectMultiple", "class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a2d1ba96ef2c19512053c7e37d8fdb213", null ]
+      [ "RequireShiftToSelectMultiple", "class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a2d1ba96ef2c19512053c7e37d8fdb213", null ],
+      [ "None", "class_barotrauma_1_1_g_u_i_list_box.html#a0670f628c80f7d376de144f148b76757a6adf97f83acf6453d4a6a4b1070f3754", null ]
     ] ],
     [ "TakeKeyBoardFocus", "class_barotrauma_1_1_g_u_i_list_box.html#a85e6235f7c6378771cdeb90609d9a740", [
       [ "Yes", "class_barotrauma_1_1_g_u_i_list_box.html#a85e6235f7c6378771cdeb90609d9a740a93cba07454f06a4a960172bbd6e2a435", null ],
@@ -60,6 +61,7 @@ var class_barotrauma_1_1_g_u_i_list_box =
     [ "HideDraggedElement", "class_barotrauma_1_1_g_u_i_list_box.html#a145ad4599ad2f94bed679e6f5e1ff166", null ],
     [ "OnRearranged", "class_barotrauma_1_1_g_u_i_list_box.html#a159f973b36044827656e0d635fd88087", null ],
     [ "OnSelected", "class_barotrauma_1_1_g_u_i_list_box.html#a7cd72c6f2ebfee72aabce5efc72ce493", null ],
+    [ "ResizeContentToMakeSpaceForScrollBar", "class_barotrauma_1_1_g_u_i_list_box.html#a494428bd01133d9567f5098e21c85956", null ],
     [ "selected", "class_barotrauma_1_1_g_u_i_list_box.html#a1b7038c9504f071a6152a2b5b25db6ba", null ],
     [ "AllowArrowKeyScroll", "class_barotrauma_1_1_g_u_i_list_box.html#a73f64d86ffe6ea32eb7d145b0608208c", null ],
     [ "AllowMouseWheelScroll", "class_barotrauma_1_1_g_u_i_list_box.html#a77ef3605857f06d4d50a2bc53497297d", null ],

@@ -10,6 +10,7 @@ var class_barotrauma_1_1_talent_tree =
     [ "TalentTree", "class_barotrauma_1_1_talent_tree.html#a8aea305d65cac12352bd08a4dbdd5738", null ],
     [ "Dispose", "class_barotrauma_1_1_talent_tree.html#ac89516d5be26bca62d300ba1f89628a5", null ],
     [ "TalentIsInTree", "class_barotrauma_1_1_talent_tree.html#ad1686dceedaca256cabb7642c15976c3", null ],
-    [ "TalentSubTrees", "class_barotrauma_1_1_talent_tree.html#a0330fd1ac6358fa4135a1217978deb8c", null ],
+    [ "AllTalentIdentifiers", "class_barotrauma_1_1_talent_tree.html#a4a6cdc777f17c462d616d80f010189cc", null ],
+    [ "TalentSubTrees", "class_barotrauma_1_1_talent_tree.html#a6ae467517ea323504799d24b766fbb09", null ],
     [ "ConfigElement", "class_barotrauma_1_1_talent_tree.html#a0dd0f29bfc3c3aad9dab11247a8c690c", null ]
 ];

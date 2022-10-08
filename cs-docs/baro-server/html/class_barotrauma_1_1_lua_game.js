@@ -27,6 +27,8 @@ var class_barotrauma_1_1_lua_game =
     [ "disableDisconnectCharacter", "class_barotrauma_1_1_lua_game.html#a16b18e96702caeec45010cf2aae360dc", null ],
     [ "disableSpamFilter", "class_barotrauma_1_1_lua_game.html#ab41341a7d866edde85ecebb2829025e3", null ],
     [ "enableControlHusk", "class_barotrauma_1_1_lua_game.html#aa359f6d3265a3cf499675a145c87d7b8", null ],
+    [ "ForceLocalVoice", "class_barotrauma_1_1_lua_game.html#add81e239455a714d46c2717ec47b341f", null ],
+    [ "ForceVoice", "class_barotrauma_1_1_lua_game.html#a2ebed9a16bdcc9f5ca5e608bd19b5247", null ],
     [ "IsMultiplayer", "class_barotrauma_1_1_lua_game.html#a03f761b7f91527c617666b9437fa448c", null ],
     [ "IsSingleplayer", "class_barotrauma_1_1_lua_game.html#a68c14eef1a341e91942763784f9eada4", null ],
     [ "overrideRespawnSub", "class_barotrauma_1_1_lua_game.html#a776b4a84e41e59c741e9e97adf166fce", null ],

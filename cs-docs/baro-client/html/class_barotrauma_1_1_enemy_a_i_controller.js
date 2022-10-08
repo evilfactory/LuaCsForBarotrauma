@@ -29,7 +29,7 @@ var class_barotrauma_1_1_enemy_a_i_controller =
     [ "ActiveAttack", "class_barotrauma_1_1_enemy_a_i_controller.html#a8d3936169c984739b2e0711c5ef2b5b9", null ],
     [ "AIParams", "class_barotrauma_1_1_enemy_a_i_controller.html#a6ca7e83b7d23e455ce362dec8a869f27", null ],
     [ "AttackHumans", "class_barotrauma_1_1_enemy_a_i_controller.html#a3d677c23db7fd14713c01e98414d268d", null ],
-    [ "AttackLimb", "class_barotrauma_1_1_enemy_a_i_controller.html#acaf780837ed8b887e8310f7f708abdc1", null ],
+    [ "AttackLimb", "class_barotrauma_1_1_enemy_a_i_controller.html#a35960b01cb700790915fc37ada5b3d33", null ],
     [ "AttackRooms", "class_barotrauma_1_1_enemy_a_i_controller.html#a48a4a0528ee89fd1eca56c92802b4912", null ],
     [ "CanEnterSubmarine", "class_barotrauma_1_1_enemy_a_i_controller.html#ad305743c41b0e606dbc1612a98b0df88", null ],
     [ "CanFlip", "class_barotrauma_1_1_enemy_a_i_controller.html#ae6390d6aa56064e047e68151c4ba8f1f", null ],

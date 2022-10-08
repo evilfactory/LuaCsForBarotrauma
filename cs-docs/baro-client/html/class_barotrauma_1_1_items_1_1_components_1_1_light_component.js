@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_light_component =
 [
     [ "LightComponent", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#ab484e0ad84028b2eaa0d5d1478d4ae9f", null ],
+    [ "CheckIfNeedsUpdate", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a11e8480537d1e45546d40c9564b839ca", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a6f70012be05c30206457ff9f12e8bb35", null ],
     [ "Draw", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#aaf9f21141fc6cc0572ce4e1fd55b82d0", null ],
     [ "FlipX", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#aecf8bcd75f67fef105f23ac78ef08417", null ],

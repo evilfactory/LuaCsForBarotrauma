@@ -104,12 +104,14 @@ Inheritance diagram for Barotrauma.Networking.GameServer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a778bb2db3f395eedac672125c8a6af3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a778bb2db3f395eedac672125c8a6af3f">GameServer</a> (string name, IPAddress listenIp, int port, int queryPort=0, bool isPublic=false, string password=&quot;&quot;, bool attemptUPnP=false, int maxPlayers=10, int? ownKey=null, UInt64? steamId=null)</td></tr>
-<tr class="separator:a778bb2db3f395eedac672125c8a6af3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51737fdde3d34d3589a59519d7cae51b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a51737fdde3d34d3589a59519d7cae51b">GameServer</a> (string name, IPAddress listenIp, int port, int queryPort, bool isPublic, string password, bool attemptUPnP, int maxPlayers, <a class="el" href="class_barotrauma_1_1_option.html">Option</a>&lt; int &gt; ownerKey, <a class="el" href="class_barotrauma_1_1_option.html">Option</a>&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> &gt; ownerSteamId)</td></tr>
+<tr class="separator:a51737fdde3d34d3589a59519d7cae51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ff960085117f35724418c0a8c63c88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#af4ff960085117f35724418c0a8c63c88">StartServer</a> ()</td></tr>
+<tr class="separator:af4ff960085117f35724418c0a8c63c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d751bec65705898d893a8ed2051e7c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2d751bec65705898d893a8ed2051e7c4">NotifyCrash</a> ()</td></tr>
 <tr class="separator:a2d751bec65705898d893a8ed2051e7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8552034c9a488d952053e9011adaa77e"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a8552034c9a488d952053e9011adaa77e">Update</a> (float deltaTime)</td></tr>
-<tr class="separator:a8552034c9a488d952053e9011adaa77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40dd60bd5e7de16cb082bda29a1a76e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a40dd60bd5e7de16cb082bda29a1a76e9">Update</a> (float deltaTime)</td></tr>
+<tr class="separator:a40dd60bd5e7de16cb082bda29a1a76e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9a571bb333deff5e48b3c7feb3f4d90"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ae9a571bb333deff5e48b3c7feb3f4d90">CreateEntityEvent</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html">INetSerializable</a> entity, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
 <tr class="separator:ae9a571bb333deff5e48b3c7feb3f4d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2f73c5433b24e2e55fd1fa494773e67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ab2f73c5433b24e2e55fd1fa494773e67">ClientWriteLobby</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c)</td></tr>
@@ -128,18 +130,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8132ec8254e3f531eaf524436243cf4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a017e826aac961eb36ec65e3ea8a591ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a017e826aac961eb36ec65e3ea8a591ed">KickClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string reason, bool resetKarma=false)</td></tr>
 <tr class="separator:a017e826aac961eb36ec65e3ea8a591ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54ab0af0dffb65dadf88153fce9bc331"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a54ab0af0dffb65dadf88153fce9bc331">BanPlayer</a> (string playerName, string reason, bool range=false, TimeSpan? duration=null)</td></tr>
-<tr class="separator:a54ab0af0dffb65dadf88153fce9bc331"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac055a4b7fb5428b2706d1cb608c1fd87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ac055a4b7fb5428b2706d1cb608c1fd87">BanClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string reason, bool range=false, TimeSpan? duration=null)</td></tr>
-<tr class="separator:ac055a4b7fb5428b2706d1cb608c1fd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a062f6d590f67473e296afc5664143ca4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a062f6d590f67473e296afc5664143ca4">BanPreviousPlayer</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_previous_player.html">PreviousPlayer</a> previousPlayer, string reason, bool range=false, TimeSpan? duration=null)</td></tr>
-<tr class="separator:a062f6d590f67473e296afc5664143ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae222bfb46b36c987f3a63aef514219d2"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ae222bfb46b36c987f3a63aef514219d2">UnbanPlayer</a> (string playerName, string playerEndPoint)</td></tr>
-<tr class="separator:ae222bfb46b36c987f3a63aef514219d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a961c6bf29e99e6f154e8756bd36348ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a961c6bf29e99e6f154e8756bd36348ae">DisconnectClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_network_connection.html">NetworkConnection</a> senderConnection, string msg=&quot;&quot;, string targetmsg=&quot;&quot;)</td></tr>
-<tr class="separator:a961c6bf29e99e6f154e8756bd36348ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d5ade97bc20400950bf28820635fb07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a3d5ade97bc20400950bf28820635fb07">DisconnectClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string msg=&quot;&quot;, string targetmsg=&quot;&quot;, string reason=&quot;&quot;, <a class="el" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a> changeType=<a class="el" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eaef70e46fd3bbc21e3e1f0b6815e750c0">PlayerConnectionChangeType.Disconnected</a>)</td></tr>
-<tr class="separator:a3d5ade97bc20400950bf28820635fb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3e517a70fd041731afb048706268cc"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#acb3e517a70fd041731afb048706268cc">BanPlayer</a> (string playerName, string reason, TimeSpan? duration=null)</td></tr>
+<tr class="separator:acb3e517a70fd041731afb048706268cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4876cb7b29f0ccee5811610823b6fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a6e4876cb7b29f0ccee5811610823b6fe">BanClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string reason, TimeSpan? duration=null)</td></tr>
+<tr class="separator:a6e4876cb7b29f0ccee5811610823b6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cbcd3777989de67d3990702b6fabebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2cbcd3777989de67d3990702b6fabebb">BanPreviousPlayer</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_previous_player.html">PreviousPlayer</a> previousPlayer, string reason, TimeSpan? duration=null)</td></tr>
+<tr class="separator:a2cbcd3777989de67d3990702b6fabebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133eb7c1474250c005eb73d05d545e4f"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a133eb7c1474250c005eb73d05d545e4f">UnbanPlayer</a> (string playerName)</td></tr>
+<tr class="separator:a133eb7c1474250c005eb73d05d545e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca37dcb4d6845dfdb239978aca34c60e"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#aca37dcb4d6845dfdb239978aca34c60e">UnbanPlayer</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_endpoint.html">Endpoint</a> endpoint)</td></tr>
+<tr class="separator:aca37dcb4d6845dfdb239978aca34c60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab6dae596f77995555ac832135a9be9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a6ab6dae596f77995555ac832135a9be9">DisconnectClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_network_connection.html">NetworkConnection</a> senderConnection, PeerDisconnectPacket peerDisconnectPacket)</td></tr>
+<tr class="separator:a6ab6dae596f77995555ac832135a9be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a0a83c29a2df7e38a5f7dc2f33b9a98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a1a0a83c29a2df7e38a5f7dc2f33b9a98">DisconnectClient</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, PeerDisconnectPacket peerDisconnectPacket)</td></tr>
+<tr class="separator:a1a0a83c29a2df7e38a5f7dc2f33b9a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40718ad8f8d0d34b06ba5a31c69b9342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a40718ad8f8d0d34b06ba5a31c69b9342">SendDirectChatMessage</a> (string txt, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> recipient, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a> messageType=<a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2a9aa1b03934893d7134a660af4204f2a9">ChatMessageType.Server</a>)</td></tr>
 <tr class="separator:a40718ad8f8d0d34b06ba5a31c69b9342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89ebef811b698627a8cc6aa31e5ee56d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a89ebef811b698627a8cc6aa31e5ee56d">SendConsoleMessage</a> (string txt, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> recipient, Color? color=null)</td></tr>
@@ -181,10 +185,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2c39d20cda62f788215b5af257b61d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4df73c10debdafeb2dc632ecad62f872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a4df73c10debdafeb2dc632ecad62f872">UpdateMissionState</a> (<a class="el" href="class_barotrauma_1_1_mission.html">Mission</a> mission)</td></tr>
 <tr class="separator:a4df73c10debdafeb2dc632ecad62f872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a6ee1d25e11376206f6a6c9c1bbf3b4"><td class="memItemLeft" align="right" valign="top">Tuple&lt; ulong, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2a6ee1d25e11376206f6a6c9c1bbf3b4">FindPreviousClientData</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client)</td></tr>
-<tr class="separator:a2a6ee1d25e11376206f6a6c9c1bbf3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06c4af650bb571a1e7d3c7cf252bc2a0"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a06c4af650bb571a1e7d3c7cf252bc2a0">Disconnect</a> ()</td></tr>
-<tr class="separator:a06c4af650bb571a1e7d3c7cf252bc2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7562c8afc7650452b1ed45d4fb626f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#aa7562c8afc7650452b1ed45d4fb626f6">Quit</a> ()</td></tr>
+<tr class="separator:aa7562c8afc7650452b1ed45d4fb626f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_barotrauma_1_1_networking_1_1_network_member"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_barotrauma_1_1_networking_1_1_network_member')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">Barotrauma.Networking.NetworkMember</a></td></tr>
 <tr class="memitem:ada96d6d95a7f419396b0852d3869c2f5 inherit pub_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ada96d6d95a7f419396b0852d3869c2f5">CanUseRadio</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender)</td></tr>
 <tr class="separator:ada96d6d95a7f419396b0852d3869c2f5 inherit pub_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,6 +195,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ab2fb00c7b48ab78e2b8f93c82bc0b70f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ab2fb00c7b48ab78e2b8f93c82bc0b70f">AddPendingMessageToOwner</a> (string message, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a> messageType)</td></tr>
+<tr class="memdesc:ab2fb00c7b48ab78e2b8f93c82bc0b70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a message that gets sent to the server owner once the connection is initialized. Can be used to for example notify the owner of problems during initialization  <a href="class_barotrauma_1_1_networking_1_1_game_server.html#ab2fb00c7b48ab78e2b8f93c82bc0b70f">More...</a><br /></td></tr>
+<tr class="separator:ab2fb00c7b48ab78e2b8f93c82bc0b70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e87ab58b07607d9b3a7a53d22ddcb8"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a17e87ab58b07607d9b3a7a53d22ddcb8">CharacterLogName</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character)</td></tr>
 <tr class="separator:a17e87ab58b07607d9b3a7a53d22ddcb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcb65cfca0f933043316d58c8c9ae0d3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#abcb65cfca0f933043316d58c8c9ae0d3">Log</a> (string line, <a class="el" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">ServerLog.MessageType</a> messageType)</td></tr>
@@ -200,9 +205,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">Barotrauma.Networking.NetworkMember</a></td></tr>
 <tr class="memitem:ab41fb44ab9c0bf972f7fc5c03a22fb5d inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ab41fb44ab9c0bf972f7fc5c03a22fb5d">ClientLogName</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string name=null)</td></tr>
 <tr class="separator:ab41fb44ab9c0bf972f7fc5c03a22fb5d inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3c74186509d3983ede68b1d75afc377 inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">static ? bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#af3c74186509d3983ede68b1d75afc377">IsCompatible</a> (string myVersion, string remoteVersion)</td></tr>
-<tr class="memdesc:af3c74186509d3983ede68b1d75afc377 inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the two version are compatible (= if they can play together in multiplayer). Returns null if compatibility could not be determined (invalid/unknown version number).  <a href="class_barotrauma_1_1_networking_1_1_network_member.html#af3c74186509d3983ede68b1d75afc377">More...</a><br /></td></tr>
-<tr class="separator:af3c74186509d3983ede68b1d75afc377 inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac699d08600d310c897146bb31a237a36 inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ac699d08600d310c897146bb31a237a36">IsCompatible</a> (Version myVersion, Version remoteVersion)</td></tr>
 <tr class="memdesc:ac699d08600d310c897146bb31a237a36 inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the two version are compatible (= if they can play together in multiplayer).  <a href="class_barotrauma_1_1_networking_1_1_network_member.html#ac699d08600d310c897146bb31a237a36">More...</a><br /></td></tr>
 <tr class="separator:ac699d08600d310c897146bb31a237a36 inherit pub_static_methods_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,13 +213,15 @@ Static Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ab6c3cacb5b87a64665f3b7f86691064e"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ab6c3cacb5b87a64665f3b7f86691064e">IsServer</a> =&gt; true</td></tr>
 <tr class="separator:ab6c3cacb5b87a64665f3b7f86691064e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab224c4394444b4751de4d15e427b6b8b"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ab224c4394444b4751de4d15e427b6b8b">IsClient</a> =&gt; false</td></tr>
+<tr class="separator:ab224c4394444b4751de4d15e427b6b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43194254565a7f2374619f17f91ebbe3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a43194254565a7f2374619f17f91ebbe3">SubmarineSwitchLoad</a> = false</td></tr>
 <tr class="separator:a43194254565a7f2374619f17f91ebbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9f2ba3db10faa3415980a6376af7725"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_traitor_manager.html">TraitorManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#aa9f2ba3db10faa3415980a6376af7725">TraitorManager</a></td></tr>
 <tr class="separator:aa9f2ba3db10faa3415980a6376af7725"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa29e601212cf9077cc62f7957b4d528b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#aa29e601212cf9077cc62f7957b4d528b">Port</a> =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4019b39c85ac1771e3bd6ad4187b6800">serverSettings</a>?.Port ?? 0</td></tr>
+<tr class="memitem:aa29e601212cf9077cc62f7957b4d528b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#aa29e601212cf9077cc62f7957b4d528b">Port</a> =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>?.Port ?? 0</td></tr>
 <tr class="separator:aa29e601212cf9077cc62f7957b4d528b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26f442de4830827e4ed2a1c5151d3e4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a26f442de4830827e4ed2a1c5151d3e4b">QueryPort</a> =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4019b39c85ac1771e3bd6ad4187b6800">serverSettings</a>?.QueryPort ?? 0</td></tr>
+<tr class="memitem:a26f442de4830827e4ed2a1c5151d3e4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a26f442de4830827e4ed2a1c5151d3e4b">QueryPort</a> =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>?.QueryPort ?? 0</td></tr>
 <tr class="separator:a26f442de4830827e4ed2a1c5151d3e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_barotrauma_1_1_networking_1_1_network_member')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">Barotrauma.Networking.NetworkMember</a></td></tr>
 <tr class="memitem:a09df4dbe9eea38e205f19199da107e65 inherit pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a09df4dbe9eea38e205f19199da107e65">ShowNetStats</a></td></tr>
@@ -228,12 +232,16 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab4aed95b9fd0bdd642202b4ff7d11821 inherit pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2988a5c4f4fdbf67e0eb5707ed33b5e7 inherit pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a2988a5c4f4fdbf67e0eb5707ed33b5e7">SimulatedDuplicatesChance</a></td></tr>
 <tr class="separator:a2988a5c4f4fdbf67e0eb5707ed33b5e7 inherit pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cfc63d503bcbf648ba68a42c5783847 inherit pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">TimeSpan&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a0cfc63d503bcbf648ba68a42c5783847">UpdateInterval</a> =&gt; new TimeSpan(0, 0, 0, 0, MathHelper.Clamp(1000 / <a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html#af40ec7e9e6fa9a1ac783093d5dccc97a">ServerSettings.TickRate</a>, 1, 500))</td></tr>
+<tr class="separator:a0cfc63d503bcbf648ba68a42c5783847 inherit pub_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a2b25c9391d558db1521defe5314e75c2"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="class_barotrauma_1_1_voting.html">Voting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2b25c9391d558db1521defe5314e75c2">Voting</a><code> [get]</code></td></tr>
+<tr class="separator:a2b25c9391d558db1521defe5314e75c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dbc068eb071fdbc354be5bffcb5982a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a1dbc068eb071fdbc354be5bffcb5982a">ServerName</a><code> [get, set]</code></td></tr>
 <tr class="separator:a1dbc068eb071fdbc354be5bffcb5982a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ea9d09d4c17f1fa887c3af87a991d3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_peer.html">ServerPeer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2ea9d09d4c17f1fa887c3af87a991d3f">ServerPeer</a><code> [get]</code></td></tr>
+<tr class="memitem:a2ea9d09d4c17f1fa887c3af87a991d3f"><td class="memItemLeft" align="right" valign="top">ServerPeer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2ea9d09d4c17f1fa887c3af87a991d3f">ServerPeer</a><code> [get]</code></td></tr>
 <tr class="separator:a2ea9d09d4c17f1fa887c3af87a991d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19d85c2aeb75f798886fca0eb6c05c64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_server.html">VoipServer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a19d85c2aeb75f798886fca0eb6c05c64">VoipServer</a><code> [get]</code></td></tr>
 <tr class="separator:a19d85c2aeb75f798886fca0eb6c05c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -241,34 +249,30 @@ Properties</h2></td></tr>
 <tr class="separator:aede19c2f290cde833a60326bc9c70c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d787159c8e83394d0cdc26e951e09b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_mod_sender.html">ModSender</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a1d787159c8e83394d0cdc26e951e09b0">ModSender</a><code> [get]</code></td></tr>
 <tr class="separator:a1d787159c8e83394d0cdc26e951e09b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0aabdf1f15ac8a15cfa920f05286148"><td class="memItemLeft" align="right" valign="top">override List&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#ac0aabdf1f15ac8a15cfa920f05286148">ConnectedClients</a><code> [get]</code></td></tr>
-<tr class="separator:ac0aabdf1f15ac8a15cfa920f05286148"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c382f55d9d3dd932e2ab2c1ff2ed077"><td class="memItemLeft" align="right" valign="top">override IReadOnlyList&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2c382f55d9d3dd932e2ab2c1ff2ed077">ConnectedClients</a><code> [get]</code></td></tr>
+<tr class="separator:a2c382f55d9d3dd932e2ab2c1ff2ed077"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e58c58684339590d5e6d81999daede3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html">ServerEntityEventManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a7e58c58684339590d5e6d81999daede3">EntityEventManager</a><code> [get]</code></td></tr>
 <tr class="separator:a7e58c58684339590d5e6d81999daede3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25ac3213049d84f34209b07238f26654"><td class="memItemLeft" align="right" valign="top">TimeSpan&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a25ac3213049d84f34209b07238f26654">UpdateInterval</a><code> [get]</code></td></tr>
-<tr class="separator:a25ac3213049d84f34209b07238f26654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bbcdbbfe1d7aaf4e57a61492de24af0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_connection.html">NetworkConnection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_game_server.html#a1bbcdbbfe1d7aaf4e57a61492de24af0">OwnerConnection</a><code> [get]</code></td></tr>
 <tr class="separator:a1bbcdbbfe1d7aaf4e57a61492de24af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_barotrauma_1_1_networking_1_1_network_member"><td colspan="2" onclick="javascript:toggleInherit('properties_class_barotrauma_1_1_networking_1_1_network_member')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">Barotrauma.Networking.NetworkMember</a></td></tr>
 <tr class="memitem:aee6b43d623040fb04e4fd42ba6cd01a9 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">UInt16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#aee6b43d623040fb04e4fd42ba6cd01a9">LastClientListUpdateID</a><code> [get, set]</code></td></tr>
 <tr class="separator:aee6b43d623040fb04e4fd42ba6cd01a9 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7033f2082639bb2839a3bf4343012a5 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ad7033f2082639bb2839a3bf4343012a5">IsServer</a><code> [get]</code></td></tr>
-<tr class="separator:ad7033f2082639bb2839a3bf4343012a5 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ab43b255c9aa7a88cf73013d4964872 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a6ab43b255c9aa7a88cf73013d4964872">IsClient</a><code> [get]</code></td></tr>
-<tr class="separator:a6ab43b255c9aa7a88cf73013d4964872 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaa9cfdea48ffcc8d2457458fcd767a9 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_voting.html">Voting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#abaa9cfdea48ffcc8d2457458fcd767a9">Voting</a><code> [get, protected set]</code></td></tr>
-<tr class="separator:abaa9cfdea48ffcc8d2457458fcd767a9 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7b1db2a4b20a6d400cc0d0cb0928801 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ab7b1db2a4b20a6d400cc0d0cb0928801">TickRate</a><code> [get, set]</code></td></tr>
-<tr class="separator:ab7b1db2a4b20a6d400cc0d0cb0928801 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01a2cf88d0c7e12236e4a52c549cc88 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ae01a2cf88d0c7e12236e4a52c549cc88">IsServer</a><code> [get]</code></td></tr>
+<tr class="separator:ae01a2cf88d0c7e12236e4a52c549cc88 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e328c15574358ebebde4b0f18cda37 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a09e328c15574358ebebde4b0f18cda37">IsClient</a><code> [get]</code></td></tr>
+<tr class="separator:a09e328c15574358ebebde4b0f18cda37 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfb64b324bcbd8c3089df8b2fe16e62e inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="class_barotrauma_1_1_voting.html">Voting</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#adfb64b324bcbd8c3089df8b2fe16e62e">Voting</a><code> [get]</code></td></tr>
+<tr class="separator:adfb64b324bcbd8c3089df8b2fe16e62e inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abda3106bc6ff737aae3bfd966a389a4f inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_karma_manager.html">KarmaManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#abda3106bc6ff737aae3bfd966a389a4f">KarmaManager</a> = new <a class="el" href="class_barotrauma_1_1_karma_manager.html">KarmaManager</a>()<code> [get]</code></td></tr>
 <tr class="separator:abda3106bc6ff737aae3bfd966a389a4f inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4187a9eacb9113589cab8a45b39c2711 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4187a9eacb9113589cab8a45b39c2711">GameStarted</a><code> [get]</code></td></tr>
+<tr class="memitem:a4187a9eacb9113589cab8a45b39c2711 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4187a9eacb9113589cab8a45b39c2711">GameStarted</a><code> [get, protected set]</code></td></tr>
 <tr class="separator:a4187a9eacb9113589cab8a45b39c2711 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae51ed09bef23671a5aba3bda0c1f5dc9 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">virtual List&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ae51ed09bef23671a5aba3bda0c1f5dc9">ConnectedClients</a><code> [get]</code></td></tr>
-<tr class="separator:ae51ed09bef23671a5aba3bda0c1f5dc9 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a683959f1035e3775b8bd9cf4ff2fbc inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_respawn_manager.html">RespawnManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a3a683959f1035e3775b8bd9cf4ff2fbc">RespawnManager</a><code> [get]</code></td></tr>
+<tr class="memitem:afdbbaa6c5f7604f3e6b6992d64bd5546 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">abstract IReadOnlyList&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#afdbbaa6c5f7604f3e6b6992d64bd5546">ConnectedClients</a><code> [get]</code></td></tr>
+<tr class="separator:afdbbaa6c5f7604f3e6b6992d64bd5546 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a683959f1035e3775b8bd9cf4ff2fbc inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_respawn_manager.html">RespawnManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a3a683959f1035e3775b8bd9cf4ff2fbc">RespawnManager</a><code> [get, protected set]</code></td></tr>
 <tr class="separator:a3a683959f1035e3775b8bd9cf4ff2fbc inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a720058a886c217b6f66886d413e0a1e5 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a720058a886c217b6f66886d413e0a1e5">ServerSettings</a><code> [get]</code></td></tr>
+<tr class="memitem:a720058a886c217b6f66886d413e0a1e5 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a720058a886c217b6f66886d413e0a1e5">ServerSettings</a><code> [get, protected set]</code></td></tr>
 <tr class="separator:a720058a886c217b6f66886d413e0a1e5 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c684c6663b7746b984a3209b10dc0e4 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_character.html">Character</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a0c684c6663b7746b984a3209b10dc0e4">Character</a><code> [get]</code></td></tr>
 <tr class="separator:a0c684c6663b7746b984a3209b10dc0e4 inherit properties_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -276,23 +280,15 @@ Properties</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_barotrauma_1_1_networking_1_1_network_member')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">Barotrauma.Networking.NetworkMember</a></td></tr>
-<tr class="memitem:a4019b39c85ac1771e3bd6ad4187b6800 inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4019b39c85ac1771e3bd6ad4187b6800">serverSettings</a></td></tr>
-<tr class="separator:a4019b39c85ac1771e3bd6ad4187b6800 inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d05dbf7f8659b6e9b187f8bcd1034b inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">TimeSpan&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ae8d05dbf7f8659b6e9b187f8bcd1034b">updateInterval</a></td></tr>
-<tr class="separator:ae8d05dbf7f8659b6e9b187f8bcd1034b inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac786f855051753ff2946bd11bc8415b0 inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">DateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ac786f855051753ff2946bd11bc8415b0">updateTimer</a></td></tr>
 <tr class="separator:ac786f855051753ff2946bd11bc8415b0 inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a985b7f050655da70b2f77090a17dea7b inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a985b7f050655da70b2f77090a17dea7b">gameStarted</a></td></tr>
-<tr class="separator:a985b7f050655da70b2f77090a17dea7b inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a221cee47c87a6c252ec4ed4efa77d0c2 inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_respawn_manager.html">RespawnManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a221cee47c87a6c252ec4ed4efa77d0c2">respawnManager</a></td></tr>
-<tr class="separator:a221cee47c87a6c252ec4ed4efa77d0c2 inherit pro_attribs_class_barotrauma_1_1_networking_1_1_network_member"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00020">20</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00019">19</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a778bb2db3f395eedac672125c8a6af3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a778bb2db3f395eedac672125c8a6af3f">&#9670;&nbsp;</a></span>GameServer()</h2>
+<a id="a51737fdde3d34d3589a59519d7cae51b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51737fdde3d34d3589a59519d7cae51b">&#9670;&nbsp;</a></span>GameServer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,43 +315,43 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>queryPort</em> = <code>0</code>, </td>
+          <td class="paramname"><em>queryPort</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>isPublic</em> = <code>false</code>, </td>
+          <td class="paramname"><em>isPublic</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>password</em> = <code>&quot;&quot;</code>, </td>
+          <td class="paramname"><em>password</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>attemptUPnP</em> = <code>false</code>, </td>
+          <td class="paramname"><em>attemptUPnP</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>maxPlayers</em> = <code>10</code>, </td>
+          <td class="paramname"><em>maxPlayers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int?&#160;</td>
-          <td class="paramname"><em>ownKey</em> = <code>null</code>, </td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_option.html">Option</a>&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>ownerKey</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">UInt64?&#160;</td>
-          <td class="paramname"><em>steamId</em> = <code>null</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_option.html">Option</a>&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> &gt;&#160;</td>
+          <td class="paramname"><em>ownerSteamId</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -365,7 +361,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00118">118</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00121">121</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -396,7 +392,47 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a94ffa1edd6bea1dfe77d091c36837134">Barotrauma.Networking.NetworkMember</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02705">2705</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02714">2714</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab2fb00c7b48ab78e2b8f93c82bc0b70f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2fb00c7b48ab78e2b8f93c82bc0b70f">&#9670;&nbsp;</a></span>AddPendingMessageToOwner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Barotrauma.Networking.GameServer.AddPendingMessageToOwner </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>&#160;</td>
+          <td class="paramname"><em>messageType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a message that gets sent to the server owner once the connection is initialized. Can be used to for example notify the owner of problems during initialization </p>
+
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00220">220</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -426,7 +462,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03844">3844</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03827">3827</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -446,12 +482,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03660">3660</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03643">3643</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="ac055a4b7fb5428b2706d1cb608c1fd87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac055a4b7fb5428b2706d1cb608c1fd87">&#9670;&nbsp;</a></span>BanClient()</h2>
+<a id="a6e4876cb7b29f0ccee5811610823b6fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4876cb7b29f0ccee5811610823b6fe">&#9670;&nbsp;</a></span>BanClient()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -471,12 +507,6 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>range</em> = <code>false</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">TimeSpan?&#160;</td>
           <td class="paramname"><em>duration</em> = <code>null</code>&#160;</td>
         </tr>
@@ -488,12 +518,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02857">2857</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02869">2869</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="a54ab0af0dffb65dadf88153fce9bc331"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54ab0af0dffb65dadf88153fce9bc331">&#9670;&nbsp;</a></span>BanPlayer()</h2>
+<a id="acb3e517a70fd041731afb048706268cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3e517a70fd041731afb048706268cc">&#9670;&nbsp;</a></span>BanPlayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -516,12 +546,6 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>range</em> = <code>false</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">TimeSpan?&#160;</td>
           <td class="paramname"><em>duration</em> = <code>null</code>&#160;</td>
         </tr>
@@ -538,14 +562,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a9d302014c05ea7aad1ca7c4bb7b1b74e">Barotrauma.Networking.NetworkMember</a>.</p>
+<p>Implements <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a944a8f60ce5b3e601f876c05778faa19">Barotrauma.Networking.NetworkMember</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02842">2842</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02854">2854</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="a062f6d590f67473e296afc5664143ca4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a062f6d590f67473e296afc5664143ca4">&#9670;&nbsp;</a></span>BanPreviousPlayer()</h2>
+<a id="a2cbcd3777989de67d3990702b6fabebb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cbcd3777989de67d3990702b6fabebb">&#9670;&nbsp;</a></span>BanPreviousPlayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -565,12 +589,6 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>range</em> = <code>false</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">TimeSpan?&#160;</td>
           <td class="paramname"><em>duration</em> = <code>null</code>&#160;</td>
         </tr>
@@ -582,7 +600,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02891">2891</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02897">2897</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -610,7 +628,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03954">3954</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03937">3937</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -630,7 +648,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l01862">1862</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l01870">1870</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -670,41 +688,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#aa342d560342d6e7c4cdac8a590b674bd">Barotrauma.Networking.NetworkMember</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l01017">1017</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l01006">1006</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="a06c4af650bb571a1e7d3c7cf252bc2a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06c4af650bb571a1e7d3c7cf252bc2a0">&#9670;&nbsp;</a></span>Disconnect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void Barotrauma.Networking.GameServer.Disconnect </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a1d2c3d2f134239a47f7c8028f9796130">Barotrauma.Networking.NetworkMember</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03989">3989</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3d5ade97bc20400950bf28820635fb07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d5ade97bc20400950bf28820635fb07">&#9670;&nbsp;</a></span>DisconnectClient() <span class="overload">[1/2]</span></h2>
+<a id="a1a0a83c29a2df7e38a5f7dc2f33b9a98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a0a83c29a2df7e38a5f7dc2f33b9a98">&#9670;&nbsp;</a></span>DisconnectClient() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -718,26 +707,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>msg</em> = <code>&quot;&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>targetmsg</em> = <code>&quot;&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>reason</em> = <code>&quot;&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>&#160;</td>
-          <td class="paramname"><em>changeType</em> = <code><a class="el" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eaef70e46fd3bbc21e3e1f0b6815e750c0">PlayerConnectionChangeType.Disconnected</a></code>&#160;</td>
+          <td class="paramtype">PeerDisconnectPacket&#160;</td>
+          <td class="paramname"><em>peerDisconnectPacket</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -747,12 +718,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02947">2947</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02943">2943</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="a961c6bf29e99e6f154e8756bd36348ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a961c6bf29e99e6f154e8756bd36348ae">&#9670;&nbsp;</a></span>DisconnectClient() <span class="overload">[2/2]</span></h2>
+<a id="a6ab6dae596f77995555ac832135a9be9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ab6dae596f77995555ac832135a9be9">&#9670;&nbsp;</a></span>DisconnectClient() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -766,14 +737,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>msg</em> = <code>&quot;&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>targetmsg</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramtype">PeerDisconnectPacket&#160;</td>
+          <td class="paramname"><em>peerDisconnectPacket</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -783,7 +748,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02933">2933</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02935">2935</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -813,27 +778,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02604">2604</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
-
-</div>
-</div>
-<a id="a2a6ee1d25e11376206f6a6c9c1bbf3b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a6ee1d25e11376206f6a6c9c1bbf3b4">&#9670;&nbsp;</a></span>FindPreviousClientData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Tuple&lt;ulong, string&gt; Barotrauma.Networking.GameServer.FindPreviousClientData </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&#160;</td>
-          <td class="paramname"><em>client</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03979">3979</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02617">2617</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -863,7 +808,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03476">3476</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03459">3459</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -893,7 +838,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03500">3500</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03483">3483</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -929,7 +874,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03488">3488</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03471">3471</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -965,7 +910,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03513">3513</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03496">3496</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1001,7 +946,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02823">2823</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02837">2837</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +976,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02815">2815</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02829">2829</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1069,9 +1014,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a93431f978205c7e6b3838b7c0a6179d0">Barotrauma.Networking.NetworkMember</a>.</p>
+<p>Implements <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#af5c6f68bcce13249bba166d0ff49a8c5">Barotrauma.Networking.NetworkMember</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02806">2806</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02820">2820</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1054,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03961">3961</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03944">3944</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1128,7 +1073,26 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00245">245</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00239">239</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa7562c8afc7650452b1ed45d4fb626f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7562c8afc7650452b1ed45d4fb626f6">&#9670;&nbsp;</a></span>Quit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.Networking.GameServer.Quit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03962">3962</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1148,7 +1112,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03294">3294</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03282">3282</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1204,7 +1168,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Add the message to the chatbox and pass it to all clients who can receive it </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03046">3046</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03034">3034</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1240,7 +1204,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03019">3019</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03007">3007</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1234,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03025">3025</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03013">3013</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1270,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03013">3013</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03001">3001</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1326,7 +1290,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03264">3264</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03252">3252</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1368,7 +1332,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03525">3525</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03508">3508</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1388,7 +1352,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03369">3369</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03352">3352</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1418,7 +1382,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03551">3551</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03534">3534</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1437,7 +1401,26 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02031">2031</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02044">2044</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+
+</div>
+</div>
+<a id="af4ff960085117f35724418c0a8c63c88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ff960085117f35724418c0a8c63c88">&#9670;&nbsp;</a></span>StartServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.Networking.GameServer.StartServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00155">155</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1456,7 +1439,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03385">3385</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03368">3368</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1486,12 +1469,42 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02748">2748</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02763">2763</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="ae222bfb46b36c987f3a63aef514219d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae222bfb46b36c987f3a63aef514219d2">&#9670;&nbsp;</a></span>UnbanPlayer()</h2>
+<a id="aca37dcb4d6845dfdb239978aca34c60e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca37dcb4d6845dfdb239978aca34c60e">&#9670;&nbsp;</a></span>UnbanPlayer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void Barotrauma.Networking.GameServer.UnbanPlayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_endpoint.html">Endpoint</a>&#160;</td>
+          <td class="paramname"><em>endpoint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a9d4464e21c56a42c86458f0468463a02">Barotrauma.Networking.NetworkMember</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02930">2930</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a133eb7c1474250c005eb73d05d545e4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133eb7c1474250c005eb73d05d545e4f">&#9670;&nbsp;</a></span>UnbanPlayer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1503,18 +1516,8 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">override void Barotrauma.Networking.GameServer.UnbanPlayer </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>playerName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>playerName</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>playerEndPoint</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -1524,39 +1527,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#af07ba46157969b599b1ed0ba1a2b3c48">Barotrauma.Networking.NetworkMember</a>.</p>
+<p>Implements <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#ac37db14748f9b7da18d24bb4162b1d1d">Barotrauma.Networking.NetworkMember</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02921">2921</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l02922">2922</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
-<a id="a8552034c9a488d952053e9011adaa77e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8552034c9a488d952053e9011adaa77e">&#9670;&nbsp;</a></span>Update()</h2>
+<a id="a40dd60bd5e7de16cb082bda29a1a76e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40dd60bd5e7de16cb082bda29a1a76e9">&#9670;&nbsp;</a></span>Update()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override void Barotrauma.Networking.GameServer.Update </td>
+          <td class="memname">void Barotrauma.Networking.GameServer.Update </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>deltaTime</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a91cb0c31c0afb25b7dfe2c79e89d068c">Barotrauma.Networking.NetworkMember</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00347">347</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00338">338</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1575,7 +1568,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03536">3536</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03519">3519</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1588,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03416">3416</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03399">3399</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1615,7 +1608,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03941">3941</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03924">3924</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1635,11 +1628,27 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03303">3303</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l03291">3291</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab224c4394444b4751de4d15e427b6b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab224c4394444b4751de4d15e427b6b8b">&#9670;&nbsp;</a></span>IsClient</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool Barotrauma.Networking.GameServer.IsClient =&gt; false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00022">22</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+
+</div>
+</div>
 <a id="ab6c3cacb5b87a64665f3b7f86691064e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6c3cacb5b87a64665f3b7f86691064e">&#9670;&nbsp;</a></span>IsServer</h2>
 
@@ -1652,7 +1661,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00022">22</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00021">21</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1663,12 +1672,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.Networking.GameServer.Port =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4019b39c85ac1771e3bd6ad4187b6800">serverSettings</a>?.Port ?? 0</td>
+          <td class="memname">int Barotrauma.Networking.GameServer.Port =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>?.Port ?? 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00109">109</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00112">112</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1679,12 +1688,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.Networking.GameServer.QueryPort =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html#a4019b39c85ac1771e3bd6ad4187b6800">serverSettings</a>?.QueryPort ?? 0</td>
+          <td class="memname">int Barotrauma.Networking.GameServer.QueryPort =&gt; <a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a>?.QueryPort ?? 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00112">112</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00115">115</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1700,7 +1709,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00035">35</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00038">38</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1716,13 +1725,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00072">72</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00080">80</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ac0aabdf1f15ac8a15cfa920f05286148"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0aabdf1f15ac8a15cfa920f05286148">&#9670;&nbsp;</a></span>ConnectedClients</h2>
+<a id="a2c382f55d9d3dd932e2ab2c1ff2ed077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c382f55d9d3dd932e2ab2c1ff2ed077">&#9670;&nbsp;</a></span>ConnectedClients</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1731,7 +1740,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override List&lt;<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&gt; Barotrauma.Networking.GameServer.ConnectedClients</td>
+          <td class="memname">override IReadOnlyList&lt;<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&gt; Barotrauma.Networking.GameServer.ConnectedClients</td>
         </tr>
       </table>
   </td>
@@ -1741,7 +1750,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00091">91</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00099">99</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1765,7 +1774,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00100">100</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00108">108</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1789,7 +1798,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00076">76</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00084">84</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1813,7 +1822,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00078">78</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00086">86</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1837,7 +1846,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00114">114</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00117">117</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1861,7 +1870,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00026">26</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00028">28</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1875,7 +1884,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_peer.html">ServerPeer</a> Barotrauma.Networking.GameServer.ServerPeer</td>
+          <td class="memname">ServerPeer Barotrauma.Networking.GameServer.ServerPeer</td>
         </tr>
       </table>
   </td>
@@ -1885,31 +1894,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00052">52</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
-
-</div>
-</div>
-<a id="a25ac3213049d84f34209b07238f26654"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25ac3213049d84f34209b07238f26654">&#9670;&nbsp;</a></span>UpdateInterval</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">TimeSpan Barotrauma.Networking.GameServer.UpdateInterval</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00105">105</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00055">55</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>
@@ -1933,7 +1918,31 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00064">64</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00072">72</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2b25c9391d558db1521defe5314e75c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b25c9391d558db1521defe5314e75c2">&#9670;&nbsp;</a></span>Voting</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override <a class="el" href="class_barotrauma_1_1_voting.html">Voting</a> Barotrauma.Networking.GameServer.Voting</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_server_8cs_source.html#l00024">24</a> of file <a class="el" href="_game_server_8cs_source.html">GameServer.cs</a>.</p>
 
 </div>
 </div>

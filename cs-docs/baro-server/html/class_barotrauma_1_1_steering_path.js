@@ -7,6 +7,7 @@ var class_barotrauma_1_1_steering_path =
     [ "GetLength", "class_barotrauma_1_1_steering_path.html#afd33b368dede25a705f464cebc8191e3", null ],
     [ "SkipToNextNode", "class_barotrauma_1_1_steering_path.html#a0a39f874af87f46536fe0bf339df4ec2", null ],
     [ "SkipToNode", "class_barotrauma_1_1_steering_path.html#a67ca8796e164fb5f5d001babaa3e4a9d", null ],
+    [ "IsAtEndNode", "class_barotrauma_1_1_steering_path.html#aa3f5b00e52b9cbdd83087be2d3c9abda", null ],
     [ "Cost", "class_barotrauma_1_1_steering_path.html#ae5e5ac56d0e53ab96a491dadd5403ef6", null ],
     [ "CurrentIndex", "class_barotrauma_1_1_steering_path.html#a4129e3fabbebf78ac610a815d4be0702", null ],
     [ "CurrentNode", "class_barotrauma_1_1_steering_path.html#a9fda1adc1715c8179a8ee6c6f93d01e7", null ],

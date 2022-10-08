@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
 [
     [ "ConnectionPanel", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ac1a5ab2fc06fda1077e30306c54081ff", null ],
+    [ "CanRewire", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a922a6c2e5a08e290f8f600d74db79b6f", null ],
     [ "CheckCharacterSuccess", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#aa4752bc551d8535c62a0500e8b9b34ef", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a753b97127064290f8e2ee2259856fbfe", null ],
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab5834a3978adf575268d5d4cb65686dc", null ],
@@ -24,6 +25,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab22c8bf269f5dc7563daac6a97637d33", null ],
     [ "Connections", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9180e1928b48c004dddb4ef70a50ed22", null ],
     [ "DisconnectedWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a403b05a1204375a680bb1cafb5600a56", null ],
+    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#af411d8f671aefb586acbdbc1fc827f5a", null ],
     [ "AlwaysAllowRewiring", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9597b320ed22dfbd2da5dbb19d09820f", null ],
     [ "IsActive", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#adb749229a52ecd90c037f57aeb692893", null ],
     [ "Locked", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a2b01ba87c2c2a6a2501be3b979d0d4b4", null ],

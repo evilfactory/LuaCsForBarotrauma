@@ -109,8 +109,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa97af2b266a68aeff5ac56f7641c3e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a178eb232d1f812165448f3ac44c20244"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a178eb232d1f812165448f3ac44c20244">TryCast&lt; V &gt;</a> (out V v)</td></tr>
 <tr class="separator:a178eb232d1f812165448f3ac44c20244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a88b5a60eb2e0c1c9b3305e3bc8fc76"><td class="memItemLeft" align="right" valign="top">abstract override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a2a88b5a60eb2e0c1c9b3305e3bc8fc76">ToString</a> ()</td></tr>
-<tr class="separator:a2a88b5a60eb2e0c1c9b3305e3bc8fc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66703ff00aa16d0072f2e380da4fcf93"><td class="memItemLeft" align="right" valign="top">abstract override? string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a66703ff00aa16d0072f2e380da4fcf93">ToString</a> ()</td></tr>
+<tr class="separator:a66703ff00aa16d0072f2e380da4fcf93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0f233ded619b25ca05fa30f979d8d0"><td class="memItemLeft" align="right" valign="top">abstract override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a2d0f233ded619b25ca05fa30f979d8d0">Equals</a> (object? obj)</td></tr>
+<tr class="separator:a2d0f233ded619b25ca05fa30f979d8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0be90605cffe1250e00be745430478e4"><td class="memItemLeft" align="right" valign="top">abstract override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a0be90605cffe1250e00be745430478e4">GetHashCode</a> ()</td></tr>
+<tr class="separator:a0be90605cffe1250e00be745430478e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -122,11 +126,79 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a01e684427cd41b5d9bfd375edd9b19b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a338692a284061a89922c0be376998a28"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a338692a284061a89922c0be376998a28">operator U</a> (<a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt; e)</td></tr>
 <tr class="separator:a338692a284061a89922c0be376998a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81268fee69d723f63de65b8eb4aec39f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#a81268fee69d723f63de65b8eb4aec39f">operator==</a> (<a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;? a, <a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;? b)</td></tr>
+<tr class="separator:a81268fee69d723f63de65b8eb4aec39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeaf296b44feda3903d290024a3ed3eb"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_either.html#afeaf296b44feda3903d290024a3ed3eb">operator!=</a> (<a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;? a, <a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;? b)</td></tr>
+<tr class="separator:afeaf296b44feda3903d290024a3ed3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_either_8cs_source.html#l00005">5</a> of file <a class="el" href="_either_8cs_source.html">Either.cs</a>.</p>
+<div class="textblock"><div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>notnull</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>U</em></td><td>&#160;:</td><td valign="top"><em>notnull</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+<p class="definition">Definition at line <a class="el" href="_either_8cs_source.html#l00006">6</a> of file <a class="el" href="_either_8cs_source.html">Either.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2d0f233ded619b25ca05fa30f979d8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d0f233ded619b25ca05fa30f979d8d0">&#9670;&nbsp;</a></span>Equals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract override bool <a class="el" href="class_barotrauma_1_1_either.html">Barotrauma.Either</a>&lt; T, U &gt;.Equals </td>
+          <td>(</td>
+          <td class="paramtype">object?&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_either_u.html#acfa28a0b827e7513e26a829c19328986">Barotrauma.EitherU&lt; T, U &gt;</a>, and <a class="el" href="class_barotrauma_1_1_either_t.html#ab23a13fa0b98d1c0e22077a802794e99">Barotrauma.EitherT&lt; T, U &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a0be90605cffe1250e00be745430478e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0be90605cffe1250e00be745430478e4">&#9670;&nbsp;</a></span>GetHashCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract override int <a class="el" href="class_barotrauma_1_1_either.html">Barotrauma.Either</a>&lt; T, U &gt;.GetHashCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_either_u.html#a035e572e290b737742d56a3a1cd6af56">Barotrauma.EitherU&lt; T, U &gt;</a>, and <a class="el" href="class_barotrauma_1_1_either_t.html#a6cb08f5e184456acff8517d056006352">Barotrauma.EitherT&lt; T, U &gt;</a>.</p>
+
+</div>
+</div>
 <a id="a8b31d0083436dad509fc244d9c941e2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b31d0083436dad509fc244d9c941e2d">&#9670;&nbsp;</a></span>operator Either&lt; T, U &gt;() <span class="overload">[1/2]</span></h2>
 
@@ -231,8 +303,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2a88b5a60eb2e0c1c9b3305e3bc8fc76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a88b5a60eb2e0c1c9b3305e3bc8fc76">&#9670;&nbsp;</a></span>ToString()</h2>
+<a id="afeaf296b44feda3903d290024a3ed3eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeaf296b44feda3903d290024a3ed3eb">&#9670;&nbsp;</a></span>operator!=()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +313,79 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">abstract override string <a class="el" href="class_barotrauma_1_1_either.html">Barotrauma.Either</a>&lt; T, U &gt;.ToString </td>
+          <td class="memname">static bool <a class="el" href="class_barotrauma_1_1_either.html">Barotrauma.Either</a>&lt; T, U &gt;.operator!= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;?&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;?&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81268fee69d723f63de65b8eb4aec39f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81268fee69d723f63de65b8eb4aec39f">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="class_barotrauma_1_1_either.html">Barotrauma.Either</a>&lt; T, U &gt;.operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;?&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_either.html">Either</a>&lt; T, U &gt;?&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66703ff00aa16d0072f2e380da4fcf93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66703ff00aa16d0072f2e380da4fcf93">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract override? string <a class="el" href="class_barotrauma_1_1_either.html">Barotrauma.Either</a>&lt; T, U &gt;.ToString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -254,7 +398,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_barotrauma_1_1_either_u.html#ac596766bacdd828b64977a4f1ad32272">Barotrauma.EitherU&lt; T, U &gt;</a>, and <a class="el" href="class_barotrauma_1_1_either_t.html#a8881d28ee5549f07125dfc6df6357a69">Barotrauma.EitherT&lt; T, U &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_either_u.html#a6ed9c249e9fcef0adabd8a54689213a6">Barotrauma.EitherU&lt; T, U &gt;</a>, and <a class="el" href="class_barotrauma_1_1_either_t.html#a46d8cf479ebcb88172fe3e6b1b81510f">Barotrauma.EitherT&lt; T, U &gt;</a>.</p>
 
 </div>
 </div>

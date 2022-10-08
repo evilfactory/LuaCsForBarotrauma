@@ -8,6 +8,7 @@ var class_barotrauma_1_1_map_entity_prefab =
     [ "GetItemNameTextId", "class_barotrauma_1_1_map_entity_prefab.html#a38b166fcdfaa2094f1f61c5f38c66265", null ],
     [ "HasSubCategory", "class_barotrauma_1_1_map_entity_prefab.html#af800e8373efa1db3e6edd02c50e8d017", null ],
     [ "IsLinkAllowed", "class_barotrauma_1_1_map_entity_prefab.html#a70c25b61cfe948b626f2392dd97bd90d", null ],
+    [ "LoadDescription", "class_barotrauma_1_1_map_entity_prefab.html#ae3b21964984c84f27adabd76ec298591", null ],
     [ "NameMatches", "class_barotrauma_1_1_map_entity_prefab.html#a5585f0f520b1d55b0827b09ad9d69c70", null ],
     [ "NameMatches", "class_barotrauma_1_1_map_entity_prefab.html#a6ae1d6ff88bb6b0b351a5615c85ea226", null ],
     [ "Aliases", "class_barotrauma_1_1_map_entity_prefab.html#a33425de6b06939a54388e25b50acdbcf", null ],

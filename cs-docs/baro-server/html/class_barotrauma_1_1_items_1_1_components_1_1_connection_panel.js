@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
 [
     [ "ConnectionPanel", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ac1a5ab2fc06fda1077e30306c54081ff", null ],
+    [ "CanRewire", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a922a6c2e5a08e290f8f600d74db79b6f", null ],
     [ "CheckCharacterSuccess", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#aa4752bc551d8535c62a0500e8b9b34ef", null ],
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab5834a3978adf575268d5d4cb65686dc", null ],
     [ "InitializeLinks", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a14e0608c749e574b1f64ed2824e9e53a", null ],

@@ -1,7 +1,8 @@
 var class_barotrauma_1_1_scan_mission =
 [
     [ "ScanMission", "class_barotrauma_1_1_scan_mission.html#a0b0917e23e76b4d2d67ebf26586354ce", null ],
-    [ "End", "class_barotrauma_1_1_scan_mission.html#a3df9da92434d5705f9e15ffa94c54e52", null ],
+    [ "DetermineCompleted", "class_barotrauma_1_1_scan_mission.html#a7146c2a182aaa0c8f5dda1973ef948c6", null ],
+    [ "EndMissionSpecific", "class_barotrauma_1_1_scan_mission.html#af2fcc6bd17f34379141eeecbbf33d8e5", null ],
     [ "ServerWrite", "class_barotrauma_1_1_scan_mission.html#a1bb26a46c07393ed3c04718103fee788", null ],
     [ "ServerWriteInitial", "class_barotrauma_1_1_scan_mission.html#a5760b56688bbeda33175642bf9bb9a67", null ],
     [ "StartMissionSpecific", "class_barotrauma_1_1_scan_mission.html#acfc96a821e7dead43cd93537e823b1c9", null ],

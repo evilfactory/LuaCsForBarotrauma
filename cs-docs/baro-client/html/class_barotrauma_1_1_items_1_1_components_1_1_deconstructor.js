@@ -17,5 +17,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_deconstructor =
     [ "InfoAreaWidth", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a7e6609e47f16d30dc27d875386984758", null ],
     [ "InfoText", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#ae71f8ea3d1a85709c701958ec70aeac3", null ],
     [ "InputContainer", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#ab5881942ee517b5ba97892741bc0497d", null ],
-    [ "OutputContainer", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a0a79879aa47c03038fa09af1be77d28b", null ]
+    [ "OutputContainer", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a0a79879aa47c03038fa09af1be77d28b", null ],
+    [ "ShowOutput", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a14517d3c58584e5372ef543ab2328dbc", null ]
 ];

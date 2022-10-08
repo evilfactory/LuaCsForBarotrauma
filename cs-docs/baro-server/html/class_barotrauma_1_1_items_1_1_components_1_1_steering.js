@@ -15,7 +15,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_steering =
     [ "LevelEndSelected", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a7c71d9472ee43c1b774433866094c979", null ],
     [ "LevelStartSelected", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a853eca5374f2d53fe3d52a4ac4c5c5a6", null ],
     [ "MaintainPos", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a64e29f21e034564a97352df9e1803920", null ],
-    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ab1ec612a7f0b2d4b34987e35ff823036", null ],
     [ "AIRamTimer", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a00e9b51a5ee98f3bdad2d99329696b9d", null ],
     [ "AITacticalTarget", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a325b992def9e23d0a92d6b085d5dc6f1", null ],
     [ "AutoPilot", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a7496cc6164aee22cfee12be3f691fb7c", null ],

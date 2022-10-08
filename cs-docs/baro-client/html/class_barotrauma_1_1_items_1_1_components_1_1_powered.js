@@ -2,9 +2,9 @@ var class_barotrauma_1_1_items_1_1_components_1_1_powered =
 [
     [ "Powered", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a4a0a19e16cb1a06c73a88fa123aa84e0", null ],
     [ "GetAvailableInstantaneousBatteryPower", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a9a204e9f5a0748d5e06587a6357a5e34", null ],
-    [ "GetConnectedBatteries", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a34580ccc523dd8200f0ff70013a4ae32", null ],
     [ "GetConnectionPowerOut", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a9ebcc419d88b5b776b1b4d509282b736", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a0c29892729cc230039a6b9e716a72759", null ],
+    [ "GetDirectlyConnectedBatteries", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a39aeb3ae550a5682f21e5e13bf13b925", null ],
     [ "GridResolved", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a52ef7169f158cb90b058e3b4f4b6c7c1", null ],
     [ "MinMaxPowerOut", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a1e532732dd55a64622bb9daabc399a40", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a65429927474f0af5243dd6e864054a02", null ],

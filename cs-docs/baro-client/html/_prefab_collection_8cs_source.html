@@ -119,388 +119,394 @@ $(document).ready(function(){initNavTree('_prefab_collection_8cs_source.html',''
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            OnRemoveOverrideFile = onRemoveOverrideFile;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">private</span> readonly Action&lt;T, bool&gt;? OnAdd = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">private</span> readonly Action&lt;T&gt;? OnRemove = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">private</span> readonly Action? OnSort = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">private</span> readonly Action&lt;ContentFile&gt;? OnAddOverrideFile = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">private</span> readonly Action&lt;ContentFile&gt;? OnRemoveOverrideFile = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#if DEBUG &amp;&amp; MODBREAKER</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">private</span> readonly CursedDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt; prefabs = <span class="keyword">new</span> CursedDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt;();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">private</span> readonly ConcurrentDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt; prefabs = <span class="keyword">new</span> ConcurrentDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt;();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">private</span> readonly HashSet&lt;ContentFile&gt; overrideFiles = <span class="keyword">new</span> HashSet&lt;ContentFile&gt;();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a>? topMostOverrideFile = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> implementsVariants;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> IsPrefabOverriddenByFile(T prefab)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> topMostOverrideFile != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    topMostOverrideFile.<a class="code" href="class_barotrauma_1_1_content_file.html#a9efe1723f2c0f72a2e04217af4acb3eb">ContentPackage</a>.<a class="code" href="class_barotrauma_1_1_content_package.html#a977e27cc43d080c812379ad0fe468f4f">Index</a> &gt; prefab.ContentFile.ContentPackage.Index;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a8f452a372eb66bd108361be8c138d189">   43</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a8f452a372eb66bd108361be8c138d189">PrefabCollection</a>(Action? onSort) : this()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            OnSort = onSort;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">private</span> readonly Action&lt;T, bool&gt;? OnAdd = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">private</span> readonly Action&lt;T&gt;? OnRemove = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">private</span> readonly Action? OnSort = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">private</span> readonly Action&lt;ContentFile&gt;? OnAddOverrideFile = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">private</span> readonly Action&lt;ContentFile&gt;? OnRemoveOverrideFile = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#if DEBUG &amp;&amp; MODBREAKER</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">private</span> readonly CursedDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt; prefabs = <span class="keyword">new</span> CursedDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt;();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">private</span> readonly ConcurrentDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt; prefabs = <span class="keyword">new</span> ConcurrentDictionary&lt;Identifier, PrefabSelector&lt;T&gt;&gt;();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">private</span> readonly HashSet&lt;ContentFile&gt; overrideFiles = <span class="keyword">new</span> HashSet&lt;ContentFile&gt;();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a>? topMostOverrideFile = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">private</span> <span class="keyword">class </span>InheritanceTreeCollection</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">  101</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">Node</a></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#af530205b66de9db5b5797ae309edd858">  103</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#af530205b66de9db5b5797ae309edd858">Node</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier) { <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> = identifier; }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                </div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aed6f21c213a6c820f841ca7586e15c60">  105</a></span>&#160;                <span class="keyword">public</span> readonly <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aed6f21c213a6c820f841ca7586e15c60">Identifier</a>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#a47b71a5857464dfcd86143f59d530f45">  106</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">Node</a>? <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#a47b71a5857464dfcd86143f59d530f45">Parent</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aa3cb294037a7ee53c47ae79c8f5b3998">  107</a></span>&#160;                <span class="keyword">public</span> readonly HashSet&lt;Node&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aa3cb294037a7ee53c47ae79c8f5b3998">Inheritors</a> = <span class="keyword">new</span> HashSet&lt;Node&gt;();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keyword">private</span> readonly <a class="code" href="class_barotrauma_1_1_prefab_collection.html">PrefabCollection&lt;T&gt;</a> prefabCollection;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keyword">public</span> InheritanceTreeCollection(<a class="code" href="class_barotrauma_1_1_prefab_collection.html">PrefabCollection&lt;T&gt;</a> collection) { prefabCollection = collection; }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">public</span> readonly Dictionary&lt;Identifier, Node&gt; IdToNode = <span class="keyword">new</span> Dictionary&lt;Identifier, Node&gt;();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keyword">public</span> readonly HashSet&lt;Node&gt; RootNodes = <span class="keyword">new</span> HashSet&lt;Node&gt;();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">public</span> Node? AddNodeAndInheritors(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> <span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">if</span> (!prefabCollection.TryGet(<span class="keywordtype">id</span>, out T? prefab)) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> (!IdToNode.TryGetValue(<span class="keywordtype">id</span>, out var node))</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    node = <span class="keyword">new</span> Node(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    RootNodes.Add(node);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    IdToNode.Add(<span class="keywordtype">id</span>, node);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <span class="comment">//if the node already exists, it already contains</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    <span class="comment">//all inheritors so let&#39;s just return this immediately</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    <span class="keywordflow">return</span> node;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                prefabCollection</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    .Cast&lt;IImplementsVariants&lt;T&gt;&gt;()</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    .Where(p =&gt; p.VariantOf == <span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    .Cast&lt;T&gt;()</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    .ForEach(p =&gt;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        var inheritorNode = AddNodeAndInheritors(p.Identifier);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        <span class="keywordflow">if</span> (inheritorNode is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        RootNodes.Remove(inheritorNode);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                        inheritorNode.Parent = node;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        node.Inheritors.Add(inheritorNode);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    });</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">return</span> node;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> FindCycles(in Node node, HashSet&lt;Node&gt; uncheckedNodes)</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                HashSet&lt;Node&gt; checkedNodes = <span class="keyword">new</span> HashSet&lt;Node&gt;();</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                List&lt;Node&gt; hierarchyPositions = <span class="keyword">new</span> List&lt;Node&gt;();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                Node? currNode = node;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">do</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                    <span class="keywordflow">if</span> (!uncheckedNodes.Contains(currNode)) { <span class="keywordflow">break</span>; }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    <span class="keywordflow">if</span> (checkedNodes.Contains(currNode))</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <span class="keywordtype">int</span> index = hierarchyPositions.IndexOf(currNode);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Inheritance cycle detected: &quot;</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                            +<span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, hierarchyPositions.Skip(index).Select(n =&gt; n.Identifier)));</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                    checkedNodes.Add(currNode);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    hierarchyPositions.Add(currNode);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    currNode = currNode.Parent;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                } <span class="keywordflow">while</span> (currNode != <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                uncheckedNodes.RemoveWhere(i =&gt; checkedNodes.Contains(i));</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> AddNodesAndInheritors(IEnumerable&lt;Identifier&gt; ids)</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                =&gt; ids.ForEach(<span class="keywordtype">id</span> =&gt; AddNodeAndInheritors(<span class="keywordtype">id</span>));</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> InvokeCallbacks()</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                HashSet&lt;Node&gt; uncheckedNodes = IdToNode.Values.ToHashSet();</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                IdToNode.Values.ForEach(v =&gt; FindCycles(v, uncheckedNodes));</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordtype">void</span> invokeCallbacksForNode(Node node)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                {</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    <span class="keywordflow">if</span> (!prefabCollection.TryGet(node.Identifier, out var p) ||</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        !(p is IImplementsVariants&lt;T&gt; prefab)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    <span class="keywordflow">if</span> (!prefab.VariantOf.IsEmpty &amp;&amp; prefabCollection.TryGet(prefab.VariantOf, out T? parent)) { prefab.InheritFrom(parent!); }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    node.Inheritors.ForEach(invokeCallbacksForNode);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                RootNodes.ForEach(invokeCallbacksForNode);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleInheritance(Identifier prefabIdentifier)</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            =&gt; HandleInheritance(prefabIdentifier.ToEnumerable());</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleInheritance(IEnumerable&lt;Identifier&gt; identifiers)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">if</span> (!implementsVariants) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            InheritanceTreeCollection inheritanceTreeCollection = <span class="keyword">new</span> InheritanceTreeCollection(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            inheritanceTreeCollection.AddNodesAndInheritors(identifiers);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            inheritanceTreeCollection.InvokeCallbacks();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> implementsVariants;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> IsPrefabOverriddenByFile(T prefab)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span> topMostOverrideFile != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    topMostOverrideFile.<a class="code" href="class_barotrauma_1_1_content_file.html#a9efe1723f2c0f72a2e04217af4acb3eb">ContentPackage</a>.<a class="code" href="class_barotrauma_1_1_content_package.html#a977e27cc43d080c812379ad0fe468f4f">Index</a> &gt; prefab.ContentFile.ContentPackage.Index;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">private</span> <span class="keyword">class </span>InheritanceTreeCollection</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">  109</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">Node</a></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#af530205b66de9db5b5797ae309edd858">  111</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#af530205b66de9db5b5797ae309edd858">Node</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier) { <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> = identifier; }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aed6f21c213a6c820f841ca7586e15c60">  113</a></span>&#160;                <span class="keyword">public</span> readonly <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aed6f21c213a6c820f841ca7586e15c60">Identifier</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#a47b71a5857464dfcd86143f59d530f45">  114</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">Node</a>? <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#a47b71a5857464dfcd86143f59d530f45">Parent</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aa3cb294037a7ee53c47ae79c8f5b3998">  115</a></span>&#160;                <span class="keyword">public</span> readonly HashSet&lt;Node&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aa3cb294037a7ee53c47ae79c8f5b3998">Inheritors</a> = <span class="keyword">new</span> HashSet&lt;Node&gt;();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keyword">private</span> readonly <a class="code" href="class_barotrauma_1_1_prefab_collection.html">PrefabCollection&lt;T&gt;</a> prefabCollection;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">public</span> InheritanceTreeCollection(<a class="code" href="class_barotrauma_1_1_prefab_collection.html">PrefabCollection&lt;T&gt;</a> collection) { prefabCollection = collection; }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keyword">public</span> readonly Dictionary&lt;Identifier, Node&gt; IdToNode = <span class="keyword">new</span> Dictionary&lt;Identifier, Node&gt;();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keyword">public</span> readonly HashSet&lt;Node&gt; RootNodes = <span class="keyword">new</span> HashSet&lt;Node&gt;();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keyword">public</span> Node? AddNodeAndInheritors(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">if</span> (!prefabCollection.TryGet(<span class="keywordtype">id</span>, out T? prefab)) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordflow">if</span> (!IdToNode.TryGetValue(<span class="keywordtype">id</span>, out var node))</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    node = <span class="keyword">new</span> Node(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                    RootNodes.Add(node);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    IdToNode.Add(<span class="keywordtype">id</span>, node);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    <span class="comment">//if the node already exists, it already contains</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    <span class="comment">//all inheritors so let&#39;s just return this immediately</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    <span class="keywordflow">return</span> node;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                prefabCollection</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    .Cast&lt;IImplementsVariants&lt;T&gt;&gt;()</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    .Where(p =&gt; p.VariantOf == <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    .Cast&lt;T&gt;()</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    .ForEach(p =&gt;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        var inheritorNode = AddNodeAndInheritors(p.Identifier);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="keywordflow">if</span> (inheritorNode is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        RootNodes.Remove(inheritorNode);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        inheritorNode.Parent = node;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        node.Inheritors.Add(inheritorNode);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    });</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">return</span> node;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> FindCycles(in Node node, HashSet&lt;Node&gt; uncheckedNodes)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                HashSet&lt;Node&gt; checkedNodes = <span class="keyword">new</span> HashSet&lt;Node&gt;();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                List&lt;Node&gt; hierarchyPositions = <span class="keyword">new</span> List&lt;Node&gt;();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                Node? currNode = node;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    <span class="keywordflow">if</span> (!uncheckedNodes.Contains(currNode)) { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    <span class="keywordflow">if</span> (checkedNodes.Contains(currNode))</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        <span class="keywordtype">int</span> index = hierarchyPositions.IndexOf(currNode);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Inheritance cycle detected: &quot;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                            +<span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, hierarchyPositions.Skip(index).Select(n =&gt; n.Identifier)));</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    checkedNodes.Add(currNode);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    hierarchyPositions.Add(currNode);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    currNode = currNode.Parent;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                } <span class="keywordflow">while</span> (currNode != <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                uncheckedNodes.RemoveWhere(i =&gt; checkedNodes.Contains(i));</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> AddNodesAndInheritors(IEnumerable&lt;Identifier&gt; ids)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                =&gt; ids.ForEach(<span class="keywordtype">id</span> =&gt; AddNodeAndInheritors(<span class="keywordtype">id</span>));</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> InvokeCallbacks()</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                HashSet&lt;Node&gt; uncheckedNodes = IdToNode.Values.ToHashSet();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                IdToNode.Values.ForEach(v =&gt; FindCycles(v, uncheckedNodes));</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keywordtype">void</span> invokeCallbacksForNode(Node node)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    <span class="keywordflow">if</span> (!prefabCollection.TryGet(node.Identifier, out var p) ||</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        !(p is IImplementsVariants&lt;T&gt; prefab)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="keywordflow">if</span> (!prefab.VariantOf.IsEmpty &amp;&amp; prefabCollection.TryGet(prefab.VariantOf, out T? parent)) { prefab.InheritFrom(parent!); }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    node.Inheritors.ForEach(invokeCallbacksForNode);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                RootNodes.ForEach(invokeCallbacksForNode);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleInheritance(Identifier prefabIdentifier)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            =&gt; HandleInheritance(prefabIdentifier.ToEnumerable());</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keyword">public</span> IEnumerable&lt;KeyValuePair&lt;Identifier, PrefabSelector&lt;T&gt;&gt;&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2">AllPrefabs</a></div>
-<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2">  204</a></span>&#160;        {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordflow">foreach</span> (var prefab <span class="keywordflow">in</span> prefabs)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    yield <span class="keywordflow">return</span> prefab;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">public</span> T <span class="keyword">this</span>[<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier]</div>
-<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#af0c6e2d6dfa043189234eea993ce1c10">  220</a></span>&#160;        {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                var prefab = prefabs[identifier].ActivePrefab;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keywordflow">if</span> (prefab != <span class="keyword">null</span> &amp;&amp; !IsPrefabOverriddenByFile(prefab))</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                    <span class="keywordflow">return</span> prefab;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException($<span class="stringliteral">&quot;Prefab of identifier \&quot;{identifier}\&quot; cannot be returned because it was overridden by \&quot;{topMostOverrideFile!.Path}\&quot;&quot;</span>);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            }</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keyword">public</span> T <span class="keyword">this</span>[<span class="keywordtype">string</span> identifier]</div>
-<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a2c9b1c298e0150c46b6549b98a430edd">  234</a></span>&#160;        {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="comment">//this exists because I don&#39;t want implicit</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                <span class="comment">//string to Identifier conversion for the most</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <span class="comment">//part, but it&#39;s useful and fairly safe to do</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="comment">//in this particular instance</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">this</span>[identifier.ToIdentifier()];</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">  251</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">TryGet</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier, out T? result)</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">if</span> (prefabs.TryGetValue(identifier, out <a class="code" href="class_barotrauma_1_1_prefab_selector.html">PrefabSelector&lt;T&gt;</a>? selector))</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                result = selector!.ActivePrefab;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                result = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">TryGet</a>(<span class="keywordtype">string</span> identifier, out T? result)</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            =&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">TryGet</a>(identifier.ToIdentifier(), out result);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d">  269</a></span>&#160;        <span class="keyword">public</span> IEnumerable&lt;Identifier&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d">Keys</a> =&gt; prefabs.Keys;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">  277</a></span>&#160;        <span class="keyword">public</span> T? <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">Find</a>(Predicate&lt;T&gt; predicate)</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">foreach</span> (var kpv <span class="keywordflow">in</span> prefabs)</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                <span class="keywordflow">if</span> (kpv.Value.ActivePrefab is T p &amp;&amp; predicate(p))</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    <span class="keywordflow">return</span> p;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">  295</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier)</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">return</span> prefabs.ContainsKey(identifier);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(<span class="keywordtype">string</span> k) =&gt;  prefabs.ContainsKey(k.ToIdentifier());</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa">  308</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa">IsOverride</a>(T prefab)</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(prefab.Identifier))</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <span class="keywordflow">return</span> prefabs[prefab.Identifier].IsOverride(prefab);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9">  327</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9">Add</a>(T prefab, <span class="keywordtype">bool</span> isOverride)</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        {</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">if</span> (prefab.Identifier.IsEmpty)</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException($<span class="stringliteral">&quot;Prefab has no identifier!&quot;</span>);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            <span class="keywordtype">bool</span> selectorExists = prefabs.TryGetValue(prefab.Identifier, out <a class="code" href="class_barotrauma_1_1_prefab_selector.html">PrefabSelector&lt;T&gt;</a>? selector);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="comment">//Add to list</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            selector ??= <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_prefab_selector.html">PrefabSelector&lt;T&gt;</a>();</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordflow">if</span> (prefab is <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a> prefabWithUintIdentifier)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <span class="keywordflow">if</span> (!selector.IsEmpty)</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    prefabWithUintIdentifier.UintIdentifier = (selector.ActivePrefab as <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a>)!.UintIdentifier;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                }</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                    <span class="keyword">using</span> (MD5 md5 = MD5.Create())</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                        prefabWithUintIdentifier.UintIdentifier = ToolBox.IdentifierToUint32Hash(prefab.Identifier, md5);</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                        <span class="comment">//it&#39;s theoretically possible for two different values to generate the same hash, but the probability is astronomically small</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                        T? findCollision()</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                            =&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">Find</a>(p =&gt;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                p.Identifier != prefab.Identifier</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                &amp;&amp; p is <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a> otherPrefab</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                                &amp;&amp; otherPrefab.<a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html#aaee4313cc15d7d45c75da24296728de8">UintIdentifier</a> == prefabWithUintIdentifier.UintIdentifier);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        <span class="keywordflow">for</span> (T? collision = findCollision(); collision != <span class="keyword">null</span>; collision = findCollision())</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                            DebugConsole.ThrowError($<span class="stringliteral">&quot;Hashing collision when generating uint identifiers for {typeof(T).Name}: {prefab.Identifier} has the same UintIdentifier as {collision.Identifier} ({prefabWithUintIdentifier.UintIdentifier})&quot;</span>);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                            prefabWithUintIdentifier.UintIdentifier++;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        }</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    }</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                }</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            selector.Add(prefab, isOverride);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordflow">if</span> (!selectorExists)</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            {</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                <span class="keywordflow">if</span> (!prefabs.TryAdd(prefab.Identifier, selector)) { <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;Failed to add selector for \&quot;{prefab.Identifier}\&quot;&quot;</span>); }</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            OnAdd?.Invoke(prefab, isOverride);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            HandleInheritance(prefab.Identifier);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleInheritance(IEnumerable&lt;Identifier&gt; identifiers)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">if</span> (!implementsVariants) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            InheritanceTreeCollection inheritanceTreeCollection = <span class="keyword">new</span> InheritanceTreeCollection(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            inheritanceTreeCollection.AddNodesAndInheritors(identifiers);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            inheritanceTreeCollection.InvokeCallbacks();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keyword">public</span> IEnumerable&lt;KeyValuePair&lt;Identifier, PrefabSelector&lt;T&gt;&gt;&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2">AllPrefabs</a></div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2">  212</a></span>&#160;        {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">foreach</span> (var prefab <span class="keywordflow">in</span> prefabs)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    yield <span class="keywordflow">return</span> prefab;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">public</span> T <span class="keyword">this</span>[<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier]</div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#af0c6e2d6dfa043189234eea993ce1c10">  228</a></span>&#160;        {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                var prefab = prefabs[identifier].ActivePrefab;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">if</span> (prefab != <span class="keyword">null</span> &amp;&amp; !IsPrefabOverriddenByFile(prefab))</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    <span class="keywordflow">return</span> prefab;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException($<span class="stringliteral">&quot;Prefab of identifier \&quot;{identifier}\&quot; cannot be returned because it was overridden by \&quot;{topMostOverrideFile!.Path}\&quot;&quot;</span>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">public</span> T <span class="keyword">this</span>[<span class="keywordtype">string</span> identifier]</div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a2c9b1c298e0150c46b6549b98a430edd">  242</a></span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <span class="comment">//this exists because I don&#39;t want implicit</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                <span class="comment">//string to Identifier conversion for the most</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <span class="comment">//part, but it&#39;s useful and fairly safe to do</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="comment">//in this particular instance</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">this</span>[identifier.ToIdentifier()];</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">  259</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">TryGet</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier, out T? result)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">if</span> (prefabs.TryGetValue(identifier, out <a class="code" href="class_barotrauma_1_1_prefab_selector.html">PrefabSelector&lt;T&gt;</a>? selector))</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                result = selector!.ActivePrefab;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                result = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">TryGet</a>(<span class="keywordtype">string</span> identifier, out T? result)</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            =&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">TryGet</a>(identifier.ToIdentifier(), out result);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d">  277</a></span>&#160;        <span class="keyword">public</span> IEnumerable&lt;Identifier&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d">Keys</a> =&gt; prefabs.Keys;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">  285</a></span>&#160;        <span class="keyword">public</span> T? <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">Find</a>(Predicate&lt;T&gt; predicate)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">foreach</span> (var kpv <span class="keywordflow">in</span> prefabs)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="keywordflow">if</span> (kpv.Value.ActivePrefab is T p &amp;&amp; predicate(p))</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                    <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">  303</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">return</span> prefabs.ContainsKey(identifier);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(<span class="keywordtype">string</span> k) =&gt;  prefabs.ContainsKey(k.ToIdentifier());</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa">  316</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa">IsOverride</a>(T prefab)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(prefab.Identifier))</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="keywordflow">return</span> prefabs[prefab.Identifier].IsOverride(prefab);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9">  335</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9">Add</a>(T prefab, <span class="keywordtype">bool</span> isOverride)</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">if</span> (prefab.Identifier.IsEmpty)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException($<span class="stringliteral">&quot;Prefab has no identifier!&quot;</span>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordtype">bool</span> selectorExists = prefabs.TryGetValue(prefab.Identifier, out <a class="code" href="class_barotrauma_1_1_prefab_selector.html">PrefabSelector&lt;T&gt;</a>? selector);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="comment">//Add to list</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            selector ??= <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_prefab_selector.html">PrefabSelector&lt;T&gt;</a>();</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (prefab is <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a> prefabWithUintIdentifier)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordflow">if</span> (!selector.IsEmpty)</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    prefabWithUintIdentifier.UintIdentifier = (selector.ActivePrefab as <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a>)!.UintIdentifier;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                    <span class="keyword">using</span> (MD5 md5 = MD5.Create())</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        prefabWithUintIdentifier.UintIdentifier = ToolBox.IdentifierToUint32Hash(prefab.Identifier, md5);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                        <span class="comment">//it&#39;s theoretically possible for two different values to generate the same hash, but the probability is astronomically small</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        T? findCollision()</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                            =&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">Find</a>(p =&gt;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                p.Identifier != prefab.Identifier</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                                &amp;&amp; p is <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a> otherPrefab</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                                &amp;&amp; otherPrefab.<a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html#aaee4313cc15d7d45c75da24296728de8">UintIdentifier</a> == prefabWithUintIdentifier.UintIdentifier);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        <span class="keywordflow">for</span> (T? collision = findCollision(); collision != <span class="keyword">null</span>; collision = findCollision())</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                        {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                            DebugConsole.ThrowError($<span class="stringliteral">&quot;Hashing collision when generating uint identifiers for {typeof(T).Name}: {prefab.Identifier} has the same UintIdentifier as {collision.Identifier} ({prefabWithUintIdentifier.UintIdentifier})&quot;</span>);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                            prefabWithUintIdentifier.UintIdentifier++;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                    }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            selector.Add(prefab, isOverride);</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ad5b100de263556196e65cc061aa90204">  380</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ad5b100de263556196e65cc061aa90204">Remove</a>(T prefab)</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        {</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            OnRemove?.Invoke(prefab);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(prefab.Identifier)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <span class="keywordflow">if</span> (!prefabs[prefab.Identifier].Contains(prefab)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            prefabs[prefab.Identifier].Remove(prefab);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <span class="keywordflow">if</span> (prefabs[prefab.Identifier].IsEmpty)</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                prefabs.TryRemove(prefab.Identifier, out _);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            HandleInheritance(prefab.Identifier);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        }</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
-<div class="line"><a name="l00398"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296">  398</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296">RemoveByFile</a>(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> file)</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        {</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            HashSet&lt;Identifier&gt; clearedIdentifiers = <span class="keyword">new</span> HashSet&lt;Identifier&gt;();</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordflow">foreach</span> (var kpv <span class="keywordflow">in</span> prefabs)</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            {</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                kpv.Value.RemoveByFile(file, OnRemove);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                <span class="keywordflow">if</span> (kpv.Value.IsEmpty) { clearedIdentifiers.Add(kpv.Key); }</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            <span class="keywordflow">foreach</span> (var identifier <span class="keywordflow">in</span> clearedIdentifiers)</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            {</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                prefabs.TryRemove(identifier, out _);</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            }</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">RemoveOverrideFile</a>(file);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        }</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
-<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2">  418</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2">AddOverrideFile</a>(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> file)</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        {</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <span class="keywordflow">if</span> (!overrideFiles.Contains(file))</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                overrideFiles.Add(file);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            }</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            OnAddOverrideFile?.Invoke(file);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        }</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
-<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">  431</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">RemoveOverrideFile</a>(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> file)</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        {</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="keywordflow">if</span> (overrideFiles.Contains(file))</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            {</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                overrideFiles.Remove(file);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            }</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            OnRemoveOverrideFile?.Invoke(file);</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        }</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
-<div class="line"><a name="l00444"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e">  444</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e">SortAll</a>()</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        {</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            <span class="keywordflow">foreach</span> (var kvp <span class="keywordflow">in</span> prefabs)</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                kvp.Value.Sort();</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            }</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            topMostOverrideFile = overrideFiles.Any() ? overrideFiles.First(f1 =&gt; overrideFiles.All(f2 =&gt; f1.ContentPackage.Index &gt;= f2.ContentPackage.Index)) : <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            OnSort?.Invoke();</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            HandleInheritance(this.<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(p =&gt; p.Identifier));</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
-<div class="line"><a name="l00460"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">  460</a></span>&#160;        <span class="keyword">public</span> IEnumerator&lt;T&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">GetEnumerator</a>()</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        {</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">foreach</span> (var kpv <span class="keywordflow">in</span> prefabs)</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            {</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                var prefab = kpv.Value.ActivePrefab;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                <span class="keywordflow">if</span> (prefab != <span class="keyword">null</span> &amp;&amp; !IsPrefabOverriddenByFile(prefab))</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                {</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                    yield <span class="keywordflow">return</span> prefab;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                }</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            }</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        }</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        IEnumerator IEnumerable.GetEnumerator()</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        {</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">GetEnumerator</a>();</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        }</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    }</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;}</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="keywordflow">if</span> (!selectorExists)</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                <span class="keywordflow">if</span> (!prefabs.TryAdd(prefab.Identifier, selector)) { <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;Failed to add selector for \&quot;{prefab.Identifier}\&quot;&quot;</span>); }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            OnAdd?.Invoke(prefab, isOverride);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            HandleInheritance(prefab.Identifier);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ad5b100de263556196e65cc061aa90204">  388</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ad5b100de263556196e65cc061aa90204">Remove</a>(T prefab)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            OnRemove?.Invoke(prefab);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">ContainsKey</a>(prefab.Identifier)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <span class="keywordflow">if</span> (!prefabs[prefab.Identifier].Contains(prefab)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            prefabs[prefab.Identifier].Remove(prefab);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <span class="keywordflow">if</span> (prefabs[prefab.Identifier].IsEmpty)</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                prefabs.TryRemove(prefab.Identifier, out _);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            HandleInheritance(prefab.Identifier);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296">  406</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296">RemoveByFile</a>(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> file)</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        {</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            HashSet&lt;Identifier&gt; clearedIdentifiers = <span class="keyword">new</span> HashSet&lt;Identifier&gt;();</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">foreach</span> (var kpv <span class="keywordflow">in</span> prefabs)</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                kpv.Value.RemoveByFile(file, OnRemove);</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                <span class="keywordflow">if</span> (kpv.Value.IsEmpty) { clearedIdentifiers.Add(kpv.Key); }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <span class="keywordflow">foreach</span> (var identifier <span class="keywordflow">in</span> clearedIdentifiers)</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            {</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                prefabs.TryRemove(identifier, out _);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            }</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">RemoveOverrideFile</a>(file);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        }</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
+<div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2">  426</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2">AddOverrideFile</a>(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> file)</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (!overrideFiles.Contains(file))</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            {</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                overrideFiles.Add(file);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            OnAddOverrideFile?.Invoke(file);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">  439</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">RemoveOverrideFile</a>(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> file)</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        {</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            <span class="keywordflow">if</span> (overrideFiles.Contains(file))</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                overrideFiles.Remove(file);</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            }</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            OnRemoveOverrideFile?.Invoke(file);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00452"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e">  452</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e">SortAll</a>()</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            <span class="keywordflow">foreach</span> (var kvp <span class="keywordflow">in</span> prefabs)</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            {</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                kvp.Value.Sort();</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            }</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            topMostOverrideFile = overrideFiles.Any() ? overrideFiles.First(f1 =&gt; overrideFiles.All(f2 =&gt; f1.ContentPackage.Index &gt;= f2.ContentPackage.Index)) : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            OnSort?.Invoke();</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            HandleInheritance(this.<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(p =&gt; p.Identifier));</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
+<div class="line"><a name="l00468"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">  468</a></span>&#160;        <span class="keyword">public</span> IEnumerator&lt;T&gt; <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">GetEnumerator</a>()</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            <a class="code" href="class_barotrauma_1_1_prefab.html">Prefab</a>.<a class="code" href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">DisallowCallFromConstructor</a>();</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="keywordflow">foreach</span> (var kpv <span class="keywordflow">in</span> prefabs)</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            {</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                var prefab = kpv.Value.ActivePrefab;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <span class="keywordflow">if</span> (prefab != <span class="keyword">null</span> &amp;&amp; !IsPrefabOverriddenByFile(prefab))</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                {</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    yield <span class="keywordflow">return</span> prefab;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        IEnumerator IEnumerable.GetEnumerator()</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        {</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">GetEnumerator</a>();</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        }</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_barotrauma_1_1_content_file_html"><div class="ttname"><a href="class_barotrauma_1_1_content_file.html">Barotrauma.ContentFile</a></div><div class="ttdoc">Base class for content file types, which are loaded from filelist.xml via reflection....</div><div class="ttdef"><b>Definition:</b> <a href="_content_file_8cs_source.html#l00022">ContentFile.cs:22</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a416af0d96e99bcb6b16586eaa72a17d2"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2">Barotrauma.PrefabCollection.AllPrefabs</a></div><div class="ttdeci">IEnumerable&lt; KeyValuePair&lt; Identifier, PrefabSelector&lt; T &gt; &gt; &gt; AllPrefabs</div><div class="ttdoc">AllPrefabs exposes all prefabs instead of just the active ones.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00204">PrefabCollection.cs:204</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_a47b71a5857464dfcd86143f59d530f45"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#a47b71a5857464dfcd86143f59d530f45">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Parent</a></div><div class="ttdeci">Node? Parent</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00106">PrefabCollection.cs:106</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a416af0d96e99bcb6b16586eaa72a17d2"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2">Barotrauma.PrefabCollection.AllPrefabs</a></div><div class="ttdeci">IEnumerable&lt; KeyValuePair&lt; Identifier, PrefabSelector&lt; T &gt; &gt; &gt; AllPrefabs</div><div class="ttdoc">AllPrefabs exposes all prefabs instead of just the active ones.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00212">PrefabCollection.cs:212</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_a47b71a5857464dfcd86143f59d530f45"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#a47b71a5857464dfcd86143f59d530f45">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Parent</a></div><div class="ttdeci">Node? Parent</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00114">PrefabCollection.cs:114</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_file_html_a9efe1723f2c0f72a2e04217af4acb3eb"><div class="ttname"><a href="class_barotrauma_1_1_content_file.html#a9efe1723f2c0f72a2e04217af4acb3eb">Barotrauma.ContentFile.ContentPackage</a></div><div class="ttdeci">readonly ContentPackage ContentPackage</div><div class="ttdef"><b>Definition:</b> <a href="_content_file_8cs_source.html#l00111">ContentFile.cs:111</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html">Barotrauma.Identifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00011">Identifier.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_with_uint_identifier_html_aaee4313cc15d7d45c75da24296728de8"><div class="ttname"><a href="class_barotrauma_1_1_prefab_with_uint_identifier.html#aaee4313cc15d7d45c75da24296728de8">Barotrauma.PrefabWithUintIdentifier.UintIdentifier</a></div><div class="ttdeci">UInt32 UintIdentifier</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_with_uint_identifier_8cs_source.html#l00013">PrefabWithUintIdentifier.cs:13</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a9170f0b239f57c074e9ac767f26d33d2"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2">Barotrauma.PrefabCollection.AddOverrideFile</a></div><div class="ttdeci">void AddOverrideFile(ContentFile file)</div><div class="ttdoc">Adds an override file to the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00418">PrefabCollection.cs:418</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_af530205b66de9db5b5797ae309edd858"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#af530205b66de9db5b5797ae309edd858">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Node</a></div><div class="ttdeci">Node(Identifier identifier)</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00103">PrefabCollection.cs:103</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a7d86d49e1bf9390f2580b5cd89d7d86b"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">Barotrauma.PrefabCollection.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; T &gt; GetEnumerator()</div><div class="ttdoc">GetEnumerator implementation to enable foreach</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00460">PrefabCollection.cs:460</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_afb416b1c6ed19544b9650160754bb296"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296">Barotrauma.PrefabCollection.RemoveByFile</a></div><div class="ttdeci">void RemoveByFile(ContentFile file)</div><div class="ttdoc">Removes all prefabs that were loaded from a certain file.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00398">PrefabCollection.cs:398</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ab8586b6c79fa1c2f2ade27d70358e05c"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">Barotrauma.PrefabCollection.RemoveOverrideFile</a></div><div class="ttdeci">void RemoveOverrideFile(ContentFile file)</div><div class="ttdoc">Removes an override file from the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00431">PrefabCollection.cs:431</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a9170f0b239f57c074e9ac767f26d33d2"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2">Barotrauma.PrefabCollection.AddOverrideFile</a></div><div class="ttdeci">void AddOverrideFile(ContentFile file)</div><div class="ttdoc">Adds an override file to the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00426">PrefabCollection.cs:426</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_af530205b66de9db5b5797ae309edd858"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#af530205b66de9db5b5797ae309edd858">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Node</a></div><div class="ttdeci">Node(Identifier identifier)</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00111">PrefabCollection.cs:111</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a7d86d49e1bf9390f2580b5cd89d7d86b"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b">Barotrauma.PrefabCollection.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; T &gt; GetEnumerator()</div><div class="ttdoc">GetEnumerator implementation to enable foreach</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00468">PrefabCollection.cs:468</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_afb416b1c6ed19544b9650160754bb296"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296">Barotrauma.PrefabCollection.RemoveByFile</a></div><div class="ttdeci">void RemoveByFile(ContentFile file)</div><div class="ttdoc">Removes all prefabs that were loaded from a certain file.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00406">PrefabCollection.cs:406</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ab8586b6c79fa1c2f2ade27d70358e05c"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c">Barotrauma.PrefabCollection.RemoveOverrideFile</a></div><div class="ttdeci">void RemoveOverrideFile(ContentFile file)</div><div class="ttdoc">Removes an override file from the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00439">PrefabCollection.cs:439</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_html_aec5bf2621cfe285b6429639e8913c832"><div class="ttname"><a href="class_barotrauma_1_1_prefab.html#aec5bf2621cfe285b6429639e8913c832">Barotrauma.Prefab.DisallowCallFromConstructor</a></div><div class="ttdeci">static void DisallowCallFromConstructor()</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_8cs_source.html#l00019">Prefab.cs:19</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ac95e9ad8fb845022014a547ccb184502"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">Barotrauma.PrefabCollection.TryGet</a></div><div class="ttdeci">bool TryGet(Identifier identifier, out T? result)</div><div class="ttdoc">Returns true if a prefab with the identifier exists, false otherwise.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00251">PrefabCollection.cs:251</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ac95e9ad8fb845022014a547ccb184502"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502">Barotrauma.PrefabCollection.TryGet</a></div><div class="ttdeci">bool TryGet(Identifier identifier, out T? result)</div><div class="ttdoc">Returns true if a prefab with the identifier exists, false otherwise.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00259">PrefabCollection.cs:259</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html">Barotrauma.PrefabCollection</a></div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00012">PrefabCollection.cs:12</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a7479ddcd103bde1fd57a453e2df54c7e"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e">Barotrauma.PrefabCollection.SortAll</a></div><div class="ttdeci">void SortAll()</div><div class="ttdoc">Sorts all prefabs in the collection based on the content package load order.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00444">PrefabCollection.cs:444</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ad5b100de263556196e65cc061aa90204"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ad5b100de263556196e65cc061aa90204">Barotrauma.PrefabCollection.Remove</a></div><div class="ttdeci">void Remove(T prefab)</div><div class="ttdoc">Removes a prefab from the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00380">PrefabCollection.cs:380</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a7479ddcd103bde1fd57a453e2df54c7e"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e">Barotrauma.PrefabCollection.SortAll</a></div><div class="ttdeci">void SortAll()</div><div class="ttdoc">Sorts all prefabs in the collection based on the content package load order.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00452">PrefabCollection.cs:452</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ad5b100de263556196e65cc061aa90204"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ad5b100de263556196e65cc061aa90204">Barotrauma.PrefabCollection.Remove</a></div><div class="ttdeci">void Remove(T prefab)</div><div class="ttdoc">Removes a prefab from the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00388">PrefabCollection.cs:388</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_adc5be233d609d4cdda67cc00f63426a4"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#adc5be233d609d4cdda67cc00f63426a4">Barotrauma.PrefabCollection.PrefabCollection</a></div><div class="ttdeci">PrefabCollection()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00017">PrefabCollection.cs:17</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a388cf0a09baaf78236540e32bbaddd73"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a388cf0a09baaf78236540e32bbaddd73">Barotrauma.PrefabCollection.PrefabCollection</a></div><div class="ttdeci">PrefabCollection(Action&lt; T, bool &gt;? onAdd, Action&lt; T &gt;? onRemove, Action? onSort, Action&lt; ContentFile &gt;? onAddOverrideFile, Action&lt; ContentFile &gt;? onRemoveOverrideFile)</div><div class="ttdoc">Constructor with OnAdd and OnRemove callbacks provided.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00026">PrefabCollection.cs:26</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ab571282489292227cb1e108fc6903d9d"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d">Barotrauma.PrefabCollection.Keys</a></div><div class="ttdeci">IEnumerable&lt; Identifier &gt; Keys</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00269">PrefabCollection.cs:269</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ab571282489292227cb1e108fc6903d9d"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d">Barotrauma.PrefabCollection.Keys</a></div><div class="ttdeci">IEnumerable&lt; Identifier &gt; Keys</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00277">PrefabCollection.cs:277</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_with_uint_identifier_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_with_uint_identifier.html">Barotrauma.PrefabWithUintIdentifier</a></div><div class="ttdoc">Prefab that has a property serves as a deterministic hash of a prefab's identifier....</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_with_uint_identifier_8cs_source.html#l00011">PrefabWithUintIdentifier.cs:11</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node</a></div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00101">PrefabCollection.cs:101</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_aed6f21c213a6c820f841ca7586e15c60"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aed6f21c213a6c820f841ca7586e15c60">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Identifier</a></div><div class="ttdeci">readonly Identifier Identifier</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00105">PrefabCollection.cs:105</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node</a></div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00109">PrefabCollection.cs:109</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_aed6f21c213a6c820f841ca7586e15c60"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aed6f21c213a6c820f841ca7586e15c60">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Identifier</a></div><div class="ttdeci">readonly Identifier Identifier</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00113">PrefabCollection.cs:113</a></div></div>
 <div class="ttc" id="ainterface_barotrauma_1_1_i_implements_variants_html"><div class="ttname"><a href="interface_barotrauma_1_1_i_implements_variants.html">Barotrauma.IImplementsVariants</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_implements_variants_8cs_source.html#l00009">IImplementsVariants.cs:9</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_selector_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_selector.html">Barotrauma.PrefabSelector</a></div><div class="ttdef"><b>Definition:</b> <a href="_prefab_selector_8cs_source.html#l00010">PrefabSelector.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a5ce67eda3bf4f62412e2312a49fccab3"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">Barotrauma.PrefabCollection.Find</a></div><div class="ttdeci">T? Find(Predicate&lt; T &gt; predicate)</div><div class="ttdoc">Finds the first active prefab that returns true given the predicate, or null if no such prefab is fou...</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00277">PrefabCollection.cs:277</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_selector_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_selector.html">Barotrauma.PrefabSelector</a></div><div class="ttdef"><b>Definition:</b> <a href="_prefab_selector_8cs_source.html#l00012">PrefabSelector.cs:12</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a5ce67eda3bf4f62412e2312a49fccab3"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a5ce67eda3bf4f62412e2312a49fccab3">Barotrauma.PrefabCollection.Find</a></div><div class="ttdeci">T? Find(Predicate&lt; T &gt; predicate)</div><div class="ttdoc">Finds the first active prefab that returns true given the predicate, or null if no such prefab is fou...</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00285">PrefabCollection.cs:285</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:3</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ae3fc9503d6578720672750d5411f398b"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">Barotrauma.PrefabCollection.ContainsKey</a></div><div class="ttdeci">bool ContainsKey(Identifier identifier)</div><div class="ttdoc">Returns true if a prefab with the given identifier exists, false otherwise.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00295">PrefabCollection.cs:295</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a94dac546cdaec50be2e806e7a7f419aa"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa">Barotrauma.PrefabCollection.IsOverride</a></div><div class="ttdeci">bool IsOverride(T prefab)</div><div class="ttdoc">Determines whether a prefab is implemented as an override or not.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00308">PrefabCollection.cs:308</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a8f452a372eb66bd108361be8c138d189"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a8f452a372eb66bd108361be8c138d189">Barotrauma.PrefabCollection.PrefabCollection</a></div><div class="ttdeci">PrefabCollection(Action? onSort)</div><div class="ttdoc">Constructor with only the OnSort callback provided.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00043">PrefabCollection.cs:43</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_ae3fc9503d6578720672750d5411f398b"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b">Barotrauma.PrefabCollection.ContainsKey</a></div><div class="ttdeci">bool ContainsKey(Identifier identifier)</div><div class="ttdoc">Returns true if a prefab with the given identifier exists, false otherwise.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00303">PrefabCollection.cs:303</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a94dac546cdaec50be2e806e7a7f419aa"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa">Barotrauma.PrefabCollection.IsOverride</a></div><div class="ttdeci">bool IsOverride(T prefab)</div><div class="ttdoc">Determines whether a prefab is implemented as an override or not.</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00316">PrefabCollection.cs:316</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:3</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab.html">Barotrauma.Prefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_prefab_8cs_source.html#l00010">Prefab.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a02f3147cfa4bc1d257ebbfcbe3e299c9"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9">Barotrauma.PrefabCollection.Add</a></div><div class="ttdeci">void Add(T prefab, bool isOverride)</div><div class="ttdoc">Add a prefab to the collection. If not marked as an override, fail if a prefab with the same identifi...</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00327">PrefabCollection.cs:327</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_aa3cb294037a7ee53c47ae79c8f5b3998"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aa3cb294037a7ee53c47ae79c8f5b3998">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Inheritors</a></div><div class="ttdeci">readonly HashSet&lt; Node &gt; Inheritors</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00107">PrefabCollection.cs:107</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_html_a02f3147cfa4bc1d257ebbfcbe3e299c9"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9">Barotrauma.PrefabCollection.Add</a></div><div class="ttdeci">void Add(T prefab, bool isOverride)</div><div class="ttdoc">Add a prefab to the collection. If not marked as an override, fail if a prefab with the same identifi...</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00335">PrefabCollection.cs:335</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node_html_aa3cb294037a7ee53c47ae79c8f5b3998"><div class="ttname"><a href="class_barotrauma_1_1_prefab_collection_1_1_inheritance_tree_collection_1_1_node.html#aa3cb294037a7ee53c47ae79c8f5b3998">Barotrauma.PrefabCollection.InheritanceTreeCollection.Node.Inheritors</a></div><div class="ttdeci">readonly HashSet&lt; Node &gt; Inheritors</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_collection_8cs_source.html#l00115">PrefabCollection.cs:115</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html_a977e27cc43d080c812379ad0fe468f4f"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html#a977e27cc43d080c812379ad0fe468f4f">Barotrauma.ContentPackage.Index</a></div><div class="ttdeci">int Index</div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00053">ContentPackage.cs:53</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Barotrauma.InputType.Select</a></div><div class="ttdeci">@ Select</div></div>
 <!-- start footer part -->

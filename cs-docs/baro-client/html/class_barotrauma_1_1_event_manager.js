@@ -15,6 +15,7 @@ var class_barotrauma_1_1_event_manager =
     [ "EndRound", "class_barotrauma_1_1_event_manager.html#afbdd076abda18141430d2c63db28f863", null ],
     [ "GetFilesToPreload", "class_barotrauma_1_1_event_manager.html#a0cfbf56bda60a9b6e4d95f8f69c98ad8", null ],
     [ "PreloadContent", "class_barotrauma_1_1_event_manager.html#ab1fbcf2c6358d91822e7ed2d4c5efe0e", null ],
+    [ "RegisterEventHistory", "class_barotrauma_1_1_event_manager.html#a53681566cac0f9a8b8551529bb70caad", null ],
     [ "SkipEventCooldown", "class_barotrauma_1_1_event_manager.html#ad1dbc1e294aad095082d8e9384c6bff5", null ],
     [ "StartRound", "class_barotrauma_1_1_event_manager.html#a0c08183861dc104fc2b67a1fd737f690", null ],
     [ "Update", "class_barotrauma_1_1_event_manager.html#a9de153196034ba26f7d93f8389666690", null ],

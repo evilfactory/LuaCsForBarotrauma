@@ -1,7 +1,9 @@
 var struct_barotrauma_1_1_deconstruct_item =
 [
     [ "DeconstructItem", "struct_barotrauma_1_1_deconstruct_item.html#a1bd2f529884da6e0a892d106f4084d4b", null ],
+    [ "IsValidDeconstructor", "struct_barotrauma_1_1_deconstruct_item.html#a8db88762b1d6e63bd57ba068a4934203", null ],
     [ "ActivateButtonText", "struct_barotrauma_1_1_deconstruct_item.html#aeca69ee36cd5dd43f5d8f94335f18800", null ],
+    [ "Amount", "struct_barotrauma_1_1_deconstruct_item.html#a421261e7a6ad350a926521f67e238543", null ],
     [ "Commonness", "struct_barotrauma_1_1_deconstruct_item.html#a1fc69481bb6ac38118111632f58164fa", null ],
     [ "CopyCondition", "struct_barotrauma_1_1_deconstruct_item.html#a865d0fc3a337c2b45da1e2c1471baf9a", null ],
     [ "InfoText", "struct_barotrauma_1_1_deconstruct_item.html#a9a262ddd112d962b4b5b1d95d0861dfc", null ],

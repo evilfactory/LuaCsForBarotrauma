@@ -3,9 +3,10 @@ var class_barotrauma_1_1_anim_controller =
     [ "Animation", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555b", [
       [ "None", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555ba6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "Climbing", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555baaebc7dfafde486758efb13d78f7219fd", null ],
-      [ "UsingConstruction", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555ba3afdd662ee095ebc7863e3430b0d53ce", null ],
+      [ "UsingItem", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555ba314099e7ead66ff2f9c71792c9f186d1", null ],
       [ "Struggle", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555ba0c61f1ef05f6c845f1ba60d94e3bab8a", null ],
-      [ "CPR", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555ba4e3f4e3431c7d01a332f5be79ff5f138", null ]
+      [ "CPR", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555ba4e3f4e3431c7d01a332f5be79ff5f138", null ],
+      [ "UsingItemWhileClimbing", "class_barotrauma_1_1_anim_controller.html#acfc43e94b828505854f92ff70d43555bafbbb423b1a80840d7dafdffdbd196ffd", null ]
     ] ],
     [ "AnimController", "class_barotrauma_1_1_anim_controller.html#a9d7b6808ce41a81effdae751430a0de0", null ],
     [ "ApplyPose", "class_barotrauma_1_1_anim_controller.html#ae45f4e33ed3bba37ac34a341b57117f3", null ],
@@ -24,6 +25,10 @@ var class_barotrauma_1_1_anim_controller =
     [ "HandIK", "class_barotrauma_1_1_anim_controller.html#a0eb223272f61513daa2a8da503c22f5e", null ],
     [ "HoldItem", "class_barotrauma_1_1_anim_controller.html#a085fd563a0748e9946c0deb1bf50132c", null ],
     [ "Recreate", "class_barotrauma_1_1_anim_controller.html#a31694381bf012e5323a249cac1bc6d6d", null ],
+    [ "StartClimbing", "class_barotrauma_1_1_anim_controller.html#a7138912852d1cabfb5e5af65bb630495", null ],
+    [ "StartUsingItem", "class_barotrauma_1_1_anim_controller.html#a67b98bc4cb6e1d46a0bdbaf369bdcf5c", null ],
+    [ "StopClimbing", "class_barotrauma_1_1_anim_controller.html#a5a51316a0ae4ead764824922d60f93c5", null ],
+    [ "StopUsingItem", "class_barotrauma_1_1_anim_controller.html#ae470d1b58b356a944515eb273e52b91d", null ],
     [ "UpdateAnim", "class_barotrauma_1_1_anim_controller.html#a12ac76d5c9cf8898a326172dc5d3f913", null ],
     [ "UpdateUseItem", "class_barotrauma_1_1_anim_controller.html#ac6734f90ec579ae824fb4d80fb54c7ee", null ],
     [ "aiming", "class_barotrauma_1_1_anim_controller.html#a48a0fc8f4ac112047a56224520e42944", null ],
@@ -40,7 +45,9 @@ var class_barotrauma_1_1_anim_controller =
     [ "IsAboveFloor", "class_barotrauma_1_1_anim_controller.html#a9e2e512e71b157b36211997e50906efc", null ],
     [ "IsAiming", "class_barotrauma_1_1_anim_controller.html#a183ccb920aed3f967dfde66ab48100a3", null ],
     [ "IsAimingMelee", "class_barotrauma_1_1_anim_controller.html#a1707b4975fa9c9fca5358d42d5ce4a29", null ],
+    [ "IsClimbing", "class_barotrauma_1_1_anim_controller.html#a127ce4d965d687b8fe8e37e66b8ec6cc", null ],
     [ "IsMovingBackwards", "class_barotrauma_1_1_anim_controller.html#ac80c9fb28c811095ef0e9ff95e834bc3", null ],
+    [ "IsUsingItem", "class_barotrauma_1_1_anim_controller.html#acae2842fafa67f5945449434de330002", null ],
     [ "LockFlippingUntil", "class_barotrauma_1_1_anim_controller.html#a992ce71f8d6973383b2c4f198134c0c9", null ],
     [ "rightShoulder", "class_barotrauma_1_1_anim_controller.html#a1d1ef5cf30fa08863b6c2fb1040d0cdb", null ],
     [ "StepSize", "class_barotrauma_1_1_anim_controller.html#a26d0d9a444d87a5b8b4c45ef467d6948", null ],

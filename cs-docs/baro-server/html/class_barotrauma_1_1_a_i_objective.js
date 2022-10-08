@@ -7,6 +7,7 @@ var class_barotrauma_1_1_a_i_objective =
     [ "CalculatePriority", "class_barotrauma_1_1_a_i_objective.html#a15d146f0d4ef7101a8a1df5b2e342339", null ],
     [ "CanEquip", "class_barotrauma_1_1_a_i_objective.html#ae82ae85c8354ae652ed37a3101d5fd04", null ],
     [ "Check", "class_barotrauma_1_1_a_i_objective.html#a488a8c355df152713b5bc87a5b50e046", null ],
+    [ "CheckItemIdentifiersOrTags", "class_barotrauma_1_1_a_i_objective.html#aaedd7ce02a60edd9c98f95c45d38d3de", null ],
     [ "CheckObjectiveSpecific", "class_barotrauma_1_1_a_i_objective.html#abd3ffc52e417dc861a6ef664ee8a2807", null ],
     [ "GetActiveObjective", "class_barotrauma_1_1_a_i_objective.html#a6462dd2d3f50c74659795775004c9a6f", null ],
     [ "GetPriority", "class_barotrauma_1_1_a_i_objective.html#a6c13d92a98f6ac2b579bda989b9183f6", null ],

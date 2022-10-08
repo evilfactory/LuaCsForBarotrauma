@@ -147,6 +147,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a76e68dba716cb8c0d3e05e64c7cfc5ce"><td class="memItemLeft" align="right" valign="top">readonly Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a76e68dba716cb8c0d3e05e64c7cfc5ce">Size</a></td></tr>
 <tr class="separator:a76e68dba716cb8c0d3e05e64c7cfc5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadadceda11e30de6f5d3df89fbbc8fd7"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#aadadceda11e30de6f5d3df89fbbc8fd7">InitialDepth</a></td></tr>
+<tr class="memdesc:aadadceda11e30de6f5d3df89fbbc8fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The depth at which the level starts at, in in-game coordinates. E.g. if this was set to 100 000 (= 1000 m), the nav terminal would display the depth as 1000 meters at the top of the level.  <a href="class_barotrauma_1_1_level_data.html#aadadceda11e30de6f5d3df89fbbc8fd7">More...</a><br /></td></tr>
 <tr class="separator:aadadceda11e30de6f5d3df89fbbc8fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bdb0797b09539b4adf76abd360174ac"><td class="memItemLeft" align="right" valign="top">int?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a0bdb0797b09539b4adf76abd360174ac">MinMainPathWidth</a></td></tr>
 <tr class="memdesc:a0bdb0797b09539b4adf76abd360174ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determined during level generation based on the size of the submarine. Null if the level hasn't been generated.  <a href="class_barotrauma_1_1_level_data.html#a0bdb0797b09539b4adf76abd360174ac">More...</a><br /></td></tr>
@@ -167,9 +168,13 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a198308118ba7361d9a8702d2bdf3703f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a198308118ba7361d9a8702d2bdf3703f">EventsExhausted</a><code> [get, set]</code></td></tr>
+<tr class="separator:a198308118ba7361d9a8702d2bdf3703f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53033428cdb190d8a3669c13022f7574"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a53033428cdb190d8a3669c13022f7574">CrushDepth</a><code> [get]</code></td></tr>
+<tr class="memdesc:a53033428cdb190d8a3669c13022f7574"><td class="mdescLeft">&#160;</td><td class="mdescRight">The crush depth of a non-upgraded submarine in in-game coordinates. Note that this can be above the top of the level!  <a href="class_barotrauma_1_1_level_data.html#a53033428cdb190d8a3669c13022f7574">More...</a><br /></td></tr>
 <tr class="separator:a53033428cdb190d8a3669c13022f7574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66b0764da98f59e24d131201759b08dc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a66b0764da98f59e24d131201759b08dc">RealWorldCrushDepth</a><code> [get]</code></td></tr>
+<tr class="memdesc:a66b0764da98f59e24d131201759b08dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The crush depth of a non-upgraded submarine in "real world units" (meters from the surface of Europa). Note that this can be above the top of the level!  <a href="class_barotrauma_1_1_level_data.html#a66b0764da98f59e24d131201759b08dc">More...</a><br /></td></tr>
 <tr class="separator:a66b0764da98f59e24d131201759b08dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -249,7 +254,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00075">75</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00087">87</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -279,7 +284,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00093">93</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00105">105</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -301,7 +306,7 @@ Properties</h2></td></tr>
 
 <p>Instantiates level data using the properties of the connection (seed, size, difficulty) </p>
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00139">139</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00153">153</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -333,7 +338,7 @@ Properties</h2></td></tr>
 
 <p>Instantiates level data using the properties of the location </p>
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00174">174</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00188">188</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -384,7 +389,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00190">190</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00204">204</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -404,7 +409,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00232">232</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00246">246</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -469,7 +474,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00057">57</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00060">60</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -575,7 +580,9 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00050">50</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p>The depth at which the level starts at, in in-game coordinates. E.g. if this was set to 100 000 (= 1000 m), the nav terminal would display the depth as 1000 meters at the top of the level. </p>
+
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00053">53</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -635,7 +642,7 @@ Properties</h2></td></tr>
 
 <p>Determined during level generation based on the size of the submarine. Null if the level hasn't been generated. </p>
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00055">55</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00058">58</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -651,7 +658,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00058">58</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00061">61</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -724,7 +731,33 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00061">61</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p>The crush depth of a non-upgraded submarine in in-game coordinates. Note that this can be above the top of the level! </p>
+
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00069">69</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+
+</div>
+</div>
+<a id="a198308118ba7361d9a8702d2bdf3703f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a198308118ba7361d9a8702d2bdf3703f">&#9670;&nbsp;</a></span>EventsExhausted</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.LevelData.EventsExhausted</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00063">63</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -748,7 +781,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00068">68</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p>The crush depth of a non-upgraded submarine in "real world units" (meters from the surface of Europa). Note that this can be above the top of the level! </p>
+
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00080">80</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>

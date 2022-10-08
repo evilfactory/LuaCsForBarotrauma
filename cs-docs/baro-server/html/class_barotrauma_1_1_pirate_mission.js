@@ -1,7 +1,8 @@
 var class_barotrauma_1_1_pirate_mission =
 [
     [ "PirateMission", "class_barotrauma_1_1_pirate_mission.html#af68cb1c318941b81d2598937f3727f4d", null ],
-    [ "End", "class_barotrauma_1_1_pirate_mission.html#aee67dd917e8488bccb2d94b57b5e41d4", null ],
+    [ "DetermineCompleted", "class_barotrauma_1_1_pirate_mission.html#a5dde4c159e994d44666e7597f54f0592", null ],
+    [ "EndMissionSpecific", "class_barotrauma_1_1_pirate_mission.html#acaa294cbb049fa65fed35cc354cc85fc", null ],
     [ "GetReward", "class_barotrauma_1_1_pirate_mission.html#a40e8db3bc7231e01da2ad8978a68377a", null ],
     [ "ServerWriteInitial", "class_barotrauma_1_1_pirate_mission.html#aacbed2ac67271ded2592e930636f2045", null ],
     [ "SetLevel", "class_barotrauma_1_1_pirate_mission.html#a9d06feae89c4da99cdf85538493f8f70", null ],

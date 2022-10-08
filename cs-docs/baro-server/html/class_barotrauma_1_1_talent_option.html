@@ -93,17 +93,19 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_talent_option.htm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a2675eaa9d913bcefebfd6d48dc7bd5aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_talent_option.html#a2675eaa9d913bcefebfd6d48dc7bd5aa">HasTalent</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> talentIdentifier)</td></tr>
+<tr class="separator:a2675eaa9d913bcefebfd6d48dc7bd5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d74d8bc7a546874726c511f373f3e72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_talent_option.html#a8d74d8bc7a546874726c511f373f3e72">TalentOption</a> (<a class="el" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> talentOptionsElement, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> debugIdentifier)</td></tr>
 <tr class="separator:a8d74d8bc7a546874726c511f373f3e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ab4ab310830c447069d0278e0fafc2761"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_talent_prefab.html">TalentPrefab</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_talent_option.html#ab4ab310830c447069d0278e0fafc2761">Talents</a> =&gt; talentIdentifiers.Select(id =&gt; <a class="el" href="class_barotrauma_1_1_talent_prefab.html#a1c78e3e3b00be6bd0c6dcf83d9ddcb33">TalentPrefab.TalentPrefabs</a>[id])</td></tr>
-<tr class="separator:ab4ab310830c447069d0278e0fafc2761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66fb8b9be907b62483daa4400e4612d9"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_talent_option.html#a66fb8b9be907b62483daa4400e4612d9">TalentIdentifiers</a> =&gt; talentIdentifiers</td></tr>
+<tr class="separator:a66fb8b9be907b62483daa4400e4612d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00189">189</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00200">200</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8d74d8bc7a546874726c511f373f3e72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8d74d8bc7a546874726c511f373f3e72">&#9670;&nbsp;</a></span>TalentOption()</h2>
@@ -131,24 +133,45 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00196">196</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00211">211</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab4ab310830c447069d0278e0fafc2761"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4ab310830c447069d0278e0fafc2761">&#9670;&nbsp;</a></span>Talents</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2675eaa9d913bcefebfd6d48dc7bd5aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2675eaa9d913bcefebfd6d48dc7bd5aa">&#9670;&nbsp;</a></span>HasTalent()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_talent_prefab.html">TalentPrefab</a>&gt; Barotrauma.TalentOption.Talents =&gt; talentIdentifiers.Select(id =&gt; <a class="el" href="class_barotrauma_1_1_talent_prefab.html#a1c78e3e3b00be6bd0c6dcf83d9ddcb33">TalentPrefab.TalentPrefabs</a>[id])</td>
+          <td class="memname">bool Barotrauma.TalentOption.HasTalent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>talentIdentifier</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00194">194</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00206">206</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a66fb8b9be907b62483daa4400e4612d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66fb8b9be907b62483daa4400e4612d9">&#9670;&nbsp;</a></span>TalentIdentifiers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerable&lt;<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&gt; Barotrauma.TalentOption.TalentIdentifiers =&gt; talentIdentifiers</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_talent_tree_8cs_source.html#l00204">204</a> of file <a class="el" href="_talent_tree_8cs_source.html">TalentTree.cs</a>.</p>
 
 </div>
 </div>

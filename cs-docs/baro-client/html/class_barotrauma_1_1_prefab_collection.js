@@ -2,6 +2,7 @@ var class_barotrauma_1_1_prefab_collection =
 [
     [ "PrefabCollection", "class_barotrauma_1_1_prefab_collection.html#adc5be233d609d4cdda67cc00f63426a4", null ],
     [ "PrefabCollection", "class_barotrauma_1_1_prefab_collection.html#a388cf0a09baaf78236540e32bbaddd73", null ],
+    [ "PrefabCollection", "class_barotrauma_1_1_prefab_collection.html#a8f452a372eb66bd108361be8c138d189", null ],
     [ "Add", "class_barotrauma_1_1_prefab_collection.html#a02f3147cfa4bc1d257ebbfcbe3e299c9", null ],
     [ "AddOverrideFile", "class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2", null ],
     [ "ContainsKey", "class_barotrauma_1_1_prefab_collection.html#ae3fc9503d6578720672750d5411f398b", null ],

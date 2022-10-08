@@ -96,6 +96,8 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_path_finder.html'
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac87b8d5e34fb612d94fd718e01ef87d3"><td class="memItemLeft" align="right" valign="top">delegate? float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_path_finder.html#ac87b8d5e34fb612d94fd718e01ef87d3">GetNodePenaltyHandler</a> (<a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a> node, <a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a> prevNode)</td></tr>
 <tr class="separator:ac87b8d5e34fb612d94fd718e01ef87d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a131a2c29969defbd9387b9a3ad1b8936"><td class="memItemLeft" align="right" valign="top">delegate? float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_path_finder.html#a131a2c29969defbd9387b9a3ad1b8936">GetSingleNodePenaltyHandler</a> (<a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a> node)</td></tr>
+<tr class="separator:a131a2c29969defbd9387b9a3ad1b8936"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a2b66a6e068cbb4b0b5bb9c417851a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">PathFinder</a> (List&lt; <a class="el" href="class_barotrauma_1_1_way_point.html">WayPoint</a> &gt; wayPoints, bool isCharacter)</td></tr>
 <tr class="separator:a2a2b66a6e068cbb4b0b5bb9c417851a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4328930b62f866716dbc67bf70b0196"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a> (Vector2 start, Vector2 end, <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> hostSub=null, string errorMsgStr=null, float minGapSize=0, Func&lt; <a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a>, bool &gt; startNodeFilter=null, Func&lt; <a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a>, bool &gt; endNodeFilter=null, Func&lt; <a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a>, bool &gt; nodeFilter=null, bool checkVisibility=true)</td></tr>
@@ -105,6 +107,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a15827d00eb8fbe455443b5aa489c3db1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_path_finder.html#ac87b8d5e34fb612d94fd718e01ef87d3">GetNodePenaltyHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a></td></tr>
 <tr class="separator:a15827d00eb8fbe455443b5aa489c3db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa268a9c7c22cf71a550878e14c7998c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_path_finder.html#a131a2c29969defbd9387b9a3ad1b8936">GetSingleNodePenaltyHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_path_finder.html#aaa268a9c7c22cf71a550878e14c7998c">GetSingleNodePenalty</a></td></tr>
+<tr class="separator:aaa268a9c7c22cf71a550878e14c7998c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -143,7 +147,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00119">119</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00121">121</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
 
 </div>
 </div>
@@ -216,7 +220,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00171">171</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00173">173</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
 
 </div>
 </div>
@@ -248,6 +252,24 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a131a2c29969defbd9387b9a3ad1b8936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131a2c29969defbd9387b9a3ad1b8936">&#9670;&nbsp;</a></span>GetSingleNodePenaltyHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate? float Barotrauma.PathFinder.GetSingleNodePenaltyHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_path_node.html">PathNode</a>&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a15827d00eb8fbe455443b5aa489c3db1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15827d00eb8fbe455443b5aa489c3db1">&#9670;&nbsp;</a></span>GetNodePenalty</h2>
@@ -262,6 +284,22 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00111">111</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
+
+</div>
+</div>
+<a id="aaa268a9c7c22cf71a550878e14c7998c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa268a9c7c22cf71a550878e14c7998c">&#9670;&nbsp;</a></span>GetSingleNodePenalty</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_path_finder.html#a131a2c29969defbd9387b9a3ad1b8936">GetSingleNodePenaltyHandler</a> Barotrauma.PathFinder.GetSingleNodePenalty</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00113">113</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
 
 </div>
 </div>
@@ -286,7 +324,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00117">117</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00119">119</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
 
 </div>
 </div>
@@ -310,7 +348,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00116">116</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_path_finder_8cs_source.html#l00118">118</a> of file <a class="el" href="_path_finder_8cs_source.html">PathFinder.cs</a>.</p>
 
 </div>
 </div>

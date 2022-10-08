@@ -7,9 +7,9 @@ var class_barotrauma_1_1_abilities_1_1_character_ability_group =
     [ "abilityConditions", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a48f3d347925390349711f71976b17fc5", null ],
     [ "AbilityEffectType", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a2d5bb43b9a3dda6d7ba55c887441cd4c", null ],
     [ "characterAbilities", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#ac4f4db0b1d433e44d04c8ba8dc4ce0e2", null ],
+    [ "maxTriggerCount", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#af645e5cc4decb271376132309cefd953", null ],
     [ "timesTriggered", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a9104509c7bf3dcf10c925bd2e5af96ad", null ],
     [ "Character", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a63999d4c2dc4e7581730ab806b0b9476", null ],
     [ "CharacterTalent", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a28faee25ede0e76ce4ff47d66b3bd5a7", null ],
-    [ "IsActive", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#ab90965e3a2012515741a91ae1afbfabd", null ],
-    [ "maxTriggerCount", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a1c42cc1b92188f87d8cded9c313ed2a9", null ]
+    [ "IsActive", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#ab90965e3a2012515741a91ae1afbfabd", null ]
 ];

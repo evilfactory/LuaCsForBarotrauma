@@ -10,7 +10,7 @@ var class_barotrauma_1_1_lua_cs_networking =
     [ "HttpRequest", "class_barotrauma_1_1_lua_cs_networking.html#a983f79d9982fa0f23de24f3c0e4b35db", null ],
     [ "NetMessageReceived", "class_barotrauma_1_1_lua_cs_networking.html#a36199642730a7cf9a43955a4b27e12d9", null ],
     [ "Receive", "class_barotrauma_1_1_lua_cs_networking.html#afc5ceb24d33a4d3f70eddef8effe9bbd", null ],
-    [ "RemovePendingClient", "class_barotrauma_1_1_lua_cs_networking.html#ac9fa7332f564e26dcc4338d5d0411dcb", null ],
+    [ "RemovePendingClient", "class_barotrauma_1_1_lua_cs_networking.html#a5159b68462cc306c83ce8a7d61e9e32f", null ],
     [ "Send", "class_barotrauma_1_1_lua_cs_networking.html#a45dca85e21a83e1096ad112c417252f7", null ],
     [ "Start", "class_barotrauma_1_1_lua_cs_networking.html#aec73200b5166a7559b61f8f440bdb327", null ],
     [ "Start", "class_barotrauma_1_1_lua_cs_networking.html#aecbf1992c591b19c562f37bde2ff64e7", null ],

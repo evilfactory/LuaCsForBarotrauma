@@ -11,6 +11,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_custom_interface =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_custom_interface.html#aa87120bb111b2c32948279c8063c48a6", null ],
     [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_custom_interface.html#a3936020b2d6a284011a5e629f5e7752a", null ],
     [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_custom_interface.html#ac8d4ca5b0ff052245fa7f28cb9f280f0", null ],
+    [ "ElementStates", "class_barotrauma_1_1_items_1_1_components_1_1_custom_interface.html#a15671fd94141166787025f1e779d3798", null ],
     [ "Labels", "class_barotrauma_1_1_items_1_1_components_1_1_custom_interface.html#ab1944a789ef691b24632707953172064", null ],
     [ "Signals", "class_barotrauma_1_1_items_1_1_components_1_1_custom_interface.html#ac38474e413b248f7e5f941cd6fa025f5", null ]
 ];

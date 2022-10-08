@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_combat_mission =
 [
     [ "CombatMission", "class_barotrauma_1_1_combat_mission.html#acc5690d23015c27bd1b06de5102a8709", null ],
-    [ "End", "class_barotrauma_1_1_combat_mission.html#a523b9859ced3ce42679131b8707b33d4", null ],
+    [ "DetermineCompleted", "class_barotrauma_1_1_combat_mission.html#a51c38c5112da647d1a8e846775bbbef1", null ],
     [ "IsInWinningTeam", "class_barotrauma_1_1_combat_mission.html#a9ccba5faeeea4de599b3442e29c67314", null ],
     [ "StartMissionSpecific", "class_barotrauma_1_1_combat_mission.html#aec872836fc155700b709dfe840abc7f5", null ],
     [ "DisplayAsCompleted", "class_barotrauma_1_1_combat_mission.html#ab4383ab26a2b7667e2b5696f8c0d3599", null ],

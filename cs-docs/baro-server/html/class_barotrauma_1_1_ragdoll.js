@@ -28,7 +28,7 @@ var class_barotrauma_1_1_ragdoll =
     [ "RemoveLimb", "class_barotrauma_1_1_ragdoll.html#a83865dd2072de64cc081034829782d19", null ],
     [ "ResetJoints", "class_barotrauma_1_1_ragdoll.html#a0f4c7ed6067a9e0fe9576dee8683a092", null ],
     [ "ResetLimbs", "class_barotrauma_1_1_ragdoll.html#a29696ef7682c9d9bc9849ef165e8d74e", null ],
-    [ "ResetPullJoints", "class_barotrauma_1_1_ragdoll.html#a9aa821d2a21f82045c85c6aef817562a", null ],
+    [ "ResetPullJoints", "class_barotrauma_1_1_ragdoll.html#a2face6a396c79254f16407ed2090bcc8", null ],
     [ "ResetRagdoll", "class_barotrauma_1_1_ragdoll.html#ab5bf0f7ed219dd04eac798e1e0a6106f", null ],
     [ "RestoreTemporarilyDisabled", "class_barotrauma_1_1_ragdoll.html#a8a1fe3f8840be70c9209e3aebf006a8f", null ],
     [ "SaveRagdoll", "class_barotrauma_1_1_ragdoll.html#a80df089fa0122b4c156d80620c576abc", null ],

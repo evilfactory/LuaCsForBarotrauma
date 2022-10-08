@@ -16,7 +16,7 @@ var class_barotrauma_1_1_networking_1_1_server_log =
     ] ],
     [ "ServerLog", "class_barotrauma_1_1_networking_1_1_server_log.html#a88c22985db300766ef7c67d460ff61a9", null ],
     [ "AssignLogFrame", "class_barotrauma_1_1_networking_1_1_server_log.html#aeb919a5dbd385961bbde4e811fc44bda", null ],
-    [ "ClearFilter", "class_barotrauma_1_1_networking_1_1_server_log.html#ac7d6432fdee156118104637d1ab3e193", null ],
+    [ "ClearFilter", "class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a", null ],
     [ "CreateLogFrame", "class_barotrauma_1_1_networking_1_1_server_log.html#a423347bfb66daf0fb5ceb163dedbc424", null ],
     [ "Save", "class_barotrauma_1_1_networking_1_1_server_log.html#a5899185079bbfabef657c8ecda38e94a", null ],
     [ "WriteLine", "class_barotrauma_1_1_networking_1_1_server_log.html#a8e13e175694bbc3eaf326e7c4a6dc4d5", null ],

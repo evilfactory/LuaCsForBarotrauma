@@ -12,7 +12,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a6698bf639dc654e24dd8fb1d7d89435f", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a2518473398b50b62756b7b504276b7b0", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#accaf5df2ef8d16f796838d9fe1fb7f95", null ],
-    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#acd6673e5565cffbd7490182cae4b2bb9", null ],
+    [ "UseDirectionalPing", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a72a48a7163fb08306b7f432ca640e7b9", null ],
     [ "CenterOnTransducers", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a5521fe2c2c0c15786de9b637dda823b7", null ],
     [ "ConnectedTransducers", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aadc018eb79e72e8713b948bd33d73d8f", null ],
     [ "CurrentMode", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a5e3d00eee254e94220d472db4d7305d9", null ],

@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_crew_manager =
 [
     [ "ActiveOrder", "class_barotrauma_1_1_crew_manager_1_1_active_order.html", "class_barotrauma_1_1_crew_manager_1_1_active_order" ],
+    [ "MinimapNodeData", "struct_barotrauma_1_1_crew_manager_1_1_minimap_node_data.html", "struct_barotrauma_1_1_crew_manager_1_1_minimap_node_data" ],
     [ "CrewManager", "class_barotrauma_1_1_crew_manager.html#a5bd93b58549caed28bf7b073fe7ff4e1", null ],
     [ "CrewManager", "class_barotrauma_1_1_crew_manager.html#a8958887d8075ccc021c821c685aa21ed", null ],
     [ "AddCharacter", "class_barotrauma_1_1_crew_manager.html#ae8a0fe209ff7a7715bcde969e0b6c281", null ],
@@ -29,6 +30,7 @@ var class_barotrauma_1_1_crew_manager =
     [ "KillCharacter", "class_barotrauma_1_1_crew_manager.html#a72e82b6857191ee8d1c56fd044436816", null ],
     [ "LoadActiveOrders", "class_barotrauma_1_1_crew_manager.html#ac5a27325b25d346c67ba70568394b35c", null ],
     [ "RemoveCharacter", "class_barotrauma_1_1_crew_manager.html#a081474009dc9ed8c4ec47573934ece69", null ],
+    [ "RemoveCharacterFromCrewList", "class_barotrauma_1_1_crew_manager.html#a7fdb0775291791214708403bad6ddb14", null ],
     [ "RemoveCharacterInfo", "class_barotrauma_1_1_crew_manager.html#a31cc70af2c8bea251a70bb71cbc46910", null ],
     [ "RenameCharacter", "class_barotrauma_1_1_crew_manager.html#acfa9b3fa4fce2571c80f83bb3432f714", null ],
     [ "Reset", "class_barotrauma_1_1_crew_manager.html#a762c3806eba6fcb03f63e5f1ffae1449", null ],

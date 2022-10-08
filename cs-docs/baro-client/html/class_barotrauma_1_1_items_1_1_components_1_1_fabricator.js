@@ -20,6 +20,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_fabricator =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#ae3b722339201481313593cd35ef7e4e5", null ],
     [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#af5ef9a0300b064473105f060e5ff1119", null ],
     [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a98b44462dc320a2b0fc2e3c4a77f5978", null ],
+    [ "SelectedItemIdentifier", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a1580f535edc3cbe064e5741a4abbc366", null ],
     [ "ActivateButton", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#ad960a96fdb927009751d867132013234", null ],
     [ "CreateButtonText", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#aa578511d5e8cb43d394c9ca6bfd10d48", null ],
     [ "FabricationLimitReachedText", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a5c7d72ac1059c158b1245d24aaee8fe4", null ],

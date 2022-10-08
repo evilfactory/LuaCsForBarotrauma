@@ -165,6 +165,9 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 <li>LeftBehindDockingPortIDs
 : <a class="el" href="class_barotrauma_1_1_submarine_info.html#a3cbdba539b67dab0ec0cbecb546d7bee">Barotrauma.SubmarineInfo</a>
 </li>
+<li>LeftVisible
+: <a class="el" href="class_barotrauma_1_1_panel_animator.html#a8921e2bed4256722dc1b71d4abbcde91">Barotrauma.PanelAnimator</a>
+</li>
 <li>LegBendTorque
 : <a class="el" href="class_barotrauma_1_1_humanoid_anim_controller.html#aa13b6555bdf8ffd956b2aa05aa40a1ac">Barotrauma.HumanoidAnimController</a>
 </li>
@@ -173,6 +176,7 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_i_o_1_1_file_stream.html#a04121eb85add3a3c946f9cb674793ad3">Barotrauma.IO.FileStream</a>
 , <a class="el" href="struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node.html#a05357cbae0098db77d215c87d5cbb662">Barotrauma.Items.Components.ElectricalDischarger.Node</a>
 , <a class="el" href="class_barotrauma_1_1_localized_string.html#aac5ba809b00b4b50fcbfc0ad4c5f10ef">Barotrauma.LocalizedString</a>
+, <a class="el" href="struct_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_1_1_remote_peer_1_1_unauthed_message.html#a5776d3a51b87cf6e31184399958795c3">Barotrauma.Networking.SteamP2POwnerPeer.RemotePeer.UnauthedMessage</a>
 , <a class="el" href="class_barotrauma_1_1_rich_string.html#a2544ef0a4e9ccea86d3368f434af3804">Barotrauma.RichString</a>
 </li>
 <li>level
@@ -187,6 +191,10 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 </li>
 <li>LevelParams
 : <a class="el" href="class_barotrauma_1_1_level_generation_params.html#a15c53d1e2f3d20ec2af39945330cd51a">Barotrauma.LevelGenerationParams</a>
+, <a class="el" href="class_barotrauma_1_1_tutorial_prefab.html#afd5649d84721a9a7f4a189ab6c129157">Barotrauma.TutorialPrefab</a>
+</li>
+<li>LevelSeed
+: <a class="el" href="class_barotrauma_1_1_tutorial_prefab.html#ac6074594b8556879c2ec76f324f0e1d0">Barotrauma.TutorialPrefab</a>
 </li>
 <li>LevelTriggerElements
 : <a class="el" href="class_barotrauma_1_1_level_object_prefab.html#a5152c990b7c531d105d12021c26493d2">Barotrauma.LevelObjectPrefab</a>
@@ -246,8 +254,8 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#aceb1315bd3c7974fe4920729c92c8589">Barotrauma.GUIFont</a>
 , <a class="el" href="class_barotrauma_1_1_scalable_font.html#a1385d7f06a6db5962060fec3878d0704">Barotrauma.ScalableFont</a>
 </li>
-<li>LinkedTitle
-: <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a76c7ace2d1bc3c102ab43b12da54b4a5">Barotrauma.Tutorials.Tutorial.Segment</a>
+<li>LinkedTextBlock
+: <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#abf72ff972f9e4441e690a115ff97ad1e">Barotrauma.Tutorials.Tutorial.Segment</a>
 </li>
 <li>linkedTo
 : <a class="el" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">Barotrauma.MapEntity</a>
@@ -262,7 +270,7 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a622e8ff5f0d33908eec4c53a86f74434">Barotrauma.AfflictionPrefab</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_target.html#a8715830c4ddfe9df5c587d1b0fa5fbb6">Barotrauma.AITarget</a>
 , <a class="el" href="class_barotrauma_1_1_game_mode_preset.html#a2446822984059d3ee517f532004ae3ee">Barotrauma.GameModePreset</a>
-, <a class="el" href="class_barotrauma_1_1_networking_1_1_permission_preset.html#acbcfe1e776698d5e0e40d2d314d38851">Barotrauma.Networking.PermissionPreset</a>
+, <a class="el" href="class_barotrauma_1_1_networking_1_1_permission_preset.html#a257a03260457f03f7346eb0a809d10d3">Barotrauma.Networking.PermissionPreset</a>
 </li>
 <li>ListenIPAddress
 : <a class="el" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a14d7eed89a9f7fb6a84ecf0f45a045e0">Barotrauma.Networking.ServerSettings</a>
@@ -322,17 +330,11 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 <li>LoadSub
 : <a class="el" href="class_barotrauma_1_1_linked_submarine.html#a738fdbf19bf9dd392361cd7a8bd34a23">Barotrauma.LinkedSubmarine</a>
 </li>
-<li>LobbyID
-: <a class="el" href="class_barotrauma_1_1_networking_1_1_server_info.html#abc3978bb664223ee02be0e628cfb3f29">Barotrauma.Networking.ServerInfo</a>
+<li>Lobby
+: <a class="el" href="class_barotrauma_1_1_steam_p2_p_server_provider_1_1_data_source.html#ae6a0823e53486704f2614e7306b66eb7">Barotrauma.SteamP2PServerProvider.DataSource</a>
 </li>
 <li>local
 : <a class="el" href="struct_barotrauma_1_1_chat_box_1_1_chat_key_states.html#a8cf515975170f7058e7efcdc9a28fba2">Barotrauma.ChatBox.ChatKeyStates</a>
-</li>
-<li>localAdded
-: <a class="el" href="class_barotrauma_1_1_networking_1_1_white_list.html#a2570866489da5a53e8341268223072d4">Barotrauma.Networking.WhiteList</a>
-</li>
-<li>localEnabled
-: <a class="el" href="class_barotrauma_1_1_networking_1_1_white_list.html#a8d3378daa89ac42b1657ec546e811d2e">Barotrauma.Networking.WhiteList</a>
 </li>
 <li>LocalEndPoint
 : <a class="el" href="class_barotrauma_1_1_lua_cs_networking_1_1_incoming_http_request.html#a1891880c20bd1fc06fb11083c318cfd8">Barotrauma.LuaCsNetworking.IncomingHttpRequest</a>
@@ -340,14 +342,8 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 <li>LocalModsDir
 : <a class="el" href="class_barotrauma_1_1_content_package.html#ac9e5838f16298c44cd403d6973d10a99">Barotrauma.ContentPackage</a>
 </li>
-<li>localRangeBans
-: <a class="el" href="class_barotrauma_1_1_networking_1_1_ban_list.html#a2416f15645c1ec8ebe0ff9a2a0f17351">Barotrauma.Networking.BanList</a>
-</li>
-<li>localRemoved
-: <a class="el" href="class_barotrauma_1_1_networking_1_1_white_list.html#ac583665b8fb339d17aa609b5d257840b">Barotrauma.Networking.WhiteList</a>
-</li>
 <li>localRemovedBans
-: <a class="el" href="class_barotrauma_1_1_networking_1_1_ban_list.html#a5c0837b3944ec0895def645e76e3ca57">Barotrauma.Networking.BanList</a>
+: <a class="el" href="class_barotrauma_1_1_networking_1_1_ban_list.html#a7b50bc4c4fc22123e49809ee58cddd46">Barotrauma.Networking.BanList</a>
 </li>
 <li>Location
 : <a class="el" href="class_barotrauma_1_1_reputation.html#aa3bbeb798b03687ce805ab4d9e897af5">Barotrauma.Reputation</a>
@@ -373,6 +369,9 @@ $(document).ready(function(){initNavTree('functions_vars_l.html',''); initResiza
 </li>
 <li>LockFlippingUntil
 : <a class="el" href="class_barotrauma_1_1_anim_controller.html#a992ce71f8d6973383b2c4f198134c0c9">Barotrauma.AnimController</a>
+</li>
+<li>LockGuiFramePosition
+: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a81f8556873a0cfcae8af9f45d2249ffc">Barotrauma.Items.Components.ItemComponent</a>
 </li>
 <li>LockX
 : <a class="el" href="class_barotrauma_1_1_submarine.html#abed08123452e738b94aabee8eaa55fa8">Barotrauma.Submarine</a>

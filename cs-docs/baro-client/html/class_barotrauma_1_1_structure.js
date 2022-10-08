@@ -4,6 +4,7 @@ var class_barotrauma_1_1_structure =
     [ "AddDamage", "class_barotrauma_1_1_structure.html#a235ea93d901cd16850f5fca8d8169aa1", null ],
     [ "AddDamage", "class_barotrauma_1_1_structure.html#a01f76ac45e3ffc75178583b36d9ab682", null ],
     [ "AddUpgrade", "class_barotrauma_1_1_structure.html#a202727c695684b0d5ec379a400c3a974", null ],
+    [ "AllSectionBodiesDisabled", "class_barotrauma_1_1_structure.html#a844304115aa46ea1a527da124769455b", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_structure.html#a20e581e8dc7deffcc511e5a29c1197fb", null ],
     [ "Clone", "class_barotrauma_1_1_structure.html#afb2f7b6298f019e3d10fc39c690d0b9f", null ],
     [ "CreateEditingHUD", "class_barotrauma_1_1_structure.html#adf716fb2154659c10bf8dbbe09fbe0e2", null ],

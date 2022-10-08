@@ -197,181 +197,181 @@ $(document).ready(function(){initNavTree('_path_finder_8cs_source.html',''); ini
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">public</span> delegate <span class="keywordtype">float</span>? <a class="code" href="class_barotrauma_1_1_path_finder.html#ac87b8d5e34fb612d94fd718e01ef87d3">GetNodePenaltyHandler</a>(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node, <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> prevNode);</div>
 <div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">  111</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#ac87b8d5e34fb612d94fd718e01ef87d3">GetNodePenaltyHandler</a> <a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">private</span> readonly List&lt;PathNode&gt; nodes;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> isCharacter;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">  116</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">  117</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">ApplyPenaltyToOutsideNodes</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">  119</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">PathFinder</a>(List&lt;WayPoint&gt; wayPoints, <span class="keywordtype">bool</span> isCharacter)</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            var filtered = isCharacter ? wayPoints : wayPoints.FindAll(w =&gt; w.Submarine == <span class="keyword">null</span>);          </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            nodes = <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a>.<a class="code" href="class_barotrauma_1_1_path_node.html#a3fc820012dcc93c135e0940c425d75ed">GenerateNodes</a>(filtered, removeOrphans: <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_way_point.html">WayPoint</a> wp <span class="keywordflow">in</span> wayPoints)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                wp.<a class="code" href="class_barotrauma_1_1_way_point.html#ab0fc1da9eff766f327cf167a90f848f5">OnLinksChanged</a> += WaypointLinksChanged;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            sortedNodes = <span class="keyword">new</span> List&lt;PathNode&gt;(nodes.Count);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            this.isCharacter = isCharacter;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordtype">void</span> WaypointLinksChanged(<a class="code" href="class_barotrauma_1_1_way_point.html">WayPoint</a> wp)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>.<a class="code" href="class_barotrauma_1_1_submarine.html#a5019aa60eea868df1d77029a3d083352">Unloading</a>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            var node = nodes.Find(n =&gt; n.Waypoint == wp);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (node == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = node.connections.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="comment">//remove connection if the waypoint isn&#39;t connected anymore</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">if</span> (wp.<a class="code" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">linkedTo</a>.FirstOrDefault(l =&gt; l == node.connections[i].Waypoint) == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#aa4edcabc673ab3aa2709a9016bb4d039">connections</a>.RemoveAt(i);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    node.distances.RemoveAt(i);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; wp.<a class="code" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">linkedTo</a>.Count; i++)</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">if</span> (!(wp.<a class="code" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">linkedTo</a>[i] is WayPoint connected)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="comment">//already connected, continue</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keywordflow">if</span> (node.connections.Any(n =&gt; n.Waypoint == connected)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                var matchingNode = nodes.Find(n =&gt; n.Waypoint == connected);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">if</span> (matchingNode == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Waypoint connections were changed, no matching path node found in PathFinder&quot;</span>);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                node.connections.Add(matchingNode);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                node.distances.Add(Vector2.Distance(node.Position, matchingNode.Position));</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keyword">private</span> readonly List&lt;PathNode&gt; sortedNodes;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">public</span> delegate <span class="keywordtype">float</span>? <a class="code" href="class_barotrauma_1_1_path_finder.html#a131a2c29969defbd9387b9a3ad1b8936">GetSingleNodePenaltyHandler</a>(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node);</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#aaa268a9c7c22cf71a550878e14c7998c">  113</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a131a2c29969defbd9387b9a3ad1b8936">GetSingleNodePenaltyHandler</a> <a class="code" href="class_barotrauma_1_1_path_finder.html#aaa268a9c7c22cf71a550878e14c7998c">GetSingleNodePenalty</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">private</span> readonly List&lt;PathNode&gt; nodes;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> isCharacter;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">  118</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">  119</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">ApplyPenaltyToOutsideNodes</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">  121</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">PathFinder</a>(List&lt;WayPoint&gt; wayPoints, <span class="keywordtype">bool</span> isCharacter)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            var filtered = isCharacter ? wayPoints : wayPoints.FindAll(w =&gt; w.Submarine == <span class="keyword">null</span>);          </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            nodes = <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a>.<a class="code" href="class_barotrauma_1_1_path_node.html#a3fc820012dcc93c135e0940c425d75ed">GenerateNodes</a>(filtered, removeOrphans: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_way_point.html">WayPoint</a> wp <span class="keywordflow">in</span> wayPoints)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                wp.<a class="code" href="class_barotrauma_1_1_way_point.html#ab0fc1da9eff766f327cf167a90f848f5">OnLinksChanged</a> += WaypointLinksChanged;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            sortedNodes = <span class="keyword">new</span> List&lt;PathNode&gt;(nodes.Count);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            this.isCharacter = isCharacter;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">void</span> WaypointLinksChanged(<a class="code" href="class_barotrauma_1_1_way_point.html">WayPoint</a> wp)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>.<a class="code" href="class_barotrauma_1_1_submarine.html#a5019aa60eea868df1d77029a3d083352">Unloading</a>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            var node = nodes.Find(n =&gt; n.Waypoint == wp);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">if</span> (node == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = node.connections.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="comment">//remove connection if the waypoint isn&#39;t connected anymore</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">if</span> (wp.<a class="code" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">linkedTo</a>.FirstOrDefault(l =&gt; l == node.connections[i].Waypoint) == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#aa4edcabc673ab3aa2709a9016bb4d039">connections</a>.RemoveAt(i);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    node.distances.RemoveAt(i);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; wp.<a class="code" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">linkedTo</a>.Count; i++)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">if</span> (!(wp.<a class="code" href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">linkedTo</a>[i] is WayPoint connected)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="comment">//already connected, continue</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">if</span> (node.connections.Any(n =&gt; n.Waypoint == connected)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                var matchingNode = nodes.Find(n =&gt; n.Waypoint == connected);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">if</span> (matchingNode == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Waypoint connections were changed, no matching path node found in PathFinder&quot;</span>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                node.connections.Add(matchingNode);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                node.distances.Add(Vector2.Distance(node.Position, matchingNode.Position));</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">  171</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a> <a class="code" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a>(Vector2 start, Vector2 end, <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> hostSub = <span class="keyword">null</span>, <span class="keywordtype">string</span> errorMsgStr = <span class="keyword">null</span>, <span class="keywordtype">float</span> minGapSize = 0, Func&lt;PathNode, bool&gt; startNodeFilter = <span class="keyword">null</span>, Func&lt;PathNode, bool&gt; endNodeFilter = <span class="keyword">null</span>, Func&lt;PathNode, bool&gt; nodeFilter = <span class="keyword">null</span>, <span class="keywordtype">bool</span> checkVisibility = <span class="keyword">true</span>)</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a7ca6b9d1271d8eea4acd62263f7c4700">ResetBlocked</a>();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="comment">// First calculate the temp positions for all nodes.</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> = node.<a class="code" href="class_barotrauma_1_1_path_node.html#a355e1175c164620baaa7f8814a333fae">Position</a>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                var wpSub = node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.Submarine;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">if</span> (hostSub != <span class="keyword">null</span> &amp;&amp; wpSub == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    <span class="comment">// inside and targeting outside</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> -= hostSub.SimPosition;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (wpSub != <span class="keyword">null</span> &amp;&amp; hostSub != <span class="keyword">null</span> &amp;&amp; wpSub != hostSub)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="comment">// different subs</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> -= hostSub.SimPosition - wpSub.SimPosition;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (hostSub == <span class="keyword">null</span> &amp;&amp; wpSub != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    <span class="comment">// Outside and targeting inside </span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> += wpSub.SimPosition;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="comment">//sort nodes roughly according to distance</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            sortedNodes.Clear();</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> startNode = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="keywordtype">float</span> xDiff = Math.Abs(start.X - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.X);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordtype">float</span> yDiff = Math.Abs(start.Y - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.Y);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> &amp;&amp; !(node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.Submarine?.Info?.IsRuin ?? <span class="keyword">false</span>))</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    <span class="comment">//higher cost for vertical movement when inside the sub</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    <span class="keywordflow">if</span> (yDiff &gt; 1.0f &amp;&amp; node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#ab513304639215e33ff1736794867a0dc">Ladders</a> == <span class="keyword">null</span> &amp;&amp; node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#a1e61bea5688c0ec5f9e891615e4339d6">Stairs</a> == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                    {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                        yDiff += 10.0f;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> = xDiff + yDiff * 10.0f; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> = xDiff + yDiff;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="comment">//much higher cost to waypoints that are outside</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#aea65202e35025f25315f10f4c305b15a">CurrentHull</a> == <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">ApplyPenaltyToOutsideNodes</a>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="comment">//optimization: node extremely far, don&#39;t try to use it as a start node</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> &gt; (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> ? 100.0f : 800.0f))</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="comment">//optimization: node extremely close (&lt; 1 m). If it&#39;s valid, choose it as the start node and skip the more exhaustive search for the closest one</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> &lt; 1.0f)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="keywordflow">if</span> (IsValidStartNode(node))</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        startNode = node;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    }</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                }</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                <span class="comment">//prefer nodes that are closer to the end position</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> += (Math.Abs(end.X - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.X) + Math.Abs(end.Y - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.Y)) / 100.0f;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">while</span> (i &lt; sortedNodes.Count &amp;&amp; sortedNodes[i].TempDistance &lt; node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a>)</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    i++;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                }</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                sortedNodes.Insert(i, node);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="comment">//find the most suitable start node, starting from the ones that are the closest</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">if</span> (startNode == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> sortedNodes)</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                    <span class="keywordflow">if</span> (IsValidStartNode(node))</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        startNode = node;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">if</span> (startNode == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Pathfinding error, couldn&#39;t find a start node. &quot;</span>+ errorMsgStr, Color.DarkRed);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="comment">//sort nodes again, now based on distance from the end position</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            sortedNodes.Clear();</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> endNode = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> = Vector2.DistanceSquared(end, node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a>)</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">ApplyPenaltyToOutsideNodes</a>)</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <span class="comment">//much higher cost to waypoints that are outside</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                        <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#aea65202e35025f25315f10f4c305b15a">CurrentHull</a> == <span class="keyword">null</span>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    <span class="comment">//avoid stopping at a doorway</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#a4a2e16c781d1d95e1ec7caefbf2dfacb">ConnectedDoor</a> != <span class="keyword">null</span>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    <span class="comment">//avoid stopping at a ladder</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#ab513304639215e33ff1736794867a0dc">Ladders</a> != <span class="keyword">null</span>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">private</span> readonly List&lt;PathNode&gt; sortedNodes;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">  173</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a> <a class="code" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a>(Vector2 start, Vector2 end, <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> hostSub = <span class="keyword">null</span>, <span class="keywordtype">string</span> errorMsgStr = <span class="keyword">null</span>, <span class="keywordtype">float</span> minGapSize = 0, Func&lt;PathNode, bool&gt; startNodeFilter = <span class="keyword">null</span>, Func&lt;PathNode, bool&gt; endNodeFilter = <span class="keyword">null</span>, Func&lt;PathNode, bool&gt; nodeFilter = <span class="keyword">null</span>, <span class="keywordtype">bool</span> checkVisibility = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a7ca6b9d1271d8eea4acd62263f7c4700">ResetBlocked</a>();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="comment">// First calculate the temp positions for all nodes.</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> = node.<a class="code" href="class_barotrauma_1_1_path_node.html#a355e1175c164620baaa7f8814a333fae">Position</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                var wpSub = node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.Submarine;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="keywordflow">if</span> (hostSub != <span class="keyword">null</span> &amp;&amp; wpSub == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    <span class="comment">// inside and targeting outside</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> -= hostSub.SimPosition;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (wpSub != <span class="keyword">null</span> &amp;&amp; hostSub != <span class="keyword">null</span> &amp;&amp; wpSub != hostSub)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    <span class="comment">// different subs</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> -= hostSub.SimPosition - wpSub.SimPosition;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (hostSub == <span class="keyword">null</span> &amp;&amp; wpSub != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <span class="comment">// Outside and targeting inside </span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a> += wpSub.SimPosition;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="comment">//sort nodes roughly according to distance</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            sortedNodes.Clear();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> startNode = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordtype">float</span> xDiff = Math.Abs(start.X - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.X);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordtype">float</span> yDiff = Math.Abs(start.Y - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.Y);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> &amp;&amp; !(node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.Submarine?.Info?.IsRuin ?? <span class="keyword">false</span>))</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                    <span class="comment">//higher cost for vertical movement when inside the sub</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    <span class="keywordflow">if</span> (yDiff &gt; 1.0f &amp;&amp; node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#ab513304639215e33ff1736794867a0dc">Ladders</a> == <span class="keyword">null</span> &amp;&amp; node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#a1e61bea5688c0ec5f9e891615e4339d6">Stairs</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                        yDiff += 10.0f;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> = xDiff + yDiff * 10.0f; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> = xDiff + yDiff;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="comment">//much higher cost to waypoints that are outside</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#aea65202e35025f25315f10f4c305b15a">CurrentHull</a> == <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">ApplyPenaltyToOutsideNodes</a>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                <span class="comment">//optimization: node extremely far, don&#39;t try to use it as a start node</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> &gt; (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> ? 100.0f : 800.0f))</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <span class="comment">//optimization: node extremely close (&lt; 1 m). If it&#39;s valid, choose it as the start node and skip the more exhaustive search for the closest one</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> &lt; 1.0f)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    <span class="keywordflow">if</span> (IsValidStartNode(node))</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        startNode = node;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="comment">//prefer nodes that are closer to the end position</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> += (Math.Abs(end.X - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.X) + Math.Abs(end.Y - node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>.Y)) / 100.0f;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="keywordflow">while</span> (i &lt; sortedNodes.Count &amp;&amp; sortedNodes[i].TempDistance &lt; node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a>)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    i++;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                sortedNodes.Insert(i, node);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="comment">//find the most suitable start node, starting from the ones that are the closest</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keywordflow">if</span> (startNode == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> sortedNodes)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    <span class="keywordflow">if</span> (IsValidStartNode(node))</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        startNode = node;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">if</span> (startNode == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Pathfinding error, couldn&#39;t find a start node. &quot;</span>+ errorMsgStr, Color.DarkRed);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="comment">//sort nodes again, now based on distance from the end position</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            sortedNodes.Clear();</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> endNode = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> = Vector2.DistanceSquared(end, node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a>)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">ApplyPenaltyToOutsideNodes</a>)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                        <span class="comment">//much higher cost to waypoints that are outside</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#aea65202e35025f25315f10f4c305b15a">CurrentHull</a> == <span class="keyword">null</span>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    <span class="comment">//avoid stopping at a doorway</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#a4a2e16c781d1d95e1ec7caefbf2dfacb">ConnectedDoor</a> != <span class="keyword">null</span>) { node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> *= 10.0f; }</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                }</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="comment">//optimization: node extremely far (&gt; 100m / 800 m) from the end position, don&#39;t try to use it as an end node</span></div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">TempDistance</a> &gt; (<a class="code" href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">InsideSubmarine</a> ? 100.0f * 100.0f : 800.0f * 800.0f))</div>
@@ -413,217 +413,192 @@ $(document).ready(function(){initNavTree('_path_finder_8cs_source.html',''); ini
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a>(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            var path = <a class="code" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a>(startNode, endNode, nodeFilter, errorMsgStr, minGapSize);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <span class="keywordflow">return</span> path;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordtype">bool</span> IsWaypointVisible(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node, Vector2 rayStart, <span class="keywordtype">bool</span> checkVisibility = <span class="keyword">true</span>)</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="comment">//if searching for a path inside the sub, make sure the waypoint is visible</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                <span class="keywordflow">if</span> (checkVisibility &amp;&amp; isCharacter)</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    var body = <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>.<a class="code" href="class_barotrauma_1_1_submarine.html#af0021304c59f91a731965107f9a86837">PickBody</a>(rayStart, node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>,</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                        collisionCategory: Physics.CollisionWall | Physics.CollisionLevel | Physics.CollisionStairs);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    <span class="keywordflow">if</span> (body != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        <span class="keywordflow">if</span> (body.UserData is <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        <span class="keywordflow">if</span> (body.UserData is <a class="code" href="class_barotrauma_1_1_structure.html">Structure</a> s &amp;&amp; !s.<a class="code" href="class_barotrauma_1_1_structure.html#a53daa2f7d2e0e944cd1a38971f206b49">IsPlatform</a>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                        <span class="keywordflow">if</span> (body.UserData is <a class="code" href="class_barotrauma_1_1_item.html">Item</a> &amp;&amp; body.FixtureList[0].CollisionCategories.HasFlag(Physics.CollisionWall)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordtype">bool</span> IsValidStartNode(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node)</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordflow">if</span> (nodeFilter != <span class="keyword">null</span> &amp;&amp; !nodeFilter(node)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                <span class="keywordflow">if</span> (startNodeFilter != <span class="keyword">null</span> &amp;&amp; !startNodeFilter(node)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#afafa06ff92a6c9505e2ae93419bd7734">isObstructed</a>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                <span class="comment">// Always check the visibility for the start node</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="keywordflow">if</span> (!IsWaypointVisible(node, start)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a856e527bef24e01fafc4e4a3c348e8c2">IsBlocked</a>()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">ConnectedGap</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                {</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    <span class="keywordflow">if</span> (!CanFitThroughGap(node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">ConnectedGap</a>, minGapSize)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            }</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="keywordtype">bool</span> IsValidEndNode(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node)</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                <span class="keywordflow">if</span> (nodeFilter != <span class="keyword">null</span> &amp;&amp; !nodeFilter(node)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                <span class="keywordflow">if</span> (endNodeFilter != <span class="keyword">null</span> &amp;&amp; !endNodeFilter(node)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#afafa06ff92a6c9505e2ae93419bd7734">isObstructed</a>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                <span class="comment">// Only check the visibility for the end node when allowed (fix leaks)</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                <span class="keywordflow">if</span> (!IsWaypointVisible(node, end, checkVisibility: checkVisibility)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a856e527bef24e01fafc4e4a3c348e8c2">IsBlocked</a>()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">ConnectedGap</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                    <span class="keywordflow">if</span> (!CanFitThroughGap(node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">ConnectedGap</a>, minGapSize)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                }</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        }</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a> <a class="code" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a>(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> start, <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> end, Func&lt;PathNode, bool&gt; filter = <span class="keyword">null</span>, <span class="keywordtype">string</span> errorMsgStr = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">float</span> minGapSize = 0)</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        {</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordflow">if</span> (start == end)</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                var path1 = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a>();</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                path1.AddNode(start.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                <span class="keywordflow">return</span> path1;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            }</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <span class="keywordflow">foreach</span> (PathNode node <span class="keywordflow">in</span> nodes)</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                node.Parent = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                node.state = 0;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                node.F = 0.0f;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                node.G = 0.0f;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                node.H = 0.0f;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a>(startNode, endNode, nodeFilter, errorMsgStr, minGapSize);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordtype">bool</span> IsValidStartNode(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node) =&gt; IsValidNode(node, (isCharacter, start), startNodeFilter);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <span class="keywordtype">bool</span> IsValidEndNode(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node) =&gt; IsValidNode(node, (isCharacter &amp;&amp; checkVisibility, end), endNodeFilter);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordtype">bool</span> IsValidNode(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> node, (<span class="keywordtype">bool</span> check, Vector2 start) visibilityCheck, Func&lt;PathNode, bool&gt; extraFilter)</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                <span class="keywordflow">if</span> (nodeFilter != <span class="keyword">null</span> &amp;&amp; !nodeFilter(node)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                <span class="keywordflow">if</span> (extraFilter != <span class="keyword">null</span> &amp;&amp; !extraFilter(node)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#aaa268a9c7c22cf71a550878e14c7998c">GetSingleNodePenalty</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_barotrauma_1_1_path_finder.html#aaa268a9c7c22cf71a550878e14c7998c">GetSingleNodePenalty</a>(node) == <span class="keyword">null</span>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">ConnectedGap</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    <span class="keywordflow">if</span> (!CanFitThroughGap(node.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>.<a class="code" href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">ConnectedGap</a>, minGapSize)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordflow">if</span> (visibilityCheck.check)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    var body = <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>.<a class="code" href="class_barotrauma_1_1_submarine.html#af0021304c59f91a731965107f9a86837">PickBody</a>(visibilityCheck.start, node.<a class="code" href="class_barotrauma_1_1_path_node.html#a24a33ea704a6d88ae62bfc06b7cafe63">TempPosition</a>,</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        collisionCategory: Physics.CollisionWall | Physics.CollisionLevel | Physics.CollisionStairs);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                    <span class="keywordflow">if</span> (body != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                    {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        <span class="keywordflow">if</span> (body.UserData is <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                        <span class="keywordflow">if</span> (body.UserData is <a class="code" href="class_barotrauma_1_1_structure.html">Structure</a> s &amp;&amp; !s.<a class="code" href="class_barotrauma_1_1_structure.html#a53daa2f7d2e0e944cd1a38971f206b49">IsPlatform</a>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                        <span class="keywordflow">if</span> (body.UserData is <a class="code" href="class_barotrauma_1_1_item.html">Item</a> &amp;&amp; body.FixtureList[0].CollisionCategories.HasFlag(Physics.CollisionWall)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a> <a class="code" href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">FindPath</a>(<a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> start, <a class="code" href="class_barotrauma_1_1_path_node.html">PathNode</a> end, Func&lt;PathNode, bool&gt; filter = <span class="keyword">null</span>, <span class="keywordtype">string</span> errorMsgStr = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">float</span> minGapSize = 0)</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">if</span> (start == end)</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                var path1 = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steering_path.html">SteeringPath</a>();</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                path1.AddNode(start.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                <span class="keywordflow">return</span> path1;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordflow">foreach</span> (PathNode node <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                node.Parent = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                node.state = 0;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                node.F = 0.0f;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                node.G = 0.0f;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                node.H = 0.0f;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            }</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            start.<a class="code" href="class_barotrauma_1_1_path_node.html#ac829a571fe296f742f99a2774a743316">state</a> = 1;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                PathNode currNode = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                <span class="keywordtype">float</span> dist = <span class="keywordtype">float</span>.MaxValue;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                <span class="keywordflow">foreach</span> (PathNode node <span class="keywordflow">in</span> nodes)</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                    <span class="keywordflow">if</span> (node.state != 1 || node.F &gt; dist) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    <span class="keywordflow">if</span> (filter != <span class="keyword">null</span> &amp;&amp; !filter(node)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    <span class="keywordflow">if</span> (node.Waypoint.ConnectedGap != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                        <span class="keywordflow">if</span> (!CanFitThroughGap(node.Waypoint.ConnectedGap, minGapSize)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    dist = node.F;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    currNode = node;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                <span class="keywordflow">if</span> (currNode == <span class="keyword">null</span> || currNode == end) { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                currNode.state = 2;</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            start.<a class="code" href="class_barotrauma_1_1_path_node.html#ac829a571fe296f742f99a2774a743316">state</a> = 1;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            {</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                PathNode currNode = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                <span class="keywordtype">float</span> dist = <span class="keywordtype">float</span>.MaxValue;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                <span class="keywordflow">foreach</span> (PathNode node <span class="keywordflow">in</span> nodes)</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                {</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                    <span class="keywordflow">if</span> (node.state != 1 || node.F &gt; dist) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                    <span class="keywordflow">if</span> (isCharacter &amp;&amp; node.Waypoint.isObstructed) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    <span class="keywordflow">if</span> (filter != <span class="keyword">null</span> &amp;&amp; !filter(node)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                    <span class="keywordflow">if</span> (node.IsBlocked()) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    <span class="keywordflow">if</span> (node.Waypoint.ConnectedGap != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    {</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                        <span class="keywordflow">if</span> (!CanFitThroughGap(node.Waypoint.ConnectedGap, minGapSize)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                    }              </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                    dist = node.F;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    currNode = node;                    </div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                <span class="keywordflow">if</span> (currNode == <span class="keyword">null</span> || currNode == end) { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; currNode.connections.Count; i++)</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                    PathNode nextNode = currNode.connections[i];</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    <span class="comment">//a node that hasn&#39;t been searched yet</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                    <span class="keywordflow">if</span> (nextNode.state == 0)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                    {</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                        nextNode.H = Vector2.Distance(nextNode.Position, end.<a class="code" href="class_barotrauma_1_1_path_node.html#a355e1175c164620baaa7f8814a333fae">Position</a>);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                        <span class="keywordtype">float</span> penalty = 0.0f;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                        {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                            <span class="keywordtype">float</span>? nodePenalty = <a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a>(currNode, nextNode);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                            <span class="keywordflow">if</span> (nodePenalty == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                            {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                                nextNode.state = -1;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                            }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                            penalty = nodePenalty.Value;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                        }</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                currNode.state = 2;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; currNode.connections.Count; i++)</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                    PathNode nextNode = currNode.connections[i];</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                    </div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    <span class="comment">//a node that hasn&#39;t been searched yet</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                    <span class="keywordflow">if</span> (nextNode.state == 0)</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                    {</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        nextNode.H = Vector2.Distance(nextNode.Position, end.<a class="code" href="class_barotrauma_1_1_path_node.html#a355e1175c164620baaa7f8814a333fae">Position</a>);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                        <span class="keywordtype">float</span> penalty = 0.0f;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                            <span class="keywordtype">float</span>? nodePenalty = <a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a>(currNode, nextNode);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                            <span class="keywordflow">if</span> (nodePenalty == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                            {</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                                nextNode.state = -1;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                            }</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                            penalty = nodePenalty.Value;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                        }</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                        nextNode.G = currNode.G + currNode.distances[i] + penalty;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                        nextNode.F = nextNode.G + nextNode.H;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                        nextNode.Parent = currNode;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                        nextNode.state = 1;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                    }</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                    <span class="comment">//node that has been searched</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nextNode.state == 1 || nextNode.state == -1)</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                    {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                        <span class="keywordtype">float</span> tempG = currNode.G + currNode.distances[i];</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                        </div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                        {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                            <span class="keywordtype">float</span>? nodePenalty = <a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a>(currNode, nextNode);</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                            <span class="keywordflow">if</span> (nodePenalty == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                            tempG += nodePenalty.Value;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                        }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                        <span class="comment">//only use if this new route is better than the </span></div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                        <span class="comment">//route the node was a part of</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                        <span class="keywordflow">if</span> (tempG &lt; nextNode.G)</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                        {</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                            nextNode.G = tempG;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                            nextNode.F = nextNode.G + nextNode.H;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                            nextNode.Parent = currNode;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                            nextNode.state = 1;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                        }</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                    }</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                }</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            }</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="keywordflow">if</span> (end.<a class="code" href="class_barotrauma_1_1_path_node.html#ac829a571fe296f742f99a2774a743316">state</a> == 0 || end.<a class="code" href="class_barotrauma_1_1_path_node.html#a35050435f5d801eb8f08a327b67b6efc">Parent</a> == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            {</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                        nextNode.G = currNode.G + currNode.distances[i] + penalty;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                        nextNode.F = nextNode.G + nextNode.H;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                        nextNode.Parent = currNode;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                        nextNode.state = 1;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                    }</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                    <span class="comment">//node that has been searched</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nextNode.state == 1 || nextNode.state == -1)</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                    {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                        <span class="keywordtype">float</span> tempG = currNode.G + currNode.distances[i];</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                        {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                            <span class="keywordtype">float</span>? nodePenalty = <a class="code" href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">GetNodePenalty</a>(currNode, nextNode);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                            <span class="keywordflow">if</span> (nodePenalty == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                            tempG += nodePenalty.Value;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                        }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                        <span class="comment">//only use if this new route is better than the </span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                        <span class="comment">//route the node was a part of</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                        <span class="keywordflow">if</span> (tempG &lt; nextNode.G)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                        {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                            nextNode.G = tempG;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                            nextNode.F = nextNode.G + nextNode.H;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                            nextNode.Parent = currNode;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                            nextNode.state = 1;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                        }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                }</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            <span class="keywordflow">if</span> (end.<a class="code" href="class_barotrauma_1_1_path_node.html#ac829a571fe296f742f99a2774a743316">state</a> == 0 || end.<a class="code" href="class_barotrauma_1_1_path_node.html#a35050435f5d801eb8f08a327b67b6efc">Parent</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                <span class="keywordflow">if</span> (errorMsgStr != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                {</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                    DebugConsole.NewMessage(<span class="stringliteral">&quot;Path not found. &quot;</span> + errorMsgStr, Color.Yellow);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> SteeringPath(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            }</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            SteeringPath path = <span class="keyword">new</span> SteeringPath();</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            List&lt;WayPoint&gt; finalPath = <span class="keyword">new</span> List&lt;WayPoint&gt;();</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            PathNode pathNode = end;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">while</span> (pathNode != start &amp;&amp; pathNode != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                finalPath.Add(pathNode.Waypoint);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                <span class="comment">//(there was one bug report that seems to have been caused by this loop never terminating:</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                <span class="comment">//couldn&#39;t reproduce or figure out what caused it, but here&#39;s a workaround that prevents the game from crashing in case it happens again)</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                <span class="comment">//should be fixed now, was most likely caused by the parent fields of the nodes not being cleared before starting the pathfinding</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                <span class="keywordflow">if</span> (finalPath.Count &gt; nodes.Count)</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                {</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <span class="keywordflow">if</span> (errorMsgStr != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                {</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    DebugConsole.NewMessage(<span class="stringliteral">&quot;Path not found. &quot;</span> + errorMsgStr, Color.Yellow);</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Pathfinding error: constructing final path failed&quot;</span>);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> SteeringPath(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                }</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> SteeringPath(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            }</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160; </div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            SteeringPath path = <span class="keyword">new</span> SteeringPath();</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            List&lt;WayPoint&gt; finalPath = <span class="keyword">new</span> List&lt;WayPoint&gt;();</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            PathNode pathNode = end;</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            <span class="keywordflow">while</span> (pathNode != start &amp;&amp; pathNode != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            {</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                finalPath.Add(pathNode.Waypoint);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                path.Cost += pathNode.F;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                pathNode = pathNode.Parent;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            finalPath.Add(start.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = finalPath.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            {</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                path.AddNode(finalPath[i]);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            }</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            System.Diagnostics.Debug.Assert(finalPath.Count == path.Nodes.Count);</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                <span class="comment">//(there was one bug report that seems to have been caused by this loop never terminating:</span></div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                <span class="comment">//couldn&#39;t reproduce or figure out what caused it, but here&#39;s a workaround that prevents the game from crashing in case it happens again)</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            <span class="keywordflow">return</span> path;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        }</div>
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                <span class="comment">//should be fixed now, was most likely caused by the parent fields of the nodes not being cleared before starting the pathfinding</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                <span class="keywordflow">if</span> (finalPath.Count &gt; nodes.Count)</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                {</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Pathfinding error: constructing final path failed&quot;</span>);</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> SteeringPath(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                }</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                path.Cost += pathNode.F;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                pathNode = pathNode.Parent;</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            }</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            finalPath.Add(start.<a class="code" href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Waypoint</a>);</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = finalPath.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            {</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                path.AddNode(finalPath[i]);</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;            }</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            System.Diagnostics.Debug.Assert(finalPath.Count == path.Nodes.Count);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordflow">return</span> path;</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        }</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> CanFitThroughGap(Gap gap, <span class="keywordtype">float</span> minWidth) =&gt; gap.IsHorizontal ? gap.RectHeight &gt; minWidth : gap.RectWidth &gt; minWidth;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    }</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;}</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> CanFitThroughGap(Gap gap, <span class="keywordtype">float</span> minWidth) =&gt; gap.IsHorizontal ? gap.RectHeight &gt; minWidth : gap.RectWidth &gt; minWidth;</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    }</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_barotrauma_1_1_structure_html_a53daa2f7d2e0e944cd1a38971f206b49"><div class="ttname"><a href="class_barotrauma_1_1_structure.html#a53daa2f7d2e0e944cd1a38971f206b49">Barotrauma.Structure.IsPlatform</a></div><div class="ttdeci">bool IsPlatform</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_structure_8cs_source.html#l00083">BarotraumaShared/SharedSource/Map/Structure.cs:83</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_submarine_html_af0021304c59f91a731965107f9a86837"><div class="ttname"><a href="class_barotrauma_1_1_submarine.html#af0021304c59f91a731965107f9a86837">Barotrauma.Submarine.PickBody</a></div><div class="ttdeci">static Body PickBody(Vector2 rayStart, Vector2 rayEnd, IEnumerable&lt; Body &gt; ignoredBodies=null, Category? collisionCategory=null, bool ignoreSensors=true, Predicate&lt; Fixture &gt; customPredicate=null, bool allowInsideFixture=false)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00648">BarotraumaShared/SharedSource/Map/Submarine.cs:648</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_submarine_html_af0021304c59f91a731965107f9a86837"><div class="ttname"><a href="class_barotrauma_1_1_submarine.html#af0021304c59f91a731965107f9a86837">Barotrauma.Submarine.PickBody</a></div><div class="ttdeci">static Body PickBody(Vector2 rayStart, Vector2 rayEnd, IEnumerable&lt; Body &gt; ignoredBodies=null, Category? collisionCategory=null, bool ignoreSensors=true, Predicate&lt; Fixture &gt; customPredicate=null, bool allowInsideFixture=false)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00664">BarotraumaShared/SharedSource/Map/Submarine.cs:664</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html_a1e61bea5688c0ec5f9e891615e4339d6"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#a1e61bea5688c0ec5f9e891615e4339d6">Barotrauma.WayPoint.Stairs</a></div><div class="ttdeci">Structure Stairs</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00028">BarotraumaShared/SharedSource/Map/WayPoint.cs:28</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_map_entity_html_aab5bbeb41bb6d34d8a41628c061bbc23"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html#aab5bbeb41bb6d34d8a41628c061bbc23">Barotrauma.MapEntity.Position</a></div><div class="ttdeci">override Vector2 Position</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00181">BarotraumaShared/SharedSource/Map/MapEntity.cs:181</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_ac87b8d5e34fb612d94fd718e01ef87d3"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#ac87b8d5e34fb612d94fd718e01ef87d3">Barotrauma.PathFinder.GetNodePenaltyHandler</a></div><div class="ttdeci">delegate? float GetNodePenaltyHandler(PathNode node, PathNode prevNode)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a3a44d948c65b4e105d7b95fce69f095b"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">Barotrauma.PathFinder.ApplyPenaltyToOutsideNodes</a></div><div class="ttdeci">bool ApplyPenaltyToOutsideNodes</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00117">PathFinder.cs:117</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_level_html_af09e6317f13fb70f0558f1c94081c253"><div class="ttname"><a href="class_barotrauma_1_1_level.html#af09e6317f13fb70f0558f1c94081c253">Barotrauma.Level.ExtraWalls</a></div><div class="ttdeci">List&lt; LevelWall &gt; ExtraWalls</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00280">BarotraumaShared/SharedSource/Map/Levels/Level.cs:280</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a2a2b66a6e068cbb4b0b5bb9c417851a8"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">Barotrauma.PathFinder.PathFinder</a></div><div class="ttdeci">PathFinder(List&lt; WayPoint &gt; wayPoints, bool isCharacter)</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00119">PathFinder.cs:119</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a3a44d948c65b4e105d7b95fce69f095b"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a3a44d948c65b4e105d7b95fce69f095b">Barotrauma.PathFinder.ApplyPenaltyToOutsideNodes</a></div><div class="ttdeci">bool ApplyPenaltyToOutsideNodes</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00119">PathFinder.cs:119</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_level_html_af09e6317f13fb70f0558f1c94081c253"><div class="ttname"><a href="class_barotrauma_1_1_level.html#af09e6317f13fb70f0558f1c94081c253">Barotrauma.Level.ExtraWalls</a></div><div class="ttdeci">List&lt; LevelWall &gt; ExtraWalls</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00303">BarotraumaShared/SharedSource/Map/Levels/Level.cs:303</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a2a2b66a6e068cbb4b0b5bb9c417851a8"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a2a2b66a6e068cbb4b0b5bb9c417851a8">Barotrauma.PathFinder.PathFinder</a></div><div class="ttdeci">PathFinder(List&lt; WayPoint &gt; wayPoints, bool isCharacter)</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00121">PathFinder.cs:121</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_aaa268a9c7c22cf71a550878e14c7998c"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#aaa268a9c7c22cf71a550878e14c7998c">Barotrauma.PathFinder.GetSingleNodePenalty</a></div><div class="ttdeci">GetSingleNodePenaltyHandler GetSingleNodePenalty</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00113">PathFinder.cs:113</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a3dafd84124a0b3ea6554c9d4d084b891"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a3dafd84124a0b3ea6554c9d4d084b891">Barotrauma.PathNode.TempDistance</a></div><div class="ttdeci">float TempDistance</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00021">PathFinder.cs:21</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_ab4328930b62f866716dbc67bf70b0196"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">Barotrauma.PathFinder.FindPath</a></div><div class="ttdeci">SteeringPath FindPath(Vector2 start, Vector2 end, Submarine hostSub=null, string errorMsgStr=null, float minGapSize=0, Func&lt; PathNode, bool &gt; startNodeFilter=null, Func&lt; PathNode, bool &gt; endNodeFilter=null, Func&lt; PathNode, bool &gt; nodeFilter=null, bool checkVisibility=true)</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00171">PathFinder.cs:171</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a00ca2dbec1bf7e916a07cb5a181a50d7"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">Barotrauma.PathFinder.InsideSubmarine</a></div><div class="ttdeci">bool InsideSubmarine</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00116">PathFinder.cs:116</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_ab4328930b62f866716dbc67bf70b0196"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#ab4328930b62f866716dbc67bf70b0196">Barotrauma.PathFinder.FindPath</a></div><div class="ttdeci">SteeringPath FindPath(Vector2 start, Vector2 end, Submarine hostSub=null, string errorMsgStr=null, float minGapSize=0, Func&lt; PathNode, bool &gt; startNodeFilter=null, Func&lt; PathNode, bool &gt; endNodeFilter=null, Func&lt; PathNode, bool &gt; nodeFilter=null, bool checkVisibility=true)</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00173">PathFinder.cs:173</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a00ca2dbec1bf7e916a07cb5a181a50d7"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a00ca2dbec1bf7e916a07cb5a181a50d7">Barotrauma.PathFinder.InsideSubmarine</a></div><div class="ttdeci">bool InsideSubmarine</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00118">PathFinder.cs:118</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a7ca6b9d1271d8eea4acd62263f7c4700"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a7ca6b9d1271d8eea4acd62263f7c4700">Barotrauma.PathNode.ResetBlocked</a></div><div class="ttdeci">void ResetBlocked()</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00102">PathFinder.cs:102</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html_aea65202e35025f25315f10f4c305b15a"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#aea65202e35025f25315f10f4c305b15a">Barotrauma.WayPoint.CurrentHull</a></div><div class="ttdeci">Hull CurrentHull</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00046">BarotraumaShared/SharedSource/Map/WayPoint.cs:46</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_level_html_aeed512e4f70bc4531e552987114975f3"><div class="ttname"><a href="class_barotrauma_1_1_level.html#aeed512e4f70bc4531e552987114975f3">Barotrauma.Level.Loaded</a></div><div class="ttdeci">static Level? Loaded</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00034">BarotraumaShared/SharedSource/Map/Levels/Level.cs:34</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_submarine_html_a5019aa60eea868df1d77029a3d083352"><div class="ttname"><a href="class_barotrauma_1_1_submarine.html#a5019aa60eea868df1d77029a3d083352">Barotrauma.Submarine.Unloading</a></div><div class="ttdeci">static bool Unloading</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l01669">BarotraumaShared/SharedSource/Map/Submarine.cs:1669</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_level_html_aeed512e4f70bc4531e552987114975f3"><div class="ttname"><a href="class_barotrauma_1_1_level.html#aeed512e4f70bc4531e552987114975f3">Barotrauma.Level.Loaded</a></div><div class="ttdeci">static Level? Loaded</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00051">BarotraumaShared/SharedSource/Map/Levels/Level.cs:51</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_submarine_html_a5019aa60eea868df1d77029a3d083352"><div class="ttname"><a href="class_barotrauma_1_1_submarine.html#a5019aa60eea868df1d77029a3d083352">Barotrauma.Submarine.Unloading</a></div><div class="ttdeci">static bool Unloading</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l01678">BarotraumaShared/SharedSource/Map/Submarine.cs:1678</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html_ad06e7618f4024302c2e31c2b8756d727"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#ad06e7618f4024302c2e31c2b8756d727">Barotrauma.WayPoint.Tunnel</a></div><div class="ttdeci">Level.Tunnel Tunnel</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00048">BarotraumaShared/SharedSource/Map/WayPoint.cs:48</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a35050435f5d801eb8f08a327b67b6efc"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a35050435f5d801eb8f08a327b67b6efc">Barotrauma.PathNode.Parent</a></div><div class="ttdeci">PathNode Parent</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00013">PathFinder.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_item_html"><div class="ttname"><a href="class_barotrauma_1_1_item.html">Barotrauma.Item</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00025">BarotraumaShared/SharedSource/Items/Item.cs:25</a></div></div>
@@ -631,11 +606,12 @@ $(document).ready(function(){initNavTree('_path_finder_8cs_source.html',''); ini
 <div class="ttc" id="aclass_barotrauma_1_1_map_entity_html_af5976c06cfb77b17cd2e21321b846bf5"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html#af5976c06cfb77b17cd2e21321b846bf5">Barotrauma.MapEntity.SimPosition</a></div><div class="ttdeci">override Vector2 SimPosition</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00194">BarotraumaShared/SharedSource/Map/MapEntity.cs:194</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a3fc820012dcc93c135e0940c425d75ed"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a3fc820012dcc93c135e0940c425d75ed">Barotrauma.PathNode.GenerateNodes</a></div><div class="ttdeci">static List&lt; PathNode &gt; GenerateNodes(List&lt; WayPoint &gt; wayPoints, bool removeOrphans)</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00039">PathFinder.cs:39</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_aada9ebdf41a08dc072baf396f975505e"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#aada9ebdf41a08dc072baf396f975505e">Barotrauma.PathNode.WayPointID</a></div><div class="ttdeci">readonly int WayPointID</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00025">PathFinder.cs:25</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_level_html_a685132046d04b15a02c250605ed5d8a0"><div class="ttname"><a href="class_barotrauma_1_1_level.html#a685132046d04b15a02c250605ed5d8a0">Barotrauma.Level.Type</a></div><div class="ttdeci">LevelData.LevelType Type</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00389">BarotraumaShared/SharedSource/Map/Levels/Level.cs:389</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_level_html_a685132046d04b15a02c250605ed5d8a0"><div class="ttname"><a href="class_barotrauma_1_1_level.html#a685132046d04b15a02c250605ed5d8a0">Barotrauma.Level.Type</a></div><div class="ttdeci">LevelData.LevelType Type</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00412">BarotraumaShared/SharedSource/Map/Levels/Level.cs:412</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html_af5a097816e9931361b46152e31618241"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#af5a097816e9931361b46152e31618241">Barotrauma.WayPoint.ConnectedGap</a></div><div class="ttdeci">Gap ConnectedGap</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00036">BarotraumaShared/SharedSource/Map/WayPoint.cs:36</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_aa4edcabc673ab3aa2709a9016bb4d039"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#aa4edcabc673ab3aa2709a9016bb4d039">Barotrauma.PathNode.connections</a></div><div class="ttdeci">readonly List&lt; PathNode &gt; connections</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00017">PathFinder.cs:17</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html_ab0fc1da9eff766f327cf167a90f848f5"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#ab0fc1da9eff766f327cf167a90f848f5">Barotrauma.WayPoint.OnLinksChanged</a></div><div class="ttdeci">Action&lt; WayPoint &gt; OnLinksChanged</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00057">BarotraumaShared/SharedSource/Map/WayPoint.cs:57</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_level_html_aaea416f4c083e9059458009a459ef145"><div class="ttname"><a href="class_barotrauma_1_1_level.html#aaea416f4c083e9059458009a459ef145">Barotrauma.Level.TunnelType</a></div><div class="ttdeci">TunnelType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00096">BarotraumaShared/SharedSource/Map/Levels/Level.cs:96</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a131a2c29969defbd9387b9a3ad1b8936"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a131a2c29969defbd9387b9a3ad1b8936">Barotrauma.PathFinder.GetSingleNodePenaltyHandler</a></div><div class="ttdeci">delegate? float GetSingleNodePenaltyHandler(PathNode node)</div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_level_html_aaea416f4c083e9059458009a459ef145"><div class="ttname"><a href="class_barotrauma_1_1_level.html#aaea416f4c083e9059458009a459ef145">Barotrauma.Level.TunnelType</a></div><div class="ttdeci">TunnelType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00113">BarotraumaShared/SharedSource/Map/Levels/Level.cs:113</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_map_entity_html_ac7fae0c271e542ae234ea08a0bf39b37"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html#ac7fae0c271e542ae234ea08a0bf39b37">Barotrauma.MapEntity.linkedTo</a></div><div class="ttdeci">readonly List&lt; MapEntity &gt; linkedTo</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00053">BarotraumaShared/SharedSource/Map/MapEntity.cs:53</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_ad7ef3b3b22b9923b0d800f653848a22a"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#ad7ef3b3b22b9923b0d800f653848a22a">Barotrauma.PathNode.distances</a></div><div class="ttdeci">List&lt; float &gt; distances</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00018">PathFinder.cs:18</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_destructible_level_wall_html"><div class="ttname"><a href="class_barotrauma_1_1_destructible_level_wall.html">Barotrauma.DestructibleLevelWall</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_destructible_level_wall_8cs_source.html#l00009">BarotraumaShared/SharedSource/Map/Levels/DestructibleLevelWall.cs:9</a></div></div>
@@ -644,13 +620,12 @@ $(document).ready(function(){initNavTree('_path_finder_8cs_source.html',''); ini
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a355e1175c164620baaa7f8814a333fae"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a355e1175c164620baaa7f8814a333fae">Barotrauma.PathNode.Position</a></div><div class="ttdeci">readonly Vector2 Position</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00024">PathFinder.cs:24</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:3</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a8e96e4be3bd46200e071f77389a72386"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a8e96e4be3bd46200e071f77389a72386">Barotrauma.PathNode.F</a></div><div class="ttdeci">float F</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00015">PathFinder.cs:15</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_level_html"><div class="ttname"><a href="class_barotrauma_1_1_level.html">Barotrauma.Level</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00016">BarotraumaShared/SharedSource/Map/Levels/Level.cs:16</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_level_html"><div class="ttname"><a href="class_barotrauma_1_1_level.html">Barotrauma.Level</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_levels_2_level_8cs_source.html#l00017">BarotraumaShared/SharedSource/Map/Levels/Level.cs:17</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html_a4a2e16c781d1d95e1ec7caefbf2dfacb"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#a4a2e16c781d1d95e1ec7caefbf2dfacb">Barotrauma.WayPoint.ConnectedDoor</a></div><div class="ttdeci">Door? ConnectedDoor</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00042">BarotraumaShared/SharedSource/Map/WayPoint.cs:42</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html_a1ba518da8d85976319578b82bc123237"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html#a1ba518da8d85976319578b82bc123237">Barotrauma.PathNode.Waypoint</a></div><div class="ttdeci">readonly WayPoint Waypoint</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00023">PathFinder.cs:23</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_finder_html_a15827d00eb8fbe455443b5aa489c3db1"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html#a15827d00eb8fbe455443b5aa489c3db1">Barotrauma.PathFinder.GetNodePenalty</a></div><div class="ttdeci">GetNodePenaltyHandler GetNodePenalty</div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00111">PathFinder.cs:111</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_map_entity_html"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00069">LuaBarotraumaAdditions.cs:69</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_map_entity_html"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00085">LuaBarotraumaAdditions.cs:85</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_submarine_html"><div class="ttname"><a href="class_barotrauma_1_1_submarine.html">Barotrauma.Submarine</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00024">BarotraumaShared/SharedSource/Map/Submarine.cs:24</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_way_point_html_afafa06ff92a6c9505e2ae93419bd7734"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html#afafa06ff92a6c9505e2ae93419bd7734">Barotrauma.WayPoint.isObstructed</a></div><div class="ttdeci">bool isObstructed</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00032">BarotraumaShared/SharedSource/Map/WayPoint.cs:32</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_finder_html"><div class="ttname"><a href="class_barotrauma_1_1_path_finder.html">Barotrauma.PathFinder</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00108">PathFinder.cs:108</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_way_point_html"><div class="ttname"><a href="class_barotrauma_1_1_way_point.html">Barotrauma.WayPoint</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_way_point_8cs_source.html#l00016">BarotraumaShared/SharedSource/Map/WayPoint.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_path_node_html"><div class="ttname"><a href="class_barotrauma_1_1_path_node.html">Barotrauma.PathNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_finder_8cs_source.html#l00009">PathFinder.cs:9</a></div></div>

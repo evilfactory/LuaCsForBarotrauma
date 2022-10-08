@@ -83,60 +83,95 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_tutorials_1_1_tut
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Barotrauma.Tutorials.Tutorial.Segment Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_text.html">Text</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_video.html">Video</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abd1789e8b6d8911aac3f2828b2726be2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#abd1789e8b6d8911aac3f2828b2726be2">Segment</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> id, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> objectiveTextTag, <a class="el" href="namespace_barotrauma_1_1_tutorials.html#aca8b717688b878360d1a595d8b8600cd">TutorialContentType</a> contentType, <a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_text.html">Text</a>? textContent=null, <a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_video.html">Video</a>? videoContent=null)</td></tr>
-<tr class="separator:abd1789e8b6d8911aac3f2828b2726be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2d7967163cf46ee40e736e0eda010d1"><td class="memItemLeft" align="right" valign="top">readonly record struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Text</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> Tag, int Width=DefaultWidth, int Height=DefaultHeight, <a class="el" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a> <a class="el" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>=<a class="el" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389a4f1f6016fc9f3f2353c0cc7c67b292bd">Anchor.Center</a>)</td></tr>
+<tr class="separator:ac2d7967163cf46ee40e736e0eda010d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad30b8057b020a2fde0be0c65d8f31e0d"><td class="memItemLeft" align="right" valign="top">readonly record struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Video</a> (string FullPath, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> TextTag, int Width=DefaultWidth, int Height=DefaultHeight)</td></tr>
+<tr class="separator:ad30b8057b020a2fde0be0c65d8f31e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a197440c19db9b15eb10d057a018f999e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a197440c19db9b15eb10d057a018f999e">ConnectMessageBox</a> (<a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a> messageBoxSegment)</td></tr>
+<tr class="separator:a197440c19db9b15eb10d057a018f999e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3788c38917d1bec1486955748bb40feb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a3788c38917d1bec1486955748bb40feb">CreateInfoBoxSegment</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> id, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> objectiveTextTag, <a class="el" href="namespace_barotrauma_1_1_tutorials.html#ab380376b08a635190d2fb764315040c5">AutoPlayVideo</a> autoPlayVideo, <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Text</a> textContent=default, <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Video</a> videoContent=default)</td></tr>
+<tr class="separator:a3788c38917d1bec1486955748bb40feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7717cc6017813d46422bf0bb558c2bc3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a7717cc6017813d46422bf0bb558c2bc3">CreateMessageBoxSegment</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> id, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> objectiveTextTag, Action onClickObjective)</td></tr>
+<tr class="separator:a7717cc6017813d46422bf0bb558c2bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9016dbcc335f48053728b569fd52288"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ae9016dbcc335f48053728b569fd52288">CreateObjectiveSegment</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> id, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> objectiveTextTag)</td></tr>
+<tr class="separator:ae9016dbcc335f48053728b569fd52288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a43ea38071222c5ac356b6524578f5f75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a43ea38071222c5ac356b6524578f5f75">IsTriggered</a></td></tr>
-<tr class="separator:a43ea38071222c5ac356b6524578f5f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fc8f6d3c7e4de165b1864f68706116d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a6fc8f6d3c7e4de165b1864f68706116d">ReplayButton</a></td></tr>
-<tr class="separator:a6fc8f6d3c7e4de165b1864f68706116d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c7ace2d1bc3c102ab43b12da54b4a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_text_block.html">GUITextBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a76c7ace2d1bc3c102ab43b12da54b4a5">LinkedTitle</a></td></tr>
-<tr class="separator:a76c7ace2d1bc3c102ab43b12da54b4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42af8daad573f2fb2f2d11acffbac2e6"><td class="memItemLeft" align="right" valign="top">object[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a42af8daad573f2fb2f2d11acffbac2e6">Args</a></td></tr>
-<tr class="separator:a42af8daad573f2fb2f2d11acffbac2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab755ed40d223a3b565f5d219d1e1261"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#aab755ed40d223a3b565f5d219d1e1261">Objective</a></td></tr>
-<tr class="separator:aab755ed40d223a3b565f5d219d1e1261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76f32f7e33bccdb61c4448fa64a6fbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_image.html">GUIImage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#af76f32f7e33bccdb61c4448fa64a6fbd">ObjectiveStateIndicator</a></td></tr>
+<tr class="separator:af76f32f7e33bccdb61c4448fa64a6fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d6c5a29e7ebf95a644fb1204344585"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a65d6c5a29e7ebf95a644fb1204344585">ObjectiveButton</a></td></tr>
+<tr class="separator:a65d6c5a29e7ebf95a644fb1204344585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf72ff972f9e4441e690a115ff97ad1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_g_u_i_text_block.html">GUITextBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#abf72ff972f9e4441e690a115ff97ad1e">LinkedTextBlock</a></td></tr>
+<tr class="separator:abf72ff972f9e4441e690a115ff97ad1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5f8c6d82505ca6522142d58930fd15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a8e5f8c6d82505ca6522142d58930fd15">ObjectiveText</a></td></tr>
+<tr class="separator:a8e5f8c6d82505ca6522142d58930fd15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d27e40e7e963f12d1a448e3421f58bf"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a8d27e40e7e963f12d1a448e3421f58bf">Id</a></td></tr>
 <tr class="separator:a8d27e40e7e963f12d1a448e3421f58bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7caa8edf988474e433a08ba927066ec3"><td class="memItemLeft" align="right" valign="top">readonly? <a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_text.html">Text</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a7caa8edf988474e433a08ba927066ec3">TextContent</a></td></tr>
-<tr class="separator:a7caa8edf988474e433a08ba927066ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad52f347ec159990092e830de17e64f8d"><td class="memItemLeft" align="right" valign="top">readonly? <a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_video.html">Video</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad52f347ec159990092e830de17e64f8d">VideoContent</a></td></tr>
-<tr class="separator:ad52f347ec159990092e830de17e64f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca6482dacfd4b9df88583948bde71dad"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma_1_1_tutorials.html#aca8b717688b878360d1a595d8b8600cd">TutorialContentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#aca6482dacfd4b9df88583948bde71dad">ContentType</a></td></tr>
-<tr class="separator:aca6482dacfd4b9df88583948bde71dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ff7a31e3b8e1890a37b3112f3b4893"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Text</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a28ff7a31e3b8e1890a37b3112f3b4893">TextContent</a></td></tr>
+<tr class="separator:a28ff7a31e3b8e1890a37b3112f3b4893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae42167398a5b315b499c79f05ceb5160"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Video</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ae42167398a5b315b499c79f05ceb5160">VideoContent</a></td></tr>
+<tr class="separator:ae42167398a5b315b499c79f05ceb5160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a7528801373fdd328754029d891ef7"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma_1_1_tutorials.html#ab380376b08a635190d2fb764315040c5">AutoPlayVideo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ab6a7528801373fdd328754029d891ef7">AutoPlayVideo</a></td></tr>
+<tr class="separator:ab6a7528801373fdd328754029d891ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18322603d231073840c631f3f33d649"><td class="memItemLeft" align="right" valign="top">Action&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ae18322603d231073840c631f3f33d649">OnClickObjective</a></td></tr>
+<tr class="separator:ae18322603d231073840c631f3f33d649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a500d7502c28b3e968414a19405ce6054"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_barotrauma_1_1_tutorials.html#a7527f50e2a025a0bd4113b1a2df08024">TutorialSegmentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a500d7502c28b3e968414a19405ce6054">SegmentType</a><code> [get]</code></td></tr>
+<tr class="separator:a500d7502c28b3e968414a19405ce6054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00056">56</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="abd1789e8b6d8911aac3f2828b2726be2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd1789e8b6d8911aac3f2828b2726be2">&#9670;&nbsp;</a></span>Segment()</h2>
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00048">48</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a197440c19db9b15eb10d057a018f999e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a197440c19db9b15eb10d057a018f999e">&#9670;&nbsp;</a></span>ConnectMessageBox()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Barotrauma.Tutorials.Tutorial.Segment.Segment </td>
+          <td class="memname">void Barotrauma.Tutorials.Tutorial.Segment.ConnectMessageBox </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>&#160;</td>
+          <td class="paramname"><em>messageBoxSegment</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00123">123</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="a3788c38917d1bec1486955748bb40feb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3788c38917d1bec1486955748bb40feb">&#9670;&nbsp;</a></span>CreateInfoBoxSegment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a> Barotrauma.Tutorials.Tutorial.Segment.CreateInfoBoxSegment </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
@@ -150,20 +185,149 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespace_barotrauma_1_1_tutorials.html#aca8b717688b878360d1a595d8b8600cd">TutorialContentType</a>&#160;</td>
-          <td class="paramname"><em>contentType</em>, </td>
+          <td class="paramtype"><a class="el" href="namespace_barotrauma_1_1_tutorials.html#ab380376b08a635190d2fb764315040c5">AutoPlayVideo</a>&#160;</td>
+          <td class="paramname"><em>autoPlayVideo</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_text.html">Text</a>?&#160;</td>
-          <td class="paramname"><em>textContent</em> = <code>null</code>, </td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Text</a>&#160;</td>
+          <td class="paramname"><em>textContent</em> = <code>default</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_video.html">Video</a>?&#160;</td>
-          <td class="paramname"><em>videoContent</em> = <code>null</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Video</a>&#160;</td>
+          <td class="paramname"><em>videoContent</em> = <code>default</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00083">83</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7717cc6017813d46422bf0bb558c2bc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7717cc6017813d46422bf0bb558c2bc3">&#9670;&nbsp;</a></span>CreateMessageBoxSegment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a> Barotrauma.Tutorials.Tutorial.Segment.CreateMessageBoxSegment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>objectiveTextTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&#160;</td>
+          <td class="paramname"><em>onClickObjective</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00088">88</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae9016dbcc335f48053728b569fd52288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9016dbcc335f48053728b569fd52288">&#9670;&nbsp;</a></span>CreateObjectiveSegment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a> Barotrauma.Tutorials.Tutorial.Segment.CreateObjectiveSegment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>objectiveTextTag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00093">93</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac2d7967163cf46ee40e736e0eda010d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2d7967163cf46ee40e736e0eda010d1">&#9670;&nbsp;</a></span>Text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly record struct Barotrauma.Tutorials.Tutorial.Segment.Text </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>Tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Width</em> = <code>DefaultWidth</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Height</em> = <code>DefaultHeight</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>&#160;</td>
+          <td class="paramname"><em>Anchor</em> = <code><a class="el" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389a4f1f6016fc9f3f2353c0cc7c67b292bd">Anchor.Center</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -173,40 +337,64 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00085">85</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
-
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a42af8daad573f2fb2f2d11acffbac2e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42af8daad573f2fb2f2d11acffbac2e6">&#9670;&nbsp;</a></span>Args</h2>
+<a id="ad30b8057b020a2fde0be0c65d8f31e0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad30b8057b020a2fde0be0c65d8f31e0d">&#9670;&nbsp;</a></span>Video()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">object [] Barotrauma.Tutorials.Tutorial.Segment.Args</td>
+          <td class="memname">readonly record struct Barotrauma.Tutorials.Tutorial.Segment.Video </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>FullPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>TextTag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Width</em> = <code>DefaultWidth</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Height</em> = <code>DefaultHeight</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00056">56</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab6a7528801373fdd328754029d891ef7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a7528801373fdd328754029d891ef7">&#9670;&nbsp;</a></span>AutoPlayVideo</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="namespace_barotrauma_1_1_tutorials.html#ab380376b08a635190d2fb764315040c5">AutoPlayVideo</a> Barotrauma.Tutorials.Tutorial.Segment.AutoPlayVideo</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00077">77</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
-
-</div>
-</div>
-<a id="aca6482dacfd4b9df88583948bde71dad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca6482dacfd4b9df88583948bde71dad">&#9670;&nbsp;</a></span>ContentType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="namespace_barotrauma_1_1_tutorials.html#aca8b717688b878360d1a595d8b8600cd">TutorialContentType</a> Barotrauma.Tutorials.Tutorial.Segment.ContentType</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00083">83</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
 
 </div>
 </div>
@@ -222,66 +410,98 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00080">80</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
-
-</div>
-</div>
-<a id="a43ea38071222c5ac356b6524578f5f75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43ea38071222c5ac356b6524578f5f75">&#9670;&nbsp;</a></span>IsTriggered</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Barotrauma.Tutorials.Tutorial.Segment.IsTriggered</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
 <p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00074">74</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
 
 </div>
 </div>
-<a id="a76c7ace2d1bc3c102ab43b12da54b4a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76c7ace2d1bc3c102ab43b12da54b4a5">&#9670;&nbsp;</a></span>LinkedTitle</h2>
+<a id="abf72ff972f9e4441e690a115ff97ad1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf72ff972f9e4441e690a115ff97ad1e">&#9670;&nbsp;</a></span>LinkedTextBlock</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_barotrauma_1_1_g_u_i_text_block.html">GUITextBlock</a> Barotrauma.Tutorials.Tutorial.Segment.LinkedTitle</td>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_g_u_i_text_block.html">GUITextBlock</a> Barotrauma.Tutorials.Tutorial.Segment.LinkedTextBlock</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00076">76</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00071">71</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
 
 </div>
 </div>
-<a id="aab755ed40d223a3b565f5d219d1e1261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab755ed40d223a3b565f5d219d1e1261">&#9670;&nbsp;</a></span>Objective</h2>
+<a id="a65d6c5a29e7ebf95a644fb1204344585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d6c5a29e7ebf95a644fb1204344585">&#9670;&nbsp;</a></span>ObjectiveButton</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a> Barotrauma.Tutorials.Tutorial.Segment.Objective</td>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a> Barotrauma.Tutorials.Tutorial.Segment.ObjectiveButton</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00078">78</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00070">70</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
 
 </div>
 </div>
-<a id="a6fc8f6d3c7e4de165b1864f68706116d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fc8f6d3c7e4de165b1864f68706116d">&#9670;&nbsp;</a></span>ReplayButton</h2>
+<a id="af76f32f7e33bccdb61c4448fa64a6fbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af76f32f7e33bccdb61c4448fa64a6fbd">&#9670;&nbsp;</a></span>ObjectiveStateIndicator</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a> Barotrauma.Tutorials.Tutorial.Segment.ReplayButton</td>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_g_u_i_image.html">GUIImage</a> Barotrauma.Tutorials.Tutorial.Segment.ObjectiveStateIndicator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00069">69</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8e5f8c6d82505ca6522142d58930fd15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5f8c6d82505ca6522142d58930fd15">&#9670;&nbsp;</a></span>ObjectiveText</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a> Barotrauma.Tutorials.Tutorial.Segment.ObjectiveText</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00072">72</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae18322603d231073840c631f3f33d649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18322603d231073840c631f3f33d649">&#9670;&nbsp;</a></span>OnClickObjective</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action Barotrauma.Tutorials.Tutorial.Segment.OnClickObjective</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00079">79</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<a id="a28ff7a31e3b8e1890a37b3112f3b4893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28ff7a31e3b8e1890a37b3112f3b4893">&#9670;&nbsp;</a></span>TextContent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Text</a> Barotrauma.Tutorials.Tutorial.Segment.TextContent</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -290,35 +510,44 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7caa8edf988474e433a08ba927066ec3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7caa8edf988474e433a08ba927066ec3">&#9670;&nbsp;</a></span>TextContent</h2>
+<a id="ae42167398a5b315b499c79f05ceb5160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42167398a5b315b499c79f05ceb5160">&#9670;&nbsp;</a></span>VideoContent</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly? <a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_text.html">Text</a> Barotrauma.Tutorials.Tutorial.Segment.TextContent</td>
+          <td class="memname">readonly <a class="el" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Video</a> Barotrauma.Tutorials.Tutorial.Segment.VideoContent</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00076">76</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a500d7502c28b3e968414a19405ce6054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a500d7502c28b3e968414a19405ce6054">&#9670;&nbsp;</a></span>SegmentType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_barotrauma_1_1_tutorials.html#a7527f50e2a025a0bd4113b1a2df08024">TutorialSegmentType</a> Barotrauma.Tutorials.Tutorial.Segment.SegmentType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00081">81</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad52f347ec159990092e830de17e64f8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad52f347ec159990092e830de17e64f8d">&#9670;&nbsp;</a></span>VideoContent</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly? <a class="el" href="struct_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_1_1_video.html">Video</a> Barotrauma.Tutorials.Tutorial.Segment.VideoContent</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tutorial_8cs_source.html#l00082">82</a> of file <a class="el" href="_tutorial_8cs_source.html">Tutorial.cs</a>.</p>
 
 </div>
 </div>

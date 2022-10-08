@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_networking_1_1_fi
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -108,6 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a817c420f0a784ce4c98abc3a3220b2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a746f393e6f94392a77e60272d17b8822"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a746f393e6f94392a77e60272d17b8822">ReadBytes</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc, int bytesToRead)</td></tr>
 <tr class="separator:a746f393e6f94392a77e60272d17b8822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84bc46c6de74b67a43544b5c858bc473"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a84bc46c6de74b67a43544b5c858bc473">ReadBytes</a> (byte[] data)</td></tr>
+<tr class="separator:a84bc46c6de74b67a43544b5c858bc473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bfcf54c74d65e2f1dea533e70b59d54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4bfcf54c74d65e2f1dea533e70b59d54">Dispose</a> ()</td></tr>
 <tr class="separator:a4bfcf54c74d65e2f1dea533e70b59d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -115,6 +118,14 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5e64d6badee5ac3c1fe11ee1aaa5a349"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a5e64d6badee5ac3c1fe11ee1aaa5a349">ID</a></td></tr>
 <tr class="separator:a5e64d6badee5ac3c1fe11ee1aaa5a349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89006ab749ff30722f1198297e1c14a7"><td class="memItemLeft" align="right" valign="top">readonly Dictionary&lt; int, byte[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a89006ab749ff30722f1198297e1c14a7">DataBuffer</a> = new Dictionary&lt;int, byte[]&gt;()</td></tr>
+<tr class="memdesc:a89006ab749ff30722f1198297e1c14a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data that we've ignored because we're waiting for some earlier data. <a class="el" href="class_barotrauma_1_1_key.html">Key</a> = byte offset, value = the actual data  <a href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a89006ab749ff30722f1198297e1c14a7">More...</a><br /></td></tr>
+<tr class="separator:a89006ab749ff30722f1198297e1c14a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aa9e7a1ee1ea2ec881395bac97deb37e3"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#aa9e7a1ee1ea2ec881395bac97deb37e3">DataBufferSize</a> = 50</td></tr>
+<tr class="separator:aa9e7a1ee1ea2ec881395bac97deb37e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -181,7 +192,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00096">96</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00102">102</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
 
 </div>
 </div>
@@ -201,7 +212,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00150">150</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00161">161</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
 
 </div>
 </div>
@@ -220,12 +231,32 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00109">109</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00115">115</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+
+</div>
+</div>
+<a id="a84bc46c6de74b67a43544b5c858bc473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84bc46c6de74b67a43544b5c858bc473">&#9670;&nbsp;</a></span>ReadBytes() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.Networking.FileReceiver.FileTransferIn.ReadBytes </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00140">140</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
 
 </div>
 </div>
 <a id="a746f393e6f94392a77e60272d17b8822"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a746f393e6f94392a77e60272d17b8822">&#9670;&nbsp;</a></span>ReadBytes()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a746f393e6f94392a77e60272d17b8822">&#9670;&nbsp;</a></span>ReadBytes() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,7 +281,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00123">123</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00129">129</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
 
 </div>
 </div>
@@ -274,6 +305,48 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a89006ab749ff30722f1198297e1c14a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89006ab749ff30722f1198297e1c14a7">&#9670;&nbsp;</a></span>DataBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Dictionary&lt;int, byte[]&gt; Barotrauma.Networking.FileReceiver.FileTransferIn.DataBuffer = new Dictionary&lt;int, byte[]&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Data that we've ignored because we're waiting for some earlier data. <a class="el" href="class_barotrauma_1_1_key.html">Key</a> = byte offset, value = the actual data </p>
+
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00100">100</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa9e7a1ee1ea2ec881395bac97deb37e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e7a1ee1ea2ec881395bac97deb37e3">&#9670;&nbsp;</a></span>DataBufferSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Barotrauma.Networking.FileReceiver.FileTransferIn.DataBufferSize = 50</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_file_receiver_8cs_source.html#l00096">96</a> of file <a class="el" href="_file_receiver_8cs_source.html">FileReceiver.cs</a>.</p>
+
+</div>
+</div>
 <a id="a5e64d6badee5ac3c1fe11ee1aaa5a349"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e64d6badee5ac3c1fe11ee1aaa5a349">&#9670;&nbsp;</a></span>ID</h2>
 

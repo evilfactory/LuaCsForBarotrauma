@@ -8,6 +8,7 @@ var class_barotrauma_1_1_g_u_i_font =
     [ "DrawString", "class_barotrauma_1_1_g_u_i_font.html#a3a1f9854d2aa1552f901549282b2feb1", null ],
     [ "DrawString", "class_barotrauma_1_1_g_u_i_font.html#a06a94bba980eca2a50c1135bcb580dbf", null ],
     [ "DrawStringWithColors", "class_barotrauma_1_1_g_u_i_font.html#aaa637c537abda454311aa80c26d802dd", null ],
+    [ "GetFontForStr", "class_barotrauma_1_1_g_u_i_font.html#ab5bfa41c74b243877e63bd3958838d4c", null ],
     [ "MeasureChar", "class_barotrauma_1_1_g_u_i_font.html#a9cabc2fd5c976f52cf1a5564e286fbfa", null ],
     [ "MeasureString", "class_barotrauma_1_1_g_u_i_font.html#a02d6bc5bcaba8c2284e09766eb5887d8", null ],
     [ "WrapText", "class_barotrauma_1_1_g_u_i_font.html#a86daa046d0bd8f554b6c7a7d76731a05", null ],

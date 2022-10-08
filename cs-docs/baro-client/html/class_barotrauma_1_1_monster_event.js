@@ -7,7 +7,7 @@ var class_barotrauma_1_1_monster_event =
     [ "Update", "class_barotrauma_1_1_monster_event.html#a109b445b0b5257a4c0fa74cd24e0886d", null ],
     [ "MaxAmountPerLevel", "class_barotrauma_1_1_monster_event.html#a97b5a0c209b633b3a9a67c4a1fa9b368", null ],
     [ "MinAmount", "class_barotrauma_1_1_monster_event.html#a6e5001d1d6340ff5d13affa965cf9887", null ],
-    [ "Monsters", "class_barotrauma_1_1_monster_event.html#ab876619205d8082f625be313ae46ec5b", null ],
+    [ "Monsters", "class_barotrauma_1_1_monster_event.html#a275a3cf949d4337761ad426bd0d13624", null ],
     [ "SpawnPending", "class_barotrauma_1_1_monster_event.html#ac67939516f9ae8cdcab7f0ad92f22eb6", null ],
     [ "SpawnPos", "class_barotrauma_1_1_monster_event.html#a4861e4aa049b7480d544855c5b5925ff", null ],
     [ "SpawnPosType", "class_barotrauma_1_1_monster_event.html#acc1160eabcadd281070e43070cb7b8e7", null ],

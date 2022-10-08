@@ -1,7 +1,8 @@
 var class_barotrauma_1_1_abandoned_outpost_mission =
 [
     [ "AbandonedOutpostMission", "class_barotrauma_1_1_abandoned_outpost_mission.html#ad80a2babdde6258088840ede40de8f96", null ],
-    [ "End", "class_barotrauma_1_1_abandoned_outpost_mission.html#a5c37cde574b01af5fc2602bf4d64c145", null ],
+    [ "DetermineCompleted", "class_barotrauma_1_1_abandoned_outpost_mission.html#a320ab09d9c833028bb901748940aaa4c", null ],
+    [ "EndMissionSpecific", "class_barotrauma_1_1_abandoned_outpost_mission.html#ae4fe32add5390f9d3507b39f540ee03a", null ],
     [ "ServerWriteInitial", "class_barotrauma_1_1_abandoned_outpost_mission.html#a82998f70fed5248441d80b8a0f9f6c3d", null ],
     [ "StartMissionSpecific", "class_barotrauma_1_1_abandoned_outpost_mission.html#aafd21d282ae9e9c7bbd4e688bc3b5e08", null ],
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_abandoned_outpost_mission.html#ae3c14e10f38834dff52fce296b0cf910", null ],

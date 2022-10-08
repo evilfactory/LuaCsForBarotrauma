@@ -22,6 +22,7 @@ var class_barotrauma_1_1_conversation_action =
     [ "Interrupted", "class_barotrauma_1_1_conversation_action.html#ab1973f4930decf4a42cbb08e2d7c60e3", null ],
     [ "InvokerTag", "class_barotrauma_1_1_conversation_action.html#a72d7369cf4da614e9b20989f1840f755", null ],
     [ "Options", "class_barotrauma_1_1_conversation_action.html#a6a61c65751da004404791725701f5b72", null ],
+    [ "speaker", "class_barotrauma_1_1_conversation_action.html#a37566f329dae98df16390cfafce9ef98", null ],
     [ "SpeakerTag", "class_barotrauma_1_1_conversation_action.html#ae2251857ab683ea3d76b9bf50ce7bafc", null ],
     [ "TargetTag", "class_barotrauma_1_1_conversation_action.html#ac125a007018d34aeb97ce1dcc617f141", null ],
     [ "Text", "class_barotrauma_1_1_conversation_action.html#aab598317578c0fc99f1031258274b15c", null ],

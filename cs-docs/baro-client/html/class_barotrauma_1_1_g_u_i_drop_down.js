@@ -11,6 +11,7 @@ var class_barotrauma_1_1_g_u_i_drop_down =
     [ "ReceiveSpecialInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a55b1659613209a95be81d01534a8231a", null ],
     [ "ReceiveTextInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a59991e78f4f7c9d1e6cfcd864fda826f", null ],
     [ "ReceiveTextInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a4a553f7e4e1ab6acedbab95a78133659", null ],
+    [ "RefreshListBoxParent", "class_barotrauma_1_1_g_u_i_drop_down.html#a8eeecd991ce3e75044cb1f36de8cc627", null ],
     [ "Select", "class_barotrauma_1_1_g_u_i_drop_down.html#ab11cb12098f89e6dcb923460ca544943", null ],
     [ "SelectItem", "class_barotrauma_1_1_g_u_i_drop_down.html#a3d7dce1cbd2d8b93f011e9c4f1ed6584", null ],
     [ "Update", "class_barotrauma_1_1_g_u_i_drop_down.html#a11d9d18f178225e82cb88a87a9c70949", null ],

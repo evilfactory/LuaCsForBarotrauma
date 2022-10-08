@@ -4,10 +4,11 @@ var class_barotrauma_1_1_g_u_i_message_box =
       [ "Default", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba7a1920d61156abc05a60135aefe8bc67", null ],
       [ "InGame", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba7f3d370e94c8b1fea09838572013d8ec", null ],
       [ "Vote", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba7f319b8ccad7e92033b9492ddbc4b522", null ],
-      [ "Hint", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cbad11c7e9c409c6ca80008c5dd01d44d1e", null ]
+      [ "Hint", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cbad11c7e9c409c6ca80008c5dd01d44d1e", null ],
+      [ "Tutorial", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba368fe771261fcb18f7988833c9294a20", null ]
     ] ],
     [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#a393c26244e37ec55847db128b7c74539", null ],
-    [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#a71fb9502d3815da242e8a1e1d2fa5f5e", null ],
+    [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#ae34095204934e59b0ee2ab43cee3c887", null ],
     [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#a73bfda7c4774ca5cbc5a848eb4a83da7", null ],
     [ "AddButton", "class_barotrauma_1_1_g_u_i_message_box.html#ac2338f3bb0a2318e0de9891c800036e1", null ],
     [ "Close", "class_barotrauma_1_1_g_u_i_message_box.html#ac854057b7a12293bf49cdb051aecd45b", null ],
@@ -23,10 +24,11 @@ var class_barotrauma_1_1_g_u_i_message_box =
     [ "Closed", "class_barotrauma_1_1_g_u_i_message_box.html#ab9af5357dfb98ac7af79d3bff9f33e70", null ],
     [ "Content", "class_barotrauma_1_1_g_u_i_message_box.html#ac42efa17a1892ad519e5f14fbcd03d16", null ],
     [ "Draggable", "class_barotrauma_1_1_g_u_i_message_box.html#a62c9ebf66cb8c281619e9fa0b95f447c", null ],
+    [ "FlashOnAutoCloseCondition", "class_barotrauma_1_1_g_u_i_message_box.html#a1e2b91c4b15f579195d488aabf828c58", null ],
     [ "Header", "class_barotrauma_1_1_g_u_i_message_box.html#af40d6e42ded07164b6c4755a2f9996ee", null ],
     [ "Icon", "class_barotrauma_1_1_g_u_i_message_box.html#a98bf78ec636b7723276d114197f6ca15", null ],
     [ "IconColor", "class_barotrauma_1_1_g_u_i_message_box.html#ad1d56dfe587d97ff41789ddc82045461", null ],
     [ "InnerFrame", "class_barotrauma_1_1_g_u_i_message_box.html#ac7d9d7b2a0247df1b1f9a25a9f1ac495", null ],
-    [ "Tag", "class_barotrauma_1_1_g_u_i_message_box.html#a72566c9717bb2b7adab8e37e7c2bc06b", null ],
+    [ "Tag", "class_barotrauma_1_1_g_u_i_message_box.html#a5b03e3852ed52d5b3bd1911bb49a40db", null ],
     [ "Text", "class_barotrauma_1_1_g_u_i_message_box.html#a587e4b830c29d9d62c0a75cd53e94d85", null ]
 ];
