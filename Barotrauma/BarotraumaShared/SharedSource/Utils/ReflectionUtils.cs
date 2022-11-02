@@ -12,16 +12,45 @@ namespace Barotrauma
         private static readonly Dictionary<Assembly, ImmutableArray<Type>> cachedNonAbstractTypes
             = new Dictionary<Assembly, ImmutableArray<Type>>();
 
+        
         public static IEnumerable<Type> GetDerivedNonAbstract<T>()
         {
             Assembly assembly = typeof(T).Assembly;
             if (!cachedNonAbstractTypes.ContainsKey(assembly))
-            {
-                cachedNonAbstractTypes[assembly] = assembly.GetTypes()
-                    .Where(t => !t.IsAbstract).ToImmutableArray();
-            }
-            return cachedNonAbstractTypes[assembly].Where(t => t.IsSubclassOf(typeof(T)));
+                AddNonAbstractAssemblyTypes(assembly);
+
+            List<Type> types = new List<Type>();
+            foreach (var typearr in cachedNonAbstractTypes)
+                types = types.Concat(typearr.Value.Where(t => t.IsSubclassOf(typeof(T)))).ToList();
+            
+            return types;
         }
+
+        public static void AddNonAbstractAssemblyTypes(Assembly assembly, bool overwrite = false)
+        {
+            if (cachedNonAbstractTypes.ContainsKey(assembly))
+            {
+                if (!overwrite)
+                {
+                    DebugConsole.LogError(
+                        $"ReflectionUtils::AddNonAbstractAssemblyTypes() | The assembly [{assembly.GetName()}] already exists in the cache.");
+                    return;
+                }
+                cachedNonAbstractTypes.Remove(assembly);
+            }
+
+            try
+            {
+                if (!cachedNonAbstractTypes.TryAdd(assembly, assembly.GetTypes().Where(t => !t.IsAbstract).ToImmutableArray()))
+                    DebugConsole.LogError($"ReflectionUtils::AddNonAbstractAssemblyTypes() | Unable to add types from Assembly to cache.");
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                DebugConsole.LogError($"ReflectionUtils::AddNonAbstractAssemblyTypes() | RTFException: Unable to load Assembly Types from {assembly.GetName()}.");
+            }
+        }
+
+        public static void RemoveAssemblyFromCache(Assembly assembly) => cachedNonAbstractTypes.Remove(assembly);
 
         public static Option<TBase> ParseDerived<TBase, TInput>(TInput input) where TInput : notnull
         {
