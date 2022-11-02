@@ -28,6 +28,11 @@ namespace Barotrauma
             return types;
         }
 
+        /// <summary>
+        /// Adds an assembly's Non-Abstract Types to the cache for Barotrauma's Type lookup. 
+        /// </summary>
+        /// <param name="assembly">Assembly to be added</param>
+        /// <param name="overwrite">Whether or not to overwrite an entry if the assembly already exists within it.</param>
         public static void AddNonAbstractAssemblyTypes(Assembly assembly, bool overwrite = false)
         {
             if (cachedNonAbstractTypes.ContainsKey(assembly))
@@ -52,6 +57,10 @@ namespace Barotrauma
             }
         }
 
+        /// <summary>
+        /// Removes an assembly from the cache for Barotrauma's Type lookup.
+        /// </summary>
+        /// <param name="assembly">Assembly to remove.</param>
         public static void RemoveAssemblyFromCache(Assembly assembly) => cachedNonAbstractTypes.Remove(assembly);
 
         public static Option<TBase> ParseDerived<TBase, TInput>(TInput input) where TInput : notnull
