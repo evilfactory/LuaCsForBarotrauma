@@ -170,8 +170,8 @@ namespace Barotrauma
 
 			var options = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
 				.WithMetadataImportOptions(MetadataImportOptions.All)
-				.WithOptimizationLevel(OptimizationLevel.Release)
-				.WithAllowUnsafe(true); //Allow the use of "IgnoreAccessChecksToAttribute" from Compiler Services
+                .WithOptimizationLevel(OptimizationLevel.Release)
+				.WithAllowUnsafe(true); 
 			var compilation = CSharpCompilation.Create(CsScriptAssembly, syntaxTrees, defaultReferences, options);
 
 			using (var mem = new MemoryStream())
