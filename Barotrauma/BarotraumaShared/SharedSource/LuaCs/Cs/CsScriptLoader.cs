@@ -213,13 +213,17 @@ namespace Barotrauma
 		}
 
         /// <summary>
-        /// This function should be used whenever a new assembly is created. Wrapper to allow more complicated setup.
+        /// This function should be used whenever a new assembly is created. Wrapper to allow more complicated setup later if need be.
         /// </summary>
         private static void RegisterAssemblyWithNativeGame(Assembly assembly)
         {
             Barotrauma.ReflectionUtils.AddNonAbstractAssemblyTypes(assembly);
         }
 
+        /// <summary>
+        /// This function should be used whenever a new assembly is about to be destroyed/unloaded. Wrapper to allow more complicated setup later if need be.
+        /// </summary>
+        /// <param name="assembly">Assembly to remove</param>
         private static void UnregisterAssemblyFromNativeGame(Assembly assembly)
         {
             Barotrauma.ReflectionUtils.RemoveAssemblyFromCache(assembly);
