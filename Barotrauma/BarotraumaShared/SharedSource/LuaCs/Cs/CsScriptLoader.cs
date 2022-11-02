@@ -29,8 +29,8 @@ namespace Barotrauma
 				.ToList();
 
 			sources = new Dictionary<string, List<string>>();
-			Assembly = null;
-		}
+            Assembly = null;
+        }
 
 		private enum RunType { Standard, Forced, None };
 		private bool ShouldRun(ContentPackage cp, string path)
@@ -164,14 +164,14 @@ namespace Barotrauma
 			return syntaxTrees;
 		}
 
-		public List<Type> Compile()
+		public List<Type> Compile() 
 		{
 			IEnumerable<SyntaxTree> syntaxTrees = ParseSources();
 
 			var options = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
 				.WithMetadataImportOptions(MetadataImportOptions.All)
 				.WithOptimizationLevel(OptimizationLevel.Release)
-				.WithAllowUnsafe(false);
+				.WithAllowUnsafe(true); //Allow the use of "IgnoreAccessChecksToAttribute" from Compiler Services
 			var compilation = CSharpCompilation.Create(CsScriptAssembly, syntaxTrees, defaultReferences, options);
 
 			using (var mem = new MemoryStream())
@@ -195,13 +195,35 @@ namespace Barotrauma
 
 			if (Assembly != null)
 			{
-				return Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(ACsMod))).ToList();
-			}
+                RegisterAssemblyWithNativeGame(Assembly);
+                try
+                {
+                    return Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(ACsMod))).ToList();
+                }
+                catch (ReflectionTypeLoadException re)
+                {
+                    LuaCsSetup.PrintCsError($"Unable to load CsMod Types. {re.Message}");
+                    throw re;
+                }
+            }
 			else
 			{
 				throw new Exception("Unable to create cs mods assembly.");
 			}
 		}
+
+        /// <summary>
+        /// This function should be used whenever a new assembly is created. Wrapper to allow more complicated setup.
+        /// </summary>
+        private static void RegisterAssemblyWithNativeGame(Assembly assembly)
+        {
+            Barotrauma.ReflectionUtils.AddNonAbstractAssemblyTypes(assembly);
+        }
+
+        private static void UnregisterAssemblyFromNativeGame(Assembly assembly)
+        {
+            Barotrauma.ReflectionUtils.RemoveAssemblyFromCache(assembly);
+        }
 
 		private static string[] DirSearch(string sDir)
 		{
@@ -215,7 +237,11 @@ namespace Barotrauma
 
 		public void Clear()
         {
-			Assembly = null;
+            if (Assembly != null)
+            {
+                UnregisterAssemblyFromNativeGame(Assembly);
+                Assembly = null;
+            }
         }
 	}
 }
