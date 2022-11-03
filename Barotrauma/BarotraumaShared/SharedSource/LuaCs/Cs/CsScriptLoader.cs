@@ -52,12 +52,12 @@ namespace Barotrauma
 				{
 					if (rtValue == RunType.Standard && isEnabled)
 					{
-						LuaCsSetup.PrintCsMessage($"Standard run C# of {cp.Name}");
+						LuaCsSetup.PrintCsMessage($"Added {cp.Name} {cp.ModVersion} to Cs compilation. (Standard)");
 						return true;
 					}
 					else if (rtValue == RunType.Forced)
 					{
-						LuaCsSetup.PrintCsMessage($"Forced run C# of {cp.Name}");
+						LuaCsSetup.PrintCsMessage($"Added {cp.Name} {cp.ModVersion} to Cs compilation. (Forced)");
 						return true;
 					}
 					else if (rtValue == RunType.None)
@@ -71,7 +71,7 @@ namespace Barotrauma
 
 			if (isEnabled)
 			{
-				LuaCsSetup.PrintCsMessage($"Assumed run C# of {cp.Name}");
+				LuaCsSetup.PrintCsMessage($"Added {cp.Name} {cp.ModVersion} to Cs compilation. (Assumed)");
 				return true;
 			}
 			else
@@ -82,9 +82,11 @@ namespace Barotrauma
 
 		public void SearchFolders()
 		{
+            var packagesAdded = new HashSet<ContentPackage>();
 			var paths = new Dictionary<string, string>();
 			foreach (var cp in ContentPackageManager.AllPackages.Concat(ContentPackageManager.EnabledPackages.All))
 			{
+                if (packagesAdded.Contains(cp)) { continue; }
 				var path = $"{Path.GetFullPath(Path.GetDirectoryName(cp.Path)).Replace('\\', '/')}/";
 				if (ShouldRun(cp, path))
 				{
@@ -99,6 +101,7 @@ namespace Barotrauma
 					{
 						paths.Add(cp.Name, path);
 					}
+                    packagesAdded.Add(cp);
 				}
 			}
 
