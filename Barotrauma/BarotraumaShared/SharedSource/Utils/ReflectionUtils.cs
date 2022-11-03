@@ -17,13 +17,17 @@ namespace Barotrauma
         {
             Assembly assembly = typeof(T).Assembly;
             if (!cachedNonAbstractTypes.ContainsKey(assembly))
+            {
                 AddNonAbstractAssemblyTypes(assembly);
+            }
 
             #warning TODO: Add safety checks in case an assembly is unloaded without being removed from the cache.
             
             List<Type> types = new List<Type>();
             foreach (var typearr in cachedNonAbstractTypes)
+            {
                 types = types.Concat(typearr.Value.Where(t => t.IsSubclassOf(typeof(T)))).ToList();
+            }
             
             return types;
         }

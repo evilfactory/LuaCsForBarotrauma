@@ -186,7 +186,9 @@ namespace Barotrauma
 
                     string errStr = "CS MODS NOT LOADED | Compilation errors:";
                     foreach (Diagnostic diagnostic in failures)
+                    {
                         errStr += $"\n{diagnostic}";
+                    }
                     LuaCsSetup.PrintCsError(errStr);
                 }
                 else
