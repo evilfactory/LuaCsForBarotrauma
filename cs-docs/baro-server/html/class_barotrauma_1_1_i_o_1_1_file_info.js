@@ -6,7 +6,7 @@ var class_barotrauma_1_1_i_o_1_1_file_info =
     [ "Delete", "class_barotrauma_1_1_i_o_1_1_file_info.html#a9a988302f565cbb18981f8ae3c176106", null ],
     [ "Exists", "class_barotrauma_1_1_i_o_1_1_file_info.html#a25108137397614c311e982e84a1f605c", null ],
     [ "FullName", "class_barotrauma_1_1_i_o_1_1_file_info.html#af68d0c997f916ea771b3505cd4860d26", null ],
+    [ "IsReadOnly", "class_barotrauma_1_1_i_o_1_1_file_info.html#aa1bef7e523837849e1a909ee8e692c89", null ],
     [ "Length", "class_barotrauma_1_1_i_o_1_1_file_info.html#a44bbf3ea7d7b3d3c0b370087a134d74b", null ],
-    [ "Name", "class_barotrauma_1_1_i_o_1_1_file_info.html#a6dd073a43dd119b7e0f4398312ee3c2d", null ],
-    [ "IsReadOnly", "class_barotrauma_1_1_i_o_1_1_file_info.html#aa1bef7e523837849e1a909ee8e692c89", null ]
+    [ "Name", "class_barotrauma_1_1_i_o_1_1_file_info.html#a6dd073a43dd119b7e0f4398312ee3c2d", null ]
 ];

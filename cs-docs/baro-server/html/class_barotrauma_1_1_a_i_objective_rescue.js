@@ -11,6 +11,6 @@ var class_barotrauma_1_1_a_i_objective_rescue =
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_rescue.html#aaddf33ca9d152256ca80d3b930024d9a", null ],
     [ "AllowOutsideSubmarine", "class_barotrauma_1_1_a_i_objective_rescue.html#a155b04f082791963df4e47d5f566c978", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_rescue.html#a76caa08cee79dff7e22dd703ec2c9743", null ],
-    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_rescue.html#a02cfc55644169e5fcb8d5dab86f25ea8", null ],
-    [ "Identifier", "class_barotrauma_1_1_a_i_objective_rescue.html#a265ab5bf599cb0e01e58dcf5346547e3", null ]
+    [ "Identifier", "class_barotrauma_1_1_a_i_objective_rescue.html#a265ab5bf599cb0e01e58dcf5346547e3", null ],
+    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_rescue.html#a02cfc55644169e5fcb8d5dab86f25ea8", null ]
 ];

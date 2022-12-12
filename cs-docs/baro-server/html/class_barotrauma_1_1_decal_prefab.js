@@ -6,6 +6,6 @@ var class_barotrauma_1_1_decal_prefab =
     [ "FadeInTime", "class_barotrauma_1_1_decal_prefab.html#a284a3f1461e44aa18e2cafaad4895f0c", null ],
     [ "FadeOutTime", "class_barotrauma_1_1_decal_prefab.html#ad2085d548db8a329cdd135d1b58574f8", null ],
     [ "LifeTime", "class_barotrauma_1_1_decal_prefab.html#affcfceaf72197a7bb946adc6044f3f3e", null ],
-    [ "Name", "class_barotrauma_1_1_decal_prefab.html#a0da4a66b59de1c73f759aa10744d42fb", null ],
-    [ "Sprites", "class_barotrauma_1_1_decal_prefab.html#af546f0efcfd1406ce0447d81b49e3491", null ]
+    [ "Sprites", "class_barotrauma_1_1_decal_prefab.html#af546f0efcfd1406ce0447d81b49e3491", null ],
+    [ "Name", "class_barotrauma_1_1_decal_prefab.html#a0da4a66b59de1c73f759aa10744d42fb", null ]
 ];

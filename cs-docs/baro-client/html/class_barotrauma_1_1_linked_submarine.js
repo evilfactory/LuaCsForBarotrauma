@@ -10,9 +10,9 @@ var class_barotrauma_1_1_linked_submarine =
     [ "Save", "class_barotrauma_1_1_linked_submarine.html#a0968ca689263a8b28d2c0aee3dbae1e0", null ],
     [ "SetPositionRelativeToMainSub", "class_barotrauma_1_1_linked_submarine.html#a6d27fea894c11573e449013dfbba8a14", null ],
     [ "UpdateEditing", "class_barotrauma_1_1_linked_submarine.html#adc653b32ed7b916541947b24d83127a3", null ],
-    [ "LoadSub", "class_barotrauma_1_1_linked_submarine.html#a738fdbf19bf9dd392361cd7a8bd34a23", null ],
-    [ "OriginalLinkedToID", "class_barotrauma_1_1_linked_submarine.html#a91f29b735e5bbefe0b33c154cc7629b9", null ],
     [ "CargoCapacity", "class_barotrauma_1_1_linked_submarine.html#a8e55f6173dea88054de15299dc65e0ca", null ],
     [ "Linkable", "class_barotrauma_1_1_linked_submarine.html#a8426ede6b64d70eec462078198bb337a", null ],
+    [ "LoadSub", "class_barotrauma_1_1_linked_submarine.html#a738fdbf19bf9dd392361cd7a8bd34a23", null ],
+    [ "OriginalLinkedToID", "class_barotrauma_1_1_linked_submarine.html#a91f29b735e5bbefe0b33c154cc7629b9", null ],
     [ "Sub", "class_barotrauma_1_1_linked_submarine.html#a4e1228b6ad54773a8d3128b84ef909bd", null ]
 ];

@@ -18,5 +18,9 @@ var class_barotrauma_1_1_tutorials_1_1_tutorial =
     [ "ActiveContentSegment", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a17ee5e0b0bee2cb4d492a29f85c5ff13", null ],
     [ "Completed", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#af7df1693eb39892c98012142a1bce799", null ],
     [ "ContentRunning", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a19cc1f9efdc80377a9507f9c42c1f716", null ],
-    [ "DisplayName", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a898c855d4b210e15d1491f6dd0d6e70f", null ]
+    [ "DisplayName", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a898c855d4b210e15d1491f6dd0d6e70f", null ],
+    [ "LevelParams", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a1b799188e7e41ea9175ca9dc1d5de0f7", null ],
+    [ "LevelSeed", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a2eb810865b6bdaf50749794e6a64453b", null ],
+    [ "StartOutpostPath", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#a7f2ed3a09154e6b456cf40767409e026", null ],
+    [ "SubmarinePath", "class_barotrauma_1_1_tutorials_1_1_tutorial.html#adb6f03554a76215defa7055577e1131d", null ]
 ];

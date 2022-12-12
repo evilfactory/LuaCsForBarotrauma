@@ -20,7 +20,6 @@ var class_barotrauma_1_1_affliction_prefab =
     [ "CauseOfDeathDescription", "class_barotrauma_1_1_affliction_prefab.html#a013638a2c5ac07e767a788f39b3b0f9b", null ],
     [ "DamageOverlayAlpha", "class_barotrauma_1_1_affliction_prefab.html#a75b129331b10a36a2d368e0807cad7e1", null ],
     [ "Duration", "class_barotrauma_1_1_affliction_prefab.html#ab5bb4d49870d83233c4b3e756a74ece3", null ],
-    [ "Effects", "class_barotrauma_1_1_affliction_prefab.html#a621faf8bc39bcac0ddac37728f109f4b", null ],
     [ "GrainBurst", "class_barotrauma_1_1_affliction_prefab.html#ae95baaa61879d5d5b408e72dd14dacac", null ],
     [ "HealableInMedicalClinic", "class_barotrauma_1_1_affliction_prefab.html#ae24bc9d9f0c4691950c8800ef99503af", null ],
     [ "HealCostMultiplier", "class_barotrauma_1_1_affliction_prefab.html#a548ec39b2497b8dcf9eeb3647fc15b4d", null ],
@@ -32,11 +31,12 @@ var class_barotrauma_1_1_affliction_prefab =
     [ "LimbSpecific", "class_barotrauma_1_1_affliction_prefab.html#a8f91bd8653f566f8a0b998f8d3a9ab86", null ],
     [ "MaxStrength", "class_barotrauma_1_1_affliction_prefab.html#a99af37a7dfdf1b8cf7bc652fb5c4cd8c", null ],
     [ "Name", "class_barotrauma_1_1_affliction_prefab.html#ab4076d2ffee6a19b6e683ed0c492e385", null ],
-    [ "PeriodicEffects", "class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46", null ],
     [ "ShowIconThreshold", "class_barotrauma_1_1_affliction_prefab.html#adf21ae6ee3c40a1ed991dfff3e1e4b7f", null ],
     [ "ShowIconToOthersThreshold", "class_barotrauma_1_1_affliction_prefab.html#a51fa2c0e6da3a5a3d90b697c78d51d29", null ],
     [ "ShowInHealthScannerThreshold", "class_barotrauma_1_1_affliction_prefab.html#ac725802b39cf005071fb6b8234d19ce2", null ],
     [ "TranslationIdentifier", "class_barotrauma_1_1_affliction_prefab.html#a27546cae2c373498f33f1d1d9d8d841b", null ],
     [ "TreatmentThreshold", "class_barotrauma_1_1_affliction_prefab.html#ac84250ed13fb8a7164bed280b1c518aa", null ],
+    [ "Effects", "class_barotrauma_1_1_affliction_prefab.html#a621faf8bc39bcac0ddac37728f109f4b", null ],
+    [ "PeriodicEffects", "class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46", null ],
     [ "TreatmentSuitability", "class_barotrauma_1_1_affliction_prefab.html#aa6fe5ef478e3d35b9fbbcfe7e0177161", null ]
 ];

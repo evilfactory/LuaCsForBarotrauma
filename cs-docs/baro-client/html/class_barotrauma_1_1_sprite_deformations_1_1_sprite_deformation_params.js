@@ -1,10 +1,10 @@
 var class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params =
 [
     [ "SpriteDeformationParams", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#a8bf92d453ddabf13f541f5a5d02c7469", null ],
-    [ "Name", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#a96bc5e79ea385a8b266583a46a07a0c4", null ],
     [ "BlendMode", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#ac76de70876be91b3adc4461a1a77ee6d", null ],
     [ "Frequency", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#a1860e9547be4d4ad46ffb60d2a5d30f4", null ],
     [ "MaxRotation", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#ad56459eb32ee86480c7178aa738e22b6", null ],
+    [ "Name", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#a96bc5e79ea385a8b266583a46a07a0c4", null ],
     [ "OnlyInWater", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#a1b3affb0d8a1dff20ee63af24cf16123", null ],
     [ "Resolution", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#aa2aea594078c7c3aab670e7df25e101d", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation_params.html#a7b8167a6ea8912c59f630c5c1e7b01e6", null ],

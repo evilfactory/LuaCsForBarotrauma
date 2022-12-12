@@ -11,7 +11,6 @@ var class_barotrauma_1_1_job_prefab =
     [ "ItemSets", "class_barotrauma_1_1_job_prefab.html#a15830ebeac9a349edfc16cb9f0fc311c", null ],
     [ "Name", "class_barotrauma_1_1_job_prefab.html#a1568b2847c9ddfbf9eae2f89bf7ec527", null ],
     [ "PreviewItems", "class_barotrauma_1_1_job_prefab.html#ae072d4e54b2ea6f42de2b0ba21b81321", null ],
-    [ "PrimarySkill", "class_barotrauma_1_1_job_prefab.html#a2fd79917a67115046a9f3ffd333c0565", null ],
     [ "Skills", "class_barotrauma_1_1_job_prefab.html#af1a6d7787e9f75615d10bc014c7e0213", null ],
     [ "AllowAlways", "class_barotrauma_1_1_job_prefab.html#a9d4c3af6266368c5c503a933ceacc6ab", null ],
     [ "Commonness", "class_barotrauma_1_1_job_prefab.html#a3b68aa5994b4b9b635362e246b53fbd9", null ],
@@ -24,6 +23,7 @@ var class_barotrauma_1_1_job_prefab =
     [ "MinNumber", "class_barotrauma_1_1_job_prefab.html#afca4d09483b2f4502b1ff0edde8e8ab9", null ],
     [ "OnlyJobSpecificDialog", "class_barotrauma_1_1_job_prefab.html#a33fc3665504d1376b129906190daa7c1", null ],
     [ "PriceMultiplier", "class_barotrauma_1_1_job_prefab.html#a2425e17a99142c3e6c132ab21270683c", null ],
+    [ "PrimarySkill", "class_barotrauma_1_1_job_prefab.html#a2fd79917a67115046a9f3ffd333c0565", null ],
     [ "UIColor", "class_barotrauma_1_1_job_prefab.html#ad565b539560fa3223fc76d1798188854", null ],
     [ "Variants", "class_barotrauma_1_1_job_prefab.html#a96e43929ba6ec7302b31b1cc964b5afc", null ],
     [ "VitalityModifier", "class_barotrauma_1_1_job_prefab.html#a4595092b0b6c24dfffc575d3df1dd373", null ]

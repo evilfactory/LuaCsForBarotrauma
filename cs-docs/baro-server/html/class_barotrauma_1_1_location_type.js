@@ -22,7 +22,7 @@ var class_barotrauma_1_1_location_type =
     [ "IsEnterable", "class_barotrauma_1_1_location_type.html#ad1cb0bf2e9f90d98d95018c8a8c23a4d", null ],
     [ "NameFormats", "class_barotrauma_1_1_location_type.html#a2d4eae8eecbc4d2d2eda4ad76ff3860a", null ],
     [ "RadiationSprite", "class_barotrauma_1_1_location_type.html#a554e4cadb2d8e0da561e583c2a5c1f69", null ],
-    [ "ReplaceInRadiation", "class_barotrauma_1_1_location_type.html#a45f2e5bb7e48a592eed6bb7abf10a39e", null ],
+    [ "ReplaceInRadiation", "class_barotrauma_1_1_location_type.html#afdebdf29a1f2f4127ee5b9cb0d989bf1", null ],
     [ "RequestedGoodsCount", "class_barotrauma_1_1_location_type.html#af72bd7106ea86725db69da1d29220f7b", null ],
     [ "RequestGoodPriceModifier", "class_barotrauma_1_1_location_type.html#a13c19214958fb962fe12d4791c32d1a7", null ],
     [ "Sprite", "class_barotrauma_1_1_location_type.html#a4da4ba41994e2c7420fc3257f85cdc1b", null ],

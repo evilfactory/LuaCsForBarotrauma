@@ -7,6 +7,6 @@ var class_barotrauma_1_1_a_i_objective_find_diving_gear =
     [ "AbandonWhenCannotCompleteSubjectives", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a37556ab8615f5451911c572aa846882a", null ],
     [ "DebugTag", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#ad4f21b18720d47029bd52741ca3fcbb9", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#ac13a0be577946e49cbb5ae9c36bd2734", null ],
-    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a96a42ecfecf0239f2b75357fa4d5f571", null ],
-    [ "Identifier", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a6f0e1e08a8398d5f047fc85978256aec", null ]
+    [ "Identifier", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a6f0e1e08a8398d5f047fc85978256aec", null ],
+    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a96a42ecfecf0239f2b75357fa4d5f571", null ]
 ];

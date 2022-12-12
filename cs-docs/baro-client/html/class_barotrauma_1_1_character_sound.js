@@ -9,8 +9,8 @@ var class_barotrauma_1_1_character_sound =
       [ "Unhappy", "class_barotrauma_1_1_character_sound.html#a9773511a8829ba4381d25434af21cd63a65572a364dd80bd5de15a398b8f5150d", null ]
     ] ],
     [ "CharacterSound", "class_barotrauma_1_1_character_sound.html#adcc4f772c0517420976c32fc97fb0c59", null ],
-    [ "IgnoreMuffling", "class_barotrauma_1_1_character_sound.html#ad36e2857a73ada7d1086945d937733c0", null ],
     [ "Params", "class_barotrauma_1_1_character_sound.html#a3fa9c62b84a904697fc16d1ea1d585ca", null ],
+    [ "IgnoreMuffling", "class_barotrauma_1_1_character_sound.html#ad36e2857a73ada7d1086945d937733c0", null ],
     [ "Range", "class_barotrauma_1_1_character_sound.html#a8574039eada2ae713d99439cea8c6c12", null ],
     [ "Sound", "class_barotrauma_1_1_character_sound.html#ac652282c596540845fa8686891f7fcaf", null ],
     [ "TagSet", "class_barotrauma_1_1_character_sound.html#acc4ab24d1b439187e596923e3eba2ba5", null ],

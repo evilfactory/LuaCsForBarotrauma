@@ -46,6 +46,7 @@ var class_barotrauma_1_1_cargo_manager =
     [ "ItemsInBuyCrate", "class_barotrauma_1_1_cargo_manager.html#a8338532ab6568eebc11e71e1401c3255", null ],
     [ "ItemsInSellCrate", "class_barotrauma_1_1_cargo_manager.html#ac954afc5fce553b02e0e606112c25315", null ],
     [ "ItemsInSellFromSubCrate", "class_barotrauma_1_1_cargo_manager.html#a56b389f632b4f7fa33b1c4886269f9b0", null ],
+    [ "Location", "class_barotrauma_1_1_cargo_manager.html#a80a18df119d22d80c46fc2e25d35b306", null ],
     [ "purchasedIDCards", "class_barotrauma_1_1_cargo_manager.html#a6d37789fe3abddc2172637cc3cb9f4a4", null ],
     [ "PurchasedItems", "class_barotrauma_1_1_cargo_manager.html#a0a66f79d57a185efe09f989e5d6ef730", null ],
     [ "SoldItems", "class_barotrauma_1_1_cargo_manager.html#accd44d3df91c134d729c76d2da24e344", null ],

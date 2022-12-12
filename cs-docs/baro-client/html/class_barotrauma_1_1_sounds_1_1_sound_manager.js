@@ -26,7 +26,6 @@ var class_barotrauma_1_1_sounds_1_1_sound_manager =
     [ "SetCategoryGainMultiplier", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a9b3d88b7b3eaade35b97bf912aa8ac2d", null ],
     [ "SetCategoryMuffle", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#abb8d34221f57485650c7338c88e3e67b", null ],
     [ "Update", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#ab60c9170a8ea6165a88697c07d0f30fd", null ],
-    [ "LoadedSounds", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a03caa0282f56eee1db0330823be4e3d8", null ],
     [ "CanDetectDisconnect", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a241209b3fdeca885feeafa5e38eb5c35", null ],
     [ "CompressionDynamicRangeGain", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae780aa353802e7ce62fc08c59cf58048", null ],
     [ "Disabled", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a0d8e609c3eef875a8a9a7a0e99a1891b", null ],
@@ -36,6 +35,7 @@ var class_barotrauma_1_1_sounds_1_1_sound_manager =
     [ "ListenerTargetVector", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#adf81eed4f5b02a39d898a792f5374edb", null ],
     [ "ListenerUpVector", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a59062d75948ceed47a0776a1c0590fda", null ],
     [ "LoadedSoundCount", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a4bef2cfe7f0b01c3ba0baae4d46c354b", null ],
+    [ "LoadedSounds", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a03caa0282f56eee1db0330823be4e3d8", null ],
     [ "PlaybackAmplitude", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a80c8a8a7b65c03ac31bd2960f4e1082c", null ],
     [ "UniqueLoadedSoundCount", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#ac6fc28b51b5d6b1b38c6371df3e775d2", null ],
     [ "VoipAttenuatedGain", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a8f1fdacb0e35feaa522687cb15eab557", null ]

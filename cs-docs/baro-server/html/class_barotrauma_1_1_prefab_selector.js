@@ -9,6 +9,8 @@ var class_barotrauma_1_1_prefab_selector =
     [ "RemoveIfContains", "class_barotrauma_1_1_prefab_selector.html#aa3741c1d54905a1e7e1b62d88d0dda81", null ],
     [ "Sort", "class_barotrauma_1_1_prefab_selector.html#a5ea4e9b8fe4a41ff473b69748fe090fd", null ],
     [ "ActivePrefab", "class_barotrauma_1_1_prefab_selector.html#ac41743f3081fd2ab14ee4593c6fbd177", null ],
+    [ "activePrefabInternal", "class_barotrauma_1_1_prefab_selector.html#a94ec3164ea3a7716a072385b3018116a", null ],
     [ "BasePrefab", "class_barotrauma_1_1_prefab_selector.html#a6677a5021a9a743ce6d4d488f076bd11", null ],
-    [ "IsEmpty", "class_barotrauma_1_1_prefab_selector.html#a9b49fdfd331ea3f4ef5fd09aa3e1f4f5", null ]
+    [ "IsEmpty", "class_barotrauma_1_1_prefab_selector.html#a9b49fdfd331ea3f4ef5fd09aa3e1f4f5", null ],
+    [ "isEmptyInternal", "class_barotrauma_1_1_prefab_selector.html#af12065e0d905aaf9a544159e83fb2f4f", null ]
 ];

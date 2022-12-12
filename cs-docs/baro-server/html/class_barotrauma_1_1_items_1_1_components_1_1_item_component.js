@@ -61,7 +61,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "requiredItems", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ab802d3a3880fb38fe092fedab253d8f6", null ],
     [ "requiredSkills", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a5bc4635459f01e01c09221925bdc5b45", null ],
     [ "statusEffectLists", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a77702490af4023448d706dbe9f37252d", null ],
-    [ "UpdateWhenInactive", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae1b57e167e3b18deb258c31db95c3d12", null ],
     [ "WasUsed", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ad8be33d55a36a63145291a0664caf627", null ],
     [ "AllowInGameEditing", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a21ac60ee8febba5c1bc75a288c6e5d35", null ],
     [ "CanBeCombined", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3ccd271efb86c0628c8aa265b81c37dc", null ],
@@ -86,5 +85,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "RemoveOnCombined", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a23443d52b5e3f2933c019e31fd1f14f2", null ],
     [ "SelectKey", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a53e2ab9422927e19fed604b1ac9c2829", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a03ff62ce5738b7c88d72d443f9244fad", null ],
-    [ "type", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a185498b68a82bd6a77b6446a91ec97d8", null ]
+    [ "type", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a185498b68a82bd6a77b6446a91ec97d8", null ],
+    [ "UpdateWhenInactive", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae1b57e167e3b18deb258c31db95c3d12", null ]
 ];

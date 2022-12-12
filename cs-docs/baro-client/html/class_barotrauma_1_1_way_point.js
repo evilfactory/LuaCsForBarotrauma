@@ -26,7 +26,6 @@ var class_barotrauma_1_1_way_point =
     [ "Ruin", "class_barotrauma_1_1_way_point.html#a037c45b660688ac638c80c1f0c815da9", null ],
     [ "spawnType", "class_barotrauma_1_1_way_point.html#a7d2e1f203179eb3fa6b9b262b51d6579", null ],
     [ "Stairs", "class_barotrauma_1_1_way_point.html#a1e61bea5688c0ec5f9e891615e4339d6", null ],
-    [ "Tags", "class_barotrauma_1_1_way_point.html#a521d6436dec5c8130fb5f2bf43a6c483", null ],
     [ "Tunnel", "class_barotrauma_1_1_way_point.html#ad06e7618f4024302c2e31c2b8756d727", null ],
     [ "AssignedJob", "class_barotrauma_1_1_way_point.html#a09316606157b275c9fd2af9a31705ce6", null ],
     [ "ConnectedDoor", "class_barotrauma_1_1_way_point.html#a4a2e16c781d1d95e1ec7caefbf2dfacb", null ],
@@ -37,5 +36,6 @@ var class_barotrauma_1_1_way_point =
     [ "Name", "class_barotrauma_1_1_way_point.html#a8245eb256dd918ca4c98c5124d3f4808", null ],
     [ "OnLinksChanged", "class_barotrauma_1_1_way_point.html#ab0fc1da9eff766f327cf167a90f848f5", null ],
     [ "SelectableInEditor", "class_barotrauma_1_1_way_point.html#a9169e414fbbac55b89561761725a77da", null ],
-    [ "SpawnType", "class_barotrauma_1_1_way_point.html#af55288a384a7fae5d054ea526b0960cb", null ]
+    [ "SpawnType", "class_barotrauma_1_1_way_point.html#af55288a384a7fae5d054ea526b0960cb", null ],
+    [ "Tags", "class_barotrauma_1_1_way_point.html#a521d6436dec5c8130fb5f2bf43a6c483", null ]
 ];

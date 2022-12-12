@@ -21,8 +21,8 @@ var class_barotrauma_1_1_crew_manager =
     [ "ServerWriteActiveOrders", "class_barotrauma_1_1_crew_manager.html#accfa6af0c2ebcf66f6ec89966491e316", null ],
     [ "Update", "class_barotrauma_1_1_crew_manager.html#a069277cdb162149c586077293c3bf60f", null ],
     [ "ActiveReadyCheck", "class_barotrauma_1_1_crew_manager.html#acb40907bdccca87e796a56df4c55feca", null ],
-    [ "CharacterInfos", "class_barotrauma_1_1_crew_manager.html#aa73c6b0df370a630a9bffcaed22d316f", null ],
     [ "ActiveOrders", "class_barotrauma_1_1_crew_manager.html#a532543fd61e086640f77da23f1936a36", null ],
+    [ "CharacterInfos", "class_barotrauma_1_1_crew_manager.html#aa73c6b0df370a630a9bffcaed22d316f", null ],
     [ "HasBots", "class_barotrauma_1_1_crew_manager.html#a844938b2f9924e0af19b4aadf33f0e7d", null ],
     [ "IsSinglePlayer", "class_barotrauma_1_1_crew_manager.html#a15fc8094b3d136cd150d107bf2e08871", null ]
 ];

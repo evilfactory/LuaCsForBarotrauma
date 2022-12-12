@@ -50,7 +50,6 @@ var class_barotrauma_1_1_physics_body =
     [ "Submarine", "class_barotrauma_1_1_physics_body.html#a153b80c0283d09ac7133e9050b420eaf", null ],
     [ "targetPosition", "class_barotrauma_1_1_physics_body.html#a61d7a90bf074dcbcb192cd4209be4685", null ],
     [ "targetRotation", "class_barotrauma_1_1_physics_body.html#afb2be064098685f85d5439a524961cf3", null ],
-    [ "TransformedRotation", "class_barotrauma_1_1_physics_body.html#aba2ac13a9259c7f81dd86d18e49f8b71", null ],
     [ "AngularVelocity", "class_barotrauma_1_1_physics_body.html#a1225c4f679b8e4733df51c99a469642f", null ],
     [ "BodyShape", "class_barotrauma_1_1_physics_body.html#ab8e90602bea4842381a598a7580d385b", null ],
     [ "BodyShapeTexture", "class_barotrauma_1_1_physics_body.html#a186c27909963673d1a4bab7db97e24e2", null ],
@@ -75,5 +74,6 @@ var class_barotrauma_1_1_physics_body =
     [ "SimPosition", "class_barotrauma_1_1_physics_body.html#a694d01270fa981f372442a4386fea9c2", null ],
     [ "TargetPosition", "class_barotrauma_1_1_physics_body.html#a3692593a92ecec4c717dfe64f87841c5", null ],
     [ "TargetRotation", "class_barotrauma_1_1_physics_body.html#a1730d0150247a20b8e4c3eb5312934a3", null ],
+    [ "TransformedRotation", "class_barotrauma_1_1_physics_body.html#aba2ac13a9259c7f81dd86d18e49f8b71", null ],
     [ "UserData", "class_barotrauma_1_1_physics_body.html#a9ed5c974cec94443948333d6a82a68c8", null ]
 ];

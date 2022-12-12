@@ -32,11 +32,11 @@ var class_barotrauma_1_1_multi_player_campaign =
     [ "Start", "class_barotrauma_1_1_multi_player_campaign.html#a2a63346decf29a2c8dba087a73fa39e0", null ],
     [ "TryPurchase", "class_barotrauma_1_1_multi_player_campaign.html#a0fb46540b9d2c4875aa17b6eed6e2ff9", null ],
     [ "Update", "class_barotrauma_1_1_multi_player_campaign.html#a53f39543969a49c2cd46641133daeabf", null ],
-    [ "PersonalWallet", "class_barotrauma_1_1_multi_player_campaign.html#a0ceadd43a41247d7a2f7133db5bd8ee7", null ],
     [ "SuppressStateSending", "class_barotrauma_1_1_multi_player_campaign.html#abd675790ed6cc8cc2d174fcaf376fe50", null ],
-    [ "Wallet", "class_barotrauma_1_1_multi_player_campaign.html#ac6d19696e800d5dd81614b90862997f0", null ],
     [ "CampaignID", "class_barotrauma_1_1_multi_player_campaign.html#a80aa42d68955e9a97ed3c81964258277", null ],
     [ "LastSaveID", "class_barotrauma_1_1_multi_player_campaign.html#a1449ceb151357d73fede4c2c7d8e36c8", null ],
     [ "Paused", "class_barotrauma_1_1_multi_player_campaign.html#a7c1a1ca31bccc3506f09defc0ebd58b2", null ],
-    [ "PendingSaveID", "class_barotrauma_1_1_multi_player_campaign.html#a15d10284026b9d1a0c7fd498b669394f", null ]
+    [ "PendingSaveID", "class_barotrauma_1_1_multi_player_campaign.html#a15d10284026b9d1a0c7fd498b669394f", null ],
+    [ "PersonalWallet", "class_barotrauma_1_1_multi_player_campaign.html#a0ceadd43a41247d7a2f7133db5bd8ee7", null ],
+    [ "Wallet", "class_barotrauma_1_1_multi_player_campaign.html#ac6d19696e800d5dd81614b90862997f0", null ]
 ];

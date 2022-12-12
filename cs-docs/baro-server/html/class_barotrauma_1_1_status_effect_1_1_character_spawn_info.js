@@ -1,10 +1,10 @@
 var class_barotrauma_1_1_status_effect_1_1_character_spawn_info =
 [
     [ "CharacterSpawnInfo", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#ae8bf7a53991376e1c9ad218412731ce1", null ],
-    [ "Name", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a923f3806701cf263e83f367de4073239", null ],
     [ "AfflictionOnSpawn", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#aa308c07a955dc68223561141c2759e9b", null ],
     [ "AfflictionStrength", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a878d87f191f9c873b2358d829c5b0b07", null ],
     [ "Count", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a4d826903ce6befdaaac539e578dc0811", null ],
+    [ "Name", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a923f3806701cf263e83f367de4073239", null ],
     [ "Offset", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#ae8a32021eaa0fdbb0165dbc33fd403b9", null ],
     [ "RemovePreviousCharacter", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a678e2577eebf128bf25316a709db1db4", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a21cf52fd92599b135ffbe2aacf12344a", null ],

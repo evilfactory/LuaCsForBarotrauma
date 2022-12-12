@@ -7,7 +7,7 @@ var class_barotrauma_1_1_networking_1_1_file_sender =
     [ "ReadFileRequest", "class_barotrauma_1_1_networking_1_1_file_sender.html#a3157e4cbf6f9fcac3a3966249d047e68", null ],
     [ "StartTransfer", "class_barotrauma_1_1_networking_1_1_file_sender.html#a2d99c330d89ed367f062b40676232243", null ],
     [ "Update", "class_barotrauma_1_1_networking_1_1_file_sender.html#a98cc58095baaed1d081ada60bbb99f5b", null ],
-    [ "ActiveTransfers", "class_barotrauma_1_1_networking_1_1_file_sender.html#a0a1e2e0be5aadd51ff90ed2a7fe53207", null ],
     [ "OnEnded", "class_barotrauma_1_1_networking_1_1_file_sender.html#ac30c2e1386a74818cd49b0d25e48a262", null ],
-    [ "OnStarted", "class_barotrauma_1_1_networking_1_1_file_sender.html#a5d916048c9e85dc6270c4c3ca9673551", null ]
+    [ "OnStarted", "class_barotrauma_1_1_networking_1_1_file_sender.html#a5d916048c9e85dc6270c4c3ca9673551", null ],
+    [ "ActiveTransfers", "class_barotrauma_1_1_networking_1_1_file_sender.html#a0a1e2e0be5aadd51ff90ed2a7fe53207", null ]
 ];

@@ -27,11 +27,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_repairable =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#af2363e32201ae14588e04ba2240455a5", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a48dc1f8c097c0b40b0f38fd91eaf1331", null ],
     [ "FakeBrokenTimer", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a4287963f022ea87eae0c8d29fde0c6f9", null ],
-    [ "IsBelowRepairIconThreshold", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#ad3253cf0feeea167b5abaa3b9b54394a", null ],
-    [ "IsBelowRepairThreshold", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a0e87f85622475d490578aa067d01ea3f", null ],
     [ "LastActiveTime", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a0ea4b6b141c1bc5a317622e417294271", null ],
-    [ "TinkeringPowersDevices", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a72502aebdbca87b70f69978b67202bc3", null ],
-    [ "TinkeringStrength", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#ac73cf82797c0f6be57c4f8ea0f12ed40", null ],
     [ "CurrentFixer", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#ac9181165be61fd8cdcc95eec70a497e0", null ],
     [ "CurrentFixerAction", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#afb688644caacf53e32d2747fdf005052", null ],
     [ "Description", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#aa99516f4f7c099f68cdaacd313355e2e", null ],
@@ -40,6 +36,8 @@ var class_barotrauma_1_1_items_1_1_components_1_1_repairable =
     [ "DrawSize", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a7b30165a9c5d7491d72238907cf1bc2b", null ],
     [ "FixDurationHighSkill", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a3e9326f2487aef53784a6f121a4dcf06", null ],
     [ "FixDurationLowSkill", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a9c493df15e23482b765aed335ecc10aa", null ],
+    [ "IsBelowRepairIconThreshold", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#ad3253cf0feeea167b5abaa3b9b54394a", null ],
+    [ "IsBelowRepairThreshold", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a0e87f85622475d490578aa067d01ea3f", null ],
     [ "IsTinkering", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a129dfae2768ccef35eb90b6acdc8041e", null ],
     [ "MaxDeteriorationDelay", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a311daf540a0c69aa0d98f05f51a20e7c", null ],
     [ "MinDeteriorationCondition", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a5f8cc3458cc1df3396b93928596d79ab", null ],
@@ -49,5 +47,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_repairable =
     [ "RepairThreshold", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a5218d165f9265d519d30c459c88d81f0", null ],
     [ "SabotageButton", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#aa0cd57699fb727ad22cbd32e56505197", null ],
     [ "SkillRequirementMultiplier", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a4969884d1eee41197d34543e85474cc0", null ],
-    [ "TinkerButton", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a2d682456a8d237e2476760ca2debfd3f", null ]
+    [ "TinkerButton", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a2d682456a8d237e2476760ca2debfd3f", null ],
+    [ "TinkeringPowersDevices", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#a72502aebdbca87b70f69978b67202bc3", null ],
+    [ "TinkeringStrength", "class_barotrauma_1_1_items_1_1_components_1_1_repairable.html#ac73cf82797c0f6be57c4f8ea0f12ed40", null ]
 ];

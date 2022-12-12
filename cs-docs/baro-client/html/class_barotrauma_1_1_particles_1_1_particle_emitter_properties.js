@@ -1,7 +1,6 @@
 var class_barotrauma_1_1_particles_1_1_particle_emitter_properties =
 [
     [ "ParticleEmitterProperties", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#aef6b66ae3e13d9999a7151b85ad3d7e8", null ],
-    [ "Name", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a0b4e7b6418d2abfba5b4135ac30ca223", null ],
     [ "Angle", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#ab6f087e06d1342f29f3318277d5ba213", null ],
     [ "AngleMax", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a346f57ddcb2b8036018ed27b7d7ec777", null ],
     [ "AngleMaxRad", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a62e15c7fd8fc1e09fb3ee6ab5f3bd6b7", null ],
@@ -18,6 +17,7 @@ var class_barotrauma_1_1_particles_1_1_particle_emitter_properties =
     [ "HighQualityCollisionDetection", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a83d20e5c568e0e25737b78fb2e8f09cf", null ],
     [ "InitialDelay", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a4f199580eaf204c08f9f0816cde177eb", null ],
     [ "LifeTimeMultiplier", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#aaeb8b16941c605c7cae9366669983a7c", null ],
+    [ "Name", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a0b4e7b6418d2abfba5b4135ac30ca223", null ],
     [ "ParticleAmount", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#aeca24fcbb0f1e206d201d1db9eb294b1", null ],
     [ "ParticlesPerSecond", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#abf250ea3bdbccb492bc5265750d3e73c", null ],
     [ "ScaleMax", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a837425c31dc3c5435805e43af6ad41b1", null ],

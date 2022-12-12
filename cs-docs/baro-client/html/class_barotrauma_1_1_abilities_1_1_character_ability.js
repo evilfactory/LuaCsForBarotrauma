@@ -11,9 +11,9 @@ var class_barotrauma_1_1_abilities_1_1_character_ability =
     [ "VerifyState", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a622aee1661495ce07721b0a0bc44af80", null ],
     [ "AllowClientSimulation", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a3b3447e46bb43111dfe41d25c98e3f98", null ],
     [ "AppliesEffectOnIntervalUpdate", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a88e50d558c3b9c036de99722f20f3812", null ],
-    [ "EffectDeltaTime", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a2dd320667f04e635fbfb6336919f4763", null ],
     [ "Character", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a2c8864b41f450d83b3a33e26fd0ee354", null ],
     [ "CharacterAbilityGroup", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a47ec9e2d369b9dfb284d76ec83279ab1", null ],
     [ "CharacterTalent", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a0a3543cafe3ef095c6cfbd64ccc6c7a7", null ],
+    [ "EffectDeltaTime", "class_barotrauma_1_1_abilities_1_1_character_ability.html#a2dd320667f04e635fbfb6336919f4763", null ],
     [ "RequiresAlive", "class_barotrauma_1_1_abilities_1_1_character_ability.html#add28047dc44caf8a6edb0ce11fadc1d3", null ]
 ];

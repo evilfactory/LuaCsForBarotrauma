@@ -10,10 +10,10 @@ var class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation =
     [ "Save", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a39388f99d75c7cceb7fc395b4386aa1d", null ],
     [ "SetResolution", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#abbce676ca4a9f79b3e51fd88e45c27ec", null ],
     [ "Update", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a56c22b87438db4b319891a04a026cf19", null ],
-    [ "Sync", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a5bb16eefdf4da9f6e54ec8030929a9d0", null ],
-    [ "TypeName", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a77d4cc458bee699b0c7c651ae0a99df2", null ],
     [ "Deformation", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a5dccb1a90e0f8996a6d098ad4cbe667d", null ],
     [ "Params", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a72115f08b6573af9ead4c26d00becd6e", null ],
     [ "Phase", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a737e3fd50a4c9beb10a4ac5a575aca45", null ],
-    [ "Resolution", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#ac8bc1b57aadd48e147f64786df83cac2", null ]
+    [ "Resolution", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#ac8bc1b57aadd48e147f64786df83cac2", null ],
+    [ "Sync", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a5bb16eefdf4da9f6e54ec8030929a9d0", null ],
+    [ "TypeName", "class_barotrauma_1_1_sprite_deformations_1_1_sprite_deformation.html#a77d4cc458bee699b0c7c651ae0a99df2", null ]
 ];

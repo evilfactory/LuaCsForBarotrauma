@@ -21,9 +21,9 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection =
     [ "MaxWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a42c5e6a7174860914e67f7b247e8d78c", null ],
     [ "Name", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a68cfd72c7801e426844eea6af5ea87e9", null ],
     [ "Priority", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a73807b92da7e888f906629ed64d8f108", null ],
-    [ "Wires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a1fe93c42517570ff04ac631f2f88c445", null ],
     [ "ConnectionPanel", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a775f0d8eda3668081f487bab28661bda", null ],
     [ "IsPower", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ae15b55361a27fa4201ed5e1d34c5bbce", null ],
     [ "Item", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ae6984516d3b982d7d8cd77856776b00e", null ],
-    [ "Recipients", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a96e105861e8c6d6f2567644fef775888", null ]
+    [ "Recipients", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a96e105861e8c6d6f2567644fef775888", null ],
+    [ "Wires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a1fe93c42517570ff04ac631f2f88c445", null ]
 ];

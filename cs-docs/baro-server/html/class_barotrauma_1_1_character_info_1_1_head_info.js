@@ -9,7 +9,6 @@ var class_barotrauma_1_1_character_info_1_1_head_info =
     [ "HairColor", "class_barotrauma_1_1_character_info_1_1_head_info.html#a0867d5800b9f24a14e85655044bcd138", null ],
     [ "MoustacheIndex", "class_barotrauma_1_1_character_info_1_1_head_info.html#a65ae1a15223c550487922dc7824dbbdb", null ],
     [ "Preset", "class_barotrauma_1_1_character_info_1_1_head_info.html#ae59b26bac6a99894b9c2b1652393f18e", null ],
-    [ "SheetIndex", "class_barotrauma_1_1_character_info_1_1_head_info.html#a1af39df07f39fed063e065a057e3db4f", null ],
     [ "SkinColor", "class_barotrauma_1_1_character_info_1_1_head_info.html#abdacdc874138870ca001c6302f1719be", null ],
     [ "BeardElement", "class_barotrauma_1_1_character_info_1_1_head_info.html#ac6cfdda16f18c971be364294838941fb", null ],
     [ "FaceAttachment", "class_barotrauma_1_1_character_info_1_1_head_info.html#a035cf4c66b744f997f1d1f77e3ead7e6", null ],
@@ -17,5 +16,6 @@ var class_barotrauma_1_1_character_info_1_1_head_info =
     [ "HairIndex", "class_barotrauma_1_1_character_info_1_1_head_info.html#a8b4bfb5259b6d97a1a58fa5b4856519f", null ],
     [ "HairWithHatElement", "class_barotrauma_1_1_character_info_1_1_head_info.html#a66a80747c56fc6814d14f7fef5020b20", null ],
     [ "HairWithHatIndex", "class_barotrauma_1_1_character_info_1_1_head_info.html#a3e21cd748c7e9b5d6e092bfa0d8c6a92", null ],
-    [ "MoustacheElement", "class_barotrauma_1_1_character_info_1_1_head_info.html#a9bf05e84b0d994c92a9a2d396acd8f8b", null ]
+    [ "MoustacheElement", "class_barotrauma_1_1_character_info_1_1_head_info.html#a9bf05e84b0d994c92a9a2d396acd8f8b", null ],
+    [ "SheetIndex", "class_barotrauma_1_1_character_info_1_1_head_info.html#a1af39df07f39fed063e065a057e3db4f", null ]
 ];

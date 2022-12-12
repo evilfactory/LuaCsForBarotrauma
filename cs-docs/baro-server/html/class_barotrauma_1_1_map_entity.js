@@ -22,7 +22,6 @@ var class_barotrauma_1_1_map_entity =
     [ "SetUpgrade", "class_barotrauma_1_1_map_entity.html#a60bac7aa9f6b710180e37b603b1c3c53", null ],
     [ "ShallowRemove", "class_barotrauma_1_1_map_entity.html#a1598b8c77ef8ac216da13120cef253ef", null ],
     [ "Update", "class_barotrauma_1_1_map_entity.html#a46389c722caa30156dc1055a2b49d3da", null ],
-    [ "AllowedLinks", "class_barotrauma_1_1_map_entity.html#a1144883f327d7625e35866b88d260f51", null ],
     [ "DisallowedUpgradeSet", "class_barotrauma_1_1_map_entity.html#a76eca7fc0e23a06c7568bff1b2f55e93", null ],
     [ "ExternalHighlight", "class_barotrauma_1_1_map_entity.html#abe2aaffd58729610d5f476a3521d6e73", null ],
     [ "flippedX", "class_barotrauma_1_1_map_entity.html#a17c39b26aa127c638aff12c63c17b6e2", null ],
@@ -33,9 +32,9 @@ var class_barotrauma_1_1_map_entity =
     [ "Prefab", "class_barotrauma_1_1_map_entity.html#a6598de49844bcf112c7031daab625e43", null ],
     [ "rect", "class_barotrauma_1_1_map_entity.html#aedfdb3e8d113836bc791f84d3757b61c", null ],
     [ "ShouldBeSaved", "class_barotrauma_1_1_map_entity.html#ab525af7296e82f96ebf5c09ae2bb61c0", null ],
-    [ "SpriteOverrideDepth", "class_barotrauma_1_1_map_entity.html#abac11fa5c780a5ae106102577f95cae0", null ],
     [ "unresolvedLinkedToID", "class_barotrauma_1_1_map_entity.html#ab6b7d816ae022cf72bd55843496338cd", null ],
     [ "Upgrades", "class_barotrauma_1_1_map_entity.html#ac958a8a6cc296ec2f9380ee59041cdd9", null ],
+    [ "AllowedLinks", "class_barotrauma_1_1_map_entity.html#a1144883f327d7625e35866b88d260f51", null ],
     [ "DisallowedUpgrades", "class_barotrauma_1_1_map_entity.html#afdc0cd297e114f465dc36a7c219a011f", null ],
     [ "DrawBelowWater", "class_barotrauma_1_1_map_entity.html#a81edd5c5763effc9cb1e979db947a515", null ],
     [ "DrawOverWater", "class_barotrauma_1_1_map_entity.html#ad9e333cd2b9c830c7affc07fc3ecf980", null ],
@@ -60,5 +59,6 @@ var class_barotrauma_1_1_map_entity =
     [ "Sprite", "class_barotrauma_1_1_map_entity.html#a1119dea13e62c46b45cbaf9846674fd2", null ],
     [ "SpriteDepth", "class_barotrauma_1_1_map_entity.html#a943884734137ed6dfcd5879d784ca0fc", null ],
     [ "SpriteDepthOverrideIsSet", "class_barotrauma_1_1_map_entity.html#a028c17898807cf5e4cd0d8031d0b3f0c", null ],
+    [ "SpriteOverrideDepth", "class_barotrauma_1_1_map_entity.html#abac11fa5c780a5ae106102577f95cae0", null ],
     [ "WorldRect", "class_barotrauma_1_1_map_entity.html#a3e94124abb0a0b40fe5708c00c55fe3a", null ]
 ];

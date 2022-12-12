@@ -24,7 +24,6 @@ var class_barotrauma_1_1_campaign_mode =
     ] ],
     [ "CampaignMode", "class_barotrauma_1_1_campaign_mode.html#a2c322bd72a89c74d1350d29c51b80838", null ],
     [ "AddExtraMissions", "class_barotrauma_1_1_campaign_mode.html#af1e1297863a3be7ea7791ea9319ac4e3", null ],
-    [ "AllowedToManageCampaign", "class_barotrauma_1_1_campaign_mode.html#a9d0a28117b212e7b9f3ab606bd296b83", null ],
     [ "AllowedToManageWallets", "class_barotrauma_1_1_campaign_mode.html#a19577916414f68d961ccd1bf91dc0958", null ],
     [ "AssignNPCMenuInteraction", "class_barotrauma_1_1_campaign_mode.html#a633b4e0d509478ecdb3d22b90438bc95", null ],
     [ "CanAfford", "class_barotrauma_1_1_campaign_mode.html#a3d8de1e29e8e25eeebaa9d0338083dc5", null ],

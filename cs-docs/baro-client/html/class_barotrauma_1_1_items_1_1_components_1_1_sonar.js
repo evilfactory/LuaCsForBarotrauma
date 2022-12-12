@@ -26,8 +26,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a2518473398b50b62756b7b504276b7b0", null ],
     [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a849a46a8f0a75a19b0bcc9ab515e967e", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#accaf5df2ef8d16f796838d9fe1fb7f95", null ],
-    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#acd6673e5565cffbd7490182cae4b2bb9", null ],
-    [ "UseDirectionalPing", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a72a48a7163fb08306b7f432ca640e7b9", null ],
     [ "CenterOnTransducers", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a5521fe2c2c0c15786de9b637dda823b7", null ],
     [ "ConnectedTransducers", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aadc018eb79e72e8713b948bd33d73d8f", null ],
     [ "CurrentMode", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a5e3d00eee254e94220d472db4d7305d9", null ],
@@ -37,8 +35,10 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
     [ "HasMineralScanner", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a637ecb750476b80a9f54f805d3d6525e", null ],
     [ "MineralClusters", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a76c77d2ec8a7134f33a3cdbef6702d96", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#afe165cd6cddba66d30626c3fed2d33c8", null ],
+    [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#acd6673e5565cffbd7490182cae4b2bb9", null ],
     [ "RightLayout", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a240a0c67227961ea21f44c8a7a917985", null ],
     [ "SonarModeSwitch", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a3303fad7199c93044eae74baa63f55b6", null ],
+    [ "UseDirectionalPing", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a72a48a7163fb08306b7f432ca640e7b9", null ],
     [ "UseTransducers", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#ac3cad2c6230297a4f9228282f62a5a89", null ],
     [ "Zoom", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#abb55f321efb132ee7fe8a36bd50d47e4", null ]
 ];

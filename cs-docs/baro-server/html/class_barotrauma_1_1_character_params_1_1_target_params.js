@@ -2,7 +2,6 @@ var class_barotrauma_1_1_character_params_1_1_target_params =
 [
     [ "TargetParams", "class_barotrauma_1_1_character_params_1_1_target_params.html#abcd5890fc8db589dce006f8993521338", null ],
     [ "TargetParams", "class_barotrauma_1_1_character_params_1_1_target_params.html#a3f47190a74de0e318c7e09cb3da88fdf", null ],
-    [ "Name", "class_barotrauma_1_1_character_params_1_1_target_params.html#a661762b4460a88590d839e5da764039b", null ],
     [ "AttackDistance", "class_barotrauma_1_1_character_params_1_1_target_params.html#a263b5a403df3000c1b90e2f1802af3f6", null ],
     [ "AttackPattern", "class_barotrauma_1_1_character_params_1_1_target_params.html#aa8df42b7e0530f7ef84ec672227622ea", null ],
     [ "CircleMaxRandomOffset", "class_barotrauma_1_1_character_params_1_1_target_params.html#a93176601ef8fad04302497d820f7748c", null ],
@@ -14,6 +13,7 @@ var class_barotrauma_1_1_character_params_1_1_target_params =
     [ "IgnoreIncapacitated", "class_barotrauma_1_1_character_params_1_1_target_params.html#a43c868d62ad5f4627232783938fd821d", null ],
     [ "IgnoreInside", "class_barotrauma_1_1_character_params_1_1_target_params.html#a54962fee5e21f6253b6ee29813bbfa85", null ],
     [ "IgnoreOutside", "class_barotrauma_1_1_character_params_1_1_target_params.html#a3d7e786a3b7a977f742ab86cd8e2119d", null ],
+    [ "Name", "class_barotrauma_1_1_character_params_1_1_target_params.html#a661762b4460a88590d839e5da764039b", null ],
     [ "Offset", "class_barotrauma_1_1_character_params_1_1_target_params.html#a517002fab5d1aedd6052734c9e903993", null ],
     [ "PrioritizeSubCenter", "class_barotrauma_1_1_character_params_1_1_target_params.html#ada1e45e97a23da716c283fc280adb52f", null ],
     [ "Priority", "class_barotrauma_1_1_character_params_1_1_target_params.html#a161fcee5373af2cb42750640b8b1f83f", null ],

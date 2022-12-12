@@ -1,24 +1,26 @@
 /*
-@licstart  The following is the entire license notice for the
-JavaScript code in this file.
+ @licstart  The following is the entire license notice for the JavaScript code in this file.
 
-Copyright (C) 1997-2019 by Dimitri van Heesch
+ The MIT License (MIT)
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of version 2 of the GNU General Public License as published by
-the Free Software Foundation
+ Copyright (C) 1997-2020 by Dimitri van Heesch
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ and associated documentation files (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ The above copyright notice and this permission notice shall be included in all copies or
+ substantial portions of the Software.
 
-@licend  The above is the entire license notice
-for the JavaScript code in this file
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var NAVTREE =
 [
@@ -53,63 +55,67 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "../../baro-server/html/index.html",
-"class_barotrauma_1_1_a_i_objective_decontain_item.html#acf9bfda567abd85d8781aff254a27a91",
-"class_barotrauma_1_1_a_i_objective_load_items.html#ab0bdc4b9b14daf944a411dcab9976119",
-"class_barotrauma_1_1_abandoned_outpost_mission.html#a5feb5e467fe8d18651e5379782cb9abe",
-"class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a5be4862a8008d532cbea3eea2ef52483",
-"class_barotrauma_1_1_affliction_prefab.html#ab4076d2ffee6a19b6e683ed0c492e385",
-"class_barotrauma_1_1_attack.html#a6fac5357bf0be82963da6a8795387be4",
-"class_barotrauma_1_1_camera.html#a9f07549de2542a3a1dccda9fba6e8583",
-"class_barotrauma_1_1_cave_generation_params.html",
-"class_barotrauma_1_1_character.html#abbe06e4f928610ddf56e3fa74c66db35",
-"class_barotrauma_1_1_character_info.html",
-"class_barotrauma_1_1_character_params.html#af7f63992d4d90705af41d59d9907e185",
-"class_barotrauma_1_1_check_reputation_action.html#a7605b9ca377810dd9d32f8831e93c12f",
-"class_barotrauma_1_1_content_x_element.html#afd1f1cf1db6dd4d1082d6c7442c80bea",
-"class_barotrauma_1_1_decorative_sprite.html#aa04297ec762b349a87d0f532c9fddae2",
-"class_barotrauma_1_1_entity_spawner.html#a14efac8dbe39e494d7068ecdaf898a2b",
-"class_barotrauma_1_1_factions_file.html#a92534a08035c0befb0999df760a57a63",
-"class_barotrauma_1_1_g_u_i_component.html#a9079a68d9387afe34466caaf0ae22958",
-"class_barotrauma_1_1_g_u_i_list_box.html#aadfc81322f36dfaa45d180d68cbdc4bf",
-"class_barotrauma_1_1_g_u_i_text_box.html#a53b2ebabcb0d179cb0c884fb9a8b3141",
-"class_barotrauma_1_1_graph.html#afda576a49713328dfd463d06465827a2",
-"class_barotrauma_1_1_humanoid_anim_controller.html#acc8574a21620852b2594b483ce0ba35e",
-"class_barotrauma_1_1_item.html#a451b50c9841a410a7bd2316d6df03a2f",
-"class_barotrauma_1_1_item_prefab.html#a9a5b7139de9574da075cfb97dd7a5230",
-"class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a44f7fc0d61f7a2c0056607eb5a7720ae",
-"class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a3f3acc7272a9625582c7d07286ef58b9",
-"class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#aada85368a9b21a201d1eae845adbfa9a",
-"class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a5b4ef724f4e88ec0847a897f0c1fe2f1",
-"class_barotrauma_1_1_items_1_1_components_1_1_relay_component.html#a685d674bf8af58fdc5070b29de575758",
-"class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a853eca5374f2d53fe3d52a4ac4c5c5a6",
-"class_barotrauma_1_1_items_1_1_components_1_1_wire.html#aba8dcd340394ddae13cd3f357e369cf6",
-"class_barotrauma_1_1_level.html#aa101d3057d5aeda724a4617c3eaa3123",
-"class_barotrauma_1_1_level_object_prefab.html#a285254f30c6a4073a9f567b2a9c1879e",
-"class_barotrauma_1_1_lights_1_1_light_source_params.html#a7af0c24028dac8e69c3da5e4f7bc3049",
-"class_barotrauma_1_1_localized_string.html#ab840beea13cff609e3d3591432ab7fae",
-"class_barotrauma_1_1_lua_cs_networking_1_1_incoming_http_request.html#a7c08471ec4b38374a39f289720912272",
-"class_barotrauma_1_1_map_entity.html#a028c17898807cf5e4cd0d8031d0b3f0c",
-"class_barotrauma_1_1_mission.html#a37eb4a8955d94a40c2d41529fbff8201",
-"class_barotrauma_1_1_n_p_c_conversations_file.html#a7d205f0c6feabedec33c4f999787160d",
-"class_barotrauma_1_1_networking_1_1_client.html#adf9d41b383f1ac0d32d2273516d8892b",
-"class_barotrauma_1_1_networking_1_1_pipe_address.html#a0593715c5b633bc2ef9255fd565cfe3b",
-"class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a1cf99a7634496809a79300138515d191",
-"class_barotrauma_1_1_outpost_generation_params.html#a329d2084ff117e130b91d9e27348e0e5",
-"class_barotrauma_1_1_pet_behavior.html#a3c6d7945e7ec69f14143de3aa7a5ae63",
-"class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eacdb9af822391aad18da010ddf2255fbb",
-"class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a673568c653051c130ebc238cbae5fe0b",
-"class_barotrauma_1_1_rich_string.html#a2544ef0a4e9ccea86d3368f434af3804",
-"class_barotrauma_1_1_set_data_action.html#ad25bb9b80613897324be6cf3b4056a5b",
-"class_barotrauma_1_1_sounds_1_1_sound.html#a4b82ea97792abba607f53127b89a613d",
-"class_barotrauma_1_1_sprite_deformations_1_1_noise_deformation.html#a689c9c62d932b5603928077fedaaa599",
-"class_barotrauma_1_1_steering_path.html#a0a39f874af87f46536fe0bf339df4ec2",
-"class_barotrauma_1_1_submarine.html#ab920e3150618f54d419d0c49a997f2c4",
-"class_barotrauma_1_1_text_file.html#ac9f2ae7f9d538f29a3998de4c60e7506",
-"class_barotrauma_1_1_voting.html#a713617c0e03c174cd18a2362a383c748a8428552d86c0d262a542a528af490afa",
-"class_inventory_highlight_action.html",
-"functions_n.html",
-"namespace_barotrauma_1_1_media.html",
-"struct_barotrauma_1_1_item_prefab_1_1_commonness_info.html#a8b731722c53ff129e428530685bde6b8"
+"class_barotrauma_1_1_a_i_objective_decontain_item.html#a9594b0c69be214f19a96a8e17d36d3d3",
+"class_barotrauma_1_1_a_i_objective_load_items.html#a7c8193121f1e3f66034b98a3acc22ed3",
+"class_barotrauma_1_1_abandoned_outpost_mission.html#a0eb8b75d5a8d14a29d2392914578072d",
+"class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a022d07ae26501329990ec434344e1e61",
+"class_barotrauma_1_1_affliction_prefab.html#a6b2b839f204655d48ef957af18267211",
+"class_barotrauma_1_1_attack.html#a56db60016828422d4a0b502c7a73a52b",
+"class_barotrauma_1_1_camera.html#a5745085ceaf2a8911c9d6fb25f6c8f21",
+"class_barotrauma_1_1_cause_of_death.html#a42aa809ac806e37a8a38b836b3405629",
+"class_barotrauma_1_1_character.html#aaf1abbc92b7433c1d22fe0466215af5a",
+"class_barotrauma_1_1_character_health.html#afb3b95ae02bbcfd07e38751301c8cfc9",
+"class_barotrauma_1_1_character_params.html#ab8da74018428178317299a857c3e3376",
+"class_barotrauma_1_1_check_money_action.html",
+"class_barotrauma_1_1_content_x_element.html#ad889b178cd2bfbaf993dcc82e438056c",
+"class_barotrauma_1_1_decals_file.html",
+"class_barotrauma_1_1_entity.html#a1e6216dd8b82a1b0d046d3e297fb92f0",
+"class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#a0b31499245e51b5220183259ef55c873",
+"class_barotrauma_1_1_g_u_i_component.html#a4f78f4cf1ab5d3d24f6c36f3445d808b",
+"class_barotrauma_1_1_g_u_i_list_box.html#a6de97dc4dcb6b720512fc5c5e57ac335",
+"class_barotrauma_1_1_g_u_i_text_block.html#ab0f8e0143162b321e91844106b123433",
+"class_barotrauma_1_1_give_skill_exp_action.html#a339314f3e22075ac351ea2f2acbf28de",
+"class_barotrauma_1_1_human_swim_params.html",
+"class_barotrauma_1_1_item.html#a20adb71f07ab621d0aa139551cf0f2f1",
+"class_barotrauma_1_1_item_prefab.html#a50a96010d5019739be95468f9195e11f",
+"class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a985b4e85398d5ff7a83f4761d2d81d58",
+"class_barotrauma_1_1_items_1_1_components_1_1_genetic_material.html#a9e8f76f6f623e86080fb3854adc9d38ea55f4b4a94111759e08b3acb1acd12b8c",
+"class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a2fd520869211c6e694e8c7d632e0a10a",
+"class_barotrauma_1_1_items_1_1_components_1_1_oxygen_detector.html#ae0cb41cb103707e20ac8e06d89f8fa0c",
+"class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a8539c0996e2fd887921de44c4ea086fe",
+"class_barotrauma_1_1_items_1_1_components_1_1_sprayer.html#a5889585f59278dca577e3f904d4f4651",
+"class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#acac4791474dcc8116a3c57872e8071bf",
+"class_barotrauma_1_1_level.html#a4080ae57fac6914fb7b397fc1dce8eea",
+"class_barotrauma_1_1_level_object.html#a7d3e58915368abf18acffa4572a1174f",
+"class_barotrauma_1_1_lights_1_1_light_source.html#a49ca82b360f832fe44320531fdbce540",
+"class_barotrauma_1_1_list_dictionary.html#a1d72f61fe1b2e471420f10ab16c7b54e",
+"class_barotrauma_1_1_lua_cs_hook.html#a59de717f105ac704c86955e577c2c0a7",
+"class_barotrauma_1_1_map.html#afde73be2ae276e9305b0649a090bace4",
+"class_barotrauma_1_1_message_box_action.html#ace5eb3c76f000d0851a93fdb2b84a32b",
+"class_barotrauma_1_1_multi_player_campaign.html#ada1f756901c62591a751d8f58721fc08",
+"class_barotrauma_1_1_networking_1_1_chat_message.html#a5f3c474958dd620c9525930ae2e6933c",
+"class_barotrauma_1_1_networking_1_1_network_connection.html#a693c1276446adb132e69140f6d1c3f9a",
+"class_barotrauma_1_1_networking_1_1_server_settings.html#af0aa7becba54fca82c516b4dbce3b63f",
+"class_barotrauma_1_1_order_prefab.html#a9adb7ee9f06ef820523311eb0547025f",
+"class_barotrauma_1_1_particles_1_1_particle_prefab.html#afe8fb142cdbdf60c21cfa8922a75cdeaa27634ff8002b12e75d98e07ccd005d18",
+"class_barotrauma_1_1_preferred_container.html#aa940b5eea7eb73335399c12f30924efe",
+"class_barotrauma_1_1_ragdoll_params_1_1_joint_params.html#a4178561d64425981878b9c745b54c916",
+"class_barotrauma_1_1_remove_item_action.html#ae2f9b4b85598c726e9739a63db6a60b2",
+"class_barotrauma_1_1_server_list_screen.html#a70cd50b33de9986600c8ed79858a85ab",
+"class_barotrauma_1_1_sounds_1_1_bandpass_filter.html",
+"class_barotrauma_1_1_sprite.html#a85cdb00a2fe1ffd8ceeefb2a74863846",
+"class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de",
+"class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7",
+"class_barotrauma_1_1_tag_l_string.html",
+"class_barotrauma_1_1_upgrade_manager.html#a99f572690bb3ab456ce43269363649a8",
+"class_barotrauma_1_1_wreck_a_i.html#a295512840fae0830e141c86d3620e6dc",
+"class_voronoi2_1_1_halfedge.html",
+"interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa705f3cb19615fd884b6a5d4428186c4",
+"namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eebaa995051b53c97455930014bde9e2d2a07",
+"namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87aad8783089f828b927473fb61d51940ec",
+"namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47",
+"struct_barotrauma_1_1_hull_1_1_ballast_flora_event_data.html#ac7f73940be34d62f354738f2a7a975f2",
+"struct_barotrauma_1_1_networking_1_1_temp_client.html#a0eac691dc408adf8a1a2a3e261e13f3d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

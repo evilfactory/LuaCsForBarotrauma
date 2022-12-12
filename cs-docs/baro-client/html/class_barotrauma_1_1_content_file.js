@@ -10,6 +10,6 @@ var class_barotrauma_1_1_content_file =
     [ "UnloadFile", "class_barotrauma_1_1_content_file.html#a4213db99ca0b954ec7f8bb6da522dad2", null ],
     [ "ContentPackage", "class_barotrauma_1_1_content_file.html#a9efe1723f2c0f72a2e04217af4acb3eb", null ],
     [ "Hash", "class_barotrauma_1_1_content_file.html#a779f9c3c9a4e68e060c793aeadb3e9ac", null ],
-    [ "NotSyncedInMultiplayer", "class_barotrauma_1_1_content_file.html#a1986caef895a65ba1328a6403171deb3", null ],
-    [ "Path", "class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da", null ]
+    [ "Path", "class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da", null ],
+    [ "NotSyncedInMultiplayer", "class_barotrauma_1_1_content_file.html#a1986caef895a65ba1328a6403171deb3", null ]
 ];

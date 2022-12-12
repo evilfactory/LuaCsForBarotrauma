@@ -3,7 +3,6 @@ var class_barotrauma_1_1_affliction_prefab_1_1_effect =
     [ "Effect", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#ac3d497746b2c1f0d2ca7777139ffa3cf", null ],
     [ "AfflictionAbilityFlags", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#af90d73cbbdda0e6a39b0853f96229654", null ],
     [ "AfflictionStatValues", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a47675d787c0d91e6f4916a16f66cf69c", null ],
-    [ "ResistanceFor", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a1c268b96f52a633a823f1b70b17f0900", null ],
     [ "StatusEffects", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#afa6e1ee4cd28641a5f74b081de4802d5", null ],
     [ "BlockTransformation", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a12da993b7e71265b0777ae17ba5f603c", null ],
     [ "DialogFlag", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a3339b435e6a9a3aeeea84cda317c73da", null ],
@@ -37,6 +36,7 @@ var class_barotrauma_1_1_affliction_prefab_1_1_effect =
     [ "MinStrength", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a3db421f584019c25e999f4114a703549", null ],
     [ "MinVitalityDecrease", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a600f2f3b2602d2d013068ca998791d67", null ],
     [ "MultiplyByMaxVitality", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a1c94ea16dfe0df9f3e7e011b1ffc073e", null ],
+    [ "ResistanceFor", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a1c268b96f52a633a823f1b70b17f0900", null ],
     [ "ScreenEffectFluctuationFrequency", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a6a8320f55b531cb2d7f44c7832ee1a53", null ],
     [ "StrengthChange", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a7ea5325b2d2d1f0898b46093bac208bf", null ],
     [ "Tag", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html#ab40c4f24a9d9a11516d0ec74428f0250", null ]

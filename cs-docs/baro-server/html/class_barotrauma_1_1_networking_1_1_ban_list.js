@@ -11,7 +11,7 @@ var class_barotrauma_1_1_networking_1_1_ban_list =
     [ "ServerAdminWrite", "class_barotrauma_1_1_networking_1_1_ban_list.html#a82f318406132a38d38bd567791b01938", null ],
     [ "UnbanPlayer", "class_barotrauma_1_1_networking_1_1_ban_list.html#a15fab567cd2227a3e1aca1a01804affd", null ],
     [ "UnbanPlayer", "class_barotrauma_1_1_networking_1_1_ban_list.html#ad7cc72b21c0bf2b7e4ee16230878c379", null ],
-    [ "BannedPlayers", "class_barotrauma_1_1_networking_1_1_ban_list.html#ad32bcf49d59ea3045d5fcf42d18c6ca7", null ],
     [ "BannedAddresses", "class_barotrauma_1_1_networking_1_1_ban_list.html#aaaebaab0fb6f130a9dbd095df510fe40", null ],
-    [ "BannedNames", "class_barotrauma_1_1_networking_1_1_ban_list.html#a79167788c01a08ef6188645b2a358938", null ]
+    [ "BannedNames", "class_barotrauma_1_1_networking_1_1_ban_list.html#a79167788c01a08ef6188645b2a358938", null ],
+    [ "BannedPlayers", "class_barotrauma_1_1_networking_1_1_ban_list.html#ad32bcf49d59ea3045d5fcf42d18c6ca7", null ]
 ];
