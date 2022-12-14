@@ -40,6 +40,7 @@ var class_barotrauma_1_1_g_u_i_list_box =
     [ "OnSelectedHandler", "class_barotrauma_1_1_g_u_i_list_box.html#a7fee6c6dc9cd598a35e9551596453e73", null ],
     [ "RecalculateChildren", "class_barotrauma_1_1_g_u_i_list_box.html#a0dab6f577882ee57f364a8d08fbe29a9", null ],
     [ "ReceiveCommandInput", "class_barotrauma_1_1_g_u_i_list_box.html#a705f7c36d0216bd56df6a5dd4b797e5a", null ],
+    [ "ReceiveEditingInput", "class_barotrauma_1_1_g_u_i_list_box.html#acea0d1f9952a649b86d25dc36318d2ca", null ],
     [ "ReceiveSpecialInput", "class_barotrauma_1_1_g_u_i_list_box.html#afab1fba77f544bedf79830f417815129", null ],
     [ "ReceiveTextInput", "class_barotrauma_1_1_g_u_i_list_box.html#a543100b7884077824b7b5bc02be7910e", null ],
     [ "ReceiveTextInput", "class_barotrauma_1_1_g_u_i_list_box.html#a373a1ad4df796b8e5c36e502f1dab075", null ],

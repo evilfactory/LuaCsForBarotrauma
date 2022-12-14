@@ -11,7 +11,6 @@ var class_barotrauma_1_1_character_health =
     [ "CalculateVitality", "class_barotrauma_1_1_character_health.html#afb3b95ae02bbcfd07e38751301c8cfc9", null ],
     [ "ClientRead", "class_barotrauma_1_1_character_health.html#adee88bfaa550ca814faf62c71b367db8", null ],
     [ "DrawHUD", "class_barotrauma_1_1_character_health.html#acb2d217ebba8524b092762f90ad24ab8", null ],
-    [ "DrawStatusHUD", "class_barotrauma_1_1_character_health.html#a3e3453b5687e422ea29fd1600eba41f5", null ],
     [ "ForceUpdateVisuals", "class_barotrauma_1_1_character_health.html#a10b20da660b2056f06c508e234d903fb", null ],
     [ "GetActiveAfflictionTags", "class_barotrauma_1_1_character_health.html#a8b5dec0cd734e129c3202d378d6c53d3", null ],
     [ "GetActiveAfflictionTags", "class_barotrauma_1_1_character_health.html#a251c573b40e3d6981634761623257066", null ],
@@ -48,6 +47,7 @@ var class_barotrauma_1_1_character_health =
     [ "Update", "class_barotrauma_1_1_character_health.html#a7b50a5f899affe714dae308bdb369aca", null ],
     [ "UpdateClientSpecific", "class_barotrauma_1_1_character_health.html#af55b863db4b42546d3aad3af853228d2", null ],
     [ "UpdateHUD", "class_barotrauma_1_1_character_health.html#af4d78ffb0f364d68bb6e97766f2cef73", null ],
+    [ "UpdateStatusHUD", "class_barotrauma_1_1_character_health.html#a9dcd9c3c164c183b43421daf9f49d3ee", null ],
     [ "Character", "class_barotrauma_1_1_character_health.html#a0c2b435644ae6c025a9a4bdeeb150a11", null ],
     [ "DefaultFaceTint", "class_barotrauma_1_1_character_health.html#acf8903ea8da03091f7a615087e9a9865", null ],
     [ "DisplayedVitality", "class_barotrauma_1_1_character_health.html#af7ecc6fe53ca65260f0efc827628a30a", null ],
@@ -78,5 +78,5 @@ var class_barotrauma_1_1_character_health =
     [ "SuicideButton", "class_barotrauma_1_1_character_health.html#a33f3da2f1c3fa9301b7a90f382c409ef", null ],
     [ "UnmodifiedMaxVitality", "class_barotrauma_1_1_character_health.html#aad3487f5571268b25ef2e1e96c9832af", null ],
     [ "UseHealthWindow", "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9", null ],
-    [ "Vitality", "class_barotrauma_1_1_character_health.html#aab37e716cb234b818c9df3710f4dfc3f", null ]
+    [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ]
 ];

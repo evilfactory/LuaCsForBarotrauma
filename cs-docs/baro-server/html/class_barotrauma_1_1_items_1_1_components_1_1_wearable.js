@@ -15,6 +15,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_wearable =
     [ "SkillModifiers", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a8b07745d9dfa4d2bfd5e16a3f19ebe87", null ],
     [ "Variants", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a56e5bf326158fbc9e3fcaa8a427cc833", null ],
     [ "WearableStatValues", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a50425c85ee930d1b89c8761694b27f27", null ],
+    [ "AllowUseWhenWorn", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a5326a97dcaa47138bb5a28ae9eeeb3d5", null ],
     [ "AutoEquipWhenFull", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a2659eaa8c4a6c24f88654ba1adfe936c", null ],
     [ "DamageModifiers", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a656f2dbd2f4fd7ba61411b43e2d3d5b9", null ],
     [ "DisplayContainedStatus", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a00121cc7d1936cf7dbe77531bf3ce02a", null ],

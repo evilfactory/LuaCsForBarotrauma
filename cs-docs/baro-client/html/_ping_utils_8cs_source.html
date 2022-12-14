@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('_ping_utils_8cs_source.html',''); init
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> <span class="keyword">class </span>PingUtils</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly Dictionary&lt;IPAddress, int&gt; activePings = <span class="keyword">new</span> Dictionary&lt;IPAddress, int&gt;();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly Dictionary&lt;IPEndPoint, int&gt; activePings = <span class="keyword">new</span> Dictionary&lt;IPEndPoint, int&gt;();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> steamPingInfoReady;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
@@ -124,9 +124,9 @@ $(document).ready(function(){initNavTree('_ping_utils_8cs_source.html',''); init
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">switch</span> (serverInfo.Endpoint)</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">case</span> LidgrenEndpoint { NetEndpoint: { Address: var address } }:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">case</span> LidgrenEndpoint { NetEndpoint: var endPoint }:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    GetIPAddressPing(serverInfo, address, onPingDiscovered);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    GetIPAddressPing(serverInfo, endPoint, onPingDiscovered);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keywordflow">case</span> SteamP2PEndpoint steamP2PEndpoint:</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    TaskPool.Add($<span class="stringliteral">&quot;EstimateSteamLobbyPing ({steamP2PEndpoint.StringRepresentation})&quot;</span>,</div>
@@ -219,9 +219,9 @@ $(document).ready(function(){initNavTree('_ping_utils_8cs_source.html',''); init
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> GetIPAddressPing(ServerInfo serverInfo, IPAddress address, Action&lt;ServerInfo&gt; onPingDiscovered)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> GetIPAddressPing(ServerInfo serverInfo, IPEndPoint endPoint, Action&lt;ServerInfo&gt; onPingDiscovered)</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (IPAddress.IsLoopback(address))</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (IPAddress.IsLoopback(endPoint.Address))</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            {</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                serverInfo.Ping = Option&lt;int&gt;.Some(0);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                onPingDiscovered(serverInfo);</div>
@@ -230,24 +230,24 @@ $(document).ready(function(){initNavTree('_ping_utils_8cs_source.html',''); init
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            {</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                lock (activePings)</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    <span class="keywordflow">if</span> (activePings.ContainsKey(address)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    activePings.Add(address, activePings.Any() ? activePings.Values.Max() + 1 : 0);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    <span class="keywordflow">if</span> (activePings.ContainsKey(endPoint)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    activePings.Add(endPoint, activePings.Any() ? activePings.Values.Max() + 1 : 0);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                }</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                serverInfo.Ping = Option&lt;int&gt;.None();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                TaskPool.Add($<span class="stringliteral">&quot;PingServerAsync ({address})&quot;</span>, PingServerAsync(address, 1000),</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                TaskPool.Add($<span class="stringliteral">&quot;PingServerAsync ({endPoint})&quot;</span>, PingServerAsync(endPoint, 1000),</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    rtt =&gt;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    {</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        <span class="keywordflow">if</span> (!rtt.TryGetResult(out serverInfo.Ping)) { serverInfo.Ping = Option&lt;int&gt;.None(); }</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                        onPingDiscovered(serverInfo);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        lock (activePings)</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                            activePings.Remove(address);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                            activePings.Remove(endPoint);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        }</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    });</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> async Task&lt;Option&lt;int&gt;&gt; PingServerAsync(IPAddress ipAddress, <span class="keywordtype">int</span> timeOut)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> async Task&lt;Option&lt;int&gt;&gt; PingServerAsync(IPEndPoint endPoint, <span class="keywordtype">int</span> timeOut)</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            await Task.Yield();</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordtype">bool</span> shouldGo = <span class="keyword">false</span>;</div>
@@ -255,21 +255,21 @@ $(document).ready(function(){initNavTree('_ping_utils_8cs_source.html',''); init
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                lock (activePings)</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    shouldGo = activePings.Count(kvp =&gt; kvp.Value &lt; activePings[ipAddress]) &lt; 25;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    shouldGo = activePings.Count(kvp =&gt; kvp.Value &lt; activePings[endPoint]) &lt; 25;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                await Task.Delay(25);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">if</span> (ipAddress == <span class="keyword">null</span>) { <span class="keywordflow">return</span> Option&lt;int&gt;.None(); }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">if</span> (endPoint?.Address == <span class="keyword">null</span>) { <span class="keywordflow">return</span> Option&lt;int&gt;.None(); }</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            </div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="comment">//don&#39;t attempt to ping if the address is IPv6 and it&#39;s not supported</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">if</span> (ipAddress.AddressFamily == AddressFamily.InterNetworkV6 &amp;&amp; !Socket.OSSupportsIPv6) { <span class="keywordflow">return</span> Option&lt;int&gt;.None(); }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">if</span> (endPoint.Address.AddressFamily == AddressFamily.InterNetworkV6 &amp;&amp; !Socket.OSSupportsIPv6) { <span class="keywordflow">return</span> Option&lt;int&gt;.None(); }</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            Ping ping = <span class="keyword">new</span> Ping();</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordtype">byte</span>[] buffer = <span class="keyword">new</span> <span class="keywordtype">byte</span>[32];</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                PingReply pingReply = await ping.SendPingAsync(ipAddress, timeOut, buffer, <span class="keyword">new</span> PingOptions(128, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                PingReply pingReply = await ping.SendPingAsync(endPoint.Address, timeOut, buffer, <span class="keyword">new</span> PingOptions(128, <span class="keyword">true</span>));</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keywordflow">return</span> pingReply.Status <span class="keywordflow">switch</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                {</div>
@@ -279,9 +279,9 @@ $(document).ready(function(){initNavTree('_ping_utils_8cs_source.html',''); init
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            }</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                GameAnalyticsManager.AddErrorEventOnce(<span class="stringliteral">&quot;ServerListScreen.PingServer:PingException&quot;</span> + ipAddress, GameAnalyticsManager.ErrorSeverity.Warning, <span class="stringliteral">&quot;Failed to ping a server - &quot;</span> + (ex?.InnerException?.Message ?? ex.Message));</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                GameAnalyticsManager.AddErrorEventOnce(<span class="stringliteral">&quot;ServerListScreen.PingServer:PingException&quot;</span> + endPoint.Address, GameAnalyticsManager.ErrorSeverity.Warning, <span class="stringliteral">&quot;Failed to ping a server - &quot;</span> + (ex?.InnerException?.Message ?? ex.Message));</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Failed to ping a server (&quot;</span> + ipAddress + <span class="stringliteral">&quot;) - &quot;</span> + (ex?.InnerException?.Message ?? ex.Message), Color.Red);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Failed to ping a server (&quot;</span> + endPoint.Address + <span class="stringliteral">&quot;) - &quot;</span> + (ex?.InnerException?.Message ?? ex.Message), Color.Red);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">return</span> Option&lt;int&gt;.None();</div>

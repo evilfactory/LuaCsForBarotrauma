@@ -8,6 +8,7 @@ var class_barotrauma_1_1_particles_1_1_particle_emitter_properties =
     [ "AngleMinRad", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a7ebe6e5f0b9cdb80374624bd4e585530", null ],
     [ "ColorMultiplier", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a53dd4048fd50af0243576892797b3b43", null ],
     [ "CopyEntityAngle", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#ae6aea1caa45a0f25b58b701c8a6605f0", null ],
+    [ "CopyEntityDir", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a0653d9e129a02b4337f298c15f0c5e2b", null ],
     [ "Distance", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a28369929039878318c3f011808de3a21", null ],
     [ "DistanceMax", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a9c9b20c8a8e45edf802d2d64dc2b7b06", null ],
     [ "DistanceMin", "class_barotrauma_1_1_particles_1_1_particle_emitter_properties.html#a33537db9f5f4c1757011837834d3ca04", null ],

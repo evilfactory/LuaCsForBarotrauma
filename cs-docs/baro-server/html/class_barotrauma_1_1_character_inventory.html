@@ -113,8 +113,8 @@ Inheritance diagram for Barotrauma.CharacterInventory:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7ba74562e953b05c2d5089cfe5aea49c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a7ba74562e953b05c2d5089cfe5aea49c">CharacterInventory</a> (XElement element, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character)</td></tr>
-<tr class="separator:a7ba74562e953b05c2d5089cfe5aea49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5109582dcd9eecfa4196f96fc75022ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a5109582dcd9eecfa4196f96fc75022ed">CharacterInventory</a> (XElement element, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, bool spawnInitialItems)</td></tr>
+<tr class="separator:a5109582dcd9eecfa4196f96fc75022ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a888420d36a3edec7f5bc9bc3f0ea07ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a888420d36a3edec7f5bc9bc3f0ea07ad">FindLimbSlot</a> (<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> limbSlot)</td></tr>
 <tr class="separator:a888420d36a3edec7f5bc9bc3f0ea07ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a708f9fe496a455a39ef7923a63076826"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a708f9fe496a455a39ef7923a63076826">GetItemInLimbSlot</a> (<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> limbSlot)</td></tr>
@@ -201,6 +201,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1550e76225a310bbcd620a412eeff925 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a1550e76225a310bbcd620a412eeff925">ForceRemoveFromSlot</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index)</td></tr>
 <tr class="memdesc:a1550e76225a310bbcd620a412eeff925 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an item from a specific slot. Doesn't do any sanity checks, use with caution!  <a href="class_barotrauma_1_1_inventory.html#a1550e76225a310bbcd620a412eeff925">More...</a><br /></td></tr>
 <tr class="separator:a1550e76225a310bbcd620a412eeff925 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae53e77a3a59775083f04a28e8686109a inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae53e77a3a59775083f04a28e8686109a">IsInSlot</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index)</td></tr>
+<tr class="separator:ae53e77a3a59775083f04a28e8686109a inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf9cde4accdc85a6000dd74664907fcd inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#abf9cde4accdc85a6000dd74664907fcd">SharedRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, out List&lt; ushort &gt;[] newItemIds)</td></tr>
 <tr class="separator:abf9cde4accdc85a6000dd74664907fcd inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6b7d4dfd8b2b9c844f4b53a104a4652 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae6b7d4dfd8b2b9c844f4b53a104a4652">SharedWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
@@ -275,8 +277,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00015">15</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7ba74562e953b05c2d5089cfe5aea49c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ba74562e953b05c2d5089cfe5aea49c">&#9670;&nbsp;</a></span>CharacterInventory()</h2>
+<a id="a5109582dcd9eecfa4196f96fc75022ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5109582dcd9eecfa4196f96fc75022ed">&#9670;&nbsp;</a></span>CharacterInventory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,7 +293,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_character.html">Character</a>&#160;</td>
-          <td class="paramname"><em>character</em>&#160;</td>
+          <td class="paramname"><em>character</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>spawnInitialItems</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -322,7 +330,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00172">172</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00174">174</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -370,7 +378,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a24539fc3075cae851e0e1f563f95cd8b">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00158">158</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00160">160</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -422,7 +430,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a4d97e4cce32ec9665416c8d518abe910">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00165">165</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00167">167</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -452,7 +460,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00399">399</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00402">402</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -472,7 +480,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00119">119</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00121">121</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -492,7 +500,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00128">128</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00130">130</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -522,7 +530,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00138">138</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00140">140</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -580,7 +588,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a7cd632364a5aae15263b7dba6ddf6f10">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00491">491</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00494">494</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -610,7 +618,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#acdfbc453520dc599bec4837cf4297c63">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00187">187</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00189">189</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -640,7 +648,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00192">192</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00194">194</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -700,7 +708,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a31ae43275e1f315b3a40d506c8cecd80">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00287">287</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00290">290</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -770,7 +778,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a06367b7cec638e3938f01e6464bc9d81">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00443">443</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00446">446</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -814,7 +822,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>If there is no room in the generic inventory (<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a>), check if the item can be auto-equipped into its respective limbslot </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00228">228</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00231">231</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
 
 </div>
 </div>

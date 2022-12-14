@@ -16,7 +16,7 @@ var class_barotrauma_1_1_pet_behavior =
     [ "Play", "class_barotrauma_1_1_pet_behavior.html#a5ede480ec32bae24da9667fb40ce34bc", null ],
     [ "ServerWrite", "class_barotrauma_1_1_pet_behavior.html#a92f9e49bbf5b1d66c41bd2d248c2cc28", null ],
     [ "Update", "class_barotrauma_1_1_pet_behavior.html#a6bdb1dc5f558fb8867a9fe40c669ff94", null ],
-    [ "AiController", "class_barotrauma_1_1_pet_behavior.html#af2473c2996ac47280c48e101b21ece62", null ],
+    [ "AIController", "class_barotrauma_1_1_pet_behavior.html#a57398837706eabcd011b6f1c9ff2014c", null ],
     [ "Happiness", "class_barotrauma_1_1_pet_behavior.html#aba31a1d9c2567fdbc0f1c9c8d47c7cb0", null ],
     [ "HappinessDecreaseRate", "class_barotrauma_1_1_pet_behavior.html#a3c6d7945e7ec69f14143de3aa7a5ae63", null ],
     [ "Hunger", "class_barotrauma_1_1_pet_behavior.html#a256215974fdb43d4ba073274aadc7357", null ],

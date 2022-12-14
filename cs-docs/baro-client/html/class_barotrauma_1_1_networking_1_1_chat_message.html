@@ -111,8 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0e3c865e08a4d60edb9759a50f655b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0425d104bc696b10adbbe6795c9fe07e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a0425d104bc696b10adbbe6795c9fe07e">EstimateLengthBytesClient</a> ()</td></tr>
 <tr class="separator:a0425d104bc696b10adbbe6795c9fe07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f8fa824e386a480c86e5320c8491d1e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a2f8fa824e386a480c86e5320c8491d1e">ClientWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg)</td></tr>
-<tr class="separator:a2f8fa824e386a480c86e5320c8491d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2a9f7251a76ed667d455a76d6fe77e7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#af2a9f7251a76ed667d455a76d6fe77e7">ClientWrite</a> (in <a class="el" href="struct_segment_table_writer.html">SegmentTableWriter</a>&lt; <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9b">ClientNetSegment</a> &gt; segmentTableWriter, <a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg)</td></tr>
+<tr class="separator:af2a9f7251a76ed667d455a76d6fe77e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -122,10 +122,11 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a13dd93684d909198ee9d2cc48bb93125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29b1504d9a0fc19d00bde1fcfafbb4ed"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a29b1504d9a0fc19d00bde1fcfafbb4ed">GetChatMessageCommand</a> (string message, out string messageWithoutCommand)</td></tr>
 <tr class="separator:a29b1504d9a0fc19d00bde1fcfafbb4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6957da0c5f7ad5adb2d64b614babb25c"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a6957da0c5f7ad5adb2d64b614babb25c">GetGarbleAmount</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> listener, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> sender, float range, float obstructionmult=2.0f)</td></tr>
-<tr class="separator:a6957da0c5f7ad5adb2d64b614babb25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c2f545cdfd9f0cdffff04942db23495"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a4c2f545cdfd9f0cdffff04942db23495">ApplyDistanceEffect</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> listener, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> sender, string text, float range, float obstructionmult=2.0f)</td></tr>
-<tr class="separator:a4c2f545cdfd9f0cdffff04942db23495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac448e169e860d6a69f2a71c65de56bad"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#ac448e169e860d6a69f2a71c65de56bad">GetGarbleAmount</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> listener, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> sender, float range, float obstructionMultiplier=2.0f)</td></tr>
+<tr class="memdesc:ac448e169e860d6a69f2a71c65de56bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">How much messages sent by <em>sender</em>  should get garbled. Takes the distance between the entities and optionally the obstructions between them into account (see <em>obstructionMultiplier</em> ).  <a href="class_barotrauma_1_1_networking_1_1_chat_message.html#ac448e169e860d6a69f2a71c65de56bad">More...</a><br /></td></tr>
+<tr class="separator:ac448e169e860d6a69f2a71c65de56bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca384fed7a2af1dfad16fb0a09fdd81"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#aaca384fed7a2af1dfad16fb0a09fdd81">ApplyDistanceEffect</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> listener, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> sender, string text, float range, float obstructionMultiplier=2.0f)</td></tr>
+<tr class="separator:aaca384fed7a2af1dfad16fb0a09fdd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07ab10b51771a2baab93f0730a685cf5"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a07ab10b51771a2baab93f0730a685cf5">ApplyDistanceEffect</a> (string text, float garbleAmount)</td></tr>
 <tr class="separator:a07ab10b51771a2baab93f0730a685cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bc416ab371039a4d46cc4848e6ef185"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a2bc416ab371039a4d46cc4848e6ef185">ApplyDistanceEffect</a> (string message, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a> type, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> receiver)</td></tr>
@@ -274,12 +275,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00188">188</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00192">192</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
-<a id="a4c2f545cdfd9f0cdffff04942db23495"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c2f545cdfd9f0cdffff04942db23495">&#9670;&nbsp;</a></span>ApplyDistanceEffect() <span class="overload">[2/4]</span></h2>
+<a id="aaca384fed7a2af1dfad16fb0a09fdd81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca384fed7a2af1dfad16fb0a09fdd81">&#9670;&nbsp;</a></span>ApplyDistanceEffect() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +316,7 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>obstructionmult</em> = <code>2.0f</code>&#160;</td>
+          <td class="paramname"><em>obstructionMultiplier</em> = <code>2.0f</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -330,7 +331,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00195">195</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00199">199</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
@@ -380,7 +381,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00216">216</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00220">220</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
@@ -418,7 +419,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00200">200</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00204">204</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
@@ -446,7 +447,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00276">276</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00280">280</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
@@ -484,7 +485,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00281">281</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00285">285</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
@@ -516,8 +517,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a2f8fa824e386a480c86e5320c8491d1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f8fa824e386a480c86e5320c8491d1e">&#9670;&nbsp;</a></span>ClientWrite()</h2>
+<a id="af2a9f7251a76ed667d455a76d6fe77e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a9f7251a76ed667d455a76d6fe77e7">&#9670;&nbsp;</a></span>ClientWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -528,9 +529,19 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">virtual void Barotrauma.Networking.ChatMessage.ClientWrite </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a>&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td class="paramtype">in <a class="el" href="struct_segment_table_writer.html">SegmentTableWriter</a>&lt; <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9b">ClientNetSegment</a> &gt;&#160;</td>
+          <td class="paramname"><em>segmentTableWriter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a>&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -540,7 +551,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_networking_1_1_order_chat_message.html#a53e6816b123a44d4d79d42b275432d3b">Barotrauma.Networking.OrderChatMessage</a>.</p>
+<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_networking_1_1_order_chat_message.html#af38d32e73fb4be477038caf22dc05557">Barotrauma.Networking.OrderChatMessage</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_chat_message_8cs_source.html#l00009">9</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_chat_message_8cs_source.html">BarotraumaClient/ClientSource/Networking/ChatMessage.cs</a>.</p>
 
@@ -629,7 +640,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00267">267</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00271">271</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>
@@ -671,8 +682,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a6957da0c5f7ad5adb2d64b614babb25c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6957da0c5f7ad5adb2d64b614babb25c">&#9670;&nbsp;</a></span>GetGarbleAmount()</h2>
+<a id="ac448e169e860d6a69f2a71c65de56bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac448e169e860d6a69f2a71c65de56bad">&#9670;&nbsp;</a></span>GetGarbleAmount()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -702,7 +713,7 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>obstructionmult</em> = <code>2.0f</code>&#160;</td>
+          <td class="paramname"><em>obstructionMultiplier</em> = <code>2.0f</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -717,7 +728,15 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00162">162</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
+<p>How much messages sent by <em>sender</em>  should get garbled. Takes the distance between the entities and optionally the obstructions between them into account (see <em>obstructionMultiplier</em> ). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obstructionMultiplier</td><td>Values greater than or equal to 1 cause the message to get garbled more heavily when there's some obstruction between the characters. Values smaller than 1 mean the garbling only depends on distance.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00166">166</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html">BarotraumaShared/SharedSource/Networking/ChatMessage.cs</a>.</p>
 
 </div>
 </div>

@@ -8,6 +8,7 @@ var class_barotrauma_1_1_g_u_i_drop_down =
     [ "GetChildren", "class_barotrauma_1_1_g_u_i_drop_down.html#a63c4347ae95115c556c6e78f16bc3db2", null ],
     [ "OnSelectedHandler", "class_barotrauma_1_1_g_u_i_drop_down.html#aeee6342a0877d2a0143cf3b2f638eaa9", null ],
     [ "ReceiveCommandInput", "class_barotrauma_1_1_g_u_i_drop_down.html#afa182d453fe78268f564e4d02158b7e6", null ],
+    [ "ReceiveEditingInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a9ae5565bd7674da26f40af6fa690b78f", null ],
     [ "ReceiveSpecialInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a55b1659613209a95be81d01534a8231a", null ],
     [ "ReceiveTextInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a59991e78f4f7c9d1e6cfcd864fda826f", null ],
     [ "ReceiveTextInput", "class_barotrauma_1_1_g_u_i_drop_down.html#a4a553f7e4e1ab6acedbab95a78133659", null ],

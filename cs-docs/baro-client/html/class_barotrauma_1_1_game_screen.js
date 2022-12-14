@@ -13,7 +13,6 @@ var class_barotrauma_1_1_game_screen =
     [ "GameTime", "class_barotrauma_1_1_game_screen.html#ad534257ca2a9004a325fe6523d918732", null ],
     [ "GradientEffect", "class_barotrauma_1_1_game_screen.html#a3e9bf5f09c63e3f53559377b940de071", null ],
     [ "GrainEffect", "class_barotrauma_1_1_game_screen.html#a3dab6dc2d311056040ea3d4743a62a20", null ],
-    [ "IsEditor", "class_barotrauma_1_1_game_screen.html#a8ab20812fc495308894b5e7b04e48a04", null ],
     [ "PostProcessEffect", "class_barotrauma_1_1_game_screen.html#a37276c2c068dc886481bde5154f61a2a", null ],
     [ "ThresholdTintEffect", "class_barotrauma_1_1_game_screen.html#a5d665aa6dec767604e627cd797c96207", null ]
 ];

@@ -98,8 +98,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4a7c0c7bdb2d64391bc648a97093518c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_price_info.html#a4a7c0c7bdb2d64391bc648a97093518c">PriceInfo</a> (XElement element)</td></tr>
 <tr class="memdesc:a4a7c0c7bdb2d64391bc648a97093518c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Support for the old style of determining item prices when there were individual Price elements for each location type where the item was for sale.  <a href="class_barotrauma_1_1_price_info.html#a4a7c0c7bdb2d64391bc648a97093518c">More...</a><br /></td></tr>
 <tr class="separator:a4a7c0c7bdb2d64391bc648a97093518c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaba282ad4583adfae0f43d99bd439526"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_price_info.html#aaba282ad4583adfae0f43d99bd439526">PriceInfo</a> (int price, bool canBeBought, int minAmount=0, int maxAmount=0, bool canBeSpecial=true, int minLevelDifficulty=0, float buyingPriceMultiplier=1f, bool displayNonEmpty=false, string storeIdentifier=null)</td></tr>
-<tr class="separator:aaba282ad4583adfae0f43d99bd439526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a644b56222ccf7d142e8581e6e3fe281a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_price_info.html#a644b56222ccf7d142e8581e6e3fe281a">PriceInfo</a> (int price, bool canBeBought, int minAmount=0, int maxAmount=0, bool canBeSpecial=true, int minLevelDifficulty=0, float buyingPriceMultiplier=1f, bool displayNonEmpty=false, bool requiresUnlock=false, string storeIdentifier=null)</td></tr>
+<tr class="separator:a644b56222ccf7d142e8581e6e3fe281a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -135,6 +135,8 @@ Properties</h2></td></tr>
 <tr class="separator:a254dc532714b24ee3503d826999e1cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e90f3c75b7ba7bb16b87c61c302030"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_price_info.html#aa8e90f3c75b7ba7bb16b87c61c302030">StoreIdentifier</a><code> [get]</code></td></tr>
 <tr class="separator:aa8e90f3c75b7ba7bb16b87c61c302030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa221f88504f12bf4a424e287650e59b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_price_info.html#aa221f88504f12bf4a424e287650e59b7">RequiresUnlock</a><code> [get]</code></td></tr>
+<tr class="separator:aa221f88504f12bf4a424e287650e59b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -158,12 +160,12 @@ Properties</h2></td></tr>
 
 <p>Support for the old style of determining item prices when there were individual Price elements for each location type where the item was for sale. </p>
 
-<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00040">40</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00042">42</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
 
 </div>
 </div>
-<a id="aaba282ad4583adfae0f43d99bd439526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaba282ad4583adfae0f43d99bd439526">&#9670;&nbsp;</a></span>PriceInfo() <span class="overload">[2/2]</span></h2>
+<a id="a644b56222ccf7d142e8581e6e3fe281a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a644b56222ccf7d142e8581e6e3fe281a">&#9670;&nbsp;</a></span>PriceInfo() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,6 +221,12 @@ Properties</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>requiresUnlock</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>storeIdentifier</em> = <code>null</code>&#160;</td>
         </tr>
@@ -230,7 +238,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00053">53</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00056">56</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
 
 </div>
 </div>
@@ -269,7 +277,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00069">69</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00073">73</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
 
 </div>
 </div>
@@ -296,7 +304,7 @@ Properties</h2></td></tr>
 
 <p>Used when both <a class="el" href="class_barotrauma_1_1_price_info.html#a048aa4fca42b434a43caac48301d9628">MinAvailableAmount</a> and <a class="el" href="class_barotrauma_1_1_price_info.html#a5ec025bf370554b209661cdea0a9975a">MaxAvailableAmount</a> are set to 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00033">33</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00035">35</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
 
 </div>
 </div>
@@ -496,6 +504,30 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00009">9</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa221f88504f12bf4a424e287650e59b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa221f88504f12bf4a424e287650e59b7">&#9670;&nbsp;</a></span>RequiresUnlock</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.PriceInfo.RequiresUnlock</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_price_info_8cs_source.html#l00030">30</a> of file <a class="el" href="_price_info_8cs_source.html">PriceInfo.cs</a>.</p>
 
 </div>
 </div>

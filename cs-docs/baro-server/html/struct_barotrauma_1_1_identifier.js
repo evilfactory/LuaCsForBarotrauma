@@ -21,5 +21,7 @@ var struct_barotrauma_1_1_identifier =
     [ "ToString", "struct_barotrauma_1_1_identifier.html#ac1a459e2b1b84966362d4110e12f4fbc", null ],
     [ "HashCode", "struct_barotrauma_1_1_identifier.html#ad94132d256e9ae2fdc35b7befb1ec8dc", null ],
     [ "IsEmpty", "struct_barotrauma_1_1_identifier.html#a62c734205451d5a4a63fd676ba3afa84", null ],
+    [ "this[int i]", "struct_barotrauma_1_1_identifier.html#ac9bb98a306f35509c6c06b9ececd1583", null ],
+    [ "this[Range range]", "struct_barotrauma_1_1_identifier.html#afe46e61924d6031c555155c0ef6ad104", null ],
     [ "Value", "struct_barotrauma_1_1_identifier.html#af73e25198c7b6f0d486b972df54f5504", null ]
 ];

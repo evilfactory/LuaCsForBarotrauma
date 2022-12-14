@@ -445,80 +445,92 @@ $(document).ready(function(){initNavTree('_file_selection_8cs_source.html',''); 
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    <span class="keywordtype">string</span> txt = directory;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    <span class="keywordflow">if</span> (txt.StartsWith(currentDirectory)) { txt = txt.Substring(currentDirectory.Length); }</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <span class="keywordflow">if</span> (!txt.EndsWith(<span class="stringliteral">&quot;/&quot;</span>)) { txt += <span class="stringliteral">&quot;/&quot;</span>; }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    var itemFrame = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.05f), fileList.Content.RectTransform), txt)</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        UserData = ItemIsDirectory.Yes</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    };</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    var folderIcon = <span class="keyword">new</span> GUIImage(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Point((<span class="keywordtype">int</span>)(itemFrame.Rect.Height * 0.8f)), itemFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.CenterLeft)</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        AbsoluteOffset = new Point((int)(itemFrame.Rect.Height * 0.25f), 0)</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                    }, style: <span class="stringliteral">&quot;OpenButton&quot;</span>, scaleToFit: <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                    itemFrame.Padding = <span class="keyword">new</span> Vector4(folderIcon.Rect.Width * 1.5f, itemFrame.Padding.Y, itemFrame.Padding.Z, itemFrame.Padding.W);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                IEnumerable&lt;string&gt; files = Enumerable.Empty&lt;<span class="keywordtype">string</span>&gt;();</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                <span class="keywordflow">if</span> (currentFileTypePattern.IsNullOrEmpty())</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                    files = Directory.GetFiles(currentDirectory);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                {</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> pattern <span class="keywordflow">in</span> currentFileTypePattern!.Split(<span class="charliteral">&#39;,&#39;</span>))</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                        <span class="keywordtype">string</span> patternTrimmed = pattern.Trim();</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                        patternTrimmed = <span class="stringliteral">&quot;*&quot;</span> + filterBox.Text + <span class="stringliteral">&quot;*&quot;</span> + patternTrimmed;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                        <span class="keywordflow">if</span> (files.None())</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                        {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                            files = Directory.EnumerateFiles(currentDirectory, patternTrimmed);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                        {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                            files = files.Concat(Directory.EnumerateFiles(currentDirectory, patternTrimmed));</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                        }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> files)</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    <span class="keywordtype">string</span> txt = file;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                    <span class="keywordflow">if</span> (txt.StartsWith(currentDirectory)) { txt = txt.Substring(currentDirectory.Length); }</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    var itemFrame = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.05f), fileList.Content.RectTransform), txt)</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                    {</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        UserData = ItemIsDirectory.No</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    };</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                }</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            }</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            {</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.05f), fileList.Content.RectTransform), <span class="stringliteral">&quot;Could not list items in directory: &quot;</span> + e.Message)</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                {</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                    CanBeFocused = <span class="keyword">false</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                };</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            }</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            directoryBox!.Text = currentDirectory;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            fileBox!.Text = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            fileList.Deselect();</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> MoveToParentDirectory(GUIButton button, <span class="keywordtype">object</span> userdata)</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        {</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <span class="keywordtype">string</span> dir = CurrentDirectory;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="keywordflow">if</span> (dir.EndsWith(<span class="stringliteral">&quot;/&quot;</span>)) { dir = dir.Substring(0, dir.Length - 1); }</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordtype">int</span> index = dir.LastIndexOf(<span class="stringliteral">&quot;/&quot;</span>);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <span class="keywordflow">if</span> (index &lt; 0) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            CurrentDirectory = CurrentDirectory.Substring(0, index + 1);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    <span class="comment">//get directory info</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    <a class="code" href="class_barotrauma_1_1_i_o_1_1_directory_info.html">DirectoryInfo</a> dirInfo = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_i_o_1_1_directory_info.html">DirectoryInfo</a>(directory);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                        <span class="comment">//this will throw an exception if the directory can&#39;t be opened</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        Directory.GetDirectories(directory);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                    <span class="keywordflow">catch</span> (UnauthorizedAccessException)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                    {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                    }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                    var itemFrame = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.05f), fileList.Content.RectTransform), txt)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                    {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                        UserData = ItemIsDirectory.Yes</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                    };</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                    var folderIcon = <span class="keyword">new</span> GUIImage(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Point((<span class="keywordtype">int</span>)(itemFrame.Rect.Height * 0.8f)), itemFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.CenterLeft)</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                        AbsoluteOffset = new Point((int)(itemFrame.Rect.Height * 0.25f), 0)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    }, style: <span class="stringliteral">&quot;OpenButton&quot;</span>, scaleToFit: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    itemFrame.Padding = <span class="keyword">new</span> Vector4(folderIcon.Rect.Width * 1.5f, itemFrame.Padding.Y, itemFrame.Padding.Z, itemFrame.Padding.W);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                IEnumerable&lt;string&gt; files = Enumerable.Empty&lt;<span class="keywordtype">string</span>&gt;();</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                <span class="keywordflow">if</span> (currentFileTypePattern.IsNullOrEmpty())</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    files = Directory.GetFiles(currentDirectory);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> pattern <span class="keywordflow">in</span> currentFileTypePattern!.Split(<span class="charliteral">&#39;,&#39;</span>))</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    {</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                        <span class="keywordtype">string</span> patternTrimmed = pattern.Trim();</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                        patternTrimmed = <span class="stringliteral">&quot;*&quot;</span> + filterBox.Text + <span class="stringliteral">&quot;*&quot;</span> + patternTrimmed;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        <span class="keywordflow">if</span> (files.None())</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                        {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                            files = Directory.EnumerateFiles(currentDirectory, patternTrimmed);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                            files = files.Concat(Directory.EnumerateFiles(currentDirectory, patternTrimmed));</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                        }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> files)</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                {</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    <span class="keywordtype">string</span> txt = file;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                    <span class="keywordflow">if</span> (txt.StartsWith(currentDirectory)) { txt = txt.Substring(currentDirectory.Length); }</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    var itemFrame = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.05f), fileList.Content.RectTransform), txt)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    {</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                        UserData = ItemIsDirectory.No</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                    };</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            {</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.05f), fileList.Content.RectTransform), <span class="stringliteral">&quot;Could not list items in directory: &quot;</span> + e.Message)</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                {</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                    CanBeFocused = <span class="keyword">false</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                };</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            directoryBox!.Text = currentDirectory;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            fileBox!.Text = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            fileList.Deselect();</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        }</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> MoveToParentDirectory(GUIButton button, <span class="keywordtype">object</span> userdata)</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (!Open) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            backgroundFrame?.AddToGUIUpdateList();</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        }</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    }</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordtype">string</span> dir = CurrentDirectory;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">if</span> (dir.EndsWith(<span class="stringliteral">&quot;/&quot;</span>)) { dir = dir.Substring(0, dir.Length - 1); }</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordtype">int</span> index = dir.LastIndexOf(<span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">if</span> (index &lt; 0) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            CurrentDirectory = CurrentDirectory.Substring(0, index + 1);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <span class="keywordflow">if</span> (!Open) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            backgroundFrame?.AddToGUIUpdateList();</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_directory_info_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_directory_info.html">Barotrauma.IO.DirectoryInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00549">SafeIO.cs:550</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>

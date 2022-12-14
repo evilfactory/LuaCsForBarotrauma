@@ -155,54 +155,63 @@ $(document).ready(function(){initNavTree('_lua_cs_timer_8cs_source.html',''); in
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_timer.html#a88a5b4ae750258fdfb865d5c58a2102e">   68</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#a88a5b4ae750258fdfb865d5c58a2102e">Update</a>()</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            List&lt;TimedAction&gt; timedActionsToRemove = <span class="keyword">new</span> List&lt;TimedAction&gt;();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; timedActions.Count; i++)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                TimedAction timedAction = timedActions[i];</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#aab49bc33059182554a009fd76412ab52">Time</a> &gt;= timedAction.ExecutionTime)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                List&lt;TimedAction&gt; timedActionsToRemove = <span class="keyword">new</span> List&lt;TimedAction&gt;();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; timedActions.Count; i++)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    TimedAction timedAction = timedActions[i];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#aab49bc33059182554a009fd76412ab52">Time</a> &gt;= timedAction.ExecutionTime)</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        timedAction.Action();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.LuaCs.HandleException(e, LuaCsMessageOrigin.CSharpMod);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    timedActionsToRemove.Add(timedAction);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">foreach</span> (TimedAction timedAction <span class="keywordflow">in</span> timedActionsToRemove)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                timedActions.Remove(timedAction);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_timer.html#a9ddcf6a1931a0dcb43f470d5dad27723">   99</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#a9ddcf6a1931a0dcb43f470d5dad27723">Clear</a>()</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            timedActions = <span class="keyword">new</span> List&lt;TimedAction&gt;();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_timer.html#a57b912f1229c772bf0f87ad235513d41">  104</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#a57b912f1229c772bf0f87ad235513d41">Wait</a>(<a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> action, <span class="keywordtype">int</span> millisecondDelay)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            TimedAction timedAction = <span class="keyword">new</span> TimedAction(action, millisecondDelay);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            AddTimer(timedAction);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00021">GameMain.cs:22</a></div></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                            timedAction.Action();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.LuaCs.HandleException(e, LuaCsMessageOrigin.CSharpMod);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        timedActionsToRemove.Add(timedAction);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">foreach</span> (TimedAction timedAction <span class="keywordflow">in</span> timedActionsToRemove)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    timedActions.Remove(timedAction);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">catch</span> (NullReferenceException e)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.LuaCs.<a class="code" href="class_barotrauma_1_1_lua_cs_setup.html#a2fbaf24af195d47fc1464528792494e7">PrintError</a>(<span class="stringliteral">&quot;Error while executing timers... This shouldn&#39;t happen... Why do we a NRE here???&quot;</span>, LuaCsMessageOrigin.Unknown);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.LuaCs.HandleException(e, LuaCsMessageOrigin.Unknown);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_timer.html#a9ddcf6a1931a0dcb43f470d5dad27723">  107</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#a9ddcf6a1931a0dcb43f470d5dad27723">Clear</a>()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            timedActions = <span class="keyword">new</span> List&lt;TimedAction&gt;();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_timer.html#a57b912f1229c772bf0f87ad235513d41">  112</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_timer.html#a57b912f1229c772bf0f87ad235513d41">Wait</a>(<a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> action, <span class="keywordtype">int</span> millisecondDelay)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            TimedAction timedAction = <span class="keyword">new</span> TimedAction(action, millisecondDelay);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            AddTimer(timedAction);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00023">GameMain.cs:24</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html_a2fbaf24af195d47fc1464528792494e7"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html#a2fbaf24af195d47fc1464528792494e7">Barotrauma.LuaCsSetup.PrintError</a></div><div class="ttdeci">void PrintError(object o, LuaCsMessageOrigin origin)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_logger_8cs_source.html#l00062">LuaCsLogger.cs:62</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html">Barotrauma.LuaCsTimer</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00007">LuaCsTimer.cs:8</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a03a5e8fb55c3cc8d95b1870180d29a27"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a03a5e8fb55c3cc8d95b1870180d29a27">Barotrauma.LuaCsTimer.GetTime</a></div><div class="ttdeci">static double GetTime()</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a10b0fd03fab86d390e11b905b1b882df"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a10b0fd03fab86d390e11b905b1b882df">Barotrauma.LuaCsTimer.AccumulatorMax</a></div><div class="ttdeci">static double AccumulatorMax</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00011">LuaCsTimer.cs:12</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a57b912f1229c772bf0f87ad235513d41"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a57b912f1229c772bf0f87ad235513d41">Barotrauma.LuaCsTimer.Wait</a></div><div class="ttdeci">void Wait(LuaCsAction action, int millisecondDelay)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00104">LuaCsTimer.cs:104</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a57b912f1229c772bf0f87ad235513d41"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a57b912f1229c772bf0f87ad235513d41">Barotrauma.LuaCsTimer.Wait</a></div><div class="ttdeci">void Wait(LuaCsAction action, int millisecondDelay)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00112">LuaCsTimer.cs:112</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a88a5b4ae750258fdfb865d5c58a2102e"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a88a5b4ae750258fdfb865d5c58a2102e">Barotrauma.LuaCsTimer.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00068">LuaCsTimer.cs:68</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a9ddcf6a1931a0dcb43f470d5dad27723"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a9ddcf6a1931a0dcb43f470d5dad27723">Barotrauma.LuaCsTimer.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00099">LuaCsTimer.cs:99</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_a9ddcf6a1931a0dcb43f470d5dad27723"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#a9ddcf6a1931a0dcb43f470d5dad27723">Barotrauma.LuaCsTimer.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00107">LuaCsTimer.cs:107</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_timer_html_aab49bc33059182554a009fd76412ab52"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_timer.html#aab49bc33059182554a009fd76412ab52">Barotrauma.LuaCsTimer.Time</a></div><div class="ttdeci">static double Time</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_timer_8cs_source.html#l00009">LuaCsTimer.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a95e1a104871188365937382c8be13570"><div class="ttname"><a href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">Barotrauma.LuaCsAction</a></div><div class="ttdeci">delegate void LuaCsAction(params object[] args)</div></div>

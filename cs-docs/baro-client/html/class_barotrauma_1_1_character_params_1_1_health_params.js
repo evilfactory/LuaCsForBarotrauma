@@ -7,6 +7,7 @@ var class_barotrauma_1_1_character_params_1_1_health_params =
     [ "ConstantHealthRegeneration", "class_barotrauma_1_1_character_params_1_1_health_params.html#a6038633dd6eae0fa5abf856a8620d91a", null ],
     [ "CrushDepth", "class_barotrauma_1_1_character_params_1_1_health_params.html#ab6c58c98115290fd9de8aec41ca9a4d2", null ],
     [ "DoesBleed", "class_barotrauma_1_1_character_params_1_1_health_params.html#a2a6070db4e5ece733d0789715a59a9dd", null ],
+    [ "EmpVulnerability", "class_barotrauma_1_1_character_params_1_1_health_params.html#af2409fb00321c8e41e5842452769dbb5", null ],
     [ "HealthRegenerationWhenEating", "class_barotrauma_1_1_character_params_1_1_health_params.html#aecda0183977265e801dbb7d0ebb073ac", null ],
     [ "Name", "class_barotrauma_1_1_character_params_1_1_health_params.html#adfe9ac03bd724597fc32f38d49e376ac", null ],
     [ "PoisonImmunity", "class_barotrauma_1_1_character_params_1_1_health_params.html#ad59e1e7b1a7f467f1f355acfa7cb23c0", null ],

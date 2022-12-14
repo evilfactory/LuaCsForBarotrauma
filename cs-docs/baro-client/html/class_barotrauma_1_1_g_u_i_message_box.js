@@ -5,9 +5,10 @@ var class_barotrauma_1_1_g_u_i_message_box =
       [ "InGame", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba7f3d370e94c8b1fea09838572013d8ec", null ],
       [ "Vote", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba7f319b8ccad7e92033b9492ddbc4b522", null ],
       [ "Hint", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cbad11c7e9c409c6ca80008c5dd01d44d1e", null ],
-      [ "Tutorial", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba368fe771261fcb18f7988833c9294a20", null ]
+      [ "Tutorial", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba368fe771261fcb18f7988833c9294a20", null ],
+      [ "Warning", "class_barotrauma_1_1_g_u_i_message_box.html#a61e094bfa2a2db2e686762a394b773cba0eaadb4fcb48a0a0ed7bc9868be9fbaa", null ]
     ] ],
-    [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#a393c26244e37ec55847db128b7c74539", null ],
+    [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#ae08755158f01d305589d9d0ad278bc5c", null ],
     [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#ae34095204934e59b0ee2ab43cee3c887", null ],
     [ "GUIMessageBox", "class_barotrauma_1_1_g_u_i_message_box.html#a73bfda7c4774ca5cbc5a848eb4a83da7", null ],
     [ "AddButton", "class_barotrauma_1_1_g_u_i_message_box.html#ac2338f3bb0a2318e0de9891c800036e1", null ],

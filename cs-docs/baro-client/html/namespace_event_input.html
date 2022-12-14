@@ -92,10 +92,6 @@ $(document).ready(function(){initNavTree('namespace_event_input.html',''); initR
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_input_1_1_character_event_args.html">CharacterEventArgs</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_input_1_1_key_event_args.html">KeyEventArgs</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>EventInput</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_event_input_1_1_i_keyboard_subscriber.html">IKeyboardSubscriber</a></td></tr>
@@ -105,12 +101,48 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0e9ce139113ba4a97b77289c334d3ac5"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#a0e9ce139113ba4a97b77289c334d3ac5">CharEnteredHandler</a> (object sender, <a class="el" href="class_event_input_1_1_character_event_args.html">CharacterEventArgs</a> e)</td></tr>
+<tr class="memitem:ac1a4f38c4ab356ceca409aebe7241f11"><td class="memItemLeft" align="right" valign="top">readonly record struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#ac1a4f38c4ab356ceca409aebe7241f11">CharacterEventArgs</a> (char Character, long Param)</td></tr>
+<tr class="separator:ac1a4f38c4ab356ceca409aebe7241f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe556deac34454e6c853ef4abfe4c709"><td class="memItemLeft" align="right" valign="top">readonly record struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#abe556deac34454e6c853ef4abfe4c709">KeyEventArgs</a> (Keys KeyCode, char Character)</td></tr>
+<tr class="separator:abe556deac34454e6c853ef4abfe4c709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9ce139113ba4a97b77289c334d3ac5"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#a0e9ce139113ba4a97b77289c334d3ac5">CharEnteredHandler</a> (object sender, <a class="el" href="namespace_event_input.html#ac1a4f38c4ab356ceca409aebe7241f11">CharacterEventArgs</a> e)</td></tr>
 <tr class="separator:a0e9ce139113ba4a97b77289c334d3ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae31da4fb245679c21a39c5bca6f6172f"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#ae31da4fb245679c21a39c5bca6f6172f">KeyEventHandler</a> (object sender, <a class="el" href="class_event_input_1_1_key_event_args.html">KeyEventArgs</a> e)</td></tr>
+<tr class="memitem:ae31da4fb245679c21a39c5bca6f6172f"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#ae31da4fb245679c21a39c5bca6f6172f">KeyEventHandler</a> (object sender, <a class="el" href="namespace_event_input.html#abe556deac34454e6c853ef4abfe4c709">KeyEventArgs</a> e)</td></tr>
 <tr class="separator:ae31da4fb245679c21a39c5bca6f6172f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa757926ed1a091836be7b5a4e4458363"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_event_input.html#aa757926ed1a091836be7b5a4e4458363">EditingTextHandler</a> (object sender, TextEditingEventArgs e)</td></tr>
+<tr class="separator:aa757926ed1a091836be7b5a4e4458363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ac1a4f38c4ab356ceca409aebe7241f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a4f38c4ab356ceca409aebe7241f11">&#9670;&nbsp;</a></span>CharacterEventArgs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly record struct EventInput.CharacterEventArgs </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>Character</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>Param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_event_input_8cs_source.html#l00006">6</a> of file <a class="el" href="_event_input_8cs_source.html">EventInput.cs</a>.</p>
+
+</div>
+</div>
 <a id="a0e9ce139113ba4a97b77289c334d3ac5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e9ce139113ba4a97b77289c334d3ac5">&#9670;&nbsp;</a></span>CharEnteredHandler()</h2>
 
@@ -126,8 +158,64 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_event_input_1_1_character_event_args.html">CharacterEventArgs</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespace_event_input.html#ac1a4f38c4ab356ceca409aebe7241f11">CharacterEventArgs</a>&#160;</td>
           <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa757926ed1a091836be7b5a4e4458363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa757926ed1a091836be7b5a4e4458363">&#9670;&nbsp;</a></span>EditingTextHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void EventInput.EditingTextHandler </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextEditingEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe556deac34454e6c853ef4abfe4c709"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe556deac34454e6c853ef4abfe4c709">&#9670;&nbsp;</a></span>KeyEventArgs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly record struct EventInput.KeyEventArgs </td>
+          <td>(</td>
+          <td class="paramtype">Keys&#160;</td>
+          <td class="paramname"><em>KeyCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>Character</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -154,7 +242,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_event_input_1_1_key_event_args.html">KeyEventArgs</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespace_event_input.html#abe556deac34454e6c853ef4abfe4c709">KeyEventArgs</a>&#160;</td>
           <td class="paramname"><em>e</em>&#160;</td>
         </tr>
         <tr>

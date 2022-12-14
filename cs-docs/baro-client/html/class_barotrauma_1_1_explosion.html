@@ -103,19 +103,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af8df6bd01d20b916282f2d23e4fd5d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ffc28f769b55d25830eaa1626d80745"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a9ffc28f769b55d25830eaa1626d80745">Explode</a> (Vector2 worldPosition, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> damageSource, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> attacker=null)</td></tr>
 <tr class="separator:a9ffc28f769b55d25830eaa1626d80745"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60ccd622b4d897cbf77702077e3fdf15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a60ccd622b4d897cbf77702077e3fdf15">RangedBallastFloraDamage</a> (Vector2 worldPosition, float worldRange, float damage, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> attacker=null)</td></tr>
-<tr class="separator:a60ccd622b4d897cbf77702077e3fdf15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5a00ce169a61ca7ec6f3ca41fff71a0c"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; <a class="el" href="class_barotrauma_1_1_structure.html">Structure</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a5a00ce169a61ca7ec6f3ca41fff71a0c">RangedStructureDamage</a> (Vector2 worldPosition, float worldRange, float damage, float levelWallDamage, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> attacker=null, IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt; ignoredSubmarines=null, bool emitWallDamageParticles=true)</td></tr>
 <tr class="memdesc:a5a00ce169a61ca7ec6f3ca41fff71a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a dictionary where the keys are the structures that took damage and the values are the amount of damage taken  <a href="class_barotrauma_1_1_explosion.html#a5a00ce169a61ca7ec6f3ca41fff71a0c">More...</a><br /></td></tr>
 <tr class="separator:a5a00ce169a61ca7ec6f3ca41fff71a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b756077c8229ef9d38b0903a01e3107"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a4b756077c8229ef9d38b0903a01e3107">RangedBallastFloraDamage</a> (Vector2 worldPosition, float worldRange, float damage, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> attacker=null)</td></tr>
+<tr class="separator:a4b756077c8229ef9d38b0903a01e3107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abe008fd164eab5d5b6bbe3a4068741e5"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_attack.html">Attack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a></td></tr>
 <tr class="separator:abe008fd164eab5d5b6bbe3a4068741e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47558acaa25ccefae1ea240a7c68ebe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#af47558acaa25ccefae1ea240a7c68ebe">OnlyInside</a></td></tr>
+<tr class="separator:af47558acaa25ccefae1ea240a7c68ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92a961711cdaa87c59928cb7cce9801b"><td class="memItemLeft" align="right" valign="top">readonly HashSet&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a92a961711cdaa87c59928cb7cce9801b">IgnoredSubmarines</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a>&gt;()</td></tr>
 <tr class="separator:a92a961711cdaa87c59928cb7cce9801b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -128,7 +130,7 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00014">14</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00013">13</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaa9e4b38a519cc31da17fda70346c515"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa9e4b38a519cc31da17fda70346c515">&#9670;&nbsp;</a></span>Explosion() <span class="overload">[1/2]</span></h2>
@@ -276,14 +278,17 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a60ccd622b4d897cbf77702077e3fdf15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60ccd622b4d897cbf77702077e3fdf15">&#9670;&nbsp;</a></span>RangedBallastFloraDamage()</h2>
+<a id="a4b756077c8229ef9d38b0903a01e3107"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b756077c8229ef9d38b0903a01e3107">&#9670;&nbsp;</a></span>RangedBallastFloraDamage()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Barotrauma.Explosion.RangedBallastFloraDamage </td>
+          <td class="memname">static void Barotrauma.Explosion.RangedBallastFloraDamage </td>
           <td>(</td>
           <td class="paramtype">Vector2&#160;</td>
           <td class="paramname"><em>worldPosition</em>, </td>
@@ -312,9 +317,14 @@ Properties</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00505">505</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00524">524</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -384,7 +394,7 @@ Properties</h2></td></tr>
 
 <p>Returns a dictionary where the keys are the structures that took damage and the values are the amount of damage taken </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00427">427</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00446">446</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -401,7 +411,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00016">16</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00015">15</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -418,6 +428,22 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00040">40</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
+
+</div>
+</div>
+<a id="af47558acaa25ccefae1ea240a7c68ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af47558acaa25ccefae1ea240a7c68ebe">&#9670;&nbsp;</a></span>OnlyInside</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Explosion.OnlyInside</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00036">36</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html">BarotraumaShared/SharedSource/Map/Explosion.cs</a>.</p>
 
 </div>
 </div>

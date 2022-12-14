@@ -26,5 +26,6 @@ var class_barotrauma_1_1_level_data =
     [ "Type", "class_barotrauma_1_1_level_data.html#aa0002b1dc01e374c8d2b2543b815537e", null ],
     [ "CrushDepth", "class_barotrauma_1_1_level_data.html#a53033428cdb190d8a3669c13022f7574", null ],
     [ "EventsExhausted", "class_barotrauma_1_1_level_data.html#a198308118ba7361d9a8702d2bdf3703f", null ],
+    [ "OutpostGenerationParamsExist", "class_barotrauma_1_1_level_data.html#aee0a5fbe4f375521f957fa2c2d785912", null ],
     [ "RealWorldCrushDepth", "class_barotrauma_1_1_level_data.html#a66b0764da98f59e24d131201759b08dc", null ]
 ];

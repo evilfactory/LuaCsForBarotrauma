@@ -2,7 +2,7 @@ var class_barotrauma_1_1_networking_1_1_chat_message =
 [
     [ "ChatMessage", "class_barotrauma_1_1_networking_1_1_chat_message.html#aaa4afd88308db53c0de7201643c6ca6f", null ],
     [ "ApplyDistanceEffect", "class_barotrauma_1_1_networking_1_1_chat_message.html#a0e3c865e08a4d60edb9759a50f655b77", null ],
-    [ "ClientWrite", "class_barotrauma_1_1_networking_1_1_chat_message.html#a2f8fa824e386a480c86e5320c8491d1e", null ],
+    [ "ClientWrite", "class_barotrauma_1_1_networking_1_1_chat_message.html#af2a9f7251a76ed667d455a76d6fe77e7", null ],
     [ "EstimateLengthBytesClient", "class_barotrauma_1_1_networking_1_1_chat_message.html#a0425d104bc696b10adbbe6795c9fe07e", null ],
     [ "ChangeType", "class_barotrauma_1_1_networking_1_1_chat_message.html#aa92d5013e810a73354b922a9dde23843", null ],
     [ "IconStyle", "class_barotrauma_1_1_networking_1_1_chat_message.html#a02ed096737b40668551829e89f70ef0e", null ],

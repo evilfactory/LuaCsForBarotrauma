@@ -15,7 +15,8 @@ var class_barotrauma_1_1_property_conditional =
       [ "HasSpecifierTag", "class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea48275171b8bfb257ad96dd98a0826438", null ],
       [ "Affliction", "class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea73592c8f05d1852819763487c90c94f9", null ],
       [ "EntityType", "class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eaa28411defe338dd0b29e8400b1c5c53c", null ],
-      [ "LimbType", "class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea9db9c26ab75404a6591594603d6cda90", null ]
+      [ "LimbType", "class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea9db9c26ab75404a6591594603d6cda90", null ],
+      [ "SkillRequirement", "class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea26cf586e0a840f598a5ddae6b3cbd26e", null ]
     ] ],
     [ "OperatorType", "class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528", [
       [ "None", "class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528a6adf97f83acf6453d4a6a4b1070f3754", null ],

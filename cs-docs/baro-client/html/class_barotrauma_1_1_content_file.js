@@ -1,6 +1,5 @@
 var class_barotrauma_1_1_content_file =
 [
-    [ "LoadError", "struct_barotrauma_1_1_content_file_1_1_load_error.html", "struct_barotrauma_1_1_content_file_1_1_load_error" ],
     [ "TypeInfo", "class_barotrauma_1_1_content_file_1_1_type_info.html", "class_barotrauma_1_1_content_file_1_1_type_info" ],
     [ "ContentFile", "class_barotrauma_1_1_content_file.html#ad1c49308dc7b9d71c05f3345f46fb1c6", null ],
     [ "CalculateHash", "class_barotrauma_1_1_content_file.html#ab185d5a83ea51a47006769b0c77af847", null ],

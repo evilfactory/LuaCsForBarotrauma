@@ -126,6 +126,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a1cd7a78fd0ea2cbe736e527156131009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acecbcdae53ef989e2b510da1db563278"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#acecbcdae53ef989e2b510da1db563278">ChangeCaptureDevice</a> (string deviceName)</td></tr>
 <tr class="separator:acecbcdae53ef989e2b510da1db563278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d32c637603ada16dd38ec73f255939"><td class="memItemLeft" align="right" valign="top">static IReadOnlyList&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a75d32c637603ada16dd38ec73f255939">GetCaptureDeviceNames</a> ()</td></tr>
+<tr class="separator:a75d32c637603ada16dd38ec73f255939"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -138,8 +140,6 @@ Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:af0469afb81cdd2d6d270147a641a6c2c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html">VoipCapture</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#af0469afb81cdd2d6d270147a641a6c2c">Instance</a><code> [get]</code></td></tr>
 <tr class="separator:af0469afb81cdd2d6d270147a641a6c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88e5556314c3762dc5ebe73fb352c01a"><td class="memItemLeft" align="right" valign="top">static IReadOnlyList&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a88e5556314c3762dc5ebe73fb352c01a">CaptureDeviceNames</a><code> [get]</code></td></tr>
-<tr class="separator:a88e5556314c3762dc5ebe73fb352c01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada6c7f93fc5398d25f98a43b6e971346"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#ada6c7f93fc5398d25f98a43b6e971346">LastdB</a><code> [get]</code></td></tr>
 <tr class="separator:ada6c7f93fc5398d25f98a43b6e971346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeb065747c053e0f68958383e00c7461"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#adeb065747c053e0f68958383e00c7461">LastAmplitude</a><code> [get]</code></td></tr>
@@ -211,7 +211,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00163">163</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00161">161</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00067">67</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00065">65</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -278,7 +278,34 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#ae30f629bdf460b85d64e2aa991655b71">Barotrauma.Networking.VoipQueue</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00380">380</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00390">390</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a75d32c637603ada16dd38ec73f255939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75d32c637603ada16dd38ec73f255939">&#9670;&nbsp;</a></span>GetCaptureDeviceNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IReadOnlyList&lt;string&gt; Barotrauma.Networking.VoipCapture.GetCaptureDeviceNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00170">170</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -298,7 +325,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00367">367</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00377">377</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -315,7 +342,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00063">63</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00061">61</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -331,35 +358,11 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00049">49</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00047">47</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a88e5556314c3762dc5ebe73fb352c01a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88e5556314c3762dc5ebe73fb352c01a">&#9670;&nbsp;</a></span>CaptureDeviceNames</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">IReadOnlyList&lt;string&gt; Barotrauma.Networking.VoipCapture.CaptureDeviceNames</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00021">21</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
-
-</div>
-</div>
 <a id="a3e2479f0ecb6b3a2eb7c97ff7f3ac291"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e2479f0ecb6b3a2eb7c97ff7f3ac291">&#9670;&nbsp;</a></span>Disconnected</h2>
 
@@ -380,7 +383,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00065">65</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00063">63</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -404,7 +407,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00044">44</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00042">42</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -452,7 +455,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00038">38</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00036">36</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -476,7 +479,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00032">32</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00030">30</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>
@@ -500,7 +503,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00051">51</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_voip_capture_8cs_source.html#l00049">49</a> of file <a class="el" href="_voip_capture_8cs_source.html">VoipCapture.cs</a>.</p>
 
 </div>
 </div>

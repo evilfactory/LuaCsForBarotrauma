@@ -27,6 +27,7 @@ var class_barotrauma_1_1_content_x_element =
     [ "GetAttributeIdentifier", "class_barotrauma_1_1_content_x_element.html#af594578243e1ad7b4244f9312b48dde4", null ],
     [ "GetAttributeIdentifier", "class_barotrauma_1_1_content_x_element.html#afc58374c68a7abeb2fdc903e3abf27ed", null ],
     [ "GetAttributeIdentifierArray", "class_barotrauma_1_1_content_x_element.html#aa2e8e315bcbccf37cfcd48e298b887e8", null ],
+    [ "GetAttributeIdentifierImmutableHashSet", "class_barotrauma_1_1_content_x_element.html#a5788e33fcdc9a19d5f0df7e6e55537ea", null ],
     [ "GetAttributeInt", "class_barotrauma_1_1_content_x_element.html#aee04e3e74c4629b11c1b57a84cc2c241", null ],
     [ "GetAttributeIntArray", "class_barotrauma_1_1_content_x_element.html#a3d9e0e9e6b5594d8a0ddf93981681c83", null ],
     [ "GetAttributePoint", "class_barotrauma_1_1_content_x_element.html#a31150e5b3f84401ce156bc55a8b451ae", null ],

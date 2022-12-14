@@ -28,7 +28,7 @@ var class_barotrauma_1_1_localized_string =
     [ "TrimStart", "class_barotrauma_1_1_localized_string.html#a96bb6a8d1e17f7c3fe4a16c38f9e6f2c", null ],
     [ "UpdateLanguage", "class_barotrauma_1_1_localized_string.html#a4ec788b6ca09acfe74be9e875bc03db2", null ],
     [ "cachedValue", "class_barotrauma_1_1_localized_string.html#a4bca5d110233f1190b1b9844ba1e3b07", null ],
-    [ "language", "class_barotrauma_1_1_localized_string.html#ada9dad6664f6e24f780bab168dc00615", null ],
+    [ "Language", "class_barotrauma_1_1_localized_string.html#a0fa1a7682f3fc39c3f879f427fdfd7e0", null ],
     [ "Length", "class_barotrauma_1_1_localized_string.html#aac5ba809b00b4b50fcbfc0ad4c5f10ef", null ],
     [ "Loaded", "class_barotrauma_1_1_localized_string.html#a091851603ff5f3d7a02b714f9b60f382", null ],
     [ "Value", "class_barotrauma_1_1_localized_string.html#a1d49a0b0daba172e0f369a9d23cae293", null ]

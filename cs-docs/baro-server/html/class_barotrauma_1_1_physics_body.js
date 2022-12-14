@@ -68,6 +68,7 @@ var class_barotrauma_1_1_physics_body =
     [ "Removed", "class_barotrauma_1_1_physics_body.html#acbc9cb521b31818567c9b3f4593dfa9f", null ],
     [ "Rotation", "class_barotrauma_1_1_physics_body.html#a3b11abb971671d216fe23a9e30e2ebce", null ],
     [ "SimPosition", "class_barotrauma_1_1_physics_body.html#a694d01270fa981f372442a4386fea9c2", null ],
+    [ "SuppressSmoothRotationCalls", "class_barotrauma_1_1_physics_body.html#a659638c9b9d6cae78ffdf085176dfdc7", null ],
     [ "TargetPosition", "class_barotrauma_1_1_physics_body.html#a3692593a92ecec4c717dfe64f87841c5", null ],
     [ "TargetRotation", "class_barotrauma_1_1_physics_body.html#a1730d0150247a20b8e4c3eb5312934a3", null ],
     [ "TransformedRotation", "class_barotrauma_1_1_physics_body.html#aba2ac13a9259c7f81dd86d18e49f8b71", null ],

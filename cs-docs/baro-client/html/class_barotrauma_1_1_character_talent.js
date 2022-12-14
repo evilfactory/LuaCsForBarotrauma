@@ -9,5 +9,6 @@ var class_barotrauma_1_1_character_talent =
     [ "Prefab", "class_barotrauma_1_1_character_talent.html#a3123d2c8ca5d8dc536a60c5f591b25a7", null ],
     [ "Character", "class_barotrauma_1_1_character_talent.html#ab8109d9586939eb86dd77f4e11b7faa6", null ],
     [ "DebugIdentifier", "class_barotrauma_1_1_character_talent.html#a481f8e1877d7ea4feb3b028e2fc9a830", null ],
-    [ "UnlockedRecipes", "class_barotrauma_1_1_character_talent.html#a513ea67718716eb1d1fe4a9ac7b5b702", null ]
+    [ "UnlockedRecipes", "class_barotrauma_1_1_character_talent.html#a513ea67718716eb1d1fe4a9ac7b5b702", null ],
+    [ "UnlockedStoreItems", "class_barotrauma_1_1_character_talent.html#a86513d5b936e48dc3f6b6e20f22cef4d", null ]
 ];

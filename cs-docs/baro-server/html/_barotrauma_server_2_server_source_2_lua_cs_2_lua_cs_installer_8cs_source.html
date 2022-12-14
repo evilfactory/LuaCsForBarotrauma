@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_l
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Install()</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            ContentPackage luaPackage = LuaCsSetup.GetPackage(<span class="stringliteral">&quot;Lua For Barotrauma&quot;</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            ContentPackage luaPackage = LuaCsSetup.GetPackage(LuaCsSetup.LuaForBarotraumaId);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">if</span> (luaPackage == <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            {</div>
@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_l
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        <span class="stringliteral">&quot;System.Runtime.CompilerServices.Unsafe.dll&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                };</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                filesToCopy = filesToCopy.Concat(Directory.EnumerateFiles(path, <span class="stringliteral">&quot;*.dll&quot;</span>, SearchOption.AllDirectories)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    .Where(s =&gt; s.Contains(<span class="stringliteral">&quot;mscordaccore_amd64_amd64_4.&quot;</span>)).Select(s =&gt; Path.GetFileName(s))).ToArray();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    .Where(s =&gt; s.Contains(<span class="stringliteral">&quot;mscordaccore_amd64_amd64&quot;</span>)).Select(s =&gt; Path.GetFileName(s))).ToArray();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                CreateMissingDirectory();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>

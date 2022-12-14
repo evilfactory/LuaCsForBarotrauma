@@ -7,8 +7,8 @@ var class_barotrauma_1_1_networking_1_1_server_entity_event_manager =
     [ "Read", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a8e715e18924eb3a3dd3a7f1d189dceba", null ],
     [ "ReadEvent", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#ac799e8e3d290e77f25d68cb21d9329d6", null ],
     [ "Update", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a7ef1ba8114ac83dcd9bd8fcc56eac184", null ],
-    [ "Write", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a634900a94a2fd3f4d3341ddd5fce89f5", null ],
-    [ "Write", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#ae701e9889d8d18bf5da56274ef8c50d6", null ],
+    [ "Write", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a1c96599095b5b39ff47b59dd81a7d5f2", null ],
+    [ "Write", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a9401e5288bcc70d7c6cdce184aa381f5", null ],
     [ "WriteEvent", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a4be6e4d33838b98b22d324be879f944b", null ],
     [ "Events", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#ab7d5f57016f3db73cd52e6327f7c9d00", null ],
     [ "UniqueEvents", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html#a1b996589b4c787995448ad6848286c33", null ]

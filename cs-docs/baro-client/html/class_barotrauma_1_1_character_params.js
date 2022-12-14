@@ -56,6 +56,7 @@ var class_barotrauma_1_1_character_params =
     [ "HideInThermalGoggles", "class_barotrauma_1_1_character_params.html#a0f47b339df7c14dcdc3a58d7e1c883b3", null ],
     [ "Humanoid", "class_barotrauma_1_1_character_params.html#a4bda29996365b235e0b3de2c47f8d7ac", null ],
     [ "Husk", "class_barotrauma_1_1_character_params.html#ac4d550d750b0e07bd58418ea7686f64d", null ],
+    [ "IsMachine", "class_barotrauma_1_1_character_params.html#a29434621a86ef1264df7dd68a660d867", null ],
     [ "MainElement", "class_barotrauma_1_1_character_params.html#ad96d3d55473dcd94a67c20e2369f9d02", null ],
     [ "NeedsAir", "class_barotrauma_1_1_character_params.html#a9148f33cbf5608fe50099f6f33850f7b", null ],
     [ "NeedsWater", "class_barotrauma_1_1_character_params.html#aa057eb283848172d576a57b0d8c165d3", null ],

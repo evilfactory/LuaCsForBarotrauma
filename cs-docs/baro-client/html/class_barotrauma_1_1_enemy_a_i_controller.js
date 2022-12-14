@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_enemy_a_i_controller =
 [
     [ "EnemyAIController", "class_barotrauma_1_1_enemy_a_i_controller.html#a97fae4684a5bb8d8eb8882ed920efb7b", null ],
+    [ "AimRangedAttack", "class_barotrauma_1_1_enemy_a_i_controller.html#afe58c6c8f2906ab9bae22c36149e8b48", null ],
     [ "CanPassThroughHole", "class_barotrauma_1_1_enemy_a_i_controller.html#a63aa40c9cee9aaa01132afb6886ac498", null ],
     [ "ClientRead", "class_barotrauma_1_1_enemy_a_i_controller.html#a3d2c17f983c1f2ab7e7bde9a8bc2b69a", null ],
     [ "DebugDraw", "class_barotrauma_1_1_enemy_a_i_controller.html#aed1e5515aa3edb922df8673669a43caa", null ],

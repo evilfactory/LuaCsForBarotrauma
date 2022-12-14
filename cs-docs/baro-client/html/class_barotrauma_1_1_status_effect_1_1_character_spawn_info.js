@@ -11,6 +11,7 @@ var class_barotrauma_1_1_status_effect_1_1_character_spawn_info =
     [ "SpeciesName", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#ae97da051cdce8ce25837ee1467b9e6a4", null ],
     [ "Spread", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#aa9e67b26e6bce63d154d669f3c97021e", null ],
     [ "Stun", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a1ce46d0e8594f151edbdcc9dd953edd3", null ],
+    [ "TotalMaxCount", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#ac11ee8b13f233c90e7183a36073ac8e4", null ],
     [ "TransferAfflictions", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a3df56e251d380219ad7f09050682147b", null ],
     [ "TransferBuffs", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#aa54846ab89805e1d39b56917144dee61", null ],
     [ "TransferControl", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a0fee7ad22b398f672aeb0bc658b006b2", null ],

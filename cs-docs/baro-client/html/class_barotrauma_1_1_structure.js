@@ -28,7 +28,7 @@ var class_barotrauma_1_1_structure =
     [ "SectionLength", "class_barotrauma_1_1_structure.html#ac5798b6ec254bf35cf178f8dc8a8839b", null ],
     [ "SectionPosition", "class_barotrauma_1_1_structure.html#a729763b1a7cf2ea0038929cd415903c8", null ],
     [ "SetCollisionCategory", "class_barotrauma_1_1_structure.html#a6796163c1c17fc7af213f17f98c88bd0", null ],
-    [ "SetDamage", "class_barotrauma_1_1_structure.html#acac8935396c256ef45dd6eb0ef15a5bf", null ],
+    [ "SetDamage", "class_barotrauma_1_1_structure.html#adb777503311abe4a783df591821f0ae9", null ],
     [ "ShallowRemove", "class_barotrauma_1_1_structure.html#aadd5ef2233cd669c9b536a6d5b52b46a", null ],
     [ "ToString", "class_barotrauma_1_1_structure.html#ab27c0984f44fda7d8ada1eb03e82eab6", null ],
     [ "Update", "class_barotrauma_1_1_structure.html#a346f93c457a0b2bc6f88edd68ec9f9fb", null ],

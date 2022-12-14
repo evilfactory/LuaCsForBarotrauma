@@ -83,11 +83,13 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_result.html','');
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_barotrauma_1_1_result-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Barotrauma.Result&lt; T, TError &gt; Class Template Reference</div>  </div>
+<div class="title">Barotrauma.Result&lt; T, TError &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
@@ -101,12 +103,26 @@ Inheritance diagram for Barotrauma.Result&lt; T, TError &gt;:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a767ae1cadd214dec07244770254ee90d"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_result.html#a767ae1cadd214dec07244770254ee90d">TryUnwrapSuccess</a> ([MaybeNullWhen(returnValue:false)] out T value)</td></tr>
+<tr class="separator:a767ae1cadd214dec07244770254ee90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39776bb109c0bb00e9737dd6f9165654"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_result.html#a39776bb109c0bb00e9737dd6f9165654">TryUnwrapFailure</a> ([MaybeNullWhen(returnValue:false)] out TError value)</td></tr>
+<tr class="separator:a39776bb109c0bb00e9737dd6f9165654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9e0223f0eb5f784ac81b321d4b93b61"><td class="memItemLeft" align="right" valign="top">abstract override? string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_result.html#ae9e0223f0eb5f784ac81b321d4b93b61">ToString</a> ()</td></tr>
+<tr class="separator:ae9e0223f0eb5f784ac81b321d4b93b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aaab269ed000f3e6afa0ee2ee0093d7c2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_success.html">Success</a>&lt; T, TError &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_result.html#aaab269ed000f3e6afa0ee2ee0093d7c2">Success</a> (T value)</td></tr>
 <tr class="separator:aaab269ed000f3e6afa0ee2ee0093d7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fdc919392e4a35ba5627272a9fb005b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_failure.html">Failure</a>&lt; T, TError &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_result.html#a7fdc919392e4a35ba5627272a9fb005b">Failure</a> (TError error)</td></tr>
 <tr class="separator:a7fdc919392e4a35ba5627272a9fb005b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a56554b87e3fc36ab0393d669fc705fb0"><td class="memItemLeft" align="right" valign="top">static Func&lt; T, <a class="el" href="class_barotrauma_1_1_result.html">Result</a>&lt; T, TError &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_result.html#a56554b87e3fc36ab0393d669fc705fb0">Success</a></td></tr>
+<tr class="separator:a56554b87e3fc36ab0393d669fc705fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -126,7 +142,7 @@ Properties</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00004">4</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00007">7</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7fdc919392e4a35ba5627272a9fb005b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7fdc919392e4a35ba5627272a9fb005b">&#9670;&nbsp;</a></span>Failure()</h2>
@@ -180,6 +196,114 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="ae9e0223f0eb5f784ac81b321d4b93b61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9e0223f0eb5f784ac81b321d4b93b61">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract override? string <a class="el" href="class_barotrauma_1_1_result.html">Barotrauma.Result</a>&lt; T, TError &gt;.ToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_failure.html#ae4a10ff5adc9d36a08709a85384945eb">Barotrauma.Failure&lt; T, TError &gt;</a>, and <a class="el" href="class_barotrauma_1_1_success.html#a3254b37779abe4f89d39f58a51eb1e53">Barotrauma.Success&lt; T, TError &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a39776bb109c0bb00e9737dd6f9165654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39776bb109c0bb00e9737dd6f9165654">&#9670;&nbsp;</a></span>TryUnwrapFailure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract bool <a class="el" href="class_barotrauma_1_1_result.html">Barotrauma.Result</a>&lt; T, TError &gt;.TryUnwrapFailure </td>
+          <td>(</td>
+          <td class="paramtype">[MaybeNullWhen(returnValue:false)] out TError&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_failure.html#a1353aaef768881af3b943870eb1217f4">Barotrauma.Failure&lt; T, TError &gt;</a>, and <a class="el" href="class_barotrauma_1_1_success.html#af0a345e60605ae7b8951fff8ee1209ad">Barotrauma.Success&lt; T, TError &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a767ae1cadd214dec07244770254ee90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a767ae1cadd214dec07244770254ee90d">&#9670;&nbsp;</a></span>TryUnwrapSuccess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract bool <a class="el" href="class_barotrauma_1_1_result.html">Barotrauma.Result</a>&lt; T, TError &gt;.TryUnwrapSuccess </td>
+          <td>(</td>
+          <td class="paramtype">[MaybeNullWhen(returnValue:false)] out T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_failure.html#a53826d70ae64046eeeb84ac1b34e050c">Barotrauma.Failure&lt; T, TError &gt;</a>, and <a class="el" href="class_barotrauma_1_1_success.html#a87784dc561ba5eeeeb57547729b1d2f9">Barotrauma.Success&lt; T, TError &gt;</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a56554b87e3fc36ab0393d669fc705fb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56554b87e3fc36ab0393d669fc705fb0">&#9670;&nbsp;</a></span>Success</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Func&lt;T, <a class="el" href="class_barotrauma_1_1_result.html">Result</a>&lt;T, TError&gt; &gt; <a class="el" href="class_barotrauma_1_1_result.html">Barotrauma.Result</a>&lt; T, TError &gt;.<a class="el" href="class_barotrauma_1_1_success.html">Success</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00025">25</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a7f2483f1c7e685c1571f7001f01a05ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f2483f1c7e685c1571f7001f01a05ed">&#9670;&nbsp;</a></span>IsFailure</h2>
@@ -201,7 +325,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00009">9</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00012">12</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
 
 </div>
 </div>
@@ -225,7 +349,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00008">8</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_result_8cs_source.html#l00011">11</a> of file <a class="el" href="_result_8cs_source.html">Result.cs</a>.</p>
 
 </div>
 </div>

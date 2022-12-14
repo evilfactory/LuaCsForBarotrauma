@@ -1,5 +1,6 @@
 var class_barotrauma_1_1_option =
 [
+    [ "UnspecifiedNone", "class_barotrauma_1_1_option_1_1_unspecified_none.html", null ],
     [ "Equals", "class_barotrauma_1_1_option.html#a142be73141bff19f77c595d3bcee4af8", null ],
     [ "Fallback", "class_barotrauma_1_1_option.html#af3973b919f7fe1f5ddfbf0edbebf204f", null ],
     [ "Fallback", "class_barotrauma_1_1_option.html#a6ac80c3313c618b0f82e0c062abe5b28", null ],

@@ -77,6 +77,7 @@ var class_barotrauma_1_1_item_prefab =
     [ "RequireCampaignInteract", "class_barotrauma_1_1_item_prefab.html#a52661a2a08e2b9c2d48a5e177be99586", null ],
     [ "RequireCursorInsideTrigger", "class_barotrauma_1_1_item_prefab.html#aab369fb150f7aff21e936314b1f0ce48", null ],
     [ "ShowContentsInTooltip", "class_barotrauma_1_1_item_prefab.html#ac953d005ed265969cdd762ed06980280", null ],
+    [ "ShowHealthBar", "class_barotrauma_1_1_item_prefab.html#addb60b9e3c47c9248a745c0039bf0f32", null ],
     [ "Size", "class_barotrauma_1_1_item_prefab.html#a7db23f7eb83a39608d94b85b7eb86637", null ],
     [ "SonarSize", "class_barotrauma_1_1_item_prefab.html#a6b6f7045aa52d3ac17571fe0f62609de", null ],
     [ "Sprite", "class_barotrauma_1_1_item_prefab.html#a8850b41714bbe1e06d2888ce5de6a0ac", null ],

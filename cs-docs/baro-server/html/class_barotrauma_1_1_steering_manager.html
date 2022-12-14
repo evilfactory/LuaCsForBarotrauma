@@ -109,8 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad650a8d9fd7a282cc95e95ea6fe251ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a618f433e737bd7a3b5257f402e354dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a618f433e737bd7a3b5257f402e354dd4">SteeringSeek</a> (Vector2 targetSimPos, float weight=1)</td></tr>
 <tr class="separator:a618f433e737bd7a3b5257f402e354dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a968a9680e452e425fca8f9f35f42ab7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a968a9680e452e425fca8f9f35f42ab7f">SteeringWander</a> (float weight=1)</td></tr>
-<tr class="separator:a968a9680e452e425fca8f9f35f42ab7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf0ff8a75a1aef183bbb7c737f7f610"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a6cf0ff8a75a1aef183bbb7c737f7f610">SteeringWander</a> (float weight=1, bool avoidWanderingOutsideLevel=false)</td></tr>
+<tr class="separator:a6cf0ff8a75a1aef183bbb7c737f7f610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fa616921a181512ad2a323f203ddc7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a7fa616921a181512ad2a323f203ddc7e">SteeringAvoid</a> (float deltaTime, float lookAheadDistance, float weight=1)</td></tr>
 <tr class="separator:a7fa616921a181512ad2a323f203ddc7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a573e0e96b3edcc0d09cc24d5ca2159b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a573e0e96b3edcc0d09cc24d5ca2159b1">SteeringManual</a> (float deltaTime, Vector2 velocity)</td></tr>
@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae8617a1b20618b33c72b0d91ae85cd7c"><td class="memItemLeft" align="right" valign="top">virtual Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#ae8617a1b20618b33c72b0d91ae85cd7c">DoSteeringSeek</a> (Vector2 target, float weight)</td></tr>
 <tr class="separator:ae8617a1b20618b33c72b0d91ae85cd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb1b36b9ff93d787cf2c8e4201d58e30"><td class="memItemLeft" align="right" valign="top">virtual Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#aeb1b36b9ff93d787cf2c8e4201d58e30">DoSteeringWander</a> (float weight)</td></tr>
-<tr class="separator:aeb1b36b9ff93d787cf2c8e4201d58e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c501d85febc009e2703453c17b10af1"><td class="memItemLeft" align="right" valign="top">virtual Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a0c501d85febc009e2703453c17b10af1">DoSteeringWander</a> (float weight, bool avoidWanderingOutsideLevel)</td></tr>
+<tr class="separator:a0c501d85febc009e2703453c17b10af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e01a87ece0ee88cd5a22ff435a425e5"><td class="memItemLeft" align="right" valign="top">virtual Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_steering_manager.html#a6e01a87ece0ee88cd5a22ff435a425e5">DoSteeringAvoid</a> (float deltaTime, float lookAheadDistance, float weight, Vector2? heading=null)</td></tr>
 <tr class="separator:a6e01a87ece0ee88cd5a22ff435a425e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -231,7 +231,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_steering_manager_8cs_source.html#l00146">146</a> of file <a class="el" href="_steering_manager_8cs_source.html">SteeringManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_steering_manager_8cs_source.html#l00162">162</a> of file <a class="el" href="_steering_manager_8cs_source.html">SteeringManager.cs</a>.</p>
 
 </div>
 </div>
@@ -275,8 +275,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb1b36b9ff93d787cf2c8e4201d58e30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb1b36b9ff93d787cf2c8e4201d58e30">&#9670;&nbsp;</a></span>DoSteeringWander()</h2>
+<a id="a0c501d85febc009e2703453c17b10af1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c501d85febc009e2703453c17b10af1">&#9670;&nbsp;</a></span>DoSteeringWander()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,8 +288,18 @@ Properties</h2></td></tr>
           <td class="memname">virtual Vector2 Barotrauma.SteeringManager.DoSteeringWander </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>weight</em></td><td>)</td>
+          <td class="paramname"><em>weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>avoidWanderingOutsideLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -456,8 +466,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a968a9680e452e425fca8f9f35f42ab7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a968a9680e452e425fca8f9f35f42ab7f">&#9670;&nbsp;</a></span>SteeringWander()</h2>
+<a id="a6cf0ff8a75a1aef183bbb7c737f7f610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf0ff8a75a1aef183bbb7c737f7f610">&#9670;&nbsp;</a></span>SteeringWander()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -466,8 +476,18 @@ Properties</h2></td></tr>
           <td class="memname">void Barotrauma.SteeringManager.SteeringWander </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>weight</em> = <code>1</code></td><td>)</td>
+          <td class="paramname"><em>weight</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>avoidWanderingOutsideLevel</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

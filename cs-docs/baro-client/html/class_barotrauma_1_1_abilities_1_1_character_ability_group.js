@@ -3,6 +3,7 @@ var class_barotrauma_1_1_abilities_1_1_character_ability_group =
     [ "CharacterAbilityGroup", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a022d07ae26501329990ec434344e1e61", null ],
     [ "ActivateAbilityGroup", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a5be4862a8008d532cbea3eea2ef52483", null ],
     [ "AddAbility", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a3edb5706ffab4cd2fd5e6c5c4cfe109c", null ],
+    [ "AddFallbackAbility", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#aeb91c3a0d8de9add33d0eff4f0c43a76", null ],
     [ "LoadConditions", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a379c4fa420400af1b7d95d266aba208d", null ],
     [ "abilityConditions", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a48f3d347925390349711f71976b17fc5", null ],
     [ "AbilityEffectType", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a2d5bb43b9a3dda6d7ba55c887441cd4c", null ],

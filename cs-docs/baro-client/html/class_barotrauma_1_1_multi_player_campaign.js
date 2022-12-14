@@ -19,7 +19,6 @@ var class_barotrauma_1_1_multi_player_campaign =
     [ "End", "class_barotrauma_1_1_multi_player_campaign.html#a601ee9a506e93d6ee687f62100ac077f", null ],
     [ "EndCampaignProjSpecific", "class_barotrauma_1_1_multi_player_campaign.html#abc8103fc4c46141aecb6d873d0a459ae", null ],
     [ "GetBalance", "class_barotrauma_1_1_multi_player_campaign.html#a6eee2bdfe431350e121540c4c20b8ff8", null ],
-    [ "GetCharacterDataSavePath", "class_barotrauma_1_1_multi_player_campaign.html#a1ffe523c8cfd74b84e1ff588b768222f", null ],
     [ "GetLastUpdateIdForFlag", "class_barotrauma_1_1_multi_player_campaign.html#aca27d3e0aad7b5261e8d600618bf0784", null ],
     [ "GetWallet", "class_barotrauma_1_1_multi_player_campaign.html#a867e810e3edae6014ca430e633b18ee9", null ],
     [ "HUDScaleChanged", "class_barotrauma_1_1_multi_player_campaign.html#a49ad0b71c9c98018d8bab0163fe8b3ac", null ],

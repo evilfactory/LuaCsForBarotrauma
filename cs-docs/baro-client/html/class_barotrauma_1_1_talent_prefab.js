@@ -2,6 +2,7 @@ var class_barotrauma_1_1_talent_prefab =
 [
     [ "TalentPrefab", "class_barotrauma_1_1_talent_prefab.html#a858a39ed606f9d0617af52c81491b34f", null ],
     [ "Dispose", "class_barotrauma_1_1_talent_prefab.html#ad991af9ed0d6d82941d87beda3c6148e", null ],
+    [ "ColorOverride", "class_barotrauma_1_1_talent_prefab.html#a8cd9a90968338d5933d9e230c039d1df", null ],
     [ "Icon", "class_barotrauma_1_1_talent_prefab.html#a0533e98354c248c009c8bcbb7d775e49", null ],
     [ "ConfigElement", "class_barotrauma_1_1_talent_prefab.html#afd739724b38b89aed84ee5b351992e9c", null ],
     [ "Description", "class_barotrauma_1_1_talent_prefab.html#acc072383a27baea6084dc0c4b2cca9bf", null ],

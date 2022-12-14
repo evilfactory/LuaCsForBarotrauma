@@ -2,6 +2,7 @@ var class_barotrauma_1_1_location_type =
 [
     [ "LocationType", "class_barotrauma_1_1_location_type.html#a7a48d1490612dcd7b8e44756fb7c055a", null ],
     [ "Dispose", "class_barotrauma_1_1_location_type.html#af7c35bcbce0a4cc630aea746e8a987dc", null ],
+    [ "GetForcedOutpostGenerationParams", "class_barotrauma_1_1_location_type.html#aa27eb432d6b93863e21a142dc27281aa", null ],
     [ "GetPortrait", "class_barotrauma_1_1_location_type.html#ad36a296d6ee127a8208630f81a5d4e6d", null ],
     [ "GetRandomHireable", "class_barotrauma_1_1_location_type.html#a1ee7035a5dd2c1d6f42cd7ba824d684c", null ],
     [ "GetRandomName", "class_barotrauma_1_1_location_type.html#aba940b9af3fe166e6b24e16d2546f2bb", null ],
@@ -9,6 +10,7 @@ var class_barotrauma_1_1_location_type =
     [ "BeaconStationChance", "class_barotrauma_1_1_location_type.html#a652aee5f7c8708b54b77a8405561e8d2", null ],
     [ "CanChangeTo", "class_barotrauma_1_1_location_type.html#a7c1e82dfc42026a58d8ce0e04afe23fd", null ],
     [ "CommonnessPerZone", "class_barotrauma_1_1_location_type.html#a9c033e9ac2c8fc4fa28dc6ea28ce5dfe", null ],
+    [ "Description", "class_barotrauma_1_1_location_type.html#a0fdff862d5ddc9cbafaffb35c2d67b70", null ],
     [ "HideEntitySubcategories", "class_barotrauma_1_1_location_type.html#a5fb4f3caa6f3dfda58a09a674738ebbe", null ],
     [ "MinCountPerZone", "class_barotrauma_1_1_location_type.html#a62e74422e3b86e6bc80850732247bf6c", null ],
     [ "MissionIdentifiers", "class_barotrauma_1_1_location_type.html#a1c8cc7478432ad243812dde32358a553", null ],
@@ -19,6 +21,7 @@ var class_barotrauma_1_1_location_type =
     [ "DailySpecialsCount", "class_barotrauma_1_1_location_type.html#ad8bc52c008d2f66e8c6a7c57b636dbed", null ],
     [ "HasHireableCharacters", "class_barotrauma_1_1_location_type.html#af4511fe21b130bfc5f072b37fe86c9ce", null ],
     [ "HasOutpost", "class_barotrauma_1_1_location_type.html#a34ede58ecfc8aada15071989060ac989", null ],
+    [ "IgnoreGenericEvents", "class_barotrauma_1_1_location_type.html#aa89cd5c404f85354d34b288036f04d1c", null ],
     [ "IsEnterable", "class_barotrauma_1_1_location_type.html#ad1cb0bf2e9f90d98d95018c8a8c23a4d", null ],
     [ "NameFormats", "class_barotrauma_1_1_location_type.html#a2d4eae8eecbc4d2d2eda4ad76ff3860a", null ],
     [ "RadiationSprite", "class_barotrauma_1_1_location_type.html#a554e4cadb2d8e0da561e583c2a5c1f69", null ],

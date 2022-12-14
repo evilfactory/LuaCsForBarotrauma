@@ -27,6 +27,7 @@ var namespace_barotrauma_1_1_abilities =
     [ "AbilityConditionHasPermanentStat", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_permanent_stat.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_permanent_stat" ],
     [ "AbilityConditionHasSkill", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_skill.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_skill" ],
     [ "AbilityConditionHasStatusTag", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_status_tag.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_status_tag" ],
+    [ "AbilityConditionHasTalent", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_talent.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_talent" ],
     [ "AbilityConditionHasVelocity", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_velocity.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_has_velocity" ],
     [ "AbilityConditionInFriendlySubmarine", "class_barotrauma_1_1_abilities_1_1_ability_condition_in_friendly_submarine.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_in_friendly_submarine" ],
     [ "AbilityConditionInHull", "class_barotrauma_1_1_abilities_1_1_ability_condition_in_hull.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_in_hull" ],
@@ -78,9 +79,7 @@ var namespace_barotrauma_1_1_abilities =
     [ "CharacterAbilityModifyValue", "class_barotrauma_1_1_abilities_1_1_character_ability_modify_value.html", "class_barotrauma_1_1_abilities_1_1_character_ability_modify_value" ],
     [ "CharacterAbilityPutItem", "class_barotrauma_1_1_abilities_1_1_character_ability_put_item.html", "class_barotrauma_1_1_abilities_1_1_character_ability_put_item" ],
     [ "CharacterAbilityResetPermanentStat", "class_barotrauma_1_1_abilities_1_1_character_ability_reset_permanent_stat.html", "class_barotrauma_1_1_abilities_1_1_character_ability_reset_permanent_stat" ],
-    [ "CharacterAbilityRevive", "class_barotrauma_1_1_abilities_1_1_character_ability_revive.html", "class_barotrauma_1_1_abilities_1_1_character_ability_revive" ],
     [ "CharacterAbilitySpawnItemsToContainer", "class_barotrauma_1_1_abilities_1_1_character_ability_spawn_items_to_container.html", "class_barotrauma_1_1_abilities_1_1_character_ability_spawn_items_to_container" ],
-    [ "CharacterAbilityUnlockTree", "class_barotrauma_1_1_abilities_1_1_character_ability_unlock_tree.html", "class_barotrauma_1_1_abilities_1_1_character_ability_unlock_tree" ],
     [ "CharacterAbilityAlienHoarder", "class_barotrauma_1_1_abilities_1_1_character_ability_alien_hoarder.html", "class_barotrauma_1_1_abilities_1_1_character_ability_alien_hoarder" ],
     [ "CharacterAbilityApprenticeship", "class_barotrauma_1_1_abilities_1_1_character_ability_apprenticeship.html", "class_barotrauma_1_1_abilities_1_1_character_ability_apprenticeship" ],
     [ "CharacterAbilityAtmosMachine", "class_barotrauma_1_1_abilities_1_1_character_ability_atmos_machine.html", "class_barotrauma_1_1_abilities_1_1_character_ability_atmos_machine" ],
@@ -93,5 +92,10 @@ var namespace_barotrauma_1_1_abilities =
     [ "CharacterAbilityTandemFire", "class_barotrauma_1_1_abilities_1_1_character_ability_tandem_fire.html", "class_barotrauma_1_1_abilities_1_1_character_ability_tandem_fire" ],
     [ "CharacterAbilityGroup", "class_barotrauma_1_1_abilities_1_1_character_ability_group.html", "class_barotrauma_1_1_abilities_1_1_character_ability_group" ],
     [ "CharacterAbilityGroupEffect", "class_barotrauma_1_1_abilities_1_1_character_ability_group_effect.html", "class_barotrauma_1_1_abilities_1_1_character_ability_group_effect" ],
-    [ "CharacterAbilityGroupInterval", "class_barotrauma_1_1_abilities_1_1_character_ability_group_interval.html", "class_barotrauma_1_1_abilities_1_1_character_ability_group_interval" ]
+    [ "CharacterAbilityGroupInterval", "class_barotrauma_1_1_abilities_1_1_character_ability_group_interval.html", "class_barotrauma_1_1_abilities_1_1_character_ability_group_interval" ],
+    [ "PermanentStatPlaceholder", "namespace_barotrauma_1_1_abilities.html#a2229294d822494d3799f1229902323ce", [
+      [ "None", "namespace_barotrauma_1_1_abilities.html#a2229294d822494d3799f1229902323cea6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "LocationName", "namespace_barotrauma_1_1_abilities.html#a2229294d822494d3799f1229902323cea208457aad33cf7fe9bad27b72c82aecf", null ],
+      [ "LocationIndex", "namespace_barotrauma_1_1_abilities.html#a2229294d822494d3799f1229902323cea9828e44a32c6d363d06486a1824042ca", null ]
+    ] ]
 ];

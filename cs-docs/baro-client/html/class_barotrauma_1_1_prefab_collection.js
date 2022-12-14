@@ -14,7 +14,7 @@ var class_barotrauma_1_1_prefab_collection =
     [ "RemoveByFile", "class_barotrauma_1_1_prefab_collection.html#afb416b1c6ed19544b9650160754bb296", null ],
     [ "RemoveOverrideFile", "class_barotrauma_1_1_prefab_collection.html#ab8586b6c79fa1c2f2ade27d70358e05c", null ],
     [ "SortAll", "class_barotrauma_1_1_prefab_collection.html#a7479ddcd103bde1fd57a453e2df54c7e", null ],
-    [ "TryGet", "class_barotrauma_1_1_prefab_collection.html#ac95e9ad8fb845022014a547ccb184502", null ],
+    [ "TryGet", "class_barotrauma_1_1_prefab_collection.html#adbfc62449ce183342cb8575cdae2d6ff", null ],
     [ "TryGet", "class_barotrauma_1_1_prefab_collection.html#af64719cbdf9b6092ac41f49d7df2400e", null ],
     [ "AllPrefabs", "class_barotrauma_1_1_prefab_collection.html#a416af0d96e99bcb6b16586eaa72a17d2", null ],
     [ "Keys", "class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d", null ],

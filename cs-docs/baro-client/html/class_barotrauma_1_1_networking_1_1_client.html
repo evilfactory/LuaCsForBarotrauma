@@ -116,8 +116,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af3491872cb9e64053100bffaa3907529"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b6a75f0089057999377f0445707a0d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a0b6a75f0089057999377f0445707a0d7">Dispose</a> ()</td></tr>
 <tr class="separator:a0b6a75f0089057999377f0445707a0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e916f160ec2e413baa742709d66da44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a4e916f160ec2e413baa742709d66da44">UpdateSoundPosition</a> ()</td></tr>
-<tr class="separator:a4e916f160ec2e413baa742709d66da44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad26fc14302163fab25a25633ab309e19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#ad26fc14302163fab25a25633ab309e19">UpdateVoipSound</a> ()</td></tr>
+<tr class="separator:ad26fc14302163fab25a25633ab309e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16230fc8c5bcc81d0673f85972a6a0d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a16230fc8c5bcc81d0673f85972a6a0d7">SetPermissions</a> (<a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34">ClientPermissions</a> permissions, IEnumerable&lt; string &gt; permittedConsoleCommands)</td></tr>
 <tr class="separator:a16230fc8c5bcc81d0673f85972a6a0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8215741db5b2c394169447a49ac936a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a8215741db5b2c394169447a49ac936a3">SetPermissions</a> (<a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34">ClientPermissions</a> permissions, IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html">DebugConsole.Command</a> &gt; permittedConsoleCommands)</td></tr>
@@ -206,6 +206,8 @@ Properties</h2></td></tr>
 <tr class="separator:a711fda3d81e2ab86a9aded9a577f848b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75a4b840df1fc7fbbcd90ff17ff619a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_sounds_1_1_voip_sound.html">VoipSound</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a75a4b840df1fc7fbbcd90ff17ff619a1">VoipSound</a><code> [get, set]</code></td></tr>
 <tr class="separator:a75a4b840df1fc7fbbcd90ff17ff619a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a234b5b902de48561f1881ef0feb49d9d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a234b5b902de48561f1881ef0feb49d9d">RadioNoise</a><code> [get, set]</code></td></tr>
+<tr class="separator:a234b5b902de48561f1881ef0feb49d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a971398f7c68ca3176de869c9f63738c6"><td class="memItemLeft" align="right" valign="top">bool??&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a971398f7c68ca3176de869c9f63738c6">MutedLocally</a><code> [get, set]</code></td></tr>
 <tr class="separator:a971398f7c68ca3176de869c9f63738c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7baa1a75ed0b40014b87d85ea930f4f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html#a7baa1a75ed0b40014b87d85ea930f4f6">AllowKicking</a><code> [get]</code></td></tr>
@@ -301,7 +303,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00114">114</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00153">153</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -321,7 +323,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00132">132</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00171">171</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -405,7 +407,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00123">123</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00162">162</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -424,7 +426,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00181">181</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -500,7 +502,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00100">100</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00139">139</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -530,7 +532,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00086">86</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00125">125</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -564,14 +566,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a4e916f160ec2e413baa742709d66da44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e916f160ec2e413baa742709d66da44">&#9670;&nbsp;</a></span>UpdateSoundPosition()</h2>
+<a id="ad26fc14302163fab25a25633ab309e19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad26fc14302163fab25a25633ab309e19">&#9670;&nbsp;</a></span>UpdateVoipSound()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Barotrauma.Networking.Client.UpdateSoundPosition </td>
+          <td class="memname">void Barotrauma.Networking.Client.UpdateVoipSound </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -579,7 +581,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00055">55</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -680,7 +682,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00035">35</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -696,7 +698,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00032">32</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00042">42</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -712,7 +714,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00037">37</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00047">47</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -949,7 +951,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00039">39</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00049">49</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1095,31 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00018">18</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00028">28</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
+
+</div>
+</div>
+<a id="a234b5b902de48561f1881ef0feb49d9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a234b5b902de48561f1881ef0feb49d9d">&#9670;&nbsp;</a></span>RadioNoise</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Networking.Client.RadioNoise</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00020">20</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html">BarotraumaClient/ClientSource/Networking/Client.cs</a>.</p>
 
 </div>
 </div>

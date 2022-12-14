@@ -5,7 +5,9 @@ var class_barotrauma_1_1_character_editor_1_1_character_editor_screen =
     [ "DeselectEditorSpecific", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a3528bd09439a451873607dae155cb9b6", null ],
     [ "Draw", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a79ba7b09fb0a97228433e4e22fc759bc", null ],
     [ "GetMouseCursorState", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#ab655742e5e6df78916c0080ea91ff5f8", null ],
+    [ "PrepareCharacterCopy", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a0ad07ce89ceb849a07c1101ce3403761", null ],
     [ "Select", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a982359b3c7cf816be1eaa646641bb754", null ],
+    [ "SpawnCharacter", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a7647ebce54b37c3825d368be7a7fcd47", null ],
     [ "Update", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a4d19591fb3d2c91aaf3784c017ad9fba", null ],
     [ "AllSpecies", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#acac1b75074290e4e8e7bddfd88b14e9d", null ],
     [ "AllWalls", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#aff3c9bddc808d1ca3ebbdea3c21739dc", null ],
@@ -16,6 +18,7 @@ var class_barotrauma_1_1_character_editor_1_1_character_editor_screen =
     [ "CurrentWall", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a78827df3a7763d61de8dee6da63134ab", null ],
     [ "RagdollParams", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a5a8341c0775d47cbe385ed7dc9ce7e77", null ],
     [ "ShowExtraRagdollControls", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a2439a09122171b20f3688fb0e42261d3", null ],
+    [ "SpawnedCharacter", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a87ba954e747c8098091f17622ee268e5", null ],
     [ "Textures", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#a42e78ea67a87bcdb240efdab5d2ee0d4", null ],
     [ "VanillaCharacters", "class_barotrauma_1_1_character_editor_1_1_character_editor_screen.html#ac949222e7eddec7828f0e074d712d6c4", null ]
 ];

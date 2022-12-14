@@ -21,6 +21,5 @@ var class_barotrauma_1_1_networking_1_1_respawn_manager =
     [ "RespawnTime", "class_barotrauma_1_1_networking_1_1_respawn_manager.html#a2af3cd62768a7819e99167782663de26", null ],
     [ "ReturnCountdownStarted", "class_barotrauma_1_1_networking_1_1_respawn_manager.html#a824df768eb0fef9ad0a826c46eff542c", null ],
     [ "ReturnTime", "class_barotrauma_1_1_networking_1_1_respawn_manager.html#ad6a9c22682f86e0913f193521a2de391", null ],
-    [ "UseRespawnPrompt", "class_barotrauma_1_1_networking_1_1_respawn_manager.html#acd7eaeb7935b11e55143bdbc66a805c7", null ],
     [ "UsingShuttle", "class_barotrauma_1_1_networking_1_1_respawn_manager.html#aa012429aa942723d9165324c7cb14ad0", null ]
 ];

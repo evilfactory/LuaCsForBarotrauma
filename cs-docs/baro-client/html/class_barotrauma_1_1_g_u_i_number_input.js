@@ -7,6 +7,7 @@ var class_barotrauma_1_1_g_u_i_number_input =
     [ "OnValueChanged", "class_barotrauma_1_1_g_u_i_number_input.html#a7c6735b5cfd52a2da0a2540d63dd4047", null ],
     [ "OnValueEntered", "class_barotrauma_1_1_g_u_i_number_input.html#a8639df833b52c52be98107f2d827a5e5", null ],
     [ "valueStep", "class_barotrauma_1_1_g_u_i_number_input.html#a1d63465fc367b60b39d2bb24e773f4c4", null ],
+    [ "WrapAround", "class_barotrauma_1_1_g_u_i_number_input.html#adcfd92232e8452938d5ed8c9ffe3ed20", null ],
     [ "DecimalsToDisplay", "class_barotrauma_1_1_g_u_i_number_input.html#acbfef336717ac0a28f06d2603bebb24e", null ],
     [ "Enabled", "class_barotrauma_1_1_g_u_i_number_input.html#a8ca4573da2b3d20aa3937673e397b0ca", null ],
     [ "FloatValue", "class_barotrauma_1_1_g_u_i_number_input.html#a481dd01238e9622b52491f0e6013ef83", null ],

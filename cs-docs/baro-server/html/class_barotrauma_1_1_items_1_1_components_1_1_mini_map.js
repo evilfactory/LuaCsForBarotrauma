@@ -3,7 +3,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_mini_map =
     [ "MiniMap", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a457a4e60fdc4b81b9b34754a066d2fff", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#ae7c8599d43be108d84d6980d0dbf366c", null ],
     [ "Pick", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a5175c1d353bc1488dd2c4701cf4f51c8", null ],
-    [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a4dca9458ba69edd877b71d03f7b30e5e", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a093f61c6331951de29c6ee2b5d4743a6", null ],
     [ "EnableElectricalView", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a6a16a800976bd072d8925b4483690ae9", null ],
     [ "EnableHullStatus", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a9620ffc30aa68dae2544a20aeb0681e4", null ],

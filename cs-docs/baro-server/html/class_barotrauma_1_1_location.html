@@ -96,6 +96,8 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_location.html',''
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_1_1_ability_location.html">AbilityLocation</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_1_1_store_info.html">StoreInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_1_1_taken_item.html">TakenItem</a></td></tr>
@@ -122,8 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a581f1e47c00fbacbbc011fdb5d5de6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad44be9064a29218a36b42893f797664c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#ad44be9064a29218a36b42893f797664c">LoadMissions</a> (XElement locationElement)</td></tr>
 <tr class="separator:ad44be9064a29218a36b42893f797664c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaea287ed41a29890e62b08bf6348876b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#aaea287ed41a29890e62b08bf6348876b">ChangeType</a> (<a class="el" href="class_barotrauma_1_1_location_type.html">LocationType</a> newType)</td></tr>
-<tr class="separator:aaea287ed41a29890e62b08bf6348876b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65a3264c0b4ade6c1fd7e1bcede5c01f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a65a3264c0b4ade6c1fd7e1bcede5c01f">ChangeType</a> (<a class="el" href="class_barotrauma_1_1_location_type.html">LocationType</a> newType, bool createStores=true)</td></tr>
+<tr class="separator:a65a3264c0b4ade6c1fd7e1bcede5c01f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55a7d58cbea5594dc53336537621fd52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a55a7d58cbea5594dc53336537621fd52">UnlockInitialMissions</a> ()</td></tr>
 <tr class="separator:a55a7d58cbea5594dc53336537621fd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6a91fcdfae9a4bb2012249591ce35e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#aa6a91fcdfae9a4bb2012249591ce35e0">UnlockMission</a> (<a class="el" href="class_barotrauma_1_1_mission_prefab.html">MissionPrefab</a> missionPrefab, <a class="el" href="class_barotrauma_1_1_location_connection.html">LocationConnection</a> connection)</td></tr>
@@ -180,16 +182,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acb8c712d3b62a366971eee60c0eb113d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5be357f46178e9bc30f15947df29a358"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a5be357f46178e9bc30f15947df29a358">UpdateStores</a> ()</td></tr>
 <tr class="separator:a5be357f46178e9bc30f15947df29a358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4a07cfc2cafb93ba81119e81dfa0543"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#aa4a07cfc2cafb93ba81119e81dfa0543">UpdateSpecials</a> ()</td></tr>
+<tr class="separator:aa4a07cfc2cafb93ba81119e81dfa0543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17944df3ba297e5409e7360614effd4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a17944df3ba297e5409e7360614effd4b">AddStock</a> (Dictionary&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>, List&lt; <a class="el" href="class_barotrauma_1_1_sold_item.html">SoldItem</a> &gt;&gt; items)</td></tr>
 <tr class="separator:a17944df3ba297e5409e7360614effd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3479e8011aabc1f619b1c9c27004b83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#ab3479e8011aabc1f619b1c9c27004b83">RemoveStock</a> (Dictionary&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>, List&lt; <a class="el" href="class_barotrauma_1_1_purchased_item.html">PurchasedItem</a> &gt;&gt; items)</td></tr>
 <tr class="separator:ab3479e8011aabc1f619b1c9c27004b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb24b79d14a5df0b977d338efdc082b4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#afb24b79d14a5df0b977d338efdc082b4">GetStoreReputationModifier</a> (bool buying)</td></tr>
 <tr class="separator:afb24b79d14a5df0b977d338efdc082b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc5e6416c61681f7e18070cd35242386"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#afc5e6416c61681f7e18070cd35242386">GetExtraSpecialSalesCount</a> ()</td></tr>
-<tr class="separator:afc5e6416c61681f7e18070cd35242386"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1ec7cde1f72245e4862b0a06f24e3e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#aa1ec7cde1f72245e4862b0a06f24e3e3">Discover</a> (bool checkTalents=true)</td></tr>
-<tr class="separator:aa1ec7cde1f72245e4862b0a06f24e3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72af2e4ee58d2d20eb8c76d665230bfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a72af2e4ee58d2d20eb8c76d665230bfe">CanHaveSubsForSale</a> ()</td></tr>
+<tr class="separator:a72af2e4ee58d2d20eb8c76d665230bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4efec41a308ae90ebd898948e2fbf36"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#ab4efec41a308ae90ebd898948e2fbf36">HighestSubmarineTierAvailable</a> (<a class="el" href="namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4">SubmarineClass</a> submarineClass=<a class="el" href="namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4aec0fc0100c4fc1ce4eea230c3dc10360">SubmarineClass.Undefined</a>)</td></tr>
+<tr class="separator:ab4efec41a308ae90ebd898948e2fbf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a902d98c79e29534301589c280f922d89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a902d98c79e29534301589c280f922d89">IsSubmarineAvailable</a> (<a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> info)</td></tr>
+<tr class="separator:a902d98c79e29534301589c280f922d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8455837d7bba6f03d808524017245cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#ac8455837d7bba6f03d808524017245cc">Reset</a> ()</td></tr>
 <tr class="separator:ac8455837d7bba6f03d808524017245cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ac0be4ad6d4fb1d10988a6b3db2fa7c"><td class="memItemLeft" align="right" valign="top">XElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a2ac0be4ad6d4fb1d10988a6b3db2fa7c">Save</a> (<a class="el" href="class_barotrauma_1_1_map.html">Map</a> map, XElement parentElement)</td></tr>
@@ -203,6 +209,8 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a524cb499c51a30d91914145f1f75b017"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_location.html">Location</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#a524cb499c51a30d91914145f1f75b017">CreateRandom</a> (Vector2 position, int? zone, Random rand, bool requireOutpost, <a class="el" href="class_barotrauma_1_1_location_type.html">LocationType</a> forceLocationType=null, IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_location.html">Location</a> &gt; existingLocations=null)</td></tr>
 <tr class="separator:a524cb499c51a30d91914145f1f75b017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47da9155c3774577ccb628f0dfc4add"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location.html#af47da9155c3774577ccb628f0dfc4add">GetExtraSpecialSalesCount</a> ()</td></tr>
+<tr class="separator:af47da9155c3774577ccb628f0dfc4add"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -324,7 +332,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00456">456</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00475">475</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -346,7 +354,7 @@ Properties</h2></td></tr>
 
 <p>Create a location from save data </p>
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00468">468</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00487">487</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -367,12 +375,31 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01208">1208</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01240">1240</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
-<a id="aaea287ed41a29890e62b08bf6348876b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaea287ed41a29890e62b08bf6348876b">&#9670;&nbsp;</a></span>ChangeType()</h2>
+<a id="a72af2e4ee58d2d20eb8c76d665230bfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72af2e4ee58d2d20eb8c76d665230bfe">&#9670;&nbsp;</a></span>CanHaveSubsForSale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Location.CanHaveSubsForSale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01297">1297</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+
+</div>
+</div>
+<a id="a65a3264c0b4ade6c1fd7e1bcede5c01f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65a3264c0b4ade6c1fd7e1bcede5c01f">&#9670;&nbsp;</a></span>ChangeType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,13 +408,23 @@ Properties</h2></td></tr>
           <td class="memname">void Barotrauma.Location.ChangeType </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_location_type.html">LocationType</a>&#160;</td>
-          <td class="paramname"><em>newType</em></td><td>)</td>
+          <td class="paramname"><em>newType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>createStores</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00644">644</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00662">662</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -408,7 +445,7 @@ Properties</h2></td></tr>
 
 <p>Removes all unlocked missions from the location </p>
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00884">884</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00905">905</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -470,7 +507,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00639">639</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00657">657</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -498,7 +535,7 @@ Properties</h2></td></tr>
 </dl>
 </p>
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01073">1073</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01094">1094</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -518,27 +555,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00380">380</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
-
-</div>
-</div>
-<a id="aa1ec7cde1f72245e4862b0a06f24e3e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1ec7cde1f72245e4862b0a06f24e3e3">&#9670;&nbsp;</a></span>Discover()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Barotrauma.Location.Discover </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>checkTalents</em> = <code>true</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01265">1265</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00399">399</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -558,7 +575,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01057">1057</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01078">1078</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -578,26 +595,34 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01051">1051</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01072">1072</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
-<a id="afc5e6416c61681f7e18070cd35242386"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc5e6416c61681f7e18070cd35242386">&#9670;&nbsp;</a></span>GetExtraSpecialSalesCount()</h2>
+<a id="af47da9155c3774577ccb628f0dfc4add"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af47da9155c3774577ccb628f0dfc4add">&#9670;&nbsp;</a></span>GetExtraSpecialSalesCount()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.Location.GetExtraSpecialSalesCount </td>
+          <td class="memname">static int Barotrauma.Location.GetExtraSpecialSalesCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01258">1258</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01290">1290</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -616,7 +641,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00945">945</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00966">966</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -635,7 +660,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00907">907</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00928">928</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -655,7 +680,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00923">923</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00944">944</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -674,7 +699,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00386">386</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00405">405</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -694,7 +719,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01063">1063</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01084">1084</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -714,7 +739,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01232">1232</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01264">1264</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -733,7 +758,27 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00890">890</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00911">911</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab4efec41a308ae90ebd898948e2fbf36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4efec41a308ae90ebd898948e2fbf36">&#9670;&nbsp;</a></span>HighestSubmarineTierAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Barotrauma.Location.HighestSubmarineTierAvailable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4">SubmarineClass</a>&#160;</td>
+          <td class="paramname"><em>submarineClass</em> = <code><a class="el" href="namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4aec0fc0100c4fc1ce4eea230c3dc10360">SubmarineClass.Undefined</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01302">1302</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -753,7 +798,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00844">844</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00865">865</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -772,7 +817,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00897">897</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00918">918</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -793,6 +838,26 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a902d98c79e29534301589c280f922d89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a902d98c79e29534301589c280f922d89">&#9670;&nbsp;</a></span>IsSubmarineAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Location.IsSubmarineAvailable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a>&#160;</td>
+          <td class="paramname"><em>info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01311">1311</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+
+</div>
+</div>
 <a id="a581f1e47c00fbacbbc011fdb5d5de6eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a581f1e47c00fbacbbc011fdb5d5de6eb">&#9670;&nbsp;</a></span>LoadLocationTypeChange()</h2>
 
@@ -809,7 +874,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00585">585</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00603">603</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -829,7 +894,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00621">621</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00639">639</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -849,7 +914,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00969">969</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00990">990</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -871,7 +936,7 @@ Properties</h2></td></tr>
 
 <p>Mark the characters who have been killed to prevent them from spawning when re-entering the outpost </p>
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01033">1033</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01054">1054</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -893,7 +958,7 @@ Properties</h2></td></tr>
 
 <p>Mark the items that have been taken from the outpost to prevent them from spawning when re-entering the outpost </p>
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01016">1016</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01037">1037</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -912,7 +977,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01416">1416</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01462">1462</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -932,7 +997,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00929">929</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00950">950</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -951,7 +1016,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01421">1421</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01467">1467</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -971,7 +1036,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01220">1220</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01252">1252</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -990,7 +1055,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01042">1042</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01063">1063</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +1074,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01275">1275</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01323">1323</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1104,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01289">1289</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01336">1336</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1124,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00371">371</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00390">390</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1144,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00399">399</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00418">418</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1163,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00451">451</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00470">470</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1182,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00671">671</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00692">692</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1137,7 +1202,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00693">693</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00714">714</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1232,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00683">683</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00704">704</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1252,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00703">703</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00724">724</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1207,7 +1272,26 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00729">729</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00750">750</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa4a07cfc2cafb93ba81119e81dfa0543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4a07cfc2cafb93ba81119e81dfa0543">&#9670;&nbsp;</a></span>UpdateSpecials()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.Location.UpdateSpecials </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01205">1205</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1310,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01125">1125</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l01146">1146</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1343,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00449">449</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00468">468</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1275,7 +1359,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00431">431</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00450">450</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1291,7 +1375,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00427">427</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00446">446</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1339,7 +1423,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00429">429</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00448">448</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1380,7 +1464,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00352">352</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00371">371</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1452,7 +1536,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00329">329</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00348">348</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1500,7 +1584,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00346">346</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00365">365</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1572,7 +1656,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00421">421</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00440">440</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1668,7 +1752,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00414">414</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00433">433</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1716,7 +1800,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00330">330</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00349">349</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1740,7 +1824,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00362">362</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00381">381</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1764,7 +1848,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00332">332</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00351">351</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1788,7 +1872,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00322">322</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00341">341</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1812,7 +1896,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00316">316</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00335">335</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>
@@ -1836,7 +1920,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00340">340</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_8cs_source.html#l00359">359</a> of file <a class="el" href="_location_8cs_source.html">Location.cs</a>.</p>
 
 </div>
 </div>

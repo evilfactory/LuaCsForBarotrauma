@@ -25,6 +25,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_holdable =
     [ "Unequip", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#aca3c241034a0585f92a437e21bd6bed0", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a3976ad77d8d504bd6547117ddb90b2a5", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a82af4994ab34ebdd6ad541829e7f475f", null ],
+    [ "UpdateSwingPos", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#af0b50b744ecae4613ec43373e3808eed", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#aefa9de681082e3367d77af2ca7c8b99a", null ],
     [ "ValidateEventData", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a431d1147df3ac802f1947ccb275d42db", null ],
     [ "aimPos", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a4ee08468331234c1cc9c3b627b37a199", null ],

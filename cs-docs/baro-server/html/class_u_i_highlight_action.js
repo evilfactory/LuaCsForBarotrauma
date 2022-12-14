@@ -24,6 +24,7 @@ var class_u_i_highlight_action =
     [ "Update", "class_u_i_highlight_action.html#a270d7f6e891f78e1da451e17dd166f2a", null ],
     [ "Bounce", "class_u_i_highlight_action.html#a875f672fe996dae9612fa0111b595eb4", null ],
     [ "EntityIdentifier", "class_u_i_highlight_action.html#a217ce58364ceaf141bc4704f0db78977", null ],
+    [ "HighlightMultiple", "class_u_i_highlight_action.html#ae3b31e2ae81cc83c2c90fbd696d3e2c3", null ],
     [ "Id", "class_u_i_highlight_action.html#a46a26b7beda37ce49ea383f9d497f0c6", null ],
     [ "OrderCategory", "class_u_i_highlight_action.html#a0187a122f9e7b40bacee288556f21df7", null ],
     [ "OrderIdentifier", "class_u_i_highlight_action.html#a0ad462c23b87df50031f737e89035f86", null ],

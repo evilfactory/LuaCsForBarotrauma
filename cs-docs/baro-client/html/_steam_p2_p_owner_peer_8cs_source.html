@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('_steam_p2_p_owner_peer_8cs_source.html
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keyword">public</span> RemotePeer(<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> steamId)</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> = steamId;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                OwnerSteamId = <a class="code" href="class_barotrauma_1_1_option.html">Option&lt;SteamId&gt;</a>.<a class="code" href="class_barotrauma_1_1_option.html#a70c8ffb1b99d58f87658eab3d7273628">None</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                OwnerSteamId = <a class="code" href="class_barotrauma_1_1_option.html">Option&lt;SteamId&gt;</a>.<a class="code" href="class_barotrauma_1_1_option.html#ad27cf86af40c3cb43b87ff4069db20f6">None</a>();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                DisconnectTime = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                Authenticating = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                Authenticated = <span class="keyword">false</span>;</div>
@@ -275,303 +275,294 @@ $(document).ready(function(){initNavTree('_steam_p2_p_owner_peer_8cs_source.html
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        {</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">if</span> (ChildServerRelay.HasShutDown || !(ChildServerRelay.Process is { HasExited: false }))</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">if</span> (ChildServerRelay.HasShutDown || !ChildServerRelay.IsProcessAlive)</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">Close</a>(PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.ServerCrashed));</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                var msgBox = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(TextManager.Get(<span class="stringliteral">&quot;ConnectionLost&quot;</span>), ChildServerRelay.CrashMessage);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                msgBox.Buttons[0].OnClicked += (btn, obj) =&gt;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a7cbe8059adce40e931a676433434225e">MainMenuScreen</a>.<a class="code" href="class_barotrauma_1_1_main_menu_screen.html#a23df615221f071c56572fb9723cc4526">Select</a>();</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                };</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = remotePeers.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">if</span> (remotePeers[i].DisconnectTime != <span class="keyword">null</span> &amp;&amp; remotePeers[i].DisconnectTime &lt; Timing.TotalTime)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    ClosePeerSession(remotePeers[i]);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                }</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                var gameClient = <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">Close</a>(PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.ServerCrashed));</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                gameClient?.CreateServerCrashMessage();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = remotePeers.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordflow">if</span> (remotePeers[i].DisconnectTime != <span class="keyword">null</span> &amp;&amp; remotePeers[i].DisconnectTime &lt; Timing.TotalTime)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    ClosePeerSession(remotePeers[i]);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 100; i++)</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordflow">if</span> (!Steamworks.SteamNetworking.IsP2PPacketAvailable()) { <span class="keywordflow">break</span>; }</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 100; i++)</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="keywordflow">if</span> (!Steamworks.SteamNetworking.IsP2PPacketAvailable()) { <span class="keywordflow">break</span>; }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                var packet = Steamworks.SteamNetworking.ReadP2PPacket();</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">if</span> (packet is { <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a>: var steamId, <a class="code" href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007daf6068daa29dbb05a7ead1e3b5a48bbee">Data</a>: var data })</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    OnP2PData(steamId, <span class="keyword">new</span> ReadWriteMessage(data, 0, data.Length * 8, <span class="keyword">false</span>));</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    receivedBytes += data.Length;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#a4581a7438829aee7c9fe3b48094e8581">NetStats</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#a211992f1444de74f90dca4e1603f0c42">AddValue</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html">NetStats</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7">NetStatType</a>.ReceivedBytes, receivedBytes);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#a4581a7438829aee7c9fe3b48094e8581">NetStats</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#a211992f1444de74f90dca4e1603f0c42">AddValue</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html">NetStats</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7">NetStatType</a>.SentBytes, sentBytes);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">while</span> (ChildServerRelay.Read(out <span class="keywordtype">byte</span>[] incBuf))</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                ChildServerRelay.DisposeLocalHandles();</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc = <span class="keyword">new</span> ReadOnlyMessage(incBuf, <span class="keyword">false</span>, 0, incBuf.Length, ServerConnection);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                HandleDataMessage(inc);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            }</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                var packet = Steamworks.SteamNetworking.ReadP2PPacket();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">if</span> (packet is { <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a>: var steamId, <a class="code" href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007daf6068daa29dbb05a7ead1e3b5a48bbee">Data</a>: var data })</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    OnP2PData(steamId, <span class="keyword">new</span> ReadWriteMessage(data, 0, data.Length * 8, <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    receivedBytes += data.Length;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#a4581a7438829aee7c9fe3b48094e8581">NetStats</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#a211992f1444de74f90dca4e1603f0c42">AddValue</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html">NetStats</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7">NetStatType</a>.ReceivedBytes, receivedBytes);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#a4581a7438829aee7c9fe3b48094e8581">NetStats</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#a211992f1444de74f90dca4e1603f0c42">AddValue</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html">NetStats</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_net_stats.html#acdd18bda7baf17be93a4c8ceed65cca7">NetStatType</a>.SentBytes, sentBytes);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">while</span> (ChildServerRelay.Read(out <span class="keywordtype">byte</span>[] incBuf))</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                ChildServerRelay.DisposeLocalHandles();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc = <span class="keyword">new</span> ReadOnlyMessage(incBuf, <span class="keyword">false</span>, 0, incBuf.Length, ServerConnection);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                HandleDataMessage(inc);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleDataMessage(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleDataMessage(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> recipientSteamId = ReadSteamId(inc);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            var peerPacketHeaders = INetSerializableStruct.Read&lt;PeerPacketHeaders&gt;(inc);</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> recipientSteamId = ReadSteamId(inc);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            var peerPacketHeaders = INetSerializableStruct.Read&lt;PeerPacketHeaders&gt;(inc);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">if</span> (recipientSteamId != selfSteamID)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">if</span> (recipientSteamId != selfSteamID)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                HandleMessageForRemotePeer(peerPacketHeaders, recipientSteamId, inc);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                HandleMessageForRemotePeer(peerPacketHeaders, recipientSteamId, inc);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                HandleMessageForOwner(peerPacketHeaders, inc);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                HandleMessageForOwner(peerPacketHeaders, inc);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">byte</span>[] GetRemainingBytes(IReadMessage msg)</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> msg.Buffer[msg.BytePosition..msg.LengthBytes];</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleMessageForRemotePeer(PeerPacketHeaders peerPacketHeaders, SteamId recipientSteamId, IReadMessage inc)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            var (deliveryMethod, packetHeader, initialization) = peerPacketHeaders;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">if</span> (!packetHeader.IsServerMessage())</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Received non-server message meant for remote peer&quot;</span>);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            RemotePeer? peer = remotePeers.Find(p =&gt; p.SteamId == recipientSteamId);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">if</span> (peer is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsDisconnectMessage())</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                var packet = INetSerializableStruct.Read&lt;PeerDisconnectPacket&gt;(inc);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                DisconnectPeer(peer, packet);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            }</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            IWriteMessage outMsg = <span class="keyword">new</span> WriteOnlyMessage();</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = deliveryMethod,</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = packetHeader,</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                Initialization = initialization</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            });</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsConnectionInitializationStep())</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                var initRelayPacket = <span class="keyword">new</span> SteamP2PInitializationRelayPacket</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                    LobbyID = SteamManager.CurrentLobbyID,</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    Message = <span class="keyword">new</span> PeerPacketMessage</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                    {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        Buffer = GetRemainingBytes(inc)</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                    }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                };</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                outMsg.WriteNetSerializableStruct(initRelayPacket);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="keywordtype">byte</span>[] userMessage = GetRemainingBytes(inc);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                outMsg.WriteBytes(userMessage, 0, userMessage.Length);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            ForwardToRemotePeer(deliveryMethod, recipientSteamId, outMsg);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">byte</span>[] GetRemainingBytes(IReadMessage msg)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">return</span> msg.Buffer[msg.BytePosition..msg.LengthBytes];</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleMessageForRemotePeer(PeerPacketHeaders peerPacketHeaders, SteamId recipientSteamId, IReadMessage inc)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            var (deliveryMethod, packetHeader, initialization) = peerPacketHeaders;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordflow">if</span> (!packetHeader.IsServerMessage())</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Received non-server message meant for remote peer&quot;</span>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            RemotePeer? peer = remotePeers.Find(p =&gt; p.SteamId == recipientSteamId);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordflow">if</span> (peer is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsDisconnectMessage())</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                var packet = INetSerializableStruct.Read&lt;PeerDisconnectPacket&gt;(inc);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                DisconnectPeer(peer, packet);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            IWriteMessage outMsg = <span class="keyword">new</span> WriteOnlyMessage();</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = deliveryMethod,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = packetHeader,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                Initialization = initialization</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            });</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsConnectionInitializationStep())</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                var initRelayPacket = <span class="keyword">new</span> SteamP2PInitializationRelayPacket</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    LobbyID = SteamManager.CurrentLobbyID,</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    Message = <span class="keyword">new</span> PeerPacketMessage</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        Buffer = GetRemainingBytes(inc)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                    }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                };</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                outMsg.WriteNetSerializableStruct(initRelayPacket);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <span class="keywordtype">byte</span>[] userMessage = GetRemainingBytes(inc);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                outMsg.WriteBytes(userMessage, 0, userMessage.Length);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            ForwardToRemotePeer(deliveryMethod, recipientSteamId, outMsg);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleMessageForOwner(PeerPacketHeaders peerPacketHeaders, IReadMessage inc)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            var (_, packetHeader, _) = peerPacketHeaders;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> HandleMessageForOwner(PeerPacketHeaders peerPacketHeaders, IReadMessage inc)</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            var (_, packetHeader, _) = peerPacketHeaders;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsDisconnectMessage())</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Received disconnect message from owned server&quot;</span>);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <span class="keywordflow">if</span> (!packetHeader.IsServerMessage())</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Received non-server message from owned server&quot;</span>);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsHeartbeatMessage())</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                <span class="keywordflow">return</span>; <span class="comment">//no timeout since we&#39;re using pipes, ignore this message</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsConnectionInitializationStep())</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                IWriteMessage outMsg = <span class="keyword">new</span> WriteOnlyMessage();</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                WriteSteamId(outMsg, selfSteamID);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                WriteSteamId(outMsg, selfSteamID);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable,</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsConnectionInitializationStep,</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    Initialization = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>.SteamTicketAndVersion</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsDisconnectMessage())</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Received disconnect message from owned server&quot;</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">if</span> (!packetHeader.IsServerMessage())</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Received non-server message from owned server&quot;</span>);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsHeartbeatMessage())</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="keywordflow">return</span>; <span class="comment">//no timeout since we&#39;re using pipes, ignore this message</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">if</span> (packetHeader.IsConnectionInitializationStep())</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                IWriteMessage outMsg = <span class="keyword">new</span> WriteOnlyMessage();</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                WriteSteamId(outMsg, selfSteamID);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                WriteSteamId(outMsg, selfSteamID);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable,</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsConnectionInitializationStep,</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    Initialization = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>.SteamTicketAndVersion</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                });</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> SteamP2PInitializationOwnerPacket</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    OwnerName = GameMain.Client.Name</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                });</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> SteamP2PInitializationOwnerPacket</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    OwnerName = GameMain.Client.Name</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                });</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                ForwardToServerProcess(outMsg);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            {</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                <span class="keywordflow">if</span> (initializationStep != <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>.Success)</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                {</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    callbacks.OnInitializationComplete.Invoke();</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                    initializationStep = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>.Success;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                PeerPacketMessage packet = INetSerializableStruct.Read&lt;PeerPacketMessage&gt;(inc);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                IReadMessage msg = <span class="keyword">new</span> ReadOnlyMessage(packet.Buffer, packetHeader.IsCompressed(), 0, packet.Length, ServerConnection);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                callbacks.OnMessageReceived.Invoke(msg);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            }</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        </div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> DisconnectPeer(RemotePeer peer, PeerDisconnectPacket peerDisconnectPacket)</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            peer.DisconnectTime ??= Timing.TotalTime + 1.0;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            IWriteMessage outMsg = <span class="keyword">new</span> WriteOnlyMessage();</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable,</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsServerMessage | <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsDisconnectMessage</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            });</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            outMsg.WriteNetSerializableStruct(peerDisconnectPacket);</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            Steamworks.SteamNetworking.SendP2PPacket(peer.SteamId.Value, outMsg.Buffer, outMsg.LengthBytes, 0, Steamworks.P2PSend.Reliable);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            sentBytes += outMsg.LengthBytes;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        }</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ClosePeerSession(RemotePeer peer)</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            Steamworks.SteamNetworking.CloseP2PSessionWithUser(peer.SteamId.Value);</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            remotePeers.Remove(peer);</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        }</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed">  381</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed">SendPassword</a>(<span class="keywordtype">string</span> password)</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            <span class="comment">//owner doesn&#39;t send passwords</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                ForwardToServerProcess(outMsg);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordflow">if</span> (initializationStep != <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>.Success)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    callbacks.OnInitializationComplete.Invoke();</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                    initializationStep = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>.Success;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                PeerPacketMessage packet = INetSerializableStruct.Read&lt;PeerPacketMessage&gt;(inc);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                IReadMessage msg = <span class="keyword">new</span> ReadOnlyMessage(packet.Buffer, packetHeader.IsCompressed(), 0, packet.Length, ServerConnection);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                callbacks.OnMessageReceived.Invoke(msg);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> DisconnectPeer(RemotePeer peer, PeerDisconnectPacket peerDisconnectPacket)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            peer.DisconnectTime ??= Timing.TotalTime + 1.0;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            IWriteMessage outMsg = <span class="keyword">new</span> WriteOnlyMessage();</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            outMsg.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable,</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsServerMessage | <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsDisconnectMessage</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            });</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            outMsg.WriteNetSerializableStruct(peerDisconnectPacket);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            Steamworks.SteamNetworking.SendP2PPacket(peer.SteamId.Value, outMsg.Buffer, outMsg.LengthBytes, 0, Steamworks.P2PSend.Reliable);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            sentBytes += outMsg.LengthBytes;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ClosePeerSession(RemotePeer peer)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            Steamworks.SteamNetworking.CloseP2PSessionWithUser(peer.SteamId.Value);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            remotePeers.Remove(peer);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed">  377</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed">SendPassword</a>(<span class="keywordtype">string</span> password)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="comment">//owner doesn&#39;t send passwords</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">  382</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">Close</a>(PeerDisconnectPacket peerDisconnectPacket)</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
-<div class="line"><a name="l00386"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">  386</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">Close</a>(PeerDisconnectPacket peerDisconnectPacket)</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            isActive = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = remotePeers.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                DisconnectPeer(remotePeers[i], PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.ServerShutdown));</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            Thread.Sleep(100);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = remotePeers.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                ClosePeerSession(remotePeers[i]);</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            }</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            ChildServerRelay.ClosePipes();</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            callbacks.OnDisconnect.Invoke(peerDisconnectPacket);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            SteamManager.LeaveLobby();</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            Steamworks.SteamNetworking.ResetActions();</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            Steamworks.SteamUser.OnValidateAuthTicketResponse -= OnAuthChange;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        }</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4f679a01cd5fb0e01a45bf4db301619c">  413</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4f679a01cd5fb0e01a45bf4db301619c">Send</a>(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> deliveryMethod, <span class="keywordtype">bool</span> compressPastThreshold = <span class="keyword">true</span>)</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        {</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msgToSend = <span class="keyword">new</span> WriteOnlyMessage();</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <span class="keywordtype">byte</span>[] msgData = msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#ae7555d040768983d6c5ba8126aa8b7f2">PrepareForSending</a>(compressPastThreshold, out <span class="keywordtype">bool</span> isCompressed, out _);</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            WriteSteamId(msgToSend, selfSteamID);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            WriteSteamId(msgToSend, selfSteamID);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            msgToSend.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = deliveryMethod,</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = isCompressed ? <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsCompressed : <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.None</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            });</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            msgToSend.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketMessage</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            {</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                Buffer = msgData</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            });</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            ForwardToServerProcess(msgToSend);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            isActive = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = remotePeers.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                DisconnectPeer(remotePeers[i], PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.ServerShutdown));</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            Thread.Sleep(100);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = remotePeers.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                ClosePeerSession(remotePeers[i]);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            callbacks.OnDisconnect.Invoke(peerDisconnectPacket);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            SteamManager.LeaveLobby();</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            Steamworks.SteamNetworking.ResetActions();</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            Steamworks.SteamUser.OnValidateAuthTicketResponse -= OnAuthChange;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4f679a01cd5fb0e01a45bf4db301619c">  407</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4f679a01cd5fb0e01a45bf4db301619c">Send</a>(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> deliveryMethod, <span class="keywordtype">bool</span> compressPastThreshold = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="keywordflow">if</span> (!isActive) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msgToSend = <span class="keyword">new</span> WriteOnlyMessage();</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <span class="keywordtype">byte</span>[] msgData = msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#ae7555d040768983d6c5ba8126aa8b7f2">PrepareForSending</a>(compressPastThreshold, out <span class="keywordtype">bool</span> isCompressed, out _);</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            WriteSteamId(msgToSend, selfSteamID);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            WriteSteamId(msgToSend, selfSteamID);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            msgToSend.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketHeaders</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> = deliveryMethod,</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> = isCompressed ? <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.IsCompressed : <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>.None</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            });</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            msgToSend.WriteNetSerializableStruct(<span class="keyword">new</span> PeerPacketMessage</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                Buffer = msgData</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            });</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            ForwardToServerProcess(msgToSend);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
+<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a6795fabe64eeae9236e5622f434a0937">  427</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a6795fabe64eeae9236e5622f434a0937">SendMsgInternal</a>(PeerPacketHeaders headers, INetSerializableStruct? body)</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="comment">//not currently used by SteamP2POwnerPeer</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        }</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
-<div class="line"><a name="l00433"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a6795fabe64eeae9236e5622f434a0937">  433</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a6795fabe64eeae9236e5622f434a0937">SendMsgInternal</a>(PeerPacketHeaders headers, INetSerializableStruct? body)</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ForwardToServerProcess(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg)</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        {</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="comment">//not currently used by SteamP2POwnerPeer</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        }</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ForwardToServerProcess(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg)</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        {</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="keywordtype">byte</span>[] bufToSend = <span class="keyword">new</span> <span class="keywordtype">byte</span>[msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#aea092ccc123a7d1fbad50de56efebf29">LengthBytes</a>];</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#a4c73ab4223decfb7ade59cde1c1154b3">Buffer</a>[..msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#aea092ccc123a7d1fbad50de56efebf29">LengthBytes</a>].CopyTo(bufToSend.AsSpan());</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            ChildServerRelay.Write(bufToSend);</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ForwardToRemotePeer(<a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> deliveryMethod, <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> recipent, <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> outMsg)</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            <span class="keywordtype">byte</span>[] buf = outMsg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#ae7555d040768983d6c5ba8126aa8b7f2">PrepareForSending</a>(compressPastThreshold: <span class="keyword">false</span>, out _, out <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordtype">byte</span>[] bufToSend = <span class="keyword">new</span> <span class="keywordtype">byte</span>[msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#aea092ccc123a7d1fbad50de56efebf29">LengthBytes</a>];</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#a4c73ab4223decfb7ade59cde1c1154b3">Buffer</a>[..msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#aea092ccc123a7d1fbad50de56efebf29">LengthBytes</a>].CopyTo(bufToSend.AsSpan());</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            ChildServerRelay.Write(bufToSend);</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ForwardToRemotePeer(<a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> deliveryMethod, <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> recipent, <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> outMsg)</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            <span class="keywordtype">byte</span>[] buf = outMsg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#ae7555d040768983d6c5ba8126aa8b7f2">PrepareForSending</a>(compressPastThreshold: <span class="keyword">false</span>, out _, out <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <span class="keywordflow">if</span> (length + 4 &gt;= MsgConstants.MTU)</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                DebugConsole.Log($<span class="stringliteral">&quot;WARNING: message length comes close to exceeding MTU, forcing reliable send ({length} bytes)&quot;</span>);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                deliveryMethod = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            }</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160; </div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            <span class="keywordflow">if</span> (length + 4 &gt;= MsgConstants.MTU)</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            {</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                DebugConsole.Log($<span class="stringliteral">&quot;WARNING: message length comes close to exceeding MTU, forcing reliable send ({length} bytes)&quot;</span>);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                deliveryMethod = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable;</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            <span class="keywordtype">bool</span> successSend = Steamworks.SteamNetworking.SendP2PPacket(recipent.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>, buf, length, 0, deliveryMethod.ToSteam());</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            sentBytes += length;</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            <span class="keywordflow">if</span> (successSend) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <span class="keywordflow">if</span> (deliveryMethod is <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Unreliable)</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            {</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                DebugConsole.Log($<span class="stringliteral">&quot;WARNING: message couldn&#39;t be sent unreliably, forcing reliable send ({length} bytes)&quot;</span>);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                successSend = Steamworks.SteamNetworking.SendP2PPacket(recipent.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>, buf, length, 0, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable.ToSteam());</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                sentBytes += length;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            <span class="keywordtype">bool</span> successSend = Steamworks.SteamNetworking.SendP2PPacket(recipent.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>, buf, length, 0, deliveryMethod.ToSteam());</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            sentBytes += length;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            <span class="keywordflow">if</span> (successSend) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            <span class="keywordflow">if</span> (deliveryMethod is <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Unreliable)</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            {</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                DebugConsole.Log($<span class="stringliteral">&quot;WARNING: message couldn&#39;t be sent unreliably, forcing reliable send ({length} bytes)&quot;</span>);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                successSend = Steamworks.SteamNetworking.SendP2PPacket(recipent.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>, buf, length, 0, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable.ToSteam());</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                sentBytes += length;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <span class="keywordflow">if</span> (!successSend)</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                DebugConsole.AddWarning($<span class="stringliteral">&quot;Failed to send message to remote peer! ({length} bytes)&quot;</span>);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        }</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            <span class="keywordflow">if</span> (!successSend)</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            {</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                DebugConsole.AddWarning($<span class="stringliteral">&quot;Failed to send message to remote peer! ({length} bytes)&quot;</span>);</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            }</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> ForceTimeOut()</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        {</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="comment">//TODO: reimplement?</span></div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        }</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> ForceTimeOut()</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        {</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            <span class="comment">//TODO: reimplement?</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        }</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    }</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_g_u_i_message_box_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_message_box.html">Barotrauma.GUIMessageBox</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_message_box_8cs_source.html#l00009">GUIMessageBox.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00021">GameMain.cs:22</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a7cbe8059adce40e931a676433434225e"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a7cbe8059adce40e931a676433434225e">Barotrauma.GameMain.MainMenuScreen</a></div><div class="ttdeci">static MainMenuScreen MainMenuScreen</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00045">GameMain.cs:45</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00175">GameMain.cs:175</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_main_menu_screen_html_a23df615221f071c56572fb9723cc4526"><div class="ttname"><a href="class_barotrauma_1_1_main_menu_screen.html#a23df615221f071c56572fb9723cc4526">Barotrauma.MainMenuScreen.Select</a></div><div class="ttdeci">override void Select()</div><div class="ttdef"><b>Definition:</b> <a href="_main_menu_screen_8cs_source.html#l00540">MainMenuScreen.cs:540</a></div></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    }</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00023">GameMain.cs:24</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00177">GameMain.cs:177</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_client_html_a4581a7438829aee7c9fe3b48094e8581"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_client.html#a4581a7438829aee7c9fe3b48094e8581">Barotrauma.Networking.GameClient.NetStats</a></div><div class="ttdeci">readonly NetStats NetStats</div><div class="ttdef"><b>Definition:</b> <a href="_game_client_8cs_source.html#l00051">GameClient.cs:51</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_net_stats_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_net_stats.html">Barotrauma.Networking.NetStats</a></div><div class="ttdef"><b>Definition:</b> <a href="_net_stats_8cs_source.html#l00008">NetStats.cs:9</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_net_stats_html_a211992f1444de74f90dca4e1603f0c42"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_net_stats.html#a211992f1444de74f90dca4e1603f0c42">Barotrauma.Networking.NetStats.AddValue</a></div><div class="ttdeci">void AddValue(NetStatType statType, float value)</div><div class="ttdef"><b>Definition:</b> <a href="_net_stats_8cs_source.html#l00037">NetStats.cs:37</a></div></div>
@@ -582,14 +573,14 @@ $(document).ready(function(){initNavTree('_steam_p2_p_owner_peer_8cs_source.html
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_id_html_a47067e30752fb9a489aa351e5e2a4bf6"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Barotrauma.Networking.SteamId.Value</a></div><div class="ttdeci">readonly UInt64 Value</div><div class="ttdef"><b>Definition:</b> <a href="_steam_id_8cs_source.html#l00008">SteamId.cs:8</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html">Barotrauma.Networking.SteamP2POwnerPeer</a></div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00010">SteamP2POwnerPeer.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_a1cf99a7634496809a79300138515d191"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a1cf99a7634496809a79300138515d191">Barotrauma.Networking.SteamP2POwnerPeer.Start</a></div><div class="ttdeci">override void Start()</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00070">SteamP2POwnerPeer.cs:70</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_a4f679a01cd5fb0e01a45bf4db301619c"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4f679a01cd5fb0e01a45bf4db301619c">Barotrauma.Networking.SteamP2POwnerPeer.Send</a></div><div class="ttdeci">override void Send(IWriteMessage msg, DeliveryMethod deliveryMethod, bool compressPastThreshold=true)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00413">SteamP2POwnerPeer.cs:413</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_a6795fabe64eeae9236e5622f434a0937"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a6795fabe64eeae9236e5622f434a0937">Barotrauma.Networking.SteamP2POwnerPeer.SendMsgInternal</a></div><div class="ttdeci">override void SendMsgInternal(PeerPacketHeaders headers, INetSerializableStruct? body)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00433">SteamP2POwnerPeer.cs:433</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_a4f679a01cd5fb0e01a45bf4db301619c"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a4f679a01cd5fb0e01a45bf4db301619c">Barotrauma.Networking.SteamP2POwnerPeer.Send</a></div><div class="ttdeci">override void Send(IWriteMessage msg, DeliveryMethod deliveryMethod, bool compressPastThreshold=true)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00407">SteamP2POwnerPeer.cs:407</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_a6795fabe64eeae9236e5622f434a0937"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a6795fabe64eeae9236e5622f434a0937">Barotrauma.Networking.SteamP2POwnerPeer.SendMsgInternal</a></div><div class="ttdeci">override void SendMsgInternal(PeerPacketHeaders headers, INetSerializableStruct? body)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00427">SteamP2POwnerPeer.cs:427</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_a7430ea826ec2e523ff8ca4322d7bab3e"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#a7430ea826ec2e523ff8ca4322d7bab3e">Barotrauma.Networking.SteamP2POwnerPeer.SteamP2POwnerPeer</a></div><div class="ttdeci">SteamP2POwnerPeer(Callbacks callbacks, int ownerKey)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00058">SteamP2POwnerPeer.cs:58</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_aa3f4764d188e418c2dc621f21c0b35ed"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed">Barotrauma.Networking.SteamP2POwnerPeer.SendPassword</a></div><div class="ttdeci">override void SendPassword(string password)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00381">SteamP2POwnerPeer.cs:381</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_aa7fc111478e183b29c54224db0922b02"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">Barotrauma.Networking.SteamP2POwnerPeer.Close</a></div><div class="ttdeci">override void Close(PeerDisconnectPacket peerDisconnectPacket)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00386">SteamP2POwnerPeer.cs:386</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_aa3f4764d188e418c2dc621f21c0b35ed"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa3f4764d188e418c2dc621f21c0b35ed">Barotrauma.Networking.SteamP2POwnerPeer.SendPassword</a></div><div class="ttdeci">override void SendPassword(string password)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00377">SteamP2POwnerPeer.cs:377</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_aa7fc111478e183b29c54224db0922b02"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aa7fc111478e183b29c54224db0922b02">Barotrauma.Networking.SteamP2POwnerPeer.Close</a></div><div class="ttdeci">override void Close(PeerDisconnectPacket peerDisconnectPacket)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00382">SteamP2POwnerPeer.cs:382</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer_html_aeb7f7f2aa3a5b3c552b1c9fc390e78d3"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_p2_p_owner_peer.html#aeb7f7f2aa3a5b3c552b1c9fc390e78d3">Barotrauma.Networking.SteamP2POwnerPeer.Update</a></div><div class="ttdeci">override void Update(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_steam_p2_p_owner_peer_8cs_source.html#l00186">SteamP2POwnerPeer.cs:186</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_option_html"><div class="ttname"><a href="class_barotrauma_1_1_option.html">Barotrauma.Option</a></div><div class="ttdoc">Implementation of Option type.</div><div class="ttdef"><b>Definition:</b> <a href="_option_8cs_source.html#l00012">Option.cs:13</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_option_html_a70c8ffb1b99d58f87658eab3d7273628"><div class="ttname"><a href="class_barotrauma_1_1_option.html#a70c8ffb1b99d58f87658eab3d7273628">Barotrauma.Option.None</a></div><div class="ttdeci">static Option&lt; T &gt; None()</div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_option_html_ad27cf86af40c3cb43b87ff4069db20f6"><div class="ttname"><a href="class_barotrauma_1_1_option.html#ad27cf86af40c3cb43b87ff4069db20f6">Barotrauma.Option.None</a></div><div class="ttdeci">static UnspecifiedNone None</div><div class="ttdef"><b>Definition:</b> <a href="_option_8cs_source.html#l00079">Option.cs:79</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_some_html"><div class="ttname"><a href="class_barotrauma_1_1_some.html">Barotrauma.Some</a></div><div class="ttdef"><b>Definition:</b> <a href="_some_8cs_source.html#l00005">Some.cs:6</a></div></div>
 <div class="ttc" id="ainterface_barotrauma_1_1_networking_1_1_i_read_message_html"><div class="ttname"><a href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">Barotrauma.Networking.IReadMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_read_message_8cs_source.html#l00007">IReadMessage.cs:8</a></div></div>
 <div class="ttc" id="ainterface_barotrauma_1_1_networking_1_1_i_read_message_html_acb0a50aa09d1b0f91d0fafa8bff2d872"><div class="ttname"><a href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#acb0a50aa09d1b0f91d0fafa8bff2d872">Barotrauma.Networking.IReadMessage.ReadUInt64</a></div><div class="ttdeci">UInt64 ReadUInt64()</div></div>
@@ -600,7 +591,7 @@ $(document).ready(function(){initNavTree('_steam_p2_p_owner_peer_8cs_source.html
 <div class="ttc" id="ainterface_barotrauma_1_1_networking_1_1_i_write_message_html_aea092ccc123a7d1fbad50de56efebf29"><div class="ttname"><a href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#aea092ccc123a7d1fbad50de56efebf29">Barotrauma.Networking.IWriteMessage.LengthBytes</a></div><div class="ttdeci">int LengthBytes</div><div class="ttdef"><b>Definition:</b> <a href="_i_write_message_8cs_source.html#l00033">IWriteMessage.cs:33</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a151b0444a254ab1eeeae7ef53da07451"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">Barotrauma.Networking.DisconnectReason</a></div><div class="ttdeci">DisconnectReason</div><div class="ttdef"><b>Definition:</b> <a href="_network_member_8cs_source.html#l00136">NetworkMember.cs:137</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a151b0444a254ab1eeeae7ef53da07451"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">Barotrauma.Networking.DisconnectReason</a></div><div class="ttdeci">DisconnectReason</div><div class="ttdef"><b>Definition:</b> <a href="_network_member_8cs_source.html#l00135">NetworkMember.cs:136</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a3861060f411baddb298f4ea43f5e5517"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">Barotrauma.Networking.NetworkConnectionStatus</a></div><div class="ttdeci">NetworkConnectionStatus</div><div class="ttdef"><b>Definition:</b> <a href="_network_connection_8cs_source.html#l00005">NetworkConnection.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a5450fc0e47014b79c93923df43f1840e"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">Barotrauma.Networking.DeliveryMethod</a></div><div class="ttdeci">DeliveryMethod</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00005">NetworkEnums.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a7818e152967077460aff6ebeea51007daf6068daa29dbb05a7ead1e3b5a48bbee"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007daf6068daa29dbb05a7ead1e3b5a48bbee">Barotrauma.Networking.FileTransferMessageType.Data</a></div><div class="ttdeci">@ Data</div></div>

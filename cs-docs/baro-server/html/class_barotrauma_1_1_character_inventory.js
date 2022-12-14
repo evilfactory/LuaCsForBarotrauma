@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_character_inventory =
 [
-    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#a7ba74562e953b05c2d5089cfe5aea49c", null ],
+    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#a5109582dcd9eecfa4196f96fc75022ed", null ],
     [ "CanBeAutoMovedToCorrectSlots", "class_barotrauma_1_1_character_inventory.html#a9d1567aa4ed49701d38be727a021ffac", null ],
     [ "CanBePutInSlot", "class_barotrauma_1_1_character_inventory.html#adc6d89565de44db69f600b93593ef88d", null ],
     [ "CanBePutInSlot", "class_barotrauma_1_1_character_inventory.html#a11d938048e2e88eaadb2009d9241e355", null ],

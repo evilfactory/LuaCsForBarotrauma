@@ -51,6 +51,7 @@ var class_barotrauma_1_1_level_object_prefab =
     [ "SerializableProperties", "class_barotrauma_1_1_level_object_prefab.html#a379852b6398b538d2ce1e1959ea82aa7", null ],
     [ "SonarDisruption", "class_barotrauma_1_1_level_object_prefab.html#ac9da0a32c0406127c522a35ccf8cc9eb", null ],
     [ "SpawnPos", "class_barotrauma_1_1_level_object_prefab.html#ae785817903cbaaf603f1f42df0271948", null ],
+    [ "SpriteColor", "class_barotrauma_1_1_level_object_prefab.html#af20ac8f73eb65a05cff81a445b7f0e29", null ],
     [ "Sprites", "class_barotrauma_1_1_level_object_prefab.html#a1ef2aec9e3b46325f0d36be253ef567e", null ],
     [ "SpriteSpecificPhysicsBodyElements", "class_barotrauma_1_1_level_object_prefab.html#a95d15d15b3891fff122453407adc2fad", null ],
     [ "SwingAmount", "class_barotrauma_1_1_level_object_prefab.html#a9ad59bf43eb9fa1f34f1e1918e3e7bfd", null ],

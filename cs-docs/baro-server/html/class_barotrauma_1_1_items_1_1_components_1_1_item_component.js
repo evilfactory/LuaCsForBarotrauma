@@ -4,7 +4,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "ItemComponent", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a6759d543cfd3d9299657754106ddbc20", null ],
     [ "AIContainItems< T >", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa4615111659cf053c70ec711bafe2780", null ],
     [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a8d4749a6dd16b88fc97f5b5763137365", null ],
-    [ "ApplyStatusEffects", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a764570345f64cc612b8ecbd6eaea1886", null ],
+    [ "ApplyStatusEffects", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a19d30bc6d9c176851178e0234f515b7e", null ],
     [ "Combine", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ad279bcb3f95acef5b7002950b8e53cf8", null ],
     [ "DegreeOfSuccess", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa63ed5e35953b0982c7c92977beba3c7", null ],
     [ "DegreeOfSuccess", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aacb59a029861d4f92ac33430d01652ff", null ],
@@ -52,6 +52,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "characterUsable", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a68d356117d383da9648838f6b6b5b7a6", null ],
     [ "delayedCorrectionCoroutine", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a6495462a7ff71aa14d4dd2af8f49f508", null ],
     [ "DisabledRequiredItems", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a9164fcc0bc35d505fdaffa7cee78acef", null ],
+    [ "InheritStatusEffects", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a8162128aa43737398e9cb3b5e6f5440b", null ],
     [ "IsActiveConditionals", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa4971c5c5d1f7f38d4b7f1cc99ced608", null ],
     [ "item", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e", null ],
     [ "name", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a45e2e345d6f8b2ea86b2ae38a31e46b2", null ],
@@ -74,6 +75,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "DrawHudWhenEquipped", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3d2ca95e6861fe5dc457776dbd071622", null ],
     [ "ID", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a9efaedba4450d8db7e268be6fb621138", null ],
     [ "IsActive", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977", null ],
+    [ "IsActiveConditionalComparison", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#abb8f2dc0ce9e8af0da009417a29878dd", null ],
     [ "Item", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a01a0f6be5502a91a956080502cd65f46", null ],
     [ "ManuallySelectedSound", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a53a8d26d5cbc6d118055644f22d21c6b", null ],
     [ "Msg", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ad7fe48d58b177292db3cb1d6b59752fd", null ],
@@ -85,6 +87,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "RemoveOnCombined", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a23443d52b5e3f2933c019e31fd1f14f2", null ],
     [ "SelectKey", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a53e2ab9422927e19fed604b1ac9c2829", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a03ff62ce5738b7c88d72d443f9244fad", null ],
+    [ "Speed", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa2479b3007a65dc430a4eeb8d0c90d26", null ],
     [ "type", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a185498b68a82bd6a77b6446a91ec97d8", null ],
     [ "UpdateWhenInactive", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae1b57e167e3b18deb258c31db95c3d12", null ]
 ];

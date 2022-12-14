@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_l
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">if</span> (!File.Exists(LuaCsSetup.VersionFile)) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            ContentPackage luaPackage = LuaCsSetup.GetPackage(<span class="stringliteral">&quot;Lua For Barotrauma&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            ContentPackage luaPackage = LuaCsSetup.GetPackage(LuaCsSetup.LuaForBarotraumaId);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordtype">string</span> luaCsPath = Path.GetDirectoryName(luaPackage.Path);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span> (luaPackage == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_l
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (clientVersion == workshopVersion) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordtype">string</span> additional = LuaCsSetup.GetPackage(<span class="stringliteral">&quot;CsForBarotrauma&quot;</span>, <span class="keyword">false</span>, <span class="keyword">true</span>) == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;Cs&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordtype">string</span> additional = LuaCsSetup.GetPackage(LuaCsSetup.CsForBarotraumaId, <span class="keyword">false</span>, <span class="keyword">true</span>) == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;Cs&quot;</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            var msg = <span class="keyword">new</span> GUIMessageBox($<span class="stringliteral">&quot;Lua{additional} Update&quot;</span>, $<span class="stringliteral">&quot;Your Lua{additional} client version is different from the version found in the Lua{additional}ForBarotrauma workshop files. Do you want to update?\n\n Client Version: {clientVersion}\n Workshop Version: {workshopVersion}&quot;</span>, </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keyword">new</span> LocalizedString[2] { TextManager.Get(<span class="stringliteral">&quot;Yes&quot;</span>), TextManager.Get(<span class="stringliteral">&quot;Cancel&quot;</span>) });</div>
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_l
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                };</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                filesToUpdate = filesToUpdate.Concat(Directory.EnumerateFiles(luaCsPath, <span class="stringliteral">&quot;*.dll&quot;</span>, SearchOption.AllDirectories)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        .Where(s =&gt; s.Contains(<span class="stringliteral">&quot;mscordaccore_amd64_amd64_4.&quot;</span>)).Select(s =&gt; Path.GetFileName(s))).ToArray();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        .Where(s =&gt; s.Contains(<span class="stringliteral">&quot;mscordaccore_amd64_amd64&quot;</span>)).Select(s =&gt; Path.GetFileName(s))).ToArray();</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                {</div>

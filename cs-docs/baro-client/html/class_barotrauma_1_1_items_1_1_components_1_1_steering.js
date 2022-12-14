@@ -36,5 +36,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_steering =
     [ "SteeringPath", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aace21396db31f3616f118a7914a78eb9", null ],
     [ "SteerRadius", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aaa9d4459ad52e796d2d1274afadaaf46", null ],
     [ "TargetVelocity", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#acfcfb7a962d7660207b36af8d5046f50", null ],
+    [ "TargetVelocityLengthSquared", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a7f51a58b45425fcf80379468d5458328", null ],
     [ "UseAutoDocking", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a3dab70c0b32a589b09a794132f1afa9f", null ]
 ];

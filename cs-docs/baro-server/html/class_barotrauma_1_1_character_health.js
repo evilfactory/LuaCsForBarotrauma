@@ -61,5 +61,5 @@ var class_barotrauma_1_1_character_health =
     [ "StunTimer", "class_barotrauma_1_1_character_health.html#a4e29580d4c1943534d8bba3cfb4ca706", null ],
     [ "UnmodifiedMaxVitality", "class_barotrauma_1_1_character_health.html#aad3487f5571268b25ef2e1e96c9832af", null ],
     [ "UseHealthWindow", "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9", null ],
-    [ "Vitality", "class_barotrauma_1_1_character_health.html#aab37e716cb234b818c9df3710f4dfc3f", null ]
+    [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ]
 ];

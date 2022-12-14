@@ -9,6 +9,7 @@ var class_barotrauma_1_1_lua_cs_hook =
     [ "Call", "class_barotrauma_1_1_lua_cs_hook.html#a59de717f105ac704c86955e577c2c0a7", null ],
     [ "Call< T >", "class_barotrauma_1_1_lua_cs_hook.html#a41a4848dac536b035c060b2f7c017f2a", null ],
     [ "Clear", "class_barotrauma_1_1_lua_cs_hook.html#a34cfc1e81d7eab0817b21332e68ee0e5", null ],
+    [ "Exists", "class_barotrauma_1_1_lua_cs_hook.html#acdb170c2f174c78aaf61d6421c5b16fd", null ],
     [ "HookMethod", "class_barotrauma_1_1_lua_cs_hook.html#a4bce15035595193a3cfc43a42ea6ce4e", null ],
     [ "HookMethod", "class_barotrauma_1_1_lua_cs_hook.html#a4541451df15666db211fb7e70c6dc5ff", null ],
     [ "HookMethod", "class_barotrauma_1_1_lua_cs_hook.html#a0710c2c22a7ee54d73f2230a4dcb5579", null ],
@@ -23,6 +24,5 @@ var class_barotrauma_1_1_lua_cs_hook =
     [ "RemovePatch", "class_barotrauma_1_1_lua_cs_hook.html#a3b9c07e7d6eacfb62253b703235b0dd0", null ],
     [ "RemovePatch", "class_barotrauma_1_1_lua_cs_hook.html#a7eded2f142d556d6ba94e96232cdae39", null ],
     [ "UnhookMethod", "class_barotrauma_1_1_lua_cs_hook.html#ae333a94997cc90b84bf9b933336ed38c", null ],
-    [ "UnhookMethod", "class_barotrauma_1_1_lua_cs_hook.html#ad2c9c7a3677d3562f33774696d0fb23f", null ],
-    [ "Update", "class_barotrauma_1_1_lua_cs_hook.html#a762b2693505263e61976e06c0c5c2ce8", null ]
+    [ "UnhookMethod", "class_barotrauma_1_1_lua_cs_hook.html#ad2c9c7a3677d3562f33774696d0fb23f", null ]
 ];

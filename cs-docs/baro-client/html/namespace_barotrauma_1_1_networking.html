@@ -115,7 +115,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for entities that the server can send events to the clients  <a href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_barotrauma_1_1_networking_1_1_i_server_position_sync.html">IServerPositionSync</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for entities that handle <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a484bfe1f4347136f3b6ebfcc215b7208">ServerNetObject.ENTITY_POSITION</a>  <a href="interface_barotrauma_1_1_networking_1_1_i_server_position_sync.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for entities that handle ServerNetObject.ENTITY_POSITION  <a href="interface_barotrauma_1_1_networking_1_1_i_server_position_sync.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>NetConfig</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -301,7 +301,8 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a933972b63e978d16df66fa1b063c2e0f">ManageMap</a> = 0x8000
 , <a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a3f8be0667fb37a5f322ffbe39d3bd624">ManageHires</a> = 0x10000
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34ab1c94ca2fbc3e78fc30069c8d0f01680">All</a> = 0x1FFFF
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34afe508d13feda9656f900f8e4ef5b3751">ManageBotTalents</a> = 0x20000
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34ab1c94ca2fbc3e78fc30069c8d0f01680">All</a> = 0x3FFFF
 <br />
  }</td></tr>
 <tr class="separator:a824d9427da6d3f19a61613a675bf8d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -359,18 +360,17 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:ade553f03febf0902a0dc7664b8b41775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a117ffc112f9a0cfe942397a49c9f82ba"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82ba">ClientNetObject</a> { <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baa54108a3e96d59fa045f820220d833529">END_OF_MESSAGE</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baad3aa3151f4520f77690c3c27a432061d">SYNC_IDS</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baaa7c66908ffa0a712241eb42269b2c432">CHAT_MESSAGE</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baaba581fc760be7ac00fffb689b9ebec0c">VOTE</a>
+<tr class="memitem:a111675b637df3fb88ff7ca52061ace9b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9b">ClientNetSegment</a> { <br />
+&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba629b6eff34adfb5d3424d8a23860fcaa">SyncIds</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba7f319b8ccad7e92033b9492ddbc4b522">Vote</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba2d5e027d1325121874ccc752494a695c">CharacterInput</a>
 , <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baa35a2c712546c3241c53b2bc803e5d552">CHARACTER_INPUT</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baa0e85ed8e7c1fa0bbd037c139d6b2bf93">ENTITY_STATE</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baae9958b8ac1f0a7526514161e3cce403f">SPECTATING_POS</a>
+&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba2f5676823b5e2ab0f27f65c0f9d470ea">EntityState</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9babdba57bd6e04751a93f58ab53161448b">SpectatingPos</a>
 <br />
  }</td></tr>
-<tr class="separator:a117ffc112f9a0cfe942397a49c9f82ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a111675b637df3fb88ff7ca52061ace9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae42993967997a3dc20c060ca9ff0a3ed"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#ae42993967997a3dc20c060ca9ff0a3ed">ClientNetError</a> { <a class="el" href="namespace_barotrauma_1_1_networking.html#ae42993967997a3dc20c060ca9ff0a3edab64e405a038f26c76fe1b82f83e8be1d">MISSING_EVENT</a>
 , <a class="el" href="namespace_barotrauma_1_1_networking.html#ae42993967997a3dc20c060ca9ff0a3eda13e1dd3f20e9f937b9893dc0713210e3">MISSING_ENTITY</a>
  }</td></tr>
@@ -408,19 +408,18 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a0a4f368cde735f9f9e3c95ddd41f5e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09695100b52b5d3359c9996f78716b37"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37">ServerNetObject</a> { <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a54108a3e96d59fa045f820220d833529">END_OF_MESSAGE</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37ad3aa3151f4520f77690c3c27a432061d">SYNC_IDS</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37aa7c66908ffa0a712241eb42269b2c432">CHAT_MESSAGE</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37aba581fc760be7ac00fffb689b9ebec0c">VOTE</a>
+<tr class="memitem:a2e26c11f80847a4050702cd06deb0764"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764">ServerNetSegment</a> { <br />
+&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a629b6eff34adfb5d3424d8a23860fcaa">SyncIds</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764ab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a7f319b8ccad7e92033b9492ddbc4b522">Vote</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a8bf43858132bcecb0aba40de4f6642e7">ClientList</a>
 , <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a0e6023ab146c23c431a679ed1a245a81">CLIENT_LIST</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a484bfe1f4347136f3b6ebfcc215b7208">ENTITY_POSITION</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a8986221a37cb92cfa712fb37c5f95d8c">ENTITY_EVENT</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a5f5fd77e693717665c9af62b87db4b5f">ENTITY_EVENT_INITIAL</a>
+&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764ace43c9960f3881ce2dc055b0148540a7">EntityPosition</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a78d9db77111255df0a6a8c024320d35c">EntityEvent</a>
+, <a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a1e1e8f786b10c90263a9657a6399961e">EntityEventInitial</a>
 <br />
  }</td></tr>
-<tr class="separator:a09695100b52b5d3359c9996f78716b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a2e26c11f80847a4050702cd06deb0764"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad481a5ed97cbe742340a591b92f4a2f8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8">TraitorMessageType</a> { <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8a9aa1b03934893d7134a660af4204f2a9">Server</a>
 , <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8af56c0d9dcb70e1af0bc65b03fe1b0f22">ServerMessageBox</a>
 , <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8a40b796b77b40775e1361ce398a9a783c">Objective</a>
@@ -626,8 +625,8 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a117ffc112f9a0cfe942397a49c9f82ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a117ffc112f9a0cfe942397a49c9f82ba">&#9670;&nbsp;</a></span>ClientNetObject</h2>
+<a id="a111675b637df3fb88ff7ca52061ace9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111675b637df3fb88ff7ca52061ace9b">&#9670;&nbsp;</a></span>ClientNetSegment</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -636,7 +635,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82ba">Barotrauma.Networking.ClientNetObject</a></td>
+          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9b">Barotrauma.Networking.ClientNetSegment</a></td>
         </tr>
       </table>
   </td>
@@ -646,16 +645,15 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baa54108a3e96d59fa045f820220d833529"></a>END_OF_MESSAGE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baad3aa3151f4520f77690c3c27a432061d"></a>SYNC_IDS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baaa7c66908ffa0a712241eb42269b2c432"></a>CHAT_MESSAGE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baaba581fc760be7ac00fffb689b9ebec0c"></a>VOTE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baa35a2c712546c3241c53b2bc803e5d552"></a>CHARACTER_INPUT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baa0e85ed8e7c1fa0bbd037c139d6b2bf93"></a>ENTITY_STATE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a117ffc112f9a0cfe942397a49c9f82baae9958b8ac1f0a7526514161e3cce403f"></a>SPECTATING_POS&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a111675b637df3fb88ff7ca52061ace9ba629b6eff34adfb5d3424d8a23860fcaa"></a>SyncIds&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727"></a>ChatMessage&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a111675b637df3fb88ff7ca52061ace9ba7f319b8ccad7e92033b9492ddbc4b522"></a>Vote&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a111675b637df3fb88ff7ca52061ace9ba2d5e027d1325121874ccc752494a695c"></a>CharacterInput&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a111675b637df3fb88ff7ca52061ace9ba2f5676823b5e2ab0f27f65c0f9d470ea"></a>EntityState&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a111675b637df3fb88ff7ca52061ace9babdba57bd6e04751a93f58ab53161448b"></a>SpectatingPos&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00043">43</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00044">44</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
 
 </div>
 </div>
@@ -743,6 +741,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a824d9427da6d3f19a61613a675bf8d34acbc0eed1fa4505038ae5f0e09c7f0f12"></a>SellSubItems&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a824d9427da6d3f19a61613a675bf8d34a933972b63e978d16df66fa1b063c2e0f"></a>ManageMap&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a824d9427da6d3f19a61613a675bf8d34a3f8be0667fb37a5f322ffbe39d3bd624"></a>ManageHires&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a824d9427da6d3f19a61613a675bf8d34afe508d13feda9656f900f8e4ef5b3751"></a>ManageBotTalents&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a824d9427da6d3f19a61613a675bf8d34ab1c94ca2fbc3e78fc30069c8d0f01680"></a>All&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -852,7 +851,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a739fe5ae168c855d64fe8fa22a468b07"></a>SteamP2PTimeOut&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00136">136</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00135">135</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
 
 </div>
 </div>
@@ -1095,7 +1094,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ab178a93493dbc0c241d496d10fc07106a87557f11575c0ad78e4e28abedc13b6e"></a>End&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00129">129</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00128">128</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
 
 </div>
 </div>
@@ -1128,8 +1127,8 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a09695100b52b5d3359c9996f78716b37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09695100b52b5d3359c9996f78716b37">&#9670;&nbsp;</a></span>ServerNetObject</h2>
+<a id="a2e26c11f80847a4050702cd06deb0764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e26c11f80847a4050702cd06deb0764">&#9670;&nbsp;</a></span>ServerNetSegment</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1138,7 +1137,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37">Barotrauma.Networking.ServerNetObject</a></td>
+          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764">Barotrauma.Networking.ServerNetSegment</a></td>
         </tr>
       </table>
   </td>
@@ -1148,14 +1147,13 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37a54108a3e96d59fa045f820220d833529"></a>END_OF_MESSAGE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37ad3aa3151f4520f77690c3c27a432061d"></a>SYNC_IDS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37aa7c66908ffa0a712241eb42269b2c432"></a>CHAT_MESSAGE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37aba581fc760be7ac00fffb689b9ebec0c"></a>VOTE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37a0e6023ab146c23c431a679ed1a245a81"></a>CLIENT_LIST&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37a484bfe1f4347136f3b6ebfcc215b7208"></a>ENTITY_POSITION&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37a8986221a37cb92cfa712fb37c5f95d8c"></a>ENTITY_EVENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a09695100b52b5d3359c9996f78716b37a5f5fd77e693717665c9af62b87db4b5f"></a>ENTITY_EVENT_INITIAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764a629b6eff34adfb5d3424d8a23860fcaa"></a>SyncIds&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764ab604277fe3a4bb9f7344e25320b18727"></a>ChatMessage&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764a7f319b8ccad7e92033b9492ddbc4b522"></a>Vote&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764a8bf43858132bcecb0aba40de4f6642e7"></a>ClientList&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764ace43c9960f3881ce2dc055b0148540a7"></a>EntityPosition&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764a78d9db77111255df0a6a8c024320d35c"></a>EntityEvent&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2e26c11f80847a4050702cd06deb0764a1e1e8f786b10c90263a9657a6399961e"></a>EntityEventInitial&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00095">95</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
@@ -1238,7 +1236,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ad481a5ed97cbe742340a591b92f4a2f8abccaa4aa80831b76c11240a16447975f"></a>Console&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00107">107</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00106">106</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1272,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba7a3684b82b3c5f0e9f0aef1f7f04dd2b"></a>TransferMoney&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00115">115</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_network_member_8cs_source.html#l00114">114</a> of file <a class="el" href="_network_member_8cs_source.html">NetworkMember.cs</a>.</p>
 
 </div>
 </div>

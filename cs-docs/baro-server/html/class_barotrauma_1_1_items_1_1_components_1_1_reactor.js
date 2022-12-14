@@ -14,6 +14,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_reactor =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a25cf03784bea3328a2b6eead5220e4a3", null ],
     [ "UpdateAutoTemp", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a8539c0996e2fd887921de44c4ea086fe", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a35d2b4c4e538da196ac9f9bb843465ee", null ],
+    [ "AllowTemperatureBoost", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a5c71775fe61f95c650e70dd6cff2d9da", null ],
     [ "AutoTemp", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a7d2ab09378ef2f052c81fdbebc13b4fb", null ],
     [ "AvailableFuel", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a2c338fcc67f6d7039b882d8231fbeb3f", null ],
     [ "CorrectTurbineOutput", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a0d9021bfc049bbd454f63d7f364b916a", null ],

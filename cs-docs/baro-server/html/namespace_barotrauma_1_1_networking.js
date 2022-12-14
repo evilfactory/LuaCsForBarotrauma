@@ -67,14 +67,13 @@ var namespace_barotrauma_1_1_networking =
       [ "MISSING_EVENT", "namespace_barotrauma_1_1_networking.html#ae42993967997a3dc20c060ca9ff0a3edab64e405a038f26c76fe1b82f83e8be1d", null ],
       [ "MISSING_ENTITY", "namespace_barotrauma_1_1_networking.html#ae42993967997a3dc20c060ca9ff0a3eda13e1dd3f20e9f937b9893dc0713210e3", null ]
     ] ],
-    [ "ClientNetObject", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82ba", [
-      [ "END_OF_MESSAGE", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baa54108a3e96d59fa045f820220d833529", null ],
-      [ "SYNC_IDS", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baad3aa3151f4520f77690c3c27a432061d", null ],
-      [ "CHAT_MESSAGE", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baaa7c66908ffa0a712241eb42269b2c432", null ],
-      [ "VOTE", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baaba581fc760be7ac00fffb689b9ebec0c", null ],
-      [ "CHARACTER_INPUT", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baa35a2c712546c3241c53b2bc803e5d552", null ],
-      [ "ENTITY_STATE", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baa0e85ed8e7c1fa0bbd037c139d6b2bf93", null ],
-      [ "SPECTATING_POS", "namespace_barotrauma_1_1_networking.html#a117ffc112f9a0cfe942397a49c9f82baae9958b8ac1f0a7526514161e3cce403f", null ]
+    [ "ClientNetSegment", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9b", [
+      [ "SyncIds", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba629b6eff34adfb5d3424d8a23860fcaa", null ],
+      [ "ChatMessage", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727", null ],
+      [ "Vote", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba7f319b8ccad7e92033b9492ddbc4b522", null ],
+      [ "CharacterInput", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba2d5e027d1325121874ccc752494a695c", null ],
+      [ "EntityState", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9ba2f5676823b5e2ab0f27f65c0f9d470ea", null ],
+      [ "SpectatingPos", "namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9babdba57bd6e04751a93f58ab53161448b", null ]
     ] ],
     [ "ClientPacketHeader", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775", [
       [ "UPDATE_LOBBY", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775aabdd5d6ed17c2507d72f7cd813fbaeed", null ],
@@ -117,6 +116,7 @@ var namespace_barotrauma_1_1_networking =
       [ "SellSubItems", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34acbc0eed1fa4505038ae5f0e09c7f0f12", null ],
       [ "ManageMap", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a933972b63e978d16df66fa1b063c2e0f", null ],
       [ "ManageHires", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a3f8be0667fb37a5f322ffbe39d3bd624", null ],
+      [ "ManageBotTalents", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34afe508d13feda9656f900f8e4ef5b3751", null ],
       [ "All", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34ab1c94ca2fbc3e78fc30069c8d0f01680", null ]
     ] ],
     [ "ConnectionInitialization", "namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390", [
@@ -213,15 +213,14 @@ var namespace_barotrauma_1_1_networking =
       [ "Random", "namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23", null ],
       [ "Vote", "namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa7f319b8ccad7e92033b9492ddbc4b522", null ]
     ] ],
-    [ "ServerNetObject", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37", [
-      [ "END_OF_MESSAGE", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a54108a3e96d59fa045f820220d833529", null ],
-      [ "SYNC_IDS", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37ad3aa3151f4520f77690c3c27a432061d", null ],
-      [ "CHAT_MESSAGE", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37aa7c66908ffa0a712241eb42269b2c432", null ],
-      [ "VOTE", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37aba581fc760be7ac00fffb689b9ebec0c", null ],
-      [ "CLIENT_LIST", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a0e6023ab146c23c431a679ed1a245a81", null ],
-      [ "ENTITY_POSITION", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a484bfe1f4347136f3b6ebfcc215b7208", null ],
-      [ "ENTITY_EVENT", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a8986221a37cb92cfa712fb37c5f95d8c", null ],
-      [ "ENTITY_EVENT_INITIAL", "namespace_barotrauma_1_1_networking.html#a09695100b52b5d3359c9996f78716b37a5f5fd77e693717665c9af62b87db4b5f", null ]
+    [ "ServerNetSegment", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764", [
+      [ "SyncIds", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a629b6eff34adfb5d3424d8a23860fcaa", null ],
+      [ "ChatMessage", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764ab604277fe3a4bb9f7344e25320b18727", null ],
+      [ "Vote", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a7f319b8ccad7e92033b9492ddbc4b522", null ],
+      [ "ClientList", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a8bf43858132bcecb0aba40de4f6642e7", null ],
+      [ "EntityPosition", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764ace43c9960f3881ce2dc055b0148540a7", null ],
+      [ "EntityEvent", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a78d9db77111255df0a6a8c024320d35c", null ],
+      [ "EntityEventInitial", "namespace_barotrauma_1_1_networking.html#a2e26c11f80847a4050702cd06deb0764a1e1e8f786b10c90263a9657a6399961e", null ]
     ] ],
     [ "ServerPacketHeader", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74", [
       [ "AUTH_RESPONSE", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a77f0eac241807ccab8b78e6a7375f804", null ],

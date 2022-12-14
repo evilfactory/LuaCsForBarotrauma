@@ -18,6 +18,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_reactor =
     [ "UpdateAutoTemp", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a8539c0996e2fd887921de44c4ea086fe", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a35d2b4c4e538da196ac9f9bb843465ee", null ],
     [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#af0040c79bdff2ba91fb8bfa128393245", null ],
+    [ "AllowTemperatureBoost", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a5c71775fe61f95c650e70dd6cff2d9da", null ],
     [ "AutoTemp", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a7d2ab09378ef2f052c81fdbebc13b4fb", null ],
     [ "AutoTempSwitch", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a14f386dcd458cd460a89f0bfded668af", null ],
     [ "AvailableFuel", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a2c338fcc67f6d7039b882d8231fbeb3f", null ],
@@ -41,6 +42,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_reactor =
     [ "TargetTurbineOutput", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#aa37575d25b29f37bab519547da6fcec2", null ],
     [ "Temperature", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#af7890a1bff6b79499314fadf2cb94c3a", null ],
     [ "TemperatureCritical", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a225c85389eff016e67aed1ae0b4b23ea", null ],
+    [ "TriggerInfographic", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a3717620333033d092317dbbafd548cd7", null ],
     [ "TurbineOutput", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a2bbffe333d35ed89338d2f0baf4014eb", null ],
     [ "TurbineOutputScrollBar", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a697985319637be43fe1853dd53aa1a04", null ]
 ];

@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_spawn_action =
 [
     [ "SpawnLocationType", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3a", [
+      [ "Any", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aaed36a1ef76a59ee3f15180e0441188ad", null ],
       [ "MainSub", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aa639e7430ad0cae4b873b2ca4a5bbf453", null ],
       [ "Outpost", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aa0fc3009923e09f21be7dbb00cd257eb1", null ],
       [ "MainPath", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aad2c40c5982d26c2b6fa957c71a670c7f", null ],

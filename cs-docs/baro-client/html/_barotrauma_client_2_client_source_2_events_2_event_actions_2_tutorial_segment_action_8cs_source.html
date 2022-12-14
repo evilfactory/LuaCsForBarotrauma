@@ -86,65 +86,50 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_e
 <div class="title">BarotraumaClient/ClientSource/Events/EventActions/TutorialSegmentAction.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_tutorials.html">Tutorials</a>;</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a>;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a>;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_tutorial_segment_action.html">    5</a></span>&#160;<span class="keyword">partial class </span><a class="code" href="class_tutorial_segment_action.html">TutorialSegmentAction</a> : EventAction</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Tutorial</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a> segment;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    partial <span class="keywordtype">void</span> UpdateProjSpecific()</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="comment">// Only need to create the segment when it&#39;s being triggered (otherwise the tutorial already has the segment instance)</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">if</span> (Type == SegmentActionType.Trigger)</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            segment = <a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Tutorial</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a3788c38917d1bec1486955748bb40feb">CreateInfoBoxSegment</a>(Identifier, ObjectiveTag, <a class="code" href="namespace_barotrauma_1_1_tutorials.html#ab380376b08a635190d2fb764315040c5">AutoPlayVideo</a> ? Tutorials.AutoPlayVideo.Yes : Tutorials.AutoPlayVideo.No,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Tutorial</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Text</a>(TextTag, Width, Height, Anchor.Center),</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Tutorial</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Video</a>(VideoFile, TextTag, Width, Height));</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Type == SegmentActionType.Add)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            segment = <a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Tutorial</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Segment</a>.<a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ae9016dbcc335f48053728b569fd52288">CreateObjectiveSegment</a>(Identifier, !ObjectiveTag.IsEmpty ? ObjectiveTag : Identifier);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span> (GameMain.GameSession?.GameMode is TutorialMode tutorialMode)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (tutorialMode.Tutorial is <a class="code" href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Tutorial</a> tutorial)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keywordflow">switch</span> (Type)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keywordflow">case</span> SegmentActionType.Trigger:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    <span class="keywordflow">case</span> SegmentActionType.Add:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        tutorial.TriggerTutorialSegment(segment);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <span class="keywordflow">case</span> SegmentActionType.Complete:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        tutorial.CompleteTutorialSegment(Identifier);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <span class="keywordflow">case</span> SegmentActionType.Remove:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        tutorial.RemoveTutorialSegment(Identifier);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <span class="keywordflow">case</span> SegmentActionType.CompleteAndRemove:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        tutorial.CompleteTutorialSegment(Identifier);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        tutorial.RemoveTutorialSegment(Identifier);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            DebugConsole.ThrowError($<span class="stringliteral">&quot;Error in event \&quot;{ParentEvent.Prefab.Identifier}\&quot;: attempting to use TutorialSegmentAction during a non-Tutorial game mode!&quot;</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_html"><div class="ttname"><a href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html">Barotrauma.Tutorials.Tutorial.Segment</a></div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00048">Tutorial.cs:49</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_html_a3788c38917d1bec1486955748bb40feb"><div class="ttname"><a href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#a3788c38917d1bec1486955748bb40feb">Barotrauma.Tutorials.Tutorial.Segment.CreateInfoBoxSegment</a></div><div class="ttdeci">static Segment CreateInfoBoxSegment(Identifier id, Identifier objectiveTextTag, AutoPlayVideo autoPlayVideo, Text textContent=default, Video videoContent=default)</div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00083">Tutorial.cs:83</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_html_ac2d7967163cf46ee40e736e0eda010d1"><div class="ttname"><a href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ac2d7967163cf46ee40e736e0eda010d1">Barotrauma.Tutorials.Tutorial.Segment.Text</a></div><div class="ttdeci">readonly record struct Text(Identifier Tag, int Width=DefaultWidth, int Height=DefaultHeight, Anchor Anchor=Anchor.Center)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_html_ad30b8057b020a2fde0be0c65d8f31e0d"><div class="ttname"><a href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ad30b8057b020a2fde0be0c65d8f31e0d">Barotrauma.Tutorials.Tutorial.Segment.Video</a></div><div class="ttdeci">readonly record struct Video(string FullPath, Identifier TextTag, int Width=DefaultWidth, int Height=DefaultHeight)</div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00056">Tutorial.cs:56</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment_html_ae9016dbcc335f48053728b569fd52288"><div class="ttname"><a href="class_barotrauma_1_1_tutorials_1_1_tutorial_1_1_segment.html#ae9016dbcc335f48053728b569fd52288">Barotrauma.Tutorials.Tutorial.Segment.CreateObjectiveSegment</a></div><div class="ttdeci">static Segment CreateObjectiveSegment(Identifier id, Identifier objectiveTextTag)</div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00093">Tutorial.cs:93</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_tutorials_1_1_tutorial_html"><div class="ttname"><a href="class_barotrauma_1_1_tutorials_1_1_tutorial.html">Barotrauma.Tutorials.Tutorial</a></div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00015">Tutorial.cs:16</a></div></div>
-<div class="ttc" id="aclass_tutorial_segment_action_html"><div class="ttname"><a href="class_tutorial_segment_action.html">TutorialSegmentAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_tutorial_segment_action_8cs_source.html#l00005">BarotraumaClient/ClientSource/Events/EventActions/TutorialSegmentAction.cs:6</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_tutorials_html"><div class="ttname"><a href="namespace_barotrauma_1_1_tutorials.html">Barotrauma.Tutorials</a></div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00009">Tutorial.cs:10</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_tutorials_html_ab380376b08a635190d2fb764315040c5"><div class="ttname"><a href="namespace_barotrauma_1_1_tutorials.html#ab380376b08a635190d2fb764315040c5">Barotrauma.Tutorials.AutoPlayVideo</a></div><div class="ttdeci">AutoPlayVideo</div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00011">Tutorial.cs:11</a></div></div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="class_tutorial_segment_action.html">    3</a></span>&#160;<span class="keyword">partial class </span><a class="code" href="class_tutorial_segment_action.html">TutorialSegmentAction</a> : EventAction</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">private</span> ObjectiveManager.Segment segment;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    partial <span class="keywordtype">void</span> UpdateProjSpecific()</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="comment">// Only need to create the segment when it&#39;s being triggered (otherwise the tutorial already has the segment instance)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordflow">if</span> (Type == SegmentActionType.Trigger)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            segment = ObjectiveManager.Segment.CreateInfoBoxSegment(Identifier, ObjectiveTag, AutoPlayVideo ? Tutorials.AutoPlayVideo.Yes : Tutorials.AutoPlayVideo.No,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                <span class="keyword">new</span> ObjectiveManager.Segment.Text(TextTag, Width, Height, Anchor.Center),</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <span class="keyword">new</span> ObjectiveManager.Segment.Video(VideoFile, TextTag, Width, Height));</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Type == SegmentActionType.Add)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            segment = ObjectiveManager.Segment.CreateObjectiveSegment(Identifier, !ObjectiveTag.IsEmpty ? ObjectiveTag : Identifier);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (segment is not <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            segment.CanBeCompleted = CanBeCompleted;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            segment.ParentId = ParentObjectiveId;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">switch</span> (Type)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Trigger:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Add:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                ObjectiveManager.TriggerTutorialSegment(segment);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Complete:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                ObjectiveManager.CompleteTutorialSegment(Identifier);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Remove:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                ObjectiveManager.RemoveTutorialSegment(Identifier);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.CompleteAndRemove:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                ObjectiveManager.CompleteTutorialSegment(Identifier);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                ObjectiveManager.RemoveTutorialSegment(Identifier);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="ttc" id="aclass_tutorial_segment_action_html"><div class="ttname"><a href="class_tutorial_segment_action.html">TutorialSegmentAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_tutorial_segment_action_8cs_source.html#l00003">BarotraumaClient/ClientSource/Events/EventActions/TutorialSegmentAction.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

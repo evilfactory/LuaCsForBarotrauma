@@ -123,6 +123,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7d75afb147834a545f0138d574843e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a377024181a9464f63a1499260194bf47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a377024181a9464f63a1499260194bf47">EnableControlHusk</a> (bool o)</td></tr>
 <tr class="separator:a377024181a9464f63a1499260194bf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac966a1a95e482e00e1a371b82c267c12"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#ac966a1a95e482e00e1a371b82c267c12">IsCustomCommandPermitted</a> (string command)</td></tr>
+<tr class="separator:ac966a1a95e482e00e1a371b82c267c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c9e662405c966c56316ba4c22a53767"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a7c9e662405c966c56316ba4c22a53767">RemoveCommand</a> (string name)</td></tr>
 <tr class="separator:a7c9e662405c966c56316ba4c22a53767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade8019dadf351b3901d5e9dd316f66db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#ade8019dadf351b3901d5e9dd316f66db">AddCommand</a> (string name, string help, <a class="el" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> onExecute, <a class="el" href="namespace_barotrauma.html#aea7657cdf97ab0564f0d66b5f67ee3bb">LuaCsFunc</a> getValidArgs=null, bool isCheat=false)</td></tr>
@@ -170,8 +172,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a9cc83a385b23c0c52cd6ae27ec46f043"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb928570a544be1b32af927454b2ebd4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aeb928570a544be1b32af927454b2ebd4">SendMessage</a> (string msg, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>? messageType=null, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> sender=null, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character=null)</td></tr>
 <tr class="separator:aeb928570a544be1b32af927454b2ebd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3cda64ba41ab51032c5d3ad5f09ff9b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#ac3cda64ba41ab51032c5d3ad5f09ff9b">SendMessage</a> (string msg, int messageType, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> sender=null, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character=null)</td></tr>
-<tr class="separator:ac3cda64ba41ab51032c5d3ad5f09ff9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f25ba8a93c0e80509876fa4055b607"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a84f25ba8a93c0e80509876fa4055b607">SendTraitorMessage</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string msg, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> missionid, <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8">TraitorMessageType</a> type)</td></tr>
 <tr class="separator:a84f25ba8a93c0e80509876fa4055b607"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbc86b3b9b4ebfdbf5785db95b857143"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#acbc86b3b9b4ebfdbf5785db95b857143">SendDirectChatMessage</a> (string sendername, string text, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a> messageType=ChatMessageType.Private, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client=null, string iconStyle=&quot;&quot;)</td></tr>
@@ -209,10 +209,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a16b18e96702caeec45010cf2aae360dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa359f6d3265a3cf499675a145c87d7b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aa359f6d3265a3cf499675a145c87d7b8">enableControlHusk</a> = false</td></tr>
 <tr class="separator:aa359f6d3265a3cf499675a145c87d7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac1f4e689dfa86eb977cace651c701e6"><td class="memItemLeft" align="right" valign="top">HashSet&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aac1f4e689dfa86eb977cace651c701e6">updatePriorityItems</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt;()</td></tr>
-<tr class="separator:aac1f4e689dfa86eb977cace651c701e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e8a90ef70567ea55c64eb807a5f86f"><td class="memItemLeft" align="right" valign="top">HashSet&lt; <a class="el" href="class_barotrauma_1_1_character.html">Character</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aa2e8a90ef70567ea55c64eb807a5f86f">updatePriorityCharacters</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_character.html">Character</a>&gt;()</td></tr>
-<tr class="separator:aa2e8a90ef70567ea55c64eb807a5f86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d5152fe58bde79616352c1a4d392796"><td class="memItemLeft" align="right" valign="top">HashSet&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a8d5152fe58bde79616352c1a4d392796">UpdatePriorityItems</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt;()</td></tr>
+<tr class="separator:a8d5152fe58bde79616352c1a4d392796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef58a7cdcec2a122f7972a7217dab27d"><td class="memItemLeft" align="right" valign="top">HashSet&lt; <a class="el" href="class_barotrauma_1_1_character.html">Character</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aef58a7cdcec2a122f7972a7217dab27d">UpdatePriorityCharacters</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_character.html">Character</a>&gt;()</td></tr>
+<tr class="separator:aef58a7cdcec2a122f7972a7217dab27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -230,14 +230,14 @@ Properties</h2></td></tr>
 <tr class="separator:aff6ae3e6e342ff84cd2a3562db8c831b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2d17aa79067be437a56ba8c2d392bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_networking_1_1_respawn_manager.html">RespawnManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a8f2d17aa79067be437a56ba8c2d392bc">RespawnManager</a><code> [get]</code></td></tr>
 <tr class="separator:a8f2d17aa79067be437a56ba8c2d392bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ec124034a1efe860d53b383cc9579ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a7ec124034a1efe860d53b383cc9579ac">mapEntityUpdateInterval</a><code> [get, set]</code></td></tr>
-<tr class="separator:a7ec124034a1efe860d53b383cc9579ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa34abe8c1dc21aa5a7c140da8a6055c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aa34abe8c1dc21aa5a7c140da8a6055c6">gapUpdateInterval</a><code> [get, set]</code></td></tr>
-<tr class="separator:aa34abe8c1dc21aa5a7c140da8a6055c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5806e1e066f64dcef9d19f4a39e6d83a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a5806e1e066f64dcef9d19f4a39e6d83a">poweredUpdateInterval</a><code> [get, set]</code></td></tr>
-<tr class="separator:a5806e1e066f64dcef9d19f4a39e6d83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dec38cb6f235bca4a012a8d3b4a8690"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a9dec38cb6f235bca4a012a8d3b4a8690">characterUpdateInterval</a><code> [get, set]</code></td></tr>
-<tr class="separator:a9dec38cb6f235bca4a012a8d3b4a8690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa72fd77cb1a2ec1183d9ab523be5a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a1fa72fd77cb1a2ec1183d9ab523be5a9">MapEntityUpdateInterval</a><code> [get, set]</code></td></tr>
+<tr class="separator:a1fa72fd77cb1a2ec1183d9ab523be5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f718456f566cf9136f58ff1186fdf44"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a7f718456f566cf9136f58ff1186fdf44">GapUpdateInterval</a><code> [get, set]</code></td></tr>
+<tr class="separator:a7f718456f566cf9136f58ff1186fdf44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d0ec2228b366a3b1fd0db3fab7e3168"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a5d0ec2228b366a3b1fd0db3fab7e3168">PoweredUpdateInterval</a><code> [get, set]</code></td></tr>
+<tr class="separator:a5d0ec2228b366a3b1fd0db3fab7e3168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5309127f96690d0e73ad76abd28ca97a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a5309127f96690d0e73ad76abd28ca97a">CharacterUpdateInterval</a><code> [get, set]</code></td></tr>
+<tr class="separator:a5309127f96690d0e73ad76abd28ca97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17310da6534706e4ad9fb414fe1f16ba"><td class="memItemLeft" align="right" valign="top">bool?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a17310da6534706e4ad9fb414fe1f16ba">RoundStarted</a><code> [get]</code></td></tr>
 <tr class="separator:a17310da6534706e4ad9fb414fe1f16ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88701a5f3616ca80ef578b1638a6e5fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_game_session.html">GameSession</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a88701a5f3616ca80ef578b1638a6e5fd">GameSession</a><code> [get]</code></td></tr>
@@ -250,6 +250,8 @@ Properties</h2></td></tr>
 <tr class="separator:ac718c8666bccaed58399de6cc8cac26c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2a52ec11ba2da573dc5f4285d5d123f"><td class="memItemLeft" align="right" valign="top">ServerPeer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#ab2a52ec11ba2da573dc5f4285d5d123f">Peer</a><code> [get]</code></td></tr>
 <tr class="separator:ab2a52ec11ba2da573dc5f4285d5d123f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a860cd31adc98111d22b778bc7e74e4c8"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html">DebugConsole.Command</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a860cd31adc98111d22b778bc7e74e4c8">LuaAddedCommand</a><code> [get]</code></td></tr>
+<tr class="separator:a860cd31adc98111d22b778bc7e74e4c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cf80d108a609d9e06c51a072203d4bd"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html">DebugConsole.Command</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a4cf80d108a609d9e06c51a072203d4bd">Commands</a><code> [get]</code></td></tr>
 <tr class="separator:a4cf80d108a609d9e06c51a072203d4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -272,7 +274,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00253">253</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00254">254</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -321,7 +323,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00408">408</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00430">430</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -381,7 +383,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00269">269</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00270">270</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -537,7 +539,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00385">385</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00386">386</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -557,7 +559,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00284">284</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00285">285</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -577,7 +579,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00279">279</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00280">280</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -604,7 +606,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00482">482</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00496">496</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -624,7 +626,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00290">290</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00291">291</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -651,7 +653,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00492">492</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00506">506</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -679,7 +681,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00380">380</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00381">381</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -753,7 +755,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00295">295</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00296">296</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -781,7 +783,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00362">362</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00363">363</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -808,7 +810,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00307">307</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00308">308</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -836,7 +838,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00368">368</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00369">369</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -864,7 +866,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00374">374</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00375">375</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -892,7 +894,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00312">312</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00313">313</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -920,7 +922,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00356">356</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00357">357</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -947,7 +949,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00321">321</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00322">322</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -975,7 +977,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00334">334</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00335">335</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1003,7 +1005,27 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00350">350</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00351">351</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac966a1a95e482e00e1a371b82c267c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac966a1a95e482e00e1a371b82c267c12">&#9670;&nbsp;</a></span>IsCustomCommandPermitted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.LuaGame.IsCustomCommandPermitted </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00394">394</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1045,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00442">442</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00464">464</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1065,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00436">436</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00458">458</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1081,7 +1103,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00477">477</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00491">491</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1101,7 +1123,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00264">264</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00265">265</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1121,7 +1143,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00274">274</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00275">275</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1163,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00259">259</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00260">260</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1161,7 +1183,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00392">392</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00414">414</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1243,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00430">430</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00452">452</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1281,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00472">472</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00486">486</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1321,12 +1343,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00462">462</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00479">479</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
 <a id="aeb928570a544be1b32af927454b2ebd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb928570a544be1b32af927454b2ebd4">&#9670;&nbsp;</a></span>SendMessage() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb928570a544be1b32af927454b2ebd4">&#9670;&nbsp;</a></span>SendMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1371,57 +1393,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00447">447</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac3cda64ba41ab51032c5d3ad5f09ff9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3cda64ba41ab51032c5d3ad5f09ff9b">&#9670;&nbsp;</a></span>SendMessage() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Barotrauma.LuaGame.SendMessage </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>messageType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&#160;</td>
-          <td class="paramname"><em>sender</em> = <code>null</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_character.html">Character</a>&#160;</td>
-          <td class="paramname"><em>character</em> = <code>null</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00452">452</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00469">469</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1471,7 +1443,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00457">457</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00474">474</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1521,7 +1493,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00300">300</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00301">301</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1548,7 +1520,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00487">487</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00501">501</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1567,7 +1539,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00501">501</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00515">515</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1732,14 +1704,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa2e8a90ef70567ea55c64eb807a5f86f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e8a90ef70567ea55c64eb807a5f86f">&#9670;&nbsp;</a></span>updatePriorityCharacters</h2>
+<a id="aef58a7cdcec2a122f7972a7217dab27d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef58a7cdcec2a122f7972a7217dab27d">&#9670;&nbsp;</a></span>UpdatePriorityCharacters</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HashSet&lt;<a class="el" href="class_barotrauma_1_1_character.html">Character</a>&gt; Barotrauma.LuaGame.updatePriorityCharacters = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_character.html">Character</a>&gt;()</td>
+          <td class="memname">HashSet&lt;<a class="el" href="class_barotrauma_1_1_character.html">Character</a>&gt; Barotrauma.LuaGame.UpdatePriorityCharacters = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_character.html">Character</a>&gt;()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1748,14 +1720,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aac1f4e689dfa86eb977cace651c701e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac1f4e689dfa86eb977cace651c701e6">&#9670;&nbsp;</a></span>updatePriorityItems</h2>
+<a id="a8d5152fe58bde79616352c1a4d392796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d5152fe58bde79616352c1a4d392796">&#9670;&nbsp;</a></span>UpdatePriorityItems</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">HashSet&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.LuaGame.updatePriorityItems = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt;()</td>
+          <td class="memname">HashSet&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.LuaGame.UpdatePriorityItems = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt;()</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1765,8 +1737,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a9dec38cb6f235bca4a012a8d3b4a8690"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dec38cb6f235bca4a012a8d3b4a8690">&#9670;&nbsp;</a></span>characterUpdateInterval</h2>
+<a id="a5309127f96690d0e73ad76abd28ca97a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5309127f96690d0e73ad76abd28ca97a">&#9670;&nbsp;</a></span>CharacterUpdateInterval</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1775,7 +1747,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.LuaGame.characterUpdateInterval</td>
+          <td class="memname">int Barotrauma.LuaGame.CharacterUpdateInterval</td>
         </tr>
       </table>
   </td>
@@ -1809,7 +1781,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00426">426</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00448">448</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1833,7 +1805,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00219">219</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00220">220</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -1857,12 +1829,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00203">203</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00204">204</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
-<a id="aa34abe8c1dc21aa5a7c140da8a6055c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa34abe8c1dc21aa5a7c140da8a6055c6">&#9670;&nbsp;</a></span>gapUpdateInterval</h2>
+<a id="a7f718456f566cf9136f58ff1186fdf44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f718456f566cf9136f58ff1186fdf44">&#9670;&nbsp;</a></span>GapUpdateInterval</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1871,7 +1843,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.LuaGame.gapUpdateInterval</td>
+          <td class="memname">int Barotrauma.LuaGame.GapUpdateInterval</td>
         </tr>
       </table>
   </td>
@@ -1957,8 +1929,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ec124034a1efe860d53b383cc9579ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ec124034a1efe860d53b383cc9579ac">&#9670;&nbsp;</a></span>mapEntityUpdateInterval</h2>
+<a id="a860cd31adc98111d22b778bc7e74e4c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a860cd31adc98111d22b778bc7e74e4c8">&#9670;&nbsp;</a></span>LuaAddedCommand</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1967,7 +1939,31 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.LuaGame.mapEntityUpdateInterval</td>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html">DebugConsole.Command</a>&gt; Barotrauma.LuaGame.LuaAddedCommand</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00392">392</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1fa72fd77cb1a2ec1183d9ab523be5a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa72fd77cb1a2ec1183d9ab523be5a9">&#9670;&nbsp;</a></span>MapEntityUpdateInterval</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Barotrauma.LuaGame.MapEntityUpdateInterval</td>
         </tr>
       </table>
   </td>
@@ -2001,7 +1997,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00211">211</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00212">212</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
@@ -2025,12 +2021,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00236">236</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00237">237</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>
-<a id="a5806e1e066f64dcef9d19f4a39e6d83a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5806e1e066f64dcef9d19f4a39e6d83a">&#9670;&nbsp;</a></span>poweredUpdateInterval</h2>
+<a id="a5d0ec2228b366a3b1fd0db3fab7e3168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d0ec2228b366a3b1fd0db3fab7e3168">&#9670;&nbsp;</a></span>PoweredUpdateInterval</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2039,7 +2035,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Barotrauma.LuaGame.poweredUpdateInterval</td>
+          <td class="memname">int Barotrauma.LuaGame.PoweredUpdateInterval</td>
         </tr>
       </table>
   </td>
@@ -2193,7 +2189,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00227">227</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_lua_game_8cs_source.html#l00228">228</a> of file <a class="el" href="_lua_game_8cs_source.html">LuaGame.cs</a>.</p>
 
 </div>
 </div>

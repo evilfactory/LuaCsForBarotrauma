@@ -102,8 +102,6 @@ var namespace_barotrauma =
     [ "AbilityOrderedCharacter", "class_barotrauma_1_1_ability_ordered_character.html", "class_barotrauma_1_1_ability_ordered_character" ],
     [ "CharacterInfoPrefab", "class_barotrauma_1_1_character_info_prefab.html", "class_barotrauma_1_1_character_info_prefab" ],
     [ "CharacterInfo", "class_barotrauma_1_1_character_info.html", "class_barotrauma_1_1_character_info" ],
-    [ "SavedStatValue", "class_barotrauma_1_1_saved_stat_value.html", "class_barotrauma_1_1_saved_stat_value" ],
-    [ "AbilitySkillGain", "class_barotrauma_1_1_ability_skill_gain.html", "class_barotrauma_1_1_ability_skill_gain" ],
     [ "AbilityExperienceGainMultiplier", "class_barotrauma_1_1_ability_experience_gain_multiplier.html", "class_barotrauma_1_1_ability_experience_gain_multiplier" ],
     [ "CharacterStateInfo", "class_barotrauma_1_1_character_state_info.html", "class_barotrauma_1_1_character_state_info" ],
     [ "CharacterPrefab", "class_barotrauma_1_1_character_prefab.html", "class_barotrauma_1_1_character_prefab" ],
@@ -157,9 +155,6 @@ var namespace_barotrauma =
     [ "SkillSettings", "class_barotrauma_1_1_skill_settings.html", "class_barotrauma_1_1_skill_settings" ],
     [ "CharacterTalent", "class_barotrauma_1_1_character_talent.html", "class_barotrauma_1_1_character_talent" ],
     [ "TalentPrefab", "class_barotrauma_1_1_talent_prefab.html", "class_barotrauma_1_1_talent_prefab" ],
-    [ "TalentTree", "class_barotrauma_1_1_talent_tree.html", "class_barotrauma_1_1_talent_tree" ],
-    [ "TalentSubTree", "class_barotrauma_1_1_talent_sub_tree.html", "class_barotrauma_1_1_talent_sub_tree" ],
-    [ "TalentOption", "class_barotrauma_1_1_talent_option.html", "class_barotrauma_1_1_talent_option" ],
     [ "AfflictionsFile", "class_barotrauma_1_1_afflictions_file.html", "class_barotrauma_1_1_afflictions_file" ],
     [ "BackgroundCreaturePrefabsFile", "class_barotrauma_1_1_background_creature_prefabs_file.html", "class_barotrauma_1_1_background_creature_prefabs_file" ],
     [ "BallastFloraFile", "class_barotrauma_1_1_ballast_flora_file.html", "class_barotrauma_1_1_ballast_flora_file" ],
@@ -288,6 +283,7 @@ var namespace_barotrauma =
     [ "MineralMission", "class_barotrauma_1_1_mineral_mission.html", "class_barotrauma_1_1_mineral_mission" ],
     [ "Mission", "class_barotrauma_1_1_mission.html", "class_barotrauma_1_1_mission" ],
     [ "AbilityMissionMoneyGainMultiplier", "class_barotrauma_1_1_ability_mission_money_gain_multiplier.html", "class_barotrauma_1_1_ability_mission_money_gain_multiplier" ],
+    [ "AbilityMissionExperienceGainMultiplier", "class_barotrauma_1_1_ability_mission_experience_gain_multiplier.html", "class_barotrauma_1_1_ability_mission_experience_gain_multiplier" ],
     [ "MissionPrefab", "class_barotrauma_1_1_mission_prefab.html", "class_barotrauma_1_1_mission_prefab" ],
     [ "MonsterMission", "class_barotrauma_1_1_monster_mission.html", "class_barotrauma_1_1_monster_mission" ],
     [ "NestMission", "class_barotrauma_1_1_nest_mission.html", "class_barotrauma_1_1_nest_mission" ],
@@ -328,7 +324,6 @@ var namespace_barotrauma =
     [ "RelatedItem", "class_barotrauma_1_1_related_item.html", "class_barotrauma_1_1_related_item" ],
     [ "ACsMod", "class_barotrauma_1_1_a_cs_mod.html", "class_barotrauma_1_1_a_cs_mod" ],
     [ "CsScriptBase", "class_barotrauma_1_1_cs_script_base.html", "class_barotrauma_1_1_cs_script_base" ],
-    [ "CsScriptFilter", "class_barotrauma_1_1_cs_script_filter.html", null ],
     [ "CsScriptLoader", "class_barotrauma_1_1_cs_script_loader.html", "class_barotrauma_1_1_cs_script_loader" ],
     [ "CsScriptRunner", "class_barotrauma_1_1_cs_script_runner.html", "class_barotrauma_1_1_cs_script_runner" ],
     [ "MapEntity", "class_barotrauma_1_1_map_entity.html", "class_barotrauma_1_1_map_entity" ],
@@ -536,6 +531,7 @@ var namespace_barotrauma =
     [ "GUITextBlock", "class_barotrauma_1_1_g_u_i_text_block.html", "class_barotrauma_1_1_g_u_i_text_block" ],
     [ "GUITextBox", "class_barotrauma_1_1_g_u_i_text_box.html", "class_barotrauma_1_1_g_u_i_text_box" ],
     [ "GUITickBox", "class_barotrauma_1_1_g_u_i_tick_box.html", "class_barotrauma_1_1_g_u_i_tick_box" ],
+    [ "IMEPreviewTextHandler", "class_barotrauma_1_1_i_m_e_preview_text_handler.html", "class_barotrauma_1_1_i_m_e_preview_text_handler" ],
     [ "LoadingScreen", "class_barotrauma_1_1_loading_screen.html", "class_barotrauma_1_1_loading_screen" ],
     [ "ParamsEditor", "class_barotrauma_1_1_params_editor.html", "class_barotrauma_1_1_params_editor" ],
     [ "RectTransform", "class_barotrauma_1_1_rect_transform.html", "class_barotrauma_1_1_rect_transform" ],
@@ -622,6 +618,7 @@ var namespace_barotrauma =
       [ "OnRepairComplete", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81af75bc1532c328a3f90624beac9d43b5f", null ],
       [ "OnItemFabricationSkillGain", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a38e977aa8ccfc6e2a7a1bbbddf15d831", null ],
       [ "OnItemFabricatedAmount", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a1fe63163b745b946e6d7f98e035a2e5b", null ],
+      [ "OnItemFabricatedIngredients", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81aeefe7599faccbe98af58a5a427ce7d3d", null ],
       [ "OnAllyItemFabricatedAmount", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81ab8100e25ebdd7e339291c3ffbe0f163a", null ],
       [ "OnOpenItemContainer", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a52f0bd8b9554115db18093399db5989f", null ],
       [ "OnUseRangedWeapon", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a7b665c687afc250d9a94f1803fa9e88a", null ],
@@ -630,6 +627,7 @@ var namespace_barotrauma =
       [ "OnSelfRagdoll", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a4167789fb2401c28d5e162c237742c9c", null ],
       [ "OnRagdoll", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81af4aa8aa7b4e489d8b37e0f7a6b3e0834", null ],
       [ "OnRoundEnd", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a12eb0acedf3b826c900028f1137e5c3e", null ],
+      [ "OnLootCharacter", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a33a94fd8d2461dad2add137c18225066", null ],
       [ "OnAnyMissionCompleted", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81af44fba8b6ed7dc10e3c6b24297881abb", null ],
       [ "OnAllMissionsCompleted", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a71ddbe263dbbeb863f8ef2ecbd8f58e5", null ],
       [ "OnGiveOrder", "namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81a904e57b77c59c3b816ae55abb21a771d", null ],
@@ -664,8 +662,8 @@ var namespace_barotrauma =
       [ "GainSkillPastMaximum", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aa1ffe24bd431bbae2b221cb1fbb9236eb", null ],
       [ "RetainExperienceForNewCharacter", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aa253c960c09e91dd66f962c6a7b065134", null ],
       [ "AllowSecondOrderedTarget", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aa732d761e429b5f37aa31768c24dc5904", null ],
-      [ "PowerfulCPR", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aad73aaa7261733ee85379306772a847ba", null ],
-      [ "AlwaysStayConscious", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aa5b16b91bd1a420603ce09c9562631ed4", null ]
+      [ "AlwaysStayConscious", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aa5b16b91bd1a420603ce09c9562631ed4", null ],
+      [ "CanNotDieToAfflictions", "namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2aa1755b63c4b841346f02ef485906acf9d", null ]
     ] ],
     [ "ActionType", "namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba", [
       [ "Always", "namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eebaa68eec46437c384d8dad18d5464ebc35c", null ],
@@ -821,6 +819,15 @@ var namespace_barotrauma =
       [ "Left", "namespace_barotrauma.html#a1535396b8a6ea16210c86c93214bd2b3a945d5e233cf7d6240f6b783b36a374ff", null ],
       [ "Right", "namespace_barotrauma.html#a1535396b8a6ea16210c86c93214bd2b3a92b09c7c48c520c3c55e497875da437c", null ]
     ] ],
+    [ "EnemyHealthBarMode", "namespace_barotrauma.html#a1d0aa35a4a29fea10576cfd95e1217f4", [
+      [ "ShowAll", "namespace_barotrauma.html#a1d0aa35a4a29fea10576cfd95e1217f4a4e86de30fa86048437962111d923c3ca", null ],
+      [ "BossHealthBarsOnly", "namespace_barotrauma.html#a1d0aa35a4a29fea10576cfd95e1217f4a1dcc28be8d231efc606a1bd7978d3cd5", null ],
+      [ "HideAll", "namespace_barotrauma.html#a1d0aa35a4a29fea10576cfd95e1217f4aeca90f3dec9ac9d57fc1f9a492dad7b7", null ]
+    ] ],
+    [ "FactionAffiliation", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3ba", [
+      [ "Affiliated", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baacdf622bb2a238db20f5997ca39c9136c", null ],
+      [ "Neutral", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baae9bb5320b3890b6747c91b5a71ae5a01", null ]
+    ] ],
     [ "ForceUpperCase", "namespace_barotrauma.html#af4a2d29cb2cc8d51ebb6b7c192b8c5ef", [
       [ "Inherit", "namespace_barotrauma.html#af4a2d29cb2cc8d51ebb6b7c192b8c5efac49484faf79e2388b580e49444d6ac11", null ],
       [ "No", "namespace_barotrauma.html#af4a2d29cb2cc8d51ebb6b7c192b8c5efabafd7322c6e97d25b6299b5d6fe8920b", null ],
@@ -910,6 +917,19 @@ var namespace_barotrauma =
       [ "Yes", "namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50a93cba07454f06a4a960172bbd6e2a435", null ],
       [ "No", "namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50abafd7322c6e97d25b6299b5d6fe8920b", null ]
     ] ],
+    [ "ItemTalentStats", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274e", [
+      [ "None", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "DetoriationSpeed", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea2443bdea54d023bb6196dae55c563bff", null ],
+      [ "BatteryCapacity", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea4b597063a1b38c9b39f83d8da2685e85", null ],
+      [ "EngineSpeed", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea060f7f6876da369438b7f1630b01e3a2", null ],
+      [ "EngineMaxSpeed", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea71817d4041fd34a1f51db13efa6f15ff", null ],
+      [ "PumpSpeed", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274eaa8920c4265dc6a81781b4f169bd4f0ca", null ],
+      [ "PumpMaxFlow", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274eab0546be645c90ab75f2d9c095141f7a4", null ],
+      [ "ReactorMaxOutput", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea25165d486f63143acd1a291482b6d2de", null ],
+      [ "ReactorFuelEfficiency", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea665b5cb66783f8627e4cc15a24da8a0d", null ],
+      [ "DeconstructorSpeed", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea4515dd2ef81270f76d7b51abb1e7c7b7", null ],
+      [ "FabricationSpeed", "namespace_barotrauma.html#a8b72759fc90ba18384624b11b048274ea0c1934968b20ae4e07673ef50767a2ed", null ]
+    ] ],
     [ "LimbType", "namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df", [
       [ "None", "namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46dfa6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "LeftHand", "namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46dfa03f7bbbc02c9006ea393ec4ef5843d7b", null ],
@@ -943,6 +963,7 @@ var namespace_barotrauma =
       [ "CSharpMod", "namespace_barotrauma.html#aeb4a8657c0b109c930b2438cd9619166aab3a8381db2b56d735c7b576ecf76e6e", null ]
     ] ],
     [ "MapEntityCategory", "namespace_barotrauma.html#aa23bdc2b979b9d75309d6f3f174cfa17", [
+      [ "None", "namespace_barotrauma.html#aa23bdc2b979b9d75309d6f3f174cfa17a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "Structure", "namespace_barotrauma.html#aa23bdc2b979b9d75309d6f3f174cfa17adc4c71563b9bc39a65be853457e6b7b6", null ],
       [ "Decorative", "namespace_barotrauma.html#aa23bdc2b979b9d75309d6f3f174cfa17ac830fbfb2e5085792d8abe7553533b1e", null ],
       [ "Machine", "namespace_barotrauma.html#aa23bdc2b979b9d75309d6f3f174cfa17a47c954121886a5e5aaca7eece461b56f", null ],
@@ -1052,6 +1073,11 @@ var namespace_barotrauma =
       [ "None", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "ElectricalSkillBonus", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a15ec56a17120c65c14fbd96ee98ed639", null ],
       [ "HelmSkillBonus", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a03d36105e559c099f535302256a194cc", null ],
+      [ "HelmSkillOverride", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1afbfc381cc39d8ac1ef7333f91824ad1c", null ],
+      [ "MedicalSkillOverride", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a8da244bffa517db937fa98c499d4f87f", null ],
+      [ "WeaponsSkillOverride", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a730009a9001bbcbee32345378ec44f26", null ],
+      [ "ElectricalSkillOverride", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a8cf094968927c6d05756fa38d07d38e4", null ],
+      [ "MechanicalSkillOverride", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ad859ff9727edff9ea0bbdd667ef36a5b", null ],
       [ "MechanicalSkillBonus", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a7770d8af98073eae042510eaba61f247", null ],
       [ "MedicalSkillBonus", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6a705524728905b2899ca0ab1bbedd5b", null ],
       [ "WeaponsSkillBonus", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a192a64636365722bf900f976e434fa79", null ],
@@ -1074,6 +1100,7 @@ var namespace_barotrauma =
       [ "RangedAttackMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a4090cc67aaf196c754ae736a6f4fed1d", null ],
       [ "RangedSpreadReduction", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6034d4df0053ef11906e8ca876fc93cc", null ],
       [ "RepairSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a9d5d0297e03c3572ae11b9bd1b6f930c", null ],
+      [ "MechanicalRepairSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ad0536b9b8f0d8b8fd358c34ce70c6c99", null ],
       [ "DeconstructorSpeedMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a66c66effb61c8817f897e97aa14f957d", null ],
       [ "RepairToolStructureRepairMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a05e2709640ef66795bfc4b154b74febb", null ],
       [ "RepairToolStructureDamageMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1adea65b527cb1c9501b7deda369fcce29", null ],
@@ -1084,18 +1111,37 @@ var namespace_barotrauma =
       [ "GeneticMaterialRefineBonus", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a0dd377e78889a46fee32ff155e7a342a", null ],
       [ "GeneticMaterialTaintedProbabilityReductionOnCombine", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a5e6fb63faedf9371378d5223c9967980", null ],
       [ "SkillGainSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a0101fc90b6905e3ba19f04f86f6683af", null ],
+      [ "ExtraLevelGain", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a3252baea8008d4cc0ef3d64ce226a0d9", null ],
+      [ "HelmSkillGainSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a8bbddb4f9b4da52ccbe35f8cd34165af", null ],
+      [ "WeaponsSkillGainSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a1491c0d17436bed3cc1f45d5c9929bee", null ],
+      [ "MedicalSkillGainSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a3394dfd90de2c628a29aed9604330841", null ],
+      [ "ElectricalSkillGainSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a3736df6f09c91117d45b7811070facda", null ],
+      [ "MechanicalSkillGainSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a15a39446076365e3ca4fe6bca9da4507", null ],
       [ "MedicalItemApplyingMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a07bffe2908b0edcb767e47e85f879dd3", null ],
+      [ "MedicalItemDurationMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ac8210a2de14310e037934c8ded85c99b", null ],
+      [ "PoisonMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a1be8efa9986b54adebf4451bd578fa0b", null ],
       [ "TinkeringDuration", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ae1ae88abde5042027fe20da62c8b445a", null ],
       [ "TinkeringStrength", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6098564253aa49603914c3087236605b", null ],
       [ "TinkeringDamage", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ad28c96194fa5fa66cd6a407fdab8cdbd", null ],
       [ "ReputationGainMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ac142ee7db1d574011503d9308bc46d16", null ],
+      [ "ReputationLossMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a78fd676612c9721986c8a0646780a76d", null ],
       [ "MissionMoneyGainMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a109c62eb834c1723dfa69e784a2f01a8", null ],
       [ "ExperienceGainMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1acf20188540a3082fa303831dadc5f5d0", null ],
       [ "MissionExperienceGainMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1aefbfb2ab79986fac1776a76474336ad4", null ],
       [ "ExtraMissionCount", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1ad393dbeb545004e54219abd06c98d5ee", null ],
       [ "ExtraSpecialSalesCount", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1afc0f80247009426e75baea379fa11e27", null ],
-      [ "ApplyTreatmentsOnSelfFraction", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6e963946b1c4b81a4d9b8db11c4a6fa2", null ],
-      [ "MaxAttachableCount", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a3008c3e94f554bfbd453ac101b5c2d72", null ]
+      [ "StoreSellMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a98ba2742ef470f451e1c4497a503a41c", null ],
+      [ "StoreBuyMultiplierAffiliated", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1aa3d106c52e854e03b6883e57baa8c6be", null ],
+      [ "StoreBuyMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a7c952a0c06cbd90dd6e37deaafdb0f55", null ],
+      [ "MaxAttachableCount", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a3008c3e94f554bfbd453ac101b5c2d72", null ],
+      [ "ExplosionRadiusMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a90ed80fbfbe18e9f7cd505754f0a9e63", null ],
+      [ "ExplosionDamageMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1af52e31991a7beba99247309f3bc77d2a", null ],
+      [ "FabricationSpeed", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a0c1934968b20ae4e07673ef50767a2ed", null ],
+      [ "BallastFloraDamageMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a5c474465cf1847f9be308ef170718952", null ],
+      [ "HoldBreathMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6a14766b87e2cbb5f5d3fe88ca5fc1cd", null ],
+      [ "Apprenticeship", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1aa007eca26d06b0b6d505e7d6f7f7baa4", null ],
+      [ "Affiliation", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1abf15e68d25d8a2b7664950ba7385ed0a", null ],
+      [ "CPRBoost", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a8b2d945361d8b14fc66deb3b7a7de333", null ]
     ] ],
     [ "SubmarineClass", "namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4", [
       [ "Undefined", "namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4aec0fc0100c4fc1ce4eea230c3dc10360", null ],
@@ -1115,6 +1161,10 @@ var namespace_barotrauma =
       [ "BeaconStation", "namespace_barotrauma.html#a2749fb4bec59995097649b591a6aa7f4ac7bd8ac0336ee00cca0f9c46aa9006cc", null ],
       [ "EnemySubmarine", "namespace_barotrauma.html#a2749fb4bec59995097649b591a6aa7f4a846a56581ca68f6a73eb07e15cb0bbbb", null ],
       [ "Ruin", "namespace_barotrauma.html#a2749fb4bec59995097649b591a6aa7f4a574ca24646bea0e378813db540929034", null ]
+    ] ],
+    [ "TalentTreeType", "namespace_barotrauma.html#af0509a7204fe2eba6c6432c16e371806", [
+      [ "Specialization", "namespace_barotrauma.html#af0509a7204fe2eba6c6432c16e371806aab4485ed64c78bb6438a8072ee1646d1", null ],
+      [ "Primary", "namespace_barotrauma.html#af0509a7204fe2eba6c6432c16e371806a074de7e7c226d5c60f8af14c20725352", null ]
     ] ],
     [ "TransitionMode", "namespace_barotrauma.html#a8f0547f013833f111bcd42f3308c8d87", [
       [ "Linear", "namespace_barotrauma.html#a8f0547f013833f111bcd42f3308c8d87a32a843da6ea40ab3b17a3421ccdf671b", null ],
@@ -1154,5 +1204,9 @@ var namespace_barotrauma =
     [ "LuaCsMessageLogger", "namespace_barotrauma.html#a20316335c0d194b6f891e6f53b6d3dff", null ],
     [ "LuaCsPatch", "namespace_barotrauma.html#a6b72b2e30df9a3c5e2a63be22d683cf6", null ],
     [ "LuaCsPatchFunc", "namespace_barotrauma.html#ab6cb88071351389cda1c6c6b287280a0", null ],
+    [ "TalentButton", "namespace_barotrauma.html#a241b719bfd6dd5c803efee05e98e58ff", null ],
+    [ "TalentCornerIcon", "namespace_barotrauma.html#a876374a1f721bb7ea222e633af235f2d", null ],
+    [ "TalentResistanceIdentifier", "namespace_barotrauma.html#ad6dbff42d8152d86c3927f8d44812d19", null ],
+    [ "TalentShowCaseButton", "namespace_barotrauma.html#a95d8004e04f2a918c60adecd2953292f", null ],
     [ "TextBoxEvent", "namespace_barotrauma.html#ab055447a25fd349337e00c2476b1b0e7", null ]
 ];

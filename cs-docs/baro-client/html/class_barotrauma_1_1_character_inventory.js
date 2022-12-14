@@ -6,7 +6,7 @@ var class_barotrauma_1_1_character_inventory =
       [ "Right", "class_barotrauma_1_1_character_inventory.html#a30eae207207741dbffb815a1d4504da2a92b09c7c48c520c3c55e497875da437c", null ],
       [ "Center", "class_barotrauma_1_1_character_inventory.html#a30eae207207741dbffb815a1d4504da2a4f1f6016fc9f3f2353c0cc7c67b292bd", null ]
     ] ],
-    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#a7ba74562e953b05c2d5089cfe5aea49c", null ],
+    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#a5109582dcd9eecfa4196f96fc75022ed", null ],
     [ "AssignQuickUseNumKeys", "class_barotrauma_1_1_character_inventory.html#af62cb635ff9e87eaac6398442181ad12", null ],
     [ "CalculateBackgroundFrame", "class_barotrauma_1_1_character_inventory.html#a22512be581ca1b55af062d46487801f7", null ],
     [ "CanBeAutoMovedToCorrectSlots", "class_barotrauma_1_1_character_inventory.html#a9d1567aa4ed49701d38be727a021ffac", null ],
