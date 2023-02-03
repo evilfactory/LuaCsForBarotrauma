@@ -5,7 +5,7 @@ var class_barotrauma_1_1_level_data =
       [ "Outpost", "class_barotrauma_1_1_level_data.html#aadf84baa855eb1857a598059879a58afa0fc3009923e09f21be7dbb00cd257eb1", null ]
     ] ],
     [ "LevelData", "class_barotrauma_1_1_level_data.html#ab12658bcc8eba2ee1bbcdad17cbd1bad", null ],
-    [ "LevelData", "class_barotrauma_1_1_level_data.html#a7e0a27e5ed02ec052807b2760db02421", null ],
+    [ "LevelData", "class_barotrauma_1_1_level_data.html#a5c9be2ec6d5ef74019a87a7917460f75", null ],
     [ "LevelData", "class_barotrauma_1_1_level_data.html#a7811eed05eeb1d29b539aa7d15454cf7", null ],
     [ "LevelData", "class_barotrauma_1_1_level_data.html#a04784e594a114f363367969fa1b57777", null ],
     [ "Save", "class_barotrauma_1_1_level_data.html#abae1ef6790fee7785b6d9e9a7f9a273d", null ],

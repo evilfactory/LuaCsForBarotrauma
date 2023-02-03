@@ -86,6 +86,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_voting.html','');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="class_barotrauma_1_1_voting-members.html">List of all members</a>  </div>
@@ -118,8 +119,6 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15100a5a60c103604be170a7a787a33b"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a15100a5a60c103604be170a7a787a33b">HighestVoted&lt; T &gt;</a> (<a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacb">VoteType</a> voteType, List&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt; voters)</td></tr>
-<tr class="separator:a15100a5a60c103604be170a7a787a33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9ebf1cdee956a7f94f1141c242fa387"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#aa9ebf1cdee956a7f94f1141c242fa387">StopSubmarineVote</a> (bool passed)</td></tr>
 <tr class="separator:aa9ebf1cdee956a7f94f1141c242fa387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada8495109d5146b72d3fa2981aaea9b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#ada8495109d5146b72d3fa2981aaea9b3">StopMoneyTransferVote</a> (bool passed)</td></tr>
@@ -130,12 +129,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af9a6dd04bc12297379778261dc4f5da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaff8edaf49ea5000fc7ea715be6da5c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#aaff8edaf49ea5000fc7ea715be6da5c6">Update</a> (float deltaTime)</td></tr>
 <tr class="separator:aaff8edaf49ea5000fc7ea715be6da5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabce291a9ae329f81a27544d65f71867"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#aabce291a9ae329f81a27544d65f71867">ResetVotes</a> (IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt; connectedClients, bool resetKickVotes)</td></tr>
-<tr class="separator:aabce291a9ae329f81a27544d65f71867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afee2fd3ce0268d6d733e1523b855d382"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#afee2fd3ce0268d6d733e1523b855d382">ServerRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> sender)</td></tr>
 <tr class="separator:afee2fd3ce0268d6d733e1523b855d382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0275733eaa678c9d0308fbaec4310386"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a0275733eaa678c9d0308fbaec4310386">ServerWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg)</td></tr>
 <tr class="separator:a0275733eaa678c9d0308fbaec4310386"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:abeb71aaff0576d04c49f14bdccc07710"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#abeb71aaff0576d04c49f14bdccc07710">HighestVoted&lt; T &gt;</a> (VoteType voteType, IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt; voters)</td></tr>
+<tr class="separator:abeb71aaff0576d04c49f14bdccc07710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ab1f198db9c41cc28ba2c76822143a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a52ab1f198db9c41cc28ba2c76822143a">ResetVotes</a> (IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt; connectedClients, bool resetKickVotes)</td></tr>
+<tr class="separator:a52ab1f198db9c41cc28ba2c76822143a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -183,22 +187,25 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a15100a5a60c103604be170a7a787a33b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15100a5a60c103604be170a7a787a33b">&#9670;&nbsp;</a></span>HighestVoted&lt; T &gt;()</h2>
+<a id="abeb71aaff0576d04c49f14bdccc07710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeb71aaff0576d04c49f14bdccc07710">&#9670;&nbsp;</a></span>HighestVoted&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T Barotrauma.Voting.HighestVoted&lt; T &gt; </td>
+          <td class="memname">static T Barotrauma.Voting.HighestVoted&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacb">VoteType</a>&#160;</td>
+          <td class="paramtype">VoteType&#160;</td>
           <td class="paramname"><em>voteType</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">List&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td>
           <td class="paramname"><em>voters</em>&#160;</td>
         </tr>
         <tr>
@@ -207,6 +214,11 @@ Protected Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00032">32</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
@@ -241,14 +253,17 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aabce291a9ae329f81a27544d65f71867"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabce291a9ae329f81a27544d65f71867">&#9670;&nbsp;</a></span>ResetVotes()</h2>
+<a id="a52ab1f198db9c41cc28ba2c76822143a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ab1f198db9c41cc28ba2c76822143a">&#9670;&nbsp;</a></span>ResetVotes()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Barotrauma.Voting.ResetVotes </td>
+          <td class="memname">static void Barotrauma.Voting.ResetVotes </td>
           <td>(</td>
           <td class="paramtype">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt;&#160;</td>
           <td class="paramname"><em>connectedClients</em>, </td>
@@ -265,6 +280,11 @@ Protected Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_networking_2_voting_8cs_source.html#l00219">219</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_networking_2_voting_8cs_source.html">BarotraumaServer/ServerSource/Networking/Voting.cs</a>.</p>
@@ -317,7 +337,7 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_networking_2_voting_8cs_source.html#l00335">335</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_networking_2_voting_8cs_source.html">BarotraumaServer/ServerSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_networking_2_voting_8cs_source.html#l00342">342</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_networking_2_voting_8cs_source.html">BarotraumaServer/ServerSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>

@@ -2,7 +2,8 @@ var class_check_objective_action =
 [
     [ "CheckType", "class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d", [
       [ "Added", "class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626daf29ddbfb905eb2593fdcdfb243f9af85", null ],
-      [ "Completed", "class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626da07ca5050e697392c9ed47e6453f1453f", null ]
+      [ "Completed", "class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626da07ca5050e697392c9ed47e6453f1453f", null ],
+      [ "Incomplete", "class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626da4307e7e7986aa21a4b7c3ef2b5e948f6", null ]
     ] ],
     [ "CheckObjectiveAction", "class_check_objective_action.html#acd4148918c98fda5ae5069efc00beb8f", null ],
     [ "DetermineSuccess", "class_check_objective_action.html#af79dc6b6fb357ea126cd2367c0f60fc3", null ],

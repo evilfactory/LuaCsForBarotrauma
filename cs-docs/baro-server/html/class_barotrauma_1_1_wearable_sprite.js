@@ -1,9 +1,15 @@
 var class_barotrauma_1_1_wearable_sprite =
 [
+    [ "ObscuringMode", "class_barotrauma_1_1_wearable_sprite.html#a3a2f1edffd161286847d4a3454ea27b0", [
+      [ "None", "class_barotrauma_1_1_wearable_sprite.html#a3a2f1edffd161286847d4a3454ea27b0a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Hide", "class_barotrauma_1_1_wearable_sprite.html#a3a2f1edffd161286847d4a3454ea27b0a62a5e490880a92eef74f167d9dc6dca0", null ],
+      [ "AlphaClip", "class_barotrauma_1_1_wearable_sprite.html#a3a2f1edffd161286847d4a3454ea27b0a099025881605273dba91a15fdc49e9e0", null ]
+    ] ],
     [ "WearableSprite", "class_barotrauma_1_1_wearable_sprite.html#acbe4e8af5316fbbb341eb787944ab657", null ],
     [ "WearableSprite", "class_barotrauma_1_1_wearable_sprite.html#a6262abeacd2b9bc27e9a6d025cb37181", null ],
     [ "Init", "class_barotrauma_1_1_wearable_sprite.html#ad15a6abbf334253f7553701b93f4973d", null ],
     [ "ParsePath", "class_barotrauma_1_1_wearable_sprite.html#a19c0200bf5347276c0ca1826c8c157f5", null ],
+    [ "AlphaClipOtherWearables", "class_barotrauma_1_1_wearable_sprite.html#a8188d76c81377c30ebbbc92aedef6e36", null ],
     [ "CanBeHiddenByOtherWearables", "class_barotrauma_1_1_wearable_sprite.html#ab2a6c1f361895e0d0d9a94f8ac95e30a", null ],
     [ "DepthLimb", "class_barotrauma_1_1_wearable_sprite.html#aee7e70e1e3aeec5a0dd2c5d919296909", null ],
     [ "HideLimb", "class_barotrauma_1_1_wearable_sprite.html#ab083eb5ca1cf108c279a73c49a8f27a8", null ],
@@ -20,6 +26,7 @@ var class_barotrauma_1_1_wearable_sprite =
     [ "LightComponent", "class_barotrauma_1_1_wearable_sprite.html#aa879fb7ea6691ce2f1a8946909b185b3", null ],
     [ "LightComponents", "class_barotrauma_1_1_wearable_sprite.html#a5029bc0e235c1e6304a31d81327f1ae6", null ],
     [ "Limb", "class_barotrauma_1_1_wearable_sprite.html#a119ba63024e85a056f9ef1d38adfe380", null ],
+    [ "ObscureOtherWearables", "class_barotrauma_1_1_wearable_sprite.html#a480858f2f64689f06208426ca9bff9d5", null ],
     [ "Picker", "class_barotrauma_1_1_wearable_sprite.html#a5667791be30f0ff601e425606f6d5115", null ],
     [ "Rotation", "class_barotrauma_1_1_wearable_sprite.html#ac2d1b04e5d2b0cefd649838ff56ef5b9", null ],
     [ "Scale", "class_barotrauma_1_1_wearable_sprite.html#a4692d85e553b73ab62a0e031a770fb31", null ],

@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_submarine_body =
 [
-    [ "SubmarineBody", "class_barotrauma_1_1_submarine_body.html#a8447025f6fe9b7f9800bbdaecef604af", null ],
+    [ "SubmarineBody", "class_barotrauma_1_1_submarine_body.html#a70f60590dede03bd441542f38c248308", null ],
     [ "ApplyForce", "class_barotrauma_1_1_submarine_body.html#a40ab73ce9b562163ca79b6d6dfac84d8", null ],
     [ "FlipX", "class_barotrauma_1_1_submarine_body.html#a0b1d72a1b0d3352d0119a3e8abbd0ab2", null ],
     [ "OnCollision", "class_barotrauma_1_1_submarine_body.html#a382ab445e55c6c8fce48a62bd46c882a", null ],

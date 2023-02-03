@@ -95,101 +95,108 @@ $(document).ready(function(){initNavTree('_lua_cs_steam_8cs_source.html',''); in
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> System.IO;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> System.Threading.Tasks;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html">   13</a></span>&#160;    <span class="keyword">partial class </span><a class="code" href="class_barotrauma_1_1_lua_cs_steam.html">LuaCsSteam</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> <span class="keyword">struct </span>WorkshopItemDownload</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">public</span> ulong ID;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">string</span> Destination;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">public</span> <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> Callback;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">double</span> lastTimeChecked = 0;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        List&lt;WorkshopItemDownload&gt; itemsBeingDownloaded = <span class="keyword">new</span> List&lt;WorkshopItemDownload&gt;();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#af3cabb730215ada2335f65f66420e024">   25</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#af3cabb730215ada2335f65f66420e024">LuaCsSteam</a>()</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> async <span class="keywordtype">void</span> DownloadWorkshopItemAsync(WorkshopItemDownload download, <span class="keywordtype">bool</span> startDownload = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            Steamworks.Ugc.Item? item = await SteamManager.Workshop.GetItem(download.ID);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> (!item.HasValue) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">if</span> (item.Value.IsInstalled)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordflow">if</span> (download.Callback != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    download.Callback(item);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                itemsBeingDownloaded.Remove(download);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                SaveUtil.CopyFolder(item.Value.Directory, download.Destination, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">if</span> (startDownload)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                SteamUGC.Download(item.Value.Id, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> Steamworks.Ugc;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html">   14</a></span>&#160;    <span class="keyword">partial class </span><a class="code" href="class_barotrauma_1_1_lua_cs_steam.html">LuaCsSteam</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> <span class="keyword">struct </span>WorkshopItemDownload</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keyword">public</span> Steamworks.Ugc.Item <a class="code" href="class_barotrauma_1_1_item.html">Item</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">string</span> Destination;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keyword">public</span> <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> Callback;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">double</span> lastTimeChecked = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        List&lt;WorkshopItemDownload&gt; itemsBeingDownloaded = <span class="keyword">new</span> List&lt;WorkshopItemDownload&gt;();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#af3cabb730215ada2335f65f66420e024">   26</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#af3cabb730215ada2335f65f66420e024">LuaCsSteam</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> async <span class="keywordtype">void</span> DownloadWorkshopItemAsync(WorkshopItemDownload download, <span class="keywordtype">bool</span> startDownload = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">if</span> (startDownload)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                SteamManager.Workshop.NukeDownload(download.Item);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                SteamUGC.Download(download.Item.Id, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                itemsBeingDownloaded.Add(download);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (download.Item.IsInstalled &amp;&amp; Directory.Exists(download.Item.Directory))</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">if</span> (download.Callback != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    download.Callback(download.Item);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                itemsBeingDownloaded.Remove(download);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                SaveUtil.CopyFolder(download.Item.Directory, download.Destination, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">if</span> (!itemsBeingDownloaded.Contains(download))</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                itemsBeingDownloaded.Add(download);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a17958ef83d1aa95a8d1c23cf0752eee9">   54</a></span>&#160;        <span class="keyword">public</span> async <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a17958ef83d1aa95a8d1c23cf0752eee9">DownloadWorkshopItem</a>(ulong <span class="keywordtype">id</span>, <span class="keywordtype">string</span> destination, <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> callback)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_barotrauma_1_1_lua_cs_file.html">LuaCsFile</a>.<a class="code" href="class_barotrauma_1_1_lua_cs_file.html#aab29f7c3a9581849ff8ee3bfb96c5abd">IsPathAllowedException</a>(destination)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            Steamworks.Ugc.Item? item = await SteamManager.Workshop.GetItem(<span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a241d5422e86b77762f6042f8122ed403">   60</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a241d5422e86b77762f6042f8122ed403">DownloadWorkshopItem</a>(ulong <span class="keywordtype">id</span>, <span class="keywordtype">string</span> destination, <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> callback)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_barotrauma_1_1_lua_cs_file.html">LuaCsFile</a>.<a class="code" href="class_barotrauma_1_1_lua_cs_file.html#aab29f7c3a9581849ff8ee3bfb96c5abd">IsPathAllowedException</a>(destination)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            DownloadWorkshopItemAsync(<span class="keyword">new</span> WorkshopItemDownload()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                ID = id,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                Destination = destination,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                Callback = callback</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a38786692c1c0f4563ee179200d6dd28e">   72</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a38786692c1c0f4563ee179200d6dd28e">DownloadWorkshopItem</a>(Steamworks.Ugc.Item item, <span class="keywordtype">string</span> destination, <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> callback)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a241d5422e86b77762f6042f8122ed403">DownloadWorkshopItem</a>(item.Id.Value, destination, callback);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a6574a182870a9a6a83f27fc5f41c8b02">   77</a></span>&#160;        <span class="keyword">public</span> async <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a6574a182870a9a6a83f27fc5f41c8b02">GetWorkshopItem</a>(UInt64 <span class="keywordtype">id</span>, <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> callback)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            Steamworks.Ugc.Item? item = await SteamManager.Workshop.GetItem(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            callback(item);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">if</span> (item == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;Tried to download invalid workshop item {id}.&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            DownloadWorkshopItemAsync(<span class="keyword">new</span> WorkshopItemDownload()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="class_barotrauma_1_1_item.html">Item</a> = item.Value,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                Destination = destination,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                Callback = callback</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a38786692c1c0f4563ee179200d6dd28e">   73</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a38786692c1c0f4563ee179200d6dd28e">DownloadWorkshopItem</a>(Steamworks.Ugc.Item item, <span class="keywordtype">string</span> destination, <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> callback)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            DownloadWorkshopItemAsync(<span class="keyword">new</span> WorkshopItemDownload()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="class_barotrauma_1_1_item.html">Item</a> = item,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                Destination = destination,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                Callback = callback</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a84d3696d502b27d14c7a54795381fd59">   83</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a84d3696d502b27d14c7a54795381fd59">Update</a>()</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a6574a182870a9a6a83f27fc5f41c8b02">   83</a></span>&#160;        <span class="keyword">public</span> async <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a6574a182870a9a6a83f27fc5f41c8b02">GetWorkshopItem</a>(UInt64 <span class="keywordtype">id</span>, <a class="code" href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">LuaCsAction</a> callback)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (itemsBeingDownloaded.Count &gt; 0 &amp;&amp; Timing.TotalTime &gt; lastTimeChecked) <span class="comment">// SteamUGC.OnDownloadItemResult for some reason doesn&#39;t work, so i need to do this stupid thing.</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">foreach</span> (var item <span class="keywordflow">in</span> itemsBeingDownloaded)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    DownloadWorkshopItemAsync(item);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                lastTimeChecked = Timing.TotalTime + 15;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            Steamworks.Ugc.Item? item = await SteamManager.Workshop.GetItem(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            callback(item);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_cs_steam.html#a84d3696d502b27d14c7a54795381fd59">   89</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_lua_cs_steam.html#a84d3696d502b27d14c7a54795381fd59">Update</a>()</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (itemsBeingDownloaded.Count &gt; 0 &amp;&amp; Timing.TotalTime &gt; lastTimeChecked) <span class="comment">// SteamUGC.OnDownloadItemResult for some reason doesn&#39;t work, so i need to do this stupid thing.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">foreach</span> (var item <span class="keywordflow">in</span> itemsBeingDownloaded.ToArray())</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    DownloadWorkshopItemAsync(item);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                lastTimeChecked = Timing.TotalTime + 15;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_html"><div class="ttname"><a href="class_barotrauma_1_1_item.html">Barotrauma.Item</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00025">BarotraumaShared/SharedSource/Items/Item.cs:26</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_file_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_file.html">Barotrauma.LuaCsFile</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_utility_8cs_source.html#l00016">LuaCsUtility.cs:17</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_file_html_aab29f7c3a9581849ff8ee3bfb96c5abd"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_file.html#aab29f7c3a9581849ff8ee3bfb96c5abd">Barotrauma.LuaCsFile.IsPathAllowedException</a></div><div class="ttdeci">static bool IsPathAllowedException(string path, bool write=true, LuaCsMessageOrigin origin=LuaCsMessageOrigin.Unknown)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_utility_8cs_source.html#l00083">LuaCsUtility.cs:83</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html">Barotrauma.LuaCsSteam</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00013">LuaCsSteam.cs:14</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a241d5422e86b77762f6042f8122ed403"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a241d5422e86b77762f6042f8122ed403">Barotrauma.LuaCsSteam.DownloadWorkshopItem</a></div><div class="ttdeci">void DownloadWorkshopItem(ulong id, string destination, LuaCsAction callback)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00060">LuaCsSteam.cs:60</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a38786692c1c0f4563ee179200d6dd28e"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a38786692c1c0f4563ee179200d6dd28e">Barotrauma.LuaCsSteam.DownloadWorkshopItem</a></div><div class="ttdeci">void DownloadWorkshopItem(Steamworks.Ugc.Item item, string destination, LuaCsAction callback)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00072">LuaCsSteam.cs:72</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a6574a182870a9a6a83f27fc5f41c8b02"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a6574a182870a9a6a83f27fc5f41c8b02">Barotrauma.LuaCsSteam.GetWorkshopItem</a></div><div class="ttdeci">async void GetWorkshopItem(UInt64 id, LuaCsAction callback)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00077">LuaCsSteam.cs:77</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a84d3696d502b27d14c7a54795381fd59"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a84d3696d502b27d14c7a54795381fd59">Barotrauma.LuaCsSteam.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00083">LuaCsSteam.cs:83</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_af3cabb730215ada2335f65f66420e024"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#af3cabb730215ada2335f65f66420e024">Barotrauma.LuaCsSteam.LuaCsSteam</a></div><div class="ttdeci">LuaCsSteam()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00025">LuaCsSteam.cs:25</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html">Barotrauma.LuaCsSteam</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00014">LuaCsSteam.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a17958ef83d1aa95a8d1c23cf0752eee9"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a17958ef83d1aa95a8d1c23cf0752eee9">Barotrauma.LuaCsSteam.DownloadWorkshopItem</a></div><div class="ttdeci">async void DownloadWorkshopItem(ulong id, string destination, LuaCsAction callback)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00054">LuaCsSteam.cs:54</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a38786692c1c0f4563ee179200d6dd28e"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a38786692c1c0f4563ee179200d6dd28e">Barotrauma.LuaCsSteam.DownloadWorkshopItem</a></div><div class="ttdeci">void DownloadWorkshopItem(Steamworks.Ugc.Item item, string destination, LuaCsAction callback)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00073">LuaCsSteam.cs:73</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a6574a182870a9a6a83f27fc5f41c8b02"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a6574a182870a9a6a83f27fc5f41c8b02">Barotrauma.LuaCsSteam.GetWorkshopItem</a></div><div class="ttdeci">async void GetWorkshopItem(UInt64 id, LuaCsAction callback)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00083">LuaCsSteam.cs:83</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_a84d3696d502b27d14c7a54795381fd59"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#a84d3696d502b27d14c7a54795381fd59">Barotrauma.LuaCsSteam.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00089">LuaCsSteam.cs:89</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_steam_html_af3cabb730215ada2335f65f66420e024"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_steam.html#af3cabb730215ada2335f65f66420e024">Barotrauma.LuaCsSteam.LuaCsSteam</a></div><div class="ttdeci">LuaCsSteam()</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_steam_8cs_source.html#l00026">LuaCsSteam.cs:26</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_auth_ticket_8cs_source.html#l00001">AuthTicket.cs:2</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a95e1a104871188365937382c8be13570"><div class="ttname"><a href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">Barotrauma.LuaCsAction</a></div><div class="ttdeci">delegate void LuaCsAction(params object[] args)</div></div>

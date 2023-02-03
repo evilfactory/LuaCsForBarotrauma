@@ -21,7 +21,7 @@ var class_barotrauma_1_1_networking_1_1_game_client =
     [ "Quit", "class_barotrauma_1_1_networking_1_1_game_client.html#a6058be4a797950470e2316888ebc65b9", null ],
     [ "ReportError", "class_barotrauma_1_1_networking_1_1_game_client.html#af7b8ace807c3469376987f076b5cd497", null ],
     [ "RequestFile", "class_barotrauma_1_1_networking_1_1_game_client.html#a07ed790a6be48afade087117b8715a5c", null ],
-    [ "RequestRoundEnd", "class_barotrauma_1_1_networking_1_1_game_client.html#a6fc746d1ddb8022cda3e518e9a76b10e", null ],
+    [ "RequestRoundEnd", "class_barotrauma_1_1_networking_1_1_game_client.html#ad6e6cf533058477240b355553cb9919a", null ],
     [ "RequestSelectMode", "class_barotrauma_1_1_networking_1_1_game_client.html#a9198b763a0ebfb57eca076c781c61560", null ],
     [ "RequestSelectSub", "class_barotrauma_1_1_networking_1_1_game_client.html#a783bad9e19a2e95c3dfaf7a07234194d", null ],
     [ "RequestStartRound", "class_barotrauma_1_1_networking_1_1_game_client.html#ae56feadfd149fd6e7dd91309808f626b", null ],

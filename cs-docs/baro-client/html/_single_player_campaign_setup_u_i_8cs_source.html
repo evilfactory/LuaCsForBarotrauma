@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('_single_player_campaign_setup_u_i_8cs_
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            : base(<a class="code" href="class_barotrauma_1_1_campaign_setup_u_i.html#a104bc5644438d6ccce24ddfe60a1cc90">newGameContainer</a>, loadGameContainer)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            UpdateNewGameMenu(submarines);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7c2d304c514adc981ba9afe7ff4b8aa1">UpdateLoadMenu</a>(saveFiles);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7370108a2fe301c59c1a66efe9cb6292">UpdateLoadMenu</a>(saveFiles);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> currentPage = 0;</div>
@@ -453,7 +453,7 @@ $(document).ready(function(){initNavTree('_single_player_campaign_setup_u_i_8cs_
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreateCustomizeWindow(CampaignSettings prevSettings, Action&lt;CampaignSettings&gt; onClosed = <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        {</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            CampaignCustomizeSettings = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">new</span>[] { TextManager.Get(<span class="stringliteral">&quot;OK&quot;</span>) }, <span class="keyword">new</span> Vector2(0.25f, 0.3f), minSize: <span class="keyword">new</span> Point(450, 350));</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            CampaignCustomizeSettings = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">new</span>[] { TextManager.Get(<span class="stringliteral">&quot;OK&quot;</span>) }, <span class="keyword">new</span> Vector2(0.25f, 0.5f), minSize: <span class="keyword">new</span> Point(450, 350));</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            GUILayoutGroup campaignSettingContent = <span class="keyword">new</span> GUILayoutGroup(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.95f, 0.8f), CampaignCustomizeSettings.Content.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopCenter));</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
@@ -669,7 +669,7 @@ $(document).ready(function(){initNavTree('_single_player_campaign_setup_u_i_8cs_
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            }</div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        }</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160; </div>
-<div class="line"><a name="l00584"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7c2d304c514adc981ba9afe7ff4b8aa1">  584</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7c2d304c514adc981ba9afe7ff4b8aa1">UpdateLoadMenu</a>(IEnumerable&lt;CampaignMode.SaveInfo&gt; saveFiles = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00584"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7370108a2fe301c59c1a66efe9cb6292">  584</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7370108a2fe301c59c1a66efe9cb6292">UpdateLoadMenu</a>(IEnumerable&lt;CampaignMode.SaveInfo&gt; saveFiles = <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        {</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;            prevSaveFiles?.Clear();</div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            prevSaveFiles = <span class="keyword">null</span>;</div>
@@ -737,146 +737,111 @@ $(document).ready(function(){initNavTree('_single_player_campaign_setup_u_i_8cs_
 <div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;                }</div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            }</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160; </div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            saveList.Content.RectTransform.SortChildren((c1, c2) =&gt;</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            {</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                <span class="keywordtype">string</span> file1 = c1.GUIComponent.UserData as string;</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                <span class="keywordtype">string</span> file2 = c2.GUIComponent.UserData as string;</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                DateTime file1WriteTime = DateTime.MinValue;</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                DateTime file2WriteTime = DateTime.MinValue;</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                {</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                    file1WriteTime = File.GetLastWriteTime(file1);</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                }</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                <span class="keywordflow">catch</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                { </div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;                    <span class="comment">//do nothing - DateTime.MinValue will be used and the element will get sorted at the bottom of the list </span></div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                };</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                {</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;                    file2WriteTime = File.GetLastWriteTime(file2);</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                }</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                <span class="keywordflow">catch</span></div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                {</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;                    <span class="comment">//do nothing - DateTime.MinValue will be used and the element will get sorted at the bottom of the list </span></div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;                };</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                <span class="keywordflow">return</span> file2WriteTime.CompareTo(file1WriteTime);</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            });</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160; </div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;            loadGameButton = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Vector2(0.45f, 0.12f), loadGameContainer.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.BottomRight), TextManager.Get(<span class="stringliteral">&quot;LoadButton&quot;</span>))</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            {</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                OnClicked = (btn, obj) =&gt;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                {</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                    <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrWhiteSpace(saveList.SelectedData as <span class="keywordtype">string</span>)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                    LoadGame?.Invoke(saveList.SelectedData as <span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                },</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                Enabled = <span class="keyword">false</span></div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            };</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        }       </div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> SelectSaveFile(<a class="code" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> component, <span class="keywordtype">object</span> obj)</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        {</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;            <span class="keywordtype">string</span> fileName = (string)obj;</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;            XDocument doc = SaveUtil.LoadGameSessionDoc(fileName);</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;            <span class="keywordflow">if</span> (doc?.Root == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            {</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Error loading save file \&quot;&quot;</span> + fileName + <span class="stringliteral">&quot;\&quot;. The file may be corrupted.&quot;</span>);</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            }</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160; </div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            loadGameButton.<a class="code" href="class_barotrauma_1_1_g_u_i_button.html#a39cac4623c6d6360add2c3e12a327cf0">Enabled</a> = SaveUtil.IsSaveFileCompatible(doc);</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160; </div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;            RemoveSaveFrame();</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160; </div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;            <span class="keywordtype">string</span> subName = doc.Root.GetAttributeString(<span class="stringliteral">&quot;submarine&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;            <span class="keywordtype">string</span> saveTime = doc.Root.GetAttributeString(<span class="stringliteral">&quot;savetime&quot;</span>, <span class="stringliteral">&quot;unknown&quot;</span>);</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;            DateTime? time = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">long</span>.TryParse(saveTime, out <span class="keywordtype">long</span> unixTime))</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            {</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                time = ToolBox.Epoch.ToDateTime(unixTime);</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                saveTime = time.ToString();</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;            }</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160; </div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;            <span class="keywordtype">string</span> mapseed = doc.Root.GetAttributeString(<span class="stringliteral">&quot;mapseed&quot;</span>, <span class="stringliteral">&quot;unknown&quot;</span>);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            SortSaveList();</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160; </div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            loadGameButton = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_button.html">GUIButton</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Vector2(0.45f, 0.12f), loadGameContainer.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.BottomRight), TextManager.Get(<span class="stringliteral">&quot;LoadButton&quot;</span>))</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;            {</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                OnClicked = (btn, obj) =&gt;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                {</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                    <span class="keywordflow">if</span> (saveList.SelectedData is not <a class="code" href="class_barotrauma_1_1_campaign_mode.html">CampaignMode</a>.SaveInfo saveInfo) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                    <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrWhiteSpace(saveInfo.FilePath)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                    LoadGame?.Invoke(saveInfo.FilePath);</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                    </div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                },</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;                Enabled = <span class="keyword">false</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;            };</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;        }</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> SelectSaveFile(<a class="code" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> component, <span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        {</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;            <span class="keywordflow">if</span> (obj is not <a class="code" href="class_barotrauma_1_1_campaign_mode.html">CampaignMode</a>.SaveInfo saveInfo) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160; </div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            <span class="keywordtype">string</span> fileName = saveInfo.FilePath;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; </div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            XDocument doc = SaveUtil.LoadGameSessionDoc(fileName);</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            <span class="keywordflow">if</span> (doc?.Root == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;            {</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Error loading save file \&quot;&quot;</span> + fileName + <span class="stringliteral">&quot;\&quot;. The file may be corrupted.&quot;</span>);</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            }</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;            loadGameButton.<a class="code" href="class_barotrauma_1_1_g_u_i_button.html#a39cac4623c6d6360add2c3e12a327cf0">Enabled</a> = SaveUtil.IsSaveFileCompatible(doc);</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; </div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            RemoveSaveFrame();</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <span class="keywordtype">string</span> subName = saveInfo.SubmarineName;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            LocalizedString saveTime = saveInfo.SaveTime</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                .Select(t =&gt; (LocalizedString)t.ToLocalUserString())</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                .Fallback(TextManager.Get(<span class="stringliteral">&quot;Unknown&quot;</span>));</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; </div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;            <span class="keywordtype">string</span> mapseed = doc.Root.GetAttributeString(<span class="stringliteral">&quot;mapseed&quot;</span>, <span class="stringliteral">&quot;unknown&quot;</span>);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;            var saveFileFrame = <span class="keyword">new</span> GUIFrame(</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                <span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.45f, 0.6f), loadGameContainer.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopRight)</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                    RelativeOffset = new Vector2(0.0f, 0.1f)</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                }, style: <span class="stringliteral">&quot;InnerFrame&quot;</span>)</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            {</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                UserData = <span class="stringliteral">&quot;savefileframe&quot;</span></div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            };</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160; </div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;            var titleText = <span class="keyword">new</span> GUITextBlock(</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.9f, 0.2f), saveFileFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopCenter)</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                    RelativeOffset = new Vector2(0, 0.05f)</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;                },</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                Path.GetFileNameWithoutExtension(fileName), font: GUIStyle.LargeFont, textAlignment: <a class="code" href="namespace_barotrauma.html#a31ea29a632cd813860eec10119527726">Alignment</a>.Center);</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            titleText.Text = ToolBox.LimitString(titleText.Text, titleText.Font, titleText.Rect.Width);</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160; </div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            var layoutGroup = <span class="keyword">new</span> GUILayoutGroup(</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                <span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.8f, 0.5f), saveFileFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.Center)</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                {</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                    RelativeOffset = new Vector2(0, 0.1f)</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                });</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160; </div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;            var saveFileFrame = <span class="keyword">new</span> GUIFrame(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.45f, 0.6f), loadGameContainer.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopRight)</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;            {</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                RelativeOffset = new Vector2(0.0f, 0.1f)</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;            }, style: <span class="stringliteral">&quot;InnerFrame&quot;</span>)</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;            {</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                UserData = <span class="stringliteral">&quot;savefileframe&quot;</span></div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;            };</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160; </div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;            var titleText = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.9f, 0.2f), saveFileFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopCenter)</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;            {</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                RelativeOffset = new Vector2(0, 0.05f)</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;            },</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                Path.GetFileNameWithoutExtension(fileName), font: GUIStyle.LargeFont, textAlignment: <a class="code" href="namespace_barotrauma.html#a31ea29a632cd813860eec10119527726">Alignment</a>.Center);</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            titleText.Text = ToolBox.LimitString(titleText.Text, titleText.Font, titleText.Rect.Width);</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160; </div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            var layoutGroup = <span class="keyword">new</span> GUILayoutGroup(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.8f, 0.5f), saveFileFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.Center)</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            {</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                RelativeOffset = new Vector2(0, 0.1f)</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            });</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160; </div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1, 0), layoutGroup.RectTransform), $<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>Submarine<span class="stringliteral">&quot;)} : {subName}&quot;</span>, font: GUIStyle.SmallFont);</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1, 0), layoutGroup.RectTransform), $<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>LastSaved<span class="stringliteral">&quot;)} : {saveTime}&quot;</span>, font: GUIStyle.SmallFont);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1, 0), layoutGroup.RectTransform), $<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>MapSeed<span class="stringliteral">&quot;)} : {mapseed}&quot;</span>, font: GUIStyle.SmallFont);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160; </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.4f, 0.15f), saveFileFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.BottomCenter)</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            {</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                RelativeOffset = new Vector2(0, 0.1f)</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;            }, TextManager.Get(<span class="stringliteral">&quot;Delete&quot;</span>), style: <span class="stringliteral">&quot;GUIButtonSmall&quot;</span>)</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            {</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                UserData = fileName,</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                OnClicked = DeleteSave</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            };</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        }</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160; </div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> DeleteSave(GUIButton button, <span class="keywordtype">object</span> obj)</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;        {</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <span class="keywordtype">string</span> saveFile = obj as string;</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;            <span class="keywordflow">if</span> (obj == <span class="keyword">null</span>) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; </div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;            LocalizedString header = TextManager.Get(<span class="stringliteral">&quot;deletedialoglabel&quot;</span>);</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            LocalizedString body = TextManager.GetWithVariable(<span class="stringliteral">&quot;deletedialogquestion&quot;</span>, <span class="stringliteral">&quot;[file]&quot;</span>, Path.GetFileNameWithoutExtension(saveFile));</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;            EventEditorScreen.AskForConfirmation(header, body, () =&gt;</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;            {</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                SaveUtil.DeleteSave(saveFile);</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                prevSaveFiles?.RemoveAll(s =&gt; s.FilePath == saveFile);</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                UpdateLoadMenu(prevSaveFiles.ToList());</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;            });</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160; </div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;        }</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160; </div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RemoveSaveFrame()</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        {</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;            GUIComponent prevFrame = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;            <span class="keywordflow">foreach</span> (GUIComponent child <span class="keywordflow">in</span> loadGameContainer.Children)</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;            {</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                <span class="keywordflow">if</span> (child.UserData as <span class="keywordtype">string</span> != <span class="stringliteral">&quot;savefileframe&quot;</span>) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160; </div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                prevFrame = child;</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;            }</div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;            loadGameContainer.RemoveChild(prevFrame);</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;        }</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    }</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html">Barotrauma.CampaignSetupUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00012">CampaignSetupUI.cs:13</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a104bc5644438d6ccce24ddfe60a1cc90"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a104bc5644438d6ccce24ddfe60a1cc90">Barotrauma.CampaignSetupUI.newGameContainer</a></div><div class="ttdeci">readonly GUIComponent newGameContainer</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00014">CampaignSetupUI.cs:14</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a1ee0ae45480f9ac322cd340fa5e2cbc5"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a1ee0ae45480f9ac322cd340fa5e2cbc5">Barotrauma.CampaignSetupUI.CurrentSettings</a></div><div class="ttdeci">CampaignSettings CurrentSettings</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00040">CampaignSetupUI.cs:40</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a31fc1b0858b9b830863bf4008130cb0d"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a31fc1b0858b9b830863bf4008130cb0d">Barotrauma.CampaignSetupUI.InitialMoneyText</a></div><div class="ttdeci">GUITextBlock InitialMoneyText</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00034">CampaignSetupUI.cs:35</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a90c6e74109860206108bf5a7ff10a06e"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a90c6e74109860206108bf5a7ff10a06e">Barotrauma.CampaignSetupUI.CampaignCustomizeButton</a></div><div class="ttdeci">GUIButton CampaignCustomizeButton</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00041">CampaignSetupUI.cs:41</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a927b0c911fee14227fa9369e91e96f10"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a927b0c911fee14227fa9369e91e96f10">Barotrauma.CampaignSetupUI.subFilter</a></div><div class="ttdeci">CategoryFilter subFilter</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00026">CampaignSetupUI.cs:26</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_aa67c078718e398d1d8b8c449796adefd"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#aa67c078718e398d1d8b8c449796adefd">Barotrauma.CampaignSetupUI.CategoryFilter</a></div><div class="ttdeci">CategoryFilter</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00025">CampaignSetupUI.cs:25</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_ac8d8cd19eee384e771545566af8a9c8f"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#ac8d8cd19eee384e771545566af8a9c8f">Barotrauma.CampaignSetupUI.saveNameBox</a></div><div class="ttdeci">GUITextBox saveNameBox</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00018">CampaignSetupUI.cs:18</a></div></div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1, 0), layoutGroup.RectTransform),</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                $<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>Submarine<span class="stringliteral">&quot;)} : {subName}&quot;</span>, font: GUIStyle.SmallFont);</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1, 0), layoutGroup.RectTransform),</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                $<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>LastSaved<span class="stringliteral">&quot;)} : {saveTime}&quot;</span>, font: GUIStyle.SmallFont);</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1, 0), layoutGroup.RectTransform),</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                $<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>MapSeed<span class="stringliteral">&quot;)} : {mapseed}&quot;</span>, font: GUIStyle.SmallFont);</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160; </div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;            <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(0.4f, 0.15f), saveFileFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.BottomCenter)</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;            {</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                RelativeOffset = new Vector2(0, 0.1f)</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            }, TextManager.Get(<span class="stringliteral">&quot;Delete&quot;</span>), style: <span class="stringliteral">&quot;GUIButtonSmall&quot;</span>)</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;            {</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                UserData = saveInfo,</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                OnClicked = DeleteSave</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;            };</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        }</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160; </div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RemoveSaveFrame()</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;        {</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            GUIComponent prevFrame = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            <span class="keywordflow">foreach</span> (GUIComponent child <span class="keywordflow">in</span> loadGameContainer.Children)</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;            {</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <span class="keywordflow">if</span> (child.UserData as <span class="keywordtype">string</span> != <span class="stringliteral">&quot;savefileframe&quot;</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160; </div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                prevFrame = child;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            }</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            loadGameContainer.RemoveChild(prevFrame);</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;        }</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    }</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_mode_html"><div class="ttname"><a href="class_barotrauma_1_1_campaign_mode.html">Barotrauma.CampaignMode</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_game_session_2_game_modes_2_campaign_mode_8cs_source.html#l00014">BarotraumaShared/SharedSource/GameSession/GameModes/CampaignMode.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html">Barotrauma.CampaignSetupUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00013">CampaignSetupUI.cs:14</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a104bc5644438d6ccce24ddfe60a1cc90"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a104bc5644438d6ccce24ddfe60a1cc90">Barotrauma.CampaignSetupUI.newGameContainer</a></div><div class="ttdeci">readonly GUIComponent newGameContainer</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00015">CampaignSetupUI.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a1ee0ae45480f9ac322cd340fa5e2cbc5"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a1ee0ae45480f9ac322cd340fa5e2cbc5">Barotrauma.CampaignSetupUI.CurrentSettings</a></div><div class="ttdeci">CampaignSettings CurrentSettings</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00041">CampaignSetupUI.cs:41</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a31fc1b0858b9b830863bf4008130cb0d"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a31fc1b0858b9b830863bf4008130cb0d">Barotrauma.CampaignSetupUI.InitialMoneyText</a></div><div class="ttdeci">GUITextBlock InitialMoneyText</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00035">CampaignSetupUI.cs:36</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a90c6e74109860206108bf5a7ff10a06e"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a90c6e74109860206108bf5a7ff10a06e">Barotrauma.CampaignSetupUI.CampaignCustomizeButton</a></div><div class="ttdeci">GUIButton CampaignCustomizeButton</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00042">CampaignSetupUI.cs:42</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_a927b0c911fee14227fa9369e91e96f10"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#a927b0c911fee14227fa9369e91e96f10">Barotrauma.CampaignSetupUI.subFilter</a></div><div class="ttdeci">CategoryFilter subFilter</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00027">CampaignSetupUI.cs:27</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_aa67c078718e398d1d8b8c449796adefd"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#aa67c078718e398d1d8b8c449796adefd">Barotrauma.CampaignSetupUI.CategoryFilter</a></div><div class="ttdeci">CategoryFilter</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00026">CampaignSetupUI.cs:26</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_campaign_setup_u_i_html_ac8d8cd19eee384e771545566af8a9c8f"><div class="ttname"><a href="class_barotrauma_1_1_campaign_setup_u_i.html#ac8d8cd19eee384e771545566af8a9c8f">Barotrauma.CampaignSetupUI.saveNameBox</a></div><div class="ttdeci">GUITextBox saveNameBox</div><div class="ttdef"><b>Definition:</b> <a href="_campaign_setup_u_i_8cs_source.html#l00019">CampaignSetupUI.cs:19</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_character_info_1_1_appearance_customization_menu_html"><div class="ttname"><a href="class_barotrauma_1_1_character_info_1_1_appearance_customization_menu.html">Barotrauma.CharacterInfo.AppearanceCustomizationMenu</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_characters_2_character_info_8cs_source.html#l00585">BarotraumaClient/ClientSource/Characters/CharacterInfo.cs:586</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_character_info_html"><div class="ttname"><a href="class_barotrauma_1_1_character_info.html">Barotrauma.CharacterInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_info_8cs_source.html#l00059">BarotraumaShared/SharedSource/Characters/CharacterInfo.cs:60</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_character_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_character_prefab.html">Barotrauma.CharacterPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_character_prefab_8cs_source.html#l00011">CharacterPrefab.cs:12</a></div></div>
@@ -916,7 +881,7 @@ $(document).ready(function(){initNavTree('_single_player_campaign_setup_u_i_8cs_
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_text_block_html_a8ba0c81abad5d9d74f077f13de1e4e0e"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_text_block.html#a8ba0c81abad5d9d74f077f13de1e4e0e">Barotrauma.GUITextBlock.TextColor</a></div><div class="ttdeci">Color TextColor</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_block_8cs_source.html#l00199">GUITextBlock.cs:200</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_text_box_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_text_box.html">Barotrauma.GUITextBox</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_box_8cs_source.html#l00014">GUITextBox.cs:15</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_text_box_html_a17ee71add9e1259ba76f6406e09b25e6"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_text_box.html#a17ee71add9e1259ba76f6406e09b25e6">Barotrauma.GUITextBox.OnDeselected</a></div><div class="ttdeci">TextBoxEvent OnDeselected</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_box_8cs_source.html#l00017">GUITextBox.cs:17</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00023">GameMain.cs:24</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a88bf9cdce5a41e369c93ae2066febd55"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a88bf9cdce5a41e369c93ae2066febd55">Barotrauma.GameMain.DebugDraw</a></div><div class="ttdeci">static bool DebugDraw</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00029">GameMain.cs:29</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_job_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_job_prefab.html">Barotrauma.JobPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_jobs_2_job_prefab_8cs_source.html#l00064">BarotraumaShared/SharedSource/Characters/Jobs/JobPrefab.cs:65</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_job_prefab_html_a3916a7e5fad7e8c26a61933da94de791"><div class="ttname"><a href="class_barotrauma_1_1_job_prefab.html#a3916a7e5fad7e8c26a61933da94de791">Barotrauma.JobPrefab.InitialCount</a></div><div class="ttdeci">int InitialCount</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_jobs_2_job_prefab_8cs_source.html#l00134">BarotraumaShared/SharedSource/Characters/Jobs/JobPrefab.cs:135</a></div></div>
@@ -930,7 +895,7 @@ $(document).ready(function(){initNavTree('_single_player_campaign_setup_u_i_8cs_
 <div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_a4b2bd9c5ce7d927a4e8e550798353c98"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a4b2bd9c5ce7d927a4e8e550798353c98">Barotrauma.SinglePlayerCampaignSetupUI.SinglePlayerCampaignSetupUI</a></div><div class="ttdeci">SinglePlayerCampaignSetupUI(GUIComponent newGameContainer, GUIComponent loadGameContainer, IEnumerable&lt; SubmarineInfo &gt; submarines, IEnumerable&lt; CampaignMode.SaveInfo &gt; saveFiles=null)</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00023">SinglePlayerCampaignSetupUI.cs:23</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_a599718295412ff35df19e2b5716f05ae"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a599718295412ff35df19e2b5716f05ae">Barotrauma.SinglePlayerCampaignSetupUI.CreateDefaultSaveName</a></div><div class="ttdeci">void CreateDefaultSaveName()</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00504">SinglePlayerCampaignSetupUI.cs:504</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_a605a744acdc70cddf9d1f6eb8e396a69"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a605a744acdc70cddf9d1f6eb8e396a69">Barotrauma.SinglePlayerCampaignSetupUI.RandomizeSeed</a></div><div class="ttdeci">void RandomizeSeed()</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00470">SinglePlayerCampaignSetupUI.cs:470</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_a7c2d304c514adc981ba9afe7ff4b8aa1"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7c2d304c514adc981ba9afe7ff4b8aa1">Barotrauma.SinglePlayerCampaignSetupUI.UpdateLoadMenu</a></div><div class="ttdeci">void UpdateLoadMenu(IEnumerable&lt; CampaignMode.SaveInfo &gt; saveFiles=null)</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00584">SinglePlayerCampaignSetupUI.cs:584</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_a7370108a2fe301c59c1a66efe9cb6292"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7370108a2fe301c59c1a66efe9cb6292">Barotrauma.SinglePlayerCampaignSetupUI.UpdateLoadMenu</a></div><div class="ttdeci">override void UpdateLoadMenu(IEnumerable&lt; CampaignMode.SaveInfo &gt; saveFiles=null)</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00584">SinglePlayerCampaignSetupUI.cs:584</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_a8ad85812b9827625658c06c92cc582cb"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a8ad85812b9827625658c06c92cc582cb">Barotrauma.SinglePlayerCampaignSetupUI.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00033">SinglePlayerCampaignSetupUI.cs:33</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_aa14340908a8ac1a367b88884886c904d"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#aa14340908a8ac1a367b88884886c904d">Barotrauma.SinglePlayerCampaignSetupUI.RandomizeCrew</a></div><div class="ttdeci">void RandomizeCrew()</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00279">SinglePlayerCampaignSetupUI.cs:279</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_single_player_campaign_setup_u_i_html_acf9c85ef4f55d60f17715c74576c367d"><div class="ttname"><a href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#acf9c85ef4f55d60f17715c74576c367d">Barotrauma.SinglePlayerCampaignSetupUI.UpdateSubList</a></div><div class="ttdeci">void UpdateSubList(IEnumerable&lt; SubmarineInfo &gt; submarines)</div><div class="ttdef"><b>Definition:</b> <a href="_single_player_campaign_setup_u_i_8cs_source.html#l00510">SinglePlayerCampaignSetupUI.cs:510</a></div></div>

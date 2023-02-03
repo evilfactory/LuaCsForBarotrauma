@@ -35,6 +35,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_container =
     [ "Inventory", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a17d6bae89ad8a3ad950a27400cca847a", null ],
     [ "OnContainedItemsChanged", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a3c16dea0ae97586f594accd5273239df", null ],
     [ "AccessOnlyWhenBroken", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a2799dc9173bc3eff254d99ed43ff69ae", null ],
+    [ "AllowAccess", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a06686063cbaea382af428a3443f712b0", null ],
     [ "AllowDragAndDrop", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a2f26bc695d46b9c6c7fe187705fd2643", null ],
     [ "AllowSwappingContainedItems", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a42c8eb2c8dc6ef740f0947f753638795", null ],
     [ "AllSubContainableItems", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#abb7f74db449005d08915e463e5afe815", null ],

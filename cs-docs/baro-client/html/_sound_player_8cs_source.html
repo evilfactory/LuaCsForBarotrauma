@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('_sound_player_8cs_source.html',''); in
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span>? OverrideMusicDuration;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6">Update</a>(<span class="keywordtype">float</span> deltaTime)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">float</span> deltaTime)</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            UpdateMusic(deltaTime);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> (flowSoundChannels == <span class="keyword">null</span> || flowSoundChannels.Length != FlowSounds.Count)</div>
@@ -947,38 +947,39 @@ $(document).ready(function(){initNavTree('_sound_player_8cs_source.html',''); in
 <div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160; </div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> PlayDamageSound(<span class="keywordtype">string</span> damageType, <span class="keywordtype">float</span> damage, Vector2 position, <span class="keywordtype">float</span> range = 2000.0f, IEnumerable&lt;Identifier&gt; tags = <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        {</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            <span class="comment">//if the damage is too low for any sound, don&#39;t play anything</span></div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            <span class="keywordflow">if</span> (damageSounds.All(d =&gt; damage &lt; d.DamageRange.X)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;            <span class="comment">//allow the damage to differ by 10 from the configured damage range,</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            <span class="comment">//so the same amount of damage doesn&#39;t always play the same sound</span></div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;            <span class="keywordtype">float</span> randomizedDamage = MathHelper.Clamp(damage + Rand.Range(-10.0f, 10.0f), 0.0f, 100.0f);</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            var suitableSounds = damageSounds.Where(s =&gt;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                s.DamageType == damageType &amp;&amp;</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                (s.RequiredTag.IsEmpty || (tags == <span class="keyword">null</span> ? s.RequiredTag.IsEmpty : tags.Contains(s.RequiredTag))));</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160; </div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            <span class="comment">//if the damage is too low for any sound, don&#39;t play anything</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;            <span class="keywordflow">if</span> (suitableSounds.All(d =&gt; damage &lt; d.DamageRange.X)) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160; </div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            var suitableSounds = damageSounds.Where(s =&gt; </div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;                s.DamageType == damageType &amp;&amp;</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;                (s.DamageRange == Vector2.Zero || (randomizedDamage &gt;= s.DamageRange.X &amp;&amp; randomizedDamage &lt;= s.DamageRange.Y)) &amp;&amp;</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;                (s.RequiredTag.IsEmpty || (tags == <span class="keyword">null</span> ? s.RequiredTag.IsEmpty : tags.Contains(s.RequiredTag))));</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160; </div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;            var damageSound = suitableSounds.GetRandomUnsynced();</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;            damageSound?.Sound?.Play(1.0f, range, position, muffle: !damageSound.IgnoreMuffling &amp;&amp; ShouldMuffleSound(<a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>.Controlled, position, range, <span class="keyword">null</span>));</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        }</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160; </div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> PlayUISound(<a class="code" href="namespace_barotrauma.html#a3c8c74f41747ab2ebc0292a045d0350e">GUISoundType</a> soundType)</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        {</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;            GUISound.GUISoundPrefabs</div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;                .Where(s =&gt; s.Type == soundType)</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                .GetRandomUnsynced()?.Sound?.Play(<span class="keyword">null</span>, <span class="stringliteral">&quot;ui&quot;</span>);</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;        }</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160; </div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> PlayUISound(<a class="code" href="namespace_barotrauma.html#a3c8c74f41747ab2ebc0292a045d0350e">GUISoundType</a>? soundType)</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        {</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;            <span class="keywordflow">if</span> (soundType.HasValue)</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;            {</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;                PlayUISound(soundType.Value);</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;            }</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;        }</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    }</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;}</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            <span class="comment">//allow the damage to differ by 10 from the configured damage range,</span></div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;            <span class="comment">//so the same amount of damage doesn&#39;t always play the same sound</span></div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;            <span class="keywordtype">float</span> randomizedDamage = MathHelper.Clamp(damage + Rand.Range(-10.0f, 10.0f), 0.0f, 100.0f);</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;            suitableSounds = suitableSounds.Where(s =&gt; </div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;                s.DamageRange == Vector2.Zero || (randomizedDamage &gt;= s.DamageRange.X &amp;&amp; randomizedDamage &lt;= s.DamageRange.Y));</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160; </div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;            var damageSound = suitableSounds.GetRandomUnsynced();</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;            damageSound?.Sound?.Play(1.0f, range, position, muffle: !damageSound.IgnoreMuffling &amp;&amp; ShouldMuffleSound(<a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>.Controlled, position, range, <span class="keyword">null</span>));</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;        }</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160; </div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> PlayUISound(<a class="code" href="namespace_barotrauma.html#a3c8c74f41747ab2ebc0292a045d0350e">GUISoundType</a> soundType)</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;        {</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;            GUISound.GUISoundPrefabs</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                .Where(s =&gt; s.Type == soundType)</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;                .GetRandomUnsynced()?.Sound?.Play(<span class="keyword">null</span>, <span class="stringliteral">&quot;ui&quot;</span>);</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;        }</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160; </div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> PlayUISound(<a class="code" href="namespace_barotrauma.html#a3c8c74f41747ab2ebc0292a045d0350e">GUISoundType</a>? soundType)</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;        {</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;            <span class="keywordflow">if</span> (soundType.HasValue)</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;            {</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;                PlayUISound(soundType.Value);</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;            }</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        }</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;    }</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_channel_html"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_channel.html">Barotrauma.Sounds.SoundChannel</a></div><div class="ttdef"><b>Definition:</b> <a href="_sound_channel_8cs_source.html#l00081">SoundChannel.cs:82</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_channel_html_a5ea20c44187b724fa9ad112078edf7f5"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_channel.html#a5ea20c44187b724fa9ad112078edf7f5">Barotrauma.Sounds.SoundChannel.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_channel_8cs_source.html#l00618">SoundChannel.cs:618</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_channel_html_a8ff2e61404772cbf0d71fd423b758116"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_channel.html#a8ff2e61404772cbf0d71fd423b758116">Barotrauma.Sounds.SoundChannel.IsPlaying</a></div><div class="ttdeci">bool IsPlaying</div><div class="ttdef"><b>Definition:</b> <a href="_sound_channel_8cs_source.html#l00451">SoundChannel.cs:452</a></div></div>
@@ -994,7 +995,6 @@ $(document).ready(function(){initNavTree('_sound_player_8cs_source.html',''); in
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_html_aeee45060bd749a3ade9bae490f1c0303"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound.html#aeee45060bd749a3ade9bae490f1c0303">Barotrauma.Sounds.Sound.Play</a></div><div class="ttdeci">virtual SoundChannel Play(float gain, float range, Vector2 position, bool muffle=false)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_8cs_source.html#l00089">Sound.cs:89</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6">Barotrauma.Networking.ReadyCheckState.Update</a></div><div class="ttdeci">@ Update</div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ad2bd88ee885a12024889adafbe8fcc47a0d234e5bcf75c768eb0db6bf96e3c22d"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47a0d234e5bcf75c768eb0db6bf96e3c22d">Barotrauma.Networking.FileTransferType.Submarine</a></div><div class="ttdeci">@ Submarine</div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_sounds_html"><div class="ttname"><a href="namespace_barotrauma_1_1_sounds.html">Barotrauma.Sounds</a></div><div class="ttdef"><b>Definition:</b> <a href="_ogg_sound_8cs_source.html#l00007">OggSound.cs:8</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>

@@ -39,7 +39,6 @@ var class_barotrauma_1_1_enemy_a_i_controller =
     [ "IsBeingChased", "class_barotrauma_1_1_enemy_a_i_controller.html#a20711f63c924c33e01fba7bd760ce75d", null ],
     [ "IsCoolDownRunning", "class_barotrauma_1_1_enemy_a_i_controller.html#a03747db9a6133cca5a6c11354b176b00", null ],
     [ "IsLatchedOnSub", "class_barotrauma_1_1_enemy_a_i_controller.html#a0aa28419242b21fd0b89fec204f1011c", null ],
-    [ "IsTargetingPlayerTeam", "class_barotrauma_1_1_enemy_a_i_controller.html#a42a17432f61591956c1f1e3ff07b4771", null ],
     [ "LatchOntoAI", "class_barotrauma_1_1_enemy_a_i_controller.html#a7a5fa133d0b09cb790d3c774c5e56932", null ],
     [ "PathSteering", "class_barotrauma_1_1_enemy_a_i_controller.html#ae43228f63d47619ff08f6bf5a892c726", null ],
     [ "PetBehavior", "class_barotrauma_1_1_enemy_a_i_controller.html#ac1824007e55bf66512b4e6d6dd67c297", null ],

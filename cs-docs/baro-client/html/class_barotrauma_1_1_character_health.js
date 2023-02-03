@@ -78,5 +78,6 @@ var class_barotrauma_1_1_character_health =
     [ "SuicideButton", "class_barotrauma_1_1_character_health.html#a33f3da2f1c3fa9301b7a90f382c409ef", null ],
     [ "UnmodifiedMaxVitality", "class_barotrauma_1_1_character_health.html#aad3487f5571268b25ef2e1e96c9832af", null ],
     [ "UseHealthWindow", "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9", null ],
-    [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ]
+    [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ],
+    [ "WasInFullHealth", "class_barotrauma_1_1_character_health.html#ad1524ae0d3e23f9eab14e1d8bab60f73", null ]
 ];

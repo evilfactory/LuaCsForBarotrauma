@@ -138,12 +138,12 @@ $(document).ready(function(){initNavTree('_steam_p2_p_server_peer_8cs_source.htm
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = pendingClients.Count - 1; i &gt;= 0; i--)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                RemovePendingClient(pendingClients[i], PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.ServerShutdown));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                RemovePendingClient(pendingClients[i], PeerDisconnectPacket.WithReason(DisconnectReason.ServerShutdown));</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = connectedClients.Count - 1; i &gt;= 0; i--)</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                Disconnect(connectedClients[i], PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.ServerShutdown));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                Disconnect(connectedClients[i], PeerDisconnectPacket.WithReason(DisconnectReason.ServerShutdown));</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            pendingClients.Clear();</div>
@@ -154,7 +154,7 @@ $(document).ready(function(){initNavTree('_steam_p2_p_server_peer_8cs_source.htm
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            callbacks.OnShutdown.Invoke();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6">Update</a>(<span class="keywordtype">float</span> deltaTime)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">float</span> deltaTime)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (!started) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('_steam_p2_p_server_peer_8cs_source.htm
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                conn.Decay(deltaTime);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">if</span> (conn.Timeout &lt; 0.0)</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    Disconnect(conn, PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.Timeout));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    Disconnect(conn, PeerDisconnectPacket.WithReason(DisconnectReason.Timeout));</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
@@ -261,11 +261,11 @@ $(document).ready(function(){initNavTree('_steam_p2_p_server_peer_8cs_source.htm
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <span class="keywordflow">if</span> (pendingClient != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                    {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.Disconnected));</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.Disconnected));</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    }</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (connectedClient != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    {</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        Disconnect(connectedClient, PeerDisconnectPacket.WithReason(<a class="code" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a>.Disconnected));</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        Disconnect(connectedClient, PeerDisconnectPacket.WithReason(DisconnectReason.Disconnected));</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    }</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                }</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (packetHeader.IsHeartbeatMessage())</div>
@@ -433,11 +433,9 @@ $(document).ready(function(){initNavTree('_steam_p2_p_server_peer_8cs_source.htm
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00008">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:9</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a151b0444a254ab1eeeae7ef53da07451"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">Barotrauma.Networking.DisconnectReason</a></div><div class="ttdeci">DisconnectReason</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html#l00135">BarotraumaShared/SharedSource/Networking/NetworkMember.cs:136</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a3861060f411baddb298f4ea43f5e5517"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">Barotrauma.Networking.NetworkConnectionStatus</a></div><div class="ttdeci">NetworkConnectionStatus</div><div class="ttdef"><b>Definition:</b> <a href="_network_connection_8cs_source.html#l00005">NetworkConnection.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a5450fc0e47014b79c93923df43f1840e"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">Barotrauma.Networking.DeliveryMethod</a></div><div class="ttdeci">DeliveryMethod</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00005">NetworkEnums.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a87312a40995de815aa9364726f08c1a9"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">Barotrauma.Networking.PacketHeader</a></div><div class="ttdeci">PacketHeader</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00025">NetworkEnums.cs:26</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6">Barotrauma.Networking.ReadyCheckState.Update</a></div><div class="ttdeci">@ Update</div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ac8969f4f0d6ecca86b366b63123d3390"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">Barotrauma.Networking.ConnectionInitialization</a></div><div class="ttdeci">ConnectionInitialization</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00012">NetworkEnums.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a10b0a8c89aa2b2724a877eefba76ffceaa6122a65eaa676f700ae68d393054a37"><div class="ttname"><a href="namespace_barotrauma.html#a10b0a8c89aa2b2724a877eefba76ffceaa6122a65eaa676f700ae68d393054a37">Barotrauma.CirclePhase.Start</a></div><div class="ttdeci">@ Start</div></div>
 </div><!-- fragment --></div><!-- contents -->

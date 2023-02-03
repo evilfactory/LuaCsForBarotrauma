@@ -3,7 +3,6 @@ var class_barotrauma_1_1_mission =
     [ "Mission", "class_barotrauma_1_1_mission.html#ac8054a03cb176d06b1e9b3b4ed3c79d3", null ],
     [ "AdjustLevelData", "class_barotrauma_1_1_mission.html#a192347c1a36dc31faecb30cb4a51748a", null ],
     [ "ChangeLocationType", "class_barotrauma_1_1_mission.html#a4871ea229d4aae856ccdcdd97ce16617", null ],
-    [ "CreateHuman", "class_barotrauma_1_1_mission.html#a3994697eb263dcbae382358bde0b3588", null ],
     [ "DetermineCompleted", "class_barotrauma_1_1_mission.html#a90cab4e0ddeaaa18b26166e5742c5fae", null ],
     [ "End", "class_barotrauma_1_1_mission.html#afc49a9c0c6916260c7f8deecf5e5d31c", null ],
     [ "EndMissionSpecific", "class_barotrauma_1_1_mission.html#aec61f3ad14bab25ccae7cda174c231c6", null ],

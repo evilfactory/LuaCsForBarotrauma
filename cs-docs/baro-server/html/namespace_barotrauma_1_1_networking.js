@@ -12,7 +12,6 @@ var namespace_barotrauma_1_1_networking =
     [ "IServerPositionSync", "interface_barotrauma_1_1_networking_1_1_i_server_position_sync.html", "interface_barotrauma_1_1_networking_1_1_i_server_position_sync" ],
     [ "NetEntityEvent", "class_barotrauma_1_1_networking_1_1_net_entity_event.html", "class_barotrauma_1_1_networking_1_1_net_entity_event" ],
     [ "NetEntityEventManager", "class_barotrauma_1_1_networking_1_1_net_entity_event_manager.html", "class_barotrauma_1_1_networking_1_1_net_entity_event_manager" ],
-    [ "NetworkMember", "class_barotrauma_1_1_networking_1_1_network_member.html", "class_barotrauma_1_1_networking_1_1_network_member" ],
     [ "OrderChatMessage", "class_barotrauma_1_1_networking_1_1_order_chat_message.html", "class_barotrauma_1_1_networking_1_1_order_chat_message" ],
     [ "AccountId", "class_barotrauma_1_1_networking_1_1_account_id.html", "class_barotrauma_1_1_networking_1_1_account_id" ],
     [ "SteamId", "class_barotrauma_1_1_networking_1_1_steam_id.html", "class_barotrauma_1_1_networking_1_1_steam_id" ],
@@ -44,6 +43,7 @@ var namespace_barotrauma_1_1_networking =
     [ "PreviousPlayer", "class_barotrauma_1_1_networking_1_1_previous_player.html", "class_barotrauma_1_1_networking_1_1_previous_player" ],
     [ "ServerEntityEvent", "class_barotrauma_1_1_networking_1_1_server_entity_event.html", "class_barotrauma_1_1_networking_1_1_server_entity_event" ],
     [ "ServerEntityEventManager", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html", "class_barotrauma_1_1_networking_1_1_server_entity_event_manager" ],
+    [ "NetworkMember", "class_barotrauma_1_1_networking_1_1_network_member.html", "class_barotrauma_1_1_networking_1_1_network_member" ],
     [ "VoipServer", "class_barotrauma_1_1_networking_1_1_voip_server.html", "class_barotrauma_1_1_networking_1_1_voip_server" ],
     [ "BotSpawnMode", "namespace_barotrauma_1_1_networking.html#a8a3fcc48a853aa0964e622a40fd01ab4", [
       [ "Normal", "namespace_barotrauma_1_1_networking.html#a8a3fcc48a853aa0964e622a40fd01ab4a960b44c579bc2f6818d2daaf9e4c16f0", null ],
@@ -131,28 +131,6 @@ var namespace_barotrauma_1_1_networking =
       [ "Reliable", "namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840ea84fcf5d37086f2a93953734ce8f385b6", null ],
       [ "ReliableOrdered", "namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840ea8825768e3616ff95776145393ffe6342", null ]
     ] ],
-    [ "DisconnectReason", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451", [
-      [ "Unknown", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a88183b946cc5f0e8c96b2e66e1c74a7e", null ],
-      [ "Disconnected", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aef70e46fd3bbc21e3e1f0b6815e750c0", null ],
-      [ "Banned", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aa6f2b2df29609876b609c318bdbdf9a1", null ],
-      [ "Kicked", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451ab795b32b5ff2af716e8c5953cb7dcc37", null ],
-      [ "ServerShutdown", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a2d77772327b4c2ebe1129c904e46bccc", null ],
-      [ "ServerCrashed", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a2ed7d0fc4ee5fdb05e3b677ae668d0cd", null ],
-      [ "ServerFull", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a5b097d4dfbac5b83d53b30a249f7de90", null ],
-      [ "AuthenticationRequired", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a1dd42c9ca5eaa052950053ee8e47fa2f", null ],
-      [ "SteamAuthenticationFailed", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451af445039395e18cf8652f065859f0958d", null ],
-      [ "SessionTaken", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a1b6c2f403ee3166e86ed9640132b5508", null ],
-      [ "TooManyFailedLogins", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a4ae2f0a558161689f76eb38a986b713f", null ],
-      [ "InvalidName", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aa798c6c805d93fedf99d9bdf443e7ffc", null ],
-      [ "NameTaken", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a822864b497e9ee1932b955fd9fab99f3", null ],
-      [ "InvalidVersion", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a47ff03d2239a69112904305444be2fc0", null ],
-      [ "SteamP2PError", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a3036ff40240f77aba92311aea34f535d", null ],
-      [ "Timeout", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451ac85a251cc457840f1e032f1b733e9398", null ],
-      [ "ExcessiveDesyncOldEvent", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451afb1c3fb45a32314f49016c041968ae50", null ],
-      [ "ExcessiveDesyncRemovedEvent", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aab648739a0db1b33e9a377f6cab52fc7", null ],
-      [ "SyncTimeout", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aab342a30ef78248a3c80b9322b98a4ff", null ],
-      [ "SteamP2PTimeOut", "namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a739fe5ae168c855d64fe8fa22a468b07", null ]
-    ] ],
     [ "FileTransferMessageType", "namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007d", [
       [ "Unknown", "namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007da88183b946cc5f0e8c96b2e66e1c74a7e", null ],
       [ "Initiate", "namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007da88167bfb453911e2256aa20e7b231d69", null ],
@@ -203,11 +181,6 @@ var namespace_barotrauma_1_1_networking =
       [ "Rampage", "namespace_barotrauma_1_1_networking.html#adc7b11b6276326403bf29bfab44f8f87aa9744fc5b0ca952b17ef07c0aa99602e", null ],
       [ "SomethingDifferent", "namespace_barotrauma_1_1_networking.html#adc7b11b6276326403bf29bfab44f8f87a63ef1c2eba59927483c20f0a72953a8a", null ]
     ] ],
-    [ "ReadyCheckState", "namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106", [
-      [ "Start", "namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106aa6122a65eaa676f700ae68d393054a37", null ],
-      [ "Update", "namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6", null ],
-      [ "End", "namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a87557f11575c0ad78e4e28abedc13b6e", null ]
-    ] ],
     [ "SelectionMode", "namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cf", [
       [ "Manual", "namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfae1ba155a9f2e8c3be94020eef32a0301", null ],
       [ "Random", "namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23", null ],
@@ -247,24 +220,6 @@ var namespace_barotrauma_1_1_networking =
       [ "MONEY", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a2bc794c2d9a28e52d1dd66d95e37d485", null ],
       [ "READY_CHECK", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74ae452988c2f0dfdc5574fd7e5fbb433fd", null ],
       [ "LUA_NET_MESSAGE", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a70e25c688902e77aa85b0d915b6aa451", null ]
-    ] ],
-    [ "TraitorMessageType", "namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8", [
-      [ "Server", "namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8a9aa1b03934893d7134a660af4204f2a9", null ],
-      [ "ServerMessageBox", "namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8af56c0d9dcb70e1af0bc65b03fe1b0f22", null ],
-      [ "Objective", "namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8a40b796b77b40775e1361ce398a9a783c", null ],
-      [ "Console", "namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8abccaa4aa80831b76c11240a16447975f", null ]
-    ] ],
-    [ "VoteType", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacb", [
-      [ "Unknown", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba88183b946cc5f0e8c96b2e66e1c74a7e", null ],
-      [ "Sub", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbae80155eceb940c89e2de63ad05868db2", null ],
-      [ "Mode", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba650be61892bf690026089544abbd9d26", null ],
-      [ "EndRound", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbab58045f31cc450059ba224e43fc4c5e9", null ],
-      [ "Kick", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba3e07960fcc45408894cf1402257bd9fd", null ],
-      [ "StartRound", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbae50c839d315885ce36d6304d03a3d33e", null ],
-      [ "PurchaseAndSwitchSub", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbab49db8c4613b5ba87ef60746970ccb27", null ],
-      [ "PurchaseSub", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba2dbdcf4ed70cc63fc3b9ebc202887503", null ],
-      [ "SwitchSub", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba456ac4989c6bb8c3463aabe7a23cfe96", null ],
-      [ "TransferMoney", "namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba7a3684b82b3c5f0e9f0aef1f7f04dd2b", null ]
     ] ],
     [ "YesNoMaybe", "namespace_barotrauma_1_1_networking.html#a3ef328d1d4d65b890e767ab99336c950", [
       [ "No", "namespace_barotrauma_1_1_networking.html#a3ef328d1d4d65b890e767ab99336c950abafd7322c6e97d25b6299b5d6fe8920b", null ],

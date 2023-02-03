@@ -4,6 +4,7 @@ var class_barotrauma_1_1_character_info =
     [ "HeadPreset", "class_barotrauma_1_1_character_info_1_1_head_preset.html", "class_barotrauma_1_1_character_info_1_1_head_preset" ],
     [ "CharacterInfo", "class_barotrauma_1_1_character_info.html#a240f63f80b337432836b72e39fdcb06d", null ],
     [ "CharacterInfo", "class_barotrauma_1_1_character_info.html#a4530b625ea3fe9fb7a4ff686ffa78eec", null ],
+    [ "ApplyDeathEffects", "class_barotrauma_1_1_character_info.html#a8ffad3c8e6f16513c26da7e2afb9ed97", null ],
     [ "ApplyOrderData", "class_barotrauma_1_1_character_info.html#adc6e7142b0f10650e1fde26c06c91a8d", null ],
     [ "ChangeSavedStatValue", "class_barotrauma_1_1_character_info.html#a680c0fe1d18e1b0c95241f97e268f38c", null ],
     [ "CheckColors", "class_barotrauma_1_1_character_info.html#ae7641e4b77b5938d6269923eade90f63", null ],

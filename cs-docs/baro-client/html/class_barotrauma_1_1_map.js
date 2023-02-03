@@ -17,6 +17,7 @@ var class_barotrauma_1_1_map =
     [ "MoveToNextLocation", "class_barotrauma_1_1_map.html#acb20841e7d68d0b124b0d99da5b29fab", null ],
     [ "ProgressWorld", "class_barotrauma_1_1_map.html#a17d74dc4ad99d23fdff3adbbbe147b81", null ],
     [ "Remove", "class_barotrauma_1_1_map.html#a58b0e26757345cc26be8c8a182371f58", null ],
+    [ "ResetPendingSub", "class_barotrauma_1_1_map.html#afb6f0d690fe674afa2d8968892951566", null ],
     [ "Save", "class_barotrauma_1_1_map.html#ab7ea84977d9d5366ae44371a57419a82", null ],
     [ "SelectLocation", "class_barotrauma_1_1_map.html#aebdb7e87769465c53d5f8fafccd29ee1", null ],
     [ "SelectLocation", "class_barotrauma_1_1_map.html#a7be8d606a38365c6fae537424e7106f7", null ],

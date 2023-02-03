@@ -65,7 +65,7 @@ var class_barotrauma_1_1_character_params =
     [ "SonarDisruption", "class_barotrauma_1_1_character_params.html#abd7088456445484f8671416db362654e", null ],
     [ "SoundInterval", "class_barotrauma_1_1_character_params.html#a85e91fb3f11cd13b71c299056622afb9", null ],
     [ "SpeciesName", "class_barotrauma_1_1_character_params.html#aeedd4d46c4e85fa18ce9610dd1563ed5", null ],
-    [ "SpeciesTranslationOverride", "class_barotrauma_1_1_character_params.html#a6e50ab0a58bcc4e7d4382e01a847822f", null ],
+    [ "SpeciesTranslationOverride", "class_barotrauma_1_1_character_params.html#af076d2ca0127a62b440a2a2bee4cb5b5", null ],
     [ "UseBossHealthBar", "class_barotrauma_1_1_character_params.html#a0be3a52f8754b37f7ac5af665573ef28", null ],
     [ "UseHuskAppendage", "class_barotrauma_1_1_character_params.html#af7f63992d4d90705af41d59d9907e185", null ],
     [ "UsePathFinding", "class_barotrauma_1_1_character_params.html#adb5718967c2f03ec16b1a1695491079d", null ],

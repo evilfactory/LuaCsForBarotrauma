@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_lights_1_1_light_manager =
 [
-    [ "LightManager", "class_barotrauma_1_1_lights_1_1_light_manager.html#aea65b5e2f36e0caada4e02bd3909596f", null ],
+    [ "LightManager", "class_barotrauma_1_1_lights_1_1_light_manager.html#a3d24970e28a2b236e220c34dc36dfc86", null ],
     [ "AddLight", "class_barotrauma_1_1_lights_1_1_light_manager.html#ab63f4c3edf29c3cbbb86b3a9f6be58fa", null ],
     [ "ClearLights", "class_barotrauma_1_1_lights_1_1_light_manager.html#a018e7834d80350be218e0f5af4af285d", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_lights_1_1_light_manager.html#aecfd4a4882b83e12d7622e5572267adb", null ],

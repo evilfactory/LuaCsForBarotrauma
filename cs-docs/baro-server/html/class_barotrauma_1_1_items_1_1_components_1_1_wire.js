@@ -1,5 +1,6 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_wire =
 [
+    [ "WireSection", "class_barotrauma_1_1_items_1_1_components_1_1_wire_1_1_wire_section.html", "class_barotrauma_1_1_items_1_1_components_1_1_wire_1_1_wire_section" ],
     [ "Wire", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a1e4a4a68d1ca914a01025506a9d597f8", null ],
     [ "ClearConnections", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#aa424f56254569888ee9625cf39180e45", null ],
     [ "Connect", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a9138bb7eef9ec95a597c6380f5d6aea0", null ],

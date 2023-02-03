@@ -150,13 +150,13 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_l
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">catch</span> (UnauthorizedAccessException e)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                GameMain.LuaCs.PrintError(<span class="stringliteral">&quot;You seem to already have Client Side Lua installed, if you are trying to reinstall, make sure uninstall it first (mainmenu button located top left).&quot;</span>, LuaCsMessageOrigin.LuaCs);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                LuaCsLogger.LogError(<span class="stringliteral">&quot;You seem to already have Client Side Lua installed, if you are trying to reinstall, make sure uninstall it first (mainmenu button located top left).&quot;</span>, LuaCsMessageOrigin.LuaCs);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                GameMain.LuaCs.HandleException(e, LuaCsMessageOrigin.LuaCs);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                LuaCsLogger.HandleException(e, LuaCsMessageOrigin.LuaCs);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>

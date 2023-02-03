@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_submarine =
 [
-    [ "Submarine", "class_barotrauma_1_1_submarine.html#a39aed81c47f9ebf0480f03d30044915b", null ],
+    [ "Submarine", "class_barotrauma_1_1_submarine.html#a236709c35bb3893c38eb79c8d9983044", null ],
     [ "ApplyForce", "class_barotrauma_1_1_submarine.html#ab920e3150618f54d419d0c49a997f2c4", null ],
     [ "AttemptBallastFloraInfection", "class_barotrauma_1_1_submarine.html#aa39258f432f590fe4ec49c4f0d08bc8e", null ],
     [ "CalculateBasePrice", "class_barotrauma_1_1_submarine.html#a6f5bd643a8e5d18de3d33dea0cb3db93", null ],
@@ -35,7 +35,7 @@ var class_barotrauma_1_1_submarine =
     [ "Remove", "class_barotrauma_1_1_submarine.html#a6e6d216db23ee60c6de463641ccea89c", null ],
     [ "SaveToXElement", "class_barotrauma_1_1_submarine.html#a343f983f3ae98e932705c1758774c56b", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_submarine.html#a729dc94e8d3b4d13c57eefaac9ea6889", null ],
-    [ "ServerWritePosition", "class_barotrauma_1_1_submarine.html#ae28e0d09817bedd9767c02adbe8ed6ff", null ],
+    [ "ServerWritePosition", "class_barotrauma_1_1_submarine.html#acad9e06367c4e290de454cfd0c0993a0", null ],
     [ "SetPosition", "class_barotrauma_1_1_submarine.html#af0a7e1d3bcd56963aea4068b45992282", null ],
     [ "SetPrevTransform", "class_barotrauma_1_1_submarine.html#a08345419961cd5db03d4d57f07bc435d", null ],
     [ "ToString", "class_barotrauma_1_1_submarine.html#a31302862a54e5feb5024309ca43f8912", null ],

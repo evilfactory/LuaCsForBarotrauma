@@ -126,8 +126,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>NetIdUtils</b></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for dealing with 16-bit IDs that wrap around ushort.MaxValue <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">NetworkMember</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_order_chat_message.html">OrderChatMessage</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_account_id.html">AccountId</a></td></tr>
@@ -230,6 +228,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_entity_event.html">ServerEntityEvent</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_server_entity_event_manager.html">ServerEntityEventManager</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_network_member.html">NetworkMember</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>LidgrenServerPeer</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -412,61 +412,6 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a2e26c11f80847a4050702cd06deb0764"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad481a5ed97cbe742340a591b92f4a2f8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8">TraitorMessageType</a> { <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8a9aa1b03934893d7134a660af4204f2a9">Server</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8af56c0d9dcb70e1af0bc65b03fe1b0f22">ServerMessageBox</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8a40b796b77b40775e1361ce398a9a783c">Objective</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8abccaa4aa80831b76c11240a16447975f">Console</a>
- }</td></tr>
-<tr class="separator:ad481a5ed97cbe742340a591b92f4a2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88ef4de8956728df13cee05efff6aacb"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacb">VoteType</a> { <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbae80155eceb940c89e2de63ad05868db2">Sub</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba650be61892bf690026089544abbd9d26">Mode</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbab58045f31cc450059ba224e43fc4c5e9">EndRound</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba3e07960fcc45408894cf1402257bd9fd">Kick</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbae50c839d315885ce36d6304d03a3d33e">StartRound</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacbab49db8c4613b5ba87ef60746970ccb27">PurchaseAndSwitchSub</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba2dbdcf4ed70cc63fc3b9ebc202887503">PurchaseSub</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba456ac4989c6bb8c3463aabe7a23cfe96">SwitchSub</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacba7a3684b82b3c5f0e9f0aef1f7f04dd2b">TransferMoney</a>
-<br />
- }</td></tr>
-<tr class="separator:a88ef4de8956728df13cee05efff6aacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab178a93493dbc0c241d496d10fc07106"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106">ReadyCheckState</a> { <a class="el" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106aa6122a65eaa676f700ae68d393054a37">Start</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6">Update</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106a87557f11575c0ad78e4e28abedc13b6e">End</a>
- }</td></tr>
-<tr class="separator:ab178a93493dbc0c241d496d10fc07106"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a151b0444a254ab1eeeae7ef53da07451"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">DisconnectReason</a> { <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aef70e46fd3bbc21e3e1f0b6815e750c0">Disconnected</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aa6f2b2df29609876b609c318bdbdf9a1">Banned</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451ab795b32b5ff2af716e8c5953cb7dcc37">Kicked</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a2d77772327b4c2ebe1129c904e46bccc">ServerShutdown</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a2ed7d0fc4ee5fdb05e3b677ae668d0cd">ServerCrashed</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a5b097d4dfbac5b83d53b30a249f7de90">ServerFull</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a1dd42c9ca5eaa052950053ee8e47fa2f">AuthenticationRequired</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451af445039395e18cf8652f065859f0958d">SteamAuthenticationFailed</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a1b6c2f403ee3166e86ed9640132b5508">SessionTaken</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a4ae2f0a558161689f76eb38a986b713f">TooManyFailedLogins</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aa798c6c805d93fedf99d9bdf443e7ffc">InvalidName</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a822864b497e9ee1932b955fd9fab99f3">NameTaken</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a47ff03d2239a69112904305444be2fc0">InvalidVersion</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a3036ff40240f77aba92311aea34f535d">SteamP2PError</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451ac85a251cc457840f1e032f1b733e9398">Timeout</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451afb1c3fb45a32314f49016c041968ae50">ExcessiveDesyncOldEvent</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aab648739a0db1b33e9a377f6cab52fc7">ExcessiveDesyncRemovedEvent</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451aab342a30ef78248a3c80b9322b98a4ff">SyncTimeout</a>
-, <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451a739fe5ae168c855d64fe8fa22a468b07">SteamP2PTimeOut</a>
-<br />
- }</td></tr>
-<tr class="separator:a151b0444a254ab1eeeae7ef53da07451"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3861060f411baddb298f4ea43f5e5517"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">NetworkConnectionStatus</a> { <a class="el" href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517a2ec0d16e4ca169baedb9b2d50ec5c6d7">Connected</a> = 0x1
 , <a class="el" href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517aef70e46fd3bbc21e3e1f0b6815e750c0">Disconnected</a> = 0x2
  }</td></tr>
@@ -801,52 +746,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a151b0444a254ab1eeeae7ef53da07451"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a151b0444a254ab1eeeae7ef53da07451">&#9670;&nbsp;</a></span>DisconnectReason</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#a151b0444a254ab1eeeae7ef53da07451">Barotrauma.Networking.DisconnectReason</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451aef70e46fd3bbc21e3e1f0b6815e750c0"></a>Disconnected&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451aa6f2b2df29609876b609c318bdbdf9a1"></a>Banned&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451ab795b32b5ff2af716e8c5953cb7dcc37"></a>Kicked&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a2d77772327b4c2ebe1129c904e46bccc"></a>ServerShutdown&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a2ed7d0fc4ee5fdb05e3b677ae668d0cd"></a>ServerCrashed&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a5b097d4dfbac5b83d53b30a249f7de90"></a>ServerFull&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a1dd42c9ca5eaa052950053ee8e47fa2f"></a>AuthenticationRequired&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451af445039395e18cf8652f065859f0958d"></a>SteamAuthenticationFailed&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a1b6c2f403ee3166e86ed9640132b5508"></a>SessionTaken&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a4ae2f0a558161689f76eb38a986b713f"></a>TooManyFailedLogins&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451aa798c6c805d93fedf99d9bdf443e7ffc"></a>InvalidName&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a822864b497e9ee1932b955fd9fab99f3"></a>NameTaken&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a47ff03d2239a69112904305444be2fc0"></a>InvalidVersion&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a3036ff40240f77aba92311aea34f535d"></a>SteamP2PError&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451ac85a251cc457840f1e032f1b733e9398"></a>Timeout&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451afb1c3fb45a32314f49016c041968ae50"></a>ExcessiveDesyncOldEvent&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451aab648739a0db1b33e9a377f6cab52fc7"></a>ExcessiveDesyncRemovedEvent&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451aab342a30ef78248a3c80b9322b98a4ff"></a>SyncTimeout&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a151b0444a254ab1eeeae7ef53da07451a739fe5ae168c855d64fe8fa22a468b07"></a>SteamP2PTimeOut&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html#l00135">135</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html">BarotraumaShared/SharedSource/Networking/NetworkMember.cs</a>.</p>
-
-</div>
-</div>
 <a id="a7818e152967077460aff6ebeea51007d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7818e152967077460aff6ebeea51007d">&#9670;&nbsp;</a></span>FileTransferMessageType</h2>
 
@@ -1061,35 +960,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="ab178a93493dbc0c241d496d10fc07106"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab178a93493dbc0c241d496d10fc07106">&#9670;&nbsp;</a></span>ReadyCheckState</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#ab178a93493dbc0c241d496d10fc07106">Barotrauma.Networking.ReadyCheckState</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab178a93493dbc0c241d496d10fc07106aa6122a65eaa676f700ae68d393054a37"></a>Start&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab178a93493dbc0c241d496d10fc07106a06933067aafd48425d67bcb01bba5cb6"></a>Update&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ab178a93493dbc0c241d496d10fc07106a87557f11575c0ad78e4e28abedc13b6e"></a>End&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html#l00128">128</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html">BarotraumaShared/SharedSource/Networking/NetworkMember.cs</a>.</p>
-
-</div>
-</div>
 <a id="adea51409ea4734f038f6c91bdcc2c4cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adea51409ea4734f038f6c91bdcc2c4cf">&#9670;&nbsp;</a></span>SelectionMode</h2>
 
@@ -1199,72 +1069,6 @@ Enumerations</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html#l00060">60</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html">BarotraumaShared/SharedSource/Networking/NetworkMember.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad481a5ed97cbe742340a591b92f4a2f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad481a5ed97cbe742340a591b92f4a2f8">&#9670;&nbsp;</a></span>TraitorMessageType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#ad481a5ed97cbe742340a591b92f4a2f8">Barotrauma.Networking.TraitorMessageType</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad481a5ed97cbe742340a591b92f4a2f8a9aa1b03934893d7134a660af4204f2a9"></a>Server&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad481a5ed97cbe742340a591b92f4a2f8af56c0d9dcb70e1af0bc65b03fe1b0f22"></a>ServerMessageBox&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad481a5ed97cbe742340a591b92f4a2f8a40b796b77b40775e1361ce398a9a783c"></a>Objective&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad481a5ed97cbe742340a591b92f4a2f8abccaa4aa80831b76c11240a16447975f"></a>Console&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html#l00106">106</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html">BarotraumaShared/SharedSource/Networking/NetworkMember.cs</a>.</p>
-
-</div>
-</div>
-<a id="a88ef4de8956728df13cee05efff6aacb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88ef4de8956728df13cee05efff6aacb">&#9670;&nbsp;</a></span>VoteType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespace_barotrauma_1_1_networking.html#a88ef4de8956728df13cee05efff6aacb">Barotrauma.Networking.VoteType</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacbae80155eceb940c89e2de63ad05868db2"></a>Sub&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba650be61892bf690026089544abbd9d26"></a>Mode&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacbab58045f31cc450059ba224e43fc4c5e9"></a>EndRound&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba3e07960fcc45408894cf1402257bd9fd"></a>Kick&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacbae50c839d315885ce36d6304d03a3d33e"></a>StartRound&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacbab49db8c4613b5ba87ef60746970ccb27"></a>PurchaseAndSwitchSub&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba2dbdcf4ed70cc63fc3b9ebc202887503"></a>PurchaseSub&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba456ac4989c6bb8c3463aabe7a23cfe96"></a>SwitchSub&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a88ef4de8956728df13cee05efff6aacba7a3684b82b3c5f0e9f0aef1f7f04dd2b"></a>TransferMoney&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html#l00114">114</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_network_member_8cs_source.html">BarotraumaShared/SharedSource/Networking/NetworkMember.cs</a>.</p>
 
 </div>
 </div>

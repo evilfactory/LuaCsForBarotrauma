@@ -5,7 +5,6 @@ var class_barotrauma_1_1_mission =
     [ "ChangeLocationType", "class_barotrauma_1_1_mission.html#a4871ea229d4aae856ccdcdd97ce16617", null ],
     [ "ClientRead", "class_barotrauma_1_1_mission.html#a589fbebc437ec1e5c276fda23d6314d1", null ],
     [ "ClientReadInitial", "class_barotrauma_1_1_mission.html#a37eb4a8955d94a40c2d41529fbff8201", null ],
-    [ "CreateHuman", "class_barotrauma_1_1_mission.html#a3994697eb263dcbae382358bde0b3588", null ],
     [ "CreateMessageBox", "class_barotrauma_1_1_mission.html#a27d657e4cacacec2d8de5d4db97859c3", null ],
     [ "DetermineCompleted", "class_barotrauma_1_1_mission.html#a90cab4e0ddeaaa18b26166e5742c5fae", null ],
     [ "End", "class_barotrauma_1_1_mission.html#afc49a9c0c6916260c7f8deecf5e5d31c", null ],

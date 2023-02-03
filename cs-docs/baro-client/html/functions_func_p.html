@@ -111,6 +111,8 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a08e50f627df48da4ebdd1bfc8466e723">Barotrauma.Networking.SteamId</a>
 , <a class="el" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_address.html#aa5ccdfab74ce3a16b6038e8307c037bc">Barotrauma.Networking.SteamP2PAddress</a>
 , <a class="el" href="class_barotrauma_1_1_networking_1_1_steam_p2_p_endpoint.html#a1bc6d9d43ef40ed7228f4711fcc594ce">Barotrauma.Networking.SteamP2PEndpoint</a>
+, <a class="el" href="struct_barotrauma_1_1_serializable_date_time.html#ae47e5a1b273263cad0d26a6af5722a56">Barotrauma.SerializableDateTime</a>
+, <a class="el" href="struct_barotrauma_1_1_serializable_time_zone.html#a94b8744a99adc37627889ceeefc911bf">Barotrauma.SerializableTimeZone</a>
 , <a class="el" href="class_barotrauma_1_1_steam_dedicated_server_provider_1_1_data_source.html#a2575d10b407e33cfd84bc0142537ebed">Barotrauma.SteamDedicatedServerProvider.DataSource</a>
 , <a class="el" href="class_barotrauma_1_1_steam_workshop_id.html#adadcefb132c5b782fc45bcaab0e33197">Barotrauma.SteamWorkshopId</a>
 </li>
@@ -173,9 +175,6 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 <li>ParseTexturePath()
 : <a class="el" href="class_barotrauma_1_1_sprite.html#a82f9787607a501c18709c6cd02c2de6e">Barotrauma.Sprite</a>
 </li>
-<li>ParseUpgrades()
-: <a class="el" href="class_barotrauma_1_1_submarine_preview.html#ac6207fee1a72d6e1e4f79bcb0d90bc48">Barotrauma.SubmarinePreview</a>
-</li>
 <li>ParticleEditorScreen()
 : <a class="el" href="class_barotrauma_1_1_particle_editor_screen.html#a0906c7bfcd62b1f6d9368040b809b650">Barotrauma.ParticleEditorScreen</a>
 </li>
@@ -229,6 +228,9 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 </li>
 <li>PendingSplashScreen()
 : <a class="el" href="struct_barotrauma_1_1_loading_screen_1_1_pending_splash_screen.html#a3fbba54938f56fb66d747ceda6cd7e58">Barotrauma.LoadingScreen.PendingSplashScreen</a>
+</li>
+<li>PendingSubInfo()
+: <a class="el" href="class_barotrauma_1_1_submarine_info.html#a5ce54fa80125f32a4dd11d9de0f9de2d">Barotrauma.SubmarineInfo</a>
 </li>
 <li>Percentage()
 : <a class="el" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html#ae953772896ebda158bf997cb8e65d8e1">Barotrauma.Steam.WorkshopMenu</a>
@@ -295,7 +297,7 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 <li>Play()
 : <a class="el" href="class_barotrauma_1_1_media_1_1_video.html#aab76cbef00587426caa0d395aaa67b5b">Barotrauma.Media.Video</a>
 , <a class="el" href="class_barotrauma_1_1_pet_behavior.html#a5ede480ec32bae24da9667fb40ce34bc">Barotrauma.PetBehavior</a>
-, <a class="el" href="class_barotrauma_1_1_sounds_1_1_sound.html#aeee45060bd749a3ade9bae490f1c0303">Barotrauma.Sounds.Sound</a>
+, <a class="el" href="class_barotrauma_1_1_sounds_1_1_sound.html#a23387df405451a92c6be815fc67d9b68">Barotrauma.Sounds.Sound</a>
 , <a class="el" href="class_barotrauma_1_1_sounds_1_1_video_sound.html#a5e21255b2f2df68f77115764555686b9">Barotrauma.Sounds.VideoSound</a>
 , <a class="el" href="class_barotrauma_1_1_sounds_1_1_voip_sound.html#ad685f877cfb2f4026d73e87443409161">Barotrauma.Sounds.VoipSound</a>
 , <a class="el" href="class_barotrauma_1_1_video_player.html#a507e5b30c6a61b9088739866a1e06a40">Barotrauma.VideoPlayer</a>
@@ -350,7 +352,7 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_prefab.html#ad557f11f8b31b22fcb568b38f8c5e808">Barotrauma.Prefab</a>
 </li>
 <li>PrefabCollection()
-: <a class="el" href="class_barotrauma_1_1_prefab_collection.html#a8f452a372eb66bd108361be8c138d189">Barotrauma.PrefabCollection&lt; T &gt;</a>
+: <a class="el" href="class_barotrauma_1_1_prefab_collection.html#adc5be233d609d4cdda67cc00f63426a4">Barotrauma.PrefabCollection&lt; T &gt;</a>
 </li>
 <li>PrefabWithUintIdentifier()
 : <a class="el" href="class_barotrauma_1_1_prefab_with_uint_identifier.html#a7d09f3b4197d5b096600a4f00b8076fe">Barotrauma.PrefabWithUintIdentifier</a>
@@ -393,22 +395,19 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_player_input.html#a7320ea6dfb53bcfe1456fca7e360dad3">Barotrauma.PlayerInput</a>
 </li>
 <li>PrintCsError()
-: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a7e7bb403b804c799b4e8151039893793">Barotrauma.LuaCsSetup</a>
+: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#afe2413fe6c76ec300425d4f54408c5e8">Barotrauma.LuaCsSetup</a>
 </li>
 <li>PrintCsMessage()
 : <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a338a2a25fe4b94f43109f709cc641000">Barotrauma.LuaCsSetup</a>
 </li>
-<li>PrintError()
-: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a2fbaf24af195d47fc1464528792494e7">Barotrauma.LuaCsSetup</a>
-</li>
 <li>PrintGenericError()
-: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a671fab4b79129aabfd9c827c74d3cc90">Barotrauma.LuaCsSetup</a>
+: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a9ac9674bf98c944ddebdc40e12e2aa2a">Barotrauma.LuaCsSetup</a>
 </li>
 <li>PrintLuaError()
-: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a0006ed6ad9e663b43d5e982ff8d9646a">Barotrauma.LuaCsSetup</a>
+: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#af5565b754516d21a8ebf17fc1e50bf17">Barotrauma.LuaCsSetup</a>
 </li>
 <li>Process()
-: <a class="el" href="class_barotrauma_1_1_sounds_1_1_bi_quad.html#a5ec9e7a572b2353398837a3b1758efa7">Barotrauma.Sounds.BiQuad</a>
+: <a class="el" href="class_barotrauma_1_1_sounds_1_1_bi_quad.html#a1ccce095fb8680e0786fd426876ffcba">Barotrauma.Sounds.BiQuad</a>
 </li>
 <li>ProcessContext()
 : <a class="el" href="class_open_a_l_1_1_alc.html#af5bff087b29d11b6fc0e08c2aaf400d4">OpenAL.Alc</a>

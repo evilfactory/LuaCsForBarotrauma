@@ -38,6 +38,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_projectile =
     [ "StickTarget", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#ad08b2b1c6be289316a573ff696ecf8cd", null ],
     [ "StickToCharacters", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#adab52c6251fae0687c7fb4fcddcf77d6", null ],
     [ "StickToDeflective", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a117d4511fae15b39e1bb36ded0442ac9", null ],
+    [ "StickToDoors", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#ae59985473e7ae537111684cdadcef351", null ],
     [ "StickToItems", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a75319834f4e5124f0f87235643f9c691", null ],
     [ "StickToLightTargets", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#afcf753594dbbf56c947b48953197d878", null ],
     [ "StickToStructures", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#aa3a92dfcb893feecb1ab1534f340ac8b", null ],

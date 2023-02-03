@@ -1,6 +1,5 @@
 var class_barotrauma_1_1_campaign_mode =
 [
-    [ "SaveInfo", "struct_barotrauma_1_1_campaign_mode_1_1_save_info.html", "struct_barotrauma_1_1_campaign_mode_1_1_save_info" ],
     [ "InteractionType", "class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efe", [
       [ "None", "class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efea6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "Talk", "class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efead7663fa42334fe2bdff69b245bf44c7e", null ],

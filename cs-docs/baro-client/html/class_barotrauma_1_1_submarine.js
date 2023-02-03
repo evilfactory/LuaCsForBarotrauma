@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_submarine =
 [
-    [ "Submarine", "class_barotrauma_1_1_submarine.html#a39aed81c47f9ebf0480f03d30044915b", null ],
+    [ "Submarine", "class_barotrauma_1_1_submarine.html#a236709c35bb3893c38eb79c8d9983044", null ],
     [ "ApplyForce", "class_barotrauma_1_1_submarine.html#ab920e3150618f54d419d0c49a997f2c4", null ],
     [ "AttemptBallastFloraInfection", "class_barotrauma_1_1_submarine.html#aa39258f432f590fe4ec49c4f0d08bc8e", null ],
     [ "CalculateBasePrice", "class_barotrauma_1_1_submarine.html#a6f5bd643a8e5d18de3d33dea0cb3db93", null ],

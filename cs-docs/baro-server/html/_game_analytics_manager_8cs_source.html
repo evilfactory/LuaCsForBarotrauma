@@ -456,7 +456,7 @@ $(document).ready(function(){initNavTree('_game_analytics_manager_8cs_source.htm
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <span class="keywordflow">if</span> (!SendUserStatistics) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">if</span> (sentEventIdentifiers.Contains(identifier)) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">if</span> (GameMain.VanillaContent == <span class="keyword">null</span> || ContentPackageManager.EnabledPackages.All.Any(p =&gt; p.HasMultiplayerSyncedContent &amp;&amp; p != GameMain.VanillaContent))</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">if</span> (ContentPackageManager.ModsEnabled)</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            {</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                message = <span class="stringliteral">&quot;[MODDED] &quot;</span> + message;</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            }</div>

@@ -116,6 +116,7 @@ var NAVTREEINDEX2 =
 "class_barotrauma_1_1_a_i_objective_prepare.html#a9ad4a61089f0a8046223ebc279c3fd23":[4,0,0,42,14],
 "class_barotrauma_1_1_a_i_objective_prepare.html#abe634901c5a3ded11e7d181381590b77":[4,0,0,42,10],
 "class_barotrauma_1_1_a_i_objective_prepare.html#abea59219989235cafd9dfc23f9a301f9":[4,0,0,42,11],
+"class_barotrauma_1_1_a_i_objective_prepare.html#adc74b5c137a3c65304837543a569198c":[4,0,0,42,16],
 "class_barotrauma_1_1_a_i_objective_prepare.html#ae4bb214880422a7b72a9c88b02610a0d":[4,0,0,42,0],
 "class_barotrauma_1_1_a_i_objective_prepare.html#aedc2731a212551d1e05cf71370149db8":[4,0,0,42,9],
 "class_barotrauma_1_1_a_i_objective_prepare.html#af8b44199f4ee254e125fd2e9b7187952":[4,0,0,42,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "class_barotrauma_1_1_a_i_trigger.html#aea99ad72a80482ad2da6ea937239d039":[4,0,0,420,3],
 "class_barotrauma_1_1_a_i_trigger.html#aeac2c2f5575cc5de43e6fd70b156059d":[4,0,0,420,12],
 "class_barotrauma_1_1_a_i_trigger.html#af3a39445d89aed50ff2cce35531d2b37":[4,0,0,420,6],
-"class_barotrauma_1_1_abandoned_outpost_mission.html":[4,0,0,260],
-"class_barotrauma_1_1_abandoned_outpost_mission.html#a102f53657a3a885f338421c3d9d26777":[4,0,0,260,9]
+"class_barotrauma_1_1_abandoned_outpost_mission.html":[4,0,0,260]
 };

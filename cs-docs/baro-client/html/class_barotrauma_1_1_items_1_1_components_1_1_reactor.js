@@ -28,6 +28,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_reactor =
     [ "FissionRate", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#ae236379b5bf6e79b8b751a6998c2f978", null ],
     [ "FissionRateScrollBar", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#ab3f572ee411be9f2e0d61a065d3564c2", null ],
     [ "FuelConsumptionRate", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#afc919a3ea91afd904dc0d7ab5b5f901c", null ],
+    [ "IsInfographicVisible", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a03f419f963876fe4aaeb5aca5284d3bc", null ],
     [ "LastAIUser", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#aafc8714f1ac061b0b41218662b5fb7bd", null ],
     [ "LastUser", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a74f6b76ac6fe7817e942c30d1ecfccf8", null ],
     [ "LastUserWasPlayer", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a3f5fca513ea52bf5293638f015df5f95", null ],

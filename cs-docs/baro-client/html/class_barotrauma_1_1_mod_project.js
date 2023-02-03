@@ -10,7 +10,7 @@ var class_barotrauma_1_1_mod_project =
     [ "Save", "class_barotrauma_1_1_mod_project.html#a9ef2b2692a33864c1da76bb638ab6afe", null ],
     [ "ToXDocument", "class_barotrauma_1_1_mod_project.html#abe991ea03cea17ad05cf99c9bd5dd0e9", null ],
     [ "AltNames", "class_barotrauma_1_1_mod_project.html#a68f8cc4bff32b5bf81145e9338bb3d5b", null ],
-    [ "InstallTime", "class_barotrauma_1_1_mod_project.html#ad8221b191e8dcf24747b4556c19a7825", null ],
+    [ "InstallTime", "class_barotrauma_1_1_mod_project.html#a618a37e221324002361835c701ce95e5", null ],
     [ "IsCore", "class_barotrauma_1_1_mod_project.html#a48acff96a13ab308acf1a5478dfb2b0a", null ],
     [ "ModVersion", "class_barotrauma_1_1_mod_project.html#add6e551434a5711ef34a41320745d792", null ],
     [ "UgcId", "class_barotrauma_1_1_mod_project.html#a67f7280ea057281c3e0583acc4b589b1", null ],

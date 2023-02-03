@@ -15,5 +15,6 @@ var class_barotrauma_1_1_a_i_objective_prepare =
     [ "KeepActiveWhenReady", "class_barotrauma_1_1_a_i_objective_prepare.html#a0f2fe6ebae62aa21468a3696b4507490", null ],
     [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_prepare.html#a6f7487282da5a9e1e9875a08d214a386", null ],
     [ "KeepDivingGearOnAlsoWhenInactive", "class_barotrauma_1_1_a_i_objective_prepare.html#a9ad4a61089f0a8046223ebc279c3fd23", null ],
-    [ "PrioritizeIfSubObjectivesActive", "class_barotrauma_1_1_a_i_objective_prepare.html#a0be93761cbdabbf7fa40e94c73e7126a", null ]
+    [ "PrioritizeIfSubObjectivesActive", "class_barotrauma_1_1_a_i_objective_prepare.html#a0be93761cbdabbf7fa40e94c73e7126a", null ],
+    [ "RequireNonEmpty", "class_barotrauma_1_1_a_i_objective_prepare.html#adc74b5c137a3c65304837543a569198c", null ]
 ];

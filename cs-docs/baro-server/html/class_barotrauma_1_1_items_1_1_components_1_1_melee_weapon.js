@@ -10,6 +10,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon =
     [ "PreferredContainedItems", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a193d683071f9d1bb932806614b93d54b", null ],
     [ "AllowHitMultiple", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#aa0ed5ec4ded64fdb2c845f7965ee50f1", null ],
     [ "Attack", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#ac830c34c0fd969d1b1b78998d5ee2067", null ],
+    [ "HitOnlyCharacters", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a0312bfc7c357e77853280b628ed87143", null ],
     [ "Hitting", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a607728445463b67f118e2e065ca06be6", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a4bd10361ceb55aacaf0c9167c63f3649", null ],
     [ "Reload", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a6d107830b354fb40a0c16e419e064a83", null ],

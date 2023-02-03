@@ -106,8 +106,8 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab12658bcc8eba2ee1bbcdad17cbd1bad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#ab12658bcc8eba2ee1bbcdad17cbd1bad">LevelData</a> (string seed, float difficulty, float sizeFactor, <a class="el" href="class_barotrauma_1_1_level_generation_params.html">LevelGenerationParams</a> generationParams, <a class="el" href="class_barotrauma_1_1_biome.html">Biome</a> biome)</td></tr>
 <tr class="separator:ab12658bcc8eba2ee1bbcdad17cbd1bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e0a27e5ed02ec052807b2760db02421"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a7e0a27e5ed02ec052807b2760db02421">LevelData</a> (XElement element, float? forceDifficulty=null)</td></tr>
-<tr class="separator:a7e0a27e5ed02ec052807b2760db02421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c9be2ec6d5ef74019a87a7917460f75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a5c9be2ec6d5ef74019a87a7917460f75">LevelData</a> (XElement element, float? forceDifficulty=null, bool clampDifficultyToBiome=false)</td></tr>
+<tr class="separator:a5c9be2ec6d5ef74019a87a7917460f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7811eed05eeb1d29b539aa7d15454cf7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_data.html#a7811eed05eeb1d29b539aa7d15454cf7">LevelData</a> (<a class="el" href="class_barotrauma_1_1_location_connection.html">LocationConnection</a> locationConnection)</td></tr>
 <tr class="memdesc:a7811eed05eeb1d29b539aa7d15454cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates level data using the properties of the connection (seed, size, difficulty)  <a href="class_barotrauma_1_1_level_data.html#a7811eed05eeb1d29b539aa7d15454cf7">More...</a><br /></td></tr>
 <tr class="separator:a7811eed05eeb1d29b539aa7d15454cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,8 +265,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a7e0a27e5ed02ec052807b2760db02421"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e0a27e5ed02ec052807b2760db02421">&#9670;&nbsp;</a></span>LevelData() <span class="overload">[2/4]</span></h2>
+<a id="a5c9be2ec6d5ef74019a87a7917460f75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c9be2ec6d5ef74019a87a7917460f75">&#9670;&nbsp;</a></span>LevelData() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,7 +281,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float?&#160;</td>
-          <td class="paramname"><em>forceDifficulty</em> = <code>null</code>&#160;</td>
+          <td class="paramname"><em>forceDifficulty</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>clampDifficultyToBiome</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -313,7 +319,7 @@ Properties</h2></td></tr>
 
 <p>Instantiates level data using the properties of the connection (seed, size, difficulty) </p>
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00162">162</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00164">164</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -345,7 +351,7 @@ Properties</h2></td></tr>
 
 <p>Instantiates level data using the properties of the location </p>
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00197">197</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00199">199</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -396,7 +402,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00213">213</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00215">215</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -424,7 +430,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00257">257</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00259">259</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -444,7 +450,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00272">272</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00274">274</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>
@@ -822,7 +828,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00255">255</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_data_8cs_source.html#l00257">257</a> of file <a class="el" href="_level_data_8cs_source.html">LevelData.cs</a>.</p>
 
 </div>
 </div>

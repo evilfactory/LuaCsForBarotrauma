@@ -8,7 +8,7 @@ var class_barotrauma_1_1_lights_1_1_light_source =
     [ "DrawSprite", "class_barotrauma_1_1_lights_1_1_light_source.html#af8f16cd5a2031b9d45678de06c7f47c3", null ],
     [ "Remove", "class_barotrauma_1_1_lights_1_1_light_source.html#aae640603acdec243094a5f58d444d075", null ],
     [ "Reset", "class_barotrauma_1_1_lights_1_1_light_source.html#a9130e158b5ce00d80233238b392e9c22", null ],
-    [ "Update", "class_barotrauma_1_1_lights_1_1_light_source.html#a5fc56b25d3f0cff897075f96e0073f39", null ],
+    [ "Update", "class_barotrauma_1_1_lights_1_1_light_source.html#a757667e3af8d46048baaf6f0d577f4f8", null ],
     [ "Enabled", "class_barotrauma_1_1_lights_1_1_light_source.html#a99d92771f7f0797f62bce8e4bdf66520", null ],
     [ "LightSpriteEffect", "class_barotrauma_1_1_lights_1_1_light_source.html#afc2c09dba25cb008c995b6750ff8f6b4", null ],
     [ "NeedsHullCheck", "class_barotrauma_1_1_lights_1_1_light_source.html#abf784150c3e7ee2caf4fe03a6cc6b0b8", null ],

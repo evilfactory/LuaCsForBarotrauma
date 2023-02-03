@@ -130,8 +130,7 @@ var hierarchy =
     [ "OpenAL.Alc", "class_open_a_l_1_1_alc.html", null ],
     [ "AssemblyLoadContext", null, [
       [ "Barotrauma.CsScriptBase", "class_barotrauma_1_1_cs_script_base.html", [
-        [ "Barotrauma.CsScriptLoader", "class_barotrauma_1_1_cs_script_loader.html", null ],
-        [ "Barotrauma.CsScriptRunner", "class_barotrauma_1_1_cs_script_runner.html", null ]
+        [ "Barotrauma.CsScriptLoader", "class_barotrauma_1_1_cs_script_loader.html", null ]
       ] ]
     ] ],
     [ "Barotrauma.Character.Attacker", "class_barotrauma_1_1_character_1_1_attacker.html", null ],
@@ -307,6 +306,7 @@ var hierarchy =
     [ "Barotrauma.ContextMenuOption", "struct_barotrauma_1_1_context_menu_option.html", null ],
     [ "Barotrauma.Lights.ConvexHull", "class_barotrauma_1_1_lights_1_1_convex_hull.html", null ],
     [ "Barotrauma.Lights.ConvexHullList", "class_barotrauma_1_1_lights_1_1_convex_hull_list.html", null ],
+    [ "CoordinateSpace2D", "struct_coordinate_space2_d.html", null ],
     [ "Barotrauma.CoroutineHandle", "class_barotrauma_1_1_coroutine_handle.html", null ],
     [ "Barotrauma.CoroutineStatus", "class_barotrauma_1_1_coroutine_status.html", [
       [ "Barotrauma.EnumCoroutineStatus", "class_barotrauma_1_1_enum_coroutine_status.html", null ],
@@ -571,7 +571,6 @@ var hierarchy =
     [ "Barotrauma.HireManager", "class_barotrauma_1_1_hire_manager.html", null ],
     [ "Barotrauma.Homoglyphs", "class_barotrauma_1_1_homoglyphs.html", null ],
     [ "RestSharp.Contrib.HttpEncoder", "class_rest_sharp_1_1_contrib_1_1_http_encoder.html", null ],
-    [ "Barotrauma.LuaCsNetworking.HttpListener", "class_barotrauma_1_1_lua_cs_networking_1_1_http_listener.html", null ],
     [ "Barotrauma.HttpUtility", "class_barotrauma_1_1_http_utility.html", null ],
     [ "Barotrauma.HUDProgressBar", "class_barotrauma_1_1_h_u_d_progress_bar.html", null ],
     [ "Barotrauma.Abilities.IAbilityAffliction", "interface_barotrauma_1_1_abilities_1_1_i_ability_affliction.html", [
@@ -652,7 +651,8 @@ var hierarchy =
         [ "Barotrauma.TrimLString", "class_barotrauma_1_1_trim_l_string.html", null ],
         [ "Barotrauma.UpperLString", "class_barotrauma_1_1_upper_l_string.html", null ],
         [ "Barotrauma.WrappedLString", "class_barotrauma_1_1_wrapped_l_string.html", null ]
-      ] ]
+      ] ],
+      [ "Barotrauma.SerializableDateTime", "struct_barotrauma_1_1_serializable_date_time.html", null ]
     ] ],
     [ "IComparer", null, [
       [ "Barotrauma.CompareCCW", "class_barotrauma_1_1_compare_c_c_w.html", null ],
@@ -837,8 +837,6 @@ var hierarchy =
       ] ]
     ] ],
     [ "Barotrauma.IMEPreviewTextHandler", "class_barotrauma_1_1_i_m_e_preview_text_handler.html", null ],
-    [ "Barotrauma.LuaCsNetworking.IncomingHttpRequest", "class_barotrauma_1_1_lua_cs_networking_1_1_incoming_http_request.html", null ],
-    [ "Barotrauma.LuaCsNetworking.IncomingHttpResponse", "class_barotrauma_1_1_lua_cs_networking_1_1_incoming_http_response.html", null ],
     [ "Barotrauma.Networking.ClientPeer.IncomingInitializationMessage", "struct_barotrauma_1_1_networking_1_1_client_peer_1_1_incoming_initialization_message.html", null ],
     [ "Barotrauma.Networking.INetSerializable", "interface_barotrauma_1_1_networking_1_1_i_net_serializable.html", [
       [ "Barotrauma.Networking.IClientSerializable", "interface_barotrauma_1_1_networking_1_1_i_client_serializable.html", [
@@ -1250,6 +1248,7 @@ var hierarchy =
     [ "Barotrauma.LuaCsConfig", "class_barotrauma_1_1_lua_cs_config.html", null ],
     [ "Barotrauma.LuaCsFile", "class_barotrauma_1_1_lua_cs_file.html", null ],
     [ "Barotrauma.LuaCsHook", "class_barotrauma_1_1_lua_cs_hook.html", null ],
+    [ "Barotrauma.LuaCsLogger", "class_barotrauma_1_1_lua_cs_logger.html", null ],
     [ "Barotrauma.LuaCsSetup.LuaCsModStore", "class_barotrauma_1_1_lua_cs_setup_1_1_lua_cs_mod_store.html", null ],
     [ "Barotrauma.LuaCsNetworking", "class_barotrauma_1_1_lua_cs_networking.html", null ],
     [ "Barotrauma.LuaCsPerformanceCounter", "class_barotrauma_1_1_lua_cs_performance_counter.html", null ],
@@ -1331,7 +1330,7 @@ var hierarchy =
       [ "Barotrauma.Networking.SteamP2PConnection", "class_barotrauma_1_1_networking_1_1_steam_p2_p_connection.html", null ]
     ] ],
     [ "Barotrauma.Hull.NetworkFireSource", "struct_barotrauma_1_1_hull_1_1_network_fire_source.html", null ],
-    [ "Barotrauma.Networking.NetworkMember", "class_barotrauma_1_1_networking_1_1_network_member.html", [
+    [ "NetworkMember", null, [
       [ "Barotrauma.Networking.GameClient", "class_barotrauma_1_1_networking_1_1_game_client.html", null ]
     ] ],
     [ "Barotrauma.Items.Components.ElectricalDischarger.Node", "struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node.html", null ],
@@ -1349,6 +1348,7 @@ var hierarchy =
     [ "Barotrauma.Option< Barotrauma.Networking.ServerInfo >", "class_barotrauma_1_1_option.html", null ],
     [ "Barotrauma.Option< Barotrauma.Networking.ServerInfo.DataSource >", "class_barotrauma_1_1_option.html", null ],
     [ "Barotrauma.Option< Barotrauma.Networking.SteamId >", "class_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< Barotrauma.SerializableDateTime >", "class_barotrauma_1_1_option.html", null ],
     [ "Barotrauma.Option< Barotrauma.Sprite >", "class_barotrauma_1_1_option.html", null ],
     [ "Barotrauma.Option< byte[]>", "class_barotrauma_1_1_option.html", null ],
     [ "Barotrauma.Option< Color >", "class_barotrauma_1_1_option.html", null ],
@@ -1466,6 +1466,7 @@ var hierarchy =
       [ "Barotrauma.MTRandom", "class_barotrauma_1_1_m_t_random.html", null ]
     ] ],
     [ "Barotrauma.Range< T >", "struct_barotrauma_1_1_range.html", null ],
+    [ "Barotrauma.Range< int >", "struct_barotrauma_1_1_range.html", null ],
     [ "Barotrauma.ReadOnlyBitField", "class_barotrauma_1_1_read_only_bit_field.html", null ],
     [ "Barotrauma.RectTransform", "class_barotrauma_1_1_rect_transform.html", [
       [ "Barotrauma.GUICanvas", "class_barotrauma_1_1_g_u_i_canvas.html", null ]
@@ -1487,7 +1488,6 @@ var hierarchy =
     [ "Barotrauma.RoundSummary", "class_barotrauma_1_1_round_summary.html", null ],
     [ "Barotrauma.RuinGeneration.Ruin", "class_barotrauma_1_1_ruin_generation_1_1_ruin.html", null ],
     [ "Barotrauma.Networking.ServerSettings.SavedClientPermission", "class_barotrauma_1_1_networking_1_1_server_settings_1_1_saved_client_permission.html", null ],
-    [ "Barotrauma.CampaignMode.SaveInfo", "struct_barotrauma_1_1_campaign_mode_1_1_save_info.html", null ],
     [ "Barotrauma.Screen", "class_barotrauma_1_1_screen.html", [
       [ "Barotrauma.CampaignEndScreen", "class_barotrauma_1_1_campaign_end_screen.html", null ],
       [ "Barotrauma.EditorScreen", "class_barotrauma_1_1_editor_screen.html", [
@@ -1515,6 +1515,7 @@ var hierarchy =
     [ "SegmentTableReader< T >", "struct_segment_table_reader.html", null ],
     [ "SegmentTableWriter< T >", "struct_segment_table_writer.html", null ],
     [ "Barotrauma.SerializableProperty", "class_barotrauma_1_1_serializable_property.html", null ],
+    [ "Barotrauma.SerializableTimeZone", "struct_barotrauma_1_1_serializable_time_zone.html", null ],
     [ "Barotrauma.Networking.ServerContentPackage", "class_barotrauma_1_1_networking_1_1_server_content_package.html", null ],
     [ "Barotrauma.ServerListFilters", "class_barotrauma_1_1_server_list_filters.html", null ],
     [ "Barotrauma.Networking.ServerLog", "class_barotrauma_1_1_networking_1_1_server_log.html", null ],
@@ -1621,6 +1622,7 @@ var hierarchy =
     [ "Barotrauma.WaterVertexData", "struct_barotrauma_1_1_water_vertex_data.html", null ],
     [ "Barotrauma.WearableSprite", "class_barotrauma_1_1_wearable_sprite.html", null ],
     [ "Barotrauma.Widget", "class_barotrauma_1_1_widget.html", null ],
+    [ "Barotrauma.Items.Components.Wire.WireSection", "class_barotrauma_1_1_items_1_1_components_1_1_wire_1_1_wire_section.html", null ],
     [ "Barotrauma.CharacterEditor.Wizard", "class_barotrauma_1_1_character_editor_1_1_wizard.html", null ],
     [ "Barotrauma.Steam.WorkshopMenu", "class_barotrauma_1_1_steam_1_1_workshop_menu.html", [
       [ "Barotrauma.Steam.ImmutableWorkshopMenu", "class_barotrauma_1_1_steam_1_1_immutable_workshop_menu.html", null ],

@@ -265,7 +265,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a0e89b62b2735c1f5cb0ec95968ac4610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a172d43f7afbb45719e7f0ecc73e49807"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#a172d43f7afbb45719e7f0ecc73e49807">GetCampaignSubs</a> ()</td></tr>
 <tr class="separator:a172d43f7afbb45719e7f0ecc73e49807"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae96d1eb780c7739c03aad2d70e5b9fb2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#ae96d1eb780c7739c03aad2d70e5b9fb2">StartCampaignSetup</a> (List&lt; <a class="el" href="struct_barotrauma_1_1_campaign_mode_1_1_save_info.html">SaveInfo</a> &gt; saveFiles)</td></tr>
+<tr class="memitem:ae96d1eb780c7739c03aad2d70e5b9fb2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#ae96d1eb780c7739c03aad2d70e5b9fb2">StartCampaignSetup</a> (List&lt; SaveInfo &gt; saveFiles)</td></tr>
 <tr class="separator:ae96d1eb780c7739c03aad2d70e5b9fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6c7dc6668d634c167090fe7e4636663"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_multi_player_campaign.html#ae6c7dc6668d634c167090fe7e4636663">ClientRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg)</td></tr>
 <tr class="separator:ae6c7dc6668d634c167090fe7e4636663"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -411,8 +411,8 @@ Properties</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_campaign_mode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_campaign_mode.html">Barotrauma.CampaignMode</a></td></tr>
-<tr class="memitem:a98eb771884cf9f5fa8d95f7b142357f7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#a98eb771884cf9f5fa8d95f7b142357f7">MaxMoney</a> = int.MaxValue / 2</td></tr>
-<tr class="separator:a98eb771884cf9f5fa8d95f7b142357f7 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc244e66f6afbcbb646a21e3c662bc5 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">readonly record struct SaveInfo(string FilePath, <a class="el" href="class_barotrauma_1_1_option.html">Option</a>&lt; <a class="el" href="struct_barotrauma_1_1_serializable_date_time.html">SerializableDateTime</a> &gt; SaveTime, string SubmarineName, ImmutableArray&lt; string &gt; EnabledContentPackageNames) const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#accc244e66f6afbcbb646a21e3c662bc5">MaxMoney</a> = int.MaxValue / 2</td></tr>
+<tr class="separator:accc244e66f6afbcbb646a21e3c662bc5 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5dde2bd5933cf6911d40015601ed694 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#af5dde2bd5933cf6911d40015601ed694">InitialMoney</a> = 8500</td></tr>
 <tr class="separator:af5dde2bd5933cf6911d40015601ed694 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae78e728d84d9066ca2fc24706c24db67 inherit pub_static_attribs_class_barotrauma_1_1_campaign_mode"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_mode.html#ae78e728d84d9066ca2fc24706c24db67">HullRepairCostPerDamage</a> = 0.5f</td></tr>
@@ -1119,7 +1119,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">static void Barotrauma.MultiPlayerCampaign.StartCampaignSetup </td>
           <td>(</td>
-          <td class="paramtype">List&lt; <a class="el" href="struct_barotrauma_1_1_campaign_mode_1_1_save_info.html">SaveInfo</a> &gt;&#160;</td>
+          <td class="paramtype">List&lt; SaveInfo &gt;&#160;</td>
           <td class="paramname"><em>saveFiles</em></td><td>)</td>
           <td></td>
         </tr>

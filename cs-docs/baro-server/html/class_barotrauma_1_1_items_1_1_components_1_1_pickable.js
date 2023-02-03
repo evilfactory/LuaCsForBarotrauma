@@ -12,5 +12,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_pickable =
     [ "picker", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a33cf40c1956d0819711dd92a2823ecc4", null ],
     [ "AllowedSlots", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a3fadb48d6ce3a8088adccd214a0e1fef", null ],
     [ "IsAttached", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#ad8a307e4ae7ead50e17706ecaa2f5756", null ],
-    [ "Picker", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a5f67b45a553fd03061b61410ef86f692", null ]
+    [ "Picker", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a5f67b45a553fd03061b61410ef86f692", null ],
+    [ "PickingDone", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#ac6908107cc58c937618fc1dcc7010d01", null ]
 ];

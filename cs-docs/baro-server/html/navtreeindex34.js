@@ -1,7 +1,5 @@
 var NAVTREEINDEX34 =
 {
-"class_barotrauma_1_1_outpost_config_file.html#a318e41c06c8c9af1fa31d8f2e49d615a":[4,0,0,171,4],
-"class_barotrauma_1_1_outpost_config_file.html#a48bf5320933c55171c207b7527c675ce":[4,0,0,171,2],
 "class_barotrauma_1_1_outpost_config_file.html#a9898f10faa0302d8e265230a357f98bc":[4,0,0,171,3],
 "class_barotrauma_1_1_outpost_config_file.html#ae1913d5b7cc8eab56a0db7a37d4814dd":[4,0,0,171,0],
 "class_barotrauma_1_1_outpost_config_file.html#af3968241e5a7cd8cfb8c7643ac980d95":[4,0,0,171,1],
@@ -65,10 +63,10 @@ var NAVTREEINDEX34 =
 "class_barotrauma_1_1_outpost_module_info.html#acdfd3a484ce0847af160fb4a29f219d6":[4,0,0,375,1],
 "class_barotrauma_1_1_outpost_module_info.html#af056b42b7b39b81076545f9d61167ca2":[4,0,0,375,5],
 "class_barotrauma_1_1_outpost_module_info.html#af6d7454b53847c87d3eb15323456b686":[4,0,0,375,17],
-"class_barotrauma_1_1_pair.html":[4,0,0,466],
-"class_barotrauma_1_1_pair.html#a8627edf8096cad7c10985f2b7d8ac069":[4,0,0,466,2],
-"class_barotrauma_1_1_pair.html#a9b01b6022c64eb189cc452f982e5101b":[4,0,0,466,1],
-"class_barotrauma_1_1_pair.html#ab55ce3630e56b2b7f6b0c46d5a167367":[4,0,0,466,0],
+"class_barotrauma_1_1_pair.html":[4,0,0,468],
+"class_barotrauma_1_1_pair.html#a8627edf8096cad7c10985f2b7d8ac069":[4,0,0,468,2],
+"class_barotrauma_1_1_pair.html#a9b01b6022c64eb189cc452f982e5101b":[4,0,0,468,1],
+"class_barotrauma_1_1_pair.html#ab55ce3630e56b2b7f6b0c46d5a167367":[4,0,0,468,0],
 "class_barotrauma_1_1_particles_file.html":[4,0,0,174],
 "class_barotrauma_1_1_particles_file.html#ac337b1e955fa46ee111ff2c0106911b5":[4,0,0,174,0],
 "class_barotrauma_1_1_path_finder.html":[4,0,0,53],
@@ -249,5 +247,7 @@ var NAVTREEINDEX34 =
 "class_barotrauma_1_1_prefab_collection.html#a7d86d49e1bf9390f2580b5cd89d7d86b":[4,0,0,399,8],
 "class_barotrauma_1_1_prefab_collection.html#a7ff3e1e37374e2e407f86812c041aa11":[4,0,0,399,6],
 "class_barotrauma_1_1_prefab_collection.html#a8f452a372eb66bd108361be8c138d189":[4,0,0,399,2],
-"class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2":[4,0,0,399,4]
+"class_barotrauma_1_1_prefab_collection.html#a9170f0b239f57c074e9ac767f26d33d2":[4,0,0,399,4],
+"class_barotrauma_1_1_prefab_collection.html#a94dac546cdaec50be2e806e7a7f419aa":[4,0,0,399,9],
+"class_barotrauma_1_1_prefab_collection.html#ab571282489292227cb1e108fc6903d9d":[4,0,0,399,17]
 };

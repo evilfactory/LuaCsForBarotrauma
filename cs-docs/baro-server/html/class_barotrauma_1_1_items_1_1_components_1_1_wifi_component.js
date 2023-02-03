@@ -7,6 +7,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_wifi_component =
     [ "GetChannelMemory", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a6b3e67c033c00559286fd0f0c689faa8", null ],
     [ "GetReceiversInRange", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#acac4791474dcc8116a3c57872e8071bf", null ],
     [ "GetTransmittersInRange", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#accd9dea97a6f5c736b9be272d2044302", null ],
+    [ "Load", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#af6af5936fdf02bcbb9c0fa49b1cb8fb7", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a5e7ce4bcb9d96b025d84c74b1449bd60", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a66d55be6ec0c654cf03262ca8be7d653", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a980200943524b6074e140383ceec7803", null ],

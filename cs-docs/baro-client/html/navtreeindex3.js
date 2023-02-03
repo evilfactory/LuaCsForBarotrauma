@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"class_barotrauma_1_1_a_i_trigger.html#aea99ad72a80482ad2da6ea937239d039":[4,0,0,430,3],
 "class_barotrauma_1_1_a_i_trigger.html#aeac2c2f5575cc5de43e6fd70b156059d":[4,0,0,430,12],
 "class_barotrauma_1_1_a_i_trigger.html#af3a39445d89aed50ff2cce35531d2b37":[4,0,0,430,6],
 "class_barotrauma_1_1_abandoned_outpost_mission.html":[4,0,0,270],
@@ -119,6 +120,7 @@ var NAVTREEINDEX3 =
 "class_barotrauma_1_1_abilities_1_1_ability_condition_is_aiming.html#a1b333d8d098755b7a90aed3ca8b40bcb":[4,0,0,0,8,1],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_is_aiming.html#a9a0a6b194844abca42fc8bf972da940c":[4,0,0,0,8,0],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html":[4,0,0,0,9],
+"class_barotrauma_1_1_abilities_1_1_ability_condition_item.html#a060ef3c3977c2dccca6cf3fdfaea38ee":[4,0,0,0,9,2],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html#a8999989d10dc9d44e8a4226c3479834c":[4,0,0,0,9,0],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html#aeb9a73b48181332021e02aa02728f0a3":[4,0,0,0,9,1],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item_in_submarine.html":[4,0,0,0,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_permanent_stat.html#a3bc0686f4d8193ea22f20c77ca8b28b5":[4,0,0,0,63,5],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_permanent_stat.html#a68aafc9c05007054b8fd4c930eb9be08":[4,0,0,0,63,4],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_permanent_stat.html#adba7a4272991413175d55b45045e63a1":[4,0,0,0,63,0],
-"class_barotrauma_1_1_abilities_1_1_character_ability_give_permanent_stat.html#ae95782a5dfe68ac37eae5dde01972797":[4,0,0,0,63,2],
-"class_barotrauma_1_1_abilities_1_1_character_ability_give_resistance.html":[4,0,0,0,64],
-"class_barotrauma_1_1_abilities_1_1_character_ability_give_resistance.html#a8cec064b4d5c9639573d4c4cf57cd0ef":[4,0,0,0,64,0]
+"class_barotrauma_1_1_abilities_1_1_character_ability_give_permanent_stat.html#ae95782a5dfe68ac37eae5dde01972797":[4,0,0,0,63,2]
 };

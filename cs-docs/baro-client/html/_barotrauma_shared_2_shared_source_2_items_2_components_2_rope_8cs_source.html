@@ -206,7 +206,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">if</span> (snapped == value) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a> != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_network_member.html#a09e328c15574358ebebde4b0f18cda37">IsClient</a>)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.IsClient)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    }</div>
@@ -247,284 +247,274 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
 <div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a021fde2c28493558c7376e78abd1a64f">  160</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a021fde2c28493558c7376e78abd1a64f">Update</a>(<span class="keywordtype">float</span> deltaTime, <a class="code" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">if</span> (source == <span class="keyword">null</span> || target == <span class="keyword">null</span> || target.<a class="code" href="class_barotrauma_1_1_entity.html#ae40bdfaee2d22e0e2f3bf44bf006964e">Removed</a> ||</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                (source is <a class="code" href="class_barotrauma_1_1_entity.html">Entity</a> sourceEntity &amp;&amp; sourceEntity.<a class="code" href="class_barotrauma_1_1_entity.html#ae40bdfaee2d22e0e2f3bf44bf006964e">Removed</a>) ||</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                (source is <a class="code" href="class_barotrauma_1_1_limb.html">Limb</a> limb &amp;&amp; limb.<a class="code" href="class_barotrauma_1_1_limb.html#a4fe01ed98ea4dc9c8c593b0f6a9f68a7">Removed</a>))</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                ResetSource();</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                target = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977">IsActive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a89d090de14909443bc939e8a48874878">Snapped</a>)</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                snapTimer += deltaTime;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">if</span> (snapTimer &gt;= <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3704c99b560c81297f865f72fb2adf50">SnapAnimDuration</a>)</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977">IsActive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            Vector2 diff = target.<a class="code" href="interface_barotrauma_1_1_i_damageable.html#a80faa00cc7aca51a65097614bc5b085c">WorldPosition</a> - source.<a class="code" href="interface_barotrauma_1_1_i_spatial_entity.html#a182ffe130d572da35f650188dc42e7f1">WorldPosition</a>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordtype">float</span> lengthSqr = diff.LengthSquared();</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">if</span> (lengthSqr &gt; <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a370907bbccf25e14d845d0558bad76a3">MaxLength</a> * <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a370907bbccf25e14d845d0558bad76a3">MaxLength</a>)</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3b909746ad0296de79dff87af9037160">Snap</a>();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">if</span> (MaxAngle &lt; 180 &amp;&amp; lengthSqr &gt; 2500)</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">if</span> (launchDir == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    launchDir = diff;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordtype">float</span> angle = MathHelper.ToDegrees(VectorExtensions.Angle(launchDir.Value, diff));</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">if</span> (angle &gt; <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#adaaf1a2ac96a2f6e271300e54c221ed0">MaxAngle</a>)</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3b909746ad0296de79dff87af9037160">Snap</a>();</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#if CLIENT</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e">item</a>.<a class="code" href="class_barotrauma_1_1_item.html#a0937a9a3817f90d0d712c826c376ba17">ResetCachedVisibleSize</a>();</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            var projectile = target.GetComponent&lt;<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Projectile</a>&gt;();</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">if</span> (projectile == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a2fe69e4be57607efcdc5435c9172994b">SnapOnCollision</a>)</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                raycastTimer += deltaTime;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordflow">if</span> (raycastTimer &gt; RayCastInterval)</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>.<a class="code" href="class_barotrauma_1_1_submarine.html#af0021304c59f91a731965107f9a86837">PickBody</a>(ConvertUnits.ToSimUnits(source.<a class="code" href="interface_barotrauma_1_1_i_spatial_entity.html#a182ffe130d572da35f650188dc42e7f1">WorldPosition</a>), ConvertUnits.ToSimUnits(target.<a class="code" href="interface_barotrauma_1_1_i_damageable.html#a80faa00cc7aca51a65097614bc5b085c">WorldPosition</a>),</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        collisionCategory: Physics.CollisionLevel | Physics.CollisionWall,</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        customPredicate: (Fixture f) =&gt;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                            foreach (Body body in projectile.Hits)</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                            {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                Submarine alreadyHitSub = null;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                if (body.UserData is Structure hitStructure)</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                    alreadyHitSub = hitStructure.Submarine;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                else if (body.UserData is Submarine hitSub)</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                {</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                    alreadyHitSub = hitSub;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                }</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                if (alreadyHitSub != null)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                    if (f.Body?.UserData is MapEntity me &amp;&amp; me.Submarine == alreadyHitSub) { return false; }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                    if (f.Body?.UserData as Submarine == alreadyHitSub) { return false; }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                            }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                            <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> targetSub = projectile.StickTarget?.UserData as <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> ?? target.<a class="code" href="class_barotrauma_1_1_entity.html#a9ff52bc5e36cd663248ff956f04b3aab">Submarine</a>;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            if (f.Body?.UserData is <a class="code" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> mapEntity &amp;&amp; mapEntity.<a class="code" href="class_barotrauma_1_1_entity.html#a9ff52bc5e36cd663248ff956f04b3aab">Submarine</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                            {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                if (mapEntity.Submarine == targetSub || mapEntity.Submarine == source.Submarine)</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                    return false;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                            }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (f.Body?.UserData is <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> sub)</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                            {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                if (sub == targetSub || sub == source.Submarine)</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                    return false;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                            }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        }) != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                    {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3b909746ad0296de79dff87af9037160">Snap</a>();</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    raycastTimer = 0.0f;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            Vector2 forceDir = diff;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordtype">float</span> distance = diff.Length();</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">if</span> (distance &gt; 0.001f)</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            {</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                forceDir = Vector2.Normalize(forceDir);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            }</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> (Math.Abs(ProjectilePullForce) &gt; 0.001f)</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                projectile.Item?.body?.ApplyForce(-forceDir * ProjectilePullForce);                </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            }</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">if</span> (projectile.StickTarget != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordtype">float</span> targetMass = <span class="keywordtype">float</span>.MaxValue;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a> targetCharacter = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Limb targetLimb)</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    targetCharacter = targetLimb.character;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    targetMass = targetLimb.ragdoll.Mass;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Character character)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    targetCharacter = character;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    targetMass = character.Mass;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                }</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Item item)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    targetMass = projectile.StickTarget.Mass;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keywordflow">if</span> (projectile.StickTarget.BodyType != BodyType.Dynamic)</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    targetMass = <span class="keywordtype">float</span>.MaxValue;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                var user = item.GetComponent&lt;Projectile&gt;()?.User;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <span class="keywordflow">if</span> (targetMass &gt; TargetMinMass)</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    <span class="keywordflow">if</span> (Math.Abs(SourcePullForce) &gt; 0.001f)</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                    {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                        var sourceBody = GetBodyToPull(source);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        <span class="keywordflow">if</span> (sourceBody != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                            var targetBody = GetBodyToPull(target);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                            <span class="keywordflow">if</span> (targetBody != <span class="keyword">null</span> &amp;&amp; !(targetBody.UserData is Character))</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            var user = <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e">item</a>.GetComponent&lt;<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Projectile</a>&gt;()?.User;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">if</span> (source == <span class="keyword">null</span> || target == <span class="keyword">null</span> || target.<a class="code" href="class_barotrauma_1_1_entity.html#ae40bdfaee2d22e0e2f3bf44bf006964e">Removed</a> ||</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                (source is <a class="code" href="class_barotrauma_1_1_entity.html">Entity</a> sourceEntity &amp;&amp; sourceEntity.<a class="code" href="class_barotrauma_1_1_entity.html#ae40bdfaee2d22e0e2f3bf44bf006964e">Removed</a>) ||</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                (source is <a class="code" href="class_barotrauma_1_1_limb.html">Limb</a> limb &amp;&amp; limb.<a class="code" href="class_barotrauma_1_1_limb.html#a4fe01ed98ea4dc9c8c593b0f6a9f68a7">Removed</a>) ||</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                (user != <span class="keyword">null</span> &amp;&amp; user.Removed))</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                ResetSource();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                target = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977">IsActive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a89d090de14909443bc939e8a48874878">Snapped</a>)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                snapTimer += deltaTime;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">if</span> (snapTimer &gt;= <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3704c99b560c81297f865f72fb2adf50">SnapAnimDuration</a>)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977">IsActive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            Vector2 diff = target.<a class="code" href="interface_barotrauma_1_1_i_damageable.html#a80faa00cc7aca51a65097614bc5b085c">WorldPosition</a> - source.<a class="code" href="interface_barotrauma_1_1_i_spatial_entity.html#a182ffe130d572da35f650188dc42e7f1">WorldPosition</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordtype">float</span> lengthSqr = diff.LengthSquared();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">if</span> (lengthSqr &gt; <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a370907bbccf25e14d845d0558bad76a3">MaxLength</a> * <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a370907bbccf25e14d845d0558bad76a3">MaxLength</a>)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3b909746ad0296de79dff87af9037160">Snap</a>();</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">if</span> (MaxAngle &lt; 180 &amp;&amp; lengthSqr &gt; 2500)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">if</span> (launchDir == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    launchDir = diff;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordtype">float</span> angle = MathHelper.ToDegrees(VectorExtensions.Angle(launchDir.Value, diff));</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">if</span> (angle &gt; <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#adaaf1a2ac96a2f6e271300e54c221ed0">MaxAngle</a>)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3b909746ad0296de79dff87af9037160">Snap</a>();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#if CLIENT</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e">item</a>.<a class="code" href="class_barotrauma_1_1_item.html#a0937a9a3817f90d0d712c826c376ba17">ResetCachedVisibleSize</a>();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            var projectile = target.GetComponent&lt;<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Projectile</a>&gt;();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">if</span> (projectile == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a2fe69e4be57607efcdc5435c9172994b">SnapOnCollision</a>)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                raycastTimer += deltaTime;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">if</span> (raycastTimer &gt; RayCastInterval)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a>.<a class="code" href="class_barotrauma_1_1_submarine.html#af0021304c59f91a731965107f9a86837">PickBody</a>(ConvertUnits.ToSimUnits(source.<a class="code" href="interface_barotrauma_1_1_i_spatial_entity.html#a182ffe130d572da35f650188dc42e7f1">WorldPosition</a>), ConvertUnits.ToSimUnits(target.<a class="code" href="interface_barotrauma_1_1_i_damageable.html#a80faa00cc7aca51a65097614bc5b085c">WorldPosition</a>),</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        collisionCategory: Physics.CollisionLevel | Physics.CollisionWall,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                        customPredicate: (Fixture f) =&gt;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                            foreach (Body body in projectile.Hits)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                            {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                Submarine alreadyHitSub = null;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                if (body.UserData is Structure hitStructure)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                    alreadyHitSub = hitStructure.Submarine;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                else if (body.UserData is Submarine hitSub)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                    alreadyHitSub = hitSub;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                if (alreadyHitSub != null)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                    if (f.Body?.UserData is MapEntity me &amp;&amp; me.Submarine == alreadyHitSub) { return false; }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                    if (f.Body?.UserData as Submarine == alreadyHitSub) { return false; }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                            }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> targetSub = projectile.StickTarget?.UserData as <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> ?? target.<a class="code" href="class_barotrauma_1_1_entity.html#a9ff52bc5e36cd663248ff956f04b3aab">Submarine</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                            if (f.Body?.UserData is <a class="code" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> mapEntity &amp;&amp; mapEntity.<a class="code" href="class_barotrauma_1_1_entity.html#a9ff52bc5e36cd663248ff956f04b3aab">Submarine</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                            {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                if (mapEntity.Submarine == targetSub || mapEntity.Submarine == source.Submarine)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                    return false;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                            }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (f.Body?.UserData is <a class="code" href="class_barotrauma_1_1_submarine.html">Submarine</a> sub)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                            {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                if (sub == targetSub || sub == source.Submarine)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                    return false;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                            }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        }) != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a3b909746ad0296de79dff87af9037160">Snap</a>();</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    raycastTimer = 0.0f;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            Vector2 forceDir = diff;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordtype">float</span> distance = diff.Length();</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">if</span> (distance &gt; 0.001f)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                forceDir = Vector2.Normalize(forceDir);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordflow">if</span> (Math.Abs(ProjectilePullForce) &gt; 0.001f)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                projectile.Item?.body?.ApplyForce(-forceDir * ProjectilePullForce);                </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">if</span> (projectile.StickTarget != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordtype">float</span> targetMass = <span class="keywordtype">float</span>.MaxValue;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a> targetCharacter = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Limb targetLimb)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    targetCharacter = targetLimb.character;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    targetMass = targetLimb.ragdoll.Mass;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Character character)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    targetCharacter = character;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                    targetMass = character.Mass;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Item item)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                    targetMass = projectile.StickTarget.Mass;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keywordflow">if</span> (projectile.StickTarget.BodyType != BodyType.Dynamic)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                    targetMass = <span class="keywordtype">float</span>.MaxValue;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                <span class="keywordflow">if</span> (targetMass &gt; TargetMinMass)</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                    <span class="keywordflow">if</span> (Math.Abs(SourcePullForce) &gt; 0.001f)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        var sourceBody = GetBodyToPull(source);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        <span class="keywordflow">if</span> (sourceBody != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                        {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                            <span class="keywordflow">if</span> (user != <span class="keyword">null</span> &amp;&amp; user.InWater)</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                            {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                sourceBody.ApplyForce(targetBody.LinearVelocity * sourceBody.Mass);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                            }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                            <span class="keywordtype">float</span> forceMultiplier = 1;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                            <span class="keywordflow">if</span> (user != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                            {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                user.AnimController.Hang();</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                <span class="keywordflow">if</span> (user.InWater)</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                    <span class="keywordflow">if</span> (user.IsRagdolled)</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                    {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                        forceMultiplier = 0;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                    }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                    forceMultiplier = user.IsRagdolled ? 0.1f : 0.4f;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                                    <span class="comment">// Prevents too easy smashing to the walls</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                                    forceDir.X /= 4;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                                    <span class="comment">// Prevents rubberbanding up and down</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                                    <span class="keywordflow">if</span> (forceDir.Y &lt; 0)</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                                    {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                                        forceDir.Y = 0;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                                <span class="keywordflow">if</span> (targetCharacter != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                                {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                                    var myCollider = user.AnimController.Collider;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                    var targetCollider = targetCharacter.AnimController.Collider;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                    <span class="keywordflow">if</span> (myCollider.LinearVelocity != Vector2.Zero &amp;&amp; targetCollider.LinearVelocity != Vector2.Zero)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                                    {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                                        <span class="keywordflow">if</span> (Vector2.Dot(Vector2.Normalize(myCollider.LinearVelocity), Vector2.Normalize(targetCollider.LinearVelocity)) &lt; 0)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                                        {</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                                            myCollider.ApplyForce(targetCollider.LinearVelocity * targetCollider.Mass);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                                        }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                                    }</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                                }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                            }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                            <span class="keywordtype">float</span> force = LerpForces ? MathHelper.Lerp(0, SourcePullForce, MathUtils.InverseLerp(0, MaxLength / 2, distance)) * forceMultiplier : SourcePullForce * forceMultiplier;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                            sourceBody.ApplyForce(forceDir * force);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                    }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                }</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                <span class="keywordflow">if</span> (Math.Abs(TargetPullForce) &gt; 0.001f)</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                    var targetBody = GetBodyToPull(target);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    <span class="keywordflow">if</span> (user != <span class="keyword">null</span> &amp;&amp; targetCharacter != <span class="keyword">null</span> &amp;&amp; !user.AnimController.InWater)</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                        <span class="comment">// Prevents rubberbanding horizontally when dragging a corpse.</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                        <span class="keywordflow">if</span> ((forceDir.X &lt; 0) != (user.AnimController.Dir &lt; 0))</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                        {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                            forceDir.X = Math.Clamp(forceDir.X, -0.1f, 0.1f);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    <span class="keywordtype">float</span> force = LerpForces ? MathHelper.Lerp(0, TargetPullForce, MathUtils.InverseLerp(0, MaxLength / 3, distance - 50)) : TargetPullForce;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    targetBody?.ApplyForce(-forceDir * force);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    var targetRagdoll = targetCharacter?.AnimController;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    <span class="keywordflow">if</span> (targetRagdoll != <span class="keyword">null</span> &amp;&amp; (targetRagdoll.InWater || targetRagdoll.OnGround))</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        targetRagdoll.Collider.ApplyForce(-forceDir * force * 3);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                }</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#ab010f072c9e5d9704ba9da8d7078fe6a">  371</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#ab010f072c9e5d9704ba9da8d7078fe6a">UpdateBroken</a>(<span class="keywordtype">float</span> deltaTime, <a class="code" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            base.UpdateBroken(deltaTime, cam); </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">if</span> (Snapped)</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                snapTimer += deltaTime;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordflow">if</span> (snapTimer &gt;= SnapAnimDuration)</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    IsActive = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_physics_body.html">PhysicsBody</a> GetBodyToPull(<a class="code" href="interface_barotrauma_1_1_i_spatial_entity.html">ISpatialEntity</a> target)</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        {</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">if</span> (target is <a class="code" href="class_barotrauma_1_1_item.html">Item</a> targetItem)</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                <span class="keywordflow">if</span> (targetItem.ParentInventory is <a class="code" href="class_barotrauma_1_1_character_inventory.html">CharacterInventory</a> characterInventory &amp;&amp;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    characterInventory.<a class="code" href="class_barotrauma_1_1_inventory.html#a1224d4cf4f928226afae8f4b4de460b3">Owner</a> is <a class="code" href="class_barotrauma_1_1_character.html">Character</a> ownerCharacter)</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    <span class="keywordflow">if</span> (ownerCharacter.Removed) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    <span class="keywordflow">return</span> ownerCharacter.AnimController.Collider;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                }</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                var projectile = targetItem.GetComponent&lt;Projectile&gt;();</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                <span class="keywordflow">if</span> (projectile != <span class="keyword">null</span> &amp;&amp; projectile.StickTarget != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    <span class="keywordflow">if</span> (projectile.StickTarget.UserData is <a class="code" href="class_barotrauma_1_1_structure.html">Structure</a> structure)</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                    {</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        <span class="keywordflow">return</span> structure.<a class="code" href="class_barotrauma_1_1_physics_body.html#a153b80c0283d09ac7133e9050b420eaf">Submarine</a>?.<a class="code" href="class_barotrauma_1_1_submarine.html#acc871c559a26cec98a490ef7d9b2de6e">PhysicsBody</a>;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    }</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Submarine sub)</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                    {</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                        <span class="keywordflow">return</span> sub.<a class="code" href="class_barotrauma_1_1_physics_body.html#af35b690deb6bb364b8653317020ca82c">PhysicsBody</a>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                    }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Item item)</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    {</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                        <span class="keywordflow">return</span> item.body;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    }</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Limb limb)</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                    {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                        <span class="keywordflow">return</span> limb.body;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                    }</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                <span class="keywordflow">if</span> (targetItem.body != <span class="keyword">null</span>) { <span class="keywordflow">return</span> targetItem.body; }</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (target is Limb targetLimb)</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            {</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                <span class="keywordflow">return</span> targetLimb.body;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            }</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    }</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                <span class="keywordflow">if</span> (user.IsRagdolled)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                    <span class="comment">// Reel in towards the target.</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                    user.AnimController.Hang();</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                                    <span class="keywordtype">float</span> force = LerpForces ? MathHelper.Lerp(0, SourcePullForce, MathUtils.InverseLerp(0, MaxLength / 2, distance)) : SourcePullForce;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                    sourceBody.ApplyForce(forceDir * force);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                <span class="comment">// Take the target velocity into account.</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                <span class="keywordflow">if</span> (targetCharacter != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                    var myCollider = user.AnimController.Collider;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                    var targetCollider = targetCharacter.AnimController.Collider;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                    <span class="keywordflow">if</span> (myCollider.LinearVelocity != Vector2.Zero &amp;&amp; targetCollider.LinearVelocity != Vector2.Zero)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                    {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                                        <span class="keywordflow">if</span> (Vector2.Dot(Vector2.Normalize(myCollider.LinearVelocity), Vector2.Normalize(targetCollider.LinearVelocity)) &lt; 0)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                        {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                                            myCollider.ApplyForce(targetCollider.LinearVelocity * targetCollider.Mass);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                                        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                                    }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                                }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                                {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                                    var targetBody = GetBodyToPull(target);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                                    <span class="keywordflow">if</span> (targetBody != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                                    {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                                        sourceBody.ApplyForce(targetBody.LinearVelocity * sourceBody.Mass);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                                    }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                            }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="keywordflow">if</span> (Math.Abs(TargetPullForce) &gt; 0.001f)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    var targetBody = GetBodyToPull(target);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    <span class="keywordflow">if</span> (user != <span class="keyword">null</span> &amp;&amp; targetCharacter != <span class="keyword">null</span> &amp;&amp; !user.AnimController.InWater)</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        <span class="comment">// Prevents rubberbanding horizontally when dragging a corpse.</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                        <span class="keywordflow">if</span> ((forceDir.X &lt; 0) != (user.AnimController.Dir &lt; 0))</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                            forceDir.X = Math.Clamp(forceDir.X, -0.1f, 0.1f);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                        }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                    <span class="keywordtype">float</span> force = LerpForces ? MathHelper.Lerp(0, TargetPullForce, MathUtils.InverseLerp(0, MaxLength / 3, distance - 50)) : TargetPullForce;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                    targetBody?.ApplyForce(-forceDir * force);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    var targetRagdoll = targetCharacter?.AnimController;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    <span class="keywordflow">if</span> (targetRagdoll != <span class="keyword">null</span> &amp;&amp; (targetRagdoll.InWater || targetRagdoll.OnGround))</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                    {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                        targetRagdoll.Collider.ApplyForce(-forceDir * force * 3);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                    }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#ab010f072c9e5d9704ba9da8d7078fe6a">  361</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#ab010f072c9e5d9704ba9da8d7078fe6a">UpdateBroken</a>(<span class="keywordtype">float</span> deltaTime, <a class="code" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            base.UpdateBroken(deltaTime, cam); </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <span class="keywordflow">if</span> (Snapped)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            {</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                snapTimer += deltaTime;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                <span class="keywordflow">if</span> (snapTimer &gt;= SnapAnimDuration)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                    IsActive = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_physics_body.html">PhysicsBody</a> GetBodyToPull(<a class="code" href="interface_barotrauma_1_1_i_spatial_entity.html">ISpatialEntity</a> target)</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="keywordflow">if</span> (target is <a class="code" href="class_barotrauma_1_1_item.html">Item</a> targetItem)</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                <span class="keywordflow">if</span> (targetItem.ParentInventory is <a class="code" href="class_barotrauma_1_1_character_inventory.html">CharacterInventory</a> characterInventory &amp;&amp;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    characterInventory.<a class="code" href="class_barotrauma_1_1_inventory.html#a1224d4cf4f928226afae8f4b4de460b3">Owner</a> is <a class="code" href="class_barotrauma_1_1_character.html">Character</a> ownerCharacter)</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                    <span class="keywordflow">if</span> (ownerCharacter.Removed) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    <span class="keywordflow">return</span> ownerCharacter.AnimController.Collider;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                var projectile = targetItem.GetComponent&lt;Projectile&gt;();</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                <span class="keywordflow">if</span> (projectile != <span class="keyword">null</span> &amp;&amp; projectile.StickTarget != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                    <span class="keywordflow">if</span> (projectile.StickTarget.UserData is <a class="code" href="class_barotrauma_1_1_structure.html">Structure</a> structure)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                        <span class="keywordflow">return</span> structure.<a class="code" href="class_barotrauma_1_1_physics_body.html#a153b80c0283d09ac7133e9050b420eaf">Submarine</a>?.<a class="code" href="class_barotrauma_1_1_submarine.html#acc871c559a26cec98a490ef7d9b2de6e">PhysicsBody</a>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Submarine sub)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        <span class="keywordflow">return</span> sub.<a class="code" href="class_barotrauma_1_1_physics_body.html#af35b690deb6bb364b8653317020ca82c">PhysicsBody</a>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                    }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Item item)</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                    {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                        <span class="keywordflow">return</span> item.body;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                    }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (projectile.StickTarget.UserData is Limb limb)</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                        <span class="keywordflow">return</span> limb.body;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                    }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                <span class="keywordflow">if</span> (targetItem.body != <span class="keyword">null</span>) { <span class="keywordflow">return</span> targetItem.body; }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (target is Limb targetLimb)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                <span class="keywordflow">return</span> targetLimb.body;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            }</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_camera_html"><div class="ttname"><a href="class_barotrauma_1_1_camera.html">Barotrauma.Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="_camera_8cs_source.html#l00009">Camera.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_character_html"><div class="ttname"><a href="class_barotrauma_1_1_character.html">Barotrauma.Character</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_8cs_source.html#l00030">BarotraumaShared/SharedSource/Characters/Character.cs:31</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_character_inventory_html"><div class="ttname"><a href="class_barotrauma_1_1_character_inventory.html">Barotrauma.CharacterInventory</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00015">BarotraumaShared/SharedSource/Items/CharacterInventory.cs:16</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_character_inventory_html"><div class="ttname"><a href="class_barotrauma_1_1_character_inventory.html">Barotrauma.CharacterInventory</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00016">BarotraumaShared/SharedSource/Items/CharacterInventory.cs:17</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html">Barotrauma.ContentXElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00013">ContentXElement.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_entity_html"><div class="ttname"><a href="class_barotrauma_1_1_entity.html">Barotrauma.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cs_source.html#l00012">Entity.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_entity_html_a9ff52bc5e36cd663248ff956f04b3aab"><div class="ttname"><a href="class_barotrauma_1_1_entity.html#a9ff52bc5e36cd663248ff956f04b3aab">Barotrauma.Entity.Submarine</a></div><div class="ttdeci">Submarine Submarine</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cs_source.html#l00049">Entity.cs:49</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_entity_html_ae40bdfaee2d22e0e2f3bf44bf006964e"><div class="ttname"><a href="class_barotrauma_1_1_entity.html#ae40bdfaee2d22e0e2f3bf44bf006964e">Barotrauma.Entity.Removed</a></div><div class="ttdeci">bool Removed</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cs_source.html#l00035">Entity.cs:35</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00023">GameMain.cs:24</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a8814ae6a86758a7f6c039be0a39d921e"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">Barotrauma.GameMain.NetworkMember</a></div><div class="ttdeci">static NetworkMember NetworkMember</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00178">GameMain.cs:179</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a8814ae6a86758a7f6c039be0a39d921e"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">Barotrauma.GameMain.NetworkMember</a></div><div class="ttdeci">static NetworkMember NetworkMember</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00182">GameMain.cs:183</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_inventory_html_a1224d4cf4f928226afae8f4b4de460b3"><div class="ttname"><a href="class_barotrauma_1_1_inventory.html#a1224d4cf4f928226afae8f4b4de460b3">Barotrauma.Inventory.Owner</a></div><div class="ttdeci">readonly Entity Owner</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00209">BarotraumaShared/SharedSource/Items/Inventory.cs:209</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_item_html"><div class="ttname"><a href="class_barotrauma_1_1_item.html">Barotrauma.Item</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00025">BarotraumaShared/SharedSource/Items/Item.cs:26</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_html_a0937a9a3817f90d0d712c826c376ba17"><div class="ttname"><a href="class_barotrauma_1_1_item.html#a0937a9a3817f90d0d712c826c376ba17">Barotrauma.Item.ResetCachedVisibleSize</a></div><div class="ttdeci">void ResetCachedVisibleSize()</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_items_2_item_8cs_source.html#l00226">BarotraumaClient/ClientSource/Items/Item.cs:226</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_html_a0937a9a3817f90d0d712c826c376ba17"><div class="ttname"><a href="class_barotrauma_1_1_item.html#a0937a9a3817f90d0d712c826c376ba17">Barotrauma.Item.ResetCachedVisibleSize</a></div><div class="ttdeci">void ResetCachedVisibleSize()</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_items_2_item_8cs_source.html#l00230">BarotraumaClient/ClientSource/Items/Item.cs:230</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">Barotrauma.Items.Components.ItemComponent</a></div><div class="ttdoc">The base class for components holding the different functionalities of the item</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00034">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:35</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_a19d30bc6d9c176851178e0234f515b7e"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a19d30bc6d9c176851178e0234f515b7e">Barotrauma.Items.Components.ItemComponent.ApplyStatusEffects</a></div><div class="ttdeci">void ApplyStatusEffects(ActionType type, float deltaTime, Character character=null, Limb targetLimb=null, Entity useTarget=null, Character user=null, Vector2? worldPosition=null, float afflictionMultiplier=1.0f)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00848">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:848</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_a19d30bc6d9c176851178e0234f515b7e"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a19d30bc6d9c176851178e0234f515b7e">Barotrauma.Items.Components.ItemComponent.ApplyStatusEffects</a></div><div class="ttdeci">void ApplyStatusEffects(ActionType type, float deltaTime, Character character=null, Limb targetLimb=null, Entity useTarget=null, Character user=null, Vector2? worldPosition=null, float afflictionMultiplier=1.0f)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00845">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:845</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_aa041575bba89d1f45931d50fe892810e"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e">Barotrauma.Items.Components.ItemComponent.item</a></div><div class="ttdeci">Item item</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00036">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:36</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_aad4062250ae882189f59d5999cff8977"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977">Barotrauma.Items.Components.ItemComponent.IsActive</a></div><div class="ttdeci">virtual bool? IsActive</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00094">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:95</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_projectile_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Barotrauma.Items.Components.Projectile</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_projectile_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/Projectile.cs:15</a></div></div>
@@ -543,13 +533,12 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_rope_html_a5742cbdb41c418379491120dff52c085"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a5742cbdb41c418379491120dff52c085">Barotrauma.Items.Components.Rope.SourcePullForce</a></div><div class="ttdeci">float SourcePullForce</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_rope_8cs_source.html#l00064">BarotraumaShared/SharedSource/Items/Components/Rope.cs:65</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_rope_html_a5ee67f11b7ec9bf92ed629bf7f2839b4"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a5ee67f11b7ec9bf92ed629bf7f2839b4">Barotrauma.Items.Components.Rope.LerpForces</a></div><div class="ttdeci">bool LerpForces</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_rope_8cs_source.html#l00106">BarotraumaShared/SharedSource/Items/Components/Rope.cs:107</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_rope_html_a89d090de14909443bc939e8a48874878"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#a89d090de14909443bc939e8a48874878">Barotrauma.Items.Components.Rope.Snapped</a></div><div class="ttdeci">bool Snapped</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_rope_8cs_source.html#l00113">BarotraumaShared/SharedSource/Items/Components/Rope.cs:114</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_rope_html_ab010f072c9e5d9704ba9da8d7078fe6a"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#ab010f072c9e5d9704ba9da8d7078fe6a">Barotrauma.Items.Components.Rope.UpdateBroken</a></div><div class="ttdeci">override void UpdateBroken(float deltaTime, Camera cam)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_rope_8cs_source.html#l00371">BarotraumaShared/SharedSource/Items/Components/Rope.cs:371</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_rope_html_ab010f072c9e5d9704ba9da8d7078fe6a"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#ab010f072c9e5d9704ba9da8d7078fe6a">Barotrauma.Items.Components.Rope.UpdateBroken</a></div><div class="ttdeci">override void UpdateBroken(float deltaTime, Camera cam)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_rope_8cs_source.html#l00361">BarotraumaShared/SharedSource/Items/Components/Rope.cs:361</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_rope_html_adaaf1a2ac96a2f6e271300e54c221ed0"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_rope.html#adaaf1a2ac96a2f6e271300e54c221ed0">Barotrauma.Items.Components.Rope.MaxAngle</a></div><div class="ttdeci">float MaxAngle</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_rope_8cs_source.html#l00078">BarotraumaShared/SharedSource/Items/Components/Rope.cs:79</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_limb_html"><div class="ttname"><a href="class_barotrauma_1_1_limb.html">Barotrauma.Limb</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_limb_8cs_source.html#l00204">BarotraumaShared/SharedSource/Characters/Limb.cs:205</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_limb_html_a4fe01ed98ea4dc9c8c593b0f6a9f68a7"><div class="ttname"><a href="class_barotrauma_1_1_limb.html#a4fe01ed98ea4dc9c8c593b0f6a9f68a7">Barotrauma.Limb.Removed</a></div><div class="ttdeci">bool Removed</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_limb_8cs_source.html#l00550">BarotraumaShared/SharedSource/Characters/Limb.cs:551</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_limb_html_a93019647a02e76459bd2179787a2bb7a"><div class="ttname"><a href="class_barotrauma_1_1_limb.html#a93019647a02e76459bd2179787a2bb7a">Barotrauma.Limb.AttachedRope</a></div><div class="ttdeci">Items.Components.Rope AttachedRope</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_limb_8cs_source.html#l00556">BarotraumaShared/SharedSource/Characters/Limb.cs:556</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_limb_html_a4fe01ed98ea4dc9c8c593b0f6a9f68a7"><div class="ttname"><a href="class_barotrauma_1_1_limb.html#a4fe01ed98ea4dc9c8c593b0f6a9f68a7">Barotrauma.Limb.Removed</a></div><div class="ttdeci">bool Removed</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_limb_8cs_source.html#l00580">BarotraumaShared/SharedSource/Characters/Limb.cs:581</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_limb_html_a93019647a02e76459bd2179787a2bb7a"><div class="ttname"><a href="class_barotrauma_1_1_limb.html#a93019647a02e76459bd2179787a2bb7a">Barotrauma.Limb.AttachedRope</a></div><div class="ttdeci">Items.Components.Rope AttachedRope</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_limb_8cs_source.html#l00586">BarotraumaShared/SharedSource/Characters/Limb.cs:586</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_map_entity_html"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00085">LuaBarotraumaAdditions.cs:86</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_network_member_html_a09e328c15574358ebebde4b0f18cda37"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_network_member.html#a09e328c15574358ebebde4b0f18cda37">Barotrauma.Networking.NetworkMember.IsClient</a></div><div class="ttdeci">abstract bool IsClient</div><div class="ttdef"><b>Definition:</b> <a href="_network_member_8cs_source.html#l00172">NetworkMember.cs:172</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_physics_body_html"><div class="ttname"><a href="class_barotrauma_1_1_physics_body.html">Barotrauma.PhysicsBody</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_physics_2_physics_body_8cs_source.html#l00084">BarotraumaShared/SharedSource/Physics/PhysicsBody.cs:85</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_physics_body_html_a153b80c0283d09ac7133e9050b420eaf"><div class="ttname"><a href="class_barotrauma_1_1_physics_body.html#a153b80c0283d09ac7133e9050b420eaf">Barotrauma.PhysicsBody.Submarine</a></div><div class="ttdeci">Submarine Submarine</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_physics_2_physics_body_8cs_source.html#l00189">BarotraumaShared/SharedSource/Physics/PhysicsBody.cs:189</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_physics_body_html_af35b690deb6bb364b8653317020ca82c"><div class="ttname"><a href="class_barotrauma_1_1_physics_body.html#af35b690deb6bb364b8653317020ca82c">Barotrauma.PhysicsBody.PhysicsBody</a></div><div class="ttdeci">PhysicsBody(XElement element, float scale=1.0f, bool findNewContacts=true)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_physics_2_physics_body_8cs_source.html#l00362">BarotraumaShared/SharedSource/Physics/PhysicsBody.cs:362</a></div></div>

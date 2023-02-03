@@ -20,7 +20,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "HasRequiredItems", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a1bdfb0dade208cb4c9b5bcb747f7c248", null ],
     [ "HasRequiredSkills", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#af9130806c85a90f3e4cab46852b89bce", null ],
     [ "HasRequiredSkills", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a49a81611a200a4ed61b76b592fe3fbc4", null ],
-    [ "IsLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa4dc33ca628c307a97d3dc7da540e844", null ],
+    [ "IsNotEmpty", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a173b8b216308ad809061f8794a268d53", null ],
     [ "Load", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a350e21654b80c0d2299a1a7b4469dce4", null ],
     [ "Move", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ac1fe1a28d391ef47cf6107fd9e24297a", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3480fd63df745e36e45124cecaab5299", null ],

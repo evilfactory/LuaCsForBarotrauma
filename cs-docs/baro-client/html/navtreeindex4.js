@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"class_barotrauma_1_1_abilities_1_1_character_ability_give_resistance.html":[4,0,0,0,64],
+"class_barotrauma_1_1_abilities_1_1_character_ability_give_resistance.html#a8cec064b4d5c9639573d4c4cf57cd0ef":[4,0,0,0,64,0],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_resistance.html#a98889724fb18b16cb579a90af00f1459":[4,0,0,0,64,1],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_stat.html":[4,0,0,0,65],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_stat.html#a49d818f8fe78e6b801f385bf7fc48f8a":[4,0,0,0,65,0],
@@ -54,9 +56,10 @@ var NAVTREEINDEX4 =
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_resistance.html#ac8fc12660d07a99a5973c71e2af9f98d":[4,0,0,0,71,2],
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_resistance.html#aecf513c0728612771400f4721fa0863b":[4,0,0,0,71,0],
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html":[4,0,0,0,72],
-"class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html#a92cd3bb11d35b5159b38f147bda7c698":[4,0,0,0,72,2],
+"class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html#a8909b8731ad383c6b9d6fe13115517b9":[4,0,0,0,72,1],
+"class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html#a92cd3bb11d35b5159b38f147bda7c698":[4,0,0,0,72,3],
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html#a9b5c19f68ac7ec4d6b0eda5f8df54b9e":[4,0,0,0,72,0],
-"class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html#ac4399cf0ab758f1bc2f3217dab749b98":[4,0,0,0,72,1],
+"class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat.html#ac4399cf0ab758f1bc2f3217dab749b98":[4,0,0,0,72,2],
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat_to_flooding.html":[4,0,0,0,73],
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat_to_flooding.html#a17dcb6454e568abf24809b8630e32461":[4,0,0,0,73,1],
 "class_barotrauma_1_1_abilities_1_1_character_ability_modify_stat_to_flooding.html#a198863cc820e5bfa1f012eb85bed442e":[4,0,0,0,73,0],
@@ -241,13 +244,10 @@ var NAVTREEINDEX4 =
 "class_barotrauma_1_1_affliction_prefab.html":[4,0,0,108],
 "class_barotrauma_1_1_affliction_prefab.html#a013638a2c5ac07e767a788f39b3b0f9b":[4,0,0,108,21],
 "class_barotrauma_1_1_affliction_prefab.html#a056adf36d303a81552d01be0107b7286":[4,0,0,108,9],
-"class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46":[4,0,0,108,46],
+"class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46":[4,0,0,108,49],
 "class_barotrauma_1_1_affliction_prefab.html#a0ca00d321ff3c0d4cdd5de97095bc853":[4,0,0,108,17],
-"class_barotrauma_1_1_affliction_prefab.html#a15c53c6b451bdf288ff778b8feca9775":[4,0,0,108,34],
+"class_barotrauma_1_1_affliction_prefab.html#a13bcb726cfa3a1aeefa9538cb6ef53fa":[4,0,0,108,20],
+"class_barotrauma_1_1_affliction_prefab.html#a15c53c6b451bdf288ff778b8feca9775":[4,0,0,108,35],
 "class_barotrauma_1_1_affliction_prefab.html#a1783482f3643d63edfcf4d6dea10babb":[4,0,0,108,4],
-"class_barotrauma_1_1_affliction_prefab.html#a1ed9228a056a1756cbc6f17632b6ca6a":[4,0,0,108,38],
-"class_barotrauma_1_1_affliction_prefab.html#a20f248bde91e7e751bb562479cd12e05":[4,0,0,108,33],
-"class_barotrauma_1_1_affliction_prefab.html#a2218f6e041cf066585d9cf0261c75143":[4,0,0,108,31],
-"class_barotrauma_1_1_affliction_prefab.html#a27546cae2c373498f33f1d1d9d8d841b":[4,0,0,108,43],
-"class_barotrauma_1_1_affliction_prefab.html#a292c51c43e094a67a66778087dcbf191":[4,0,0,108,19]
+"class_barotrauma_1_1_affliction_prefab.html#a1ed9228a056a1756cbc6f17632b6ca6a":[4,0,0,108,40]
 };

@@ -1,6 +1,5 @@
 var class_barotrauma_1_1_campaign_mode =
 [
-    [ "SaveInfo", "struct_barotrauma_1_1_campaign_mode_1_1_save_info.html", "struct_barotrauma_1_1_campaign_mode_1_1_save_info" ],
     [ "InteractionType", "class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efe", [
       [ "None", "class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efea6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "Talk", "class_barotrauma_1_1_campaign_mode.html#a7fd255ef07a3fa8a585cfc33cc400efead7663fa42334fe2bdff69b245bf44c7e", null ],
@@ -24,7 +23,6 @@ var class_barotrauma_1_1_campaign_mode =
     ] ],
     [ "CampaignMode", "class_barotrauma_1_1_campaign_mode.html#a2c322bd72a89c74d1350d29c51b80838", null ],
     [ "AddExtraMissions", "class_barotrauma_1_1_campaign_mode.html#af1e1297863a3be7ea7791ea9319ac4e3", null ],
-    [ "AllowedToManageWallets", "class_barotrauma_1_1_campaign_mode.html#a19577916414f68d961ccd1bf91dc0958", null ],
     [ "AssignNPCMenuInteraction", "class_barotrauma_1_1_campaign_mode.html#a633b4e0d509478ecdb3d22b90438bc95", null ],
     [ "CanAfford", "class_barotrauma_1_1_campaign_mode.html#a3d8de1e29e8e25eeebaa9d0338083dc5", null ],
     [ "CheckTooManyMissions", "class_barotrauma_1_1_campaign_mode.html#ab04c8244d6276785f7947197a13f9e59", null ],

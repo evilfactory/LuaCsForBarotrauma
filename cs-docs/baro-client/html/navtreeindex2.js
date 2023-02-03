@@ -119,6 +119,7 @@ var NAVTREEINDEX2 =
 "class_barotrauma_1_1_a_i_objective_prepare.html#a9ad4a61089f0a8046223ebc279c3fd23":[4,0,0,51,14],
 "class_barotrauma_1_1_a_i_objective_prepare.html#abe634901c5a3ded11e7d181381590b77":[4,0,0,51,10],
 "class_barotrauma_1_1_a_i_objective_prepare.html#abea59219989235cafd9dfc23f9a301f9":[4,0,0,51,11],
+"class_barotrauma_1_1_a_i_objective_prepare.html#adc74b5c137a3c65304837543a569198c":[4,0,0,51,16],
 "class_barotrauma_1_1_a_i_objective_prepare.html#ae4bb214880422a7b72a9c88b02610a0d":[4,0,0,51,0],
 "class_barotrauma_1_1_a_i_objective_prepare.html#aedc2731a212551d1e05cf71370149db8":[4,0,0,51,9],
 "class_barotrauma_1_1_a_i_objective_prepare.html#af8b44199f4ee254e125fd2e9b7187952":[4,0,0,51,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "class_barotrauma_1_1_a_i_trigger.html#ac0372378175c5e9ac253a4b4071714c8":[4,0,0,430,0],
 "class_barotrauma_1_1_a_i_trigger.html#ac6d4115ddcf95824233709ba25f45b4f":[4,0,0,430,14],
 "class_barotrauma_1_1_a_i_trigger.html#acfce24274157770c2de6c65af73d5782":[4,0,0,430,13],
-"class_barotrauma_1_1_a_i_trigger.html#ad403bb24e38019eb7333ddfc17ea0b44":[4,0,0,430,5],
-"class_barotrauma_1_1_a_i_trigger.html#aea99ad72a80482ad2da6ea937239d039":[4,0,0,430,3]
+"class_barotrauma_1_1_a_i_trigger.html#ad403bb24e38019eb7333ddfc17ea0b44":[4,0,0,430,5]
 };

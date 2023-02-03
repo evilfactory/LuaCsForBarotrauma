@@ -102,10 +102,14 @@ Inheritance diagram for Barotrauma.SpriteRecorder:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aabaa42bc3c1b219443970ec75e3970f4"><td class="memItemLeft" align="right" valign="top">readonly record struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite_recorder.html#aabaa42bc3c1b219443970ec75e3970f4">Command</a> (Texture2D Texture, VertexPositionColorTexture VertexBL, VertexPositionColorTexture VertexBR, VertexPositionColorTexture VertexTL, VertexPositionColorTexture VertexTR, float Depth, Vector2 <a class="el" href="class_barotrauma_1_1_sprite_recorder.html#aaf8c3ed5f691aef7715734231dea7e9c">Min</a>, Vector2 <a class="el" href="class_barotrauma_1_1_sprite_recorder.html#ab52b2b9b5132869e9f6eb07181064f14">Max</a>, int Index)</td></tr>
+<tr class="separator:aabaa42bc3c1b219443970ec75e3970f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0896d63e0f3304c37de638fd860ac2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite_recorder.html#af0896d63e0f3304c37de638fd860ac2c">Begin</a> (SpriteSortMode sortMode)</td></tr>
 <tr class="separator:af0896d63e0f3304c37de638fd860ac2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af666541fbfe6701a087a75298aa772cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite_recorder.html#af666541fbfe6701a087a75298aa772cd">Draw</a> (Texture2D texture, Vector2 pos, Rectangle? srcRect, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float depth)</td></tr>
 <tr class="separator:af666541fbfe6701a087a75298aa772cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b57fd58da32fffde65cc58aab995b3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite_recorder.html#a1b57fd58da32fffde65cc58aab995b3d">Draw</a> (Texture2D texture, VertexPositionColorTexture[] vertices, float layerDepth, int? count=null)</td></tr>
+<tr class="separator:a1b57fd58da32fffde65cc58aab995b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2717cc8f0438512509e5fc6be57a3634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite_recorder.html#a2717cc8f0438512509e5fc6be57a3634">End</a> ()</td></tr>
 <tr class="separator:a2717cc8f0438512509e5fc6be57a3634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98b302e5f96f74cb21661bc0e24314fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite_recorder.html#a98b302e5f96f74cb21661bc0e24314fe">Render</a> (<a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
@@ -150,7 +154,79 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00167">167</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00169">169</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+
+</div>
+</div>
+<a id="aabaa42bc3c1b219443970ec75e3970f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabaa42bc3c1b219443970ec75e3970f4">&#9670;&nbsp;</a></span>Command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly record struct Barotrauma.SpriteRecorder.Command </td>
+          <td>(</td>
+          <td class="paramtype">Texture2D&#160;</td>
+          <td class="paramname"><em>Texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexPositionColorTexture&#160;</td>
+          <td class="paramname"><em>VertexBL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexPositionColorTexture&#160;</td>
+          <td class="paramname"><em>VertexBR</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexPositionColorTexture&#160;</td>
+          <td class="paramname"><em>VertexTL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexPositionColorTexture&#160;</td>
+          <td class="paramname"><em>VertexTR</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>Min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>Max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00012">12</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -169,12 +245,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00309">309</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00340">340</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
 <a id="af666541fbfe6701a087a75298aa772cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af666541fbfe6701a087a75298aa772cd">&#9670;&nbsp;</a></span>Draw()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af666541fbfe6701a087a75298aa772cd">&#9670;&nbsp;</a></span>Draw() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +317,49 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00173">173</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00186">186</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1b57fd58da32fffde65cc58aab995b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b57fd58da32fffde65cc58aab995b3d">&#9670;&nbsp;</a></span>Draw() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.SpriteRecorder.Draw </td>
+          <td>(</td>
+          <td class="paramtype">Texture2D&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertexPositionColorTexture[]&#160;</td>
+          <td class="paramname"><em>vertices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>layerDepth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int?&#160;</td>
+          <td class="paramname"><em>count</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00194">194</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -260,7 +378,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00185">185</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00216">216</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -280,7 +398,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00268">268</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00299">299</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -305,7 +423,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00152">152</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00154">154</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -321,7 +439,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00161">161</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00163">163</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -346,7 +464,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00165">165</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00167">167</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>
@@ -370,7 +488,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00164">164</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_sprite_recorder_8cs_source.html#l00166">166</a> of file <a class="el" href="_sprite_recorder_8cs_source.html">SpriteRecorder.cs</a>.</p>
 
 </div>
 </div>

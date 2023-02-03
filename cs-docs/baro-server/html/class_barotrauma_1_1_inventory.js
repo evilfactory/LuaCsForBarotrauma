@@ -45,5 +45,6 @@ var class_barotrauma_1_1_inventory =
     [ "syncItemsDelay", "class_barotrauma_1_1_inventory.html#ad98390808578075b574953c089c3242e", null ],
     [ "AllItems", "class_barotrauma_1_1_inventory.html#a3ec98aaad79366ae0bc19d5f9a758658", null ],
     [ "AllItemsMod", "class_barotrauma_1_1_inventory.html#ae2c528d3eb8483f180dd460d9322ffd0", null ],
-    [ "Capacity", "class_barotrauma_1_1_inventory.html#af1e7de8a0d7e1889a9788baaaac9cf1a", null ]
+    [ "Capacity", "class_barotrauma_1_1_inventory.html#af1e7de8a0d7e1889a9788baaaac9cf1a", null ],
+    [ "EmptySlotCount", "class_barotrauma_1_1_inventory.html#a95aa265e64999cd39f08d509cc555746", null ]
 ];

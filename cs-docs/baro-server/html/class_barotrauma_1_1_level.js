@@ -62,6 +62,7 @@ var class_barotrauma_1_1_level =
     [ "IsCloseToEnd", "class_barotrauma_1_1_level.html#a6b5bf6b9eff8fbe5790141f301d7a6e0", null ],
     [ "IsCloseToStart", "class_barotrauma_1_1_level.html#a9751c492f5eb958fde47eaf275831f90", null ],
     [ "IsCloseToStart", "class_barotrauma_1_1_level.html#a912b199b3e990b2147b2dfceba629e90", null ],
+    [ "IsPositionInsideWall", "class_barotrauma_1_1_level.html#a9bd17f45dabb76d9146b486241ea11b5", null ],
     [ "PrepareBeaconStation", "class_barotrauma_1_1_level.html#ad499e43b5911358b2d27b3a7d18e550a", null ],
     [ "Remove", "class_barotrauma_1_1_level.html#abedc1f25908af938545b87a94b1e9331", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_level.html#aa66ad0cbbb947659669b49f4bdb34299", null ],

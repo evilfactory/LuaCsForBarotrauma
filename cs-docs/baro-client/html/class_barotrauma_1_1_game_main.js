@@ -13,7 +13,6 @@ var class_barotrauma_1_1_game_main =
     [ "ResetViewPort", "class_barotrauma_1_1_game_main.html#a2798a5cd6350e8bcb7a6ae9b5565c547", null ],
     [ "SetWindowMode", "class_barotrauma_1_1_game_main.html#aa0609df794dda7d9ee8481c92d411dc3", null ],
     [ "ShowBugReporter", "class_barotrauma_1_1_game_main.html#a9f21ff406136c1fcc6ba6b934535274a", null ],
-    [ "ShowEditorDisclaimer", "class_barotrauma_1_1_game_main.html#a270975f503d533b806281402828ac0ec", null ],
     [ "ShowLoading", "class_barotrauma_1_1_game_main.html#a3206f5b40f0f4e947618086734964f3c", null ],
     [ "UnloadContent", "class_barotrauma_1_1_game_main.html#a68bd83b4e54dda03ec466412b185b653", null ],
     [ "Update", "class_barotrauma_1_1_game_main.html#a8ae465fb8639bcca3d47723677cbce99", null ],

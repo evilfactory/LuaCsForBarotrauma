@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"class_barotrauma_1_1_abandoned_outpost_mission.html#a102f53657a3a885f338421c3d9d26777":[4,0,0,260,9],
 "class_barotrauma_1_1_abandoned_outpost_mission.html#a22b3cc05a1258b83ac801a11d672c672":[4,0,0,260,13],
 "class_barotrauma_1_1_abandoned_outpost_mission.html#a30ce484507e5016a4c0a63126d2f3e03":[4,0,0,260,12],
 "class_barotrauma_1_1_abandoned_outpost_mission.html#a320ab09d9c833028bb901748940aaa4c":[4,0,0,260,1],
@@ -112,6 +113,7 @@ var NAVTREEINDEX3 =
 "class_barotrauma_1_1_abilities_1_1_ability_condition_is_aiming.html#a1b333d8d098755b7a90aed3ca8b40bcb":[4,0,0,0,8,1],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_is_aiming.html#a9a0a6b194844abca42fc8bf972da940c":[4,0,0,0,8,0],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html":[4,0,0,0,9],
+"class_barotrauma_1_1_abilities_1_1_ability_condition_item.html#a060ef3c3977c2dccca6cf3fdfaea38ee":[4,0,0,0,9,2],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html#a8999989d10dc9d44e8a4226c3479834c":[4,0,0,0,9,0],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html#aeb9a73b48181332021e02aa02728f0a3":[4,0,0,0,9,1],
 "class_barotrauma_1_1_abilities_1_1_ability_condition_item_in_submarine.html":[4,0,0,0,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_stat.html":[4,0,0,0,65],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_stat.html#a49d818f8fe78e6b801f385bf7fc48f8a":[4,0,0,0,65,0],
 "class_barotrauma_1_1_abilities_1_1_character_ability_give_stat.html#aaad457fecd3a8c3427d7b9139d0244a5":[4,0,0,0,65,1],
-"class_barotrauma_1_1_abilities_1_1_character_ability_give_talent_points.html":[4,0,0,0,66],
-"class_barotrauma_1_1_abilities_1_1_character_ability_give_talent_points.html#a6eeb18ce234cb602bb8a6f0f6c4ad580":[4,0,0,0,66,0],
-"class_barotrauma_1_1_abilities_1_1_character_ability_give_talent_points.html#ada3f6bd869014e774c26fbcd9184736b":[4,0,0,0,66,1]
+"class_barotrauma_1_1_abilities_1_1_character_ability_give_talent_points.html":[4,0,0,0,66]
 };

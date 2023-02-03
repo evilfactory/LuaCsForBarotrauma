@@ -16,7 +16,9 @@ var class_u_i_highlight_action =
       [ "TurbineOutputSlider", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284a6b3be287e10955f1c9ce3c4534ddcb02", null ],
       [ "DeconstructButton", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284ab5de5fd9e2308e2263fd3faecebff66d", null ],
       [ "RechargeSpeedSlider", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284a51c4b534f29d7d97108b3c1c74adeb3a", null ],
-      [ "CPRButton", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284aa86e0ecc258a5966d41e47fb9e44a5d1", null ]
+      [ "CPRButton", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284aa86e0ecc258a5966d41e47fb9e44a5d1", null ],
+      [ "CloseButton", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284a2db4324cf4a475bc104457a2e1323bf6", null ],
+      [ "MessageBoxCloseButton", "class_u_i_highlight_action.html#a0e5eb3fcec70f5e5d6c8f0ee8edd4284ad16250076da239e43a69fb2f1947db7c", null ]
     ] ],
     [ "UIHighlightAction", "class_u_i_highlight_action.html#a4c3e3dcdaaeb96510ac8f45bb18c278d", null ],
     [ "IsFinished", "class_u_i_highlight_action.html#a57ea12bd0cf7351f72c3fcd660ce0966", null ],
