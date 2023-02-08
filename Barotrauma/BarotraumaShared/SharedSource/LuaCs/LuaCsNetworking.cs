@@ -145,15 +145,15 @@ namespace Barotrauma
             }
         }
 
-        public void HttpPost(string url, LuaCsAction callback, string data, string contentType = "application/json", Dictionary<string, string> headers = null)
+        public void HttpPost(string url, LuaCsAction callback, string data, string contentType = "application/json", Dictionary<string, string> headers = null, string savePath = null)
         {
-            HttpRequest(url, callback, data, "POST", contentType, headers);
+            HttpRequest(url, callback, data, "POST", contentType, headers, savePath);
         }
 
 
-        public void HttpGet(string url, LuaCsAction callback, Dictionary<string, string> headers = null)
+        public void HttpGet(string url, LuaCsAction callback, Dictionary<string, string> headers = null, string savePath = null)
         {
-            HttpRequest(url, callback, null, "GET", null, headers);
+            HttpRequest(url, callback, null, "GET", null, headers, savePath);
         }
 
         public void CreateEntityEvent(INetSerializable entity, NetEntityEvent.IData extraData)
