@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -96,7 +97,7 @@ namespace Barotrauma
             HandleNetMessage(netMessage, name, client);
         }
 
-        public async void HttpRequest(string url, LuaCsAction callback, string data = null, string method = "POST", string contentType = "application/json", Dictionary<string, string> headers = null)
+        public async void HttpRequest(string url, LuaCsAction callback, string data = null, string method = "POST", string contentType = "application/json", Dictionary<string, string> headers = null, string savePath = null)
         {
             try
             {
@@ -114,8 +115,18 @@ namespace Barotrauma
                 {
                     request.Content = new StringContent(data, Encoding.UTF8, contentType);
                 }
-
+                
                 HttpResponseMessage response = await client.SendAsync(request);
+
+                if (savePath != null)
+                {
+                    byte[] responseData = await response.Content.ReadAsByteArrayAsync();
+
+                    using (var fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write))
+                    {
+                        fileStream.Write(responseData, 0, responseData.Length);
+                    }
+                }
 
                 string responseBody = await response.Content.ReadAsStringAsync();
 
