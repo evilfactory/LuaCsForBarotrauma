@@ -120,11 +120,14 @@ namespace Barotrauma
 
                 if (savePath != null)
                 {
-                    byte[] responseData = await response.Content.ReadAsByteArrayAsync();
-
-                    using (var fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write))
+                    if (LuaCsFile.IsPathAllowedException(savePath)) 
                     {
-                        fileStream.Write(responseData, 0, responseData.Length);
+                        byte[] responseData = await response.Content.ReadAsByteArrayAsync();
+
+                        using (var fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write))
+                        {
+                            fileStream.Write(responseData, 0, responseData.Length);
+                        }
                     }
                 }
 
