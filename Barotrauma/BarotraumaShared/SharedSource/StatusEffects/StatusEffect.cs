@@ -1539,7 +1539,7 @@ namespace Barotrauma
                             {
                                 targetCharacter.TryAdjustHealerSkill(user, healthChange);
 #if SERVER
-                                GameMain.Server.KarmaManager.OnCharacterHealthChanged(targetCharacter, user, healthChange, 0.0f);
+                                GameMain.Server.KarmaManager.OnCharacterHealthChanged(targetCharacter, user, -healthChange, 0.0f);
 #endif
                             }
                         }
@@ -2168,7 +2168,7 @@ namespace Barotrauma
                                 {
                                     targetCharacter.TryAdjustHealerSkill(element.User, healthChange);
 #if SERVER
-                                    GameMain.Server.KarmaManager.OnCharacterHealthChanged(targetCharacter, element.User, healthChange, 0.0f);
+                                    GameMain.Server.KarmaManager.OnCharacterHealthChanged(targetCharacter, element.User, -healthChange, 0.0f);
 #endif
                                 }
                             }
