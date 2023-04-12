@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_level_renderer.ht
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="class_barotrauma_1_1_level_renderer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Barotrauma.LevelRenderer Class Reference</div>  </div>
@@ -103,6 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa330551faa136765a6161d73074f5ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34a5e8b1f74a36f133397f9b9e7df755"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#a34a5e8b1f74a36f133397f9b9e7df755">ReloadTextures</a> ()</td></tr>
 <tr class="separator:a34a5e8b1f74a36f133397f9b9e7df755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a4ab8ff8b773b703d7a4243c0474ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#a92a4ab8ff8b773b703d7a4243c0474ad">Flash</a> ()</td></tr>
+<tr class="separator:a92a4ab8ff8b773b703d7a4243c0474ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9b16575d86be8aa53632104e29dfe85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#af9b16575d86be8aa53632104e29dfe85">Update</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
 <tr class="separator:af9b16575d86be8aa53632104e29dfe85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee9911a22b372bf5bd550b74c094b869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#aee9911a22b372bf5bd550b74c094b869">SetVertices</a> (VertexPositionTexture[] wallVertices, VertexPositionTexture[] wallEdgeVertices, Texture2D wallTexture, Texture2D edgeTexture, Color color)</td></tr>
@@ -122,6 +125,17 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1766d5786a0562979a92a2a87618ac79"><td class="memItemLeft" align="right" valign="top">static VertexPositionColorTexture[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#a1766d5786a0562979a92a2a87618ac79">GetColoredVertices</a> (VertexPositionTexture[] vertices, Color color)</td></tr>
 <tr class="separator:a1766d5786a0562979a92a2a87618ac79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:ad386608bffa0018bd6040dd1d98588e7"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#ad386608bffa0018bd6040dd1d98588e7">FlashColor</a><code> [get]</code></td></tr>
+<tr class="separator:ad386608bffa0018bd6040dd1d98588e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73a1caf1b34450bb79715991f5817c71"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#a73a1caf1b34450bb79715991f5817c71">ChromaticAberrationStrength</a><code> [get, set]</code></td></tr>
+<tr class="separator:a73a1caf1b34450bb79715991f5817c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525972499f495df186e361c372a624d4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#a525972499f495df186e361c372a624d4">CollapseEffectStrength</a><code> [get, set]</code></td></tr>
+<tr class="separator:a525972499f495df186e361c372a624d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6ab1907254aaaf08aac023a22a50d4"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_renderer.html#a1c6ab1907254aaaf08aac023a22a50d4">CollapseEffectOrigin</a><code> [get, set]</code></td></tr>
+<tr class="separator:a1c6ab1907254aaaf08aac023a22a50d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -143,7 +157,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00084">84</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00105">105</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -163,7 +177,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00478">478</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00535">535</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -205,7 +219,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00183">183</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00240">240</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -235,7 +249,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00289">289</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00346">346</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -271,7 +285,26 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00279">279</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00336">336</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a92a4ab8ff8b773b703d7a4243c0474ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92a4ab8ff8b773b703d7a4243c0474ad">&#9670;&nbsp;</a></span>Flash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.LevelRenderer.Flash </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00143">143</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -309,7 +342,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00160">160</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00217">217</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -328,7 +361,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00116">116</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00135">135</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -358,7 +391,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00386">386</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00443">443</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -406,7 +439,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00170">170</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00227">227</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -436,7 +469,104 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00124">124</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00148">148</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a73a1caf1b34450bb79715991f5817c71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73a1caf1b34450bb79715991f5817c71">&#9670;&nbsp;</a></span>ChromaticAberrationStrength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.LevelRenderer.ChromaticAberrationStrength</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00088">88</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1c6ab1907254aaaf08aac023a22a50d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c6ab1907254aaaf08aac023a22a50d4">&#9670;&nbsp;</a></span>CollapseEffectOrigin</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Barotrauma.LevelRenderer.CollapseEffectOrigin</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00098">98</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a525972499f495df186e361c372a624d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525972499f495df186e361c372a624d4">&#9670;&nbsp;</a></span>CollapseEffectStrength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.LevelRenderer.CollapseEffectStrength</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00093">93</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ad386608bffa0018bd6040dd1d98588e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad386608bffa0018bd6040dd1d98588e7">&#9670;&nbsp;</a></span>FlashColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color Barotrauma.LevelRenderer.FlashColor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_level_renderer_8cs_source.html#l00079">79</a> of file <a class="el" href="_level_renderer_8cs_source.html">LevelRenderer.cs</a>.</p>
 
 </div>
 </div>

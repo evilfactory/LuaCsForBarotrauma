@@ -396,7 +396,7 @@ $(document).ready(function(){initNavTree('_lidgren_server_peer_8cs_source.html',
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            PendingClient? pendingClient = pendingClients.Find(c =&gt; c.AccountInfo.AccountId is Some&lt;AccountId&gt; { Value: SteamId id } &amp;&amp; <span class="keywordtype">id</span>.Value == steamId);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            PendingClient? pendingClient = pendingClients.Find(c =&gt; c.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var <span class="keywordtype">id</span>) &amp;&amp; <span class="keywordtype">id</span>.Value == steamId);</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            DebugConsole.Log($<span class="stringliteral">&quot;{steamId} validation: {status}, {(pendingClient != null)}&quot;</span>);</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">if</span> (pendingClient is <span class="keyword">null</span>)</div>
@@ -404,7 +404,7 @@ $(document).ready(function(){initNavTree('_lidgren_server_peer_8cs_source.html',
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">if</span> (status == Steamworks.AuthResponse.OK) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                <span class="keywordflow">if</span> (connectedClients.Find(c</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        =&gt; c.AccountInfo.AccountId is Some&lt;AccountId&gt; { Value: SteamId id } &amp;&amp; <span class="keywordtype">id</span>.Value == steamId)</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        =&gt; c.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var <span class="keywordtype">id</span>) &amp;&amp; <span class="keywordtype">id</span>.Value == steamId)</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                    is LidgrenConnection connection)</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                {</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    Disconnect(connection,  PeerDisconnectPacket.SteamAuthError(status));</div>
@@ -478,7 +478,7 @@ $(document).ready(function(){initNavTree('_lidgren_server_peer_8cs_source.html',
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                lidgrenConn.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">NetworkConnectionStatus</a>.Disconnected;</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                connectedClients.Remove(lidgrenConn);</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                callbacks.OnDisconnect.Invoke(conn, peerDisconnectPacket);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                <span class="keywordflow">if</span> (conn.AccountInfo.AccountId is Some&lt;AccountId&gt; { Value: SteamId steamId }) { SteamManager.StopAuthSession(steamId); }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                <span class="keywordflow">if</span> (conn.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var steamId)) { SteamManager.StopAuthSession(steamId); }</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            }</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            lidgrenConn.NetConnection.Disconnect(peerDisconnectPacket.ToLidgrenStringRepresentation());</div>

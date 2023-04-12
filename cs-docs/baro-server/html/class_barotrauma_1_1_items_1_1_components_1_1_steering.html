@@ -134,10 +134,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adf6cadfc14307e2a2016acd2a58a2fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef9d135985841cf184fe45fdaf9db8f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aef9d135985841cf184fe45fdaf9db8f9">SetDestinationLevelEnd</a> ()</td></tr>
 <tr class="separator:aef9d135985841cf184fe45fdaf9db8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5acc42c136acc95819daf99d574f148"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ab5acc42c136acc95819daf99d574f148">AIOperate</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, <a class="el" href="class_barotrauma_1_1_a_i_objective_operate_item.html">AIObjectiveOperateItem</a> objective)</td></tr>
-<tr class="memdesc:ab5acc42c136acc95819daf99d574f148"><td class="mdescLeft">&#160;</td><td class="mdescRight"><dl class="section return"><dt>Returns</dt><dd>true if the operation was completed</dd></dl>
- <a href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ab5acc42c136acc95819daf99d574f148">More...</a><br /></td></tr>
-<tr class="separator:ab5acc42c136acc95819daf99d574f148"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64c51a374c53d9f97250f8df14e5e834"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a64c51a374c53d9f97250f8df14e5e834">CrewAIOperate</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, <a class="el" href="class_barotrauma_1_1_a_i_objective_operate_item.html">AIObjectiveOperateItem</a> objective)</td></tr>
+<tr class="memdesc:a64c51a374c53d9f97250f8df14e5e834"><td class="mdescLeft">&#160;</td><td class="mdescRight"><dl class="section return"><dt>Returns</dt><dd>true if the operation was completed</dd></dl>
+ <a href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a64c51a374c53d9f97250f8df14e5e834">More...</a><br /></td></tr>
+<tr class="separator:a64c51a374c53d9f97250f8df14e5e834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af09bc3c32b282968c9b76199f1c320d4"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#af09bc3c32b282968c9b76199f1c320d4">ReceiveSignal</a> (<a class="el" href="struct_barotrauma_1_1_items_1_1_components_1_1_signal.html">Signal</a> signal, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a> connection)</td></tr>
 <tr class="separator:af09bc3c32b282968c9b76199f1c320d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a046165924aad6e360c263b6851028010"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a046165924aad6e360c263b6851028010">ServerEventRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c)</td></tr>
@@ -505,8 +505,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab5acc42c136acc95819daf99d574f148"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5acc42c136acc95819daf99d574f148">&#9670;&nbsp;</a></span>AIOperate()</h2>
+<a id="a64c51a374c53d9f97250f8df14e5e834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64c51a374c53d9f97250f8df14e5e834">&#9670;&nbsp;</a></span>CrewAIOperate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -515,7 +515,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override bool Barotrauma.Items.Components.Steering.AIOperate </td>
+          <td class="memname">override bool Barotrauma.Items.Components.Steering.CrewAIOperate </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>deltaTime</em>, </td>
@@ -548,7 +548,7 @@ Additional Inherited Members</h2></td></tr>
 <p><dl class="section return"><dt>Returns</dt><dd>true if the operation was completed</dd></dl>
 </p>
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a8d4749a6dd16b88fc97f5b5763137365">Barotrauma.Items.Components.ItemComponent</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa89188936d97141d96acddcd82fb0ea0">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_machines_2_steering_8cs_source.html#l00723">723</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_machines_2_steering_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Machines/Steering.cs</a>.</p>
 

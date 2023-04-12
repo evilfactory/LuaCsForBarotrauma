@@ -9,6 +9,7 @@ var class_barotrauma_1_1_price_info =
     [ "MaxAvailableAmount", "class_barotrauma_1_1_price_info.html#a5ec025bf370554b209661cdea0a9975a", null ],
     [ "MinAvailableAmount", "class_barotrauma_1_1_price_info.html#a048aa4fca42b434a43caac48301d9628", null ],
     [ "MinLevelDifficulty", "class_barotrauma_1_1_price_info.html#a38d2857ffbd3de20edfd21c0c7e68b61", null ],
+    [ "MinReputation", "class_barotrauma_1_1_price_info.html#a82ec12fb9164cdd26650a6a6e946f30d", null ],
     [ "Price", "class_barotrauma_1_1_price_info.html#a187496573ce91007751c44968499dd72", null ],
     [ "RequiresUnlock", "class_barotrauma_1_1_price_info.html#aa221f88504f12bf4a424e287650e59b7", null ],
     [ "StoreIdentifier", "class_barotrauma_1_1_price_info.html#aa8e90f3c75b7ba7bb16b87c61c302030", null ]

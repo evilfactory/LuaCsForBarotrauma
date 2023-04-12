@@ -24,7 +24,7 @@ var class_barotrauma_1_1_game_session =
     [ "Save", "class_barotrauma_1_1_game_session.html#a6c1aaefd1ee06b4217fc6534b3af5c5f", null ],
     [ "StartRound", "class_barotrauma_1_1_game_session.html#a0a9ce2756bd53fb276f03874cebfa2d8", null ],
     [ "StartRound", "class_barotrauma_1_1_game_session.html#a705d12c980cb99f44eb343623a325989", null ],
-    [ "SwitchSubmarine", "class_barotrauma_1_1_game_session.html#a1434ed4f920274cff2f29b3693ca968b", null ],
+    [ "SwitchSubmarine", "class_barotrauma_1_1_game_session.html#afdc5942b17d3b927de7e1b09f72eaa74", null ],
     [ "Update", "class_barotrauma_1_1_game_session.html#ae143bd0a862937407a9011b28ba741ff", null ],
     [ "CrewManager", "class_barotrauma_1_1_game_session.html#ae904be5ebcdede3d01c6b95a0f5d9250", null ],
     [ "EventManager", "class_barotrauma_1_1_game_session.html#ad4914bfd30a35f65fcfe13b9dcdd5aeb", null ],
@@ -34,7 +34,7 @@ var class_barotrauma_1_1_game_session =
     [ "WinningTeam", "class_barotrauma_1_1_game_session.html#a10c60bdc99406a0cc39f9fae8d40f6c1", null ],
     [ "Campaign", "class_barotrauma_1_1_game_session.html#a8c3132ea67d099e8593cb7882c2e712b", null ],
     [ "Casualties", "class_barotrauma_1_1_game_session.html#ac2836cf5014e4a35c4cd20ad48cbbd7b", null ],
-    [ "EndLocation", "class_barotrauma_1_1_game_session.html#aac5095007f045ed2aaa14ff6e251618f", null ],
+    [ "EndLocation", "class_barotrauma_1_1_game_session.html#a5e5532456178b83bb7b5a51d135e58ab", null ],
     [ "IsRunning", "class_barotrauma_1_1_game_session.html#a2716df1844786d69ebb26153fa9e1d91", null ],
     [ "Level", "class_barotrauma_1_1_game_session.html#aa9adcbcf57c8686e0616854e6179b65a", null ],
     [ "LevelData", "class_barotrauma_1_1_game_session.html#a27869a40b27bcb8408058c3603d296ff", null ],
@@ -44,7 +44,7 @@ var class_barotrauma_1_1_game_session =
     [ "RoundDuration", "class_barotrauma_1_1_game_session.html#ae2f287e2aea945e343bb6167625c45ed", null ],
     [ "RoundEnding", "class_barotrauma_1_1_game_session.html#ad1f8c2a5e0d6a18089a70b7941381402", null ],
     [ "SavePath", "class_barotrauma_1_1_game_session.html#a1ff2b6e8bc19c06f9a441a36cdbcc4a2", null ],
-    [ "StartLocation", "class_barotrauma_1_1_game_session.html#a29a24184d9cd442a2fde63f304299802", null ],
+    [ "StartLocation", "class_barotrauma_1_1_game_session.html#ac0e9dd39414c35445819ddfedb63de62", null ],
     [ "Submarine", "class_barotrauma_1_1_game_session.html#a3b7ace54e938521440f6ed2f90d70991", null ],
     [ "SubmarineInfo", "class_barotrauma_1_1_game_session.html#aae789996c68ee7b5a27cbfea052dba8d", null ]
 ];

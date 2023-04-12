@@ -12,7 +12,7 @@ var class_barotrauma_1_1_related_item =
     [ "MatchesItem", "class_barotrauma_1_1_related_item.html#ad2c219746e4652c6d8559b7b66fed01d", null ],
     [ "MatchesItem", "class_barotrauma_1_1_related_item.html#a0e17177b01f32d7df75708aea3c6c7ba", null ],
     [ "Save", "class_barotrauma_1_1_related_item.html#a2c78dba2079c9a90124add91c6399abb", null ],
-    [ "Hide", "class_barotrauma_1_1_related_item.html#ad2e041ce34cf6aa3f76c9b03ce5bbc58", null ],
+    [ "Hide", "class_barotrauma_1_1_related_item.html#a6124f394ec3b6ab7bc5e127597f2ba4a", null ],
     [ "ItemPos", "class_barotrauma_1_1_related_item.html#a68cde6092e51f5a438bc4e29d1f770b6", null ],
     [ "Msg", "class_barotrauma_1_1_related_item.html#a77e36f2594e61dc9f6c08879fbc19be3", null ],
     [ "MsgTag", "class_barotrauma_1_1_related_item.html#a278d89f1cd7f9e6c5717ce3cfc50023a", null ],

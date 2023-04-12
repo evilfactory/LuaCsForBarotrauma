@@ -7,7 +7,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_repair_tool =
       [ "None", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a11d8510667639b5c0d40bde2d5c34efda6adf97f83acf6453d4a6a4b1070f3754", null ]
     ] ],
     [ "RepairTool", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a22b7538ad98c2e93410bcda449a538de", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a754d9ca9f8970110981db8560726a2b3", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a4be0c7f737a0bb760cc0e8ff6d3c0d79", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a33fc666f223fb6fad057f65b856996a3", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a92f3829588d5a95aa13d36f242806623", null ],
     [ "BarrelPos", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a2416157d037813e9ab1ecd5d714738ad", null ],
@@ -17,6 +17,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_repair_tool =
     [ "FireProbability", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a3b3560b6f6f59e65420c2121bc62a74e", null ],
     [ "HitBrokenDoors", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a89200ac35fcd5ca11fe344e7671ed7f4", null ],
     [ "HitItems", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#ae54143e47f46114117da4af775f66127", null ],
+    [ "IgnoreCharacters", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a448c0a40a9295dbf996994a9b35f0f20", null ],
     [ "LevelWallFixAmount", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a942473e259bd846271b4c3ba0aab1124", null ],
     [ "MaxOverlappingWallDist", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#aa354f6142bf1799b07ff8d678f1fce94", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a9031f7aa003548d7b3b73810ccf4847c", null ],

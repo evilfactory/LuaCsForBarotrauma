@@ -29,5 +29,5 @@ var class_barotrauma_1_1_spawn_action =
     [ "TargetInventory", "class_barotrauma_1_1_spawn_action.html#af118ea40575e72389c0a78368fa70c98", null ],
     [ "TargetModuleTags", "class_barotrauma_1_1_spawn_action.html#a2a61a53d13dc44cf3da3d2cf911fafc5", null ],
     [ "TargetTag", "class_barotrauma_1_1_spawn_action.html#a5fcdf5337feeb5ed5b29d28fa3ad72c1", null ],
-    [ "Team", "class_barotrauma_1_1_spawn_action.html#aa1ca1f9f7ab9f4900f5a73b2752b3b73", null ]
+    [ "TeamID", "class_barotrauma_1_1_spawn_action.html#a852aa7a885db5e669da047bd9e74fb8b", null ]
 ];

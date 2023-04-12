@@ -80,6 +80,7 @@ var class_barotrauma_1_1_item =
     [ "ReplaceTag", "class_barotrauma_1_1_item.html#a3dd61cdb0affa8907ecb7e78861fd14a", null ],
     [ "ReplaceTag", "class_barotrauma_1_1_item.html#a20adb71f07ab621d0aa139551cf0f2f1", null ],
     [ "Reset", "class_barotrauma_1_1_item.html#a881237e41619437dd258191f720574f4", null ],
+    [ "ResetWaterDragCoefficient", "class_barotrauma_1_1_item.html#a42295fb42089e852df85357e41d9d00a", null ],
     [ "Save", "class_barotrauma_1_1_item.html#a8b5a60e30175edf15220f5b79dc48573", null ],
     [ "SecondaryUse", "class_barotrauma_1_1_item.html#a6cd68ba1f017dc7399ec9a24fe0350c5", null ],
     [ "SendPendingNetworkUpdates", "class_barotrauma_1_1_item.html#a1b327376002853b2676541efe7bf6a44", null ],
@@ -106,6 +107,7 @@ var class_barotrauma_1_1_item =
     [ "body", "class_barotrauma_1_1_item.html#aec9817e3e92a50365c4c5fe59f3a25ae", null ],
     [ "HighlightColor", "class_barotrauma_1_1_item.html#a15bfee179ee275349c124adc8c74cc6e", null ],
     [ "OnDeselect", "class_barotrauma_1_1_item.html#a8f6ba9ad89dd86180972b0c93c728903", null ],
+    [ "OnInteract", "class_barotrauma_1_1_item.html#a878ea18667f25f6c1d83ec5cff70e447", null ],
     [ "PreviousParentInventory", "class_barotrauma_1_1_item.html#a3007a7464eda5d0bf9458d34bf35a704", null ],
     [ "spriteColor", "class_barotrauma_1_1_item.html#a471632ff7780ed628d1563aa29ab3ff0", null ],
     [ "StaticBodyConfig", "class_barotrauma_1_1_item.html#a5eb9003e49a53033a8f34db30d063244", null ],
@@ -197,6 +199,7 @@ var class_barotrauma_1_1_item =
     [ "StatManager", "class_barotrauma_1_1_item.html#a3f6d599a632b467c639f6ed6c2007f90", null ],
     [ "Tags", "class_barotrauma_1_1_item.html#a1084a1d4689e55d3f312417c5fa17a84", null ],
     [ "UseInHealthInterface", "class_barotrauma_1_1_item.html#a3ef308ee387365cdf179b3c4b06c64a3", null ],
+    [ "WaterDragCoefficient", "class_barotrauma_1_1_item.html#a59dae17a2b5d91308bd933e2dfb29a1f", null ],
     [ "WaterProof", "class_barotrauma_1_1_item.html#aa5fb16c627f5d3b7fef463ddab3c5e1e", null ],
     [ "WorldPositionX", "class_barotrauma_1_1_item.html#a51ccad6659194587605dc45f264b90c1", null ],
     [ "WorldPositionY", "class_barotrauma_1_1_item.html#a73798136eb30c41ec0796fa9d0ed0798", null ]

@@ -14,7 +14,7 @@ var class_barotrauma_1_1_abandoned_outpost_mission =
     [ "AllowUndocking", "class_barotrauma_1_1_abandoned_outpost_mission.html#aa1b440ebb12b5dde039b240b7c58ad08", null ],
     [ "DisplayAsCompleted", "class_barotrauma_1_1_abandoned_outpost_mission.html#a09b38b8d0c831b7218d511829ad75d16", null ],
     [ "DisplayAsFailed", "class_barotrauma_1_1_abandoned_outpost_mission.html#a0eb8b75d5a8d14a29d2392914578072d", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_abandoned_outpost_mission.html#a30ce484507e5016a4c0a63126d2f3e03", null ],
+    [ "SonarLabels", "class_barotrauma_1_1_abandoned_outpost_mission.html#ac11b65f4c7292719a948375c1998ffb0", null ],
     [ "State", "class_barotrauma_1_1_abandoned_outpost_mission.html#a5feb5e467fe8d18651e5379782cb9abe", null ],
     [ "Targets", "class_barotrauma_1_1_abandoned_outpost_mission.html#a22b3cc05a1258b83ac801a11d672c672", null ]
 ];

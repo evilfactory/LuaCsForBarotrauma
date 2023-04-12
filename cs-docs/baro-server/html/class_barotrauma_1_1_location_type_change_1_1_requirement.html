@@ -103,10 +103,12 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab8c1cf3c59d95df721a948dc59a48cbb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_type_change_1_1_requirement.html#ab8c1cf3c59d95df721a948dc59a48cbb">Requirement</a> (XElement element, <a class="el" href="class_barotrauma_1_1_location_type_change.html">LocationTypeChange</a> change)</td></tr>
 <tr class="separator:ab8c1cf3c59d95df721a948dc59a48cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca72257e288a5294e0984f6bfd74d2b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_type_change_1_1_requirement.html#aca72257e288a5294e0984f6bfd74d2b4">AnyWithinDistance</a> (<a class="el" href="class_barotrauma_1_1_location.html">Location</a> startLocation, int distance)</td></tr>
+<tr class="separator:aca72257e288a5294e0984f6bfd74d2b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ccf2888f09ba1a0098680cb6fc2c4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_type_change_1_1_requirement.html#a70ccf2888f09ba1a0098680cb6fc2c4e">MatchesLocation</a> (<a class="el" href="class_barotrauma_1_1_location.html">Location</a> location)</td></tr>
 <tr class="separator:a70ccf2888f09ba1a0098680cb6fc2c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcceae9099bcfe23ecdb80a8f1c4e498"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_type_change_1_1_requirement.html#adcceae9099bcfe23ecdb80a8f1c4e498">AnyWithinDistance</a> (<a class="el" href="class_barotrauma_1_1_location.html">Location</a> location, int maxDistance, int currentDistance=0, HashSet&lt; <a class="el" href="class_barotrauma_1_1_location.html">Location</a> &gt; checkedLocations=null)</td></tr>
-<tr class="separator:adcceae9099bcfe23ecdb80a8f1c4e498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08e5b6d71a4aa2b21b7e3eeeffd407d1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_location_type_change_1_1_requirement.html#a08e5b6d71a4aa2b21b7e3eeeffd407d1">MatchesConnection</a> (<a class="el" href="class_barotrauma_1_1_location_connection.html">LocationConnection</a> connection)</td></tr>
+<tr class="separator:a08e5b6d71a4aa2b21b7e3eeeffd407d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -198,8 +200,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adcceae9099bcfe23ecdb80a8f1c4e498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcceae9099bcfe23ecdb80a8f1c4e498">&#9670;&nbsp;</a></span>AnyWithinDistance()</h2>
+<a id="aca72257e288a5294e0984f6bfd74d2b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca72257e288a5294e0984f6bfd74d2b4">&#9670;&nbsp;</a></span>AnyWithinDistance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -208,25 +210,13 @@ Public Attributes</h2></td></tr>
           <td class="memname">bool Barotrauma.LocationTypeChange.Requirement.AnyWithinDistance </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_location.html">Location</a>&#160;</td>
-          <td class="paramname"><em>location</em>, </td>
+          <td class="paramname"><em>startLocation</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>maxDistance</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>currentDistance</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">HashSet&lt; <a class="el" href="class_barotrauma_1_1_location.html">Location</a> &gt;&#160;</td>
-          <td class="paramname"><em>checkedLocations</em> = <code>null</code>&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -236,7 +226,27 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_type_change_8cs_source.html#l00099">99</a> of file <a class="el" href="_location_type_change_8cs_source.html">LocationTypeChange.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_type_change_8cs_source.html#l00094">94</a> of file <a class="el" href="_location_type_change_8cs_source.html">LocationTypeChange.cs</a>.</p>
+
+</div>
+</div>
+<a id="a08e5b6d71a4aa2b21b7e3eeeffd407d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08e5b6d71a4aa2b21b7e3eeeffd407d1">&#9670;&nbsp;</a></span>MatchesConnection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.LocationTypeChange.Requirement.MatchesConnection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_location_connection.html">LocationConnection</a>&#160;</td>
+          <td class="paramname"><em>connection</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_location_type_change_8cs_source.html#l00108">108</a> of file <a class="el" href="_location_type_change_8cs_source.html">LocationTypeChange.cs</a>.</p>
 
 </div>
 </div>
@@ -256,7 +266,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_location_type_change_8cs_source.html#l00094">94</a> of file <a class="el" href="_location_type_change_8cs_source.html">LocationTypeChange.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_location_type_change_8cs_source.html#l00103">103</a> of file <a class="el" href="_location_type_change_8cs_source.html">LocationTypeChange.cs</a>.</p>
 
 </div>
 </div>

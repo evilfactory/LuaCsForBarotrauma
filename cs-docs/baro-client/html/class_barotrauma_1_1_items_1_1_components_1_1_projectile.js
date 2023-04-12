@@ -33,6 +33,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_projectile =
     [ "Prismatic", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a54907ad785f5736a4b2505a3036bdb02", null ],
     [ "RemoveOnHit", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#ae3d71deba0212bd7b4d1cac16bf46da8", null ],
     [ "Spread", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a4763389dc5a5ed5befa5752688b64451", null ],
+    [ "SpreadCounter", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#af79daf4a7303fd137bdd7239b0efb8ed", null ],
     [ "StaticSpread", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a771e9f69f51c6b95cfdf8043e5b22e1d", null ],
     [ "StickDuration", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a22ab34a2bec71f5c473d5e1a284ba922", null ],
     [ "StickTarget", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#ad08b2b1c6be289316a573ff696ecf8cd", null ],

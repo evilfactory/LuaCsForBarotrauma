@@ -124,8 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adb33bc90c87051867bb58cfb2d40f635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e90c6b82da55bb0f44acab6241aca9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a8e90c6b82da55bb0f44acab6241aca9d">ResetVotes</a> (IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> &gt; connectedClients)</td></tr>
 <tr class="separator:a8e90c6b82da55bb0f44acab6241aca9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fd853ff5518acda7594eb489ea6283e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a3fd853ff5518acda7594eb489ea6283e">ClientWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, VoteType voteType, object data)</td></tr>
-<tr class="separator:a3fd853ff5518acda7594eb489ea6283e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ff42b6517b6fa6442dec21b08db363a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a8ff42b6517b6fa6442dec21b08db363a">ClientWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, VoteType voteType, object data)</td></tr>
+<tr class="memdesc:a8ff42b6517b6fa6442dec21b08db363a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the given data is valid for the given vote type, returns false otherwise. If it returns false, the message must be discarded or reset by the caller, as it is now malformed :)  <a href="class_barotrauma_1_1_voting.html#a8ff42b6517b6fa6442dec21b08db363a">More...</a><br /></td></tr>
+<tr class="separator:a8ff42b6517b6fa6442dec21b08db363a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40f52bc35a264def533c1be8e786d62b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_voting.html#a40f52bc35a264def533c1be8e786d62b">ClientRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc)</td></tr>
 <tr class="separator:a40f52bc35a264def533c1be8e786d62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -136,7 +137,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00007">7</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00006">6</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a713617c0e03c174cd18a2362a383c748"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a713617c0e03c174cd18a2362a383c748">&#9670;&nbsp;</a></span>VoteState</h2>
@@ -165,7 +166,7 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a713617c0e03c174cd18a2362a383c748ad7c8c85bf79bbe1b7188497c32c3b0ca"></a>Failed&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00009">9</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00008">8</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -186,18 +187,18 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00191">191</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00197">197</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
-<a id="a3fd853ff5518acda7594eb489ea6283e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fd853ff5518acda7594eb489ea6283e">&#9670;&nbsp;</a></span>ClientWrite()</h2>
+<a id="a8ff42b6517b6fa6442dec21b08db363a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff42b6517b6fa6442dec21b08db363a">&#9670;&nbsp;</a></span>ClientWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Barotrauma.Voting.ClientWrite </td>
+          <td class="memname">bool Barotrauma.Voting.ClientWrite </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a>&#160;</td>
           <td class="paramname"><em>msg</em>, </td>
@@ -222,7 +223,9 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00131">131</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p>Returns true if the given data is valid for the given vote type, returns false otherwise. If it returns false, the message must be discarded or reset by the caller, as it is now malformed :) </p>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00134">134</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -242,7 +245,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00041">41</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00039">39</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -262,7 +265,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00036">36</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00034">34</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -282,7 +285,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00031">31</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00029">29</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -320,7 +323,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00032">32</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00031">31</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html">BarotraumaShared/SharedSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -340,7 +343,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00114">114</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00112">112</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -370,7 +373,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00054">54</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00052">52</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -400,7 +403,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00050">50</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00048">48</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -430,7 +433,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00046">46</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00044">44</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>
@@ -460,7 +463,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00059">59</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html#l00057">57</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_networking_2_voting_8cs_source.html">BarotraumaClient/ClientSource/Networking/Voting.cs</a>.</p>
 
 </div>
 </div>

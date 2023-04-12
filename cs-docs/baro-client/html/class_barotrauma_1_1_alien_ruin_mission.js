@@ -8,6 +8,6 @@ var class_barotrauma_1_1_alien_ruin_mission =
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_alien_ruin_mission.html#ac2a41d39c228824f663eaeb06358d47f", null ],
     [ "DisplayAsCompleted", "class_barotrauma_1_1_alien_ruin_mission.html#a6d2b626ae9b3c73013bf40e727827a67", null ],
     [ "DisplayAsFailed", "class_barotrauma_1_1_alien_ruin_mission.html#aa3693d33fc5779e6743099f99f30bc79", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_alien_ruin_mission.html#aab891923a191e26b9a62f05d0f9f592d", null ],
+    [ "SonarLabels", "class_barotrauma_1_1_alien_ruin_mission.html#a348e9aaadf79655fd4930faf0982e494", null ],
     [ "TargetRuin", "class_barotrauma_1_1_alien_ruin_mission.html#ab974a9a8420cde25dc9b2b65b47cd9c6", null ]
 ];

@@ -40,5 +40,6 @@ var class_barotrauma_1_1_character_params_1_1_a_i_params =
     [ "StayInAbyss", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a3f7479ec6e8163e656588d69963baf44", null ],
     [ "TargetOuterWalls", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#af49ec62c5de6b5372b777f7fa87a181b", null ],
     [ "Targets", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a818479a6196248562766d3cc71705a50", null ],
+    [ "UsePathFindingToGetInside", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#acbd2db75f5ba92c6d9991e4644c1dc0d", null ],
     [ "WallTargetingMethod", "class_barotrauma_1_1_character_params_1_1_a_i_params.html#a5cbada0adbe4af6ca3a3d252237cae5d", null ]
 ];

@@ -88,94 +88,137 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_e
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> Microsoft.Xna.Framework;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Xml.Linq;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">partial class </span>MissionPrefab : PrefabWithUintIdentifier</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">    9</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="keyword">get</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">   15</a></span>&#160;        <span class="keyword">public</span> Color <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">IconColor</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">get</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">   21</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">DisplayTargetHudIcons</a></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">get</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">   27</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">HudIconMaxDistance</a></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">get</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#ab25f78f4310146166b8e0009e39493d6">   33</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#ab25f78f4310146166b8e0009e39493d6">HudIcon</a></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">return</span> hudIcon ?? <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#af434e7eafdf6875a2d9afa89c3e4fc3a">   41</a></span>&#160;        <span class="keyword">public</span> Color <a class="code" href="class_barotrauma_1_1_mission_prefab.html#af434e7eafdf6875a2d9afa89c3e4fc3a">HudIconColor</a></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordflow">return</span> hudIconColor ?? <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">IconColor</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        } </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> hudIcon;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">private</span> Color? hudIconColor;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        partial <span class="keywordtype">void</span> InitProjSpecific(<a class="code" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">DisplayTargetHudIcons</a> = element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#ae4e4d4db9b4b3138089ceb8c77d751c4">GetAttributeBool</a>(<span class="stringliteral">&quot;displaytargethudicons&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">HudIconMaxDistance</a> = element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a671983d7e766fb14c82c4f3daf861c03">GetAttributeFloat</a>(<span class="stringliteral">&quot;hudiconmaxdistance&quot;</span>, 1000.0f);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">foreach</span> (var subElement <span class="keywordflow">in</span> element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a954237d6a4224ca04477b468077a884f">Elements</a>())</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordtype">string</span> name = subElement.Name.ToString();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">if</span> (name.Equals(<span class="stringliteral">&quot;icon&quot;</span>, StringComparison.OrdinalIgnoreCase))</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a>(subElement);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">IconColor</a> = subElement.GetAttributeColor(<span class="stringliteral">&quot;color&quot;</span>, Color.White);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(<span class="stringliteral">&quot;hudicon&quot;</span>, StringComparison.OrdinalIgnoreCase))</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    hudIcon = <span class="keyword">new</span> Sprite(subElement);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    hudIconColor = subElement.GetAttributeColor(<span class="stringliteral">&quot;color&quot;</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        partial <span class="keywordtype">void</span> DisposeProjectSpecific()</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a>?.<a class="code" href="class_barotrauma_1_1_sprite.html#a1cff3e163a436de4c12b84fd0c714c28">Remove</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Collections.Immutable;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">partial class </span>MissionPrefab : PrefabWithUintIdentifier</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">private</span> ImmutableArray&lt;Sprite&gt; portraits = <span class="keyword">new</span> ImmutableArray&lt;Sprite&gt;();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#ab0513849e8345e735f445e1e8c569fef">   12</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#ab0513849e8345e735f445e1e8c569fef">HasPortraits</a> =&gt; portraits.Length &gt; 0;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">   14</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">   20</a></span>&#160;        <span class="keyword">public</span> Color <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">IconColor</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">   26</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">DisplayTargetHudIcons</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">HudIconMaxDistance</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#ab25f78f4310146166b8e0009e39493d6">   38</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#ab25f78f4310146166b8e0009e39493d6">HudIcon</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">return</span> hudIcon ?? <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#af434e7eafdf6875a2d9afa89c3e4fc3a">   46</a></span>&#160;        <span class="keyword">public</span> Color <a class="code" href="class_barotrauma_1_1_mission_prefab.html#af434e7eafdf6875a2d9afa89c3e4fc3a">HudIconColor</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">return</span> hudIconColor ?? <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">IconColor</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        } </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> hudIcon;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">private</span> Color? hudIconColor;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">private</span> ImmutableDictionary&lt;int, Identifier&gt; overrideMusicOnState;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        partial <span class="keywordtype">void</span> InitProjSpecific(<a class="code" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">DisplayTargetHudIcons</a> = element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#ae4e4d4db9b4b3138089ceb8c77d751c4">GetAttributeBool</a>(<span class="stringliteral">&quot;displaytargethudicons&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">HudIconMaxDistance</a> = element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a671983d7e766fb14c82c4f3daf861c03">GetAttributeFloat</a>(<span class="stringliteral">&quot;hudiconmaxdistance&quot;</span>, 1000.0f);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            Dictionary&lt;int, Identifier&gt; overrideMusic = <span class="keyword">new</span> Dictionary&lt;int, Identifier&gt;();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            List&lt;Sprite&gt; portraits = <span class="keyword">new</span> List&lt;Sprite&gt;();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">foreach</span> (var subElement <span class="keywordflow">in</span> element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a954237d6a4224ca04477b468077a884f">Elements</a>())</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">switch</span> (subElement.Name.ToString().ToLowerInvariant())</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;icon&quot;</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a>(subElement);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">IconColor</a> = subElement.GetAttributeColor(<span class="stringliteral">&quot;color&quot;</span>, Color.White);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;hudicon&quot;</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        hudIcon = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a>(subElement);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        hudIconColor = subElement.GetAttributeColor(<span class="stringliteral">&quot;color&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;overridemusic&quot;</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        overrideMusic.Add(</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                            subElement.GetAttributeInt(<span class="stringliteral">&quot;state&quot;</span>, 0),</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                            subElement.GetAttributeIdentifier(<span class="stringliteral">&quot;type&quot;</span>, <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a>.<a class="code" href="struct_barotrauma_1_1_identifier.html#ae915db6c165efdcb2b3913daa4e8c56e">Empty</a>));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;portrait&quot;</span>:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        var portrait = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a>(subElement, lazyLoad: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        <span class="keywordflow">if</span> (portrait != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                            portraits.Add(portrait);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            this.portraits = portraits.ToImmutableArray();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            overrideMusicOnState = overrideMusic.ToImmutableDictionary();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#a3138350a8e8eaa67abb38f1c7e9efbf6">   95</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a3138350a8e8eaa67abb38f1c7e9efbf6">GetOverrideMusicType</a>(<span class="keywordtype">int</span> state)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">if</span> (overrideMusicOnState.TryGetValue(state, out <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> <span class="keywordtype">id</span>))</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">return</span> id;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a>.<a class="code" href="struct_barotrauma_1_1_identifier.html#ae915db6c165efdcb2b3913daa4e8c56e">Empty</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_mission_prefab.html#a6fdfde4afb36a5434d09cef358f43708">  104</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_sprite.html">Sprite</a> <a class="code" href="class_barotrauma_1_1_mission_prefab.html#a6fdfde4afb36a5434d09cef358f43708">GetPortrait</a>(<span class="keywordtype">int</span> randomSeed)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (portraits.Length == 0) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">return</span> portraits[Math.Abs(randomSeed) % portraits.Length];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        partial <span class="keywordtype">void</span> DisposeProjectSpecific()</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Icon</a>?.<a class="code" href="class_barotrauma_1_1_sprite.html#a1cff3e163a436de4c12b84fd0c714c28">Remove</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html">Barotrauma.ContentXElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00013">ContentXElement.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a671983d7e766fb14c82c4f3daf861c03"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a671983d7e766fb14c82c4f3daf861c03">Barotrauma.ContentXElement.GetAttributeFloat</a></div><div class="ttdeci">float GetAttributeFloat(string key, float def)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a954237d6a4224ca04477b468077a884f"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a954237d6a4224ca04477b468077a884f">Barotrauma.ContentXElement.Elements</a></div><div class="ttdeci">IEnumerable&lt; ContentXElement &gt; Elements()</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_ae4e4d4db9b4b3138089ceb8c77d751c4"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#ae4e4d4db9b4b3138089ceb8c77d751c4">Barotrauma.ContentXElement.GetAttributeBool</a></div><div class="ttdeci">bool GetAttributeBool(string key, bool def)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_a12d13c9d40e45a286888dbc12fed348d"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">Barotrauma.MissionPrefab.DisplayTargetHudIcons</a></div><div class="ttdeci">bool DisplayTargetHudIcons</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00021">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:22</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_a745d10f8917c92e862aeec97f2bc445e"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">Barotrauma.MissionPrefab.IconColor</a></div><div class="ttdeci">Color IconColor</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00015">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:16</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_ab25f78f4310146166b8e0009e39493d6"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#ab25f78f4310146166b8e0009e39493d6">Barotrauma.MissionPrefab.HudIcon</a></div><div class="ttdeci">Sprite?? HudIcon</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00033">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:34</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_aecb0c2ebffa2a6d5f54a80469d1d4311"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Barotrauma.MissionPrefab.Icon</a></div><div class="ttdeci">Sprite Icon</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00009">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_af3cb85d6f05368c377bb66c021868c30"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">Barotrauma.MissionPrefab.HudIconMaxDistance</a></div><div class="ttdeci">float HudIconMaxDistance</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00027">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:28</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_af434e7eafdf6875a2d9afa89c3e4fc3a"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#af434e7eafdf6875a2d9afa89c3e4fc3a">Barotrauma.MissionPrefab.HudIconColor</a></div><div class="ttdeci">Color?? HudIconColor</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00041">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:42</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_a12d13c9d40e45a286888dbc12fed348d"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#a12d13c9d40e45a286888dbc12fed348d">Barotrauma.MissionPrefab.DisplayTargetHudIcons</a></div><div class="ttdeci">bool DisplayTargetHudIcons</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00026">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:27</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_a3138350a8e8eaa67abb38f1c7e9efbf6"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#a3138350a8e8eaa67abb38f1c7e9efbf6">Barotrauma.MissionPrefab.GetOverrideMusicType</a></div><div class="ttdeci">Identifier GetOverrideMusicType(int state)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00095">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:95</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_a6fdfde4afb36a5434d09cef358f43708"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#a6fdfde4afb36a5434d09cef358f43708">Barotrauma.MissionPrefab.GetPortrait</a></div><div class="ttdeci">Sprite GetPortrait(int randomSeed)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00104">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:104</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_a745d10f8917c92e862aeec97f2bc445e"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#a745d10f8917c92e862aeec97f2bc445e">Barotrauma.MissionPrefab.IconColor</a></div><div class="ttdeci">Color IconColor</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00020">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:21</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_ab0513849e8345e735f445e1e8c569fef"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#ab0513849e8345e735f445e1e8c569fef">Barotrauma.MissionPrefab.HasPortraits</a></div><div class="ttdeci">bool HasPortraits</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00012">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:12</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_ab25f78f4310146166b8e0009e39493d6"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#ab25f78f4310146166b8e0009e39493d6">Barotrauma.MissionPrefab.HudIcon</a></div><div class="ttdeci">Sprite?? HudIcon</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00038">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:39</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_aecb0c2ebffa2a6d5f54a80469d1d4311"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#aecb0c2ebffa2a6d5f54a80469d1d4311">Barotrauma.MissionPrefab.Icon</a></div><div class="ttdeci">Sprite Icon</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00014">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_af3cb85d6f05368c377bb66c021868c30"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#af3cb85d6f05368c377bb66c021868c30">Barotrauma.MissionPrefab.HudIconMaxDistance</a></div><div class="ttdeci">float HudIconMaxDistance</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00032">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:33</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_mission_prefab_html_af434e7eafdf6875a2d9afa89c3e4fc3a"><div class="ttname"><a href="class_barotrauma_1_1_mission_prefab.html#af434e7eafdf6875a2d9afa89c3e4fc3a">Barotrauma.MissionPrefab.HudIconColor</a></div><div class="ttdeci">Color?? HudIconColor</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_missions_2_mission_prefab_8cs_source.html#l00046">BarotraumaClient/ClientSource/Events/Missions/MissionPrefab.cs:47</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html">Barotrauma.Sprite</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00015">BarotraumaShared/SharedSource/Sprite/Sprite.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a1cff3e163a436de4c12b84fd0c714c28"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a1cff3e163a436de4c12b84fd0c714c28">Barotrauma.Sprite.Remove</a></div><div class="ttdeci">void Remove()</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00238">BarotraumaShared/SharedSource/Sprite/Sprite.cs:238</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
+<div class="ttc" id="astruct_barotrauma_1_1_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html">Barotrauma.Identifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00011">Identifier.cs:12</a></div></div>
+<div class="ttc" id="astruct_barotrauma_1_1_identifier_html_ae915db6c165efdcb2b3913daa4e8c56e"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html#ae915db6c165efdcb2b3913daa4e8c56e">Barotrauma.Identifier.Empty</a></div><div class="ttdeci">static readonly Identifier Empty</div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00013">Identifier.cs:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,10 +1,10 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_reactor =
 [
     [ "Reactor", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a3ae3ec4946857857b584df80949b2ab1", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a03276db15a50f41f2c8feb9d19163bb3", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a072ffa665c0ecab922eeea8a2c3ff6fd", null ],
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#aee081de9a4e6a54ae991be4d91d8dee9", null ],
     [ "CreateGUI", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a757e1532ebce091c7f3f819d12a2038a", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a8f57c531123739fe37613e92741c4a94", null ],
     [ "GetConnectionPowerOut", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a74f8f41ad87c692938b517f95c839b81", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a88378490dcc08c20304f5d68e39628b5", null ],
     [ "MinMaxPowerOut", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a22af1db528196844123c929ae9b2b82d", null ],

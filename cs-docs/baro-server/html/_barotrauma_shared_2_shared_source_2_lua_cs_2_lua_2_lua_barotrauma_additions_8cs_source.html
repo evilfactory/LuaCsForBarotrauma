@@ -101,115 +101,118 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_l
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keyword">get</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#if SERVER</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a7e0ad5e70cd26d542a6f6004f54d4d48">Server</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2c382f55d9d3dd932e2ab2c1ff2ed077">ConnectedClients</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.Client.ConnectedClients;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_client.html#ac931b1452e082465885aff72a2fa9ab2">   24</a></span>&#160;        <span class="keyword">public</span> ulong <a class="code" href="class_barotrauma_1_1_networking_1_1_client.html#ac931b1452e082465885aff72a2fa9ab2">SteamID</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_networking_1_1_account_id.html">AccountId</a>.TryUnwrap(out <a class="code" href="class_barotrauma_1_1_networking_1_1_account_id.html">AccountId</a> outValue) &amp;&amp; outValue is <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> steamId)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    <span class="keywordflow">return</span> steamId.Value;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a5f49fe051527c9f81f6a91c8723a9e63">IsSingleplayer</a>) { <span class="keywordflow">return</span> <span class="keyword">new</span> List&lt;Client&gt;(); }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#if SERVER</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a7e0ad5e70cd26d542a6f6004f54d4d48">Server</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_server.html#a2c382f55d9d3dd932e2ab2c1ff2ed077">ConnectedClients</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.Client.ConnectedClients;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_client.html#ac931b1452e082465885aff72a2fa9ab2">   26</a></span>&#160;        <span class="keyword">public</span> ulong <a class="code" href="class_barotrauma_1_1_networking_1_1_client.html#ac931b1452e082465885aff72a2fa9ab2">SteamID</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_networking_1_1_account_id.html">AccountId</a>.TryUnwrap(out <a class="code" href="class_barotrauma_1_1_networking_1_1_account_id.html">AccountId</a> outValue) &amp;&amp; outValue is <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> steamId)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <span class="keywordflow">return</span> steamId.Value;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a> </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_networking.html">Networking</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">using</span> System.Reflection;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a> </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_networking.html">Networking</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">using</span> System.Reflection;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">partial class </span>Character</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">partial class </span><a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_item.html#ad7b8d54cd9d65d65beb2a84d161a94bc">   58</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="class_barotrauma_1_1_item.html#ad7b8d54cd9d65d65beb2a84d161a94bc">GetComponentString</a>(<span class="keywordtype">string</span> component)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            Type type = <a class="code" href="class_barotrauma_1_1_lua_user_data.html">LuaUserData</a>.<a class="code" href="class_barotrauma_1_1_lua_user_data.html#a620a3d33e0ee8ad9c88b14d1429b6917">GetType</a>(<span class="stringliteral">&quot;Barotrauma.Items.Components.&quot;</span> + component);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">if</span> (type == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            MethodInfo method = typeof(<a class="code" href="class_barotrauma_1_1_item.html">Item</a>).GetMethod(nameof(<a class="code" href="class_barotrauma_1_1_item.html">Item</a>.GetComponent));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            MethodInfo <span class="keyword">generic</span> = method.MakeGenericMethod(type);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">generic</span>.Invoke(<span class="keyword">this</span>, <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">partial class </span>Character</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">partial class </span><a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_item.html#ad7b8d54cd9d65d65beb2a84d161a94bc">   60</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="class_barotrauma_1_1_item.html#ad7b8d54cd9d65d65beb2a84d161a94bc">GetComponentString</a>(<span class="keywordtype">string</span> component)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            Type type = <a class="code" href="class_barotrauma_1_1_lua_user_data.html">LuaUserData</a>.<a class="code" href="class_barotrauma_1_1_lua_user_data.html#a620a3d33e0ee8ad9c88b14d1429b6917">GetType</a>(<span class="stringliteral">&quot;Barotrauma.Items.Components.&quot;</span> + component);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (type == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            MethodInfo method = typeof(<a class="code" href="class_barotrauma_1_1_item.html">Item</a>).GetMethod(nameof(<a class="code" href="class_barotrauma_1_1_item.html">Item</a>.GetComponent));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            MethodInfo <span class="keyword">generic</span> = method.MakeGenericMethod(type);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">generic</span>.Invoke(<span class="keyword">this</span>, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">partial class </span>ItemPrefab</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_item_prefab.html#ad72a1bd161a2f7d989bc05661baf06ad">   77</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> <a class="code" href="class_barotrauma_1_1_item_prefab.html#ad72a1bd161a2f7d989bc05661baf06ad">GetItemPrefab</a>(<span class="keywordtype">string</span> itemNameOrId)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> itemPrefab =</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            (<a class="code" href="class_barotrauma_1_1_map_entity_prefab.html">MapEntityPrefab</a>.<a class="code" href="class_barotrauma_1_1_map_entity_prefab.html#af469de8fd35d05188ece313018697b1d">Find</a>(itemNameOrId, identifier: <span class="keyword">null</span>, showErrorMessages: <span class="keyword">false</span>) ??</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="class_barotrauma_1_1_map_entity_prefab.html">MapEntityPrefab</a>.<a class="code" href="class_barotrauma_1_1_map_entity_prefab.html#af469de8fd35d05188ece313018697b1d">Find</a>(<span class="keyword">null</span>, identifier: itemNameOrId, showErrorMessages: <span class="keyword">false</span>)) as <a class="code" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> itemPrefab;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_map_entity.html">   87</a></span>&#160;    <span class="keyword">abstract</span> <span class="keyword">partial class </span><a class="code" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_map_entity.html#aa4fd39b06415a2568b9726ce34f52467">   89</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_map_entity.html#aa4fd39b06415a2568b9726ce34f52467">AddLinked</a>(<a class="code" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> entity)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            linkedTo.Add(entity);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">partial class </span>ItemPrefab</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_item_prefab.html#ad72a1bd161a2f7d989bc05661baf06ad">   79</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> <a class="code" href="class_barotrauma_1_1_item_prefab.html#ad72a1bd161a2f7d989bc05661baf06ad">GetItemPrefab</a>(<span class="keywordtype">string</span> itemNameOrId)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> itemPrefab =</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            (<a class="code" href="class_barotrauma_1_1_map_entity_prefab.html">MapEntityPrefab</a>.<a class="code" href="class_barotrauma_1_1_map_entity_prefab.html#af469de8fd35d05188ece313018697b1d">Find</a>(itemNameOrId, identifier: <span class="keyword">null</span>, showErrorMessages: <span class="keyword">false</span>) ??</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="class_barotrauma_1_1_map_entity_prefab.html">MapEntityPrefab</a>.<a class="code" href="class_barotrauma_1_1_map_entity_prefab.html#af469de8fd35d05188ece313018697b1d">Find</a>(<span class="keyword">null</span>, identifier: itemNameOrId, showErrorMessages: <span class="keyword">false</span>)) as <a class="code" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> itemPrefab;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_map_entity.html">   89</a></span>&#160;    <span class="keyword">abstract</span> <span class="keyword">partial class </span><a class="code" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_map_entity.html#aa4fd39b06415a2568b9726ce34f52467">   91</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_map_entity.html#aa4fd39b06415a2568b9726ce34f52467">AddLinked</a>(<a class="code" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> entity)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            linkedTo.Add(entity);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_items.html">Items</a>.<a class="code" href="namespace_barotrauma_1_1_items_1_1_components.html">Components</a></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_networking.html">Networking</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">partial class </span>CustomInterface</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    partial <span class="keyword">struct </span>Signal</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_items.html">Items</a>.<a class="code" href="namespace_barotrauma_1_1_items_1_1_components.html">Components</a></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_networking.html">Networking</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">partial class </span>CustomInterface</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    partial <span class="keyword">struct </span>Signal</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00019">GameMain.cs:20</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a5f49fe051527c9f81f6a91c8723a9e63"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a5f49fe051527c9f81f6a91c8723a9e63">Barotrauma.GameMain.IsSingleplayer</a></div><div class="ttdeci">static bool IsSingleplayer</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00023">GameMain.cs:23</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a7e0ad5e70cd26d542a6f6004f54d4d48"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a7e0ad5e70cd26d542a6f6004f54d4d48">Barotrauma.GameMain.Server</a></div><div class="ttdeci">static GameServer Server</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00039">GameMain.cs:39</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_item_html"><div class="ttname"><a href="class_barotrauma_1_1_item.html">Barotrauma.Item</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00025">BarotraumaShared/SharedSource/Items/Item.cs:26</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_html_ad7b8d54cd9d65d65beb2a84d161a94bc"><div class="ttname"><a href="class_barotrauma_1_1_item.html#ad7b8d54cd9d65d65beb2a84d161a94bc">Barotrauma.Item.GetComponentString</a></div><div class="ttdeci">object GetComponentString(string component)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00058">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:58</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html">Barotrauma.ItemPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_item_prefab_8cs_source.html#l00400">ItemPrefab.cs:401</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_ad72a1bd161a2f7d989bc05661baf06ad"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#ad72a1bd161a2f7d989bc05661baf06ad">Barotrauma.ItemPrefab.GetItemPrefab</a></div><div class="ttdeci">static ItemPrefab GetItemPrefab(string itemNameOrId)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00077">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:77</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_html_ad7b8d54cd9d65d65beb2a84d161a94bc"><div class="ttname"><a href="class_barotrauma_1_1_item.html#ad7b8d54cd9d65d65beb2a84d161a94bc">Barotrauma.Item.GetComponentString</a></div><div class="ttdeci">object GetComponentString(string component)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00060">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:60</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html">Barotrauma.ItemPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_item_prefab_8cs_source.html#l00417">ItemPrefab.cs:418</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_ad72a1bd161a2f7d989bc05661baf06ad"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#ad72a1bd161a2f7d989bc05661baf06ad">Barotrauma.ItemPrefab.GetItemPrefab</a></div><div class="ttdeci">static ItemPrefab GetItemPrefab(string itemNameOrId)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00079">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:79</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html">Barotrauma.LuaUserData</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00010">LuaUserData.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_a620a3d33e0ee8ad9c88b14d1429b6917"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#a620a3d33e0ee8ad9c88b14d1429b6917">Barotrauma.LuaUserData.GetType</a></div><div class="ttdeci">static Type GetType(string typeName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00012">LuaUserData.cs:12</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_map_entity_html"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00087">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:88</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_map_entity_html_aa4fd39b06415a2568b9726ce34f52467"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html#aa4fd39b06415a2568b9726ce34f52467">Barotrauma.MapEntity.AddLinked</a></div><div class="ttdeci">void AddLinked(MapEntity entity)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00089">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:89</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_map_entity_html"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00089">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:90</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_map_entity_html_aa4fd39b06415a2568b9726ce34f52467"><div class="ttname"><a href="class_barotrauma_1_1_map_entity.html#aa4fd39b06415a2568b9726ce34f52467">Barotrauma.MapEntity.AddLinked</a></div><div class="ttdeci">void AddLinked(MapEntity entity)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00091">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:91</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_map_entity_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_map_entity_prefab.html">Barotrauma.MapEntityPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_map_entity_prefab_8cs_source.html#l00031">MapEntityPrefab.cs:32</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_map_entity_prefab_html_af469de8fd35d05188ece313018697b1d"><div class="ttname"><a href="class_barotrauma_1_1_map_entity_prefab.html#af469de8fd35d05188ece313018697b1d">Barotrauma.MapEntityPrefab.Find</a></div><div class="ttdeci">static MapEntityPrefab Find(string name, string identifier=null, bool showErrorMessages=true)</div><div class="ttdoc">Find a matching map entity prefab</div><div class="ttdef"><b>Definition:</b> <a href="_map_entity_prefab_8cs_source.html#l00090">MapEntityPrefab.cs:90</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_account_id_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_account_id.html">Barotrauma.Networking.AccountId</a></div><div class="ttdef"><b>Definition:</b> <a href="_account_id_8cs_source.html#l00005">AccountId.cs:6</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html">Barotrauma.Networking.Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00010">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html_a1d2d5cde07644ae4334e317380eb59b2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html#a1d2d5cde07644ae4334e317380eb59b2">Barotrauma.Networking.Client.ClientList</a></div><div class="ttdeci">static IReadOnlyList&lt; Client &gt; ClientList</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00012">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:13</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html_ac931b1452e082465885aff72a2fa9ab2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html#ac931b1452e082465885aff72a2fa9ab2">Barotrauma.Networking.Client.SteamID</a></div><div class="ttdeci">ulong SteamID</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00024">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:25</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html_ac931b1452e082465885aff72a2fa9ab2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html#ac931b1452e082465885aff72a2fa9ab2">Barotrauma.Networking.Client.SteamID</a></div><div class="ttdeci">ulong SteamID</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00026">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:27</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_server_html_a2c382f55d9d3dd932e2ab2c1ff2ed077"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_server.html#a2c382f55d9d3dd932e2ab2c1ff2ed077">Barotrauma.Networking.GameServer.ConnectedClients</a></div><div class="ttdeci">override IReadOnlyList&lt; Client &gt; ConnectedClients</div><div class="ttdef"><b>Definition:</b> <a href="_game_server_8cs_source.html#l00099">GameServer.cs:100</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_id_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_id.html">Barotrauma.Networking.SteamId</a></div><div class="ttdef"><b>Definition:</b> <a href="_steam_id_8cs_source.html#l00006">SteamId.cs:7</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_items_1_1_components_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items_1_1_components.html">Barotrauma.Items.Components</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00012">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:13</a></div></div>

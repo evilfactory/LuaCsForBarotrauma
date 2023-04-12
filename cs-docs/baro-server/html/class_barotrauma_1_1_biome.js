@@ -8,6 +8,7 @@ var class_barotrauma_1_1_biome =
     [ "AllowedZones", "class_barotrauma_1_1_biome.html#a15bf3002b1e7b01eae5146579e3008ce", null ],
     [ "Description", "class_barotrauma_1_1_biome.html#a050dc49f058eea070bcc86e5007a2ac9", null ],
     [ "DisplayName", "class_barotrauma_1_1_biome.html#aa07822ebd49bc4a4896d58b9f921c39c", null ],
+    [ "EndBiomeLocationCount", "class_barotrauma_1_1_biome.html#aed0768f8d63238f2d1316fd1e69f45f2", null ],
     [ "IsEndBiome", "class_barotrauma_1_1_biome.html#a1e7d04817af3fa90d35b69c7ead39f77", null ],
     [ "MinDifficulty", "class_barotrauma_1_1_biome.html#a977373d47908b93372581b9c417a4f70", null ],
     [ "OldIdentifier", "class_barotrauma_1_1_biome.html#a9be73df82ca076304b9c122268ce4239", null ],

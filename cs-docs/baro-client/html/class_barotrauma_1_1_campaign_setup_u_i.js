@@ -12,7 +12,6 @@ var class_barotrauma_1_1_campaign_setup_u_i =
     [ "DeleteSave", "class_barotrauma_1_1_campaign_setup_u_i.html#ab867f9136679f7be5aad747263075eb7", null ],
     [ "SortSaveList", "class_barotrauma_1_1_campaign_setup_u_i.html#ad6adb9a09d8f4048e3bc99cd90431043", null ],
     [ "UpdateLoadMenu", "class_barotrauma_1_1_campaign_setup_u_i.html#a3c7c6e36ca2c029cb417a917415158f3", null ],
-    [ "CurrentSettings", "class_barotrauma_1_1_campaign_setup_u_i.html#a1ee0ae45480f9ac322cd340fa5e2cbc5", null ],
     [ "LoadGame", "class_barotrauma_1_1_campaign_setup_u_i.html#a033b95e728c225d240e10300e11f1e89", null ],
     [ "loadGameButton", "class_barotrauma_1_1_campaign_setup_u_i.html#a3adf07abf62d67c4f571e42154ac7443", null ],
     [ "newGameContainer", "class_barotrauma_1_1_campaign_setup_u_i.html#a104bc5644438d6ccce24ddfe60a1cc90", null ],

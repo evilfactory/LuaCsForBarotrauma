@@ -5,7 +5,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
       [ "Passive", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a321b94e15d0694c7e7cf2f255b05ecbfaf80bc338b6146b566004a046f8137c85", null ]
     ] ],
     [ "Sonar", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a4e81ded7d28876d28a853e17be1f344a", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a0dd0a9cbd6f98c27e3f10d2aed7d8a69", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#afd0df9fb4575892d19df7df5aeb5cfef", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#ad1d67a4186c889a023cc53ef7baa8a6a", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aac5eeda0471d72d25fbcb9e2798e6377", null ],
     [ "ServerEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a77b4f929c56f77fded9c38c52c59a06b", null ],

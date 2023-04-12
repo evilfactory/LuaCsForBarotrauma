@@ -182,6 +182,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9f39f3f154b01cc931d4c783cbaf1f37"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_gap.html">Gap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_gap.html#a9f39f3f154b01cc931d4c783cbaf1f37">Load</a> (<a class="el" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element, <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> submarine, <a class="el" href="class_barotrauma_1_1_id_remap.html">IdRemap</a> idRemap)</td></tr>
 <tr class="separator:a9f39f3f154b01cc931d4c783cbaf1f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_class_barotrauma_1_1_map_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_barotrauma_1_1_map_entity')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></td></tr>
+<tr class="memitem:af51e64e706e72c69debf3838de66a5e4 inherit pub_static_methods_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#af51e64e706e72c69debf3838de66a5e4">ClearHighlightedEntities</a> ()</td></tr>
+<tr class="separator:af51e64e706e72c69debf3838de66a5e4 inherit pub_static_methods_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5bb058d32ade95cbf2032c2b8a970f0 inherit pub_static_methods_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#ad5bb058d32ade95cbf2032c2b8a970f0">Clone</a> (List&lt; <a class="el" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> &gt; entitiesToClone)</td></tr>
 <tr class="separator:ad5bb058d32ade95cbf2032c2b8a970f0 inherit pub_static_methods_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a406f9ec93d191dcaa4ff295fb5dcc8c3 inherit pub_static_methods_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a406f9ec93d191dcaa4ff295fb5dcc8c3">UpdateAll</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
@@ -226,8 +228,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ac7fae0c271e542ae234ea08a0bf39b37 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab525af7296e82f96ebf5c09ae2bb61c0 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#ab525af7296e82f96ebf5c09ae2bb61c0">ShouldBeSaved</a> = true</td></tr>
 <tr class="separator:ab525af7296e82f96ebf5c09ae2bb61c0 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe2aaffd58729610d5f476a3521d6e73 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#abe2aaffd58729610d5f476a3521d6e73">ExternalHighlight</a> = false</td></tr>
-<tr class="separator:abe2aaffd58729610d5f476a3521d6e73 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63612c0785afa2139138950899d01a49 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a63612c0785afa2139138950899d01a49">OriginalModuleIndex</a> = -1</td></tr>
 <tr class="memdesc:a63612c0785afa2139138950899d01a49 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the outpost module this entity originally spawned in (-1 if not an outpost item)  <a href="class_barotrauma_1_1_map_entity.html#a63612c0785afa2139138950899d01a49">More...</a><br /></td></tr>
 <tr class="separator:a63612c0785afa2139138950899d01a49 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,6 +235,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af5f7a201e691e82de349c7d33a037537 inherit pub_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_barotrauma_1_1_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_barotrauma_1_1_entity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_entity.html">Barotrauma.Entity</a></td></tr>
 <tr class="memitem:ab60566c1da45d1ca4c66002a5d9cf172 inherit pub_attribs_class_barotrauma_1_1_entity"><td class="memItemLeft" align="right" valign="top">readonly ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_entity.html#ab60566c1da45d1ca4c66002a5d9cf172">ID</a></td></tr>
+<tr class="memdesc:ab60566c1da45d1ca4c66002a5d9cf172 inherit pub_attribs_class_barotrauma_1_1_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique, but non-persistent identifier. Stays the same if the entities are created in the exactly same order, but doesn't persist e.g. between the rounds.  <a href="class_barotrauma_1_1_entity.html#ab60566c1da45d1ca4c66002a5d9cf172">More...</a><br /></td></tr>
 <tr class="separator:ab60566c1da45d1ca4c66002a5d9cf172 inherit pub_attribs_class_barotrauma_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca7869ced0649ce011c3940f8dc0fe62 inherit pub_attribs_class_barotrauma_1_1_entity"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_entity.html#aca7869ced0649ce011c3940f8dc0fe62">CreationStackTrace</a></td></tr>
 <tr class="separator:aca7869ced0649ce011c3940f8dc0fe62 inherit pub_attribs_class_barotrauma_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -302,6 +303,10 @@ Properties</h2></td></tr>
 <tr class="separator:a7c6b6e46a9c34e1c559354dcaa645aaf inherit properties_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39a99a12559d74fe3dbb6a77ff454ae6 inherit properties_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a39a99a12559d74fe3dbb6a77ff454ae6">FlippedY</a><code> [get]</code></td></tr>
 <tr class="separator:a39a99a12559d74fe3dbb6a77ff454ae6 inherit properties_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5faf2c4f1521affdd22d18b00ab32d74 inherit properties_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a5faf2c4f1521affdd22d18b00ab32d74">HighlightedEntities</a><code> [get]</code></td></tr>
+<tr class="separator:a5faf2c4f1521affdd22d18b00ab32d74 inherit properties_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2aaffd58729610d5f476a3521d6e73 inherit properties_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#abe2aaffd58729610d5f476a3521d6e73">ExternalHighlight</a><code> [get, set]</code></td></tr>
+<tr class="separator:abe2aaffd58729610d5f476a3521d6e73 inherit properties_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b96b7805760c82831e8e0f7b3f3d4f4 inherit properties_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a2b96b7805760c82831e8e0f7b3f3d4f4">IsHighlighted</a><code> [get, set]</code></td></tr>
 <tr class="separator:a2b96b7805760c82831e8e0f7b3f3d4f4 inherit properties_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e4ab63e6f0c29fa73593ed39ffbff24 inherit properties_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">virtual Rectangle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a7e4ab63e6f0c29fa73593ed39ffbff24">Rect</a><code> [get, set]</code></td></tr>
@@ -390,6 +395,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_barotrauma_1_1_map_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_barotrauma_1_1_map_entity')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></td></tr>
 <tr class="memitem:a70db2196ee2c3f5a11acabde6964c07f inherit pro_methods_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a70db2196ee2c3f5a11acabde6964c07f">ParseLinks</a> (XElement element, <a class="el" href="class_barotrauma_1_1_id_remap.html">IdRemap</a> idRemap)</td></tr>
 <tr class="separator:a70db2196ee2c3f5a11acabde6964c07f inherit pro_methods_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9d95451be2280a87ff9b8183adecf8 inherit pro_methods_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a3a9d95451be2280a87ff9b8183adecf8">CheckIsHighlighted</a> ()</td></tr>
+<tr class="separator:a3a9d95451be2280a87ff9b8183adecf8 inherit pro_methods_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b6244119472dd2b52133400dba18684 inherit pro_methods_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a1b6244119472dd2b52133400dba18684">InsertToList</a> ()</td></tr>
 <tr class="separator:a1b6244119472dd2b52133400dba18684 inherit pro_methods_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_barotrauma_1_1_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_barotrauma_1_1_entity')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_barotrauma_1_1_entity.html">Barotrauma.Entity</a></td></tr>
@@ -408,10 +415,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_barotrauma_1_1_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_barotrauma_1_1_entity')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_barotrauma_1_1_entity.html">Barotrauma.Entity</a></td></tr>
 <tr class="memitem:acf88c7760f01117e9a399077b0eeaf6d inherit pro_attribs_class_barotrauma_1_1_entity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_a_i_target.html">AITarget</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_entity.html#acf88c7760f01117e9a399077b0eeaf6d">aiTarget</a></td></tr>
 <tr class="separator:acf88c7760f01117e9a399077b0eeaf6d inherit pro_attribs_class_barotrauma_1_1_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_class_barotrauma_1_1_map_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_class_barotrauma_1_1_map_entity')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="class_barotrauma_1_1_map_entity.html">Barotrauma.MapEntity</a></td></tr>
+<tr class="memitem:aa3f33bd88994a41d30b43a5e23ee9c25 inherit pro_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static readonly HashSet&lt; <a class="el" href="class_barotrauma_1_1_map_entity.html">MapEntity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#aa3f33bd88994a41d30b43a5e23ee9c25">highlightedEntities</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_map_entity.html">MapEntity</a>&gt;()</td></tr>
+<tr class="separator:aa3f33bd88994a41d30b43a5e23ee9c25 inherit pro_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00012">12</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00013">13</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a42f05abf5ff4735efb6a8361c7c15bb8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42f05abf5ff4735efb6a8361c7c15bb8">&#9670;&nbsp;</a></span>Gap() <span class="overload">[1/3]</span></h2>
@@ -429,7 +439,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00130">130</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00165">165</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -459,7 +469,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00141">141</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00176">176</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -507,7 +517,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00145">145</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00180">180</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -527,7 +537,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00213">213</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00248">248</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -556,7 +566,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_map_entity.html#abbc69a5f16283567305faa11f448a63f">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00172">172</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00207">207</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -600,7 +610,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00680">680</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00715">715</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -630,7 +640,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#adddb56ddd753320fc97c5f98c4be0d4c">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00207">207</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00242">242</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -674,7 +684,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00746">746</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00781">781</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -714,7 +724,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#afd30523ffeb544b65db11a11540a877a">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00177">177</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00212">212</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -743,7 +753,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a894499889efd3df17a908b27525690cb">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00741">741</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00776">776</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -762,7 +772,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00595">595</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00630">630</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -791,7 +801,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_entity.html#a0c8d53a53a23e335dff0a8460f290def">Barotrauma.Entity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00724">724</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00759">759</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -821,7 +831,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#ac79287ad70ecec5f514a2faf54b7e205">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00781">781</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00816">816</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -852,7 +862,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a1598b8c77ef8ac216da13120cef253ef">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00713">713</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00748">748</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -892,7 +902,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a46389c722caa30156dc1055a2b49d3da">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00298">298</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00333">333</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -919,7 +929,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00190">190</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00225">225</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -936,7 +946,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00088">88</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00123">123</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -952,7 +962,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00050">50</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00051">51</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -976,7 +986,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00014">14</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00015">15</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -992,7 +1002,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00053">53</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00054">54</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1016,7 +1026,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00018">18</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00019">19</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1041,7 +1051,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00075">75</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00110">110</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1065,7 +1075,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00095">95</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00130">130</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1091,7 +1101,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>"Diagonal" gaps are used on sloped walls to allow characters to pass through them either horizontally or vertically. Water still flows through them only horizontally or vertically </p>
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00033">33</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00034">34</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1125,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00023">23</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00024">24</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1139,7 +1149,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00100">100</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00135">135</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1163,7 +1173,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00090">90</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00125">125</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1197,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00122">122</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00157">157</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1235,7 +1245,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00108">108</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00143">143</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1269,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00072">72</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_gap_8cs_source.html#l00107">107</a> of file <a class="el" href="_gap_8cs_source.html">Gap.cs</a>.</p>
 
 </div>
 </div>

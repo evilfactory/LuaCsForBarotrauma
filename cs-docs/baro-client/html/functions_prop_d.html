@@ -223,6 +223,9 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 <li>DebugLogWhenFails
 : <a class="el" href="class_barotrauma_1_1_a_i_objective_go_to.html#ac3748239aac78f7e09c3d1e205fba805">Barotrauma.AIObjectiveGoTo</a>
 </li>
+<li>DebugServer
+: <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a657f990e3c576aedab3588ecbaa3b2fe">Barotrauma.LuaCsSetup</a>
+</li>
 <li>DebugTag
 : <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a9222f2feae9c1954284bb289eaf16c3f">Barotrauma.AIObjective</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_find_diving_gear.html#ad4f21b18720d47029bd52741ca3fcbb9">Barotrauma.AIObjectiveFindDivingGear</a>
@@ -430,6 +433,7 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 <li>Disabled
 : <a class="el" href="class_barotrauma_1_1_limb.html#aa8e26bc37be5fd76c9b567dde48ffbf1">Barotrauma.Limb</a>
 , <a class="el" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a0d8e609c3eef875a8a9a7a0e99a1891b">Barotrauma.Sounds.SoundManager</a>
+, <a class="el" href="class_barotrauma_1_1_status_effect.html#a2bad01c0a5a6c8d6932abfd57d32c62a">Barotrauma.StatusEffect</a>
 </li>
 <li>DisabledByEvent
 : <a class="el" href="class_barotrauma_1_1_character.html#aa25ddbff526c891a616d7198c9a31e09">Barotrauma.Character</a>
@@ -505,6 +509,7 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_beacon_mission.html#ab73c75eaa19fbe6f83985c423c717ac1">Barotrauma.BeaconMission</a>
 , <a class="el" href="class_barotrauma_1_1_cargo_mission.html#af7a9c98b98eb4310b8c9c208067a8f23">Barotrauma.CargoMission</a>
 , <a class="el" href="class_barotrauma_1_1_combat_mission.html#ab4383ab26a2b7667e2b5696f8c0d3599">Barotrauma.CombatMission</a>
+, <a class="el" href="class_barotrauma_1_1_end_mission.html#a6b0c15aa1d43813317b48fa36357527d">Barotrauma.EndMission</a>
 , <a class="el" href="class_barotrauma_1_1_escort_mission.html#aa96d8c531f438a56c0a46ffa3cfd10fe">Barotrauma.EscortMission</a>
 , <a class="el" href="class_barotrauma_1_1_go_to_mission.html#ad3e689cd116ab401f6da3aaacb13aea0">Barotrauma.GoToMission</a>
 , <a class="el" href="class_barotrauma_1_1_mineral_mission.html#a87fd0f639bdde64af2b67132d316c4c0">Barotrauma.MineralMission</a>
@@ -521,6 +526,7 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_beacon_mission.html#a2ce151c2196e768af7fecad4503966d1">Barotrauma.BeaconMission</a>
 , <a class="el" href="class_barotrauma_1_1_cargo_mission.html#a941ef20930a1f0b4357eba3e028e9e2c">Barotrauma.CargoMission</a>
 , <a class="el" href="class_barotrauma_1_1_combat_mission.html#ab60460c25786837b3266f4c2e775cf6b">Barotrauma.CombatMission</a>
+, <a class="el" href="class_barotrauma_1_1_end_mission.html#a12a4fe3135551c7eedbef79f33a7d16a">Barotrauma.EndMission</a>
 , <a class="el" href="class_barotrauma_1_1_escort_mission.html#a1f2c90ac8f34972f3b2e8daf46c8c0cf">Barotrauma.EscortMission</a>
 , <a class="el" href="class_barotrauma_1_1_go_to_mission.html#aaef933b2a2183b8031ac33eac0659cc9">Barotrauma.GoToMission</a>
 , <a class="el" href="class_barotrauma_1_1_mineral_mission.html#a3bb162f5030ac5ef33c8964bd70688a1">Barotrauma.MineralMission</a>
@@ -632,7 +638,8 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_content_x_element.html#add3a081d2896c1832754db57bbe3db11">Barotrauma.ContentXElement</a>
 </li>
 <li>DoesBleed
-: <a class="el" href="class_barotrauma_1_1_character_health.html#aebb23376efa7f1da9423c0be501f5f31">Barotrauma.CharacterHealth</a>
+: <a class="el" href="class_barotrauma_1_1_character.html#ac1b6b6ab5669789633675331b3701484">Barotrauma.Character</a>
+, <a class="el" href="class_barotrauma_1_1_character_health.html#aebb23376efa7f1da9423c0be501f5f31">Barotrauma.CharacterHealth</a>
 , <a class="el" href="class_barotrauma_1_1_character_params_1_1_health_params.html#a2a6070db4e5ece733d0789715a59a9dd">Barotrauma.CharacterParams.HealthParams</a>
 </li>
 <li>DoesFlip
@@ -649,6 +656,9 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 </li>
 <li>Door
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_docking_port.html#a21cd1db294af5c286bb1bc365335baaf">Barotrauma.Items.Components.DockingPort</a>
+</li>
+<li>DoorList
+: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_door.html#afdfef7f9ab8baa05ee2a9c44769c06a5">Barotrauma.Items.Components.Door</a>
 </li>
 <li>DownloadedPackages
 : <a class="el" href="class_barotrauma_1_1_mod_download_screen.html#a9b44150758e2fef4e63b01eb68b45e51">Barotrauma.ModDownloadScreen</a>
@@ -682,8 +692,12 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 <li>Drawable
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a105b2ac141ec7773b41137386c50454a">Barotrauma.Items.Components.ItemComponent</a>
 </li>
+<li>DrawAlways
+: <a class="el" href="class_barotrauma_1_1_particles_1_1_particle_prefab.html#a5cdcf9ed61e0ffdb23def016a246b544">Barotrauma.Particles.ParticlePrefab</a>
+</li>
 <li>DrawBehindSubs
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#acd3251223241214cf7260fa4c27b39fb">Barotrauma.Items.Components.LightComponent</a>
+, <a class="el" href="class_barotrauma_1_1_outpost_generation_params.html#a78ec9978d145111f0c7068947013581f">Barotrauma.OutpostGenerationParams</a>
 </li>
 <li>DrawBelowWater
 : <a class="el" href="class_barotrauma_1_1_hull.html#ade4abd782dc0baee2df400324b7b35d3">Barotrauma.Hull</a>
@@ -785,6 +799,9 @@ $(document).ready(function(){initNavTree('functions_prop_d.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_duration_list_element.html#a63281cbbe9014cbc8f93ef8c8793204c">Barotrauma.DurationListElement</a>
 , <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#aea4a2bec8d153f648bea86895d2607fb">Barotrauma.Items.Components.ElectricalDischarger</a>
 , <a class="el" href="class_barotrauma_1_1_status_effect.html#aabcfc59a5f58ba3733c3a4e0e7c200bc">Barotrauma.StatusEffect</a>
+</li>
+<li>DynamicCircleRotationSpeed
+: <a class="el" href="class_barotrauma_1_1_character_params_1_1_target_params.html#a2c90dd6a65356dbfb4b43b2baa5d99a8">Barotrauma.CharacterParams.TargetParams</a>
 </li>
 <li>DynamicLoading
 : <a class="el" href="class_barotrauma_1_1_scalable_font.html#a2fd4693ccaea7e5aedf515e02006acee">Barotrauma.ScalableFont</a>

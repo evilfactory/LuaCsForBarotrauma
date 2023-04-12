@@ -160,44 +160,45 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_s
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            Steamworks.SteamServer.SetKey(<span class="stringliteral">&quot;gamestarted&quot;</span>, server.GameStarted.ToString());</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            Steamworks.SteamServer.SetKey(<span class="stringliteral">&quot;gamemode&quot;</span>, server.ServerSettings.GameModeIdentifier.Value);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            Steamworks.SteamServer.SetKey(<span class="stringliteral">&quot;playstyle&quot;</span>, server.ServerSettings.PlayStyle.ToString());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            Steamworks.SteamServer.DedicatedServer = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Steamworks.BeginAuthResult StartAuthSession(<span class="keywordtype">byte</span>[] authTicketData, <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> clientSteamID)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> (!IsInitialized || !Steamworks.SteamServer.IsValid) <span class="keywordflow">return</span> Steamworks.BeginAuthResult.ServerNotConnectedToSteam;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            DebugConsole.Log(<span class="stringliteral">&quot;SteamManager authenticating Steam client &quot;</span> + clientSteamID);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            Steamworks.BeginAuthResult startResult = Steamworks.SteamServer.BeginAuthSession(authTicketData, clientSteamID.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (startResult != Steamworks.BeginAuthResult.OK)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                DebugConsole.Log(<span class="stringliteral">&quot;Authentication failed: failed to start auth session (&quot;</span> + startResult.ToString() + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span> startResult;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopAuthSession(<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> clientSteamId)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">if</span> (!IsInitialized || !Steamworks.SteamServer.IsValid) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            DebugConsole.Log(<span class="stringliteral">&quot;SteamManager ending auth session with Steam client &quot;</span> + clientSteamId);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            Steamworks.SteamServer.EndSession(clientSteamId.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> CloseServer()</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">if</span> (!IsInitialized || !Steamworks.SteamServer.IsValid) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            Steamworks.SteamServer.Shutdown();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            Steamworks.SteamServer.SetKey(<span class="stringliteral">&quot;language&quot;</span>, server.ServerSettings.Language.ToString());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            Steamworks.SteamServer.DedicatedServer = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Steamworks.BeginAuthResult StartAuthSession(<span class="keywordtype">byte</span>[] authTicketData, <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> clientSteamID)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (!IsInitialized || !Steamworks.SteamServer.IsValid) <span class="keywordflow">return</span> Steamworks.BeginAuthResult.ServerNotConnectedToSteam;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            DebugConsole.Log(<span class="stringliteral">&quot;SteamManager authenticating Steam client &quot;</span> + clientSteamID);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            Steamworks.BeginAuthResult startResult = Steamworks.SteamServer.BeginAuthSession(authTicketData, clientSteamID.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (startResult != Steamworks.BeginAuthResult.OK)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                DebugConsole.Log(<span class="stringliteral">&quot;Authentication failed: failed to start auth session (&quot;</span> + startResult.ToString() + <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> startResult;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopAuthSession(<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a> clientSteamId)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (!IsInitialized || !Steamworks.SteamServer.IsValid) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            DebugConsole.Log(<span class="stringliteral">&quot;SteamManager ending auth session with Steam client &quot;</span> + clientSteamId);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            Steamworks.SteamServer.EndSession(clientSteamId.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Value</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> CloseServer()</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (!IsInitialized || !Steamworks.SteamServer.IsValid) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            Steamworks.SteamServer.Shutdown();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_id_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_id.html">Barotrauma.Networking.SteamId</a></div><div class="ttdef"><b>Definition:</b> <a href="_steam_id_8cs_source.html#l00006">SteamId.cs:7</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_steam_id_html_a47067e30752fb9a489aa351e5e2a4bf6"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_steam_id.html#a47067e30752fb9a489aa351e5e2a4bf6">Barotrauma.Networking.SteamId.Value</a></div><div class="ttdeci">readonly UInt64 Value</div><div class="ttdef"><b>Definition:</b> <a href="_steam_id_8cs_source.html#l00008">SteamId.cs:8</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00008">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:9</a></div></div>

@@ -9,5 +9,6 @@ var class_barotrauma_1_1_beacon_station_info =
     [ "MaxLevelDifficulty", "class_barotrauma_1_1_beacon_station_info.html#a000238277ec67c71a7a836ea35dcaae9", null ],
     [ "MinLevelDifficulty", "class_barotrauma_1_1_beacon_station_info.html#a39670dedfc7b9ffbbd92cbc5f5307e27", null ],
     [ "Name", "class_barotrauma_1_1_beacon_station_info.html#a436a3b81d3593664ad00081218fe1e7d", null ],
+    [ "Placement", "class_barotrauma_1_1_beacon_station_info.html#a67f114e0909f627743c9ee4037efede2", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_beacon_station_info.html#a9d828e48a3555d3313515c1356c0cdef", null ]
 ];

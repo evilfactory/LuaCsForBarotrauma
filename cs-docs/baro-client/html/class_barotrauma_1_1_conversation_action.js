@@ -6,6 +6,7 @@ var class_barotrauma_1_1_conversation_action =
       [ "Mission", "class_barotrauma_1_1_conversation_action.html#a99ecf801006990da4acbc1ca00368389a70d529695c253d17e992cb9265abc57f", null ]
     ] ],
     [ "ConversationAction", "class_barotrauma_1_1_conversation_action.html#ab6c78e45b6c573444181d66403b88832", null ],
+    [ "GetEndingOptions", "class_barotrauma_1_1_conversation_action.html#ae46000c77bafea59e885bef5ebb49fe9", null ],
     [ "GetSubActions", "class_barotrauma_1_1_conversation_action.html#aa46c9b6d71e76d204e6d5f709b8c7776", null ],
     [ "IsFinished", "class_barotrauma_1_1_conversation_action.html#a0994e700fadb1b387e33b0fd16547182", null ],
     [ "Reset", "class_barotrauma_1_1_conversation_action.html#a29dcbf398246bc98d0c77a8401a4266c", null ],

@@ -1,11 +1,11 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_steering =
 [
     [ "Steering", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ade5f68837ae4f362d00ad4c562bf1551", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ab5acc42c136acc95819daf99d574f148", null ],
     [ "AttachToSonarHUD", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aab46a6f626529da9f8b715cb9bf45c92", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a5d7817aab13143c7860a37ccbc3e6f4a", null ],
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aa79ac95c9edaf7f491d1839348c78dc2", null ],
     [ "CreateGUI", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a3d614edffd4e2eb332b26d551f44b53c", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a64c51a374c53d9f97250f8df14e5e834", null ],
     [ "DebugDrawHUD", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a94c73350230eaf080161735e67ca5ec5", null ],
     [ "DrawHUD", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#af2491fe02e8a39d8dc7b41e0abf1cd36", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a9627024aadca4039283e69467dddc3f8", null ],

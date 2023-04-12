@@ -5,6 +5,5 @@ var class_barotrauma_1_1_beacon_mission =
     [ "DetermineCompleted", "class_barotrauma_1_1_beacon_mission.html#a471588579bf007e1e569039581d72da9", null ],
     [ "EndMissionSpecific", "class_barotrauma_1_1_beacon_mission.html#aa0db699b43c24c660265a73e7efa289d", null ],
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_beacon_mission.html#a7970cea9db71e3acadc11c9518188aff", null ],
-    [ "SonarLabel", "class_barotrauma_1_1_beacon_mission.html#ae6388a28f6abb1313898b50b0025ddd3", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_beacon_mission.html#ad6e89a15ab9d9371831d63b57c3a81b2", null ]
+    [ "SonarLabels", "class_barotrauma_1_1_beacon_mission.html#aeb225590fc654b2b2c5099e51b10ec4c", null ]
 ];

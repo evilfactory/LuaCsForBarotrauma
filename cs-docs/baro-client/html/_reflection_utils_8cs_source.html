@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('_reflection_utils_8cs_source.html','')
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> RemoveAssemblyFromCache(Assembly assembly) =&gt; cachedNonAbstractTypes.Remove(assembly);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Option&lt;TBase&gt; ParseDerived&lt;TBase, TInput&gt;(TInput input) where TInput : notnull</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Option&lt;TBase&gt; ParseDerived&lt;TBase, TInput&gt;(TInput input) where TInput : notnull where TBase : notnull</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">static</span> Option&lt;TBase&gt; none() =&gt; Option&lt;TBase&gt;.None();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            </div>
@@ -175,10 +175,10 @@ $(document).ready(function(){initNavTree('_reflection_utils_8cs_source.html','')
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    f.Method.GetGenericMethodDefinition().MakeGenericMethod(genericArgs);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">return</span> constructedConverter.Invoke(<span class="keyword">null</span>, <span class="keyword">new</span>[] { parseFunc.Invoke(<span class="keyword">null</span>, <span class="keyword">new</span> <span class="keywordtype">object</span>[] { input }) })</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    as Option&lt;TBase&gt; ?? none();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    as Option&lt;TBase&gt;? ?? none();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> derivedTypes.Select(parseOfType).FirstOrDefault(t =&gt; t.IsSome()) ?? none();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> derivedTypes.Select(parseOfType).FirstOrDefault(t =&gt; t.IsSome());</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> NameWithGenerics(<span class="keyword">this</span> Type t)</div>

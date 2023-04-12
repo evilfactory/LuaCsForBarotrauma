@@ -17,6 +17,7 @@ var class_barotrauma_1_1_a_i_objective_go_to =
     [ "OverridePriority", "class_barotrauma_1_1_a_i_objective_go_to.html#a350df33386120d3d1985890aa5f66ec1", null ],
     [ "PriorityGetter", "class_barotrauma_1_1_a_i_objective_go_to.html#a065c61be27c90019d8ba56b148aa6866", null ],
     [ "requiredCondition", "class_barotrauma_1_1_a_i_objective_go_to.html#a1ecc4d6c4f57133ccf4da8f9fa6255e1", null ],
+    [ "SourceEventAction", "class_barotrauma_1_1_a_i_objective_go_to.html#ab3b67fccb75c967d6fa9cafea907ad24", null ],
     [ "AbandonWhenCannotCompleteSubjectives", "class_barotrauma_1_1_a_i_objective_go_to.html#a0126ad55f7ece7321f1334dc586686b2", null ],
     [ "AllowGoingOutside", "class_barotrauma_1_1_a_i_objective_go_to.html#a52b337a4615022b3319c5ebcd8da416b", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_go_to.html#a883f24f1737f535c9e9bfce52af204be", null ],

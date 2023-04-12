@@ -12,6 +12,7 @@ var class_barotrauma_1_1_fish_swim_params =
     [ "TailAngleInRadians", "class_barotrauma_1_1_fish_swim_params.html#a1f61b682438b28e3df99e754ffb45cfb", null ],
     [ "TailTorque", "class_barotrauma_1_1_fish_swim_params.html#adf666d4f199a9c551325cad67c560980", null ],
     [ "TailTorqueMultiplier", "class_barotrauma_1_1_fish_swim_params.html#a4070811bef081fb1adc82f0082a7c2f2", null ],
+    [ "UpdateAnimationWhenNotMoving", "class_barotrauma_1_1_fish_swim_params.html#a528511b854e49777375ad66d74fb2352", null ],
     [ "UseSineMovement", "class_barotrauma_1_1_fish_swim_params.html#a5a8a4af1c822394373a56129cbc003c4", null ],
     [ "WaveAmplitude", "class_barotrauma_1_1_fish_swim_params.html#aaba18f8c601a32ed8999077d979321bc", null ],
     [ "WaveLength", "class_barotrauma_1_1_fish_swim_params.html#a39ba35ca7679db71d5f2e250ede89e17", null ]

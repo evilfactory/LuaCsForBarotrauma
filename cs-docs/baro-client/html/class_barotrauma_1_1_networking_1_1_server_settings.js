@@ -71,6 +71,7 @@ var class_barotrauma_1_1_networking_1_1_server_settings =
     [ "KickVoteRequiredRatio", "class_barotrauma_1_1_networking_1_1_server_settings.html#afecbb43333839b672eda506e37484b22", null ],
     [ "KillableNPCs", "class_barotrauma_1_1_networking_1_1_server_settings.html#ae8b1f553ae36a3060d4fd281f11c799a", null ],
     [ "KillDisconnectedTime", "class_barotrauma_1_1_networking_1_1_server_settings.html#af8f1e92f937d4ebfb38296ab7e4c2e25", null ],
+    [ "Language", "class_barotrauma_1_1_networking_1_1_server_settings.html#a57e5006cb15265f8132cb1067c774c39", null ],
     [ "LinesPerLogFile", "class_barotrauma_1_1_networking_1_1_server_settings.html#a148cca84184321bf0d9ed38719a4af20", null ],
     [ "LockAllDefaultWires", "class_barotrauma_1_1_networking_1_1_server_settings.html#a0fad0477c1b713cb669181f75183305f", null ],
     [ "LootedMoneyDestination", "class_barotrauma_1_1_networking_1_1_server_settings.html#a7431fd3845d5dc6516e5bc7077fe268a", null ],

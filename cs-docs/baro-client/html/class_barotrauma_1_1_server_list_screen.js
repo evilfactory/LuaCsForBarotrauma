@@ -26,6 +26,7 @@ var class_barotrauma_1_1_server_list_screen =
     [ "StoreServerFilters", "class_barotrauma_1_1_server_list_screen.html#acb7f4b3c90f733e8c0f6946162bd7d28", null ],
     [ "Update", "class_barotrauma_1_1_server_list_screen.html#afaf61265e16ae977145fac663ad805da", null ],
     [ "UpdateOrAddServerInfo", "class_barotrauma_1_1_server_list_screen.html#a790885bfb6ff251d8286b4fc286aa5d0", null ],
+    [ "AllLanguagesVisible", "class_barotrauma_1_1_server_list_screen.html#adc65cd5208811aa273bd1c88d1864d6b", null ],
     [ "ClientNameBox", "class_barotrauma_1_1_server_list_screen.html#a0137e89e84074e30fad20cc8f0acbd02", null ],
     [ "selectedTab", "class_barotrauma_1_1_server_list_screen.html#af5340697752cf92bc6acf2fa7fabadbd", null ]
 ];

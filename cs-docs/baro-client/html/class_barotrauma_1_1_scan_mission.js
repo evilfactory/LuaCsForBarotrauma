@@ -11,6 +11,6 @@ var class_barotrauma_1_1_scan_mission =
     [ "DisplayAsCompleted", "class_barotrauma_1_1_scan_mission.html#a6d3513870f3927b9020c3b45d1258dbb", null ],
     [ "DisplayAsFailed", "class_barotrauma_1_1_scan_mission.html#a488057b1de64307e573b1310ef0b9246", null ],
     [ "HudIconTargets", "class_barotrauma_1_1_scan_mission.html#ae740d600b51dc3ef1acde2d9bc626728", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_scan_mission.html#a09855ae7b8df3f9c9515bcfb9db16f25", null ],
+    [ "SonarLabels", "class_barotrauma_1_1_scan_mission.html#ab8e2860d691bef164cabdfe3d5f04f58", null ],
     [ "TargetRuin", "class_barotrauma_1_1_scan_mission.html#acc783702f941cfa5b38dfb2b8dd6207f", null ]
 ];

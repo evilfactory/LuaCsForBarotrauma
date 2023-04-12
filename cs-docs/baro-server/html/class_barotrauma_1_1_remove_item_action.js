@@ -5,6 +5,6 @@ var class_barotrauma_1_1_remove_item_action =
     [ "Reset", "class_barotrauma_1_1_remove_item_action.html#ada004dcf52a2c6ab1a4ab821c6dc5531", null ],
     [ "Update", "class_barotrauma_1_1_remove_item_action.html#a45ca94b9e45efb71baafcafb987cbcfb", null ],
     [ "Amount", "class_barotrauma_1_1_remove_item_action.html#a1d83562cdf642613a00471683eba6c62", null ],
-    [ "ItemIdentifier", "class_barotrauma_1_1_remove_item_action.html#a9a9f70bc3d37fbff645a2e700f86977b", null ],
+    [ "ItemIdentifiers", "class_barotrauma_1_1_remove_item_action.html#a4b9b16a930dde161d372d5a50e2e7b02", null ],
     [ "TargetTag", "class_barotrauma_1_1_remove_item_action.html#ae417ecbea1ae51a2820338f360fa7904", null ]
 ];

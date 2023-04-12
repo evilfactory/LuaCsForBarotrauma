@@ -8,6 +8,7 @@ var class_barotrauma_1_1_a_i_objective_operate_item =
     [ "IsDuplicate< T >", "class_barotrauma_1_1_a_i_objective_operate_item.html#aa41b96f42b5456ab8c61417a0370df81", null ],
     [ "Reset", "class_barotrauma_1_1_a_i_objective_operate_item.html#ab90c05a64e586c2b75d41cbf24d62279", null ],
     [ "completionCondition", "class_barotrauma_1_1_a_i_objective_operate_item.html#ac34799af044f851b57302de3e1d6b10b", null ],
+    [ "EndNodeFilter", "class_barotrauma_1_1_a_i_objective_operate_item.html#aace6ca24774e11638ce9bb834e59d893", null ],
     [ "OverridePriority", "class_barotrauma_1_1_a_i_objective_operate_item.html#aeca1cd7deefcd93ec22b41ce2179c7fd", null ],
     [ "AllowAutomaticItemUnequipping", "class_barotrauma_1_1_a_i_objective_operate_item.html#a1e23fa6e272012230bb6673f5c916236", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_operate_item.html#aee17607aefb87eed11c2676e205dd733", null ],

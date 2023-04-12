@@ -13,6 +13,7 @@ var class_barotrauma_1_1_affliction_prefab =
     [ "LoadEffects", "class_barotrauma_1_1_affliction_prefab.html#af7c09096b922335d6e1b086e61c75a05", null ],
     [ "ReloadSoundsIfNeeded", "class_barotrauma_1_1_affliction_prefab.html#a53443c30547e54111adfb2a46e018876", null ],
     [ "ToString", "class_barotrauma_1_1_affliction_prefab.html#a7eadf241623b648969f692c7a1390455", null ],
+    [ "AchievementOnReceived", "class_barotrauma_1_1_affliction_prefab.html#a21a05c8cdac6ed0aa29f530253cd0340", null ],
     [ "AchievementOnRemoved", "class_barotrauma_1_1_affliction_prefab.html#a2f569d30df8e25d21897c681694958f0", null ],
     [ "ActivationThreshold", "class_barotrauma_1_1_affliction_prefab.html#ad357f59d11296cbe03933ebaa715713c", null ],
     [ "AffectMachines", "class_barotrauma_1_1_affliction_prefab.html#a64468c57ef26a027dd3180343d9231e7", null ],
@@ -50,5 +51,6 @@ var class_barotrauma_1_1_affliction_prefab =
     [ "WeaponsSkillGain", "class_barotrauma_1_1_affliction_prefab.html#a7d29cdf13f37b687cb5f996d8bc921e9", null ],
     [ "Effects", "class_barotrauma_1_1_affliction_prefab.html#a621faf8bc39bcac0ddac37728f109f4b", null ],
     [ "PeriodicEffects", "class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46", null ],
+    [ "TargetSpecies", "class_barotrauma_1_1_affliction_prefab.html#a6af0f1f6c58383fefd6569755492f1d6", null ],
     [ "TreatmentSuitability", "class_barotrauma_1_1_affliction_prefab.html#aa6fe5ef478e3d35b9fbbcfe7e0177161", null ]
 ];

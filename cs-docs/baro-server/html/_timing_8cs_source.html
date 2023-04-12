@@ -122,19 +122,20 @@ $(document).ready(function(){initNavTree('_timing_8cs_source.html',''); initResi
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span> InterpolateRotation(<span class="keywordtype">float</span> previous, <span class="keywordtype">float</span> current)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">float</span> angleDiff = MathUtils.GetShortestAngle(previous, current);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">return</span> previous + angleDiff * (float)alpha;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Vector2 Interpolate(Vector2 previous, Vector2 current)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                Interpolate(previous.X, current.X),</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                Interpolate(previous.Y, current.Y));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">//use a somewhat high epsilon - very small differences aren&#39;t visible</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (MathUtils.NearlyEqual(previous, current, epsilon: 0.02f)) { <span class="keywordflow">return</span> current; }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">float</span> angleDiff = MathUtils.GetShortestAngle(previous, current);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">return</span> previous + angleDiff * (float)alpha;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Vector2 Interpolate(Vector2 previous, Vector2 current)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                Interpolate(previous.X, current.X),</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                Interpolate(previous.Y, current.Y));</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

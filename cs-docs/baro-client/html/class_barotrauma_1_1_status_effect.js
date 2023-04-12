@@ -60,6 +60,7 @@ var class_barotrauma_1_1_status_effect =
     [ "TargetSlot", "class_barotrauma_1_1_status_effect.html#ab56c75753764bdf04ec0d1708ac4720a", null ],
     [ "type", "class_barotrauma_1_1_status_effect.html#ac307093284537c474cf19358b0b95c17", null ],
     [ "Afflictions", "class_barotrauma_1_1_status_effect.html#acbbcc37d988a2054f080a715f753c7cf", null ],
+    [ "Disabled", "class_barotrauma_1_1_status_effect.html#a2bad01c0a5a6c8d6932abfd57d32c62a", null ],
     [ "Duration", "class_barotrauma_1_1_status_effect.html#aabcfc59a5f58ba3733c3a4e0e7c200bc", null ],
     [ "HasConditions", "class_barotrauma_1_1_status_effect.html#ab04526bf9bbaab55b8e36d980777aadf", null ],
     [ "Offset", "class_barotrauma_1_1_status_effect.html#a13938a0c8f532496029a1539ea99fe11", null ],

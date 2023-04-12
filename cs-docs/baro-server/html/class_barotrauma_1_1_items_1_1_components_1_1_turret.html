@@ -126,12 +126,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a64e17b763b2184cbafab322f2d022484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52f3a4fc8ccfd9830725e2d8b9392357"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a52f3a4fc8ccfd9830725e2d8b9392357">HasPowerToShoot</a> ()</td></tr>
 <tr class="separator:a52f3a4fc8ccfd9830725e2d8b9392357"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a312df65a8380a5ee341c3efc015fcd23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a312df65a8380a5ee341c3efc015fcd23">ThalamusOperate</a> (<a class="el" href="class_barotrauma_1_1_wreck_a_i.html">WreckAI</a> ai, float deltaTime, bool targetHumans, bool targetOtherCreatures, bool targetSubmarines, bool ignoreDelay)</td></tr>
-<tr class="separator:a312df65a8380a5ee341c3efc015fcd23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa47b9955983e48012238c286ac638c39"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#aa47b9955983e48012238c286ac638c39">AIOperate</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, <a class="el" href="class_barotrauma_1_1_a_i_objective_operate_item.html">AIObjectiveOperateItem</a> objective)</td></tr>
-<tr class="memdesc:aa47b9955983e48012238c286ac638c39"><td class="mdescLeft">&#160;</td><td class="mdescRight"><dl class="section return"><dt>Returns</dt><dd>true if the operation was completed</dd></dl>
- <a href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#aa47b9955983e48012238c286ac638c39">More...</a><br /></td></tr>
-<tr class="separator:aa47b9955983e48012238c286ac638c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64fc65b103688f7dbdf3b7ecc45d43ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a64fc65b103688f7dbdf3b7ecc45d43ed">UpdateAutoOperate</a> (float deltaTime, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> friendlyTag=default)</td></tr>
+<tr class="separator:a64fc65b103688f7dbdf3b7ecc45d43ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957c8e13a9b559a20a166b906816fc55"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a957c8e13a9b559a20a166b906816fc55">CrewAIOperate</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, <a class="el" href="class_barotrauma_1_1_a_i_objective_operate_item.html">AIObjectiveOperateItem</a> objective)</td></tr>
+<tr class="memdesc:a957c8e13a9b559a20a166b906816fc55"><td class="mdescLeft">&#160;</td><td class="mdescRight"><dl class="section return"><dt>Returns</dt><dd>true if the operation was completed</dd></dl>
+ <a href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a957c8e13a9b559a20a166b906816fc55">More...</a><br /></td></tr>
+<tr class="separator:a957c8e13a9b559a20a166b906816fc55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a246b13351e45648474eacb6afcd10e4f"><td class="memItemLeft" align="right" valign="top">override float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a246b13351e45648474eacb6afcd10e4f">GetCurrentPowerConsumption</a> (<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a> conn=null)</td></tr>
 <tr class="memdesc:a246b13351e45648474eacb6afcd10e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html">Turret</a> doesn't consume grid power, directly takes from the batteries on its grid instead.  <a href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a246b13351e45648474eacb6afcd10e4f">More...</a><br /></td></tr>
 <tr class="separator:a246b13351e45648474eacb6afcd10e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -339,6 +339,30 @@ Properties</h2></td></tr>
 <tr class="separator:aab01d029c0c483ba7965f2989c561c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60cda174edb817054dcdf0b18b90a98c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a60cda174edb817054dcdf0b18b90a98c">MaxChargeTime</a><code> [get]</code></td></tr>
 <tr class="separator:a60cda174edb817054dcdf0b18b90a98c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea5e88ac848c90aa8f9b2172c0bbc2cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#aea5e88ac848c90aa8f9b2172c0bbc2cd">AutoOperate</a><code> [get, set]</code></td></tr>
+<tr class="separator:aea5e88ac848c90aa8f9b2172c0bbc2cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bcf00986227e4bf47342716c191bbc3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a7bcf00986227e4bf47342716c191bbc3">RandomAimAmount</a><code> [get, set]</code></td></tr>
+<tr class="separator:a7bcf00986227e4bf47342716c191bbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd61e6effcad61bda44f4fef757fda80"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#abd61e6effcad61bda44f4fef757fda80">RandomAimMinTime</a><code> [get, set]</code></td></tr>
+<tr class="separator:abd61e6effcad61bda44f4fef757fda80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe43275f7aa00e1fa86ab23fada41b66"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#abe43275f7aa00e1fa86ab23fada41b66">RandomAimMaxTime</a><code> [get, set]</code></td></tr>
+<tr class="separator:abe43275f7aa00e1fa86ab23fada41b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54801f540157f5fa23241510c808aa4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#af54801f540157f5fa23241510c808aa4">RandomMovement</a><code> [get, set]</code></td></tr>
+<tr class="separator:af54801f540157f5fa23241510c808aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139526517cf97ddb9b105cb7e1ddf098"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a139526517cf97ddb9b105cb7e1ddf098">AimDelay</a><code> [get, set]</code></td></tr>
+<tr class="separator:a139526517cf97ddb9b105cb7e1ddf098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1a7d1d31165bc62cf0514eee7033a2d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#af1a7d1d31165bc62cf0514eee7033a2d">TargetCharacters</a><code> [get, set]</code></td></tr>
+<tr class="separator:af1a7d1d31165bc62cf0514eee7033a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03daa4494715101cc77d4caf4e893f41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a03daa4494715101cc77d4caf4e893f41">TargetMonsters</a><code> [get, set]</code></td></tr>
+<tr class="separator:a03daa4494715101cc77d4caf4e893f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b88349bd4080e6284cd47d03c04512d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a4b88349bd4080e6284cd47d03c04512d">TargetHumans</a><code> [get, set]</code></td></tr>
+<tr class="separator:a4b88349bd4080e6284cd47d03c04512d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17f2c914b8a31f0f89e9d23f1946d35f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a17f2c914b8a31f0f89e9d23f1946d35f">TargetSubmarines</a><code> [get, set]</code></td></tr>
+<tr class="separator:a17f2c914b8a31f0f89e9d23f1946d35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac86f3913f6f0695dcbcd836016f2aced"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#ac86f3913f6f0695dcbcd836016f2aced">TargetItems</a><code> [get, set]</code></td></tr>
+<tr class="separator:ac86f3913f6f0695dcbcd836016f2aced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af760acb2badbc98cbfb6c3292120d12d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_turret.html#af760acb2badbc98cbfb6c3292120d12d">FriendlyTag</a><code> [get]</code></td></tr>
+<tr class="separator:af760acb2badbc98cbfb6c3292120d12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_barotrauma_1_1_items_1_1_components_1_1_powered"><td colspan="2" onclick="javascript:toggleInherit('properties_class_barotrauma_1_1_items_1_1_components_1_1_powered')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html">Barotrauma.Items.Components.Powered</a></td></tr>
 <tr class="memitem:ae8f36bef27c34496fceae42e9974a907 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_powered"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html">Powered</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#ae8f36bef27c34496fceae42e9974a907">PoweredList</a><code> [get]</code></td></tr>
 <tr class="separator:ae8f36bef27c34496fceae42e9974a907 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_powered"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -509,13 +533,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00320">320</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00359">359</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa47b9955983e48012238c286ac638c39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa47b9955983e48012238c286ac638c39">&#9670;&nbsp;</a></span>AIOperate()</h2>
+<a id="a957c8e13a9b559a20a166b906816fc55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a957c8e13a9b559a20a166b906816fc55">&#9670;&nbsp;</a></span>CrewAIOperate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -524,7 +548,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override bool Barotrauma.Items.Components.Turret.AIOperate </td>
+          <td class="memname">override bool Barotrauma.Items.Components.Turret.CrewAIOperate </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>deltaTime</em>, </td>
@@ -557,9 +581,9 @@ Additional Inherited Members</h2></td></tr>
 <p><dl class="section return"><dt>Returns</dt><dd>true if the operation was completed</dd></dl>
 </p>
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a8d4749a6dd16b88fc97f5b5763137365">Barotrauma.Items.Components.ItemComponent</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa89188936d97141d96acddcd82fb0ea0">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01058">1058</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01129">1129</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -589,7 +613,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a22af2236cac317ccf2b873a5318cfcd7">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01600">1600</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01741">1741</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -619,7 +643,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a56852e8f5b6e63774f580f865ed390fd">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01622">1622</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01763">1763</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -651,7 +675,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a0c29892729cc230039a6b9e716a72759">Barotrauma.Items.Components.Powered</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01435">1435</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01530">1530</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -670,7 +694,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00584">584</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00629">629</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -689,7 +713,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00594">594</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00639">639</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -735,7 +759,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a350e21654b80c0d2299a1a7b4469dce4">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01701">1701</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01842">1842</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -766,7 +790,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a65429927474f0af5243dd6e864054a02">Barotrauma.Items.Components.Powered</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01708">1708</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01849">1849</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -797,7 +821,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a74598689273b64d1e52327408b9bda0e">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00364">364</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00404">404</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -837,7 +861,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae1435a89bf919cbd8663301f3ebbbbcf">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01644">1644</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01785">1785</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -866,7 +890,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#ae6cd105557c6e1e4c8747c2051010d86">Barotrauma.Items.Components.Powered</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01524">1524</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01665">1665</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -904,61 +928,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html#ac638249d2b9e91e857dec222deff9cd9">Barotrauma.Networking.IServerSerializable</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01720">1720</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
-
-</div>
-</div>
-<a id="a312df65a8380a5ee341c3efc015fcd23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a312df65a8380a5ee341c3efc015fcd23">&#9670;&nbsp;</a></span>ThalamusOperate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Barotrauma.Items.Components.Turret.ThalamusOperate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_wreck_a_i.html">WreckAI</a>&#160;</td>
-          <td class="paramname"><em>ai</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>deltaTime</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>targetHumans</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>targetOtherCreatures</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>targetSubmarines</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>ignoreDelay</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00903">903</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l01861">1861</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -998,7 +968,37 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a9b23573fa67a034ed9971670eb78c77e">Barotrauma.Items.Components.Powered</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00407">407</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00447">447</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="a64fc65b103688f7dbdf3b7ecc45d43ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64fc65b103688f7dbdf3b7ecc45d43ed">&#9670;&nbsp;</a></span>UpdateAutoOperate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.Items.Components.Turret.UpdateAutoOperate </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
+          <td class="paramname"><em>friendlyTag</em> = <code>default</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00956">956</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1017,7 +1017,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00565">565</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00610">610</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1057,7 +1057,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a0caa0c436b20ae306d627603c70f512b">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00578">578</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00623">623</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1074,7 +1074,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00071">71</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00072">72</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1090,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00102">102</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00105">105</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1119,6 +1119,30 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a139526517cf97ddb9b105cb7e1ddf098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139526517cf97ddb9b105cb7e1ddf098">&#9670;&nbsp;</a></span>AimDelay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.AimDelay</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00339">339</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
 <a id="a0b3b3ecac06598f90752b18e2da7affa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b3b3ecac06598f90752b18e2da7affa">&#9670;&nbsp;</a></span>AIRange</h2>
 
@@ -1139,7 +1163,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00300">300</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00303">303</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1163,7 +1187,31 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00105">105</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00108">108</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="aea5e88ac848c90aa8f9b2172c0bbc2cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea5e88ac848c90aa8f9b2172c0bbc2cd">&#9670;&nbsp;</a></span>AutoOperate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.AutoOperate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00324">324</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1235,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00082">82</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00085">85</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1211,7 +1259,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00289">289</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00292">292</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1235,7 +1283,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00169">169</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00172">172</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1307,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00141">141</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00144">144</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1283,7 +1331,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00096">96</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00099">99</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1355,31 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00273">273</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00276">276</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="af760acb2badbc98cbfb6c3292120d12d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af760acb2badbc98cbfb6c3292120d12d">&#9670;&nbsp;</a></span>FriendlyTag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> Barotrauma.Items.Components.Turret.FriendlyTag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00357">357</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1331,7 +1403,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00120">120</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00123">123</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1427,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00183">183</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00186">186</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1451,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00307">307</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00310">310</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1403,7 +1475,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00314">314</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00317">317</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1427,7 +1499,103 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00176">176</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00179">179</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7bcf00986227e4bf47342716c191bbc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bcf00986227e4bf47342716c191bbc3">&#9670;&nbsp;</a></span>RandomAimAmount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Items.Components.Turret.RandomAimAmount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00327">327</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="abe43275f7aa00e1fa86ab23fada41b66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe43275f7aa00e1fa86ab23fada41b66">&#9670;&nbsp;</a></span>RandomAimMaxTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Items.Components.Turret.RandomAimMaxTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00333">333</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="abd61e6effcad61bda44f4fef757fda80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd61e6effcad61bda44f4fef757fda80">&#9670;&nbsp;</a></span>RandomAimMinTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Items.Components.Turret.RandomAimMinTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00330">330</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="af54801f540157f5fa23241510c808aa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af54801f540157f5fa23241510c808aa4">&#9670;&nbsp;</a></span>RandomMovement</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.RandomMovement</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00336">336</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1451,7 +1619,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00155">155</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00158">158</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1475,7 +1643,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00127">127</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00130">130</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1499,7 +1667,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00162">162</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00165">165</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1691,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00148">148</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00151">151</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1547,7 +1715,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00076">76</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00079">79</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1571,7 +1739,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00191">191</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00194">194</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1763,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00266">266</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00269">269</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1619,7 +1787,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00259">259</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00262">262</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1643,7 +1811,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00134">134</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00137">137</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1667,7 +1835,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00280">280</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00283">283</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1691,7 +1859,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00217">217</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00220">220</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1715,7 +1883,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00251">251</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00254">254</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1739,7 +1907,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00243">243</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00246">246</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1763,7 +1931,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00234">234</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00237">237</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1787,7 +1955,127 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00226">226</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00229">229</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="af1a7d1d31165bc62cf0514eee7033a2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a7d1d31165bc62cf0514eee7033a2d">&#9670;&nbsp;</a></span>TargetCharacters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.TargetCharacters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00342">342</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="a4b88349bd4080e6284cd47d03c04512d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b88349bd4080e6284cd47d03c04512d">&#9670;&nbsp;</a></span>TargetHumans</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.TargetHumans</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00348">348</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac86f3913f6f0695dcbcd836016f2aced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac86f3913f6f0695dcbcd836016f2aced">&#9670;&nbsp;</a></span>TargetItems</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.TargetItems</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00354">354</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="a03daa4494715101cc77d4caf4e893f41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03daa4494715101cc77d4caf4e893f41">&#9670;&nbsp;</a></span>TargetMonsters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.TargetMonsters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00345">345</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+
+</div>
+</div>
+<a id="a17f2c914b8a31f0f89e9d23f1946d35f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17f2c914b8a31f0f89e9d23f1946d35f">&#9670;&nbsp;</a></span>TargetSubmarines</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Items.Components.Turret.TargetSubmarines</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00351">351</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>
@@ -1811,7 +2099,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00111">111</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_turret_8cs_source.html#l00114">114</a> of file <a class="el" href="_turret_8cs_source.html">Turret.cs</a>.</p>
 
 </div>
 </div>

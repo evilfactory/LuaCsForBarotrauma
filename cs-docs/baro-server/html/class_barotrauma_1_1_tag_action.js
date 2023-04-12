@@ -12,6 +12,7 @@ var class_barotrauma_1_1_tag_action =
     [ "Reset", "class_barotrauma_1_1_tag_action.html#aa5c9d6eea4ba8e89e12c3f9bb570bcd6", null ],
     [ "ToDebugString", "class_barotrauma_1_1_tag_action.html#a93308eb0ce11004577955c17382b9051", null ],
     [ "Update", "class_barotrauma_1_1_tag_action.html#afa9969c64f7f21a9980d4ea3555d49d8", null ],
+    [ "AllowHiddenItems", "class_barotrauma_1_1_tag_action.html#a96af5bc603988fb2119af61f888b6cac", null ],
     [ "Criteria", "class_barotrauma_1_1_tag_action.html#a2fd7fa0de8c94a597087186a1d80eaf3", null ],
     [ "IgnoreIncapacitatedCharacters", "class_barotrauma_1_1_tag_action.html#a01b823ed08ea6d8fc0c77bbbe582fb9f", null ],
     [ "SubmarineType", "class_barotrauma_1_1_tag_action.html#abd2fe0c22fa80e11fa39096feb2d28f5", null ],

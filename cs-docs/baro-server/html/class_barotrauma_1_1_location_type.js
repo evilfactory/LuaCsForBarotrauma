@@ -3,7 +3,7 @@ var class_barotrauma_1_1_location_type =
     [ "LocationType", "class_barotrauma_1_1_location_type.html#a7a48d1490612dcd7b8e44756fb7c055a", null ],
     [ "Dispose", "class_barotrauma_1_1_location_type.html#af7c35bcbce0a4cc630aea746e8a987dc", null ],
     [ "GetForcedOutpostGenerationParams", "class_barotrauma_1_1_location_type.html#aa27eb432d6b93863e21a142dc27281aa", null ],
-    [ "GetPortrait", "class_barotrauma_1_1_location_type.html#ad36a296d6ee127a8208630f81a5d4e6d", null ],
+    [ "GetPortrait", "class_barotrauma_1_1_location_type.html#a58d65215ee93704bf9e7f6f0933f235a", null ],
     [ "GetRandomHireable", "class_barotrauma_1_1_location_type.html#a1ee7035a5dd2c1d6f42cd7ba824d684c", null ],
     [ "GetRandomName", "class_barotrauma_1_1_location_type.html#aba940b9af3fe166e6b24e16d2546f2bb", null ],
     [ "ToString", "class_barotrauma_1_1_location_type.html#aaee012b77d13ffab895a4da1104ba073", null ],
@@ -11,12 +11,15 @@ var class_barotrauma_1_1_location_type =
     [ "CanChangeTo", "class_barotrauma_1_1_location_type.html#a7c1e82dfc42026a58d8ce0e04afe23fd", null ],
     [ "CommonnessPerZone", "class_barotrauma_1_1_location_type.html#a9c033e9ac2c8fc4fa28dc6ea28ce5dfe", null ],
     [ "Description", "class_barotrauma_1_1_location_type.html#a0fdff862d5ddc9cbafaffb35c2d67b70", null ],
+    [ "ForceLocationName", "class_barotrauma_1_1_location_type.html#ad5aa01354bc6ff20d1606e4e54ea0603", null ],
     [ "HideEntitySubcategories", "class_barotrauma_1_1_location_type.html#a5fb4f3caa6f3dfda58a09a674738ebbe", null ],
     [ "MinCountPerZone", "class_barotrauma_1_1_location_type.html#a62e74422e3b86e6bc80850732247bf6c", null ],
     [ "MissionIdentifiers", "class_barotrauma_1_1_location_type.html#a1c8cc7478432ad243812dde32358a553", null ],
     [ "MissionTags", "class_barotrauma_1_1_location_type.html#a604d41efc5cba30c8d3fa5deaf32e8d0", null ],
     [ "Name", "class_barotrauma_1_1_location_type.html#a77ad2ceee9dbc57353d9f22345ea6a50", null ],
     [ "OutpostTeam", "class_barotrauma_1_1_location_type.html#a116404c086bea3942c150a64804894e0", null ],
+    [ "ShowSonarMarker", "class_barotrauma_1_1_location_type.html#ab2ae6198c618cb8ebdac136043c647cd", null ],
+    [ "AllowInRandomLevels", "class_barotrauma_1_1_location_type.html#abcbf01e51d76191dd649a120f2d9592b", null ],
     [ "DailySpecialPriceModifier", "class_barotrauma_1_1_location_type.html#ac69ef41c6a172b088ec8264bf32ab435", null ],
     [ "DailySpecialsCount", "class_barotrauma_1_1_location_type.html#ad8bc52c008d2f66e8c6a7c57b636dbed", null ],
     [ "HasHireableCharacters", "class_barotrauma_1_1_location_type.html#af4511fe21b130bfc5f072b37fe86c9ce", null ],
@@ -34,5 +37,5 @@ var class_barotrauma_1_1_location_type =
     [ "StoreMaxReputationModifier", "class_barotrauma_1_1_location_type.html#a8933b315e35e5a5b7995c5a628e740ab", null ],
     [ "StorePriceModifierRange", "class_barotrauma_1_1_location_type.html#ab61df6b37beddc6525929687a5ef9618", null ],
     [ "StoreSellPriceModifier", "class_barotrauma_1_1_location_type.html#a59dd2d24f304038a24b92c2a7c01a2c7", null ],
-    [ "UseInMainMenu", "class_barotrauma_1_1_location_type.html#abc1dc1973d8ce0b9c87d1b310f2bcf7c", null ]
+    [ "UsePortraitInRandomLoadingScreens", "class_barotrauma_1_1_location_type.html#adfe611736929389429e4bddb13000624", null ]
 ];

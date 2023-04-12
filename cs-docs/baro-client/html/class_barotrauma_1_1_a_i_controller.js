@@ -45,6 +45,7 @@ var class_barotrauma_1_1_a_i_controller =
     [ "IsCurrentPathUnreachable", "class_barotrauma_1_1_a_i_controller.html#ab62f73a36ccaf0175f4944c8b01db5ff", null ],
     [ "IsMentallyUnstable", "class_barotrauma_1_1_a_i_controller.html#a45f2e3e9b9e5f1dad2eecedd77c4afcc", null ],
     [ "IsSteeringThroughGap", "class_barotrauma_1_1_a_i_controller.html#ac48f35c9defe933e38a20324475bbd48", null ],
+    [ "IsTryingToSteerThroughGap", "class_barotrauma_1_1_a_i_controller.html#a7283a00ec6cc051accf7638586a307e0", null ],
     [ "SelectedAiTarget", "class_barotrauma_1_1_a_i_controller.html#a8e81a7915987774ed8d652524b4a0f2d", null ],
     [ "SimPosition", "class_barotrauma_1_1_a_i_controller.html#a2a43041edb7b1be62ed25a9cd1ac4db8", null ],
     [ "Steering", "class_barotrauma_1_1_a_i_controller.html#a54e9d36e204ceef84d85cf22a1fbaa1c", null ],

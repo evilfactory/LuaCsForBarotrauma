@@ -102,12 +102,12 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_e
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_event.html">Event</a> ev <span class="keywordflow">in</span> activeEvents)</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordflow">if</span> (!(ev is <a class="code" href="class_barotrauma_1_1_scripted_event.html">ScriptedEvent</a> scriptedEvent)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordflow">if</span> (ev is not <a class="code" href="class_barotrauma_1_1_scripted_event.html">ScriptedEvent</a> scriptedEvent) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                var actions = FindActions(scriptedEvent);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_event_action.html">EventAction</a> action <span class="keywordflow">in</span> actions.Select(a =&gt; a.Item2))</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                    <span class="keywordflow">if</span> (!(action is <a class="code" href="class_barotrauma_1_1_conversation_action.html">ConversationAction</a> convAction) || convAction.Identifier != actionId) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                    <span class="keywordflow">if</span> (action is not <a class="code" href="class_barotrauma_1_1_conversation_action.html">ConversationAction</a> convAction || convAction.<a class="code" href="class_barotrauma_1_1_conversation_action.html#a35683bdc27aaca7377f5f210409b1854">Identifier</a> != actionId) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                    <span class="keywordflow">if</span> (!convAction.TargetClients.Contains(sender))</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#if DEBUG || UNSTABLE</span></div>
@@ -130,15 +130,24 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_e
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                            convAction.SelectedOption = selectedOption;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }                </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                            <span class="keywordflow">if</span> (convAction.Options.Any() &amp;&amp; !convAction.GetEndingOptions().Contains(selectedOption))</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c <span class="keywordflow">in</span> convAction.TargetClients)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                    <span class="keywordflow">if</span> (c == sender) { <span class="keywordflow">continue</span>; }                                    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                    convAction.ServerWriteSelectedOption(c);                                    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                }                </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_conversation_action_html"><div class="ttname"><a href="class_barotrauma_1_1_conversation_action.html">Barotrauma.ConversationAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_conversation_action_8cs_source.html#l00011">BarotraumaShared/SharedSource/Events/EventActions/ConversationAction.cs:12</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_conversation_action_html_a35683bdc27aaca7377f5f210409b1854"><div class="ttname"><a href="class_barotrauma_1_1_conversation_action.html#a35683bdc27aaca7377f5f210409b1854">Barotrauma.ConversationAction.Identifier</a></div><div class="ttdeci">readonly UInt16 Identifier</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_conversation_action_8cs_source.html#l00080">BarotraumaShared/SharedSource/Events/EventActions/ConversationAction.cs:80</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_event_action_html"><div class="ttname"><a href="class_barotrauma_1_1_event_action.html">Barotrauma.EventAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_event_action_8cs_source.html#l00009">EventAction.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_event_html"><div class="ttname"><a href="class_barotrauma_1_1_event.html">Barotrauma.Event</a></div><div class="ttdef"><b>Definition:</b> <a href="_event_8cs_source.html#l00007">Event.cs:8</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_event_manager_html_a8577821efc1b16e27c3e7a189c7705d4"><div class="ttname"><a href="class_barotrauma_1_1_event_manager.html#a8577821efc1b16e27c3e7a189c7705d4">Barotrauma.EventManager.ServerRead</a></div><div class="ttdeci">void ServerRead(IReadMessage inc, Client sender)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_server_2_server_source_2_events_2_event_manager_8cs_source.html#l00010">BarotraumaServer/ServerSource/Events/EventManager.cs:10</a></div></div>

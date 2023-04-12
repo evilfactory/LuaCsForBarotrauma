@@ -24,6 +24,7 @@ var class_barotrauma_1_1_networking_1_1_server_info =
     [ "HasPassword", "class_barotrauma_1_1_networking_1_1_server_info.html#a7bb3d9ee2d97ab4d77aff271fa6044c3", null ],
     [ "IsModded", "class_barotrauma_1_1_networking_1_1_server_info.html#ac5f87110673e9dc1b37834b05655cd4c", null ],
     [ "KarmaEnabled", "class_barotrauma_1_1_networking_1_1_server_info.html#af4c5fd3b706dd4f89c79e033122a1863", null ],
+    [ "Language", "class_barotrauma_1_1_networking_1_1_server_info.html#aa5fefc5ec9d92c8ac784bd2521f53080", null ],
     [ "MaxPlayers", "class_barotrauma_1_1_networking_1_1_server_info.html#a26f6cf637b99e07b81196d2128d85428", null ],
     [ "ModeSelectionMode", "class_barotrauma_1_1_networking_1_1_server_info.html#a7c4abf438a5849ddfee0f7c16c8961da", null ],
     [ "Name", "class_barotrauma_1_1_networking_1_1_server_info.html#aaabce6835a3623e2abd9ac78341732fb", null ],

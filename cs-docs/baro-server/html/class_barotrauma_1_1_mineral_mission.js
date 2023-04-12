@@ -10,7 +10,6 @@ var class_barotrauma_1_1_mineral_mission =
     [ "Description", "class_barotrauma_1_1_mineral_mission.html#a9d0053901033b24ab09764d356903572", null ],
     [ "FailureMessage", "class_barotrauma_1_1_mineral_mission.html#a24fb68bab68750105594e004605aedc4", null ],
     [ "Name", "class_barotrauma_1_1_mineral_mission.html#ac4bfc6858d8a1a0b760fe52773f91851", null ],
-    [ "SonarLabel", "class_barotrauma_1_1_mineral_mission.html#ac34c62c04b6eed6f317422cda8795773", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_mineral_mission.html#ae0719b1e7b132d7a02835f4d894e2ffd", null ],
+    [ "SonarLabels", "class_barotrauma_1_1_mineral_mission.html#a5e6941aab67cbf28d78feba3fc4c3130", null ],
     [ "SuccessMessage", "class_barotrauma_1_1_mineral_mission.html#a325b04976d72f0be118532eacf4e902e", null ]
 ];

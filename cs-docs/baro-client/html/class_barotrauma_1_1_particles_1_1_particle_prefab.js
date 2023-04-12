@@ -20,6 +20,7 @@ var class_barotrauma_1_1_particles_1_1_particle_prefab =
     [ "CollisionRadius", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a57b71e0dd97a9f559216d885cf365396", null ],
     [ "DeleteOnCollision", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a905415be21082fe5508f5dc60271f7f7", null ],
     [ "Drag", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#ac11490a38d3373c5810e3ae73f30fdda", null ],
+    [ "DrawAlways", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a5cdcf9ed61e0ffdb23def016a246b544", null ],
     [ "DrawOnTop", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a0fbfc4a0cf50243e10e79c40c368aff2", null ],
     [ "DrawTarget", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#aa2965617b73285e712abc37d80e3c2cc", null ],
     [ "EndColor", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a8d8f57acaf313e5371ccdf004cf74fe8", null ],

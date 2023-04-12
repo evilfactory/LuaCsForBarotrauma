@@ -815,7 +815,7 @@ $(document).ready(function(){initNavTree('_talent_menu_8cs_source.html',''); ini
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                    talentStages.Add(GetTalentState(character, button.Identifier, selectedTalents));</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                }</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160; </div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                TalentStages collectiveStage = talentStages.Any(<span class="keyword">static</span> stage =&gt; stage is Locked)</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                TalentStages collectiveStage = talentStages.All(<span class="keyword">static</span> stage =&gt; stage is Locked)</div>
 <div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                    ? Locked</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                    : Available;</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160; </div>

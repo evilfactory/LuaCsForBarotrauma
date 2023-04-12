@@ -89,78 +89,86 @@ $(document).ready(function(){initNavTree('_server_list_filters_8cs_source.html',
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#nullable enable</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Xml.Linq;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">    #warning TODO: implement properly</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> System.Xml.Linq;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html">    9</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;Identifier, string&gt; attributes = <span class="keyword">new</span> Dictionary&lt;Identifier, string&gt;();</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>() { }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>(XElement elem)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordflow">if</span> (elem == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">foreach</span> (var attr <span class="keywordflow">in</span> elem.Attributes())</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                attributes.Add(attr.NameAsIdentifier(), attr.Value);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a48ca01c09278c7a9024f0eb4b2c15438">   24</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a48ca01c09278c7a9024f0eb4b2c15438">Init</a>(XElement? elem)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (elem is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">Instance</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>(elem);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#aa8c3ea2f535e39632eaec8b1bd732e21">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#aa8c3ea2f535e39632eaec8b1bd732e21">SaveTo</a>(XElement elem)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">foreach</span> (var kvp <span class="keywordflow">in</span> attributes)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                elem.Add(<span class="keyword">new</span> XAttribute(kvp.Key.Value, kvp.Value));</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#acfe8216d89f3f735d7a4be93dc83ccd8">   39</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#acfe8216d89f3f735d7a4be93dc83ccd8">GetAttributeBool</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, <span class="keywordtype">bool</span> def)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (attributes.TryGetValue(key, out <span class="keywordtype">string</span>? val))</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordtype">bool</span>.TryParse(val, out <span class="keywordtype">bool</span> result)) { <span class="keywordflow">return</span> result; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">return</span> def;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a17fded72104be91642ccaffdb829bc0d">   49</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a17fded72104be91642ccaffdb829bc0d">GetAttributeEnum&lt;T&gt;</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, T def) where T : <span class="keyword">struct</span>, Enum</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">if</span> (attributes.TryGetValue(key, out <span class="keywordtype">string</span>? val))</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">if</span> (Enum.TryParse(val, out T result)) { <span class="keywordflow">return</span> result; }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> def;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#af20aa2ca35e8bca8250d45549fb768e1">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#af20aa2ca35e8bca8250d45549fb768e1">SetAttribute</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, <span class="keywordtype">string</span> val)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            attributes[key] = val;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">   64</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">Instance</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; } = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>(XElement? elem)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">if</span> (elem is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">foreach</span> (var attr <span class="keywordflow">in</span> elem.Attributes())</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                attributes.Add(attr.NameAsIdentifier(), attr.Value);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a48ca01c09278c7a9024f0eb4b2c15438">   22</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a48ca01c09278c7a9024f0eb4b2c15438">Init</a>(XElement? elem)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">Instance</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>(elem);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#aa8c3ea2f535e39632eaec8b1bd732e21">   27</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#aa8c3ea2f535e39632eaec8b1bd732e21">SaveTo</a>(XElement elem)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">foreach</span> (var kvp <span class="keywordflow">in</span> attributes)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                elem.Add(<span class="keyword">new</span> XAttribute(kvp.Key.Value, kvp.Value));</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#acfe8216d89f3f735d7a4be93dc83ccd8">   35</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#acfe8216d89f3f735d7a4be93dc83ccd8">GetAttributeBool</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, <span class="keywordtype">bool</span> def)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">if</span> (attributes.TryGetValue(key, out <span class="keywordtype">string</span>? val))</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordtype">bool</span>.TryParse(val, out <span class="keywordtype">bool</span> result)) { <span class="keywordflow">return</span> result; }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">return</span> def;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a17fded72104be91642ccaffdb829bc0d">   45</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a17fded72104be91642ccaffdb829bc0d">GetAttributeEnum&lt;T&gt;</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, T def) where T : <span class="keyword">struct</span>, Enum</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (attributes.TryGetValue(key, out <span class="keywordtype">string</span>? val))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">if</span> (Enum.TryParse(val, ignoreCase: <span class="keyword">true</span>, out T result)) { <span class="keywordflow">return</span> result; }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> def;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a092447b894219e61b558bc17b2266162">   55</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="struct_barotrauma_1_1_language_identifier.html">LanguageIdentifier</a>[] <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a092447b894219e61b558bc17b2266162">GetAttributeLanguageIdentifierArray</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, <a class="code" href="struct_barotrauma_1_1_language_identifier.html">LanguageIdentifier</a>[] def)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> attributes.TryGetValue(key, out <span class="keywordtype">string</span>? val)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                ? val.Split(<span class="stringliteral">&quot;,&quot;</span>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    .Select(<span class="keyword">static</span> s =&gt; s.Trim())</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    .Where(<span class="keyword">static</span> s =&gt; !s.IsNullOrWhiteSpace())</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    .Select(<span class="keyword">static</span> s =&gt; s.ToLanguageIdentifier()).ToArray()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                : def;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#af20aa2ca35e8bca8250d45549fb768e1">   65</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#af20aa2ca35e8bca8250d45549fb768e1">SetAttribute</a>(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> key, <span class="keywordtype">string</span> val)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            attributes[key] = val;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">   70</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a> <a class="code" href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">Instance</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; } = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_server_list_filters.html">ServerListFilters</a>(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html">Barotrauma.ServerListFilters</a></div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00009">ServerListFilters.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a17fded72104be91642ccaffdb829bc0d"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a17fded72104be91642ccaffdb829bc0d">Barotrauma.ServerListFilters.GetAttributeEnum&lt; T &gt;</a></div><div class="ttdeci">T GetAttributeEnum&lt; T &gt;(Identifier key, T def)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00049">ServerListFilters.cs:49</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a1e243d99050d5882d1af574bea045559"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">Barotrauma.ServerListFilters.Instance</a></div><div class="ttdeci">static ServerListFilters Instance</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00064">ServerListFilters.cs:64</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a48ca01c09278c7a9024f0eb4b2c15438"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a48ca01c09278c7a9024f0eb4b2c15438">Barotrauma.ServerListFilters.Init</a></div><div class="ttdeci">static void Init(XElement? elem)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00024">ServerListFilters.cs:24</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_aa8c3ea2f535e39632eaec8b1bd732e21"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#aa8c3ea2f535e39632eaec8b1bd732e21">Barotrauma.ServerListFilters.SaveTo</a></div><div class="ttdeci">void SaveTo(XElement elem)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00031">ServerListFilters.cs:31</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_acfe8216d89f3f735d7a4be93dc83ccd8"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#acfe8216d89f3f735d7a4be93dc83ccd8">Barotrauma.ServerListFilters.GetAttributeBool</a></div><div class="ttdeci">bool GetAttributeBool(Identifier key, bool def)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00039">ServerListFilters.cs:39</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_af20aa2ca35e8bca8250d45549fb768e1"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#af20aa2ca35e8bca8250d45549fb768e1">Barotrauma.ServerListFilters.SetAttribute</a></div><div class="ttdeci">void SetAttribute(Identifier key, string val)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00059">ServerListFilters.cs:59</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a092447b894219e61b558bc17b2266162"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a092447b894219e61b558bc17b2266162">Barotrauma.ServerListFilters.GetAttributeLanguageIdentifierArray</a></div><div class="ttdeci">LanguageIdentifier[] GetAttributeLanguageIdentifierArray(Identifier key, LanguageIdentifier[] def)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00055">ServerListFilters.cs:55</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a17fded72104be91642ccaffdb829bc0d"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a17fded72104be91642ccaffdb829bc0d">Barotrauma.ServerListFilters.GetAttributeEnum&lt; T &gt;</a></div><div class="ttdeci">T GetAttributeEnum&lt; T &gt;(Identifier key, T def)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00045">ServerListFilters.cs:45</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a1e243d99050d5882d1af574bea045559"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a1e243d99050d5882d1af574bea045559">Barotrauma.ServerListFilters.Instance</a></div><div class="ttdeci">static ServerListFilters Instance</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00070">ServerListFilters.cs:70</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_a48ca01c09278c7a9024f0eb4b2c15438"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#a48ca01c09278c7a9024f0eb4b2c15438">Barotrauma.ServerListFilters.Init</a></div><div class="ttdeci">static void Init(XElement? elem)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00022">ServerListFilters.cs:22</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_aa8c3ea2f535e39632eaec8b1bd732e21"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#aa8c3ea2f535e39632eaec8b1bd732e21">Barotrauma.ServerListFilters.SaveTo</a></div><div class="ttdeci">void SaveTo(XElement elem)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00027">ServerListFilters.cs:27</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_acfe8216d89f3f735d7a4be93dc83ccd8"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#acfe8216d89f3f735d7a4be93dc83ccd8">Barotrauma.ServerListFilters.GetAttributeBool</a></div><div class="ttdeci">bool GetAttributeBool(Identifier key, bool def)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00035">ServerListFilters.cs:35</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_server_list_filters_html_af20aa2ca35e8bca8250d45549fb768e1"><div class="ttname"><a href="class_barotrauma_1_1_server_list_filters.html#af20aa2ca35e8bca8250d45549fb768e1">Barotrauma.ServerListFilters.SetAttribute</a></div><div class="ttdeci">void SetAttribute(Identifier key, string val)</div><div class="ttdef"><b>Definition:</b> <a href="_server_list_filters_8cs_source.html#l00065">ServerListFilters.cs:65</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html">Barotrauma.Identifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00011">Identifier.cs:12</a></div></div>
+<div class="ttc" id="astruct_barotrauma_1_1_language_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_language_identifier.html">Barotrauma.LanguageIdentifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00010">TextPack.cs:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

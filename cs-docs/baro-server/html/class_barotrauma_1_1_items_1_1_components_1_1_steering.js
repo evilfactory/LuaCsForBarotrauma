@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_steering =
 [
     [ "Steering", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ade5f68837ae4f362d00ad4c562bf1551", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#ab5acc42c136acc95819daf99d574f148", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a64c51a374c53d9f97250f8df14e5e834", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a9627024aadca4039283e69467dddc3f8", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#af09bc3c32b282968c9b76199f1c320d4", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a32342d81d18f6fecb22c64869e6389c7", null ],

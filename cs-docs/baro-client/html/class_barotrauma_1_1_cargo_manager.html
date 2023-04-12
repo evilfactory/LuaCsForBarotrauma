@@ -182,6 +182,14 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af23bf26c8c989a17e5c83d74975c5a64"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#af23bf26c8c989a17e5c83d74975c5a64">HasUnlockedStoreItem</a> (<a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> prefab)</td></tr>
 <tr class="separator:af23bf26c8c989a17e5c83d74975c5a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a494c614746520bfbb5af2a3429e13e39"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_hull.html">Hull</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#a494c614746520bfbb5af2a3429e13e39">FindCargoRooms</a> (IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt; subs)</td></tr>
+<tr class="separator:a494c614746520bfbb5af2a3429e13e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5343b06f946a0c58e557c20840def658"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_hull.html">Hull</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#a5343b06f946a0c58e557c20840def658">FindCargoRooms</a> (<a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> sub)</td></tr>
+<tr class="separator:a5343b06f946a0c58e557c20840def658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08aeef7f9e1f59ed1c86fdf9e03676f6"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#a08aeef7f9e1f59ed1c86fdf9e03676f6">FilterCargoCrates</a> (IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt; items, Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt; conditional=null)</td></tr>
+<tr class="separator:a08aeef7f9e1f59ed1c86fdf9e03676f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af859d4d2a550b84b71c2f68bb1d6bf35"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html">ItemContainer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#af859d4d2a550b84b71c2f68bb1d6bf35">FindReusableCargoContainers</a> (IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt; subs, IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_hull.html">Hull</a> &gt; cargoRooms=null)</td></tr>
+<tr class="separator:af859d4d2a550b84b71c2f68bb1d6bf35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a733e0f884b810312a30638feedd90aae"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html">ItemContainer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#a733e0f884b810312a30638feedd90aae">GetOrCreateCargoContainerFor</a> (<a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> item, <a class="el" href="interface_barotrauma_1_1_i_spatial_entity.html">ISpatialEntity</a> cargoRoomOrSpawnPoint, ref List&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html">ItemContainer</a> &gt; availableContainers)</td></tr>
 <tr class="separator:a733e0f884b810312a30638feedd90aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4e5a609876f79954da17d476f297459"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_cargo_manager.html#ae4e5a609876f79954da17d476f297459">CreateItems</a> (List&lt; <a class="el" href="class_barotrauma_1_1_purchased_item.html">PurchasedItem</a> &gt; itemsToSpawn, <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> sub, <a class="el" href="class_barotrauma_1_1_cargo_manager.html">CargoManager</a> cargoManager)</td></tr>
@@ -222,7 +230,7 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00090">90</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00091">91</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1958b0d9f23ab1b379b3089ec6371d88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1958b0d9f23ab1b379b3089ec6371d88">&#9670;&nbsp;</a></span>CargoManager()</h2>
@@ -240,7 +248,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00156">156</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00157">157</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -260,7 +268,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00225">225</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00226">226</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -279,7 +287,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00231">231</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00232">232</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -298,7 +306,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00237">237</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00238">238</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -361,7 +369,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00516">516</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00532">532</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -380,7 +388,131 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00382">382</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00383">383</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a08aeef7f9e1f59ed1c86fdf9e03676f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08aeef7f9e1f59ed1c86fdf9e03676f6">&#9670;&nbsp;</a></span>FilterCargoCrates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.CargoManager.FilterCargoCrates </td>
+          <td>(</td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td>
+          <td class="paramname"><em>items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt;&#160;</td>
+          <td class="paramname"><em>conditional</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a494c614746520bfbb5af2a3429e13e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a494c614746520bfbb5af2a3429e13e39">&#9670;&nbsp;</a></span>FindCargoRooms() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_hull.html">Hull</a>&gt; Barotrauma.CargoManager.FindCargoRooms </td>
+          <td>(</td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt;&#160;</td>
+          <td class="paramname"><em>subs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5343b06f946a0c58e557c20840def658"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5343b06f946a0c58e557c20840def658">&#9670;&nbsp;</a></span>FindCargoRooms() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_hull.html">Hull</a>&gt; Barotrauma.CargoManager.FindCargoRooms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a>&#160;</td>
+          <td class="paramname"><em>sub</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af859d4d2a550b84b71c2f68bb1d6bf35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af859d4d2a550b84b71c2f68bb1d6bf35">&#9670;&nbsp;</a></span>FindReusableCargoContainers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html">ItemContainer</a>&gt; Barotrauma.CargoManager.FindReusableCargoContainers </td>
+          <td>(</td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt;&#160;</td>
+          <td class="paramname"><em>subs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_hull.html">Hull</a> &gt;&#160;</td>
+          <td class="paramname"><em>cargoRooms</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -522,7 +654,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00348">348</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00349">349</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -560,7 +692,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00610">610</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00626">626</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -604,7 +736,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00474">474</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00490">490</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -755,7 +887,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00397">397</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00398">398</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -897,7 +1029,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00365">365</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00366">366</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1225,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00161">161</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00162">162</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1244,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00594">594</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00610">610</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1132,7 +1264,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00654">654</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00670">670</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1174,7 +1306,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00254">254</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00255">255</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1252,7 +1384,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00271">271</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00272">272</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1294,7 +1426,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00305">305</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00306">306</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1446,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00636">636</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00652">652</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1542,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00243">243</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00244">244</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1587,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00138">138</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00139">139</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1471,7 +1603,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00150">150</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00151">151</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1487,7 +1619,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00151">151</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00152">152</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1503,7 +1635,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00152">152</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00153">153</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1519,7 +1651,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00153">153</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00154">154</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1535,7 +1667,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00154">154</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00155">155</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1560,7 +1692,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00140">140</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00141">141</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1584,7 +1716,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00141">141</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1608,7 +1740,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00143">143</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1632,7 +1764,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00143">143</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00144">144</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1656,7 +1788,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00144">144</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html#l00145">145</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_game_session_2_cargo_manager_8cs_source.html">BarotraumaShared/SharedSource/GameSession/CargoManager.cs</a>.</p>
 
 </div>
 </div>

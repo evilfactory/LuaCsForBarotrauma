@@ -468,7 +468,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_s
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                    var ids = items.Select(it =&gt; it.Id.Value).ToHashSet();</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                    var toUninstall = ContentPackageManager.WorkshopPackages</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                        .Where(pkg</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                            =&gt; !pkg.UgcId.TryUnwrap(out SteamWorkshopId workshopId)</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                            =&gt; !pkg.UgcId.TryUnwrap&lt;SteamWorkshopId&gt;(out var workshopId)</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                               || !ids.Contains(workshopId.Value))</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                        .ToArray();</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    if (toUninstall.Any())</div>

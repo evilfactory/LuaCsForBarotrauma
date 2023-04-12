@@ -8,6 +8,6 @@ var class_barotrauma_1_1_scan_mission =
     [ "StartMissionSpecific", "class_barotrauma_1_1_scan_mission.html#acfc96a821e7dead43cd93537e823b1c9", null ],
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_scan_mission.html#a89bca5d907400b0516464ae0bc39a8d0", null ],
     [ "AllTargetsScanned", "class_barotrauma_1_1_scan_mission.html#a3d2928b444089a8fa75b18a8eb57f78c", null ],
-    [ "SonarPositions", "class_barotrauma_1_1_scan_mission.html#a09855ae7b8df3f9c9515bcfb9db16f25", null ],
+    [ "SonarLabels", "class_barotrauma_1_1_scan_mission.html#ab8e2860d691bef164cabdfe3d5f04f58", null ],
     [ "TargetRuin", "class_barotrauma_1_1_scan_mission.html#acc783702f941cfa5b38dfb2b8dd6207f", null ]
 ];

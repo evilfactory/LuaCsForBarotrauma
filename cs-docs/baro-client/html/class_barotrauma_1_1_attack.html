@@ -111,8 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0869971322706e9588100e7e7635f93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52de527921ab23bef35fe6ed91ff76fb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#a52de527921ab23bef35fe6ed91ff76fb">GetLevelWallDamage</a> (float deltaTime)</td></tr>
 <tr class="separator:a52de527921ab23bef35fe6ed91ff76fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabaa4b97b6e0a053b2bd7314156bdf1a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#aabaa4b97b6e0a053b2bd7314156bdf1a">GetItemDamage</a> (float deltaTime)</td></tr>
-<tr class="separator:aabaa4b97b6e0a053b2bd7314156bdf1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b68ab0b112168e16eef67b9ce5397b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#ae4b68ab0b112168e16eef67b9ce5397b">GetItemDamage</a> (float deltaTime, float multiplier=1)</td></tr>
+<tr class="separator:ae4b68ab0b112168e16eef67b9ce5397b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fac5357bf0be82963da6a8795387be4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#a6fac5357bf0be82963da6a8795387be4">GetTotalDamage</a> (bool includeStructureDamage=false)</td></tr>
 <tr class="separator:a6fac5357bf0be82963da6a8795387be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93abfa6d32ba8d2f4274c72aa98857bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#a93abfa6d32ba8d2f4274c72aa98857bb">Attack</a> (float damage, float bleedingDamage, float burnDamage, float structureDamage, float itemDamage, float range=0.0f)</td></tr>
@@ -226,6 +226,10 @@ Properties</h2></td></tr>
 <tr class="separator:a4d6bac9daf0027599b832ef98ec29900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6580ecf6fa659d701b621068e619312"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#ab6580ecf6fa659d701b621068e619312">RotationLimbIndex</a><code> [get, set]</code></td></tr>
 <tr class="separator:ab6580ecf6fa659d701b621068e619312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5546bed9b939cb2bf1a5b255eb31f0f9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#a5546bed9b939cb2bf1a5b255eb31f0f9">SwayAmount</a><code> [get, set]</code></td></tr>
+<tr class="separator:a5546bed9b939cb2bf1a5b255eb31f0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06c1bf7c35e3e8e5809eb49145ac9503"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#a06c1bf7c35e3e8e5809eb49145ac9503">SwayFrequency</a><code> [get, set]</code></td></tr>
+<tr class="separator:a06c1bf7c35e3e8e5809eb49145ac9503"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6672836fc2a1b05ba326cd4369dda251"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_attack.html#a6672836fc2a1b05ba326cd4369dda251">Stun</a><code> [get]</code></td></tr>
 <tr class="memdesc:a6672836fc2a1b05ba326cd4369dda251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Legacy support. Use Afflictions.  <a href="class_barotrauma_1_1_attack.html#a6672836fc2a1b05ba326cd4369dda251">More...</a><br /></td></tr>
 <tr class="separator:a6672836fc2a1b05ba326cd4369dda251"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,7 +352,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00355">355</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00362">362</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -384,7 +388,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00367">367</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00374">374</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -414,7 +418,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00372">372</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00379">379</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -435,7 +439,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00770">770</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00777">777</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -465,7 +469,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00473">473</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00480">480</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -525,7 +529,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00479">479</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00486">486</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -585,12 +589,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00581">581</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00588">588</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
-<a id="aabaa4b97b6e0a053b2bd7314156bdf1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabaa4b97b6e0a053b2bd7314156bdf1a">&#9670;&nbsp;</a></span>GetItemDamage()</h2>
+<a id="ae4b68ab0b112168e16eef67b9ce5397b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4b68ab0b112168e16eef67b9ce5397b">&#9670;&nbsp;</a></span>GetItemDamage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -599,13 +603,23 @@ Properties</h2></td></tr>
           <td class="memname">float Barotrauma.Attack.GetItemDamage </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>deltaTime</em></td><td>)</td>
+          <td class="paramname"><em>deltaTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>multiplier</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00340">340</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00346">346</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -625,7 +639,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00335">335</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00341">341</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -645,7 +659,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00320">320</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00326">326</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -665,7 +679,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00330">330</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00336">336</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -685,7 +699,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00345">345</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00352">352</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -723,7 +737,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00721">721</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00728">728</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -761,7 +775,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00760">760</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00767">767</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -791,7 +805,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00437">437</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00444">444</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -810,7 +824,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00686">686</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00693">693</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -829,7 +843,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00710">710</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00717">717</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -849,7 +863,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00461">461</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00468">468</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -869,7 +883,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00692">692</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00699">699</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -889,7 +903,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00308">308</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00314">314</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -919,7 +933,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00675">675</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00682">682</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -939,7 +953,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00667">667</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00674">674</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -956,7 +970,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00299">299</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00305">305</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -972,7 +986,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00297">297</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00303">303</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1083,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00212">212</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00218">218</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1107,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00251">251</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00257">257</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1131,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00661">661</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00668">668</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1165,7 +1179,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00280">280</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00286">286</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1191,7 +1205,7 @@ Properties</h2></td></tr>
 
 <p>Only affects ai decision making. All the conditionals has to be met in order to select the attack. TODO: allow to define conditionals using any (implemented in <a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a> -&gt; move from there to <a class="el" href="class_barotrauma_1_1_property_conditional.html">PropertyConditional</a>?) </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00304">304</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00310">310</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1287,7 +1301,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00662">662</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00669">669</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1311,7 +1325,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00663">663</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00670">670</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1433,7 +1447,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00233">233</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00239">239</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1531,7 +1545,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00665">665</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00672">672</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1627,7 +1641,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00287">287</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00293">293</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1651,7 +1665,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00209">209</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00215">215</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1699,7 +1713,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00277">277</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00283">283</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1893,7 +1907,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00242">242</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00248">248</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1917,7 +1931,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00239">239</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00245">245</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1941,7 +1955,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00236">236</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00242">242</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -1965,7 +1979,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00245">245</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00251">251</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2037,7 +2051,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00664">664</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00671">671</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2061,7 +2075,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00289">289</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00295">295</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2085,7 +2099,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00269">269</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00275">275</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2133,7 +2147,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00318">318</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00324">324</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2157,7 +2171,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00282">282</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00288">288</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2181,7 +2195,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00274">274</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00280">280</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2255,7 +2269,7 @@ Properties</h2></td></tr>
 
 <p>Legacy support. Use Afflictions. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00206">206</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00212">212</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2279,7 +2293,55 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00266">266</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00272">272</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5546bed9b939cb2bf1a5b255eb31f0f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5546bed9b939cb2bf1a5b255eb31f0f9">&#9670;&nbsp;</a></span>SwayAmount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Attack.SwayAmount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00203">203</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+
+</div>
+</div>
+<a id="a06c1bf7c35e3e8e5809eb49145ac9503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06c1bf7c35e3e8e5809eb49145ac9503">&#9670;&nbsp;</a></span>SwayFrequency</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Attack.SwayFrequency</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00206">206</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2303,7 +2365,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00260">260</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00266">266</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2327,7 +2389,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00263">263</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00269">269</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2351,7 +2413,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00254">254</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00260">260</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2375,7 +2437,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00257">257</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00263">263</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>
@@ -2447,7 +2509,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00248">248</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00254">254</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html">BarotraumaShared/SharedSource/Characters/Attack.cs</a>.</p>
 
 </div>
 </div>

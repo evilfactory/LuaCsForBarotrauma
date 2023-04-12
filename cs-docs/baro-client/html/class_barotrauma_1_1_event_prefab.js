@@ -9,11 +9,11 @@ var class_barotrauma_1_1_event_prefab =
     [ "Commonness", "class_barotrauma_1_1_event_prefab.html#a2fbd4e3bd7116864f5c1ec5142098378", null ],
     [ "ConfigElement", "class_barotrauma_1_1_event_prefab.html#a83fb41dedceb8be55069938b299c7ad7", null ],
     [ "EventType", "class_barotrauma_1_1_event_prefab.html#a9515fbc46d2ecc463cd559ad1caab7e8", null ],
+    [ "Faction", "class_barotrauma_1_1_event_prefab.html#a9cebef23d56e235a9535f1d810bf4ae2", null ],
     [ "Probability", "class_barotrauma_1_1_event_prefab.html#ad953cfa210ba397713972bff4e22c0ea", null ],
     [ "SpawnDistance", "class_barotrauma_1_1_event_prefab.html#a5656bd277c499d8b30b77831363769e0", null ],
     [ "TriggerEventCooldown", "class_barotrauma_1_1_event_prefab.html#a64b891fb9a5d6397147a0379014540d6", null ],
     [ "UnlockPathEvent", "class_barotrauma_1_1_event_prefab.html#a22ea7faa491a87a5f213d3c0dfa66293", null ],
-    [ "UnlockPathFaction", "class_barotrauma_1_1_event_prefab.html#a05b5fe5dc5c45d4fe2c1bf5a5b3a40d0", null ],
     [ "UnlockPathReputation", "class_barotrauma_1_1_event_prefab.html#abb4179159a342d6e6da8bcbbf8627f2d", null ],
     [ "UnlockPathTooltip", "class_barotrauma_1_1_event_prefab.html#a2791bc5e0724f89356570d8077ada881", null ]
 ];

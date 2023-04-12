@@ -147,6 +147,7 @@ var hierarchy =
       [ "Barotrauma.StructSerialization.SkipAttribute", "class_barotrauma_1_1_struct_serialization_1_1_skip_attribute.html", null ]
     ] ],
     [ "Barotrauma.GameSettings.Config.AudioSettings", "struct_barotrauma_1_1_game_settings_1_1_config_1_1_audio_settings.html", null ],
+    [ "Barotrauma.FactionPrefab.AutomaticMission", "class_barotrauma_1_1_faction_prefab_1_1_automatic_mission.html", null ],
     [ "Barotrauma.AutonomousObjective", "class_barotrauma_1_1_autonomous_objective.html", null ],
     [ "Barotrauma.BackgroundSection", "class_barotrauma_1_1_background_section.html", null ],
     [ "Barotrauma.MapCreatures.Behavior.BallastFloraBranch", "class_barotrauma_1_1_map_creatures_1_1_behavior_1_1_ballast_flora_branch.html", null ],
@@ -275,7 +276,6 @@ var hierarchy =
       [ "Barotrauma.EnumCoroutineStatus", "class_barotrauma_1_1_enum_coroutine_status.html", null ],
       [ "Barotrauma.WaitForSeconds", "class_barotrauma_1_1_wait_for_seconds.html", null ]
     ] ],
-    [ "Barotrauma.CreatureMetrics", "class_barotrauma_1_1_creature_metrics.html", null ],
     [ "Barotrauma.CrewManager", "class_barotrauma_1_1_crew_manager.html", null ],
     [ "Barotrauma.Decal", "class_barotrauma_1_1_decal.html", null ],
     [ "Barotrauma.DeconstructItem", "struct_barotrauma_1_1_deconstruct_item.html", null ],
@@ -332,6 +332,9 @@ var hierarchy =
       [ "Barotrauma.Label", "class_barotrauma_1_1_label.html", null ],
       [ "Barotrauma.MessageBoxAction", "class_barotrauma_1_1_message_box_action.html", null ],
       [ "Barotrauma.MissionAction", "class_barotrauma_1_1_mission_action.html", null ],
+      [ "Barotrauma.MissionAction", "class_barotrauma_1_1_mission_action.html", null ],
+      [ "Barotrauma.MissionStateAction", "class_barotrauma_1_1_mission_state_action.html", null ],
+      [ "Barotrauma.ModifyLocationAction", "class_barotrauma_1_1_modify_location_action.html", null ],
       [ "Barotrauma.MoneyAction", "class_barotrauma_1_1_money_action.html", null ],
       [ "Barotrauma.NPCChangeTeamAction", "class_barotrauma_1_1_n_p_c_change_team_action.html", null ],
       [ "Barotrauma.NPCFollowAction", "class_barotrauma_1_1_n_p_c_follow_action.html", null ],
@@ -430,6 +433,9 @@ var hierarchy =
     [ "Barotrauma.GenericPrefabFile< RuinGenerationParams >", "class_barotrauma_1_1_generic_prefab_file.html", [
       [ "Barotrauma.RuinConfigFile", "class_barotrauma_1_1_ruin_config_file.html", null ]
     ] ],
+    [ "Barotrauma.GenericPrefabFile< SlideshowPrefab >", "class_barotrauma_1_1_generic_prefab_file.html", [
+      [ "Barotrauma.SlideshowsFile", "class_barotrauma_1_1_slideshows_file.html", null ]
+    ] ],
     [ "Barotrauma.GenericPrefabFile< StartItemSet >", "class_barotrauma_1_1_generic_prefab_file.html", [
       [ "Barotrauma.StartItemsFile", "class_barotrauma_1_1_start_items_file.html", null ]
     ] ],
@@ -480,6 +486,7 @@ var hierarchy =
     [ "Barotrauma.Items.Components.GridInfo", "class_barotrauma_1_1_items_1_1_components_1_1_grid_info.html", null ],
     [ "Voronoi2.Halfedge", "class_voronoi2_1_1_halfedge.html", null ],
     [ "Barotrauma.CharacterInfo.HeadInfo", "class_barotrauma_1_1_character_info_1_1_head_info.html", null ],
+    [ "Barotrauma.FactionPrefab.HireableCharacter", "class_barotrauma_1_1_faction_prefab_1_1_hireable_character.html", null ],
     [ "Barotrauma.HireManager", "class_barotrauma_1_1_hire_manager.html", null ],
     [ "Barotrauma.Homoglyphs", "class_barotrauma_1_1_homoglyphs.html", null ],
     [ "Barotrauma.HttpUtility", "class_barotrauma_1_1_http_utility.html", null ],
@@ -1073,7 +1080,6 @@ var hierarchy =
     [ "Barotrauma.LuaInt16", "struct_barotrauma_1_1_lua_int16.html", null ],
     [ "Barotrauma.LuaInt32", "struct_barotrauma_1_1_lua_int32.html", null ],
     [ "Barotrauma.LuaInt64", "struct_barotrauma_1_1_lua_int64.html", null ],
-    [ "Barotrauma.LuaNone", "struct_barotrauma_1_1_lua_none.html", null ],
     [ "Barotrauma.LuaRequire", "class_barotrauma_1_1_lua_require.html", null ],
     [ "Barotrauma.LuaSByte", "struct_barotrauma_1_1_lua_s_byte.html", null ],
     [ "Barotrauma.LuaSingle", "struct_barotrauma_1_1_lua_single.html", null ],
@@ -1094,6 +1100,8 @@ var hierarchy =
       [ "Barotrauma.CargoMission", "class_barotrauma_1_1_cargo_mission.html", null ],
       [ "Barotrauma.CargoMission", "class_barotrauma_1_1_cargo_mission.html", null ],
       [ "Barotrauma.CombatMission", "class_barotrauma_1_1_combat_mission.html", null ],
+      [ "Barotrauma.EndMission", "class_barotrauma_1_1_end_mission.html", null ],
+      [ "Barotrauma.EndMission", "class_barotrauma_1_1_end_mission.html", null ],
       [ "Barotrauma.EscortMission", "class_barotrauma_1_1_escort_mission.html", null ],
       [ "Barotrauma.EscortMission", "class_barotrauma_1_1_escort_mission.html", null ],
       [ "Barotrauma.GoToMission", "class_barotrauma_1_1_go_to_mission.html", null ],
@@ -1143,18 +1151,15 @@ var hierarchy =
       [ "Barotrauma.TraitorMissionPrefab.Objective", "class_barotrauma_1_1_traitor_mission_prefab_1_1_objective.html", null ],
       [ "Barotrauma.TraitorMissionPrefab.WaitObjective", "class_barotrauma_1_1_traitor_mission_prefab_1_1_wait_objective.html", null ]
     ] ],
-    [ "Barotrauma.Option< T >", "class_barotrauma_1_1_option.html", [
-      [ "Barotrauma.None< T >", "class_barotrauma_1_1_none.html", null ],
-      [ "Barotrauma.Some< T >", "class_barotrauma_1_1_some.html", null ]
-    ] ],
-    [ "Barotrauma.Option< Barotrauma.Character >", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< Barotrauma.ContentPackageId >", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< Barotrauma.Networking.AccountId >", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< Barotrauma.Networking.SteamId >", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< Barotrauma.SerializableDateTime >", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< byte[]>", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< int >", "class_barotrauma_1_1_option.html", null ],
-    [ "Barotrauma.Option< ushort >", "class_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< T >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< Barotrauma.Character >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< Barotrauma.ContentPackageId >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< Barotrauma.Networking.AccountId >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< Barotrauma.Networking.SteamId >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< Barotrauma.SerializableDateTime >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< byte[]>", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< int >", "struct_barotrauma_1_1_option.html", null ],
+    [ "Barotrauma.Option< ushort >", "struct_barotrauma_1_1_option.html", null ],
     [ "Barotrauma.Order", "class_barotrauma_1_1_order.html", null ],
     [ "Barotrauma.Networking.OrderChatMessage.OrderMessageInfo", "struct_barotrauma_1_1_networking_1_1_order_chat_message_1_1_order_message_info.html", null ],
     [ "Barotrauma.Pair< T1, T2 >", "class_barotrauma_1_1_pair.html", null ],
@@ -1214,6 +1219,7 @@ var hierarchy =
         [ "Barotrauma.WreckAIConfig", "class_barotrauma_1_1_wreck_a_i_config.html", null ]
       ] ],
       [ "Barotrauma.SkillSettings", "class_barotrauma_1_1_skill_settings.html", null ],
+      [ "Barotrauma.SlideshowPrefab", "class_barotrauma_1_1_slideshow_prefab.html", null ],
       [ "Barotrauma.TraitorMissionPrefab.TraitorMissionEntry", "class_barotrauma_1_1_traitor_mission_prefab_1_1_traitor_mission_entry.html", null ],
       [ "Barotrauma.TutorialPrefab", "class_barotrauma_1_1_tutorial_prefab.html", null ],
       [ "Barotrauma.UpgradeContentPrefab", "class_barotrauma_1_1_upgrade_content_prefab.html", null ]
@@ -1288,7 +1294,9 @@ var hierarchy =
     [ "Voronoi2.Site", "class_voronoi2_1_1_site.html", null ],
     [ "Barotrauma.Skill", "class_barotrauma_1_1_skill.html", null ],
     [ "Barotrauma.SkillPrefab", "class_barotrauma_1_1_skill_prefab.html", null ],
+    [ "Barotrauma.SkillRequirementHint", "struct_barotrauma_1_1_skill_requirement_hint.html", null ],
     [ "Barotrauma.IO.Validation.Skipper", "struct_barotrauma_1_1_i_o_1_1_validation_1_1_skipper.html", null ],
+    [ "Barotrauma.SlideshowPrefab.Slide", "class_barotrauma_1_1_slideshow_prefab_1_1_slide.html", null ],
     [ "Barotrauma.SoldItem", "class_barotrauma_1_1_sold_item.html", null ],
     [ "Barotrauma.Sprite", "class_barotrauma_1_1_sprite.html", [
       [ "Barotrauma.SpriteSheet", "class_barotrauma_1_1_sprite_sheet.html", null ]
@@ -1323,7 +1331,7 @@ var hierarchy =
     [ "Barotrauma.MissionPrefab.TriggerEvent", "class_barotrauma_1_1_mission_prefab_1_1_trigger_event.html", null ],
     [ "Barotrauma.Level.Tunnel", "class_barotrauma_1_1_level_1_1_tunnel.html", null ],
     [ "Barotrauma.ContentFile.TypeInfo", "class_barotrauma_1_1_content_file_1_1_type_info.html", null ],
-    [ "Barotrauma.Option< T >.UnspecifiedNone", "class_barotrauma_1_1_option_1_1_unspecified_none.html", null ],
+    [ "Barotrauma.Option< T >.UnspecifiedNone", "struct_barotrauma_1_1_option_1_1_unspecified_none.html", null ],
     [ "Barotrauma.UpgradeManager", "class_barotrauma_1_1_upgrade_manager.html", null ],
     [ "Barotrauma.Networking.VoipServer", "class_barotrauma_1_1_networking_1_1_voip_server.html", null ],
     [ "Voronoi2.Voronoi", "class_voronoi2_1_1_voronoi.html", null ],

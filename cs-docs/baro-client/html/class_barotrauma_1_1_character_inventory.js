@@ -17,6 +17,7 @@ var class_barotrauma_1_1_character_inventory =
     [ "CreateSlots", "class_barotrauma_1_1_character_inventory.html#a1757b1f8906d3695f50b4f74546cb1bd", null ],
     [ "DrawOwn", "class_barotrauma_1_1_character_inventory.html#a7eb971969e049b288c3b963ca5997ed9", null ],
     [ "FindLimbSlot", "class_barotrauma_1_1_character_inventory.html#a888420d36a3edec7f5bc9bc3f0ea07ad", null ],
+    [ "FlashAllowedSlots", "class_barotrauma_1_1_character_inventory.html#a021f6ee818bd9363c1a9f42e10ec7a89", null ],
     [ "GetActiveEquippedSubInventory", "class_barotrauma_1_1_character_inventory.html#a8a264a45eba3dea50197cdd0bdf9ba7b", null ],
     [ "GetItemInLimbSlot", "class_barotrauma_1_1_character_inventory.html#a708f9fe496a455a39ef7923a63076826", null ],
     [ "HideSlot", "class_barotrauma_1_1_character_inventory.html#a0df4475722f5ed4f4e91d48a9d599a83", null ],

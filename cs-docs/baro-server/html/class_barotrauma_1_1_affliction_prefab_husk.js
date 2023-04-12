@@ -10,7 +10,6 @@ var class_barotrauma_1_1_affliction_prefab_husk =
     [ "HuskedSpeciesName", "class_barotrauma_1_1_affliction_prefab_husk.html#aef2b69159e4b31faf637248260cf0166", null ],
     [ "NeedsAir", "class_barotrauma_1_1_affliction_prefab_husk.html#a7b5ab4ba7a961368e66fd1e1e10f587e", null ],
     [ "SendMessages", "class_barotrauma_1_1_affliction_prefab_husk.html#a96d4b09e0ae2f7e41a95044724721478", null ],
-    [ "TargetSpecies", "class_barotrauma_1_1_affliction_prefab_husk.html#a60c9f028fc7f19fd227256b335d6d30d", null ],
     [ "TransferBuffs", "class_barotrauma_1_1_affliction_prefab_husk.html#a596e1d8db38da503a46e209934333699", null ],
     [ "TransformThresholdOnDeath", "class_barotrauma_1_1_affliction_prefab_husk.html#a2834c5b81ee460dcd5c109954d0e4ca2", null ]
 ];

@@ -417,258 +417,256 @@ $(document).ready(function(){initNavTree('_file_receiver_8cs_source.html',''); i
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                            FileSize = 0</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                        };</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a>.<a class="code" href="class_barotrauma_1_1_md5_hash_1_1_cache.html">Cache</a>.Remove(directTransfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a>);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#adfd28861ab139ad62a6c8ebe6ae9bf9f">OnFinished</a>(directTransfer);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    }</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007d">FileTransferMessageType</a>.Data:</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        <span class="keywordtype">byte</span> transferId = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa723bf261e28d85b5222ab6835174f16">ReadByte</a>();</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        var activeTransfer = activeTransfers.Find(t =&gt; t.Connection.EndpointMatches(t.Connection.Endpoint) &amp;&amp; t.ID == transferId);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        <span class="keywordflow">if</span> (activeTransfer == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                        {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                            <span class="comment">//it&#39;s possible for the server to send some extra data</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                            <span class="comment">//before it acknowledges that the download is finished,</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                            <span class="comment">//so let&#39;s suppress the error message in that case</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                            finishedTransfers.RemoveAll(t =&gt; t.finishedTime + 5.0 &lt; Timing.TotalTime);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                            <span class="keywordflow">if</span> (!finishedTransfers.Any(t =&gt; t.transferId == transferId))</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                            {</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                                <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">CancelFileTransfer</a>(transferId);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                                DebugConsole.AddWarning(<span class="stringliteral">&quot;File transfer error: received data without a transfer initiation message&quot;</span>);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                            }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                        }</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        <span class="keywordtype">int</span> offset = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#af2be8983c1d63192ca40b3636a8c4427">ReadInt32</a>();</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        <span class="keywordtype">int</span> bytesToRead = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#a864ca4bc6997ecd033f7310be5c5e2ca">ReadUInt16</a>();</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                        <span class="keywordflow">if</span> (offset != activeTransfer.Received)</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                            activeTransfer.LastSeen = Math.Max(offset, activeTransfer.LastSeen);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                            <span class="keywordflow">if</span> (!activeTransfer.DataBuffer.ContainsKey(offset) &amp;&amp; activeTransfer.DataBuffer.Count &lt; <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html">FileTransferIn</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#aa9e7a1ee1ea2ec881395bac97deb37e3">DataBufferSize</a>)</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                            {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                                activeTransfer.DataBuffer.Add(offset, inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa705f3cb19615fd884b6a5d4428186c4">ReadBytes</a>(bytesToRead));</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                            }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                            DebugConsole.Log($<span class="stringliteral">&quot;Received {bytesToRead} bytes of the file {activeTransfer.FileName} (ignoring: offset {offset}, waiting for {activeTransfer.Received})&quot;</span>);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#aef6e1aa265179a8405061328022ce1a9">UpdateFileTransfer</a>(activeTransfer, activeTransfer.Received, activeTransfer.LastSeen);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        }</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                        activeTransfer.LastSeen = offset;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                        <span class="keywordflow">if</span> (activeTransfer.Received + bytesToRead &gt; activeTransfer.FileSize)</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                        {</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">CancelFileTransfer</a>(transferId);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                            DebugConsole.ThrowError(<span class="stringliteral">&quot;File transfer error: Received more data than expected (total received: &quot;</span> + activeTransfer.Received +</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                                <span class="stringliteral">&quot;, msg received: &quot;</span> + (inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#ae1b23486300a938b9d202662b4a9b4de">LengthBytes</a> - inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#a81594c016310c2f97923ff716aac9aff">BytePosition</a>) +</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                <span class="stringliteral">&quot;, msg length: &quot;</span> + inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#ae1b23486300a938b9d202662b4a9b4de">LengthBytes</a> +</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                                <span class="stringliteral">&quot;, msg read: &quot;</span> + inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#a81594c016310c2f97923ff716aac9aff">BytePosition</a> +</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                <span class="stringliteral">&quot;, filesize: &quot;</span> + activeTransfer.FileSize);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                            activeTransfer.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                        }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                        {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                            activeTransfer.ReadBytes(inc, bytesToRead);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                            <span class="keywordflow">if</span> (GameSettings.CurrentConfig.VerboseLogging)</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                            {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                DebugConsole.Log($<span class="stringliteral">&quot;Received {bytesToRead} bytes of the file {activeTransfer.FileName} ({activeTransfer.Received / 1000}/{activeTransfer.FileSize / 1000} kB received)&quot;</span>);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                            }</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                            <span class="keywordflow">while</span> (activeTransfer.DataBuffer.TryGetValue(activeTransfer.Received, out <span class="keywordtype">byte</span>[] data))</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                            {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                activeTransfer.ReadBytes(data);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                DebugConsole.Log($<span class="stringliteral">&quot;Read {data.Length} bytes of buffer data of the file {activeTransfer.FileName} ({activeTransfer.Received / 1000}/{activeTransfer.FileSize / 1000} kB received)&quot;</span>);</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                            }</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                        {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">CancelFileTransfer</a>(transferId);</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                            DebugConsole.ThrowError(<span class="stringliteral">&quot;File transfer error: &quot;</span> + e.Message);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                            activeTransfer.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                        }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                        <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#aef6e1aa265179a8405061328022ce1a9">UpdateFileTransfer</a>(activeTransfer, activeTransfer.Received, activeTransfer.LastSeen,  reliable: activeTransfer.Status == <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Finished);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                        <span class="keywordflow">if</span> (activeTransfer.Status == <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Finished)</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                        {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                            activeTransfer.Dispose();</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                            <span class="keywordflow">if</span> (ValidateReceivedData(activeTransfer, out <span class="keywordtype">string</span> errorMessage))</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                            {</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                finishedTransfers.Add((transferId, Timing.TotalTime));</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer);</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a>.<a class="code" href="class_barotrauma_1_1_md5_hash_1_1_cache.html">Cache</a>.Remove(activeTransfer.FilePath);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#adfd28861ab139ad62a6c8ebe6ae9bf9f">OnFinished</a>(activeTransfer);</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                            }</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                            {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                                <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(<span class="stringliteral">&quot;File transfer aborted&quot;</span>, errorMessage);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                                activeTransfer.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                            }</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        }</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                    }</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007d">FileTransferMessageType</a>.Cancel:</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                    {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                        <span class="keywordtype">byte</span> transferId = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa723bf261e28d85b5222ab6835174f16">ReadByte</a>();</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                        var matchingTransfer = activeTransfers.Find(t =&gt; t.Connection.EndpointMatches(t.Connection.Endpoint) &amp;&amp; t.ID == transferId);</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                        <span class="keywordflow">if</span> (matchingTransfer != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                        {</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                            <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(<span class="stringliteral">&quot;File transfer cancelled&quot;</span>, <span class="stringliteral">&quot;The server has cancelled the transfer of the file \&quot;&quot;</span> + matchingTransfer.FileName + <span class="stringliteral">&quot;\&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(matchingTransfer);</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                        }</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                    }</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            }</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        }</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> ValidateInitialData(<span class="keywordtype">byte</span> type, <span class="keywordtype">string</span> fileName, <span class="keywordtype">int</span> fileSize, out <span class="keywordtype">string</span> errorMessage)</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        {</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            errorMessage = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            <span class="keywordflow">if</span> (!Enum.IsDefined(typeof(<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>), (<span class="keywordtype">int</span>)type))</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            {</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                errorMessage = <span class="stringliteral">&quot;Unknown file type&quot;</span>;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            }</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            <span class="keywordflow">if</span> (fileSize &gt; GetMaxFileSizeInBytes((<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>)type))</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            {</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                errorMessage = $<span class="stringliteral">&quot;File too large ({MathUtils.GetBytesReadable(fileSize)} &gt; {MathUtils.GetBytesReadable(GetMaxFileSizeInBytes((FileTransferType)type))})&quot;</span>;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            }</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(fileName) ||</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                fileName.IndexOfAny(Path.GetInvalidFileNameCharsCrossPlatform().ToArray()) &gt; -1)</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            {</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                errorMessage = <span class="stringliteral">&quot;Illegal characters in file name &#39;&#39;&quot;</span> + fileName + <span class="stringliteral">&quot;&#39;&#39;&quot;</span>;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            }</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            <span class="keywordflow">switch</span> (type)</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            {</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.Submarine:</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                    <span class="keywordflow">if</span> (Path.GetExtension(fileName) != <span class="stringliteral">&quot;.sub&quot;</span>)</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                    {</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                        errorMessage = <span class="stringliteral">&quot;Wrong file extension &#39;&#39;&quot;</span> + Path.GetExtension(fileName) + <span class="stringliteral">&quot;&#39;&#39;! (Expected .sub)&quot;</span>;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                    }</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.CampaignSave:</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    <span class="keywordflow">if</span> (Path.GetExtension(fileName) != <span class="stringliteral">&quot;.save&quot;</span>)</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                    {</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                        errorMessage = <span class="stringliteral">&quot;Wrong file extension &#39;&#39;&quot;</span> + Path.GetExtension(fileName) + <span class="stringliteral">&quot;&#39;&#39;! (Expected .save)&quot;</span>;</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                    }</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            }</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        }</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> ValidateReceivedData(FileTransferIn fileTransfer, out <span class="keywordtype">string</span> ErrorMessage)</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        {</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            ErrorMessage = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">switch</span> (fileTransfer.FileType)</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            {</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.Submarine:</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                    System.IO.Stream stream;</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                    {</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                        stream = SaveUtil.DecompressFileToStream(fileTransfer.FilePath);</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                    }</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                    {</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                        ErrorMessage = <span class="stringliteral">&quot;Loading received submarine \&quot;&quot;</span> + fileTransfer.FileName + <span class="stringliteral">&quot;\&quot; failed! {&quot;</span> + e.Message + <span class="stringliteral">&quot;}&quot;</span>;</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                    }</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                    <span class="keywordflow">if</span> (stream == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                    {</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                        ErrorMessage = <span class="stringliteral">&quot;Decompressing received submarine file \&quot;&quot;</span> + fileTransfer.FilePath + <span class="stringliteral">&quot;\&quot; failed!&quot;</span>;</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                    }</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                    {</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                        stream.Position = 0;</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                        XmlReaderSettings settings = <span class="keyword">new</span> XmlReaderSettings</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                        {</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                            DtdProcessing = DtdProcessing.Prohibit,</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                            IgnoreProcessingInstructions = <span class="keyword">true</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                        };</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                        <span class="keyword">using</span> (var reader = XmlReader.Create(stream, settings))</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                        {</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                            <span class="keywordflow">while</span> (reader.Read());</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                        }</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                    }</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                    <span class="keywordflow">catch</span></div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                    {</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                        stream?.Close();</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                        ErrorMessage = <span class="stringliteral">&quot;Parsing file \&quot;&quot;</span> + fileTransfer.FilePath + <span class="stringliteral">&quot;\&quot; failed! The file may not be a valid submarine file.&quot;</span>;</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                    }</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                    stream?.Close();</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.CampaignSave:</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                    {</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                        var files = SaveUtil.EnumerateContainedFiles(fileTransfer.FilePath);</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                        <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> files)</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                        {</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                            <span class="keywordtype">string</span> extension = Path.GetExtension(file);</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                            <span class="keywordflow">if</span> ((!extension.Equals(<span class="stringliteral">&quot;.sub&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                                &amp;&amp; !file.Equals(<span class="stringliteral">&quot;gamesession.xml&quot;</span>))</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                                || file.CleanUpPathCrossPlatform(correctFilenameCase: <span class="keyword">false</span>).Contains(<span class="charliteral">&#39;/&#39;</span>))</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                            {</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                                ErrorMessage = $<span class="stringliteral">&quot;Found unexpected file in \&quot;{fileTransfer.FileName}\&quot;! ({file})&quot;</span>;</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                            }</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                        }</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                    }</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                    {</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                        ErrorMessage = $<span class="stringliteral">&quot;Loading received campaign save \&quot;{fileTransfer.FileName}\&quot; failed! {{{e.Message}}}&quot;</span>;</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                    }</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            }</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160; </div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        }</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        </div>
-<div class="line"><a name="l00562"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">  562</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html">FileTransferIn</a> transfer, <span class="keywordtype">bool</span> deleteFile = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        {</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            <span class="keywordflow">if</span> (transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4ea2687274957d37db5b66ba9163e857">Status</a> != <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Finished &amp;&amp; </div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4ea2687274957d37db5b66ba9163e857">Status</a> != <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error)</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            {</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4ea2687274957d37db5b66ba9163e857">Status</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Canceled;</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            }</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordflow">if</span> (activeTransfers.Contains(transfer)) { activeTransfers.Remove(transfer); }</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4bfcf54c74d65e2f1dea533e70b59d54">Dispose</a>();</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            <span class="keywordflow">if</span> (deleteFile &amp;&amp; File.Exists(transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a>))</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            {</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                {</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                    File.Delete(transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a>);</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                }</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                {</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Failed to delete file \&quot;&quot;</span> + transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a> + <span class="stringliteral">&quot;\&quot; (&quot;</span> + e.Message + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                }</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            }</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        }</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    }</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;}</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#adfd28861ab139ad62a6c8ebe6ae9bf9f">OnFinished</a>(directTransfer);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007d">FileTransferMessageType</a>.Data:</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        <span class="keywordtype">byte</span> transferId = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa723bf261e28d85b5222ab6835174f16">ReadByte</a>();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                        var activeTransfer = activeTransfers.Find(t =&gt; t.Connection.EndpointMatches(t.Connection.Endpoint) &amp;&amp; t.ID == transferId);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        <span class="keywordflow">if</span> (activeTransfer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                            <span class="comment">//it&#39;s possible for the server to send some extra data</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                            <span class="comment">//before it acknowledges that the download is finished,</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                            <span class="comment">//so let&#39;s suppress the error message in that case</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                            finishedTransfers.RemoveAll(t =&gt; t.finishedTime + 5.0 &lt; Timing.TotalTime);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                            <span class="keywordflow">if</span> (!finishedTransfers.Any(t =&gt; t.transferId == transferId))</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                            {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                                <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">CancelFileTransfer</a>(transferId);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                                DebugConsole.AddWarning(<span class="stringliteral">&quot;File transfer error: received data without a transfer initiation message&quot;</span>);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                            }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                        }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                        <span class="keywordtype">int</span> offset = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#af2be8983c1d63192ca40b3636a8c4427">ReadInt32</a>();</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        <span class="keywordtype">int</span> bytesToRead = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#a864ca4bc6997ecd033f7310be5c5e2ca">ReadUInt16</a>();</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        <span class="keywordflow">if</span> (offset != activeTransfer.Received)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                        {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                            activeTransfer.LastSeen = Math.Max(offset, activeTransfer.LastSeen);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                            <span class="keywordflow">if</span> (!activeTransfer.DataBuffer.ContainsKey(offset) &amp;&amp; activeTransfer.DataBuffer.Count &lt; <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html">FileTransferIn</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#aa9e7a1ee1ea2ec881395bac97deb37e3">DataBufferSize</a>)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                            {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                                activeTransfer.DataBuffer.Add(offset, inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa705f3cb19615fd884b6a5d4428186c4">ReadBytes</a>(bytesToRead));</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                            }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                            DebugConsole.Log($<span class="stringliteral">&quot;Received {bytesToRead} bytes of the file {activeTransfer.FileName} (ignoring: offset {offset}, waiting for {activeTransfer.Received})&quot;</span>);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#aef6e1aa265179a8405061328022ce1a9">UpdateFileTransfer</a>(activeTransfer, activeTransfer.Received, activeTransfer.LastSeen);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        activeTransfer.LastSeen = offset;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                        <span class="keywordflow">if</span> (activeTransfer.Received + bytesToRead &gt; activeTransfer.FileSize)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                        {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">CancelFileTransfer</a>(transferId);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                            DebugConsole.ThrowError(<span class="stringliteral">&quot;File transfer error: Received more data than expected (total received: &quot;</span> + activeTransfer.Received +</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                                <span class="stringliteral">&quot;, msg received: &quot;</span> + (inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#ae1b23486300a938b9d202662b4a9b4de">LengthBytes</a> - inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#a81594c016310c2f97923ff716aac9aff">BytePosition</a>) +</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                                <span class="stringliteral">&quot;, msg length: &quot;</span> + inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#ae1b23486300a938b9d202662b4a9b4de">LengthBytes</a> +</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                <span class="stringliteral">&quot;, msg read: &quot;</span> + inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#a81594c016310c2f97923ff716aac9aff">BytePosition</a> +</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                                <span class="stringliteral">&quot;, filesize: &quot;</span> + activeTransfer.FileSize);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                            activeTransfer.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                        }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                            activeTransfer.ReadBytes(inc, bytesToRead);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                            <span class="keywordflow">if</span> (GameSettings.CurrentConfig.VerboseLogging)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                            {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                DebugConsole.Log($<span class="stringliteral">&quot;Received {bytesToRead} bytes of the file {activeTransfer.FileName} ({activeTransfer.Received / 1000}/{activeTransfer.FileSize / 1000} kB received)&quot;</span>);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                            }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                            <span class="keywordflow">while</span> (activeTransfer.DataBuffer.TryGetValue(activeTransfer.Received, out <span class="keywordtype">byte</span>[] data))</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                            {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                                activeTransfer.ReadBytes(data);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                DebugConsole.Log($<span class="stringliteral">&quot;Read {data.Length} bytes of buffer data of the file {activeTransfer.FileName} ({activeTransfer.Received / 1000}/{activeTransfer.FileSize / 1000} kB received)&quot;</span>);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                            }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                        }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                            <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">CancelFileTransfer</a>(transferId);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                            DebugConsole.ThrowError(<span class="stringliteral">&quot;File transfer error: &quot;</span> + e.Message);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                            activeTransfer.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                        }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                        <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_client.html#aef6e1aa265179a8405061328022ce1a9">UpdateFileTransfer</a>(activeTransfer, activeTransfer.Received, activeTransfer.LastSeen,  reliable: activeTransfer.Status == <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Finished);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                        <span class="keywordflow">if</span> (activeTransfer.Status == <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Finished)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                        {</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                            activeTransfer.Dispose();</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                            <span class="keywordflow">if</span> (ValidateReceivedData(activeTransfer, out <span class="keywordtype">string</span> errorMessage))</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                            {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                                finishedTransfers.Add((transferId, Timing.TotalTime));</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#adfd28861ab139ad62a6c8ebe6ae9bf9f">OnFinished</a>(activeTransfer);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                            }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                            {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(<span class="stringliteral">&quot;File transfer aborted&quot;</span>, errorMessage);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                                activeTransfer.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(activeTransfer, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                            }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                        }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                    }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#a7818e152967077460aff6ebeea51007d">FileTransferMessageType</a>.Cancel:</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                    {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                        <span class="keywordtype">byte</span> transferId = inc.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa723bf261e28d85b5222ab6835174f16">ReadByte</a>();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        var matchingTransfer = activeTransfers.Find(t =&gt; t.Connection.EndpointMatches(t.Connection.Endpoint) &amp;&amp; t.ID == transferId);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                        <span class="keywordflow">if</span> (matchingTransfer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                        {</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                            <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(<span class="stringliteral">&quot;File transfer cancelled&quot;</span>, <span class="stringliteral">&quot;The server has cancelled the transfer of the file \&quot;&quot;</span> + matchingTransfer.FileName + <span class="stringliteral">&quot;\&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(matchingTransfer);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                        }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                    }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        }</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> ValidateInitialData(<span class="keywordtype">byte</span> type, <span class="keywordtype">string</span> fileName, <span class="keywordtype">int</span> fileSize, out <span class="keywordtype">string</span> errorMessage)</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            errorMessage = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <span class="keywordflow">if</span> (!Enum.IsDefined(typeof(<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>), (<span class="keywordtype">int</span>)type))</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                errorMessage = <span class="stringliteral">&quot;Unknown file type&quot;</span>;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            <span class="keywordflow">if</span> (fileSize &gt; GetMaxFileSizeInBytes((<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>)type))</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                errorMessage = $<span class="stringliteral">&quot;File too large ({MathUtils.GetBytesReadable(fileSize)} &gt; {MathUtils.GetBytesReadable(GetMaxFileSizeInBytes((FileTransferType)type))})&quot;</span>;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(fileName) ||</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                fileName.IndexOfAny(Path.GetInvalidFileNameCharsCrossPlatform().ToArray()) &gt; -1)</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            {</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                errorMessage = <span class="stringliteral">&quot;Illegal characters in file name &#39;&#39;&quot;</span> + fileName + <span class="stringliteral">&quot;&#39;&#39;&quot;</span>;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordflow">switch</span> (type)</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            {</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.Submarine:</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                    <span class="keywordflow">if</span> (Path.GetExtension(fileName) != <span class="stringliteral">&quot;.sub&quot;</span>)</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                    {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                        errorMessage = <span class="stringliteral">&quot;Wrong file extension &#39;&#39;&quot;</span> + Path.GetExtension(fileName) + <span class="stringliteral">&quot;&#39;&#39;! (Expected .sub)&quot;</span>;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                    }</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <span class="keywordflow">case</span> (<span class="keywordtype">byte</span>)<a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.CampaignSave:</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                    <span class="keywordflow">if</span> (Path.GetExtension(fileName) != <span class="stringliteral">&quot;.save&quot;</span>)</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    {</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                        errorMessage = <span class="stringliteral">&quot;Wrong file extension &#39;&#39;&quot;</span> + Path.GetExtension(fileName) + <span class="stringliteral">&quot;&#39;&#39;! (Expected .save)&quot;</span>;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                    }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        }</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> ValidateReceivedData(FileTransferIn fileTransfer, out <span class="keywordtype">string</span> ErrorMessage)</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        {</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            ErrorMessage = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            <span class="keywordflow">switch</span> (fileTransfer.FileType)</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.Submarine:</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;                    System.IO.Stream stream;</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                    {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                        stream = SaveUtil.DecompressFileToStream(fileTransfer.FilePath);</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                    }</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                    {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                        ErrorMessage = <span class="stringliteral">&quot;Loading received submarine \&quot;&quot;</span> + fileTransfer.FileName + <span class="stringliteral">&quot;\&quot; failed! {&quot;</span> + e.Message + <span class="stringliteral">&quot;}&quot;</span>;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                    }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                    <span class="keywordflow">if</span> (stream == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                    {</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                        ErrorMessage = <span class="stringliteral">&quot;Decompressing received submarine file \&quot;&quot;</span> + fileTransfer.FilePath + <span class="stringliteral">&quot;\&quot; failed!&quot;</span>;</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                    }</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                    {</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                        stream.Position = 0;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                        XmlReaderSettings settings = <span class="keyword">new</span> XmlReaderSettings</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                        {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                            DtdProcessing = DtdProcessing.Prohibit,</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                            IgnoreProcessingInstructions = <span class="keyword">true</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                        };</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                        <span class="keyword">using</span> (var reader = XmlReader.Create(stream, settings))</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                        {</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                            <span class="keywordflow">while</span> (reader.Read());</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                        }</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                    }</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                    <span class="keywordflow">catch</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                    {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                        stream?.Close();</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                        ErrorMessage = <span class="stringliteral">&quot;Parsing file \&quot;&quot;</span> + fileTransfer.FilePath + <span class="stringliteral">&quot;\&quot; failed! The file may not be a valid submarine file.&quot;</span>;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                    }</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160; </div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                    stream?.Close();</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ad2bd88ee885a12024889adafbe8fcc47">FileTransferType</a>.CampaignSave:</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                    {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                        var files = SaveUtil.EnumerateContainedFiles(fileTransfer.FilePath);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                        <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> files)</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                        {</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                            <span class="keywordtype">string</span> extension = Path.GetExtension(file);</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                            <span class="keywordflow">if</span> ((!extension.Equals(<span class="stringliteral">&quot;.sub&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                                &amp;&amp; !file.Equals(<span class="stringliteral">&quot;gamesession.xml&quot;</span>))</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                                || file.CleanUpPathCrossPlatform(correctFilenameCase: <span class="keyword">false</span>).Contains(<span class="charliteral">&#39;/&#39;</span>))</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                            {</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                                ErrorMessage = $<span class="stringliteral">&quot;Found unexpected file in \&quot;{fileTransfer.FileName}\&quot;! ({file})&quot;</span>;</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                            }</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                        }</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                    }</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                    {</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                        ErrorMessage = $<span class="stringliteral">&quot;Loading received campaign save \&quot;{fileTransfer.FileName}\&quot; failed! {{{e.Message}}}&quot;</span>;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                    }</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        }</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        </div>
+<div class="line"><a name="l00560"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">  560</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">StopTransfer</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html">FileTransferIn</a> transfer, <span class="keywordtype">bool</span> deleteFile = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        {</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            <span class="keywordflow">if</span> (transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4ea2687274957d37db5b66ba9163e857">Status</a> != <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Finished &amp;&amp; </div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4ea2687274957d37db5b66ba9163e857">Status</a> != <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Error)</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4ea2687274957d37db5b66ba9163e857">Status</a> = <a class="code" href="namespace_barotrauma_1_1_networking.html#ac83d4440e456cd4168ad0673ee54b78d">FileTransferStatus</a>.Canceled;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            }</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <span class="keywordflow">if</span> (activeTransfers.Contains(transfer)) { activeTransfers.Remove(transfer); }</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a4bfcf54c74d65e2f1dea533e70b59d54">Dispose</a>();</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160; </div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            <span class="keywordflow">if</span> (deleteFile &amp;&amp; File.Exists(transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a>))</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            {</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                {</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                    File.Delete(transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a>);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                }</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                {</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Failed to delete file \&quot;&quot;</span> + transfer.<a class="code" href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a88a85fda5cc4f90b479964640df43e54">FilePath</a> + <span class="stringliteral">&quot;\&quot; (&quot;</span> + e.Message + <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            }</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        }</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    }</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_message_box_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_message_box.html">Barotrauma.GUIMessageBox</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_message_box_8cs_source.html#l00009">GUIMessageBox.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00181">GameMain.cs:181</a></div></div>
@@ -676,8 +674,6 @@ $(document).ready(function(){initNavTree('_file_receiver_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_stream_html_a9433975e1d2d8f41f4249bf484fc674b"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file_stream.html#a9433975e1d2d8f41f4249bf484fc674b">Barotrauma.IO.FileStream.Write</a></div><div class="ttdeci">override void Write(byte[] buffer, int offset, int count)</div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00516">SafeIO.cs:516</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_stream_html_ad33bed96a62434b7e17b59b69233cb82"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file_stream.html#ad33bed96a62434b7e17b59b69233cb82">Barotrauma.IO.FileStream.Flush</a></div><div class="ttdeci">override void Flush()</div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00538">SafeIO.cs:538</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_stream_html_ad3b2c40ae29db2f2c4db30921ca357f8"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file_stream.html#ad3b2c40ae29db2f2c4db30921ca357f8">Barotrauma.IO.FileStream.Dispose</a></div><div class="ttdeci">override void Dispose(bool notCalledByFinalizer)</div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00543">SafeIO.cs:543</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_md5_hash_1_1_cache_html"><div class="ttname"><a href="class_barotrauma_1_1_md5_hash_1_1_cache.html">Barotrauma.Md5Hash.Cache</a></div><div class="ttdef"><b>Definition:</b> <a href="_md5_hash_8cs_source.html#l00015">Md5Hash.cs:16</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_md5_hash_html"><div class="ttname"><a href="class_barotrauma_1_1_md5_hash.html">Barotrauma.Md5Hash</a></div><div class="ttdef"><b>Definition:</b> <a href="_md5_hash_8cs_source.html#l00013">Md5Hash.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html">Barotrauma.Networking.FileReceiver.FileTransferIn</a></div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00014">FileReceiver.cs:15</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in_html_a123bfb7790723aa282b98dce828fccd0"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a123bfb7790723aa282b98dce828fccd0">Barotrauma.Networking.FileReceiver.FileTransferIn.LastSeen</a></div><div class="ttdeci">int LastSeen</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00040">FileReceiver.cs:40</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in_html_a15e8719dc09a938c49470b913d743055"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver_1_1_file_transfer_in.html#a15e8719dc09a938c49470b913d743055">Barotrauma.Networking.FileReceiver.FileTransferIn.FileSize</a></div><div class="ttdeci">int FileSize</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00028">FileReceiver.cs:29</a></div></div>
@@ -708,7 +704,7 @@ $(document).ready(function(){initNavTree('_file_receiver_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_html_a8cb1d477b50a1376ecc143453d42def4"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver.html#a8cb1d477b50a1376ecc143453d42def4">Barotrauma.Networking.FileReceiver.HasActiveTransfers</a></div><div class="ttdeci">bool HasActiveTransfers</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00198">FileReceiver.cs:198</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_html_a9df638d06205eb7279f2d5cf4a6818d3"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver.html#a9df638d06205eb7279f2d5cf4a6818d3">Barotrauma.Networking.FileReceiver.ReadMessage</a></div><div class="ttdeci">void ReadMessage(IReadMessage inc)</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00206">FileReceiver.cs:206</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_html_ac10ad8edee5f3573d8c87f77a4f86c07"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ac10ad8edee5f3573d8c87f77a4f86c07">Barotrauma.Networking.FileReceiver.ActiveTransfers</a></div><div class="ttdeci">IReadOnlyList&lt; FileTransferIn &gt; ActiveTransfers</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00197">FileReceiver.cs:197</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_html_ad0d74c9db290c1910c0a045c586e5f9d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">Barotrauma.Networking.FileReceiver.StopTransfer</a></div><div class="ttdeci">void StopTransfer(FileTransferIn transfer, bool deleteFile=false)</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00562">FileReceiver.cs:562</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_html_ad0d74c9db290c1910c0a045c586e5f9d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver.html#ad0d74c9db290c1910c0a045c586e5f9d">Barotrauma.Networking.FileReceiver.StopTransfer</a></div><div class="ttdeci">void StopTransfer(FileTransferIn transfer, bool deleteFile=false)</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00560">FileReceiver.cs:560</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_file_receiver_html_adfd28861ab139ad62a6c8ebe6ae9bf9f"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_file_receiver.html#adfd28861ab139ad62a6c8ebe6ae9bf9f">Barotrauma.Networking.FileReceiver.OnFinished</a></div><div class="ttdeci">TransferInDelegate OnFinished</div><div class="ttdef"><b>Definition:</b> <a href="_file_receiver_8cs_source.html#l00184">FileReceiver.cs:184</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_client_html_ad7cf1bdfde9c9fcd896cfd983bfd6292"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_client.html#ad7cf1bdfde9c9fcd896cfd983bfd6292">Barotrauma.Networking.GameClient.CancelFileTransfer</a></div><div class="ttdeci">void CancelFileTransfer(FileReceiver.FileTransferIn transfer)</div><div class="ttdef"><b>Definition:</b> <a href="_game_client_8cs_source.html#l02370">GameClient.cs:2370</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_client_html_aef6e1aa265179a8405061328022ce1a9"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_client.html#aef6e1aa265179a8405061328022ce1a9">Barotrauma.Networking.GameClient.UpdateFileTransfer</a></div><div class="ttdeci">void UpdateFileTransfer(FileReceiver.FileTransferIn transfer, int expecting, int lastSeen, bool reliable=false)</div><div class="ttdef"><b>Definition:</b> <a href="_game_client_8cs_source.html#l02375">GameClient.cs:2375</a></div></div>

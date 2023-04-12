@@ -25,6 +25,7 @@ var class_barotrauma_1_1_camera =
     [ "Resolution", "class_barotrauma_1_1_camera.html#a578c247739f81edb544f523fb9d991ce", null ],
     [ "Rotation", "class_barotrauma_1_1_camera.html#a5514ec0cca6e398a235b6c34eaf9fcda", null ],
     [ "ShaderTransform", "class_barotrauma_1_1_camera.html#afbcced3b02a9f90999c616f3756e455a", null ],
+    [ "ShakePosition", "class_barotrauma_1_1_camera.html#a45d55d52c72ad8a40417742c866b37cb", null ],
     [ "TargetPos", "class_barotrauma_1_1_camera.html#ad432cbaedbed22830938e2bf05e32c42", null ],
     [ "Transform", "class_barotrauma_1_1_camera.html#a5229b359bb3d3be534b272258dd7764d", null ],
     [ "WorldView", "class_barotrauma_1_1_camera.html#a8d8e705d3297fa9315141563e7fb9a8d", null ],

@@ -32,7 +32,12 @@ var class_barotrauma_1_1_level =
       [ "GenerateItems", "class_barotrauma_1_1_level.html#a3415fcb121f9680d572afc011b2ba7b0a0d476c64a94c88bf97a1fecf634ca0d5", null ],
       [ "Finish", "class_barotrauma_1_1_level.html#a3415fcb121f9680d572afc011b2ba7b0aa20ddccbb6f808ec42cd66323e6c6061", null ]
     ] ],
+    [ "PlacementType", "class_barotrauma_1_1_level.html#add920fbc34e5d60b7e162497f5cd0041", [
+      [ "Top", "class_barotrauma_1_1_level.html#add920fbc34e5d60b7e162497f5cd0041aa4ffdcf0dc1f31b9acaf295d75b51d00", null ],
+      [ "Bottom", "class_barotrauma_1_1_level.html#add920fbc34e5d60b7e162497f5cd0041a2ad9d63b69c4a10a5cc9cad923133bc4", null ]
+    ] ],
     [ "PositionType", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823", [
+      [ "None", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "MainPath", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823ad2c40c5982d26c2b6fa957c71a670c7f", null ],
       [ "SidePath", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823ad7872b26ecf530be8e7ded2ef5d16d9b", null ],
       [ "Cave", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823a1e8b2516fdcbb457e365167b8b060b47", null ],
@@ -40,7 +45,8 @@ var class_barotrauma_1_1_level =
       [ "Wreck", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823abb854b8bbbf8ce1f4b0a5e222f7a3a6f", null ],
       [ "BeaconStation", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823ac7bd8ac0336ee00cca0f9c46aa9006cc", null ],
       [ "Abyss", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823af658cb76a25e81676aff697c5d2eb4de", null ],
-      [ "AbyssCave", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823a0b5fa81ef06c6d63b5b643ca8dc15c2e", null ]
+      [ "AbyssCave", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823a0b5fa81ef06c6d63b5b643ca8dc15c2e", null ],
+      [ "Outpost", "class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823a0fc3009923e09f21be7dbb00cd257eb1", null ]
     ] ],
     [ "TunnelType", "class_barotrauma_1_1_level.html#aaea416f4c083e9059458009a459ef145", [
       [ "MainPath", "class_barotrauma_1_1_level.html#aaea416f4c083e9059458009a459ef145ad2c40c5982d26c2b6fa957c71a670c7f", null ],
@@ -66,6 +72,7 @@ var class_barotrauma_1_1_level =
     [ "PrepareBeaconStation", "class_barotrauma_1_1_level.html#ad499e43b5911358b2d27b3a7d18e550a", null ],
     [ "Remove", "class_barotrauma_1_1_level.html#abedc1f25908af938545b87a94b1e9331", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_level.html#aa66ad0cbbb947659669b49f4bdb34299", null ],
+    [ "ShouldSpawnCrewInsideOutpost", "class_barotrauma_1_1_level.html#a0682235a502aab68679dd22c94870ee6", null ],
     [ "SpawnCorpses", "class_barotrauma_1_1_level.html#aba752b0eaa886aeb908a4553bc54cd9a", null ],
     [ "SpawnNPCs", "class_barotrauma_1_1_level.html#ad5be504b20bd33d91ec836503d5954dc", null ],
     [ "TryGetInterestingPosition", "class_barotrauma_1_1_level.html#a302dd890537eab0d8e6a0868169140e0", null ],
@@ -99,6 +106,7 @@ var class_barotrauma_1_1_level =
     [ "ExtraWalls", "class_barotrauma_1_1_level.html#af09e6317f13fb70f0558f1c94081c253", null ],
     [ "Generating", "class_barotrauma_1_1_level.html#ad0bf8b628757b068e3419fc92f484096", null ],
     [ "GenerationParams", "class_barotrauma_1_1_level.html#a0c7f3aa861f05effcaf84baaf5812947", null ],
+    [ "IsEndBiome", "class_barotrauma_1_1_level.html#a3ccbeb74389c89e29649aa3fe35e7507", null ],
     [ "LevelObjectManager", "class_barotrauma_1_1_level.html#a4080ae57fac6914fb7b397fc1dce8eea", null ],
     [ "Mirrored", "class_barotrauma_1_1_level.html#a5b4b5e80da0467936cb4639b86256898", null ],
     [ "PathPoints", "class_barotrauma_1_1_level.html#a64b9e7cec405224c749ffd9a018efd4b", null ],

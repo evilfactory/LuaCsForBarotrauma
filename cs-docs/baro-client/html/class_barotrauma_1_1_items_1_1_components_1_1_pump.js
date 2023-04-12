@@ -1,9 +1,9 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_pump =
 [
     [ "Pump", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#abbf3da6dfb30c5d845f8b30a83021f87", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a9293f4a274c4efbb3922557efa742186", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#acee6a98b4f1789ad25039584ae8f3578", null ],
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a5549be1a8d36de364e1b53af40364dda", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a0e89f0a29c37527230ce6c07c5ff4e1e", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#ab01fadae580ac4f68a55be75d9d0f819", null ],
     [ "InfectBallast", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a181d08fdf90d82422cd2ba7561b405c2", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a89021616809588a659288ef347d48c5b", null ],

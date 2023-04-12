@@ -2,6 +2,7 @@ var class_barotrauma_1_1_event_manager =
 [
     [ "NetworkEventType", "class_barotrauma_1_1_event_manager.html#a99a76986d4915d706f915b538d98c73d", [
       [ "CONVERSATION", "class_barotrauma_1_1_event_manager.html#a99a76986d4915d706f915b538d98c73dafd1eeff21543293576b9febcee854115", null ],
+      [ "CONVERSATION_SELECTED_OPTION", "class_barotrauma_1_1_event_manager.html#a99a76986d4915d706f915b538d98c73da8ea9ce26050be08734fe8cb1be9e3893", null ],
       [ "STATUSEFFECT", "class_barotrauma_1_1_event_manager.html#a99a76986d4915d706f915b538d98c73daf51281dc3c53ed456b27b0cb65c90007", null ],
       [ "MISSION", "class_barotrauma_1_1_event_manager.html#a99a76986d4915d706f915b538d98c73daa46075d70b9612df685b11436d195196", null ],
       [ "UNLOCKPATH", "class_barotrauma_1_1_event_manager.html#a99a76986d4915d706f915b538d98c73da53300f32b1489c60b2c5c8ef9784ee89", null ]

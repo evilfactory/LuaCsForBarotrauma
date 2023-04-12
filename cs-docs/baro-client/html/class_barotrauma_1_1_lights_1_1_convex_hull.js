@@ -5,7 +5,6 @@ var class_barotrauma_1_1_lights_1_1_convex_hull =
     [ "GetVisibleSegments", "class_barotrauma_1_1_lights_1_1_convex_hull.html#afdf9a411e697c41ad5edee0fa65dc50a", null ],
     [ "Intersects", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a1893e93dc7cd98652784820483a684bb", null ],
     [ "IsPointInside", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a793892f08a3ff50f0c4e4aa228174c42", null ],
-    [ "IsSegmentAInB", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a5cdeae1fa1bf330daf8ebe558c5a989b", null ],
     [ "Move", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a2b65ceaf4bc0f956556f7a94538bebf7", null ],
     [ "RefreshWorldPositions", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a3435e4d935ec037234b00667ceaf06fd", null ],
     [ "Remove", "class_barotrauma_1_1_lights_1_1_convex_hull.html#aa0605028a83a28e60720fd0f63aec0f9", null ],

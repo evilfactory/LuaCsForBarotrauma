@@ -6,5 +6,6 @@ var class_barotrauma_1_1_character_prefab =
     [ "CharacterInfoPrefab", "class_barotrauma_1_1_character_prefab.html#a9067de6bf2220ce52d417a57de9cdaa4", null ],
     [ "ConfigElement", "class_barotrauma_1_1_character_prefab.html#aad4dacfdf61a4b3258dac9962ea87338", null ],
     [ "Name", "class_barotrauma_1_1_character_prefab.html#a2697dbd44ad2ee44cdba29d98c92a888", null ],
+    [ "ParentPrefab", "class_barotrauma_1_1_character_prefab.html#abf355de0315e18ec5eefae6d3e2ce6d4", null ],
     [ "VariantOf", "class_barotrauma_1_1_character_prefab.html#a156835d9608e92c5d32b9dbf762921ff", null ]
 ];

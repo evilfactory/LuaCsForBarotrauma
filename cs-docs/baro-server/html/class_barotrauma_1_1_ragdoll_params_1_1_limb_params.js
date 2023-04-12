@@ -31,6 +31,8 @@ var class_barotrauma_1_1_ragdoll_params_1_1_limb_params =
     [ "BlinkHoldTime", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#acf42dbf2d0a632001a2f8ece94677230", null ],
     [ "BlinkRotationIn", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a87ac37de17b2eeb9473b72977137a5a6", null ],
     [ "BlinkRotationOut", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a6f4e3b32b63f9051d528722aa179cf1b", null ],
+    [ "BlinkTextureOffsetIn", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#af12727d60d1138005f67794c882766e7", null ],
+    [ "BlinkTextureOffsetOut", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a04af08fbabfc05a8ba99d1a07fc1c554", null ],
     [ "BlinkTransitionIn", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a24065ebf41cf1e5c8a08cef60369478c", null ],
     [ "BlinkTransitionOut", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a3ecb42209b51d83b2969e04996e9186c", null ],
     [ "CanBeSeveredAlive", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a47332f0870824850047e5b77be09df69", null ],
@@ -67,5 +69,6 @@ var class_barotrauma_1_1_ragdoll_params_1_1_limb_params =
     [ "SteerForce", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#abcc4cb386f7f590f8372ae17c7395540", null ],
     [ "StepOffset", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#a853547ea34fda2f601878d4673b6256c", null ],
     [ "Type", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#ac37860633a461a6c84a04e723832fbca", null ],
+    [ "UseTextureOffsetForBlinking", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#aeeecac368e7d76222ff8689ffb8b3392", null ],
     [ "Width", "class_barotrauma_1_1_ragdoll_params_1_1_limb_params.html#add1186311761f2b39224bf599e94c9a5", null ]
 ];

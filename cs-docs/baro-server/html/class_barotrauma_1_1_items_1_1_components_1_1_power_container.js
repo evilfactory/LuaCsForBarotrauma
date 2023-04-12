@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_power_container =
 [
     [ "PowerContainer", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#acce51b9ab27178d348d26f7154a9634b", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#ade2230c1d377261d658d6b15b53a12d1", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a4dbfa7c464d97b64864a4222fd368612", null ],
     [ "GetCapacity", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a0f002662c806eaf4961fc42777e3abaa", null ],
     [ "GetConnectionPowerOut", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a0190e846dd749646bff6f833c3948bfa", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#a169980852441fbcf4d2c89eaf337b50f", null ],

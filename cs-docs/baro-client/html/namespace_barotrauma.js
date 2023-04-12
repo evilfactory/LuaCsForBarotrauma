@@ -191,6 +191,7 @@ var namespace_barotrauma =
     [ "RuinConfigFile", "class_barotrauma_1_1_ruin_config_file.html", "class_barotrauma_1_1_ruin_config_file" ],
     [ "ServerExecutableFile", "class_barotrauma_1_1_server_executable_file.html", "class_barotrauma_1_1_server_executable_file" ],
     [ "SkillSettingsFile", "class_barotrauma_1_1_skill_settings_file.html", "class_barotrauma_1_1_skill_settings_file" ],
+    [ "SlideshowsFile", "class_barotrauma_1_1_slideshows_file.html", "class_barotrauma_1_1_slideshows_file" ],
     [ "SoundsFile", "class_barotrauma_1_1_sounds_file.html", "class_barotrauma_1_1_sounds_file" ],
     [ "StartItemsFile", "class_barotrauma_1_1_start_items_file.html", "class_barotrauma_1_1_start_items_file" ],
     [ "StructureFile", "class_barotrauma_1_1_structure_file.html", "class_barotrauma_1_1_structure_file" ],
@@ -247,6 +248,8 @@ var namespace_barotrauma =
     [ "Label", "class_barotrauma_1_1_label.html", "class_barotrauma_1_1_label" ],
     [ "MessageBoxAction", "class_barotrauma_1_1_message_box_action.html", "class_barotrauma_1_1_message_box_action" ],
     [ "MissionAction", "class_barotrauma_1_1_mission_action.html", "class_barotrauma_1_1_mission_action" ],
+    [ "MissionStateAction", "class_barotrauma_1_1_mission_state_action.html", "class_barotrauma_1_1_mission_state_action" ],
+    [ "ModifyLocationAction", "class_barotrauma_1_1_modify_location_action.html", "class_barotrauma_1_1_modify_location_action" ],
     [ "MoneyAction", "class_barotrauma_1_1_money_action.html", "class_barotrauma_1_1_money_action" ],
     [ "NPCChangeTeamAction", "class_barotrauma_1_1_n_p_c_change_team_action.html", "class_barotrauma_1_1_n_p_c_change_team_action" ],
     [ "NPCFollowAction", "class_barotrauma_1_1_n_p_c_follow_action.html", "class_barotrauma_1_1_n_p_c_follow_action" ],
@@ -278,6 +281,7 @@ var namespace_barotrauma =
     [ "BeaconMission", "class_barotrauma_1_1_beacon_mission.html", "class_barotrauma_1_1_beacon_mission" ],
     [ "CargoMission", "class_barotrauma_1_1_cargo_mission.html", "class_barotrauma_1_1_cargo_mission" ],
     [ "CombatMission", "class_barotrauma_1_1_combat_mission.html", "class_barotrauma_1_1_combat_mission" ],
+    [ "EndMission", "class_barotrauma_1_1_end_mission.html", "class_barotrauma_1_1_end_mission" ],
     [ "EscortMission", "class_barotrauma_1_1_escort_mission.html", "class_barotrauma_1_1_escort_mission" ],
     [ "GoToMission", "class_barotrauma_1_1_go_to_mission.html", "class_barotrauma_1_1_go_to_mission" ],
     [ "MineralMission", "class_barotrauma_1_1_mineral_mission.html", "class_barotrauma_1_1_mineral_mission" ],
@@ -309,6 +313,7 @@ var namespace_barotrauma =
     [ "TutorialPrefab", "class_barotrauma_1_1_tutorial_prefab.html", "class_barotrauma_1_1_tutorial_prefab" ],
     [ "GameSession", "class_barotrauma_1_1_game_session.html", "class_barotrauma_1_1_game_session" ],
     [ "HireManager", "class_barotrauma_1_1_hire_manager.html", "class_barotrauma_1_1_hire_manager" ],
+    [ "SlideshowPrefab", "class_barotrauma_1_1_slideshow_prefab.html", "class_barotrauma_1_1_slideshow_prefab" ],
     [ "UpgradeManager", "class_barotrauma_1_1_upgrade_manager.html", "class_barotrauma_1_1_upgrade_manager" ],
     [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html", "class_barotrauma_1_1_character_inventory" ],
     [ "WearableSprite", "class_barotrauma_1_1_wearable_sprite.html", "class_barotrauma_1_1_wearable_sprite" ],
@@ -316,6 +321,7 @@ var namespace_barotrauma =
     [ "Item", "class_barotrauma_1_1_item.html", "class_barotrauma_1_1_item" ],
     [ "AbilityApplyTreatment", "class_barotrauma_1_1_ability_apply_treatment.html", "class_barotrauma_1_1_ability_apply_treatment" ],
     [ "ItemInventory", "class_barotrauma_1_1_item_inventory.html", "class_barotrauma_1_1_item_inventory" ],
+    [ "SkillRequirementHint", "struct_barotrauma_1_1_skill_requirement_hint.html", "struct_barotrauma_1_1_skill_requirement_hint" ],
     [ "DeconstructItem", "struct_barotrauma_1_1_deconstruct_item.html", "struct_barotrauma_1_1_deconstruct_item" ],
     [ "FabricationRecipe", "class_barotrauma_1_1_fabrication_recipe.html", "class_barotrauma_1_1_fabrication_recipe" ],
     [ "PreferredContainer", "class_barotrauma_1_1_preferred_container.html", "class_barotrauma_1_1_preferred_container" ],
@@ -327,7 +333,6 @@ var namespace_barotrauma =
     [ "CsScriptLoader", "class_barotrauma_1_1_cs_script_loader.html", "class_barotrauma_1_1_cs_script_loader" ],
     [ "MapEntity", "class_barotrauma_1_1_map_entity.html", "class_barotrauma_1_1_map_entity" ],
     [ "LuaGame", "class_barotrauma_1_1_lua_game.html", "class_barotrauma_1_1_lua_game" ],
-    [ "LuaNone", "struct_barotrauma_1_1_lua_none.html", null ],
     [ "LuaSByte", "struct_barotrauma_1_1_lua_s_byte.html", "struct_barotrauma_1_1_lua_s_byte" ],
     [ "LuaByte", "struct_barotrauma_1_1_lua_byte.html", "struct_barotrauma_1_1_lua_byte" ],
     [ "LuaInt16", "struct_barotrauma_1_1_lua_int16.html", "struct_barotrauma_1_1_lua_int16" ],
@@ -424,7 +429,6 @@ var namespace_barotrauma =
     [ "ConditionallyEditable", "class_barotrauma_1_1_conditionally_editable.html", "class_barotrauma_1_1_conditionally_editable" ],
     [ "Serialize", "class_barotrauma_1_1_serialize.html", "class_barotrauma_1_1_serialize" ],
     [ "SerializableProperty", "class_barotrauma_1_1_serializable_property.html", "class_barotrauma_1_1_serializable_property" ],
-    [ "CreatureMetrics", "class_barotrauma_1_1_creature_metrics.html", "class_barotrauma_1_1_creature_metrics" ],
     [ "ConditionalSprite", "class_barotrauma_1_1_conditional_sprite.html", "class_barotrauma_1_1_conditional_sprite" ],
     [ "DeformableSprite", "class_barotrauma_1_1_deformable_sprite.html", "class_barotrauma_1_1_deformable_sprite" ],
     [ "Sprite", "class_barotrauma_1_1_sprite.html", "class_barotrauma_1_1_sprite" ],
@@ -471,9 +475,7 @@ var namespace_barotrauma =
     [ "CompareCCW", "class_barotrauma_1_1_compare_c_c_w.html", "class_barotrauma_1_1_compare_c_c_w" ],
     [ "Md5Hash", "class_barotrauma_1_1_md5_hash.html", "class_barotrauma_1_1_md5_hash" ],
     [ "MTRandom", "class_barotrauma_1_1_m_t_random.html", "class_barotrauma_1_1_m_t_random" ],
-    [ "None", "class_barotrauma_1_1_none.html", "class_barotrauma_1_1_none" ],
-    [ "Option", "class_barotrauma_1_1_option.html", "class_barotrauma_1_1_option" ],
-    [ "Some", "class_barotrauma_1_1_some.html", "class_barotrauma_1_1_some" ],
+    [ "Option", "struct_barotrauma_1_1_option.html", "struct_barotrauma_1_1_option" ],
     [ "Range", "struct_barotrauma_1_1_range.html", "struct_barotrauma_1_1_range" ],
     [ "Result", "class_barotrauma_1_1_result.html", "class_barotrauma_1_1_result" ],
     [ "Success", "class_barotrauma_1_1_success.html", "class_barotrauma_1_1_success" ],
@@ -585,6 +587,7 @@ var namespace_barotrauma =
     [ "RoundSummaryScreen", "class_barotrauma_1_1_round_summary_screen.html", "class_barotrauma_1_1_round_summary_screen" ],
     [ "PanelAnimator", "class_barotrauma_1_1_panel_animator.html", "class_barotrauma_1_1_panel_animator" ],
     [ "ServerListScreen", "class_barotrauma_1_1_server_list_screen.html", "class_barotrauma_1_1_server_list_screen" ],
+    [ "SlideshowPlayer", "class_barotrauma_1_1_slideshow_player.html", "class_barotrauma_1_1_slideshow_player" ],
     [ "SpriteEditorScreen", "class_barotrauma_1_1_sprite_editor_screen.html", "class_barotrauma_1_1_sprite_editor_screen" ],
     [ "SubEditorScreen", "class_barotrauma_1_1_sub_editor_screen.html", "class_barotrauma_1_1_sub_editor_screen" ],
     [ "SerializableEntityEditor", "class_barotrauma_1_1_serializable_entity_editor.html", "class_barotrauma_1_1_serializable_entity_editor" ],
@@ -826,8 +829,9 @@ var namespace_barotrauma =
       [ "HideAll", "namespace_barotrauma.html#a1d0aa35a4a29fea10576cfd95e1217f4aeca90f3dec9ac9d57fc1f9a492dad7b7", null ]
     ] ],
     [ "FactionAffiliation", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3ba", [
-      [ "Affiliated", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baacdf622bb2a238db20f5997ca39c9136c", null ],
-      [ "Neutral", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baae9bb5320b3890b6747c91b5a71ae5a01", null ]
+      [ "Positive", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baa3289297424e01eda5b788c083bbf3147", null ],
+      [ "Neutral", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baae9bb5320b3890b6747c91b5a71ae5a01", null ],
+      [ "Negative", "namespace_barotrauma.html#ab8831477e9a79ed3150271f51252a3baaffb9356ff2b7da85c75c92fa7ea03b8b", null ]
     ] ],
     [ "ForceUpperCase", "namespace_barotrauma.html#af4a2d29cb2cc8d51ebb6b7c192b8c5ef", [
       [ "Inherit", "namespace_barotrauma.html#af4a2d29cb2cc8d51ebb6b7c192b8c5efac49484faf79e2388b580e49444d6ac11", null ],
@@ -996,19 +1000,18 @@ var namespace_barotrauma =
       [ "GoTo", "namespace_barotrauma.html#a830f58bf4400b3a4fe534193191f7013a4b4078b45fb374165cb88d1e9f57953d", null ],
       [ "ScanAlienRuins", "namespace_barotrauma.html#a830f58bf4400b3a4fe534193191f7013a867324810703f4f8c36fe042a985e71c", null ],
       [ "ClearAlienRuins", "namespace_barotrauma.html#a830f58bf4400b3a4fe534193191f7013a308103005036c6e8edb719833245ac10", null ],
+      [ "End", "namespace_barotrauma.html#a830f58bf4400b3a4fe534193191f7013a87557f11575c0ad78e4e28abedc13b6e", null ],
       [ "All", "namespace_barotrauma.html#a830f58bf4400b3a4fe534193191f7013ab1c94ca2fbc3e78fc30069c8d0f01680", null ]
     ] ],
     [ "MouseButton", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbd", [
       [ "None", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda6adf97f83acf6453d4a6a4b1070f3754", null ],
-      [ "LeftMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbdadc3b19d2e43d3f3b21dba3797f8dfade", null ],
-      [ "RightMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda8996a4f34d0b03f713d08c8dccfe072a", null ],
+      [ "PrimaryMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda312fb4a5cee7ce5a5f0b00ae6e1b5609", null ],
+      [ "SecondaryMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbdace48cb4ede757b3ea9b683a44387928f", null ],
       [ "MiddleMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbdac3e02f9934101d9377ab1f29ace32fd6", null ],
       [ "MouseButton4", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda9b0bb3ab2495b7b4a8196da28c93ea6d", null ],
       [ "MouseButton5", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda9ca4c02b5f565fa90f16f72a1601e917", null ],
       [ "MouseWheelUp", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda29a51a025f19449abf7daa4e9be49941", null ],
-      [ "MouseWheelDown", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda3efa0593f62dde3038d55a63ad4ad2c7", null ],
-      [ "PrimaryMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda312fb4a5cee7ce5a5f0b00ae6e1b5609", null ],
-      [ "SecondaryMouse", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbdace48cb4ede757b3ea9b683a44387928f", null ]
+      [ "MouseWheelDown", "namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbda3efa0593f62dde3038d55a63ad4ad2c7", null ]
     ] ],
     [ "NumberType", "namespace_barotrauma.html#a2c9fbf04346b715593727fc834f3cd84", [
       [ "Int", "namespace_barotrauma.html#a2c9fbf04346b715593727fc834f3cd84a1686a6c336b71b36d77354cea19a8b52", null ],
@@ -1055,7 +1058,9 @@ var namespace_barotrauma =
       [ "Human", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9ac1bb19b27818343c1926119b958741b5", null ],
       [ "Enemy", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a8c6d21187fb58b7a079d70030686b33e", null ],
       [ "Cargo", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9ae9769d75d750d246328fa96e996a5650", null ],
-      [ "Corpse", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a417799dc63b3ebb2852970ae4b5c0f4a", null ]
+      [ "Corpse", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a417799dc63b3ebb2852970ae4b5c0f4a", null ],
+      [ "Submarine", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d", null ],
+      [ "ExitPoint", "namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a3d284446289e5112a483c188cf7ba6e1", null ]
     ] ],
     [ "SpriteFallBackState", "namespace_barotrauma.html#a12ec5c6f95f1006ea9a0c0a2074de969", [
       [ "None", "namespace_barotrauma.html#a12ec5c6f95f1006ea9a0c0a2074de969a6adf97f83acf6453d4a6a4b1070f3754", null ],
@@ -1134,6 +1139,8 @@ var namespace_barotrauma =
       [ "StoreSellMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a98ba2742ef470f451e1c4497a503a41c", null ],
       [ "StoreBuyMultiplierAffiliated", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1aa3d106c52e854e03b6883e57baa8c6be", null ],
       [ "StoreBuyMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a7c952a0c06cbd90dd6e37deaafdb0f55", null ],
+      [ "ShipyardBuyMultiplierAffiliated", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1afa2a43d73d6c35bd89c5d863796f8315", null ],
+      [ "ShipyardBuyMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a80da36d0163f58a8558ae833fcc03711", null ],
       [ "MaxAttachableCount", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a3008c3e94f554bfbd453ac101b5c2d72", null ],
       [ "ExplosionRadiusMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a90ed80fbfbe18e9f7cd505754f0a9e63", null ],
       [ "ExplosionDamageMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1af52e31991a7beba99247309f3bc77d2a", null ],
@@ -1142,7 +1149,8 @@ var namespace_barotrauma =
       [ "HoldBreathMultiplier", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a6a14766b87e2cbb5f5d3fe88ca5fc1cd", null ],
       [ "Apprenticeship", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1aa007eca26d06b0b6d505e7d6f7f7baa4", null ],
       [ "Affiliation", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1abf15e68d25d8a2b7664950ba7385ed0a", null ],
-      [ "CPRBoost", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a8b2d945361d8b14fc66deb3b7a7de333", null ]
+      [ "CPRBoost", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a8b2d945361d8b14fc66deb3b7a7de333", null ],
+      [ "LockedTalents", "namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1a0a746bf56ab4107f66103362164ca3f1", null ]
     ] ],
     [ "SubmarineClass", "namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4", [
       [ "Undefined", "namespace_barotrauma.html#a55f81937ad8af3a9b678bf015afd72b4aec0fc0100c4fc1ce4eea230c3dc10360", null ],

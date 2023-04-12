@@ -4,6 +4,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
       [ "Default", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aa5025fb59b37165856e3012defbefcdfa7a1920d61156abc05a60135aefe8bc67", null ],
       [ "Disruption", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aa5025fb59b37165856e3012defbefcdfaf98c6e239f6b514a13c085a357d7b165", null ],
       [ "Destructible", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aa5025fb59b37165856e3012defbefcdfa5da2d980c7c4678e0a8e9d991a0e2b2c", null ],
+      [ "Door", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aa5025fb59b37165856e3012defbefcdfaf44e14d49cd011d1e873d9fe0c4624f1", null ],
       [ "LongRange", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aa5025fb59b37165856e3012defbefcdfacc9ef42bf48ab3818281ccb0242bda47", null ]
     ] ],
     [ "Mode", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a321b94e15d0694c7e7cf2f255b05ecbf", [
@@ -11,14 +12,15 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
       [ "Passive", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a321b94e15d0694c7e7cf2f255b05ecbfaf80bc338b6146b566004a046f8137c85", null ]
     ] ],
     [ "Sonar", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a4e81ded7d28876d28a853e17be1f344a", null ],
-    [ "AIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a0dd0a9cbd6f98c27e3f10d2aed7d8a69", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a00bd9e3ca28718efebbfbf792aa8594d", null ],
     [ "ClientEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#ad8d9831dd50ee21adf4252a8d7f409db", null ],
     [ "CreateGUI", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#afa2a4f80dfd7b7782da14d5804e91783", null ],
+    [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#afd0df9fb4575892d19df7df5aeb5cfef", null ],
     [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#ad1d67a4186c889a023cc53ef7baa8a6a", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a0025a00b04322573971648b05a37f2ff", null ],
     [ "OnResolutionChanged", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a067d601396acf8ccd5df50d87c51055e", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aac5eeda0471d72d25fbcb9e2798e6377", null ],
+    [ "RegisterExplosion", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#acb9baa16f04bf7f2dc0258157d5f15a0", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a10eac02e4edb6dbd00068cd6cfd05a64", null ],
     [ "ServerEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a77b4f929c56f77fded9c38c52c59a06b", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a6698bf639dc654e24dd8fb1d7d89435f", null ],

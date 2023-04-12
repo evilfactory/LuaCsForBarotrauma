@@ -30,6 +30,7 @@ var class_barotrauma_1_1_affliction =
     [ "ToString", "class_barotrauma_1_1_affliction.html#a1289abf0d6dd5ded918ed5f9a28dadda", null ],
     [ "Update", "class_barotrauma_1_1_affliction.html#aa5c006a6747da741e1826d1e03fea7c7", null ],
     [ "_strength", "class_barotrauma_1_1_affliction.html#ae2850a271bbe47ee3fab675b82d12c9d", null ],
+    [ "activeEffectDirty", "class_barotrauma_1_1_affliction.html#a1374e32b0d07373ec363079e778050e1", null ],
     [ "AppliedAsSuccessfulTreatmentTime", "class_barotrauma_1_1_affliction.html#ab69219283d4d6891e6b43dc8056e1989", null ],
     [ "DamagePerSecond", "class_barotrauma_1_1_affliction.html#ad7cd2af22f951b1574779a9390770897", null ],
     [ "DamagePerSecondTimer", "class_barotrauma_1_1_affliction.html#a787bcbc59389df9809c6e4b537110f25", null ],

@@ -5,7 +5,7 @@ var class_barotrauma_1_1_campaign_u_i =
     [ "GetTabContainer", "class_barotrauma_1_1_campaign_u_i.html#a260f6d908ce9a2bbace13119e5c09677", null ],
     [ "RefreshLocationInfo", "class_barotrauma_1_1_campaign_u_i.html#ae4f698a417c4625d82749455876445b5", null ],
     [ "SelectLocation", "class_barotrauma_1_1_campaign_u_i.html#af37694567bbd8a610d74304f2c0f65e2", null ],
-    [ "SelectTab", "class_barotrauma_1_1_campaign_u_i.html#a70f7f350b37b1f0d1ed6b3d92b415810", null ],
+    [ "SelectTab", "class_barotrauma_1_1_campaign_u_i.html#ac10d16f86019d92af66639c09c480e8d", null ],
     [ "Update", "class_barotrauma_1_1_campaign_u_i.html#acb3193aa029b6758820dba51625c1b93", null ],
     [ "StartRound", "class_barotrauma_1_1_campaign_u_i.html#ade2f04055476a88b43f49a03991250e0", null ],
     [ "Campaign", "class_barotrauma_1_1_campaign_u_i.html#af68b31a75c51111cdd6b461e46f05172", null ],

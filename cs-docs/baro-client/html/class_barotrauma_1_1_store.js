@@ -9,7 +9,7 @@ var class_barotrauma_1_1_store =
     [ "Refresh", "class_barotrauma_1_1_store.html#a3d4650d27a4e54de551bf29385bfa2eb", null ],
     [ "RefreshItemsToSell", "class_barotrauma_1_1_store.html#a7b712f7dda10affb8e8d630d7d7048b9", null ],
     [ "RefreshItemsToSellFromSub", "class_barotrauma_1_1_store.html#a2eb3efa553fcaed35abb6bcbe6c64243", null ],
-    [ "SelectStore", "class_barotrauma_1_1_store.html#ad50c8b1d0c96233ce4331f9ccd0c453f", null ],
+    [ "SelectStore", "class_barotrauma_1_1_store.html#a86d4f8f97229b7690354069a4e0b6ee4", null ],
     [ "Update", "class_barotrauma_1_1_store.html#a36e23e25f4ab8874599d6102948b9b2d", null ],
     [ "ActiveShoppingCrateList", "class_barotrauma_1_1_store.html#a8e6ba3b5fd28337fc112d5c7bb9794c9", null ],
     [ "ActiveStore", "class_barotrauma_1_1_store.html#a69ebaebc3fae04ef8c7a000eb0fd5fbf", null ],
