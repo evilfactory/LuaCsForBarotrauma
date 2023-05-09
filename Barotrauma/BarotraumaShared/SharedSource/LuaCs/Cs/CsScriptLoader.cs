@@ -141,6 +141,7 @@ namespace Barotrauma
             {
                 name = FindModNameInternal(path);
                 name = ToValidAssemblyIdentifier(name);
+                _dirToModNameCache[path] = name;
             }
             catch (Exception e)
             {
@@ -148,7 +149,6 @@ namespace Barotrauma
                 return path;
             }
 
-            _dirToModNameCache[path] = name;
             return name;
         }        
         
@@ -160,9 +160,13 @@ namespace Barotrauma
             {
                 var doc = XDocument.Load(fileListPath);
                 var name = doc.XPathEvaluate("string(//contentpackage/@name)") as string;
+                var workshopId = doc.XPathEvaluate("string(//contentpackage/@steamworkshopid)") as string;
                 if (!string.IsNullOrWhiteSpace(name))
                 {
-                    _dirToModNameCache.Add(path, name);
+                    if (!string.IsNullOrWhiteSpace(workshopId))
+                    {
+                        return $"{name}_{workshopId}";
+                    }
                     return name;
                 }
             }
@@ -217,7 +221,7 @@ namespace Barotrauma
                 }
                 catch (Exception ex)
                 {
-                    LuaCsLogger.LogError("Error loading '" + modName + "':\n" + ex.Message + "\n" + ex.StackTrace, LuaCsMessageOrigin.CSharpMod);
+                    LuaCsLogger.LogError($"Error loading '{modName}':\n{ex.Message}\n{ex.StackTrace}", LuaCsMessageOrigin.CSharpMod);
                 }
             }
 
@@ -249,7 +253,7 @@ namespace Barotrauma
                 .WithMetadataImportOptions(MetadataImportOptions.All)
                 .WithOptimizationLevel(OptimizationLevel.Release)
                 .WithAllowUnsafe(true);
-            
+
             var topLevelBinderFlagsProperty = typeof(CSharpCompilationOptions).GetProperty("TopLevelBinderFlags", BindingFlags.Instance | BindingFlags.NonPublic);
             topLevelBinderFlagsProperty.SetValue(options, (uint)1 << 22);
 
