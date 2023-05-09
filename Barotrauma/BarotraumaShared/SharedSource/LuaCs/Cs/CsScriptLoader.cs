@@ -1,35 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.CodeAnalysis.Scripting;
 using System.Reflection;
 using Microsoft.CodeAnalysis.CSharp;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using System.Runtime.Loader;
-using System.Reflection.PortableExecutable;
-using System.Reflection.Metadata;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace Barotrauma
 {
     class CsScriptLoader : CsScriptBase
     {
+        private static Dictionary<string, string> _dirToModNameCache = new();
         private List<MetadataReference> defaultReferences;
 
         private Dictionary<string, List<string>> sources;
-        public Assembly Assembly { get; private set; }
+        public List<Assembly> LoadedAssemblies { get; } = new();
+        private PublicizedBinariesResolver publicizedBinariesResolver;
 
         public CsScriptLoader()
         {
+            publicizedBinariesResolver = new PublicizedBinariesResolver();
             defaultReferences = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(a => !(a.IsDynamic || string.IsNullOrEmpty(a.Location) || a.Location.Contains("xunit")))
-                .Select(a => MetadataReference.CreateFromFile(a.Location) as MetadataReference)
+                .Select(a => MetadataReference.CreateFromFile(this.publicizedBinariesResolver.TryFindPublicized(a.Location)) as MetadataReference)
                 .ToList();
 
             sources = new Dictionary<string, List<string>>();
-            Assembly = null;
         }
 
         private enum RunType { Standard, Forced, None };
@@ -113,58 +111,117 @@ namespace Barotrauma
 
         public bool HasSources { get => sources.Count > 0; }
 
-        private void AddSources(string folder)
+        private void AddSources(string modRoot, string srcRoot)
         {
-            foreach (var str in DirSearch(folder))
+            var name = GetModAssemblyName(modRoot);
+            
+            foreach (var str in DirSearch(srcRoot))
             {
                 string s = str.Replace("\\", "/");
 
-                if (sources.ContainsKey(folder))
+                if (this.sources.TryGetValue(name, out var source))
                 {
-                    sources[folder].Add(s);
+                    source.Add(s);
                 }
                 else
                 {
-                    sources.Add(folder, new List<string> { s });
+                    sources.Add(name, new List<string> { s });
                 }
             }
         }
 
+        public static string GetModAssemblyName(string path)
+        {
+            if (_dirToModNameCache.TryGetValue(path, out var name))
+            {
+                return name;
+            }
+
+            try
+            {
+                name = FindModNameInternal(path);
+                name = ToValidAssemblyIdentifier(name);
+            }
+            catch (Exception e)
+            {
+                DebugConsole.AddWarning("Failed to find mod name for " + path + ": " + e.Message);
+                return path;
+            }
+
+            _dirToModNameCache[path] = name;
+            return name;
+        }        
+        
+        private static string FindModNameInternal(string path)
+        {
+            // Preferred way: find "name" attr value from filelist.xml
+            var fileListPath = Path.Combine(path, ContentPackage.FileListFileName);
+            if (File.Exists(fileListPath))
+            {
+                var doc = XDocument.Load(fileListPath);
+                var name = doc.XPathEvaluate("string(//contentpackage/@name)") as string;
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    _dirToModNameCache.Add(path, name);
+                    return name;
+                }
+            }
+            
+            // fallback: use the name of the folder
+            return Path.GetFileName(path);
+        }
+
+        private static string ToValidAssemblyIdentifier(string str)
+        {
+            // Replace any invalid characters with underscores
+            string validStr = new string(str.Select(c => char.IsLetterOrDigit(c) ? c : '_').ToArray());
+
+            // If the first character is not a letter or underscore, add an underscore to the beginning
+            if (!char.IsLetter(validStr[0]) && validStr[0] != '_')
+            {
+                validStr = "_" + validStr;
+            }
+
+            return validStr;
+        }
+        
         private void RunFolder(string folder)
         {
 
-            AddSources(folder + "/CSharp/Shared");
+            AddSources(folder, Path.Combine(folder, "CSharp/Shared"));
 
 #if SERVER
-            AddSources(folder + "/CSharp/Server");
+            AddSources(folder, Path.Combine(folder, "CSharp/Server"));
 #else
-            AddSources(folder + "/CSharp/Client");
+            AddSources(folder, Path.Combine(folder, "CSharp/Client"));
 #endif
         }
 
-        private IEnumerable<SyntaxTree> ParseSources() {
-            var syntaxTrees = new List<SyntaxTree>();
-
+        private Dictionary<string, List<SyntaxTree>> ParseSources()
+        {
+            var result = new Dictionary<string, List<SyntaxTree>>();
             if (sources.Count <= 0) throw new Exception("No Cs sources detected");
-            syntaxTrees.Add(AssemblyInfoSyntaxTree(CsScriptAssembly));
-            foreach ((var folder, var src) in sources)
+
+            foreach ((var modName, var src) in sources)
             {
                 try
                 {
+                    var syntaxTrees = new List<SyntaxTree> { AssemblyInfoSyntaxTree(modName) };
                     foreach (var file in src)
                     {
                         var tree = SyntaxFactory.ParseSyntaxTree(File.ReadAllText(file), ParseOptions, file);
-
                         syntaxTrees.Add(tree);
                     }
+                    
+                    result.Add(modName, syntaxTrees);
                 }
                 catch (Exception ex)
                 {
-                    LuaCsLogger.LogError("Error loading '" + folder + "':\n" + ex.Message + "\n" + ex.StackTrace, LuaCsMessageOrigin.CSharpMod);
+                    LuaCsLogger.LogError("Error loading '" + modName + "':\n" + ex.Message + "\n" + ex.StackTrace, LuaCsMessageOrigin.CSharpMod);
                 }
             }
 
-            return syntaxTrees;
+            return result;
         }
 
         private ContentPackage FindSourcePackage(Diagnostic diagnostic)
@@ -186,67 +243,111 @@ namespace Barotrauma
             return null;
         }
 
-        public List<Type> Compile() 
+        private bool TryCompileMod(string assemblyName, IList<SyntaxTree> syntaxTrees, out Assembly assembly)
         {
-            IEnumerable<SyntaxTree> syntaxTrees = ParseSources();
-
             var options = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
                 .WithMetadataImportOptions(MetadataImportOptions.All)
                 .WithOptimizationLevel(OptimizationLevel.Release)
                 .WithAllowUnsafe(true);
-
+            
             var topLevelBinderFlagsProperty = typeof(CSharpCompilationOptions).GetProperty("TopLevelBinderFlags", BindingFlags.Instance | BindingFlags.NonPublic);
             topLevelBinderFlagsProperty.SetValue(options, (uint)1 << 22);
 
-            var compilation = CSharpCompilation.Create(CsScriptAssembly, syntaxTrees, defaultReferences, options);
-
-            using (var mem = new MemoryStream())
+            var compilation = CSharpCompilation.Create(assemblyName, syntaxTrees, defaultReferences, options);
+            using var mem = new MemoryStream();
+            
+            var result = compilation.Emit(mem);
+            if (!result.Success)
             {
-                var result = compilation.Emit(mem);
-                if (!result.Success)
-                {
-                    IEnumerable<Diagnostic> failures = result.Diagnostics.Where(d => d.IsWarningAsError || d.Severity == DiagnosticSeverity.Error);
+                IEnumerable<Diagnostic> failures = result.Diagnostics.Where(d => d.IsWarningAsError || d.Severity == DiagnosticSeverity.Error);
 
-                    string errStr = "CS MODS NOT LOADED | Compilation errors:";
-                    foreach (Diagnostic diagnostic in failures)
-                    {
-                        errStr += $"\n{diagnostic}";
+                string errStr = $"CS MOD \"{assemblyName}\" NOT LOADED | Compilation errors:";
+                foreach (Diagnostic diagnostic in failures)
+                {
+                    errStr += $"\n{diagnostic}";
 #if CLIENT
-                        ContentPackage package = FindSourcePackage(diagnostic);
-                        if (package != null)
-                        {
-                            LuaCsLogger.ShowErrorOverlay($"{package.Name} {package.ModVersion} is causing compilation errors. Check debug console for more details.", 7f, 7f);
-                        }
-#endif
+                    ContentPackage package = FindSourcePackage(diagnostic);
+                    if (package != null)
+                    {
+                        LuaCsLogger.ShowErrorOverlay($"{package.Name} {package.ModVersion} is causing compilation errors. Check debug console for more details.", 7f, 7f);
                     }
-                    LuaCsLogger.LogError(errStr, LuaCsMessageOrigin.CSharpMod);
+#endif
                 }
-                else
-                {
-                    mem.Seek(0, SeekOrigin.Begin);
-                    Assembly = LoadFromStream(mem);
-                }
-            }
-
-            if (Assembly != null)
-            {
-                RegisterAssemblyWithNativeGame(Assembly);
-                try
-                {
-                    return Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(ACsMod))).ToList();
-                }
-                catch (ReflectionTypeLoadException re)
-                {
-                    LuaCsLogger.LogError($"Unable to load CsMod Types. {re.Message}", LuaCsMessageOrigin.CSharpMod);
-                    throw re;
-                }
+                LuaCsLogger.LogError(errStr, LuaCsMessageOrigin.CSharpMod);
             }
             else
             {
-                throw new Exception("Unable to create cs mods assembly.");
+                mem.Seek(0, SeekOrigin.Begin);
+                assembly = LoadFromStream(mem);
+                return true;
             }
+
+            assembly = null;
+            return false;
         }
 
+        public List<Type> CompileAll() 
+        {
+            var mods = ParseSources();
+            var assemblies = CompileAssemblies(mods);
+            var acMods = RegisterACsMods(assemblies);
+            
+            if (!acMods.Any())
+            {
+                LuaCsLogger.LogError("No Cs mods loaded.", LuaCsMessageOrigin.CSharpMod);
+            }
+
+            return acMods;
+        }
+
+        private List<Assembly> CompileAssemblies(Dictionary<string, List<SyntaxTree>> parsedMods)
+        {
+            var assemblies = new List<Assembly>();
+            foreach (var (modName, syntaxTrees) in parsedMods)
+            {
+                if (TryCompileMod(modName, syntaxTrees, out var assembly))
+                {
+                    assemblies.Add(assembly);
+                }
+            }
+            LoadedAssemblies.AddRange(assemblies);
+
+            return assemblies;
+        }
+
+        private List<Type> RegisterACsMods(List<Assembly> assemblies)
+        {
+            var acMods = new List<Type>();
+            foreach (var assembly in assemblies)
+            {
+                RegisterAssemblyWithNativeGame(assembly);
+                try
+                {
+                    acMods.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(ACsMod))));
+                }
+                catch (ReflectionTypeLoadException re)
+                {
+                    LuaCsLogger.LogError($"Unable to load CsMod Types for {assembly.FullName}. {re.Message}", LuaCsMessageOrigin.CSharpMod);
+                }
+            }
+
+            return acMods;
+        }
+        
+        public Type GetTypeFromLoadedAssemblies(string fullName)
+        {
+            foreach (var loadedAssembly in this.LoadedAssemblies)
+            {
+                var type = loadedAssembly.GetType(fullName);
+                if (type != null)
+                {
+                    return type;
+                }
+            }
+
+            return null;
+        }
+        
         /// <summary>
         /// This function should be used whenever a new assembly is created. Wrapper to allow more complicated setup later if need be.
         /// </summary>
@@ -276,11 +377,11 @@ namespace Barotrauma
 
         public void Clear()
         {
-            if (Assembly != null)
+            foreach (var loadedAssembly in LoadedAssemblies)
             {
-                UnregisterAssemblyFromNativeGame(Assembly);
-                Assembly = null;
+                UnregisterAssemblyFromNativeGame(loadedAssembly);
             }
+            LoadedAssemblies.Clear();
         }
     }
 }

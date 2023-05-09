@@ -16,18 +16,10 @@ namespace Barotrauma
 {
     class CsScriptBase : AssemblyLoadContext
     {
+        public const string LegacyCsScriptAssembly = "NetScriptAssembly";
 
-        public const string CsScriptAssembly = "NetScriptAssembly";
-
-        public static readonly string[] LoadedAssemblyName = {
-            CsScriptBase.CsScriptAssembly
-        };
-
-        public static Dictionary<string, object> Revision = new Dictionary<string, object>()
-        {
-            { CsScriptAssembly, 0}
-        };
-
+        public static Dictionary<string, int> Revision = new();
+        
         public CSharpParseOptions ParseOptions { get; protected set; }
 
         public CsScriptBase() : base(isCollectible: true) {
@@ -35,9 +27,9 @@ namespace Barotrauma
                 .WithPreprocessorSymbols(new[] { LuaCsSetup.IsServer ? "SERVER" : (LuaCsSetup.IsClient ? "CLIENT" : "UNDEFINED") });
         }
 
-        public static SyntaxTree AssemblyInfoSyntaxTree(string asmName = null)
+        public static SyntaxTree AssemblyInfoSyntaxTree(string asmName)
         {
-            Revision[asmName] = (int)Revision[asmName] + 1;
+            Revision[asmName] = Revision.GetValueOrDefault(asmName) + 1;
             var asmInfo = new StringBuilder();
             asmInfo.AppendLine("using System.Reflection;");
             asmInfo.AppendLine($"[assembly: AssemblyMetadata(\"Revision\", \"{Revision[asmName]}\")]");

@@ -10,7 +10,7 @@ using System.Diagnostics;
 using MoonSharp.VsCodeDebugger;
 using System.Reflection;
 
-[assembly: InternalsVisibleTo(Barotrauma.CsScriptBase.CsScriptAssembly, AllInternalsVisible = true)]
+[assembly: InternalsVisibleTo(Barotrauma.CsScriptBase.LegacyCsScriptAssembly, AllInternalsVisible = true)]
 namespace Barotrauma
 {
     class LuaCsSetupConfig
@@ -121,13 +121,26 @@ namespace Barotrauma
             if (type != null) { return byRef ? type.MakeByRefType() : type; }
             foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
             {
-                if (CsScriptBase.LoadedAssemblyName.Contains(a.GetName().Name))
+                // skip loaded assemblies that have revision that doesn't match the latest
+                var assemblyName = a.GetName().Name!;
+                if (CsScriptBase.Revision.TryGetValue(assemblyName, out var latestRev))
                 {
                     var attrs = a.GetCustomAttributes<AssemblyMetadataAttribute>();
                     var revision = attrs.FirstOrDefault(attr => attr.Key == "Revision")?.Value;
-                    if (revision != null && int.Parse(revision) != (int)CsScriptBase.Revision[a.GetName().Name]) { continue; }
+                    if (revision != null && int.Parse(revision) != latestRev) { continue; }
                 }
-                type = a.GetType(typeName, throwOnError, ignoreCase);
+                
+                // legacy support for old assembly names: NetScriptAssembly.Foo.Bar -> [AssemblyName].Foo.Bar
+                if (typeName.StartsWith(CsScriptBase.LegacyCsScriptAssembly))
+                {
+                    var newTypeName = $"{assemblyName}{typeName.Substring(CsScriptBase.LegacyCsScriptAssembly.Length)}";
+                    type = a.GetType(newTypeName, throwOnError, ignoreCase);
+                }
+                else
+                {
+                    type = a.GetType(typeName, throwOnError, ignoreCase);
+                }
+                
                 if (type != null)
                 {
                     return byRef ? type.MakeByRefType() : type;
@@ -293,7 +306,7 @@ namespace Barotrauma
 
         public void Stop()
         {
-            foreach (var type in AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name == CsScriptBase.CsScriptAssembly).SelectMany(assembly => assembly.GetTypes()))
+            foreach (var type in AppDomain.CurrentDomain.GetAssemblies().Where(a => CsScriptLoader?.LoadedAssemblies.Contains(a) ?? false).SelectMany(assembly => assembly.GetTypes()))
             {
                 UserData.UnregisterType(type, true);
             }
@@ -438,7 +451,7 @@ namespace Barotrauma
                     {
                         Stopwatch compilationTime = new Stopwatch();
                         compilationTime.Start();
-                        var modTypes = CsScriptLoader.Compile();
+                        var modTypes = CsScriptLoader.CompileAll();
 
                         modTypes.ForEach(t =>
                         {
