@@ -1382,6 +1382,9 @@ var hierarchy =
     [ "Barotrauma.Networking.PermissionPreset", "class_barotrauma_1_1_networking_1_1_permission_preset.html", null ],
     [ "Barotrauma.PetBehavior", "class_barotrauma_1_1_pet_behavior.html", null ],
     [ "Barotrauma.PhysicsBody", "class_barotrauma_1_1_physics_body.html", null ],
+    [ "PlatformAccessorBase", null, [
+      [ "Barotrauma.LuaPlatformAccessor", "class_barotrauma_1_1_lua_platform_accessor.html", null ]
+    ] ],
     [ "Barotrauma.CampaignUI.PlayerBalanceElement", "struct_barotrauma_1_1_campaign_u_i_1_1_player_balance_element.html", null ],
     [ "Barotrauma.PlayerInput", "class_barotrauma_1_1_player_input.html", null ],
     [ "Barotrauma.PosInfo", "class_barotrauma_1_1_pos_info.html", [

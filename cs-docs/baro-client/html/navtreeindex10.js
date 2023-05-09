@@ -10,7 +10,7 @@ var NAVTREEINDEX10 =
 "class_barotrauma_1_1_character_file.html#a9b9ba5813190ee7e6b5dfdf9d0bbf538":[4,0,0,157,2],
 "class_barotrauma_1_1_character_file.html#ab4373550d17223fbe615752778368742":[4,0,0,157,0],
 "class_barotrauma_1_1_character_file.html#aed631edd9d5ce03a050144115c4ab1b5":[4,0,0,157,1],
-"class_barotrauma_1_1_character_h_u_d.html":[4,0,0,483],
+"class_barotrauma_1_1_character_h_u_d.html":[4,0,0,484],
 "class_barotrauma_1_1_character_health.html":[4,0,0,112],
 "class_barotrauma_1_1_character_health.html#a0c2b435644ae6c025a9a4bdeeb150a11":[4,0,0,112,48],
 "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9":[4,0,0,112,78],

@@ -335,6 +335,7 @@ var namespace_barotrauma =
     [ "LuaDouble", "struct_barotrauma_1_1_lua_double.html", "struct_barotrauma_1_1_lua_double" ],
     [ "LuaUserData", "class_barotrauma_1_1_lua_user_data.html", null ],
     [ "LuaCsSetup", "class_barotrauma_1_1_lua_cs_setup.html", "class_barotrauma_1_1_lua_cs_setup" ],
+    [ "LuaPlatformAccessor", "class_barotrauma_1_1_lua_platform_accessor.html", "class_barotrauma_1_1_lua_platform_accessor" ],
     [ "LuaRequire", "class_barotrauma_1_1_lua_require.html", "class_barotrauma_1_1_lua_require" ],
     [ "LuaScriptLoader", "class_barotrauma_1_1_lua_script_loader.html", "class_barotrauma_1_1_lua_script_loader" ],
     [ "LuaCsHook", "class_barotrauma_1_1_lua_cs_hook.html", "class_barotrauma_1_1_lua_cs_hook" ],

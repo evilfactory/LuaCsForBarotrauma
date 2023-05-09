@@ -1173,6 +1173,9 @@ var hierarchy =
     [ "Barotrauma.Networking.PermissionPreset", "class_barotrauma_1_1_networking_1_1_permission_preset.html", null ],
     [ "Barotrauma.PetBehavior", "class_barotrauma_1_1_pet_behavior.html", null ],
     [ "Barotrauma.PhysicsBody", "class_barotrauma_1_1_physics_body.html", null ],
+    [ "PlatformAccessorBase", null, [
+      [ "Barotrauma.LuaPlatformAccessor", "class_barotrauma_1_1_lua_platform_accessor.html", null ]
+    ] ],
     [ "Barotrauma.PosInfo", "class_barotrauma_1_1_pos_info.html", [
       [ "Barotrauma.CharacterStateInfo", "class_barotrauma_1_1_character_state_info.html", null ]
     ] ],
