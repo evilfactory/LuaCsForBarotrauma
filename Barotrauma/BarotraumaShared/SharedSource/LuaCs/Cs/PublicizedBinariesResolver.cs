@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace Barotrauma;
@@ -8,6 +9,11 @@ public class PublicizedBinariesResolver
 {
     private List<string> searchRoots;
     private const string PublicizedDirName = "Publicized";
+
+    private static string[] RequiredAssemblies = {
+        "Barotrauma.dll",
+        "DedicatedServer.dll"
+    };
     
     public PublicizedBinariesResolver()
     {
@@ -24,10 +30,15 @@ public class PublicizedBinariesResolver
     {
         foreach (var searchRoot in this.searchRoots)
         {
-            var pub = Path.Combine(searchRoot, Path.GetFileName(location));
+            var fileName = Path.GetFileName(location);
+            var pub = Path.Combine(searchRoot, fileName);
             if (File.Exists(pub))
             {
                 return pub;
+            }
+            if (RequiredAssemblies.Contains(fileName))
+            {
+                LuaCsSetup.PrintCsError($"Required assembly {fileName} not found in {searchRoot}");
             }
         }
 
