@@ -16,8 +16,6 @@ namespace Barotrauma
 {
     class CsScriptBase : AssemblyLoadContext
     {
-        public const string LegacyCsScriptAssembly = "NetScriptAssembly";
-
         public static Dictionary<string, int> Revision = new();
         
         public CSharpParseOptions ParseOptions { get; protected set; }
