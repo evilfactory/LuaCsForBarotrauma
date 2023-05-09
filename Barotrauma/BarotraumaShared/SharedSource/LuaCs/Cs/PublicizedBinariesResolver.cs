@@ -24,7 +24,7 @@ public class PublicizedBinariesResolver
     {
         foreach (var searchRoot in this.searchRoots)
         {
-            var pub = Path.Combine(searchRoot, Path.GetFileNameWithoutExtension(location) + "-publicized.dll");
+            var pub = Path.Combine(searchRoot, Path.GetFileName(location));
             if (File.Exists(pub))
             {
                 return pub;

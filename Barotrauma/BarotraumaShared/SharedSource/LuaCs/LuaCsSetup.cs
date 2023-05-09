@@ -129,17 +129,8 @@ namespace Barotrauma
                     var revision = attrs.FirstOrDefault(attr => attr.Key == "Revision")?.Value;
                     if (revision != null && int.Parse(revision) != latestRev) { continue; }
                 }
-                
-                // legacy support for old assembly names: NetScriptAssembly.Foo.Bar -> [AssemblyName].Foo.Bar
-                if (typeName.StartsWith(CsScriptBase.LegacyCsScriptAssembly))
-                {
-                    var newTypeName = $"{assemblyName}{typeName.Substring(CsScriptBase.LegacyCsScriptAssembly.Length)}";
-                    type = a.GetType(newTypeName, throwOnError, ignoreCase);
-                }
-                else
-                {
-                    type = a.GetType(typeName, throwOnError, ignoreCase);
-                }
+
+                type = a.GetType(typeName, throwOnError, ignoreCase);
                 
                 if (type != null)
                 {
