@@ -8,6 +8,7 @@ on:
 
 env:
   ARTIFACTS_DIR: 2049ef39-42a2-46d2-b513-ee6d2e3a7b15
+  TOOLS_DIR: c1c0ee3b-b22f-451f-b330-8f6337a38fd7
   RELEASES: |
     windows:Barotrauma/bin/ReleaseWindows/net6.0/win-x64/publish
     linux:Barotrauma/bin/ReleaseLinux/net6.0/linux-x64/publish
@@ -15,6 +16,9 @@ env:
   ARCHIVE_BASE_NAME: luacsforbarotrauma
   # XXX: these file names are subject to shell expansion.
   # Be careful when using special characters.
+  PUBLICIZED_ASSEMBLIES: |
+    Barotrauma.dll
+    DedicatedServer.dll
   ARCHIVE_FILES_SERVER: |
     DedicatedServer.deps.json
     DedicatedServer.dll
@@ -45,6 +49,7 @@ env:
     System.Runtime.CompilerServices.Unsafe.dll
     mscordaccore_amd64_amd64_*
     Lua
+    Publicized
 
 jobs:
   build:
@@ -77,6 +82,42 @@ jobs:
       - name: "Build: MacClient"
         run: dotnet publish Barotrauma/BarotraumaClient/MacClient.csproj -c Release -clp:"ErrorsOnly;Summary" --self-contained -r osx-x64 \/p:Platform="x64"
 
+      - name: Publicize assemblies
+        run: |
+          set -e
+          shopt -s globstar nullglob
+          shopt -u dotglob
+
+          # This converts a newline-separated (LF) list into a Bash array
+          # NOTE: this doesn't discard the trailing LF that GitHub actions
+          # append (which results in an extra entry in the array).
+          lines_to_array() {
+            IFS=$'\n' readarray -td $'\n' "$1" <<< "${!1}"
+          }
+
+          lines_to_array RELEASES
+
+          tools_dir="$(realpath -m "$TOOLS_DIR")"
+          mkdir -p "$tools_dir"
+
+          dotnet tool install --tool-path "$tools_dir/asmpub" BepInEx.AssemblyPublicizer.Cli --version 0.4.1
+
+          for i in "${!RELEASES[@]}"; do
+            [[ -z "${RELEASES[i]}" ]] && continue
+            (
+              IFS=':' read platform publish_dir _rest <<< "${RELEASES[i]}"
+              cd "$publish_dir"
+              echo "Publicizing assemblies for $platform build"
+              mkdir Publicized
+              # XXX: assembly-publicizer supports processing assemblies in
+              # parallel, but it aborts the entire process if it encounters
+              # an invalid .NET assembly.
+              parallel "$tools_dir/asmpub/assembly-publicizer" \
+                {} -f --strip -o Publicized \
+                ::: ${PUBLICIZED_ASSEMBLIES[@]}
+            )
+          done
+
       - name: Create archives
         run: |
           set -e
@@ -95,8 +136,8 @@ jobs:
           lines_to_array ARCHIVE_FILES_SERVER
           lines_to_array RELEASES
 
-          mkdir -p "$ARTIFACTS_DIR"
-          artifacts_dir="$(realpath "$ARTIFACTS_DIR")"
+          artifacts_dir="$(realpath -m "$ARTIFACTS_DIR")"
+          mkdir -p "$artifacts_dir"
 
           for i in "${!RELEASES[@]}"; do
             [[ -z "${RELEASES[i]}" ]] && continue
