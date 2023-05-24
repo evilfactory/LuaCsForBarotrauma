@@ -145,13 +145,13 @@ jobs:
               IFS=':' read platform publish_dir _rest <<< "${RELEASES[i]}"
               cd "$publish_dir"
               echo "Creating build_${platform}.zip"
-              zip -qr "${artifacts_dir}/${ARCHIVE_BASE_NAME}_build_${platform}.zip" *
+              zip --must-match -qr "${artifacts_dir}/${ARCHIVE_BASE_NAME}_build_${platform}.zip" *
               echo "Creating patch_${platform}_client.zip"
-              zip -qr "${artifacts_dir}/${ARCHIVE_BASE_NAME}_patch_${platform}_client.zip" \
+              zip --must-match -qr "${artifacts_dir}/${ARCHIVE_BASE_NAME}_patch_${platform}_client.zip" \
                 ${ARCHIVE_FILES_SHARED[@]} \
                 ${ARCHIVE_FILES_CLIENT[@]}
               echo "Creating patch_${platform}_server.zip"
-              zip -qr "${artifacts_dir}/${ARCHIVE_BASE_NAME}_patch_${platform}_server.zip" \
+              zip --must-match -qr "${artifacts_dir}/${ARCHIVE_BASE_NAME}_patch_${platform}_server.zip" \
                 ${ARCHIVE_FILES_SHARED[@]} \
                 ${ARCHIVE_FILES_SERVER[@]}
             )
