@@ -180,10 +180,13 @@ jobs:
           done
 
       - name: Publish release
-        uses: ./.github/actions/github-release
+        uses: notpeelz/action-gh-create-release@a3caaff31cdf1022430c5a95689330ed83de62f2 # v1.0.2
         with:
-          type: latest
           token: ${{ github.token }}
+          tag: latest
+          strategy: replace
+          title: "Automatic build"
+          body: "Automatic build"
           files: |
             ${{ env.ARTIFACTS_DIR }}/${{ env.ARCHIVE_BASE_NAME }}_build_windows.zip
             ${{ env.ARTIFACTS_DIR }}/${{ env.ARCHIVE_BASE_NAME }}_patch_windows_client.zip
