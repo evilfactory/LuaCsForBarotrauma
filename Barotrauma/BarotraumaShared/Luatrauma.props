@@ -16,4 +16,13 @@
   <PropertyGroup>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
+
+  <!--
+    Upstream ships vendored OpenAL and SDL2 dylibs, which clobber the ones
+    defined in Libraries/MonoGame.Framework/DesktopGL/MonoGame.Framework.dll.config
+    This lets us work around the (otherwise fatal) error.
+  -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'MacClient'">
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
 </Project>
