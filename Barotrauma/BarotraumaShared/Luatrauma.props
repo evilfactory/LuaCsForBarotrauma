@@ -8,7 +8,12 @@
     <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\Libraries\moonsharp\MoonSharp.VsCodeDebugger\MoonSharp.VsCodeDebugger.csproj" />
   </ItemGroup>
 
+  <!--
+    The `Microsoft.CodeAnalysis.CSharp.Scripting` package includes satellites
+    assemblies, which end up polluting the build folder.
+    This suppresses the extra satellite assemblies.
+  -->
   <PropertyGroup>
-    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>      
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
 </Project>
