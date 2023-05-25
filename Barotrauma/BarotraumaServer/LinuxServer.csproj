@@ -1,10 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\BarotraumaShared\Luatrauma.props" />
-  <ItemGroup>
-    <None Include="..\BarotraumaShared\Luatrauma.props" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
@@ -148,5 +143,10 @@
     <!-- writes the attribute to the customAssemblyInfo file -->
     <WriteCodeFragment Language="C#" OutputFile="$(CustomAssemblyInfoFile)" AssemblyAttributes="@(AssemblyAttributes)" />
   </Target>
+
+  <Import Project="../BarotraumaShared/Luatrauma.props" />
+  <ItemGroup>
+    <None Include="../BarotraumaShared/Luatrauma.props" />
+  </ItemGroup>
 
 </Project>

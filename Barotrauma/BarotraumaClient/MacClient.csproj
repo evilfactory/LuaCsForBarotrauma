@@ -1,10 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\BarotraumaShared\Luatrauma.props" />
-  <ItemGroup>
-    <None Include="..\BarotraumaShared\Luatrauma.props" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
@@ -218,5 +213,10 @@
     <GARuntime>osx-x64</GARuntime>
   </PropertyGroup>
   <Import Project="../BarotraumaShared/DeployGameAnalytics.props" />
+
+  <Import Project="../BarotraumaShared/Luatrauma.props" />
+  <ItemGroup>
+    <None Include="../BarotraumaShared/Luatrauma.props" />
+  </ItemGroup>
 
 </Project>
