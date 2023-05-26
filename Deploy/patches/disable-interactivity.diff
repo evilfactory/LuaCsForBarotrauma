@@ -1,0 +1,43 @@
+diff --git a/Deploy/DeployAll/Program.cs b/Deploy/DeployAll/Program.cs
+index 3de060435..6e199b4d4 100644
+--- a/Deploy/DeployAll/Program.cs
++++ b/Deploy/DeployAll/Program.cs
+@@ -22,37 +22,9 @@ string gitBranch = GitCmd.GetBranch();
+ 
+ Console.WriteLine($"DEPLOYALL - Barotrauma v{gameVersion}, branch {gitBranch}, revision {gitRevision}");
+ 
+-if (GitCmd.HasUncommittedChanges())
+-{
+-    if (Util.AskQuestion("The repo currently has some uncommitted changes. Do you still wish to proceed? [y/n]")
+-        .AnsweredNo()) { return; }
+-}
+-else if (GitCmd.IsRepoOutOfSync())
+-{
+-    if (Util.AskQuestion("The repo is currently out of sync. Do you still wish to proceed? [y/n]")
+-        .AnsweredNo()) { return; }
+-}
+-
+ var sdkVersion = DotnetCmd.GetSdkVersion();
+ Console.WriteLine($"Using .NET SDK {sdkVersion}");
+ 
+-string configuration = Util.AskQuestion("Type 1 for Release, 2 for Unstable, enter nothing to cancel") switch
+-{
+-    "1" => "Release",
+-    "2" => "Unstable",
+-    _ => ""
+-};
+-if (string.IsNullOrWhiteSpace(configuration)) { return; }
++const string configuration = "Release";
+ 
+ Deployables.Generate(configuration, gameVersion, gitBranch, gitRevision);
+-
+-if (Util.AskQuestion("Would you like to upload the generated builds to Steam? [y/n]")
+-    .AnsweredNo()) { return; }
+-
+-SteamPipeAssistant.PrepareSteamCmd();
+-SteamPipeAssistant.PrepareScripts(configuration, gameVersion, gitBranch, gitRevision);
+-
+-string userName = Util.AskQuestion("Type your Steam username to upload to Steamworks, enter nothing to skip uploading");
+-if (string.IsNullOrWhiteSpace(userName)) { return; }
+-
+-SteamPipeAssistant.Upload(userName, configuration);

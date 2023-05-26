@@ -1,0 +1,113 @@
+diff --git a/Deploy/DeployAll/Util.cs b/Deploy/DeployAll/Util.cs
+index 6962ac512..d700c7f8e 100644
+--- a/Deploy/DeployAll/Util.cs
++++ b/Deploy/DeployAll/Util.cs
+@@ -10,97 +10,106 @@ namespace DeployAll;
+ public static class Util
+ {
+     public static void DeleteFiles(string path, params string[] patterns)
+     {
+         foreach (var file in patterns.SelectMany(p => Directory.GetFiles(path, p, SearchOption.AllDirectories)))
+         {
+             File.Delete(file);
+             string dir = file;
+             do
+             {
+                 dir = Path.GetDirectoryName(dir) ?? "";
+                 if (Directory.GetFiles(dir, "*", SearchOption.AllDirectories).Length == 0)
+                 {
+                     Directory.Delete(dir, recursive: false);
+                 }
+                 else
+                 {
+                     break;
+                 }
+             } while (dir.LastIndexOf('/') > 0);
+         }
+     }
+     
+     public static void CopyDirectory(string sourceDir, string destinationDir)
+     {
+         var dir = new DirectoryInfo(sourceDir);
+ 
+-        DirectoryInfo[] dirs = dir.GetDirectories();
++        DirectoryInfo[] dirs;
++        try
++        {
++            dirs = dir.GetDirectories();
++        }
++        catch (DirectoryNotFoundException ex)
++        {
++            Console.WriteLine($"WARNING: attempted to copy non-existing directory: {ex}");
++            return;
++        }
+ 
+         Directory.CreateDirectory(destinationDir);
+ 
+         foreach (FileInfo file in dir.GetFiles())
+         {
+             string targetFilePath = Path.Combine(destinationDir, file.Name);
+             file.CopyTo(targetFilePath);
+         }
+ 
+         foreach (DirectoryInfo subDir in dirs)
+         {
+             string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+             CopyDirectory(subDir.FullName, newDestinationDir);
+         }
+     }
+     
+     public static void DeleteDirectory(string path)
+     {
+         if (Directory.Exists(path))
+         {
+             Directory.Delete(path, recursive: true);
+         }
+     }
+ 
+     public static void RecreateDirectory(string path)
+     {
+         DeleteDirectory(path);
+         Directory.CreateDirectory(path);
+     }
+     
+     public static IReadOnlyList<byte> DownloadFile(string url)
+     {
+         var httpClient = new HttpClient();
+         var response = httpClient.Send(new HttpRequestMessage(
+             HttpMethod.Get,
+             new Uri(url)));
+         using var stream = response.Content.ReadAsStream();
+ 
+         using var reader = new BinaryReader(stream);
+         var contents = new List<byte>();
+         while (true)
+         {
+             byte[] bytesRead = reader.ReadBytes(1024);
+             if (bytesRead.Length == 0) { break; }
+             contents.AddRange(bytesRead);
+         }
+ 
+         return contents;
+     }
+ 
+     public static string AskQuestion(string question)
+     {
+         Console.WriteLine(question);
+         Console.Write("> ");
+         string answer = Console.ReadLine() ?? "";
+         Console.WriteLine("");
+         return answer;
+     }
+ 
+     public static bool AnsweredYes(this string answer)
+         => answer.Equals("y", StringComparison.InvariantCulture);
+ 
+     public static bool AnsweredNo(this string answer)
+         => !answer.AnsweredYes();
+ 
+     public static Process StartProcess(ProcessStartInfo info)
+         => Process.Start(info)
+             ?? throw new Exception($"Failed to start process \"{info.FileName}\"");
+ }
+\ No newline at end of file
