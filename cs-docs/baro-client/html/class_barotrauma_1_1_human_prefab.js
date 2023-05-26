@@ -14,6 +14,7 @@ var class_barotrauma_1_1_human_prefab =
     [ "NpcSetIdentifier", "class_barotrauma_1_1_human_prefab.html#ad3c69c3c135fc49023c0a1247f0d7a01", null ],
     [ "AimAccuracy", "class_barotrauma_1_1_human_prefab.html#ad8e737fc4bc17230279edd4e86876f89", null ],
     [ "AimSpeed", "class_barotrauma_1_1_human_prefab.html#a518892facb9baf23596a188a02c57317", null ],
+    [ "AllowDraggingIndefinitely", "class_barotrauma_1_1_human_prefab.html#a7cd2a253bb47331033c269f6f86c0e8e", null ],
     [ "Behavior", "class_barotrauma_1_1_human_prefab.html#ae8ed547e5d90fe6e3717676bd01c3af8", null ],
     [ "CampaignInteractionType", "class_barotrauma_1_1_human_prefab.html#aef5dfca9d05cd4b29895e0ff492d602f", null ],
     [ "Commonness", "class_barotrauma_1_1_human_prefab.html#a704b26feb342e3e6a03621be23ad7a77", null ],

@@ -6,7 +6,7 @@ var class_barotrauma_1_1_content_package =
     ] ],
     [ "ContentPackage", "class_barotrauma_1_1_content_package.html#a44d59afd9a64fe747b9b22d3b72055b7", null ],
     [ "AssertCondition", "class_barotrauma_1_1_content_package.html#a53137ba4472d54d26a2322d6ac3fa45a", null ],
-    [ "CalculateHash", "class_barotrauma_1_1_content_package.html#af0ffd1a3fa69e58dd72135f4247a2a4b", null ],
+    [ "CalculateHash", "class_barotrauma_1_1_content_package.html#a26c426672974f394867d9d148e256900", null ],
     [ "GetFiles", "class_barotrauma_1_1_content_package.html#af70149fb875a4d57cf435d174b02118d", null ],
     [ "GetFiles< T >", "class_barotrauma_1_1_content_package.html#afc58cc52d50b9d97dcdae2eb8616b25b", null ],
     [ "HashMismatches", "class_barotrauma_1_1_content_package.html#a7a11c58544e7e5800300b4503c60d429", null ],

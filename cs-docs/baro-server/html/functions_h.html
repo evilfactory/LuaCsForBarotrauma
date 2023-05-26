@@ -238,6 +238,9 @@ $(document).ready(function(){initNavTree('functions_h.html',''); initResizable()
 <li>HasHuntingGrounds
 : <a class="el" href="class_barotrauma_1_1_level_data.html#a312365e6589fc8868f163ffbecba8573">Barotrauma.LevelData</a>
 </li>
+<li>HasIdentifierOrTags()
+: <a class="el" href="class_barotrauma_1_1_item.html#a822572968d0b84d107bf09fc837b988e">Barotrauma.Item</a>
+</li>
 <li>HasInfo
 : <a class="el" href="class_barotrauma_1_1_character_params.html#af2f2f13041d26d9a300bff5c3687aae2">Barotrauma.CharacterParams</a>
 </li>
@@ -364,8 +367,8 @@ $(document).ready(function(){initNavTree('functions_h.html',''); initResizable()
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#af41b95c99a2d04ebcd408939a89a9dc7">Barotrauma.Items.Components.ItemContainer</a>
 </li>
 <li>HasTag()
-: <a class="el" href="class_barotrauma_1_1_character_params_1_1_a_i_params.html#a25cf77b175ac00aa1d8980c38d7d597e">Barotrauma.CharacterParams.AIParams</a>
-, <a class="el" href="class_barotrauma_1_1_item.html#aa3f01eda2fb6109936ae9a1f6f4b6f8d">Barotrauma.Item</a>
+: <a class="el" href="class_barotrauma_1_1_character_params_1_1_a_i_params.html#a0d7b0402357e5a3f0a898e41fe9accfa">Barotrauma.CharacterParams.AIParams</a>
+, <a class="el" href="class_barotrauma_1_1_item.html#ae7f3a43af66406e0f16e7617d7005ac2">Barotrauma.Item</a>
 , <a class="el" href="class_barotrauma_1_1_status_effect.html#aa3d5d9ea84f6072f30cf73f9e35af0ac">Barotrauma.StatusEffect</a>
 , <a class="el" href="class_barotrauma_1_1_submarine_info.html#ae9f97d09336d1f0c1f9f2f6c47c5fd0d">Barotrauma.SubmarineInfo</a>
 </li>
@@ -391,7 +394,7 @@ $(document).ready(function(){initNavTree('functions_h.html',''); initResizable()
 : <a class="el" href="class_barotrauma_1_1_map_entity.html#a438aeca8633500f0fe9da303613039e4">Barotrauma.MapEntity</a>
 </li>
 <li>HasValidPath()
-: <a class="el" href="class_barotrauma_1_1_a_i_controller.html#ac0443991acc6ad8c8888122958c437ec">Barotrauma.AIController</a>
+: <a class="el" href="class_barotrauma_1_1_a_i_controller.html#ada20b1876bf5b93356a85b55f5bae855">Barotrauma.AIController</a>
 </li>
 <li>Head
 : <a class="el" href="class_barotrauma_1_1_character_info.html#ae5bf849fbe4d6833da09ac9e3d73a428">Barotrauma.CharacterInfo</a>
@@ -432,9 +435,6 @@ $(document).ready(function(){initNavTree('functions_h.html',''); initResizable()
 </li>
 <li>HeadPreset()
 : <a class="el" href="class_barotrauma_1_1_character_info_1_1_head_preset.html#af8a10d9c172ae9e06f7c3b9af6f8b546">Barotrauma.CharacterInfo.HeadPreset</a>
-</li>
-<li>Heads
-: <a class="el" href="class_barotrauma_1_1_character_info_prefab.html#a3d32d9dfa476611d6a7a29dfa8cb1e42">Barotrauma.CharacterInfoPrefab</a>
 </li>
 <li>HeadSprite
 : <a class="el" href="class_barotrauma_1_1_character_info.html#a1d66bb7273635e7aa819706771724e8e">Barotrauma.CharacterInfo</a>
@@ -698,11 +698,11 @@ $(document).ready(function(){initNavTree('functions_h.html',''); initResizable()
 <li>Holdable()
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a543ec3437794d11d3039fb485ba8ea27">Barotrauma.Items.Components.Holdable</a>
 </li>
-<li>holdAngle
-: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a6708a0312a5304595a34f394333e0f10">Barotrauma.Items.Components.Holdable</a>
-</li>
 <li>HoldAngle
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a196cbdbfafea7baf6da5d20f742995ba">Barotrauma.Items.Components.Holdable</a>
+</li>
+<li>holdAngle
+: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a6708a0312a5304595a34f394333e0f10">Barotrauma.Items.Components.Holdable</a>
 </li>
 <li>holdFireCondition
 : <a class="el" href="class_barotrauma_1_1_a_i_objective_combat.html#a05fecabe1dafc9566b5c5684b7704e9c">Barotrauma.AIObjectiveCombat</a>
@@ -765,7 +765,7 @@ $(document).ready(function(){initNavTree('functions_h.html',''); initResizable()
 </li>
 <li>Hull
 : <a class="el" href="class_barotrauma_1_1_fire_source.html#a27ceda1150991052596a066e15a76c14">Barotrauma.FireSource</a>
-, <a class="el" href="class_barotrauma_1_1_hull.html#aeb2fc72d9e5e79a254a8c79e82636396">Barotrauma.Hull</a>
+, <a class="el" href="class_barotrauma_1_1_hull.html#a01e169d66f31ffb86b8285c23df4e45f">Barotrauma.Hull</a>
 , <a class="el" href="class_barotrauma_1_1_limb.html#a44a27fb41b0e8e2f35313f170a0f3530">Barotrauma.Limb</a>
 , <a class="el" href="class_barotrauma_1_1_order_target.html#a6f37576812da2c05607a3d90fd29bc18">Barotrauma.OrderTarget</a>
 </li>

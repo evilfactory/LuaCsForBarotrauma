@@ -128,6 +128,7 @@ var hierarchy =
     [ "Barotrauma.AITargetMemory", "class_barotrauma_1_1_a_i_target_memory.html", null ],
     [ "OpenAL.Al", "class_open_a_l_1_1_al.html", null ],
     [ "OpenAL.Alc", "class_open_a_l_1_1_alc.html", null ],
+    [ "Barotrauma.AfflictionPrefab.Effect.AppliedStatValue", "struct_barotrauma_1_1_affliction_prefab_1_1_effect_1_1_applied_stat_value.html", null ],
     [ "AssemblyLoadContext", null, [
       [ "Barotrauma.CsScriptBase", "class_barotrauma_1_1_cs_script_base.html", [
         [ "Barotrauma.CsScriptLoader", "class_barotrauma_1_1_cs_script_loader.html", null ]
@@ -243,7 +244,6 @@ var hierarchy =
     [ "Barotrauma.CharacterHUD", "class_barotrauma_1_1_character_h_u_d.html", null ],
     [ "CharacterHUD", "class_character_h_u_d.html", null ],
     [ "Barotrauma.CharacterInfo", "class_barotrauma_1_1_character_info.html", null ],
-    [ "Barotrauma.CharacterInfoPrefab", "class_barotrauma_1_1_character_info_prefab.html", null ],
     [ "Barotrauma.CharacterSound", "class_barotrauma_1_1_character_sound.html", null ],
     [ "Barotrauma.CharacterTalent", "class_barotrauma_1_1_character_talent.html", null ],
     [ "Barotrauma.ChatBox", "class_barotrauma_1_1_chat_box.html", null ],
@@ -1004,6 +1004,7 @@ var hierarchy =
         [ "Barotrauma.CharacterParams", "class_barotrauma_1_1_character_params.html", null ],
         [ "Barotrauma.RagdollParams", "class_barotrauma_1_1_ragdoll_params.html", null ]
       ] ],
+      [ "Barotrauma.Gap", "class_barotrauma_1_1_gap.html", null ],
       [ "Barotrauma.Hull", "class_barotrauma_1_1_hull.html", null ],
       [ "Barotrauma.Hull", "class_barotrauma_1_1_hull.html", null ],
       [ "Barotrauma.Item", "class_barotrauma_1_1_item.html", null ],
@@ -1232,7 +1233,6 @@ var hierarchy =
     [ "Barotrauma.Networking.IWriteMessage", "interface_barotrauma_1_1_networking_1_1_i_write_message.html", null ],
     [ "Barotrauma.Job", "class_barotrauma_1_1_job.html", null ],
     [ "Barotrauma.MultiplayerPreferences.JobPreference", "struct_barotrauma_1_1_multiplayer_preferences_1_1_job_preference.html", null ],
-    [ "Barotrauma.JobVariant", "class_barotrauma_1_1_job_variant.html", null ],
     [ "Barotrauma.Key", "class_barotrauma_1_1_key.html", null ],
     [ "EventInput.KeyboardDispatcher", "class_event_input_1_1_keyboard_dispatcher.html", null ],
     [ "Barotrauma.GameSettings.Config.KeyMapping", "struct_barotrauma_1_1_game_settings_1_1_config_1_1_key_mapping.html", null ],

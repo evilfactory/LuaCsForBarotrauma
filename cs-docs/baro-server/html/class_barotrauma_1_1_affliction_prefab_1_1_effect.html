@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_affliction_prefab
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
@@ -91,20 +92,42 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_affliction_prefab
 <div class="title">Barotrauma.AfflictionPrefab.Effect Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Effects are the primary way to add functionality to afflictions.  
+ <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_affliction_prefab_1_1_effect_1_1_applied_stat_value.html">AppliedStatValue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">StatType that will be applied to the affected character when the effect is active that is proportional to the effect's strength.  <a href="struct_barotrauma_1_1_affliction_prefab_1_1_effect_1_1_applied_stat_value.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac3d497746b2c1f0d2ca7777139ffa3cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#ac3d497746b2c1f0d2ca7777139ffa3cf">Effect</a> (<a class="el" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element, string parentDebugName)</td></tr>
 <tr class="separator:ac3d497746b2c1f0d2ca7777139ffa3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cdbc91fb6a32ddf5c03600b670a3a1d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a0cdbc91fb6a32ddf5c03600b670a3a1d">GetStrengthFactor</a> (<a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a> affliction)</td></tr>
+<tr class="memdesc:a0cdbc91fb6a32ddf5c03600b670a3a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns 0 if affliction.Strength is MinStrength, 1 if affliction.Strength is MaxStrength  <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a0cdbc91fb6a32ddf5c03600b670a3a1d">More...</a><br /></td></tr>
+<tr class="separator:a0cdbc91fb6a32ddf5c03600b670a3a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83e53e8974362df62163f9514b010587"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a83e53e8974362df62163f9514b010587">GetStrengthFactor</a> (float strength)</td></tr>
+<tr class="memdesc:a83e53e8974362df62163f9514b010587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns 0 if affliction.Strength is MinStrength, 1 if affliction.Strength is MaxStrength  <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a83e53e8974362df62163f9514b010587">More...</a><br /></td></tr>
+<tr class="separator:a83e53e8974362df62163f9514b010587"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a47675d787c0d91e6f4916a16f66cf69c"><td class="memItemLeft" align="right" valign="top">readonly Dictionary&lt; <a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a>,(float minValue, float maxValue)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a47675d787c0d91e6f4916a16f66cf69c">AfflictionStatValues</a> = new Dictionary&lt;<a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a>, (float minValue, float maxValue)&gt;()</td></tr>
-<tr class="separator:a47675d787c0d91e6f4916a16f66cf69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af90d73cbbdda0e6a39b0853f96229654"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2a">AbilityFlags</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#af90d73cbbdda0e6a39b0853f96229654">AfflictionAbilityFlags</a></td></tr>
-<tr class="separator:af90d73cbbdda0e6a39b0853f96229654"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa6e1ee4cd28641a5f74b081de4802d5"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a622e8ff5f0d33908eec4c53a86f74434">List</a>&lt; <a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#afa6e1ee4cd28641a5f74b081de4802d5">StatusEffects</a> = new <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a622e8ff5f0d33908eec4c53a86f74434">List</a>&lt;<a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a>&gt;()</td></tr>
-<tr class="separator:afa6e1ee4cd28641a5f74b081de4802d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb1f42612034fff8bc8a3cb6662eaaa6"><td class="memItemLeft" align="right" valign="top">readonly ImmutableArray&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#acb1f42612034fff8bc8a3cb6662eaaa6">ResistanceFor</a></td></tr>
+<tr class="memdesc:acb1f42612034fff8bc8a3cb6662eaaa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of identifiers of afflictions that the affected character will be resistant to when this effect is active.  <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#acb1f42612034fff8bc8a3cb6662eaaa6">More...</a><br /></td></tr>
+<tr class="separator:acb1f42612034fff8bc8a3cb6662eaaa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae88aa6fc053793d3c97a9a67a2ca04"><td class="memItemLeft" align="right" valign="top">readonly ImmutableArray&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a0ae88aa6fc053793d3c97a9a67a2ca04">BlockTransformation</a></td></tr>
+<tr class="memdesc:a0ae88aa6fc053793d3c97a9a67a2ca04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevents AfflictionHusks with the specified identifier(s) from transforming the character into an AI-controlled character.  <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a0ae88aa6fc053793d3c97a9a67a2ca04">More...</a><br /></td></tr>
+<tr class="separator:a0ae88aa6fc053793d3c97a9a67a2ca04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71022035abb27e38d4768c21bc9095f2"><td class="memItemLeft" align="right" valign="top">readonly ImmutableDictionary&lt; <a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a>, <a class="el" href="struct_barotrauma_1_1_affliction_prefab_1_1_effect_1_1_applied_stat_value.html">AppliedStatValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a71022035abb27e38d4768c21bc9095f2">AfflictionStatValues</a></td></tr>
+<tr class="memdesc:a71022035abb27e38d4768c21bc9095f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">StatType that will be applied to the affected character when the effect is active that is proportional to the effect's strength.  <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a71022035abb27e38d4768c21bc9095f2">More...</a><br /></td></tr>
+<tr class="separator:a71022035abb27e38d4768c21bc9095f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40794b75b5ed257fb0811787cfa71fa5"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2a">AbilityFlags</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a40794b75b5ed257fb0811787cfa71fa5">AfflictionAbilityFlags</a></td></tr>
+<tr class="separator:a40794b75b5ed257fb0811787cfa71fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d73bb0df578ceb9ffacb9a21f8701c"><td class="memItemLeft" align="right" valign="top">readonly ImmutableArray&lt; <a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a33d73bb0df578ceb9ffacb9a21f8701c">StatusEffects</a></td></tr>
+<tr class="separator:a33d73bb0df578ceb9ffacb9a21f8701c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -160,8 +183,6 @@ Properties</h2></td></tr>
 <tr class="separator:a797ebf13d50cf7f5fe3dea5b73cfd828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e369d40e5f0fc154fbb815922b835eb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a2e369d40e5f0fc154fbb815922b835eb">MaxSkillMultiplier</a><code> [get]</code></td></tr>
 <tr class="separator:a2e369d40e5f0fc154fbb815922b835eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c268b96f52a633a823f1b70b17f0900"><td class="memItemLeft" align="right" valign="top">IReadOnlyList&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a1c268b96f52a633a823f1b70b17f0900">ResistanceFor</a><code> [get]</code></td></tr>
-<tr class="separator:a1c268b96f52a633a823f1b70b17f0900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedb8c55f3de845f80bd2e0ab2f00ba64"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#aedb8c55f3de845f80bd2e0ab2f00ba64">MinResistance</a><code> [get]</code></td></tr>
 <tr class="separator:aedb8c55f3de845f80bd2e0ab2f00ba64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e0340d7b09ddf5cfa74b03f6c9cc76a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a3e0340d7b09ddf5cfa74b03f6c9cc76a">MaxResistance</a><code> [get]</code></td></tr>
@@ -178,13 +199,19 @@ Properties</h2></td></tr>
 <tr class="separator:ac78eaf4838fa878e7bcb99f9361598e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af521fe2bf236184db80dd2ee31d7a7e2"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#af521fe2bf236184db80dd2ee31d7a7e2">MaxBodyTint</a><code> [get]</code></td></tr>
 <tr class="separator:af521fe2bf236184db80dd2ee31d7a7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12da993b7e71265b0777ae17ba5f603c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a12da993b7e71265b0777ae17ba5f603c">BlockTransformation</a><code> [get]</code></td></tr>
-<tr class="memdesc:a12da993b7e71265b0777ae17ba5f603c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevents AfflictionHusks with the specified identifier(s) from transforming the character into an AI-controlled character  <a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#a12da993b7e71265b0777ae17ba5f603c">More...</a><br /></td></tr>
-<tr class="separator:a12da993b7e71265b0777ae17ba5f603c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00122">122</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<div class="textblock"><p>Effects are the primary way to add functionality to afflictions. </p>
+<p>&lt;doc&gt; &lt;Ignore type="SubElement" identifier="AbilityFlag" &gt; &lt;SubElement identifier="abilityflag" type="AppliedAbilityFlag"&gt; Enables the specified flag on the character as long as the effect is active. &lt;/SubElement&gt; &lt;Type identifier="AppliedAbilityFlag"&gt; </p>
+<p>Flag that will be enabled for the character as long as the effect is active. </p>
+<div class="fragment"><div class="line">&lt;<a class="code" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#ac3d497746b2c1f0d2ca7777139ffa3cf">Effect</a> minstrength=<span class="stringliteral">&quot;0&quot;</span> maxstrength=<span class="stringliteral">&quot;100&quot;</span>&gt;</div>
+<div class="line">    </div>
+<div class="line">    &lt;AbilityFlag flagtype=<span class="stringliteral">&quot;ImmuneToPressure&quot;</span> /&gt;</div>
+<div class="line">&lt;/<a class="code" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#ac3d497746b2c1f0d2ca7777139ffa3cf">Effect</a>&gt;</div>
+<div class="ttc" id="aclass_barotrauma_1_1_affliction_prefab_1_1_effect_html_ac3d497746b2c1f0d2ca7777139ffa3cf"><div class="ttname"><a href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html#ac3d497746b2c1f0d2ca7777139ffa3cf">Barotrauma.AfflictionPrefab.Effect.Effect</a></div><div class="ttdeci">Effect(ContentXElement element, string parentDebugName)</div><div class="ttdef"><b>Definition:</b> <a href="_affliction_prefab_8cs_source.html#l00418">AfflictionPrefab.cs:418</a></div></div>
+</div><!-- fragment --> <p>&lt;Field identifier="FlagType" type="AbilityFlags" defaultValue="None"&gt; Which ability flag to enable. &lt;/Field&gt; &lt;/Type&gt; &lt;/doc&gt; </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00230">230</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac3d497746b2c1f0d2ca7777139ffa3cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac3d497746b2c1f0d2ca7777139ffa3cf">&#9670;&nbsp;</a></span>Effect()</h2>
@@ -212,86 +239,139 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00242">242</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00418">418</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0cdbc91fb6a32ddf5c03600b670a3a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cdbc91fb6a32ddf5c03600b670a3a1d">&#9670;&nbsp;</a></span>GetStrengthFactor() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.AfflictionPrefab.Effect.GetStrengthFactor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a>&#160;</td>
+          <td class="paramname"><em>affliction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns 0 if affliction.Strength is MinStrength, 1 if affliction.Strength is MaxStrength </p>
+
+</div>
+</div>
+<a id="a83e53e8974362df62163f9514b010587"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83e53e8974362df62163f9514b010587">&#9670;&nbsp;</a></span>GetStrengthFactor() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.AfflictionPrefab.Effect.GetStrengthFactor </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>strength</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns 0 if affliction.Strength is MinStrength, 1 if affliction.Strength is MaxStrength </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af90d73cbbdda0e6a39b0853f96229654"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af90d73cbbdda0e6a39b0853f96229654">&#9670;&nbsp;</a></span>AfflictionAbilityFlags</h2>
+<a id="a40794b75b5ed257fb0811787cfa71fa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40794b75b5ed257fb0811787cfa71fa5">&#9670;&nbsp;</a></span>AfflictionAbilityFlags</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2a">AbilityFlags</a> Barotrauma.AfflictionPrefab.Effect.AfflictionAbilityFlags</td>
+          <td class="memname">readonly <a class="el" href="namespace_barotrauma.html#a58236f02e27bd781c6f1dfe9aa224e2a">AbilityFlags</a> Barotrauma.AfflictionPrefab.Effect.AfflictionAbilityFlags</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00237">237</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00413">413</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
-<a id="a47675d787c0d91e6f4916a16f66cf69c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47675d787c0d91e6f4916a16f66cf69c">&#9670;&nbsp;</a></span>AfflictionStatValues</h2>
+<a id="a71022035abb27e38d4768c21bc9095f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71022035abb27e38d4768c21bc9095f2">&#9670;&nbsp;</a></span>AfflictionStatValues</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly Dictionary&lt;<a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a>, (float minValue, float maxValue)&gt; Barotrauma.AfflictionPrefab.Effect.AfflictionStatValues = new Dictionary&lt;<a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a>, (float minValue, float maxValue)&gt;()</td>
+          <td class="memname">readonly ImmutableDictionary&lt;<a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a>, <a class="el" href="struct_barotrauma_1_1_affliction_prefab_1_1_effect_1_1_applied_stat_value.html">AppliedStatValue</a>&gt; Barotrauma.AfflictionPrefab.Effect.AfflictionStatValues</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00236">236</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>StatType that will be applied to the affected character when the effect is active that is proportional to the effect's strength. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00411">411</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
-<a id="afa6e1ee4cd28641a5f74b081de4802d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa6e1ee4cd28641a5f74b081de4802d5">&#9670;&nbsp;</a></span>StatusEffects</h2>
+<a id="a0ae88aa6fc053793d3c97a9a67a2ca04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae88aa6fc053793d3c97a9a67a2ca04">&#9670;&nbsp;</a></span>BlockTransformation</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a622e8ff5f0d33908eec4c53a86f74434">List</a>&lt;<a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a>&gt; Barotrauma.AfflictionPrefab.Effect.StatusEffects = new <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a622e8ff5f0d33908eec4c53a86f74434">List</a>&lt;<a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a>&gt;()</td>
+          <td class="memname">readonly ImmutableArray&lt;<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&gt; Barotrauma.AfflictionPrefab.Effect.BlockTransformation</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00240">240</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>Prevents AfflictionHusks with the specified identifier(s) from transforming the character into an AI-controlled character. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00406">406</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+
+</div>
+</div>
+<a id="acb1f42612034fff8bc8a3cb6662eaaa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb1f42612034fff8bc8a3cb6662eaaa6">&#9670;&nbsp;</a></span>ResistanceFor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ImmutableArray&lt;<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&gt; Barotrauma.AfflictionPrefab.Effect.ResistanceFor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A list of identifiers of afflictions that the affected character will be resistant to when this effect is active. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00327">327</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+
+</div>
+</div>
+<a id="a33d73bb0df578ceb9ffacb9a21f8701c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d73bb0df578ceb9ffacb9a21f8701c">&#9670;&nbsp;</a></span>StatusEffects</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ImmutableArray&lt;<a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a>&gt; Barotrauma.AfflictionPrefab.Effect.StatusEffects</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00416">416</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a12da993b7e71265b0777ae17ba5f603c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12da993b7e71265b0777ae17ba5f603c">&#9670;&nbsp;</a></span>BlockTransformation</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> [] Barotrauma.AfflictionPrefab.Effect.BlockTransformation</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Prevents AfflictionHusks with the specified identifier(s) from transforming the character into an AI-controlled character </p>
-
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00234">234</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
-
-</div>
-</div>
 <a id="a3339b435e6a9a3aeeea84cda317c73da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3339b435e6a9a3aeeea84cda317c73da">&#9670;&nbsp;</a></span>DialogFlag</h2>
 
@@ -312,7 +392,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00214">214</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00338">338</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -336,7 +416,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00169">169</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00278">278</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -360,7 +440,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00184">184</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00299">299</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -384,7 +464,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00229">229</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00357">357</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -408,7 +488,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00190">190</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00309">309</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -432,7 +512,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00166">166</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00275">275</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -456,7 +536,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00223">223</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00349">349</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -480,7 +560,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00175">175</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00284">284</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -504,7 +584,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00160">160</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00269">269</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -528,7 +608,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00211">211</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00335">335</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -552,7 +632,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00148">148</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00257">257</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -576,7 +656,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00154">154</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00263">263</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -600,7 +680,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00202">202</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00321">321</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -624,7 +704,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00196">196</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00315">315</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -648,7 +728,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00129">129</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00237">237</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -672,7 +752,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00135">135</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00243">243</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -696,7 +776,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00181">181</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00294">294</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -720,7 +800,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00226">226</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00353">353</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -744,7 +824,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00187">187</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00304">304</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -768,7 +848,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00163">163</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00272">272</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -792,7 +872,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00220">220</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00345">345</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -816,7 +896,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00172">172</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00281">281</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -840,7 +920,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00157">157</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00266">266</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -864,7 +944,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00208">208</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00331">331</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -888,7 +968,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00145">145</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00254">254</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -912,7 +992,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00151">151</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00260">260</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -936,7 +1016,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00199">199</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00318">318</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -960,7 +1040,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00193">193</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00312">312</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -984,7 +1064,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00126">126</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00234">234</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1088,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00132">132</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00240">240</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -1032,31 +1112,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00142">142</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
-
-</div>
-</div>
-<a id="a1c268b96f52a633a823f1b70b17f0900"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c268b96f52a633a823f1b70b17f0900">&#9670;&nbsp;</a></span>ResistanceFor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">IReadOnlyList&lt;<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&gt; Barotrauma.AfflictionPrefab.Effect.ResistanceFor</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00205">205</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00251">251</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -1080,7 +1136,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00178">178</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00289">289</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -1104,7 +1160,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00139">139</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00246">246</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -1128,7 +1184,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00217">217</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00341">341</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>

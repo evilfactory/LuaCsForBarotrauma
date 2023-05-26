@@ -15,9 +15,11 @@ var class_barotrauma_1_1_gap =
     [ "Save", "class_barotrauma_1_1_gap.html#af09288a2da41a37a330d5060e2cb929f", null ],
     [ "ShallowRemove", "class_barotrauma_1_1_gap.html#a69c4ea45199c9aac039b29307ff0906b", null ],
     [ "Update", "class_barotrauma_1_1_gap.html#a1203bc7982d3022155f206d62f162b0d", null ],
+    [ "UpdateEditing", "class_barotrauma_1_1_gap.html#a9babe977370b80bb95780284616a845e", null ],
     [ "ConnectedWall", "class_barotrauma_1_1_gap.html#a3cb4fbeaeaa80ef0f1043d507b53e118", null ],
     [ "DisableHullRechecks", "class_barotrauma_1_1_gap.html#aaa31eea70f7ac243fb02e4e5d7a66e51", null ],
     [ "PassAmbientLight", "class_barotrauma_1_1_gap.html#a42879c84cfeaaca15785f70f03ea2b28", null ],
+    [ "properties", "class_barotrauma_1_1_gap.html#aeab433264e304c6e30b78028cdd29f97", null ],
     [ "ConnectedDoor", "class_barotrauma_1_1_gap.html#a61af1acef2cd8e6dbe7e448c855baeaf", null ],
     [ "FlowTargetHull", "class_barotrauma_1_1_gap.html#ae1f06dcbf8ecbc281dec12ddf79b4178", null ],
     [ "IsDiagonal", "class_barotrauma_1_1_gap.html#a57e09152aa3ddeecc11bb2ac9fd166b2", null ],
@@ -28,5 +30,6 @@ var class_barotrauma_1_1_gap =
     [ "Open", "class_barotrauma_1_1_gap.html#a6c3604c368ea80310fcb285700f5fe2b", null ],
     [ "Rect", "class_barotrauma_1_1_gap.html#af4b6015d12be7eb91dc005b0c7ed267c", null ],
     [ "SelectableInEditor", "class_barotrauma_1_1_gap.html#a1dc7fe9d634977599a22abb646b287db", null ],
+    [ "SerializableProperties", "class_barotrauma_1_1_gap.html#a3e71a6608f8f0c01bd0d8b61b618ca57", null ],
     [ "Size", "class_barotrauma_1_1_gap.html#a6390c203f57861735b15c8b552c2acea", null ]
 ];

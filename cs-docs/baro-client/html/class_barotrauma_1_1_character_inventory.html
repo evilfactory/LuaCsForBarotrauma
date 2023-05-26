@@ -148,8 +148,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f708f31c5358b49a2dc2ac355a42e4a"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a1f708f31c5358b49a2dc2ac355a42e4a">TryPutItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, IEnumerable&lt; <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> &gt; allowedSlots=null, bool createNetworkEvent=true, bool ignoreCondition=false)</td></tr>
 <tr class="memdesc:a1f708f31c5358b49a2dc2ac355a42e4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If there is room, puts the item in the inventory and returns true, otherwise returns false  <a href="class_barotrauma_1_1_character_inventory.html#a1f708f31c5358b49a2dc2ac355a42e4a">More...</a><br /></td></tr>
 <tr class="separator:a1f708f31c5358b49a2dc2ac355a42e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a278ddb4263ab3db156b58a0637fe82c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a278ddb4263ab3db156b58a0637fe82c5">CheckIfAnySlotAvailable</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, bool inWrongSlot)</td></tr>
-<tr class="separator:a278ddb4263ab3db156b58a0637fe82c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb7c42226945754ba6dcff84446c0df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a0bb7c42226945754ba6dcff84446c0df">IsAnySlotAvailable</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item)</td></tr>
+<tr class="separator:a0bb7c42226945754ba6dcff84446c0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adde41d26ecfb5e7fa8fbd91fb8806782"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#adde41d26ecfb5e7fa8fbd91fb8806782">TryPutItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index, bool allowSwapping, bool allowCombine, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, bool createNetworkEvent=true, bool ignoreCondition=false)</td></tr>
 <tr class="separator:adde41d26ecfb5e7fa8fbd91fb8806782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1757b1f8906d3695f50b4f74546cb1bd"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a1757b1f8906d3695f50b4f74546cb1bd">CreateSlots</a> ()</td></tr>
@@ -281,8 +281,8 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a37d2213243f7e005cbb967a4de4980eb"><td class="memItemLeft" align="right" valign="top">static readonly List&lt; <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a37d2213243f7e005cbb967a4de4980eb">anySlot</a> = new List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt;() { <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a> }</td></tr>
-<tr class="separator:a37d2213243f7e005cbb967a4de4980eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa209d5c54a96a1ad552145abc473814a"><td class="memItemLeft" align="right" valign="top">static readonly List&lt; <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#aa209d5c54a96a1ad552145abc473814a">AnySlot</a> = new List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt;() { <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a> }</td></tr>
+<tr class="separator:aa209d5c54a96a1ad552145abc473814a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2755d5d2a47397500bdce729db722b64"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a2755d5d2a47397500bdce729db722b64">PersonalSlots</a> = <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025a1d565b9e5303987bb1b1938d5d458bca">InvSlotType.Card</a> | <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025ad3ab3d5184fe9b1b4428e4ffb797bdca">InvSlotType.Bag</a> | <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025ad480b8c7a164e3e8aa55f7f9d214919f">InvSlotType.Headset</a> | <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025a38a379ca78af5eed83204b2645844b05">InvSlotType.InnerClothes</a> | <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aa09e639fa9868276caa45339d3cbda46">InvSlotType.OuterClothes</a> | <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025a98921133d10fbdb0fb6dbb7b2648befe">InvSlotType.Head</a></td></tr>
 <tr class="separator:a2755d5d2a47397500bdce729db722b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4ec6e52da28ee86bd15879758115aef"><td class="memItemLeft" align="right" valign="top">static Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#aa4ec6e52da28ee86bd15879758115aef">SlotSize</a></td></tr>
@@ -655,36 +655,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a278ddb4263ab3db156b58a0637fe82c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a278ddb4263ab3db156b58a0637fe82c5">&#9670;&nbsp;</a></span>CheckIfAnySlotAvailable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Barotrauma.CharacterInventory.CheckIfAnySlotAvailable </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td>
-          <td class="paramname"><em>item</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>inWrongSlot</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00396">396</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
-
-</div>
-</div>
 <a id="a26c0ec17a76f6a84f1aa573d37e879cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26c0ec17a76f6a84f1aa573d37e879cb">&#9670;&nbsp;</a></span>ControlInput()</h2>
 
@@ -896,6 +866,24 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a0bb7c42226945754ba6dcff84446c0df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb7c42226945754ba6dcff84446c0df">&#9670;&nbsp;</a></span>IsAnySlotAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.CharacterInventory.IsAnySlotAvailable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aedb2dcc21e7fc8602383c9ab45738ec2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aedb2dcc21e7fc8602383c9ab45738ec2">&#9670;&nbsp;</a></span>IsInLimbSlot()</h2>
 
@@ -980,7 +968,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a7cd632364a5aae15263b7dba6ddf6f10">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00488">488</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00490">490</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1158,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a06367b7cec638e3938f01e6464bc9d81">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00440">440</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00442">442</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1284,8 +1272,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a37d2213243f7e005cbb967a4de4980eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37d2213243f7e005cbb967a4de4980eb">&#9670;&nbsp;</a></span>anySlot</h2>
+<a id="aa209d5c54a96a1ad552145abc473814a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa209d5c54a96a1ad552145abc473814a">&#9670;&nbsp;</a></span>AnySlot</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1294,7 +1282,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt; Barotrauma.CharacterInventory.anySlot = new List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt;() { <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a> }</td>
+          <td class="memname">readonly List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt; Barotrauma.CharacterInventory.AnySlot = new List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt;() { <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a> }</td>
         </tr>
       </table>
   </td>

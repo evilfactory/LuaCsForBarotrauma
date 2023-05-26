@@ -44,6 +44,7 @@ var class_barotrauma_1_1_character_params =
     [ "CanEat", "class_barotrauma_1_1_character_params.html#a56c15a8a309b8aebb1e601f1c9b11e6b", null ],
     [ "CanInteract", "class_barotrauma_1_1_character_params.html#aaa792e6698322a8716f89f25a1081c2a", null ],
     [ "CanSpeak", "class_barotrauma_1_1_character_params.html#ad735e5a75a3147a56fa4deae6859ccc1", null ],
+    [ "DespawnContainer", "class_barotrauma_1_1_character_params.html#a78e649f7ad5253e7c1334648b1b15b38", null ],
     [ "DisableDistance", "class_barotrauma_1_1_character_params.html#a30be18d5ce558680b2883953939a12f8", null ],
     [ "DisplayName", "class_barotrauma_1_1_character_params.html#a2a394d3ae4cc63394d8b7861762a014f", null ],
     [ "DistantSonarRange", "class_barotrauma_1_1_character_params.html#a3c0197e8f6c96606022f98a521f36127", null ],

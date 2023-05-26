@@ -118,6 +118,7 @@ var namespace_barotrauma_1_1_networking =
       [ "ManageMap", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a933972b63e978d16df66fa1b063c2e0f", null ],
       [ "ManageHires", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a3f8be0667fb37a5f322ffbe39d3bd624", null ],
       [ "ManageBotTalents", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34afe508d13feda9656f900f8e4ef5b3751", null ],
+      [ "SpamImmunity", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34a560545ef46d4154b1c2b80fc424e5e3c", null ],
       [ "All", "namespace_barotrauma_1_1_networking.html#a824d9427da6d3f19a61613a675bf8d34ab1c94ca2fbc3e78fc30069c8d0f01680", null ]
     ] ],
     [ "ConnectionInitialization", "namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390", [

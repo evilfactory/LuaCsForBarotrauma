@@ -92,6 +92,9 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_explosion.html','
 <div class="title">Barotrauma.Explosion Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Explosions are area of effect attacks that can damage characters, items and structures.  
+ <a href="class_barotrauma_1_1_explosion.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -117,20 +120,28 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:abe008fd164eab5d5b6bbe3a4068741e5"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_attack.html">Attack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a></td></tr>
 <tr class="separator:abe008fd164eab5d5b6bbe3a4068741e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af47558acaa25ccefae1ea240a7c68ebe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#af47558acaa25ccefae1ea240a7c68ebe">OnlyInside</a></td></tr>
+<tr class="memdesc:af47558acaa25ccefae1ea240a7c68ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the explosion only affects characters inside a submarine.  <a href="class_barotrauma_1_1_explosion.html#af47558acaa25ccefae1ea240a7c68ebe">More...</a><br /></td></tr>
 <tr class="separator:af47558acaa25ccefae1ea240a7c68ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeddbd20cdf84611edb2d573061a1ba2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#adeddbd20cdf84611edb2d573061a1ba2">OnlyOutside</a></td></tr>
+<tr class="memdesc:adeddbd20cdf84611edb2d573061a1ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the explosion only affects characters outside a submarine.  <a href="class_barotrauma_1_1_explosion.html#adeddbd20cdf84611edb2d573061a1ba2">More...</a><br /></td></tr>
+<tr class="separator:adeddbd20cdf84611edb2d573061a1ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92a961711cdaa87c59928cb7cce9801b"><td class="memItemLeft" align="right" valign="top">readonly HashSet&lt; <a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a92a961711cdaa87c59928cb7cce9801b">IgnoredSubmarines</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_submarine.html">Submarine</a>&gt;()</td></tr>
 <tr class="separator:a92a961711cdaa87c59928cb7cce9801b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a7a34c760861cb332a321c42c79a53693"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a7a34c760861cb332a321c42c79a53693">EmpStrength</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7a34c760861cb332a321c42c79a53693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strength of the EMP effect created by the explosion.  <a href="class_barotrauma_1_1_explosion.html#a7a34c760861cb332a321c42c79a53693">More...</a><br /></td></tr>
 <tr class="separator:a7a34c760861cb332a321c42c79a53693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a404c1ee43221e01d47354a107fd9c524"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_explosion.html#a404c1ee43221e01d47354a107fd9c524">BallastFloraDamage</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a404c1ee43221e01d47354a107fd9c524"><td class="mdescLeft">&#160;</td><td class="mdescRight">How much damage the explosion does to ballast flora.  <a href="class_barotrauma_1_1_explosion.html#a404c1ee43221e01d47354a107fd9c524">More...</a><br /></td></tr>
 <tr class="separator:a404c1ee43221e01d47354a107fd9c524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00013">13</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<div class="textblock"><p>Explosions are area of effect attacks that can damage characters, items and structures. </p>
+<p>&lt;doc&gt; &lt;Field Identifier="showEffects" Type="bool" DefaultValue="true"&gt; Used to enable all particle effects without having to specify them one by one. &lt;/Field&gt; &lt;/doc&gt; </p>
+
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00021">21</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaa9e4b38a519cc31da17fda70346c515"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa9e4b38a519cc31da17fda70346c515">&#9670;&nbsp;</a></span>Explosion() <span class="overload">[1/2]</span></h2>
@@ -188,7 +199,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00046">46</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00178">178</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -218,7 +229,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00063">63</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00195">195</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -238,7 +249,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00110">110</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00240">240</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -274,7 +285,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00120">120</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00250">250</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -324,7 +335,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00538">538</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00674">674</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -394,7 +405,7 @@ Properties</h2></td></tr>
 
 <p>Returns a dictionary where the keys are the structures that took damage and the values are the amount of damage taken </p>
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00460">460</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00589">589</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -411,7 +422,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00015">15</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00023">23</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -427,7 +438,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00040">40</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00166">166</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -443,7 +454,27 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00036">36</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p>Whether the explosion only affects characters inside a submarine. </p>
+
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00154">154</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+
+</div>
+</div>
+<a id="adeddbd20cdf84611edb2d573061a1ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeddbd20cdf84611edb2d573061a1ba2">&#9670;&nbsp;</a></span>OnlyOutside</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.Explosion.OnlyOutside</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the explosion only affects characters outside a submarine. </p>
+
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00159">159</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -468,7 +499,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00044">44</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p>How much damage the explosion does to ballast flora. </p>
+
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00176">176</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>
@@ -492,7 +525,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00042">42</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
+<p>Strength of the EMP effect created by the explosion. </p>
+
+<p class="definition">Definition at line <a class="el" href="_explosion_8cs_source.html#l00171">171</a> of file <a class="el" href="_explosion_8cs_source.html">Explosion.cs</a>.</p>
 
 </div>
 </div>

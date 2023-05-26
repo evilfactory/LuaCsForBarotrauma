@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_s
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    System.IO.Directory.Delete(item.Directory, recursive: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    System.IO.Directory.Delete(item.Directory ?? <span class="stringliteral">&quot;&quot;</span>, recursive: <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                }</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">catch</span></div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                {</div>
@@ -377,7 +377,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_s
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsItemDirectoryUpToDate(in Steamworks.Ugc.Item item)</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <span class="keywordtype">string</span> itemDirectory = item.Directory;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <span class="keywordtype">string</span> itemDirectory = item.Directory ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">return</span> Directory.Exists(itemDirectory)</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    &amp;&amp; File.GetLastWriteTime(itemDirectory).ToUniversalTime() &gt;= item.LatestUpdateTime;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            }</div>
@@ -497,9 +497,9 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_s
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                <span class="keywordflow">if</span> (!(itemNullable is { } item)) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                await Task.Yield();</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                <span class="keywordtype">string</span> itemTitle = item.Title.Trim();</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                <span class="keywordtype">string</span> itemTitle = item.Title?.Trim() ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                UInt64 itemId = item.Id;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                <span class="keywordtype">string</span> itemDirectory = item.Directory;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                <span class="keywordtype">string</span> itemDirectory = item.Directory ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                DateTime updateTime = item.LatestUpdateTime;</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                <span class="keywordflow">if</span> (!CanBeInstalled(item))</div>

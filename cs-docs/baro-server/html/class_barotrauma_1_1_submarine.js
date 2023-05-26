@@ -13,6 +13,7 @@ var class_barotrauma_1_1_submarine =
     [ "DisableObstructedWayPoints", "class_barotrauma_1_1_submarine.html#aa69a0434a3c6d75c6262a9e618fad1cc", null ],
     [ "DisableWreckAI", "class_barotrauma_1_1_submarine.html#a60691446b812cefc4e2769dc6886cbcf", null ],
     [ "Dispose", "class_barotrauma_1_1_submarine.html#a9600b8c39dd0fc8c7712ee427c8927f9", null ],
+    [ "EnableFactionSpecificEntities", "class_barotrauma_1_1_submarine.html#a907911ed2b6acbcfcd7a39008d97f1f6", null ],
     [ "EnableMaintainPosition", "class_barotrauma_1_1_submarine.html#a3871a33ae0a51680dbfc25661a3db744", null ],
     [ "EnableObstructedWaypoints", "class_barotrauma_1_1_submarine.html#aaaece7a1fbbc6dbd354ff1029c12e2e9", null ],
     [ "FindContainerFor", "class_barotrauma_1_1_submarine.html#a15fe99a09f1f3c6f8c0edecb33c51b53", null ],

@@ -7,6 +7,7 @@ var class_barotrauma_1_1_explosion =
     [ "Attack", "class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5", null ],
     [ "IgnoredSubmarines", "class_barotrauma_1_1_explosion.html#a92a961711cdaa87c59928cb7cce9801b", null ],
     [ "OnlyInside", "class_barotrauma_1_1_explosion.html#af47558acaa25ccefae1ea240a7c68ebe", null ],
+    [ "OnlyOutside", "class_barotrauma_1_1_explosion.html#adeddbd20cdf84611edb2d573061a1ba2", null ],
     [ "BallastFloraDamage", "class_barotrauma_1_1_explosion.html#a404c1ee43221e01d47354a107fd9c524", null ],
     [ "EmpStrength", "class_barotrauma_1_1_explosion.html#a7a34c760861cb332a321c42c79a53693", null ]
 ];

@@ -9,6 +9,7 @@ var class_barotrauma_1_1_event =
     [ "Update", "class_barotrauma_1_1_event.html#a27a95c84fb98b963a693f75456ba618f", null ],
     [ "isFinished", "class_barotrauma_1_1_event.html#af932351f2fdc80a72b2d263134b955c3", null ],
     [ "prefab", "class_barotrauma_1_1_event.html#acfd75f688b50d4930e06e44c419b209e", null ],
+    [ "RandomSeed", "class_barotrauma_1_1_event.html#ab093d1b039cdbeb97b508eff1b63ae9e", null ],
     [ "SpawnPosFilter", "class_barotrauma_1_1_event.html#a534d4be1c2a49a1922cac3076b818dc4", null ],
     [ "DebugDrawPos", "class_barotrauma_1_1_event.html#a89f33bf221bc3a419d4a538486e3d750", null ],
     [ "IsFinished", "class_barotrauma_1_1_event.html#a39c118e9d35b5b1de4fb8a93ae2b530c", null ],

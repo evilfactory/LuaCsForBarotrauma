@@ -16,7 +16,6 @@ var class_barotrauma_1_1_job_prefab =
     [ "PreviewItems", "class_barotrauma_1_1_job_prefab.html#ae072d4e54b2ea6f42de2b0ba21b81321", null ],
     [ "Skills", "class_barotrauma_1_1_job_prefab.html#af1a6d7787e9f75615d10bc014c7e0213", null ],
     [ "AllowAlways", "class_barotrauma_1_1_job_prefab.html#a9d4c3af6266368c5c503a933ceacc6ab", null ],
-    [ "Commonness", "class_barotrauma_1_1_job_prefab.html#a3b68aa5994b4b9b635362e246b53fbd9", null ],
     [ "Element", "class_barotrauma_1_1_job_prefab.html#a2738b6be27a02668ad8f3b44d98a5332", null ],
     [ "HiddenJob", "class_barotrauma_1_1_job_prefab.html#afe54daa5778939e349b61cd100a069d0", null ],
     [ "IdleBehavior", "class_barotrauma_1_1_job_prefab.html#a0b9b5c2951e2895be2e84ebecc826e92", null ],

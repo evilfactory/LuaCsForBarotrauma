@@ -14,6 +14,7 @@ var class_barotrauma_1_1_lights_1_1_light_source =
     [ "LightSpriteEffect", "class_barotrauma_1_1_lights_1_1_light_source.html#afc2c09dba25cb008c995b6750ff8f6b4", null ],
     [ "ParentSub", "class_barotrauma_1_1_lights_1_1_light_source.html#ac5abe8428ebd971a5bc1e3f166bb4aa5", null ],
     [ "Priority", "class_barotrauma_1_1_lights_1_1_light_source.html#a973d0f53e25b6c5b9d2b91c8b5a57d71", null ],
+    [ "PriorityMultiplier", "class_barotrauma_1_1_lights_1_1_light_source.html#adfa908a431e79403a3dfc239a3e860a4", null ],
     [ "texture", "class_barotrauma_1_1_lights_1_1_light_source.html#a4126ee4ec5b953b3e3a08ca194a5790d", null ],
     [ "CastShadows", "class_barotrauma_1_1_lights_1_1_light_source.html#ab676526094906e2a65e18a5bffa42c87", null ],
     [ "Color", "class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2", null ],

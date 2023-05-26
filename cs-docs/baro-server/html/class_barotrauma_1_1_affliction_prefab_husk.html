@@ -90,13 +90,16 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_affliction_prefab
 <div class="title">Barotrauma.AfflictionPrefabHusk Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html" title="AfflictionPrefabHusk is a special type of affliction that has added functionality for husk infection.">AfflictionPrefabHusk</a> is a special type of affliction that has added functionality for husk infection.  
+ <a href="class_barotrauma_1_1_affliction_prefab_husk.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Barotrauma.AfflictionPrefabHusk:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_barotrauma_1_1_affliction_prefab_husk.png" usemap="#Barotrauma.AfflictionPrefabHusk_map" alt=""/>
   <map id="Barotrauma.AfflictionPrefabHusk_map" name="Barotrauma.AfflictionPrefabHusk_map">
-<area href="class_barotrauma_1_1_affliction_prefab.html" alt="Barotrauma.AfflictionPrefab" shape="rect" coords="0,112,213,136"/>
+<area href="class_barotrauma_1_1_affliction_prefab.html" title="AfflictionPrefab is a prefab that defines a type of affliction that can be applied to a character...." alt="Barotrauma.AfflictionPrefab" shape="rect" coords="0,112,213,136"/>
 <area href="class_barotrauma_1_1_prefab_with_uint_identifier.html" title="Prefab that has a property serves as a deterministic hash of a prefab&#39;s identifier...." alt="Barotrauma.PrefabWithUintIdentifier" shape="rect" coords="0,56,213,80"/>
 <area href="class_barotrauma_1_1_prefab.html" alt="Barotrauma.Prefab" shape="rect" coords="0,0,213,24"/>
   </map>
@@ -139,99 +142,141 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a874c3391de2ec69863c94c4ec04c259e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33e2826d90fe8ed7b2439f0abbdb1453"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a33e2826d90fe8ed7b2439f0abbdb1453">AttachLimbType</a></td></tr>
 <tr class="separator:a33e2826d90fe8ed7b2439f0abbdb1453"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb2bd4181243e1a8f546054ab543288b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#afb2bd4181243e1a8f546054ab543288b">ActiveThreshold</a></td></tr>
-<tr class="separator:afb2bd4181243e1a8f546054ab543288b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2834c5b81ee460dcd5c109954d0e4ca2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a2834c5b81ee460dcd5c109954d0e4ca2">TransformThresholdOnDeath</a></td></tr>
-<tr class="separator:a2834c5b81ee460dcd5c109954d0e4ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa15b471645607da45ebb9fee769b4654"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#aa15b471645607da45ebb9fee769b4654">DormantThreshold</a></td></tr>
+<tr class="memdesc:aa15b471645607da45ebb9fee769b4654"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum strength at which husk infection will be in the dormant stage. It must be less than or equal to ActiveThreshold.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#aa15b471645607da45ebb9fee769b4654">More...</a><br /></td></tr>
+<tr class="separator:aa15b471645607da45ebb9fee769b4654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7eecdd7c323b4c61fd8d898b9411adf"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#af7eecdd7c323b4c61fd8d898b9411adf">ActiveThreshold</a></td></tr>
+<tr class="memdesc:af7eecdd7c323b4c61fd8d898b9411adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum strength at which husk infection will be in the active stage. It must be greater than or equal to DormantThreshold and less than or equal to TransitionThreshold.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#af7eecdd7c323b4c61fd8d898b9411adf">More...</a><br /></td></tr>
+<tr class="separator:af7eecdd7c323b4c61fd8d898b9411adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9dcdbd67bfad94c0cffd6da0b828582"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#aa9dcdbd67bfad94c0cffd6da0b828582">TransitionThreshold</a></td></tr>
+<tr class="memdesc:aa9dcdbd67bfad94c0cffd6da0b828582"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum strength at which husk infection will be in its final stage. It must be greater than or equal to ActiveThreshold.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#aa9dcdbd67bfad94c0cffd6da0b828582">More...</a><br /></td></tr>
+<tr class="separator:aa9dcdbd67bfad94c0cffd6da0b828582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8347791dad6492f8e9a5a212b494257c"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a8347791dad6492f8e9a5a212b494257c">TransformThresholdOnDeath</a></td></tr>
+<tr class="memdesc:a8347791dad6492f8e9a5a212b494257c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum strength the affliction must have for the affected character to transform into a husk upon death.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#a8347791dad6492f8e9a5a212b494257c">More...</a><br /></td></tr>
+<tr class="separator:a8347791dad6492f8e9a5a212b494257c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef2b69159e4b31faf637248260cf0166"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#aef2b69159e4b31faf637248260cf0166">HuskedSpeciesName</a></td></tr>
+<tr class="memdesc:aef2b69159e4b31faf637248260cf0166"><td class="mdescLeft">&#160;</td><td class="mdescRight">The species of husk to convert the affected character to once husk infection reaches its final stage.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#aef2b69159e4b31faf637248260cf0166">More...</a><br /></td></tr>
 <tr class="separator:aef2b69159e4b31faf637248260cf0166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a596e1d8db38da503a46e209934333699"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a596e1d8db38da503a46e209934333699">TransferBuffs</a></td></tr>
+<tr class="memdesc:a596e1d8db38da503a46e209934333699"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, all buffs are transferred to the converted character after husk transformation is complete.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#a596e1d8db38da503a46e209934333699">More...</a><br /></td></tr>
 <tr class="separator:a596e1d8db38da503a46e209934333699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d4b09e0ae2f7e41a95044724721478"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a96d4b09e0ae2f7e41a95044724721478">SendMessages</a></td></tr>
+<tr class="memdesc:a96d4b09e0ae2f7e41a95044724721478"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, the affected player will see on-screen messages describing husk infection symptoms and affected bots will speak about their current husk infection stage.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#a96d4b09e0ae2f7e41a95044724721478">More...</a><br /></td></tr>
 <tr class="separator:a96d4b09e0ae2f7e41a95044724721478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a591164ce5a0ce4a9d5f362394edda8f6"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a591164ce5a0ce4a9d5f362394edda8f6">CauseSpeechImpediment</a></td></tr>
+<tr class="memdesc:a591164ce5a0ce4a9d5f362394edda8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, affected characters will have their speech impeded once the affliction reaches the dormant stage.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#a591164ce5a0ce4a9d5f362394edda8f6">More...</a><br /></td></tr>
 <tr class="separator:a591164ce5a0ce4a9d5f362394edda8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b5ab4ba7a961368e66fd1e1e10f587e"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a7b5ab4ba7a961368e66fd1e1e10f587e">NeedsAir</a></td></tr>
+<tr class="memdesc:a7b5ab4ba7a961368e66fd1e1e10f587e"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to false, affected characters will no longer require air once the affliction reaches the active stage.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#a7b5ab4ba7a961368e66fd1e1e10f587e">More...</a><br /></td></tr>
 <tr class="separator:a7b5ab4ba7a961368e66fd1e1e10f587e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9562152eb82926c702adc08a5e1cfd25"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html#a9562152eb82926c702adc08a5e1cfd25">ControlHusk</a></td></tr>
+<tr class="memdesc:a9562152eb82926c702adc08a5e1cfd25"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, affected players will retain control of their character after transforming into a husk.  <a href="class_barotrauma_1_1_affliction_prefab_husk.html#a9562152eb82926c702adc08a5e1cfd25">More...</a><br /></td></tr>
 <tr class="separator:a9562152eb82926c702adc08a5e1cfd25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_barotrauma_1_1_affliction_prefab"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_barotrauma_1_1_affliction_prefab')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_affliction_prefab.html">Barotrauma.AfflictionPrefab</a></td></tr>
-<tr class="memitem:abf78b6af69d33f3b9229cb85226e7731 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#abf78b6af69d33f3b9229cb85226e7731">AfflictionType</a></td></tr>
-<tr class="separator:abf78b6af69d33f3b9229cb85226e7731 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f91bd8653f566f8a0b998f8d3a9ab86 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a8f91bd8653f566f8a0b998f8d3a9ab86">LimbSpecific</a></td></tr>
-<tr class="separator:a8f91bd8653f566f8a0b998f8d3a9ab86 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c0cba5c5393e01f44c3f1c2ce8ac538 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a7c0cba5c5393e01f44c3f1c2ce8ac538">IndicatorLimb</a></td></tr>
-<tr class="separator:a7c0cba5c5393e01f44c3f1c2ce8ac538 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4076d2ffee6a19b6e683ed0c492e385 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ab4076d2ffee6a19b6e683ed0c492e385">Name</a></td></tr>
 <tr class="separator:ab4076d2ffee6a19b6e683ed0c492e385 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27546cae2c373498f33f1d1d9d8d841b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a27546cae2c373498f33f1d1d9d8d841b">TranslationIdentifier</a></td></tr>
-<tr class="separator:a27546cae2c373498f33f1d1d9d8d841b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20f248bde91e7e751bb562479cd12e05 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a20f248bde91e7e751bb562479cd12e05">IsBuff</a></td></tr>
-<tr class="separator:a20f248bde91e7e751bb562479cd12e05 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64468c57ef26a027dd3180343d9231e7 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a64468c57ef26a027dd3180343d9231e7">AffectMachines</a></td></tr>
-<tr class="separator:a64468c57ef26a027dd3180343d9231e7 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae24bc9d9f0c4691950c8800ef99503af inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ae24bc9d9f0c4691950c8800ef99503af">HealableInMedicalClinic</a></td></tr>
-<tr class="separator:ae24bc9d9f0c4691950c8800ef99503af inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a548ec39b2497b8dcf9eeb3647fc15b4d inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a548ec39b2497b8dcf9eeb3647fc15b4d">HealCostMultiplier</a></td></tr>
-<tr class="separator:a548ec39b2497b8dcf9eeb3647fc15b4d inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a292c51c43e094a67a66778087dcbf191 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a292c51c43e094a67a66778087dcbf191">BaseHealCost</a></td></tr>
-<tr class="separator:a292c51c43e094a67a66778087dcbf191 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a814b9bdebe0e5cff4e96856f1728a5b0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a814b9bdebe0e5cff4e96856f1728a5b0">ShowBarInHealthMenu</a></td></tr>
-<tr class="separator:a814b9bdebe0e5cff4e96856f1728a5b0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a013638a2c5ac07e767a788f39b3b0f9b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a013638a2c5ac07e767a788f39b3b0f9b">CauseOfDeathDescription</a></td></tr>
 <tr class="separator:a013638a2c5ac07e767a788f39b3b0f9b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca19f231e7a0d94b9228644e353182f3 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly ImmutableList&lt; <a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_description.html">Description</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#aca19f231e7a0d94b9228644e353182f3">Descriptions</a></td></tr>
 <tr class="separator:aca19f231e7a0d94b9228644e353182f3 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf78b6af69d33f3b9229cb85226e7731 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#abf78b6af69d33f3b9229cb85226e7731">AfflictionType</a></td></tr>
+<tr class="memdesc:abf78b6af69d33f3b9229cb85226e7731 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arbitrary string that is used to identify the type of the affliction.  <a href="class_barotrauma_1_1_affliction_prefab.html#abf78b6af69d33f3b9229cb85226e7731">More...</a><br /></td></tr>
+<tr class="separator:abf78b6af69d33f3b9229cb85226e7731 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f91bd8653f566f8a0b998f8d3a9ab86 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a8f91bd8653f566f8a0b998f8d3a9ab86">LimbSpecific</a></td></tr>
+<tr class="memdesc:a8f91bd8653f566f8a0b998f8d3a9ab86 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, the affliction affects individual limbs. Otherwise, it affects the whole character.  <a href="class_barotrauma_1_1_affliction_prefab.html#a8f91bd8653f566f8a0b998f8d3a9ab86">More...</a><br /></td></tr>
+<tr class="separator:a8f91bd8653f566f8a0b998f8d3a9ab86 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0cba5c5393e01f44c3f1c2ce8ac538 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a7c0cba5c5393e01f44c3f1c2ce8ac538">IndicatorLimb</a></td></tr>
+<tr class="memdesc:a7c0cba5c5393e01f44c3f1c2ce8ac538 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the affliction doesn't affect individual limbs, this attribute determines where the game will render the affliction's indicator when viewed in the in-game health UI.  <a href="class_barotrauma_1_1_affliction_prefab.html#a7c0cba5c5393e01f44c3f1c2ce8ac538">More...</a><br /></td></tr>
+<tr class="separator:a7c0cba5c5393e01f44c3f1c2ce8ac538 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27546cae2c373498f33f1d1d9d8d841b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a27546cae2c373498f33f1d1d9d8d841b">TranslationIdentifier</a></td></tr>
+<tr class="memdesc:a27546cae2c373498f33f1d1d9d8d841b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can be set to the identifier of another affliction to make this affliction reuse the same name and description.  <a href="class_barotrauma_1_1_affliction_prefab.html#a27546cae2c373498f33f1d1d9d8d841b">More...</a><br /></td></tr>
+<tr class="separator:a27546cae2c373498f33f1d1d9d8d841b inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f248bde91e7e751bb562479cd12e05 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a20f248bde91e7e751bb562479cd12e05">IsBuff</a></td></tr>
+<tr class="memdesc:a20f248bde91e7e751bb562479cd12e05 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, the game will recognize this affliction as a buff. This means, among other things, that bots won't attempt to treat it, and the health UI will render the affected limb in green rather than red.  <a href="class_barotrauma_1_1_affliction_prefab.html#a20f248bde91e7e751bb562479cd12e05">More...</a><br /></td></tr>
+<tr class="separator:a20f248bde91e7e751bb562479cd12e05 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64468c57ef26a027dd3180343d9231e7 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a64468c57ef26a027dd3180343d9231e7">AffectMachines</a></td></tr>
+<tr class="memdesc:a64468c57ef26a027dd3180343d9231e7 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, this affliction can affect characters that are marked as machines, such as the Fractal Guardian.  <a href="class_barotrauma_1_1_affliction_prefab.html#a64468c57ef26a027dd3180343d9231e7">More...</a><br /></td></tr>
+<tr class="separator:a64468c57ef26a027dd3180343d9231e7 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae24bc9d9f0c4691950c8800ef99503af inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ae24bc9d9f0c4691950c8800ef99503af">HealableInMedicalClinic</a></td></tr>
+<tr class="memdesc:ae24bc9d9f0c4691950c8800ef99503af inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, this affliction can be healed at the medical clinic.  <a href="class_barotrauma_1_1_affliction_prefab.html#ae24bc9d9f0c4691950c8800ef99503af">More...</a><br /></td></tr>
+<tr class="separator:ae24bc9d9f0c4691950c8800ef99503af inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a548ec39b2497b8dcf9eeb3647fc15b4d inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a548ec39b2497b8dcf9eeb3647fc15b4d">HealCostMultiplier</a></td></tr>
+<tr class="memdesc:a548ec39b2497b8dcf9eeb3647fc15b4d inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How much each unit of this affliction's strength will add to the cost of healing at the medical clinic.  <a href="class_barotrauma_1_1_affliction_prefab.html#a548ec39b2497b8dcf9eeb3647fc15b4d">More...</a><br /></td></tr>
+<tr class="separator:a548ec39b2497b8dcf9eeb3647fc15b4d inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a292c51c43e094a67a66778087dcbf191 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a292c51c43e094a67a66778087dcbf191">BaseHealCost</a></td></tr>
+<tr class="memdesc:a292c51c43e094a67a66778087dcbf191 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum cost of healing this affliction at the medical clinic.  <a href="class_barotrauma_1_1_affliction_prefab.html#a292c51c43e094a67a66778087dcbf191">More...</a><br /></td></tr>
+<tr class="separator:a292c51c43e094a67a66778087dcbf191 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814b9bdebe0e5cff4e96856f1728a5b0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a814b9bdebe0e5cff4e96856f1728a5b0">ShowBarInHealthMenu</a></td></tr>
+<tr class="memdesc:a814b9bdebe0e5cff4e96856f1728a5b0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to false, the health UI will not show the strength of the affliction as a bar under its indicator.  <a href="class_barotrauma_1_1_affliction_prefab.html#a814b9bdebe0e5cff4e96856f1728a5b0">More...</a><br /></td></tr>
+<tr class="separator:a814b9bdebe0e5cff4e96856f1728a5b0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60f62388948fff1d8c3dbf4c159e0a1c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a60f62388948fff1d8c3dbf4c159e0a1c">HideIconAfterDelay</a></td></tr>
+<tr class="memdesc:a60f62388948fff1d8c3dbf4c159e0a1c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, this affliction's icon will be hidden from the HUD after 5 seconds.  <a href="class_barotrauma_1_1_affliction_prefab.html#a60f62388948fff1d8c3dbf4c159e0a1c">More...</a><br /></td></tr>
 <tr class="separator:a60f62388948fff1d8c3dbf4c159e0a1c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad357f59d11296cbe03933ebaa715713c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ad357f59d11296cbe03933ebaa715713c">ActivationThreshold</a> = 0.0f</td></tr>
+<tr class="memdesc:ad357f59d11296cbe03933ebaa715713c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How high the strength has to be for the affliction to take effect  <a href="class_barotrauma_1_1_affliction_prefab.html#ad357f59d11296cbe03933ebaa715713c">More...</a><br /></td></tr>
 <tr class="separator:ad357f59d11296cbe03933ebaa715713c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf21ae6ee3c40a1ed991dfff3e1e4b7f inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#adf21ae6ee3c40a1ed991dfff3e1e4b7f">ShowIconThreshold</a> = 0.05f</td></tr>
+<tr class="memdesc:adf21ae6ee3c40a1ed991dfff3e1e4b7f inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How high the strength has to be for the affliction icon to be shown in the UI  <a href="class_barotrauma_1_1_affliction_prefab.html#adf21ae6ee3c40a1ed991dfff3e1e4b7f">More...</a><br /></td></tr>
 <tr class="separator:adf21ae6ee3c40a1ed991dfff3e1e4b7f inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51fa2c0e6da3a5a3d90b697c78d51d29 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a51fa2c0e6da3a5a3d90b697c78d51d29">ShowIconToOthersThreshold</a> = 0.05f</td></tr>
+<tr class="memdesc:a51fa2c0e6da3a5a3d90b697c78d51d29 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How high the strength has to be for the affliction icon to be shown to others with a health scanner or via the health interface  <a href="class_barotrauma_1_1_affliction_prefab.html#a51fa2c0e6da3a5a3d90b697c78d51d29">More...</a><br /></td></tr>
 <tr class="separator:a51fa2c0e6da3a5a3d90b697c78d51d29 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99af37a7dfdf1b8cf7bc652fb5c4cd8c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a99af37a7dfdf1b8cf7bc652fb5c4cd8c">MaxStrength</a> = 100.0f</td></tr>
+<tr class="memdesc:a99af37a7dfdf1b8cf7bc652fb5c4cd8c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum strength this affliction can have.  <a href="class_barotrauma_1_1_affliction_prefab.html#a99af37a7dfdf1b8cf7bc652fb5c4cd8c">More...</a><br /></td></tr>
 <tr class="separator:a99af37a7dfdf1b8cf7bc652fb5c4cd8c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae95baaa61879d5d5b408e72dd14dacac inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ae95baaa61879d5d5b408e72dd14dacac">GrainBurst</a></td></tr>
+<tr class="memdesc:ae95baaa61879d5d5b408e72dd14dacac inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The strength of the radiation grain effect to apply when the strength of this affliction increases.  <a href="class_barotrauma_1_1_affliction_prefab.html#ae95baaa61879d5d5b408e72dd14dacac">More...</a><br /></td></tr>
 <tr class="separator:ae95baaa61879d5d5b408e72dd14dacac inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac725802b39cf005071fb6b8234d19ce2 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ac725802b39cf005071fb6b8234d19ce2">ShowInHealthScannerThreshold</a> = 0.05f</td></tr>
+<tr class="memdesc:ac725802b39cf005071fb6b8234d19ce2 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How high the strength has to be for the affliction icon to be shown with a health scanner  <a href="class_barotrauma_1_1_affliction_prefab.html#ac725802b39cf005071fb6b8234d19ce2">More...</a><br /></td></tr>
 <tr class="separator:ac725802b39cf005071fb6b8234d19ce2 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac84250ed13fb8a7164bed280b1c518aa inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ac84250ed13fb8a7164bed280b1c518aa">TreatmentThreshold</a> = 5.0f</td></tr>
+<tr class="memdesc:ac84250ed13fb8a7164bed280b1c518aa inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How strong the affliction needs to be before bots attempt to treat it. Also effects when the affliction is shown in the suitable treatments list.  <a href="class_barotrauma_1_1_affliction_prefab.html#ac84250ed13fb8a7164bed280b1c518aa">More...</a><br /></td></tr>
 <tr class="separator:ac84250ed13fb8a7164bed280b1c518aa inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2218f6e041cf066585d9cf0261c75143 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">ImmutableHashSet&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a2218f6e041cf066585d9cf0261c75143">IgnoreTreatmentIfAfflictedBy</a></td></tr>
 <tr class="memdesc:a2218f6e041cf066585d9cf0261c75143 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bots will not try to treat the affliction if the character has any of these afflictions  <a href="class_barotrauma_1_1_affliction_prefab.html#a2218f6e041cf066585d9cf0261c75143">More...</a><br /></td></tr>
 <tr class="separator:a2218f6e041cf066585d9cf0261c75143 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5bb4d49870d83233c4b3e756a74ece3 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ab5bb4d49870d83233c4b3e756a74ece3">Duration</a></td></tr>
-<tr class="memdesc:ab5bb4d49870d83233c4b3e756a74ece3 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The affliction is automatically removed after this time. 0 = unlimited  <a href="class_barotrauma_1_1_affliction_prefab.html#ab5bb4d49870d83233c4b3e756a74ece3">More...</a><br /></td></tr>
+<tr class="memdesc:ab5bb4d49870d83233c4b3e756a74ece3 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">The duration of the affliction, in seconds. If set to 0, the affliction does not expire.  <a href="class_barotrauma_1_1_affliction_prefab.html#ab5bb4d49870d83233c4b3e756a74ece3">More...</a><br /></td></tr>
 <tr class="separator:ab5bb4d49870d83233c4b3e756a74ece3 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15c53c6b451bdf288ff778b8feca9775 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a15c53c6b451bdf288ff778b8feca9775">KarmaChangeOnApplied</a></td></tr>
+<tr class="memdesc:a15c53c6b451bdf288ff778b8feca9775 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">How much karma changes when a player applies this affliction to someone (per strength of the affliction)  <a href="class_barotrauma_1_1_affliction_prefab.html#a15c53c6b451bdf288ff778b8feca9775">More...</a><br /></td></tr>
 <tr class="separator:a15c53c6b451bdf288ff778b8feca9775 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13bcb726cfa3a1aeefa9538cb6ef53fa inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a13bcb726cfa3a1aeefa9538cb6ef53fa">BurnOverlayAlpha</a></td></tr>
+<tr class="memdesc:a13bcb726cfa3a1aeefa9538cb6ef53fa inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opacity of the burn effect (darker tint) on limbs affected by this affliction. 1 = full strength.  <a href="class_barotrauma_1_1_affliction_prefab.html#a13bcb726cfa3a1aeefa9538cb6ef53fa">More...</a><br /></td></tr>
 <tr class="separator:a13bcb726cfa3a1aeefa9538cb6ef53fa inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1b1f23c2a8677b4e66c604a76a1571c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ad1b1f23c2a8677b4e66c604a76a1571c">DamageOverlayAlpha</a></td></tr>
+<tr class="memdesc:ad1b1f23c2a8677b4e66c604a76a1571c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opacity of the bloody damage overlay on limbs affected by this affliction. 1 = full strength.  <a href="class_barotrauma_1_1_affliction_prefab.html#ad1b1f23c2a8677b4e66c604a76a1571c">More...</a><br /></td></tr>
 <tr class="separator:ad1b1f23c2a8677b4e66c604a76a1571c inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21a05c8cdac6ed0aa29f530253cd0340 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a21a05c8cdac6ed0aa29f530253cd0340">AchievementOnReceived</a></td></tr>
 <tr class="separator:a21a05c8cdac6ed0aa29f530253cd0340 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f569d30df8e25d21897c681694958f0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a2f569d30df8e25d21897c681694958f0">AchievementOnRemoved</a></td></tr>
+<tr class="memdesc:a2f569d30df8e25d21897c681694958f0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_barotrauma_1_1_steam.html">Steam</a> achievement given when the affliction is removed from the controlled character.  <a href="class_barotrauma_1_1_affliction_prefab.html#a2f569d30df8e25d21897c681694958f0">More...</a><br /></td></tr>
 <tr class="separator:a2f569d30df8e25d21897c681694958f0 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae73d55ddbc27683418e67d4bfc72b859 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ae73d55ddbc27683418e67d4bfc72b859">Icon</a></td></tr>
-<tr class="separator:ae73d55ddbc27683418e67d4bfc72b859 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b2b839f204655d48ef957af18267211 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly Color[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a6b2b839f204655d48ef957af18267211">IconColors</a></td></tr>
+<tr class="memdesc:a6b2b839f204655d48ef957af18267211 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">A gradient that defines which color to render this affliction's icon with, based on the affliction's current strength.  <a href="class_barotrauma_1_1_affliction_prefab.html#a6b2b839f204655d48ef957af18267211">More...</a><br /></td></tr>
 <tr class="separator:a6b2b839f204655d48ef957af18267211 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd405d37942aa354e5ff86cdadf25159 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#afd405d37942aa354e5ff86cdadf25159">AfflictionOverlay</a></td></tr>
-<tr class="separator:afd405d37942aa354e5ff86cdadf25159 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ca00d321ff3c0d4cdd5de97095bc853 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a0ca00d321ff3c0d4cdd5de97095bc853">AfflictionOverlayAlphaIsLinear</a></td></tr>
+<tr class="memdesc:a0ca00d321ff3c0d4cdd5de97095bc853 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true and the affliction has an AfflictionOverlay element, the overlay's opacity will be strictly proportional to its strength. Otherwise, the overlay's opacity will be determined based on its activation threshold and effects.  <a href="class_barotrauma_1_1_affliction_prefab.html#a0ca00d321ff3c0d4cdd5de97095bc853">More...</a><br /></td></tr>
 <tr class="separator:a0ca00d321ff3c0d4cdd5de97095bc853 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ed9228a056a1756cbc6f17632b6ca6a inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a1ed9228a056a1756cbc6f17632b6ca6a">ResetBetweenRounds</a></td></tr>
+<tr class="memdesc:a1ed9228a056a1756cbc6f17632b6ca6a inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, this affliction will not persist between rounds.  <a href="class_barotrauma_1_1_affliction_prefab.html#a1ed9228a056a1756cbc6f17632b6ca6a">More...</a><br /></td></tr>
+<tr class="separator:a1ed9228a056a1756cbc6f17632b6ca6a inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf3dbe440c23f3b5fedb69edb8e27911 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#abf3dbe440c23f3b5fedb69edb8e27911">DamageParticles</a></td></tr>
+<tr class="memdesc:abf3dbe440c23f3b5fedb69edb8e27911 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Should damage particles be emitted when a character receives this affliction? Only relevant if the affliction is of the type "bleeding" or "damage".  <a href="class_barotrauma_1_1_affliction_prefab.html#abf3dbe440c23f3b5fedb69edb8e27911">More...</a><br /></td></tr>
 <tr class="separator:abf3dbe440c23f3b5fedb69edb8e27911 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af030d8a23ca1f3d5799f95c3591d6b3e inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#af030d8a23ca1f3d5799f95c3591d6b3e">MedicalSkillGain</a></td></tr>
-<tr class="memdesc:af030d8a23ca1f3d5799f95c3591d6b3e inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary modifier that affects how much medical skill is increased when you apply the affliction on a target. If the affliction causes damage or is of type poison or paralysis, the skill is increased only when the target is hostile. If the affliction is of type buff, the skill is increased only when the target is friendly.  <a href="class_barotrauma_1_1_affliction_prefab.html#af030d8a23ca1f3d5799f95c3591d6b3e">More...</a><br /></td></tr>
+<tr class="memdesc:af030d8a23ca1f3d5799f95c3591d6b3e inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary modifier that affects how much medical skill is increased when you apply the affliction on a target. If the affliction causes damage or is of the 'poison' or 'paralysis' type, the skill is increased only when the target is hostile. If the affliction is of the 'buff' type, the skill is increased only when the target is friendly.  <a href="class_barotrauma_1_1_affliction_prefab.html#af030d8a23ca1f3d5799f95c3591d6b3e">More...</a><br /></td></tr>
 <tr class="separator:af030d8a23ca1f3d5799f95c3591d6b3e inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d29cdf13f37b687cb5f996d8bc921e9 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a7d29cdf13f37b687cb5f996d8bc921e9">WeaponsSkillGain</a></td></tr>
 <tr class="memdesc:a7d29cdf13f37b687cb5f996d8bc921e9 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary modifier that affects how much weapons skill is increased when you apply the affliction on a target. The skill is increased only when the target is hostile.  <a href="class_barotrauma_1_1_affliction_prefab.html#a7d29cdf13f37b687cb5f996d8bc921e9">More...</a><br /></td></tr>
 <tr class="separator:a7d29cdf13f37b687cb5f996d8bc921e9 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ed9228a056a1756cbc6f17632b6ca6a inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a1ed9228a056a1756cbc6f17632b6ca6a">ResetBetweenRounds</a></td></tr>
-<tr class="separator:a1ed9228a056a1756cbc6f17632b6ca6a inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73d55ddbc27683418e67d4bfc72b859 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#ae73d55ddbc27683418e67d4bfc72b859">Icon</a></td></tr>
+<tr class="memdesc:ae73d55ddbc27683418e67d4bfc72b859 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">An icon that’s used in the UI to represent this affliction.  <a href="class_barotrauma_1_1_affliction_prefab.html#ae73d55ddbc27683418e67d4bfc72b859">More...</a><br /></td></tr>
+<tr class="separator:ae73d55ddbc27683418e67d4bfc72b859 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd405d37942aa354e5ff86cdadf25159 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#afd405d37942aa354e5ff86cdadf25159">AfflictionOverlay</a></td></tr>
+<tr class="memdesc:afd405d37942aa354e5ff86cdadf25159 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">A sprite that covers the affected player's entire screen when this affliction is active. Its opacity is controlled by the active effect's MinAfflictionOverlayAlphaMultiplier and MaxAfflictionOverlayAlphaMultiplier  <a href="class_barotrauma_1_1_affliction_prefab.html#afd405d37942aa354e5ff86cdadf25159">More...</a><br /></td></tr>
+<tr class="separator:afd405d37942aa354e5ff86cdadf25159 inherit pub_attribs_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_barotrauma_1_1_prefab"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_barotrauma_1_1_prefab')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_prefab.html">Barotrauma.Prefab</a></td></tr>
 <tr class="memitem:af02707f77b17e23dd22af51e35c45c81 inherit pub_attribs_class_barotrauma_1_1_prefab"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_prefab.html#af02707f77b17e23dd22af51e35c45c81">Identifier</a></td></tr>
 <tr class="separator:af02707f77b17e23dd22af51e35c45c81 inherit pub_attribs_class_barotrauma_1_1_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -307,12 +352,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ad17591b551f5ee9154813457d9e34e00 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622e8ff5f0d33908eec4c53a86f74434 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_affliction_prefab.html">AfflictionPrefab</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a622e8ff5f0d33908eec4c53a86f74434">List</a><code> [get]</code></td></tr>
 <tr class="separator:a622e8ff5f0d33908eec4c53a86f74434 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6af0f1f6c58383fefd6569755492f1d6 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a6af0f1f6c58383fefd6569755492f1d6">TargetSpecies</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a6af0f1f6c58383fefd6569755492f1d6 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of species this affliction is allowed to affect.  <a href="class_barotrauma_1_1_affliction_prefab.html#a6af0f1f6c58383fefd6569755492f1d6">More...</a><br /></td></tr>
+<tr class="separator:a6af0f1f6c58383fefd6569755492f1d6 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a621faf8bc39bcac0ddac37728f109f4b inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_effect.html">Effect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a621faf8bc39bcac0ddac37728f109f4b">Effects</a><code> [get]</code></td></tr>
 <tr class="separator:a621faf8bc39bcac0ddac37728f109f4b inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06d2492cde8586fc8898c10be8449c46 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">IList&lt; <a class="el" href="class_barotrauma_1_1_affliction_prefab_1_1_periodic_effect.html">PeriodicEffect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46">PeriodicEffects</a><code> [get]</code></td></tr>
 <tr class="separator:a06d2492cde8586fc8898c10be8449c46 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6af0f1f6c58383fefd6569755492f1d6 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a6af0f1f6c58383fefd6569755492f1d6">TargetSpecies</a><code> [get, protected set]</code></td></tr>
-<tr class="separator:a6af0f1f6c58383fefd6569755492f1d6 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6fe5ef478e3d35b9fbbcfe7e0177161 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; KeyValuePair&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>, float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_affliction_prefab.html#aa6fe5ef478e3d35b9fbbcfe7e0177161">TreatmentSuitability</a><code> [get]</code></td></tr>
 <tr class="separator:aa6fe5ef478e3d35b9fbbcfe7e0177161 inherit properties_class_barotrauma_1_1_affliction_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_barotrauma_1_1_prefab_with_uint_identifier"><td colspan="2" onclick="javascript:toggleInherit('properties_class_barotrauma_1_1_prefab_with_uint_identifier')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">Barotrauma.PrefabWithUintIdentifier</a></td></tr>
@@ -325,8 +371,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ae7975dad30a25cda8396800b8351fe8c inherit properties_class_barotrauma_1_1_prefab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00059">59</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<div class="textblock"><p><a class="el" href="class_barotrauma_1_1_affliction_prefab_husk.html" title="AfflictionPrefabHusk is a special type of affliction that has added functionality for husk infection.">AfflictionPrefabHusk</a> is a special type of affliction that has added functionality for husk infection. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00063">63</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad7c5b39b45b9e07865db86f29ec55e4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7c5b39b45b9e07865db86f29ec55e4a">&#9670;&nbsp;</a></span>AfflictionPrefabHusk()</h2>
@@ -360,24 +407,26 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00061">61</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00131">131</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="afb2bd4181243e1a8f546054ab543288b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb2bd4181243e1a8f546054ab543288b">&#9670;&nbsp;</a></span>ActiveThreshold</h2>
+<a id="af7eecdd7c323b4c61fd8d898b9411adf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7eecdd7c323b4c61fd8d898b9411adf">&#9670;&nbsp;</a></span>ActiveThreshold</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Barotrauma.AfflictionPrefabHusk.ActiveThreshold</td>
+          <td class="memname">readonly float Barotrauma.AfflictionPrefabHusk.ActiveThreshold</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00108">108</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>The minimum strength at which husk infection will be in the active stage. It must be greater than or equal to DormantThreshold and less than or equal to TransitionThreshold. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00081">81</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -393,7 +442,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00104">104</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00067">67</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -409,7 +458,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00105">105</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00068">68</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -425,7 +474,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00106">106</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00069">69</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -441,7 +490,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00115">115</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>If set to true, affected characters will have their speech impeded once the affliction reaches the dormant stage. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00117">117</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -457,7 +508,27 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00117">117</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>If set to true, affected players will retain control of their character after transforming into a husk. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00129">129</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa15b471645607da45ebb9fee769b4654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa15b471645607da45ebb9fee769b4654">&#9670;&nbsp;</a></span>DormantThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float Barotrauma.AfflictionPrefabHusk.DormantThreshold</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The minimum strength at which husk infection will be in the dormant stage. It must be less than or equal to ActiveThreshold. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00075">75</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -473,7 +544,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00111">111</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>The species of husk to convert the affected character to once husk infection reaches its final stage. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00099">99</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -489,7 +562,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00116">116</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>If set to false, affected characters will no longer require air once the affliction reaches the active stage. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00123">123</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -505,7 +580,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00114">114</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>If set to true, the affected player will see on-screen messages describing husk infection symptoms and affected bots will speak about their current husk infection stage. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00111">111</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -521,23 +598,45 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00113">113</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>If set to true, all buffs are transferred to the converted character after husk transformation is complete. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00105">105</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>
-<a id="a2834c5b81ee460dcd5c109954d0e4ca2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2834c5b81ee460dcd5c109954d0e4ca2">&#9670;&nbsp;</a></span>TransformThresholdOnDeath</h2>
+<a id="a8347791dad6492f8e9a5a212b494257c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8347791dad6492f8e9a5a212b494257c">&#9670;&nbsp;</a></span>TransformThresholdOnDeath</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Barotrauma.AfflictionPrefabHusk.TransformThresholdOnDeath</td>
+          <td class="memname">readonly float Barotrauma.AfflictionPrefabHusk.TransformThresholdOnDeath</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00109">109</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+<p>The minimum strength the affliction must have for the affected character to transform into a husk upon death. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00093">93</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa9dcdbd67bfad94c0cffd6da0b828582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9dcdbd67bfad94c0cffd6da0b828582">&#9670;&nbsp;</a></span>TransitionThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float Barotrauma.AfflictionPrefabHusk.TransitionThreshold</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The minimum strength at which husk infection will be in its final stage. It must be greater than or equal to ActiveThreshold. </p>
+
+<p class="definition">Definition at line <a class="el" href="_affliction_prefab_8cs_source.html#l00087">87</a> of file <a class="el" href="_affliction_prefab_8cs_source.html">AfflictionPrefab.cs</a>.</p>
 
 </div>
 </div>

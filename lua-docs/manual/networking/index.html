@@ -18,8 +18,8 @@ In singleplayer the global variable `CLIENT` is set to true and `Game.IsSinglepl
 The server is responsible f..." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=34f7917" />
-    <link rel="stylesheet" href="../../highlight.css?v=a7e452f" />
+    <link rel="stylesheet" href="../../ldoc.css?v=723ba2f" />
+    <link rel="stylesheet" href="../../highlight.css?v=0dc1bb0" />
   </head>
 
   <body>
@@ -240,9 +240,6 @@ The server is responsible f..." />
                 </li>
 
                     <li>
-                      <span class="realm shared"></span><a href="../../code/affliction/#AdditionStrength"><span>AdditionStrength</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/affliction/#AppliedAsFailedTreatmentTime"><span>AppliedAsFailedTreatmentTime</span></a>
                     </li>
                     <li>
@@ -261,10 +258,10 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/affliction/#Duration"><span>Duration</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/affliction/#Identifier"><span>Identifier</span></a>
+                      <span class="realm shared"></span><a href="../../code/affliction/#GrainEffectStrength"><span>GrainEffectStrength</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/affliction/#MultiplierSource"><span>MultiplierSource</span></a>
+                      <span class="realm shared"></span><a href="../../code/affliction/#Identifier"><span>Identifier</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/affliction/#MultiplyByMaxVitality"><span>MultiplyByMaxVitality</span></a>
@@ -276,7 +273,7 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/affliction/#NonClampedStrength"><span>NonClampedStrength</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/affliction/#PendingAdditionStrength"><span>PendingAdditionStrength</span></a>
+                      <span class="realm shared"></span><a href="../../code/affliction/#PendingGrainEffectStrength"><span>PendingGrainEffectStrength</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/affliction/#PeriodicEffectTimers"><span>PeriodicEffectTimers</span></a>
@@ -1361,6 +1358,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/character/#RecordKill"><span>RecordKill</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#ReleaseSecondaryItem"><span>ReleaseSecondaryItem</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#ReloadHead"><span>ReloadHead</span></a>
                     </li>
                     <li>
@@ -1609,6 +1609,9 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#CharacterHealth"><span>CharacterHealth</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#CharacterTalents"><span>CharacterTalents</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#ChromaticAberrationStrength"><span>ChromaticAberrationStrength</span></a>
@@ -2204,9 +2207,6 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetActiveAfflictionTags"><span>GetActiveAfflictionTags</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/characterhealth/#GetActiveAfflictionTags"><span>GetActiveAfflictionTags</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetAffliction"><span>GetAffliction</span></a>
                     </li>
                     <li>
@@ -2349,6 +2349,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterhealth/#CharacterHealth.DamageOverlay"><span>CharacterHealth.DamageOverlay</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#CharacterHealth.DefaultFaceTint"><span>CharacterHealth.DefaultFaceTint</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#CharacterHealth.InsufficientOxygenThreshold"><span>CharacterHealth.InsufficientOxygenThreshold</span></a>
                     </li>
                     <li>
@@ -2362,9 +2365,6 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#DamageOverlayTimer"><span>DamageOverlayTimer</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/characterhealth/#DefaultFaceTint"><span>DefaultFaceTint</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/characterhealth/#DisplayVitalityDelay"><span>DisplayVitalityDelay</span></a>
@@ -2588,6 +2588,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterinfo/#GetSavedStatValue"><span>GetSavedStatValue</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#GetSavedStatValueWithBotsInMp"><span>GetSavedStatValueWithBotsInMp</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterinfo/#GetTotalTalentPoints"><span>GetTotalTalentPoints</span></a>
                     </li>
                     <li>
@@ -2612,13 +2615,13 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterinfo/#LoadHeadAttachments"><span>LoadHeadAttachments</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
-                    </li>
-                    <li>
                       <span class="realm client"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinfo/#RefreshHead"><span>RefreshHead</span></a>
@@ -2876,9 +2879,6 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterinventory/#CanBePutInSlot"><span>CanBePutInSlot</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/characterinventory/#CheckIfAnySlotAvailable"><span>CheckIfAnySlotAvailable</span></a>
-                    </li>
-                    <li>
                       <span class="realm client"></span><a href="../../code/characterinventory/#ClearSubInventories"><span>ClearSubInventories</span></a>
                     </li>
                     <li>
@@ -2972,6 +2972,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterinventory/#HowManyCanBePut"><span>HowManyCanBePut</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterinventory/#IsAnySlotAvailable"><span>IsAnySlotAvailable</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#IsEmpty"><span>IsEmpty</span></a>
                     </li>
                     <li>
@@ -3063,6 +3066,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/characterinventory/#Capacity"><span>Capacity</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterinventory/#CharacterInventory.AnySlot"><span>CharacterInventory.AnySlot</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#CharacterInventory.LimbSlotIcons"><span>CharacterInventory.LimbSlotIcons</span></a>
                     </li>
                     <li>
@@ -3070,9 +3076,6 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/characterinventory/#CharacterInventory.SlotSize"><span>CharacterInventory.SlotSize</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/characterinventory/#CharacterInventory.anySlot"><span>CharacterInventory.anySlot</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#CurrentLayout"><span>CurrentLayout</span></a>
@@ -3206,10 +3209,10 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/client/#RemovePermission"><span>RemovePermission</span></a>
                     </li>
                     <li>
-                      <span class="realm client"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
+                      <span class="realm server"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
                     </li>
                     <li>
-                      <span class="realm server"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
+                      <span class="realm client"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/client/#SessionOrAccountIdMatches"><span>SessionOrAccountIdMatches</span></a>
@@ -3451,6 +3454,9 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm server"></span><a href="../../code/client/#UnreceivedEntityEventCount"><span>UnreceivedEntityEventCount</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/client/#UsingFreeCam"><span>UsingFreeCam</span></a>
                     </li>
                     <li>
                       <span class="realm server"></span><a href="../../code/client/#VoiceEnabled"><span>VoiceEnabled</span></a>
@@ -4716,6 +4722,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#DisallowKickVoteTime"><span>DisallowKickVoteTime</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#EnableDoSProtection"><span>EnableDoSProtection</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#EnableUPnP"><span>EnableUPnP</span></a>
                     </li>
                     <li>
@@ -4780,6 +4789,9 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#MaxBotCount"><span>MaxBotCount</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#MaxPacketAmount"><span>MaxPacketAmount</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#MaxPasswordRetriesBeforeBan"><span>MaxPasswordRetriesBeforeBan</span></a>
@@ -4858,6 +4870,18 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.MaxExtraCargoItemsOfType"><span>ServerSettings.MaxExtraCargoItemsOfType</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.PacketLimitDefault"><span>ServerSettings.PacketLimitDefault</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.PacketLimitMax"><span>ServerSettings.PacketLimitMax</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.PacketLimitMin"><span>ServerSettings.PacketLimitMin</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.PacketLimitWarning"><span>ServerSettings.PacketLimitWarning</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.PermissionPresetFile"><span>ServerSettings.PermissionPresetFile</span></a>
@@ -6434,6 +6458,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/item/#HasAccess"><span>HasAccess</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#HasIdentifierOrTags"><span>HasIdentifierOrTags</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#HasTag"><span>HasTag</span></a>
                     </li>
                     <li>
@@ -7452,6 +7479,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AITurretPriority"><span>AITurretPriority</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#AITurretTargetingMaxDistance"><span>AITurretTargetingMaxDistance</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AddedPickingSpeedMultiplier"><span>AddedPickingSpeedMultiplier</span></a>
                     </li>
                     <li>
@@ -7477,6 +7507,9 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AllowSellingWhenBroken"><span>AllowSellingWhenBroken</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#AllowStealingAlways"><span>AllowStealingAlways</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AllowedLinks"><span>AllowedLinks</span></a>
@@ -7906,9 +7939,6 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/jobprefab/#AutonomousObjectives"><span>AutonomousObjectives</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/jobprefab/#Commonness"><span>Commonness</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/jobprefab/#ContentFile"><span>ContentFile</span></a>
@@ -9882,6 +9912,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/structureprefab/#ContentPackage"><span>ContentPackage</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/structureprefab/#DamageParticle"><span>DamageParticle</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/structureprefab/#DamageSound"><span>DamageSound</span></a>
                     </li>
                     <li>
@@ -10032,6 +10065,9 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#Dispose"><span>Dispose</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#EnableFactionSpecificEntities"><span>EnableFactionSpecificEntities</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#EnableMaintainPosition"><span>EnableMaintainPosition</span></a>
@@ -10658,7 +10694,7 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../code/timer/#Timer.GetTime"><span>Timer.GetTime</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/timer/#Timer.GetUsageMemory"><span>Timer.GetUsageMemory</span></a>
+                      <span class="realm shared"></span><a href="../../code/timer/#Timer.NextFrame"><span>Timer.NextFrame</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/timer/#Timer.Wait"><span>Timer.Wait</span></a>
@@ -10673,6 +10709,33 @@ The server is responsible f..." />
                     <li>
                       <span class="realm shared"></span><a href="../../code/timer/#Timer.Time"><span>Timer.Time</span></a>
                     </li>
+
+
+
+                  </ul>
+                  </details>
+              </li>
+              <li>
+                  <details >
+                  <summary><a href="../../code/util/">Util</a></summary>
+
+                  <ul>
+
+
+                <li>
+                  <label class="colorful-label">FUNCTIONS</label>
+                </li>
+
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/util/#Util.FindClientCharacter"><span>Util.FindClientCharacter</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/util/#Util.GetItemsById"><span>Util.GetItemsById</span></a>
+                    </li>
+
+
+
+
 
 
 
@@ -11282,6 +11345,9 @@ The server is responsible f..." />
                       <span class="realm shared"></span><a href="../../enum/clientpermissions/#ServerLog"><span>ServerLog</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../enum/clientpermissions/#SpamImmunity"><span>SpamImmunity</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../enum/clientpermissions/#Unban"><span>Unban</span></a>
                     </li>
 
@@ -11553,6 +11619,9 @@ The server is responsible f..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../enum/messagetype/#ConsoleUsage"><span>ConsoleUsage</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../enum/messagetype/#DoSProtection"><span>DoSProtection</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../enum/messagetype/#Error"><span>Error</span></a>
@@ -11836,8 +11905,8 @@ The only difference between a <strong>Dedicated Server</strong> and a <strong>Pl
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=91bb755"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=14348ac"></script>
+    <script type="text/javascript" src="../../app.js?v=5a062a7"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=ac2792c"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 

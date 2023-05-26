@@ -10,6 +10,7 @@ var class_barotrauma_1_1_networking_1_1_server_log =
       [ "ServerMessage", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa0f9905bfad400628389930a755d5a532", null ],
       [ "ConsoleUsage", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa2b7c988c91ad4feae4ae5ba4061b96d0", null ],
       [ "Money", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baaa93312829ec4c71aac461cec296faa0e", null ],
+      [ "DoSProtection", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa1967a4c657e5f25caabbf9b4c85bdccc", null ],
       [ "Karma", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baaec775c48945f0790ef23f3820f985a78", null ],
       [ "Talent", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa6d43c13d7ff6e837002c976f99c9f449", null ],
       [ "Error", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa902b0d55fddef6f8d651fe1035b7d4bd", null ]

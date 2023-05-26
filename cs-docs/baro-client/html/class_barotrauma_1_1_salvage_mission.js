@@ -7,6 +7,7 @@ var class_barotrauma_1_1_salvage_mission =
     [ "EndMissionSpecific", "class_barotrauma_1_1_salvage_mission.html#a4e2e188e80dcf94a2853c886c6370144", null ],
     [ "StartMissionSpecific", "class_barotrauma_1_1_salvage_mission.html#a780990fcb8bfc128164a96fc227f3d1b", null ],
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_salvage_mission.html#ad5806b6a324959d36139d9f417eaa0c5", null ],
+    [ "AnyTargetNeedsToBeRetrievedToSub", "class_barotrauma_1_1_salvage_mission.html#ae99b0d7c0594c7c4de766370a93a606e", null ],
     [ "DisplayAsCompleted", "class_barotrauma_1_1_salvage_mission.html#af4b0626891944bd11dcbd153609b9fdb", null ],
     [ "DisplayAsFailed", "class_barotrauma_1_1_salvage_mission.html#a8c42d9d3a58f0f074c1e2048558e331a", null ],
     [ "SonarLabels", "class_barotrauma_1_1_salvage_mission.html#ac638db0b58f2acacd0e590764dbe1614", null ]

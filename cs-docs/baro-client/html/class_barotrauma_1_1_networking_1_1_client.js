@@ -31,6 +31,7 @@ var class_barotrauma_1_1_networking_1_1_client =
     [ "PreferredTeam", "class_barotrauma_1_1_networking_1_1_client.html#a799869d215c271201b47b252a6f3cb01", null ],
     [ "SessionId", "class_barotrauma_1_1_networking_1_1_client.html#ac1041f20190f30a44f73759d888fb75a", null ],
     [ "TeamID", "class_barotrauma_1_1_networking_1_1_client.html#a4ae96ce713d3545fa670c32326487602", null ],
+    [ "UsingFreeCam", "class_barotrauma_1_1_networking_1_1_client.html#aed989da4a5d4a2b0531180630c0b8e09", null ],
     [ "AccountId", "class_barotrauma_1_1_networking_1_1_client.html#aa0c51cb06632cb4e1f6c517186839a05", null ],
     [ "AllowKicking", "class_barotrauma_1_1_networking_1_1_client.html#a7baa1a75ed0b40014b87d85ea930f4f6", null ],
     [ "Character", "class_barotrauma_1_1_networking_1_1_client.html#a94c7849feeb272b648538ae54305680b", null ],

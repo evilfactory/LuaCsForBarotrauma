@@ -8,6 +8,7 @@ var class_barotrauma_1_1_preferred_container =
     [ "MaxCondition", "class_barotrauma_1_1_preferred_container.html#a1168579ed3f99255b8d1a8f3c1e27728", null ],
     [ "MinAmount", "class_barotrauma_1_1_preferred_container.html#aadf9cb86512e69f2fc55bc594dbb08aa", null ],
     [ "MinCondition", "class_barotrauma_1_1_preferred_container.html#a8f0250c4d71ce8f6f8f2963693bdc3b6", null ],
+    [ "MinLevelDifficulty", "class_barotrauma_1_1_preferred_container.html#a5cd5616802c0398a4be55a24bd25f48e", null ],
     [ "NotCampaign", "class_barotrauma_1_1_preferred_container.html#aa940b5eea7eb73335399c12f30924efe", null ],
     [ "Primary", "class_barotrauma_1_1_preferred_container.html#a6c3a1724564e3fc3caa33b77d9af8545", null ],
     [ "Secondary", "class_barotrauma_1_1_preferred_container.html#a63566639f0bdd83f39ccad190ad96152", null ],

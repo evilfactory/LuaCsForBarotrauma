@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('_bulk_downloader_8cs_source.html','');
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    CanBeFocused = <span class="keyword">false</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                };</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                var itemTitle = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(Vector2.One, itemFrame.RectTransform),</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    text: item.Title);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    text: item.Title ?? <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                var itemDownloadProgress</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    = <span class="keyword">new</span> GUIProgressBar(<span class="keyword">new</span> RectTransform((0.5f, 0.75f),</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                            itemFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.CenterRight), 0.0f)</div>

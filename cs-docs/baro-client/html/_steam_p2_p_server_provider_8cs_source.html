@@ -159,10 +159,10 @@ $(document).ready(function(){initNavTree('_steam_p2_p_server_provider_8cs_source
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">foreach</span> (var lobby <span class="keywordflow">in</span> lobbies)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordtype">string</span> lobbyOwnerStr = lobby.GetData(<span class="stringliteral">&quot;lobbyowner&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordtype">string</span> lobbyOwnerStr = lobby.GetData(<span class="stringliteral">&quot;lobbyowner&quot;</span>) ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    lobbyQuery = lobbyQuery.WithoutKeyValue(<span class="stringliteral">&quot;lobbyowner&quot;</span>, lobbyOwnerStr);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordtype">string</span> serverName = lobby.GetData(<span class="stringliteral">&quot;name&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordtype">string</span> serverName = lobby.GetData(<span class="stringliteral">&quot;name&quot;</span>) ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(serverName)) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    var ownerId = <a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html">SteamId</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_steam_id.html#a08e50f627df48da4ebdd1bfc8466e723">Parse</a>(lobbyOwnerStr);</div>

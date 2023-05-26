@@ -230,22 +230,28 @@ $(document).ready(function(){initNavTree('_wiki_image_8cs_source.html',''); init
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                GameMain.Instance.GraphicsDevice.SetRenderTarget(rt);</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                GameMain.Instance.GraphicsDevice.Clear(Color.Transparent);</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, transform);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.Draw(spriteBatch);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.DrawFront(spriteBatch);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.DrawDamageable(spriteBatch, <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                spriteBatch.End();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                GameMain.Instance.GraphicsDevice.SetRenderTarget(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                GameMain.Instance.GraphicsDevice.Viewport = prevViewport;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keyword">using</span> (<a class="code" href="class_barotrauma_1_1_i_o_1_1_file_stream.html">FileStream</a> fs = File.Open(<span class="stringliteral">&quot;wikiimage.png&quot;</span>, System.IO.FileMode.Create))</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    rt.SaveAsPng(fs, width, height);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                DrawBatch(() =&gt; <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.DrawBack(spriteBatch, <span class="keyword">true</span>, e =&gt; e is Structure s &amp;&amp; (e.SpriteDepth &gt;= 0.9f || s.Prefab.BackgroundSprite != <span class="keyword">null</span>)));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                DrawBatch(() =&gt; <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.DrawBack(spriteBatch, <span class="keyword">true</span>, e =&gt; (e is not Structure || e.SpriteDepth &lt; 0.9f)));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                DrawBatch(() =&gt; <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.DrawDamageable(spriteBatch, <span class="keyword">null</span>, editing: <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                DrawBatch(() =&gt; <a class="code" href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Submarine</a>.DrawFront(spriteBatch, editing: <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordtype">void</span> DrawBatch(Action drawAction)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, transform);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    drawAction.Invoke();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    spriteBatch.End();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                GameMain.Instance.GraphicsDevice.SetRenderTarget(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                GameMain.Instance.GraphicsDevice.Viewport = prevViewport;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keyword">using</span> (<a class="code" href="class_barotrauma_1_1_i_o_1_1_file_stream.html">FileStream</a> fs = File.Open(<span class="stringliteral">&quot;wikiimage.png&quot;</span>, System.IO.FileMode.Create))</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    rt.SaveAsPng(fs, width, height);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_stream_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file_stream.html">Barotrauma.IO.FileStream</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00474">SafeIO.cs:475</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>

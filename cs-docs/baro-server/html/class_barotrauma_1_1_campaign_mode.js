@@ -79,6 +79,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "UpgradeManager", "class_barotrauma_1_1_campaign_mode.html#a05a72de7973f46978bc52ce17deeddaa", null ],
     [ "wasDocked", "class_barotrauma_1_1_campaign_mode.html#a4083a4af916fb1c9873f114550f33431", null ],
     [ "ActiveOrdersElement", "class_barotrauma_1_1_campaign_mode.html#ab5e26a0cb71b4721ee66df834d6acc31", null ],
+    [ "CurrentLocation", "class_barotrauma_1_1_campaign_mode.html#aa039fa13939f0d8c082b7c697ccffd50", null ],
     [ "DisableEvents", "class_barotrauma_1_1_campaign_mode.html#ad6c86b0acfc37983233202de2c2f9edb", null ],
     [ "Factions", "class_barotrauma_1_1_campaign_mode.html#a6f8c616ddcd2cc4a10b0852fd3fbd5b4", null ],
     [ "IsFirstRound", "class_barotrauma_1_1_campaign_mode.html#a63a53dbc3ba7f040dd6b7969de89532e", null ],

@@ -2,7 +2,7 @@ var class_barotrauma_1_1_reputation =
 [
     [ "Reputation", "class_barotrauma_1_1_reputation.html#a0c520de5b93eeb4fd0bd1bb921790988", null ],
     [ "Reputation", "class_barotrauma_1_1_reputation.html#adcafbd59246fec5011accee44850f7db", null ],
-    [ "AddReputation", "class_barotrauma_1_1_reputation.html#a62258502fdcaf4fe60428c81ec2eb44f", null ],
+    [ "AddReputation", "class_barotrauma_1_1_reputation.html#a861d98dd99980c9eb54ab3ef2385b1b4", null ],
     [ "GetFormattedReputationText", "class_barotrauma_1_1_reputation.html#a94475f05679a6e68bd6ec1cc056a8e3c", null ],
     [ "GetReputationChangeMultiplier", "class_barotrauma_1_1_reputation.html#a3637527ccf424bccd3c4bba9b11d306c", null ],
     [ "GetReputationName", "class_barotrauma_1_1_reputation.html#a4c1704064cab1d93e0019533988302c8", null ],
@@ -16,5 +16,6 @@ var class_barotrauma_1_1_reputation =
     [ "Metadata", "class_barotrauma_1_1_reputation.html#aae637c73b61c50335f3aa8b93973579e", null ],
     [ "MinReputation", "class_barotrauma_1_1_reputation.html#acc9c15ff0922fbe8994b75244d3bc411", null ],
     [ "NormalizedValue", "class_barotrauma_1_1_reputation.html#abaa21ed464a56321c15dfa54b0dfc10b", null ],
+    [ "ReputationAtRoundStart", "class_barotrauma_1_1_reputation.html#a922c276493e572dda358bae85cd7ef86", null ],
     [ "Value", "class_barotrauma_1_1_reputation.html#afa5ecdff8018eac00f909c874a7b7b1e", null ]
 ];

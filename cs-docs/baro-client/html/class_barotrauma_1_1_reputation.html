@@ -100,8 +100,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a827a230ee8cb93b5fec4a31daa5b3e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3637527ccf424bccd3c4bba9b11d306c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a3637527ccf424bccd3c4bba9b11d306c">GetReputationChangeMultiplier</a> (float reputationChange)</td></tr>
 <tr class="separator:a3637527ccf424bccd3c4bba9b11d306c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62258502fdcaf4fe60428c81ec2eb44f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a62258502fdcaf4fe60428c81ec2eb44f">AddReputation</a> (float reputationChange)</td></tr>
-<tr class="separator:a62258502fdcaf4fe60428c81ec2eb44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a861d98dd99980c9eb54ab3ef2385b1b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a861d98dd99980c9eb54ab3ef2385b1b4">AddReputation</a> (float reputationChange, float maxReputationChangePerRound=float.MaxValue)</td></tr>
+<tr class="separator:a861d98dd99980c9eb54ab3ef2385b1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c520de5b93eeb4fd0bd1bb921790988"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a0c520de5b93eeb4fd0bd1bb921790988">Reputation</a> (CampaignMetadata metadata, <a class="el" href="class_barotrauma_1_1_location.html">Location</a> location, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier, int minReputation, int maxReputation, int initialReputation)</td></tr>
 <tr class="separator:a0c520de5b93eeb4fd0bd1bb921790988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcafbd59246fec5011accee44850f7db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#adcafbd59246fec5011accee44850f7db">Reputation</a> (CampaignMetadata metadata, <a class="el" href="class_barotrauma_1_1_faction.html">Faction</a> faction, int minReputation, int maxReputation, int initialReputation)</td></tr>
@@ -133,16 +133,22 @@ Public Attributes</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a2042a1639ef6338c802c3acdc1dc5716"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a2042a1639ef6338c802c3acdc1dc5716">HostileThreshold</a> = 0.2f</td></tr>
 <tr class="separator:a2042a1639ef6338c802c3acdc1dc5716"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ab4c7f49e9baeec389875b7274bbddc"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a8ab4c7f49e9baeec389875b7274bbddc">ReputationLossPerNPCDamage</a> = 0.05f</td></tr>
+<tr class="memitem:a8ab4c7f49e9baeec389875b7274bbddc"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a8ab4c7f49e9baeec389875b7274bbddc">ReputationLossPerNPCDamage</a> = 0.025f</td></tr>
 <tr class="separator:a8ab4c7f49e9baeec389875b7274bbddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa42c7367fc6e117008e04d7067cfab9e"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#aa42c7367fc6e117008e04d7067cfab9e">ReputationLossPerWallDamage</a> = 0.05f</td></tr>
+<tr class="memitem:aa42c7367fc6e117008e04d7067cfab9e"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#aa42c7367fc6e117008e04d7067cfab9e">ReputationLossPerWallDamage</a> = 0.025f</td></tr>
 <tr class="separator:aa42c7367fc6e117008e04d7067cfab9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a270144fd889bab182f4ec8650902c0dd"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a270144fd889bab182f4ec8650902c0dd">ReputationLossPerStolenItemPrice</a> = 0.005f</td></tr>
+<tr class="memitem:a270144fd889bab182f4ec8650902c0dd"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a270144fd889bab182f4ec8650902c0dd">ReputationLossPerStolenItemPrice</a> = 0.0025f</td></tr>
 <tr class="separator:a270144fd889bab182f4ec8650902c0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a50648e5cc396d715a710e38374837"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a46a50648e5cc396d715a710e38374837">MinReputationLossPerStolenItem</a> = 0.05f</td></tr>
+<tr class="memitem:a46a50648e5cc396d715a710e38374837"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a46a50648e5cc396d715a710e38374837">MinReputationLossPerStolenItem</a> = 0.025f</td></tr>
 <tr class="separator:a46a50648e5cc396d715a710e38374837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20ff7a10a5745a47b243352bec843a74"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a20ff7a10a5745a47b243352bec843a74">MaxReputationLossPerStolenItem</a> = 1.0f</td></tr>
+<tr class="memitem:a20ff7a10a5745a47b243352bec843a74"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a20ff7a10a5745a47b243352bec843a74">MaxReputationLossPerStolenItem</a> = 0.5f</td></tr>
 <tr class="separator:a20ff7a10a5745a47b243352bec843a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b5df7e3159db0b1cfb67bf05604bb32"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a7b5df7e3159db0b1cfb67bf05604bb32">MaxReputationLossFromNPCDamage</a> = 20.0f</td></tr>
+<tr class="memdesc:a7b5df7e3159db0b1cfb67bf05604bb32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum amount of reputation loss you can get from damaging outpost NPCs per round  <a href="class_barotrauma_1_1_reputation.html#a7b5df7e3159db0b1cfb67bf05604bb32">More...</a><br /></td></tr>
+<tr class="separator:a7b5df7e3159db0b1cfb67bf05604bb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d8a2471dd03c4dfb1718b3000d9fed"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a36d8a2471dd03c4dfb1718b3000d9fed">MaxReputationLossFromWallDamage</a> = 10.0f</td></tr>
+<tr class="memdesc:a36d8a2471dd03c4dfb1718b3000d9fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum amount of reputation loss you can get from damaging outpost walls per round  <a href="class_barotrauma_1_1_reputation.html#a36d8a2471dd03c4dfb1718b3000d9fed">More...</a><br /></td></tr>
+<tr class="separator:a36d8a2471dd03c4dfb1718b3000d9fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70329f62f3bfbbe4e57bf71de54f892b"><td class="memItemLeft" align="right" valign="top">static readonly NamedEvent&lt; <a class="el" href="class_barotrauma_1_1_reputation.html">Reputation</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a70329f62f3bfbbe4e57bf71de54f892b">OnAnyReputationValueChanged</a> = new NamedEvent&lt;<a class="el" href="class_barotrauma_1_1_reputation.html">Reputation</a>&gt;()</td></tr>
 <tr class="separator:a70329f62f3bfbbe4e57bf71de54f892b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -158,6 +164,8 @@ Properties</h2></td></tr>
 <tr class="separator:aea38b992b0bfdd22e994fbdcf1a40694"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae637c73b61c50335f3aa8b93973579e"><td class="memItemLeft" align="right" valign="top">CampaignMetadata&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#aae637c73b61c50335f3aa8b93973579e">Metadata</a><code> [get]</code></td></tr>
 <tr class="separator:aae637c73b61c50335f3aa8b93973579e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a922c276493e572dda358bae85cd7ef86"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#a922c276493e572dda358bae85cd7ef86">ReputationAtRoundStart</a><code> [get, set]</code></td></tr>
+<tr class="separator:a922c276493e572dda358bae85cd7ef86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaa21ed464a56321c15dfa54b0dfc10b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_reputation.html#abaa21ed464a56321c15dfa54b0dfc10b">NormalizedValue</a><code> [get]</code></td></tr>
 <tr class="memdesc:abaa21ed464a56321c15dfa54b0dfc10b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_barotrauma_1_1_reputation.html">Reputation</a> value normalized to the range of 0-1  <a href="class_barotrauma_1_1_reputation.html#abaa21ed464a56321c15dfa54b0dfc10b">More...</a><br /></td></tr>
 <tr class="separator:abaa21ed464a56321c15dfa54b0dfc10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,7 +174,7 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00006">6</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00007">7</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0c520de5b93eeb4fd0bd1bb921790988"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c520de5b93eeb4fd0bd1bb921790988">&#9670;&nbsp;</a></span>Reputation() <span class="overload">[1/2]</span></h2>
@@ -218,7 +226,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00098">98</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00128">128</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -266,13 +274,13 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00103">103</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00133">133</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a62258502fdcaf4fe60428c81ec2eb44f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62258502fdcaf4fe60428c81ec2eb44f">&#9670;&nbsp;</a></span>AddReputation()</h2>
+<a id="a861d98dd99980c9eb54ab3ef2385b1b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a861d98dd99980c9eb54ab3ef2385b1b4">&#9670;&nbsp;</a></span>AddReputation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,13 +289,23 @@ Properties</h2></td></tr>
           <td class="memname">void Barotrauma.Reputation.AddReputation </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>reputationChange</em></td><td>)</td>
+          <td class="paramname"><em>reputationChange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxReputationChangePerRound</em> = <code>float.MaxValue</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00086">86</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00095">95</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -307,7 +325,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00169">169</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00200">200</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -351,7 +369,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00174">174</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00205">205</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -371,7 +389,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00061">61</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00073">73</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -399,7 +417,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00149">149</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00180">180</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -418,7 +436,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00122">122</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00153">153</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -446,7 +464,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00127">127</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00158">158</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -466,7 +484,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00056">56</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00068">68</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -483,7 +501,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00094">94</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00124">124</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -507,7 +525,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00008">8</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00009">9</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -523,7 +541,59 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00095">95</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00125">125</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7b5df7e3159db0b1cfb67bf05604bb32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b5df7e3159db0b1cfb67bf05604bb32">&#9670;&nbsp;</a></span>MaxReputationLossFromNPCDamage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Barotrauma.Reputation.MaxReputationLossFromNPCDamage = 20.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Maximum amount of reputation loss you can get from damaging outpost NPCs per round </p>
+
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00019">19</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+
+</div>
+</div>
+<a id="a36d8a2471dd03c4dfb1718b3000d9fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36d8a2471dd03c4dfb1718b3000d9fed">&#9670;&nbsp;</a></span>MaxReputationLossFromWallDamage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Barotrauma.Reputation.MaxReputationLossFromWallDamage = 10.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Maximum amount of reputation loss you can get from damaging outpost walls per round </p>
+
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00023">23</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -537,7 +607,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const float Barotrauma.Reputation.MaxReputationLossPerStolenItem = 1.0f</td>
+          <td class="memname">const float Barotrauma.Reputation.MaxReputationLossPerStolenItem = 0.5f</td>
         </tr>
       </table>
   </td>
@@ -547,7 +617,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00013">13</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00014">14</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -561,7 +631,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const float Barotrauma.Reputation.MinReputationLossPerStolenItem = 0.05f</td>
+          <td class="memname">const float Barotrauma.Reputation.MinReputationLossPerStolenItem = 0.025f</td>
         </tr>
       </table>
   </td>
@@ -571,7 +641,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00012">12</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00013">13</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -595,7 +665,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00092">92</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00122">122</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -611,7 +681,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00091">91</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00121">121</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -625,7 +695,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const float Barotrauma.Reputation.ReputationLossPerNPCDamage = 0.05f</td>
+          <td class="memname">const float Barotrauma.Reputation.ReputationLossPerNPCDamage = 0.025f</td>
         </tr>
       </table>
   </td>
@@ -635,7 +705,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00009">9</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00010">10</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -649,7 +719,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const float Barotrauma.Reputation.ReputationLossPerStolenItemPrice = 0.005f</td>
+          <td class="memname">const float Barotrauma.Reputation.ReputationLossPerStolenItemPrice = 0.0025f</td>
         </tr>
       </table>
   </td>
@@ -659,7 +729,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00011">11</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00012">12</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -673,7 +743,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const float Barotrauma.Reputation.ReputationLossPerWallDamage = 0.05f</td>
+          <td class="memname">const float Barotrauma.Reputation.ReputationLossPerWallDamage = 0.025f</td>
         </tr>
       </table>
   </td>
@@ -683,7 +753,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00010">10</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00011">11</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -708,7 +778,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00015">15</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00025">25</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -732,7 +802,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00018">18</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00028">28</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -756,7 +826,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00017">17</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00027">27</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -780,7 +850,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00019">19</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00029">29</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -804,7 +874,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00016">16</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00026">26</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -830,7 +900,31 @@ Properties</h2></td></tr>
 
 <p><a class="el" href="class_barotrauma_1_1_reputation.html">Reputation</a> value normalized to the range of 0-1 </p>
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00026">26</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00038">38</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+
+</div>
+</div>
+<a id="a922c276493e572dda358bae85cd7ef86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a922c276493e572dda358bae85cd7ef86">&#9670;&nbsp;</a></span>ReputationAtRoundStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.Reputation.ReputationAtRoundStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00031">31</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>
@@ -854,7 +948,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00031">31</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_reputation_8cs_source.html#l00043">43</a> of file <a class="el" href="_reputation_8cs_source.html">Reputation.cs</a>.</p>
 
 </div>
 </div>

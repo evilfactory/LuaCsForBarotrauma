@@ -146,9 +146,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a23d00f8d7200f686019380c555a2ad21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c0373a82980bd5c3dedbba6e2b66581"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a6c0373a82980bd5c3dedbba6e2b66581">GetOrder&lt; T &gt;</a> ()</td></tr>
 <tr class="separator:a6c0373a82980bd5c3dedbba6e2b66581"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7adca5a7ebba89468d7dae3b59df5379"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a7adca5a7ebba89468d7dae3b59df5379">GetActiveObjective&lt; T &gt;</a> ()</td></tr>
-<tr class="memdesc:a7adca5a7ebba89468d7dae3b59df5379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last active objective of the specific type.  <a href="class_barotrauma_1_1_a_i_objective_manager.html#a7adca5a7ebba89468d7dae3b59df5379">More...</a><br /></td></tr>
-<tr class="separator:a7adca5a7ebba89468d7dae3b59df5379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3903f50fc1f6fb582de860dede7fa7f0"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a3903f50fc1f6fb582de860dede7fa7f0">GetLastActiveObjective&lt; T &gt;</a> ()</td></tr>
+<tr class="separator:a3903f50fc1f6fb582de860dede7fa7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac382caddd8de85db6c56a712c67cb384"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#ac382caddd8de85db6c56a712c67cb384">GetFirstActiveObjective&lt; T &gt;</a> ()</td></tr>
+<tr class="separator:ac382caddd8de85db6c56a712c67cb384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b794e5b7e08a987013cb5ce9a46d38b"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a3b794e5b7e08a987013cb5ce9a46d38b">GetActiveObjectives&lt; T &gt;</a> ()</td></tr>
 <tr class="memdesc:a3b794e5b7e08a987013cb5ce9a46d38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all active objectives of the specific type. Creates a new collection -&gt; don't use too frequently.  <a href="class_barotrauma_1_1_a_i_objective_manager.html#a3b794e5b7e08a987013cb5ce9a46d38b">More...</a><br /></td></tr>
 <tr class="separator:a3b794e5b7e08a987013cb5ce9a46d38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,6 +168,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
+<tr class="memitem:adbde8032fc9b1bd82e0ee79624793738"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#adbde8032fc9b1bd82e0ee79624793738">MaxObjectivePriority</a> = 100</td></tr>
+<tr class="separator:adbde8032fc9b1bd82e0ee79624793738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a023410ae10eb0714360c70f38a672744"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a023410ae10eb0714360c70f38a672744">EmergencyObjectivePriority</a> = 90</td></tr>
+<tr class="separator:a023410ae10eb0714360c70f38a672744"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc042cb5d05cfa77096739cc70c5d3e6"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#afc042cb5d05cfa77096739cc70c5d3e6">HighestOrderPriority</a> = 70</td></tr>
 <tr class="separator:afc042cb5d05cfa77096739cc70c5d3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7423983c404a70e23be80ca56570fd74"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a7423983c404a70e23be80ca56570fd74">LowestOrderPriority</a> = 60</td></tr>
@@ -252,7 +257,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00070">70</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00072">72</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -273,7 +278,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00076">76</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00078">78</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -301,7 +306,7 @@ Properties</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00081">81</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00083">83</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -345,7 +350,7 @@ Properties</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00171">171</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00183">183</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -364,7 +369,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00332">332</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00344">344</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -383,7 +388,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00123">123</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00125">125</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -413,7 +418,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00411">411</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00423">423</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -433,7 +438,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00315">315</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00327">327</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -451,44 +456,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7adca5a7ebba89468d7dae3b59df5379"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7adca5a7ebba89468d7dae3b59df5379">&#9670;&nbsp;</a></span>GetActiveObjective&lt; T &gt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a23d00f8d7200f686019380c555a2ad21">Barotrauma.AIObjectiveManager.GetActiveObjective</a>&lt; T &gt; </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the last active objective of the specific type. </p>
-<div class="typeconstraint">
-<dl><dt><b>Type Constraints</b></dt><dd>
-<table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>AIObjective</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>CurrentObjective</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>GetSubObjectivesRecursive</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>includingSelf</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>true</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>LastOrDefault</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>so</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>so</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>is</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>as</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
-</table>
-</dd>
-</dl>
-</div>
 
 </div>
 </div>
@@ -517,7 +484,7 @@ Properties</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00653">653</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00666">666</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -536,7 +503,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00709">709</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00722">722</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -555,7 +522,79 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00224">224</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00236">236</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac382caddd8de85db6c56a712c67cb384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac382caddd8de85db6c56a712c67cb384">&#9670;&nbsp;</a></span>GetFirstActiveObjective&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">T Barotrauma.AIObjectiveManager.GetFirstActiveObjective&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>AIObjective</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>CurrentObjective</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>GetSubObjectivesRecursive</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>includingSelf</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>true</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>FirstOrDefault</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>so</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>so</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>is</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>as</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a3903f50fc1f6fb582de860dede7fa7f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3903f50fc1f6fb582de860dede7fa7f0">&#9670;&nbsp;</a></span>GetLastActiveObjective&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">T Barotrauma.AIObjectiveManager.GetLastActiveObjective&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>AIObjective</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>CurrentObjective</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>GetSubObjectivesRecursive</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>includingSelf</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>true</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>LastOrDefault</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>so</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>so</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>is</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>as</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>T</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
 
 </div>
 </div>
@@ -640,7 +679,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00680">680</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00693">693</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -739,7 +778,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00671">671</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00684">684</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -843,7 +882,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00661">661</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00674">674</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -863,7 +902,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00327">327</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00339">339</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -893,7 +932,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00338">338</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00350">350</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -912,7 +951,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00286">286</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00298">298</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -932,7 +971,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00229">229</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00241">241</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -957,7 +996,31 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00027">27</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00029">29</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a023410ae10eb0714360c70f38a672744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a023410ae10eb0714360c70f38a672744">&#9670;&nbsp;</a></span>EmergencyObjectivePriority</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Barotrauma.AIObjectiveManager.EmergencyObjectivePriority = 90</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00024">24</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1044,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00023">23</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00025">25</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1005,7 +1068,31 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00024">24</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00026">26</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="adbde8032fc9b1bd82e0ee79624793738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbde8032fc9b1bd82e0ee79624793738">&#9670;&nbsp;</a></span>MaxObjectivePriority</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Barotrauma.AIObjectiveManager.MaxObjectivePriority = 100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00023">23</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1029,7 +1116,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00025">25</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00027">27</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1054,7 +1141,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00068">68</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00070">70</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1080,7 +1167,7 @@ Properties</h2></td></tr>
 
 <p>The <a class="el" href="class_barotrauma_1_1_a_i_objective.html">AIObjective</a> in <a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html#a92b60b8c97caa74d754c830c3c2a37e3">CurrentOrders</a> with the highest <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a429fcc7b5dfe980d3c6f073048c6af00" title="Final priority value after all calculations.">AIObjective.Priority</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00055">55</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00057">57</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1104,7 +1191,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00051">51</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00053">53</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1128,7 +1215,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00111">111</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00113">113</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1152,7 +1239,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00112">112</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00114">114</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1176,7 +1263,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00067">67</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00069">69</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1200,7 +1287,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00036">36</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00038">38</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1313,7 @@ Properties</h2></td></tr>
 
 <p>Excluding the current order. </p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00032">32</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00034">34</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>
@@ -1252,7 +1339,7 @@ Properties</h2></td></tr>
 
 <p>When set above zero, the character will stand still doing nothing until the timer runs out. Does not affect orders, find safety or combat. </p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00042">42</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_manager_8cs_source.html#l00044">44</a> of file <a class="el" href="_a_i_objective_manager_8cs_source.html">AIObjectiveManager.cs</a>.</p>
 
 </div>
 </div>

@@ -14,6 +14,7 @@ var class_barotrauma_1_1_level_data =
     [ "Biome", "class_barotrauma_1_1_level_data.html#ae78cdc0ad03c96b115fe1858c98739c7", null ],
     [ "Difficulty", "class_barotrauma_1_1_level_data.html#a772101044b80c54b112dd06c9d8f5eb0", null ],
     [ "EventHistory", "class_barotrauma_1_1_level_data.html#a738f29c24570fe5151d7fe3724632ff0", null ],
+    [ "FinishedEvents", "class_barotrauma_1_1_level_data.html#a6f7e67f7fc885235e61a7afaa28c6b47", null ],
     [ "ForceOutpostGenerationParams", "class_barotrauma_1_1_level_data.html#a5815e35350c31a18e9c45694f91cccfc", null ],
     [ "HasBeaconStation", "class_barotrauma_1_1_level_data.html#a8404f340bcc58760385e15dd55738a6e", null ],
     [ "HasHuntingGrounds", "class_barotrauma_1_1_level_data.html#a312365e6589fc8868f163ffbecba8573", null ],

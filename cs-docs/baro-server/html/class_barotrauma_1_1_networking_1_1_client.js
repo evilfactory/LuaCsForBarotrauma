@@ -71,6 +71,7 @@ var class_barotrauma_1_1_networking_1_1_client =
     [ "SpectateOnly", "class_barotrauma_1_1_networking_1_1_client.html#a68393ea02703059ed80b2cfc2317c139", null ],
     [ "TeamID", "class_barotrauma_1_1_networking_1_1_client.html#a4ae96ce713d3545fa670c32326487602", null ],
     [ "UnreceivedEntityEventCount", "class_barotrauma_1_1_networking_1_1_client.html#a20d30020cd11aaeca5b8537b81b3c89e", null ],
+    [ "UsingFreeCam", "class_barotrauma_1_1_networking_1_1_client.html#aed989da4a5d4a2b0531180630c0b8e09", null ],
     [ "VoiceEnabled", "class_barotrauma_1_1_networking_1_1_client.html#a15088667eae3450ccbff6df004928361", null ],
     [ "WaitForNextRoundRespawn", "class_barotrauma_1_1_networking_1_1_client.html#a218ca43fb712b48892c5a809126c68e3", null ],
     [ "AccountId", "class_barotrauma_1_1_networking_1_1_client.html#aa0c51cb06632cb4e1f6c517186839a05", null ],

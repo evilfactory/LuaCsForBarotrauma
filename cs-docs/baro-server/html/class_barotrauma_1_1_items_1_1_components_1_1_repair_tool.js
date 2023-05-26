@@ -22,6 +22,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_repair_tool =
     [ "MaxOverlappingWallDist", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#aa354f6142bf1799b07ff8d678f1fce94", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a9031f7aa003548d7b3b73810ccf4847c", null ],
     [ "RepairMultiple", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#af82f8880609a7a42b32396e2b656db08", null ],
+    [ "RepairMultipleWalls", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a3dfbc0a4f62336eb8a6ed597209619ce", null ],
     [ "RepairThroughHoles", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a1bd45296f8e7f36e0f8d103f1a93dd50", null ],
     [ "RepairThroughWalls", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#a655cbe14ce162e111449259112d9e1fc", null ],
     [ "Spread", "class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html#ac9d5291e914dc6d8cb476a011a686866", null ],

@@ -105,8 +105,6 @@ Inheritance diagram for Barotrauma.AIObjectiveLoadItem:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1262a7c8e1fdaf17a0f65e2bbdc414f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_load_item.html#a1262a7c8e1fdaf17a0f65e2bbdc414f2">AIObjectiveLoadItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> container, ImmutableArray&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt; targetTags, <a class="el" href="class_barotrauma_1_1_a_i_objective_load_items.html#aa10a1861cffe72824b2ac5222aaf0a47">AIObjectiveLoadItems.ItemCondition</a> targetCondition, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> option, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a62c748f4a37b3925bfbf431bafd177bd">character</a>, <a class="el" href="class_barotrauma_1_1_a_i_objective_manager.html">AIObjectiveManager</a> <a class="el" href="class_barotrauma_1_1_a_i_objective.html#ae65b80b495b80e33bc78dc7e9e69ae27">objectiveManager</a>, float priorityModifier)</td></tr>
 <tr class="separator:a1262a7c8e1fdaf17a0f65e2bbdc414f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98cd30f328c1f4ce4dc8a960db64c138"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_load_item.html#a98cd30f328c1f4ce4dc8a960db64c138">Update</a> (float deltaTime)</td></tr>
-<tr class="separator:a98cd30f328c1f4ce4dc8a960db64c138"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b4e3b0828047740455707929825134a"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_load_item.html#a9b4e3b0828047740455707929825134a">Reset</a> ()</td></tr>
 <tr class="separator:a9b4e3b0828047740455707929825134a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_barotrauma_1_1_a_i_objective"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_barotrauma_1_1_a_i_objective')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_a_i_objective.html">Barotrauma.AIObjective</a></td></tr>
@@ -133,6 +131,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a15d146f0d4ef7101a8a1df5b2e342339 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04589e1b23884f0373a53f4e03ee0118 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a04589e1b23884f0373a53f4e03ee0118">IsDuplicate&lt; T &gt;</a> (T otherObjective)</td></tr>
 <tr class="separator:a04589e1b23884f0373a53f4e03ee0118 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad6b9ee8d150a6fb874b962859c3dae inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a3ad6b9ee8d150a6fb874b962859c3dae">Update</a> (float deltaTime)</td></tr>
+<tr class="separator:a3ad6b9ee8d150a6fb874b962859c3dae inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac95e85610ecc87bd069f5794755f6602 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#ac95e85610ecc87bd069f5794755f6602">OnSelected</a> ()</td></tr>
 <tr class="separator:ac95e85610ecc87bd069f5794755f6602 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af420f25e611dce08bfdbf20160244ae8 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#af420f25e611dce08bfdbf20160244ae8">OnDeselected</a> ()</td></tr>
@@ -159,10 +159,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a3e5b52af6911a0e94c607f0d61eb3737 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a488a8c355df152713b5bc87a5b50e046 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a488a8c355df152713b5bc87a5b50e046">Check</a> ()</td></tr>
 <tr class="separator:a488a8c355df152713b5bc87a5b50e046 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaedd7ce02a60edd9c98f95c45d38d3de inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#aaedd7ce02a60edd9c98f95c45d38d3de">CheckItemIdentifiersOrTags</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, ImmutableHashSet&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt; identifiersOrTags)</td></tr>
-<tr class="separator:aaedd7ce02a60edd9c98f95c45d38d3de inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae82ae85c8354ae652ed37a3101d5fd04 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#ae82ae85c8354ae652ed37a3101d5fd04">CanEquip</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item)</td></tr>
-<tr class="separator:ae82ae85c8354ae652ed37a3101d5fd04 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a791b9fb8b3c5fad96b5c5c8d893283c5 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a791b9fb8b3c5fad96b5c5c8d893283c5">CanEquip</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, bool allowWearing)</td></tr>
+<tr class="separator:a791b9fb8b3c5fad96b5c5c8d893283c5 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -258,8 +256,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:a6795f8f42a159a0251cff238b450b7ca inherit pub_attribs_class_barotrauma_1_1_a_i_objective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aborts the objective when this condition is true.  <a href="class_barotrauma_1_1_a_i_objective.html#a6795f8f42a159a0251cff238b450b7ca">More...</a><br /></td></tr>
 <tr class="separator:a6795f8f42a159a0251cff238b450b7ca inherit pub_attribs_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_methods_class_barotrauma_1_1_a_i_objective"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_class_barotrauma_1_1_a_i_objective')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="class_barotrauma_1_1_a_i_objective.html">Barotrauma.AIObjective</a></td></tr>
-<tr class="memitem:a752b9ad0046edc8b3c1c3e413f9607f3 inherit pro_static_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a752b9ad0046edc8b3c1c3e413f9607f3">CanEquip</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a62c748f4a37b3925bfbf431bafd177bd">character</a>, <a class="el" href="class_barotrauma_1_1_item.html">Item</a> item)</td></tr>
-<tr class="separator:a752b9ad0046edc8b3c1c3e413f9607f3 inherit pro_static_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b70d81f0f4bac2a57ba0396d39d69c inherit pro_static_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#ad6b70d81f0f4bac2a57ba0396d39d69c">CanEquip</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a62c748f4a37b3925bfbf431bafd177bd">character</a>, <a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, bool allowWearing)</td></tr>
+<tr class="separator:ad6b70d81f0f4bac2a57ba0396d39d69c inherit pro_static_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_barotrauma_1_1_a_i_objective"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_barotrauma_1_1_a_i_objective')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_barotrauma_1_1_a_i_objective.html">Barotrauma.AIObjective</a></td></tr>
 <tr class="memitem:a893fb4ccfdb0596451e01565b135e1b2 inherit pro_attribs_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_barotrauma_1_1_a_i_objective.html">AIObjective</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a893fb4ccfdb0596451e01565b135e1b2">subObjectives</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_a_i_objective.html">AIObjective</a>&gt;()</td></tr>
 <tr class="separator:a893fb4ccfdb0596451e01565b135e1b2 inherit pro_attribs_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -368,7 +366,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a47aaceb8a082848e7f17bb1596bde7c0">Barotrauma.AIObjective</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_load_item_8cs_source.html#l00261">261</a> of file <a class="el" href="_a_i_objective_load_item_8cs_source.html">AIObjectiveLoadItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_load_item_8cs_source.html#l00222">222</a> of file <a class="el" href="_a_i_objective_load_item_8cs_source.html">AIObjectiveLoadItem.cs</a>.</p>
 
 </div>
 </div>
@@ -453,37 +451,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a92186a78f53e6964685de228b2933ecd">Barotrauma.AIObjective</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_load_item_8cs_source.html#l00330">330</a> of file <a class="el" href="_a_i_objective_load_item_8cs_source.html">AIObjectiveLoadItem.cs</a>.</p>
-
-</div>
-</div>
-<a id="a98cd30f328c1f4ce4dc8a960db64c138"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98cd30f328c1f4ce4dc8a960db64c138">&#9670;&nbsp;</a></span>Update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void Barotrauma.AIObjectiveLoadItem.Update </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>deltaTime</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a3ad6b9ee8d150a6fb874b962859c3dae">Barotrauma.AIObjective</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_load_item_8cs_source.html#l00222">222</a> of file <a class="el" href="_a_i_objective_load_item_8cs_source.html">AIObjectiveLoadItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_load_item_8cs_source.html#l00322">322</a> of file <a class="el" href="_a_i_objective_load_item_8cs_source.html">AIObjectiveLoadItem.cs</a>.</p>
 
 </div>
 </div>

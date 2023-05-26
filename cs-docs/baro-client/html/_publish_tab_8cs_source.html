@@ -566,7 +566,7 @@ $(document).ready(function(){initNavTree('_publish_tab_8cs_source.html',''); ini
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            <span class="keywordtype">bool</span> stagingReady = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            Exception? stagingException = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            TaskPool.Add(<span class="stringliteral">&quot;CreatePublishStagingCopy&quot;</span>,</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                SteamManager.Workshop.CreatePublishStagingCopy(modVersion, localPackage),</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                SteamManager.Workshop.CreatePublishStagingCopy(editor.Title ?? localPackage.Name, modVersion, localPackage),</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                (t) =&gt;</div>
 <div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                {</div>
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                    stagingReady = true;</div>
@@ -674,7 +674,7 @@ $(document).ready(function(){initNavTree('_publish_tab_8cs_source.html',''); ini
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        }</div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    }</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html">Barotrauma.ContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00014">ContentPackage.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html">Barotrauma.ContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00015">ContentPackage.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_either_html"><div class="ttname"><a href="class_barotrauma_1_1_either.html">Barotrauma.Either</a></div><div class="ttdef"><b>Definition:</b> <a href="_either_8cs_source.html#l00006">Either.cs:7</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html_a086f1e28e77ee3665f7ac65ded21f68a"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html#a086f1e28e77ee3665f7ac65ded21f68a">Barotrauma.GUIComponent.UserData</a></div><div class="ttdeci">object UserData</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00336">GUIComponent.cs:336</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html_a6272b9c8153facf7c3d769ea3373a4ef"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html#a6272b9c8153facf7c3d769ea3373a4ef">Barotrauma.GUIComponent.Parent</a></div><div class="ttdeci">GUIComponent Parent</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00021">GUIComponent.cs:21</a></div></div>

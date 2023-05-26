@@ -125,6 +125,7 @@ var hierarchy =
     [ "Barotrauma.AITarget", "class_barotrauma_1_1_a_i_target.html", null ],
     [ "Barotrauma.MapCreatures.Behavior.BallastFloraBehavior.AITarget", "struct_barotrauma_1_1_map_creatures_1_1_behavior_1_1_ballast_flora_behavior_1_1_a_i_target.html", null ],
     [ "Barotrauma.AITargetMemory", "class_barotrauma_1_1_a_i_target_memory.html", null ],
+    [ "Barotrauma.AfflictionPrefab.Effect.AppliedStatValue", "struct_barotrauma_1_1_affliction_prefab_1_1_effect_1_1_applied_stat_value.html", null ],
     [ "AssemblyLoadContext", null, [
       [ "Barotrauma.CsScriptBase", "class_barotrauma_1_1_cs_script_base.html", [
         [ "Barotrauma.CsScriptLoader", "class_barotrauma_1_1_cs_script_loader.html", null ]
@@ -216,7 +217,6 @@ var hierarchy =
     [ "Barotrauma.CharacterHealth", "class_barotrauma_1_1_character_health.html", null ],
     [ "CharacterHUD", "class_character_h_u_d.html", null ],
     [ "Barotrauma.CharacterInfo", "class_barotrauma_1_1_character_info.html", null ],
-    [ "Barotrauma.CharacterInfoPrefab", "class_barotrauma_1_1_character_info_prefab.html", null ],
     [ "Barotrauma.CharacterTalent", "class_barotrauma_1_1_character_talent.html", null ],
     [ "Barotrauma.Networking.ChatMessage", "class_barotrauma_1_1_networking_1_1_chat_message.html", [
       [ "Barotrauma.Networking.OrderChatMessage", "class_barotrauma_1_1_networking_1_1_order_chat_message.html", null ],
@@ -283,6 +283,7 @@ var hierarchy =
     [ "Barotrauma.DelayedListElement", "class_barotrauma_1_1_delayed_list_element.html", null ],
     [ "Barotrauma.AfflictionPrefab.Description", "class_barotrauma_1_1_affliction_prefab_1_1_description.html", null ],
     [ "Barotrauma.IO.DirectoryInfo", "class_barotrauma_1_1_i_o_1_1_directory_info.html", null ],
+    [ "Barotrauma.DoSProtection.DoSAction", "struct_barotrauma_1_1_do_s_protection_1_1_do_s_action.html", null ],
     [ "Voronoi2.DoubleVector2", "class_voronoi2_1_1_double_vector2.html", null ],
     [ "Barotrauma.DurationListElement", "class_barotrauma_1_1_duration_list_element.html", null ],
     [ "Voronoi2.Edge", "class_voronoi2_1_1_edge.html", null ],
@@ -855,6 +856,7 @@ var hierarchy =
         [ "Barotrauma.CharacterParams", "class_barotrauma_1_1_character_params.html", null ],
         [ "Barotrauma.RagdollParams", "class_barotrauma_1_1_ragdoll_params.html", null ]
       ] ],
+      [ "Barotrauma.Gap", "class_barotrauma_1_1_gap.html", null ],
       [ "Barotrauma.Hull", "class_barotrauma_1_1_hull.html", null ],
       [ "Barotrauma.Hull", "class_barotrauma_1_1_hull.html", null ],
       [ "Barotrauma.Item", "class_barotrauma_1_1_item.html", null ],
@@ -1049,7 +1051,6 @@ var hierarchy =
     ] ],
     [ "Barotrauma.Networking.IWriteMessage", "interface_barotrauma_1_1_networking_1_1_i_write_message.html", null ],
     [ "Barotrauma.Job", "class_barotrauma_1_1_job.html", null ],
-    [ "Barotrauma.JobVariant", "class_barotrauma_1_1_job_variant.html", null ],
     [ "Barotrauma.Key", "class_barotrauma_1_1_key.html", null ],
     [ "Barotrauma.LanguageIdentifier", "struct_barotrauma_1_1_language_identifier.html", null ],
     [ "Barotrauma.LatchOntoAI", "class_barotrauma_1_1_latch_onto_a_i.html", null ],

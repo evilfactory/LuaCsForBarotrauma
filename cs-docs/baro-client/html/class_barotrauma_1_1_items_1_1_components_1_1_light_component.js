@@ -29,6 +29,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_light_component =
     [ "IsOn", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a4d5004f5d78eec28fefb47831352f756", null ],
     [ "Light", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#ae5e8acf399ff90fc5235d31caf4c7cd5", null ],
     [ "LightColor", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#ae3e28d9141535285ce14c6f7c9c7f499", null ],
+    [ "LightSpriteScale", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#aba3a05ac8c1ed4e15699ecee37fa19c5", null ],
     [ "PulseAmount", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a76e44dcc2cc9066424660fe397a62950", null ],
     [ "PulseFrequency", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a3a59141e5bc09dec46e334dbf5d1cc3a", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a7363f15d5a065807e96065dedecd48aa", null ],

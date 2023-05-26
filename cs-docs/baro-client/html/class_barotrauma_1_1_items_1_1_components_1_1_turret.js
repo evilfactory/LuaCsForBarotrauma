@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_turret =
 [
     [ "Turret", "class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a8b6b2e0865d46fc06b2de828960f257b", null ],
+    [ "CheckTurretAngle", "class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a21baa79319e533908261c01689382eb2", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a1a39fe8664b3b5cdbcc6ae558063cb27", null ],
     [ "CrewAIOperate", "class_barotrauma_1_1_items_1_1_components_1_1_turret.html#a957c8e13a9b559a20a166b906816fc55", null ],
     [ "Draw", "class_barotrauma_1_1_items_1_1_components_1_1_turret.html#aae03798b28ebb7d1e4fc954ef1e9bf6c", null ],

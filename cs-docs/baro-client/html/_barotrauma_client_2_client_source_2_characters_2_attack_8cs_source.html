@@ -94,48 +94,48 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_c
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">partial class </span><a class="code" href="namespace_barotrauma.html#a55389d27e5f2b04e4c3c7b0c1d14bd55adcfafcb4323b102c7e204555d313ba0a">Attack</a></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        [<a class="code" href="class_barotrauma_1_1_attack.html#a56db60016828422d4a0b502c7a73a52b">Serialize</a>(<span class="stringliteral">&quot;StructureBlunt&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes), Editable()]</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        [<a class="code" href="class_barotrauma_1_1_attack.html#a56db60016828422d4a0b502c7a73a52b">Serialize</a>(<span class="stringliteral">&quot;StructureBlunt&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, description: <span class="stringliteral">&quot;Name of the sound effect the attack makes when it hits a structure.&quot;</span>), Editable()]</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_attack.html#acbab2aafb364deef3e38829b03bb9e7d">   10</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_attack.html#acbab2aafb364deef3e38829b03bb9e7d">StructureSoundType</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_round_sound.html">RoundSound</a> sound;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_emitter.html">ParticleEmitter</a> particleEmitter;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        partial <span class="keywordtype">void</span> InitProjSpecific(<a class="code" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">if</span> (element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#af62aa09ab15310fa86967de6bbb70951">GetAttribute</a>(<span class="stringliteral">&quot;sound&quot;</span>) != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Error in attack (&quot;</span>+element+<span class="stringliteral">&quot;) - sounds should be defined as child elements, not as attributes.&quot;</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">foreach</span> (var subElement <span class="keywordflow">in</span> element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a954237d6a4224ca04477b468077a884f">Elements</a>())</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_round_sound.html">RoundSound</a> sound;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_emitter.html">ParticleEmitter</a> particleEmitter;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        partial <span class="keywordtype">void</span> InitProjSpecific(<a class="code" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#af62aa09ab15310fa86967de6bbb70951">GetAttribute</a>(<span class="stringliteral">&quot;sound&quot;</span>) != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keywordflow">switch</span> (subElement.Name.ToString().ToLowerInvariant())</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;particleemitter&quot;</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        particleEmitter = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_emitter.html">ParticleEmitter</a>(subElement);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;sound&quot;</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        sound = RoundSound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a0563776a9bd0a1c538ddfae4d1e1f907">Load</a>(subElement);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        partial <span class="keywordtype">void</span> DamageParticles(<span class="keywordtype">float</span> deltaTime, Vector2 worldPosition)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            particleEmitter?.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_emitter.html#ad67d3a15af9c27d9c2ab71dc5294fdca">Emit</a>(deltaTime, worldPosition);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span> (sound != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                SoundPlayer.PlaySound(sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a6a794e56464d512d0f4897e01a74c5a7">Sound</a>, worldPosition, sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a7fdebb17acd3651147d1c172d25b892b">Volume</a>, sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a2565c6140b6db6a62ad82436e76c4398">Range</a>, ignoreMuffling: sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#ac14d194d69542f6c6b09bf9bf65f0d5a">IgnoreMuffling</a>, freqMult: sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a42e37f20f4d158e380481cdc9f969c95">GetRandomFrequencyMultiplier</a>());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_attack_html_a56db60016828422d4a0b502c7a73a52b"><div class="ttname"><a href="class_barotrauma_1_1_attack.html#a56db60016828422d4a0b502c7a73a52b">Barotrauma.Attack.Serialize</a></div><div class="ttdeci">void Serialize(XElement element)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00468">BarotraumaShared/SharedSource/Characters/Attack.cs:468</a></div></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Error in attack (&quot;</span>+element+<span class="stringliteral">&quot;) - sounds should be defined as child elements, not as attributes.&quot;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">foreach</span> (var subElement <span class="keywordflow">in</span> element.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a954237d6a4224ca04477b468077a884f">Elements</a>())</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">switch</span> (subElement.Name.ToString().ToLowerInvariant())</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;particleemitter&quot;</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        particleEmitter = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_emitter.html">ParticleEmitter</a>(subElement);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;sound&quot;</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        sound = RoundSound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a0563776a9bd0a1c538ddfae4d1e1f907">Load</a>(subElement);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        partial <span class="keywordtype">void</span> DamageParticles(<span class="keywordtype">float</span> deltaTime, Vector2 worldPosition)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            particleEmitter?.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_emitter.html#ad67d3a15af9c27d9c2ab71dc5294fdca">Emit</a>(deltaTime, worldPosition);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span> (sound != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                SoundPlayer.PlaySound(sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a6a794e56464d512d0f4897e01a74c5a7">Sound</a>, worldPosition, sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a7fdebb17acd3651147d1c172d25b892b">Volume</a>, sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a2565c6140b6db6a62ad82436e76c4398">Range</a>, ignoreMuffling: sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#ac14d194d69542f6c6b09bf9bf65f0d5a">IgnoreMuffling</a>, freqMult: sound.<a class="code" href="class_barotrauma_1_1_round_sound.html#a42e37f20f4d158e380481cdc9f969c95">GetRandomFrequencyMultiplier</a>());</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_attack_html_a56db60016828422d4a0b502c7a73a52b"><div class="ttname"><a href="class_barotrauma_1_1_attack.html#a56db60016828422d4a0b502c7a73a52b">Barotrauma.Attack.Serialize</a></div><div class="ttdeci">void Serialize(XElement element)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00474">BarotraumaShared/SharedSource/Characters/Attack.cs:474</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_attack_html_acbab2aafb364deef3e38829b03bb9e7d"><div class="ttname"><a href="class_barotrauma_1_1_attack.html#acbab2aafb364deef3e38829b03bb9e7d">Barotrauma.Attack.StructureSoundType</a></div><div class="ttdeci">string StructureSoundType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_characters_2_attack_8cs_source.html#l00010">BarotraumaClient/ClientSource/Characters/Attack.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html">Barotrauma.ContentXElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00013">ContentXElement.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a954237d6a4224ca04477b468077a884f"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a954237d6a4224ca04477b468077a884f">Barotrauma.ContentXElement.Elements</a></div><div class="ttdeci">IEnumerable&lt; ContentXElement &gt; Elements()</div></div>

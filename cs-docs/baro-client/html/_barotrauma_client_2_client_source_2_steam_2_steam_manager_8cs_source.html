@@ -104,40 +104,40 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly List&lt;Identifier&gt; initializationErrors = <span class="keyword">new</span> List&lt;Identifier&gt;();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IReadOnlyList&lt;Identifier&gt; InitializationErrors =&gt; initializationErrors;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> InitializeProjectSpecific()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span> (IsInitialized) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                Steamworks.SteamClient.Init(AppID, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                IsInitialized = Steamworks.SteamClient.IsLoggedOn &amp;&amp; Steamworks.SteamClient.IsValid;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">if</span> (IsInitialized)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    DebugConsole.NewMessage(</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        $<span class="stringliteral">&quot;Logged in as {GetUsername()} (SteamID {(GetSteamId().TryUnwrap(out var steamId) ? steamId.ToString() : &quot;</span>[NULL]<span class="stringliteral">&quot;)})&quot;</span>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                    popularTags.Clear();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <span class="keywordflow">foreach</span> (KeyValuePair&lt;string, int&gt; commonness <span class="keywordflow">in</span> tagCommonness)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        popularTags.Insert(i, commonness.Key);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        i++;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                Steamworks.SteamNetworkingUtils.OnDebugOutput += LogSteamworksNetworking;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">catch</span> (DllNotFoundException)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                IsInitialized = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                initializationErrors.Add(<span class="stringliteral">&quot;SteamDllNotFound&quot;</span>.ToIdentifier());</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;SteamManager initialization threw an exception&quot;</span>, e);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                IsInitialized = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsInitializedProjectSpecific</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            =&gt; Steamworks.SteamClient.IsValid &amp;&amp; Steamworks.SteamClient.IsLoggedOn;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> InitializeProjectSpecific()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (IsInitialized) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                Steamworks.SteamClient.Init(AppID, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keywordflow">if</span> (IsInitialized)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    DebugConsole.NewMessage(</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        $<span class="stringliteral">&quot;Logged in as {GetUsername()} (SteamID {(GetSteamId().TryUnwrap(out var steamId) ? steamId.ToString() : &quot;</span>[NULL]<span class="stringliteral">&quot;)})&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    popularTags.Clear();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordflow">foreach</span> (KeyValuePair&lt;string, int&gt; commonness <span class="keywordflow">in</span> tagCommonness)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        popularTags.Insert(i, commonness.Key);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        i++;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                Steamworks.SteamNetworkingUtils.OnDebugOutput += LogSteamworksNetworking;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">catch</span> (DllNotFoundException)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                initializationErrors.Add(<span class="stringliteral">&quot;SteamDllNotFound&quot;</span>.ToIdentifier());</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;SteamManager initialization threw an exception&quot;</span>, e);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                initializationErrors.Add(<span class="stringliteral">&quot;SteamClientInitFailed&quot;</span>.ToIdentifier());</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>

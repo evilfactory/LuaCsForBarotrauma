@@ -21,7 +21,6 @@ var class_barotrauma_1_1_traitor =
     [ "Objective", "class_barotrauma_1_1_traitor_1_1_objective.html", "class_barotrauma_1_1_traitor_1_1_objective" ],
     [ "TraitorMission", "class_barotrauma_1_1_traitor_1_1_traitor_mission.html", "class_barotrauma_1_1_traitor_1_1_traitor_mission" ],
     [ "Traitor", "class_barotrauma_1_1_traitor.html#ae785cc3f93909f5c4e678c94376ab1f5", null ],
-    [ "Greet", "class_barotrauma_1_1_traitor.html#ae332ba6043d9484791d974561b2f6ce9", null ],
     [ "MessageSender", "class_barotrauma_1_1_traitor.html#a4126e95e68ad5febd4f82b909493372e", null ],
     [ "SendChatMessage", "class_barotrauma_1_1_traitor.html#affbaf4c15c04a1b182c3994ccea6b43b", null ],
     [ "SendChatMessageBox", "class_barotrauma_1_1_traitor.html#a7cc1aa34d60c1a0a70aaeecc228e9672", null ],

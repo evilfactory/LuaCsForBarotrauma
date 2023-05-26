@@ -40,7 +40,7 @@ var class_barotrauma_1_1_networking_1_1_game_client =
     [ "SetupNewCampaign", "class_barotrauma_1_1_networking_1_1_game_client.html#ab8014f5cc420ecbb72b135b4cbffd27c", null ],
     [ "ShowMoneyTransferVoteInterface", "class_barotrauma_1_1_networking_1_1_game_client.html#af27b42b8c4216a58eef53453a79a72d6", null ],
     [ "ShowSubmarineChangeVoteInterface", "class_barotrauma_1_1_networking_1_1_game_client.html#af60f2ff156d2c88aab46b6854bc545cd", null ],
-    [ "SpectateClicked", "class_barotrauma_1_1_networking_1_1_game_client.html#a192beb8ff4e82653c15078982f15214e", null ],
+    [ "SpectateClicked", "class_barotrauma_1_1_networking_1_1_game_client.html#acfdf6077c3287bb20e2dc904e6b82e07", null ],
     [ "ToggleEndRoundVote", "class_barotrauma_1_1_networking_1_1_game_client.html#a36486d22c1e803971302998999db5d0b", null ],
     [ "TypingChatMessage", "class_barotrauma_1_1_networking_1_1_game_client.html#a12898b1906d9a638ef73aa3230f317a9", null ],
     [ "UnbanPlayer", "class_barotrauma_1_1_networking_1_1_game_client.html#ae8c43d9383cda8873b93f84491351e1e", null ],

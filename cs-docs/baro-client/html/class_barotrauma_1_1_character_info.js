@@ -37,6 +37,7 @@ var class_barotrauma_1_1_character_info =
     [ "GetRandomName", "class_barotrauma_1_1_character_info.html#a69edc23751575295c7c843ca9dcb6742", null ],
     [ "GetSavedStatValue", "class_barotrauma_1_1_character_info.html#aca3b5555eccfd927a0c5afca2b41a5d0", null ],
     [ "GetSavedStatValue", "class_barotrauma_1_1_character_info.html#ae9d3a90b1a0ccaaa6f2679b5e2eb7209", null ],
+    [ "GetSavedStatValueWithBotsInMp", "class_barotrauma_1_1_character_info.html#a748dd2451dd3332261e7fd2eefb1bafc", null ],
     [ "GetTotalTalentPoints", "class_barotrauma_1_1_character_info.html#ae3e8729d0e8094c1e74183c8726696eb", null ],
     [ "GetUnlockedTalentsInTree", "class_barotrauma_1_1_character_info.html#aca9418ba85d956997fe8907f1d0e3ef2", null ],
     [ "GetUnlockedTalentsOutsideTree", "class_barotrauma_1_1_character_info.html#a08434983e331ac04504286082af10f90", null ],

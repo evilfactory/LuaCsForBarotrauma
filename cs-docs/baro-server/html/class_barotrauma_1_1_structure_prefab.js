@@ -20,6 +20,7 @@ var class_barotrauma_1_1_structure_prefab =
     [ "CanSpriteFlipY", "class_barotrauma_1_1_structure_prefab.html#a0b6a22b0192c3ec8fc02a88e1a356b84", null ],
     [ "CastShadow", "class_barotrauma_1_1_structure_prefab.html#ad3c6aa48b9f3ef07bcd9a91335364c86", null ],
     [ "Category", "class_barotrauma_1_1_structure_prefab.html#a5d40fe8eb40edfc2fea1b4f33fda4e91", null ],
+    [ "DamageParticle", "class_barotrauma_1_1_structure_prefab.html#adef9a051d10253ddbe05656fab648efd", null ],
     [ "DamageSound", "class_barotrauma_1_1_structure_prefab.html#a28c69539d5b4647acdbaefdfb60907a0", null ],
     [ "Health", "class_barotrauma_1_1_structure_prefab.html#afa6c80eb41de4e1ff2796a8751c4365a", null ],
     [ "IndestructibleInOutposts", "class_barotrauma_1_1_structure_prefab.html#a8c32cc8733d2520d8ee8a8e6a2e9cc3c", null ],

@@ -111,8 +111,9 @@ Inheritance diagram for Barotrauma.AIController:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac0443991acc6ad8c8888122958c437ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#ac0443991acc6ad8c8888122958c437ec">HasValidPath</a> (bool requireNonDirty=false, bool requireUnfinished=true)</td></tr>
-<tr class="separator:ac0443991acc6ad8c8888122958c437ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada20b1876bf5b93356a85b55f5bae855"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#ada20b1876bf5b93356a85b55f5bae855">HasValidPath</a> (bool requireNonDirty=true, bool requireUnfinished=true, Func&lt; <a class="el" href="class_barotrauma_1_1_way_point.html">WayPoint</a>, bool &gt; nodePredicate=null)</td></tr>
+<tr class="memdesc:ada20b1876bf5b93356a85b55f5bae855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the current path valid, using the provided parameters.  <a href="class_barotrauma_1_1_a_i_controller.html#ada20b1876bf5b93356a85b55f5bae855">More...</a><br /></td></tr>
+<tr class="separator:ada20b1876bf5b93356a85b55f5bae855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affa6bbf64400112f0bd197f3b165ed66"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#affa6bbf64400112f0bd197f3b165ed66">AIController</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> c)</td></tr>
 <tr class="separator:affa6bbf64400112f0bd197f3b165ed66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65e956abad549e4c610e9b14a34894f8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#a65e956abad549e4c610e9b14a34894f8">OnHealed</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> healer, float healAmount)</td></tr>
@@ -133,8 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aae1f9d970e593f40de658b1d97972aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab431d7b96732a43c4a09ebd2d26a58dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#ab431d7b96732a43c4a09ebd2d26a58dc">CanPassThroughHole</a> (<a class="el" href="class_barotrauma_1_1_structure.html">Structure</a> wall, int sectionIndex, int requiredHoleCount)</td></tr>
 <tr class="separator:ab431d7b96732a43c4a09ebd2d26a58dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7235f16f45969cb71423799933e61fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#af7235f16f45969cb71423799933e61fb">TakeItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, <a class="el" href="class_barotrauma_1_1_character_inventory.html">CharacterInventory</a> targetInventory, bool equip, bool wear=false, bool dropOtherIfCannotMove=true, bool allowSwapping=false, bool storeUnequipped=false)</td></tr>
-<tr class="separator:af7235f16f45969cb71423799933e61fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71338931342997505c231a9cbabc35a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#a71338931342997505c231a9cbabc35a1">TakeItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, <a class="el" href="class_barotrauma_1_1_character_inventory.html">CharacterInventory</a> targetInventory, bool equip, bool wear=false, bool dropOtherIfCannotMove=true, bool allowSwapping=false, bool storeUnequipped=false, IEnumerable&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt; targetTags=null)</td></tr>
+<tr class="separator:a71338931342997505c231a9cbabc35a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bd025577842b346b3ff12da23acbabe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#a5bd025577842b346b3ff12da23acbabe">UnequipEmptyItems</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> parentItem, bool avoidDroppingInSea=true)</td></tr>
 <tr class="separator:a5bd025577842b346b3ff12da23acbabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37b4e98104746f52960f60db1601b68c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_controller.html#a37b4e98104746f52960f60db1601b68c">UnequipContainedItems</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> parentItem, Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt; predicate=null, bool avoidDroppingInSea=true, int? unequipMax=null)</td></tr>
@@ -266,7 +267,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00126">126</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00140">140</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -303,7 +304,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00210">210</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00224">224</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -333,7 +334,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#a3d2c17f983c1f2ab7e7bde9a8bc2b69a">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00508">508</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00533">533</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -413,8 +414,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ac0443991acc6ad8c8888122958c437ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0443991acc6ad8c8888122958c437ec">&#9670;&nbsp;</a></span>HasValidPath()</h2>
+<a id="ada20b1876bf5b93356a85b55f5bae855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada20b1876bf5b93356a85b55f5bae855">&#9670;&nbsp;</a></span>HasValidPath()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,13 +424,19 @@ Properties</h2></td></tr>
           <td class="memname">bool Barotrauma.AIController.HasValidPath </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>requireNonDirty</em> = <code>false</code>, </td>
+          <td class="paramname"><em>requireNonDirty</em> = <code>true</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>requireUnfinished</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>requireUnfinished</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Func&lt; <a class="el" href="class_barotrauma_1_1_way_point.html">WayPoint</a>, bool &gt;&#160;</td>
+          <td class="paramname"><em>nodePredicate</em> = <code>null</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -438,6 +445,19 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Is the current path valid, using the provided parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requireNonDirty</td><td></td></tr>
+    <tr><td class="paramname">requireUnfinished</td><td></td></tr>
+    <tr><td class="paramname">nodePredicate</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>When <em>nodePredicate</em>  is defined, returns false if any of the nodes fails to match the predicate.</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00117">117</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -465,7 +485,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00239">239</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00253">253</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -505,7 +525,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_human_a_i_controller.html#a67c13416af7f6a66d8478b48af9c1996">Barotrauma.HumanAIController</a>, and <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#aefbc8b5347ef01d584ef92cdcdb0d9a2">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00140">140</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00154">154</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -545,7 +565,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_human_a_i_controller.html#a6464547fe0ec74212f6d4e4dc47987df">Barotrauma.HumanAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00138">138</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00152">152</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -585,7 +605,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#a16eac850ae0792321bf745e85779f149">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00505">505</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00530">530</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -625,7 +645,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#a16b0fc13d8cea862703ac7604f3cc2d6">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00506">506</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00531">531</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -644,7 +664,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00355">355</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00379">379</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -673,7 +693,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_human_a_i_controller.html#ad694466240ac6fba2c227785bd96763d">Barotrauma.HumanAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00157">157</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00171">171</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -700,7 +720,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00162">162</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00176">176</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -719,7 +739,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00496">496</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00521">521</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -749,7 +769,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_human_a_i_controller.html#ab9ea048248123333a3708c64236035f9">Barotrauma.HumanAIController</a>, and <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#a6c60b26e0e710d34cb34649576ae47de">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00156">156</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -779,7 +799,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#ac3de8959383641c0168c30433af7d881">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00509">509</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00534">534</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -831,7 +851,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#ad18d1906edb2daec40981717448e7230">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00194">194</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00208">208</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -883,12 +903,12 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#aa26a4abb0f9e722219c1961a815d73b2">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00173">173</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00187">187</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
-<a id="af7235f16f45969cb71423799933e61fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7235f16f45969cb71423799933e61fb">&#9670;&nbsp;</a></span>TakeItem()</h2>
+<a id="a71338931342997505c231a9cbabc35a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71338931342997505c231a9cbabc35a1">&#9670;&nbsp;</a></span>TakeItem()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -933,7 +953,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>storeUnequipped</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>storeUnequipped</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IEnumerable&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td>
+          <td class="paramname"><em>targetTags</em> = <code>null</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -943,7 +969,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00254">254</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00268">268</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1025,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00327">327</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00351">351</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1139,7 +1165,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_human_a_i_controller.html#a6b60ec3a3e96b542002d576692c0ee15">Barotrauma.HumanAIController</a>, and <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#a3a1ce97e8a4a79fc1ae6ce56b8333822">Barotrauma.EnemyAIController</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00144">144</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00158">158</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1177,7 +1203,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00376">376</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00400">400</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1300,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00374">374</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00398">398</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1298,7 +1324,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00124">124</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00138">138</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1364,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00123">123</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00137">137</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1362,7 +1388,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00121">121</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00135">135</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1402,7 +1428,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00122">122</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00136">136</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1450,7 +1476,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00375">375</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00399">399</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1549,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00370">370</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00394">394</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1547,7 +1573,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00119">119</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00133">133</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1571,7 +1597,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00117">117</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00131">131</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1621,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00118">118</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00132">132</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1643,7 +1669,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00170">170</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00184">184</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
@@ -1667,7 +1693,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00171">171</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html#l00185">185</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_characters_2_a_i_2_a_i_controller_8cs_source.html">BarotraumaShared/SharedSource/Characters/AI/AIController.cs</a>.</p>
 
 </div>
 </div>
