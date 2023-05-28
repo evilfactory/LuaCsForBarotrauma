@@ -11,7 +11,7 @@ jobs:
   check-if-release-needed:
     runs-on: ubuntu-latest
     outputs:
-      has-new-commits: "true"
+      has-new-commits: ${{ steps.check-for-new-commits.outputs.has-new-commits }}
     steps:
       - name: Extract branch name
         id: extract-branch-name
@@ -73,7 +73,9 @@ jobs:
           fi
 
           if [[ "$LATEST_TAGGED_SHA" == "$LATEST_SHA" ]]; then
-            echo "has-new-commits=false" >> "$GITHUB_STATE"
+            echo "has-new-commits=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has-new-commits=true" >> "$GITHUB_OUTPUT"
           fi
 
   publish-release:
