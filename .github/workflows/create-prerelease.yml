@@ -4,13 +4,14 @@ name: Create pre-release
 
 on:
   schedule:
-    - cron: 0 0 * * *
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
   check-if-release-needed:
     runs-on: ubuntu-latest
     outputs:
+      latest-commit-sha: ${{ steps.get-latest-commit.outputs.result }}
       has-new-commits: ${{ steps.check-for-new-commits.outputs.has-new-commits }}
     steps:
       - name: Extract branch name
@@ -83,6 +84,6 @@ jobs:
     if: ${{ needs.check-if-release-needed.outputs.has-new-commits == 'true' }}
     uses: ./.github/workflows/publish-release.yml
     with:
-      target: ${{ github.event.ref }}
+      target: ${{ needs.check-if-release-needed.outputs.latest-commit-sha }}
       tag: nightly
       prerelease: true
