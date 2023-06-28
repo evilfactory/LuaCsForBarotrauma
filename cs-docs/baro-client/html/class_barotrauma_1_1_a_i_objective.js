@@ -20,6 +20,7 @@ var class_barotrauma_1_1_a_i_objective =
     [ "RemoveSubObjective< T >", "class_barotrauma_1_1_a_i_objective.html#a21e3fa7e3bc2260be9d8429ab442d059", null ],
     [ "Reset", "class_barotrauma_1_1_a_i_objective.html#a92186a78f53e6964685de228b2933ecd", null ],
     [ "SortSubObjectives", "class_barotrauma_1_1_a_i_objective.html#acf974964097919eb71f05512988e2b7d", null ],
+    [ "SpeakAfterOrderReceived", "class_barotrauma_1_1_a_i_objective.html#a2470fc0afc384dc191990444f8c43042", null ],
     [ "SyncRemovedObjectives< T1, T2 >", "class_barotrauma_1_1_a_i_objective.html#a10280cd07aceb7d45d1de55db69d9cca", null ],
     [ "TryAddSubObjective< T >", "class_barotrauma_1_1_a_i_objective.html#a77fd19bf5e49d9e9c2ae3bac619987ec", null ],
     [ "TryComplete", "class_barotrauma_1_1_a_i_objective.html#a67fa1356de7cf735d99cad1f439c39b0", null ],

@@ -5,7 +5,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_holdable =
     [ "CanBeAttached", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a325cec3d9f58f373981e6505f6214e3e", null ],
     [ "CanBeDeattached", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a8c5ea2984a71bfc6eda56972a1ad2f29", null ],
     [ "DeattachFromWall", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#af59ec4c73e8c508f328fc87e6fea8253", null ],
-    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a979fd1de6f9e9065a612d2a81349cca8", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#ac472c2c14815863fb4463da66968c867", null ],
     [ "Equip", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a922bcb6682f02eb28caa5d754b8608ef", null ],
     [ "FlipX", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a2040297207d01a7c3eee0e550e4625d8", null ],
     [ "GetRope", "class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#ac9c98abb36c71f3c5cd17ce7af1cb89b", null ],

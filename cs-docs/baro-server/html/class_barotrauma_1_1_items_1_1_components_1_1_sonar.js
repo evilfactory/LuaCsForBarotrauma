@@ -19,6 +19,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
     [ "HasMineralScanner", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a637ecb750476b80a9f54f805d3d6525e", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#afe165cd6cddba66d30626c3fed2d33c8", null ],
     [ "UseDirectionalPing", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a72a48a7163fb08306b7f432ca640e7b9", null ],
+    [ "UseMineralScanner", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#aed6977263f9eda378797bc21c73f71c6", null ],
     [ "UseTransducers", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#ac3cad2c6230297a4f9228282f62a5a89", null ],
     [ "Zoom", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#abb55f321efb132ee7fe8a36bd50d47e4", null ]
 ];

@@ -115,9 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5bb34a31aef862b1ae167539567f4234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b45cb94ef45092a4af0daf83ee1df21"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a0b45cb94ef45092a4af0daf83ee1df21">Equip</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character)</td></tr>
 <tr class="separator:a0b45cb94ef45092a4af0daf83ee1df21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a387fc1fb3f67a8fec59acb339cbfce10"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a387fc1fb3f67a8fec59acb339cbfce10">Drop</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> dropper)</td></tr>
-<tr class="memdesc:a387fc1fb3f67a8fec59acb339cbfce10"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="class_barotrauma_1_1_character.html">Character</a> has dropped the item  <a href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a387fc1fb3f67a8fec59acb339cbfce10">More...</a><br /></td></tr>
-<tr class="separator:a387fc1fb3f67a8fec59acb339cbfce10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d54de702c3a56c2062bf50ded04aea"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a64d54de702c3a56c2062bf50ded04aea">Drop</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> dropper, bool setTransform=true)</td></tr>
+<tr class="memdesc:a64d54de702c3a56c2062bf50ded04aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">a <a class="el" href="class_barotrauma_1_1_character.html">Character</a> has dropped the item  <a href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a64d54de702c3a56c2062bf50ded04aea">More...</a><br /></td></tr>
+<tr class="separator:a64d54de702c3a56c2062bf50ded04aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9815d87696b93463b728de25d166c4f4"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a9815d87696b93463b728de25d166c4f4">Unequip</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character)</td></tr>
 <tr class="separator:a9815d87696b93463b728de25d166c4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae784a8670cc846fe229ef6e56108fa7b"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#ae784a8670cc846fe229ef6e56108fa7b">UpdateBroken</a> (float deltaTime, <a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
@@ -450,8 +450,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a387fc1fb3f67a8fec59acb339cbfce10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a387fc1fb3f67a8fec59acb339cbfce10">&#9670;&nbsp;</a></span>Drop()</h2>
+<a id="a64d54de702c3a56c2062bf50ded04aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d54de702c3a56c2062bf50ded04aea">&#9670;&nbsp;</a></span>Drop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -463,8 +463,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">override void Barotrauma.Items.Components.Wearable.Drop </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_character.html">Character</a>&#160;</td>
-          <td class="paramname"><em>dropper</em></td><td>)</td>
+          <td class="paramname"><em>dropper</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>setTransform</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -476,7 +486,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>a <a class="el" href="class_barotrauma_1_1_character.html">Character</a> has dropped the item </p>
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a1591f151e82007b842f48349839cbbc9">Barotrauma.Items.Components.Pickable</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a2d9bb67a466563a41cbb76f08ec2c810">Barotrauma.Items.Components.Pickable</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_wearable_8cs_source.html#l00485">485</a> of file <a class="el" href="_wearable_8cs_source.html">Wearable.cs</a>.</p>
 

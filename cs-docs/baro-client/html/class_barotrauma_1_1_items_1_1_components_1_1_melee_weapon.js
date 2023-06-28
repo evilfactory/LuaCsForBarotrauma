@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon =
 [
     [ "MeleeWeapon", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a89f783b8e9a537f719350f6d6e1bd85a", null ],
-    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#ac25e227bda737398046363955db9a406", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#aee9150436dbb02e5d2ee11de06a678f0", null ],
     [ "Equip", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#a88de442d106d62099ca734538368bc76", null ],
     [ "SecondaryUse", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#ab8d1ce0b1aaa4315828a8ae8dfce1e95", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#aaf780a20ff99fbd78a5a0b555f17bc30", null ],

@@ -1,10 +1,5 @@
 var NAVTREEINDEX32 =
 {
-"class_barotrauma_1_1_networking_1_1_client.html#a7da84789d2d3fd4633952ff7d4eeea22":[4,0,0,4,0,47],
-"class_barotrauma_1_1_networking_1_1_client.html#a7e5ab635c240b5ea722acdcd636cb0a1":[4,0,0,4,0,23],
-"class_barotrauma_1_1_networking_1_1_client.html#a800f96f511f97fb9324f365a1e091bcc":[4,0,0,4,0,64],
-"class_barotrauma_1_1_networking_1_1_client.html#a8215741db5b2c394169447a49ac936a3":[4,0,0,4,0,19],
-"class_barotrauma_1_1_networking_1_1_client.html#a85270826c851ef3906e618c2f131743c":[4,0,0,4,0,6],
 "class_barotrauma_1_1_networking_1_1_client.html#a88d7d26d7de362d644e3b007aa3f28e7":[4,0,0,4,0,9],
 "class_barotrauma_1_1_networking_1_1_client.html#a8ab18809d0b9c3aa4ed91b5e59d91bd7":[4,0,0,4,0,24],
 "class_barotrauma_1_1_networking_1_1_client.html#a90f5ff5e89ce62737ebc796395cdca14":[4,0,0,4,0,81],
@@ -122,11 +117,12 @@ var NAVTREEINDEX32 =
 "class_barotrauma_1_1_networking_1_1_game_server.html#a6ab6dae596f77995555ac832135a9be9":[4,0,0,4,39,10],
 "class_barotrauma_1_1_networking_1_1_game_server.html#a6b0df47fd2a2f518aa4fe80d26c9aad9":[4,0,0,4,39,11],
 "class_barotrauma_1_1_networking_1_1_game_server.html#a6e4876cb7b29f0ccee5811610823b6fe":[4,0,0,4,39,4],
-"class_barotrauma_1_1_networking_1_1_game_server.html#a77d3b4974d2d89ca4b6abdac2e217045":[4,0,0,4,39,32],
+"class_barotrauma_1_1_networking_1_1_game_server.html#a77d3b4974d2d89ca4b6abdac2e217045":[4,0,0,4,39,31],
 "class_barotrauma_1_1_networking_1_1_game_server.html#a7d7fbfaf845364d6c0d0403c6ee6bd9f":[4,0,0,4,39,27],
 "class_barotrauma_1_1_networking_1_1_game_server.html#a7e58c58684339590d5e6d81999daede3":[4,0,0,4,39,44],
 "class_barotrauma_1_1_networking_1_1_game_server.html#a8132ec8254e3f531eaf524436243cf4a":[4,0,0,4,39,17],
 "class_barotrauma_1_1_networking_1_1_game_server.html#a89ebef811b698627a8cc6aa31e5ee56d":[4,0,0,4,39,23],
+"class_barotrauma_1_1_networking_1_1_game_server.html#a8dae9b70b5535be3a11ddd80d9a510ff":[4,0,0,4,39,33],
 "class_barotrauma_1_1_networking_1_1_game_server.html#aa29e601212cf9077cc62f7957b4d528b":[4,0,0,4,39,50],
 "class_barotrauma_1_1_networking_1_1_game_server.html#aa7562c8afc7650452b1ed45d4fb626f6":[4,0,0,4,39,20],
 "class_barotrauma_1_1_networking_1_1_game_server.html#aa9f2ba3db10faa3415980a6376af7725":[4,0,0,4,39,42],
@@ -139,7 +135,7 @@ var NAVTREEINDEX32 =
 "class_barotrauma_1_1_networking_1_1_game_server.html#aca37dcb4d6845dfdb239978aca34c60e":[4,0,0,4,39,34],
 "class_barotrauma_1_1_networking_1_1_game_server.html#acb3e517a70fd041731afb048706268cc":[4,0,0,4,39,5],
 "class_barotrauma_1_1_networking_1_1_game_server.html#ad1c6285039d6a2ffedec315969046e0e":[4,0,0,4,39,38],
-"class_barotrauma_1_1_networking_1_1_game_server.html#ad658807c3eb8c62fa94a640d1da0587b":[4,0,0,4,39,33],
+"class_barotrauma_1_1_networking_1_1_game_server.html#ad658807c3eb8c62fa94a640d1da0587b":[4,0,0,4,39,32],
 "class_barotrauma_1_1_networking_1_1_game_server.html#ad7f47708dca75b4a90c7126130d7a86b":[4,0,0,4,39,15],
 "class_barotrauma_1_1_networking_1_1_game_server.html#add459f46f81c8d694404558fb6a3d83f":[4,0,0,4,39,1],
 "class_barotrauma_1_1_networking_1_1_game_server.html#ae5e1a0923aef89b2f7e2ce52fec9a9c9":[4,0,0,4,39,22],
@@ -147,7 +143,6 @@ var NAVTREEINDEX32 =
 "class_barotrauma_1_1_networking_1_1_game_server.html#aede19c2f290cde833a60326bc9c70c86":[4,0,0,4,39,45],
 "class_barotrauma_1_1_networking_1_1_game_server.html#af4ff960085117f35724418c0a8c63c88":[4,0,0,4,39,30],
 "class_barotrauma_1_1_networking_1_1_game_server.html#afa2855f3683c85e3838dd1b28ad0df18":[4,0,0,4,39,21],
-"class_barotrauma_1_1_networking_1_1_game_server.html#afbd202708d01c86ac299c584ab3666a1":[4,0,0,4,39,31],
 "class_barotrauma_1_1_networking_1_1_lidgren_address.html":[4,0,0,4,17],
 "class_barotrauma_1_1_networking_1_1_lidgren_address.html#a0c7809ba942324400888e97a7f4537d2":[4,0,0,4,17,2],
 "class_barotrauma_1_1_networking_1_1_lidgren_address.html#a1ca69d9543cdc68f6ef69f9e60b736d4":[4,0,0,4,17,5],
@@ -249,5 +244,10 @@ var NAVTREEINDEX32 =
 "class_barotrauma_1_1_networking_1_1_respawn_manager.html#a6d5b2f6c5c790b0511555468e6ad9682a5706de961fb376d701be6e7762d8b09c":[4,0,0,4,33,0,0],
 "class_barotrauma_1_1_networking_1_1_respawn_manager.html#a6d5b2f6c5c790b0511555468e6ad9682a6300e0c307ee17a1e9ae7bf72d279468":[4,0,0,4,33,0,2],
 "class_barotrauma_1_1_networking_1_1_respawn_manager.html#a6d5b2f6c5c790b0511555468e6ad9682a81f2e4ac5734666bd05d82ab6c280c28":[4,0,0,4,33,0,1],
-"class_barotrauma_1_1_networking_1_1_respawn_manager.html#a710b5015c9409769ffe918f104bfea41":[4,0,0,4,33,9]
+"class_barotrauma_1_1_networking_1_1_respawn_manager.html#a710b5015c9409769ffe918f104bfea41":[4,0,0,4,33,9],
+"class_barotrauma_1_1_networking_1_1_respawn_manager.html#a824df768eb0fef9ad0a826c46eff542c":[4,0,0,4,33,12],
+"class_barotrauma_1_1_networking_1_1_respawn_manager.html#aa012429aa942723d9165324c7cb14ad0":[4,0,0,4,33,14],
+"class_barotrauma_1_1_networking_1_1_respawn_manager.html#ad6a9c22682f86e0913f193521a2de391":[4,0,0,4,33,13],
+"class_barotrauma_1_1_networking_1_1_respawn_manager.html#ae4808e310b152d24b790dcf471be455f":[4,0,0,4,33,6],
+"class_barotrauma_1_1_networking_1_1_respawn_manager.html#aea64d4181d7d60173c5881f7f4b3bd68":[4,0,0,4,33,10]
 };

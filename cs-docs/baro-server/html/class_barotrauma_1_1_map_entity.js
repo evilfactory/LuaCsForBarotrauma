@@ -13,7 +13,7 @@ var class_barotrauma_1_1_map_entity =
     [ "HasUpgrade", "class_barotrauma_1_1_map_entity.html#a438aeca8633500f0fe9da303613039e4", null ],
     [ "InsertToList", "class_barotrauma_1_1_map_entity.html#a1b6244119472dd2b52133400dba18684", null ],
     [ "IsMouseOn", "class_barotrauma_1_1_map_entity.html#adddb56ddd753320fc97c5f98c4be0d4c", null ],
-    [ "Move", "class_barotrauma_1_1_map_entity.html#afd30523ffeb544b65db11a11540a877a", null ],
+    [ "Move", "class_barotrauma_1_1_map_entity.html#a9c1bda7cf1f886c441fb1ccf730a6774", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_map_entity.html#a894499889efd3df17a908b27525690cb", null ],
     [ "ParseLinks", "class_barotrauma_1_1_map_entity.html#a70db2196ee2c3f5a11acabde6964c07f", null ],
     [ "Remove", "class_barotrauma_1_1_map_entity.html#a5aadc990593768bc8942e373a8c40879", null ],

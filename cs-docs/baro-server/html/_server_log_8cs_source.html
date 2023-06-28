@@ -220,7 +220,7 @@ $(document).ready(function(){initNavTree('_server_log_8cs_source.html',''); init
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                listBox.UpdateScrollBarSize();</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">if</span> (unsavedLines.Count() &gt;= <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#ab5c605dda3bc7898a64cc62227afb854">LinesPerFile</a>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">if</span> (unsavedLines.Count &gt;= <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#ab5c605dda3bc7898a64cc62227afb854">LinesPerFile</a>)</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            {</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a5899185079bbfabef657c8ecda38e94a">Save</a>();</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                unsavedLines.Clear();</div>
@@ -234,7 +234,7 @@ $(document).ready(function(){initNavTree('_server_log_8cs_source.html',''); init
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#if CLIENT</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">while</span> (listBox != <span class="keyword">null</span> &amp;&amp; listBox.Content.CountChildren &gt; <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#ab5c605dda3bc7898a64cc62227afb854">LinesPerFile</a>)</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                listBox.RemoveChild(reverseOrder ? listBox.Content.Children.First() : listBox.Content.Children.Last());</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                listBox.Content.RemoveChild(!reverseOrder ? listBox.Content.Children.First() : listBox.Content.Children.Last());</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>

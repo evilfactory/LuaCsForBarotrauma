@@ -56,7 +56,7 @@ var class_barotrauma_1_1_level =
     [ "CheckBeaconActive", "class_barotrauma_1_1_level.html#a590e2653a0c1883876be0cd60a1a3014", null ],
     [ "DebugSetEndLocation", "class_barotrauma_1_1_level.html#a781b436d43ba29fd7ecc47d21f9b5ccd", null ],
     [ "DebugSetStartLocation", "class_barotrauma_1_1_level.html#ab7f9dec257c65bf353316a522f39ef8f", null ],
-    [ "GenerateMissionResources", "class_barotrauma_1_1_level.html#aaacede3f270668441153d8a94ab8145f", null ],
+    [ "GenerateMissionResources", "class_barotrauma_1_1_level.html#acf4af5ba8719438d1a358be5fcdbd76e", null ],
     [ "GetAllCells", "class_barotrauma_1_1_level.html#a9bd2a1c2e833cf9c8ee6d519387ce999", null ],
     [ "GetBottomPosition", "class_barotrauma_1_1_level.html#aadecda424f579083a88549986b80da95", null ],
     [ "GetCells", "class_barotrauma_1_1_level.html#ad8e5024a2c2eecfb690790bb942fa2b0", null ],

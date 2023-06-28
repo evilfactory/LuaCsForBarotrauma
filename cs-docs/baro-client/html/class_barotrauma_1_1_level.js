@@ -57,7 +57,7 @@ var class_barotrauma_1_1_level =
     [ "DrawBack", "class_barotrauma_1_1_level.html#a19edec2899b7000ea5765029f24d085f", null ],
     [ "DrawDebugOverlay", "class_barotrauma_1_1_level.html#aa101d3057d5aeda724a4617c3eaa3123", null ],
     [ "DrawFront", "class_barotrauma_1_1_level.html#af3eb0af5cdbc628bae542ad50d793069", null ],
-    [ "GenerateMissionResources", "class_barotrauma_1_1_level.html#aaacede3f270668441153d8a94ab8145f", null ],
+    [ "GenerateMissionResources", "class_barotrauma_1_1_level.html#acf4af5ba8719438d1a358be5fcdbd76e", null ],
     [ "GetAllCells", "class_barotrauma_1_1_level.html#a9bd2a1c2e833cf9c8ee6d519387ce999", null ],
     [ "GetBottomPosition", "class_barotrauma_1_1_level.html#aadecda424f579083a88549986b80da95", null ],
     [ "GetCells", "class_barotrauma_1_1_level.html#ad8e5024a2c2eecfb690790bb942fa2b0", null ],

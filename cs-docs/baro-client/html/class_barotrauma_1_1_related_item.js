@@ -5,9 +5,11 @@ var class_barotrauma_1_1_related_item =
       [ "Contained", "class_barotrauma_1_1_related_item.html#a2c17ae21d973a1916d4a6387555bc18fa09b0f4b749b4a7523156f43d7a93baa0", null ],
       [ "Equipped", "class_barotrauma_1_1_related_item.html#a2c17ae21d973a1916d4a6387555bc18fa90ebbe94b8f35de8bc27c3a110aac495", null ],
       [ "Picked", "class_barotrauma_1_1_related_item.html#a2c17ae21d973a1916d4a6387555bc18fad93f746231e2eee7870ea159b391b6a6", null ],
-      [ "Container", "class_barotrauma_1_1_related_item.html#a2c17ae21d973a1916d4a6387555bc18fa0e7278cda02a9c0446dcc75a4df34eb2", null ]
+      [ "Container", "class_barotrauma_1_1_related_item.html#a2c17ae21d973a1916d4a6387555bc18fa0e7278cda02a9c0446dcc75a4df34eb2", null ],
+      [ "Invalid", "class_barotrauma_1_1_related_item.html#a2c17ae21d973a1916d4a6387555bc18fa4bbb8f967da6d1a610596d7257179c2b", null ]
     ] ],
     [ "RelatedItem", "class_barotrauma_1_1_related_item.html#a34f3f61bbbd16937ff7212619aaee8a2", null ],
+    [ "RelatedItem", "class_barotrauma_1_1_related_item.html#a7d69b2132b568d76c60f8bd640ba84c4", null ],
     [ "CheckRequirements", "class_barotrauma_1_1_related_item.html#a9f9f4f200b947e7564da3875ef5c5948", null ],
     [ "MatchesItem", "class_barotrauma_1_1_related_item.html#ad2c219746e4652c6d8559b7b66fed01d", null ],
     [ "MatchesItem", "class_barotrauma_1_1_related_item.html#a0e17177b01f32d7df75708aea3c6c7ba", null ],
@@ -18,7 +20,7 @@ var class_barotrauma_1_1_related_item =
     [ "MsgTag", "class_barotrauma_1_1_related_item.html#a278d89f1cd7f9e6c5717ce3cfc50023a", null ],
     [ "Rotation", "class_barotrauma_1_1_related_item.html#ae6e1075b0772ef65a68669cba636dcae", null ],
     [ "SetActive", "class_barotrauma_1_1_related_item.html#af80e31d47c7462b5096ec0cf33049e71", null ],
-    [ "statusEffects", "class_barotrauma_1_1_related_item.html#a6a34982a654d9bc02648e5618cf69d14", null ],
+    [ "StatusEffects", "class_barotrauma_1_1_related_item.html#aa371a64b05fd73acf667a5dd2751616a", null ],
     [ "TargetSlot", "class_barotrauma_1_1_related_item.html#a1dfeaaa8d84ffbea9f9f8d309937b91e", null ],
     [ "AllowVariants", "class_barotrauma_1_1_related_item.html#ae1ebe4576e248fac1787e12c95dc850f", null ],
     [ "ExcludeBroken", "class_barotrauma_1_1_related_item.html#a675d0e6600b9918b2312123c7569d4d8", null ],

@@ -8,6 +8,7 @@ var class_barotrauma_1_1_game_screen =
     [ "DrawMap", "class_barotrauma_1_1_game_screen.html#a1a74c72bfdee3e520a4f57220221968c", null ],
     [ "Select", "class_barotrauma_1_1_game_screen.html#afdd9190aae9e6e2febcf7b5d25aa23db", null ],
     [ "Update", "class_barotrauma_1_1_game_screen.html#a7a29885a89a3ee8d16a7abfaf4c9f9a2", null ],
+    [ "DamageEffect", "class_barotrauma_1_1_game_screen.html#aefbfc1dccffe5066ff7bb797a45e00f9", null ],
     [ "BlueprintEffect", "class_barotrauma_1_1_game_screen.html#a2e6b2158804b786698a7810c8e84bb48", null ],
     [ "Cam", "class_barotrauma_1_1_game_screen.html#aca300f79f681d86f27abdc828334dc64", null ],
     [ "GameTime", "class_barotrauma_1_1_game_screen.html#ad534257ca2a9004a325fe6523d918732", null ],

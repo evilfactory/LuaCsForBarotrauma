@@ -26,6 +26,7 @@ var class_barotrauma_1_1_particles_1_1_particle_prefab =
     [ "EndColor", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a8d8f57acaf313e5371ccdf004cf74fe8", null ],
     [ "Friction", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a9ef350432cd96e84fb977ce8cf7097f2", null ],
     [ "GrowTime", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a15ee96bd5bd8690da440e6eeb6711128", null ],
+    [ "InvariantCollisionSize", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#acabe78ae128904a807699cba7b93c26e", null ],
     [ "LifeTime", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a50bd58d0f7e9d0a86c72fbe76668593b", null ],
     [ "LifeTimeMin", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a4365224ca5c847023bfdb68e6424fe51", null ],
     [ "LoopAnim", "class_barotrauma_1_1_particles_1_1_particle_prefab.html#a05d2ad642f11638c6f8210c473b767e5", null ],

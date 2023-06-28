@@ -365,7 +365,6 @@ var hierarchy =
         [ "Barotrauma.CheckMoneyAction", "class_barotrauma_1_1_check_money_action.html", null ],
         [ "Barotrauma.CheckOrderAction", "class_barotrauma_1_1_check_order_action.html", null ],
         [ "Barotrauma.CheckSelectedAction", "class_barotrauma_1_1_check_selected_action.html", null ],
-        [ "Barotrauma.CheckSelectedItemAction", "class_barotrauma_1_1_check_selected_item_action.html", null ],
         [ "Barotrauma.RNGAction", "class_barotrauma_1_1_r_n_g_action.html", null ],
         [ "Barotrauma.SkillCheckAction", "class_barotrauma_1_1_skill_check_action.html", null ]
       ] ],
@@ -974,7 +973,6 @@ var hierarchy =
       [ "Barotrauma.NetSerializableProperties.ReadWriteBehavior< T >", "struct_barotrauma_1_1_net_serializable_properties_1_1_read_write_behavior.html", null ]
     ] ],
     [ "Barotrauma.ISerializableEntity", "interface_barotrauma_1_1_i_serializable_entity.html", [
-      [ "Barotrauma.AITrigger", "class_barotrauma_1_1_a_i_trigger.html", null ],
       [ "Barotrauma.Affliction", "class_barotrauma_1_1_affliction.html", [
         [ "Barotrauma.AfflictionBleeding", "class_barotrauma_1_1_affliction_bleeding.html", null ],
         [ "Barotrauma.AfflictionHusk", "class_barotrauma_1_1_affliction_husk.html", null ],
@@ -1172,6 +1170,7 @@ var hierarchy =
         [ "Barotrauma.SpriteDeformations.NoiseDeformationParams", "class_barotrauma_1_1_sprite_deformations_1_1_noise_deformation_params.html", null ],
         [ "Barotrauma.SpriteDeformations.PositionalDeformationParams", "class_barotrauma_1_1_sprite_deformations_1_1_positional_deformation_params.html", null ]
       ] ],
+      [ "Barotrauma.StatusEffect.AITrigger", "class_barotrauma_1_1_status_effect_1_1_a_i_trigger.html", null ],
       [ "Barotrauma.StatusEffect.CharacterSpawnInfo", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html", null ],
       [ "Barotrauma.Structure", "class_barotrauma_1_1_structure.html", null ],
       [ "Barotrauma.WreckAIConfig", "class_barotrauma_1_1_wreck_a_i_config.html", null ]

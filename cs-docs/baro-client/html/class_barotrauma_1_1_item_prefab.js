@@ -39,6 +39,7 @@ var class_barotrauma_1_1_item_prefab =
     [ "AllowRotatingInEditor", "class_barotrauma_1_1_item_prefab.html#a2e370576f4d1be25e57f9f6133e51a71", null ],
     [ "AllowSellingWhenBroken", "class_barotrauma_1_1_item_prefab.html#ace9445a6ad152ea895c5e9f1968985c5", null ],
     [ "AllowStealingAlways", "class_barotrauma_1_1_item_prefab.html#ad102be480b4c800b47796cdf30fa70ab", null ],
+    [ "AllowStealingContainedItems", "class_barotrauma_1_1_item_prefab.html#a21b595dd71e90b2851c6de974be28f73", null ],
     [ "BotPriority", "class_barotrauma_1_1_item_prefab.html#aa26a4e01bc19ab64be1f71ce821ae9b2", null ],
     [ "BrokenSprites", "class_barotrauma_1_1_item_prefab.html#acd891f013edb18d3342415c99f7ee343", null ],
     [ "CanBeBought", "class_barotrauma_1_1_item_prefab.html#a2619cfecbe2e8767d8077b32c2f7c5ef", null ],
@@ -68,7 +69,6 @@ var class_barotrauma_1_1_item_prefab =
     [ "EquipConfirmationText", "class_barotrauma_1_1_item_prefab.html#abe2c18017c7e6f9ff217d0f2968883bf", null ],
     [ "ExplosionDamageMultiplier", "class_barotrauma_1_1_item_prefab.html#a760b1da7bf6474e3d8aa1f7e1f926d0e", null ],
     [ "FabricationRecipes", "class_barotrauma_1_1_item_prefab.html#a9917951f66a6fd9825ac95704eff8fa4", null ],
-    [ "FireProof", "class_barotrauma_1_1_item_prefab.html#acd6f3c02538df3f9177f98ba6a4438d3", null ],
     [ "FocusOnSelected", "class_barotrauma_1_1_item_prefab.html#a874f0cd027ac7ad7c92ee3aee8fa4901", null ],
     [ "Health", "class_barotrauma_1_1_item_prefab.html#aeb5390d684f7f533b35fb7025b287194", null ],
     [ "HideConditionBar", "class_barotrauma_1_1_item_prefab.html#a7e7cc231f15637d7d8565a01b6886925", null ],
@@ -118,6 +118,5 @@ var class_barotrauma_1_1_item_prefab =
     [ "UseContainedInventoryIconColor", "class_barotrauma_1_1_item_prefab.html#a26266ae7a041213ab9cb25a7b8b68e9c", null ],
     [ "UseContainedSpriteColor", "class_barotrauma_1_1_item_prefab.html#a71ba12148e57f056e59d7dacc8ae2756", null ],
     [ "UseInHealthInterface", "class_barotrauma_1_1_item_prefab.html#a313dda68c01c281faa29226faeafec22", null ],
-    [ "VariantOf", "class_barotrauma_1_1_item_prefab.html#ac3ca4d126a9b7506c9aa9500dd61d288", null ],
-    [ "WaterProof", "class_barotrauma_1_1_item_prefab.html#a057b32540e19104be9966479d70c7c3f", null ]
+    [ "VariantOf", "class_barotrauma_1_1_item_prefab.html#ac3ca4d126a9b7506c9aa9500dd61d288", null ]
 ];

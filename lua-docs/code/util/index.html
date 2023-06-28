@@ -11,8 +11,8 @@
       <meta property="og:description" content="Class providing several util functions." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=b336719" />
-    <link rel="stylesheet" href="../../highlight.css?v=9941f98" />
+    <link rel="stylesheet" href="../../ldoc.css?v=7f65bbc" />
+    <link rel="stylesheet" href="../../highlight.css?v=f8587a9" />
   </head>
 
   <body>
@@ -313,10 +313,7 @@
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.ClearAllEffects"><span>AfflictionPrefab.ClearAllEffects</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.LoadAllEffects"><span>AfflictionPrefab.LoadAllEffects</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#ClearEffects"><span>ClearEffects</span></a>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.LoadAllEffectsAndTreatmentSuitabilities"><span>AfflictionPrefab.LoadAllEffectsAndTreatmentSuitabilities</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#Dispose"><span>Dispose</span></a>
@@ -341,9 +338,6 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#Instantiate"><span>Instantiate</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#LoadEffects"><span>LoadEffects</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/afflictionprefab/#ReloadSoundsIfNeeded"><span>ReloadSoundsIfNeeded</span></a>
@@ -485,6 +479,9 @@
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#GrainBurst"><span>GrainBurst</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#HasTreatments"><span>HasTreatments</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#HealCostMultiplier"><span>HealCostMultiplier</span></a>
                     </li>
                     <li>
@@ -554,7 +551,7 @@
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#TranslationIdentifier"><span>TranslationIdentifier</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#TreatmentSuitability"><span>TreatmentSuitability</span></a>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#TreatmentSuitabilities"><span>TreatmentSuitabilities</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#TreatmentThreshold"><span>TreatmentThreshold</span></a>
@@ -1832,6 +1829,9 @@
                       <span class="realm shared"></span><a href="../../code/character/#IsInFriendlySub"><span>IsInFriendlySub</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsInPlayerSub"><span>IsInPlayerSub</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsIncapacitated"><span>IsIncapacitated</span></a>
                     </li>
                     <li>
@@ -2249,6 +2249,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetSuitableTreatments"><span>GetSuitableTreatments</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#GetTotalAdjustedAfflictionStrength"><span>GetTotalAdjustedAfflictionStrength</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetType"><span>GetType</span></a>
@@ -3935,6 +3938,9 @@
                       <span class="realm shared"></span><a href="../../code/game.gamescreen/#Cam"><span>Cam</span></a>
                     </li>
                     <li>
+                      <span class="realm client"></span><a href="../../code/game.gamescreen/#DamageEffect"><span>DamageEffect</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamescreen/#Frame"><span>Frame</span></a>
                     </li>
                     <li>
@@ -4039,9 +4045,6 @@
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#PlaceSubAtStart"><span>PlaceSubAtStart</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/game.gamesession/#PurchaseSubmarine"><span>PurchaseSubmarine</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#ReviveCharacter"><span>ReviveCharacter</span></a>
                     </li>
                     <li>
@@ -4064,6 +4067,9 @@
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/game.gamesession/#ToggleTabMenu"><span>ToggleTabMenu</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.gamesession/#TryPurchaseSubmarine"><span>TryPurchaseSubmarine</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#Update"><span>Update</span></a>
@@ -4857,6 +4863,9 @@
                     </li>
                     <li>
                       <span class="realm server"></span><a href="../../code/game.serversettings/#ServerSettings.ClientPermissionsFile"><span>ServerSettings.ClientPermissionsFile</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.DefaultTickRate"><span>ServerSettings.DefaultTickRate</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.MaxExtraCargoItemTypes"><span>ServerSettings.MaxExtraCargoItemTypes</span></a>
@@ -6427,9 +6436,6 @@
                       <span class="realm client"></span><a href="../../code/item/#GetReplacementOrThis"><span>GetReplacementOrThis</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/item/#GetRootContainer"><span>GetRootContainer</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#GetRootInventoryOwner"><span>GetRootInventoryOwner</span></a>
                     </li>
                     <li>
@@ -6869,6 +6875,9 @@
                       <span class="realm client"></span><a href="../../code/item/#Item.ShowWires"><span>Item.ShowWires</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#Item.SonarVisibleItems"><span>Item.SonarVisibleItems</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#Item.connectionPairs"><span>Item.connectionPairs</span></a>
                     </li>
                     <li>
@@ -6993,6 +7002,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#ResizeVertical"><span>ResizeVertical</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#RootContainer"><span>RootContainer</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#Rotation"><span>Rotation</span></a>
@@ -7505,6 +7517,9 @@
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AllowStealingAlways"><span>AllowStealingAlways</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#AllowStealingContainedItems"><span>AllowStealingContainedItems</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AllowedLinks"><span>AllowedLinks</span></a>
                     </li>
                     <li>
@@ -7608,9 +7623,6 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#FilePath"><span>FilePath</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/itemprefab/#FireProof"><span>FireProof</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#FocusOnSelected"><span>FocusOnSelected</span></a>
@@ -7794,9 +7806,6 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#VariantOf"><span>VariantOf</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/itemprefab/#WaterProof"><span>WaterProof</span></a>
                     </li>
 
 
@@ -10132,6 +10141,9 @@
                       <span class="realm shared"></span><a href="../../code/submarine/#NeutralizeBallast"><span>NeutralizeBallast</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#RefreshConnectedSubs"><span>RefreshConnectedSubs</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#RefreshOutdoorNodes"><span>RefreshOutdoorNodes</span></a>
                     </li>
                     <li>
@@ -10723,7 +10735,13 @@
                       <span class="realm shared"></span><a href="../../code/util/#Util.FindClientCharacter"><span>Util.FindClientCharacter</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/util/#Util.GetItemGroup"><span>Util.GetItemGroup</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/util/#Util.GetItemsById"><span>Util.GetItemsById</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/util/#Util.RegisterItemGroup"><span>Util.RegisterItemGroup</span></a>
                     </li>
 
 
@@ -11857,6 +11875,36 @@
 
 
     </section>
+    <section class="method" id="Util.GetItemGroup">
+      <header>
+        <a class="anchor"><h1><span class="realm shared"></span>Util.GetItemGroup(groupName)</h1></a>
+
+
+
+          <p class="description">Returns a table with all items associated with the item group.</p>
+      </header>
+
+
+          <h3>Parameters</h3>
+
+
+          <ul>
+
+              <li>
+                <span class="tag parameter">groupName</span>
+
+
+
+
+                <p>
+
+</p>
+              </li>
+          </ul>
+
+
+
+    </section>
     <section class="method" id="Util.GetItemsById">
       <header>
         <a class="anchor"><h1><span class="realm shared"></span>Util.GetItemsById(id)</h1></a>
@@ -11887,13 +11935,57 @@
 
 
     </section>
+    <section class="method" id="Util.RegisterItemGroup">
+      <header>
+        <a class="anchor"><h1><span class="realm shared"></span>Util.RegisterItemGroup(groupName, func)</h1></a>
+
+
+
+          <p class="description">Registers a new item group, the given function will be called for every item and should return true if the item should be in the group.</p>
+      </header>
+
+
+          <h3>Parameters</h3>
+
+
+          <ul>
+
+              <li>
+                <span class="tag parameter">groupName</span>
+
+
+
+
+                <p>
+
+</p>
+              </li>
+          </ul>
+
+          <ul>
+
+              <li>
+                <span class="tag parameter">func</span>
+
+
+
+
+                <p>
+
+</p>
+              </li>
+          </ul>
+
+
+
+    </section>
 
           </div>
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=79c5bf8"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=0a7878f"></script>
+    <script type="text/javascript" src="../../app.js?v=6be8c9e"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=ac1c5ef"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 

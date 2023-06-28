@@ -18,7 +18,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection =
     [ "Effects", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a20c82065904876a671a8762b3121f109", null ],
     [ "Grid", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a930920aef624ec2a7696861e1653b188", null ],
     [ "IsOutput", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a4bb15437a43310381149c3078353256d", null ],
-    [ "LoadedWireIds", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#aaaf299930c6b2d5c6203c75a2d8a1a7a", null ],
+    [ "LoadedWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a3f198879685212aae1a86cfa1873c9dd", null ],
     [ "MaxPlayerConnectableWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ae880cd831cfdfb48d870c9ab9f9e8361", null ],
     [ "MaxWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a42c5e6a7174860914e67f7b247e8d78c", null ],
     [ "Name", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a68cfd72c7801e426844eea6af5ea87e9", null ],
@@ -27,6 +27,8 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection =
     [ "FlashTimer", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#adc86292d7042283994e59958a7dc67e3", null ],
     [ "IsPower", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ae15b55361a27fa4201ed5e1d34c5bbce", null ],
     [ "Item", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ae6984516d3b982d7d8cd77856776b00e", null ],
+    [ "LastReceivedSignal", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ad7105b456336bf32116f228574a53018", null ],
+    [ "LastSentSignal", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a7a90b8712398fff7533400a4523b097a", null ],
     [ "Recipients", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a96e105861e8c6d6f2567644fef775888", null ],
     [ "Wires", "class_barotrauma_1_1_items_1_1_components_1_1_connection.html#a1fe93c42517570ff04ac631f2f88c445", null ]
 ];

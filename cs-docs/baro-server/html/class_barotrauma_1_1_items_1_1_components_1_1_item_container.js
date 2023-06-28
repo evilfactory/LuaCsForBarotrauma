@@ -7,7 +7,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_container =
     [ "CanBeContained", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a0f12ff43d6959b375d5a433201d2df51", null ],
     [ "Combine", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a62cb13c3712c33914cd47a6719465cf9", null ],
     [ "ContainsItemsWithSameIdentifier", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a70ab8ddf6b5329acd4fee391ba221856", null ],
-    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a1a3c56d576cef36e8334c5ee577b280f", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#ad47ea08345101033ec8f364fdb7d7a1a", null ],
     [ "Equip", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a2fd520869211c6e694e8c7d632e0a10a", null ],
     [ "FindSuitableSubContainerIndex", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#acd2ffde5f63f0119b927a14815327f00", null ],
     [ "FlipX", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#aaeca95f486ba47376b371ecc14976f44", null ],

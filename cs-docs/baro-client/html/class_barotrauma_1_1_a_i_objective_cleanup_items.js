@@ -12,5 +12,6 @@ var class_barotrauma_1_1_a_i_objective_cleanup_items =
     [ "AllowAutomaticItemUnequipping", "class_barotrauma_1_1_a_i_objective_cleanup_items.html#a71cde40d935d46fb03117ab57654376d", null ],
     [ "ForceOrderPriority", "class_barotrauma_1_1_a_i_objective_cleanup_items.html#a446a352a95791c2561f787941f673df3", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_cleanup_items.html#a05acc6f9bb9ef540ca43f83ed21f89b0", null ],
-    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_cleanup_items.html#a82d7e6db35a8e4ad9f07a21200c9c72a", null ]
+    [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_cleanup_items.html#a82d7e6db35a8e4ad9f07a21200c9c72a", null ],
+    [ "MaxTargets", "class_barotrauma_1_1_a_i_objective_cleanup_items.html#aaa43ef1ac26678a1465d5ffc69d9502f", null ]
 ];

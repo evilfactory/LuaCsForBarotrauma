@@ -14,7 +14,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_component =
     [ "DegreeOfSuccess", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa63ed5e35953b0982c7c92977beba3c7", null ],
     [ "DegreeOfSuccess", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aacb59a029861d4f92ac33430d01652ff", null ],
     [ "DrawHUD", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa80a658d129fc652230d5f3646b36c2d", null ],
-    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae528ab4483d884c28c006c142ea86882", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a7348c0178ae7427e54d739e158bf0bc5", null ],
     [ "Equip", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#af183f9d17d31bde7add3bd9a530b403b", null ],
     [ "ExtractEventData< T >", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa0cbef2aef1248d1385a8af0fc5725ea", null ],
     [ "FlipX", "class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a22af2236cac317ccf2b873a5318cfcd7", null ],

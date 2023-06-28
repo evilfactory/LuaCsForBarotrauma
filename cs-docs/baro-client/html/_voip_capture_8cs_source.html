@@ -341,160 +341,157 @@ $(document).ready(function(){initNavTree('_voip_capture_8cs_source.html',''); in
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                            <span class="comment">//in push-to-talk mode, InputType.Voice uses the active chat mode</span></div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                            <span class="keywordtype">bool</span> usingActiveMode = PlayerInput.KeyDown(<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87">InputType</a>.Voice);</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                            <span class="keywordtype">bool</span> pttDown = (usingActiveMode || usingLocalMode || usingRadioMode) &amp;&amp; GUI.KeyboardDispatcher.Subscriber == <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            if (pttDown || captureTimer &lt;= 0)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            if (pttDown)</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                            {</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a163d7dc6404b4e9c9e6623a9a6de8b26">ForceLocal</a> = (usingActiveMode &amp;&amp; GameMain.ActiveChatMode == <a class="code" href="namespace_barotrauma.html#a25b865ef7f274c6ee93dea12a623098a">ChatMode</a>.Local) || usingLocalMode;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                            }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                            <span class="keywordflow">if</span> (pttDown)</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                            {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                allowEnqueue = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                            }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                        }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    <span class="keywordflow">if</span> (Screen.Selected is ModDownloadScreen)</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        allowEnqueue = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        captureTimer = 0;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    }</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    <span class="keywordflow">if</span> (allowEnqueue || captureTimer &gt; 0)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                        <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#ae1cc93d047dca53f9882286b2e5c665c">LastEnqueueAudio</a> = DateTime.Now;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                        <span class="keywordflow">if</span> (GameMain.Client?.Character != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                        {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                            var messageType = !<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a163d7dc6404b4e9c9e6623a9a6de8b26">ForceLocal</a> &amp;&amp; <a class="code" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>.CanUseRadio(GameMain.Client.Character, out _) ? <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>.Radio : <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>.Default;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                            <span class="keywordflow">if</span> (GameMain.Client.Character.IsDead) { messageType = <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>.Dead; }</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                            </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                            GameMain.Client.Character.ShowSpeechBubble(1.25f, <a class="code" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>.MessageColor[(<span class="keywordtype">int</span>)messageType]);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                        }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        <span class="comment">//encode audio and enqueue it</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        lock (<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a7807a6a97e5605e9f4a47f90d0e94bbc">buffers</a>)</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                            <span class="keywordflow">if</span> (!prevCaptured) <span class="comment">//enqueue the previous buffer if not sent to avoid cutoff</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                            {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                <span class="keywordtype">int</span> compressedCountPrev = encoder.Encode(prevUncompressedBuffer, 0, VoipConfig.BUFFER_SIZE, <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a43fd9a1c87750ee8cc9e09aefcfc1e03">BufferToQueue</a>, 0, VoipConfig.MAX_COMPRESSED_SIZE);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a409cde21b3c32fe08b14bec0b2decd72">EnqueueBuffer</a>(compressedCountPrev);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                            }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                            <span class="keywordtype">int</span> compressedCount = encoder.Encode(uncompressedBuffer, 0, VoipConfig.BUFFER_SIZE, <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a43fd9a1c87750ee8cc9e09aefcfc1e03">BufferToQueue</a>, 0, VoipConfig.MAX_COMPRESSED_SIZE);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a409cde21b3c32fe08b14bec0b2decd72">EnqueueBuffer</a>(compressedCount);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        captureTimer -= (VoipConfig.BUFFER_SIZE * 1000) / VoipConfig.FREQUENCY;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        if (allowEnqueue)</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                            captureTimer = GameSettings.CurrentConfig.Audio.VoiceChatCutoffPrevention;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                        }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                        prevCaptured = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                    }</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        captureTimer = 0;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                        prevCaptured = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                        <span class="comment">//enqueue silence</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                        lock (<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a7807a6a97e5605e9f4a47f90d0e94bbc">buffers</a>)</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a409cde21b3c32fe08b14bec0b2decd72">EnqueueBuffer</a>(0);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                        }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            }</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;VoipCapture threw an exception. Disabling capture...&quot;</span>, e);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                capturing = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">finally</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                Marshal.FreeHGlobal(nativeBuffer);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound.html">Sound</a> overrideSound;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> overridePos;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">short</span>[] overrideBuf = <span class="keyword">new</span> <span class="keywordtype">short</span>[VoipConfig.BUFFER_SIZE];</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> FillBuffer()</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">if</span> (overrideSound != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordtype">int</span> totalSampleCount = 0;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="keywordflow">while</span> (totalSampleCount &lt; VoipConfig.BUFFER_SIZE)</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    <span class="keywordtype">int</span> sampleCount = overrideSound.<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound.html#a6a6b1090dab0fe3ed3ad89ff6ee0d8c4">FillStreamBuffer</a>(overridePos, overrideBuf);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    overridePos += sampleCount * 2;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    Array.Copy(overrideBuf, 0, uncompressedBuffer, totalSampleCount, sampleCount);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    totalSampleCount += sampleCount;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    <span class="keywordflow">if</span> (sampleCount == 0)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                        overridePos = 0;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                <span class="keywordtype">int</span> sleepMs = VoipConfig.BUFFER_SIZE * 800 / VoipConfig.FREQUENCY;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                Thread.Sleep(sleepMs - 1);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordtype">int</span> sampleCount = 0;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">while</span> (sampleCount &lt; VoipConfig.BUFFER_SIZE)</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                    <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#ab60c644d2549409d8c004dd175600225">GetInteger</a>(captureDevice, <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#ada097e6d4278955dee4a62f90420163d">EnumCaptureSamples</a>, out sampleCount);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                    <span class="keywordtype">int</span> alcError = <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a68f9bd812fcfce9a4b479df57b84c2c7">GetError</a>(captureDevice);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    <span class="keywordflow">if</span> (alcError != <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#ae819cf8c1d53e6c1583d3383f9048f7b">NoError</a>)</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    {</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Failed to determine sample count: &quot;</span> + alcError.ToString());</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    }</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    <span class="keywordflow">if</span> (sampleCount &lt; VoipConfig.BUFFER_SIZE)</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    {</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                        <span class="keywordtype">int</span> sleepMs = (VoipConfig.BUFFER_SIZE - sampleCount) * 800 / VoipConfig.FREQUENCY;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        if (sleepMs &gt;= 1)</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        {</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                            Thread.Sleep(sleepMs);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                        }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                allowEnqueue = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    <span class="keywordflow">if</span> (Screen.Selected is ModDownloadScreen)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                        allowEnqueue = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        captureTimer = 0;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="keywordflow">if</span> (allowEnqueue || captureTimer &gt; 0)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#ae1cc93d047dca53f9882286b2e5c665c">LastEnqueueAudio</a> = DateTime.Now;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        <span class="keywordflow">if</span> (GameMain.Client?.Character != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                        {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                            var messageType = !<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a163d7dc6404b4e9c9e6623a9a6de8b26">ForceLocal</a> &amp;&amp; <a class="code" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>.CanUseRadio(GameMain.Client.Character, out _) ? <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>.Radio : <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>.Default;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                            <span class="keywordflow">if</span> (GameMain.Client.Character.IsDead) { messageType = <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>.Dead; }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                            </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                            GameMain.Client.Character.ShowSpeechBubble(1.25f, <a class="code" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>.MessageColor[(<span class="keywordtype">int</span>)messageType]);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <span class="comment">//encode audio and enqueue it</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                        lock (<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a7807a6a97e5605e9f4a47f90d0e94bbc">buffers</a>)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                        {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                            <span class="keywordflow">if</span> (!prevCaptured) <span class="comment">//enqueue the previous buffer if not sent to avoid cutoff</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                            {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                <span class="keywordtype">int</span> compressedCountPrev = encoder.Encode(prevUncompressedBuffer, 0, VoipConfig.BUFFER_SIZE, <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a43fd9a1c87750ee8cc9e09aefcfc1e03">BufferToQueue</a>, 0, VoipConfig.MAX_COMPRESSED_SIZE);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a409cde21b3c32fe08b14bec0b2decd72">EnqueueBuffer</a>(compressedCountPrev);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                            }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                            <span class="keywordtype">int</span> compressedCount = encoder.Encode(uncompressedBuffer, 0, VoipConfig.BUFFER_SIZE, <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a43fd9a1c87750ee8cc9e09aefcfc1e03">BufferToQueue</a>, 0, VoipConfig.MAX_COMPRESSED_SIZE);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a409cde21b3c32fe08b14bec0b2decd72">EnqueueBuffer</a>(compressedCount);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        captureTimer -= (VoipConfig.BUFFER_SIZE * 1000) / VoipConfig.FREQUENCY;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        if (allowEnqueue)</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                            captureTimer = GameSettings.CurrentConfig.Audio.VoiceChatCutoffPrevention;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        prevCaptured = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                        captureTimer = 0;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                        prevCaptured = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        <span class="comment">//enqueue silence</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        lock (<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a7807a6a97e5605e9f4a47f90d0e94bbc">buffers</a>)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                        {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                            <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_queue.html#a409cde21b3c32fe08b14bec0b2decd72">EnqueueBuffer</a>(0);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                        }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                    }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;VoipCapture threw an exception. Disabling capture...&quot;</span>, e);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                capturing = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">finally</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                Marshal.FreeHGlobal(nativeBuffer);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound.html">Sound</a> overrideSound;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> overridePos;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">short</span>[] overrideBuf = <span class="keyword">new</span> <span class="keywordtype">short</span>[VoipConfig.BUFFER_SIZE];</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> FillBuffer()</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">if</span> (overrideSound != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="keywordtype">int</span> totalSampleCount = 0;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <span class="keywordflow">while</span> (totalSampleCount &lt; VoipConfig.BUFFER_SIZE)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    <span class="keywordtype">int</span> sampleCount = overrideSound.<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound.html#a6a6b1090dab0fe3ed3ad89ff6ee0d8c4">FillStreamBuffer</a>(overridePos, overrideBuf);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    overridePos += sampleCount * 2;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                    Array.Copy(overrideBuf, 0, uncompressedBuffer, totalSampleCount, sampleCount);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    totalSampleCount += sampleCount;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                    <span class="keywordflow">if</span> (sampleCount == 0)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        overridePos = 0;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <span class="keywordtype">int</span> sleepMs = VoipConfig.BUFFER_SIZE * 800 / VoipConfig.FREQUENCY;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                Thread.Sleep(sleepMs - 1);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                <span class="keywordtype">int</span> sampleCount = 0;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                <span class="keywordflow">while</span> (sampleCount &lt; VoipConfig.BUFFER_SIZE)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                    <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#ab60c644d2549409d8c004dd175600225">GetInteger</a>(captureDevice, <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#ada097e6d4278955dee4a62f90420163d">EnumCaptureSamples</a>, out sampleCount);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    <span class="keywordtype">int</span> alcError = <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a68f9bd812fcfce9a4b479df57b84c2c7">GetError</a>(captureDevice);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                    <span class="keywordflow">if</span> (alcError != <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#ae819cf8c1d53e6c1583d3383f9048f7b">NoError</a>)</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                    {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Failed to determine sample count: &quot;</span> + alcError.ToString());</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                    <span class="keywordflow">if</span> (sampleCount &lt; VoipConfig.BUFFER_SIZE)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        <span class="keywordtype">int</span> sleepMs = (VoipConfig.BUFFER_SIZE - sampleCount) * 800 / VoipConfig.FREQUENCY;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        if (sleepMs &gt;= 1)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                        {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                            Thread.Sleep(sleepMs);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                    <span class="keywordflow">if</span> (!capturing) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                }</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                    <span class="keywordflow">if</span> (!capturing) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a5db715b5b42e756673152a3b3fc5359e">CaptureSamples</a>(captureDevice, nativeBuffer, VoipConfig.BUFFER_SIZE);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                Marshal.Copy(nativeBuffer, uncompressedBuffer, 0, uncompressedBuffer.Length);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        }</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
-<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a0f5ae52f82dd517e4a2414327f751681">  379</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a0f5ae52f82dd517e4a2414327f751681">SetOverrideSound</a>(<span class="keywordtype">string</span> fileName)</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        {</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            overrideSound?.<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound.html#a723b6bf24ca7874a94436fff2d735435">Dispose</a>();</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(fileName))</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                overrideSound = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                overrideSound = <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#ae5da228ae4735d8f3623b7b1285520f8">SoundManager</a>.<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#af732593a1d5e82c58ba6524e57524c86">LoadSound</a>(fileName, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">  392</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Dispose</a>()</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#af0469afb81cdd2d6d270147a641a6c2c">Instance</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            capturing = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            captureThread?.Join();</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            captureThread = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <span class="keywordflow">if</span> (captureDevice != IntPtr.Zero) { <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#aa9b409450aad4d1c0e87845bc4575a62">CaptureCloseDevice</a>(captureDevice); }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        }</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    }</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a5db715b5b42e756673152a3b3fc5359e">CaptureSamples</a>(captureDevice, nativeBuffer, VoipConfig.BUFFER_SIZE);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                Marshal.Copy(nativeBuffer, uncompressedBuffer, 0, uncompressedBuffer.Length);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        }</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a0f5ae52f82dd517e4a2414327f751681">  376</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a0f5ae52f82dd517e4a2414327f751681">SetOverrideSound</a>(<span class="keywordtype">string</span> fileName)</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            overrideSound?.<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound.html#a723b6bf24ca7874a94436fff2d735435">Dispose</a>();</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(fileName))</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                overrideSound = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                overrideSound = <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#ae5da228ae4735d8f3623b7b1285520f8">SoundManager</a>.<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#af732593a1d5e82c58ba6524e57524c86">LoadSound</a>(fileName, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">  389</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Dispose</a>()</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        {</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#af0469afb81cdd2d6d270147a641a6c2c">Instance</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            capturing = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            captureThread?.Join();</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            captureThread = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">if</span> (captureDevice != IntPtr.Zero) { <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#aa9b409450aad4d1c0e87845bc4575a62">CaptureCloseDevice</a>(captureDevice); }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00181">GameMain.cs:181</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_ae5da228ae4735d8f3623b7b1285520f8"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#ae5da228ae4735d8f3623b7b1285520f8">Barotrauma.GameMain.SoundManager</a></div><div class="ttdeci">static Sounds.SoundManager SoundManager</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00078">GameMain.cs:78</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html">Barotrauma.Networking.Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00010">LuaBarotraumaAdditions.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_client_html_a2d2395cbe3fe7e065e5148e427911eca"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_client.html#a2d2395cbe3fe7e065e5148e427911eca">Barotrauma.Networking.GameClient.SessionId</a></div><div class="ttdeci">byte SessionId</div><div class="ttdef"><b>Definition:</b> <a href="_game_client_8cs_source.html#l00119">GameClient.cs:119</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html">Barotrauma.Networking.VoipCapture</a></div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00013">VoipCapture.cs:14</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a0f5ae52f82dd517e4a2414327f751681"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a0f5ae52f82dd517e4a2414327f751681">Barotrauma.Networking.VoipCapture.SetOverrideSound</a></div><div class="ttdeci">void SetOverrideSound(string fileName)</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00379">VoipCapture.cs:379</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a14da42c357b539cd46d457debfa8dc5d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Barotrauma.Networking.VoipCapture.Dispose</a></div><div class="ttdeci">override void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00392">VoipCapture.cs:392</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a0f5ae52f82dd517e4a2414327f751681"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a0f5ae52f82dd517e4a2414327f751681">Barotrauma.Networking.VoipCapture.SetOverrideSound</a></div><div class="ttdeci">void SetOverrideSound(string fileName)</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00376">VoipCapture.cs:376</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a14da42c357b539cd46d457debfa8dc5d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Barotrauma.Networking.VoipCapture.Dispose</a></div><div class="ttdeci">override void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00389">VoipCapture.cs:389</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a1cd7a78fd0ea2cbe736e527156131009"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a1cd7a78fd0ea2cbe736e527156131009">Barotrauma.Networking.VoipCapture.Create</a></div><div class="ttdeci">static void Create(string deviceName, UInt16? storedBufferID=null)</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00065">VoipCapture.cs:65</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a3e2479f0ecb6b3a2eb7c97ff7f3ac291"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a3e2479f0ecb6b3a2eb7c97ff7f3ac291">Barotrauma.Networking.VoipCapture.Disconnected</a></div><div class="ttdeci">bool Disconnected</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00063">VoipCapture.cs:63</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a663bfb92f2cefe33af389ded6d28602d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a663bfb92f2cefe33af389ded6d28602d">Barotrauma.Networking.VoipCapture.QueueID</a></div><div class="ttdeci">override byte??? QueueID</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00049">VoipCapture.cs:50</a></div></div>
@@ -538,7 +535,7 @@ $(document).ready(function(){initNavTree('_voip_capture_8cs_source.html',''); in
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_add3372db2e3cffdc066c7a035266a7b2"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">Barotrauma.Networking.ChatMessageType</a></div><div class="ttdeci">ChatMessageType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00009">BarotraumaShared/SharedSource/Networking/ChatMessage.cs:10</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_sounds_html"><div class="ttname"><a href="namespace_barotrauma_1_1_sounds.html">Barotrauma.Sounds</a></div><div class="ttdef"><b>Definition:</b> <a href="_ogg_sound_8cs_source.html#l00007">OggSound.cs:8</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_a25b865ef7f274c6ee93dea12a623098a"><div class="ttname"><a href="namespace_barotrauma.html#a25b865ef7f274c6ee93dea12a623098a">Barotrauma.ChatMode</a></div><div class="ttdeci">ChatMode</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00582">Enums.cs:583</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_a25b865ef7f274c6ee93dea12a623098a"><div class="ttname"><a href="namespace_barotrauma.html#a25b865ef7f274c6ee93dea12a623098a">Barotrauma.ChatMode</a></div><div class="ttdeci">ChatMode</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00673">Enums.cs:674</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a70a53af53142ae1cc4adeb79f766af75"><div class="ttname"><a href="namespace_barotrauma.html#a70a53af53142ae1cc4adeb79f766af75">Barotrauma.VoiceMode</a></div><div class="ttdeci">VoiceMode</div><div class="ttdef"><b>Definition:</b> <a href="_game_settings_8cs_source.html#l00031">GameSettings.cs:32</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87">Barotrauma.InputType</a></div><div class="ttdeci">InputType</div><div class="ttdef"><b>Definition:</b> <a href="_input_type_8cs_source.html#l00003">InputType.cs:4</a></div></div>
 <div class="ttc" id="anamespace_open_a_l_html"><div class="ttname"><a href="namespace_open_a_l.html">OpenAL</a></div><div class="ttdef"><b>Definition:</b> <a href="_al_8cs_source.html#l00035">Al.cs:36</a></div></div>

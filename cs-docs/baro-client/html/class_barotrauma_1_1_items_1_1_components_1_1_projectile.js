@@ -2,7 +2,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_projectile =
 [
     [ "Projectile", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#ac9f167d65255322b2497bd4629fc8c48", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a9b7b79cab19af451cf90cb1a8fa17012", null ],
-    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a08afbc46b1799b8caeae1de29b5fbb21", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#aa73b59c30430c714dce5d9b5f1dc15c4", null ],
     [ "GetSpreadFromPool", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a7330975b4177db0290355df5c5943580", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#ad84dd4122a98499e52a5fd3f9c307a03", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a404633d5507ce75f6b59c9c052d0f8d2", null ],

@@ -3,6 +3,7 @@ var class_barotrauma_1_1_human_a_i_controller =
     [ "HumanAIController", "class_barotrauma_1_1_human_a_i_controller.html#a97e11e03ca7d572d8da7eeff26462979", null ],
     [ "AddCombatObjective", "class_barotrauma_1_1_human_a_i_controller.html#acaa3459daf657df0905fcf340f36caea", null ],
     [ "AllowCampaignInteraction", "class_barotrauma_1_1_human_a_i_controller.html#a2b25c946885632f2effa8b5a91935f90", null ],
+    [ "AskToRecalculateHullSafety", "class_barotrauma_1_1_human_a_i_controller.html#a5bef62a37b10931467bddd236e9221a8", null ],
     [ "ClearForcedOrder", "class_barotrauma_1_1_human_a_i_controller.html#a58b965647c0dc128ec65890d892a3e54", null ],
     [ "CountBotsInTheCrew", "class_barotrauma_1_1_human_a_i_controller.html#a2cabe6ba988dc46bc07b901b201ebd8a", null ],
     [ "Escape", "class_barotrauma_1_1_human_a_i_controller.html#aef653f4dc4d4a6b88773e5262de95130", null ],

@@ -285,6 +285,9 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 <li>ParseQueryString()
 : <a class="el" href="class_barotrauma_1_1_http_utility.html#a66bc6b555c5bd52785f234222aff0282">Barotrauma.HttpUtility</a>
 </li>
+<li>ParseSize()
+: <a class="el" href="class_barotrauma_1_1_g_u_i_prefab.html#ac5ee976c3dd4953366d86acedaa40d83">Barotrauma.GUIPrefab</a>
+</li>
 <li>ParseStatType()
 : <a class="el" href="class_barotrauma_1_1_abilities_1_1_character_ability_group.html#a7057047e03b7cc3e7049b88dfaeac733">Barotrauma.Abilities.CharacterAbilityGroup</a>
 </li>
@@ -376,7 +379,7 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 : <a class="el" href="class_barotrauma_1_1_item_assembly_prefab.html#a3d2621408ea41c66e0c39cb55f4a01cf">Barotrauma.ItemAssemblyPrefab</a>
 </li>
 <li>Patch()
-: <a class="el" href="class_barotrauma_1_1_lua_cs_hook.html#ac6117cd51f359613f46a81f74b88a76c">Barotrauma.LuaCsHook</a>
+: <a class="el" href="class_barotrauma_1_1_lua_cs_hook.html#af9d436ea44d24820f7369c16966e4166">Barotrauma.LuaCsHook</a>
 </li>
 <li>Path
 : <a class="el" href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Barotrauma.ContentFile</a>
@@ -396,6 +399,9 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 </li>
 <li>PathFinderPriority
 : <a class="el" href="class_barotrauma_1_1_character_params.html#a173e549b328da90ba5be711656604466">Barotrauma.CharacterParams</a>
+</li>
+<li>PathHasStairs
+: <a class="el" href="class_barotrauma_1_1_indoors_steering_manager.html#ab139238d13dacc1d9c8f8ac168647402">Barotrauma.IndoorsSteeringManager</a>
 </li>
 <li>PathNode()
 : <a class="el" href="class_barotrauma_1_1_path_node.html#abe79e37c098c51834813e9fb8bee4097">Barotrauma.PathNode</a>
@@ -886,11 +892,11 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 <li>PowerConnections
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#a0882360abdee7dd0cbf8e7ec5be7af18">Barotrauma.Items.Components.PowerTransfer</a>
 </li>
-<li>PowerConsumption
-: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a04ff91773ea44add5a53afac06973424">Barotrauma.Items.Components.Powered</a>
-</li>
 <li>powerConsumption
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a4dbfb0ab227f1b0b6724e83cdc341e1e">Barotrauma.Items.Components.Powered</a>
+</li>
+<li>PowerConsumption
+: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a04ff91773ea44add5a53afac06973424">Barotrauma.Items.Components.Powered</a>
 </li>
 <li>PowerContainer()
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_power_container.html#acce51b9ab27178d348d26f7154a9634b">Barotrauma.Items.Components.PowerContainer</a>
@@ -911,11 +917,11 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 <li>powerIn
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_powered.html#a517e4c14ea87934cda457d518f7f4165">Barotrauma.Items.Components.Powered</a>
 </li>
-<li>PowerLoad
-: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#abcc4f5711b1e7047bd27e209e75d43be">Barotrauma.Items.Components.PowerTransfer</a>
-</li>
 <li>powerLoad
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#a163ce1d010673423a3cc697cc013fc40">Barotrauma.Items.Components.PowerTransfer</a>
+</li>
+<li>PowerLoad
+: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#abcc4f5711b1e7047bd27e209e75d43be">Barotrauma.Items.Components.PowerTransfer</a>
 </li>
 <li>PowerOn
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#aec771c11c6b4ca70683ec517428644d5">Barotrauma.Items.Components.Reactor</a>
@@ -952,13 +958,13 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 , <a class="el" href="class_barotrauma_1_1_character_talent.html#a3123d2c8ca5d8dc536a60c5f591b25a7">Barotrauma.CharacterTalent</a>
 , <a class="el" href="class_barotrauma_1_1_decal.html#a0bd0ddfdea184a42804f838ba17745dc">Barotrauma.Decal</a>
 , <a class="el" href="class_barotrauma_1_1_entity_spawner_1_1_item_spawn_info.html#a03257a0fb5682a9ecdffec29fc14b1c2">Barotrauma.EntitySpawner.ItemSpawnInfo</a>
-, <a class="el" href="class_barotrauma_1_1_event.html#a8b76d86b272295881afbe0ddd7c9e406">Barotrauma.Event</a>
 </li>
 <li>prefab
 : <a class="el" href="class_barotrauma_1_1_event.html#acfd75f688b50d4930e06e44c419b209e">Barotrauma.Event</a>
 </li>
 <li>Prefab
-: <a class="el" href="class_barotrauma_1_1_faction.html#a1649490e93904e555e54816bbbcd2a86">Barotrauma.Faction</a>
+: <a class="el" href="class_barotrauma_1_1_event.html#a8b76d86b272295881afbe0ddd7c9e406">Barotrauma.Event</a>
+, <a class="el" href="class_barotrauma_1_1_faction.html#a1649490e93904e555e54816bbbcd2a86">Barotrauma.Faction</a>
 , <a class="el" href="class_barotrauma_1_1_item.html#af7f1cf26f2680bbdfbecf5d5ca65f521">Barotrauma.Item</a>
 , <a class="el" href="class_barotrauma_1_1_job.html#af4cb0732f2e3b7f6c9832f70415ba14d">Barotrauma.Job</a>
 , <a class="el" href="class_barotrauma_1_1_level_object.html#a0f8177ab0bcac3cc8c79e582d72662c7">Barotrauma.LevelObject</a>
@@ -1295,11 +1301,11 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 </li>
 <li>Probability
 : <a class="el" href="class_barotrauma_1_1_affliction.html#a37d309cf4a0b283f1388de689c52edf8">Barotrauma.Affliction</a>
-, <a class="el" href="class_barotrauma_1_1_a_i_trigger.html#aeac2c2f5575cc5de43e6fd70b156059d">Barotrauma.AITrigger</a>
 , <a class="el" href="class_barotrauma_1_1_event_prefab.html#ad953cfa210ba397713972bff4e22c0ea">Barotrauma.EventPrefab</a>
 , <a class="el" href="struct_barotrauma_1_1_event_set_1_1_sub_event_prefab.html#a47fbd23d366ef6f441fff9e9329a573e">Barotrauma.EventSet.SubEventPrefab</a>
 , <a class="el" href="class_barotrauma_1_1_location_type_change.html#a141190a072adb8806f8f34e4d69e1260">Barotrauma.LocationTypeChange</a>
 , <a class="el" href="class_barotrauma_1_1_location_type_change_1_1_requirement.html#a07888548904c065b30c5825ec5d0962d">Barotrauma.LocationTypeChange.Requirement</a>
+, <a class="el" href="class_barotrauma_1_1_status_effect_1_1_a_i_trigger.html#acee8a84b5993286ee487968a5db54f5c">Barotrauma.StatusEffect.AITrigger</a>
 </li>
 <li>ProbabilityBased
 : <a class="el" href="class_barotrauma_1_1_skill_check_action.html#a6853ef800d03bcf9bc82d32e6c3d45e8">Barotrauma.SkillCheckAction</a>
@@ -1308,7 +1314,7 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 : <a class="el" href="class_barotrauma_1_1_damage_modifier.html#afe69582d153ae65668cd36367b9ba5a4">Barotrauma.DamageModifier</a>
 </li>
 <li>Process()
-: <a class="el" href="class_barotrauma_1_1_sounds_1_1_bi_quad.html#a1ccce095fb8680e0786fd426876ffcba">Barotrauma.Sounds.BiQuad</a>
+: <a class="el" href="class_barotrauma_1_1_sounds_1_1_bi_quad.html#a5ec9e7a572b2353398837a3b1758efa7">Barotrauma.Sounds.BiQuad</a>
 </li>
 <li>ProcessContext()
 : <a class="el" href="class_open_a_l_1_1_alc.html#af5bff087b29d11b6fc0e08c2aaf400d4">OpenAL.Alc</a>
@@ -1364,14 +1370,11 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 <li>PropertyConditional()
 : <a class="el" href="class_barotrauma_1_1_property_conditional.html#aaac20aada3bceb59cf27b13989988ca0">Barotrauma.PropertyConditional</a>
 </li>
-<li>propertyEffects
-: <a class="el" href="class_barotrauma_1_1_status_effect.html#acbb5177e1287d86f711a94e25d67fc74">Barotrauma.StatusEffect</a>
+<li>PropertyEffects
+: <a class="el" href="class_barotrauma_1_1_status_effect.html#aa349c944ae9c7b9908126005a90ad5e4">Barotrauma.StatusEffect</a>
 </li>
 <li>PropertyInfo
 : <a class="el" href="class_barotrauma_1_1_serializable_property.html#a293199fd49ddd8b3b8b756a1f65b42db">Barotrauma.SerializableProperty</a>
-</li>
-<li>propertyNames
-: <a class="el" href="class_barotrauma_1_1_status_effect.html#ad263011b90f5aad13538c28ad02bc0cd">Barotrauma.StatusEffect</a>
 </li>
 <li>PropertyType
 : <a class="el" href="class_barotrauma_1_1_serializable_property.html#a3571416e4436967b249cccd86a218af6">Barotrauma.SerializableProperty</a>
@@ -1429,7 +1432,7 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 , <a class="el" href="class_barotrauma_1_1_single_player_campaign.html#a933d1ee3635d6ab9b106812dd8254aec">Barotrauma.SinglePlayerCampaign</a>
 </li>
 <li>PurchasedItem()
-: <a class="el" href="class_barotrauma_1_1_purchased_item.html#ad0abf7c04ef769e2cd1d1bd51fbae7d2">Barotrauma.PurchasedItem</a>
+: <a class="el" href="class_barotrauma_1_1_purchased_item.html#a4334589d26068d6842f5da188c50a9b5">Barotrauma.PurchasedItem</a>
 </li>
 <li>PurchasedItemRepairs
 : <a class="el" href="class_barotrauma_1_1_campaign_mode.html#a63851207194794681120761aa5f55f6f">Barotrauma.CampaignMode</a>
@@ -1459,9 +1462,6 @@ $(document).ready(function(){initNavTree('functions_p.html',''); initResizable()
 </li>
 <li>PurchaseItemSwap()
 : <a class="el" href="class_barotrauma_1_1_upgrade_manager.html#a8006cb3b61d0d6faf7be89b6b14d0ee8">Barotrauma.UpgradeManager</a>
-</li>
-<li>PurchaseSubmarine()
-: <a class="el" href="class_barotrauma_1_1_game_session.html#a79430d06eb7f010e9d2d645db74aaa54">Barotrauma.GameSession</a>
 </li>
 <li>PurchaseUpgrade()
 : <a class="el" href="class_barotrauma_1_1_upgrade_manager.html#ac494821ce2febc6cf302d4cf4f2e91a3">Barotrauma.UpgradeManager</a>

@@ -21,6 +21,8 @@ var class_barotrauma_1_1_items_1_1_components_1_1_controller =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#af6fb69538bb8cc8f5ebc60045d21e5fa", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a1e7558305f96d52ac73547d808d6598c", null ],
     [ "AllowAiming", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a215a8bf2e50f79aa4df3c4affc64186f", null ],
+    [ "AllowSelectingWhenSelectedByBot", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a4d7ad03df6c65db4458e54792a15ccf7", null ],
+    [ "AllowSelectingWhenSelectedByOther", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#ac22623e10e7b219ddaa5cff8dee050e5", null ],
     [ "ControlCharacterPose", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a5600b7a411d8cbf72d09fc86635a826c", null ],
     [ "Direction", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a10eaf281f7214c7d60eb3739bbc76f8d", null ],
     [ "DrawUserBehind", "class_barotrauma_1_1_items_1_1_components_1_1_controller.html#a56c3f2721db12b332af1832e9f6019d5", null ],

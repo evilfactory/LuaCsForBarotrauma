@@ -2,6 +2,7 @@ var class_barotrauma_1_1_fire_source =
 [
     [ "FireSource", "class_barotrauma_1_1_fire_source.html#a8c93de6f9c89bd3c06a148ced243e1fa", null ],
     [ "AdjustXPos", "class_barotrauma_1_1_fire_source.html#a6734185b536a30fc1fdc7706e5a018db", null ],
+    [ "EmitParticles", "class_barotrauma_1_1_fire_source.html#ae2cf6a26eb1986a4c05817950300131d", null ],
     [ "Extinguish", "class_barotrauma_1_1_fire_source.html#a12de3ce0d7ed6a7e034faede294e5111", null ],
     [ "Extinguish", "class_barotrauma_1_1_fire_source.html#a631e4616f157cbb2b03416ce82a075c8", null ],
     [ "IsInDamageRange", "class_barotrauma_1_1_fire_source.html#a3425b1ee23f9fdb2e0df9a8c74d251a1", null ],

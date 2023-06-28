@@ -119,8 +119,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afdc5942b17d3b927de7e1b09f72eaa74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_session.html#afdc5942b17d3b927de7e1b09f72eaa74">SwitchSubmarine</a> (<a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> newSubmarine, bool transferItems, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>? client=null)</td></tr>
 <tr class="memdesc:afdc5942b17d3b927de7e1b09f72eaa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch to another submarine. The sub is loaded when the next round starts.  <a href="class_barotrauma_1_1_game_session.html#afdc5942b17d3b927de7e1b09f72eaa74">More...</a><br /></td></tr>
 <tr class="separator:afdc5942b17d3b927de7e1b09f72eaa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79430d06eb7f010e9d2d645db74aaa54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_session.html#a79430d06eb7f010e9d2d645db74aaa54">PurchaseSubmarine</a> (<a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> newSubmarine, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>? client=null)</td></tr>
-<tr class="separator:a79430d06eb7f010e9d2d645db74aaa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa26568c9875956ca451ff3bc983cd173"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_session.html#aa26568c9875956ca451ff3bc983cd173">TryPurchaseSubmarine</a> (<a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> newSubmarine, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>? client=null)</td></tr>
+<tr class="separator:aa26568c9875956ca451ff3bc983cd173"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e675ed7a864cd69a8bac6c9ad8c86f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_session.html#a6e675ed7a864cd69a8bac6c9ad8c86f9">IsSubmarineOwned</a> (<a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> query)</td></tr>
 <tr class="separator:a6e675ed7a864cd69a8bac6c9ad8c86f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e316a52f75ea25a0033cf2b1ac00fa5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_game_session.html#a9e316a52f75ea25a0033cf2b1ac00fa5">IsCurrentLocationRadiated</a> ()</td></tr>
@@ -498,7 +498,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00843">843</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00853">853</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -518,7 +518,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00789">789</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00799">799</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -538,7 +538,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00778">778</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00788">788</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -558,7 +558,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00784">784</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00794">794</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -596,7 +596,7 @@ Properties</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 <p>In singleplayer mode the <a class="el" href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707a636da1d35e805b00eae0fcd8333f9234">CharacterType.Player</a> returns the currently controlled player. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00812">812</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00822">822</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -634,7 +634,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01056">1056</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01066">1066</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -653,7 +653,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00353">353</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00354">354</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -673,7 +673,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00346">346</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00347">347</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -693,7 +693,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01037">1037</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01047">1047</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -732,7 +732,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00962">962</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00972">972</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -752,37 +752,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00661">661</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
-
-</div>
-</div>
-<a id="a79430d06eb7f010e9d2d645db74aaa54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79430d06eb7f010e9d2d645db74aaa54">&#9670;&nbsp;</a></span>PurchaseSubmarine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Barotrauma.GameSession.PurchaseSubmarine </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a>&#160;</td>
-          <td class="paramname"><em>newSubmarine</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>?&#160;</td>
-          <td class="paramname"><em>client</em> = <code>null</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00331">331</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00671">671</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -802,7 +772,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01048">1048</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01058">1058</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -822,7 +792,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01123">1123</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l01133">1133</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -864,7 +834,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00388">388</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00389">389</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -900,7 +870,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00367">367</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00368">368</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>
@@ -942,6 +912,36 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="aa26568c9875956ca451ff3bc983cd173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa26568c9875956ca451ff3bc983cd173">&#9670;&nbsp;</a></span>TryPurchaseSubmarine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Barotrauma.GameSession.TryPurchaseSubmarine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a>&#160;</td>
+          <td class="paramname"><em>newSubmarine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>?&#160;</td>
+          <td class="paramname"><em>client</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00331">331</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+
+</div>
+</div>
 <a id="ae143bd0a862937407a9011b28ba741ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae143bd0a862937407a9011b28ba741ff">&#9670;&nbsp;</a></span>Update()</h2>
 
@@ -958,7 +958,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00765">765</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_session_8cs_source.html#l00775">775</a> of file <a class="el" href="_game_session_8cs_source.html">GameSession.cs</a>.</p>
 
 </div>
 </div>

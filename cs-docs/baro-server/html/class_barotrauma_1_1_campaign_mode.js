@@ -67,6 +67,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "CampaignMetadata", "class_barotrauma_1_1_campaign_mode.html#a45646db51f7e9cea4c273df952a0f6aa", null ],
     [ "CargoManager", "class_barotrauma_1_1_campaign_mode.html#af96e1598fe324c0bd3efd6e5a17f7d05", null ],
     [ "CheatsEnabled", "class_barotrauma_1_1_campaign_mode.html#a32319a9b521b3f4305d961ba7a9678d3", null ],
+    [ "DivingSuitWarningShown", "class_barotrauma_1_1_campaign_mode.html#a0b80b7d00a6bd34c2c651bf93a7aca31", null ],
     [ "map", "class_barotrauma_1_1_campaign_mode.html#a732e8c97b2dfbd9cc932f2e76b4c2b80", null ],
     [ "MedicalClinic", "class_barotrauma_1_1_campaign_mode.html#a420c07f41621ad1a5f69a3125f97218e", null ],
     [ "OnMoneyChanged", "class_barotrauma_1_1_campaign_mode.html#a66d4196a7efd12ada7fce38da20d077f", null ],

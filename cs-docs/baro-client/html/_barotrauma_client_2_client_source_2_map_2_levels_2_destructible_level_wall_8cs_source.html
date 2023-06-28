@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_m
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keywordflow">foreach</span> (var edge <span class="keywordflow">in</span> cell.Edges)</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keywordflow">if</span> (MathUtils.GetLineIntersection(worldPosition, cell.Center, edge.Point1 + cell.Translation, edge.Point2 + cell.Translation, out Vector2 intersection))</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keywordflow">if</span> (MathUtils.GetLineSegmentIntersection(worldPosition, cell.Center, edge.Point1 + cell.Translation, edge.Point2 + cell.Translation, out Vector2 intersection))</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                            intersectionFound = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                            particlePos = intersection;</div>

@@ -120,6 +120,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a631e4616f157cbb2b03416ce82a075c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9311e10bedd2db6293dc990a395aa27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fire_source.html#ac9311e10bedd2db6293dc990a395aa27">Remove</a> ()</td></tr>
 <tr class="separator:ac9311e10bedd2db6293dc990a395aa27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2cf6a26eb1986a4c05817950300131d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fire_source.html#ae2cf6a26eb1986a4c05817950300131d">EmitParticles</a> (Vector2 <a class="el" href="class_barotrauma_1_1_fire_source.html#aaaad34da330e1ac8f2475915360920d7">size</a>, Vector2 worldPosition, float deltaTime, <a class="el" href="class_barotrauma_1_1_hull.html">Hull</a> <a class="el" href="class_barotrauma_1_1_fire_source.html#ae9f59b1a680bd70fc0dcca75b6c4194b">hull</a>, float growModifier, Particle.OnChangeHullHandler onChangeHull=null)</td></tr>
+<tr class="separator:ae2cf6a26eb1986a4c05817950300131d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -127,8 +129,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:afdb10421ed029ac92cef30709397640d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f75a091626588e55ee6ffbb61d5172b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fire_source.html#a2f75a091626588e55ee6ffbb61d5172b">UpdateAll</a> (List&lt; <a class="el" href="class_barotrauma_1_1_dummy_fire_source.html">DummyFireSource</a> &gt; fireSources, float deltaTime)</td></tr>
 <tr class="separator:a2f75a091626588e55ee6ffbb61d5172b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6c58d6dfbed1e8d11817d2ea9810ffd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fire_source.html#ae6c58d6dfbed1e8d11817d2ea9810ffd">EmitParticles</a> (Vector2 <a class="el" href="class_barotrauma_1_1_fire_source.html#aaaad34da330e1ac8f2475915360920d7">size</a>, Vector2 worldPosition, <a class="el" href="class_barotrauma_1_1_hull.html">Hull</a> <a class="el" href="class_barotrauma_1_1_fire_source.html#ae9f59b1a680bd70fc0dcca75b6c4194b">hull</a>, float growModifier, Particle.OnChangeHullHandler onChangeHull=null)</td></tr>
-<tr class="separator:ae6c58d6dfbed1e8d11817d2ea9810ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -263,17 +263,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6c58d6dfbed1e8d11817d2ea9810ffd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6c58d6dfbed1e8d11817d2ea9810ffd">&#9670;&nbsp;</a></span>EmitParticles()</h2>
+<a id="ae2cf6a26eb1986a4c05817950300131d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2cf6a26eb1986a4c05817950300131d">&#9670;&nbsp;</a></span>EmitParticles()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void Barotrauma.FireSource.EmitParticles </td>
+          <td class="memname">void Barotrauma.FireSource.EmitParticles </td>
           <td>(</td>
           <td class="paramtype">Vector2&#160;</td>
           <td class="paramname"><em>size</em>, </td>
@@ -283,6 +280,12 @@ Properties</h2></td></tr>
           <td></td>
           <td class="paramtype">Vector2&#160;</td>
           <td class="paramname"><em>worldPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaTime</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -308,14 +311,9 @@ Properties</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_map_2_fire_source_8cs_source.html#l00028">28</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_map_2_fire_source_8cs_source.html">BarotraumaClient/ClientSource/Map/FireSource.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_map_2_fire_source_8cs_source.html#l00030">30</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_map_2_fire_source_8cs_source.html">BarotraumaClient/ClientSource/Map/FireSource.cs</a>.</p>
 
 </div>
 </div>

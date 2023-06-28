@@ -234,7 +234,8 @@ $(document).ready(function(){initNavTree('functions_prop_t.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_order.html#a3f5b8a3b01f38efd5a4dab567d85c5ce">Barotrauma.Order</a>
 </li>
 <li>TargetLimb
-: <a class="el" href="struct_barotrauma_1_1_character_1_1_execute_attack_event_data.html#a929820fb4a2cb05ee1ec7107ad99c776">Barotrauma.Character.ExecuteAttackEventData</a>
+: <a class="el" href="class_barotrauma_1_1_ability_apply_treatment.html#a3b998b935e2767f76bca9f1257123361">Barotrauma.AbilityApplyTreatment</a>
+, <a class="el" href="struct_barotrauma_1_1_character_1_1_execute_attack_event_data.html#a929820fb4a2cb05ee1ec7107ad99c776">Barotrauma.Character.ExecuteAttackEventData</a>
 , <a class="el" href="struct_barotrauma_1_1_character_1_1_set_attack_target_event_data.html#a79baac51e6398f08fc4b75edbf4d907d">Barotrauma.Character.SetAttackTargetEventData</a>
 </li>
 <li>TargetLimbType
@@ -310,7 +311,6 @@ $(document).ready(function(){initNavTree('functions_prop_t.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_check_money_action.html#a69217fda25bca751c988127096c31a75">Barotrauma.CheckMoneyAction</a>
 , <a class="el" href="class_barotrauma_1_1_check_order_action.html#a1438b8b7ea75f545959b53b1b1aca1d5">Barotrauma.CheckOrderAction</a>
 , <a class="el" href="class_barotrauma_1_1_check_selected_action.html#a3a69201c87a0ffa6eabe64730b8d89bd">Barotrauma.CheckSelectedAction</a>
-, <a class="el" href="class_barotrauma_1_1_check_selected_item_action.html#a3ec0c01042d6e870cfeb87e226940281">Barotrauma.CheckSelectedItemAction</a>
 , <a class="el" href="class_barotrauma_1_1_conversation_action.html#ac125a007018d34aeb97ce1dcc617f141">Barotrauma.ConversationAction</a>
 , <a class="el" href="class_barotrauma_1_1_fire_action.html#a349b466223499b37f873417408aec5fe">Barotrauma.FireAction</a>
 , <a class="el" href="class_barotrauma_1_1_give_skill_exp_action.html#a8bd07cb30f8879e824ce7cba333fd176">Barotrauma.GiveSkillExpAction</a>
@@ -462,15 +462,18 @@ $(document).ready(function(){initNavTree('functions_prop_t.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_string_component.html#a184274b5420ffd0d163a375355f1de17">Barotrauma.Items.Components.StringComponent</a>
 </li>
 <li>Timer
-: <a class="el" href="class_barotrauma_1_1_a_i_trigger.html#aa6e5d951019f86ccbe2fa8c71926687b">Barotrauma.AITrigger</a>
-, <a class="el" href="class_barotrauma_1_1_character_params_1_1_target_params.html#a5c0eb33977fb2772abea725af482ac4b">Barotrauma.CharacterParams.TargetParams</a>
+: <a class="el" href="class_barotrauma_1_1_character_params_1_1_target_params.html#a5c0eb33977fb2772abea725af482ac4b">Barotrauma.CharacterParams.TargetParams</a>
 , <a class="el" href="class_barotrauma_1_1_lua_cs_setup.html#a779657799b2f06fe9feb1574dbd3ae5a">Barotrauma.LuaCsSetup</a>
+, <a class="el" href="class_barotrauma_1_1_status_effect_1_1_a_i_trigger.html#a431814651c8087cb8489af71a545a91f">Barotrauma.StatusEffect.AITrigger</a>
 , <a class="el" href="interface_barotrauma_1_1_voting_1_1_i_vote.html#a03277809ff7aec8f242b464707e657c9">Barotrauma.Voting.IVote</a>
 , <a class="el" href="class_barotrauma_1_1_voting_1_1_submarine_vote.html#adb8445a15f1402fdd5bf8d931d5ab6d4">Barotrauma.Voting.SubmarineVote</a>
 , <a class="el" href="class_barotrauma_1_1_voting_1_1_transfer_vote.html#aeb1ccbea175f48df57811c883308e28a">Barotrauma.Voting.TransferVote</a>
 </li>
 <li>TimesAttempted
 : <a class="el" href="class_barotrauma_1_1_mission.html#ae1e593fd5b4138f8a6334c9fef534ab3">Barotrauma.Mission</a>
+</li>
+<li>TimeSinceCreated
+: <a class="el" href="struct_barotrauma_1_1_items_1_1_components_1_1_signal.html#a920a42fc2df9b226308d6ad788463f6a">Barotrauma.Items.Components.Signal</a>
 </li>
 <li>TimeSinceLastAttempt
 : <a class="el" href="class_barotrauma_1_1_ship_issue_worker.html#a6c7a1b25581f6edcb836a91087416db4">Barotrauma.ShipIssueWorker</a>
@@ -584,8 +587,8 @@ $(document).ready(function(){initNavTree('functions_prop_t.html',''); initResiza
 <li>TranslatedText
 : <a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#aecdae2726f52184127b8ae7bae5ff987">Barotrauma.Networking.ChatMessage</a>
 </li>
-<li>TreatmentSuitability
-: <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#aa6fe5ef478e3d35b9fbbcfe7e0177161">Barotrauma.AfflictionPrefab</a>
+<li>TreatmentSuitabilities
+: <a class="el" href="class_barotrauma_1_1_affliction_prefab.html#a4d7ddbb8b1d3b5956c8383e3178137ea">Barotrauma.AfflictionPrefab</a>
 </li>
 <li>TriggerActive
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#ad50efe888709be2b7b1da7f4458a8d8e">Barotrauma.Items.Components.TriggerComponent</a>

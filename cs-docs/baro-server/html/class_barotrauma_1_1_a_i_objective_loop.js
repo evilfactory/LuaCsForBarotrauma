@@ -24,6 +24,7 @@ var class_barotrauma_1_1_a_i_objective_loop =
     [ "IgnoreListClearInterval", "class_barotrauma_1_1_a_i_objective_loop.html#a4aba59359cb03b3ad994f4c00616ca29", null ],
     [ "InverseTargetEvaluation", "class_barotrauma_1_1_a_i_objective_loop.html#ab28ff4397a4dedb9ab437a0efa362550", null ],
     [ "IsLoop", "class_barotrauma_1_1_a_i_objective_loop.html#a5660c940855616ddbf9c5b25e96e559e", null ],
+    [ "MaxTargets", "class_barotrauma_1_1_a_i_objective_loop.html#a0486e5d591a8cd6aa4009f07a53dfcc9", null ],
     [ "Objectives", "class_barotrauma_1_1_a_i_objective_loop.html#ab066e2e5fa36414cca10b244d6c11521", null ],
     [ "ReportedTargets", "class_barotrauma_1_1_a_i_objective_loop.html#a920af7c4a4e0cea20af03ce3f9d9dbae", null ],
     [ "ResetWhenClearingIgnoreList", "class_barotrauma_1_1_a_i_objective_loop.html#a8850bd5a46511f917f26e69ea9f969f5", null ],

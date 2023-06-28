@@ -132,8 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7b8a197092aba41eb67c7afe9eecbf8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99e15f98133b25320fa0b01c9640c1fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a99e15f98133b25320fa0b01c9640c1fb">ResolveLinks</a> (<a class="el" href="class_barotrauma_1_1_id_remap.html">IdRemap</a> childRemap)</td></tr>
 <tr class="separator:a99e15f98133b25320fa0b01c9640c1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd30523ffeb544b65db11a11540a877a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#afd30523ffeb544b65db11a11540a877a">Move</a> (Vector2 amount, bool ignoreContacts=false)</td></tr>
-<tr class="separator:afd30523ffeb544b65db11a11540a877a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c1bda7cf1f886c441fb1ccf730a6774"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a9c1bda7cf1f886c441fb1ccf730a6774">Move</a> (Vector2 amount, bool ignoreContacts=true)</td></tr>
+<tr class="separator:a9c1bda7cf1f886c441fb1ccf730a6774"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adddb56ddd753320fc97c5f98c4be0d4c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#adddb56ddd753320fc97c5f98c4be0d4c">IsMouseOn</a> (Vector2 position)</td></tr>
 <tr class="separator:adddb56ddd753320fc97c5f98c4be0d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a438aeca8633500f0fe9da303613039e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a438aeca8633500f0fe9da303613039e4">HasUpgrade</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> identifier)</td></tr>
@@ -295,8 +295,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a7d128fe6cdc75d31fe6a3977d71a79e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48dcec09ae98eb15e0ecd6eb69cbb521"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a48dcec09ae98eb15e0ecd6eb69cbb521">MapEntityUpdateInterval</a> = 1</td></tr>
 <tr class="separator:a48dcec09ae98eb15e0ecd6eb69cbb521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4cef240f10b74a6b63f09c06cb6e63"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#afb4cef240f10b74a6b63f09c06cb6e63">GapUpdateInterval</a> = 4</td></tr>
-<tr class="separator:afb4cef240f10b74a6b63f09c06cb6e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c23ea58f4897a04b462afe55185a063"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a5c23ea58f4897a04b462afe55185a063">PoweredUpdateInterval</a> = 1</td></tr>
 <tr class="separator:a5c23ea58f4897a04b462afe55185a063"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70776734e56683ba8a91154acebd8681"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a70776734e56683ba8a91154acebd8681">SelectionChanged</a></td></tr>
@@ -522,7 +520,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00275">275</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00274">274</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -643,7 +641,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#a202727c695684b0d5ec379a400c3a974">Barotrauma.Structure</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a1f35ebcdce91ef75bb1a229ad3fee254">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00365">365</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00364">364</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -672,7 +670,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item.html#a6211294cdda06b59b403b7d67a0ab721">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00391">391</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00390">390</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -699,7 +697,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00404">404</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00403">403</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -754,7 +752,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00418">418</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00417">417</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1110,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#a0e375cdf186d2f7161bb2178b35dd53e">Barotrauma.Structure</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a59ceb46aa12da103fb5da2300fc7133d">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00696">696</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00694">694</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1148,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#a9a5e673b0ca6d0e703c12cfe2a471887">Barotrauma.Structure</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a5d3c9dba78d66eff3bc85408d4397658">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00710">710</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00708">708</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1255,7 +1253,7 @@ Events</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00878">878</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00876">876</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1360,7 +1358,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00336">336</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00335">335</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1377,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00341">341</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00340">340</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1399,7 +1397,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00331">331</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00330">330</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1427,7 +1425,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00832">832</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00830">830</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1454,7 +1452,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00533">533</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00534">534</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1484,7 +1482,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#a800325b77a0e0fe22f95efca1b628957">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_linked_submarine.html#a879368ba04b820a418a0ebcfcc7e366f">Barotrauma.LinkedSubmarine</a>, <a class="el" href="class_barotrauma_1_1_gap.html#a2809e9d8c4190b3e1fa8e6c682c52539">Barotrauma.Gap</a>, <a class="el" href="class_barotrauma_1_1_way_point.html#a77743dd93df1ad2ce7ab27152da37448">Barotrauma.WayPoint</a>, and <a class="el" href="class_barotrauma_1_1_hull.html#a5afa2b7611d1538b780950b2a683eca2">Barotrauma.Hull</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00326">326</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00325">325</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1564,7 +1562,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00720">720</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00718">718</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1602,12 +1600,12 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00801">801</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00799">799</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
-<a id="afd30523ffeb544b65db11a11540a877a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd30523ffeb544b65db11a11540a877a">&#9670;&nbsp;</a></span>Move()</h2>
+<a id="a9c1bda7cf1f886c441fb1ccf730a6774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c1bda7cf1f886c441fb1ccf730a6774">&#9670;&nbsp;</a></span>Move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1625,7 +1623,7 @@ Events</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>ignoreContacts</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>ignoreContacts</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1640,9 +1638,9 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#ad9bc0f0e0c8752ba1d2718f6f36192a6">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_hull.html#abfe844ace38e4c600f871af2893f06ee">Barotrauma.Hull</a>, <a class="el" href="class_barotrauma_1_1_gap.html#a53d600cf72168bc0618504925dd8427b">Barotrauma.Gap</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a9fcfcdac05343ce5955e2cfb65b26f45">Barotrauma.Item</a>.</p>
+<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#a1b109d0654ec3f8226b451e569329ad5">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_hull.html#aa86bacf24c29b0f7d1c42e46b68e87f2">Barotrauma.Hull</a>, <a class="el" href="class_barotrauma_1_1_gap.html#af3d7d4fac0da564672ffeb26d11547e2">Barotrauma.Gap</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a429c013e39676f9ca0ae1e89540f0a6f">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00320">320</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00319">319</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1671,7 +1669,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_way_point.html#a914951839c69ec2a65f65eb4cd1ceed1">Barotrauma.WayPoint</a>, <a class="el" href="class_barotrauma_1_1_structure.html#a49fae9ea326ba7a8826af9b473867ab4">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_linked_submarine.html#a610951d35ff3001185f597942d8b6e3f">Barotrauma.LinkedSubmarine</a>, <a class="el" href="class_barotrauma_1_1_hull.html#a04d4b9367f5a030ca315a8bb74e11e6c">Barotrauma.Hull</a>, <a class="el" href="class_barotrauma_1_1_gap.html#a32e54a51ae332b287e42f0891d286714">Barotrauma.Gap</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a4b2f603dca7f0cf3e209b721bd8519bd">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00861">861</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00859">859</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1709,7 +1707,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00281">281</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00280">280</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1795,7 +1793,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_way_point.html#ae4b94d3f3f65a73f707ed7bd0d56f395">Barotrauma.WayPoint</a>, and <a class="el" href="class_barotrauma_1_1_structure.html#a407789bcc000b63b659745a76bfc263d">Barotrauma.Structure</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00577">577</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00578">578</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1815,7 +1813,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00869">869</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00867">867</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1863,7 +1861,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00302">302</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00301">301</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1893,7 +1891,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_way_point.html#ad3b1259cfc1aa93cdb9238a135dd5cb7">Barotrauma.WayPoint</a>, <a class="el" href="class_barotrauma_1_1_structure.html#a58e3972862e55ff663dcbec7d5954edb">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_linked_submarine.html#a0968ca689263a8b28d2c0aee3dbae1e0">Barotrauma.LinkedSubmarine</a>, <a class="el" href="class_barotrauma_1_1_hull.html#a46938effa3979e6ef5e0bf69d5c5dc72">Barotrauma.Hull</a>, <a class="el" href="class_barotrauma_1_1_gap.html#af09288a2da41a37a330d5060e2cb929f">Barotrauma.Gap</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a8b5a60e30175edf15220f5b79dc48573">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00863">863</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00861">861</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1951,7 +1949,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00346">346</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00345">345</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -1982,7 +1980,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_way_point.html#aa6a26e152b532aab1461c51d182a43d2">Barotrauma.WayPoint</a>, <a class="el" href="class_barotrauma_1_1_structure.html#aadd5ef2233cd669c9b536a6d5b52b46a">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_hull.html#a5427b2f68877986e2107dc5af165e36a">Barotrauma.Hull</a>, <a class="el" href="class_barotrauma_1_1_gap.html#a69c4ea45199c9aac039b29307ff0906b">Barotrauma.Gap</a>, and <a class="el" href="class_barotrauma_1_1_item.html#ad2db3c4ac575c6cebd5b6adcecd52fd6">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00568">568</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00569">569</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2022,7 +2020,7 @@ Events</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_structure.html#a346f93c457a0b2bc6f88edd68ec9f9fb">Barotrauma.Structure</a>, <a class="el" href="class_barotrauma_1_1_hull.html#ad249b3c5924b6c3b6fb7366db8785c8e">Barotrauma.Hull</a>, <a class="el" href="class_barotrauma_1_1_gap.html#a1203bc7982d3022155f206d62f162b0d">Barotrauma.Gap</a>, and <a class="el" href="class_barotrauma_1_1_item.html#a5b578c7db467c0a51fea55b9a6235abb">Barotrauma.Item</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00690">690</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00688">688</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2062,7 +2060,7 @@ Events</h2></td></tr>
 
 <p>Call <a class="el" href="class_barotrauma_1_1_map_entity.html#a46389c722caa30156dc1055a2b49d3da">Update()</a> on every object in Entity.list </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00610">610</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00611">611</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2258,7 +2256,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00032">32</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00031">31</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2306,31 +2304,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00055">55</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
-
-</div>
-</div>
-<a id="afb4cef240f10b74a6b63f09c06cb6e63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb4cef240f10b74a6b63f09c06cb6e63">&#9670;&nbsp;</a></span>GapUpdateInterval</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Barotrauma.MapEntity.GapUpdateInterval = 4</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00023">23</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00054">54</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2354,7 +2328,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00064">64</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00063">63</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2370,7 +2344,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00053">53</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00052">52</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2458,7 +2432,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00268">268</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00267">267</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2476,7 +2450,7 @@ Events</h2></td></tr>
 
 <p>The index of the outpost module this entity originally spawned in (-1 if not an outpost item) </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00266">266</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00265">265</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2500,7 +2474,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00024">24</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00023">23</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2540,7 +2514,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00062">62</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00061">61</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2646,7 +2620,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00059">59</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00058">58</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2688,7 +2662,7 @@ Events</h2></td></tr>
 
 <p>List of upgrades this item has </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00030">30</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00029">29</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2713,7 +2687,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00136">136</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00135">135</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2761,7 +2735,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00035">35</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00034">34</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2785,7 +2759,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00115">115</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00114">114</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2809,7 +2783,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00123">123</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00122">122</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2857,7 +2831,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00070">70</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00069">69</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2905,7 +2879,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00056">56</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00055">55</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2929,7 +2903,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00057">57</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00056">56</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2953,7 +2927,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00198">198</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00197">197</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -2977,7 +2951,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00066">66</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00065">65</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3025,7 +2999,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00086">86</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00085">85</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3097,7 +3071,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00261">261</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00260">260</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3121,7 +3095,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00131">131</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00130">130</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3145,7 +3119,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00270">270</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00269">269</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3169,7 +3143,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00204">204</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00203">203</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3193,7 +3167,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00099">99</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00098">98</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3217,7 +3191,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00160">160</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00159">159</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3241,7 +3215,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00149">149</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00148">148</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3265,7 +3239,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00254">254</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00253">253</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3289,7 +3263,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00138">138</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00137">137</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3313,7 +3287,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00141">141</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3337,7 +3311,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00195">195</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00194">194</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3457,7 +3431,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00239">239</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00238">238</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3481,7 +3455,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00217">217</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00216">216</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3505,7 +3479,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00225">225</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00224">224</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3529,7 +3503,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00110">110</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00109">109</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3553,7 +3527,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00176">176</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00175">175</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3577,7 +3551,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00172">172</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00171">171</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3601,7 +3575,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00173">173</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00172">172</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>
@@ -3649,7 +3623,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00105">105</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html#l00104">104</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_map_entity_8cs_source.html">BarotraumaShared/SharedSource/Map/MapEntity.cs</a>.</p>
 
 </div>
 </div>

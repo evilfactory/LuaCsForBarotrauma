@@ -3,7 +3,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_wearable =
     [ "Wearable", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a5bb34a31aef862b1ae167539567f4234", null ],
     [ "AddTooltipInfo", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a45ba07622b6e021870cdb57582bcdb8d", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a4fe8e8c7ca61ece38c4689d21b4c4a73", null ],
-    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a387fc1fb3f67a8fec59acb339cbfce10", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a64d54de702c3a56c2062bf50ded04aea", null ],
     [ "Equip", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a0b45cb94ef45092a4af0daf83ee1df21", null ],
     [ "Load", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a3709c0f6bda1da9e61fb0aa259a657a5", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a52aa8d315001aec426310a754d736e22", null ],

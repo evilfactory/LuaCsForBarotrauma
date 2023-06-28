@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a28121851dc76be8ff61e9e9e29385284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1798213deb5dd4191e90232ff55812b4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#a1798213deb5dd4191e90232ff55812b4">GetAfflictionStrength</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> afflictionType, bool allowLimbAfflictions=true)</td></tr>
 <tr class="separator:a1798213deb5dd4191e90232ff55812b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61416f59f848b9adf6bff74a85f9376b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#a61416f59f848b9adf6bff74a85f9376b">ApplyAffliction</a> (<a class="el" href="class_barotrauma_1_1_limb.html">Limb</a> targetLimb, <a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a> affliction, bool allowStacking=true)</td></tr>
-<tr class="separator:a61416f59f848b9adf6bff74a85f9376b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0548748c6ce8d1bbdb971be55f534afd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#a0548748c6ce8d1bbdb971be55f534afd">ApplyAffliction</a> (<a class="el" href="class_barotrauma_1_1_limb.html">Limb</a> targetLimb, <a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a> affliction, bool allowStacking=true, bool ignoreUnkillability=false)</td></tr>
+<tr class="separator:a0548748c6ce8d1bbdb971be55f534afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c59d865f5563cd7f14ae4937cd96734"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#a8c59d865f5563cd7f14ae4937cd96734">GetResistance</a> (<a class="el" href="class_barotrauma_1_1_affliction_prefab.html">AfflictionPrefab</a> afflictionPrefab)</td></tr>
 <tr class="separator:a8c59d865f5563cd7f14ae4937cd96734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a156d3ed74672a62cccf250066bbe30c0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#a156d3ed74672a62cccf250066bbe30c0">GetStatValue</a> (<a class="el" href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">StatTypes</a> statType)</td></tr>
@@ -167,6 +167,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee96049d6c3c53842e6bd485fb673717"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#aee96049d6c3c53842e6bd485fb673717">GetSuitableTreatments</a> (Dictionary&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>, float &gt; treatmentSuitability, bool normalize, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, <a class="el" href="class_barotrauma_1_1_limb.html">Limb</a> limb=null, bool ignoreHiddenAfflictions=false, float predictFutureDuration=0.0f)</td></tr>
 <tr class="memdesc:aee96049d6c3c53842e6bd485fb673717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the identifiers of the items that can be used to treat the character. Takes into account all the afflictions the character has, and negative treatment suitabilities (e.g. a medicine that causes oxygen loss may not be suitable if the character is already suffocating)  <a href="class_barotrauma_1_1_character_health.html#aee96049d6c3c53842e6bd485fb673717">More...</a><br /></td></tr>
 <tr class="separator:aee96049d6c3c53842e6bd485fb673717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83d59fa9c01d553e255b6873f1c72fd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#aa83d59fa9c01d553e255b6873f1c72fd">GetTotalAdjustedAfflictionStrength</a> (<a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a> affliction, float otherAfflictionMultiplier=0.3f, bool includeSameAffliction=true)</td></tr>
+<tr class="memdesc:aa83d59fa9c01d553e255b6873f1c72fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total strength of instances of the same affliction on all the characters limbs, with a smaller weight given to the other afflictions on other limbs  <a href="class_barotrauma_1_1_character_health.html#aa83d59fa9c01d553e255b6873f1c72fd">More...</a><br /></td></tr>
+<tr class="separator:aa83d59fa9c01d553e255b6873f1c72fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b5dec0cd734e129c3202d378d6c53d3"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#a8b5dec0cd734e129c3202d378d6c53d3">GetActiveAfflictionTags</a> ()</td></tr>
 <tr class="separator:a8b5dec0cd734e129c3202d378d6c53d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0a9eeb17e95e856d40fca2d4ade76f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_health.html#ad0a9eeb17e95e856d40fca2d4ade76f0">GetPredictedStrength</a> (<a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a> affliction, float predictFutureDuration, <a class="el" href="class_barotrauma_1_1_limb.html">Limb</a> limb=null)</td></tr>
@@ -257,7 +260,7 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00017">17</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00018">18</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5bfa11b0e6e2097f0447ce5a44918922"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5bfa11b0e6e2097f0447ce5a44918922">&#9670;&nbsp;</a></span>CharacterHealth() <span class="overload">[1/2]</span></h2>
@@ -275,7 +278,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00250">250</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00251">251</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -311,13 +314,13 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00265">265</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00266">266</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a61416f59f848b9adf6bff74a85f9376b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61416f59f848b9adf6bff74a85f9376b">&#9670;&nbsp;</a></span>ApplyAffliction()</h2>
+<a id="a0548748c6ce8d1bbdb971be55f534afd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0548748c6ce8d1bbdb971be55f534afd">&#9670;&nbsp;</a></span>ApplyAffliction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -338,7 +341,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>allowStacking</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>allowStacking</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ignoreUnkillability</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -348,7 +357,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00425">425</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00426">426</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -368,7 +377,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01039">1039</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01040">1040</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -404,7 +413,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00582">582</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00583">583</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -423,7 +432,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00968">968</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00969">969</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -442,7 +451,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00890">890</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00891">891</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -461,7 +470,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01175">1175</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01209">1209</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -519,7 +528,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00352">352</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00353">353</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -585,7 +594,7 @@ Properties</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00347">347</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00348">348</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -605,7 +614,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00367">367</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00368">368</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -663,7 +672,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00409">409</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00410">410</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -709,7 +718,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00388">388</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00389">389</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -728,7 +737,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00303">303</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00304">304</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -748,7 +757,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00308">308</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00309">309</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -778,7 +787,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00646">646</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00647">647</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -814,7 +823,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01189">1189</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01223">1223</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -834,7 +843,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00450">450</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00455">455</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -854,7 +863,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00465">465</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00466">466</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -926,7 +935,52 @@ Properties</h2></td></tr>
 <p><br  />
  </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01112">1112</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01113">1113</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa83d59fa9c01d553e255b6873f1c72fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83d59fa9c01d553e255b6873f1c72fd">&#9670;&nbsp;</a></span>GetTotalAdjustedAfflictionStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Barotrauma.CharacterHealth.GetTotalAdjustedAfflictionStrength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a>&#160;</td>
+          <td class="paramname"><em>affliction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>otherAfflictionMultiplier</em> = <code>0.3f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>includeSameAffliction</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the total strength of instances of the same affliction on all the characters limbs, with a smaller weight given to the other afflictions on other limbs </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">otherAfflictionMultiplier</td><td>Multiplier on the strengths of the afflictions on other limbs.</td></tr>
+    <tr><td class="paramname">includeSameAffliction</td><td>Should the strength of the provided affliction be included too?</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01192">1192</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -946,7 +1000,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00476">476</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00477">477</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -976,7 +1030,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01312">1312</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01346">1346</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1012,7 +1066,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00496">496</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00497">497</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1054,7 +1108,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00525">525</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00526">526</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1084,7 +1138,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00488">488</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00489">489</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1174,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00515">515</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00516">516</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1139,7 +1193,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01270">1270</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01304">1304</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1158,7 +1212,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00674">674</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00675">675</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1177,7 +1231,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00689">689</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00690">690</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1197,7 +1251,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01283">1283</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01317">1317</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1271,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01217">1217</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01251">1251</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1307,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00621">621</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00622">622</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1273,7 +1327,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00962">962</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00963">963</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1331,7 +1385,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00801">801</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00802">802</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1348,7 +1402,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00248">248</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00249">249</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1372,7 +1426,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00192">192</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00193">193</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1396,7 +1450,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00095">95</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00096">96</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1420,7 +1474,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00096">96</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00097">97</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1444,7 +1498,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00097">97</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00098">98</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1460,7 +1514,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01049">1049</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l01050">1050</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1476,7 +1530,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00108">108</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00109">109</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1501,7 +1555,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00136">136</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00137">137</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1525,7 +1579,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00220">220</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00221">221</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1549,7 +1603,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00200">200</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00201">201</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1573,7 +1627,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00122">122</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00123">123</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1597,7 +1651,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00110">110</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00111">111</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1621,7 +1675,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00194">194</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00195">195</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1645,7 +1699,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00163">163</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00164">164</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1669,7 +1723,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00138">138</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00139">139</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1693,7 +1747,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00165">165</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00166">166</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1717,7 +1771,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00180">180</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00181">181</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1741,7 +1795,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00206">206</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00207">207</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1767,7 +1821,7 @@ Properties</h2></td></tr>
 
 <p>0-1. </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00918">918</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00919">919</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1791,7 +1845,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00243">243</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00244">244</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1815,7 +1869,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00143">143</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00144">144</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1839,7 +1893,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00226">226</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00227">227</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1863,7 +1917,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00236">236</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00237">237</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1889,7 +1943,7 @@ Properties</h2></td></tr>
 
 <p>Maximum vitality without talent- or job-based modifiers </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00102">102</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00103">103</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1913,7 +1967,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00116">116</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00117">117</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1937,7 +1991,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00146">146</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00147">147</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>
@@ -1963,7 +2017,7 @@ Properties</h2></td></tr>
 
 <p>Was the character in full health at the beginning of the frame? </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00241">241</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_character_health_8cs_source.html#l00242">242</a> of file <a class="el" href="_character_health_8cs_source.html">CharacterHealth.cs</a>.</p>
 
 </div>
 </div>

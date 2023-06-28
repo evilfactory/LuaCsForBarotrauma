@@ -4,13 +4,11 @@ var class_barotrauma_1_1_affliction_prefab =
     [ "Effect", "class_barotrauma_1_1_affliction_prefab_1_1_effect.html", "class_barotrauma_1_1_affliction_prefab_1_1_effect" ],
     [ "PeriodicEffect", "class_barotrauma_1_1_affliction_prefab_1_1_periodic_effect.html", "class_barotrauma_1_1_affliction_prefab_1_1_periodic_effect" ],
     [ "AfflictionPrefab", "class_barotrauma_1_1_affliction_prefab.html#ad462340877d02861fd201b0c6078585f", null ],
-    [ "ClearEffects", "class_barotrauma_1_1_affliction_prefab.html#a1783482f3643d63edfcf4d6dea10babb", null ],
     [ "Dispose", "class_barotrauma_1_1_affliction_prefab.html#aef6cc191476241cf7589e753dbd21e07", null ],
     [ "GetActiveEffect", "class_barotrauma_1_1_affliction_prefab.html#aa30b6799e63a6bedb4a20909dacf7bf2", null ],
     [ "GetDescription", "class_barotrauma_1_1_affliction_prefab.html#af33432d1906cb8ef1f7ad8ac6bde97d3", null ],
     [ "GetTreatmentSuitability", "class_barotrauma_1_1_affliction_prefab.html#ab0a54e3b3bd832b90fc7c68894395728", null ],
     [ "Instantiate", "class_barotrauma_1_1_affliction_prefab.html#a056adf36d303a81552d01be0107b7286", null ],
-    [ "LoadEffects", "class_barotrauma_1_1_affliction_prefab.html#af7c09096b922335d6e1b086e61c75a05", null ],
     [ "ToString", "class_barotrauma_1_1_affliction_prefab.html#a7eadf241623b648969f692c7a1390455", null ],
     [ "AchievementOnReceived", "class_barotrauma_1_1_affliction_prefab.html#a21a05c8cdac6ed0aa29f530253cd0340", null ],
     [ "AchievementOnRemoved", "class_barotrauma_1_1_affliction_prefab.html#a2f569d30df8e25d21897c681694958f0", null ],
@@ -49,7 +47,8 @@ var class_barotrauma_1_1_affliction_prefab =
     [ "TreatmentThreshold", "class_barotrauma_1_1_affliction_prefab.html#ac84250ed13fb8a7164bed280b1c518aa", null ],
     [ "WeaponsSkillGain", "class_barotrauma_1_1_affliction_prefab.html#a7d29cdf13f37b687cb5f996d8bc921e9", null ],
     [ "Effects", "class_barotrauma_1_1_affliction_prefab.html#a621faf8bc39bcac0ddac37728f109f4b", null ],
+    [ "HasTreatments", "class_barotrauma_1_1_affliction_prefab.html#ab1cad704dfd1a3ec2d9180b39a6988cf", null ],
     [ "PeriodicEffects", "class_barotrauma_1_1_affliction_prefab.html#a06d2492cde8586fc8898c10be8449c46", null ],
     [ "TargetSpecies", "class_barotrauma_1_1_affliction_prefab.html#a6af0f1f6c58383fefd6569755492f1d6", null ],
-    [ "TreatmentSuitability", "class_barotrauma_1_1_affliction_prefab.html#aa6fe5ef478e3d35b9fbbcfe7e0177161", null ]
+    [ "TreatmentSuitabilities", "class_barotrauma_1_1_affliction_prefab.html#a4d7ddbb8b1d3b5956c8383e3178137ea", null ]
 ];

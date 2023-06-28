@@ -115,6 +115,8 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_enemy_a_i_controller.html#aed1e5515aa3edb922df8673669a43caa">Barotrauma.EnemyAIController</a>
 , <a class="el" href="class_barotrauma_1_1_event_manager.html#a5875d0f11ccc8d0df3eff0370e649045">Barotrauma.EventManager</a>
 , <a class="el" href="class_barotrauma_1_1_human_a_i_controller.html#ae4cc3c35e8b29b51af16c383c99d610b">Barotrauma.HumanAIController</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a9286505aa1ae1f127f43da20317b6df1">Barotrauma.Items.Components.Wire</a>
+, <a class="el" href="class_barotrauma_1_1_lights_1_1_convex_hull.html#ac0854e6648d4a6f5bd3314edf27369af">Barotrauma.Lights.ConvexHull</a>
 , <a class="el" href="class_barotrauma_1_1_physics_body.html#a950d4cba636caea345187dc112929c5a">Barotrauma.PhysicsBody</a>
 , <a class="el" href="class_barotrauma_1_1_ragdoll.html#a3a7cfaca24590a06c320db1996809a04">Barotrauma.Ragdoll</a>
 , <a class="el" href="class_barotrauma_1_1_ruin_generation_1_1_ruin.html#ae859bb7eeea0fd3071a526c5bed3349f">Barotrauma.RuinGeneration.Ruin</a>
@@ -122,6 +124,9 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 <li>DebugDrawHUD()
 : <a class="el" href="class_barotrauma_1_1_event_manager.html#ae3f3ebb5c7fa9befbc83cdeaa2f4f076">Barotrauma.EventManager</a>
 , <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a94c73350230eaf080161735e67ca5ec5">Barotrauma.Items.Components.Steering</a>
+</li>
+<li>DebugDrawLos()
+: <a class="el" href="class_barotrauma_1_1_lights_1_1_light_manager.html#a0362a0d636f1d45fa9129a804d3732c5">Barotrauma.Lights.LightManager</a>
 </li>
 <li>DebugLog()
 : <a class="el" href="class_barotrauma_1_1_upgrade_manager.html#a8aeec4c9578235bf5fb79e0da2e13ed6">Barotrauma.UpgradeManager</a>
@@ -367,7 +372,6 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_check_money_action.html#a7c898d2c573946cfb7a404b92c4f7252">Barotrauma.CheckMoneyAction</a>
 , <a class="el" href="class_barotrauma_1_1_check_order_action.html#a50078ef2702c92fbd8ee50b344f04adc">Barotrauma.CheckOrderAction</a>
 , <a class="el" href="class_barotrauma_1_1_check_selected_action.html#a510dfe7a1f9930c5590dea9a07a249a7">Barotrauma.CheckSelectedAction</a>
-, <a class="el" href="class_barotrauma_1_1_check_selected_item_action.html#ad1085ef43f185397ab060c4aeccda898">Barotrauma.CheckSelectedItemAction</a>
 , <a class="el" href="class_barotrauma_1_1_r_n_g_action.html#afcf764788b4d9e1935203e6ab51bd2a6">Barotrauma.RNGAction</a>
 , <a class="el" href="class_barotrauma_1_1_skill_check_action.html#a475e65df47b7f33fc30c8642483165d2">Barotrauma.SkillCheckAction</a>
 , <a class="el" href="class_check_connection_action.html#a9ee4c53783d178f8c75eda63baea43b1">CheckConnectionAction</a>
@@ -690,7 +694,7 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_g_u_i_scissor_component.html#abde241aa2f023cf81230d2ec44f9438d">Barotrauma.GUIScissorComponent</a>
 </li>
 <li>DrawConnections()
-: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ac0ac28bbacf5b9f6b021aaa3ed9cb34f">Barotrauma.Items.Components.Connection</a>
+: <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html#ad7abe56095252e9fd1a54b8b551d7a07">Barotrauma.Items.Components.Connection</a>
 </li>
 <li>DrawContainedItems()
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a72cf2db9b47a9108a0d20c35324d21ae">Barotrauma.Items.Components.ItemContainer</a>
@@ -806,7 +810,7 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 </li>
 <li>DrawPlacing()
 : <a class="el" href="class_barotrauma_1_1_item_assembly_prefab.html#ac2dd1562b5de66e21260a71540f0e458">Barotrauma.ItemAssemblyPrefab</a>
-, <a class="el" href="class_barotrauma_1_1_item_prefab.html#a2fa749e37714e58f6fe81db2954d8210">Barotrauma.ItemPrefab</a>
+, <a class="el" href="class_barotrauma_1_1_item_prefab.html#a54eb1c16d4fb4982f2a2b3d330062546">Barotrauma.ItemPrefab</a>
 , <a class="el" href="class_barotrauma_1_1_map_entity_prefab.html#a82c5011086cfc13e5df2120a5b5c96b5">Barotrauma.MapEntityPrefab</a>
 , <a class="el" href="class_barotrauma_1_1_structure_prefab.html#af35c7b8a45e14a1d7cbab6afba89c0db">Barotrauma.StructurePrefab</a>
 </li>
@@ -832,8 +836,8 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_lights_1_1_light_source.html#af8f16cd5a2031b9d45678de06c7f47c3">Barotrauma.Lights.LightSource</a>
 </li>
 <li>DrawString()
-: <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#af4147d2ea37fdf5cc47a8288b01a551c">Barotrauma.GUIFont</a>
-, <a class="el" href="class_barotrauma_1_1_scalable_font.html#a34c3e4cd1b38bb13dfcbe64fa1c507f2">Barotrauma.ScalableFont</a>
+: <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#a06a94bba980eca2a50c1135bcb580dbf">Barotrauma.GUIFont</a>
+, <a class="el" href="class_barotrauma_1_1_scalable_font.html#abdfb5dbe46d179cd50428cd61a6f008b">Barotrauma.ScalableFont</a>
 </li>
 <li>DrawStringWithColors()
 : <a class="el" href="class_barotrauma_1_1_g_u_i_font.html#acad40f6e73744b6bd165775208ab75f2">Barotrauma.GUIFont</a>
@@ -846,20 +850,21 @@ $(document).ready(function(){initNavTree('functions_func_d.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_sprite.html#ac134204e0206d2c22dea52de69f5f120">Barotrauma.Sprite</a>
 </li>
 <li>DrawToolTip()
-: <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#a4559fd92bfaebafb31d3908abbda970c">Barotrauma.GUIComponent</a>
+: <a class="el" href="class_barotrauma_1_1_g_u_i_component.html#ae34742d209eea02bab6123eed5b41130">Barotrauma.GUIComponent</a>
 , <a class="el" href="class_barotrauma_1_1_inventory.html#a21b24d10f50cd4e630aa5727350c3340">Barotrauma.Inventory</a>
 </li>
 <li>Drop()
 : <a class="el" href="class_barotrauma_1_1_item.html#a0974e4e4e433da549bae4e2eb500ee9e">Barotrauma.Item</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#a979fd1de6f9e9065a612d2a81349cca8">Barotrauma.Items.Components.Holdable</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae528ab4483d884c28c006c142ea86882">Barotrauma.Items.Components.ItemComponent</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a1a3c56d576cef36e8334c5ee577b280f">Barotrauma.Items.Components.ItemContainer</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#ac25e227bda737398046363955db9a406">Barotrauma.Items.Components.MeleeWeapon</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a1591f151e82007b842f48349839cbbc9">Barotrauma.Items.Components.Pickable</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#a08afbc46b1799b8caeae1de29b5fbb21">Barotrauma.Items.Components.Projectile</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_throwable.html#a6c927a803e2a43548d6ec4f0dc19f354">Barotrauma.Items.Components.Throwable</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a387fc1fb3f67a8fec59acb339cbfce10">Barotrauma.Items.Components.Wearable</a>
-, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a08f96e523bba3d5367a45ef3fa058224">Barotrauma.Items.Components.Wire</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html#ac472c2c14815863fb4463da66968c867">Barotrauma.Items.Components.Holdable</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a7348c0178ae7427e54d739e158bf0bc5">Barotrauma.Items.Components.ItemComponent</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#ad47ea08345101033ec8f364fdb7d7a1a">Barotrauma.Items.Components.ItemContainer</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html#aee9150436dbb02e5d2ee11de06a678f0">Barotrauma.Items.Components.MeleeWeapon</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a2d9bb67a466563a41cbb76f08ec2c810">Barotrauma.Items.Components.Pickable</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html#aa73b59c30430c714dce5d9b5f1dc15c4">Barotrauma.Items.Components.Projectile</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_status_h_u_d.html#adee6fe4ab709697bf45557f82a966c2a">Barotrauma.Items.Components.StatusHUD</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_throwable.html#ae1fe8e3069985eff1281305b32d76359">Barotrauma.Items.Components.Throwable</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wearable.html#a64d54de702c3a56c2062bf50ded04aea">Barotrauma.Items.Components.Wearable</a>
+, <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a10f82652fe3436638d034a5d8be87b4a">Barotrauma.Items.Components.Wire</a>
 </li>
 <li>DropConnectedWires()
 : <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#af752d958926aed39bcba90645f8019e8">Barotrauma.Items.Components.Pickable</a>

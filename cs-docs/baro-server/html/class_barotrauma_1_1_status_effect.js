@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_status_effect =
 [
     [ "AbilityStatusEffectIdentifier", "class_barotrauma_1_1_status_effect_1_1_ability_status_effect_identifier.html", "class_barotrauma_1_1_status_effect_1_1_ability_status_effect_identifier" ],
+    [ "AITrigger", "class_barotrauma_1_1_status_effect_1_1_a_i_trigger.html", "class_barotrauma_1_1_status_effect_1_1_a_i_trigger" ],
     [ "CharacterSpawnInfo", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info" ],
     [ "GiveSkill", "class_barotrauma_1_1_status_effect_1_1_give_skill.html", "class_barotrauma_1_1_status_effect_1_1_give_skill" ],
     [ "GiveTalentInfo", "class_barotrauma_1_1_status_effect_1_1_give_talent_info.html", "class_barotrauma_1_1_status_effect_1_1_give_talent_info" ],
@@ -48,9 +49,8 @@ var class_barotrauma_1_1_status_effect =
     [ "intervalTimers", "class_barotrauma_1_1_status_effect.html#aeab1df8b7c9ba9da90718a6c9b32bf6f", null ],
     [ "OnlyInside", "class_barotrauma_1_1_status_effect.html#afde172b958724f012be3dc75df76fe04", null ],
     [ "OnlyOutside", "class_barotrauma_1_1_status_effect.html#a198178c0f34cb6c18daae1d7c91bead1", null ],
-    [ "OnlyPlayerTriggered", "class_barotrauma_1_1_status_effect.html#aca5f8ab9de16218c5ab2374e26016c3a", null ],
-    [ "propertyEffects", "class_barotrauma_1_1_status_effect.html#acbb5177e1287d86f711a94e25d67fc74", null ],
-    [ "propertyNames", "class_barotrauma_1_1_status_effect.html#ad263011b90f5aad13538c28ad02bc0cd", null ],
+    [ "OnlyWhenDamagedByPlayer", "class_barotrauma_1_1_status_effect.html#a916546e20485bcc0e6e3e072ffa5b1d7", null ],
+    [ "PropertyEffects", "class_barotrauma_1_1_status_effect.html#aa349c944ae9c7b9908126005a90ad5e4", null ],
     [ "ReduceAffliction", "class_barotrauma_1_1_status_effect.html#ab1412fd6c58fe793e28bd14fdf3909c7", null ],
     [ "SeverLimbsProbability", "class_barotrauma_1_1_status_effect.html#a4e0ae5d15b77e0966e6c38e0fbc01559", null ],
     [ "sourceBody", "class_barotrauma_1_1_status_effect.html#a30a91b9b5dddb5c79e75355abcf4cc85", null ],

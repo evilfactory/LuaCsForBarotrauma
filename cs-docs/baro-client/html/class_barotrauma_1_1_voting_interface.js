@@ -4,5 +4,5 @@ var class_barotrauma_1_1_voting_interface =
     [ "Remove", "class_barotrauma_1_1_voting_interface.html#a298f9f678fb271ab990cf4fc401a4c6e", null ],
     [ "Update", "class_barotrauma_1_1_voting_interface.html#a34d6d2e674de30c82309c283deca8c88", null ],
     [ "VoteRunning", "class_barotrauma_1_1_voting_interface.html#a0482b0bafff52c48cb5b4a439420cd88", null ],
-    [ "SubmarineColor", "class_barotrauma_1_1_voting_interface.html#a7f6a8271c2f3c3474fb4f666a9cf1c24", null ]
+    [ "TimedOut", "class_barotrauma_1_1_voting_interface.html#a218e043dd3e1bdf32bd3e70fd7115741", null ]
 ];

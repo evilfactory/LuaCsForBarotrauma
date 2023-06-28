@@ -200,15 +200,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a93f496962f174fe950386c606604b52e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a93f496962f174fe950386c606604b52e">CheckCleanable</a> ()</td></tr>
 <tr class="memdesc:a93f496962f174fe950386c606604b52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recheck if the item needs to be included in the list of cleanable items  <a href="class_barotrauma_1_1_item.html#a93f496962f174fe950386c606604b52e">More...</a><br /></td></tr>
 <tr class="separator:a93f496962f174fe950386c606604b52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fcfcdac05343ce5955e2cfb65b26f45"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a9fcfcdac05343ce5955e2cfb65b26f45">Move</a> (Vector2 amount, bool ignoreContacts=false)</td></tr>
-<tr class="separator:a9fcfcdac05343ce5955e2cfb65b26f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429c013e39676f9ca0ae1e89540f0a6f"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a429c013e39676f9ca0ae1e89540f0a6f">Move</a> (Vector2 amount, bool ignoreContacts=true)</td></tr>
+<tr class="separator:a429c013e39676f9ca0ae1e89540f0a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ce9ace693b095518a0afc767c681478"><td class="memItemLeft" align="right" valign="top">Rectangle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a5ce9ace693b095518a0afc767c681478">TransformTrigger</a> (Rectangle trigger, bool world=false)</td></tr>
 <tr class="separator:a5ce9ace693b095518a0afc767c681478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9425db49faa715f9d0fc44ff2a7321bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_hull.html">Hull</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a9425db49faa715f9d0fc44ff2a7321bd">FindHull</a> ()</td></tr>
 <tr class="separator:a9425db49faa715f9d0fc44ff2a7321bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0b323b820c1a91f087fe157575bb2ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#ad0b323b820c1a91f087fe157575bb2ee">GetRootContainer</a> ()</td></tr>
-<tr class="separator:ad0b323b820c1a91f087fe157575bb2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3e9926e213a8394e83da80ff225f5b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#af3e9926e213a8394e83da80ff225f5b3">HasAccess</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character)</td></tr>
+<tr class="memdesc:af3e9926e213a8394e83da80ff225f5b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used by the AI to check whether they can (in principle) and are allowed (in practice) to interact with an object or not. Unlike CanInteractWith(), this method doesn't check the distance, the triggers, or anything like that.  <a href="class_barotrauma_1_1_item.html#af3e9926e213a8394e83da80ff225f5b3">More...</a><br /></td></tr>
 <tr class="separator:af3e9926e213a8394e83da80ff225f5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a651f790b1d7ac96ece712a8aba756d5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a651f790b1d7ac96ece712a8aba756d5e">IsOwnedBy</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> entity)</td></tr>
 <tr class="separator:a651f790b1d7ac96ece712a8aba756d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -550,8 +549,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a7d128fe6cdc75d31fe6a3977d71a79e8 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48dcec09ae98eb15e0ecd6eb69cbb521 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a48dcec09ae98eb15e0ecd6eb69cbb521">MapEntityUpdateInterval</a> = 1</td></tr>
 <tr class="separator:a48dcec09ae98eb15e0ecd6eb69cbb521 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4cef240f10b74a6b63f09c06cb6e63 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#afb4cef240f10b74a6b63f09c06cb6e63">GapUpdateInterval</a> = 4</td></tr>
-<tr class="separator:afb4cef240f10b74a6b63f09c06cb6e63 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c23ea58f4897a04b462afe55185a063 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a5c23ea58f4897a04b462afe55185a063">PoweredUpdateInterval</a> = 1</td></tr>
 <tr class="separator:a5c23ea58f4897a04b462afe55185a063 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70776734e56683ba8a91154acebd8681 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a70776734e56683ba8a91154acebd8681">SelectionChanged</a></td></tr>
@@ -617,6 +614,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a0d78edc8522367bd663cea8d7c4fd914"><td class="memItemLeft" align="right" valign="top">static IReadOnlyCollection&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a0d78edc8522367bd663cea8d7c4fd914">CleanableItems</a><code> [get]</code></td></tr>
 <tr class="memdesc:a0d78edc8522367bd663cea8d7c4fd914"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_barotrauma_1_1_items.html">Items</a> that may potentially need to be cleaned up (pickable, not attached to a wall, and not inside a valid container)  <a href="class_barotrauma_1_1_item.html#a0d78edc8522367bd663cea8d7c4fd914">More...</a><br /></td></tr>
 <tr class="separator:a0d78edc8522367bd663cea8d7c4fd914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf979b8823aeaf5549255eca64031127"><td class="memItemLeft" align="right" valign="top">static IReadOnlyCollection&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#adf979b8823aeaf5549255eca64031127">SonarVisibleItems</a><code> [get]</code></td></tr>
+<tr class="memdesc:adf979b8823aeaf5549255eca64031127"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_barotrauma_1_1_items.html">Items</a> whose <a class="el" href="class_barotrauma_1_1_item_prefab.html#a6b6f7045aa52d3ac17571fe0f62609de">ItemPrefab.SonarSize</a> is larger than 0  <a href="class_barotrauma_1_1_item.html#adf979b8823aeaf5549255eca64031127">More...</a><br /></td></tr>
+<tr class="separator:adf979b8823aeaf5549255eca64031127"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7f1cf26f2680bbdfbecf5d5ca65f521"><td class="memItemLeft" align="right" valign="top">new <a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#af7f1cf26f2680bbdfbecf5d5ca65f521">Prefab</a><code> [get]</code></td></tr>
 <tr class="separator:af7f1cf26f2680bbdfbecf5d5ca65f521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3af1b8ac75aa29cd1cfe1845b946b847"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_hull.html">Hull</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a3af1b8ac75aa29cd1cfe1845b946b847">CurrentHull</a><code> [get, set]</code></td></tr>
@@ -636,6 +636,8 @@ Properties</h2></td></tr>
 <tr class="separator:a8d2acdddfbf9f781918943ecaee665cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37bf33047415b0fb010516c38d1e4668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_inventory.html">Inventory</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#a37bf33047415b0fb010516c38d1e4668">ParentInventory</a><code> [get, set]</code></td></tr>
 <tr class="separator:a37bf33047415b0fb010516c38d1e4668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb79548f68eece867df33771dbc21d3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#aeb79548f68eece867df33771dbc21d3a">RootContainer</a><code> [get]</code></td></tr>
+<tr class="separator:aeb79548f68eece867df33771dbc21d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae124b6f9f627e1e7212a226ea91177cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#ae124b6f9f627e1e7212a226ea91177cb">Container</a><code> [get]</code></td></tr>
 <tr class="separator:ae124b6f9f627e1e7212a226ea91177cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafc10729ba318243009d672763fe1e60"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item.html#aafc10729ba318243009d672763fe1e60">Name</a><code> [get]</code></td></tr>
@@ -1057,7 +1059,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00889">889</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00916">916</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1113,7 +1115,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00904">904</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00931">931</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1136,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01211">1211</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01240">1240</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1184,7 +1186,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_barotrauma_1_1_i_damageable.html#aa5b20706c0a2d785ac1ca150ef1a8838">Barotrauma.IDamageable</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01760">1760</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01823">1823</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1204,7 +1206,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01575">1575</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01638">1638</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1224,7 +1226,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01570">1570</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01633">1633</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1318,7 +1320,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Is dropping the item allowed when trying to swap it with the other item </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01376">1376</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01405">1405</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1392,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01660">1660</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01723">1723</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1450,7 +1452,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01648">1648</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01711">1711</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1486,7 +1488,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02832">2832</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02903">2903</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1506,7 +1508,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02579">2579</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02650">2650</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1527,7 +1529,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Recheck if the item needs to be included in the list of cleanable items </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01404">1404</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01433">1433</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1701,7 +1703,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_map_entity.html#abbc69a5f16283567305faa11f448a63f">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01148">1148</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01177">1177</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1731,7 +1733,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02887">2887</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02958">2958</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1751,7 +1753,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01631">1631</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01694">1694</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1860,7 +1862,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01903">1903</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01981">1981</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -1880,7 +1882,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01275">1275</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01304">1304</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2008,7 +2010,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02907">2907</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02978">2978</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2028,7 +2030,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01262">1262</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01291">1291</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2048,7 +2050,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02965">2965</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03036">3036</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2068,7 +2070,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02450">2450</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02521">2521</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2087,7 +2089,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01485">1485</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01514">1514</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2107,7 +2109,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01546">1546</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01609">1609</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2145,7 +2147,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a1367dfa143d4818d60582131e6fdbdb2">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02267">2267</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02338">2338</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2183,7 +2185,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a61acc75010c3135e1ca5213c5f3306ff">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02296">2296</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02367">2367</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2230,7 +2232,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01292">1292</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01321">1321</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2250,7 +2252,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01287">1287</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01316">1316</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2269,7 +2271,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01305">1305</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01334">1334</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2335,7 +2337,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02324">2324</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02395">2395</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2381,7 +2383,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02371">2371</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02442">2442</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2400,7 +2402,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02737">2737</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02808">2808</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2487,7 +2489,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02984">2984</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03055">3055</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2507,26 +2509,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01315">1315</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad0b323b820c1a91f087fe157575bb2ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0b323b820c1a91f087fe157575bb2ee">&#9670;&nbsp;</a></span>GetRootContainer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_barotrauma_1_1_item.html">Item</a> Barotrauma.Item.GetRootContainer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01514">1514</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01344">1344</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2545,7 +2528,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01537">1537</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01601">1601</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2584,7 +2567,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01616">1616</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01679">1679</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2604,7 +2587,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01525">1525</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p>Used by the AI to check whether they can (in principle) and are allowed (in practice) to interact with an object or not. Unlike CanInteractWith(), this method doesn't check the distance, the triggers, or anything like that. </p>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01588">1588</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2624,7 +2609,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01593">1593</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01656">1656</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2644,7 +2629,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01587">1587</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01650">1650</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2664,7 +2649,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01621">1621</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01684">1684</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2684,7 +2669,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01582">1582</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01645">1645</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2783,7 +2768,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02562">2562</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02633">2633</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2813,7 +2798,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02567">2567</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02638">2638</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2835,7 +2820,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns interactibility based on whether the character is on a player team </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00282">282</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00296">296</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2944,7 +2929,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03297">3297</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03368">3368</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -2988,12 +2973,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03285">3285</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03356">3356</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9fcfcdac05343ce5955e2cfb65b26f45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fcfcdac05343ce5955e2cfb65b26f45">&#9670;&nbsp;</a></span>Move()</h2>
+<a id="a429c013e39676f9ca0ae1e89540f0a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a429c013e39676f9ca0ae1e89540f0a6f">&#9670;&nbsp;</a></span>Move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3011,7 +2996,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>ignoreContacts</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>ignoreContacts</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3026,9 +3011,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#afd30523ffeb544b65db11a11540a877a">Barotrauma.MapEntity</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a9c1bda7cf1f886c441fb1ccf730a6774">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01422">1422</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01451">1451</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3057,7 +3042,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a894499889efd3df17a908b27525690cb">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03637">3637</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03708">3708</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3116,7 +3101,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Recalculates the item's maximum condition, condition percentage and whether it's in full condition. You generally never need to call this manually - done automatically when any of the factors that affect the values change. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01877">1877</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01955">1955</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3145,7 +3130,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_entity.html#a0c8d53a53a23e335dff0a8460f290def">Barotrauma.Entity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03670">3670</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03741">3741</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3173,7 +3158,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03766">3766</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03838">3838</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3193,7 +3178,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01320">1320</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01349">1349</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3223,7 +3208,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01609">1609</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01672">1672</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3253,7 +3238,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01604">1604</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01667">1667</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3280,7 +3265,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03621">3621</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03692">3692</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3348,7 +3333,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#ac79287ad70ecec5f514a2faf54b7e205">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03550">3550</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03621">3621</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3378,7 +3363,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02796">2796</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02867">2867</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3397,7 +3382,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01892">1892</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01970">1970</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3427,7 +3412,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02490">2490</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02561">2561</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3457,7 +3442,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02479">2479</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02550">2550</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3487,7 +3472,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02474">2474</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02545">2545</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3506,7 +3491,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01394">1394</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01423">1423</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3525,7 +3510,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01562">1562</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01625">1625</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3567,7 +3552,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01326">1326</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01355">1355</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3598,7 +3583,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a1598b8c77ef8ac216da13120cef253ef">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03651">3651</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03722">3722</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3617,7 +3602,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00842">842</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00869">869</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3647,7 +3632,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01451">1451</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01480">1480</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3677,7 +3662,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02468">2468</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02539">2539</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3719,7 +3704,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02584">2584</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02655">2655</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3739,7 +3724,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02978">2978</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l03049">3049</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3779,7 +3764,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a46389c722caa30156dc1055a2b49d3da">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01910">1910</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01988">1988</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3884,7 +3869,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>goes through every item and re-checks which hull they are in </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01477">1477</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01506">1506</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3923,7 +3908,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02087">2087</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02158">2158</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3959,7 +3944,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02756">2756</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02827">2827</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3976,7 +3961,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00840">840</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00867">867</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -3992,7 +3977,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00102">102</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00109">109</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4027,7 +4012,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">            (<span class="stringliteral">&quot;signal_in2&quot;</span>.ToIdentifier(), <span class="stringliteral">&quot;signal_out&quot;</span>.ToIdentifier())</div>
 <div class="line">        }.ToImmutableArray()</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02380">2380</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l02451">2451</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4059,7 +4044,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00474">474</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00489">489</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4139,7 +4124,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00887">887</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00914">914</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4155,7 +4140,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00157">157</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00165">165</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4203,7 +4188,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00049">49</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00056">56</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4227,7 +4212,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00404">404</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00418">418</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4243,7 +4228,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00089">89</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00096">96</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4259,7 +4244,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00116">116</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00123">123</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4275,7 +4260,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00118">118</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00125">125</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4291,7 +4276,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00639">639</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00654">654</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4307,7 +4292,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00086">86</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00093">93</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4356,7 +4341,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00630">630</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00645">645</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4380,7 +4365,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00759">759</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00786">786</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4404,7 +4389,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00658">658</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00673">673</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4428,7 +4413,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00255">255</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00269">269</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4452,7 +4437,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00848">848</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00875">875</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4476,7 +4461,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00071">71</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00078">78</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4526,7 +4511,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00549">549</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00564">564</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4550,7 +4535,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00800">800</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00827">827</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4574,7 +4559,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00599">599</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00614">614</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4600,7 +4585,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Return true if the condition of this item increased within the last second. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00613">613</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00628">628</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4624,7 +4609,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00556">556</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00571">571</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4648,7 +4633,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00755">755</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00782">782</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4672,7 +4657,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00767">767</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00794">794</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4696,7 +4681,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00777">777</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00804">804</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4720,7 +4705,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00211">211</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00223">223</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4744,7 +4729,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00420">420</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00435">435</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4770,7 +4755,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used by status effects or conditionals to check what item this item is contained inside </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00429">429</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00444">444</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4794,7 +4779,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00056">56</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00063">63</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4844,7 +4829,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Unscaled rect </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00139">139</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00147">147</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4868,7 +4853,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00231">231</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00245">245</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4892,7 +4877,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00793">793</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00820">820</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -4964,7 +4949,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00191">191</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00199">199</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5012,7 +4997,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00703">703</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00719">719</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5036,7 +5021,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00856">856</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00883">883</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5060,7 +5045,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00615">615</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00630">630</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5084,7 +5069,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00570">570</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00585">585</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5108,7 +5093,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00065">65</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00072">72</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5156,7 +5141,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00331">331</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00345">345</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5182,7 +5167,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Per-instance value - if not set, the value of the prefab is used. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00624">624</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00639">639</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5206,7 +5191,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00836">836</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00863">863</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5230,7 +5215,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00336">336</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00350">350</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5254,7 +5239,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00362">362</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00376">376</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5278,7 +5263,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00341">341</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00355">355</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5302,7 +5287,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00413">413</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00427">427</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5326,7 +5311,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00637">637</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00652">652</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5350,7 +5335,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00733">733</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00760">760</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5374,7 +5359,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00864">864</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00891">891</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5400,7 +5385,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used by status effects or conditionals to check whether the item is contained inside something </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00443">443</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00458">458</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5424,7 +5409,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00554">554</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00569">569</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5448,7 +5433,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00873">873</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00900">900</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5474,7 +5459,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Checks both <a class="el" href="class_barotrauma_1_1_item.html#a52365eb80f3f1e09715301633399a526">NonInteractable</a> and <a class="el" href="class_barotrauma_1_1_item.html#a0c33ce62e71b76462942494c8cc368cf" title="Use IsPlayerInteractable to also check NonInteractable">NonPlayerTeamInteractable</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00271">271</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00285">285</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5498,7 +5483,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00875">875</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00902">902</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5524,7 +5509,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Should the item's Use method be called with the "Use" or with the "Shoot" key? </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00529">529</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00544">544</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5550,7 +5535,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>A list of connections the last signal sent by this item went through </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00749">749</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00776">776</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5574,7 +5559,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00805">805</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00832">832</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5598,7 +5583,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00555">555</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00570">570</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5622,7 +5607,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00586">586</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00601">601</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5646,7 +5631,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00225">225</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00239">239</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5670,7 +5655,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00238">238</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00252">252</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5696,7 +5681,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Use IsPlayerInteractable to also check <a class="el" href="class_barotrauma_1_1_item.html#a52365eb80f3f1e09715301633399a526">NonInteractable</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00248">248</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00262">262</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5720,7 +5705,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00561">561</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00576">576</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5744,7 +5729,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00854">854</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00881">881</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5768,7 +5753,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00666">666</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00681">681</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5792,7 +5777,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00785">785</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00812">812</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5816,7 +5801,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00194">194</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00202">202</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5840,7 +5825,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00838">838</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00865">865</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5866,7 +5851,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used by status effects or conditionals to check if the physics body of the item is active </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00497">497</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00512">512</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5890,7 +5875,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00346">346</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00360">360</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5914,7 +5899,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00398">398</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00412">412</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5940,7 +5925,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used to move the item from XML (e.g. to correct the positions of items whose sprite origin has been changed) </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00816">816</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00843">843</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5966,7 +5951,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used to move the item from XML (e.g. to correct the positions of items whose sprite origin has been changed) </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00827">827</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00854">854</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -5990,7 +5975,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00047">47</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00054">54</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6014,7 +5999,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00262">262</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00276">276</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6038,7 +6023,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00718">718</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00745">745</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6112,7 +6097,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00795">795</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00822">822</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6138,7 +6123,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>If true, the user has to hold the "aim" key before secondary use is registered. True by default. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00544">544</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00559">559</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6164,7 +6149,31 @@ Additional Inherited Members</h2></td></tr>
 
 <p>If true, the user has to hold the "aim" key before use is registered. False by default. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00535">535</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00550">550</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+
+</div>
+</div>
+<a id="aeb79548f68eece867df33771dbc21d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb79548f68eece867df33771dbc21d3a">&#9670;&nbsp;</a></span>RootContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_item.html">Item</a> Barotrauma.Item.RootContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00218">218</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6188,7 +6197,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00304">304</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00318">318</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6212,7 +6221,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00301">301</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00315">315</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6236,7 +6245,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00371">371</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00385">385</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6284,7 +6293,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00159">159</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00167">167</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6310,7 +6319,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used by status effects or conditionals to modify the sight range </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00519">519</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00534">534</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6334,7 +6343,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00354">354</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00368">368</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6360,7 +6369,33 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used to modify the <a class="el" href="class_barotrauma_1_1_a_i_target.html">AITarget</a>'s label using status effects </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00481">481</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00496">496</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+
+</div>
+</div>
+<a id="adf979b8823aeaf5549255eca64031127"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf979b8823aeaf5549255eca64031127">&#9670;&nbsp;</a></span>SonarVisibleItems</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IReadOnlyCollection&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.Item.SonarVisibleItems</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="namespace_barotrauma_1_1_items.html">Items</a> whose <a class="el" href="class_barotrauma_1_1_item_prefab.html#a6b6f7045aa52d3ac17571fe0f62609de">ItemPrefab.SonarSize</a> is larger than 0 </p>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00052">52</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6386,7 +6421,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used by status effects or conditionals to modify the sound range </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00509">509</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00524">524</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6410,7 +6445,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00642">642</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00657">657</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6436,7 +6471,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can be used by status effects or conditionals to the speed of the item </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00454">454</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00469">469</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6484,7 +6519,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00406">406</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00420">420</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6508,7 +6543,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00878">878</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00905">905</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6532,7 +6567,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00682">682</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00697">697</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6556,7 +6591,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00713">713</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00740">740</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6580,7 +6615,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00105">105</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00112">112</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6604,7 +6639,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00708">708</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00726">726</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6628,7 +6663,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00810">810</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00837">837</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>
@@ -6652,7 +6687,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00811">811</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l00838">838</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html">BarotraumaShared/SharedSource/Items/Item.cs</a>.</p>
 
 </div>
 </div>

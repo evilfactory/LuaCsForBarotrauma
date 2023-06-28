@@ -106,8 +106,8 @@ Inheritance diagram for Barotrauma.FabricationRecipe.RequiredItem:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3285f106eb7bf4178e91cf3f8d6d771f"><td class="memItemLeft" align="right" valign="top">abstract bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#a3285f106eb7bf4178e91cf3f8d6d771f">MatchesItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item)</td></tr>
 <tr class="separator:a3285f106eb7bf4178e91cf3f8d6d771f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1a4e3f1a7df1d7385233692d519ab50"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#ae1a4e3f1a7df1d7385233692d519ab50">RequiredItem</a> (int amount, float minCondition, float maxCondition, bool useCondition)</td></tr>
-<tr class="separator:ae1a4e3f1a7df1d7385233692d519ab50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3f0d3eacd3c2d2df2b8bf89cd3ae27b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#af3f0d3eacd3c2d2df2b8bf89cd3ae27b">RequiredItem</a> (int amount, float minCondition, float maxCondition, bool useCondition, <a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a> overrideDescription)</td></tr>
+<tr class="separator:af3f0d3eacd3c2d2df2b8bf89cd3ae27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b31499245e51b5220183259ef55c873"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#a0b31499245e51b5220183259ef55c873">IsConditionSuitable</a> (float conditionPercentage)</td></tr>
 <tr class="separator:a0b31499245e51b5220183259ef55c873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -130,13 +130,15 @@ Properties</h2></td></tr>
 <tr class="separator:adabca43a6f91f293e29f2627aa973674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab008adef6e15c9804d559adf39c884f2"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#ab008adef6e15c9804d559adf39c884f2">FirstMatchingPrefab</a><code> [get]</code></td></tr>
 <tr class="separator:ab008adef6e15c9804d559adf39c884f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a7a867a04e5836e96f7665292b1d50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html#a38a7a867a04e5836e96f7665292b1d50">OverrideDescription</a><code> [get]</code></td></tr>
+<tr class="separator:a38a7a867a04e5836e96f7665292b1d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00082">82</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae1a4e3f1a7df1d7385233692d519ab50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1a4e3f1a7df1d7385233692d519ab50">&#9670;&nbsp;</a></span>RequiredItem()</h2>
+<a id="af3f0d3eacd3c2d2df2b8bf89cd3ae27b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3f0d3eacd3c2d2df2b8bf89cd3ae27b">&#9670;&nbsp;</a></span>RequiredItem()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +165,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>useCondition</em>&#160;</td>
+          <td class="paramname"><em>useCondition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a>&#160;</td>
+          <td class="paramname"><em>overrideDescription</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -173,7 +181,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00091">91</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00093">93</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -194,7 +202,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00103">103</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00106">106</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -239,7 +247,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00098">98</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00101">101</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -255,7 +263,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00100">100</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00103">103</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -271,7 +279,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00099">99</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00102">102</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -287,7 +295,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00101">101</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00104">104</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>
@@ -337,6 +345,30 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00084">84</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
+
+</div>
+</div>
+<a id="a38a7a867a04e5836e96f7665292b1d50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38a7a867a04e5836e96f7665292b1d50">&#9670;&nbsp;</a></span>OverrideDescription</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_localized_string.html">LocalizedString</a> Barotrauma.FabricationRecipe.RequiredItem.OverrideDescription</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_item_prefab_8cs_source.html#l00091">91</a> of file <a class="el" href="_item_prefab_8cs_source.html">ItemPrefab.cs</a>.</p>
 
 </div>
 </div>

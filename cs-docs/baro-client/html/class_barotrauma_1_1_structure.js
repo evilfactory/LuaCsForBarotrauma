@@ -17,7 +17,7 @@ var class_barotrauma_1_1_structure =
     [ "GetSection", "class_barotrauma_1_1_structure.html#affbe604d2984c36e0b24bc7c9e9dc44d", null ],
     [ "IsMouseOn", "class_barotrauma_1_1_structure.html#a800325b77a0e0fe22f95efca1b628957", null ],
     [ "IsVisible", "class_barotrauma_1_1_structure.html#a7814232f8bec9a1ddb17bfa83260f31a", null ],
-    [ "Move", "class_barotrauma_1_1_structure.html#ad9bc0f0e0c8752ba1d2718f6f36192a6", null ],
+    [ "Move", "class_barotrauma_1_1_structure.html#a1b109d0654ec3f8226b451e569329ad5", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_structure.html#a49fae9ea326ba7a8826af9b473867ab4", null ],
     [ "Remove", "class_barotrauma_1_1_structure.html#a407789bcc000b63b659745a76bfc263d", null ],
     [ "Reset", "class_barotrauma_1_1_structure.html#ab0b6029be2eb1c6377cf86d71b8269ed", null ],

@@ -20,8 +20,8 @@ Hooks can be added like this:
 Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=723ba2f" />
-    <link rel="stylesheet" href="../../highlight.css?v=0dc1bb0" />
+    <link rel="stylesheet" href="../../ldoc.css?v=d90ba6d" />
+    <link rel="stylesheet" href="../../highlight.css?v=1ad54b9" />
   </head>
 
   <body>
@@ -322,10 +322,7 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.ClearAllEffects"><span>AfflictionPrefab.ClearAllEffects</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.LoadAllEffects"><span>AfflictionPrefab.LoadAllEffects</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#ClearEffects"><span>ClearEffects</span></a>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.LoadAllEffectsAndTreatmentSuitabilities"><span>AfflictionPrefab.LoadAllEffectsAndTreatmentSuitabilities</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#Dispose"><span>Dispose</span></a>
@@ -350,9 +347,6 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#Instantiate"><span>Instantiate</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#LoadEffects"><span>LoadEffects</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/afflictionprefab/#ReloadSoundsIfNeeded"><span>ReloadSoundsIfNeeded</span></a>
@@ -494,6 +488,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#GrainBurst"><span>GrainBurst</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#HasTreatments"><span>HasTreatments</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#HealCostMultiplier"><span>HealCostMultiplier</span></a>
                     </li>
                     <li>
@@ -563,7 +560,7 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#TranslationIdentifier"><span>TranslationIdentifier</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#TreatmentSuitability"><span>TreatmentSuitability</span></a>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#TreatmentSuitabilities"><span>TreatmentSuitabilities</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#TreatmentThreshold"><span>TreatmentThreshold</span></a>
@@ -1841,6 +1838,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/character/#IsInFriendlySub"><span>IsInFriendlySub</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsInPlayerSub"><span>IsInPlayerSub</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsIncapacitated"><span>IsIncapacitated</span></a>
                     </li>
                     <li>
@@ -2258,6 +2258,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetSuitableTreatments"><span>GetSuitableTreatments</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#GetTotalAdjustedAfflictionStrength"><span>GetTotalAdjustedAfflictionStrength</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetType"><span>GetType</span></a>
@@ -3944,6 +3947,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/game.gamescreen/#Cam"><span>Cam</span></a>
                     </li>
                     <li>
+                      <span class="realm client"></span><a href="../../code/game.gamescreen/#DamageEffect"><span>DamageEffect</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamescreen/#Frame"><span>Frame</span></a>
                     </li>
                     <li>
@@ -4048,9 +4054,6 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#PlaceSubAtStart"><span>PlaceSubAtStart</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/game.gamesession/#PurchaseSubmarine"><span>PurchaseSubmarine</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#ReviveCharacter"><span>ReviveCharacter</span></a>
                     </li>
                     <li>
@@ -4073,6 +4076,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/game.gamesession/#ToggleTabMenu"><span>ToggleTabMenu</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.gamesession/#TryPurchaseSubmarine"><span>TryPurchaseSubmarine</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#Update"><span>Update</span></a>
@@ -4866,6 +4872,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm server"></span><a href="../../code/game.serversettings/#ServerSettings.ClientPermissionsFile"><span>ServerSettings.ClientPermissionsFile</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.DefaultTickRate"><span>ServerSettings.DefaultTickRate</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#ServerSettings.MaxExtraCargoItemTypes"><span>ServerSettings.MaxExtraCargoItemTypes</span></a>
@@ -6436,9 +6445,6 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm client"></span><a href="../../code/item/#GetReplacementOrThis"><span>GetReplacementOrThis</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/item/#GetRootContainer"><span>GetRootContainer</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#GetRootInventoryOwner"><span>GetRootInventoryOwner</span></a>
                     </li>
                     <li>
@@ -6878,6 +6884,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm client"></span><a href="../../code/item/#Item.ShowWires"><span>Item.ShowWires</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#Item.SonarVisibleItems"><span>Item.SonarVisibleItems</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#Item.connectionPairs"><span>Item.connectionPairs</span></a>
                     </li>
                     <li>
@@ -7002,6 +7011,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#ResizeVertical"><span>ResizeVertical</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#RootContainer"><span>RootContainer</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#Rotation"><span>Rotation</span></a>
@@ -7514,6 +7526,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AllowStealingAlways"><span>AllowStealingAlways</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#AllowStealingContainedItems"><span>AllowStealingContainedItems</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#AllowedLinks"><span>AllowedLinks</span></a>
                     </li>
                     <li>
@@ -7617,9 +7632,6 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#FilePath"><span>FilePath</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/itemprefab/#FireProof"><span>FireProof</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#FocusOnSelected"><span>FocusOnSelected</span></a>
@@ -7803,9 +7815,6 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#VariantOf"><span>VariantOf</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/itemprefab/#WaterProof"><span>WaterProof</span></a>
                     </li>
 
 
@@ -10141,6 +10150,9 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/submarine/#NeutralizeBallast"><span>NeutralizeBallast</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#RefreshConnectedSubs"><span>RefreshConnectedSubs</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#RefreshOutdoorNodes"><span>RefreshOutdoorNodes</span></a>
                     </li>
                     <li>
@@ -10732,7 +10744,13 @@ Hook.Add(&quot;chatMessage&quot;, &quot;test&quot;, function(messag..." />
                       <span class="realm shared"></span><a href="../../code/util/#Util.FindClientCharacter"><span>Util.FindClientCharacter</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/util/#Util.GetItemGroup"><span>Util.GetItemGroup</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/util/#Util.GetItemsById"><span>Util.GetItemsById</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/util/#Util.RegisterItemGroup"><span>Util.RegisterItemGroup</span></a>
                     </li>
 
 
@@ -11911,8 +11929,8 @@ parameters or prevent the original method from executing.</p>
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=5a062a7"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=ac2792c"></script>
+    <script type="text/javascript" src="../../app.js?v=5166937"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=988335a"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 

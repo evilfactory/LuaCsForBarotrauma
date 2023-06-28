@@ -598,8 +598,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_check_reputation_action.html">CheckReputationAction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_check_selected_item_action.html">CheckSelectedItemAction</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_check_selected_action.html">CheckSelectedAction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>CheckTalentAction</b></td></tr>
@@ -1101,9 +1099,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_duration_list_element.html">DurationListElement</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_trigger.html">AITrigger</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html">StatusEffect</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">StatusEffects can be used to execute various kinds of effects: modifying the state of some entity in some way, spawning things, playing sounds, emitting particles, creating fire and explosions, increasing a characters' skill. They are a crucial part of modding <a class="el" href="namespace_barotrauma.html">Barotrauma</a>: all kinds of custom behaviors of an item or a creature for example are generally created using StatusEffects.  <a href="class_barotrauma_1_1_status_effect.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>SteamAchievementManager</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1455,6 +1452,7 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eebaa7f290f53ca367f2a932e2818964865a7">OnDeath</a> = OnBroken
 <br />
  }</td></tr>
+<tr class="memdesc:a7c2425cda6d9eaf0e435c297adb9eeba"><td class="mdescLeft">&#160;</td><td class="mdescRight">ActionTypes define when a StatusEffect is executed.  <a href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">More...</a><br /></td></tr>
 <tr class="separator:a7c2425cda6d9eaf0e435c297adb9eeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91422b95127bdc20bbcfcaef1fa5ea81"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81">AbilityEffectType</a> { <br />
 &#160;&#160;<a class="el" href="namespace_barotrauma.html#a91422b95127bdc20bbcfcaef1fa5ea81aec0fc0100c4fc1ce4eea230c3dc10360">Undefined</a>
@@ -1957,7 +1955,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a91422b95127bdc20bbcfcaef1fa5ea81a1189539e3a4a39994c07b835f1ccf6d0"></a>OnStatusEffectIdentifier&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00033">33</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00124">124</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -2011,7 +2009,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00484">484</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00575">575</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -2034,35 +2032,62 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ActionTypes define when a <a class="el" href="class_barotrauma_1_1_status_effect.html" title="StatusEffects can be used to execute various kinds of effects: modifying the state of some entity in ...">StatusEffect</a> is executed. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa68eec46437c384d8dad18d5464ebc35c"></a>Always&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaaa576568028bd0976340a119c8c453f70"></a>OnPicked&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa52b06c58a86a84db45cb1b375fc6e5bc"></a>OnUse&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa1b40a15ea4bec5de2ca5df13439f8a90"></a>OnSecondaryUse&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa5f08366fab8128d9d2f1a5d5dbfd5823"></a>OnWearing&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaac6b411207d8ab7b601b2a4235e0e5ec5"></a>OnContaining&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa41f589d2cbdd021a525811f18cfc0c5f"></a>OnContained&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaab586faa5d0bc84e2da59512069fb3a01"></a>OnNotContained&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaaf7a20b3371de98880f79da525432130c"></a>OnActive&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaabafe37a0acd9d474a837ffb4cdec8e9e"></a>OnFailure&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa5cdbde019bf3bdcbedf54cbd4981687a"></a>OnBroken&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa1a3955f67f9e6a3302f0cb4131ab0e89"></a>OnFire&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa1295ef0da033bb0346ffdaa1de8921f6"></a>InWater&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa163fb475c907300809ca90853b97d1ae"></a>NotInWater&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa5baf1f352adf8d07d27b93f5ab6cee00"></a>OnImpact&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa995051b53c97455930014bde9e2d2a07"></a>OnEating&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaac5fc3b71ed6babfdf74a793ba80c50a4"></a>OnDamaged&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa004e8dd9a617e55075dbeb2839ac33e0"></a>OnSevered&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa35e1bbc383f814f4811333d93178cb46"></a>OnProduceSpawned&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaad03a73b6ca5fe233ab93e55d02e7fd8d"></a>OnOpen&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaaa9047419734327fdc9c0e3a0678546f8"></a>OnClose&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa21c8add90e8911de732a678c8236ec16"></a>OnSpawn&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa7c166bec86bfd2699544d691b6870e76"></a>OnSuccess&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa22bea15ffd6938c940a970b78a19a925"></a>OnAbility&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa7f290f53ca367f2a932e2818964865a7"></a>OnDeath&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa68eec46437c384d8dad18d5464ebc35c"></a>Always&#160;</td><td class="fielddoc"><p>Executes every frame regardless of the state of the entity. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaaa576568028bd0976340a119c8c453f70"></a>OnPicked&#160;</td><td class="fielddoc"><p>Executes when the item is picked up. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa52b06c58a86a84db45cb1b375fc6e5bc"></a>OnUse&#160;</td><td class="fielddoc"><p>Executes when the item is used. The meaning of "using" an item depends on the item, but generally it means the action that happens when holding the item and clicking LMB. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa1b40a15ea4bec5de2ca5df13439f8a90"></a>OnSecondaryUse&#160;</td><td class="fielddoc"><p>Executes when an item is held and the aim key is held. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa5f08366fab8128d9d2f1a5d5dbfd5823"></a>OnWearing&#160;</td><td class="fielddoc"><p>Executes continuously while the item is being worn. Only valid for wearable items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaac6b411207d8ab7b601b2a4235e0e5ec5"></a>OnContaining&#160;</td><td class="fielddoc"><p>Executes continuously when a specific Containable is inside an ItemContainer. Only valid for Containables defined in an ItemContainer component. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa41f589d2cbdd021a525811f18cfc0c5f"></a>OnContained&#160;</td><td class="fielddoc"><p>Executes continuously when the item is contained in some inventory. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaab586faa5d0bc84e2da59512069fb3a01"></a>OnNotContained&#160;</td><td class="fielddoc"><p>Executes continuously when the item is NOT contained in an inventory. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaaf7a20b3371de98880f79da525432130c"></a>OnActive&#160;</td><td class="fielddoc"><p>Executes continuously when the item is active. The meaning of "active" depends on the item, but generally means the item is on, powered, and doing the thing it's intended for. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaabafe37a0acd9d474a837ffb4cdec8e9e"></a>OnFailure&#160;</td><td class="fielddoc"><p>Executes when using the item fails due to a failed skill check. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa5cdbde019bf3bdcbedf54cbd4981687a"></a>OnBroken&#160;</td><td class="fielddoc"><p>Executes when using the item's condition drops to 0. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa1a3955f67f9e6a3302f0cb4131ab0e89"></a>OnFire&#160;</td><td class="fielddoc"><p>Executes continuously when the entity is within the damage range of fire. Valid for items and characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa1295ef0da033bb0346ffdaa1de8921f6"></a>InWater&#160;</td><td class="fielddoc"><p>Executes continuously when the entity is submerged. Valid for items and characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa163fb475c907300809ca90853b97d1ae"></a>NotInWater&#160;</td><td class="fielddoc"><p>Executes continuously when the entity is NOT submerged. Valid for items and characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa5baf1f352adf8d07d27b93f5ab6cee00"></a>OnImpact&#160;</td><td class="fielddoc"><p>Executes when the entity hits something hard enough. For items, the threshold is determined by <a class="el" href="class_barotrauma_1_1_item_prefab.html#a679a559c51d56fc36707966d74429f8e">ItemPrefab.ImpactTolerance</a>, for characters by <a class="el" href="class_barotrauma_1_1_ragdoll.html#a1028fd1202927859e3f87212a776fc90">Ragdoll.ImpactTolerance</a>. Valid for items and characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa995051b53c97455930014bde9e2d2a07"></a>OnEating&#160;</td><td class="fielddoc"><p>Executes continuously when the character is eating another character. Only valid for characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaac5fc3b71ed6babfdf74a793ba80c50a4"></a>OnDamaged&#160;</td><td class="fielddoc"><p>Executes when the entity receives damage from an external source (i.e. an affliction that increases in severity, or an item degrading by itself don't count). Valid for items and characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa004e8dd9a617e55075dbeb2839ac33e0"></a>OnSevered&#160;</td><td class="fielddoc"><p>Executes when the limb gets severed. Only valid for limbs. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa35e1bbc383f814f4811333d93178cb46"></a>OnProduceSpawned&#160;</td><td class="fielddoc"><p>Executes when a Items.Components.Growable produces an item (e.g. when a plant grows a fruit). Only valid for Growable items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaad03a73b6ca5fe233ab93e55d02e7fd8d"></a>OnOpen&#160;</td><td class="fielddoc"><p>Executes when a <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_door.html">Items.Components.Door</a> is opened. Only valid for doors. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaaa9047419734327fdc9c0e3a0678546f8"></a>OnClose&#160;</td><td class="fielddoc"><p>Executes when a <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_door.html">Items.Components.Door</a> is closed. Only valid for doors. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa21c8add90e8911de732a678c8236ec16"></a>OnSpawn&#160;</td><td class="fielddoc"><p>Executes when the entity spawns. Valid for items and characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa7c166bec86bfd2699544d691b6870e76"></a>OnSuccess&#160;</td><td class="fielddoc"><p>Executes when using the item succeeds based on a skill check. Only valid for items. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa22bea15ffd6938c940a970b78a19a925"></a>OnAbility&#160;</td><td class="fielddoc"><p>Executes when an Ability (an effect from a talent) triggers the status effect. Only valid in <a class="el" href="namespace_barotrauma_1_1_abilities.html">Abilities</a>, the target can be either a character or an item depending on the type of Ability. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c2425cda6d9eaf0e435c297adb9eebaa7f290f53ca367f2a932e2818964865a7"></a>OnDeath&#160;</td><td class="fielddoc"><p>Executes when the character dies. Only valid for characters. </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00015">15</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00018">18</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -2392,7 +2417,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="aa27e6fdb7c241b28d847ecfc36630707a130c5b3473c57faa76e2a1c54e26f88e"></a>Both&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00554">554</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00645">645</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -2421,7 +2446,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a25b865ef7f274c6ee93dea12a623098aa1f32d2c1b49b9b0c9d99bd10da107e41"></a>Radio&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00582">582</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00673">673</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -2481,7 +2506,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a1535396b8a6ea16210c86c93214bd2b3a92b09c7c48c520c3c55e497875da437c"></a>Right&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00016">16</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html">BarotraumaShared/SharedSource/Map/Submarine.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00017">17</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html">BarotraumaShared/SharedSource/Map/Submarine.cs</a>.</p>
 
 </div>
 </div>
@@ -2597,7 +2622,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a86b91e0dbef05edf78ceaf63e7aed928a2dca7a339aa2021ee36b0b77c9fafa2b"></a>Hellish&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00568">568</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00659">659</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -2750,7 +2775,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="aef74ac760c0c487bd00ad7d0d69b6e50abafd7322c6e97d25b6299b5d6fe8920b"></a>No&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_serializable_property_8cs_source.html#l00110">110</a> of file <a class="el" href="_serializable_property_8cs_source.html">SerializableProperty.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_serializable_property_8cs_source.html#l00123">123</a> of file <a class="el" href="_serializable_property_8cs_source.html">SerializableProperty.cs</a>.</p>
 
 </div>
 </div>
@@ -2936,7 +2961,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a2c9fbf04346b715593727fc834f3cd84a22ae0e2b89e5e3d477f988cc36d3272b"></a>Float&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00576">576</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00667">667</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -3088,7 +3113,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ac699db0cd6f463a18f1b98c5c85b98c1a655d20c1ca69519ca647684edbb2db35"></a>High&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00561">561</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00652">652</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>
@@ -3263,7 +3288,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00085">85</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_enums_8cs_source.html#l00176">176</a> of file <a class="el" href="_enums_8cs_source.html">Enums.cs</a>.</p>
 
 </div>
 </div>

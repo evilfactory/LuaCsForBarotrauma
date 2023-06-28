@@ -161,8 +161,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af3d545b8b9daf4c8f425cfa786ec089a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4893ab5a196add2373d75ad53b65489c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#a4893ab5a196add2373d75ad53b65489c">GetWaveIndex</a> (float xPos)</td></tr>
 <tr class="separator:a4893ab5a196add2373d75ad53b65489c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfe844ace38e4c600f871af2893f06ee"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#abfe844ace38e4c600f871af2893f06ee">Move</a> (Vector2 amount, bool ignoreContacts=false)</td></tr>
-<tr class="separator:abfe844ace38e4c600f871af2893f06ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa86bacf24c29b0f7d1c42e46b68e87f2"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#aa86bacf24c29b0f7d1c42e46b68e87f2">Move</a> (Vector2 amount, bool ignoreContacts=true)</td></tr>
+<tr class="separator:aa86bacf24c29b0f7d1c42e46b68e87f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5427b2f68877986e2107dc5af165e36a"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#a5427b2f68877986e2107dc5af165e36a">ShallowRemove</a> ()</td></tr>
 <tr class="memdesc:a5427b2f68877986e2107dc5af165e36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the entity from the entity list without removing links to other entities  <a href="class_barotrauma_1_1_hull.html#a5427b2f68877986e2107dc5af165e36a">More...</a><br /></td></tr>
 <tr class="separator:a5427b2f68877986e2107dc5af165e36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,6 +209,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aee7dca6550ba5adc8f59d8fb21b152ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46938effa3979e6ef5e0bf69d5c5dc72"><td class="memItemLeft" align="right" valign="top">override XElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#a46938effa3979e6ef5e0bf69d5c5dc72">Save</a> (XElement parentElement)</td></tr>
 <tr class="separator:a46938effa3979e6ef5e0bf69d5c5dc72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2308a6e14449a728bbf275886bc59012"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#a2308a6e14449a728bbf275886bc59012">ToString</a> ()</td></tr>
+<tr class="separator:a2308a6e14449a728bbf275886bc59012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5afa2b7611d1538b780950b2a683eca2"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#a5afa2b7611d1538b780950b2a683eca2">IsMouseOn</a> (Vector2 position)</td></tr>
 <tr class="separator:a5afa2b7611d1538b780950b2a683eca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b770a907c24b615995c1ff181005e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hull.html#aa8b770a907c24b615995c1ff181005e4">ServerEventWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
@@ -375,8 +377,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a7d128fe6cdc75d31fe6a3977d71a79e8 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48dcec09ae98eb15e0ecd6eb69cbb521 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a48dcec09ae98eb15e0ecd6eb69cbb521">MapEntityUpdateInterval</a> = 1</td></tr>
 <tr class="separator:a48dcec09ae98eb15e0ecd6eb69cbb521 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4cef240f10b74a6b63f09c06cb6e63 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#afb4cef240f10b74a6b63f09c06cb6e63">GapUpdateInterval</a> = 4</td></tr>
-<tr class="separator:afb4cef240f10b74a6b63f09c06cb6e63 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c23ea58f4897a04b462afe55185a063 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_map_entity.html#a5c23ea58f4897a04b462afe55185a063">PoweredUpdateInterval</a> = 1</td></tr>
 <tr class="separator:a5c23ea58f4897a04b462afe55185a063 inherit pub_static_attribs_class_barotrauma_1_1_map_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_entity')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_entity.html">Barotrauma.Entity</a></td></tr>
@@ -838,7 +838,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l00988">988</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01002">1002</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -874,7 +874,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01509">1509</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01523">1523</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -922,7 +922,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01259">1259</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01273">1273</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -950,7 +950,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01200">1200</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01214">1214</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -980,7 +980,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01443">1443</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01457">1457</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1028,7 +1028,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01005">1005</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01019">1019</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1089,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01123">1123</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01137">1137</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1141,7 +1141,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the hull which contains the point (or null if it isn't inside any). The difference to FindHull is that this method goes through all hulls without trying to first find the sub the point is inside and checking the hulls in that sub. = This is slower, use with caution in situations where the sub's extents or hulls may have changed after it was loaded. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01185">1185</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01199">1199</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1247,7 +1247,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Approximate distance from this hull to the target hull, moving through open gaps without passing through walls. Uses a greedy algo and may not use the most optimal path. Returns float.MaxValue if no path is found. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01065">1065</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01079">1079</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1267,7 +1267,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01400">1400</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01414">1414</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1287,7 +1287,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01415">1415</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01429">1429</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1342,7 +1342,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01388">1388</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01402">1402</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1378,7 +1378,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01033">1033</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01047">1047</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1466,7 +1466,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01448">1448</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01462">1462</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1517,7 +1517,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Is this hull or any of the items inside it tagged as "airlock"? </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01323">1323</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01337">1337</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1545,7 +1545,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01346">1346</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01360">1360</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1589,12 +1589,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01533">1533</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01546">1546</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
-<a id="abfe844ace38e4c600f871af2893f06ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfe844ace38e4c600f871af2893f06ee">&#9670;&nbsp;</a></span>Move()</h2>
+<a id="aa86bacf24c29b0f7d1c42e46b68e87f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa86bacf24c29b0f7d1c42e46b68e87f2">&#9670;&nbsp;</a></span>Move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1612,7 +1612,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>ignoreContacts</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>ignoreContacts</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1627,7 +1627,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#afd30523ffeb544b65db11a11540a877a">Barotrauma.MapEntity</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a9c1bda7cf1f886c441fb1ccf730a6774">Barotrauma.MapEntity</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l00593">593</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
@@ -1707,7 +1707,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01023">1023</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01037">1037</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1737,7 +1737,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#ac79287ad70ecec5f514a2faf54b7e205">Barotrauma.MapEntity</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01616">1616</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01629">1629</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1863,7 +1863,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01490">1490</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01504">1504</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>
@@ -1895,6 +1895,25 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_map_entity.html#a1598b8c77ef8ac216da13120cef253ef">Barotrauma.MapEntity</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l00617">617</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2308a6e14449a728bbf275886bc59012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2308a6e14449a728bbf275886bc59012">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string Barotrauma.Hull.ToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html#l01688">1688</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_map_2_hull_8cs_source.html">BarotraumaShared/SharedSource/Map/Hull.cs</a>.</p>
 
 </div>
 </div>

@@ -2,7 +2,6 @@ var class_barotrauma_1_1_a_i_controller =
 [
     [ "AIController", "class_barotrauma_1_1_a_i_controller.html#affa6bbf64400112f0bd197f3b165ed66", null ],
     [ "CanPassThroughHole", "class_barotrauma_1_1_a_i_controller.html#ab431d7b96732a43c4a09ebd2d26a58dc", null ],
-    [ "ClientRead", "class_barotrauma_1_1_a_i_controller.html#abe363faa7c78d9ca4ad230d67a1982e9", null ],
     [ "Escape", "class_barotrauma_1_1_a_i_controller.html#afd9be7a632db86c563c4b01e2270378c", null ],
     [ "FaceTarget", "class_barotrauma_1_1_a_i_controller.html#af916cd3b3f2a3193c01fdd8866af54f7", null ],
     [ "HasValidPath", "class_barotrauma_1_1_a_i_controller.html#ada20b1876bf5b93356a85b55f5bae855", null ],
@@ -16,7 +15,6 @@ var class_barotrauma_1_1_a_i_controller =
     [ "ResetAITarget", "class_barotrauma_1_1_a_i_controller.html#ac8039cc93c201890b90ed94d4d8ee8b0", null ],
     [ "ResetEscape", "class_barotrauma_1_1_a_i_controller.html#a7e4103af227ff289ecad7766f59a1050", null ],
     [ "SelectTarget", "class_barotrauma_1_1_a_i_controller.html#a6619f22ebf2631e5b5a37b922b95ec91", null ],
-    [ "ServerWrite", "class_barotrauma_1_1_a_i_controller.html#ae21911917fa8b9455bc7e5e248aec84f", null ],
     [ "SteerThroughGap", "class_barotrauma_1_1_a_i_controller.html#aae1f9d970e593f40de658b1d97972aae", null ],
     [ "SteerThroughGap", "class_barotrauma_1_1_a_i_controller.html#a43fcb0257c44181fab7bd3a9b5e895ed", null ],
     [ "TakeItem", "class_barotrauma_1_1_a_i_controller.html#a71338931342997505c231a9cbabc35a1", null ],

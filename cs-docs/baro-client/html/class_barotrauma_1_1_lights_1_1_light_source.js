@@ -6,6 +6,7 @@ var class_barotrauma_1_1_lights_1_1_light_source =
     [ "CheckConditionals", "class_barotrauma_1_1_lights_1_1_light_source.html#a8c3b6875d432e3bb46b7e8b0f501b3c8", null ],
     [ "DrawLightVolume", "class_barotrauma_1_1_lights_1_1_light_source.html#ae698b9381c4fa56fd79e2963bdd91459", null ],
     [ "DrawSprite", "class_barotrauma_1_1_lights_1_1_light_source.html#af8f16cd5a2031b9d45678de06c7f47c3", null ],
+    [ "RayCastTask", "class_barotrauma_1_1_lights_1_1_light_source.html#a51190f90c3d1d6c99a03dec6fb646cb6", null ],
     [ "Remove", "class_barotrauma_1_1_lights_1_1_light_source.html#aae640603acdec243094a5f58d444d075", null ],
     [ "Reset", "class_barotrauma_1_1_lights_1_1_light_source.html#a9130e158b5ce00d80233238b392e9c22", null ],
     [ "Update", "class_barotrauma_1_1_lights_1_1_light_source.html#a757667e3af8d46048baaf6f0d577f4f8", null ],
