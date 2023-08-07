@@ -1371,7 +1371,7 @@ namespace Barotrauma
             return false;
         }
 
-        public virtual void Apply(ActionType type, float deltaTime, Entity entity, ISerializableEntity target, Vector2? worldPosition = null)
+        public virtual void Apply(ActionType type, float deltaTime, Entity entity, ISerializableEntity target, Vector2? worldPosition = null, character = null)
         {
             if (Disabled) { return; }
             if (this.type != type || !HasRequiredItems(entity)) { return; }
@@ -1392,11 +1392,11 @@ namespace Barotrauma
             currentTargets.Clear();
             currentTargets.Add(target);
             if (!HasRequiredConditions(currentTargets)) { return; }
-            Apply(deltaTime, entity, currentTargets, worldPosition);
+            Apply(deltaTime, entity, currentTargets, worldPosition, character);
         }
 
         protected readonly List<ISerializableEntity> currentTargets = new List<ISerializableEntity>();
-        public virtual void Apply(ActionType type, float deltaTime, Entity entity, IReadOnlyList<ISerializableEntity> targets, Vector2? worldPosition = null)
+        public virtual void Apply(ActionType type, float deltaTime, Entity entity, IReadOnlyList<ISerializableEntity> targets, Vector2? worldPosition = null, character = null)
         {
             if (Disabled) { return; }
             if (this.type != type) { return; }
@@ -1434,7 +1434,7 @@ namespace Barotrauma
                 }
             }
 
-            Apply(deltaTime, entity, currentTargets, worldPosition);
+            Apply(deltaTime, entity, currentTargets, worldPosition, character);
         }
 
         private Hull GetHull(Entity entity)
@@ -1496,7 +1496,7 @@ namespace Barotrauma
             return position;
         }
 
-        protected void Apply(float deltaTime, Entity entity, IReadOnlyList<ISerializableEntity> targets, Vector2? worldPosition = null)
+        protected void Apply(float deltaTime, Entity entity, IReadOnlyList<ISerializableEntity> targets, Vector2? worldPosition = null, character = null)
         {
             if (Disabled) { return; }
             if (lifeTime > 0)
@@ -1526,7 +1526,7 @@ namespace Barotrauma
 
             foreach (string luaHooks in luaHook)
             {
-                var result = GameMain.LuaCs.Hook.Call<bool?>(luaHooks, this, deltaTime, entity, targets, worldPosition);
+                var result = GameMain.LuaCs.Hook.Call<bool?>(luaHooks, this, deltaTime, entity, targets, worldPosition, character);
 
                 if (result != null && result.Value)
                     return;
