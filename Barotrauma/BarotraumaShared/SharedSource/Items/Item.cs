@@ -1816,7 +1816,7 @@ namespace Barotrauma
 
             if (Container != null && effect.HasTargetType(StatusEffect.TargetType.Parent)) { targets.Add(Container); }
             
-            effect.Apply(type, deltaTime, this, targets, worldPosition);            
+            effect.Apply(type, deltaTime, this, targets, worldPosition, character);            
         }
 
 
