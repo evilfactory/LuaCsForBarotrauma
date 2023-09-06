@@ -259,10 +259,10 @@ namespace TestProject.LuaCs
         {
             public bool ran;
 
-            public void Run(int a, out string outString, ref byte refByte, string b)
+            public void Run(out string result, int a, string b, ref byte c)
             {
                 ran = true;
-                outString = a + b + refByte;
+                result = a + b + c;
             }
         }
 
@@ -274,12 +274,13 @@ namespace TestProject.LuaCs
             using var patchHandle = luaCs.AddPrefix<PatchTargetModifyParams>(@"
                 ptable['a'] = Int32(100)
                 ptable['b'] = 'abc'
-                ptable['refByte'] = Byte(4)
+                ptable['c'] = Byte(4)
             ", nameof(PatchTargetModifyParams.Run));
-            byte refByte = 123;
-            target.Run(5, out var outString, ref refByte, "foo");
+            byte c = 123;
+            target.Run(out var result, 5, "foo", ref c);
             Assert.True(target.ran);
-            Assert.Equal("100abc4", outString);
+            Assert.Equal(4, c);
+            Assert.Equal("100abc4", result);
         }
 
         private class PatchTargetVector2
@@ -309,13 +310,63 @@ namespace TestProject.LuaCs
 
         private class PatchTargetAmbiguous
         {
+            public bool ran;
+
             public PatchTargetAmbiguous() { }
 
-            public PatchTargetAmbiguous(int a) { }
+            public PatchTargetAmbiguous(int a)
+            {
+                throw new NotImplementedException();
+            }
 
-            public void Blah() { }
+            public void Run(out string result, int a, string b, ref byte c)
+            {
+                ran = true;
+                result = a + b + c;
+            }
 
-            public void Blah(int a) { }
+            public void Run(string result, int a, string b, byte c)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Run(out string result, int a, string b, byte c)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Run(string result, int a, string b, ref byte c)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Run()
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        [Fact]
+        public void TestPatchDisambiguation()
+        {
+            using var patchTargetHandle = HookPatchHelpers.LockPatchTarget<PatchTargetAmbiguous>();
+            var target = new PatchTargetAmbiguous();
+            using var patchHandle = luaCs.AddPrefix<PatchTargetAmbiguous>(@"
+                ptable['a'] = Int32(100)
+                ptable['b'] = 'abc'
+                ptable['c'] = Byte(4)
+            ", nameof(PatchTargetAmbiguous.Run), new[]
+            {
+                $"out {typeof(string).FullName!}",
+                typeof(int).FullName!,
+                typeof(string).FullName!,
+                $"ref {typeof(byte).FullName!}",
+            });
+            byte c = 123;
+            target.Run(out var result, 5, "foo", ref c);
+            Assert.True(target.ran);
+            Assert.Equal(4, c);
+            Assert.Equal("100abc4", result);
         }
 
         [Fact]
@@ -334,11 +385,11 @@ namespace TestProject.LuaCs
 
             Assert.Throws<ScriptRuntimeException>(() =>
             {
-                using var postfixHandle = luaCs.AddPostfix<PatchTargetAmbiguous>("", nameof(PatchTargetAmbiguous.Blah));
+                using var postfixHandle = luaCs.AddPostfix<PatchTargetAmbiguous>("", nameof(PatchTargetAmbiguous.Run));
             });
             Assert.Throws<ScriptRuntimeException>(() =>
             {
-                using var prefixHandle = luaCs.AddPrefix<PatchTargetAmbiguous>("", nameof(PatchTargetAmbiguous.Blah));
+                using var prefixHandle = luaCs.AddPrefix<PatchTargetAmbiguous>("", nameof(PatchTargetAmbiguous.Run));
             });
         }
 
