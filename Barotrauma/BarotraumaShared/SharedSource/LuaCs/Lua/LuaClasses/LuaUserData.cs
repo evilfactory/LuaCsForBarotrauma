@@ -9,7 +9,7 @@ namespace Barotrauma
 {
     partial class LuaUserData
     {
-        public static Type GetType(string typeName) => LuaCsSetup.GetType(typeName);
+        public static Type GetType(string typeName) => LuaCsSetup.GetTypeRefCompat(typeName);
 
         public static IUserDataDescriptor RegisterType(string typeName)
         {

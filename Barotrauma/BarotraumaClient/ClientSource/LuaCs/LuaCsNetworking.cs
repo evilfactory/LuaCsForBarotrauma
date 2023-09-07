@@ -133,7 +133,7 @@ namespace Barotrauma
                 {
                     if (netReceives.ContainsKey(name))
                     {
-                        netReceives[name](netMessage, null);
+                        netReceives[name](queueMessage, null);
                     }
                 }
             }

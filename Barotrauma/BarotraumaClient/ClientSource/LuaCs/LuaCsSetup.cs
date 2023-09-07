@@ -34,6 +34,7 @@ namespace Barotrauma
             if (GameMain.Client.IsServerOwner)
             {
                 new GUIMessageBox("", "You have CSharp mods enabled but don't have the Cs For Barotrauma package enabled, those mods might not work.");
+                Initialize();
                 return;
             }
 

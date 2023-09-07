@@ -16,13 +16,17 @@ Networking.FileSenderMaxPacketsPerUpdate = 4
 -- @realm server
 Networking.LastClientListUpdateID = 0
 
---- Send a post HTTP Request, callback is called with an argument result string.
--- @realm server 
+--- Send a GET HTTP Request, callback is called with the result string message, status code and headers. only url anda callback are optional.
+-- @realm shared 
 function Networking.HttpGet(url, callback, textData, contentType) end
 
---- Send a get HTTP Request, callback is called with an argument result string.
--- @realm server 
-function Networking.HttpPost(url, callback) end
+--- Send a POST HTTP Request, callback is called with the result string message, status code and headers.
+-- @realm shared 
+function Networking.HttpPost(url, callback, textData, contentType) end
+
+--- Sends a HTTP Request, callback is called with the result string message, status code and headers. If savePath is specified, the result will be saved as binary format in the specified path. only url and callback are optional.
+-- @realm shared 
+function Networking.HttpRequest(url, callback, data, method, contentType, headers, savePath) end
 
 --- Creates a new net message, returns an IWriteMessage
 -- @treturn IWriteMessage netMessage
