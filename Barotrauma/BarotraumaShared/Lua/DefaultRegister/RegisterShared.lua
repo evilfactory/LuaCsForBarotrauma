@@ -6,8 +6,8 @@ Register("System.Exception")
 Register("System.Console")
 Register("System.Exception")
 
-RegisterBarotrauma("Success`2[[Barotrauma.ContentPackage],[System.Exception]]")
-RegisterBarotrauma("Failure`2[[Barotrauma.ContentPackage],[System.Exception]]")
+RegisterBarotrauma("Success`2")
+RegisterBarotrauma("Failure`2")
 
 RegisterBarotrauma("LuaSByte")
 RegisterBarotrauma("LuaByte")
@@ -24,8 +24,7 @@ RegisterBarotrauma("GameMain")
 RegisterBarotrauma("Networking.BanList")
 RegisterBarotrauma("Networking.BannedPlayer")
 
-RegisterBarotrauma("Range`1[System.Single]")
-RegisterBarotrauma("Range`1[System.Int32]")
+RegisterBarotrauma("Range`1")
 
 RegisterBarotrauma("RichString")
 RegisterBarotrauma("Identifier")
@@ -399,27 +398,11 @@ end
 RegisterBarotrauma("Camera")
 RegisterBarotrauma("Key")
 
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.ItemPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.JobPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.CharacterPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.AfflictionPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.TalentPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.TalentTree]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.OrderPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.LevelGenerationParams]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.OutpostGenerationParams]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.RuinGeneration.RuinGenerationParams]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.LevelGenerationParams]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.LocationType]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.EventPrefab]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.EventSet]]")
-RegisterBarotrauma("PrefabCollection`1[[Barotrauma.EventManagerSettings]]")
+RegisterBarotrauma("PrefabCollection`1")
 
-RegisterBarotrauma("PrefabSelector`1[[Barotrauma.SkillSettings]]")
+RegisterBarotrauma("PrefabSelector`1")
 
-RegisterBarotrauma("Pair`2[[Barotrauma.JobPrefab],[System.Int32]]")
-
-RegisterBarotrauma("Range`1[System.Single]")
+RegisterBarotrauma("Pair`2")
 
 RegisterBarotrauma("Items.Components.Signal")
 RegisterBarotrauma("SubmarineInfo")

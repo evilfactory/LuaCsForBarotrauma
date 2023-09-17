@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 
 namespace Barotrauma
 {
-    public abstract class ACsMod : IDisposable
+    [Obsolete("Make your class implement IAssemblyPlugin instead.")]
+    public abstract class ACsMod : IAssemblyPlugin
     {
         private static List<ACsMod> mods = new List<ACsMod>();
         public static List<ACsMod> LoadedMods { get => mods; }
@@ -18,7 +18,6 @@ namespace Barotrauma
             if (!Directory.Exists(modFolder)) Directory.CreateDirectory(modFolder);
             return modFolder;
         }
-        public static string GetSoreFolder<T>() where T : ACsMod => GetStoreFolder<T>();
 
         public bool IsDisposed { get; private set; }
 
@@ -29,7 +28,23 @@ namespace Barotrauma
             LoadedMods.Add(this);
         }
 
-        public void Dispose()
+        /// <summary>
+        /// Called as soon as plugin loading begins, use this for internal setup only.
+        /// </summary>
+        public virtual void Initialize() { }
+
+        /// <summary>
+        /// Called once all plugins have completed Initialization. Put cross-mod code here.
+        /// </summary>
+        public virtual void OnLoadCompleted() { }
+
+        /// <summary>
+        /// [NotImplemented] Called before vanilla content is loaded. Use to patch Barotrauma classes before they're
+        /// instantiated.
+        /// </summary>
+        public void PreInitPatching() { }
+
+        public virtual void Dispose()
         {
             try
             {
@@ -43,8 +58,7 @@ namespace Barotrauma
             LoadedMods.Remove(this);
             IsDisposed = true;
         }
-
-        /// Error or client exit
+        
         public abstract void Stop();
     }
 }
