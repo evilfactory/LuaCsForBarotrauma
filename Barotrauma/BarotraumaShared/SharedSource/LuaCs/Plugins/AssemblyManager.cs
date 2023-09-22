@@ -210,9 +210,13 @@ public partial class AssemblyManager
     /// Note: Will return the by-reference equivalent type if the type name is prefixed with "out " or "ref ".
     /// </summary>
     /// <param name="name">The string name of the type to search for.</param>
-    /// <returns>An Enumerator for matching types.</returns>
+    /// <returns>An Enumerator for matching types. List will be empty if bad params are supplied.</returns>
     public IEnumerable<Type> GetTypesByName(string typeName)
     {
+        List<Type> types = new();
+        if (typeName.IsNullOrWhiteSpace())
+            return types;
+        
         bool byRef = false;
         if (typeName.StartsWith("out ") || typeName.StartsWith("ref "))
         {
@@ -220,7 +224,6 @@ public partial class AssemblyManager
             byRef = true;
         }
         
-        List<Type> types = new();
         
         TypesListHelper();
         if (types.Count > 0)
@@ -229,6 +232,18 @@ public partial class AssemblyManager
         // we couldn't find it, rebuild and try one more time
         RebuildTypesList();
         TypesListHelper();
+
+        if (types.Count > 0)
+            return types;
+        
+        // fallback to Type.GetType
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            Type t = assembly.GetType(typeName);
+            if (t is not null)
+                types.Add(byRef ? t.MakeByRefType() : t);
+        }
+        
         return types;
 
         void TypesListHelper()
