@@ -240,9 +240,16 @@ public partial class AssemblyManager
         try
         {
             // fallback to Type.GetType
+            Type t = Type.GetType(typeName, false, false);
+            if (t is not null)
+            {
+                types.Add(byRef ? t.MakeByRefType() : t);
+                return types;
+            }
+            
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                Type t = assembly.GetType(typeName, false, false);
+                t = assembly.GetType(typeName, false, false);
                 if (t is not null)
                     types.Add(byRef ? t.MakeByRefType() : t);
             }
