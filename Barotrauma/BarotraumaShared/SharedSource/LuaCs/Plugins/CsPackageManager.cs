@@ -286,6 +286,17 @@ public sealed class CsPackageManager : IDisposable
 
         // load publicized assemblies
         var publicizedDir = Path.Combine(Environment.CurrentDirectory, "Publicized");
+        
+        // if using workshop lua setup is checked, try to use the publicized assemblies in the content package there instead.
+        if (_luaCsSetup.Config.PreferToUseWorkshopLuaSetup)
+        {
+            var pck = LuaCsSetup.GetPackage(LuaCsSetup.LuaForBarotraumaId);
+            if (pck is not null)
+            {
+                publicizedDir = Path.Combine(pck.Dir, "Binary", "Publicized");
+            }
+        }
+        
         ImmutableList<Assembly> publicizedAssemblies = ImmutableList<Assembly>.Empty;
         if (Directory.Exists(publicizedDir))
         {
