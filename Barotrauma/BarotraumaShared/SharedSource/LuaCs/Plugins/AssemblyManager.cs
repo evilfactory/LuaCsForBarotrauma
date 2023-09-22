@@ -236,12 +236,20 @@ public partial class AssemblyManager
         if (types.Count > 0)
             return types;
         
-        // fallback to Type.GetType
-        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        OpsLockLoaded.EnterReadLock();
+        try
         {
-            Type t = assembly.GetType(typeName);
-            if (t is not null)
-                types.Add(byRef ? t.MakeByRefType() : t);
+            // fallback to Type.GetType
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                Type t = assembly.GetType(typeName, false, false);
+                if (t is not null)
+                    types.Add(byRef ? t.MakeByRefType() : t);
+            }
+        }
+        finally
+        {
+            OpsLockLoaded.ExitReadLock();
         }
         
         return types;
