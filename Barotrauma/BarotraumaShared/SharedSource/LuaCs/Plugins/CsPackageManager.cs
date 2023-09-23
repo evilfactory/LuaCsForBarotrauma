@@ -325,17 +325,65 @@ public sealed class CsPackageManager : IDisposable
 
         // get packages
         IEnumerable<ContentPackage> packages = BuildPackagesList();
-
+        
         // check and load config
         _packageRunConfigs.AddRange(packages
             .Select(p => new KeyValuePair<ContentPackage, RunConfig>(p, GetRunConfigForPackage(p)))
             .ToDictionary(p => p.Key, p=> p.Value));
-
+        
         // filter not to be loaded
-        var cpToRun = _packageRunConfigs
+        var cpToRunA = _packageRunConfigs
             .Where(kvp => ShouldRunPackage(kvp.Key, kvp.Value))
             .Select(kvp => kvp.Key)
-            .ToImmutableList();
+            .ToHashSet();
+        
+        //-- filter and remove duplicate mods, prioritize /LocalMods/
+        HashSet<string> cpNames = new();
+        HashSet<string> duplicateNames = new();
+
+        // search
+        foreach (ContentPackage package in cpToRunA)
+        {
+            if (cpNames.Contains(package.Name))
+            {
+                if (!duplicateNames.Contains(package.Name))
+                {
+                    duplicateNames.Add(package.Name);
+                }
+            }
+            else
+            {
+                cpNames.Add(package.Name);
+            }        
+        }
+
+        // remove
+        foreach (string name in duplicateNames)
+        {
+            var duplCpList = cpToRunA
+                .Where(p => p.Name.Equals(name))
+                .ToHashSet();
+            
+            if (duplCpList.Count < 2)   // one or less found
+                continue;
+
+            ContentPackage toKeep = null;
+            foreach (ContentPackage package in duplCpList)
+            {
+                if (package.Dir.Contains("LocalMods"))
+                {
+                    toKeep = package;
+                    break;
+                }
+            }
+
+            toKeep ??= duplCpList.First();
+
+            duplCpList.Remove(toKeep);  // remove all but this one
+            cpToRunA.RemoveWhere(p => duplCpList.Contains(p));
+        }
+
+        var cpToRun = cpToRunA.ToImmutableList();
 
         // build dependencies map
         bool reliableMap = TryBuildDependenciesMap(cpToRun, out var packDeps);
