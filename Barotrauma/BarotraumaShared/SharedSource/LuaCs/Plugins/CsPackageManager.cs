@@ -298,27 +298,60 @@ public sealed class CsPackageManager : IDisposable
         }
         
         ImmutableList<Assembly> publicizedAssemblies = ImmutableList<Assembly>.Empty;
-        if (Directory.Exists(publicizedDir))
+        ImmutableList<string> list;
+        
+        try
         {
             // search for assemblies
-            var list = Directory.GetFiles(publicizedDir, "*.dll")
+            list = Directory.GetFiles(publicizedDir, "*.dll")
 #if CLIENT
-                .Where(s => !s.ToLowerInvariant().EndsWith("dedicatedserver.dll"));            
+                .Where(s => !s.ToLowerInvariant().EndsWith("dedicatedserver.dll"))
 #elif SERVER
-                .Where(s => !s.ToLowerInvariant().EndsWith("barotrauma.dll"));
+                .Where(s => !s.ToLowerInvariant().EndsWith("barotrauma.dll"))
 #endif
-            
-            // try load them into an acl
-            var loadState = _assemblyManager.LoadAssembliesFromLocations(list, ref _publicizedAssemblyLoader);
+                .ToImmutableList();
 
-            // loaded
-            if (loadState is AssemblyLoadingSuccessState.Success)
+            if (list.Count < 1)
+                throw new DirectoryNotFoundException("No publicized assemblies found.");
+        }
+        // no directory found, use the other one
+        catch (DirectoryNotFoundException dne)
+        {
+            if (_luaCsSetup.Config.PreferToUseWorkshopLuaSetup)
             {
-                if (_assemblyManager.TryGetACL(_publicizedAssemblyLoader, out var acl))
+                ModUtils.Logging.PrintError($"Unable to find <LuaCsPackage>/Binary/Publicized/ . Using Game folder instead.");
+                publicizedDir = Path.Combine(Environment.CurrentDirectory, "Publicized");
+            }
+            else
+            {
+                ModUtils.Logging.PrintError($"Unable to find <GameFolder>/Publicized/ . Using LuaCsPackage folder instead.");
+                var pck = LuaCsSetup.GetPackage(LuaCsSetup.LuaForBarotraumaId);
+                if (pck is not null)
                 {
-                    publicizedAssemblies = acl.Acl.Assemblies.ToImmutableList();
-                    _assemblyManager.SetACLToTemplateMode(_publicizedAssemblyLoader);
+                    publicizedDir = Path.Combine(pck.Dir, "Binary", "Publicized");
                 }
+            }
+            
+            // search for assemblies
+            list = Directory.GetFiles(publicizedDir, "*.dll")
+#if CLIENT
+                .Where(s => !s.ToLowerInvariant().EndsWith("dedicatedserver.dll"))
+#elif SERVER
+                .Where(s => !s.ToLowerInvariant().EndsWith("barotrauma.dll"))
+#endif
+                .ToImmutableList();
+        }
+
+        // try load them into an acl
+        var loadState = _assemblyManager.LoadAssembliesFromLocations(list, ref _publicizedAssemblyLoader);
+
+        // loaded
+        if (loadState is AssemblyLoadingSuccessState.Success)
+        {
+            if (_assemblyManager.TryGetACL(_publicizedAssemblyLoader, out var acl))
+            {
+                publicizedAssemblies = acl.Acl.Assemblies.ToImmutableList();
+                _assemblyManager.SetACLToTemplateMode(_publicizedAssemblyLoader);
             }
         }
 
