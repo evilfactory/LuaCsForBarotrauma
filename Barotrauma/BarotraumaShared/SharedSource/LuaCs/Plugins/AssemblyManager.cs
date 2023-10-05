@@ -340,10 +340,23 @@ public partial class AssemblyManager
     /// </summary>
     public event System.Func<LoadedACL, bool> IsReadyToUnloadACL;
 
+    /// <summary>
+    /// Compiles an assembly from supplied references and syntax trees into the specified AssemblyContextLoader.
+    /// A new ACL will be created if the Guid supplied is Guid.Empty.
+    /// </summary>
+    /// <param name="compiledAssemblyName"></param>
+    /// <param name="syntaxTree"></param>
+    /// <param name="externalMetadataReferences"></param>
+    /// <param name="compilationOptions"></param>
+    /// <param name="friendlyName">A non-unique name for later reference. Optional, set to null if unused.</param>
+    /// <param name="id">The guid of the assembly </param>
+    /// <param name="externFileAssemblyRefs"></param>
+    /// <returns></returns>
     public AssemblyLoadingSuccessState LoadAssemblyFromMemory([NotNull] string compiledAssemblyName,
         [NotNull] IEnumerable<SyntaxTree> syntaxTree,
         IEnumerable<MetadataReference> externalMetadataReferences,
         [NotNull] CSharpCompilationOptions compilationOptions,
+        string friendlyName,
         ref Guid id,
         IEnumerable<Assembly> externFileAssemblyRefs = null)
     {
@@ -351,7 +364,7 @@ public partial class AssemblyManager
         if (compiledAssemblyName.IsNullOrWhiteSpace())
             return AssemblyLoadingSuccessState.BadName;
         
-        if (!GetOrCreateACL(id, out var acl))
+        if (!GetOrCreateACL(id, friendlyName, out var acl))
             return AssemblyLoadingSuccessState.ACLLoadFailure;
 
         id = acl.Id;    // pass on true id returned
@@ -399,11 +412,12 @@ public partial class AssemblyManager
     /// If the supplied Guid is Empty, then a new ACl will be created and the Guid will be assigned to it.
     /// </summary>
     /// <param name="filePaths">List of assemblies to try and load.</param>
+    /// <param name="friendlyName">A non-unique name for later reference. Optional.</param>
     /// <param name="id">Guid of the ACL or Empty if none specified. Guid of ACL will be assigned to this var.</param>
     /// <returns>Operation success messages.</returns>
     /// <exception cref="ArgumentNullException"></exception>
     public AssemblyLoadingSuccessState LoadAssembliesFromLocations([NotNull] IEnumerable<string> filePaths,
-        ref Guid id)
+        string friendlyName, ref Guid id)
     {
 
         if (filePaths is null)
@@ -419,7 +433,7 @@ public partial class AssemblyManager
             return AssemblyLoadingSuccessState.NoAssemblyFound;
         }
         
-        if (GetOrCreateACL(id, out var loadedAcl))
+        if (GetOrCreateACL(id, friendlyName, out var loadedAcl))
         {
             var state = loadedAcl.Acl.LoadFromFiles(assemblyFilePaths);
             // if failure, we dispose of the acl
@@ -567,10 +581,11 @@ public partial class AssemblyManager
     /// [IMPORTANT] After calling this method, the id you use should be taken from the acl container (acl.Id). 
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="friendlyName">A non-unique name for later reference. Optional.</param>
     /// <param name="acl"></param>
     /// <returns>Should only return false if an error occurs.</returns>
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private bool GetOrCreateACL(Guid id, out LoadedACL acl)
+    private bool GetOrCreateACL(Guid id, string friendlyName, out LoadedACL acl)
     {
         OpsLockLoaded.EnterUpgradeableReadLock();
         try
@@ -581,7 +596,7 @@ public partial class AssemblyManager
                 try
                 {
                     id = Guid.NewGuid();
-                    acl = new LoadedACL(id, this);
+                    acl = new LoadedACL(id, this, friendlyName);
                     LoadedACLs[id] = acl;
                     return true;
                 }
@@ -719,11 +734,12 @@ public partial class AssemblyManager
         public readonly MemoryFileAssemblyContextLoader Acl;
         private readonly AssemblyManager _manager;
 
-        internal LoadedACL(Guid id, AssemblyManager manager)
+        internal LoadedACL(Guid id, AssemblyManager manager, string friendlyName)
         {
             this.Id = id;
             this.Acl = new(manager);
             this._manager = manager;
+            this.Acl.FriendlyName = friendlyName;
         }
         public ImmutableDictionary<string, Type> AssembliesTypes => _assembliesTypes;
         

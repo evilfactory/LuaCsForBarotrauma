@@ -23,6 +23,7 @@ namespace Barotrauma;
 public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
 {
     // public
+    public string FriendlyName { get; set; } = null;
     // ReSharper disable MemberCanBePrivate.Global
     public Assembly CompiledAssembly { get; private set; } = null;
     public byte[] CompiledAssemblyImage { get; private set; } = null;

@@ -284,6 +284,24 @@ public sealed class CsPackageManager : IDisposable
         _assemblyManager.OnAssemblyLoaded += AssemblyManagerOnAssemblyLoaded;
         _assemblyManager.OnAssemblyUnloading += AssemblyManagerOnAssemblyUnloading;
 
+        // log error if some ACLs are still unloading (some assembly is still in use)
+        if (_assemblyManager.IsCurrentlyUnloading)
+        {
+            ModUtils.Logging.PrintError($"WARNING: Some mods from a previous session (lobby) are still loaded! This may result in undefined behaviour! Please restart your game. \nIf you wish to avoid this issue in the future, please disable the below mods and report the error to the mod author.");
+            foreach (var wkref in _assemblyManager.StillUnloadingACLs)
+            {
+                ModUtils.Logging.PrintError($"The below ACL is still unloading:");
+                if (wkref.TryGetTarget(out var tgt))
+                {
+                    ModUtils.Logging.PrintError($"ACL Name: {tgt.Name}");
+                    foreach (Assembly assembly in tgt.Assemblies)
+                    {
+                        ModUtils.Logging.PrintError($"-- Assembly: {assembly.GetName()}");
+                    }
+                }
+            }
+        }
+        
         // load publicized assemblies
         var publicizedDir = Path.Combine(Environment.CurrentDirectory, "Publicized");
         
@@ -343,7 +361,7 @@ public sealed class CsPackageManager : IDisposable
         }
 
         // try load them into an acl
-        var loadState = _assemblyManager.LoadAssembliesFromLocations(list, ref _publicizedAssemblyLoader);
+        var loadState = _assemblyManager.LoadAssembliesFromLocations(list, "luacs_publicized_assemblies", ref _publicizedAssemblyLoader);
 
         // loaded
         if (loadState is AssemblyLoadingSuccessState.Success)
@@ -485,7 +503,7 @@ public sealed class CsPackageManager : IDisposable
                 }
 #endif
                 
-                successState = _assemblyManager.LoadAssembliesFromLocations(pair.Value.AssembliesFilePaths, ref id);
+                successState = _assemblyManager.LoadAssembliesFromLocations(pair.Value.AssembliesFilePaths, pair.Key.Name, ref id);
 
                 // error handling
                 if (successState is not AssemblyLoadingSuccessState.Success)
@@ -550,7 +568,7 @@ public sealed class CsPackageManager : IDisposable
                     syntaxTrees, 
                     null, 
                     CompilationOptions, 
-                    ref id, publicizedAssemblies);
+                     pair.Key.Name, ref id, publicizedAssemblies);
 
                 if (successState is not AssemblyLoadingSuccessState.Success)
                 {
