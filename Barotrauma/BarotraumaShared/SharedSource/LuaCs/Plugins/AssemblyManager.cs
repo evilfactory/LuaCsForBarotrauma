@@ -50,7 +50,6 @@ public partial class AssemblyManager
     /// </summary>
     public event Action<Guid> OnACLUnload; 
     
-    #if DEBUG
 
     /// <summary>
     /// [DEBUG ONLY]
@@ -72,8 +71,6 @@ public partial class AssemblyManager
         }
     }
 
-    #endif
-    
 
     // ReSharper disable once MemberCanBePrivate.Global
     /// <summary>
