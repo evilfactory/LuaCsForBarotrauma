@@ -19,6 +19,7 @@ var class_barotrauma_1_1_location_type =
     [ "Name", "class_barotrauma_1_1_location_type.html#a77ad2ceee9dbc57353d9f22345ea6a50", null ],
     [ "OutpostTeam", "class_barotrauma_1_1_location_type.html#a116404c086bea3942c150a64804894e0", null ],
     [ "ShowSonarMarker", "class_barotrauma_1_1_location_type.html#ab2ae6198c618cb8ebdac136043c647cd", null ],
+    [ "AllowAsBiomeGate", "class_barotrauma_1_1_location_type.html#ab8938b412177b85b5514561d5fefea3b", null ],
     [ "AllowInRandomLevels", "class_barotrauma_1_1_location_type.html#abcbf01e51d76191dd649a120f2d9592b", null ],
     [ "DailySpecialPriceModifier", "class_barotrauma_1_1_location_type.html#ac69ef41c6a172b088ec8264bf32ab435", null ],
     [ "DailySpecialsCount", "class_barotrauma_1_1_location_type.html#ad8bc52c008d2f66e8c6a7c57b636dbed", null ],

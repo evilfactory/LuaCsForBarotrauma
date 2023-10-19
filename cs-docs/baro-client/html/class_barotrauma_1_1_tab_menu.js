@@ -4,7 +4,6 @@ var class_barotrauma_1_1_tab_menu =
       [ "Crew", "class_barotrauma_1_1_tab_menu.html#a02833a83ab98261da9e7d739d4f0bf4dae2eb313ebe80eedde70387f31c96bd8c", null ],
       [ "Mission", "class_barotrauma_1_1_tab_menu.html#a02833a83ab98261da9e7d739d4f0bf4da70d529695c253d17e992cb9265abc57f", null ],
       [ "Reputation", "class_barotrauma_1_1_tab_menu.html#a02833a83ab98261da9e7d739d4f0bf4da8d9bec4f224970e231041639de877092", null ],
-      [ "Traitor", "class_barotrauma_1_1_tab_menu.html#a02833a83ab98261da9e7d739d4f0bf4dab61a51ffa139c623896fae27ac736131", null ],
       [ "Submarine", "class_barotrauma_1_1_tab_menu.html#a02833a83ab98261da9e7d739d4f0bf4da0d234e5bcf75c768eb0db6bf96e3c22d", null ],
       [ "Talents", "class_barotrauma_1_1_tab_menu.html#a02833a83ab98261da9e7d739d4f0bf4da2ca33d762e9afe63a4c4f2eb9924f163", null ]
     ] ],

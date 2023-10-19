@@ -141,6 +141,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1061e5030c2f0b63bb50588709986385"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_content_file.html#a1061e5030c2f0b63bb50588709986385">IsLegacyContentType</a> (XElement contentFileElement, <a class="el" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> package, bool logWarning)</td></tr>
+<tr class="separator:a1061e5030c2f0b63bb50588709986385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eb34d8ef13ae07547cf71a7cec1aff0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_result.html">Result</a>&lt; <a class="el" href="class_barotrauma_1_1_content_file.html">ContentFile</a>, <a class="el" href="class_barotrauma_1_1_content_package.html#a055da2e6de0afc854144efb597cbacd7">ContentPackage.LoadError</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_content_file.html#a0eb34d8ef13ae07547cf71a7cec1aff0">CreateFromXElement</a> (<a class="el" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> contentPackage, XElement element)</td></tr>
 <tr class="separator:a0eb34d8ef13ae07547cf71a7cec1aff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -207,7 +209,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00112">112</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00128">128</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>
@@ -235,9 +237,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_hashless_file.html#ab2bd23ee875700a1fe867eff4f40185f">Barotrauma.HashlessFile</a>.</p>
+<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_base_sub_file.html#ab8fb930f2c21c1d1f7631fa2ec0bb831">Barotrauma.BaseSubFile</a>, and <a class="el" href="class_barotrauma_1_1_hashless_file.html#ab2bd23ee875700a1fe867eff4f40185f">Barotrauma.HashlessFile</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00128">128</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00144">144</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>
@@ -261,6 +263,50 @@ Properties</h2></td></tr>
           <td></td>
           <td class="paramtype">XElement&#160;</td>
           <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00086">86</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1061e5030c2f0b63bb50588709986385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1061e5030c2f0b63bb50588709986385">&#9670;&nbsp;</a></span>IsLegacyContentType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Barotrauma.ContentFile.IsLegacyContentType </td>
+          <td>(</td>
+          <td class="paramtype">XElement&#160;</td>
+          <td class="paramname"><em>contentFileElement</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_content_package.html">ContentPackage</a>&#160;</td>
+          <td class="paramname"><em>package</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>logWarning</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -332,7 +378,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_character_file.html#a9b9ba5813190ee7e6b5dfdf9d0bbf538">Barotrauma.CharacterFile</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00126">126</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00142">142</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>
@@ -403,7 +449,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00119">119</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00135">135</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>
@@ -419,7 +465,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00121">121</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00137">137</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>
@@ -435,7 +481,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00120">120</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00136">136</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>
@@ -484,7 +530,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00133">133</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_content_file_8cs_source.html#l00149">149</a> of file <a class="el" href="_content_file_8cs_source.html">ContentFile.cs</a>.</p>
 
 </div>
 </div>

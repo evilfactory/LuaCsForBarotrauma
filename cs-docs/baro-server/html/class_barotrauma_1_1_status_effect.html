@@ -174,10 +174,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afbe5cb38eb0904c1ec8b141740bfb026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7cf795a1a900518d3f04880f0832579"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#ad7cf795a1a900518d3f04880f0832579">Apply</a> (<a class="el" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">ActionType</a> <a class="el" href="class_barotrauma_1_1_status_effect.html#ac307093284537c474cf19358b0b95c17">type</a>, float deltaTime, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> entity, IReadOnlyList&lt; <a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a> &gt; targets, Vector2? worldPosition=null)</td></tr>
 <tr class="separator:ad7cf795a1a900518d3f04880f0832579"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9767b432275ac8a7f432cfef07ab1634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a9767b432275ac8a7f432cfef07ab1634">AddTag</a> (string tag)</td></tr>
-<tr class="separator:a9767b432275ac8a7f432cfef07ab1634"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d5d9ea84f6072f30cf73f9e35af0ac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#aa3d5d9ea84f6072f30cf73f9e35af0ac">HasTag</a> (string tag)</td></tr>
-<tr class="separator:aa3d5d9ea84f6072f30cf73f9e35af0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20646c198947f6b633d4026a8547cce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#af20646c198947f6b633d4026a8547cce">AddTag</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag)</td></tr>
+<tr class="separator:af20646c198947f6b633d4026a8547cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1a59855c241041b3a666cc817e0ce4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#af1a59855c241041b3a666cc817e0ce4e">HasTag</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag)</td></tr>
+<tr class="separator:af1a59855c241041b3a666cc817e0ce4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -195,8 +195,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab56c75753764bdf04ec0d1708ac4720a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa349c944ae9c7b9908126005a90ad5e4"><td class="memItemLeft" align="right" valign="top">readonly ImmutableArray&lt;(<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> propertyName, object value)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#aa349c944ae9c7b9908126005a90ad5e4">PropertyEffects</a></td></tr>
 <tr class="separator:aa349c944ae9c7b9908126005a90ad5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab1df8b7c9ba9da90718a6c9b32bf6f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#aeab1df8b7c9ba9da90718a6c9b32bf6f">intervalTimers</a> = new Dictionary&lt;<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a>, float&gt;()</td></tr>
-<tr class="separator:aeab1df8b7c9ba9da90718a6c9b32bf6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4cde8d23da3f1f6d61e8065815be6a5"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#ae4cde8d23da3f1f6d61e8065815be6a5">CheckConditionalAlways</a></td></tr>
 <tr class="memdesc:ae4cde8d23da3f1f6d61e8065815be6a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Only applicable for StatusEffects with a duration or delay. Should the conditional checks only be done when the effect triggers, or for the whole duration it executes / when the delay runs out and the effect executes? In other words, if false, the conditionals are only checked once when the effect triggers, but after that it can keep running for the whole duration, or is guaranteed to execute after the delay.  <a href="class_barotrauma_1_1_status_effect.html#ae4cde8d23da3f1f6d61e8065815be6a5">More...</a><br /></td></tr>
 <tr class="separator:ae4cde8d23da3f1f6d61e8065815be6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,9 +206,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aa587d4f2e07f24ce9076b99df6463b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac307093284537c474cf19358b0b95c17"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">ActionType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#ac307093284537c474cf19358b0b95c17">type</a> = <a class="el" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eebaaf7a20b3371de98880f79da525432130c">ActionType.OnActive</a></td></tr>
 <tr class="separator:ac307093284537c474cf19358b0b95c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ec7ca6bd4d85f008611114fa294e608"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_barotrauma_1_1_explosion.html">Explosion</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a8ec7ca6bd4d85f008611114fa294e608">Explosions</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_explosion.html">Explosion</a>&gt;()</td></tr>
-<tr class="separator:a8ec7ca6bd4d85f008611114fa294e608"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e59123a732f776ff1f6def54d99793f"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_barotrauma_1_1_status_effect_1_1_give_talent_info.html">GiveTalentInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a8e59123a732f776ff1f6def54d99793f">giveTalentInfos</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_status_effect_1_1_give_talent_info.html">GiveTalentInfo</a>&gt;()</td></tr>
+<tr class="memitem:a8e59123a732f776ff1f6def54d99793f"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_barotrauma_1_1_status_effect_1_1_give_talent_info.html">GiveTalentInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a8e59123a732f776ff1f6def54d99793f">giveTalentInfos</a></td></tr>
 <tr class="separator:a8e59123a732f776ff1f6def54d99793f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b6178e029d92fb5a72b94de30982353"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a6b6178e029d92fb5a72b94de30982353">FireSize</a></td></tr>
 <tr class="separator:a6b6178e029d92fb5a72b94de30982353"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,10 +233,16 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af27526384f2de352778db37eea3026a2"><td class="memItemLeft" align="right" valign="top">readonly ImmutableHashSet&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#af27526384f2de352778db37eea3026a2">TargetIdentifiers</a></td></tr>
 <tr class="memdesc:af27526384f2de352778db37eea3026a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifier(s), tag(s) or species name(s) of the entity the effect can target. Null if there's no identifiers.  <a href="class_barotrauma_1_1_status_effect.html#af27526384f2de352778db37eea3026a2">More...</a><br /></td></tr>
 <tr class="separator:af27526384f2de352778db37eea3026a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d8601a27664c9fb3c5a5ae60f331c5"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a85d8601a27664c9fb3c5a5ae60f331c5">TargetItemComponent</a></td></tr>
+<tr class="memdesc:a85d8601a27664c9fb3c5a5ae60f331c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to the name of one of the target's ItemComponents, the effect is only applied on that component. Only works on items.  <a href="class_barotrauma_1_1_status_effect.html#a85d8601a27664c9fb3c5a5ae60f331c5">More...</a><br /></td></tr>
+<tr class="separator:a85d8601a27664c9fb3c5a5ae60f331c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77c5b0bab9b555e648f7527a8ab8d2f5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a77c5b0bab9b555e648f7527a8ab8d2f5">AfflictionMultiplier</a> = 1.0f</td></tr>
 <tr class="separator:a77c5b0bab9b555e648f7527a8ab8d2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1412fd6c58fe793e28bd14fdf3909c7"><td class="memItemLeft" align="right" valign="top">readonly List&lt;(<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> AfflictionIdentifier, float ReduceAmount)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#ab1412fd6c58fe793e28bd14fdf3909c7">ReduceAffliction</a> = new List&lt;(<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> affliction, float amount)&gt;()</td></tr>
 <tr class="separator:ab1412fd6c58fe793e28bd14fdf3909c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae82a6b5339eb462d84d1e4060433c115"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#ae82a6b5339eb462d84d1e4060433c115">Duration</a></td></tr>
+<tr class="memdesc:ae82a6b5339eb462d84d1e4060433c115"><td class="mdescLeft">&#160;</td><td class="mdescRight">How long the effect runs (in seconds). Note that if <a class="el" href="class_barotrauma_1_1_status_effect.html#a4157cb2204260f2957043a46251bac0b" title="Only valid if the effect has a duration or delay. Can the effect be applied on the same target(s) if ...">Stackable</a> is true, there can be multiple instances of the effect running at a time. In other words, if the effect has a duration and executes every frame, you probably want to make it non-stackable or it'll lead to a large number of overlapping effects running at the same time.  <a href="class_barotrauma_1_1_status_effect.html#ae82a6b5339eb462d84d1e4060433c115">More...</a><br /></td></tr>
+<tr class="separator:ae82a6b5339eb462d84d1e4060433c115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -271,12 +273,12 @@ Protected Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:ab04526bf9bbaab55b8e36d980777aadf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#ab04526bf9bbaab55b8e36d980777aadf">HasConditions</a><code> [get]</code></td></tr>
 <tr class="separator:ab04526bf9bbaab55b8e36d980777aadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bde6439ce21c3e83baf4781826ea79b"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_explosion.html">Explosion</a> &gt;??&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a5bde6439ce21c3e83baf4781826ea79b">Explosions</a><code> [get]</code></td></tr>
+<tr class="separator:a5bde6439ce21c3e83baf4781826ea79b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbbcc37d988a2054f080a715f753c7cf"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#acbbcc37d988a2054f080a715f753c7cf">Afflictions</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_affliction.html">Affliction</a>&gt;()<code> [get]</code></td></tr>
 <tr class="separator:acbbcc37d988a2054f080a715f753c7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9965f651814f0392e8599a5da2958972"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html">CharacterSpawnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a9965f651814f0392e8599a5da2958972">SpawnCharacters</a><code> [get]</code></td></tr>
-<tr class="separator:a9965f651814f0392e8599a5da2958972"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabcfc59a5f58ba3733c3a4e0e7c200bc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#aabcfc59a5f58ba3733c3a4e0e7c200bc">Duration</a><code> [get]</code></td></tr>
-<tr class="separator:aabcfc59a5f58ba3733c3a4e0e7c200bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15f733d4c6d9f2f2cb98084a56b5b540"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html">CharacterSpawnInfo</a> &gt;??&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#a15f733d4c6d9f2f2cb98084a56b5b540">SpawnCharacters</a><code> [get]</code></td></tr>
+<tr class="separator:a15f733d4c6d9f2f2cb98084a56b5b540"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa260a6412927897535482fa2059a9c0f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_status_effect.html#aa260a6412927897535482fa2059a9c0f">Range</a><code> [get]</code></td></tr>
 <tr class="memdesc:aa260a6412927897535482fa2059a9c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">How close to the entity executing the effect the targets must be. Only applicable if targeting NearbyCharacters or NearbyItems.  <a href="class_barotrauma_1_1_status_effect.html#aa260a6412927897535482fa2059a9c0f">More...</a><br /></td></tr>
 <tr class="separator:aa260a6412927897535482fa2059a9c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -378,7 +380,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00732">732</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00761">761</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -409,12 +411,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01110">1110</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01167">1167</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9767b432275ac8a7f432cfef07ab1634"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9767b432275ac8a7f432cfef07ab1634">&#9670;&nbsp;</a></span>AddTag()</h2>
+<a id="af20646c198947f6b633d4026a8547cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20646c198947f6b633d4026a8547cce">&#9670;&nbsp;</a></span>AddTag()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -422,14 +424,14 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">void Barotrauma.StatusEffect.AddTag </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
           <td class="paramname"><em>tag</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02491">2491</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02584">2584</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -487,7 +489,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_delayed_effect.html#a1ec22c12839a1a1debe1ea5e443005cd">Barotrauma.DelayedEffect</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01399">1399</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01440">1440</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -545,7 +547,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_delayed_effect.html#a71128a68b7d71ef240afaf657b0b2601">Barotrauma.DelayedEffect</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01374">1374</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01415">1415</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -595,7 +597,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01499">1499</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01540">1540</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -615,7 +617,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01082">1082</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01139">1139</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -635,7 +637,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01165">1165</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01222">1222</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -663,12 +665,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01093">1093</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01150">1150</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
-<a id="aa3d5d9ea84f6072f30cf73f9e35af0ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3d5d9ea84f6072f30cf73f9e35af0ac">&#9670;&nbsp;</a></span>HasTag()</h2>
+<a id="af1a59855c241041b3a666cc817e0ce4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a59855c241041b3a666cc817e0ce4e">&#9670;&nbsp;</a></span>HasTag()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -676,14 +678,14 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">bool Barotrauma.StatusEffect.HasTag </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
           <td class="paramname"><em>tag</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02497">2497</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02590">2590</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -703,7 +705,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01041">1041</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01098">1098</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -722,7 +724,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01058">1058</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01115">1115</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -750,7 +752,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01336">1336</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01376">1376</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -778,7 +780,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01292">1292</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01331">1331</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -806,7 +808,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01326">1326</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01366">1366</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -834,7 +836,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01316">1316</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01355">1355</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -872,7 +874,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00722">722</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00751">751</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -892,7 +894,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01070">1070</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01127">1127</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -911,7 +913,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01046">1046</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01103">1103</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -931,7 +933,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01345">1345</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01385">1385</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -961,7 +963,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01355">1355</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01396">1396</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -988,7 +990,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02484">2484</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02577">2577</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1016,7 +1018,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02298">2298</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l02391">2391</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +1035,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00659">659</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00682">682</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1051,7 +1053,7 @@ Properties</h2></td></tr>
 
 <p>Can the <a class="el" href="class_barotrauma_1_1_status_effect.html" title="StatusEffects can be used to execute various kinds of effects: modifying the state of some entity in ...">StatusEffect</a> be applied when the item applying it is broken? </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00647">647</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00665">665</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1071,7 @@ Properties</h2></td></tr>
 
 <p>Only applicable for StatusEffects with a duration or delay. Should the conditional checks only be done when the effect triggers, or for the whole duration it executes / when the delay runs out and the effect executes? In other words, if false, the conditionals are only checked once when the effect triggers, but after that it can keep running for the whole duration, or is guaranteed to execute after the delay. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00551">551</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00555">555</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1093,7 +1095,25 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01398">1398</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l01439">1439</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae82a6b5339eb462d84d1e4060433c115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae82a6b5339eb462d84d1e4060433c115">&#9670;&nbsp;</a></span>Duration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float Barotrauma.StatusEffect.Duration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>How long the effect runs (in seconds). Note that if <a class="el" href="class_barotrauma_1_1_status_effect.html#a4157cb2204260f2957043a46251bac0b" title="Only valid if the effect has a duration or delay. Can the effect be applied on the same target(s) if ...">Stackable</a> is true, there can be multiple instances of the effect running at a time. In other words, if the effect has a duration and executes every frame, you probably want to make it non-stackable or it'll lead to a large number of overlapping effects running at the same time. </p>
+
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00715">715</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1117,23 +1137,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00543">543</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
-
-</div>
-</div>
-<a id="a8ec7ca6bd4d85f008611114fa294e608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ec7ca6bd4d85f008611114fa294e608">&#9670;&nbsp;</a></span>Explosions</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly List&lt;<a class="el" href="class_barotrauma_1_1_explosion.html">Explosion</a>&gt; Barotrauma.StatusEffect.Explosions = new List&lt;<a class="el" href="class_barotrauma_1_1_explosion.html">Explosion</a>&gt;()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00579">579</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00547">547</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1149,7 +1153,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00615">615</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00633">633</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1160,12 +1164,12 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly List&lt;<a class="el" href="class_barotrauma_1_1_status_effect_1_1_give_talent_info.html">GiveTalentInfo</a>&gt; Barotrauma.StatusEffect.giveTalentInfos = new List&lt;<a class="el" href="class_barotrauma_1_1_status_effect_1_1_give_talent_info.html">GiveTalentInfo</a>&gt;()</td>
+          <td class="memname">readonly List&lt;<a class="el" href="class_barotrauma_1_1_status_effect_1_1_give_talent_info.html">GiveTalentInfo</a>&gt; Barotrauma.StatusEffect.giveTalentInfos</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00589">589</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00597">597</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1183,23 +1187,7 @@ Properties</h2></td></tr>
 
 <p>The interval at which the effect is executed. The difference between delay and interval is that effects with a delay find the targets, check the conditions, etc immediately when Apply is called, but don't apply the effects until the delay has passed. Effects with an interval check if the interval has passed when Apply is called and apply the effects if it has, otherwise they do nothing. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00563">563</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
-
-</div>
-</div>
-<a id="aeab1df8b7c9ba9da90718a6c9b32bf6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab1df8b7c9ba9da90718a6c9b32bf6f">&#9670;&nbsp;</a></span>intervalTimers</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a>, float&gt; Barotrauma.StatusEffect.intervalTimers = new Dictionary&lt;<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a>, float&gt;()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00536">536</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00567">567</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1205,7 @@ Properties</h2></td></tr>
 
 <p>If enabled, this effect can only execute inside a hull. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00632">632</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00650">650</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1235,7 +1223,7 @@ Properties</h2></td></tr>
 
 <p>If enabled, this effect can only execute outside hulls. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00636">636</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00654">654</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1241,7 @@ Properties</h2></td></tr>
 
 <p>If enabled, the effect only executes when the entity receives damage from a player character (a character controlled by a human player). Only valid for characters, and effects of the type OnDamaged. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00642">642</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00660">660</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1269,7 +1257,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00496">496</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00508">508</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1285,7 +1273,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00679">679</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00702">702</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1303,7 +1291,7 @@ Properties</h2></td></tr>
 
 <p>The probability of severing a limb damaged by this status effect. Only valid when targeting characters or limbs. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00625">625</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00643">643</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1319,7 +1307,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00627">627</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00645">645</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1337,7 +1325,7 @@ Properties</h2></td></tr>
 
 <p>Only valid if the effect has a duration or delay. Can the effect be applied on the same target(s) if the effect is already being applied? </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00556">556</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00560">560</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1343,25 @@ Properties</h2></td></tr>
 
 <p>Identifier(s), tag(s) or species name(s) of the entity the effect can target. Null if there's no identifiers. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00652">652</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00670">670</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+
+</div>
+</div>
+<a id="a85d8601a27664c9fb3c5a5ae60f331c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d8601a27664c9fb3c5a5ae60f331c5">&#9670;&nbsp;</a></span>TargetItemComponent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly string Barotrauma.StatusEffect.TargetItemComponent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If set to the name of one of the target's ItemComponents, the effect is only applied on that component. Only works on items. </p>
+
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00676">676</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1373,7 +1379,7 @@ Properties</h2></td></tr>
 
 <p>Which types of limbs this effect can target? Only valid when targeting characters or limbs. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00620">620</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00638">638</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1391,7 +1397,7 @@ Properties</h2></td></tr>
 
 <p>Index of the slot the target must be in. Only valid when targeting a Contained item. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00492">492</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00504">504</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1407,7 +1413,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00577">577</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00581">581</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1432,7 +1438,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00661">661</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00684">684</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1456,12 +1462,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00720">720</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00749">749</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
-<a id="aabcfc59a5f58ba3733c3a4e0e7c200bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabcfc59a5f58ba3733c3a4e0e7c200bc">&#9670;&nbsp;</a></span>Duration</h2>
+<a id="a5bde6439ce21c3e83baf4781826ea79b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bde6439ce21c3e83baf4781826ea79b">&#9670;&nbsp;</a></span>Explosions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1470,7 +1476,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Barotrauma.StatusEffect.Duration</td>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_explosion.html">Explosion</a>&gt;?? Barotrauma.StatusEffect.Explosions</td>
         </tr>
       </table>
   </td>
@@ -1480,7 +1486,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00686">686</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00584">584</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1504,7 +1510,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00500">500</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00512">512</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1530,7 +1536,7 @@ Properties</h2></td></tr>
 
 <p>An offset added to the position of the effect is executed at. Only relevant if the effect does something where position matters, for example emitting particles or explosions, spawning something or playing sounds. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00701">701</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00730">730</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1556,12 +1562,12 @@ Properties</h2></td></tr>
 
 <p>How close to the entity executing the effect the targets must be. Only applicable if targeting NearbyCharacters or NearbyItems. </p>
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00691">691</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00720">720</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9965f651814f0392e8599a5da2958972"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9965f651814f0392e8599a5da2958972">&#9670;&nbsp;</a></span>SpawnCharacters</h2>
+<a id="a15f733d4c6d9f2f2cb98084a56b5b540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f733d4c6d9f2f2cb98084a56b5b540">&#9670;&nbsp;</a></span>SpawnCharacters</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1570,7 +1576,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html">CharacterSpawnInfo</a>&gt; Barotrauma.StatusEffect.SpawnCharacters</td>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html">CharacterSpawnInfo</a>&gt;?? Barotrauma.StatusEffect.SpawnCharacters</td>
         </tr>
       </table>
   </td>
@@ -1580,7 +1586,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00674">674</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00697">697</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>
@@ -1604,7 +1610,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00703">703</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_status_effect_8cs_source.html#l00732">732</a> of file <a class="el" href="_status_effect_8cs_source.html">StatusEffect.cs</a>.</p>
 
 </div>
 </div>

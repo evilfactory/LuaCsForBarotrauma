@@ -10,6 +10,7 @@ var class_barotrauma_1_1_lights_1_1_light_source_params =
     [ "BlinkFrequency", "class_barotrauma_1_1_lights_1_1_light_source_params.html#af3a18eac01752a18a8faaf6388691ff9", null ],
     [ "Color", "class_barotrauma_1_1_lights_1_1_light_source_params.html#a320beacfc9f4a6f8eccfca3cbf189f3a", null ],
     [ "DeformableLightSpriteElement", "class_barotrauma_1_1_lights_1_1_light_source_params.html#a4865274076dfe0736668aaa3abe85940", null ],
+    [ "Directional", "class_barotrauma_1_1_lights_1_1_light_source_params.html#a184cc6d993d806171d467344f3c91c71", null ],
     [ "Flicker", "class_barotrauma_1_1_lights_1_1_light_source_params.html#ac7a33b6cee42f778f9b55eb956867260", null ],
     [ "FlickerSpeed", "class_barotrauma_1_1_lights_1_1_light_source_params.html#a787346dbeec1a969dcfe854d3a53b2b7", null ],
     [ "LightSprite", "class_barotrauma_1_1_lights_1_1_light_source_params.html#a69fd2d8bbbc4ebbc55c9f406d72a9833", null ],

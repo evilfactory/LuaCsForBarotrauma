@@ -17,5 +17,5 @@ var class_barotrauma_1_1_reputation =
     [ "MinReputation", "class_barotrauma_1_1_reputation.html#acc9c15ff0922fbe8994b75244d3bc411", null ],
     [ "NormalizedValue", "class_barotrauma_1_1_reputation.html#abaa21ed464a56321c15dfa54b0dfc10b", null ],
     [ "ReputationAtRoundStart", "class_barotrauma_1_1_reputation.html#a922c276493e572dda358bae85cd7ef86", null ],
-    [ "Value", "class_barotrauma_1_1_reputation.html#afa5ecdff8018eac00f909c874a7b7b1e", null ]
+    [ "Value", "class_barotrauma_1_1_reputation.html#a0498c1e911a84671420cc2f2ea50de28", null ]
 ];

@@ -16,7 +16,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_steering =
     [ "SetDestinationLevelEnd", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#aef9d135985841cf184fe45fdaf9db8f9", null ],
     [ "SetDestinationLevelStart", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#adf6cadfc14307e2a2016acd2a58a2fa6", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a12be5416b17a9f1c22ee96a51f59e410", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a0154ceb13735e8abc969e6a9f0896ef1", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#abfe00a5cf422cf82f7cab58339f64dea", null ],
     [ "ActiveDockingSource", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#afd94779c9074b3944af92fd5405d2fed", null ],
     [ "DockingSources", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a3348a86b4ebb850d39b391c151029640", null ],
     [ "AIRamTimer", "class_barotrauma_1_1_items_1_1_components_1_1_steering.html#a00e9b51a5ee98f3bdad2d99329696b9d", null ],

@@ -380,7 +380,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                var (x, y, z, w) = Parent.GrowthWeights;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordtype">float</span>[] weights = { x, y, z, w };</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                value = pool.RandomElementByWeight(i =&gt; weights[i]);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                value = pool.GetRandomByWeight(i =&gt; weights[i], Rand.RandSync.Unsynced);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            </div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">return</span> (TileSide) (1 &lt;&lt; value);</div>
@@ -496,8 +496,8 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <span class="keyword">set</span> =&gt; health = Math.Clamp(value, 0, MaxHealth);</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        }</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> Decayed;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> FullyGrown;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> Decayed { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> FullyGrown { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> maxProductDelay = 10,</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                          maxVineGrowthDelay = 10;</div>
@@ -642,7 +642,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            <span class="keywordflow">if</span> (spawnProduct &amp;&amp; ProducedItems.Any())</div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            {</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                SpawnItem(Item, ProducedItems.RandomElementByWeight(it =&gt; it.Probability), spawnPos);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                SpawnItem(Item, ProducedItems.GetRandomByWeight(it =&gt; it.Probability, Rand.RandSync.Unsynced), spawnPos);</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            }</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160; </div>
@@ -1014,7 +1014,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_i
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87a605669cab962bf944d99ce89cf9e58d9"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a605669cab962bf944d99ce89cf9e58d9">Barotrauma.InputType.Health</a></div><div class="ttdeci">@ Health</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87a92b09c7c48c520c3c55e497875da437c"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a92b09c7c48c520c3c55e497875da437c">Barotrauma.InputType.Right</a></div><div class="ttdeci">@ Right</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87a945d5e233cf7d6240f6b783b36a374ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a945d5e233cf7d6240f6b783b36a374ff">Barotrauma.InputType.Left</a></div><div class="ttdeci">@ Left</div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aef74ac760c0c487bd00ad7d0d69b6e50"><div class="ttname"><a href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">Barotrauma.IsPropertySaveable</a></div><div class="ttdeci">IsPropertySaveable</div><div class="ttdef"><b>Definition:</b> <a href="_serializable_property_8cs_source.html#l00123">SerializableProperty.cs:124</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_aef74ac760c0c487bd00ad7d0d69b6e50"><div class="ttname"><a href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">Barotrauma.IsPropertySaveable</a></div><div class="ttdeci">IsPropertySaveable</div><div class="ttdef"><b>Definition:</b> <a href="_serializable_property_8cs_source.html#l00147">SerializableProperty.cs:148</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Barotrauma.WearableType.Item</a></div><div class="ttdeci">@ Item</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_af65b6e3828ae5f6db8cc6aa90bb72ab9a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_barotrauma.html#af65b6e3828ae5f6db8cc6aa90bb72ab9a6adf97f83acf6453d4a6a4b1070f3754">Barotrauma.HitDetection.None</a></div><div class="ttdeci">@ None</div></div>
 </div><!-- fragment --></div><!-- contents -->

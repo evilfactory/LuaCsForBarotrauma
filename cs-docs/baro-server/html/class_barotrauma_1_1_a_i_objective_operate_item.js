@@ -13,6 +13,7 @@ var class_barotrauma_1_1_a_i_objective_operate_item =
     [ "AllowAutomaticItemUnequipping", "class_barotrauma_1_1_a_i_objective_operate_item.html#a1e23fa6e272012230bb6673f5c916236", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_operate_item.html#aee17607aefb87eed11c2676e205dd733", null ],
     [ "AllowMultipleInstances", "class_barotrauma_1_1_a_i_objective_operate_item.html#a7ded09b53b0e77b9ced3a6e0b0d0f541", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_operate_item.html#ad46854c2044b502ceeb85b01972283b9", null ],
     [ "CanBeCompleted", "class_barotrauma_1_1_a_i_objective_operate_item.html#a6bd6e2427156415f793a0fadf91559b4", null ],
     [ "Component", "class_barotrauma_1_1_a_i_objective_operate_item.html#ab82f71411eb27feb5fce537ed7889451", null ],
     [ "DebugTag", "class_barotrauma_1_1_a_i_objective_operate_item.html#a348b26a474c4ae26089b9238233aeaad", null ],

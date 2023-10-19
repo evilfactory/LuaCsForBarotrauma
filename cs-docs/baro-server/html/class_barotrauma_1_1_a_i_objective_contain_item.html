@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a21e3fa7e3bc2260be9d8429ab442d059 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf974964097919eb71f05512988e2b7d inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#acf974964097919eb71f05512988e2b7d">SortSubObjectives</a> ()</td></tr>
 <tr class="separator:acf974964097919eb71f05512988e2b7d inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c06a033143a0ed6e2813edeb5cd2ab2 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a0c06a033143a0ed6e2813edeb5cd2ab2">IsIgnoredAtOutpost</a> ()</td></tr>
+<tr class="memdesc:a0c06a033143a0ed6e2813edeb5cd2ab2 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true only when at a friendly outpost and when the order is set to be ignored there. Note that even if this returns false, the objective can be disallowed, because AllowInFriendlySubs is false.  <a href="class_barotrauma_1_1_a_i_objective.html#a0c06a033143a0ed6e2813edeb5cd2ab2">More...</a><br /></td></tr>
+<tr class="separator:a0c06a033143a0ed6e2813edeb5cd2ab2 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d146f0d4ef7101a8a1df5b2e342339 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a15d146f0d4ef7101a8a1df5b2e342339">CalculatePriority</a> ()</td></tr>
 <tr class="memdesc:a15d146f0d4ef7101a8a1df5b2e342339 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this only when the priority needs to be recalculated. Use the cached Priority property when you don't need to recalculate.  <a href="class_barotrauma_1_1_a_i_objective.html#a15d146f0d4ef7101a8a1df5b2e342339">More...</a><br /></td></tr>
 <tr class="separator:a15d146f0d4ef7101a8a1df5b2e342339 inherit pub_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,6 +182,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a8b5b37022978648e130776db496149ae"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_contain_item.html#a8b5b37022978648e130776db496149ae">Act</a> (float deltaTime)</td></tr>
 <tr class="separator:a8b5b37022978648e130776db496149ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_barotrauma_1_1_a_i_objective"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_barotrauma_1_1_a_i_objective')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_barotrauma_1_1_a_i_objective.html">Barotrauma.AIObjective</a></td></tr>
+<tr class="memitem:acc8e7c2e6a0cf9979f668bb6c16ce2ed inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#acc8e7c2e6a0cf9979f668bb6c16ce2ed">HandleNonAllowed</a> ()</td></tr>
+<tr class="separator:acc8e7c2e6a0cf9979f668bb6c16ce2ed inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c13d92a98f6ac2b579bda989b9183f6 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a6c13d92a98f6ac2b579bda989b9183f6">GetPriority</a> ()</td></tr>
 <tr class="separator:a6c13d92a98f6ac2b579bda989b9183f6 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10280cd07aceb7d45d1de55db69d9cca inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a10280cd07aceb7d45d1de55db69d9cca">SyncRemovedObjectives&lt; T1, T2 &gt;</a> (Dictionary&lt; T1, T2 &gt; dictionary, IEnumerable&lt; T1 &gt; collection)</td></tr>
@@ -191,8 +196,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:aca9a3bcad14aeec5c322bae247b79bfe inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e5b52af6911a0e94c607f0d61eb3737 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a3e5b52af6911a0e94c607f0d61eb3737">OnAbandon</a> ()</td></tr>
 <tr class="separator:a3e5b52af6911a0e94c607f0d61eb3737 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a488a8c355df152713b5bc87a5b50e046 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a488a8c355df152713b5bc87a5b50e046">Check</a> ()</td></tr>
-<tr class="separator:a488a8c355df152713b5bc87a5b50e046 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a791b9fb8b3c5fad96b5c5c8d893283c5 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a791b9fb8b3c5fad96b5c5c8d893283c5">CanEquip</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, bool allowWearing)</td></tr>
 <tr class="separator:a791b9fb8b3c5fad96b5c5c8d893283c5 inherit pro_methods_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -200,6 +203,8 @@ Protected Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:abe7c5d72b98d9233e7fcff7377710033"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_contain_item.html#abe7c5d72b98d9233e7fcff7377710033">Identifier</a> = &quot;contain item&quot;.ToIdentifier()<code> [get, set]</code></td></tr>
 <tr class="separator:abe7c5d72b98d9233e7fcff7377710033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2629b220681859228e5716c18082c938"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_contain_item.html#a2629b220681859228e5716c18082c938">AllowWhileHandcuffed</a><code> [get]</code></td></tr>
+<tr class="separator:a2629b220681859228e5716c18082c938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf211ee1d0595f40d4e602fb42072bad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_contain_item.html#adf211ee1d0595f40d4e602fb42072bad">ItemToContain</a><code> [get]</code></td></tr>
 <tr class="separator:adf211ee1d0595f40d4e602fb42072bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94b43a20b58e3cb4d0383c99d7a0fba5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective_contain_item.html#a94b43a20b58e3cb4d0383c99d7a0fba5">AllowToFindDivingGear</a> = true<code> [get, set]</code></td></tr>
@@ -261,6 +266,8 @@ Properties</h2></td></tr>
 <tr class="separator:ad67987e8442930bb1cdfe8f07158a3b8 inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2956fd3a0697b389a3bbda5c40bb45f9 inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a2956fd3a0697b389a3bbda5c40bb45f9">AllowInAnySub</a><code> [get]</code></td></tr>
 <tr class="separator:a2956fd3a0697b389a3bbda5c40bb45f9 inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50629bd463a0dfe5a57f3074129d1727 inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a50629bd463a0dfe5a57f3074129d1727">AllowWhileHandcuffed</a><code> [get]</code></td></tr>
+<tr class="separator:a50629bd463a0dfe5a57f3074129d1727 inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79f5ddb751d487978aaed5693891671f inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a79f5ddb751d487978aaed5693891671f">CumulatedDevotion</a><code> [get, set]</code></td></tr>
 <tr class="separator:a79f5ddb751d487978aaed5693891671f inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a709c19560bcb14eb9685eaacd6371066 inherit properties_class_barotrauma_1_1_a_i_objective"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_a_i_objective.html#a709c19560bcb14eb9685eaacd6371066">MaxDevotion</a><code> [get]</code></td></tr>
@@ -370,7 +377,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00061">61</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00062">62</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -424,7 +431,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00068">68</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00069">69</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -478,7 +485,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00071">71</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00072">72</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -509,7 +516,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a47aaceb8a082848e7f17bb1596bde7c0">Barotrauma.AIObjective</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00115">115</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00116">116</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -538,7 +545,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_barotrauma_1_1_a_i_objective.html#abd3ffc52e417dc861a6ef664ee8a2807">Barotrauma.AIObjective</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00079">79</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00080">80</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -558,7 +565,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00247">247</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00251">251</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -587,7 +594,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_a_i_objective.html#a92186a78f53e6964685de228b2933ecd">Barotrauma.AIObjective</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00257">257</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00261">261</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -604,7 +611,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00018">18</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00019">19</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -620,7 +627,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00025">25</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00026">26</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -636,7 +643,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00015">15</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00016">16</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -652,7 +659,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00017">17</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00018">18</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -668,7 +675,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00024">24</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00025">25</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -684,7 +691,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00029">29</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00030">30</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -709,7 +716,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00037">37</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00038">38</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -733,7 +740,31 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00036">36</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00037">37</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2629b220681859228e5716c18082c938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2629b220681859228e5716c18082c938">&#9670;&nbsp;</a></span>AllowWhileHandcuffed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool Barotrauma.AIObjectiveContainItem.AllowWhileHandcuffed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00014">14</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -757,7 +788,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00038">38</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00039">39</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -781,7 +812,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00039">39</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00040">40</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -829,7 +860,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00052">52</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00053">53</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -853,7 +884,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00027">27</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00028">28</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -877,7 +908,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00049">49</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00050">50</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -901,7 +932,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00040">40</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00041">41</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -925,7 +956,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00041">41</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00042">42</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -949,7 +980,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00046">46</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00047">47</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -975,7 +1006,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Only remove existing items when the contain target can't be put in the inventory </p>
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00045">45</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00046">46</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1030,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00047">47</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_i_objective_contain_item_8cs_source.html#l00048">48</a> of file <a class="el" href="_a_i_objective_contain_item_8cs_source.html">AIObjectiveContainItem.cs</a>.</p>
 
 </div>
 </div>

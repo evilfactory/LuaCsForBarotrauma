@@ -34,6 +34,6 @@ var class_barotrauma_1_1_networking_1_1_server_info =
     [ "ServerMessage", "class_barotrauma_1_1_networking_1_1_server_info.html#a4698b847b4515d4ef39d52805256149a", null ],
     [ "ServerName", "class_barotrauma_1_1_networking_1_1_server_info.html#a0332979e43ebe7a1d7e226e13d60eb60", null ],
     [ "SubSelectionMode", "class_barotrauma_1_1_networking_1_1_server_info.html#adef4ac41a2704d5843747c16420e95d5", null ],
-    [ "TraitorsEnabled", "class_barotrauma_1_1_networking_1_1_server_info.html#a1387d56d0a008ee5abaa8a7cf693a00f", null ],
+    [ "TraitorProbability", "class_barotrauma_1_1_networking_1_1_server_info.html#a90d557ad2abd26bcd39c14789edb178f", null ],
     [ "VoipEnabled", "class_barotrauma_1_1_networking_1_1_server_info.html#af6c993ce403eb060de419f64f976a4b7", null ]
 ];

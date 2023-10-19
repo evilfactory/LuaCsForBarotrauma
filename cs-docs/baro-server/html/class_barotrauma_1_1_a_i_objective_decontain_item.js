@@ -1,8 +1,8 @@
 var class_barotrauma_1_1_a_i_objective_decontain_item =
 [
     [ "AIObjectiveDecontainItem", "class_barotrauma_1_1_a_i_objective_decontain_item.html#aac9aa2f41be4a9beb3a048e40e9d0ba7", null ],
-    [ "AIObjectiveDecontainItem", "class_barotrauma_1_1_a_i_objective_decontain_item.html#af30d506a07b22a38ce1efebae9e53901", null ],
-    [ "AIObjectiveDecontainItem", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a7739bb26dfeb79ce464279f9f46820c0", null ],
+    [ "AIObjectiveDecontainItem", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a3e03281b7a8f907fc1adf71a30c7ca4d", null ],
+    [ "AIObjectiveDecontainItem", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a4779ebdaeba3b43cb2acb300bb48be63", null ],
     [ "Act", "class_barotrauma_1_1_a_i_objective_decontain_item.html#adac13705806fca356e749a893311eb8b", null ],
     [ "CheckObjectiveSpecific", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a8b055253fb7ec7c47cdcb6a41e52b3f5", null ],
     [ "OnAbandon", "class_barotrauma_1_1_a_i_objective_decontain_item.html#acae4788cc418f5e58719fd787f633a58", null ],
@@ -10,6 +10,7 @@ var class_barotrauma_1_1_a_i_objective_decontain_item =
     [ "GetItemPriority", "class_barotrauma_1_1_a_i_objective_decontain_item.html#acf9bfda567abd85d8781aff254a27a91", null ],
     [ "AbandonGetItemDialogueCondition", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a37f01da4cc6dd25242feae6627bfc4d9", null ],
     [ "AbandonGetItemDialogueIdentifier", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a5f6ef4b32b279685de773fb405f46789", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a0b9b9af909e0f76127e0d77f8fa58a95", null ],
     [ "ContainObjective", "class_barotrauma_1_1_a_i_objective_decontain_item.html#a9b9a12cb6831fa58e394cf324d0fe0a4", null ],
     [ "DropIfFails", "class_barotrauma_1_1_a_i_objective_decontain_item.html#ac08bd1a237e809ee1093c0262d60e30e", null ],
     [ "Equip", "class_barotrauma_1_1_a_i_objective_decontain_item.html#afef14a53d68fe9bde4a20c81e2458454", null ],

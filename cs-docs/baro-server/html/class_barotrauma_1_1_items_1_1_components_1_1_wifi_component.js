@@ -2,7 +2,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_wifi_component =
 [
     [ "WifiComponent", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#acc0d0adbcc4c8c5fe861855e1fae9dec", null ],
     [ "CanReceive", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a975958d6daf2e2e313903aa391615243", null ],
-    [ "CanTransmit", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a31d3dedfdc681f271b3b2c71150ef124", null ],
+    [ "CanTransmit", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a24170b18ea6681624312af91d4d8d46b", null ],
     [ "CanTransmit", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a268a7cce9b206e54b592686d9542804c", null ],
     [ "GetChannelMemory", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a6b3e67c033c00559286fd0f0c689faa8", null ],
     [ "GetReceiversInRange", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#acac4791474dcc8116a3c57872e8071bf", null ],
@@ -19,6 +19,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_wifi_component =
     [ "AllowCrossTeamCommunication", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#af01f832a57080ac0de0e016fdabc38b6", null ],
     [ "Channel", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a50a0f3e13809acbe723211ef5dd6561d", null ],
     [ "DiscardDuplicateChatMessages", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#ac8165fd990005766d22c80564a1a52cb", null ],
+    [ "JamTimer", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#afb713c7a7dd303dfc71f2a8674f73094", null ],
     [ "LinkToChat", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#aa2ce3fb26a75fa33f485d987e58b4146", null ],
     [ "MinChatMessageInterval", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#ab035b2d63af3712af129fdbb3907c230", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html#a39125fb4f02b2b506354cf831091d418", null ],

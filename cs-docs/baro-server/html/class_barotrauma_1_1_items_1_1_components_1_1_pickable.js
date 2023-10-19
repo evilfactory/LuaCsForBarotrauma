@@ -5,6 +5,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_pickable =
     [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a2d9bb67a466563a41cbb76f08ec2c810", null ],
     [ "DropConnectedWires", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#af752d958926aed39bcba90645f8019e8", null ],
     [ "OnPicked", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#af3731c6772d33ccd9a42238ffb604a49", null ],
+    [ "OnPicked", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a5c7b86f073c1ac585d26ebdeadd4cb9f", null ],
     [ "Pick", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a5e5227fe09a2e231fa8870771f4f09b8", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a19ca81db8cb97feffd851bad2f65cc97", null ],
     [ "StopPicking", "class_barotrauma_1_1_items_1_1_components_1_1_pickable.html#a9fb9e48465636b48c72b2ef50c90ff78", null ],

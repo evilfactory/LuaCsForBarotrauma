@@ -12,6 +12,7 @@ var class_barotrauma_1_1_sub_editor_screen =
       [ "NoCargoSpawnpoints", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a52375c2adf0a34c63f67011dce46db55", null ],
       [ "NoBallastTag", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a610b22dc5bab55c61bdcf236fec2b1f7", null ],
       [ "NonLinkedGaps", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7abce3c7ec548da4fb186b8b5dd8472ba6", null ],
+      [ "NoHiddenContainers", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7ab08bd63bc2a18ca6a0746058883a9536", null ],
       [ "StructureCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a6ab3d1fe191e5785152f95f2d5d010d7", null ],
       [ "WallCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a5c326ecbb694d8d587912723820885fd", null ],
       [ "ItemCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a4715b601daa2cda3d7b42172977bfe2e", null ],
@@ -38,6 +39,7 @@ var class_barotrauma_1_1_sub_editor_screen =
     [ "showEntitiesPanel", "class_barotrauma_1_1_sub_editor_screen.html#ae00aab7960dc9f9718faaf0fa7b215f1", null ],
     [ "TopPanel", "class_barotrauma_1_1_sub_editor_screen.html#aa2e95b3fc88341addb88344ef4928938", null ],
     [ "Cam", "class_barotrauma_1_1_sub_editor_screen.html#a19ae9693b4181216c34ac2ebbeb15f38", null ],
+    [ "DrawCharacterInventory", "class_barotrauma_1_1_sub_editor_screen.html#ae8646ede881bea9bf5456f66c0a2434a", null ],
     [ "ShowThalamus", "class_barotrauma_1_1_sub_editor_screen.html#a3f2a58c0838a786847c49e4ecd670c1e", null ],
     [ "ToggleEntityMenuButton", "class_barotrauma_1_1_sub_editor_screen.html#a0cc530e7e5d41d3d13fe651dad0c86d0", null ],
     [ "WiringMode", "class_barotrauma_1_1_sub_editor_screen.html#ae428f4469f34c32f3f4dcf6126aea30a", null ]

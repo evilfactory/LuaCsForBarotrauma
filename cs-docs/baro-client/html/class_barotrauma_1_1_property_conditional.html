@@ -87,17 +87,21 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_property_conditio
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_barotrauma_1_1_property_conditional-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Barotrauma.PropertyConditional Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Conditionals are used by some in-game mechanics to require one or more conditions to be met for those mechanics to be active. For example, some StatusEffects use Conditionals to only trigger if the affected character is alive.  
+ <a href="class_barotrauma_1_1_property_conditional.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:aef079fde397a26a259196b90c69dc32e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32e">ConditionType</a> { <br />
-&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea5fd6174f8e6640260a150af1a8d2b340">Uncertain</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eaf4ce278cfa05075e75b726706e06ef3d">PropertyValue</a>
+&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea5110e14c0006a3ce2e1c40a7bfa47066">PropertyValueOrAffliction</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea26cf586e0a840f598a5ddae6b3cbd26e">SkillRequirement</a>
 , <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea49ee3087348e8d44e1feda1917443987">Name</a>
 , <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eae26c51c0914809b8cc026a50ebb15643">SpeciesName</a>
 , <br />
@@ -106,79 +110,88 @@ Public Types</h2></td></tr>
 , <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eae002de34660c9d8675393368490b4a3f">HasStatusTag</a>
 , <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea48275171b8bfb257ad96dd98a0826438">HasSpecifierTag</a>
 , <br />
-&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea73592c8f05d1852819763487c90c94f9">Affliction</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eaa28411defe338dd0b29e8400b1c5c53c">EntityType</a>
+&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32eaa28411defe338dd0b29e8400b1c5c53c">EntityType</a>
 , <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea9db9c26ab75404a6591594603d6cda90">LimbType</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32ea26cf586e0a840f598a5ddae6b3cbd26e">SkillRequirement</a>
 <br />
  }</td></tr>
+<tr class="memdesc:aef079fde397a26a259196b90c69dc32e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Category of properties to check against  <a href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32e">More...</a><br /></td></tr>
 <tr class="separator:aef079fde397a26a259196b90c69dc32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a5aeceaea37ccad6f91d09f7f51291d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a7a5aeceaea37ccad6f91d09f7f51291d">Comparison</a> { <a class="el" href="class_barotrauma_1_1_property_conditional.html#a7a5aeceaea37ccad6f91d09f7f51291dac33315685a0cba3ce53be378b3c7874b">And</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a7a5aeceaea37ccad6f91d09f7f51291da3a2d5fe857d8f9541136a124c2edec6c">Or</a>
+<tr class="memitem:af0be344c5d6341f793735162956a32be"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#af0be344c5d6341f793735162956a32be">LogicalOperatorType</a> { <a class="el" href="class_barotrauma_1_1_property_conditional.html#af0be344c5d6341f793735162956a32beac33315685a0cba3ce53be378b3c7874b">And</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#af0be344c5d6341f793735162956a32bea3a2d5fe857d8f9541136a124c2edec6c">Or</a>
  }</td></tr>
-<tr class="separator:a7a5aeceaea37ccad6f91d09f7f51291d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a440810abf979d9366c53dac6edd37528"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528">OperatorType</a> { <br />
-&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528a6adf97f83acf6453d4a6a4b1070f3754">None</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528a0ccb67e7eaae09d9e4078d161eeca100">Equals</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528a34b5af77cc5bf3a5f2a999f11f578255">NotEquals</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528ac6d9d7bb9939f62f01c80f8b1251501c">LessThan</a>
+<tr class="separator:af0be344c5d6341f793735162956a32be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8549edcee5e6fdb6087c36573a2b616a"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a> { <br />
+&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aa6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aa0ccb67e7eaae09d9e4078d161eeca100">Equals</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aa34b5af77cc5bf3a5f2a999f11f578255">NotEquals</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aac6d9d7bb9939f62f01c80f8b1251501c">LessThan</a>
 , <br />
-&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528a06d4c6be3bd9e50b7634b6f20d696a4c">LessThanEquals</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528af6d044fe1f01fb0c956b80099e2a3072">GreaterThan</a>
-, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528a556a75b20efa08c1871b235b22b935bd">GreaterThanEquals</a>
+&#160;&#160;<a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aa06d4c6be3bd9e50b7634b6f20d696a4c">LessThanEquals</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aaf6d044fe1f01fb0c956b80099e2a3072">GreaterThan</a>
+, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616aa556a75b20efa08c1871b235b22b935bd">GreaterThanEquals</a>
 <br />
  }</td></tr>
-<tr class="separator:a440810abf979d9366c53dac6edd37528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a8549edcee5e6fdb6087c36573a2b616a"><td class="mdescLeft">&#160;</td><td class="mdescRight">There are several ways to compare properties to values. The comparison operator to use can be specified by placing one of the following before the value to compare against.  <a href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">More...</a><br /></td></tr>
+<tr class="separator:a8549edcee5e6fdb6087c36573a2b616a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaac20aada3bceb59cf27b13989988ca0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#aaac20aada3bceb59cf27b13989988ca0">PropertyConditional</a> (XAttribute attribute)</td></tr>
-<tr class="separator:aaac20aada3bceb59cf27b13989988ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f42966d71f1d88810795ad1a002d2ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a3f42966d71f1d88810795ad1a002d2ca">Matches</a> (<a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a> target)</td></tr>
-<tr class="separator:a3f42966d71f1d88810795ad1a002d2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1455bcf43bb2ced066b71ed3210f18d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a1455bcf43bb2ced066b71ed3210f18d9">Matches</a> (<a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a> target, bool checkContained)</td></tr>
-<tr class="separator:a1455bcf43bb2ced066b71ed3210f18d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fe00a8ba6a716061fb8c36d579fd88a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a1fe00a8ba6a716061fb8c36d579fd88a">MatchesTagCondition</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> targetTag)</td></tr>
-<tr class="separator:a1fe00a8ba6a716061fb8c36d579fd88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1059ea8aba157e8276adaea30e8a8c2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a1059ea8aba157e8276adaea30e8a8c2b">Matches</a> (<a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a>? target)</td></tr>
+<tr class="separator:a1059ea8aba157e8276adaea30e8a8c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ba122902348f9f0a6cb5479e4d3a408"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a1ba122902348f9f0a6cb5479e4d3a408">TargetTagMatchesTagCondition</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> targetTag)</td></tr>
+<tr class="separator:a1ba122902348f9f0a6cb5479e4d3a408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a16ed217a6d55fee181e5455ca43c9ac9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a16ed217a6d55fee181e5455ca43c9ac9">IsValid</a> (XAttribute attribute)</td></tr>
-<tr class="separator:a16ed217a6d55fee181e5455ca43c9ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4aa600ee9b4f90fc513106097e1d777"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528">OperatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#ac4aa600ee9b4f90fc513106097e1d777">GetOperatorType</a> (string op)</td></tr>
-<tr class="separator:ac4aa600ee9b4f90fc513106097e1d777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c7e9799b5302aeb893278a70004f3d"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_property_conditional.html">PropertyConditional</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a01c7e9799b5302aeb893278a70004f3d">FromXElement</a> (XElement element, Predicate&lt; XAttribute &gt;? predicate=null)</td></tr>
+<tr class="separator:a01c7e9799b5302aeb893278a70004f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e4c881a0751e597814a3efc84d59635"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a2e4c881a0751e597814a3efc84d59635">GetComparisonOperatorType</a> (string op)</td></tr>
+<tr class="separator:a2e4c881a0751e597814a3efc84d59635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea83af56d4f55f096b3618af6623b84"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a9ea83af56d4f55f096b3618af6623b84">CompareFloat</a> (float val1, float val2, <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a> op)</td></tr>
+<tr class="separator:a9ea83af56d4f55f096b3618af6623b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac1cf76237e6628c172c10263b9bf410a"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_property_conditional.html#aef079fde397a26a259196b90c69dc32e">ConditionType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#ac1cf76237e6628c172c10263b9bf410a">Type</a></td></tr>
 <tr class="separator:ac1cf76237e6628c172c10263b9bf410a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c35bff5ccc1473d5fda0b1a16ac38eb"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528">OperatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a9c35bff5ccc1473d5fda0b1a16ac38eb">Operator</a></td></tr>
-<tr class="separator:a9c35bff5ccc1473d5fda0b1a16ac38eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08ab954684f011ef233a1620922e5dcd"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a08ab954684f011ef233a1620922e5dcd">ComparisonOperator</a></td></tr>
+<tr class="separator:a08ab954684f011ef233a1620922e5dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd7f18162bfe124093be8502206d727d"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#acd7f18162bfe124093be8502206d727d">AttributeName</a></td></tr>
 <tr class="separator:acd7f18162bfe124093be8502206d727d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39d8f4c721a878af2113ccb344c5b064"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a39d8f4c721a878af2113ccb344c5b064">AttributeValue</a></td></tr>
 <tr class="separator:a39d8f4c721a878af2113ccb344c5b064"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1250ed8966f6e98fb9e6c7562339744"><td class="memItemLeft" align="right" valign="top">readonly string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#ab1250ed8966f6e98fb9e6c7562339744">SplitAttributeValue</a></td></tr>
-<tr class="separator:ab1250ed8966f6e98fb9e6c7562339744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb58e95e731c9f6bc054c28eeb1d548"><td class="memItemLeft" align="right" valign="top">readonly ImmutableArray&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a8bb58e95e731c9f6bc054c28eeb1d548">AttributeValueAsTags</a></td></tr>
+<tr class="separator:a8bb58e95e731c9f6bc054c28eeb1d548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba693c7ae9a2181645f59c3ae98e42d8"><td class="memItemLeft" align="right" valign="top">readonly? float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#aba693c7ae9a2181645f59c3ae98e42d8">FloatValue</a></td></tr>
 <tr class="separator:aba693c7ae9a2181645f59c3ae98e42d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a897c22b01d191d2741891db15d176902"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a897c22b01d191d2741891db15d176902">TargetItemComponentName</a></td></tr>
-<tr class="separator:a897c22b01d191d2741891db15d176902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd32941b6bb55b2deba8a82945efaac"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a4cd32941b6bb55b2deba8a82945efaac">TargetItemComponent</a></td></tr>
+<tr class="memdesc:a4cd32941b6bb55b2deba8a82945efaac"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to the name of one of the target's ItemComponents, the conditionals defined by this element check against the properties of that component. Only works on items.  <a href="class_barotrauma_1_1_property_conditional.html#a4cd32941b6bb55b2deba8a82945efaac">More...</a><br /></td></tr>
+<tr class="separator:a4cd32941b6bb55b2deba8a82945efaac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeb6d02e9eebb086226be6b72865f4ba"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#abeb6d02e9eebb086226be6b72865f4ba">TargetSelf</a></td></tr>
+<tr class="memdesc:abeb6d02e9eebb086226be6b72865f4ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, the conditionals defined by this element check against the attacking character instead of the attacked character. Only applies to a character's attacks.  <a href="class_barotrauma_1_1_property_conditional.html#abeb6d02e9eebb086226be6b72865f4ba">More...</a><br /></td></tr>
 <tr class="separator:abeb6d02e9eebb086226be6b72865f4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a197742d5d2a583bbf7ca9f59e72add0d"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a197742d5d2a583bbf7ca9f59e72add0d">TargetContainer</a></td></tr>
+<tr class="memdesc:a197742d5d2a583bbf7ca9f59e72add0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, the conditionals defined by this element check against the entity containing the target.  <a href="class_barotrauma_1_1_property_conditional.html#a197742d5d2a583bbf7ca9f59e72add0d">More...</a><br /></td></tr>
 <tr class="separator:a197742d5d2a583bbf7ca9f59e72add0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c249b1f983860d59bf400a7c13c3c32"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a4c249b1f983860d59bf400a7c13c3c32">TargetGrandParent</a></td></tr>
+<tr class="memdesc:a4c249b1f983860d59bf400a7c13c3c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this and TargetContainer are set to true, the conditionals defined by this element check against the entity containing the target's container. For example, diving suits have a status effect that targets contained oxygen tanks, with a conditional that only passes if the locker containing the suit is powered.  <a href="class_barotrauma_1_1_property_conditional.html#a4c249b1f983860d59bf400a7c13c3c32">More...</a><br /></td></tr>
 <tr class="separator:a4c249b1f983860d59bf400a7c13c3c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a916ad6cc848adbdd790f7b954fd15576"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a916ad6cc848adbdd790f7b954fd15576">TargetContainedItem</a></td></tr>
+<tr class="memdesc:a916ad6cc848adbdd790f7b954fd15576"><td class="mdescLeft">&#160;</td><td class="mdescRight">If set to true, the conditionals defined by this element check against the items contained by the target. Only works with items.  <a href="class_barotrauma_1_1_property_conditional.html#a916ad6cc848adbdd790f7b954fd15576">More...</a><br /></td></tr>
 <tr class="separator:a916ad6cc848adbdd790f7b954fd15576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:acf1eab47cd0782394699779940fad120"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_property_conditional.html#acf1eab47cd0782394699779940fad120">ComparisonOperator</a></td></tr>
+<tr class="separator:acf1eab47cd0782394699779940fad120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00013">13</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<div class="textblock"><p>Conditionals are used by some in-game mechanics to require one or more conditions to be met for those mechanics to be active. For example, some StatusEffects use Conditionals to only trigger if the affected character is alive. </p>
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00018">18</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a7a5aeceaea37ccad6f91d09f7f51291d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a5aeceaea37ccad6f91d09f7f51291d">&#9670;&nbsp;</a></span>Comparison</h2>
+<a id="a8549edcee5e6fdb6087c36573a2b616a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8549edcee5e6fdb6087c36573a2b616a">&#9670;&nbsp;</a></span>ComparisonOperatorType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +200,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="class_barotrauma_1_1_property_conditional.html#a7a5aeceaea37ccad6f91d09f7f51291d">Barotrauma.PropertyConditional.Comparison</a></td>
+          <td class="memname">enum <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">Barotrauma.PropertyConditional.ComparisonOperatorType</a></td>
         </tr>
       </table>
   </td>
@@ -196,12 +209,30 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>There are several ways to compare properties to values. The comparison operator to use can be specified by placing one of the following before the value to compare against. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7a5aeceaea37ccad6f91d09f7f51291dac33315685a0cba3ce53be378b3c7874b"></a>And&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7a5aeceaea37ccad6f91d09f7f51291da3a2d5fe857d8f9541136a124c2edec6c"></a>Or&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aa6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aa0ccb67e7eaae09d9e4078d161eeca100"></a>Equals&#160;</td><td class="fielddoc"><p>Require that the property being checked equals the given value. </p>
+<p>This is the default operator used if none is specified.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aa34b5af77cc5bf3a5f2a999f11f578255"></a>NotEquals&#160;</td><td class="fielddoc"><p>Require that the property being checked doesn't equal the given value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aac6d9d7bb9939f62f01c80f8b1251501c"></a>LessThan&#160;</td><td class="fielddoc"><p>Require that the property being checked is less than the given value. </p>
+<p>This can only be used to compare with numeric object properties, affliction strengths and skill levels.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aa06d4c6be3bd9e50b7634b6f20d696a4c"></a>LessThanEquals&#160;</td><td class="fielddoc"><p>Require that the property being checked is less than or equal to the given value. </p>
+<p>This can only be used to compare with numeric object properties, affliction strengths and skill levels.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aaf6d044fe1f01fb0c956b80099e2a3072"></a>GreaterThan&#160;</td><td class="fielddoc"><p>Require that the property being checked is greater than the given value. </p>
+<p>This can only be used to compare with numeric object properties, affliction strengths and skill levels.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8549edcee5e6fdb6087c36573a2b616aa556a75b20efa08c1871b235b22b935bd"></a>GreaterThanEquals&#160;</td><td class="fielddoc"><p>Require that the property being checked is greater than or equal to the given value. </p>
+<p>This can only be used to compare with numeric object properties, affliction strengths and skill levels.</p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00031">31</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00115">115</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -224,27 +255,48 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Category of properties to check against </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea5fd6174f8e6640260a150af1a8d2b340"></a>Uncertain&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eaf4ce278cfa05075e75b726706e06ef3d"></a>PropertyValue&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea49ee3087348e8d44e1feda1917443987"></a>Name&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eae26c51c0914809b8cc026a50ebb15643"></a>SpeciesName&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eacdb9af822391aad18da010ddf2255fbb"></a>SpeciesGroup&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea90606097e959064225074a4c4e472b8e"></a>HasTag&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eae002de34660c9d8675393368490b4a3f"></a>HasStatusTag&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea48275171b8bfb257ad96dd98a0826438"></a>HasSpecifierTag&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea73592c8f05d1852819763487c90c94f9"></a>Affliction&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eaa28411defe338dd0b29e8400b1c5c53c"></a>EntityType&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea9db9c26ab75404a6591594603d6cda90"></a>LimbType&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea26cf586e0a840f598a5ddae6b3cbd26e"></a>SkillRequirement&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea5110e14c0006a3ce2e1c40a7bfa47066"></a>PropertyValueOrAffliction&#160;</td><td class="fielddoc"><p>If there exists an affliction with an identifier that matches the given key, check against the strength of that affliction. Otherwise, check against the value of one of the target's properties. </p>
+<p>The target object's available properties depend on how that object is defined in the <a href="https://github.com/Regalis11/Barotrauma">source code</a>.</p>
+<p>This is not applicable if the element contains the attribute <code>SkillRequirement="true"</code>.</p>
+<p>&lt;AutoDocEntryName value="Property or affliction identifier" &gt; </p>
+<p>&lt;Conditional WatchersGaze="gt 0" &gt; &lt;Conditional IsDead="true" &gt; </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea26cf586e0a840f598a5ddae6b3cbd26e"></a>SkillRequirement&#160;</td><td class="fielddoc"><p>Check against the target character's skill with the same name as the attribute. </p>
+<p>This is only applicable if the element contains the attribute <code>SkillRequirement="true"</code>.</p>
+<p>&lt;AutoDocEntryName value="Skill identifier" &gt; </p>
+<p>&lt;Conditional SkillRequirement="true" weapons="lt 50" &gt; </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea49ee3087348e8d44e1feda1917443987"></a>Name&#160;</td><td class="fielddoc"><p>Check against the name of the target. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eae26c51c0914809b8cc026a50ebb15643"></a>SpeciesName&#160;</td><td class="fielddoc"><p>Check against the species identifier of the target. Only works on characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eacdb9af822391aad18da010ddf2255fbb"></a>SpeciesGroup&#160;</td><td class="fielddoc"><p>Check against the species group of the target. Only works on characters. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea90606097e959064225074a4c4e472b8e"></a>HasTag&#160;</td><td class="fielddoc"><p>Check against the target's tags. Only works on items. </p>
+<p>Several tags can be checked against by using a comma-separated list.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eae002de34660c9d8675393368490b4a3f"></a>HasStatusTag&#160;</td><td class="fielddoc"><p>Check against the tags of the target's active status effects. </p>
+<p>Several tags can be checked against by using a comma-separated list.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea48275171b8bfb257ad96dd98a0826438"></a>HasSpecifierTag&#160;</td><td class="fielddoc"><p>Check against the target's specifier tags. In the vanilla game, these are the head index and gender. See human.xml for more details. </p>
+<p>Several tags can be checked against by using a comma-separated list.</p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32eaa28411defe338dd0b29e8400b1c5c53c"></a>EntityType&#160;</td><td class="fielddoc"><p>Check against the target's entity type. </p>
+<p>The currently supported values are "character", "limb", "item", "structure" and "null".</p>
+</td></tr>
+<tr><td class="fieldname"><a id="aef079fde397a26a259196b90c69dc32ea9db9c26ab75404a6591594603d6cda90"></a>LimbType&#160;</td><td class="fielddoc"><p>Check against the target's limb type. See <a class="el" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">Barotrauma.LimbType</a>. </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00015">15</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00025">25</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
-<a id="a440810abf979d9366c53dac6edd37528"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a440810abf979d9366c53dac6edd37528">&#9670;&nbsp;</a></span>OperatorType</h2>
+<a id="af0be344c5d6341f793735162956a32be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0be344c5d6341f793735162956a32be">&#9670;&nbsp;</a></span>LogicalOperatorType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,7 +305,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528">Barotrauma.PropertyConditional.OperatorType</a></td>
+          <td class="memname">enum <a class="el" href="class_barotrauma_1_1_property_conditional.html#af0be344c5d6341f793735162956a32be">Barotrauma.PropertyConditional.LogicalOperatorType</a></td>
         </tr>
       </table>
   </td>
@@ -263,43 +315,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528a0ccb67e7eaae09d9e4078d161eeca100"></a>Equals&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528a34b5af77cc5bf3a5f2a999f11f578255"></a>NotEquals&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528ac6d9d7bb9939f62f01c80f8b1251501c"></a>LessThan&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528a06d4c6be3bd9e50b7634b6f20d696a4c"></a>LessThanEquals&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528af6d044fe1f01fb0c956b80099e2a3072"></a>GreaterThan&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a440810abf979d9366c53dac6edd37528a556a75b20efa08c1871b235b22b935bd"></a>GreaterThanEquals&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af0be344c5d6341f793735162956a32beac33315685a0cba3ce53be378b3c7874b"></a>And&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af0be344c5d6341f793735162956a32bea3a2d5fe857d8f9541136a124c2edec6c"></a>Or&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00037">37</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aaac20aada3bceb59cf27b13989988ca0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaac20aada3bceb59cf27b13989988ca0">&#9670;&nbsp;</a></span>PropertyConditional()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Barotrauma.PropertyConditional.PropertyConditional </td>
-          <td>(</td>
-          <td class="paramtype">XAttribute&#160;</td>
-          <td class="paramname"><em>attribute</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00086">86</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00105">105</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac4aa600ee9b4f90fc513106097e1d777"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4aa600ee9b4f90fc513106097e1d777">&#9670;&nbsp;</a></span>GetOperatorType()</h2>
+<a id="a9ea83af56d4f55f096b3618af6623b84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ea83af56d4f55f096b3618af6623b84">&#9670;&nbsp;</a></span>CompareFloat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -308,7 +334,89 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528">OperatorType</a> Barotrauma.PropertyConditional.GetOperatorType </td>
+          <td class="memname">static bool Barotrauma.PropertyConditional.CompareFloat </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a>&#160;</td>
+          <td class="paramname"><em>op</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00606">606</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+
+</div>
+</div>
+<a id="a01c7e9799b5302aeb893278a70004f3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c7e9799b5302aeb893278a70004f3d">&#9670;&nbsp;</a></span>FromXElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_property_conditional.html">PropertyConditional</a>&gt; Barotrauma.PropertyConditional.FromXElement </td>
+          <td>(</td>
+          <td class="paramtype">XElement&#160;</td>
+          <td class="paramname"><em>element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Predicate&lt; XAttribute &gt;?&#160;</td>
+          <td class="paramname"><em>predicate</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00199">199</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2e4c881a0751e597814a3efc84d59635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e4c881a0751e597814a3efc84d59635">&#9670;&nbsp;</a></span>GetComparisonOperatorType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a> Barotrauma.PropertyConditional.GetComparisonOperatorType </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>op</em></td><td>)</td>
@@ -322,40 +430,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00130">130</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00307">307</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
-<a id="a16ed217a6d55fee181e5455ca43c9ac9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16ed217a6d55fee181e5455ca43c9ac9">&#9670;&nbsp;</a></span>IsValid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static bool Barotrauma.PropertyConditional.IsValid </td>
-          <td>(</td>
-          <td class="paramtype">XAttribute&#160;</td>
-          <td class="paramname"><em>attribute</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00068">68</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3f42966d71f1d88810795ad1a002d2ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f42966d71f1d88810795ad1a002d2ca">&#9670;&nbsp;</a></span>Matches() <span class="overload">[1/2]</span></h2>
+<a id="a1059ea8aba157e8276adaea30e8a8c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1059ea8aba157e8276adaea30e8a8c2b">&#9670;&nbsp;</a></span>Matches()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -363,55 +443,25 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool Barotrauma.PropertyConditional.Matches </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a>?&#160;</td>
           <td class="paramname"><em>target</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00167">167</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00345">345</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
-<a id="a1455bcf43bb2ced066b71ed3210f18d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1455bcf43bb2ced066b71ed3210f18d9">&#9670;&nbsp;</a></span>Matches() <span class="overload">[2/2]</span></h2>
+<a id="a1ba122902348f9f0a6cb5479e4d3a408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ba122902348f9f0a6cb5479e4d3a408">&#9670;&nbsp;</a></span>TargetTagMatchesTagCondition()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Barotrauma.PropertyConditional.Matches </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_i_serializable_entity.html">ISerializableEntity</a>&#160;</td>
-          <td class="paramname"><em>target</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>checkContained</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00172">172</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
-
-</div>
-</div>
-<a id="a1fe00a8ba6a716061fb8c36d579fd88a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fe00a8ba6a716061fb8c36d579fd88a">&#9670;&nbsp;</a></span>MatchesTagCondition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Barotrauma.PropertyConditional.MatchesTagCondition </td>
+          <td class="memname">bool Barotrauma.PropertyConditional.TargetTagMatchesTagCondition </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
           <td class="paramname"><em>targetTag</em></td><td>)</td>
@@ -420,7 +470,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00378">378</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00529">529</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -437,7 +487,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00050">50</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00166">166</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -453,7 +503,63 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00051">51</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00167">167</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8bb58e95e731c9f6bc054c28eeb1d548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb58e95e731c9f6bc054c28eeb1d548">&#9670;&nbsp;</a></span>AttributeValueAsTags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ImmutableArray&lt;<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&gt; Barotrauma.PropertyConditional.AttributeValueAsTags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00168">168</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+
+</div>
+</div>
+<a id="a08ab954684f011ef233a1620922e5dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08ab954684f011ef233a1620922e5dcd">&#9670;&nbsp;</a></span>ComparisonOperator <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a> Barotrauma.PropertyConditional.ComparisonOperator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00165">165</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+
+</div>
+</div>
+<a id="acf1eab47cd0782394699779940fad120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1eab47cd0782394699779940fad120">&#9670;&nbsp;</a></span>ComparisonOperator <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a8549edcee5e6fdb6087c36573a2b616a">ComparisonOperatorType</a> Barotrauma.PropertyConditional.ComparisonOperator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00292">292</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -469,39 +575,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00053">53</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
-
-</div>
-</div>
-<a id="a9c35bff5ccc1473d5fda0b1a16ac38eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c35bff5ccc1473d5fda0b1a16ac38eb">&#9670;&nbsp;</a></span>Operator</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="class_barotrauma_1_1_property_conditional.html#a440810abf979d9366c53dac6edd37528">OperatorType</a> Barotrauma.PropertyConditional.Operator</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00049">49</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
-
-</div>
-</div>
-<a id="ab1250ed8966f6e98fb9e6c7562339744"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1250ed8966f6e98fb9e6c7562339744">&#9670;&nbsp;</a></span>SplitAttributeValue</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly string [] Barotrauma.PropertyConditional.SplitAttributeValue</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00052">52</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00169">169</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -517,7 +591,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00065">65</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p>If set to true, the conditionals defined by this element check against the items contained by the target. Only works with items. </p>
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00197">197</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -533,7 +609,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00061">61</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p>If set to true, the conditionals defined by this element check against the entity containing the target. </p>
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00186">186</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -549,23 +627,27 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00063">63</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p>If this and TargetContainer are set to true, the conditionals defined by this element check against the entity containing the target's container. For example, diving suits have a status effect that targets contained oxygen tanks, with a conditional that only passes if the locker containing the suit is powered. </p>
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00192">192</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
-<a id="a897c22b01d191d2741891db15d176902"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a897c22b01d191d2741891db15d176902">&#9670;&nbsp;</a></span>TargetItemComponentName</h2>
+<a id="a4cd32941b6bb55b2deba8a82945efaac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd32941b6bb55b2deba8a82945efaac">&#9670;&nbsp;</a></span>TargetItemComponent</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly string Barotrauma.PropertyConditional.TargetItemComponentName</td>
+          <td class="memname">readonly string Barotrauma.PropertyConditional.TargetItemComponent</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00055">55</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p>If set to the name of one of the target's ItemComponents, the conditionals defined by this element check against the properties of that component. Only works on items. </p>
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00175">175</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -581,7 +663,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00058">58</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p>If set to true, the conditionals defined by this element check against the attacking character instead of the attacked character. Only applies to a character's attacks. </p>
+
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00181">181</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>
@@ -597,7 +681,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00048">48</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_property_conditional_8cs_source.html#l00164">164</a> of file <a class="el" href="_property_conditional_8cs_source.html">PropertyConditional.cs</a>.</p>
 
 </div>
 </div>

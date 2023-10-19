@@ -182,183 +182,182 @@ $(document).ready(function(){initNavTree('_spreadsheet_export_8cs_source.html','
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="keywordflow">if</span> (name.Equals(nameof(StatusEffect), StringComparison.OrdinalIgnoreCase))</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        StatusEffect statusEffect = StatusEffect.Load(subElement, debugIdentifier);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        <span class="keywordflow">if</span> (statusEffect == <span class="keyword">null</span> || !statusEffect.HasTag(<span class="stringliteral">&quot;medical&quot;</span>)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        statusEffects.Add(statusEffect);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IsRequiredSkill(subElement, out Skill? skill) &amp;&amp; skill != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        medicalRequiredSkill = (int) skill.Level;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                List&lt;StatusEffect&gt; successEffects = statusEffects.Where(se =&gt; se.type == <a class="code" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">ActionType</a>.OnSuccess).ToList();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                List&lt;StatusEffect&gt; failureEffects = statusEffects.Where(se =&gt; se.type == <a class="code" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">ActionType</a>.OnFailure).ToList();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">foreach</span> (StatusEffect statusEffect <span class="keywordflow">in</span> successEffects)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    <span class="keywordtype">float</span> duration = statusEffect.Duration;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    onSuccessAfflictions.AddRange(statusEffect.ReduceAffliction.Select(ra =&gt; (GetAfflictionName(ra.AfflictionIdentifier), -ra.ReduceAmount, duration)));</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    onSuccessAfflictions.AddRange(statusEffect.Afflictions.Select(affliction =&gt; (affliction.Prefab.Name, affliction.NonClampedStrength, duration)));</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">foreach</span> (StatusEffect statusEffect <span class="keywordflow">in</span> failureEffects)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keywordtype">float</span> duration = statusEffect.Duration;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    onFailureAfflictions.AddRange(statusEffect.ReduceAffliction.Select(ra =&gt; (GetAfflictionName(ra.AfflictionIdentifier), -ra.ReduceAmount, duration)));</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    onFailureAfflictions.AddRange(statusEffect.Afflictions.Select(affliction =&gt; (affliction.Prefab.Name, affliction.NonClampedStrength, duration)));</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> XElement(<span class="stringliteral">&quot;Medical&quot;</span>,</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;skillamount&quot;</span>, medicalRequiredSkill),</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;successafflictions&quot;</span>, FormatArray(onSuccessAfflictions.Select(tpl =&gt; tpl.Item1))),</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;successamounts&quot;</span>, FormatArray(onSuccessAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item2)))),</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;successdurations&quot;</span>, FormatArray(onSuccessAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item3)))),</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;failureafflictions&quot;</span>, FormatArray(onFailureAfflictions.Select(tpl =&gt; tpl.Item1))),</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;failureamounts&quot;</span>, FormatArray(onFailureAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item2)))),</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;failuredurations&quot;</span>, FormatArray(onFailureAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item3))))</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            );</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> XElement ParseWeapon(ItemPrefab prefab)</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordtype">float</span> stun = 0;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordtype">bool</span> isAoE = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordtype">float</span>? structDamage = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordtype">int</span> skillRequirement = 0;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="comment">// affliction, amount</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            List&lt;(LocalizedString Name, <span class="keywordtype">float</span> Amount)&gt; damages = <span class="keyword">new</span> List&lt;(LocalizedString Name, <span class="keywordtype">float</span> Amount)&gt;();</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordtype">string</span>[] validNames = { nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Projectile</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html">MeleeWeapon</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html">RepairTool</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">ItemComponent</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html">RangedWeapon</a>) };</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">foreach</span> (var icElement <span class="keywordflow">in</span> prefab.ConfigElement.Elements())</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordtype">string</span> icName = icElement.Name.ToString();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">if</span> (!validNames.Any(name =&gt; icName.Equals(name, StringComparison.OrdinalIgnoreCase))) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">foreach</span> (var icChildElement <span class="keywordflow">in</span> icElement.Elements())</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    <span class="keywordtype">string</span> name = icChildElement.Name.ToString();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    <span class="keywordflow">if</span> (IsRequiredSkill(icChildElement, out Skill? skill) &amp;&amp; skill != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        skillRequirement = (int) skill.Level;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(nameof(Attack), StringComparison.OrdinalIgnoreCase))</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                        ParseAttack(<span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#a55389d27e5f2b04e4c3c7b0c1d14bd55adcfafcb4323b102c7e204555d313ba0a">Attack</a>(icChildElement, debugIdentifier));</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(nameof(Explosion), StringComparison.OrdinalIgnoreCase))</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                    {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        ParseExplosion(<span class="keyword">new</span>[] { <span class="keyword">new</span> Explosion(icChildElement, debugIdentifier) });</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(nameof(StatusEffect), StringComparison.OrdinalIgnoreCase))</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                        ParseStatusEffect(<span class="keyword">new</span>[] { StatusEffect.Load(icChildElement, debugIdentifier) });</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    <span class="keywordtype">void</span> ParseStatusEffect(IEnumerable&lt;StatusEffect&gt; statusEffects)</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        <span class="keywordflow">foreach</span> (StatusEffect effect <span class="keywordflow">in</span> statusEffects)</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                            <span class="keywordflow">if</span> (effect.HasTargetType(StatusEffect.TargetType.Character)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                            ParseAfflictions(effect.Afflictions);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                            ParseExplosion(effect.Explosions);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    <span class="keywordtype">void</span> ParseExplosion(IEnumerable&lt;Explosion&gt; explosions)</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        <span class="keywordflow">foreach</span> (Explosion explosion <span class="keywordflow">in</span> explosions)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                            isAoE = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                            ParseAttack(explosion.Attack);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                            ParseStatusEffect(explosion.Attack.StatusEffects);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                        }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <span class="keywordtype">void</span> ParseAttack(Attack attack)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        structDamage ??= attack.StructureDamage;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        ParseAfflictions(attack.Afflictions.Keys);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        ParseStatusEffect(attack.StatusEffects);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="keywordtype">void</span> ParseAfflictions(IEnumerable&lt;Affliction&gt; afflictions)</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                        <span class="keywordflow">foreach</span> (Affliction affliction <span class="keywordflow">in</span> afflictions)</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                        {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                            <span class="comment">// Exclude stuns</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                            <span class="keywordflow">if</span> (affliction.Prefab == AfflictionPrefab.Stun)</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                            {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                stun += affliction.NonClampedStrength;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                            }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                            damages.Add((affliction.Prefab.Name, affliction.NonClampedStrength));</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                        }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> XElement(<span class="stringliteral">&quot;Weapon&quot;</span>,</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;damagenames&quot;</span>, FormatArray(damages.Select(tpl =&gt; tpl.Item1))),</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;damageamounts&quot;</span>, FormatArray(damages.Select(tpl =&gt; FormatFloat(tpl.Item2)))),</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;isaoe&quot;</span>, isAoE),</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;structuredamage&quot;</span>, structDamage ?? 0),</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;stun&quot;</span>, FormatFloat(stun)),</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;skillrequirement&quot;</span>, skillRequirement)</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            );</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> LocalizedString GetAfflictionName(Identifier identifier)</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">return</span> AfflictionPrefab.Prefabs.Find(prefab =&gt; prefab.Identifier == identifier)?.Name ?? CultureInfo.CurrentCulture.TextInfo.ToTitleCase(identifier.Value!.ToLower());</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        }</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> FormatFloat(<span class="keywordtype">float</span> value)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">return</span> value.ToString(<span class="stringliteral">&quot;0.00&quot;</span>, CultureInfo.InvariantCulture);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> FormatArray&lt;T&gt;(IEnumerable&lt;T&gt; array)</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Join(separator, array);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsRequiredSkill(ContentXElement element, out Skill? skill)</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keywordtype">string</span> name = element.Name.ToString();</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordtype">bool</span> isSkill = name.Equals(<span class="stringliteral">&quot;RequiredSkill&quot;</span>, StringComparison.OrdinalIgnoreCase) ||</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                           name.Equals(<span class="stringliteral">&quot;RequiredSkills&quot;</span>, StringComparison.OrdinalIgnoreCase);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> (isSkill)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                Identifier identifier = element.GetAttributeIdentifier(nameof(Skill.Identifier), Identifier.Empty);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="keywordtype">float</span> level = element.GetAttributeFloat(nameof(Skill.Level).ToLowerInvariant(), 0f);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                skill = <span class="keyword">new</span> Skill(identifier, level);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                skill = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">return</span> isSkill;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        <span class="keywordflow">if</span> (statusEffect == <span class="keyword">null</span> || !statusEffect.HasTag(Tags.MedicalItem)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        statusEffects.Add(statusEffect);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IsRequiredSkill(subElement, out Skill? skill) &amp;&amp; skill != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                        medicalRequiredSkill = (int) skill.Level;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                List&lt;StatusEffect&gt; successEffects = statusEffects.Where(se =&gt; se.type == <a class="code" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">ActionType</a>.OnSuccess).ToList();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                List&lt;StatusEffect&gt; failureEffects = statusEffects.Where(se =&gt; se.type == <a class="code" href="namespace_barotrauma.html#a7c2425cda6d9eaf0e435c297adb9eeba">ActionType</a>.OnFailure).ToList();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">foreach</span> (StatusEffect statusEffect <span class="keywordflow">in</span> successEffects)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    <span class="keywordtype">float</span> duration = statusEffect.Duration;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    onSuccessAfflictions.AddRange(statusEffect.ReduceAffliction.Select(ra =&gt; (GetAfflictionName(ra.AfflictionIdentifier), -ra.ReduceAmount, duration)));</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    onSuccessAfflictions.AddRange(statusEffect.Afflictions.Select(affliction =&gt; (affliction.Prefab.Name, affliction.NonClampedStrength, duration)));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">foreach</span> (StatusEffect statusEffect <span class="keywordflow">in</span> failureEffects)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    <span class="keywordtype">float</span> duration = statusEffect.Duration;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    onFailureAfflictions.AddRange(statusEffect.ReduceAffliction.Select(ra =&gt; (GetAfflictionName(ra.AfflictionIdentifier), -ra.ReduceAmount, duration)));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    onFailureAfflictions.AddRange(statusEffect.Afflictions.Select(affliction =&gt; (affliction.Prefab.Name, affliction.NonClampedStrength, duration)));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> XElement(<span class="stringliteral">&quot;Medical&quot;</span>,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;skillamount&quot;</span>, medicalRequiredSkill),</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;successafflictions&quot;</span>, FormatArray(onSuccessAfflictions.Select(tpl =&gt; tpl.Item1))),</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;successamounts&quot;</span>, FormatArray(onSuccessAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item2)))),</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;successdurations&quot;</span>, FormatArray(onSuccessAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item3)))),</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;failureafflictions&quot;</span>, FormatArray(onFailureAfflictions.Select(tpl =&gt; tpl.Item1))),</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;failureamounts&quot;</span>, FormatArray(onFailureAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item2)))),</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;failuredurations&quot;</span>, FormatArray(onFailureAfflictions.Select(tpl =&gt; FormatFloat(tpl.Item3))))</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> XElement ParseWeapon(ItemPrefab prefab)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordtype">float</span> stun = 0;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordtype">bool</span> isAoE = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordtype">float</span>? structDamage = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordtype">int</span> skillRequirement = 0;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="comment">// affliction, amount</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            List&lt;(LocalizedString Name, <span class="keywordtype">float</span> Amount)&gt; damages = <span class="keyword">new</span> List&lt;(LocalizedString Name, <span class="keywordtype">float</span> Amount)&gt;();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordtype">string</span>[] validNames = { nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Projectile</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html">MeleeWeapon</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_repair_tool.html">RepairTool</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">ItemComponent</a>), nameof(<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html">RangedWeapon</a>) };</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">foreach</span> (var icElement <span class="keywordflow">in</span> prefab.ConfigElement.Elements())</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordtype">string</span> icName = icElement.Name.ToString();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">if</span> (!validNames.Any(name =&gt; icName.Equals(name, StringComparison.OrdinalIgnoreCase))) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <span class="keywordflow">foreach</span> (var icChildElement <span class="keywordflow">in</span> icElement.Elements())</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    <span class="keywordtype">string</span> name = icChildElement.Name.ToString();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    <span class="keywordflow">if</span> (IsRequiredSkill(icChildElement, out Skill? skill) &amp;&amp; skill != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        skillRequirement = (int) skill.Level;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(nameof(Attack), StringComparison.OrdinalIgnoreCase))</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        ParseAttack(<span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#a55389d27e5f2b04e4c3c7b0c1d14bd55adcfafcb4323b102c7e204555d313ba0a">Attack</a>(icChildElement, debugIdentifier));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(nameof(Explosion), StringComparison.OrdinalIgnoreCase))</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        ParseExplosion(<span class="keyword">new</span>[] { <span class="keyword">new</span> Explosion(icChildElement, debugIdentifier) });</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (name.Equals(nameof(StatusEffect), StringComparison.OrdinalIgnoreCase))</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        ParseStatusEffect(<span class="keyword">new</span>[] { StatusEffect.Load(icChildElement, debugIdentifier) });</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    <span class="keywordtype">void</span> ParseStatusEffect(IEnumerable&lt;StatusEffect&gt; statusEffects)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        <span class="keywordflow">foreach</span> (StatusEffect effect <span class="keywordflow">in</span> statusEffects)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                            <span class="keywordflow">if</span> (effect.HasTargetType(StatusEffect.TargetType.Character)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                            ParseAfflictions(effect.Afflictions);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                            ParseExplosion(effect.Explosions);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    <span class="keywordtype">void</span> ParseExplosion(IEnumerable&lt;Explosion&gt; explosions)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        <span class="keywordflow">foreach</span> (Explosion explosion <span class="keywordflow">in</span> explosions)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                            isAoE = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                            ParseAttack(explosion.Attack);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                            ParseStatusEffect(explosion.Attack.StatusEffects);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    <span class="keywordtype">void</span> ParseAttack(Attack attack)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                        structDamage ??= attack.StructureDamage;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        ParseAfflictions(attack.Afflictions.Keys);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        ParseStatusEffect(attack.StatusEffects);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <span class="keywordtype">void</span> ParseAfflictions(IEnumerable&lt;Affliction&gt; afflictions)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                        <span class="keywordflow">foreach</span> (Affliction affliction <span class="keywordflow">in</span> afflictions)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                        {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                            <span class="comment">// Exclude stuns</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                            <span class="keywordflow">if</span> (affliction.Prefab == AfflictionPrefab.Stun)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                            {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                stun += affliction.NonClampedStrength;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                            }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                            damages.Add((affliction.Prefab.Name, affliction.NonClampedStrength));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> XElement(<span class="stringliteral">&quot;Weapon&quot;</span>,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;damagenames&quot;</span>, FormatArray(damages.Select(tpl =&gt; tpl.Item1))),</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;damageamounts&quot;</span>, FormatArray(damages.Select(tpl =&gt; FormatFloat(tpl.Item2)))),</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;isaoe&quot;</span>, isAoE),</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;structuredamage&quot;</span>, structDamage ?? 0),</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;stun&quot;</span>, FormatFloat(stun)),</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;skillrequirement&quot;</span>, skillRequirement)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            );</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> LocalizedString GetAfflictionName(Identifier identifier)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">return</span> AfflictionPrefab.Prefabs.Find(prefab =&gt; prefab.Identifier == identifier)?.Name ?? CultureInfo.CurrentCulture.TextInfo.ToTitleCase(identifier.Value!.ToLower());</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> FormatFloat(<span class="keywordtype">float</span> value)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">return</span> value.ToString(<span class="stringliteral">&quot;0.00&quot;</span>, CultureInfo.InvariantCulture);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> FormatArray&lt;T&gt;(IEnumerable&lt;T&gt; array)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Join(separator, array);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsRequiredSkill(ContentXElement element, out Skill? skill)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordtype">string</span> name = element.Name.ToString();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keywordtype">bool</span> isSkill = name.Equals(<span class="stringliteral">&quot;RequiredSkill&quot;</span>, StringComparison.OrdinalIgnoreCase) ||</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                           name.Equals(<span class="stringliteral">&quot;RequiredSkills&quot;</span>, StringComparison.OrdinalIgnoreCase);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">if</span> (isSkill)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                Identifier identifier = element.GetAttributeIdentifier(nameof(Skill.Identifier), Identifier.Empty);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordtype">float</span> level = element.GetAttributeFloat(nameof(Skill.Level).ToLowerInvariant(), 0f);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                skill = <span class="keyword">new</span> Skill(identifier, level);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                skill = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">return</span> isSkill;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_fabrication_recipe_html"><div class="ttname"><a href="class_barotrauma_1_1_fabrication_recipe.html">Barotrauma.FabricationRecipe</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00080">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:81</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_fabrication_recipe_html_aa766536e1b07feed4b8c9ae0a2131e62"><div class="ttname"><a href="class_barotrauma_1_1_fabrication_recipe.html#aa766536e1b07feed4b8c9ae0a2131e62">Barotrauma.FabricationRecipe.RequiredItems</a></div><div class="ttdeci">readonly ImmutableArray&lt; RequiredItem &gt; RequiredItems</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00191">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:191</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_fabrication_recipe_html_ab05b2bfb5b5a244dcfb872ab19fb0d21"><div class="ttname"><a href="class_barotrauma_1_1_fabrication_recipe.html#ab05b2bfb5b5a244dcfb872ab19fb0d21">Barotrauma.FabricationRecipe.RequiredSkills</a></div><div class="ttdeci">readonly ImmutableArray&lt; Skill &gt; RequiredSkills</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00197">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:197</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_fabrication_recipe_html_aa766536e1b07feed4b8c9ae0a2131e62"><div class="ttname"><a href="class_barotrauma_1_1_fabrication_recipe.html#aa766536e1b07feed4b8c9ae0a2131e62">Barotrauma.FabricationRecipe.RequiredItems</a></div><div class="ttdeci">readonly ImmutableArray&lt; RequiredItem &gt; RequiredItems</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00215">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:215</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_fabrication_recipe_html_ab05b2bfb5b5a244dcfb872ab19fb0d21"><div class="ttname"><a href="class_barotrauma_1_1_fabrication_recipe.html#ab05b2bfb5b5a244dcfb872ab19fb0d21">Barotrauma.FabricationRecipe.RequiredSkills</a></div><div class="ttdeci">readonly ImmutableArray&lt; Skill &gt; RequiredSkills</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00221">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:221</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_xml_writer_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_xml_writer.html">Barotrauma.IO.XmlWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00148">SafeIO.cs:149</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_xml_writer_html_a613c893e2e94c285085ee38a1273a3b5"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_xml_writer.html#a613c893e2e94c285085ee38a1273a3b5">Barotrauma.IO.XmlWriter.Create</a></div><div class="ttdeci">static XmlWriter Create(string path, System.Xml.XmlWriterSettings settings)</div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00163">SafeIO.cs:163</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html">Barotrauma.ItemPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00434">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:435</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_a011a59bb35cb6dd1d64d7a085464d279"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#a011a59bb35cb6dd1d64d7a085464d279">Barotrauma.ItemPrefab.Prefabs</a></div><div class="ttdeci">static readonly PrefabCollection&lt; ItemPrefab &gt; Prefabs</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00436">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:436</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_a9917951f66a6fd9825ac95704eff8fa4"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#a9917951f66a6fd9825ac95704eff8fa4">Barotrauma.ItemPrefab.FabricationRecipes</a></div><div class="ttdeci">ImmutableDictionary&lt; uint, FabricationRecipe &gt; FabricationRecipes</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00471">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:471</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_a9f100fe667f1ccbdb582de25c7f14546"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#a9f100fe667f1ccbdb582de25c7f14546">Barotrauma.ItemPrefab.DefaultPrice</a></div><div class="ttdeci">PriceInfo DefaultPrice</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00444">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:444</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_aab9870ebeeffd9d69855f288658c1f49"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#aab9870ebeeffd9d69855f288658c1f49">Barotrauma.ItemPrefab.Name</a></div><div class="ttdeci">override LocalizedString Name</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00628">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:628</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_acad5125f0a1ace686bd2d17d2d16887b"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#acad5125f0a1ace686bd2d17d2d16887b">Barotrauma.ItemPrefab.Tags</a></div><div class="ttdeci">override ImmutableHashSet&lt; Identifier &gt; Tags</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00631">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:631</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html">Barotrauma.ItemPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00468">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:469</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_a011a59bb35cb6dd1d64d7a085464d279"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#a011a59bb35cb6dd1d64d7a085464d279">Barotrauma.ItemPrefab.Prefabs</a></div><div class="ttdeci">static readonly PrefabCollection&lt; ItemPrefab &gt; Prefabs</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00470">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:470</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_a9917951f66a6fd9825ac95704eff8fa4"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#a9917951f66a6fd9825ac95704eff8fa4">Barotrauma.ItemPrefab.FabricationRecipes</a></div><div class="ttdeci">ImmutableDictionary&lt; uint, FabricationRecipe &gt; FabricationRecipes</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00505">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:505</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_a9f100fe667f1ccbdb582de25c7f14546"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#a9f100fe667f1ccbdb582de25c7f14546">Barotrauma.ItemPrefab.DefaultPrice</a></div><div class="ttdeci">PriceInfo DefaultPrice</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00478">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:478</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_aab9870ebeeffd9d69855f288658c1f49"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#aab9870ebeeffd9d69855f288658c1f49">Barotrauma.ItemPrefab.Name</a></div><div class="ttdeci">override LocalizedString Name</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00662">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:662</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_prefab_html_acad5125f0a1ace686bd2d17d2d16887b"><div class="ttname"><a href="class_barotrauma_1_1_item_prefab.html#acad5125f0a1ace686bd2d17d2d16887b">Barotrauma.ItemPrefab.Tags</a></div><div class="ttdeci">override ImmutableHashSet&lt; Identifier &gt; Tags</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_prefab_8cs_source.html#l00665">BarotraumaShared/SharedSource/Items/ItemPrefab.cs:665</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">Barotrauma.Items.Components.ItemComponent</a></div><div class="ttdoc">The base class for components holding the different functionalities of the item</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00034">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:35</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_melee_weapon_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_melee_weapon.html">Barotrauma.Items.Components.MeleeWeapon</a></div><div class="ttdef"><b>Definition:</b> <a href="_melee_weapon_8cs_source.html#l00012">MeleeWeapon.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_projectile_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_projectile.html">Barotrauma.Items.Components.Projectile</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_projectile_8cs_source.html#l00015">BarotraumaShared/SharedSource/Items/Components/Projectile.cs:16</a></div></div>

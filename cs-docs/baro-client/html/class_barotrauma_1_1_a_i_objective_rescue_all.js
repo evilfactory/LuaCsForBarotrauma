@@ -5,7 +5,6 @@ var class_barotrauma_1_1_a_i_objective_rescue_all =
     [ "GetList", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a7df52633dbb1c7adc01cddad3d1110f5", null ],
     [ "ObjectiveConstructor", "class_barotrauma_1_1_a_i_objective_rescue_all.html#affbd75534ab5ce73ceb25c5d7e379dca", null ],
     [ "OnObjectiveCompleted", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a31a715d87d0071be5d72c11298e9ac4c", null ],
-    [ "Reset", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a807ac4e092e37f90d9adc035daff50c1", null ],
     [ "TargetEvaluation", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a1ada7a43b92dcf88e2989162420d17ce", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a0aace631253e749289bc3bcd3540f80f", null ],
     [ "AllowOutsideSubmarine", "class_barotrauma_1_1_a_i_objective_rescue_all.html#a107c9b564d1b836e83d0acd1c0a35f16", null ],

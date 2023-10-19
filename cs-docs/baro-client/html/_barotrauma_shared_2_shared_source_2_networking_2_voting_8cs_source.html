@@ -118,35 +118,41 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_n
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_voting.html#abeb71aaff0576d04c49f14bdccc07710">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T <a class="code" href="class_barotrauma_1_1_voting.html#abeb71aaff0576d04c49f14bdccc07710">HighestVoted&lt;T&gt;</a>(VoteType voteType, IEnumerable&lt;Client&gt; voters)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">if</span> (voteType == VoteType.Sub &amp;&amp; !<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.ServerSettings.AllowSubVoting) { <span class="keywordflow">return</span> <span class="keywordflow">default</span>; }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> (voteType == VoteType.Mode &amp;&amp; !<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.ServerSettings.AllowModeVoting) { <span class="keywordflow">return</span> <span class="keywordflow">default</span>; }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_voting.html#abeb71aaff0576d04c49f14bdccc07710">HighestVoted&lt;T&gt;</a>(voteType, voters, out _);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            IReadOnlyDictionary&lt;T, int&gt; voteList = GetVoteCounts&lt;T&gt;(voteType, voters);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            T selected = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordtype">int</span> highestVotes = 0;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">foreach</span> (KeyValuePair&lt;T, int&gt; votable <span class="keywordflow">in</span> voteList)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">if</span> (voteType == VoteType.Sub</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    &amp;&amp; votable.Key is <a class="code" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> subInfo</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    &amp;&amp; <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.ServerSettings.HiddenSubs.Contains(subInfo.Name))</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="comment">//This sub is hidden so it can&#39;t be voted for, skip</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">if</span> (selected == <span class="keyword">null</span> || votable.Value &gt; highestVotes)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    highestVotes = votable.Value;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    selected = votable.Key;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> selected;            </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_voting.html#a153870f7f48c94f560df0b4e0fd7c152">   36</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T <a class="code" href="class_barotrauma_1_1_voting.html#abeb71aaff0576d04c49f14bdccc07710">HighestVoted&lt;T&gt;</a>(VoteType voteType, IEnumerable&lt;Client&gt; voters, out <span class="keywordtype">int</span> voteCount)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            voteCount = 0;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">if</span> (voteType == VoteType.Sub &amp;&amp; !<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.ServerSettings.AllowSubVoting) { <span class="keywordflow">return</span> <span class="keywordflow">default</span>; }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (voteType == VoteType.Mode &amp;&amp; !<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.ServerSettings.AllowModeVoting) { <span class="keywordflow">return</span> <span class="keywordflow">default</span>; }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            IReadOnlyDictionary&lt;T, int&gt; voteList = GetVoteCounts&lt;T&gt;(voteType, voters);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            T selected = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordtype">int</span> highestVotes = 0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">foreach</span> (KeyValuePair&lt;T, int&gt; votable <span class="keywordflow">in</span> voteList)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">if</span> (voteType == VoteType.Sub</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    &amp;&amp; votable.Key is <a class="code" href="class_barotrauma_1_1_submarine_info.html">SubmarineInfo</a> subInfo</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    &amp;&amp; <a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">NetworkMember</a>.ServerSettings.HiddenSubs.Contains(subInfo.Name))</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    <span class="comment">//This sub is hidden so it can&#39;t be voted for, skip</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">if</span> (selected == <span class="keyword">null</span> || votable.Value &gt; highestVotes)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    highestVotes = votable.Value;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    selected = votable.Key;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            voteCount = highestVotes;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> selected;            </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a8814ae6a86758a7f6c039be0a39d921e"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">Barotrauma.GameMain.NetworkMember</a></div><div class="ttdeci">static NetworkMember NetworkMember</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00182">GameMain.cs:183</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a8814ae6a86758a7f6c039be0a39d921e"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a8814ae6a86758a7f6c039be0a39d921e">Barotrauma.GameMain.NetworkMember</a></div><div class="ttdeci">static NetworkMember NetworkMember</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00183">GameMain.cs:184</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html">Barotrauma.Networking.Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00010">LuaBarotraumaAdditions.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_submarine_info_html"><div class="ttname"><a href="class_barotrauma_1_1_submarine_info.html">Barotrauma.SubmarineInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_info_8cs_source.html#l00030">BarotraumaShared/SharedSource/Map/SubmarineInfo.cs:31</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_voting_html"><div class="ttname"><a href="class_barotrauma_1_1_voting.html">Barotrauma.Voting</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_voting_8cs_source.html#l00006">BarotraumaShared/SharedSource/Networking/Voting.cs:7</a></div></div>

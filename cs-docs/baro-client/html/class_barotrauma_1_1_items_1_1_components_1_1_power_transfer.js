@@ -11,7 +11,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_power_transfer =
     [ "SetConnectionDirty", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#ab3e96ed9b74d3d77ba01d30546b0a813", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#aa7fc840aad731fffaee2fc52ee43093c", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#ab0f6188c9cb27441def73804aa3208b5", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#aa316f6b33ac47a406dca164ba698e87d", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#aae082e54d26c7698bc3b6dacc5b1e594", null ],
     [ "isBroken", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#a449636a8bbf938c251331c6efac59840", null ],
     [ "powerLoad", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#a163ce1d010673423a3cc697cc013fc40", null ],
     [ "CanBeOverloaded", "class_barotrauma_1_1_items_1_1_components_1_1_power_transfer.html#a36c2b57ea56d5f3f5837948ca309f34e", null ],

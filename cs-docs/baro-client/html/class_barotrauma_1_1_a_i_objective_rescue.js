@@ -8,8 +8,10 @@ var class_barotrauma_1_1_a_i_objective_rescue =
     [ "OnCompleted", "class_barotrauma_1_1_a_i_objective_rescue.html#a08bb1ff43808ca17aa61de7150507fe2", null ],
     [ "OnDeselected", "class_barotrauma_1_1_a_i_objective_rescue.html#a055237befe62018c8eed259926917fc7", null ],
     [ "Reset", "class_barotrauma_1_1_a_i_objective_rescue.html#a273084d79517c1dd699b61b2b6b8d2d2", null ],
+    [ "Target", "class_barotrauma_1_1_a_i_objective_rescue.html#abc6de221bf2cbb6d7491967e5ca25e43", null ],
     [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_rescue.html#aaddf33ca9d152256ca80d3b930024d9a", null ],
     [ "AllowOutsideSubmarine", "class_barotrauma_1_1_a_i_objective_rescue.html#a155b04f082791963df4e47d5f566c978", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_rescue.html#a9378cf39f1a7df81145c44e68ba613af", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_rescue.html#a76caa08cee79dff7e22dd703ec2c9743", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_rescue.html#a265ab5bf599cb0e01e58dcf5346547e3", null ],
     [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_rescue.html#a02cfc55644169e5fcb8d5dab86f25ea8", null ]

@@ -8,6 +8,7 @@ var class_barotrauma_1_1_a_i_objective_pump_water =
     [ "OnObjectiveCompleted", "class_barotrauma_1_1_a_i_objective_pump_water.html#a08882755c21b1dfa20179dfa88149aff", null ],
     [ "TargetEvaluation", "class_barotrauma_1_1_a_i_objective_pump_water.html#aba790af3a1f2d1eb78b68a4424eaed49", null ],
     [ "AllowAutomaticItemUnequipping", "class_barotrauma_1_1_a_i_objective_pump_water.html#aeb5c68ab5883c6c7059cbd6cb99a7ce5", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_pump_water.html#a4b919a7f3f6ef627fd720af5e7140c1e", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_pump_water.html#a8a9331022338d796ac4173d5249d4d60", null ],
     [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_pump_water.html#a3516151efbd8eb0f1c7d45a7a723059a", null ]
 ];

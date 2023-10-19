@@ -18,6 +18,7 @@ var class_barotrauma_1_1_ragdoll =
     [ "GetColliderBottom", "class_barotrauma_1_1_ragdoll.html#a63aaf8c7d4b1704790b6dfbdc25bcf6b", null ],
     [ "GetConnectedLimbs", "class_barotrauma_1_1_ragdoll.html#a50c31b93c1dbedcb022bcc0d93e1d279", null ],
     [ "GetDepthOffset", "class_barotrauma_1_1_ragdoll.html#a005de7bbd5ad0e55e3eb9f787a13540f", null ],
+    [ "GetImpactDamage", "class_barotrauma_1_1_ragdoll.html#a9721d0f103028f58b00e4e7e829aa0cd", null ],
     [ "GetLimb", "class_barotrauma_1_1_ragdoll.html#a98b06c5f7f604756c2041b8d3d34e9f0", null ],
     [ "GetMouthPosition", "class_barotrauma_1_1_ragdoll.html#a95a5195ae42570801440ba4ca558b18a", null ],
     [ "GetSurfaceY", "class_barotrauma_1_1_ragdoll.html#a9e3466a92641818bbf48ea00be2d1aa6", null ],

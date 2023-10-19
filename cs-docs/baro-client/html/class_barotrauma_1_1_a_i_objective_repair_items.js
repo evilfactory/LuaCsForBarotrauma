@@ -9,7 +9,7 @@ var class_barotrauma_1_1_a_i_objective_repair_items =
     [ "OnObjectiveCompleted", "class_barotrauma_1_1_a_i_objective_repair_items.html#ac9582a09d76765af08b527b1dac29027", null ],
     [ "TargetEvaluation", "class_barotrauma_1_1_a_i_objective_repair_items.html#a0e551b939bd6dc6a2dcd045755b0d784", null ],
     [ "RelevantSkill", "class_barotrauma_1_1_a_i_objective_repair_items.html#aeae1af085a11b1baaa618d721598c69c", null ],
-    [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_repair_items.html#a4a0bba0852919098f031905dd81996e5", null ],
+    [ "AllowInFriendlySubs", "class_barotrauma_1_1_a_i_objective_repair_items.html#a4f187aae171a84d4894fc8261a0b7526", null ],
     [ "AllowMultipleInstances", "class_barotrauma_1_1_a_i_objective_repair_items.html#a9c610e62f00cec163366f4ac0889a9d7", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_repair_items.html#a1e27e155657baeed59f146e8dc09720a", null ],
     [ "PrioritizedItem", "class_barotrauma_1_1_a_i_objective_repair_items.html#a7f7e90870f49acbc55b226d59fb6e511", null ]

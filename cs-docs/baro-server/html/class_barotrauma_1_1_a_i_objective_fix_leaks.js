@@ -6,7 +6,7 @@ var class_barotrauma_1_1_a_i_objective_fix_leaks =
     [ "ObjectiveConstructor", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#a0fdd5cf56ea1bd965054485e59c8909a", null ],
     [ "OnObjectiveCompleted", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#a6bffe3bac18dcc997a745d811a6a2d80", null ],
     [ "TargetEvaluation", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#afb9817c6b7f96844c8e9301389f141ee", null ],
-    [ "AllowInAnySub", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#aec29cd9c28529d86fed64bad31acde26", null ],
+    [ "AllowInFriendlySubs", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#ab777f724bb4b75c17ed479346d271c5a", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#afba75aed773988329546449f4072999c", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#aab9525b84856f36106aa0bc6bb20068c", null ],
     [ "KeepDivingGearOn", "class_barotrauma_1_1_a_i_objective_fix_leaks.html#a9d768ca2a562b05729f6258fccee54c9", null ],

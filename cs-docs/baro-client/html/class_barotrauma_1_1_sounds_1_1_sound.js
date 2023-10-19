@@ -1,12 +1,12 @@
 var class_barotrauma_1_1_sounds_1_1_sound =
 [
     [ "Sound", "class_barotrauma_1_1_sounds_1_1_sound.html#ae0c8e0f3c1860ae19d7e2824dc6e5896", null ],
-    [ "DeleteALBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a3f5362f75777f59158f5476acddf9f15", null ],
+    [ "DeleteAlBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a98bb951884e3cca1ae2f63e6652585fe", null ],
     [ "Dispose", "class_barotrauma_1_1_sounds_1_1_sound.html#a723b6bf24ca7874a94436fff2d735435", null ],
-    [ "FillBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#ae47fa05f7b7dd18c201cc55789accd5c", null ],
+    [ "FillAlBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a2b987e6d32a17690c5caa530784406e9", null ],
     [ "FillStreamBuffer", "class_barotrauma_1_1_sounds_1_1_sound.html#a6a6b1090dab0fe3ed3ad89ff6ee0d8c4", null ],
     [ "GetAmplitudeAtPlaybackPos", "class_barotrauma_1_1_sounds_1_1_sound.html#aab6ae3845dde6ca1d03a98c2fd3de334", null ],
-    [ "InitializeALBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a6976b2597817cf696eace6b9dd20cc0b", null ],
+    [ "InitializeAlBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a6d22754ee1523755514c3a7346686fc9", null ],
     [ "IsPlaying", "class_barotrauma_1_1_sounds_1_1_sound.html#ad947341133676858a481351d326c8f5f", null ],
     [ "Play", "class_barotrauma_1_1_sounds_1_1_sound.html#a23387df405451a92c6be815fc67d9b68", null ],
     [ "Play", "class_barotrauma_1_1_sounds_1_1_sound.html#a4b82ea97792abba607f53127b89a613d", null ],
@@ -18,6 +18,7 @@ var class_barotrauma_1_1_sounds_1_1_sound =
     [ "BaseFar", "class_barotrauma_1_1_sounds_1_1_sound.html#a88d6471914b784f5fa07b75d54dd2b76", null ],
     [ "BaseGain", "class_barotrauma_1_1_sounds_1_1_sound.html#add90cc8df51ec3c4aa4785759a70a549", null ],
     [ "BaseNear", "class_barotrauma_1_1_sounds_1_1_sound.html#a991331a3565df600c47ba6d9a05569ae", null ],
+    [ "buffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a7b6b0f9e063b00f743b15a8a504903e0", null ],
     [ "disposed", "class_barotrauma_1_1_sounds_1_1_sound.html#ac5ac4d98760c4bdae0ac7f8b5f243f16", null ],
     [ "Filename", "class_barotrauma_1_1_sounds_1_1_sound.html#a964f50d7dee06dd1354fca280b186fee", null ],
     [ "MaxSimultaneousInstances", "class_barotrauma_1_1_sounds_1_1_sound.html#a08d4cf9a008773837f678bd45d07e768", null ],

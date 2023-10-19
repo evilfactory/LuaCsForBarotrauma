@@ -27,7 +27,7 @@ var class_barotrauma_1_1_networking_1_1_game_server =
     [ "SendDirectChatMessage", "class_barotrauma_1_1_networking_1_1_game_server.html#aab6211eb3da072668d9a9b1a71934161", null ],
     [ "SendDirectChatMessage", "class_barotrauma_1_1_networking_1_1_game_server.html#a40718ad8f8d0d34b06ba5a31c69b9342", null ],
     [ "SendOrderChatMessage", "class_barotrauma_1_1_networking_1_1_game_server.html#a21530a39b7bb72e2855afb61d41ff9c5", null ],
-    [ "SendTraitorMessage", "class_barotrauma_1_1_networking_1_1_game_server.html#a7d7fbfaf845364d6c0d0403c6ee6bd9f", null ],
+    [ "SendTraitorMessage", "class_barotrauma_1_1_networking_1_1_game_server.html#a95df2285ca52dc4e227018670fdb46ee", null ],
     [ "SendVoteStatus", "class_barotrauma_1_1_networking_1_1_game_server.html#abf0f9b598efc1790ec5b872e6f61f8be", null ],
     [ "SetClientCharacter", "class_barotrauma_1_1_networking_1_1_game_server.html#a13172eff6ea82333c17b29b122571372", null ],
     [ "StartServer", "class_barotrauma_1_1_networking_1_1_game_server.html#af4ff960085117f35724418c0a8c63c88", null ],
@@ -42,7 +42,6 @@ var class_barotrauma_1_1_networking_1_1_game_server =
     [ "UpdateMissionState", "class_barotrauma_1_1_networking_1_1_game_server.html#a4df73c10debdafeb2dc632ecad62f872", null ],
     [ "UpdateVoteStatus", "class_barotrauma_1_1_networking_1_1_game_server.html#a1673b68fe3c0404242eb36497e8bbabe", null ],
     [ "SubmarineSwitchLoad", "class_barotrauma_1_1_networking_1_1_game_server.html#a43194254565a7f2374619f17f91ebbe3", null ],
-    [ "TraitorManager", "class_barotrauma_1_1_networking_1_1_game_server.html#aa9f2ba3db10faa3415980a6376af7725", null ],
     [ "ConnectedClients", "class_barotrauma_1_1_networking_1_1_game_server.html#a2c382f55d9d3dd932e2ab2c1ff2ed077", null ],
     [ "EntityEventManager", "class_barotrauma_1_1_networking_1_1_game_server.html#a7e58c58684339590d5e6d81999daede3", null ],
     [ "FileSender", "class_barotrauma_1_1_networking_1_1_game_server.html#aede19c2f290cde833a60326bc9c70c86", null ],
@@ -54,6 +53,7 @@ var class_barotrauma_1_1_networking_1_1_game_server =
     [ "QueryPort", "class_barotrauma_1_1_networking_1_1_game_server.html#a26f442de4830827e4ed2a1c5151d3e4b", null ],
     [ "ServerName", "class_barotrauma_1_1_networking_1_1_game_server.html#a1dbc068eb071fdbc354be5bffcb5982a", null ],
     [ "ServerPeer", "class_barotrauma_1_1_networking_1_1_game_server.html#a2ea9d09d4c17f1fa887c3af87a991d3f", null ],
+    [ "TraitorManager", "class_barotrauma_1_1_networking_1_1_game_server.html#aa9f2ba3db10faa3415980a6376af7725", null ],
     [ "VoipServer", "class_barotrauma_1_1_networking_1_1_game_server.html#a19d85c2aeb75f798886fca0eb6c05c64", null ],
     [ "Voting", "class_barotrauma_1_1_networking_1_1_game_server.html#a2b25c9391d558db1521defe5314e75c2", null ]
 ];

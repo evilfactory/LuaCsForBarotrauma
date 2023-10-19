@@ -1034,7 +1034,7 @@ $(document).ready(function(){initNavTree('_medical_clinic_u_i_8cs_source.html','
 <div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;            }</div>
 <div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;            <span class="keywordflow">if</span> (truncated)</div>
 <div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;            {</div>
-<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;                descriptionBlock.Text += <span class="stringliteral">&quot;...&quot;</span>;</div>
+<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;                descriptionBlock.Text += TextManager.Get(<span class="stringliteral">&quot;ellipsis&quot;</span>);</div>
 <div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;            }</div>
 <div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160; </div>
 <div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;            GUITextBlock priceBlock = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1f, 0.25f), bottomTextLayout.RectTransform), TextManager.FormatCurrency(affliction.Price), font: GUIStyle.SubHeadingFont);</div>

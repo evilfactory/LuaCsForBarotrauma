@@ -19,6 +19,7 @@ var class_barotrauma_1_1_a_i_objective_get_item =
     [ "AllowStealing", "class_barotrauma_1_1_a_i_objective_get_item.html#ac49d23595968469bea24e032f87ce39d", null ],
     [ "AllowToFindDivingGear", "class_barotrauma_1_1_a_i_objective_get_item.html#a42df202b864fc707467f661fc61650a1", null ],
     [ "AllowVariants", "class_barotrauma_1_1_a_i_objective_get_item.html#a19a36fdeff3f0cfd0578831c027b547d", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_get_item.html#a5560c969e8c5081fc2cd4a51c1d5f2fa", null ],
     [ "CannotFindDialogueCondition", "class_barotrauma_1_1_a_i_objective_get_item.html#aa919b42777b15f2639f530c7b829d30a", null ],
     [ "CannotFindDialogueIdentifierOverride", "class_barotrauma_1_1_a_i_objective_get_item.html#a018e476a4a7ea20722ff549f22fc9565", null ],
     [ "CheckPathForEachItem", "class_barotrauma_1_1_a_i_objective_get_item.html#a20f06bcefd0c40976266c310ae4bc0d5", null ],

@@ -39,7 +39,7 @@ var class_barotrauma_1_1_physics_body =
     [ "SmoothRotate", "class_barotrauma_1_1_physics_body.html#ad59497ab0d4ae5aa0793313c64335d02", null ],
     [ "TransformRotation", "class_barotrauma_1_1_physics_body.html#a84c4ec9abb4f8c701a95b8e55eaa2c22", null ],
     [ "Update", "class_barotrauma_1_1_physics_body.html#ac52abe8424448aefc5ed321fd61c7258", null ],
-    [ "UpdateDrawPosition", "class_barotrauma_1_1_physics_body.html#a99c9ec16ebb671c2d3d14ad5b2ba623b", null ],
+    [ "UpdateDrawPosition", "class_barotrauma_1_1_physics_body.html#ac5f63917979f61c3e12f44d0e12b20af", null ],
     [ "PositionSmoothingFactor", "class_barotrauma_1_1_physics_body.html#a3ed601ef6abce1b6d9cc4e22f9f04e37", null ],
     [ "prevPosition", "class_barotrauma_1_1_physics_body.html#a6bf1ca24c2ba9985c603882b5c632823", null ],
     [ "prevRotation", "class_barotrauma_1_1_physics_body.html#ac52bb5a00e6ab29c26ed47ea474f4230", null ],

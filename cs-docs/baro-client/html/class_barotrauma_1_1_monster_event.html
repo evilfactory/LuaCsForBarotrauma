@@ -111,6 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adf631630de4fb6f882c874b5cef6bee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2144bafebbb62b117787f34da1fd5c51"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#a2144bafebbb62b117787f34da1fd5c51">Init</a> (<a class="el" href="class_barotrauma_1_1_event_set.html">EventSet</a> parentSet)</td></tr>
 <tr class="separator:a2144bafebbb62b117787f34da1fd5c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5f2e336d88b0aea17d6e8a7f29cc5b3"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#ac5f2e336d88b0aea17d6e8a7f29cc5b3">GetDebugInfo</a> ()</td></tr>
+<tr class="separator:ac5f2e336d88b0aea17d6e8a7f29cc5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a109b445b0b5257a4c0fa74cd24e0886d"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#a109b445b0b5257a4c0fa74cd24e0886d">Update</a> (float deltaTime)</td></tr>
 <tr class="separator:a109b445b0b5257a4c0fa74cd24e0886d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_barotrauma_1_1_event"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_barotrauma_1_1_event')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_event.html">Barotrauma.Event</a></td></tr>
@@ -129,6 +131,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a24a755089c45dddfe86b0c89cde045ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e5001d1d6340ff5d13affa965cf9887"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#a6e5001d1d6340ff5d13affa965cf9887">MinAmount</a></td></tr>
 <tr class="separator:a6e5001d1d6340ff5d13affa965cf9887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a679fbcc9934f0a636479881f5da1a227"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#a679fbcc9934f0a636479881f5da1a227">SpawnDistance</a></td></tr>
+<tr class="separator:a679fbcc9934f0a636479881f5da1a227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc1160eabcadd281070e43070cb7b8e7"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_level.html#af9c4fc1507588d1b28b758d7a7fea823">Level.PositionType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#acc1160eabcadd281070e43070cb7b8e7">SpawnPosType</a></td></tr>
 <tr class="separator:acc1160eabcadd281070e43070cb7b8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97b5a0c209b633b3a9a67c4a1fa9b368"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_monster_event.html#a97b5a0c209b633b3a9a67c4a1fa9b368">MaxAmountPerLevel</a> = int.MaxValue</td></tr>
@@ -172,7 +176,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00010">10</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00011">11</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aba39685db08f20c3a3c74b0fb6611dd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba39685db08f20c3a3c74b0fb6611dd8">&#9670;&nbsp;</a></span>MonsterEvent()</h2>
@@ -190,11 +194,40 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00058">58</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00060">60</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac5f2e336d88b0aea17d6e8a7f29cc5b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5f2e336d88b0aea17d6e8a7f29cc5b3">&#9670;&nbsp;</a></span>GetDebugInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string Barotrauma.MonsterEvent.GetDebugInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#a1ea59d5eea6c5e6bc76cb2e0bfab64e8">Barotrauma.Event</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00179">179</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+
+</div>
+</div>
 <a id="adf631630de4fb6f882c874b5cef6bee2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf631630de4fb6f882c874b5cef6bee2">&#9670;&nbsp;</a></span>GetFilesToPreload()</h2>
 
@@ -220,7 +253,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#abd4592dbb7ada4df227ab1a629ac628f">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00123">123</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00125">125</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -250,7 +283,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#a73e8c85167a57dc1305f5ea8cd33a137">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00137">137</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00139">139</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -269,7 +302,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00042">42</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00044">44</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -299,7 +332,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#a27a95c84fb98b963a693f75456ba618f">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00394">394</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00406">406</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -316,7 +349,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00031">31</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00033">33</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -332,7 +365,23 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00013">13</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00014">14</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+
+</div>
+</div>
+<a id="a679fbcc9934f0a636479881f5da1a227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679fbcc9934f0a636479881f5da1a227">&#9670;&nbsp;</a></span>SpawnDistance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly float Barotrauma.MonsterEvent.SpawnDistance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00017">17</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -348,7 +397,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00026">26</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00028">28</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -364,7 +413,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00012">12</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00013">13</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -389,7 +438,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00037">37</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00039">39</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -413,7 +462,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00033">33</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00035">35</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -437,7 +486,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00035">35</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00037">37</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -461,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00034">34</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_monster_event_8cs_source.html#l00036">36</a> of file <a class="el" href="_monster_event_8cs_source.html">MonsterEvent.cs</a>.</p>
 
 </div>
 </div>

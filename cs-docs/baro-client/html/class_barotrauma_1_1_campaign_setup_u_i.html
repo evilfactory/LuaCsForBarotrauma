@@ -118,8 +118,8 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c65cf40973537df5c6fc40dbc93fc0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_setup_u_i.html#a2c65cf40973537df5c6fc40dbc93fc0a">CampaignSetupUI</a> (<a class="el" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> <a class="el" href="class_barotrauma_1_1_campaign_setup_u_i.html#a104bc5644438d6ccce24ddfe60a1cc90">newGameContainer</a>, <a class="el" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> loadGameContainer)</td></tr>
 <tr class="separator:a2c65cf40973537df5c6fc40dbc93fc0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c7c6e36ca2c029cb417a917415158f3"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_setup_u_i.html#a3c7c6e36ca2c029cb417a917415158f3">UpdateLoadMenu</a> (IEnumerable&lt; CampaignMode.SaveInfo &gt; saveFiles=null)</td></tr>
-<tr class="separator:a3c7c6e36ca2c029cb417a917415158f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5aea9f4f0f4385a2c9bde8e69f3572b"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_campaign_setup_u_i.html#aa5aea9f4f0f4385a2c9bde8e69f3572b">CreateLoadMenu</a> (IEnumerable&lt; CampaignMode.SaveInfo &gt; saveFiles=null)</td></tr>
+<tr class="separator:aa5aea9f4f0f4385a2c9bde8e69f3572b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -285,6 +285,34 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="aa5aea9f4f0f4385a2c9bde8e69f3572b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5aea9f4f0f4385a2c9bde8e69f3572b">&#9670;&nbsp;</a></span>CreateLoadMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void Barotrauma.CampaignSetupUI.CreateLoadMenu </td>
+          <td>(</td>
+          <td class="paramtype">IEnumerable&lt; CampaignMode.SaveInfo &gt;&#160;</td>
+          <td class="paramname"><em>saveFiles</em> = <code>null</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a07b144ac0dffa599f55e14fe095b4cc1">Barotrauma.SinglePlayerCampaignSetupUI</a>, and <a class="el" href="class_barotrauma_1_1_multi_player_campaign_setup_u_i.html#ae5f2a3fa2735f531b44ae230ef0c8aba">Barotrauma.MultiPlayerCampaignSetupUI</a>.</p>
+
+</div>
+</div>
 <a id="a580233c799456e922346e256ee200093"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a580233c799456e922346e256ee200093">&#9670;&nbsp;</a></span>CreateSaveElement()</h2>
 
@@ -375,34 +403,6 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_campaign_setup_u_i_8cs_source.html#l00104">104</a> of file <a class="el" href="_campaign_setup_u_i_8cs_source.html">CampaignSetupUI.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3c7c6e36ca2c029cb417a917415158f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c7c6e36ca2c029cb417a917415158f3">&#9670;&nbsp;</a></span>UpdateLoadMenu()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">abstract void Barotrauma.CampaignSetupUI.UpdateLoadMenu </td>
-          <td>(</td>
-          <td class="paramtype">IEnumerable&lt; CampaignMode.SaveInfo &gt;&#160;</td>
-          <td class="paramname"><em>saveFiles</em> = <code>null</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="class_barotrauma_1_1_single_player_campaign_setup_u_i.html#a7370108a2fe301c59c1a66efe9cb6292">Barotrauma.SinglePlayerCampaignSetupUI</a>, and <a class="el" href="class_barotrauma_1_1_multi_player_campaign_setup_u_i.html#add80421eb9344c15383225a1bada3e24">Barotrauma.MultiPlayerCampaignSetupUI</a>.</p>
 
 </div>
 </div>

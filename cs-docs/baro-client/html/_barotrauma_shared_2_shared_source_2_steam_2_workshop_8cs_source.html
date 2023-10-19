@@ -678,27 +678,34 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_s
 <div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;            </div>
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> async Task CopyDirectory(<span class="keywordtype">string</span> fileListDir, <span class="keywordtype">string</span> modName, <span class="keywordtype">string</span> from, <span class="keywordtype">string</span> to, ShouldCorrectPaths shouldCorrectPaths)</div>
 <div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            {</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                from = Path.GetFullPath(from); to = Path.GetFullPath(to);</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                Directory.CreateDirectory(to);</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160; </div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                <span class="keywordtype">string</span> convertFromTo(<span class="keywordtype">string</span> from)</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                    =&gt; Path.Combine(to, Path.GetFileName(from));</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160; </div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                <span class="keywordtype">string</span>[] files = Directory.GetFiles(from);</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                <span class="keywordtype">string</span>[] subDirs = Directory.GetDirectories(from);</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> files)</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                {</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                    await CopyFile(fileListDir, modName, file, convertFromTo(file), shouldCorrectPaths);</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                }</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160; </div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                <span class="keywordflow">foreach</span> (var dir <span class="keywordflow">in</span> subDirs) { await CopyDirectory(fileListDir, modName, dir, convertFromTo(dir), shouldCorrectPaths); }</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;            }</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        }</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    }</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;}</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                from = Path.GetFullPath(from); </div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                to = Path.GetFullPath(to);</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                Directory.CreateDirectory(to);</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                <span class="keywordtype">string</span> convertFromTo(<span class="keywordtype">string</span> from)</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                    =&gt; Path.Combine(to, Path.GetFileName(from));</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160; </div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                <span class="keywordtype">string</span>[] files = Directory.GetFiles(from);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                <span class="keywordtype">string</span>[] subDirs = Directory.GetDirectories(from);</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> files)</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                {</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                    <span class="comment">//ignore hidden files</span></div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                    <span class="keywordflow">if</span> (Path.GetFileName(file).StartsWith(<span class="charliteral">&#39;.&#39;</span>)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                    await CopyFile(fileListDir, modName, file, convertFromTo(file), shouldCorrectPaths);</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                }</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                <span class="keywordflow">foreach</span> (var dir <span class="keywordflow">in</span> subDirs)</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                    <span class="keywordflow">if</span> (Path.GetFileName(dir) is { } dirName &amp;&amp; dirName.StartsWith(<span class="charliteral">&#39;.&#39;</span>)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                    await CopyDirectory(fileListDir, modName, dir, convertFromTo(dir), shouldCorrectPaths); </div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                }</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            }</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        }</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    }</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_steam_2_auth_ticket_8cs_source.html#l00001">BarotraumaShared/SharedSource/Steam/AuthTicket.cs:2</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_steam_2_auth_ticket_8cs_source.html#l00006">BarotraumaShared/SharedSource/Steam/AuthTicket.cs:7</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Barotrauma.InputType.Select</a></div><div class="ttdeci">@ Select</div></div>
 </div><!-- fragment --></div><!-- contents -->

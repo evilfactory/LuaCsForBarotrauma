@@ -10,6 +10,7 @@ var class_barotrauma_1_1_wearable_sprite =
     [ "Init", "class_barotrauma_1_1_wearable_sprite.html#ad15a6abbf334253f7553701b93f4973d", null ],
     [ "ParsePath", "class_barotrauma_1_1_wearable_sprite.html#a19c0200bf5347276c0ca1826c8c157f5", null ],
     [ "AlphaClipOtherWearables", "class_barotrauma_1_1_wearable_sprite.html#a8188d76c81377c30ebbbc92aedef6e36", null ],
+    [ "CanBeHiddenByItem", "class_barotrauma_1_1_wearable_sprite.html#a07dc91f1f7ec3ff1f0165e6f56382af3", null ],
     [ "CanBeHiddenByOtherWearables", "class_barotrauma_1_1_wearable_sprite.html#ab2a6c1f361895e0d0d9a94f8ac95e30a", null ],
     [ "DepthLimb", "class_barotrauma_1_1_wearable_sprite.html#aee7e70e1e3aeec5a0dd2c5d919296909", null ],
     [ "HideLimb", "class_barotrauma_1_1_wearable_sprite.html#ab083eb5ca1cf108c279a73c49a8f27a8", null ],

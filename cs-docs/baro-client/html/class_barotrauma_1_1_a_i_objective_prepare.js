@@ -6,6 +6,7 @@ var class_barotrauma_1_1_a_i_objective_prepare =
     [ "CheckObjectiveSpecific", "class_barotrauma_1_1_a_i_objective_prepare.html#a66ec41c5f4c35091b60515177d1324bd", null ],
     [ "GetPriority", "class_barotrauma_1_1_a_i_objective_prepare.html#a4d3ee394b3f0bdb4b7bc887a26217481", null ],
     [ "Reset", "class_barotrauma_1_1_a_i_objective_prepare.html#af8b44199f4ee254e125fd2e9b7187952", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_prepare.html#af6f3b8580ea709238db56cf27c9c90a3", null ],
     [ "CheckInventory", "class_barotrauma_1_1_a_i_objective_prepare.html#a1ec3f47d89e59a406aabccb104994d1f", null ],
     [ "DebugTag", "class_barotrauma_1_1_a_i_objective_prepare.html#afa56ffe5102bba610d3f8b13493871b0", null ],
     [ "Equip", "class_barotrauma_1_1_a_i_objective_prepare.html#a351ed3800793b309337bbda2c75a80a4", null ],

@@ -234,153 +234,155 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_n
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            List&lt;GUITickBox&gt; tickBoxes = <span class="keyword">new</span> List&lt;GUITickBox&gt;();</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">MessageType</a> msgType <span class="keywordflow">in</span> Enum.GetValues(typeof(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">MessageType</a>)))</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                var tickBox = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_tick_box.html">GUITickBox</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Point(tickBoxContainer.Rect.Width, (<span class="keywordtype">int</span>)(25 * GUI.Scale)), tickBoxContainer.RectTransform), TextManager.Get(<span class="stringliteral">&quot;ServerLog.&quot;</span> + messageTypeName[msgType]), font: GUIStyle.SmallFont)</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    <a class="code" href="namespace_barotrauma.html#a12ec5c6f95f1006ea9a0c0a2074de969a91b442d385b54e1418d81adc34871053">Selected</a> = <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    TextColor = messageColor[msgType],</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    OnSelected = (<a class="code" href="class_barotrauma_1_1_g_u_i_tick_box.html">GUITickBox</a> tb) =&gt;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        msgTypeHidden[(int)msgType] = !tb.Selected;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        FilterMessages();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                };</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                tickBox.TextBlock.SelectedTextColor = tickBox.TextBlock.TextColor;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                tickBox.Selected = !msgTypeHidden[(int)msgType];</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                tickBoxes.Add(tickBox);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            tickBoxes.Last().TextBlock.RectTransform.SizeChanged += () =&gt;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <a class="code" href="class_barotrauma_1_1_g_u_i_text_block.html">GUITextBlock</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_text_block.html#a74dce9fc9a91dcfaf16bb72a0e4e923c">AutoScaleAndNormalize</a>(tickBoxes.Select(t =&gt; t.TextBlock), defaultScale: 1.0f);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            };</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            inListBox.ClearChildren();</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            listBox = inListBox;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            reverseButton = inReverseButton;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            reverseButton.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a>.ForEach(c =&gt; c.SpriteEffects = reverseOrder ? SpriteEffects.FlipVertically : SpriteEffects.None);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            reverseButton.<a class="code" href="class_barotrauma_1_1_g_u_i_button.html#a0871b233620ffeb4d54c7e78c4b505c8">OnClicked</a> = OnReverseClicked;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            var currLines = lines.ToList();</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">foreach</span> (LogMessage line <span class="keywordflow">in</span> currLines)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                AddLine(line);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            FilterMessages();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#ae228888b22aecbb1d548eff98bdf87d6">UpdateScrollBarSize</a>();</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> AddLine(LogMessage line)</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordtype">float</span> prevSize = listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a5c5ad496e195e026a875fc52598e2bfc">BarSize</a>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <a class="code" href="class_barotrauma_1_1_g_u_i_frame.html">GUIFrame</a> textContainer = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                var tickBox = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_tick_box.html">GUITickBox</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Point(tickBoxContainer.Rect.Width, (<span class="keywordtype">int</span>)(25 * GUI.Scale)), tickBoxContainer.RectTransform), </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    TextManager.Get(<span class="stringliteral">&quot;ServerLog.&quot;</span> + messageTypeName[msgType]).Fallback(messageTypeName[msgType]), </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    font: GUIStyle.SmallFont)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    <a class="code" href="namespace_barotrauma.html#a12ec5c6f95f1006ea9a0c0a2074de969a91b442d385b54e1418d81adc34871053">Selected</a> = <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    TextColor = messageColor[msgType],</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    OnSelected = (<a class="code" href="class_barotrauma_1_1_g_u_i_tick_box.html">GUITickBox</a> tb) =&gt;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        msgTypeHidden[(int)msgType] = !tb.Selected;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        FilterMessages();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                };</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                tickBox.TextBlock.SelectedTextColor = tickBox.TextBlock.TextColor;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                tickBox.Selected = !msgTypeHidden[(int)msgType];</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                tickBoxes.Add(tickBox);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            tickBoxes.Last().TextBlock.RectTransform.SizeChanged += () =&gt;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <a class="code" href="class_barotrauma_1_1_g_u_i_text_block.html">GUITextBlock</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_text_block.html#a74dce9fc9a91dcfaf16bb72a0e4e923c">AutoScaleAndNormalize</a>(tickBoxes.Select(t =&gt; t.TextBlock), defaultScale: 1.0f);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            };</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            inListBox.ClearChildren();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            listBox = inListBox;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            reverseButton = inReverseButton;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            reverseButton.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a>.ForEach(c =&gt; c.SpriteEffects = reverseOrder ? SpriteEffects.FlipVertically : SpriteEffects.None);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            reverseButton.<a class="code" href="class_barotrauma_1_1_g_u_i_button.html#a0871b233620ffeb4d54c7e78c4b505c8">OnClicked</a> = OnReverseClicked;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            var currLines = lines.ToList();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">foreach</span> (LogMessage line <span class="keywordflow">in</span> currLines)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                AddLine(line);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            FilterMessages();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#ae228888b22aecbb1d548eff98bdf87d6">UpdateScrollBarSize</a>();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> AddLine(LogMessage line)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordtype">float</span> prevSize = listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a5c5ad496e195e026a875fc52598e2bfc">BarSize</a>;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a> anchor = <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopLeft;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a> pivot = <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a>.TopLeft;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="class_barotrauma_1_1_rich_string.html">RichString</a> richString = line.Text as <a class="code" href="class_barotrauma_1_1_rich_string.html">RichString</a>;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">if</span> (richString != <span class="keyword">null</span> &amp;&amp; richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.HasValue)</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">foreach</span> (var data <span class="keywordflow">in</span> richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.Value)</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <a class="code" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client = data.ExtractClient();</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="keywordflow">if</span> (client != <span class="keyword">null</span> &amp;&amp; client.<a class="code" href="class_barotrauma_1_1_networking_1_1_client.html#a90f5ff5e89ce62737ebc796395cdca14">Karma</a> &lt; 40.0f)</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                        textContainer = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_frame.html">GUIFrame</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Vector2(1.0f, 0.0f), listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>),</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                style: <span class="keyword">null</span>, color: <span class="keyword">new</span> Color(0xff111155))</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                            CanBeFocused = <span class="keyword">false</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        };</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        anchor = <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.CenterLeft;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        pivot = <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a>.CenterLeft;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            var textBlock = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.0f), (textContainer ?? listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>).RectTransform, anchor, pivot),</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                line.Text, wrap: <span class="keyword">true</span>, font: GUIStyle.SmallFont)</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                TextColor = messageColor[line.Type],</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                Visible = !msgTypeHidden[(int)line.Type],</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                CanBeFocused = <span class="keyword">false</span>,</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                UserData = line</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            };</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">if</span> (textContainer != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                textContainer.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">NonScaledSize</a> = <span class="keyword">new</span> Point(textContainer.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">NonScaledSize</a>.X, textBlock.RectTransform.NonScaledSize.Y + 5);</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                textBlock.SetTextPos();</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                textBlock.RectTransform.Resize(textContainer.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">NonScaledSize</a>);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">if</span> (reverseOrder)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                textBlock.RectTransform.SetAsFirstChild();</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">if</span> (richString != <span class="keyword">null</span> &amp;&amp; richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.HasValue)</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keywordflow">foreach</span> (var data <span class="keywordflow">in</span> richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.Value)</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    textBlock.ClickableAreas.Add(<span class="keyword">new</span> GUITextBlock.ClickableArea()</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                    {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        Data = data,</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        OnClick = GameMain.NetLobbyScreen.SelectPlayer,</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        OnSecondaryClick = GameMain.NetLobbyScreen.ShowPlayerContextMenu</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    });</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                }</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> ((prevSize == 1.0f &amp;&amp; listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> == 0.0f) || (prevSize &lt; 1.0f &amp;&amp; listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> == 1.0f)) listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> = 1.0f;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> FilterMessages()</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordtype">string</span> filter = msgFilter == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : msgFilter.ToLower();</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordflow">foreach</span> (GUIComponent child <span class="keywordflow">in</span> listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a>)</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                <span class="keywordflow">if</span> (!(child is GUITextBlock textBlock)) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                child.Visible = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">if</span> (msgTypeHidden[(<span class="keywordtype">int</span>)((LogMessage)child.UserData).Type])</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    child.Visible = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                textBlock.Visible = <span class="keywordtype">string</span>.IsNullOrEmpty(filter) || textBlock.Text.ToLower().Contains(filter);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#ae228888b22aecbb1d548eff98bdf87d6">UpdateScrollBarSize</a>();</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> = 0.0f;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        }</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> SetMessageReversal(<span class="keywordtype">bool</span> reverse)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">if</span> (reverseOrder == reverse) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            reverseOrder = reverse;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            reverseButton.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a>.ForEach(c =&gt; c.SpriteEffects = reverseOrder ? SpriteEffects.FlipVertically : SpriteEffects.None);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#acb5040288ce57ee4848a174a3650ac08">ReverseChildren</a>();</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a">  283</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a">ClearFilter</a>(<a class="code" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> button, <span class="keywordtype">object</span> _)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            var searchBox = button.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#a086f1e28e77ee3665f7ac65ded21f68a">UserData</a> as <a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html">GUITextBox</a>;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (searchBox != <span class="keyword">null</span>) { searchBox.<a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html#ad6715b059a895f312de48c6b66162d3d">Text</a> = <span class="stringliteral">&quot;&quot;</span>; }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            msgFilter = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            FilterMessages();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="class_barotrauma_1_1_g_u_i_frame.html">GUIFrame</a> textContainer = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a> anchor = <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.TopLeft;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a> pivot = <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a>.TopLeft;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <a class="code" href="class_barotrauma_1_1_rich_string.html">RichString</a> richString = line.Text as <a class="code" href="class_barotrauma_1_1_rich_string.html">RichString</a>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">if</span> (richString != <span class="keyword">null</span> &amp;&amp; richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.HasValue)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">foreach</span> (var data <span class="keywordflow">in</span> richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.Value)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    <a class="code" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client = data.ExtractClient();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keywordflow">if</span> (client != <span class="keyword">null</span> &amp;&amp; client.<a class="code" href="class_barotrauma_1_1_networking_1_1_client.html#a90f5ff5e89ce62737ebc796395cdca14">Karma</a> &lt; 40.0f)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        textContainer = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_frame.html">GUIFrame</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Vector2(1.0f, 0.0f), listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>),</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                style: <span class="keyword">null</span>, color: <span class="keyword">new</span> Color(0xff111155))</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                            CanBeFocused = <span class="keyword">false</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        };</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        anchor = <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.CenterLeft;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        pivot = <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a>.CenterLeft;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            var textBlock = <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.0f), (textContainer ?? listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>).RectTransform, anchor, pivot),</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                line.Text, wrap: <span class="keyword">true</span>, font: GUIStyle.SmallFont)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                TextColor = messageColor[line.Type],</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                Visible = !msgTypeHidden[(int)line.Type],</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                CanBeFocused = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                UserData = line</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            };</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">if</span> (textContainer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                textContainer.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">NonScaledSize</a> = <span class="keyword">new</span> Point(textContainer.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">NonScaledSize</a>.X, textBlock.RectTransform.NonScaledSize.Y + 5);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                textBlock.SetTextPos();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                textBlock.RectTransform.Resize(textContainer.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">NonScaledSize</a>);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">if</span> (reverseOrder)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                textBlock.RectTransform.SetAsFirstChild();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">if</span> (richString != <span class="keyword">null</span> &amp;&amp; richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.HasValue)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <span class="keywordflow">foreach</span> (var data <span class="keywordflow">in</span> richString.<a class="code" href="class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118">RichTextData</a>.Value)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                    textBlock.ClickableAreas.Add(<span class="keyword">new</span> GUITextBlock.ClickableArea()</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        Data = data,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                        OnClick = GameMain.NetLobbyScreen.SelectPlayer,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                        OnSecondaryClick = GameMain.NetLobbyScreen.ShowPlayerContextMenu</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    });</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">if</span> ((prevSize == 1.0f &amp;&amp; listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> == 0.0f) || (prevSize &lt; 1.0f &amp;&amp; listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> == 1.0f)) listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> = 1.0f;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> FilterMessages()</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordtype">string</span> filter = msgFilter == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : msgFilter.ToLower();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">foreach</span> (GUIComponent child <span class="keywordflow">in</span> listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a>)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">if</span> (!(child is GUITextBlock textBlock)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                child.Visible = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                <span class="keywordflow">if</span> (msgTypeHidden[(<span class="keywordtype">int</span>)((LogMessage)child.UserData).Type])</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    child.Visible = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                textBlock.Visible = <span class="keywordtype">string</span>.IsNullOrEmpty(filter) || textBlock.Text.ToLower().Contains(filter);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#ae228888b22aecbb1d548eff98bdf87d6">UpdateScrollBarSize</a>();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#af99d26d142e9986688261a4dbd1b1d90">BarScroll</a> = 0.0f;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> SetMessageReversal(<span class="keywordtype">bool</span> reverse)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">if</span> (reverseOrder == reverse) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            reverseOrder = reverse;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            reverseButton.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a>.ForEach(c =&gt; c.SpriteEffects = reverseOrder ? SpriteEffects.FlipVertically : SpriteEffects.None);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            listBox.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">RectTransform</a>.<a class="code" href="class_barotrauma_1_1_rect_transform.html#acb5040288ce57ee4848a174a3650ac08">ReverseChildren</a>();</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a">  285</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a">ClearFilter</a>(<a class="code" href="class_barotrauma_1_1_g_u_i_component.html">GUIComponent</a> button, <span class="keywordtype">object</span> _)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            var searchBox = button.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#a086f1e28e77ee3665f7ac65ded21f68a">UserData</a> as <a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html">GUITextBox</a>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">if</span> (searchBox != <span class="keyword">null</span>) { searchBox.<a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html#ad6715b059a895f312de48c6b66162d3d">Text</a> = <span class="stringliteral">&quot;&quot;</span>; }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            msgFilter = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            FilterMessages();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_button_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_button.html">Barotrauma.GUIButton</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_button_8cs_source.html#l00008">GUIButton.cs:9</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_button_html_a0871b233620ffeb4d54c7e78c4b505c8"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_button.html#a0871b233620ffeb4d54c7e78c4b505c8">Barotrauma.GUIButton.OnClicked</a></div><div class="ttdeci">OnClickedHandler OnClicked</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_button_8cs_source.html#l00016">GUIButton.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html">Barotrauma.GUIComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00018">GUIComponent.cs:19</a></div></div>
@@ -404,13 +406,13 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_n
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html">Barotrauma.Networking.Client</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00010">LuaBarotraumaAdditions.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_client_html_a90f5ff5e89ce62737ebc796395cdca14"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_client.html#a90f5ff5e89ce62737ebc796395cdca14">Barotrauma.Networking.Client.Karma</a></div><div class="ttdeci">float Karma</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_networking_2_client_8cs_source.html#l00047">BarotraumaClient/ClientSource/Networking/Client.cs:47</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_a23f246849e07051673b5a38aa113c1f2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#a23f246849e07051673b5a38aa113c1f2">Barotrauma.Networking.ServerLog.LogFrame</a></div><div class="ttdeci">GUIButton LogFrame</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_networking_2_server_log_8cs_source.html#l00012">BarotraumaClient/ClientSource/Networking/ServerLog.cs:12</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_a3b335a25942d7e361ebae8c3a9d4c68a"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a">Barotrauma.Networking.ServerLog.ClearFilter</a></div><div class="ttdeci">bool ClearFilter(GUIComponent button, object _)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_networking_2_server_log_8cs_source.html#l00283">BarotraumaClient/ClientSource/Networking/ServerLog.cs:283</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_a3b335a25942d7e361ebae8c3a9d4c68a"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#a3b335a25942d7e361ebae8c3a9d4c68a">Barotrauma.Networking.ServerLog.ClearFilter</a></div><div class="ttdeci">bool ClearFilter(GUIComponent button, object _)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_networking_2_server_log_8cs_source.html#l00285">BarotraumaClient/ClientSource/Networking/ServerLog.cs:285</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_a423347bfb66daf0fb5ceb163dedbc424"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#a423347bfb66daf0fb5ceb163dedbc424">Barotrauma.Networking.ServerLog.CreateLogFrame</a></div><div class="ttdeci">void CreateLogFrame()</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_networking_2_server_log_8cs_source.html#l00027">BarotraumaClient/ClientSource/Networking/ServerLog.cs:27</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_a9d65041bf3e41c2c1ac43a64559f49ba"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">Barotrauma.Networking.ServerLog.MessageType</a></div><div class="ttdeci">MessageType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_log_8cs_source.html#l00031">BarotraumaShared/SharedSource/Networking/ServerLog.cs:32</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_aeb919a5dbd385961bbde4e811fc44bda"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#aeb919a5dbd385961bbde4e811fc44bda">Barotrauma.Networking.ServerLog.AssignLogFrame</a></div><div class="ttdeci">void AssignLogFrame(GUIButton inReverseButton, GUIListBox inListBox, GUIComponent tickBoxContainer, GUITextBox searchBox)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_networking_2_server_log_8cs_source.html#l00135">BarotraumaClient/ClientSource/Networking/ServerLog.cs:135</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html">Barotrauma.RectTransform</a></div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00031">RectTransform.cs:32</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html_a5daf8cc60adc014c74e60a825f89d53a"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html#a5daf8cc60adc014c74e60a825f89d53a">Barotrauma.RectTransform.Children</a></div><div class="ttdeci">IEnumerable&lt; RectTransform &gt; Children</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00062">RectTransform.cs:62</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html_acb5040288ce57ee4848a174a3650ac08"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html#acb5040288ce57ee4848a174a3650ac08">Barotrauma.RectTransform.ReverseChildren</a></div><div class="ttdeci">void ReverseChildren()</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00678">RectTransform.cs:678</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html_acb5040288ce57ee4848a174a3650ac08"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html#acb5040288ce57ee4848a174a3650ac08">Barotrauma.RectTransform.ReverseChildren</a></div><div class="ttdeci">void ReverseChildren()</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00680">RectTransform.cs:680</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html_ad833b65149c44c3308c2f99537674b0a"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html#ad833b65149c44c3308c2f99537674b0a">Barotrauma.RectTransform.MinSize</a></div><div class="ttdeci">Point?? MinSize</div><div class="ttdoc">Min size in pixels. Does not affect scaling.</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00086">RectTransform.cs:87</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html_aee6809f3a40dfa351b57c759521ce7b5"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html#aee6809f3a40dfa351b57c759521ce7b5">Barotrauma.RectTransform.NonScaledSize</a></div><div class="ttdeci">Point NonScaledSize</div><div class="ttdoc">Size before scale multiplications.</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00119">RectTransform.cs:120</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rich_string_html"><div class="ttname"><a href="class_barotrauma_1_1_rich_string.html">Barotrauma.RichString</a></div><div class="ttdef"><b>Definition:</b> <a href="_rich_string_8cs_source.html#l00008">RichString.cs:9</a></div></div>

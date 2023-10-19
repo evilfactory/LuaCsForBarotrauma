@@ -8,5 +8,6 @@ var class_barotrauma_1_1_nest_mission =
     [ "UpdateMissionSpecific", "class_barotrauma_1_1_nest_mission.html#a601dcc8c852edad0c945afc3a9ec87a1", null ],
     [ "DisplayAsCompleted", "class_barotrauma_1_1_nest_mission.html#aa1255ab1c60126621e493066cb4b16af", null ],
     [ "DisplayAsFailed", "class_barotrauma_1_1_nest_mission.html#abb48ed711ff19fac96ec0f82a115ca20", null ],
-    [ "SonarLabels", "class_barotrauma_1_1_nest_mission.html#ace74698fbda3f670bbbaadf4f3ed670e", null ]
+    [ "SonarLabels", "class_barotrauma_1_1_nest_mission.html#ace74698fbda3f670bbbaadf4f3ed670e", null ],
+    [ "State", "class_barotrauma_1_1_nest_mission.html#a1f5a6de3ff13b3f8766cd8f7009dc471", null ]
 ];

@@ -13,6 +13,6 @@ var struct_barotrauma_1_1_deconstruct_item =
     [ "MinCondition", "struct_barotrauma_1_1_deconstruct_item.html#a4c56f9a81d14f0f0b09129630ce334ae", null ],
     [ "OutConditionMax", "struct_barotrauma_1_1_deconstruct_item.html#a7472e92a298ee70e368d47d8712b2b61", null ],
     [ "OutConditionMin", "struct_barotrauma_1_1_deconstruct_item.html#a96afb164206bb782f6b5642599df0acf", null ],
-    [ "RequiredDeconstructor", "struct_barotrauma_1_1_deconstruct_item.html#ae94be5d45a548a537f86dba0a896f30c", null ],
-    [ "RequiredOtherItem", "struct_barotrauma_1_1_deconstruct_item.html#a1e795d19e663332c3a64fcd013ed8d43", null ]
+    [ "RequiredDeconstructor", "struct_barotrauma_1_1_deconstruct_item.html#a37ddcf924252fd70118d73204bd48d7e", null ],
+    [ "RequiredOtherItem", "struct_barotrauma_1_1_deconstruct_item.html#a79e430c8f04dccef3c9106a7eb857b44", null ]
 ];

@@ -28,5 +28,5 @@ var class_barotrauma_1_1_wreck_a_i_config =
     [ "Name", "class_barotrauma_1_1_wreck_a_i_config.html#a9cbfef09ad5e0a7603d54ba798271654", null ],
     [ "OffensiveAgent", "class_barotrauma_1_1_wreck_a_i_config.html#abb1ba8db97cb0c2377936dca48f933ae", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_wreck_a_i_config.html#a69d2c5705b31014a4ee39abde24688d4", null ],
-    [ "Spawner", "class_barotrauma_1_1_wreck_a_i_config.html#a7362abbc587854257a9baf95ec6272f6", null ]
+    [ "Spawner", "class_barotrauma_1_1_wreck_a_i_config.html#a179f7b04738e56f72039bf98da7222ac", null ]
 ];

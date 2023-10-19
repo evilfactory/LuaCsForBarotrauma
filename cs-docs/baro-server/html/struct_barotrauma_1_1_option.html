@@ -112,6 +112,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af05b940504f520d909f624bd97b05032"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0d4e914ff3532d609566c0d271cf95c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_option.html">Option</a>&lt; TType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_option.html#ae0d4e914ff3532d609566c0d271cf95c">Bind&lt; TType &gt;</a> (Func&lt; T, <a class="el" href="struct_barotrauma_1_1_option.html">Option</a>&lt; TType &gt;&gt; binder)</td></tr>
 <tr class="separator:ae0d4e914ff3532d609566c0d271cf95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d9e5bdc37748e9ec92b7961fec0e305"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_option.html#a3d9e5bdc37748e9ec92b7961fec0e305">Match</a> (Func&lt; T, T &gt; some, Func&lt; T &gt; none)</td></tr>
+<tr class="separator:a3d9e5bdc37748e9ec92b7961fec0e305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e830afb8a59aae84ebafc9280dff17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_option.html#a12e830afb8a59aae84ebafc9280dff17">Match</a> (Action&lt; T &gt; some, Action none)</td></tr>
+<tr class="separator:a12e830afb8a59aae84ebafc9280dff17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab18daf53ea78af2f0198015f14cc458"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_option.html#aab18daf53ea78af2f0198015f14cc458">Fallback</a> (T fallback)</td></tr>
 <tr class="separator:aab18daf53ea78af2f0198015f14cc458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dea5c25744c39ef42a5fc069d95fafb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_option.html">Option</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_barotrauma_1_1_option.html#a0dea5c25744c39ef42a5fc069d95fafb">Fallback</a> (<a class="el" href="struct_barotrauma_1_1_option.html">Option</a>&lt; T &gt; fallback)</td></tr>
@@ -289,6 +293,64 @@ Properties</h2></td></tr>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12e830afb8a59aae84ebafc9280dff17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e830afb8a59aae84ebafc9280dff17">&#9670;&nbsp;</a></span>Match() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_barotrauma_1_1_option.html">Barotrauma.Option</a>&lt; T &gt;.Match </td>
+          <td>(</td>
+          <td class="paramtype">Action&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>some</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&#160;</td>
+          <td class="paramname"><em>none</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_option_8cs_source.html#l00047">47</a> of file <a class="el" href="_option_8cs_source.html">Option.cs</a>.</p>
+
+</div>
+</div>
+<a id="a3d9e5bdc37748e9ec92b7961fec0e305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d9e5bdc37748e9ec92b7961fec0e305">&#9670;&nbsp;</a></span>Match() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="struct_barotrauma_1_1_option.html">Barotrauma.Option</a>&lt; T &gt;.Match </td>
+          <td>(</td>
+          <td class="paramtype">Func&lt; T, T &gt;&#160;</td>
+          <td class="paramname"><em>some</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Func&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>none</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -617,7 +679,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_option_8cs_source.html#l00105">105</a> of file <a class="el" href="_option_8cs_source.html">Option.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_option_8cs_source.html#l00118">118</a> of file <a class="el" href="_option_8cs_source.html">Option.cs</a>.</p>
 
 </div>
 </div>

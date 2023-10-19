@@ -17,12 +17,15 @@ var class_barotrauma_1_1_pet_behavior =
     [ "AIController", "class_barotrauma_1_1_pet_behavior.html#a57398837706eabcd011b6f1c9ff2014c", null ],
     [ "Happiness", "class_barotrauma_1_1_pet_behavior.html#aba31a1d9c2567fdbc0f1c9c8d47c7cb0", null ],
     [ "HappinessDecreaseRate", "class_barotrauma_1_1_pet_behavior.html#a3c6d7945e7ec69f14143de3aa7a5ae63", null ],
+    [ "HappyThreshold", "class_barotrauma_1_1_pet_behavior.html#a2f3c17f14f05c9afcbc0e137d3eae73c", null ],
     [ "Hunger", "class_barotrauma_1_1_pet_behavior.html#a256215974fdb43d4ba073274aadc7357", null ],
     [ "HungerIncreaseRate", "class_barotrauma_1_1_pet_behavior.html#a335577e83057d960b6711139ecb248ef", null ],
+    [ "HungryThreshold", "class_barotrauma_1_1_pet_behavior.html#a8847492259c49ac35694a2e4409d083e", null ],
     [ "MaxHappiness", "class_barotrauma_1_1_pet_behavior.html#aab55a72e3c5948413150510801bdba57", null ],
     [ "MaxHunger", "class_barotrauma_1_1_pet_behavior.html#ace5ad55e1ebb1ac4f593dcfb7fccad40", null ],
     [ "Owner", "class_barotrauma_1_1_pet_behavior.html#a5d490ca51582f431eec85968c5053498", null ],
     [ "PlayForce", "class_barotrauma_1_1_pet_behavior.html#ab96c588646e79dc404ee283ce1b60192", null ],
     [ "PlayTimer", "class_barotrauma_1_1_pet_behavior.html#a5c1b21875c647ec7016c9418a46e378b", null ],
-    [ "unstunY", "class_barotrauma_1_1_pet_behavior.html#a7d062419d6f7e37f4c5c56f6c595fa54", null ]
+    [ "UnhappyThreshold", "class_barotrauma_1_1_pet_behavior.html#a333e1855a4bc14a8a08fae55416432a3", null ],
+    [ "UnstunY", "class_barotrauma_1_1_pet_behavior.html#a29cec4a9910cb53e05e6f075aebb92e9", null ]
 ];

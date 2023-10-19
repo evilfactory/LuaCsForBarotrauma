@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_character_invento
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
@@ -99,15 +100,12 @@ Inheritance diagram for Barotrauma.CharacterInventory:</div>
  <div class="center">
   <img src="class_barotrauma_1_1_character_inventory.png" usemap="#Barotrauma.CharacterInventory_map" alt=""/>
   <map id="Barotrauma.CharacterInventory_map" name="Barotrauma.CharacterInventory_map">
-<area href="class_barotrauma_1_1_inventory.html" alt="Barotrauma.Inventory" shape="rect" coords="399,112,655,136"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html" title="Interface for entities that the server can send events to the clients" alt="Barotrauma.Networking.IServerSerializable" shape="rect" coords="0,56,256,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="266,56,522,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html" title="Interface for entities that the server can send events to the clients" alt="Barotrauma.Networking.IServerSerializable" shape="rect" coords="532,56,788,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="798,56,1054,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="0,0,256,24"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="266,0,522,24"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="532,0,788,24"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="798,0,1054,24"/>
+<area href="class_barotrauma_1_1_inventory.html" alt="Barotrauma.Inventory" shape="rect" coords="0,112,249,136"/>
+<area href="class_barotrauma_1_1_inventory.html" alt="Barotrauma.Inventory" shape="rect" coords="259,112,508,136"/>
+<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="0,56,249,80"/>
+<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="259,56,508,80"/>
+<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="0,0,249,24"/>
+<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="259,0,508,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -140,6 +138,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0bb7c42226945754ba6dcff84446c0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adde41d26ecfb5e7fa8fbd91fb8806782"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#adde41d26ecfb5e7fa8fbd91fb8806782">TryPutItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index, bool allowSwapping, bool allowCombine, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, bool createNetworkEvent=true, bool ignoreCondition=false)</td></tr>
 <tr class="separator:adde41d26ecfb5e7fa8fbd91fb8806782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63f24a9ac632bca73058bcb78ab0e9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#ac63f24a9ac632bca73058bcb78ab0e9b">ServerEventWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c, <a class="el" href="struct_barotrauma_1_1_character_1_1_inventory_state_event_data.html">Character.InventoryStateEventData</a> inventoryData)</td></tr>
+<tr class="separator:ac63f24a9ac632bca73058bcb78ab0e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_barotrauma_1_1_inventory"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_barotrauma_1_1_inventory')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_inventory.html">Barotrauma.Inventory</a></td></tr>
 <tr class="memitem:a69db3e1499a0ed21f471c9576007fb5b inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a69db3e1499a0ed21f471c9576007fb5b">Inventory</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> owner, int <a class="el" href="class_barotrauma_1_1_inventory.html#a18955321122b0e95daa2506a63a6d4a7">capacity</a>, int slotsPerRow=5)</td></tr>
 <tr class="separator:a69db3e1499a0ed21f471c9576007fb5b inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,6 +158,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae039efdc77c24ea9d5669dcfddf65143 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae039efdc77c24ea9d5669dcfddf65143">GetItemsAt</a> (int index)</td></tr>
 <tr class="memdesc:ae039efdc77c24ea9d5669dcfddf65143 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the item stored in the specified inventory slot. Can return more than one item if the slot contains a stack of items.  <a href="class_barotrauma_1_1_inventory.html#ae039efdc77c24ea9d5669dcfddf65143">More...</a><br /></td></tr>
 <tr class="separator:ae039efdc77c24ea9d5669dcfddf65143 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539a0e22261e0114b546f22eab9483bd inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a539a0e22261e0114b546f22eab9483bd">GetItemStackSlotIndex</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index)</td></tr>
+<tr class="separator:a539a0e22261e0114b546f22eab9483bd inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad00bdcd0e56bbd036b24e891cf05c8f5 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ad00bdcd0e56bbd036b24e891cf05c8f5">FindIndex</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item)</td></tr>
 <tr class="memdesc:ad00bdcd0e56bbd036b24e891cf05c8f5 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the index of the first slot the item is contained in.  <a href="class_barotrauma_1_1_inventory.html#ad00bdcd0e56bbd036b24e891cf05c8f5">More...</a><br /></td></tr>
 <tr class="separator:ad00bdcd0e56bbd036b24e891cf05c8f5 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,8 +185,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aef65d96c579ac869316bb7d05973ede0 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aef65d96c579ac869316bb7d05973ede0">IsFull</a> (bool takeStacksIntoAccount=false)</td></tr>
 <tr class="memdesc:aef65d96c579ac869316bb7d05973ede0 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is there room to put more items in the inventory. Doesn't take stacking into account by default.  <a href="class_barotrauma_1_1_inventory.html#aef65d96c579ac869316bb7d05973ede0">More...</a><br /></td></tr>
 <tr class="separator:aef65d96c579ac869316bb7d05973ede0 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a807986dabe0fce588ff21de325d0b10e inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a807986dabe0fce588ff21de325d0b10e">CreateNetworkEvent</a> ()</td></tr>
-<tr class="separator:a807986dabe0fce588ff21de325d0b10e inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760b7013e768ab99748ff1895a13f10c inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a760b7013e768ab99748ff1895a13f10c">CreateNetworkEvent</a> ()</td></tr>
+<tr class="separator:a760b7013e768ab99748ff1895a13f10c inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a988d2f59f72f564d14c7151f45504b00 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a988d2f59f72f564d14c7151f45504b00">FindItem</a> (Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt; predicate, bool recursive)</td></tr>
 <tr class="separator:a988d2f59f72f564d14c7151f45504b00 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad814ac0478b6ce6f96b9e712f993fb11 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ad814ac0478b6ce6f96b9e712f993fb11">FindAllItems</a> (Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt; predicate=null, bool recursive=false, List&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt; list=null)</td></tr>
@@ -201,31 +203,40 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1550e76225a310bbcd620a412eeff925 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53e77a3a59775083f04a28e8686109a inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae53e77a3a59775083f04a28e8686109a">IsInSlot</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index)</td></tr>
 <tr class="separator:ae53e77a3a59775083f04a28e8686109a inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9cde4accdc85a6000dd74664907fcd inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#abf9cde4accdc85a6000dd74664907fcd">SharedRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, out List&lt; ushort &gt;[] newItemIds)</td></tr>
-<tr class="separator:abf9cde4accdc85a6000dd74664907fcd inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6b7d4dfd8b2b9c844f4b53a104a4652 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae6b7d4dfd8b2b9c844f4b53a104a4652">SharedWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
-<tr class="separator:ae6b7d4dfd8b2b9c844f4b53a104a4652 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a373824a7000c4172b3f43ab0b50bd275 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a373824a7000c4172b3f43ab0b50bd275">SharedRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, List&lt; ushort &gt;[] receivedItemIds, out bool readyToApply)</td></tr>
+<tr class="separator:a373824a7000c4172b3f43ab0b50bd275 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a85f33d7a19711d2aa1ecae908bfa5 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a84a85f33d7a19711d2aa1ecae908bfa5">SharedWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="struct_barotrauma_1_1_range.html">Range</a> slotRange)</td></tr>
+<tr class="separator:a84a85f33d7a19711d2aa1ecae908bfa5 inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa62b795eb13c60d6c18b733cb95ae62c inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aa62b795eb13c60d6c18b733cb95ae62c">DeleteAllItems</a> ()</td></tr>
 <tr class="memdesc:aa62b795eb13c60d6c18b733cb95ae62c inherit pub_methods_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all items inside the inventory (and also recursively all items inside the items)  <a href="class_barotrauma_1_1_inventory.html#aa62b795eb13c60d6c18b733cb95ae62c">More...</a><br /></td></tr>
 <tr class="separator:aa62b795eb13c60d6c18b733cb95ae62c inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3baa5b8489b6d4a3932a0e42603abaa inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aa3baa5b8489b6d4a3932a0e42603abaa">ServerEventRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c)</td></tr>
 <tr class="separator:aa3baa5b8489b6d4a3932a0e42603abaa inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a621a3bb6233315eda274194c9af53e0a inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a621a3bb6233315eda274194c9af53e0a">ServerEventWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
-<tr class="separator:a621a3bb6233315eda274194c9af53e0a inherit pub_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a55c5e312eb4a532f5df187f7d51e03bd"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a55c5e312eb4a532f5df187f7d51e03bd">IsHandSlotType</a> (<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> s)</td></tr>
+<tr class="separator:a55c5e312eb4a532f5df187f7d51e03bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:aa209d5c54a96a1ad552145abc473814a"><td class="memItemLeft" align="right" valign="top">static readonly List&lt; <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#aa209d5c54a96a1ad552145abc473814a">AnySlot</a> = new List&lt;<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&gt;() { <a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a> }</td></tr>
 <tr class="separator:aa209d5c54a96a1ad552145abc473814a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_class_barotrauma_1_1_inventory"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_class_barotrauma_1_1_inventory')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_inventory.html">Barotrauma.Inventory</a></td></tr>
-<tr class="memitem:a2f8854e2bda59d45fe02dadebeee9b84 inherit pub_static_attribs_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a2f8854e2bda59d45fe02dadebeee9b84">MaxStackSize</a> = (1 &lt;&lt; 6) - 1</td></tr>
-<tr class="separator:a2f8854e2bda59d45fe02dadebeee9b84 inherit pub_static_attribs_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff559b59dd631d690cf41ddefa9ea3b0 inherit pub_static_attribs_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aff559b59dd631d690cf41ddefa9ea3b0">MaxPossibleStackSize</a> = (1 &lt;&lt; 6) - 1</td></tr>
+<tr class="separator:aff559b59dd631d690cf41ddefa9ea3b0 inherit pub_static_attribs_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57edfd097c90c6dbed00c08d35583d0f inherit pub_static_attribs_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a57edfd097c90c6dbed00c08d35583d0f">MaxItemsPerNetworkEvent</a> = 128</td></tr>
+<tr class="separator:a57edfd097c90c6dbed00c08d35583d0f inherit pub_static_attribs_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:aaa6c8939e201d01125d33a3cf9accca8"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#aaa6c8939e201d01125d33a3cf9accca8">PutItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int i, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, bool removeItem=true, bool createNetworkEvent=true)</td></tr>
 <tr class="separator:aaa6c8939e201d01125d33a3cf9accca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b4827234bb4ad56629059732f89c527"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_character_inventory.html#a6b4827234bb4ad56629059732f89c527">CreateNetworkEvent</a> (<a class="el" href="struct_barotrauma_1_1_range.html">Range</a> slotRange)</td></tr>
+<tr class="separator:a6b4827234bb4ad56629059732f89c527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_barotrauma_1_1_inventory"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_barotrauma_1_1_inventory')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_barotrauma_1_1_inventory.html">Barotrauma.Inventory</a></td></tr>
+<tr class="memitem:ae59b35b0bc8cf5ae0e0487d0f8c82c10 inherit pro_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae59b35b0bc8cf5ae0e0487d0f8c82c10">GetAllItems</a> (bool checkForDuplicates)</td></tr>
+<tr class="separator:ae59b35b0bc8cf5ae0e0487d0f8c82c10 inherit pro_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90f3f413619c3369f5df2a1b789fa6ab inherit pro_methods_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a90f3f413619c3369f5df2a1b789fa6ab">TrySwapping</a> (int index, <a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, bool createNetworkEvent, bool swapWholeStack)</td></tr>
 <tr class="separator:a90f3f413619c3369f5df2a1b789fa6ab inherit pro_methods_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -252,9 +263,9 @@ Properties</h2></td></tr>
 <tr class="memdesc:a77dd83c060ad3c4c0acb82a13c5ceb0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can the inventory be accessed by the character itself when the character is still alive (only has an effect if AccessibleWhenAlive false)  <a href="class_barotrauma_1_1_character_inventory.html#a77dd83c060ad3c4c0acb82a13c5ceb0a">More...</a><br /></td></tr>
 <tr class="separator:a77dd83c060ad3c4c0acb82a13c5ceb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_barotrauma_1_1_inventory"><td colspan="2" onclick="javascript:toggleInherit('properties_class_barotrauma_1_1_inventory')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_barotrauma_1_1_inventory.html">Barotrauma.Inventory</a></td></tr>
-<tr class="memitem:a3ec98aaad79366ae0bc19d5f9a758658 inherit properties_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a3ec98aaad79366ae0bc19d5f9a758658">AllItems</a><code> [get]</code></td></tr>
-<tr class="memdesc:a3ec98aaad79366ae0bc19d5f9a758658 inherit properties_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Stacked items are returned as individual instances. DO NOT modify the contents of the inventory while enumerating this list.  <a href="class_barotrauma_1_1_inventory.html#a3ec98aaad79366ae0bc19d5f9a758658">More...</a><br /></td></tr>
-<tr class="separator:a3ec98aaad79366ae0bc19d5f9a758658 inherit properties_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2afdf2d157dd1f31fa3d75faeaa71e1 inherit properties_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">virtual IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1">AllItems</a><code> [get]</code></td></tr>
+<tr class="memdesc:ab2afdf2d157dd1f31fa3d75faeaa71e1 inherit properties_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Stacked items are returned as individual instances. DO NOT modify the contents of the inventory while enumerating this list.  <a href="class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1">More...</a><br /></td></tr>
+<tr class="separator:ab2afdf2d157dd1f31fa3d75faeaa71e1 inherit properties_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c528d3eb8483f180dd460d9322ffd0 inherit properties_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae2c528d3eb8483f180dd460d9322ffd0">AllItemsMod</a><code> [get]</code></td></tr>
 <tr class="memdesc:ae2c528d3eb8483f180dd460d9322ffd0 inherit properties_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Allows modifying the contents of the inventory while being enumerated.  <a href="class_barotrauma_1_1_inventory.html#ae2c528d3eb8483f180dd460d9322ffd0">More...</a><br /></td></tr>
 <tr class="separator:ae2c528d3eb8483f180dd460d9322ffd0 inherit properties_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -275,7 +286,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00016">16</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00016">16</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5109582dcd9eecfa4196f96fc75022ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5109582dcd9eecfa4196f96fc75022ed">&#9670;&nbsp;</a></span>CharacterInventory()</h2>
@@ -309,7 +320,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00055">55</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00057">57</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -358,7 +369,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a24539fc3075cae851e0e1f563f95cd8b">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00181">181</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00190">190</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -410,7 +421,37 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a4d97e4cce32ec9665416c8d518abe910">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00188">188</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00197">197</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6b4827234bb4ad56629059732f89c527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b4827234bb4ad56629059732f89c527">&#9670;&nbsp;</a></span>CreateNetworkEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void Barotrauma.CharacterInventory.CreateNetworkEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_range.html">Range</a>&#160;</td>
+          <td class="paramname"><em>slotRange</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a20f846cff5819085f8f728aa5adcbd16">Barotrauma.Inventory</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00535">535</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -430,7 +471,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00142">142</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00151">151</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -450,7 +491,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00151">151</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00160">160</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -468,6 +509,32 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55c5e312eb4a532f5df187f7d51e03bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55c5e312eb4a532f5df187f7d51e03bd">&#9670;&nbsp;</a></span>IsHandSlotType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Barotrauma.CharacterInventory.IsHandSlotType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -498,7 +565,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00161">161</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00170">170</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -556,7 +623,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a7cd632364a5aae15263b7dba6ddf6f10">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00504">504</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00517">517</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -586,7 +653,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#acdfbc453520dc599bec4837cf4297c63">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00195">195</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00204">204</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -616,7 +683,43 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00200">200</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00209">209</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac63f24a9ac632bca73058bcb78ab0e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac63f24a9ac632bca73058bcb78ab0e9b">&#9670;&nbsp;</a></span>ServerEventWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.CharacterInventory.ServerEventWrite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_character_1_1_inventory_state_event_data.html">Character.InventoryStateEventData</a>&#160;</td>
+          <td class="paramname"><em>inventoryData</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_items_2_character_inventory_8cs_source.html#l00007">7</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_items_2_character_inventory_8cs_source.html">BarotraumaServer/ServerSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -676,7 +779,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a31ae43275e1f315b3a40d506c8cecd80">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00296">296</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00309">309</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -746,7 +849,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a06367b7cec638e3938f01e6464bc9d81">Barotrauma.Inventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00456">456</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00469">469</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -790,7 +893,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>If there is no room in the generic inventory (<a class="el" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025aed36a1ef76a59ee3f15180e0441188ad">InvSlotType.Any</a>), check if the item can be auto-equipped into its respective limbslot </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00237">237</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00250">250</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -815,7 +918,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00027">27</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00027">27</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -839,7 +942,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00029">29</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00031">31</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -866,7 +969,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can the inventory be accessed by the character itself when the character is still alive (only has an effect if AccessibleWhenAlive false) </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00043">43</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -892,7 +995,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Can the inventory be accessed when the character is still alive </p>
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00034">34</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00036">36</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>
@@ -916,7 +1019,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_character_inventory_8cs_source.html#l00020">20</a> of file <a class="el" href="_character_inventory_8cs_source.html">CharacterInventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html#l00020">20</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_character_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/CharacterInventory.cs</a>.</p>
 
 </div>
 </div>

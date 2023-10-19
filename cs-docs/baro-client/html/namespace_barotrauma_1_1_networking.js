@@ -94,6 +94,7 @@ var namespace_barotrauma_1_1_networking =
       [ "MEDICAL", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775aea68388b0642cfd18735a4a166494310", null ],
       [ "TRANSFER_MONEY", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775a6f010933a98a90754e928d7a5a201b5b", null ],
       [ "REWARD_DISTRIBUTION", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775aa54ee7a5050d730d6fb5279d3091dfad", null ],
+      [ "CIRCUITBOX", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775a2ddd1026d2d0bbba7f5969ef958cbd79", null ],
       [ "READY_CHECK", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775ae452988c2f0dfdc5574fd7e5fbb433fd", null ],
       [ "READY_TO_SPAWN", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775aeec1758cb4a8fb9da3dd25b8d3924ff0", null ],
       [ "LUA_NET_MESSAGE", "namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775a70e25c688902e77aa85b0d915b6aa451", null ]
@@ -214,18 +215,14 @@ var namespace_barotrauma_1_1_networking =
       [ "STARTGAME", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a7ab4fc66cfa618723162caf989555a5f", null ],
       [ "STARTGAMEFINALIZE", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74ad2f61fc9fc37ec33d86f3fb53fd3c218", null ],
       [ "ENDGAME", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74ab209c6829b4b78ec7012ba3a9f7819d8", null ],
-      [ "TRAITOR_MESSAGE", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74afee15acbb109f8779dcadd3e1fecc3d6", null ],
       [ "MISSION", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74aa46075d70b9612df685b11436d195196", null ],
       [ "EVENTACTION", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a8e5e9e65f61e555b758bb21771ebb173", null ],
+      [ "TRAITOR_MESSAGE", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74afee15acbb109f8779dcadd3e1fecc3d6", null ],
       [ "CREW", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74aeb343ac9e20ef1772af115023d693e11", null ],
       [ "MEDICAL", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74aea68388b0642cfd18735a4a166494310", null ],
+      [ "CIRCUITBOX", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a2ddd1026d2d0bbba7f5969ef958cbd79", null ],
       [ "MONEY", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a2bc794c2d9a28e52d1dd66d95e37d485", null ],
       [ "READY_CHECK", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74ae452988c2f0dfdc5574fd7e5fbb433fd", null ],
       [ "LUA_NET_MESSAGE", "namespace_barotrauma_1_1_networking.html#a0a4f368cde735f9f9e3c95ddd41f5e74a70e25c688902e77aa85b0d915b6aa451", null ]
-    ] ],
-    [ "YesNoMaybe", "namespace_barotrauma_1_1_networking.html#a3ef328d1d4d65b890e767ab99336c950", [
-      [ "No", "namespace_barotrauma_1_1_networking.html#a3ef328d1d4d65b890e767ab99336c950abafd7322c6e97d25b6299b5d6fe8920b", null ],
-      [ "Maybe", "namespace_barotrauma_1_1_networking.html#a3ef328d1d4d65b890e767ab99336c950a80ba31cc9d111c8ef880737a23ab0c54", null ],
-      [ "Yes", "namespace_barotrauma_1_1_networking.html#a3ef328d1d4d65b890e767ab99336c950a93cba07454f06a4a960172bbd6e2a435", null ]
     ] ]
 ];

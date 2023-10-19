@@ -16,7 +16,7 @@ var class_barotrauma_1_1_multi_player_campaign =
     [ "CanPurchaseSub", "class_barotrauma_1_1_multi_player_campaign.html#ab5eb1bc7f83efbf63248d4f479f997e6", null ],
     [ "ClearSavedExperiencePoints", "class_barotrauma_1_1_multi_player_campaign.html#ac1387b2ced734239987c11666842c324", null ],
     [ "DiscardClientCharacterData", "class_barotrauma_1_1_multi_player_campaign.html#a42904bf390c33f313f3ffae2d806fabf", null ],
-    [ "DoLevelTransition", "class_barotrauma_1_1_multi_player_campaign.html#af72294e9c28d89c61d874c01ba130f00", null ],
+    [ "DoLevelTransition", "class_barotrauma_1_1_multi_player_campaign.html#a516de0e4a437a2d030fb7e212efdde94", null ],
     [ "End", "class_barotrauma_1_1_multi_player_campaign.html#a601ee9a506e93d6ee687f62100ac077f", null ],
     [ "GetAssignedJobs", "class_barotrauma_1_1_multi_player_campaign.html#a0962019572760a627dff4bce91b7a88d", null ],
     [ "GetBalance", "class_barotrauma_1_1_multi_player_campaign.html#a6eee2bdfe431350e121540c4c20b8ff8", null ],

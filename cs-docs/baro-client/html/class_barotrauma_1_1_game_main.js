@@ -1,6 +1,5 @@
 var class_barotrauma_1_1_game_main =
 [
-    [ "LoadingException", "class_barotrauma_1_1_game_main_1_1_loading_exception.html", "class_barotrauma_1_1_game_main_1_1_loading_exception" ],
     [ "GameMain", "class_barotrauma_1_1_game_main.html#af675975c8f1fb671be9f66ca3ac96f73", null ],
     [ "ApplyGraphicsSettings", "class_barotrauma_1_1_game_main.html#aa220608e6e4d2a1e408c5c0b317ba7ff", null ],
     [ "Draw", "class_barotrauma_1_1_game_main.html#a4e799400d06ddd3349f6e22bbba5cbfc", null ],

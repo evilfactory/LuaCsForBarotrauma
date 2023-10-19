@@ -29,7 +29,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "CancelStartRound", "class_barotrauma_1_1_campaign_mode.html#a2d919433e7fd79727bd5f9c60d7552a7", null ],
     [ "CheckTooManyMissions", "class_barotrauma_1_1_campaign_mode.html#ab04c8244d6276785f7947197a13f9e59", null ],
     [ "CreateEndRoundButton", "class_barotrauma_1_1_campaign_mode.html#ab2b8f1ab2829d8e67b0da43d666bed65", null ],
-    [ "DoLevelTransition", "class_barotrauma_1_1_campaign_mode.html#a2dc29c4a8a3a17ddb6e01c0aacf72ea5", null ],
+    [ "DoLevelTransition", "class_barotrauma_1_1_campaign_mode.html#a8c5a0b7a8cd0a27897ea5ccf22e27b79", null ],
     [ "Draw", "class_barotrauma_1_1_campaign_mode.html#a9082e41c2e156df5dd7b88c3bc251bba", null ],
     [ "End", "class_barotrauma_1_1_campaign_mode.html#aa7a02d6c26264da659d3bb7e54939f3a", null ],
     [ "EndCampaign", "class_barotrauma_1_1_campaign_mode.html#a1e51cb3c7c54a3a655b2a0e3f9213516", null ],
@@ -110,6 +110,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "PurchasedLostShuttles", "class_barotrauma_1_1_campaign_mode.html#ad2e59ccb57695124693a1bf0cabd18a5", null ],
     [ "ShowCampaignUI", "class_barotrauma_1_1_campaign_mode.html#ad1055b751c6a474286b76cc9618c63e4", null ],
     [ "SlideshowPlayer", "class_barotrauma_1_1_campaign_mode.html#a3b5ed7e4ed362b3e593e2051cfc99798", null ],
+    [ "SwitchedSubsThisRound", "class_barotrauma_1_1_campaign_mode.html#a3d79cb186a31b4c162389e0d2a3e73d4", null ],
     [ "TransferItemsOnSubSwitch", "class_barotrauma_1_1_campaign_mode.html#ad6dc4d7bee02dafef5964d0a9b06e33d", null ],
     [ "Wallet", "class_barotrauma_1_1_campaign_mode.html#a5e79175f4f44fbcbcb8ea5a3ce61f51e", null ],
     [ "BeforeLevelLoading", "class_barotrauma_1_1_campaign_mode.html#a1fe14717ca4198055511641b9b67e46f", null ]

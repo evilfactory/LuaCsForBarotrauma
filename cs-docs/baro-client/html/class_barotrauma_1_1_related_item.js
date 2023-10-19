@@ -14,6 +14,7 @@ var class_barotrauma_1_1_related_item =
     [ "MatchesItem", "class_barotrauma_1_1_related_item.html#ad2c219746e4652c6d8559b7b66fed01d", null ],
     [ "MatchesItem", "class_barotrauma_1_1_related_item.html#a0e17177b01f32d7df75708aea3c6c7ba", null ],
     [ "Save", "class_barotrauma_1_1_related_item.html#a2c78dba2079c9a90124add91c6399abb", null ],
+    [ "CharacterInventorySlotType", "class_barotrauma_1_1_related_item.html#adbc5e41b6520a7193e6b173098bf99b3", null ],
     [ "Hide", "class_barotrauma_1_1_related_item.html#a6124f394ec3b6ab7bc5e127597f2ba4a", null ],
     [ "ItemPos", "class_barotrauma_1_1_related_item.html#a68cde6092e51f5a438bc4e29d1f770b6", null ],
     [ "Msg", "class_barotrauma_1_1_related_item.html#a77e36f2594e61dc9f6c08879fbc19be3", null ],
@@ -33,5 +34,6 @@ var class_barotrauma_1_1_related_item =
     [ "JoinedIdentifiers", "class_barotrauma_1_1_related_item.html#a276bfc0f0f496376d485f4b4706b531e", null ],
     [ "MatchOnEmpty", "class_barotrauma_1_1_related_item.html#aa0051182acfba9f7b2d19cb1e1d4a501", null ],
     [ "RequireEmpty", "class_barotrauma_1_1_related_item.html#a2b7e8f7a46f32679e0b59404a4a5920c", null ],
+    [ "RequireOrMatchOnEmpty", "class_barotrauma_1_1_related_item.html#af07c30406ebde73753681b892a1f199f", null ],
     [ "Type", "class_barotrauma_1_1_related_item.html#a8bae10185d94be74ddf6c0f9da2dd81d", null ]
 ];

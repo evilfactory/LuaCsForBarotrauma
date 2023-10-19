@@ -172,8 +172,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a9cc83a385b23c0c52cd6ae27ec46f043"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb928570a544be1b32af927454b2ebd4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#aeb928570a544be1b32af927454b2ebd4">SendMessage</a> (string msg, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a>? messageType=null, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> sender=null, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> character=null)</td></tr>
 <tr class="separator:aeb928570a544be1b32af927454b2ebd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f25ba8a93c0e80509876fa4055b607"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a84f25ba8a93c0e80509876fa4055b607">SendTraitorMessage</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client, string msg, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> missionid, TraitorMessageType type)</td></tr>
-<tr class="separator:a84f25ba8a93c0e80509876fa4055b607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a264a97aaa74633ccdf0543142c2aff44"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a264a97aaa74633ccdf0543142c2aff44">SendTraitorMessage</a> (WriteOnlyMessage message, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client)</td></tr>
+<tr class="separator:a264a97aaa74633ccdf0543142c2aff44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbc86b3b9b4ebfdbf5785db95b857143"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#acbc86b3b9b4ebfdbf5785db95b857143">SendDirectChatMessage</a> (string sendername, string text, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a> messageType=ChatMessageType.Private, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client=null, string iconStyle=&quot;&quot;)</td></tr>
 <tr class="separator:acbc86b3b9b4ebfdbf5785db95b857143"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28aa6ec248d5891e0e13ac90d1eb12aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_lua_game.html#a28aa6ec248d5891e0e13ac90d1eb12aa">SendDirectChatMessage</a> (<a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html">ChatMessage</a> chatMessage, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> client)</td></tr>
@@ -1399,8 +1399,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a84f25ba8a93c0e80509876fa4055b607"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84f25ba8a93c0e80509876fa4055b607">&#9670;&nbsp;</a></span>SendTraitorMessage()</h2>
+<a id="a264a97aaa74633ccdf0543142c2aff44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a264a97aaa74633ccdf0543142c2aff44">&#9670;&nbsp;</a></span>SendTraitorMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1411,26 +1411,14 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">static void Barotrauma.LuaGame.SendTraitorMessage </td>
           <td>(</td>
+          <td class="paramtype">WriteOnlyMessage&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&#160;</td>
-          <td class="paramname"><em>client</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
-          <td class="paramname"><em>missionid</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TraitorMessageType&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
+          <td class="paramname"><em>client</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

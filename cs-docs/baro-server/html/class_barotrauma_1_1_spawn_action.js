@@ -7,7 +7,8 @@ var class_barotrauma_1_1_spawn_action =
       [ "MainPath", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aad2c40c5982d26c2b6fa957c71a670c7f", null ],
       [ "Ruin", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aa574ca24646bea0e378813db540929034", null ],
       [ "Wreck", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aabb854b8bbbf8ce1f4b0a5e222f7a3a6f", null ],
-      [ "BeaconStation", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aac7bd8ac0336ee00cca0f9c46aa9006cc", null ]
+      [ "BeaconStation", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aac7bd8ac0336ee00cca0f9c46aa9006cc", null ],
+      [ "NearMainSub", "class_barotrauma_1_1_spawn_action.html#a5497fdaf6e47786efcc95acaeca14b3aaab28a02f0d03b9667f74debf4053f03b", null ]
     ] ],
     [ "SpawnAction", "class_barotrauma_1_1_spawn_action.html#ab9dc33119ba3126cd8864aaa312419ae", null ],
     [ "IsFinished", "class_barotrauma_1_1_spawn_action.html#a2810052ae4da35a4742011020b0ac5b9", null ],
@@ -15,6 +16,8 @@ var class_barotrauma_1_1_spawn_action =
     [ "ToDebugString", "class_barotrauma_1_1_spawn_action.html#a2be04bc5cab5d627ce34cc994e7bbffe", null ],
     [ "Update", "class_barotrauma_1_1_spawn_action.html#adf5d5a756025aad0a5e2ff8afa209828", null ],
     [ "AllowDuplicates", "class_barotrauma_1_1_spawn_action.html#af6bb5ee095c04002b0e0b1b66cd2c27c", null ],
+    [ "AllowInPlayerView", "class_barotrauma_1_1_spawn_action.html#a505eba19fbbdf6eb163edba1a00fa55d", null ],
+    [ "Amount", "class_barotrauma_1_1_spawn_action.html#a444ed74a9c1884dab89a03766c4fbbb9", null ],
     [ "IgnoreByAI", "class_barotrauma_1_1_spawn_action.html#a73b1c26a3f5fe1a316f7cfa60005486b", null ],
     [ "ItemIdentifier", "class_barotrauma_1_1_spawn_action.html#a542aea94c9cd162ffa10a8ad76addcec", null ],
     [ "LootingIsStealing", "class_barotrauma_1_1_spawn_action.html#a81a47554b9d6a653fdaa6989973e5920", null ],

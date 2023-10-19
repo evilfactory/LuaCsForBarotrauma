@@ -16,8 +16,8 @@ The manual installation of the mod involves the simple task of just replacing so
 The client patch is for when when you need to install client-side support, this ..." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=d90ba6d" />
-    <link rel="stylesheet" href="../../highlight.css?v=1ad54b9" />
+    <link rel="stylesheet" href="../../ldoc.css?v=10e03f6" />
+    <link rel="stylesheet" href="../../highlight.css?v=d688904" />
   </head>
 
   <body>
@@ -403,9 +403,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.EMPType"><span>AfflictionPrefab.EMPType</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.HuskInfectionType"><span>AfflictionPrefab.HuskInfectionType</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.ImpactDamage"><span>AfflictionPrefab.ImpactDamage</span></a>
                     </li>
                     <li>
@@ -416,6 +413,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.List"><span>AfflictionPrefab.List</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.OrganDamage"><span>AfflictionPrefab.OrganDamage</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/afflictionprefab/#AfflictionPrefab.OxygenLow"><span>AfflictionPrefab.OxygenLow</span></a>
@@ -640,6 +640,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/animcontroller/#GetHeightFromFloor"><span>GetHeightFromFloor</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/animcontroller/#GetImpactDamage"><span>GetImpactDamage</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/animcontroller/#GetLimb"><span>GetLimb</span></a>
@@ -1035,9 +1038,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/character/#CanInteractWith"><span>CanInteractWith</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/character/#CanSeeCharacter"><span>CanSeeCharacter</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#CanSeeTarget"><span>CanSeeTarget</span></a>
                     </li>
                     <li>
@@ -1065,9 +1065,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/character/#Character.GetFriendlyCrew"><span>Character.GetFriendlyCrew</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/character/#Character.GetRelativeSimPosition"><span>Character.GetRelativeSimPosition</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#Character.IsFriendly"><span>Character.IsFriendly</span></a>
                     </li>
                     <li>
@@ -1078,6 +1075,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#Character.IsSameSpeciesOrGroup"><span>Character.IsSameSpeciesOrGroup</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#Character.IsTargetVisible"><span>Character.IsTargetVisible</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/character/#Character.ReadSpawnData"><span>Character.ReadSpawnData</span></a>
@@ -1245,6 +1245,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/character/#GiveIdCardTags"><span>GiveIdCardTags</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#GiveIdCardTags"><span>GiveIdCardTags</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#GiveJobItems"><span>GiveJobItems</span></a>
                     </li>
                     <li>
@@ -1261,9 +1264,6 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#HasAbilityFlag"><span>HasAbilityFlag</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/character/#HasEquippedItem"><span>HasEquippedItem</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#HasEquippedItem"><span>HasEquippedItem</span></a>
@@ -1804,6 +1804,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/character/#IsDead"><span>IsDead</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsDisguisedAsHusk"><span>IsDisguisedAsHusk</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsDismissed"><span>IsDismissed</span></a>
                     </li>
                     <li>
@@ -1816,7 +1819,13 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/character/#IsFemale"><span>IsFemale</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsFlipped"><span>IsFlipped</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsForceRagdolled"><span>IsForceRagdolled</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsFriendlyNPCTurnedHostile"><span>IsFriendlyNPCTurnedHostile</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsHuman"><span>IsHuman</span></a>
@@ -1826,6 +1835,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsHusk"><span>IsHusk</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsHuskInfected"><span>IsHuskInfected</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsImmuneToPressure"><span>IsImmuneToPressure</span></a>
@@ -1841,6 +1853,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsInstigator"><span>IsInstigator</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsKiller"><span>IsKiller</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsKnockedDown"><span>IsKnockedDown</span></a>
@@ -2110,6 +2125,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/character/#UniqueNameColor"><span>UniqueNameColor</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#Unkillable"><span>Unkillable</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#UseHullOxygen"><span>UseHullOxygen</span></a>
                     </li>
                     <li>
@@ -2227,6 +2245,12 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetAfflictionStrength"><span>GetAfflictionStrength</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#GetAfflictionStrengthByIdentifier"><span>GetAfflictionStrengthByIdentifier</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#GetAfflictionStrengthByType"><span>GetAfflictionStrengthByType</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#GetAllAfflictions"><span>GetAllAfflictions</span></a>
@@ -2389,6 +2413,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/characterhealth/#InventorySlotContainer"><span>InventorySlotContainer</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#IsParalyzed"><span>IsParalyzed</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#IsUnconscious"><span>IsUnconscious</span></a>
                     </li>
                     <li>
@@ -2429,6 +2456,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#Vitality"><span>Vitality</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterhealth/#VitalityDisregardingDeath"><span>VitalityDisregardingDeath</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterhealth/#WasInFullHealth"><span>WasInFullHealth</span></a>
@@ -2880,6 +2910,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/characterinventory/#CanBePutInSlot"><span>CanBePutInSlot</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterinventory/#CharacterInventory.IsHandSlotType"><span>CharacterInventory.IsHandSlotType</span></a>
+                    </li>
+                    <li>
                       <span class="realm client"></span><a href="../../code/characterinventory/#ClearSubInventories"><span>ClearSubInventories</span></a>
                     </li>
                     <li>
@@ -2958,6 +2991,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/characterinventory/#GetItemInLimbSlot"><span>GetItemInLimbSlot</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterinventory/#GetItemStackSlotIndex"><span>GetItemStackSlotIndex</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#GetItemsAt"><span>GetItemsAt</span></a>
                     </li>
                     <li>
@@ -2965,6 +3001,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#GetType"><span>GetType</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/characterinventory/#HideSlot"><span>HideSlot</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#HowManyCanBePut"><span>HowManyCanBePut</span></a>
@@ -2998,6 +3037,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/characterinventory/#Movable"><span>Movable</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/characterinventory/#RefreshSlotPositions"><span>RefreshSlotPositions</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#RemoveItem"><span>RemoveItem</span></a>
@@ -3080,6 +3122,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#CurrentLayout"><span>CurrentLayout</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/characterinventory/#DrawWhenEquipped"><span>DrawWhenEquipped</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinventory/#EmptySlotCount"><span>EmptySlotCount</span></a>
@@ -3210,10 +3255,10 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/client/#RemovePermission"><span>RemovePermission</span></a>
                     </li>
                     <li>
-                      <span class="realm server"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
+                      <span class="realm client"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
                     </li>
                     <li>
-                      <span class="realm client"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
+                      <span class="realm server"></span><a href="../../code/client/#ResetVotes"><span>ResetVotes</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/client/#SessionOrAccountIdMatches"><span>SessionOrAccountIdMatches</span></a>
@@ -3431,9 +3476,6 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm server"></span><a href="../../code/client/#RejectedName"><span>RejectedName</span></a>
-                    </li>
-                    <li>
-                      <span class="realm server"></span><a href="../../code/client/#RoundsSincePlayedAsTraitor"><span>RoundsSincePlayedAsTraitor</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/client/#SessionId"><span>SessionId</span></a>
@@ -3990,6 +4032,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm client"></span><a href="../../code/game.gamesession/#Draw"><span>Draw</span></a>
                     </li>
                     <li>
+                      <span class="realm client"></span><a href="../../code/game.gamesession/#EnableEventLogNotificationIcon"><span>EnableEventLogNotificationIcon</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#EndRound"><span>EndRound</span></a>
                     </li>
                     <li>
@@ -4005,7 +4050,7 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#GameSession.CreateDummyLocations"><span>GameSession.CreateDummyLocations</span></a>
                     </li>
                     <li>
-                      <span class="realm client"></span><a href="../../code/game.gamesession/#GameSession.CreateTalentIconNotification"><span>GameSession.CreateTalentIconNotification</span></a>
+                      <span class="realm client"></span><a href="../../code/game.gamesession/#GameSession.CreateNotificationIcon"><span>GameSession.CreateNotificationIcon</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#GameSession.GetSessionCrewCharacters"><span>GameSession.GetSessionCrewCharacters</span></a>
@@ -4117,6 +4162,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#IsRunning"><span>IsRunning</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.gamesession/#LastSaveVersion"><span>LastSaveVersion</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#Level"><span>Level</span></a>
                     </li>
                     <li>
@@ -4160,6 +4208,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#TimeSpentPainting"><span>TimeSpentPainting</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.gamesession/#TraitorsEnabled"><span>TraitorsEnabled</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#WinningTeam"><span>WinningTeam</span></a>
@@ -4263,6 +4314,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#RemovePlayer"><span>RemovePlayer</span></a>
                     </li>
                     <li>
+                      <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#SaveAppearance"><span>SaveAppearance</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#Select"><span>Select</span></a>
                     </li>
                     <li>
@@ -4311,7 +4365,10 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#SetSpectate"><span>SetSpectate</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#SetTraitorsEnabled"><span>SetTraitorsEnabled</span></a>
+                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#SetTraitorDangerLevel"><span>SetTraitorDangerLevel</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#SetTraitorProbability"><span>SetTraitorProbability</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#ShowPlayerContextMenu"><span>ShowPlayerContextMenu</span></a>
@@ -4330,9 +4387,6 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#ToggleSpectate"><span>ToggleSpectate</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#ToggleTraitorsEnabled"><span>ToggleTraitorsEnabled</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#TryDiscardCampaignCharacter"><span>TryDiscardCampaignCharacter</span></a>
@@ -4513,6 +4567,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm client"></span><a href="../../code/game.netlobbyscreen/#ShuttleList"><span>ShuttleList</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#Spectating"><span>Spectating</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#StartButton"><span>StartButton</span></a>
                     </li>
                     <li>
@@ -4663,9 +4720,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowModeVoting"><span>AllowModeVoting</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowRagdollButton"><span>AllowRagdollButton</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowRespawn"><span>AllowRespawn</span></a>
                     </li>
                     <li>
@@ -4810,6 +4864,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#MaximumMoneyTransferRequest"><span>MaximumMoneyTransferRequest</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#MinPercentageOfPlayersForTraitorAccusation"><span>MinPercentageOfPlayersForTraitorAccusation</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#MinRespawnRatio"><span>MinRespawnRatio</span></a>
                     </li>
                     <li>
@@ -4903,6 +4960,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#ShowEnemyHealthBars"><span>ShowEnemyHealthBars</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#SkillLossPercentageOnDeath"><span>SkillLossPercentageOnDeath</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#StartWhenClientsReady"><span>StartWhenClientsReady</span></a>
                     </li>
                     <li>
@@ -4915,22 +4975,13 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#TickRate"><span>TickRate</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorsEnabled"><span>TraitorsEnabled</span></a>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorDangerLevel"><span>TraitorDangerLevel</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorsMaxRestartDelay"><span>TraitorsMaxRestartDelay</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorsMaxStartDelay"><span>TraitorsMaxStartDelay</span></a>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorProbability"><span>TraitorProbability</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorsMinPlayerCount"><span>TraitorsMinPlayerCount</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorsMinRestartDelay"><span>TraitorsMinRestartDelay</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#TraitorsMinStartDelay"><span>TraitorsMinStartDelay</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#UseRespawnShuttle"><span>UseRespawnShuttle</span></a>
@@ -5595,9 +5646,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/hull/#IsMouseOn"><span>IsMouseOn</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/hull/#IsTaggedAirlock"><span>IsTaggedAirlock</span></a>
-                    </li>
-                    <li>
                       <span class="realm client"></span><a href="../../code/hull/#IsVisible"><span>IsVisible</span></a>
                     </li>
                     <li>
@@ -5666,6 +5714,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/hull/#AmbientLight"><span>AmbientLight</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#AveragePaintedColor"><span>AveragePaintedColor</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/hull/#AvoidStaying"><span>AvoidStaying</span></a>
@@ -5764,6 +5815,12 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/hull/#Hull.OxygenDistributionSpeed"><span>Hull.OxygenDistributionSpeed</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#Hull.PressureBuildUpSpeed"><span>Hull.PressureBuildUpSpeed</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#Hull.PressureDropSpeed"><span>Hull.PressureDropSpeed</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/hull/#Hull.ShowHulls"><span>Hull.ShowHulls</span></a>
                     </li>
                     <li>
@@ -5788,10 +5845,22 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/hull/#InDetectable"><span>InDetectable</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#IsAirlock"><span>IsAirlock</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#IsBlue"><span>IsBlue</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#IsGreen"><span>IsGreen</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/hull/#IsHighlighted"><span>IsHighlighted</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/hull/#IsIncludedInSelection"><span>IsIncludedInSelection</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#IsRed"><span>IsRed</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/hull/#IsSelected"><span>IsSelected</span></a>
@@ -5994,9 +6063,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm client"></span><a href="../../code/inventory/#ClientEventRead"><span>ClientEventRead</span></a>
                     </li>
                     <li>
-                      <span class="realm client"></span><a href="../../code/inventory/#ClientEventWrite"><span>ClientEventWrite</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#Contains"><span>Contains</span></a>
                     </li>
                     <li>
@@ -6054,6 +6120,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/inventory/#GetItemAt"><span>GetItemAt</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/inventory/#GetItemStackSlotIndex"><span>GetItemStackSlotIndex</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#GetItemsAt"><span>GetItemsAt</span></a>
                     </li>
                     <li>
@@ -6061,6 +6130,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#GetType"><span>GetType</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/inventory/#HideSlot"><span>HideSlot</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#HowManyCanBePut"><span>HowManyCanBePut</span></a>
@@ -6114,9 +6186,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm server"></span><a href="../../code/inventory/#ServerEventRead"><span>ServerEventRead</span></a>
                     </li>
                     <li>
-                      <span class="realm server"></span><a href="../../code/inventory/#ServerEventWrite"><span>ServerEventWrite</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#SharedRead"><span>SharedRead</span></a>
                     </li>
                     <li>
@@ -6160,6 +6229,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/inventory/#Capacity"><span>Capacity</span></a>
                     </li>
                     <li>
+                      <span class="realm client"></span><a href="../../code/inventory/#DrawWhenEquipped"><span>DrawWhenEquipped</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#EmptySlotCount"><span>EmptySlotCount</span></a>
                     </li>
                     <li>
@@ -6196,7 +6268,10 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/inventory/#Inventory.IsMouseOnInventory"><span>Inventory.IsMouseOnInventory</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/inventory/#Inventory.MaxStackSize"><span>Inventory.MaxStackSize</span></a>
+                      <span class="realm shared"></span><a href="../../code/inventory/#Inventory.MaxItemsPerNetworkEvent"><span>Inventory.MaxItemsPerNetworkEvent</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/inventory/#Inventory.MaxPossibleStackSize"><span>Inventory.MaxPossibleStackSize</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#Inventory.SelectedSlot"><span>Inventory.SelectedSlot</span></a>
@@ -6291,6 +6366,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#ApplyTreatment"><span>ApplyTreatment</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#AssignCampaignInteractionType"><span>AssignCampaignInteractionType</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#CanClientAccess"><span>CanClientAccess</span></a>
                     </li>
                     <li>
@@ -6324,6 +6402,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm client"></span><a href="../../code/item/#CreateClientEvent"><span>CreateClientEvent</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#CreateDroppedStack"><span>CreateDroppedStack</span></a>
+                    </li>
+                    <li>
                       <span class="realm client"></span><a href="../../code/item/#CreateEditingHUD"><span>CreateEditingHUD</span></a>
                     </li>
                     <li>
@@ -6343,6 +6424,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#DisableDrawableComponent"><span>DisableDrawableComponent</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/item/#Draw"><span>Draw</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/item/#Draw"><span>Draw</span></a>
@@ -6471,9 +6555,6 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#HasTag"><span>HasTag</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/item/#HasTag"><span>HasTag</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#HasUpgrade"><span>HasUpgrade</span></a>
                     </li>
                     <li>
@@ -6517,6 +6598,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#Item.UpdateHulls"><span>Item.UpdateHulls</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#Item.UpdatePendingConditionUpdates"><span>Item.UpdatePendingConditionUpdates</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#Move"><span>Move</span></a>
@@ -6673,6 +6757,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#AvailableSwaps"><span>AvailableSwaps</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#BodyType"><span>BodyType</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#CampaignInteractionType"><span>CampaignInteractionType</span></a>
                     </li>
                     <li>
@@ -6724,6 +6811,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#Description"><span>Description</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#DescriptionTag"><span>DescriptionTag</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#DisallowedUpgradeSet"><span>DisallowedUpgradeSet</span></a>
                     </li>
                     <li>
@@ -6745,6 +6835,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#DrawPosition"><span>DrawPosition</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#DroppedStack"><span>DroppedStack</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#EditableWhenEquipped"><span>EditableWhenEquipped</span></a>
                     </li>
                     <li>
@@ -6764,6 +6857,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#FlippedY"><span>FlippedY</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#FullyInitialized"><span>FullyInitialized</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#HasBallastFloraInHull"><span>HasBallastFloraInHull</span></a>
@@ -6796,7 +6892,13 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#ImpactTolerance"><span>ImpactTolerance</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#InBeaconStation"><span>InBeaconStation</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#InDetectable"><span>InDetectable</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#InPlayerSubmarine"><span>InPlayerSubmarine</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#InWater"><span>InWater</span></a>
@@ -6844,6 +6946,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/item/#IsPlayerTeamInteractable"><span>IsPlayerTeamInteractable</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#IsSalvageMissionItem"><span>IsSalvageMissionItem</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#IsSecondaryItem"><span>IsSecondaryItem</span></a>
                     </li>
                     <li>
@@ -6884,6 +6989,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#Item.connectionPairs"><span>Item.connectionPairs</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#LastEatenTime"><span>LastEatenTime</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/item/#LastImpactSoundTime"><span>LastImpactSoundTime</span></a>
@@ -7224,6 +7332,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/iteminventory/#GetItemAt"><span>GetItemAt</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/iteminventory/#GetItemStackSlotIndex"><span>GetItemStackSlotIndex</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/iteminventory/#GetItemsAt"><span>GetItemsAt</span></a>
                     </li>
                     <li>
@@ -7231,6 +7342,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/iteminventory/#GetType"><span>GetType</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/iteminventory/#HideSlot"><span>HideSlot</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/iteminventory/#HowManyCanBePut"><span>HowManyCanBePut</span></a>
@@ -7313,6 +7427,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/iteminventory/#Container"><span>Container</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/iteminventory/#DrawWhenEquipped"><span>DrawWhenEquipped</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/iteminventory/#EmptySlotCount"><span>EmptySlotCount</span></a>
@@ -7402,6 +7519,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#GetItemNameTextId"><span>GetItemNameTextId</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#GetMaxStackSize"><span>GetMaxStackSize</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#GetMinPrice"><span>GetMinPrice</span></a>
@@ -7612,6 +7732,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/itemprefab/#Description"><span>Description</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#DisableCommandMenuWhenSelected"><span>DisableCommandMenuWhenSelected</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#DisableItemUsageWhenSelected"><span>DisableItemUsageWhenSelected</span></a>
                     </li>
                     <li>
@@ -7633,6 +7756,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/itemprefab/#FocusOnSelected"><span>FocusOnSelected</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#GrabWhenSelected"><span>GrabWhenSelected</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#Health"><span>Health</span></a>
                     </li>
                     <li>
@@ -7640,6 +7766,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#HideConditionInTooltip"><span>HideConditionInTooltip</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#HideInEditors"><span>HideInEditors</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#HideInMenus"><span>HideInMenus</span></a>
@@ -7705,6 +7834,12 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/itemprefab/#MaxStackSize"><span>MaxStackSize</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#MaxStackSizeCharacterInventory"><span>MaxStackSizeCharacterInventory</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#MaxStackSizeHoldableOrWearableInventory"><span>MaxStackSizeHoldableOrWearableInventory</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#MinimapIcon"><span>MinimapIcon</span></a>
                     </li>
                     <li>
@@ -7760,6 +7895,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#ShowNameInHealthBar"><span>ShowNameInHealthBar</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/itemprefab/#SignalComponentColor"><span>SignalComponentColor</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/itemprefab/#Size"><span>Size</span></a>
@@ -8632,6 +8770,12 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/limb/#IsDead"><span>IsDead</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/limb/#IsFlipped"><span>IsFlipped</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/limb/#IsHuman"><span>IsHuman</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/limb/#IsLeg"><span>IsLeg</span></a>
                     </li>
                     <li>
@@ -8835,19 +8979,22 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/networking/#Networking.CreateEntityEvent"><span>Networking.CreateEntityEvent</span></a>
                     </li>
                     <li>
-                      <span class="realm server"></span><a href="../../code/networking/#Networking.HttpGet"><span>Networking.HttpGet</span></a>
+                      <span class="realm shared"></span><a href="../../code/networking/#Networking.HttpGet"><span>Networking.HttpGet</span></a>
                     </li>
                     <li>
-                      <span class="realm server"></span><a href="../../code/networking/#Networking.HttpPost"><span>Networking.HttpPost</span></a>
+                      <span class="realm shared"></span><a href="../../code/networking/#Networking.HttpPost"><span>Networking.HttpPost</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/networking/#Networking.HttpRequest"><span>Networking.HttpRequest</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/networking/#Networking.Receive"><span>Networking.Receive</span></a>
                     </li>
                     <li>
-                      <span class="realm client"></span><a href="../../code/networking/#Networking.Send"><span>Networking.Send</span></a>
+                      <span class="realm server"></span><a href="../../code/networking/#Networking.Send"><span>Networking.Send</span></a>
                     </li>
                     <li>
-                      <span class="realm server"></span><a href="../../code/networking/#Networking.Send"><span>Networking.Send</span></a>
+                      <span class="realm client"></span><a href="../../code/networking/#Networking.Send"><span>Networking.Send</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/networking/#Networking.Start"><span>Networking.Start</span></a>
@@ -9940,6 +10087,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/structureprefab/#Health"><span>Health</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/structureprefab/#HideInEditors"><span>HideInEditors</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/structureprefab/#HideInMenus"><span>HideInMenus</span></a>
                     </li>
                     <li>
@@ -10173,6 +10323,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.AbsRect"><span>Submarine.AbsRect</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.AbsRectF"><span>Submarine.AbsRectF</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.CalculateDockOffset"><span>Submarine.CalculateDockOffset</span></a>
                     </li>
                     <li>
@@ -10209,6 +10362,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.FindContaining"><span>Submarine.FindContaining</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.FindContainingInLocalCoordinates"><span>Submarine.FindContainingInLocalCoordinates</span></a>
+                    </li>
+                    <li>
                       <span class="realm client"></span><a href="../../code/submarine/#Submarine.ForceRemoveFromVisibleEntities"><span>Submarine.ForceRemoveFromVisibleEntities</span></a>
                     </li>
                     <li>
@@ -10219,6 +10375,15 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/submarine/#Submarine.GetLightCount"><span>Submarine.GetLightCount</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.GetRelativeSimPosition"><span>Submarine.GetRelativeSimPosition</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.GetRelativeSimPosition"><span>Submarine.GetRelativeSimPosition</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.GetRelativeSimPositionFromWorldPosition"><span>Submarine.GetRelativeSimPositionFromWorldPosition</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/submarine/#Submarine.GetShadowCastingLightCount"><span>Submarine.GetShadowCastingLightCount</span></a>
@@ -10240,6 +10405,9 @@ The client patch is for when when you need to install client-side support, this 
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.RectContains"><span>Submarine.RectContains</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.RectsOverlap"><span>Submarine.RectsOverlap</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.RectsOverlap"><span>Submarine.RectsOverlap</span></a>
@@ -11664,6 +11832,9 @@ The client patch is for when when you need to install client-side support, this 
                       <span class="realm shared"></span><a href="../../enum/messagetype/#Talent"><span>Talent</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../enum/messagetype/#Traitors"><span>Traitors</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../enum/messagetype/#Wiring"><span>Wiring</span></a>
                     </li>
 
@@ -11878,8 +12049,8 @@ After that, it's done, you can test if it was successfully installed by testing 
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=5166937"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=988335a"></script>
+    <script type="text/javascript" src="../../app.js?v=1f3ef4a"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=7c4c27a"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 

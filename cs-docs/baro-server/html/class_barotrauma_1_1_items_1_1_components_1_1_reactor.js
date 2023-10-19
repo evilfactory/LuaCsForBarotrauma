@@ -28,6 +28,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_reactor =
     [ "Load", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a896ee423be929e94021bd7fb1fe17a87", null ],
     [ "MaxPowerOutput", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#aaa12b77b5dc01ca7ff9c6df8b1305253", null ],
     [ "MeltdownDelay", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a3e9bd58f25faf9c20c1d2fef3cad20c0", null ],
+    [ "MeltedDownThisRound", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a885ffd442fd59f4193e5d845294259a8", null ],
     [ "PowerOn", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#aec771c11c6b4ca70683ec517428644d5", null ],
     [ "Priority", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#a356242fa9f18d2430679b4a6736d86d7", null ],
     [ "TargetFissionRate", "class_barotrauma_1_1_items_1_1_components_1_1_reactor.html#af80e90744481a9549ee6cc73dabd17e9", null ],

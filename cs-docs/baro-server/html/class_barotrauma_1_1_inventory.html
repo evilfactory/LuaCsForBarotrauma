@@ -101,16 +101,12 @@ Inheritance diagram for Barotrauma.Inventory:</div>
  <div class="center">
   <img src="class_barotrauma_1_1_inventory.png" usemap="#Barotrauma.Inventory_map" alt=""/>
   <map id="Barotrauma.Inventory_map" name="Barotrauma.Inventory_map">
-<area href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html" title="Interface for entities that the server can send events to the clients" alt="Barotrauma.Networking.IServerSerializable" shape="rect" coords="0,56,256,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="266,56,522,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html" title="Interface for entities that the server can send events to the clients" alt="Barotrauma.Networking.IServerSerializable" shape="rect" coords="532,56,788,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="798,56,1054,80"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="0,0,256,24"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="266,0,522,24"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="532,0,788,24"/>
-<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="798,0,1054,24"/>
-<area href="class_barotrauma_1_1_character_inventory.html" alt="Barotrauma.CharacterInventory" shape="rect" coords="266,168,522,192"/>
-<area href="class_barotrauma_1_1_item_inventory.html" alt="Barotrauma.ItemInventory" shape="rect" coords="532,168,788,192"/>
+<area href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html" title="Interface for entities that the clients can send events to the server" alt="Barotrauma.Networking.IClientSerializable" shape="rect" coords="388,56,637,80"/>
+<area href="interface_barotrauma_1_1_networking_1_1_i_net_serializable.html" alt="Barotrauma.Networking.INetSerializable" shape="rect" coords="388,0,637,24"/>
+<area href="class_barotrauma_1_1_character_inventory.html" alt="Barotrauma.CharacterInventory" shape="rect" coords="0,168,249,192"/>
+<area href="class_barotrauma_1_1_character_inventory.html" alt="Barotrauma.CharacterInventory" shape="rect" coords="259,168,508,192"/>
+<area href="class_barotrauma_1_1_item_inventory.html" alt="Barotrauma.ItemInventory" shape="rect" coords="518,168,767,192"/>
+<area href="class_barotrauma_1_1_item_inventory.html" alt="Barotrauma.ItemInventory" shape="rect" coords="777,168,1026,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -138,6 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae039efdc77c24ea9d5669dcfddf65143"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae039efdc77c24ea9d5669dcfddf65143">GetItemsAt</a> (int index)</td></tr>
 <tr class="memdesc:ae039efdc77c24ea9d5669dcfddf65143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the item stored in the specified inventory slot. Can return more than one item if the slot contains a stack of items.  <a href="class_barotrauma_1_1_inventory.html#ae039efdc77c24ea9d5669dcfddf65143">More...</a><br /></td></tr>
 <tr class="separator:ae039efdc77c24ea9d5669dcfddf65143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539a0e22261e0114b546f22eab9483bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a539a0e22261e0114b546f22eab9483bd">GetItemStackSlotIndex</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index)</td></tr>
+<tr class="separator:a539a0e22261e0114b546f22eab9483bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad00bdcd0e56bbd036b24e891cf05c8f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ad00bdcd0e56bbd036b24e891cf05c8f5">FindIndex</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item)</td></tr>
 <tr class="memdesc:ad00bdcd0e56bbd036b24e891cf05c8f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the index of the first slot the item is contained in.  <a href="class_barotrauma_1_1_inventory.html#ad00bdcd0e56bbd036b24e891cf05c8f5">More...</a><br /></td></tr>
 <tr class="separator:ad00bdcd0e56bbd036b24e891cf05c8f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,8 +171,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aef65d96c579ac869316bb7d05973ede0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aef65d96c579ac869316bb7d05973ede0">IsFull</a> (bool takeStacksIntoAccount=false)</td></tr>
 <tr class="memdesc:aef65d96c579ac869316bb7d05973ede0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is there room to put more items in the inventory. Doesn't take stacking into account by default.  <a href="class_barotrauma_1_1_inventory.html#aef65d96c579ac869316bb7d05973ede0">More...</a><br /></td></tr>
 <tr class="separator:aef65d96c579ac869316bb7d05973ede0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a807986dabe0fce588ff21de325d0b10e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a807986dabe0fce588ff21de325d0b10e">CreateNetworkEvent</a> ()</td></tr>
-<tr class="separator:a807986dabe0fce588ff21de325d0b10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760b7013e768ab99748ff1895a13f10c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a760b7013e768ab99748ff1895a13f10c">CreateNetworkEvent</a> ()</td></tr>
+<tr class="separator:a760b7013e768ab99748ff1895a13f10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a988d2f59f72f564d14c7151f45504b00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a988d2f59f72f564d14c7151f45504b00">FindItem</a> (Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt; predicate, bool recursive)</td></tr>
 <tr class="separator:a988d2f59f72f564d14c7151f45504b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad814ac0478b6ce6f96b9e712f993fb11"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ad814ac0478b6ce6f96b9e712f993fb11">FindAllItems</a> (Func&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, bool &gt; predicate=null, bool recursive=false, List&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt; list=null)</td></tr>
@@ -193,17 +191,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1550e76225a310bbcd620a412eeff925"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53e77a3a59775083f04a28e8686109a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae53e77a3a59775083f04a28e8686109a">IsInSlot</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int index)</td></tr>
 <tr class="separator:ae53e77a3a59775083f04a28e8686109a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9cde4accdc85a6000dd74664907fcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#abf9cde4accdc85a6000dd74664907fcd">SharedRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, out List&lt; ushort &gt;[] newItemIds)</td></tr>
-<tr class="separator:abf9cde4accdc85a6000dd74664907fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6b7d4dfd8b2b9c844f4b53a104a4652"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae6b7d4dfd8b2b9c844f4b53a104a4652">SharedWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
-<tr class="separator:ae6b7d4dfd8b2b9c844f4b53a104a4652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a373824a7000c4172b3f43ab0b50bd275"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a373824a7000c4172b3f43ab0b50bd275">SharedRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, List&lt; ushort &gt;[] receivedItemIds, out bool readyToApply)</td></tr>
+<tr class="separator:a373824a7000c4172b3f43ab0b50bd275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a85f33d7a19711d2aa1ecae908bfa5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a84a85f33d7a19711d2aa1ecae908bfa5">SharedWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="struct_barotrauma_1_1_range.html">Range</a> slotRange)</td></tr>
+<tr class="separator:a84a85f33d7a19711d2aa1ecae908bfa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa62b795eb13c60d6c18b733cb95ae62c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aa62b795eb13c60d6c18b733cb95ae62c">DeleteAllItems</a> ()</td></tr>
 <tr class="memdesc:aa62b795eb13c60d6c18b733cb95ae62c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all items inside the inventory (and also recursively all items inside the items)  <a href="class_barotrauma_1_1_inventory.html#aa62b795eb13c60d6c18b733cb95ae62c">More...</a><br /></td></tr>
 <tr class="separator:aa62b795eb13c60d6c18b733cb95ae62c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3baa5b8489b6d4a3932a0e42603abaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aa3baa5b8489b6d4a3932a0e42603abaa">ServerEventRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c)</td></tr>
 <tr class="separator:aa3baa5b8489b6d4a3932a0e42603abaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a621a3bb6233315eda274194c9af53e0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a621a3bb6233315eda274194c9af53e0a">ServerEventWrite</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c, <a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a> extraData=null)</td></tr>
-<tr class="separator:a621a3bb6233315eda274194c9af53e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -216,15 +212,21 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a2f8854e2bda59d45fe02dadebeee9b84"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a2f8854e2bda59d45fe02dadebeee9b84">MaxStackSize</a> = (1 &lt;&lt; 6) - 1</td></tr>
-<tr class="separator:a2f8854e2bda59d45fe02dadebeee9b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff559b59dd631d690cf41ddefa9ea3b0"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#aff559b59dd631d690cf41ddefa9ea3b0">MaxPossibleStackSize</a> = (1 &lt;&lt; 6) - 1</td></tr>
+<tr class="separator:aff559b59dd631d690cf41ddefa9ea3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57edfd097c90c6dbed00c08d35583d0f"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a57edfd097c90c6dbed00c08d35583d0f">MaxItemsPerNetworkEvent</a> = 128</td></tr>
+<tr class="separator:a57edfd097c90c6dbed00c08d35583d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:ae59b35b0bc8cf5ae0e0487d0f8c82c10"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae59b35b0bc8cf5ae0e0487d0f8c82c10">GetAllItems</a> (bool checkForDuplicates)</td></tr>
+<tr class="separator:ae59b35b0bc8cf5ae0e0487d0f8c82c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cd632364a5aae15263b7dba6ddf6f10"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a7cd632364a5aae15263b7dba6ddf6f10">PutItem</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, int i, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, bool removeItem=true, bool createNetworkEvent=true)</td></tr>
 <tr class="separator:a7cd632364a5aae15263b7dba6ddf6f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90f3f413619c3369f5df2a1b789fa6ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a90f3f413619c3369f5df2a1b789fa6ab">TrySwapping</a> (int index, <a class="el" href="class_barotrauma_1_1_item.html">Item</a> item, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> user, bool createNetworkEvent, bool swapWholeStack)</td></tr>
 <tr class="separator:a90f3f413619c3369f5df2a1b789fa6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f846cff5819085f8f728aa5adcbd16"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a20f846cff5819085f8f728aa5adcbd16">CreateNetworkEvent</a> (<a class="el" href="struct_barotrauma_1_1_range.html">Range</a> slotRange)</td></tr>
+<tr class="separator:a20f846cff5819085f8f728aa5adcbd16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -237,9 +239,9 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a3ec98aaad79366ae0bc19d5f9a758658"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a3ec98aaad79366ae0bc19d5f9a758658">AllItems</a><code> [get]</code></td></tr>
-<tr class="memdesc:a3ec98aaad79366ae0bc19d5f9a758658"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Stacked items are returned as individual instances. DO NOT modify the contents of the inventory while enumerating this list.  <a href="class_barotrauma_1_1_inventory.html#a3ec98aaad79366ae0bc19d5f9a758658">More...</a><br /></td></tr>
-<tr class="separator:a3ec98aaad79366ae0bc19d5f9a758658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2afdf2d157dd1f31fa3d75faeaa71e1"><td class="memItemLeft" align="right" valign="top">virtual IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1">AllItems</a><code> [get]</code></td></tr>
+<tr class="memdesc:ab2afdf2d157dd1f31fa3d75faeaa71e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Stacked items are returned as individual instances. DO NOT modify the contents of the inventory while enumerating this list.  <a href="class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1">More...</a><br /></td></tr>
+<tr class="separator:ab2afdf2d157dd1f31fa3d75faeaa71e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2c528d3eb8483f180dd460d9322ffd0"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ae2c528d3eb8483f180dd460d9322ffd0">AllItemsMod</a><code> [get]</code></td></tr>
 <tr class="memdesc:ae2c528d3eb8483f180dd460d9322ffd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Allows modifying the contents of the inventory while being enumerated.  <a href="class_barotrauma_1_1_inventory.html#ae2c528d3eb8483f180dd460d9322ffd0">More...</a><br /></td></tr>
 <tr class="separator:ae2c528d3eb8483f180dd460d9322ffd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -284,7 +286,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00286">286</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00272">272</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -307,7 +309,7 @@ Properties</h2></td></tr>
 
 <p>Can the item be put in the inventory (i.e. is there a suitable free slot or a stack the item can be put in). </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00429">429</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00476">476</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -343,7 +345,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00448">448</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00495">495</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -391,7 +393,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a20bdfb80fb2429445fdc8f4b6044c75f">Barotrauma.ItemInventory</a>, and <a class="el" href="class_barotrauma_1_1_character_inventory.html#adc6d89565de44db69f600b93593ef88d">Barotrauma.CharacterInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00441">441</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00488">488</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -443,7 +445,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a431e6d36a9d7ba6208ce75dda7fd886b">Barotrauma.ItemInventory</a>, and <a class="el" href="class_barotrauma_1_1_character_inventory.html#a11d938048e2e88eaadb2009d9241e355">Barotrauma.CharacterInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00457">457</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00504">504</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -465,12 +467,31 @@ Properties</h2></td></tr>
 
 <p>Is the item contained in this inventory. Does not recursively check items inside items. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00321">321</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00361">361</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
-<a id="a807986dabe0fce588ff21de325d0b10e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a807986dabe0fce588ff21de325d0b10e">&#9670;&nbsp;</a></span>CreateNetworkEvent()</h2>
+<a id="a760b7013e768ab99748ff1895a13f10c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a760b7013e768ab99748ff1895a13f10c">&#9670;&nbsp;</a></span>CreateNetworkEvent() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.Inventory.CreateNetworkEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00940">940</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="a20f846cff5819085f8f728aa5adcbd16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f846cff5819085f8f728aa5adcbd16">&#9670;&nbsp;</a></span>CreateNetworkEvent() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -481,20 +502,21 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">virtual void Barotrauma.Inventory.CreateNetworkEvent </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_range.html">Range</a>&#160;</td>
+          <td class="paramname"><em>slotRange</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#ac08113ac33cdc1a5a568e0a6d2ea17b1">Barotrauma.ItemInventory</a>.</p>
+<p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a20f684758d95d5e30efec30d73543c13">Barotrauma.ItemInventory</a>, and <a class="el" href="class_barotrauma_1_1_character_inventory.html#a6b4827234bb4ad56629059732f89c527">Barotrauma.CharacterInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00891">891</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00967">967</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -515,7 +537,7 @@ Properties</h2></td></tr>
 
 <p>Deletes all items inside the inventory (and also recursively all items inside the items) </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01034">1034</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01120">1120</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -551,7 +573,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00922">922</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00985">985</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -591,7 +613,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a6f4de57dde7db2a1e3a6f9e5846aca0b">Barotrauma.ItemInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00408">408</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00455">455</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -613,7 +635,7 @@ Properties</h2></td></tr>
 
 <p>Find the index of the first slot the item is contained in. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00373">373</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00420">420</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -635,7 +657,7 @@ Properties</h2></td></tr>
 
 <p>Find the indices of all the slots the item is contained in (two-hand items for example can be in multiple slots). Note that this method instantiates a new list. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00385">385</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00432">432</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -665,7 +687,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00906">906</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00969">969</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -695,7 +717,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00945">945</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01008">1008</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -725,7 +747,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00939">939</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01002">1002</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -746,7 +768,7 @@ Properties</h2></td></tr>
 
 <p>Return the first item in the inventory, or null if the inventory is empty. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00329">329</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00369">369</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -778,7 +800,7 @@ Properties</h2></td></tr>
 
 <p>Removes an item from a specific slot. Doesn't do any sanity checks, use with caution! </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00991">991</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01057">1057</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -810,7 +832,35 @@ Properties</h2></td></tr>
 
 <p>Forces an item to a specific slot. Doesn't remove the item from existing slots/inventories or do any other sanity checks, use with caution! </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00976">976</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01042">1042</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae59b35b0bc8cf5ae0e0487d0f8c82c10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae59b35b0bc8cf5ae0e0487d0f8c82c10">&#9670;&nbsp;</a></span>GetAllItems()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.Inventory.GetAllItems </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checkForDuplicates</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00304">304</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -832,7 +882,7 @@ Properties</h2></td></tr>
 
 <p>Get the item stored in the specified inventory slot. If the slot contains a stack of items, returns the first item in the stack. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00355">355</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00395">395</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -854,7 +904,37 @@ Properties</h2></td></tr>
 
 <p>Get all the item stored in the specified inventory slot. Can return more than one item if the slot contains a stack of items. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00364">364</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00404">404</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="a539a0e22261e0114b546f22eab9483bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a539a0e22261e0114b546f22eab9483bd">&#9670;&nbsp;</a></span>GetItemStackSlotIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Barotrauma.Inventory.GetItemStackSlotIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_item.html">Item</a>&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00410">410</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -884,7 +964,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00463">463</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00510">510</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -930,7 +1010,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a476ad5e2bec3be85b5566f4beb342e8d">Barotrauma.ItemInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00473">473</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00520">520</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -949,7 +1029,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00634">634</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00683">683</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -987,7 +1067,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a0a384077202010f6a8811f8cf0a1deb8">Barotrauma.ItemInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00648">648</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00697">697</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1017,7 +1097,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00996">996</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01062">1062</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1047,7 +1127,7 @@ Properties</h2></td></tr>
 
 <p>Returns true if the item owns any of the parent inventories. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00398">398</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00445">445</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1148,7 @@ Properties</h2></td></tr>
 
 <p>Return the last item in the inventory, or null if the inventory is empty. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00342">342</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00382">382</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1126,7 +1206,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_character_inventory.html#aaa6c8939e201d01125d33a3cf9accca8">Barotrauma.CharacterInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00555">555</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00602">602</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1156,7 +1236,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a9c93fab09147ff1d8f6a239b6b0c2f66">Barotrauma.ItemInventory</a>, and <a class="el" href="class_barotrauma_1_1_character_inventory.html#aa836070e74982519bc78a7772c8b4acd">Barotrauma.CharacterInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00951">951</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01014">1014</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1188,50 +1268,12 @@ Properties</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html#a2f8f0f75c005a3ce07dd27b08a1ac4f5">Barotrauma.Networking.IClientSerializable</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_items_2_inventory_8cs_source.html#l00013">13</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_items_2_inventory_8cs_source.html">BarotraumaServer/ServerSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_items_2_inventory_8cs_source.html#l00014">14</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_items_2_inventory_8cs_source.html">BarotraumaServer/ServerSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
-<a id="a621a3bb6233315eda274194c9af53e0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a621a3bb6233315eda274194c9af53e0a">&#9670;&nbsp;</a></span>ServerEventWrite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Barotrauma.Inventory.ServerEventWrite </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a>&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a>&#160;</td>
-          <td class="paramname"><em>c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a>&#160;</td>
-          <td class="paramname"><em>extraData</em> = <code>null</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html#ac638249d2b9e91e857dec222deff9cd9">Barotrauma.Networking.IServerSerializable</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_server_2_server_source_2_items_2_inventory_8cs_source.html#l00207">207</a> of file <a class="el" href="_barotrauma_server_2_server_source_2_items_2_inventory_8cs_source.html">BarotraumaServer/ServerSource/Items/Inventory.cs</a>.</p>
-
-</div>
-</div>
-<a id="abf9cde4accdc85a6000dd74664907fcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf9cde4accdc85a6000dd74664907fcd">&#9670;&nbsp;</a></span>SharedRead()</h2>
+<a id="a373824a7000c4172b3f43ab0b50bd275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a373824a7000c4172b3f43ab0b50bd275">&#9670;&nbsp;</a></span>SharedRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1245,8 +1287,14 @@ Properties</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">out List&lt; ushort &gt;[]&#160;</td>
-          <td class="paramname"><em>newItemIds</em>&#160;</td>
+          <td class="paramtype">List&lt; ushort &gt;[]&#160;</td>
+          <td class="paramname"><em>receivedItemIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out bool&#160;</td>
+          <td class="paramname"><em>readyToApply</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1256,12 +1304,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01002">1002</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01068">1068</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
-<a id="ae6b7d4dfd8b2b9c844f4b53a104a4652"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6b7d4dfd8b2b9c844f4b53a104a4652">&#9670;&nbsp;</a></span>SharedWrite()</h2>
+<a id="a84a85f33d7a19711d2aa1ecae908bfa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a85f33d7a19711d2aa1ecae908bfa5">&#9670;&nbsp;</a></span>SharedWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1275,8 +1323,8 @@ Properties</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="interface_barotrauma_1_1_networking_1_1_net_entity_event_1_1_i_data.html">NetEntityEvent.IData</a>&#160;</td>
-          <td class="paramname"><em>extraData</em> = <code>null</code>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_range.html">Range</a>&#160;</td>
+          <td class="paramname"><em>slotRange</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1286,7 +1334,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01017">1017</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l01099">1099</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1346,7 +1394,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_item_inventory.html#a03187469e4717755b080ce2a8624cad9">Barotrauma.ItemInventory</a>, and <a class="el" href="class_barotrauma_1_1_character_inventory.html#a1f708f31c5358b49a2dc2ac355a42e4a">Barotrauma.CharacterInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00482">482</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00529">529</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1416,7 +1464,7 @@ Properties</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_character_inventory.html#adde41d26ecfb5e7fa8fbd91fb8806782">Barotrauma.CharacterInventory</a>, and <a class="el" href="class_barotrauma_1_1_item_inventory.html#ae434db8a27246929bc7bea17c98403c2">Barotrauma.ItemInventory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00491">491</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00538">538</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1472,7 +1520,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00670">670</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00719">719</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1489,7 +1537,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00284">284</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00270">270</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1513,7 +1561,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00222">222</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00231">231</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1529,12 +1577,12 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00225">225</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00234">234</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
-<a id="a2f8854e2bda59d45fe02dadebeee9b84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f8854e2bda59d45fe02dadebeee9b84">&#9670;&nbsp;</a></span>MaxStackSize</h2>
+<a id="a57edfd097c90c6dbed00c08d35583d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57edfd097c90c6dbed00c08d35583d0f">&#9670;&nbsp;</a></span>MaxItemsPerNetworkEvent</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1543,7 +1591,31 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int Barotrauma.Inventory.MaxStackSize = (1 &lt;&lt; 6) - 1</td>
+          <td class="memname">const int Barotrauma.Inventory.MaxItemsPerNetworkEvent = 128</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00015">15</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="aff559b59dd631d690cf41ddefa9ea3b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff559b59dd631d690cf41ddefa9ea3b0">&#9670;&nbsp;</a></span>MaxPossibleStackSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Barotrauma.Inventory.MaxPossibleStackSize = (1 &lt;&lt; 6) - 1</td>
         </tr>
       </table>
   </td>
@@ -1569,7 +1641,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00220">220</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00229">229</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1593,7 +1665,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00223">223</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00232">232</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1617,13 +1689,13 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00227">227</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00236">236</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a3ec98aaad79366ae0bc19d5f9a758658"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ec98aaad79366ae0bc19d5f9a758658">&#9670;&nbsp;</a></span>AllItems</h2>
+<a id="ab2afdf2d157dd1f31fa3d75faeaa71e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2afdf2d157dd1f31fa3d75faeaa71e1">&#9670;&nbsp;</a></span>AllItems</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1632,7 +1704,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.Inventory.AllItems</td>
+          <td class="memname">virtual IEnumerable&lt;<a class="el" href="class_barotrauma_1_1_item.html">Item</a>&gt; Barotrauma.Inventory.AllItems</td>
         </tr>
       </table>
   </td>
@@ -1644,7 +1716,7 @@ Properties</h2></td></tr>
 
 <p>All items contained in the inventory. Stacked items are returned as individual instances. DO NOT modify the contents of the inventory while enumerating this list. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00232">232</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00241">241</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1670,7 +1742,7 @@ Properties</h2></td></tr>
 
 <p>All items contained in the inventory. Allows modifying the contents of the inventory while being enumerated. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00267">267</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00253">253</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1694,7 +1766,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00277">277</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00263">263</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -1718,7 +1790,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00282">282</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html#l00268">268</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/Inventory.cs</a>.</p>
 
 </div>
 </div>

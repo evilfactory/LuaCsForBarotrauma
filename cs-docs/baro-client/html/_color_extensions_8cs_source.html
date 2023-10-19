@@ -108,8 +108,29 @@ $(document).ready(function(){initNavTree('_color_extensions_8cs_source.html','')
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Color(color.R, color.G, color.B, (<span class="keywordtype">byte</span>)255);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsFirstColorChannelDominant(<span class="keywordtype">byte</span> first, <span class="keywordtype">byte</span> second, <span class="keywordtype">byte</span> third, <span class="keywordtype">float</span> minimumRatio = 2)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            =&gt; first &gt; second * minimumRatio &amp;&amp; first &gt; third * minimumRatio;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsRedDominant(Color color, <span class="keywordtype">float</span> minimumRatio = 2, <span class="keywordtype">byte</span> minimumAlpha = 0)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            =&gt; color.A &gt; minimumAlpha &amp;&amp;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                IsFirstColorChannelDominant(</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                    first: color.R,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    color.G, color.B, minimumRatio);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsGreenDominant(Color color, <span class="keywordtype">float</span> minimumRatio = 2, <span class="keywordtype">byte</span> minimumAlpha = 0)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            =&gt; color.A &gt; minimumAlpha &amp;&amp;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                IsFirstColorChannelDominant(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    first: color.G,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    color.R, color.B, minimumRatio);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsBlueDominant(Color color, <span class="keywordtype">float</span> minimumRatio = 2, <span class="keywordtype">byte</span> minimumAlpha = 0)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            =&gt; color.A &gt; minimumAlpha &amp;&amp;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                 IsFirstColorChannelDominant(</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    first: color.B,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    color.G, color.R, minimumRatio);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_ad6cb17f26b2f5570054c64dbc3c49902afaa90538de35640e4b1e31ccf35b6eb5"><div class="ttname"><a href="namespace_barotrauma.html#ad6cb17f26b2f5570054c64dbc3c49902afaa90538de35640e4b1e31ccf35b6eb5">Barotrauma.LosMode.Opaque</a></div><div class="ttdeci">@ Opaque</div></div>
 </div><!-- fragment --></div><!-- contents -->

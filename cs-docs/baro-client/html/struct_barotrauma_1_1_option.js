@@ -8,6 +8,8 @@ var struct_barotrauma_1_1_option =
     [ "GetHashCode", "struct_barotrauma_1_1_option.html#a888c0a7bf99faa0ad2e4c32f3c682a2e", null ],
     [ "IsNone", "struct_barotrauma_1_1_option.html#a472737773659c57636462ce24d87663c", null ],
     [ "IsSome", "struct_barotrauma_1_1_option.html#a769e8c1a808db41ab1d681527f8caf5e", null ],
+    [ "Match", "struct_barotrauma_1_1_option.html#a12e830afb8a59aae84ebafc9280dff17", null ],
+    [ "Match", "struct_barotrauma_1_1_option.html#a3d9e5bdc37748e9ec92b7961fec0e305", null ],
     [ "Select< TType >", "struct_barotrauma_1_1_option.html#af05b940504f520d909f624bd97b05032", null ],
     [ "ToString", "struct_barotrauma_1_1_option.html#a437dbf8bd9ead9de966a9504920b39f6", null ],
     [ "TryUnwrap", "struct_barotrauma_1_1_option.html#a4463d783157e772498fbfa8e489c0b90", null ],

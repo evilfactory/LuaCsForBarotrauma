@@ -157,11 +157,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4976d32d7d36a74135c9866059b42c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad04fceb1c478dec7bf5716c6e4edd586"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ad04fceb1c478dec7bf5716c6e4edd586">ShouldDrawHUD</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character)</td></tr>
 <tr class="separator:ad04fceb1c478dec7bf5716c6e4edd586"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad67f980305f253bcac334c1da3ea6272"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ad67f980305f253bcac334c1da3ea6272">UpdateHUD</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, float deltaTime, <a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
-<tr class="separator:ad67f980305f253bcac334c1da3ea6272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0a13a5ad19a8b860a184f313790ec0d"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab0a13a5ad19a8b860a184f313790ec0d">UpdateHUDComponentSpecific</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, float deltaTime, <a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
+<tr class="separator:ab0a13a5ad19a8b860a184f313790ec0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a753b97127064290f8e2ee2259856fbfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a753b97127064290f8e2ee2259856fbfe">ClientEventRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, float sendingTime)</td></tr>
 <tr class="separator:a753b97127064290f8e2ee2259856fbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">Barotrauma.Items.Components.ItemComponent</a></td></tr>
+<tr class="memitem:a2b2cf0fda494a68140bd3325d1766fb7 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">readonly record struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a2b2cf0fda494a68140bd3325d1766fb7">ItemUseInfo</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> <a class="el" href="class_barotrauma_1_1_item.html">Item</a>, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> User)</td></tr>
+<tr class="separator:a2b2cf0fda494a68140bd3325d1766fb7 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6759d543cfd3d9299657754106ddbc20 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a6759d543cfd3d9299657754106ddbc20">ItemComponent</a> (<a class="el" href="class_barotrauma_1_1_item.html">Item</a> <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e">item</a>, <a class="el" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element)</td></tr>
 <tr class="separator:a6759d543cfd3d9299657754106ddbc20 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9994b2aa2e59815e6f2f75033ebecac1 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a9994b2aa2e59815e6f2f75033ebecac1">SetRequiredItems</a> (<a class="el" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> element, bool allowEmpty=false)</td></tr>
@@ -219,6 +221,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a19d30bc6d9c176851178e0234f515b7e inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae30490037d9908e411d8a4a835da1976 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae30490037d9908e411d8a4a835da1976">OnScaleChanged</a> ()</td></tr>
 <tr class="separator:ae30490037d9908e411d8a4a835da1976 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada721e11be93d8a98feb5bb608324e56 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ada721e11be93d8a98feb5bb608324e56">OnInventoryChanged</a> ()</td></tr>
+<tr class="memdesc:ada721e11be93d8a98feb5bb608324e56 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the item has an <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html">ItemContainer</a> and the contents inside of it changed.  <a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ada721e11be93d8a98feb5bb608324e56">More...</a><br /></td></tr>
+<tr class="separator:ada721e11be93d8a98feb5bb608324e56 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43abb740f2b39f1d6c3490f636113da7 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a43abb740f2b39f1d6c3490f636113da7">Reset</a> ()</td></tr>
 <tr class="separator:a43abb740f2b39f1d6c3490f636113da7 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0436f577c778309f8756f30b4af8ca94 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a0436f577c778309f8756f30b4af8ca94">ParseMsg</a> ()</td></tr>
@@ -241,6 +246,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa80a658d129fc652230d5f3646b36c2d inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a477eeec8787713e14d429d67cff36daf inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a477eeec8787713e14d429d67cff36daf">AddToGUIUpdateList</a> (int order=0)</td></tr>
 <tr class="separator:a477eeec8787713e14d429d67cff36daf inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fae1617be114efcda17b070b76e6c76 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a5fae1617be114efcda17b070b76e6c76">UpdateHUD</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> character, float deltaTime, <a class="el" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</td></tr>
+<tr class="separator:a5fae1617be114efcda17b070b76e6c76 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17f336c54f0f1908c999c0582bce4aa6 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a17f336c54f0f1908c999c0582bce4aa6">UpdateEditing</a> (float deltaTime)</td></tr>
 <tr class="separator:a17f336c54f0f1908c999c0582bce4aa6 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a4fccfdd8f7cd0183c6ab187b29b981 inherit pub_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a1a4fccfdd8f7cd0183c6ab187b29b981">CreateEditingHUD</a> (<a class="el" href="class_barotrauma_1_1_serializable_entity_editor.html">SerializableEntityEditor</a> editor)</td></tr>
@@ -250,8 +257,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a9180e1928b48c004dddb4ef70a50ed22"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9180e1928b48c004dddb4ef70a50ed22">Connections</a></td></tr>
-<tr class="separator:a9180e1928b48c004dddb4ef70a50ed22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fd816c4efd112207b3f880a72f961b6"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a0fd816c4efd112207b3f880a72f961b6">Connections</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a>&gt;()</td></tr>
+<tr class="separator:a0fd816c4efd112207b3f880a72f961b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a403b05a1204375a680bb1cafb5600a56"><td class="memItemLeft" align="right" valign="top">readonly HashSet&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wire.html">Wire</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a403b05a1204375a680bb1cafb5600a56">DisconnectedWires</a> = new HashSet&lt;<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wire.html">Wire</a>&gt;()</td></tr>
 <tr class="memdesc:a403b05a1204375a680bb1cafb5600a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wires that have been disconnected from the panel, but not removed completely (visible at the bottom of the connection panel).  <a href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a403b05a1204375a680bb1cafb5600a56">More...</a><br /></td></tr>
 <tr class="separator:a403b05a1204375a680bb1cafb5600a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,12 +279,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a58e52432ee857c67759a5e9d233404fc inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4971c5c5d1f7f38d4b7f1cc99ced608 inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_property_conditional.html">PropertyConditional</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa4971c5c5d1f7f38d4b7f1cc99ced608">IsActiveConditionals</a></td></tr>
 <tr class="separator:aa4971c5c5d1f7f38d4b7f1cc99ced608 inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd9ece6653e5ab178952f0c51e0a182 inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">readonly NamedEvent&lt; <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a2b2cf0fda494a68140bd3325d1766fb7">ItemUseInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aedd9ece6653e5ab178952f0c51e0a182">OnUsed</a> = new()</td></tr>
+<tr class="separator:aedd9ece6653e5ab178952f0c51e0a182 inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8162128aa43737398e9cb3b5e6f5440b inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a8162128aa43737398e9cb3b5e6f5440b">InheritStatusEffects</a></td></tr>
 <tr class="separator:a8162128aa43737398e9cb3b5e6f5440b inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96671a7d8ce03b84085ca6e395ad8aaf inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a96671a7d8ce03b84085ca6e395ad8aaf">IsActiveTimer</a></td></tr>
 <tr class="separator:a96671a7d8ce03b84085ca6e395ad8aaf inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81f8556873a0cfcae8af9f45d2249ffc inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a81f8556873a0cfcae8af9f45d2249ffc">LockGuiFramePosition</a></td></tr>
-<tr class="separator:a81f8556873a0cfcae8af9f45d2249ffc inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05620b08beec36c82bb46f2f7254eaf4 inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">ItemComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a05620b08beec36c82bb46f2f7254eaf4">ReplacedBy</a></td></tr>
 <tr class="separator:a05620b08beec36c82bb46f2f7254eaf4 inherit pub_attribs_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -312,8 +319,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ab206f3508831d12e250616a92379f4c5 inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4be050f02f56af8af249340da62f5852 inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a4be050f02f56af8af249340da62f5852">ReloadGuiFrame</a> ()</td></tr>
 <tr class="separator:a4be050f02f56af8af249340da62f5852 inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a714d6169868e141dd4af2397f27aceaf inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a714d6169868e141dd4af2397f27aceaf">TryCreateDragHandle</a> ()</td></tr>
-<tr class="separator:a714d6169868e141dd4af2397f27aceaf inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984b35e54e320183963e8a996f99748d inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a984b35e54e320183963e8a996f99748d">TryCreateDragHandle</a> ()</td></tr>
+<tr class="separator:a984b35e54e320183963e8a996f99748d inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b8a63b921112bc7eac6c9cade069fd3 inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a0b8a63b921112bc7eac6c9cade069fd3">StartDelayedCorrection</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> buffer, float sendingTime, bool waitForMidRoundSync=false)</td></tr>
 <tr class="separator:a0b8a63b921112bc7eac6c9cade069fd3 inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add25432286417ee74186a7d9ba7d4fa2 inherit pro_methods_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#add25432286417ee74186a7d9ba7d4fa2">OnGUIParentChanged</a> (<a class="el" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a> newParent)</td></tr>
@@ -337,8 +344,6 @@ Properties</h2></td></tr>
 <tr class="separator:aba55b58a8f3569ccc92b6c4fa89a9030"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43cf816a8b5c438941b562c0a26ec7c0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a43cf816a8b5c438941b562c0a26ec7c0">ShouldDebugDrawWiring</a><code> [get]</code></td></tr>
 <tr class="separator:a43cf816a8b5c438941b562c0a26ec7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3901dafadd6366de4d011705bb3105de"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a3901dafadd6366de4d011705bb3105de">Scale</a><code> [get]</code></td></tr>
-<tr class="separator:a3901dafadd6366de4d011705bb3105de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af411d8f671aefb586acbdbc1fc827f5a"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#af411d8f671aefb586acbdbc1fc827f5a">RecreateGUIOnResolutionChange</a><code> [get]</code></td></tr>
 <tr class="separator:af411d8f671aefb586acbdbc1fc827f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td colspan="2" onclick="javascript:toggleInherit('properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">Barotrauma.Items.Components.ItemComponent</a></td></tr>
@@ -352,14 +357,18 @@ Properties</h2></td></tr>
 <tr class="separator:a03ff62ce5738b7c88d72d443f9244fad inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad4062250ae882189f59d5999cff8977 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">virtual bool?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aad4062250ae882189f59d5999cff8977">IsActive</a><code> [get, set]</code></td></tr>
 <tr class="separator:aad4062250ae882189f59d5999cff8977 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb8f2dc0ce9e8af0da009417a29878dd inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_property_conditional.html#a7a5aeceaea37ccad6f91d09f7f51291d">PropertyConditional.Comparison</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#abb8f2dc0ce9e8af0da009417a29878dd">IsActiveConditionalComparison</a><code> [get, set]</code></td></tr>
-<tr class="separator:abb8f2dc0ce9e8af0da009417a29878dd inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0674f3a9c9c68464936520f56fdf0c96 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_property_conditional.html#af0be344c5d6341f793735162956a32be">PropertyConditional.LogicalOperatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a0674f3a9c9c68464936520f56fdf0c96">IsActiveConditionalComparison</a><code> [get, set]</code></td></tr>
+<tr class="separator:a0674f3a9c9c68464936520f56fdf0c96 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a105b2ac141ec7773b41137386c50454a inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a105b2ac141ec7773b41137386c50454a">Drawable</a><code> [get, set]</code></td></tr>
 <tr class="separator:a105b2ac141ec7773b41137386c50454a inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c9eaeead8dbba09ceee2efcb18b6afd inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3c9eaeead8dbba09ceee2efcb18b6afd">CanBePicked</a><code> [get, set]</code></td></tr>
 <tr class="separator:a3c9eaeead8dbba09ceee2efcb18b6afd inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d2ca95e6861fe5dc457776dbd071622 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3d2ca95e6861fe5dc457776dbd071622">DrawHudWhenEquipped</a><code> [get, protected set]</code></td></tr>
 <tr class="separator:a3d2ca95e6861fe5dc457776dbd071622 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f8556873a0cfcae8af9f45d2249ffc inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a81f8556873a0cfcae8af9f45d2249ffc">LockGuiFramePosition</a><code> [get, set]</code></td></tr>
+<tr class="separator:a81f8556873a0cfcae8af9f45d2249ffc inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba7d7b837aeff38b05773819cbc12a69 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">Point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aba7d7b837aeff38b05773819cbc12a69">GuiFrameOffset</a><code> [get, set]</code></td></tr>
+<tr class="separator:aba7d7b837aeff38b05773819cbc12a69 inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3af857d656cdb69f7f3c15529d8f6ac inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa3af857d656cdb69f7f3c15529d8f6ac">CanBeSelected</a><code> [get, set]</code></td></tr>
 <tr class="separator:aa3af857d656cdb69f7f3c15529d8f6ac inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ccd271efb86c0628c8aa265b81c37dc inherit properties_class_barotrauma_1_1_items_1_1_components_1_1_item_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3ccd271efb86c0628c8aa265b81c37dc">CanBeCombined</a><code> [get, set]</code></td></tr>
@@ -484,7 +493,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00067">67</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00068">68</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -504,7 +513,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00209">209</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00213">213</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -526,7 +535,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Check if the character manages to succesfully rewire the panel, and if not, apply OnFailure effects </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00244">244</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00252">252</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -558,7 +567,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_barotrauma_1_1_networking_1_1_i_server_serializable.html#a70d9e2d7162c9ea2a73847d901f71115">Barotrauma.Networking.IServerSerializable</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00157">157</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00152">152</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -590,7 +599,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_barotrauma_1_1_networking_1_1_i_client_serializable.html#aab4b138c142778176c7139b923f3dd92">Barotrauma.Networking.IClientSerializable</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00393">393</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00401">401</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -621,7 +630,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a613575b78e71bf05d034794c5e6139f9">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00040">40</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -640,7 +649,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00098">98</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00102">102</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -686,7 +695,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a350e21654b80c0d2299a1a7b4469dce4">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00277">277</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00285">285</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -726,7 +735,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ac1fe1a28d391ef47cf6107fd9e24297a">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00099">99</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00094">94</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -746,7 +755,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00142">142</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00146">146</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -777,7 +786,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a3480fd63df745e36e45124cecaab5299">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00128">128</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00132">132</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -808,7 +817,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a74598689273b64d1e52327408b9bda0e">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00092">92</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00096">96</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -848,7 +857,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ae1435a89bf919cbd8663301f3ebbbbcf">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00387">387</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00395">395</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -877,7 +886,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a64a91b7715c459b05411ce0521205a0f">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00331">331</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00339">339</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -907,7 +916,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#af6f194615bddf5f701daed252df5288e">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00309">309</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00317">317</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -937,7 +946,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a2253d0d5c50a7a6c82b4f14e67db5bdc">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00220">220</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00228">228</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -966,7 +975,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a2160e5d43e20081aa9e7bff179417860">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00326">326</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00334">334</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -996,7 +1005,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a680cf5e9ed02bab164e735c3923a37c0">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00105">105</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00100">100</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1015,7 +1024,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00061">61</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00056">56</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1055,7 +1064,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ad9a73b1dbbe21339fd3a644adfb99ff9">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00178">178</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00182">182</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1095,12 +1104,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a7b8438af504c8c84a73e753f11cf5d74">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00202">202</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00206">206</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
-<a id="ad67f980305f253bcac334c1da3ea6272"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad67f980305f253bcac334c1da3ea6272">&#9670;&nbsp;</a></span>UpdateHUD()</h2>
+<a id="ab0a13a5ad19a8b860a184f313790ec0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a13a5ad19a8b860a184f313790ec0d">&#9670;&nbsp;</a></span>UpdateHUDComponentSpecific()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1109,7 +1118,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override void Barotrauma.Items.Components.ConnectionPanel.UpdateHUD </td>
+          <td class="memname">override void Barotrauma.Items.Components.ConnectionPanel.UpdateHUDComponentSpecific </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_character.html">Character</a>&#160;</td>
           <td class="paramname"><em>character</em>, </td>
@@ -1139,9 +1148,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a454aa688dda3dc0b0d2eb00e85360508">Barotrauma.Items.Components.ItemComponent</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#ac847c34568951d669ecdeb119f275059">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00110">110</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00105">105</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1181,24 +1190,24 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a0caa0c436b20ae306d627603c70f512b">Barotrauma.Items.Components.ItemComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00235">235</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00243">243</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9180e1928b48c004dddb4ef70a50ed22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9180e1928b48c004dddb4ef70a50ed22">&#9670;&nbsp;</a></span>Connections</h2>
+<a id="a0fd816c4efd112207b3f880a72f961b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fd816c4efd112207b3f880a72f961b6">&#9670;&nbsp;</a></span>Connections</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a>&gt; Barotrauma.Items.Components.ConnectionPanel.Connections</td>
+          <td class="memname">readonly List&lt;<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a>&gt; Barotrauma.Items.Components.ConnectionPanel.Connections = new List&lt;<a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_connection.html">Connection</a>&gt;()</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00012">12</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00013">13</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1264,7 +1273,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Wires that have been disconnected from the panel, but not removed completely (visible at the bottom of the connection panel). </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00019">19</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00020">20</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1315,7 +1324,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Allows rewiring the connection panel despite rewiring being disabled on a server </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00026">26</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00027">27</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1339,7 +1348,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00056">56</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00057">57</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1363,7 +1372,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00044">44</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1387,31 +1396,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00035">35</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3901dafadd6366de4d011705bb3105de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3901dafadd6366de4d011705bb3105de">&#9670;&nbsp;</a></span>Scale</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Barotrauma.Items.Components.ConnectionPanel.Scale</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00025">25</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00030">30</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaClient/ClientSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1459,7 +1444,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00050">50</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00051">51</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>
@@ -1483,7 +1468,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00062">62</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html#l00063">63</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_components_2_signal_2_connection_panel_8cs_source.html">BarotraumaShared/SharedSource/Items/Components/Signal/ConnectionPanel.cs</a>.</p>
 
 </div>
 </div>

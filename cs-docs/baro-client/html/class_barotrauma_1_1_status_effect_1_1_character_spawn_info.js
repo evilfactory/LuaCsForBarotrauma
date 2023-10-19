@@ -4,6 +4,7 @@ var class_barotrauma_1_1_status_effect_1_1_character_spawn_info =
     [ "AfflictionOnSpawn", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#aa308c07a955dc68223561141c2759e9b", null ],
     [ "AfflictionStrength", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a878d87f191f9c873b2358d829c5b0b07", null ],
     [ "Count", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a4d826903ce6befdaaac539e578dc0811", null ],
+    [ "InheritEventTags", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a94337acfc2e8658b1da3a38ca15d386e", null ],
     [ "Name", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a923f3806701cf263e83f367de4073239", null ],
     [ "Offset", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#ae8a32021eaa0fdbb0165dbc33fd403b9", null ],
     [ "RemovePreviousCharacter", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a678e2577eebf128bf25316a709db1db4", null ],

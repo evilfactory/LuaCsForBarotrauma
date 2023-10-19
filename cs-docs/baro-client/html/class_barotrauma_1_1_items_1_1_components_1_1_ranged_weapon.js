@@ -7,7 +7,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon =
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a301ad819c23bd923b0b7e0a1cbf035d5", null ],
     [ "SecondaryUse", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a90eef6d93e4bec01fdd72b066e6be14d", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a448f216849732902c6e87365eb58bd7c", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a79a0b571339713d2c41926ebd0c87586", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a9ad8d91adf3e6413c7b1f6dfe8a3a305", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a530746dbea363a31f55f5f292a9cde1a", null ],
     [ "crosshairPos", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#a0f84b9552730ed070c7774503604e839", null ],
     [ "crosshairSprite", "class_barotrauma_1_1_items_1_1_components_1_1_ranged_weapon.html#ae84e3e2f52e6a431803692c1abd2e102", null ],

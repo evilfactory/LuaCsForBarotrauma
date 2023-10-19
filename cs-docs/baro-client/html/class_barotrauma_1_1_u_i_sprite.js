@@ -2,6 +2,7 @@ var class_barotrauma_1_1_u_i_sprite =
 [
     [ "UISprite", "class_barotrauma_1_1_u_i_sprite.html#a5c6160c1a6a7a1f24d435af98ef70713", null ],
     [ "Draw", "class_barotrauma_1_1_u_i_sprite.html#af797dcf8245a09918323412e8bd95d53", null ],
+    [ "Draw", "class_barotrauma_1_1_u_i_sprite.html#ad46002870c863e293e09e54ad9655fca", null ],
     [ "GetSliceBorderScale", "class_barotrauma_1_1_u_i_sprite.html#ac3a38201b7927d06135cffd151e25966", null ],
     [ "CrossFadeIn", "class_barotrauma_1_1_u_i_sprite.html#aed4319a4857d4ad847686fc0a40256cf", null ],
     [ "CrossFadeOut", "class_barotrauma_1_1_u_i_sprite.html#ac1c4bb62ca1f19a420e773fa2599b64a", null ],

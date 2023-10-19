@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_artifact_event =
 [
     [ "ArtifactEvent", "class_barotrauma_1_1_artifact_event.html#abc50c8e71e937a14ade7612d20cfc46f", null ],
+    [ "GetDebugInfo", "class_barotrauma_1_1_artifact_event.html#a8fa3ce3988438fb17cc242a9106cd9da", null ],
     [ "Init", "class_barotrauma_1_1_artifact_event.html#a2ea673625184e6b148e21a0606f3809a", null ],
     [ "ToString", "class_barotrauma_1_1_artifact_event.html#ad63e16bc7a24c116d2175dda5884ec20", null ],
     [ "Update", "class_barotrauma_1_1_artifact_event.html#aeb79699907a266e71a664142884cc36e", null ],

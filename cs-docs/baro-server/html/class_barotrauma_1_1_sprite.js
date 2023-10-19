@@ -17,7 +17,6 @@ var class_barotrauma_1_1_sprite =
     [ "EntityIdentifier", "class_barotrauma_1_1_sprite.html#a55f35cbd068e4fcb1ea578a9a57060be", null ],
     [ "FilePath", "class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb", null ],
     [ "FullPath", "class_barotrauma_1_1_sprite.html#a4e3decfaa8aad6f759b9c3da99612578", null ],
-    [ "Identifier", "class_barotrauma_1_1_sprite.html#a7d32f9df08afe30330201b6a2e45c477", null ],
     [ "LazyLoad", "class_barotrauma_1_1_sprite.html#ab130cc9cb6afc6d45fa8d18f8a9a83d8", null ],
     [ "Name", "class_barotrauma_1_1_sprite.html#a36aeac1d182db9c3c4d789b3c5cc0e5e", null ],
     [ "Origin", "class_barotrauma_1_1_sprite.html#ae4c9af5b5e0e4e8a48d0c03793bcff5a", null ],

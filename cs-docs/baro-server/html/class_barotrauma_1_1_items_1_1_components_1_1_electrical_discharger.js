@@ -3,7 +3,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger =
     [ "Node", "struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node.html", "struct_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger_1_1_node" ],
     [ "ElectricalDischarger", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#aaf81d85f1247032f5605af118cfae1b1", null ],
     [ "FindNodes", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#acf8d36e669c214db9d4cac96a06f0e79", null ],
-    [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a2f9223c90f00b9cf2fb18b32438dcba3", null ],
+    [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#af58c8183b753f2edc64f95d7f790419c", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a61906110011430e9ad3e4668b4326f7c", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a8a01c87ef08df1adec2bd91afa2580ad", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a2beee0bdc615fec210f55a91e8a5fb8b", null ],

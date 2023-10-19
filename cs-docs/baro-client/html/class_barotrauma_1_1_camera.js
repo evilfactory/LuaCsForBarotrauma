@@ -5,7 +5,7 @@ var class_barotrauma_1_1_camera =
     [ "Dispose", "class_barotrauma_1_1_camera.html#a400a8b1f6cb80cdd98da51abb3113e97", null ],
     [ "GetPosition", "class_barotrauma_1_1_camera.html#a322187dc0b0bd4df46a1ccc385e62a13", null ],
     [ "GetZoomAmountFromPrevious", "class_barotrauma_1_1_camera.html#ab49a2fd609077b6c4eafc3ff3d4c7409", null ],
-    [ "MoveCamera", "class_barotrauma_1_1_camera.html#af7de78109d55642f556bb38c14a1ad8c", null ],
+    [ "MoveCamera", "class_barotrauma_1_1_camera.html#a50afc1ef41893130718c5aa185c525d9", null ],
     [ "ScreenToWorld", "class_barotrauma_1_1_camera.html#a64529063a75e9b659df4150b53699c4a", null ],
     [ "SetResolution", "class_barotrauma_1_1_camera.html#ac8f190bf2eaea759a3d17ef8d2a8aca0", null ],
     [ "StopMovement", "class_barotrauma_1_1_camera.html#ad0b808f67345b45261f51be4c0a97195", null ],

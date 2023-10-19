@@ -46,6 +46,7 @@ var class_barotrauma_1_1_order_prefab =
     [ "SymbolSprite", "class_barotrauma_1_1_order_prefab.html#a321b4f423ff1dc13a7fa6049921c12b6", null ],
     [ "TargetAllCharacters", "class_barotrauma_1_1_order_prefab.html#a4715dea9d780328abe495ff4f8680b5b", null ],
     [ "TargetItems", "class_barotrauma_1_1_order_prefab.html#a1cbccafc2116b9f76b38ccf346ba680b", null ],
+    [ "TraitorModeOnly", "class_barotrauma_1_1_order_prefab.html#aea408a78032050d7602aeed9d5cd38cb", null ],
     [ "UseController", "class_barotrauma_1_1_order_prefab.html#a0fdfe616f3a69fee498fc24535bfe2e9", null ],
     [ "AssignmentPriority", "class_barotrauma_1_1_order_prefab.html#a6623c4c3266701f89e335762a8474316", null ],
     [ "Color", "class_barotrauma_1_1_order_prefab.html#a4e8320a151ee1ebf3262bdab819f4441", null ],
@@ -57,6 +58,7 @@ var class_barotrauma_1_1_order_prefab =
     [ "IsDismissal", "class_barotrauma_1_1_order_prefab.html#a33d543bbe9e93f43d876b20f5cf495d9", null ],
     [ "IsIgnoreOrder", "class_barotrauma_1_1_order_prefab.html#a931ccdc299c9f816ab4f507324411af1", null ],
     [ "IsReport", "class_barotrauma_1_1_order_prefab.html#ac88c49450fa11923ffa367ea3b55fa20", null ],
+    [ "IsVisibleAsReportButton", "class_barotrauma_1_1_order_prefab.html#aaf13e4c2ca5647032a43727d658dc218", null ],
     [ "TargetType", "class_barotrauma_1_1_order_prefab.html#ae8851f3e9b32faab7da01ae648b9e961", null ],
     [ "WallSectionIndex", "class_barotrauma_1_1_order_prefab.html#a81fb2056ef9cc29968bde55b536cee7d", null ]
 ];

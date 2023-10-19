@@ -17,6 +17,7 @@ var class_barotrauma_1_1_trigger_action =
     [ "DisableIfTargetIncapacitated", "class_barotrauma_1_1_trigger_action.html#a1f406922c54a31d04adc32e11c9d0bef", null ],
     [ "DisableInCombat", "class_barotrauma_1_1_trigger_action.html#afe4d397f1dce275ad7195f1dd9d892c6", null ],
     [ "Radius", "class_barotrauma_1_1_trigger_action.html#a327088b0924a48d04776455b9fea7cfe", null ],
+    [ "SelectOnTrigger", "class_barotrauma_1_1_trigger_action.html#a81874e8e55ff15d02b5dc27bb2af3937", null ],
     [ "Target1Tag", "class_barotrauma_1_1_trigger_action.html#a3f0df525630ce9713427946fa1d6a5c2", null ],
     [ "Target2Tag", "class_barotrauma_1_1_trigger_action.html#a1ad59a75293463ad0773cf6c52be88cf", null ],
     [ "TargetModuleType", "class_barotrauma_1_1_trigger_action.html#a650c52dbdd834537f01e105d2716b6f6", null ],

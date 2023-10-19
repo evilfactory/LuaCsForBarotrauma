@@ -5,6 +5,7 @@ var class_barotrauma_1_1_a_i_objective_find_diving_gear =
     [ "CheckObjectiveSpecific", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a854eeb147e4bb1b1fe6bf2e48967cd60", null ],
     [ "Reset", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a31233cd8db925ce5d514a515439c0678", null ],
     [ "AbandonWhenCannotCompleteSubjectives", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a37556ab8615f5451911c572aa846882a", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a1ff6a88a3bc28e54df3c22868ea0b0e7", null ],
     [ "DebugTag", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#ad4f21b18720d47029bd52741ca3fcbb9", null ],
     [ "ForceRun", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#ac13a0be577946e49cbb5ae9c36bd2734", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_find_diving_gear.html#a6f0e1e08a8398d5f047fc85978256aec", null ],

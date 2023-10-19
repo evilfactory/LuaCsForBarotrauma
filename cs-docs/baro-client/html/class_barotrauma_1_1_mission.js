@@ -50,7 +50,7 @@ var class_barotrauma_1_1_mission =
     [ "FailureMessage", "class_barotrauma_1_1_mission.html#a128c4f8ba4be18e45c7c2bebb54ff5e9", null ],
     [ "HudIconTargets", "class_barotrauma_1_1_mission.html#a44e49cd7f129f0004af6918c2d31444a", null ],
     [ "Name", "class_barotrauma_1_1_mission.html#a8b7114db22fa84907d0b69b22ece35c3", null ],
-    [ "ReputationRewards", "class_barotrauma_1_1_mission.html#a4b55783ddce3ad09074a1c0d1b0294d5", null ],
+    [ "ReputationRewards", "class_barotrauma_1_1_mission.html#ab624ffd6fa208a341330974e0fbd42c7", null ],
     [ "Reward", "class_barotrauma_1_1_mission.html#a3fe9835bb308b2c31baa9a3c5fe4e7a0", null ],
     [ "ShownMessages", "class_barotrauma_1_1_mission.html#a63c502c5f1091f3a898f387b11043498", null ],
     [ "SonarIconIdentifier", "class_barotrauma_1_1_mission.html#ae10fa2ac60c43d2f0bf16d736eb03ba7", null ],

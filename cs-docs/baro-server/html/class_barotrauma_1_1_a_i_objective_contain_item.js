@@ -15,6 +15,7 @@ var class_barotrauma_1_1_a_i_objective_contain_item =
     [ "TargetSlot", "class_barotrauma_1_1_a_i_objective_contain_item.html#a8fd6877729f4a17482f9c33363a16a58", null ],
     [ "AllowDangerousPressure", "class_barotrauma_1_1_a_i_objective_contain_item.html#a151f12aa7d2850d375ea5f12902bb30e", null ],
     [ "AllowToFindDivingGear", "class_barotrauma_1_1_a_i_objective_contain_item.html#a94b43a20b58e3cb4d0383c99d7a0fba5", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_contain_item.html#a2629b220681859228e5716c18082c938", null ],
     [ "ConditionLevel", "class_barotrauma_1_1_a_i_objective_contain_item.html#a8f676f8d1e84935e3e7fc5ce473ff373", null ],
     [ "Equip", "class_barotrauma_1_1_a_i_objective_contain_item.html#a81089e6896b15c40184dc0af8c285d41", null ],
     [ "Identifier", "class_barotrauma_1_1_a_i_objective_contain_item.html#abe7c5d72b98d9233e7fcff7377710033", null ],

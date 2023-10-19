@@ -8,7 +8,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_deconstructor =
     [ "OnResolutionChanged", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a0b886d3bbe7835b769ddb215811e682f", null ],
     [ "Select", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#aa5ce487bac16de8e627f84c973fa08c0", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a18f34e83a2349615042614be677ab981", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#af361505eba7cf32a3353e9305ebd1640", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a1a14d5704c315ea764d198d3b57cb60b", null ],
     [ "ActivateButton", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a7d59f5827b9af127d3720873a0c9a2c9", null ],
     [ "ActivateButtonText", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a255cc950c672424fac7b34856538d2b5", null ],
     [ "DeconstructionSpeed", "class_barotrauma_1_1_items_1_1_components_1_1_deconstructor.html#a0b6083d4cffa85aa938275a4865d2542", null ],

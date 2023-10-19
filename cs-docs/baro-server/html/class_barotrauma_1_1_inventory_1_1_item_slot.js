@@ -1,5 +1,6 @@
 var class_barotrauma_1_1_inventory_1_1_item_slot =
 [
+    [ "ItemSlot", "class_barotrauma_1_1_inventory_1_1_item_slot.html#aa747da6a241216a58427d8d4dce39a7f", null ],
     [ "Add", "class_barotrauma_1_1_inventory_1_1_item_slot.html#af5f5917e7e35e0e877b2319616c50e4d", null ],
     [ "Any", "class_barotrauma_1_1_inventory_1_1_item_slot.html#ade6a35726eec49edd513eb3b0c2a1515", null ],
     [ "CanBePut", "class_barotrauma_1_1_inventory_1_1_item_slot.html#a9ed97213a3134f0cc3483b9a9c000b86", null ],

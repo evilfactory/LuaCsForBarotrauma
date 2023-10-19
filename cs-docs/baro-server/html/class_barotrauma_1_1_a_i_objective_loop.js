@@ -19,6 +19,7 @@ var class_barotrauma_1_1_a_i_objective_loop =
     [ "targetUpdateTimer", "class_barotrauma_1_1_a_i_objective_loop.html#a7ec2e62f487b191424e5dd9be787716c", null ],
     [ "AbandonWhenCannotCompleteSubjectives", "class_barotrauma_1_1_a_i_objective_loop.html#a8309d02201b979ed5a912369aba293e6", null ],
     [ "AllowSubObjectiveSorting", "class_barotrauma_1_1_a_i_objective_loop.html#a0b395ec5eb247050a80ac02f184e9c4c", null ],
+    [ "AllowWhileHandcuffed", "class_barotrauma_1_1_a_i_objective_loop.html#a71ae8f53a6fd5e4bc55830b48d8087c0", null ],
     [ "CanBeCompleted", "class_barotrauma_1_1_a_i_objective_loop.html#a3f4f582949e0742412956c2791e7d220", null ],
     [ "ForceOrderPriority", "class_barotrauma_1_1_a_i_objective_loop.html#af81b005193a74e8ba78bc16550d7f20f", null ],
     [ "IgnoreListClearInterval", "class_barotrauma_1_1_a_i_objective_loop.html#a4aba59359cb03b3ad994f4c00616ca29", null ],

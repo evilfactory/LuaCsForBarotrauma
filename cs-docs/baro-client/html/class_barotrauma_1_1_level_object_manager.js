@@ -7,7 +7,6 @@ var class_barotrauma_1_1_level_object_manager =
     [ "DrawObjectsMid", "class_barotrauma_1_1_level_object_manager.html#a9fc6a8af59617b4f026e559fbeefbf27", null ],
     [ "GetAllObjects", "class_barotrauma_1_1_level_object_manager.html#a554b50411faa3b6bf63c19f3769be43d", null ],
     [ "GetAllObjects", "class_barotrauma_1_1_level_object_manager.html#aca236d2d27d02b0d12ed5f461265e67b", null ],
-    [ "GetGridIndices", "class_barotrauma_1_1_level_object_manager.html#a6f88d69d7ac807b699bc5f3454eb7ac3", null ],
     [ "GetVisibleObjects", "class_barotrauma_1_1_level_object_manager.html#ad9c4f525b34d1f350dfa5d1b343fccbf", null ],
     [ "PlaceNestObjects", "class_barotrauma_1_1_level_object_manager.html#a47caa8c4e8d10ccc0bbc7ede3f8b1769", null ],
     [ "PlaceObjects", "class_barotrauma_1_1_level_object_manager.html#a4fef463b45141d1485982ffa3c705756", null ],

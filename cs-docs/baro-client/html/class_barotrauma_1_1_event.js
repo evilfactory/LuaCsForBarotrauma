@@ -2,6 +2,7 @@ var class_barotrauma_1_1_event =
 [
     [ "Event", "class_barotrauma_1_1_event.html#a806fb82373cc2d2c192ccd41262fb8b2", null ],
     [ "Finish", "class_barotrauma_1_1_event.html#aa3239da23a7a7bd879a4fadefdc2b38f", null ],
+    [ "GetDebugInfo", "class_barotrauma_1_1_event.html#a1ea59d5eea6c5e6bc76cb2e0bfab64e8", null ],
     [ "GetFilesToPreload", "class_barotrauma_1_1_event.html#abd4592dbb7ada4df227ab1a629ac628f", null ],
     [ "Init", "class_barotrauma_1_1_event.html#a73e8c85167a57dc1305f5ea8cd33a137", null ],
     [ "LevelMeetsRequirements", "class_barotrauma_1_1_event.html#a408383af91a56d54dff58072f12e297c", null ],

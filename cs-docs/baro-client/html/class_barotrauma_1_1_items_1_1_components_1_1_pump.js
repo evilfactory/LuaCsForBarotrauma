@@ -9,7 +9,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_pump =
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a89021616809588a659288ef347d48c5b", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#aa2a489cb092686f38e2a289f8ac9a619", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a769c74eb5e26ac7fa06e52273c0f620d", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a193f50d83507d21800417e4fdbed9799", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a8638a1b4cfac23184cb96d35736e02da", null ],
     [ "TargetLevel", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a522866a431aa581019e8030ce521caf3", null ],
     [ "CurrentBrokenVolume", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#a7d94e668317477b20335a5ae113a172a", null ],
     [ "CurrFlow", "class_barotrauma_1_1_items_1_1_components_1_1_pump.html#aa8f98861a08903a584391e1fb2d4ca59", null ],

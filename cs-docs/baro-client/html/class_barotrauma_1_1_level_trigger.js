@@ -19,7 +19,7 @@ var class_barotrauma_1_1_level_trigger =
     [ "ClientRead", "class_barotrauma_1_1_level_trigger.html#ad1bf08e3167da26697fb87a7fa379fd0", null ],
     [ "GetWaterFlowVelocity", "class_barotrauma_1_1_level_trigger.html#a335c524b2337b23246dee4aa3c2581b3", null ],
     [ "GetWaterFlowVelocity", "class_barotrauma_1_1_level_trigger.html#a2e891c50d3d3ebb704329b208e77ef7c", null ],
-    [ "OtherTriggered", "class_barotrauma_1_1_level_trigger.html#ae55c9b8dc24562f0c76ef0159c625b85", null ],
+    [ "OtherTriggered", "class_barotrauma_1_1_level_trigger.html#a33eb2ae6f7084f98e5fc090c5a004e9e", null ],
     [ "ServerWrite", "class_barotrauma_1_1_level_trigger.html#a4cfa3130fa80eb6082f2870312ab30b1", null ],
     [ "Update", "class_barotrauma_1_1_level_trigger.html#ab2e0df11d20a56bd8f653e4159580538", null ],
     [ "OnTriggered", "class_barotrauma_1_1_level_trigger.html#a6ec79c0cb791b32ea4f5e41d6fd5493a", null ],

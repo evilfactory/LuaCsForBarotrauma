@@ -18,6 +18,7 @@ var class_barotrauma_1_1_map_entity_prefab =
     [ "CanSpriteFlipY", "class_barotrauma_1_1_map_entity_prefab.html#a4cecbc90f7538fcda49438df0068ace0", null ],
     [ "Category", "class_barotrauma_1_1_map_entity_prefab.html#aec10f2c56922decffd60d2daba970aab", null ],
     [ "Description", "class_barotrauma_1_1_map_entity_prefab.html#a7c51848cdd0b9c0b16d2fc22db1120bb", null ],
+    [ "HideInEditors", "class_barotrauma_1_1_map_entity_prefab.html#a88526ffe976275a1480f5f50dfedb71e", null ],
     [ "HideInMenus", "class_barotrauma_1_1_map_entity_prefab.html#acdccc5eb26ff61551cf54750c5337354", null ],
     [ "Linkable", "class_barotrauma_1_1_map_entity_prefab.html#a4a943f030c06f576b34fc858e8a4c54f", null ],
     [ "Name", "class_barotrauma_1_1_map_entity_prefab.html#ae4f1c57fb3847c426cc51d902f38f099", null ],

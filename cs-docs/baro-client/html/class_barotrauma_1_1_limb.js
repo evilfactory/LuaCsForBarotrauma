@@ -79,6 +79,8 @@ var class_barotrauma_1_1_limb =
     [ "InitialLightSpriteAlpha", "class_barotrauma_1_1_limb.html#ad557958155d27e047cefca7396ecd7a7", null ],
     [ "InWater", "class_barotrauma_1_1_limb.html#a752bd0779cf94417089eb2f28b5b71aa", null ],
     [ "IsDead", "class_barotrauma_1_1_limb.html#a75438c18d1b4d1bc4bee0b518c29d5b1", null ],
+    [ "IsFlipped", "class_barotrauma_1_1_limb.html#a0c892668f5e87550d7806644e44f939b", null ],
+    [ "IsHuman", "class_barotrauma_1_1_limb.html#ae5e2daf1eed68ad94f53613179cc63ab", null ],
     [ "IsLeg", "class_barotrauma_1_1_limb.html#a932ce6c708fe13910be1dc269e4adb85", null ],
     [ "IsLowerBody", "class_barotrauma_1_1_limb.html#ab444d59a851a0d0f1d79510446bcab10", null ],
     [ "IsSevered", "class_barotrauma_1_1_limb.html#a833b08e742407c7dea9f5f5965e49b0a", null ],

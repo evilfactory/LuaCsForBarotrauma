@@ -26,7 +26,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "AssignNPCMenuInteraction", "class_barotrauma_1_1_campaign_mode.html#a633b4e0d509478ecdb3d22b90438bc95", null ],
     [ "CanAfford", "class_barotrauma_1_1_campaign_mode.html#a3d8de1e29e8e25eeebaa9d0338083dc5", null ],
     [ "CheckTooManyMissions", "class_barotrauma_1_1_campaign_mode.html#ab04c8244d6276785f7947197a13f9e59", null ],
-    [ "DoLevelTransition", "class_barotrauma_1_1_campaign_mode.html#a2dc29c4a8a3a17ddb6e01c0aacf72ea5", null ],
+    [ "DoLevelTransition", "class_barotrauma_1_1_campaign_mode.html#a8c5a0b7a8cd0a27897ea5ccf22e27b79", null ],
     [ "End", "class_barotrauma_1_1_campaign_mode.html#aa7a02d6c26264da659d3bb7e54939f3a", null ],
     [ "EndCampaign", "class_barotrauma_1_1_campaign_mode.html#a1e51cb3c7c54a3a655b2a0e3f9213516", null ],
     [ "EndCampaignProjSpecific", "class_barotrauma_1_1_campaign_mode.html#ab1b6d00174f9293520d16422afc73b88", null ],
@@ -91,6 +91,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "PurchasedHullRepairs", "class_barotrauma_1_1_campaign_mode.html#acbe961cddaed206a016522ea9a6e07c7", null ],
     [ "PurchasedItemRepairs", "class_barotrauma_1_1_campaign_mode.html#a63851207194794681120761aa5f55f6f", null ],
     [ "PurchasedLostShuttles", "class_barotrauma_1_1_campaign_mode.html#ad2e59ccb57695124693a1bf0cabd18a5", null ],
+    [ "SwitchedSubsThisRound", "class_barotrauma_1_1_campaign_mode.html#a3d79cb186a31b4c162389e0d2a3e73d4", null ],
     [ "TransferItemsOnSubSwitch", "class_barotrauma_1_1_campaign_mode.html#ad6dc4d7bee02dafef5964d0a9b06e33d", null ],
     [ "BeforeLevelLoading", "class_barotrauma_1_1_campaign_mode.html#a1fe14717ca4198055511641b9b67e46f", null ]
 ];

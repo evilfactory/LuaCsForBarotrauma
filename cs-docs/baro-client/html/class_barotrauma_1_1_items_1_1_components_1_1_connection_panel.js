@@ -21,15 +21,14 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
     [ "TriggerRewiringSound", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a996e8fabe25d67c52e2df325458fd931", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab990403ca2af3346f9b3671811e9aca3", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ad7c9ba8078d7e4c483f779c76ef9b491", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ad67f980305f253bcac334c1da3ea6272", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab0a13a5ad19a8b860a184f313790ec0d", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab22c8bf269f5dc7563daac6a97637d33", null ],
-    [ "Connections", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9180e1928b48c004dddb4ef70a50ed22", null ],
+    [ "Connections", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a0fd816c4efd112207b3f880a72f961b6", null ],
     [ "DisconnectedWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a403b05a1204375a680bb1cafb5600a56", null ],
     [ "AlwaysAllowRewiring", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9597b320ed22dfbd2da5dbb19d09820f", null ],
     [ "IsActive", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#adb749229a52ecd90c037f57aeb692893", null ],
     [ "Locked", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a2b01ba87c2c2a6a2501be3b979d0d4b4", null ],
     [ "RecreateGUIOnResolutionChange", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#af411d8f671aefb586acbdbc1fc827f5a", null ],
-    [ "Scale", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a3901dafadd6366de4d011705bb3105de", null ],
     [ "TemporarilyLocked", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a8884e5ca15f0ae445397e8f9af83f4fe", null ],
     [ "User", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#aba55b58a8f3569ccc92b6c4fa89a9030", null ]
 ];

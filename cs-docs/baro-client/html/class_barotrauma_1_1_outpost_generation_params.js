@@ -24,6 +24,7 @@ var class_barotrauma_1_1_outpost_generation_params =
     [ "ModuleCounts", "class_barotrauma_1_1_outpost_generation_params.html#aad983edb41e3fa7cd000aa6724ed4695", null ],
     [ "Name", "class_barotrauma_1_1_outpost_generation_params.html#a4563dbd3ca7a0195a8a9fa93ebfa3dcb", null ],
     [ "OutpostFilePath", "class_barotrauma_1_1_outpost_generation_params.html#a428fb9fadae9fb8de98de603afe6a0f8", null ],
+    [ "PreferredDifficulty", "class_barotrauma_1_1_outpost_generation_params.html#adf071702d8426d5eaae22972c908cb9e", null ],
     [ "RemoveUnusedGaps", "class_barotrauma_1_1_outpost_generation_params.html#a7211eaff5522a6f4228e4ccee83c3c4b", null ],
     [ "ReplaceInRadiation", "class_barotrauma_1_1_outpost_generation_params.html#a687f842cafa076aa3b7953f7525e3896", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_outpost_generation_params.html#afc918eee0d2f8857bd6ad197a94fecd0", null ],

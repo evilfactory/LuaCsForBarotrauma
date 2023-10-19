@@ -5,7 +5,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger =
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a81e751c9b0ffdfa27b743988afc350bc", null ],
     [ "DrawElectricity", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a13463c6c0a872a9cac2024084682ec58", null ],
     [ "FindNodes", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#acf8d36e669c214db9d4cac96a06f0e79", null ],
-    [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a2f9223c90f00b9cf2fb18b32438dcba3", null ],
+    [ "GetCurrentPowerConsumption", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#af58c8183b753f2edc64f95d7f790419c", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a61906110011430e9ad3e4668b4326f7c", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a8a01c87ef08df1adec2bd91afa2580ad", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_electrical_discharger.html#a2beee0bdc615fec210f55a91e8a5fb8b", null ],

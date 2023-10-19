@@ -65,7 +65,6 @@ var class_barotrauma_1_1_networking_1_1_client =
     [ "PreferredTeam", "class_barotrauma_1_1_networking_1_1_client.html#a799869d215c271201b47b252a6f3cb01", null ],
     [ "ReadyToStart", "class_barotrauma_1_1_networking_1_1_client.html#afbf7e7296100fdb6404c05ffcdc29f48", null ],
     [ "RejectedName", "class_barotrauma_1_1_networking_1_1_client.html#a800f96f511f97fb9324f365a1e091bcc", null ],
-    [ "RoundsSincePlayedAsTraitor", "class_barotrauma_1_1_networking_1_1_client.html#a39ea35d6ccc5d4615cdeb5ca9d0267bc", null ],
     [ "saveId", "class_barotrauma_1_1_networking_1_1_client.html#af8411e392b936b03b52894571207c3bd", null ],
     [ "SessionId", "class_barotrauma_1_1_networking_1_1_client.html#ac1041f20190f30a44f73759d888fb75a", null ],
     [ "SpectateOnly", "class_barotrauma_1_1_networking_1_1_client.html#a68393ea02703059ed80b2cfc2317c139", null ],

@@ -35,5 +35,5 @@ var class_barotrauma_1_1_a_i_objective_combat =
     [ "ShouldUnequipWeapon", "class_barotrauma_1_1_a_i_objective_combat.html#aa050483c6d9a531cb6e52aa05e379209", null ],
     [ "TargetEliminated", "class_barotrauma_1_1_a_i_objective_combat.html#adc01d19e1feec7a9cca45b6f08b4826e", null ],
     [ "Weapon", "class_barotrauma_1_1_a_i_objective_combat.html#a0bdc8894ea82e3874096f5cb24a7b4a9", null ],
-    [ "WeaponComponent", "class_barotrauma_1_1_a_i_objective_combat.html#abc53893509e4556e35e7ea405d5e331a", null ]
+    [ "WeaponComponent", "class_barotrauma_1_1_a_i_objective_combat.html#abb2343609373cdbe8a8df21d40b67bf6", null ]
 ];

@@ -249,7 +249,7 @@ $(document).ready(function(){initNavTree('_file_selection_8cs_source.html',''); 
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            }</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Compare(file1, file2);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Compare(file1, file2, StringComparison.OrdinalIgnoreCase);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> InitIfNecessary()</div>
@@ -507,29 +507,31 @@ $(document).ready(function(){initNavTree('_file_selection_8cs_source.html',''); 
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                };</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            }</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            directoryBox!.Text = currentDirectory;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            fileBox!.Text = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            fileList.Deselect();</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        }</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> MoveToParentDirectory(GUIButton button, <span class="keywordtype">object</span> userdata)</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordtype">string</span> dir = CurrentDirectory;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">if</span> (dir.EndsWith(<span class="stringliteral">&quot;/&quot;</span>)) { dir = dir.Substring(0, dir.Length - 1); }</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordtype">int</span> index = dir.LastIndexOf(<span class="stringliteral">&quot;/&quot;</span>);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">if</span> (index &lt; 0) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            CurrentDirectory = CurrentDirectory.Substring(0, index + 1);</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        }</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        {</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <span class="keywordflow">if</span> (!Open) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            backgroundFrame?.AddToGUIUpdateList();</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        }</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            fileList.Content.RectTransform.SortChildren(SortFiles);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            directoryBox!.Text = currentDirectory;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            fileBox!.Text = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            fileList.Deselect();</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        }</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> MoveToParentDirectory(GUIButton button, <span class="keywordtype">object</span> userdata)</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        {</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordtype">string</span> dir = CurrentDirectory;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">if</span> (dir.EndsWith(<span class="stringliteral">&quot;/&quot;</span>)) { dir = dir.Substring(0, dir.Length - 1); }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="keywordtype">int</span> index = dir.LastIndexOf(<span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="keywordflow">if</span> (index &lt; 0) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            CurrentDirectory = CurrentDirectory.Substring(0, index + 1);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            <span class="keywordflow">if</span> (!Open) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            backgroundFrame?.AddToGUIUpdateList();</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    }</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_directory_info_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_directory_info.html">Barotrauma.IO.DirectoryInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00549">SafeIO.cs:550</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>

@@ -97,31 +97,33 @@ $(document).ready(function(){initNavTree('_start_item_set_8cs_source.html',''); 
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">public</span> Identifier <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> Amount;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> StartItem(XElement element)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a> = element.GetAttributeIdentifier(<span class="stringliteral">&quot;identifier&quot;</span>, Identifier.Empty);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            Amount = element.GetAttributeInt(<span class="stringliteral">&quot;amount&quot;</span>, 1);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">internal</span> <span class="keyword">class </span>StartItemSet : PrefabWithUintIdentifier</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">public</span> readonly <span class="keyword">static</span> PrefabCollection&lt;StartItemSet&gt; Sets = <span class="keyword">new</span> PrefabCollection&lt;StartItemSet&gt;();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span> readonly ImmutableArray&lt;StartItem&gt; Items;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> MultiPlayerOnly;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">public</span> StartItem(XElement element)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a> = element.GetAttributeIdentifier(<span class="stringliteral">&quot;identifier&quot;</span>, Identifier.Empty);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            Amount = element.GetAttributeInt(nameof(Amount), 1);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            MultiPlayerOnly = element.GetAttributeBool(nameof(MultiPlayerOnly), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">internal</span> <span class="keyword">class </span>StartItemSet : PrefabWithUintIdentifier</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span> readonly <span class="keyword">static</span> PrefabCollection&lt;StartItemSet&gt; Sets = <span class="keyword">new</span> PrefabCollection&lt;StartItemSet&gt;();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">int</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2aa240fa27925a635b08dc28c9e4f9216d">Order</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">public</span> StartItemSet(ContentXElement element, StartItemsFile file) : base(file, element.GetAttributeIdentifier(<span class="stringliteral">&quot;identifier&quot;</span>, <a class="code" href="class_barotrauma_1_1_prefab.html#af02707f77b17e23dd22af51e35c45c81">Identifier</a>.<a class="code" href="namespace_voronoi2.html#a422879e361ad339cba5e3b8ecb130825ace2c8aed9c2fa0cfbed56cbda4d8bf07">Empty</a>))</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            Items = element.Elements().Select(e =&gt; <span class="keyword">new</span> StartItem(e!)).ToImmutableArray();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2aa240fa27925a635b08dc28c9e4f9216d">Order</a> = element.GetAttributeInt(<span class="stringliteral">&quot;order&quot;</span>, 0);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Dispose() { }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">public</span> readonly ImmutableArray&lt;StartItem&gt; Items;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">int</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2aa240fa27925a635b08dc28c9e4f9216d">Order</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">public</span> StartItemSet(ContentXElement element, StartItemsFile file) : base(file, element.GetAttributeIdentifier(<span class="stringliteral">&quot;identifier&quot;</span>, <a class="code" href="class_barotrauma_1_1_prefab.html#af02707f77b17e23dd22af51e35c45c81">Identifier</a>.<a class="code" href="namespace_voronoi2.html#a422879e361ad339cba5e3b8ecb130825ace2c8aed9c2fa0cfbed56cbda4d8bf07">Empty</a>))</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            Items = element.Elements().Select(e =&gt; <span class="keyword">new</span> StartItem(e!)).ToImmutableArray();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2aa240fa27925a635b08dc28c9e4f9216d">Order</a> = element.GetAttributeInt(<span class="stringliteral">&quot;order&quot;</span>, 0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Dispose() { }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_prefab_html_af02707f77b17e23dd22af51e35c45c81"><div class="ttname"><a href="class_barotrauma_1_1_prefab.html#af02707f77b17e23dd22af51e35c45c81">Barotrauma.Prefab.Identifier</a></div><div class="ttdeci">readonly Identifier Identifier</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_8cs_source.html#l00034">Prefab.cs:34</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_add3372db2e3cffdc066c7a035266a7b2aa240fa27925a635b08dc28c9e4f9216d"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2aa240fa27925a635b08dc28c9e4f9216d">Barotrauma.Networking.ChatMessageType.Order</a></div><div class="ttdeci">@ Order</div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>

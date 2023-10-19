@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('_steam_p2_p_client_peer_8cs_source.htm
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            ContentPackageOrderReceived = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            steamAuthTicket = SteamManager.GetAuthSessionTicket();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            steamAuthTicket = SteamManager.GetAuthSessionTicketForMultiplayer(ServerEndpoint);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">//TODO: wait for GetAuthSessionTicketResponse_t</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">if</span> (steamAuthTicket == <span class="keyword">null</span>)</div>
@@ -451,8 +451,8 @@ $(document).ready(function(){initNavTree('_steam_p2_p_client_peer_8cs_source.htm
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            Steamworks.SteamNetworking.ResetActions();</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            Steamworks.SteamNetworking.CloseP2PSessionWithUser(hostSteamId.Value);</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            steamAuthTicket?.Cancel();</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            steamAuthTicket = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">if</span> (steamAuthTicket.TryUnwrap(out var ticket)) { ticket.Cancel(); }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            steamAuthTicket = Option.None;</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            callbacks.OnDisconnect.Invoke(peerDisconnectPacket);</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        }</div>
@@ -502,7 +502,7 @@ $(document).ready(function(){initNavTree('_steam_p2_p_client_peer_8cs_source.htm
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a87312a40995de815aa9364726f08c1a9"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">Barotrauma.Networking.PacketHeader</a></div><div class="ttdeci">PacketHeader</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00025">NetworkEnums.cs:26</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ac8969f4f0d6ecca86b366b63123d3390"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">Barotrauma.Networking.ConnectionInitialization</a></div><div class="ttdeci">ConnectionInitialization</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00012">NetworkEnums.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ac8969f4f0d6ecca86b366b63123d3390adc647eb65e6711e155375218212b3964"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390adc647eb65e6711e155375218212b3964">Barotrauma.Networking.ConnectionInitialization.Password</a></div><div class="ttdeci">@ Password</div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_steam_2_auth_ticket_8cs_source.html#l00001">BarotraumaShared/SharedSource/Steam/AuthTicket.cs:2</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_steam_2_auth_ticket_8cs_source.html#l00006">BarotraumaShared/SharedSource/Steam/AuthTicket.cs:7</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a10b0a8c89aa2b2724a877eefba76ffceaa6122a65eaa676f700ae68d393054a37"><div class="ttname"><a href="namespace_barotrauma.html#a10b0a8c89aa2b2724a877eefba76ffceaa6122a65eaa676f700ae68d393054a37">Barotrauma.CirclePhase.Start</a></div><div class="ttdeci">@ Start</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_af65b6e3828ae5f6db8cc6aa90bb72ab9a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_barotrauma.html#af65b6e3828ae5f6db8cc6aa90bb72ab9a6adf97f83acf6453d4a6a4b1070f3754">Barotrauma.HitDetection.None</a></div><div class="ttdeci">@ None</div></div>

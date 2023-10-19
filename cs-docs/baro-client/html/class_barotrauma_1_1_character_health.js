@@ -19,8 +19,10 @@ var class_barotrauma_1_1_character_health =
     [ "GetAffliction< T >", "class_barotrauma_1_1_character_health.html#afa54a7d35409ea665e705527bbaf1592", null ],
     [ "GetAfflictionLimb", "class_barotrauma_1_1_character_health.html#a6b551ab1d42f0e755d06c18bae1af62c", null ],
     [ "GetAfflictionOfType", "class_barotrauma_1_1_character_health.html#a23f0804d336051434bb93b76da02cfde", null ],
-    [ "GetAfflictionStrength", "class_barotrauma_1_1_character_health.html#a1798213deb5dd4191e90232ff55812b4", null ],
+    [ "GetAfflictionStrength", "class_barotrauma_1_1_character_health.html#a228faeae52b342ce6c9f20ebae423508", null ],
     [ "GetAfflictionStrength", "class_barotrauma_1_1_character_health.html#a28121851dc76be8ff61e9e9e29385284", null ],
+    [ "GetAfflictionStrengthByIdentifier", "class_barotrauma_1_1_character_health.html#ab3e849f33a734c1d9f1734bec56c1b70", null ],
+    [ "GetAfflictionStrengthByType", "class_barotrauma_1_1_character_health.html#ae9c319eb7d1fdcfeb6d51cf0549dc35c", null ],
     [ "GetAllAfflictions", "class_barotrauma_1_1_character_health.html#a8b637cf85d60fe9ba1dc77f47f91fb52", null ],
     [ "GetAllAfflictions", "class_barotrauma_1_1_character_health.html#a773127f5bfb242bf68d2e9c62dd78299", null ],
     [ "GetLimbDamage", "class_barotrauma_1_1_character_health.html#a1927d828461161fc6251fadb32ca1e65", null ],
@@ -65,6 +67,7 @@ var class_barotrauma_1_1_character_health =
     [ "HealthBarPulsateTimer", "class_barotrauma_1_1_character_health.html#ac691767d11cd9e249116f13b90dfdc65", null ],
     [ "HealthPercentage", "class_barotrauma_1_1_character_health.html#ad8ef93388c3b4e2845dbc568d90aa53b", null ],
     [ "InventorySlotContainer", "class_barotrauma_1_1_character_health.html#a72ed5631cc9d981fc1a73807345d4e59", null ],
+    [ "IsParalyzed", "class_barotrauma_1_1_character_health.html#a9deb1b48f4e45e13959a5c1ce68a2b23", null ],
     [ "IsUnconscious", "class_barotrauma_1_1_character_health.html#ad7363b6c6d5574f120100725259bf20b", null ],
     [ "MaxVitality", "class_barotrauma_1_1_character_health.html#a100e0c633d0b43dd50a3cb37613745c0", null ],
     [ "MinVitality", "class_barotrauma_1_1_character_health.html#a41818822a0c584968740c4c0ca4e72a4", null ],
@@ -79,5 +82,6 @@ var class_barotrauma_1_1_character_health =
     [ "UnmodifiedMaxVitality", "class_barotrauma_1_1_character_health.html#aad3487f5571268b25ef2e1e96c9832af", null ],
     [ "UseHealthWindow", "class_barotrauma_1_1_character_health.html#a0f12fedb1d13c7afb645cdaf7e4575a9", null ],
     [ "Vitality", "class_barotrauma_1_1_character_health.html#afb61dbd57c1d04a11b54aac67150db19", null ],
+    [ "VitalityDisregardingDeath", "class_barotrauma_1_1_character_health.html#a12fd83ae6cbcffc01653c2048c1b44ec", null ],
     [ "WasInFullHealth", "class_barotrauma_1_1_character_health.html#ad1524ae0d3e23f9eab14e1d8bab60f73", null ]
 ];

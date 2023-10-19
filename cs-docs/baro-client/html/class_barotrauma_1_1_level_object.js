@@ -22,6 +22,7 @@ var class_barotrauma_1_1_level_object =
     [ "ScaleOscillateTimer", "class_barotrauma_1_1_level_object.html#aa69b82ec8e3691717579db072a8e5b0f", null ],
     [ "SwingTimer", "class_barotrauma_1_1_level_object.html#a6664323d42adbbbf9d4c1b576e5a24f1", null ],
     [ "tookDamage", "class_barotrauma_1_1_level_object.html#a427d3a7ba9ad28a36ec3c191fce09ef6", null ],
+    [ "CanBeVisible", "class_barotrauma_1_1_level_object.html#a5aa6acb526efb311dd72fc31647c39e5", null ],
     [ "CurrentScale", "class_barotrauma_1_1_level_object.html#a4e13b037bf25cd1204179de6b2982fac", null ],
     [ "CurrentSpriteDeformation", "class_barotrauma_1_1_level_object.html#a4fa18e7b4588d16e43d66badde9d7ea5", null ],
     [ "Health", "class_barotrauma_1_1_level_object.html#a14e1726701e5d8ad475989bde87e5d53", null ],

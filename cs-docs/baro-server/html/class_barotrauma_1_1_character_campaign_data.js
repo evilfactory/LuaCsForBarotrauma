@@ -7,7 +7,7 @@ var class_barotrauma_1_1_character_campaign_data =
     [ "ApplyWalletData", "class_barotrauma_1_1_character_campaign_data.html#a785eb4f66448668b8b54650aa302e881", null ],
     [ "IsDuplicate", "class_barotrauma_1_1_character_campaign_data.html#ad607b89b0f56e9f4f9f6d8684100ba6d", null ],
     [ "MatchesClient", "class_barotrauma_1_1_character_campaign_data.html#abc2a02bc7f9c36e84850c341bde6197b", null ],
-    [ "Refresh", "class_barotrauma_1_1_character_campaign_data.html#a5e46c84f3d7b449e4187264960d822d2", null ],
+    [ "Refresh", "class_barotrauma_1_1_character_campaign_data.html#aa7d19450a6750118f99580f5ada8b30a", null ],
     [ "Reset", "class_barotrauma_1_1_character_campaign_data.html#a7b28af6f3433172e67044f98ed19ef37", null ],
     [ "Save", "class_barotrauma_1_1_character_campaign_data.html#a5b84f2d742c5a7cf89cd9b4fc004da28", null ],
     [ "SpawnInventoryItems", "class_barotrauma_1_1_character_campaign_data.html#a6c7729014c61c1cccda9e9597e595303", null ],

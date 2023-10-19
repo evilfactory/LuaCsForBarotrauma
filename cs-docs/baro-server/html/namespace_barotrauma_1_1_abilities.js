@@ -18,6 +18,7 @@ var namespace_barotrauma_1_1_abilities =
     [ "AbilityConditionStatusEffectIdentifier", "class_barotrauma_1_1_abilities_1_1_ability_condition_status_effect_identifier.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_status_effect_identifier" ],
     [ "AbilityConditionAboveVitality", "class_barotrauma_1_1_abilities_1_1_ability_condition_above_vitality.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_above_vitality" ],
     [ "AbilityConditionAlliesAboveVitality", "class_barotrauma_1_1_abilities_1_1_ability_condition_allies_above_vitality.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_allies_above_vitality" ],
+    [ "AbilityConditionAllyHasTalent", "class_barotrauma_1_1_abilities_1_1_ability_condition_ally_has_talent.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_ally_has_talent" ],
     [ "AbilityConditionCoauthor", "class_barotrauma_1_1_abilities_1_1_ability_condition_coauthor.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_coauthor" ],
     [ "AbilityConditionCrouched", "class_barotrauma_1_1_abilities_1_1_ability_condition_crouched.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_crouched" ],
     [ "AbilityConditionDataless", "class_barotrauma_1_1_abilities_1_1_ability_condition_dataless.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_dataless" ],

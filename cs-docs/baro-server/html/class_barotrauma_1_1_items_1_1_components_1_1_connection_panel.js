@@ -19,7 +19,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_connection_panel =
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab990403ca2af3346f9b3671811e9aca3", null ],
     [ "UpdateBroken", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ad7c9ba8078d7e4c483f779c76ef9b491", null ],
     [ "Use", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#ab22c8bf269f5dc7563daac6a97637d33", null ],
-    [ "Connections", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9180e1928b48c004dddb4ef70a50ed22", null ],
+    [ "Connections", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a0fd816c4efd112207b3f880a72f961b6", null ],
     [ "DisconnectedWires", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a403b05a1204375a680bb1cafb5600a56", null ],
     [ "AlwaysAllowRewiring", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#a9597b320ed22dfbd2da5dbb19d09820f", null ],
     [ "IsActive", "class_barotrauma_1_1_items_1_1_components_1_1_connection_panel.html#adb749229a52ecd90c037f57aeb692893", null ],

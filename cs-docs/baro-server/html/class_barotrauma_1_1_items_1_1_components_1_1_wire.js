@@ -35,6 +35,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_wire =
     [ "ValidateEventData", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a5668d5267a3db7e4b6d5c1639c88a014", null ],
     [ "Hidden", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a44b3dcf7c561c699e5d345d9123d011c", null ],
     [ "Connections", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a41cbbfc0b98047172e15598e36ae33b9", null ],
+    [ "DropOnConnect", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a573203f5ddc85c1d90017ac5bb14e94a", null ],
     [ "HiddenInGame", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a94043b2c4e79d3cb6361141e028e580b", null ],
     [ "Length", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a96dfb435d3032489ec0c18b21cc5bcbc", null ],
     [ "Locked", "class_barotrauma_1_1_items_1_1_components_1_1_wire.html#a1530d1a614c1e52292f39cab7bce7627", null ],

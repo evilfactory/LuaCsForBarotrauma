@@ -62,6 +62,8 @@ var class_barotrauma_1_1_map_entity =
     [ "RectHeight", "class_barotrauma_1_1_map_entity.html#ace2eb8d432f15542eb715a69bcd87ae1", null ],
     [ "RectWidth", "class_barotrauma_1_1_map_entity.html#a930078e380102aa66b4fb61d8eb801c6", null ],
     [ "RemoveIfLinkedOutpostDoorInUse", "class_barotrauma_1_1_map_entity.html#a04bc175723ee4528396ed44730c3830e", null ],
+    [ "ResizeHandleHighlightDistance", "class_barotrauma_1_1_map_entity.html#a5da10b9ea71313c991c76075d001be1f", null ],
+    [ "ResizeHandleSize", "class_barotrauma_1_1_map_entity.html#a4e14cea91eaf007f6b1476e90f5aaa00", null ],
     [ "ResizeHorizontal", "class_barotrauma_1_1_map_entity.html#a5258984b9f40715a860b332ecb720bc5", null ],
     [ "ResizeVertical", "class_barotrauma_1_1_map_entity.html#a35498a68740b33244d82c77966c31f35", null ],
     [ "Scale", "class_barotrauma_1_1_map_entity.html#a6f082718ce6ae2aa3467e5a53c0bd36a", null ],

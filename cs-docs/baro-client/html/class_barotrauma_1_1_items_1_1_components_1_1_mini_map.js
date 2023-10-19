@@ -8,7 +8,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_mini_map =
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a4dca9458ba69edd877b71d03f7b30e5e", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a247ab43ab1d921f8e71481312faa53dd", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a093f61c6331951de29c6ee2b5d4743a6", null ],
-    [ "UpdateHUD", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a08e1cd50c243c91804dd3137a7c18a03", null ],
+    [ "UpdateHUDComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a46314bd6a874d070501b2c04dbae3fac", null ],
     [ "EnableElectricalView", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a6a16a800976bd072d8925b4483690ae9", null ],
     [ "EnableHullStatus", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a9620ffc30aa68dae2544a20aeb0681e4", null ],
     [ "EnableItemFinder", "class_barotrauma_1_1_items_1_1_components_1_1_mini_map.html#a071137d09c66af8d9e37dc041d9e5771", null ],

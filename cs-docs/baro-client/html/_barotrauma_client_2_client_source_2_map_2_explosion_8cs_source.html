@@ -87,127 +87,173 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_m
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_lights.html">Lights</a>;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> Microsoft.Xna.Framework;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">partial class </span>Explosion</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        partial <span class="keywordtype">void</span> ExplodeProjSpecific(Vector2 worldPosition, Hull hull)</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="keywordflow">if</span> (GameMain.Client?.MidRoundSyncing ?? <span class="keyword">false</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">if</span> (shockwave)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;shockwave&quot;</span>, worldPosition,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                    Vector2.Zero, 0.0f, hull);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            hull ??= Hull.FindHull(worldPosition, useWorldCoordinates: <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordtype">bool</span> underwater = hull == <span class="keyword">null</span> || worldPosition.Y &lt; hull.WorldSurface;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span> (underwater &amp;&amp; underwaterBubble)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                var underwaterExplosion = GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;underwaterexplosion&quot;</span>, worldPosition, Vector2.Zero, 0.0f, hull);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">if</span> (underwaterExplosion != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    underwaterExplosion.Size *= MathHelper.Clamp(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> / 150.0f, 0.5f, 10.0f);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    underwaterExplosion.StartDelay = 0.0f;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.1f; i++)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">if</span> (!underwater)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <span class="keywordtype">float</span> particleSpeed = Rand.<a class="code" href="struct_barotrauma_1_1_range.html">Range</a>(0.0f, 1.0f);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    particleSpeed = particleSpeed * particleSpeed * <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_particles.html">Particles</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> Microsoft.Xna.Framework;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">partial class </span>Explosion</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        partial <span class="keywordtype">void</span> ExplodeProjSpecific(Vector2 worldPosition, Hull hull)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">if</span> (GameMain.Client?.MidRoundSyncing ?? <span class="keyword">false</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">if</span> (shockwave)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;shockwave&quot;</span>, worldPosition,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                    Vector2.Zero, 0.0f, hull);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            hull ??= Hull.FindHull(worldPosition, useWorldCoordinates: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordtype">bool</span> underwater = hull == <span class="keyword">null</span> || worldPosition.Y &lt; hull.WorldSurface;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (underwater &amp;&amp; underwaterBubble)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                var underwaterExplosion = GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;underwaterexplosion&quot;</span>, worldPosition, Vector2.Zero, 0.0f, hull);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordflow">if</span> (underwaterExplosion != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    underwaterExplosion.Size *= MathHelper.Clamp(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> / 150.0f, 0.5f, 10.0f);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    underwaterExplosion.StartDelay = 0.0f;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">if</span> (!underwater &amp;&amp; (flames || smoke))</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.025f; i++)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordtype">float</span> distFactor = 0.0f;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="keywordflow">if</span> (flames)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="keywordflow">if</span> (i &gt; 0 &amp;&amp; <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> &gt; 100.0f)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        <span class="keywordtype">float</span> particleScale = MathHelper.Clamp(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.0025f, 0.5f, 2.0f);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        var flameParticle = GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;explosionfire&quot;</span>,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                            ClampParticlePos(worldPosition + Rand.Vector((<span class="keywordtype">float</span>)System.Math.Sqrt(Rand.Range(0.0f, <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a>))), hull),</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                            Rand.Vector(Rand.Range(0.0f, particleSpeed)), 0.0f, hull);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        <span class="keywordflow">if</span> (flameParticle != <span class="keyword">null</span>) flameParticle.Size *= particleScale;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">if</span> (smoke)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        GameMain.ParticleManager.CreateParticle(Rand.Range(0.0f, 1.0f) &lt; 0.5f ? <span class="stringliteral">&quot;explosionsmoke&quot;</span> : <span class="stringliteral">&quot;smoke&quot;</span>,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                            ClampParticlePos(worldPosition + Rand.Vector((<span class="keywordtype">float</span>)System.Math.Sqrt(Rand.Range(0.0f, <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a>))), hull),</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                            Rand.Vector(Rand.Range(0.0f, particleSpeed)), 0.0f, hull);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (underwaterBubble)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    Vector2 bubblePos = Rand.Vector(Rand.Range(0.0f, <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.5f));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        distFactor = Rand.<a class="code" href="struct_barotrauma_1_1_range.html">Range</a>(0.0f, 1.0f);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="comment">//sqrt to make larger values more common (= more particles spawn further away from the origin)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        distFactor = MathF.Sqrt(distFactor);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="keywordtype">float</span> sizeFactor = MathHelper.Clamp(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> / 1000.0f, 0.0f, 1.0f);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordtype">float</span> minScale = MathHelper.Lerp(0.2f, 1.0f, sizeFactor);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordtype">float</span> maxScale = MathUtils.InverseLerp(2.0f, 3.0f, sizeFactor);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    <span class="comment">//larger particles closer to the origin</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    <span class="keywordtype">float</span> particleScale = MathHelper.Clamp(1.0f - distFactor, minScale, maxScale);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    var particlePrefab = <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_manager.html">ParticleManager</a>.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_manager.html#addcf84a828ef20ae96b01fdb78de67c5">FindPrefab</a>(<span class="stringliteral">&quot;explosionfire&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    Vector2 pos = worldPosition;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <span class="keywordflow">if</span> (i &gt; 0)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        pos = ClampParticlePos(worldPosition + Rand.Vector(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * distFactor * 0.3f), hull, particlePrefab);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;risingbubbles&quot;</span>, worldPosition + bubblePos,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        Vector2.Zero, 0.0f, hull);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    <span class="keywordflow">if</span> (i &lt; <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.02f)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        var underwaterExplosion = GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;underwaterexplosion&quot;</span>, worldPosition + bubblePos,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                            Vector2.Zero, 0.0f, hull);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        <span class="keywordflow">if</span> (underwaterExplosion != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                            underwaterExplosion.Size *= MathHelper.Clamp(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> / 300.0f, 0.5f, 2.0f) * Rand.Range(0.8f, 1.2f);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    <span class="keywordflow">if</span> (flames)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        var flameParticle = GameMain.ParticleManager.CreateParticle(particlePrefab,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                            pos,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                            velocity: Vector2.Zero, hullGuess: hull);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        <span class="keywordflow">if</span> (flameParticle != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                            <span class="comment">//brief delay to particles futher from origin</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                            flameParticle.StartDelay = distFactor * sizeFactor;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                            flameParticle.Size *= particleScale;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">if</span> (sparks)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;spark&quot;</span>, worldPosition,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        Rand.Vector(Rand.Range(1200.0f, 2400.0f)), 0.0f, hull);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (flash)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordtype">float</span> displayRange = flashRange ?? <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (displayRange &lt; 0.1f) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                var light = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html">LightSource</a>(worldPosition, displayRange, flashColor, <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                CoroutineManager.StartCoroutine(DimLight(light));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">private</span> Vector2 ClampParticlePos(Vector2 particlePos, Hull hull)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (hull == <span class="keyword">null</span>) <span class="keywordflow">return</span> particlePos;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                MathHelper.Clamp(particlePos.X, hull.WorldRect.X, hull.WorldRect.Right),</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                MathHelper.Clamp(particlePos.Y, hull.WorldRect.Y - hull.WorldRect.Height, hull.WorldRect.Y));</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">private</span> IEnumerable&lt;CoroutineStatus&gt; DimLight(<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html">LightSource</a> light)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">float</span> currBrightness = 1.0f;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">while</span> (light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.A &gt; 0.0f &amp;&amp; flashDuration &gt; 0.0f &amp;&amp; currBrightness &gt; 0.0f)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a> = <span class="keyword">new</span> Color(light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.R, light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.G, light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.B, (<span class="keywordtype">byte</span>)(currBrightness * 255));</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                currBrightness -= 1.0f / flashDuration * CoroutineManager.DeltaTime;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                yield <span class="keywordflow">return</span> CoroutineStatus.Running;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <span class="keywordflow">if</span> (smoke)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        GameMain.ParticleManager.CreateParticle(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                            <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_manager.html">ParticleManager</a>.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_manager.html#addcf84a828ef20ae96b01fdb78de67c5">FindPrefab</a>(Rand.Range(0.0f, 1.0f) &lt; 0.5f ? <span class="stringliteral">&quot;explosionsmoke&quot;</span> : <span class="stringliteral">&quot;smoke&quot;</span>), </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                            pos, velocity: Vector2.Zero, hullGuess: hull);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.1f; i++)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">if</span> (underwater &amp;&amp; underwaterBubble)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    Vector2 bubblePos = Rand.Vector(Rand.Range(0.0f, <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.5f));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;risingbubbles&quot;</span>, worldPosition + bubblePos,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        velocity: Vector2.Zero, hullGuess: hull);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordflow">if</span> (i &lt; <a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 0.02f)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        var underwaterExplosion = GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;underwaterexplosion&quot;</span>, worldPosition + bubblePos,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                            Vector2.Zero, 0.0f, hull);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="keywordflow">if</span> (underwaterExplosion != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                            underwaterExplosion.Size *= MathHelper.Clamp(<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> / 300.0f, 0.5f, 2.0f) * Rand.Range(0.8f, 1.2f);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    }                    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">if</span> (sparks)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;spark&quot;</span>, worldPosition,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                        Rand.Vector(Rand.Range(800.0f, 1500.0f)), 0.0f, hull);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">if</span> (debris)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    GameMain.ParticleManager.CreateParticle(<span class="stringliteral">&quot;explosiondebris&quot;</span>, worldPosition,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        Rand.Vector(Rand.Range(800.0f, 2000.0f)), 0.0f, hull);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                }</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#aae640603acdec243094a5f58d444d075">Remove</a>();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            yield <span class="keywordflow">return</span> CoroutineStatus.Success;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">static</span> partial <span class="keywordtype">void</span> PlayTinnitusProjSpecific(<span class="keywordtype">float</span> volume) =&gt; SoundPlayer.PlaySound(<span class="stringliteral">&quot;tinnitus&quot;</span>, volume: volume);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> (flash)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordtype">float</span> displayRange = flashRange ?? (<a class="code" href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Attack</a>.<a class="code" href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Range</a> * 2);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">if</span> (displayRange &lt; 0.1f) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                var light = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html">LightSource</a>(worldPosition, displayRange, flashColor, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                CoroutineManager.StartCoroutine(DimLight(light));</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Vector2 ClampParticlePos(Vector2 particlePos, Hull hull, <a class="code" href="class_barotrauma_1_1_particles_1_1_particle_prefab.html">ParticlePrefab</a> particlePrefab)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordtype">float</span> minX = hull.WorldRect.X;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordtype">float</span> maxX = hull.WorldRect.Right;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordtype">float</span> minY = hull.WorldRect.Y - hull.WorldRect.Height;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordtype">float</span> maxY = hull.WorldRect.Y;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (particlePrefab != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                minX = Math.Min(minX + particlePrefab.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_prefab.html#a57b71e0dd97a9f559216d885cf365396">CollisionRadius</a>, hull.WorldRect.Center.X);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                maxX = Math.Max(maxX - particlePrefab.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_prefab.html#a57b71e0dd97a9f559216d885cf365396">CollisionRadius</a>, hull.WorldRect.Center.X);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                minY = Math.Min(minY + particlePrefab.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_prefab.html#a57b71e0dd97a9f559216d885cf365396">CollisionRadius</a>, hull.WorldRect.Y - hull.WorldRect.Height / 2);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                maxY = Math.Max(maxY - particlePrefab.<a class="code" href="class_barotrauma_1_1_particles_1_1_particle_prefab.html#a57b71e0dd97a9f559216d885cf365396">CollisionRadius</a>, hull.WorldRect.Y - hull.WorldRect.Height / 2);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                MathHelper.Clamp(particlePos.X, minX, maxX),</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                MathHelper.Clamp(particlePos.Y, minY, maxY));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keyword">private</span> IEnumerable&lt;CoroutineStatus&gt; DimLight(<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html">LightSource</a> light)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordtype">float</span> currBrightness = 1.0f;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">while</span> (light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.A &gt; 0.0f &amp;&amp; flashDuration &gt; 0.0f &amp;&amp; currBrightness &gt; 0.0f)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">if</span> (!CoroutineManager.Paused)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a> = <span class="keyword">new</span> Color(light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.R, light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.G, light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Color</a>.B, (<span class="keywordtype">byte</span>)(currBrightness * 255));</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    currBrightness -= 1.0f / flashDuration * CoroutineManager.DeltaTime;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                yield <span class="keywordflow">return</span> CoroutineStatus.Running;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            light.<a class="code" href="class_barotrauma_1_1_lights_1_1_light_source.html#aae640603acdec243094a5f58d444d075">Remove</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            yield <span class="keywordflow">return</span> CoroutineStatus.Success;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">static</span> partial <span class="keywordtype">void</span> PlayTinnitusProjSpecific(<span class="keywordtype">float</span> volume) =&gt; SoundPlayer.PlaySound(<span class="stringliteral">&quot;tinnitus&quot;</span>, volume: volume);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_attack_html_ae1e00793837f953351d80ac63904d0e7"><div class="ttname"><a href="class_barotrauma_1_1_attack.html#ae1e00793837f953351d80ac63904d0e7">Barotrauma.Attack.Range</a></div><div class="ttdeci">float Range</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_attack_8cs_source.html#l00117">BarotraumaShared/SharedSource/Characters/Attack.cs:118</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_explosion_html_abe008fd164eab5d5b6bbe3a4068741e5"><div class="ttname"><a href="class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5">Barotrauma.Explosion.Attack</a></div><div class="ttdeci">readonly Attack Attack</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_explosion_8cs_source.html#l00023">BarotraumaShared/SharedSource/Map/Explosion.cs:23</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lights_1_1_light_source_html"><div class="ttname"><a href="class_barotrauma_1_1_lights_1_1_light_source.html">Barotrauma.Lights.LightSource</a></div><div class="ttdef"><b>Definition:</b> <a href="_light_source_8cs_source.html#l00195">LightSource.cs:196</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lights_1_1_light_source_html_aae640603acdec243094a5f58d444d075"><div class="ttname"><a href="class_barotrauma_1_1_lights_1_1_light_source.html#aae640603acdec243094a5f58d444d075">Barotrauma.Lights.LightSource.Remove</a></div><div class="ttdeci">void Remove()</div><div class="ttdef"><b>Definition:</b> <a href="_light_source_8cs_source.html#l01468">LightSource.cs:1468</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lights_1_1_light_source_html_ae1eb2e124643185bd56ce51d112e65f2"><div class="ttname"><a href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Barotrauma.Lights.LightSource.Color</a></div><div class="ttdeci">Color Color</div><div class="ttdef"><b>Definition:</b> <a href="_light_source_8cs_source.html#l00371">LightSource.cs:372</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lights_1_1_light_source_html"><div class="ttname"><a href="class_barotrauma_1_1_lights_1_1_light_source.html">Barotrauma.Lights.LightSource</a></div><div class="ttdef"><b>Definition:</b> <a href="_light_source_8cs_source.html#l00199">LightSource.cs:200</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lights_1_1_light_source_html_aae640603acdec243094a5f58d444d075"><div class="ttname"><a href="class_barotrauma_1_1_lights_1_1_light_source.html#aae640603acdec243094a5f58d444d075">Barotrauma.Lights.LightSource.Remove</a></div><div class="ttdeci">void Remove()</div><div class="ttdef"><b>Definition:</b> <a href="_light_source_8cs_source.html#l01483">LightSource.cs:1483</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lights_1_1_light_source_html_ae1eb2e124643185bd56ce51d112e65f2"><div class="ttname"><a href="class_barotrauma_1_1_lights_1_1_light_source.html#ae1eb2e124643185bd56ce51d112e65f2">Barotrauma.Lights.LightSource.Color</a></div><div class="ttdeci">Color Color</div><div class="ttdef"><b>Definition:</b> <a href="_light_source_8cs_source.html#l00379">LightSource.cs:380</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_particles_1_1_particle_manager_html"><div class="ttname"><a href="class_barotrauma_1_1_particles_1_1_particle_manager.html">Barotrauma.Particles.ParticleManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_particle_manager_8cs_source.html#l00014">ParticleManager.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_particles_1_1_particle_manager_html_addcf84a828ef20ae96b01fdb78de67c5"><div class="ttname"><a href="class_barotrauma_1_1_particles_1_1_particle_manager.html#addcf84a828ef20ae96b01fdb78de67c5">Barotrauma.Particles.ParticleManager.FindPrefab</a></div><div class="ttdeci">static ParticlePrefab FindPrefab(string prefabName)</div><div class="ttdef"><b>Definition:</b> <a href="_particle_manager_8cs_source.html#l00140">ParticleManager.cs:140</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_particles_1_1_particle_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_particles_1_1_particle_prefab.html">Barotrauma.Particles.ParticlePrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_particle_prefab_8cs_source.html#l00009">ParticlePrefab.cs:10</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_particles_1_1_particle_prefab_html_a57b71e0dd97a9f559216d885cf365396"><div class="ttname"><a href="class_barotrauma_1_1_particles_1_1_particle_prefab.html#a57b71e0dd97a9f559216d885cf365396">Barotrauma.Particles.ParticlePrefab.CollisionRadius</a></div><div class="ttdeci">float CollisionRadius</div><div class="ttdef"><b>Definition:</b> <a href="_particle_prefab_8cs_source.html#l00136">ParticlePrefab.cs:136</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_lights_html"><div class="ttname"><a href="namespace_barotrauma_1_1_lights.html">Barotrauma.Lights</a></div><div class="ttdef"><b>Definition:</b> <a href="_convex_hull_8cs_source.html#l00009">ConvexHull.cs:10</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_particles_html"><div class="ttname"><a href="namespace_barotrauma_1_1_particles.html">Barotrauma.Particles</a></div><div class="ttdef"><b>Definition:</b> <a href="_particle_8cs_source.html#l00008">Particle.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_range_html"><div class="ttname"><a href="struct_barotrauma_1_1_range.html">Barotrauma.Range</a></div><div class="ttdoc">An inclusive range, i.e. [Start, End] where Start &lt;= End</div><div class="ttdef"><b>Definition:</b> <a href="_range_8cs_source.html#l00009">Range.cs:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

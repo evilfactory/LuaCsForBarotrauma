@@ -2,7 +2,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_door =
 [
     [ "Door", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a8b2d9b49e378cc98856ef5ffab85472a", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a39cd5d0c37bd7c82ed08dfa299e633c8", null ],
-    [ "Draw", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a8026b49fd1e28ac481b22c7f41927991", null ],
+    [ "Draw", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a7bc42d992b009d812ab3b0b4e28705e9", null ],
     [ "HasAccess", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#ac319e51741edb21c48f6fc16fc8d6234", null ],
     [ "HasRequiredItems", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a5b70a658291292cc460cdfaf311c2a46", null ],
     [ "Move", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a2a2872c860f682d087fc64c8152c33db", null ],
@@ -43,6 +43,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_door =
     [ "ShadowScale", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#acd8791e9b475282f8221d70c78ebea51", null ],
     [ "Stuck", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a97e8393d9e06ddec01155eba8c9062b0", null ],
     [ "ToggleCoolDown", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#af1ef48ae7f06196a489300956cb6ffb1", null ],
+    [ "ToggleWhenClicked", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a14195477286e6662c7ac61fdbad97e8c", null ],
     [ "UseBetweenOutpostModules", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#aa3b9deab8a50330cc7054a9a83f6b7ad", null ],
     [ "Window", "class_barotrauma_1_1_items_1_1_components_1_1_door.html#a353cc2b4fc5802f855d98eb77df9e1b2", null ]
 ];

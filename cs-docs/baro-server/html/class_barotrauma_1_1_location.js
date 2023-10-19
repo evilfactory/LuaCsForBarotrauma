@@ -48,6 +48,7 @@ var class_barotrauma_1_1_location =
     [ "UpdateSpecials", "class_barotrauma_1_1_location.html#aa4a07cfc2cafb93ba81119e81dfa0543", null ],
     [ "UpdateStores", "class_barotrauma_1_1_location.html#a5be357f46178e9bc30f15947df29a358", null ],
     [ "Connections", "class_barotrauma_1_1_location.html#a1d74c10d6a39d84b507b6b8bcf0d1bfb", null ],
+    [ "DisallowLocationTypeChanges", "class_barotrauma_1_1_location.html#a9b54d89f53f886b8baa9a884a9f6d5d3", null ],
     [ "HireManager", "class_barotrauma_1_1_location.html#a234e423b0d667d04328637c6dbb23397", null ],
     [ "IsGateBetweenBiomes", "class_barotrauma_1_1_location.html#a2b9337eed19d4a9107f2ef79acca2f94", null ],
     [ "LastTypeChangeMessage", "class_barotrauma_1_1_location.html#a775a2483e1266c4f6efe945e61d524d5", null ],

@@ -133,10 +133,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a07ab10b51771a2baab93f0730a685cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bc416ab371039a4d46cc4848e6ef185"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a2bc416ab371039a4d46cc4848e6ef185">ApplyDistanceEffect</a> (string message, <a class="el" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2">ChatMessageType</a> type, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, <a class="el" href="class_barotrauma_1_1_character.html">Character</a> receiver)</td></tr>
 <tr class="separator:a2bc416ab371039a4d46cc4848e6ef185"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ac45537193cbd559af2214c5254060d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a3ac45537193cbd559af2214c5254060d">CanUseRadio</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender)</td></tr>
-<tr class="separator:a3ac45537193cbd559af2214c5254060d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2f1b63228de36e476955c0525299dab"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#ac2f1b63228de36e476955c0525299dab">CanUseRadio</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, out <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html">WifiComponent</a> radio)</td></tr>
-<tr class="separator:ac2f1b63228de36e476955c0525299dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc3d04165a44e99abf27780b6cb8a26"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#aefc3d04165a44e99abf27780b6cb8a26">CanUseRadio</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, bool ignoreJamming=false)</td></tr>
+<tr class="separator:aefc3d04165a44e99abf27780b6cb8a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46fa7a136b81183af7d106d631826af1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a46fa7a136b81183af7d106d631826af1">CanUseRadio</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> sender, out <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html">WifiComponent</a> radio, bool ignoreJamming=false)</td></tr>
+<tr class="separator:a46fa7a136b81183af7d106d631826af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17d064e4d9217dfdeab2e3f1fa0e9d65"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_networking_1_1_chat_message.html#a17d064e4d9217dfdeab2e3f1fa0e9d65">ServerRead</a> (<a class="el" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> msg, <a class="el" href="class_barotrauma_1_1_networking_1_1_client.html">Client</a> c)</td></tr>
 <tr class="separator:a17d064e4d9217dfdeab2e3f1fa0e9d65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -425,8 +425,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a3ac45537193cbd559af2214c5254060d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ac45537193cbd559af2214c5254060d">&#9670;&nbsp;</a></span>CanUseRadio() <span class="overload">[1/2]</span></h2>
+<a id="aefc3d04165a44e99abf27780b6cb8a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc3d04165a44e99abf27780b6cb8a26">&#9670;&nbsp;</a></span>CanUseRadio() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,8 +438,18 @@ Properties</h2></td></tr>
           <td class="memname">static bool Barotrauma.Networking.ChatMessage.CanUseRadio </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_barotrauma_1_1_character.html">Character</a>&#160;</td>
-          <td class="paramname"><em>sender</em></td><td>)</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ignoreJamming</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -453,8 +463,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ac2f1b63228de36e476955c0525299dab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2f1b63228de36e476955c0525299dab">&#9670;&nbsp;</a></span>CanUseRadio() <span class="overload">[2/2]</span></h2>
+<a id="a46fa7a136b81183af7d106d631826af1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46fa7a136b81183af7d106d631826af1">&#9670;&nbsp;</a></span>CanUseRadio() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -472,7 +482,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">out <a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_wifi_component.html">WifiComponent</a>&#160;</td>
-          <td class="paramname"><em>radio</em>&#160;</td>
+          <td class="paramname"><em>radio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ignoreJamming</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

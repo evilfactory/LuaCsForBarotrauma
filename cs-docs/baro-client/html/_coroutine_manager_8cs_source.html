@@ -86,361 +86,306 @@ $(document).ready(function(){initNavTree('_coroutine_manager_8cs_source.html',''
 <div class="title">CoroutineManager.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Threading;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html">    8</a></span>&#160;    <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#a7319a9aa7785953f376cc91f9412fd6e">   10</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_coroutine_status.html#a7319a9aa7785953f376cc91f9412fd6e">Running</a> =&gt; <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>.<a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a8071ccd18d71c2e22c9b1ff38d376b53">Running</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#aeeca0ce87d94af6d609311b4af25c436">   11</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_success.html">Success</a> =&gt; <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>.<a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#afa88cc7212899f3f242ab0f5b6dd8e6b">Success</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#ad65f743de5ad9d7f19b4e19a9007c2b2">   12</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_failure.html">Failure</a> =&gt; <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>.<a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a8517a6ca37602d909e7aadfb9aad3367">Failure</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#a3c4b67aebf792c31ee59afaa20d5a81f">   14</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html#a3c4b67aebf792c31ee59afaa20d5a81f">CheckFinished</a>(<span class="keywordtype">float</span> deltaTime);</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#af18dc0954200d17075ce4c6a8ffecfa6">   15</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html#af18dc0954200d17075ce4c6a8ffecfa6">EndsCoroutine</a>(<a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a> handle);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> : <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> <span class="keyword">enum</span> StatusValue</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a8071ccd18d71c2e22c9b1ff38d376b53">Running</a>, <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#afa88cc7212899f3f242ab0f5b6dd8e6b">Success</a>, <a class="code" href="class_barotrauma_1_1_failure.html">Failure</a></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> readonly StatusValue Value;</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#nullable enable</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> System.Threading;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html">   10</a></span>&#160;    <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#a7319a9aa7785953f376cc91f9412fd6e">   12</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_coroutine_status.html#a7319a9aa7785953f376cc91f9412fd6e">Running</a> =&gt; <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>.<a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a0bfa65dd9a1d33b309b694413c5d9d60">Running</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#aeeca0ce87d94af6d609311b4af25c436">   13</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_success.html">Success</a> =&gt; <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>.<a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a5cf93800f5c0b838a2628659f6bf5b7f">Success</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#ad65f743de5ad9d7f19b4e19a9007c2b2">   14</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_failure.html">Failure</a> =&gt; <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>.<a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a33a64a276c0efce8c87db91c979c362d">Failure</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#a3c4b67aebf792c31ee59afaa20d5a81f">   16</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html#a3c4b67aebf792c31ee59afaa20d5a81f">CheckFinished</a>(<span class="keywordtype">float</span> deltaTime);</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_status.html#af18dc0954200d17075ce4c6a8ffecfa6">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_coroutine_status.html#af18dc0954200d17075ce4c6a8ffecfa6">EndsCoroutine</a>(<a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a> handle);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html">   20</a></span>&#160;    sealed <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> : <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> <span class="keyword">enum</span> StatusValue</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a0bfa65dd9a1d33b309b694413c5d9d60">Running</a>, <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a5cf93800f5c0b838a2628659f6bf5b7f">Success</a>, <a class="code" href="class_barotrauma_1_1_failure.html">Failure</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue value) { Value = value; }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> readonly StatusValue value;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a8071ccd18d71c2e22c9b1ff38d376b53">   29</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> readonly <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a8071ccd18d71c2e22c9b1ff38d376b53">Running</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue.Running);</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#afa88cc7212899f3f242ab0f5b6dd8e6b">   30</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> readonly <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_success.html">Success</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue.Success);</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a8517a6ca37602d909e7aadfb9aad3367">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> readonly <span class="keyword">static</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_failure.html">Failure</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue.Failure);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a57fe18b30b91839c855bbdba996c4dbd">   33</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a57fe18b30b91839c855bbdba996c4dbd">CheckFinished</a>(<span class="keywordtype">float</span> deltaTime)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a6dc26400a79cc5f9738aec2eb86883eb">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a6dc26400a79cc5f9738aec2eb86883eb">EndsCoroutine</a>(<a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a> handle)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (Value == StatusValue.Failure)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Coroutine \&quot;&quot;</span> + handle.<a class="code" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Name</a> + <span class="stringliteral">&quot;\&quot; has failed&quot;</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> Value != StatusValue.Running;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a61c564025bea339b6ce4c106c0f5da06">   47</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a61c564025bea339b6ce4c106c0f5da06">Equals</a>(<span class="keywordtype">object</span> obj)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> obj is <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> other &amp;&amp; Value == other.Value;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#af2496bd9bbdf9f14ea723311064cd313">   52</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#af2496bd9bbdf9f14ea723311064cd313">GetHashCode</a>()</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">return</span> Value.GetHashCode();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#af90bca2f6e2ba2931fb6d26c8f14c8a9">   57</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#af90bca2f6e2ba2931fb6d26c8f14c8a9">ToString</a>()</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> Value.ToString();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html">   63</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">   65</a></span>&#160;        <span class="keyword">public</span> readonly IEnumerator&lt;CoroutineStatus&gt; <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">Coroutine</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">   66</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Name</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a3eda2370040ae30e4b46efc881aca58f">   68</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a3eda2370040ae30e4b46efc881aca58f">Exception</a> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a3eda2370040ae30e4b46efc881aca58f">Exception</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a625039744739c323cd827e08c4a0e450">   69</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">volatile</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a625039744739c323cd827e08c4a0e450">AbortRequested</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#aad9ad4f40804b14ef3bcffad779909c8">   71</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#aad9ad4f40804b14ef3bcffad779909c8">Thread</a> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#aad9ad4f40804b14ef3bcffad779909c8">Thread</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a5a04b03e24fc8b3e7d9b5c8f12719682">   73</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a5a04b03e24fc8b3e7d9b5c8f12719682">CoroutineHandle</a>(IEnumerator&lt;CoroutineStatus&gt; coroutine, <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">bool</span> useSeparateThread = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">Coroutine</a> = coroutine;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Name</a> = <span class="keywordtype">string</span>.IsNullOrWhiteSpace(name) ? coroutine.ToString() : name;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a3eda2370040ae30e4b46efc881aca58f">Exception</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Keeps track of all running coroutines, and runs them till the end.</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">static</span> <span class="keyword">class </span>CoroutineManager</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">static</span> readonly List&lt;CoroutineHandle&gt; Coroutines = <span class="keyword">new</span> List&lt;CoroutineHandle&gt;();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span> DeltaTime { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> Paused { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> CoroutineHandle StartCoroutine(IEnumerable&lt;CoroutineStatus&gt; func, <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">bool</span> useSeparateThread = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            var handle = <span class="keyword">new</span> CoroutineHandle(func.GetEnumerator(), name);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                Coroutines.Add(handle);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            handle.Thread = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">if</span> (useSeparateThread)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                handle.Thread = <span class="keyword">new</span> Thread(() =&gt; { ExecuteCoroutineThread(handle); })</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    Name = <span class="stringliteral">&quot;Coroutine Thread (&quot;</span> + handle.Name + <span class="stringliteral">&quot;)&quot;</span>,</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    IsBackground = <span class="keyword">true</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                };</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                handle.Thread.Start();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> handle;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue value) { this.value = value; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a0bfa65dd9a1d33b309b694413c5d9d60">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">static</span> readonly <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a0bfa65dd9a1d33b309b694413c5d9d60">Running</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue.Running);</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a5cf93800f5c0b838a2628659f6bf5b7f">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">static</span> readonly <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_success.html">Success</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue.Success);</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a33a64a276c0efce8c87db91c979c362d">   33</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">static</span> readonly <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> <a class="code" href="class_barotrauma_1_1_failure.html">Failure</a> = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a>(StatusValue.Failure);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a57fe18b30b91839c855bbdba996c4dbd">   35</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a57fe18b30b91839c855bbdba996c4dbd">CheckFinished</a>(<span class="keywordtype">float</span> deltaTime)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a6dc26400a79cc5f9738aec2eb86883eb">   40</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a6dc26400a79cc5f9738aec2eb86883eb">EndsCoroutine</a>(<a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a> handle)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (value == StatusValue.Failure)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Coroutine \&quot;&quot;</span> + handle.<a class="code" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Name</a> + <span class="stringliteral">&quot;\&quot; has failed&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">return</span> value != StatusValue.Running;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#a0f1f9463cb59e88004a4508bd7ad817f">   49</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#a0f1f9463cb59e88004a4508bd7ad817f">Equals</a>(<span class="keywordtype">object</span>? obj)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span> obj is <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html">EnumCoroutineStatus</a> other &amp;&amp; value == other.value;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#af2496bd9bbdf9f14ea723311064cd313">   54</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#af2496bd9bbdf9f14ea723311064cd313">GetHashCode</a>()</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> value.GetHashCode();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_enum_coroutine_status.html#af90bca2f6e2ba2931fb6d26c8f14c8a9">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_enum_coroutine_status.html#af90bca2f6e2ba2931fb6d26c8f14c8a9">ToString</a>()</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> value.ToString();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html">   65</a></span>&#160;    sealed <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_wait_for_seconds.html">WaitForSeconds</a> : <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">   67</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">float</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">TotalTime</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> timer;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> ignorePause;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a904c4afb857ee8d81ff3f93da83fda2c">   72</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a904c4afb857ee8d81ff3f93da83fda2c">WaitForSeconds</a>(<span class="keywordtype">float</span> time, <span class="keywordtype">bool</span> ignorePause = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            timer = time;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">TotalTime</a> = time;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            this.ignorePause = ignorePause;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a6a42ba38e45a7738e430e595baf9f7bc">   79</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a6a42ba38e45a7738e430e595baf9f7bc">CheckFinished</a>(<span class="keywordtype">float</span> deltaTime) </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (ignorePause || !CoroutineManager.Paused)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                timer -= deltaTime;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            timer -= deltaTime;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> timer &lt;= 0.0f;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a1152d59ce0dba0ec794c0ebdf4462c84">   92</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a1152d59ce0dba0ec794c0ebdf4462c84">EndsCoroutine</a>(<a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a> handle)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html">   98</a></span>&#160;    sealed <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">  100</a></span>&#160;        <span class="keyword">public</span> readonly IEnumerator&lt;CoroutineStatus&gt; <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">Coroutine</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">  101</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Name</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a16cf51e8e15f01c578e05140a4f884c6">  103</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a16cf51e8e15f01c578e05140a4f884c6">Exception</a>? <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a16cf51e8e15f01c578e05140a4f884c6">Exception</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#aea1a1f2e1d8bf1e1d07707844457efc4">  104</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#aea1a1f2e1d8bf1e1d07707844457efc4">AbortRequested</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_coroutine_handle.html#a892f968e8444c0687944580de395580f">  106</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a892f968e8444c0687944580de395580f">CoroutineHandle</a>(IEnumerator&lt;CoroutineStatus&gt; coroutine, <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">Coroutine</a> = coroutine;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Name</a> = <span class="keywordtype">string</span>.IsNullOrWhiteSpace(name) ? (coroutine.ToString() ?? <span class="stringliteral">&quot;&quot;</span>) : name;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <a class="code" href="class_barotrauma_1_1_coroutine_handle.html#a16cf51e8e15f01c578e05140a4f884c6">Exception</a> = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> CoroutineHandle Invoke(Action action, <span class="keywordtype">float</span> delay = 0f)</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">return</span> StartCoroutine(DoInvokeAfter(action, delay));</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> IEnumerable&lt;CoroutineStatus&gt; DoInvokeAfter(Action action, <span class="keywordtype">float</span> delay)</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">if</span> (action == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                yield <span class="keywordflow">return</span> CoroutineStatus.Failure;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (delay &gt; 0.0f)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(delay);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            action();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// Keeps track of all running coroutines, and runs them till the end.</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">static</span> <span class="keyword">class </span>CoroutineManager</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">static</span> readonly List&lt;CoroutineHandle&gt; Coroutines = <span class="keyword">new</span> List&lt;CoroutineHandle&gt;();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span> DeltaTime { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> Paused { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> CoroutineHandle StartCoroutine(IEnumerable&lt;CoroutineStatus&gt; func, <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            var handle = <span class="keyword">new</span> CoroutineHandle(func.GetEnumerator(), name);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                Coroutines.Add(handle);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            yield <span class="keywordflow">return</span> CoroutineStatus.Success;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> handle;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsCoroutineRunning(<span class="keywordtype">string</span> name)</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="keywordflow">return</span> Coroutines.Any(c =&gt; c.Name == name);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsCoroutineRunning(CoroutineHandle handle)</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordflow">return</span> Coroutines.Contains(handle);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            }</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopCoroutines(<span class="keywordtype">string</span> name)</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                HandleCoroutineStopping(c =&gt; c.Name == name);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                Coroutines.RemoveAll(c =&gt; c.Name == name);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopCoroutines(CoroutineHandle handle)</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                HandleCoroutineStopping(c =&gt; c == handle);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                Coroutines.RemoveAll(c =&gt; c == handle);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> HandleCoroutineStopping(Func&lt;CoroutineHandle, bool&gt; filter)</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">foreach</span> (CoroutineHandle coroutine <span class="keywordflow">in</span> Coroutines)</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keywordflow">if</span> (filter(coroutine))</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    coroutine.AbortRequested = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <span class="keywordflow">if</span> (coroutine.Thread != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                        <span class="keywordtype">bool</span> joined = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        <span class="keywordflow">while</span> (!joined)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                            CrossThread.ProcessTasks();</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                            joined = coroutine.Thread.Join(TimeSpan.FromMilliseconds(500));</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> PerformCoroutineStep(CoroutineHandle handle)</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            var current = handle.Coroutine.Current;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span> (current != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">if</span> (current.EndsCoroutine(handle) || handle.AbortRequested) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">if</span> (!current.CheckFinished(DeltaTime)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">if</span> (!handle.Coroutine.MoveNext()) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ExecuteCoroutineThread(CoroutineHandle handle)</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordflow">while</span> (!handle.AbortRequested)</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    <span class="keywordflow">if</span> (PerformCoroutineStep(handle)) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    Thread.Sleep((<span class="keywordtype">int</span>)(DeltaTime * 1000));</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">catch</span> (ThreadAbortException)</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="comment">//not an error, don&#39;t worry about it</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                handle.Exception = e;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Coroutine \&quot;&quot;</span> + handle.Name + <span class="stringliteral">&quot;\&quot; has thrown an exception&quot;</span>, e);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsDone(CoroutineHandle handle)</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#if !DEBUG</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> CoroutineHandle Invoke(Action action, <span class="keywordtype">float</span> delay = 0f)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">return</span> StartCoroutine(DoInvokeAfter(action, delay));</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> IEnumerable&lt;CoroutineStatus&gt; DoInvokeAfter(Action? action, <span class="keywordtype">float</span> delay)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">if</span> (action == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                yield <span class="keywordflow">return</span> CoroutineStatus.Failure;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                yield <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> (delay &gt; 0.0f)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(delay);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            action();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            yield <span class="keywordflow">return</span> CoroutineStatus.Success;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsCoroutineRunning(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">return</span> Coroutines.Any(c =&gt; c.Name == name);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsCoroutineRunning(CoroutineHandle handle)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">return</span> Coroutines.Contains(handle);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopCoroutines(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                HandleCoroutineStopping(c =&gt; c.Name == name);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                Coroutines.RemoveAll(c =&gt; c.Name == name);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopCoroutines(CoroutineHandle handle)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                HandleCoroutineStopping(c =&gt; c == handle);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                Coroutines.RemoveAll(c =&gt; c == handle);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> HandleCoroutineStopping(Func&lt;CoroutineHandle, bool&gt; filter)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="comment">// No lock here because all callers lock for us</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">foreach</span> (CoroutineHandle coroutine <span class="keywordflow">in</span> Coroutines)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordflow">if</span> (filter(coroutine))</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    coroutine.AbortRequested = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> PerformCoroutineStep(CoroutineHandle handle)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            var current = handle.Coroutine.Current;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">if</span> (current != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">if</span> (current.EndsCoroutine(handle) || handle.AbortRequested) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">if</span> (!current.CheckFinished(DeltaTime)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">if</span> (!handle.Coroutine.MoveNext()) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsDone(CoroutineHandle handle)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor">#if !DEBUG</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keywordflow">return</span> PerformCoroutineStep(handle);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#if !DEBUG</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            {</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">if</span> (handle.Thread == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    <span class="keywordflow">return</span> PerformCoroutineStep(handle);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    <span class="keywordflow">if</span> (handle.Thread.ThreadState.HasFlag(ThreadState.Stopped))</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        <span class="keywordflow">if</span> (handle.Exception != <span class="keyword">null</span> || handle.Coroutine.Current == CoroutineStatus.Failure)</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                            DebugConsole.ThrowError(<span class="stringliteral">&quot;Coroutine \&quot;&quot;</span> + handle.Name + <span class="stringliteral">&quot;\&quot; has failed&quot;</span>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">#if !DEBUG</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#if CLIENT &amp;&amp; WINDOWS</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">if</span> (e is SharpDX.SharpDXException) { <span class="keywordflow">throw</span>; }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Coroutine &quot;</span> + handle.Name + <span class="stringliteral">&quot; threw an exception: &quot;</span> + e.Message + <span class="stringliteral">&quot;\n&quot;</span> + e.StackTrace.CleanupStackTrace());</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                handle.Exception = e;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            }</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">// Updating just means stepping through all the coroutines</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">bool</span> paused, <span class="keywordtype">float</span> deltaTime)</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            Paused = paused;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            DeltaTime = deltaTime;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            List&lt;CoroutineHandle&gt; coroutineList;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                coroutineList = Coroutines.ToList();</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">foreach</span> (var coroutine <span class="keywordflow">in</span> coroutineList)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keywordflow">if</span> (IsDone(coroutine))</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    lock (Coroutines)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                    {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                        Coroutines.Remove(coroutine);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            }</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ListCoroutines()</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            lock (Coroutines)</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;***********&quot;</span>);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;{Coroutines.Count} coroutine(s)&quot;</span>);</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">foreach</span> (var c <span class="keywordflow">in</span> Coroutines)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    DebugConsole.NewMessage($<span class="stringliteral">&quot;- {c.Name}&quot;</span>);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  </div>
-<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html">  296</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_wait_for_seconds.html">WaitForSeconds</a> : <a class="code" href="class_barotrauma_1_1_coroutine_status.html">CoroutineStatus</a></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    {</div>
-<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">  298</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">float</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">TotalTime</a>;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> timer;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> ignorePause;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a904c4afb857ee8d81ff3f93da83fda2c">  303</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a904c4afb857ee8d81ff3f93da83fda2c">WaitForSeconds</a>(<span class="keywordtype">float</span> time, <span class="keywordtype">bool</span> ignorePause = <span class="keyword">true</span>)</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            timer = time;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">TotalTime</a> = time;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            this.ignorePause = ignorePause;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a6a42ba38e45a7738e430e595baf9f7bc">  310</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a6a42ba38e45a7738e430e595baf9f7bc">CheckFinished</a>(<span class="keywordtype">float</span> deltaTime) </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">if</span> (ignorePause || !CoroutineManager.Paused)</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                timer -= deltaTime;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            timer -= deltaTime;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">return</span> timer &lt;= 0.0f;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_wait_for_seconds.html#a1152d59ce0dba0ec794c0ebdf4462c84">  323</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_wait_for_seconds.html#a1152d59ce0dba0ec794c0ebdf4462c84">EndsCoroutine</a>(<a class="code" href="class_barotrauma_1_1_coroutine_handle.html">CoroutineHandle</a> handle)</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html">Barotrauma.CoroutineHandle</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00063">CoroutineManager.cs:64</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a3eda2370040ae30e4b46efc881aca58f"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a3eda2370040ae30e4b46efc881aca58f">Barotrauma.CoroutineHandle.Exception</a></div><div class="ttdeci">Exception Exception</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00068">CoroutineManager.cs:68</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a5a04b03e24fc8b3e7d9b5c8f12719682"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a5a04b03e24fc8b3e7d9b5c8f12719682">Barotrauma.CoroutineHandle.CoroutineHandle</a></div><div class="ttdeci">CoroutineHandle(IEnumerator&lt; CoroutineStatus &gt; coroutine, string name=&quot;&quot;, bool useSeparateThread=false)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00073">CoroutineManager.cs:73</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a625039744739c323cd827e08c4a0e450"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a625039744739c323cd827e08c4a0e450">Barotrauma.CoroutineHandle.AbortRequested</a></div><div class="ttdeci">volatile bool AbortRequested</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00069">CoroutineManager.cs:69</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a73b00d2566c87d8c392a3d6cfcb496ab"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">Barotrauma.CoroutineHandle.Coroutine</a></div><div class="ttdeci">readonly IEnumerator&lt; CoroutineStatus &gt; Coroutine</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00065">CoroutineManager.cs:65</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_aad9ad4f40804b14ef3bcffad779909c8"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#aad9ad4f40804b14ef3bcffad779909c8">Barotrauma.CoroutineHandle.Thread</a></div><div class="ttdeci">Thread Thread</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00071">CoroutineManager.cs:71</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_ab3cdbb118942c45609ea5b672ab86dd3"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Barotrauma.CoroutineHandle.Name</a></div><div class="ttdeci">readonly string Name</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00066">CoroutineManager.cs:66</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_status_html"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_status.html">Barotrauma.CoroutineStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00008">CoroutineManager.cs:9</a></div></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#if CLIENT &amp;&amp; WINDOWS</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">if</span> (e is SharpDX.SharpDXException) { <span class="keywordflow">throw</span>; }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Coroutine &quot;</span> + handle.Name + <span class="stringliteral">&quot; threw an exception: &quot;</span> + e.Message + <span class="stringliteral">&quot;\n&quot;</span> + e.StackTrace.CleanupStackTrace());</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                handle.Exception = e;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="comment">// Updating just means stepping through all the coroutines</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly List&lt;CoroutineHandle&gt; coroutinePass = <span class="keyword">new</span> List&lt;CoroutineHandle&gt;();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">bool</span> paused, <span class="keywordtype">float</span> deltaTime)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            Paused = paused;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            DeltaTime = deltaTime;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="comment">// Do not optimize this as a for loop directly over the Coroutines list!</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="comment">// Coroutines are able to spawn new coroutines!</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                coroutinePass.AddRange(Coroutines);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">foreach</span> (var coroutine <span class="keywordflow">in</span> coroutinePass)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keywordflow">if</span> (!IsDone(coroutine)) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                lock (Coroutines)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    Coroutines.Remove(coroutine);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            coroutinePass.Clear();</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ListCoroutines()</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            lock (Coroutines)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;***********&quot;</span>);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;{Coroutines.Count} coroutine(s)&quot;</span>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">foreach</span> (var c <span class="keywordflow">in</span> Coroutines)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    DebugConsole.NewMessage($<span class="stringliteral">&quot;- {c.Name}&quot;</span>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html">Barotrauma.CoroutineHandle</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00098">CoroutineManager.cs:99</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a16cf51e8e15f01c578e05140a4f884c6"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a16cf51e8e15f01c578e05140a4f884c6">Barotrauma.CoroutineHandle.Exception</a></div><div class="ttdeci">Exception? Exception</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00103">CoroutineManager.cs:103</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a73b00d2566c87d8c392a3d6cfcb496ab"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a73b00d2566c87d8c392a3d6cfcb496ab">Barotrauma.CoroutineHandle.Coroutine</a></div><div class="ttdeci">readonly IEnumerator&lt; CoroutineStatus &gt; Coroutine</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00100">CoroutineManager.cs:100</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_a892f968e8444c0687944580de395580f"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#a892f968e8444c0687944580de395580f">Barotrauma.CoroutineHandle.CoroutineHandle</a></div><div class="ttdeci">CoroutineHandle(IEnumerator&lt; CoroutineStatus &gt; coroutine, string name=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00106">CoroutineManager.cs:106</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_ab3cdbb118942c45609ea5b672ab86dd3"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#ab3cdbb118942c45609ea5b672ab86dd3">Barotrauma.CoroutineHandle.Name</a></div><div class="ttdeci">readonly string Name</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00101">CoroutineManager.cs:101</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_handle_html_aea1a1f2e1d8bf1e1d07707844457efc4"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_handle.html#aea1a1f2e1d8bf1e1d07707844457efc4">Barotrauma.CoroutineHandle.AbortRequested</a></div><div class="ttdeci">bool AbortRequested</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00104">CoroutineManager.cs:104</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_status_html"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_status.html">Barotrauma.CoroutineStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00010">CoroutineManager.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_coroutine_status_html_a3c4b67aebf792c31ee59afaa20d5a81f"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_status.html#a3c4b67aebf792c31ee59afaa20d5a81f">Barotrauma.CoroutineStatus.CheckFinished</a></div><div class="ttdeci">abstract bool CheckFinished(float deltaTime)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_coroutine_status_html_a7319a9aa7785953f376cc91f9412fd6e"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_status.html#a7319a9aa7785953f376cc91f9412fd6e">Barotrauma.CoroutineStatus.Running</a></div><div class="ttdeci">static CoroutineStatus Running</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00010">CoroutineManager.cs:10</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_coroutine_status_html_a7319a9aa7785953f376cc91f9412fd6e"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_status.html#a7319a9aa7785953f376cc91f9412fd6e">Barotrauma.CoroutineStatus.Running</a></div><div class="ttdeci">static CoroutineStatus Running</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00012">CoroutineManager.cs:12</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_coroutine_status_html_af18dc0954200d17075ce4c6a8ffecfa6"><div class="ttname"><a href="class_barotrauma_1_1_coroutine_status.html#af18dc0954200d17075ce4c6a8ffecfa6">Barotrauma.CoroutineStatus.EndsCoroutine</a></div><div class="ttdeci">abstract bool EndsCoroutine(CoroutineHandle handle)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html">Barotrauma.EnumCoroutineStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00018">CoroutineManager.cs:19</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a57fe18b30b91839c855bbdba996c4dbd"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a57fe18b30b91839c855bbdba996c4dbd">Barotrauma.EnumCoroutineStatus.CheckFinished</a></div><div class="ttdeci">override bool CheckFinished(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00033">CoroutineManager.cs:33</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a61c564025bea339b6ce4c106c0f5da06"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a61c564025bea339b6ce4c106c0f5da06">Barotrauma.EnumCoroutineStatus.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00047">CoroutineManager.cs:47</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a6dc26400a79cc5f9738aec2eb86883eb"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a6dc26400a79cc5f9738aec2eb86883eb">Barotrauma.EnumCoroutineStatus.EndsCoroutine</a></div><div class="ttdeci">override bool EndsCoroutine(CoroutineHandle handle)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00038">CoroutineManager.cs:38</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a8071ccd18d71c2e22c9b1ff38d376b53"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a8071ccd18d71c2e22c9b1ff38d376b53">Barotrauma.EnumCoroutineStatus.Running</a></div><div class="ttdeci">new static readonly EnumCoroutineStatus Running</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00029">CoroutineManager.cs:29</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a8517a6ca37602d909e7aadfb9aad3367"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a8517a6ca37602d909e7aadfb9aad3367">Barotrauma.EnumCoroutineStatus.Failure</a></div><div class="ttdeci">new static readonly EnumCoroutineStatus Failure</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00031">CoroutineManager.cs:31</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_af2496bd9bbdf9f14ea723311064cd313"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#af2496bd9bbdf9f14ea723311064cd313">Barotrauma.EnumCoroutineStatus.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00052">CoroutineManager.cs:52</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_af90bca2f6e2ba2931fb6d26c8f14c8a9"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#af90bca2f6e2ba2931fb6d26c8f14c8a9">Barotrauma.EnumCoroutineStatus.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00057">CoroutineManager.cs:57</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_afa88cc7212899f3f242ab0f5b6dd8e6b"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#afa88cc7212899f3f242ab0f5b6dd8e6b">Barotrauma.EnumCoroutineStatus.Success</a></div><div class="ttdeci">new static readonly EnumCoroutineStatus Success</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00030">CoroutineManager.cs:30</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html">Barotrauma.EnumCoroutineStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00020">CoroutineManager.cs:21</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a0bfa65dd9a1d33b309b694413c5d9d60"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a0bfa65dd9a1d33b309b694413c5d9d60">Barotrauma.EnumCoroutineStatus.Running</a></div><div class="ttdeci">static new readonly EnumCoroutineStatus Running</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00031">CoroutineManager.cs:31</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a0f1f9463cb59e88004a4508bd7ad817f"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a0f1f9463cb59e88004a4508bd7ad817f">Barotrauma.EnumCoroutineStatus.Equals</a></div><div class="ttdeci">override bool Equals(object? obj)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00049">CoroutineManager.cs:49</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a33a64a276c0efce8c87db91c979c362d"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a33a64a276c0efce8c87db91c979c362d">Barotrauma.EnumCoroutineStatus.Failure</a></div><div class="ttdeci">static new readonly EnumCoroutineStatus Failure</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00033">CoroutineManager.cs:33</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a57fe18b30b91839c855bbdba996c4dbd"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a57fe18b30b91839c855bbdba996c4dbd">Barotrauma.EnumCoroutineStatus.CheckFinished</a></div><div class="ttdeci">override bool CheckFinished(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00035">CoroutineManager.cs:35</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a5cf93800f5c0b838a2628659f6bf5b7f"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a5cf93800f5c0b838a2628659f6bf5b7f">Barotrauma.EnumCoroutineStatus.Success</a></div><div class="ttdeci">static new readonly EnumCoroutineStatus Success</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00032">CoroutineManager.cs:32</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_a6dc26400a79cc5f9738aec2eb86883eb"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#a6dc26400a79cc5f9738aec2eb86883eb">Barotrauma.EnumCoroutineStatus.EndsCoroutine</a></div><div class="ttdeci">override bool EndsCoroutine(CoroutineHandle handle)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00040">CoroutineManager.cs:40</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_af2496bd9bbdf9f14ea723311064cd313"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#af2496bd9bbdf9f14ea723311064cd313">Barotrauma.EnumCoroutineStatus.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00054">CoroutineManager.cs:54</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_enum_coroutine_status_html_af90bca2f6e2ba2931fb6d26c8f14c8a9"><div class="ttname"><a href="class_barotrauma_1_1_enum_coroutine_status.html#af90bca2f6e2ba2931fb6d26c8f14c8a9">Barotrauma.EnumCoroutineStatus.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00059">CoroutineManager.cs:59</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_failure_html"><div class="ttname"><a href="class_barotrauma_1_1_failure.html">Barotrauma.Failure</a></div><div class="ttdef"><b>Definition:</b> <a href="_result_8cs_source.html#l00057">Result.cs:60</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_success_html"><div class="ttname"><a href="class_barotrauma_1_1_success.html">Barotrauma.Success</a></div><div class="ttdef"><b>Definition:</b> <a href="_result_8cs_source.html#l00029">Result.cs:32</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html">Barotrauma.WaitForSeconds</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00296">CoroutineManager.cs:297</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a0705491f88960228a3ca3dcbd08183e0"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">Barotrauma.WaitForSeconds.TotalTime</a></div><div class="ttdeci">readonly float TotalTime</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00298">CoroutineManager.cs:298</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a1152d59ce0dba0ec794c0ebdf4462c84"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a1152d59ce0dba0ec794c0ebdf4462c84">Barotrauma.WaitForSeconds.EndsCoroutine</a></div><div class="ttdeci">override bool EndsCoroutine(CoroutineHandle handle)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00323">CoroutineManager.cs:323</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a6a42ba38e45a7738e430e595baf9f7bc"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a6a42ba38e45a7738e430e595baf9f7bc">Barotrauma.WaitForSeconds.CheckFinished</a></div><div class="ttdeci">override bool CheckFinished(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00310">CoroutineManager.cs:310</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a904c4afb857ee8d81ff3f93da83fda2c"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a904c4afb857ee8d81ff3f93da83fda2c">Barotrauma.WaitForSeconds.WaitForSeconds</a></div><div class="ttdeci">WaitForSeconds(float time, bool ignorePause=true)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00303">CoroutineManager.cs:303</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html">Barotrauma.WaitForSeconds</a></div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00065">CoroutineManager.cs:66</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a0705491f88960228a3ca3dcbd08183e0"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a0705491f88960228a3ca3dcbd08183e0">Barotrauma.WaitForSeconds.TotalTime</a></div><div class="ttdeci">readonly float TotalTime</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00067">CoroutineManager.cs:67</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a1152d59ce0dba0ec794c0ebdf4462c84"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a1152d59ce0dba0ec794c0ebdf4462c84">Barotrauma.WaitForSeconds.EndsCoroutine</a></div><div class="ttdeci">override bool EndsCoroutine(CoroutineHandle handle)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00092">CoroutineManager.cs:92</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a6a42ba38e45a7738e430e595baf9f7bc"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a6a42ba38e45a7738e430e595baf9f7bc">Barotrauma.WaitForSeconds.CheckFinished</a></div><div class="ttdeci">override bool CheckFinished(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00079">CoroutineManager.cs:79</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_wait_for_seconds_html_a904c4afb857ee8d81ff3f93da83fda2c"><div class="ttname"><a href="class_barotrauma_1_1_wait_for_seconds.html#a904c4afb857ee8d81ff3f93da83fda2c">Barotrauma.WaitForSeconds.WaitForSeconds</a></div><div class="ttdeci">WaitForSeconds(float time, bool ignorePause=true)</div><div class="ttdef"><b>Definition:</b> <a href="_coroutine_manager_8cs_source.html#l00072">CoroutineManager.cs:72</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,5 +1,6 @@
 var class_barotrauma_1_1_mission_prefab =
 [
+    [ "ReputationReward", "class_barotrauma_1_1_mission_prefab_1_1_reputation_reward.html", "class_barotrauma_1_1_mission_prefab_1_1_reputation_reward" ],
     [ "TriggerEvent", "class_barotrauma_1_1_mission_prefab_1_1_trigger_event.html", "class_barotrauma_1_1_mission_prefab_1_1_trigger_event" ],
     [ "MissionPrefab", "class_barotrauma_1_1_mission_prefab.html#ac92fa1e7b108c2f81252493ed2ab33b7", null ],
     [ "Dispose", "class_barotrauma_1_1_mission_prefab.html#a12ed1b06fd67b452fc873eda43adc0ee", null ],
@@ -27,7 +28,8 @@ var class_barotrauma_1_1_mission_prefab =
     [ "MultiplayerOnly", "class_barotrauma_1_1_mission_prefab.html#ab2498c47000813e711f0a78b1480b4cd", null ],
     [ "Name", "class_barotrauma_1_1_mission_prefab.html#a9b9c5558ef668d0d0741c069a18fee1a", null ],
     [ "ProgressBarLabel", "class_barotrauma_1_1_mission_prefab.html#a7a700bbd6666b8dfa3aa47711b8405f8", null ],
-    [ "ReputationRewards", "class_barotrauma_1_1_mission_prefab.html#af9a0bc8d04096f2d50b634a12dd6a2c0", null ],
+    [ "ReputationRewards", "class_barotrauma_1_1_mission_prefab.html#a0350a4f157d07e64333955d50fa4cf88", null ],
+    [ "RequiredLocationFaction", "class_barotrauma_1_1_mission_prefab.html#a92992645c45a91580334ed27b2c9bd3a", null ],
     [ "RequireWreck", "class_barotrauma_1_1_mission_prefab.html#a92fa7b262de2e9b4d04e8182c4ea041b", null ],
     [ "Reward", "class_barotrauma_1_1_mission_prefab.html#a67a55198d7c657833abb558486a54b5f", null ],
     [ "ShowInMenus", "class_barotrauma_1_1_mission_prefab.html#a4939dc114fc8c9347a33f56c523b2da2", null ],

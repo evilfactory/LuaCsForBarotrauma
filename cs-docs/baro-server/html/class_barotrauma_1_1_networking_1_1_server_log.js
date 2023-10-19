@@ -13,6 +13,7 @@ var class_barotrauma_1_1_networking_1_1_server_log =
       [ "DoSProtection", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa1967a4c657e5f25caabbf9b4c85bdccc", null ],
       [ "Karma", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baaec775c48945f0790ef23f3820f985a78", null ],
       [ "Talent", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa6d43c13d7ff6e837002c976f99c9f449", null ],
+      [ "Traitors", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baada867941c8bacf9be8e59bc13d765f92", null ],
       [ "Error", "class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49baa902b0d55fddef6f8d651fe1035b7d4bd", null ]
     ] ],
     [ "ServerLog", "class_barotrauma_1_1_networking_1_1_server_log.html#a88c22985db300766ef7c67d460ff61a9", null ],
