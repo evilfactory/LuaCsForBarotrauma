@@ -5,13 +5,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
-using System.Threading;
-using Barotrauma;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Emit;
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
 
 namespace Barotrauma;
 
@@ -23,16 +20,16 @@ namespace Barotrauma;
 public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
 {
     // public
-    public string FriendlyName { get; set; } = null;
+    public string FriendlyName { get; set; }
     // ReSharper disable MemberCanBePrivate.Global
-    public Assembly CompiledAssembly { get; private set; } = null;
-    public byte[] CompiledAssemblyImage { get; private set; } = null;
+    public Assembly CompiledAssembly { get; private set; }
+    public byte[] CompiledAssemblyImage { get; private set; }
     // ReSharper restore MemberCanBePrivate.Global 
     // internal
     private readonly Dictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();       // path-folder, resolver
     protected bool IsResolving;   //this is to avoid circular dependency lookup.
     private AssemblyManager _assemblyManager;
-    public bool IsTemplateMode { get; set; } = false;
+    public bool IsTemplateMode { get; set; }
     
     public MemoryFileAssemblyContextLoader(AssemblyManager assemblyManager) : base(isCollectible: true)
     {
@@ -73,23 +70,23 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
                 LoadFromAssemblyPath(sanitizedFilePath);
             }
             // on fail of any we're done because we assume that loaded files are related. This ACL needs to be unloaded and collected.
-            catch (ArgumentNullException ane)
+            catch (ArgumentNullException)
             {
                 return AssemblyLoadingSuccessState.BadFilePath;
             }
-            catch (ArgumentException ae)
+            catch (ArgumentException)
             {
                 return AssemblyLoadingSuccessState.BadFilePath;
             }
-            catch (FileLoadException fle)
+            catch (FileLoadException)
             {
                 return AssemblyLoadingSuccessState.CannotLoadFile;
             }
-            catch (FileNotFoundException fne)
+            catch (FileNotFoundException)
             {
                 return AssemblyLoadingSuccessState.NoAssemblyFound;
             }
-            catch (BadImageFormatException bfe)
+            catch (BadImageFormatException)
             {
                 return AssemblyLoadingSuccessState.InvalidAssembly;
             }
@@ -281,7 +278,7 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
     }
     
 
-    private new void Unload()
+    public new void Unload()
     {
         CompiledAssembly = null;
         CompiledAssemblyImage = null;
