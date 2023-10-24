@@ -32,7 +32,7 @@ public sealed class RunConfig
     /// <summary>
     /// Compiles the mod using non-publicized assemblies.
     /// </summary>
-    [XmlElement(ElementName = "UseNonPubAssemblies")]
+    [XmlElement(ElementName = "UseNonPublicizedAssemblies")]
     [DefaultValue(false)]
     public bool UseNonPublicizedAssemblies { get; set; }
     
