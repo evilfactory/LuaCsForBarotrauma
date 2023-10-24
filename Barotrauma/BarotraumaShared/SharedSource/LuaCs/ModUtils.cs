@@ -9,6 +9,7 @@ using Barotrauma;
 using Barotrauma.Items.Components;
 using Barotrauma.Networking;
 using Microsoft.CodeAnalysis;
+using Microsoft.Xna.Framework;
 
 namespace Barotrauma;
 
@@ -24,6 +25,15 @@ public static class ModUtils
             LuaCsLogger.LogMessage($"[Server] {s}");
 #else
             LuaCsLogger.LogMessage($"[Client] {s}");
+#endif
+        }
+
+        public static void PrintWarning(string s)
+        {
+#if SERVER
+            LuaCsLogger.Log($"[Server] {s}", Color.Yellow);
+#else
+            LuaCsLogger.Log($"[Client] {s}", Color.Yellow);
 #endif
         }
         

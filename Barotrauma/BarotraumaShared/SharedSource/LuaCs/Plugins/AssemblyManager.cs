@@ -481,6 +481,7 @@ public class AssemblyManager
         try
         {
             _subTypesLookupCache.Clear();
+            _defaultContextTypes = _defaultContextTypes.Clear();
 
             foreach (KeyValuePair<Guid, LoadedACL> loadedAcl in LoadedACLs)
             {
@@ -506,6 +507,7 @@ public class AssemblyManager
                     UnloadingACLs.Add(new WeakReference<MemoryFileAssemblyContextLoader>(loadedAcl.Value.Acl, true));
                     loadedAcl.Value.ClearTypesList();
                     loadedAcl.Value.Acl.Unload();
+                    loadedAcl.Value.ClearACLRef();
                     OnACLUnload?.Invoke(loadedAcl.Value.Id);
                 }
             }
@@ -534,6 +536,8 @@ public class AssemblyManager
         OpsLockUnloaded.EnterUpgradeableReadLock();
         try
         {
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced); // force the gc to collect unloaded acls.
+            GC.WaitForPendingFinalizers();
             List<WeakReference<MemoryFileAssemblyContextLoader>> toRemove = new();
             foreach (WeakReference<MemoryFileAssemblyContextLoader> weakReference in UnloadingACLs)
             {
@@ -666,6 +670,7 @@ public class AssemblyManager
             _subTypesLookupCache.Clear();
             UnloadingACLs.Add(new WeakReference<MemoryFileAssemblyContextLoader>(acl.Acl, true));
             acl.Acl.Unload();
+            acl.ClearACLRef();
             OnACLUnload?.Invoke(acl.Id);
 
             return true;
@@ -740,8 +745,8 @@ public class AssemblyManager
     private ImmutableDictionary<string, Type> _defaultContextTypes;
     private readonly ConcurrentDictionary<Guid, LoadedACL> LoadedACLs = new();
     private readonly List<WeakReference<MemoryFileAssemblyContextLoader>> UnloadingACLs= new();
-    private readonly ReaderWriterLockSlim OpsLockLoaded = new ReaderWriterLockSlim();
-    private readonly ReaderWriterLockSlim OpsLockUnloaded = new ReaderWriterLockSlim();
+    private readonly ReaderWriterLockSlim OpsLockLoaded = new ();
+    private readonly ReaderWriterLockSlim OpsLockUnloaded = new ();
 
     #endregion
 
@@ -752,7 +757,7 @@ public class AssemblyManager
     {
         public readonly Guid Id;
         private ImmutableDictionary<string, Type> _assembliesTypes = ImmutableDictionary<string, Type>.Empty;
-        public readonly MemoryFileAssemblyContextLoader Acl;
+        public MemoryFileAssemblyContextLoader Acl { get; private set; }
 
         internal LoadedACL(Guid id, AssemblyManager manager, string friendlyName)
         {
@@ -763,6 +768,14 @@ public class AssemblyManager
             };
         }
         public ImmutableDictionary<string, Type> AssembliesTypes => _assembliesTypes;
+
+        /// <summary>
+        /// Warning: For use by the Assembly Manager only! Do not call this method otherwise.
+        /// </summary>
+        internal void ClearACLRef()
+        {
+            Acl = null;
+        }
         
         /// <summary>
         /// Rebuild the list of types from assemblies loaded in the AsmCtxLoader.

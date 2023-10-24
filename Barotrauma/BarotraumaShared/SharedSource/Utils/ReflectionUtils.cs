@@ -10,8 +10,7 @@ namespace Barotrauma
 {
     public static class ReflectionUtils
     {
-        private static readonly ConcurrentDictionary<Assembly, ImmutableArray<Type>> CachedNonAbstractTypes
-            = new ConcurrentDictionary<Assembly, ImmutableArray<Type>>();
+        private static readonly ConcurrentDictionary<Assembly, ImmutableArray<Type>> CachedNonAbstractTypes = new();
         private static readonly ConcurrentDictionary<string, ImmutableArray<Type>> TypeSearchCache = new();
 
         public static IEnumerable<Type> GetDerivedNonAbstract<T>()

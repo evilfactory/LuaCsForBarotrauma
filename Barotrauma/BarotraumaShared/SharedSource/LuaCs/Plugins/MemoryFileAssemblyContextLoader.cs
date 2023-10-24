@@ -34,6 +34,7 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
     public MemoryFileAssemblyContextLoader(AssemblyManager assemblyManager) : base(isCollectible: true)
     {
         this._assemblyManager = assemblyManager;
+        base.Unloading += OnUnload;
     }
     
 
@@ -278,10 +279,11 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
     }
     
 
-    public new void Unload()
+    private void OnUnload(AssemblyLoadContext alc)
     {
         CompiledAssembly = null;
         CompiledAssemblyImage = null;
-        base.Unload();
+        _dependencyResolvers.Clear();
+        base.Unloading -= OnUnload;
     }
 }
