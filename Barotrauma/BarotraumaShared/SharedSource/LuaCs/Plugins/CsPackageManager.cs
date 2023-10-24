@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using Barotrauma.Steam;
@@ -203,10 +204,19 @@ public sealed class CsPackageManager : IDisposable
     /// </summary>
     public event Action OnDispose; 
 
+    [MethodImpl(MethodImplOptions.Synchronized)]
     public void Dispose()
     {
         // send events for cleanup
-        OnDispose?.Invoke();
+        try
+        {
+            OnDispose?.Invoke();
+        }
+        catch (Exception e)
+        {
+            ModUtils.Logging.PrintError($"Error while executing Dispose event: {e.Message}");
+        }
+        
         // cleanup events
         if (OnDispose is not null)
         {
@@ -240,6 +250,7 @@ public sealed class CsPackageManager : IDisposable
         // we can't wait forever or app dies but we can try to be graceful
         while (!_assemblyManager.TryBeginDispose())
         {
+            Thread.Sleep(20);   // give the assembly context unloader time to run (async)
             if (_assemblyUnloadStartTime.AddSeconds(_assemblyUnloadTimeoutSeconds) > DateTime.Now)
             {
                 break;
@@ -247,8 +258,10 @@ public sealed class CsPackageManager : IDisposable
         }
         
         _assemblyUnloadStartTime = DateTime.Now;
+        Thread.Sleep(100);  // give the garbage collector time to finalize the disposed assemblies.
         while (!_assemblyManager.FinalizeDispose())
         {
+            Thread.Sleep(100);  // give the garbage collector time to finalize the disposed assemblies.
             if (_assemblyUnloadStartTime.AddSeconds(_assemblyUnloadTimeoutSeconds) > DateTime.Now)
             {
                 break;
@@ -268,7 +281,6 @@ public sealed class CsPackageManager : IDisposable
         _currentPackagesByLoadOrder.Clear();
 
         AssembliesLoaded = false;
-        GC.SuppressFinalize(this);  
     }
 
     /// <summary>
@@ -480,7 +492,8 @@ public sealed class CsPackageManager : IDisposable
                 cp,
                 new LoadableData(
                     TryScanPackagesForAssemblies(cp, out var list1) ? list1 : null,
-                    TryScanPackageForScripts(cp, out var list2) ? list2 : null)))
+                    TryScanPackageForScripts(cp, out var list2) ? list2 : null,
+                    GetRunConfigForPackage(cp))))
             .ToImmutableDictionary();
         
         HashSet<ContentPackage> badPackages = new();
@@ -568,7 +581,7 @@ public sealed class CsPackageManager : IDisposable
                     syntaxTrees, 
                     null, 
                     CompilationOptions, 
-                     pair.Key.Name, ref id, publicizedAssemblies);
+                     pair.Key.Name, ref id, pair.Value.config.UseNonPublicizedAssemblies ? null : publicizedAssemblies);
 
                 if (successState is not AssemblyLoadingSuccessState.Success)
                 {
@@ -1077,7 +1090,7 @@ public sealed class CsPackageManager : IDisposable
         BadPackage
     }
 
-    private record LoadableData(ImmutableList<string> AssembliesFilePaths, ImmutableList<string> ScriptsFilePaths);
+    private record LoadableData(ImmutableList<string> AssembliesFilePaths, ImmutableList<string> ScriptsFilePaths, RunConfig config);
 
     #endregion
 }
