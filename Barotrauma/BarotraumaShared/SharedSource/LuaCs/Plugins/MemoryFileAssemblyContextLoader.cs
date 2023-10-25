@@ -5,10 +5,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
+
+[assembly: InternalsVisibleTo("CompiledAssembly")]
 
 namespace Barotrauma;
 
@@ -30,10 +33,12 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
     protected bool IsResolving;   //this is to avoid circular dependency lookup.
     private AssemblyManager _assemblyManager;
     public bool IsTemplateMode { get; set; }
+    public bool IsDisposed { get; private set; }
     
     public MemoryFileAssemblyContextLoader(AssemblyManager assemblyManager) : base(isCollectible: true)
     {
         this._assemblyManager = assemblyManager;
+        this.IsDisposed = false;
         base.Unloading += OnUnload;
     }
     
@@ -157,11 +162,11 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
         if (externMetadataReferences is not null)
             metadataReferences.AddRange(externMetadataReferences);
 
-        // build metadata refs from global where not an in-memory compiled assembly and not the same assembly as supplied.
-        metadataReferences.AddRange(AppDomain.CurrentDomain.GetAssemblies()
+        // build metadata refs from default where not an in-memory compiled assembly and not the same assembly as supplied.
+        metadataReferences.AddRange(AssemblyLoadContext.Default.Assemblies
             .Where(a =>
             {
-                if (a.IsDynamic || string.IsNullOrEmpty(a.Location) || a.Location.Contains("xunit"))
+                if (a.IsDynamic || string.IsNullOrWhiteSpace(a.Location) || a.Location.Contains("xunit"))
                     return false;
                 if (a.FullName is null)
                     return true;
@@ -172,7 +177,28 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
                 .Where(a => !(a.IsDynamic || string.IsNullOrEmpty(a.Location) || a.Location.Contains("xunit")))
                 .Select(a => MetadataReference.CreateFromFile(a.Location) as MetadataReference)
             ).ToList());
-            
+
+        // build metadata refs from ACL assemblies from files/disk.
+        foreach (AssemblyManager.LoadedACL loadedAcl in _assemblyManager.GetAllLoadedACLs())
+        {
+            if(loadedAcl.Acl.IsTemplateMode || loadedAcl.Acl.IsDisposed)
+                continue;
+            metadataReferences.AddRange(loadedAcl.Acl.Assemblies
+                .Where(a =>
+                {
+                    if (a.IsDynamic || string.IsNullOrWhiteSpace(a.Location) || a.Location.Contains("xunit"))
+                        return false;
+                    if (a.FullName is null)
+                        return true;
+                    return !externAssemblyNames.Contains(a.FullName);    // exclude duplicates
+                })
+                .Select(a => MetadataReference.CreateFromFile(a.Location) as MetadataReference)
+                .Union(externAssemblyRefs   // add custom supplied assemblies
+                    .Where(a => !(a.IsDynamic || string.IsNullOrEmpty(a.Location) || a.Location.Contains("xunit")))
+                    .Select(a => MetadataReference.CreateFromFile(a.Location) as MetadataReference)
+                ).ToList());
+        }
+        
         // build metadata refs from in-memory images
         foreach (var loadedAcl in _assemblyManager.GetAllLoadedACLs())
         {
@@ -252,7 +278,8 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
             //try resolve against other loaded alcs
             foreach (var loadedAcL in _assemblyManager.GetAllLoadedACLs())
             {
-                if (loadedAcL.Acl is null || loadedAcL.Acl.IsTemplateMode) continue;
+                if (loadedAcL.Acl is null || loadedAcL.Acl.IsTemplateMode || loadedAcL.Acl.IsDisposed) 
+                    continue;
                 
                 try
                 {
@@ -285,5 +312,6 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
         CompiledAssemblyImage = null;
         _dependencyResolvers.Clear();
         base.Unloading -= OnUnload;
+        this.IsDisposed = true;
     }
 }

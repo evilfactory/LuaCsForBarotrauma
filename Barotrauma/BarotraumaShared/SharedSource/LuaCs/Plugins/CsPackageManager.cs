@@ -574,11 +574,13 @@ public sealed class CsPackageManager : IDisposable
             
                 // try compile
                 successState = _assemblyManager.LoadAssemblyFromMemory(
-                    pair.Key.Name.Replace(" ",""), 
+                    pair.Value.config.UseInternalAssemblyName ? "CompiledAssembly" : pair.Key.Name.Replace(" ",""), 
                     syntaxTrees, 
                     null, 
                     CompilationOptions, 
-                     pair.Key.Name, ref id, pair.Value.config.UseNonPublicizedAssemblies ? null : publicizedAssemblies);
+                     pair.Key.Name, 
+                    ref id, 
+                    pair.Value.config.UseNonPublicizedAssemblies ? null : publicizedAssemblies);
 
                 if (successState is not AssemblyLoadingSuccessState.Success)
                 {
