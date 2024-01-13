@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_damage_modifier =
 [
-    [ "DamageModifier", "class_barotrauma_1_1_damage_modifier.html#abb672fb3956e90d3ad0ad8800490ad72", null ],
+    [ "DamageModifier", "class_barotrauma_1_1_damage_modifier.html#a580e6b94eddd3adac7984af8bf00bd35", null ],
     [ "Deserialize", "class_barotrauma_1_1_damage_modifier.html#a1e91c29c85a1341fe8d4f6dfbf977b83", null ],
     [ "MatchesAffliction", "class_barotrauma_1_1_damage_modifier.html#a6d8b4770021588e28b026d9f73063844", null ],
     [ "MatchesAffliction", "class_barotrauma_1_1_damage_modifier.html#adb66557b7c3f1b4b362575798120de06", null ],

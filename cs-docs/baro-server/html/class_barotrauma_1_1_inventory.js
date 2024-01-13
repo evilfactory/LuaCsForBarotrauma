@@ -25,7 +25,7 @@ var class_barotrauma_1_1_inventory =
     [ "GetItemsAt", "class_barotrauma_1_1_inventory.html#ae039efdc77c24ea9d5669dcfddf65143", null ],
     [ "GetItemStackSlotIndex", "class_barotrauma_1_1_inventory.html#a539a0e22261e0114b546f22eab9483bd", null ],
     [ "HowManyCanBePut", "class_barotrauma_1_1_inventory.html#aaa3c7b332a23c6a7ccccf5cd2ac5f4ef", null ],
-    [ "HowManyCanBePut", "class_barotrauma_1_1_inventory.html#ad319419dd9c7b71c2a0e91169e543b13", null ],
+    [ "HowManyCanBePut", "class_barotrauma_1_1_inventory.html#a568d38764636cf15dc405caac53d5d0a", null ],
     [ "IsEmpty", "class_barotrauma_1_1_inventory.html#aacf22c9d58f61db562c377d32feaad57", null ],
     [ "IsFull", "class_barotrauma_1_1_inventory.html#aef65d96c579ac869316bb7d05973ede0", null ],
     [ "IsInSlot", "class_barotrauma_1_1_inventory.html#ae53e77a3a59775083f04a28e8686109a", null ],
@@ -48,5 +48,6 @@ var class_barotrauma_1_1_inventory =
     [ "AllItems", "class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1", null ],
     [ "AllItemsMod", "class_barotrauma_1_1_inventory.html#ae2c528d3eb8483f180dd460d9322ffd0", null ],
     [ "Capacity", "class_barotrauma_1_1_inventory.html#af1e7de8a0d7e1889a9788baaaac9cf1a", null ],
-    [ "EmptySlotCount", "class_barotrauma_1_1_inventory.html#a95aa265e64999cd39f08d509cc555746", null ]
+    [ "EmptySlotCount", "class_barotrauma_1_1_inventory.html#a95aa265e64999cd39f08d509cc555746", null ],
+    [ "ExtraStackSize", "class_barotrauma_1_1_inventory.html#a80016ec452065e14db402818fbc1d8f8", null ]
 ];

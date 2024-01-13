@@ -11,6 +11,7 @@ var namespace_barotrauma_1_1_abilities =
     [ "AbilityConditionIsAiming", "class_barotrauma_1_1_abilities_1_1_ability_condition_is_aiming.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_is_aiming" ],
     [ "AbilityConditionItem", "class_barotrauma_1_1_abilities_1_1_ability_condition_item.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_item" ],
     [ "AbilityConditionItemInSubmarine", "class_barotrauma_1_1_abilities_1_1_ability_condition_item_in_submarine.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_item_in_submarine" ],
+    [ "AbilityConditionItemIsStatic", "class_barotrauma_1_1_abilities_1_1_ability_condition_item_is_static.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_item_is_static" ],
     [ "AbilityConditionLocation", "class_barotrauma_1_1_abilities_1_1_ability_condition_location.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_location" ],
     [ "AbilityConditionMission", "class_barotrauma_1_1_abilities_1_1_ability_condition_mission.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_mission" ],
     [ "AbilityConditionReduceAffliction", "class_barotrauma_1_1_abilities_1_1_ability_condition_reduce_affliction.html", "class_barotrauma_1_1_abilities_1_1_ability_condition_reduce_affliction" ],

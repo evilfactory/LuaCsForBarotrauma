@@ -33,6 +33,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_sonar =
     [ "DetectSubmarineWalls", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#ab121a26652f6648da0334adfe6fd1204", null ],
     [ "DisplayOffset", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a190ad19fdd6c7a8ee4ea868743f68286", null ],
     [ "DisplayRadius", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a2d38ee9d9dcfcf7bc608dcc6640b254d", null ],
+    [ "DisplayScale", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a17ebcc3eba1775332588ef1f17cf2a78", null ],
     [ "HasMineralScanner", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a637ecb750476b80a9f54f805d3d6525e", null ],
     [ "MineralClusters", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#a76c77d2ec8a7134f33a3cdbef6702d96", null ],
     [ "Range", "class_barotrauma_1_1_items_1_1_components_1_1_sonar.html#afe165cd6cddba66d30626c3fed2d33c8", null ],

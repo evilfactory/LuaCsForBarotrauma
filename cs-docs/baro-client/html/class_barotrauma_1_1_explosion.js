@@ -6,10 +6,12 @@ var class_barotrauma_1_1_explosion =
     [ "Explode", "class_barotrauma_1_1_explosion.html#a9ffc28f769b55d25830eaa1626d80745", null ],
     [ "Attack", "class_barotrauma_1_1_explosion.html#abe008fd164eab5d5b6bbe3a4068741e5", null ],
     [ "IgnoredCharacters", "class_barotrauma_1_1_explosion.html#a9cee534135146dda563596dca4c5b336", null ],
+    [ "IgnoredCover", "class_barotrauma_1_1_explosion.html#ad278c0c8a98c4b9ad00972ce270db164", null ],
     [ "IgnoredSubmarines", "class_barotrauma_1_1_explosion.html#a92a961711cdaa87c59928cb7cce9801b", null ],
     [ "OnlyInside", "class_barotrauma_1_1_explosion.html#af47558acaa25ccefae1ea240a7c68ebe", null ],
     [ "OnlyOutside", "class_barotrauma_1_1_explosion.html#adeddbd20cdf84611edb2d573061a1ba2", null ],
     [ "BallastFloraDamage", "class_barotrauma_1_1_explosion.html#a404c1ee43221e01d47354a107fd9c524", null ],
+    [ "DistanceFalloff", "class_barotrauma_1_1_explosion.html#a282b7f59862917d7d752dab066dfc3b0", null ],
     [ "EmpStrength", "class_barotrauma_1_1_explosion.html#a7a34c760861cb332a321c42c79a53693", null ],
     [ "IgnoreCover", "class_barotrauma_1_1_explosion.html#a665acb39912a29971816b1982ed901e5", null ]
 ];

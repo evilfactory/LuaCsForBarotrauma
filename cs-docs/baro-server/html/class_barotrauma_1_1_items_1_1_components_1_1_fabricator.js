@@ -8,6 +8,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_fabricator =
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a10d59bdf4ee213e0bec42d573d67033d", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a9f6c84a242a9cdce8225dd97869efbb0", null ],
     [ "Pick", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a9a842b2a4795c09f2c8f3bb19a321715", null ],
+    [ "QualityResult", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#ade7ea2685e44d1a4e7159f0cfd93b6c3", null ],
     [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a123c3f0a1c9637c4752bb042418f9d79", null ],
     [ "RemoveFabricationRecipes", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a066b3dcdd4c1372e4360aa5e3d670a3e", null ],
     [ "Save", "class_barotrauma_1_1_items_1_1_components_1_1_fabricator.html#a6e964bca70b7669a5f7da3e2aee7d567", null ],

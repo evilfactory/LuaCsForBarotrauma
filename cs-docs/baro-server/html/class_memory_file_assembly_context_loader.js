@@ -8,5 +8,6 @@ var class_memory_file_assembly_context_loader =
     [ "CompiledAssembly", "class_memory_file_assembly_context_loader.html#a712280cc463a3be23eb2ea6c5312f211", null ],
     [ "CompiledAssemblyImage", "class_memory_file_assembly_context_loader.html#a94922c53f477f49364eaac38bb771522", null ],
     [ "FriendlyName", "class_memory_file_assembly_context_loader.html#a175bc75f5da97b6ee0895cf754d4d9b3", null ],
+    [ "IsDisposed", "class_memory_file_assembly_context_loader.html#ae942f68565f889275c7ffe615906ff3d", null ],
     [ "IsTemplateMode", "class_memory_file_assembly_context_loader.html#a0d5bf7762e60900ef64fa94cd901d2fe", null ]
 ];

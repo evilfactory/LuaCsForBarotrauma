@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_level_object =
 [
     [ "LevelObject", "class_barotrauma_1_1_level_object.html#a14c416ee417ddcced4f0cd04e531b2f3", null ],
-    [ "AddDamage", "class_barotrauma_1_1_level_object.html#a8b54f6a388043b69b113642c2e2e68f0", null ],
+    [ "AddDamage", "class_barotrauma_1_1_level_object.html#af6c8485bb6925beda6f902657f2c8e87", null ],
     [ "AddDamage", "class_barotrauma_1_1_level_object.html#a076db6a30ae038898cb6bc9a822b4f85", null ],
     [ "ClientRead", "class_barotrauma_1_1_level_object.html#a01af6c89b9fbc5ca29f052232ea006f5", null ],
     [ "LocalToWorld", "class_barotrauma_1_1_level_object.html#aff66fc4773f15ea136085200488f0761", null ],

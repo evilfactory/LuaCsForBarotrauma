@@ -70,6 +70,7 @@ var class_barotrauma_1_1_character_params =
     [ "SpeciesName", "class_barotrauma_1_1_character_params.html#aeedd4d46c4e85fa18ce9610dd1563ed5", null ],
     [ "SpeciesTranslationOverride", "class_barotrauma_1_1_character_params.html#af076d2ca0127a62b440a2a2bee4cb5b5", null ],
     [ "UseBossHealthBar", "class_barotrauma_1_1_character_params.html#a0be3a52f8754b37f7ac5af665573ef28", null ],
+    [ "UseHumanAI", "class_barotrauma_1_1_character_params.html#abd21e5510666a07112b9201311a69843", null ],
     [ "UseHuskAppendage", "class_barotrauma_1_1_character_params.html#af7f63992d4d90705af41d59d9907e185", null ],
     [ "UsePathFinding", "class_barotrauma_1_1_character_params.html#adb5718967c2f03ec16b1a1695491079d", null ],
     [ "VariantFile", "class_barotrauma_1_1_character_params.html#a92f973e3b4b85f187da1eb793d46dfcc", null ],

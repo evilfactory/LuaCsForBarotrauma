@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_debug_console_1_1
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a68408cdd04bfabfc5ad995aea2dd7cd6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a68408cdd04bfabfc5ad995aea2dd7cd6">Command</a> (string name, string <a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a8a2e50e149252c5c0f038f4e8d2aa181">help</a>, Action&lt; string[]&gt; onExecute, Func&lt; string[][]&gt; getValidArgs=null, bool isCheat=false)</td></tr>
+<tr class="memitem:a68408cdd04bfabfc5ad995aea2dd7cd6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a68408cdd04bfabfc5ad995aea2dd7cd6">Command</a> (string name, string help, Action&lt; string[]&gt; onExecute, Func&lt; string[][]&gt; getValidArgs=null, bool isCheat=false)</td></tr>
 <tr class="memdesc:a68408cdd04bfabfc5ad995aea2dd7cd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this constructor to create a command that executes the same action regardless of whether it's executed by a client or the server.  <a href="class_barotrauma_1_1_debug_console_1_1_command.html#a68408cdd04bfabfc5ad995aea2dd7cd6">More...</a><br /></td></tr>
 <tr class="separator:a68408cdd04bfabfc5ad995aea2dd7cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1da381d36ada5cbfde3e1fd3d53e81d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#ad1da381d36ada5cbfde3e1fd3d53e81d">Execute</a> (string[] args)</td></tr>
@@ -105,10 +105,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a71e5a7b059e34f6431f5ee84058f3953"><td class="memItemLeft" align="right" valign="top">readonly string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a71e5a7b059e34f6431f5ee84058f3953">names</a></td></tr>
-<tr class="separator:a71e5a7b059e34f6431f5ee84058f3953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a2e50e149252c5c0f038f4e8d2aa181"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a8a2e50e149252c5c0f038f4e8d2aa181">help</a></td></tr>
-<tr class="separator:a8a2e50e149252c5c0f038f4e8d2aa181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773de0f7ff3a4de7ab98bc51c3805c8a"><td class="memItemLeft" align="right" valign="top">readonly ImmutableArray&lt; <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a773de0f7ff3a4de7ab98bc51c3805c8a">Names</a></td></tr>
+<tr class="separator:a773de0f7ff3a4de7ab98bc51c3805c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9477fa0579e179afd069264d93bbd424"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a9477fa0579e179afd069264d93bbd424">Help</a></td></tr>
+<tr class="separator:a9477fa0579e179afd069264d93bbd424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dc3ca4c6afc3313a7dc664042fc0b8a"><td class="memItemLeft" align="right" valign="top">Action&lt; string[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a6dc3ca4c6afc3313a7dc664042fc0b8a">OnExecute</a></td></tr>
 <tr class="separator:a6dc3ca4c6afc3313a7dc664042fc0b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25d25c4b818a7195fe49ec00e74fb875"><td class="memItemLeft" align="right" valign="top">Func&lt; string[][]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_debug_console_1_1_command.html#a25d25c4b818a7195fe49ec00e74fb875">GetValidArgs</a></td></tr>
@@ -124,7 +124,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00042">42</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00043">43</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a68408cdd04bfabfc5ad995aea2dd7cd6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a68408cdd04bfabfc5ad995aea2dd7cd6">&#9670;&nbsp;</a></span>Command()</h2>
@@ -172,7 +172,7 @@ Public Attributes</h2></td></tr>
 
 <p>Use this constructor to create a command that executes the same action regardless of whether it's executed by a client or the server. </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00059">59</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00060">60</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00070">70</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00071">71</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00090">90</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00092">92</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
@@ -249,23 +249,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00049">49</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00050">50</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
-<a id="a8a2e50e149252c5c0f038f4e8d2aa181"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a2e50e149252c5c0f038f4e8d2aa181">&#9670;&nbsp;</a></span>help</h2>
+<a id="a9477fa0579e179afd069264d93bbd424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9477fa0579e179afd069264d93bbd424">&#9670;&nbsp;</a></span>Help</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly string Barotrauma.DebugConsole.Command.help</td>
+          <td class="memname">readonly string Barotrauma.DebugConsole.Command.Help</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00046">46</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
@@ -283,23 +283,23 @@ Public Attributes</h2></td></tr>
 
 <p>Using a command that's considered a cheat disables achievements </p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00054">54</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00055">55</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
-<a id="a71e5a7b059e34f6431f5ee84058f3953"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71e5a7b059e34f6431f5ee84058f3953">&#9670;&nbsp;</a></span>names</h2>
+<a id="a773de0f7ff3a4de7ab98bc51c3805c8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a773de0f7ff3a4de7ab98bc51c3805c8a">&#9670;&nbsp;</a></span>Names</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">readonly string [] Barotrauma.DebugConsole.Command.names</td>
+          <td class="memname">readonly ImmutableArray&lt;<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&gt; Barotrauma.DebugConsole.Command.Names</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00044">44</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00045">45</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>
@@ -333,7 +333,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00047">47</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html#l00048">48</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_debug_console_8cs_source.html">BarotraumaShared/SharedSource/DebugConsole.cs</a>.</p>
 
 </div>
 </div>

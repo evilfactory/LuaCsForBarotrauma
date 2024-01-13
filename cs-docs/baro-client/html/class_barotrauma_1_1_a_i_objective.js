@@ -3,7 +3,6 @@ var class_barotrauma_1_1_a_i_objective =
     [ "AIObjective", "class_barotrauma_1_1_a_i_objective.html#a91d3d0ae857cc2e208c7b89d68c640d2", null ],
     [ "Act", "class_barotrauma_1_1_a_i_objective.html#a47aaceb8a082848e7f17bb1596bde7c0", null ],
     [ "AddSubObjective", "class_barotrauma_1_1_a_i_objective.html#a485508851cd4465e5b0e64a0ac0fac15", null ],
-    [ "AddSubObjectiveInQueue", "class_barotrauma_1_1_a_i_objective.html#a40af25d9b8ca848fec551121f0775a36", null ],
     [ "CalculatePriority", "class_barotrauma_1_1_a_i_objective.html#a15d146f0d4ef7101a8a1df5b2e342339", null ],
     [ "CanEquip", "class_barotrauma_1_1_a_i_objective.html#a791b9fb8b3c5fad96b5c5c8d893283c5", null ],
     [ "CheckObjectiveSpecific", "class_barotrauma_1_1_a_i_objective.html#abd3ffc52e417dc861a6ef664ee8a2807", null ],

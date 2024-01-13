@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_sounds_1_1_sound =
 [
-    [ "Sound", "class_barotrauma_1_1_sounds_1_1_sound.html#ae0c8e0f3c1860ae19d7e2824dc6e5896", null ],
+    [ "Sound", "class_barotrauma_1_1_sounds_1_1_sound.html#a3d039971a559a0c38bb15b590d727c2c", null ],
     [ "DeleteAlBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a98bb951884e3cca1ae2f63e6652585fe", null ],
     [ "Dispose", "class_barotrauma_1_1_sounds_1_1_sound.html#a723b6bf24ca7874a94436fff2d735435", null ],
     [ "FillAlBuffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a2b987e6d32a17690c5caa530784406e9", null ],
@@ -25,7 +25,7 @@ var class_barotrauma_1_1_sounds_1_1_sound =
     [ "Owner", "class_barotrauma_1_1_sounds_1_1_sound.html#ac1186a3e9abe6b80ebf376b2d238f1a1", null ],
     [ "Stream", "class_barotrauma_1_1_sounds_1_1_sound.html#a85dd333bb567819f56d7a7a670395d2a", null ],
     [ "StreamsReliably", "class_barotrauma_1_1_sounds_1_1_sound.html#a77fc3f227f699a35eba40d9adbfd72a6", null ],
-    [ "XElement", "class_barotrauma_1_1_sounds_1_1_sound.html#a97c84c08b1042d2723f7374575bf23d7", null ],
+    [ "XElement", "class_barotrauma_1_1_sounds_1_1_sound.html#a426d5197c1ed006a5c92c263466d3635", null ],
     [ "ALFormat", "class_barotrauma_1_1_sounds_1_1_sound.html#a5d52235c03f47649f8928789165d8251", null ],
     [ "Buffers", "class_barotrauma_1_1_sounds_1_1_sound.html#a9eb6bcb2b470fe8d07e1e35e924f1800", null ],
     [ "Disposed", "class_barotrauma_1_1_sounds_1_1_sound.html#a8c357380f191faddcd97739ff13b50db", null ],

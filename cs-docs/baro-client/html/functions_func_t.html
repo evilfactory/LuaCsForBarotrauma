@@ -120,6 +120,7 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_cleanup_items.html#aa6b4ff5d3d44b85f77776fe43247977f">Barotrauma.AIObjectiveCleanupItems</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_extinguish_fires.html#a30ccac052f949f6aca34466c2fda1889">Barotrauma.AIObjectiveExtinguishFires</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_fight_intruders.html#ad2ba6661f14611ef68aa11ff9a00be31">Barotrauma.AIObjectiveFightIntruders</a>
+, <a class="el" href="class_barotrauma_1_1_a_i_objective_find_thieves.html#ae62d87e95310feec974590942652a1de">Barotrauma.AIObjectiveFindThieves</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_fix_leaks.html#afb9817c6b7f96844c8e9301389f141ee">Barotrauma.AIObjectiveFixLeaks</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_load_items.html#a8a2151acfe5b495f4faf82e379958119">Barotrauma.AIObjectiveLoadItems</a>
 , <a class="el" href="class_barotrauma_1_1_a_i_objective_loop.html#a1fe289349d9b233e34e29e8839402e99">Barotrauma.AIObjectiveLoop&lt; T &gt;</a>
@@ -132,6 +133,9 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 </li>
 <li>TargetParams()
 : <a class="el" href="class_barotrauma_1_1_character_params_1_1_target_params.html#abcd5890fc8db589dce006f8993521338">Barotrauma.CharacterParams.TargetParams</a>
+</li>
+<li>TargetPredicate()
+: <a class="el" href="class_barotrauma_1_1_scripted_event.html#a5f9a2bded43ea79e70c2c26d692dd58a">Barotrauma.ScriptedEvent</a>
 </li>
 <li>TargetTagMatchesTagCondition()
 : <a class="el" href="class_barotrauma_1_1_property_conditional.html#a1ba122902348f9f0a6cb5479e4d3a408">Barotrauma.PropertyConditional</a>
@@ -158,7 +162,8 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_level_editor_screen.html#a6a497a59e9c4e65bd5e0ee1077be702f">Barotrauma.LevelEditorScreen</a>
 </li>
 <li>Text()
-: <a class="el" href="class_objective_manager_1_1_segment.html#a5e45b8dc065cedbd45ff1d0c6b7263b9">ObjectiveManager.Segment</a>
+: <a class="el" href="class_barotrauma_1_1_text_pack.html#a1e937cccbe7a1812bbf5bf32814b6ec8">Barotrauma.TextPack</a>
+, <a class="el" href="class_objective_manager_1_1_segment.html#a5e45b8dc065cedbd45ff1d0c6b7263b9">ObjectiveManager.Segment</a>
 </li>
 <li>TextFile()
 : <a class="el" href="class_barotrauma_1_1_text_file.html#a16b8ceadab26c2232a3a6c2d44e61d9a">Barotrauma.TextFile</a>
@@ -501,7 +506,7 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 </li>
 <li>TryGet()
 : <a class="el" href="class_barotrauma_1_1_either.html#ab91aa9071914827452a190b805307e3c">Barotrauma.Either&lt; T, U &gt;</a>
-, <a class="el" href="class_barotrauma_1_1_either_t.html#aed393a81b635558aee0a6a0d1dc8bb9a">Barotrauma.EitherT&lt; T, U &gt;</a>
+, <a class="el" href="class_barotrauma_1_1_either_t.html#a4979f0ec5cae91ad3856df32b530c0b5">Barotrauma.EitherT&lt; T, U &gt;</a>
 , <a class="el" href="class_barotrauma_1_1_either_u.html#a3979ba4616bb6b06e91ae12ed5d46220">Barotrauma.EitherU&lt; T, U &gt;</a>
 , <a class="el" href="class_barotrauma_1_1_prefab_collection.html#adbfc62449ce183342cb8575cdae2d6ff">Barotrauma.PrefabCollection&lt; T &gt;</a>
 </li>
@@ -512,10 +517,10 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_ragdoll.html#a0642bf708cd9c0ee981e6e0928e91734">Barotrauma.Ragdoll</a>
 </li>
 <li>TryGetInterestingPosition()
-: <a class="el" href="class_barotrauma_1_1_level.html#a683605614e87db7823e0f8c3b7848695">Barotrauma.Level</a>
+: <a class="el" href="class_barotrauma_1_1_level.html#a1a53cfdac0bebd8a77f7fc3ec3cbd462">Barotrauma.Level</a>
 </li>
 <li>TryGetInterestingPositionAwayFromPoint()
-: <a class="el" href="class_barotrauma_1_1_level.html#ae72e00fdd36a92c68fad182b31f28ecd">Barotrauma.Level</a>
+: <a class="el" href="class_barotrauma_1_1_level.html#a89340169f3559e80df2857bf7bcf0153">Barotrauma.Level</a>
 </li>
 <li>TryGetLoadedPluginsForPackage()
 : <a class="el" href="class_cs_package_manager.html#a20c78091fe9d8c5ec0c6391f14376637">CsPackageManager</a>
@@ -540,7 +545,7 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_list_dictionary.html#af28b45baf6e6dbc0b1c0a19d5297380f">Barotrauma.ListDictionary&lt; TKey, TValue &gt;</a>
 </li>
 <li>TryHireCharacter()
-: <a class="el" href="class_barotrauma_1_1_campaign_mode.html#adc4a6c0baa0dcfe7200f9fe1faf2ffdd">Barotrauma.CampaignMode</a>
+: <a class="el" href="class_barotrauma_1_1_campaign_mode.html#aba0c4cb80c4be24652ab48b6cd07067b">Barotrauma.CampaignMode</a>
 </li>
 <li>TryInteract()
 : <a class="el" href="class_barotrauma_1_1_item.html#a691fad42f3fadd428e30b1b99a6acd52">Barotrauma.Item</a>
@@ -556,7 +561,7 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 : <a class="el" href="class_barotrauma_1_1_game_session.html#aa26568c9875956ca451ff3bc983cd173">Barotrauma.GameSession</a>
 </li>
 <li>TryPutItem()
-: <a class="el" href="class_barotrauma_1_1_character_inventory.html#a1f708f31c5358b49a2dc2ac355a42e4a">Barotrauma.CharacterInventory</a>
+: <a class="el" href="class_barotrauma_1_1_character_inventory.html#adde41d26ecfb5e7fa8fbd91fb8806782">Barotrauma.CharacterInventory</a>
 , <a class="el" href="class_barotrauma_1_1_inventory.html#a31ae43275e1f315b3a40d506c8cecd80">Barotrauma.Inventory</a>
 , <a class="el" href="class_barotrauma_1_1_item_inventory.html#a03187469e4717755b080ce2a8624cad9">Barotrauma.ItemInventory</a>
 </li>
@@ -614,9 +619,6 @@ $(document).ready(function(){initNavTree('functions_func_t.html',''); initResiza
 </li>
 <li>TutorialCompleteAction()
 : <a class="el" href="class_barotrauma_1_1_tutorial_complete_action.html#a1081e35d9eda0f927a3f7e589322a698">Barotrauma.TutorialCompleteAction</a>
-</li>
-<li>TutorialHighlightAction()
-: <a class="el" href="class_tutorial_highlight_action.html#a9f78cd38591a68162e32621d8ec51d0e">TutorialHighlightAction</a>
 </li>
 <li>TutorialIconAction()
 : <a class="el" href="class_tutorial_icon_action.html#a7d98e6b6e9b79bcb1188dfe59734c730">TutorialIconAction</a>

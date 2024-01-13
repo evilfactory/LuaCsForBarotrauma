@@ -136,162 +136,196 @@ $(document).ready(function(){initNavTree('_text_pack_8cs_source.html',''); initR
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">   49</a></span>&#160;        <span class="keyword">public</span> readonly <a class="code" href="struct_barotrauma_1_1_language_identifier.html">LanguageIdentifier</a> <a class="code" href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">Language</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">   51</a></span>&#160;        <span class="keyword">public</span> readonly ImmutableDictionary&lt;Identifier, ImmutableArray&lt;string&gt;&gt; <a class="code" href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">Texts</a>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">   52</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">TranslatedName</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">   53</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">NoWhitespace</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#affd7c0cd051cf12c646ffc9d50c79440">   55</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#affd7c0cd051cf12c646ffc9d50c79440">TextPack</a>(<a class="code" href="class_barotrauma_1_1_text_file.html">TextFile</a> file, <a class="code" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> mainElement, <a class="code" href="struct_barotrauma_1_1_language_identifier.html">LanguageIdentifier</a> language)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> = file;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            var languageName = mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#afc58374c68a7abeb2fdc903e3abf27ed">GetAttributeIdentifier</a>(<span class="stringliteral">&quot;language&quot;</span>, TextManager.DefaultLanguage.Value);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">Language</a> = language;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">TranslatedName</a> = mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a15ee93bb098273b1eef516ba3d6e7205">GetAttributeString</a>(<span class="stringliteral">&quot;translatedname&quot;</span>, languageName.Value);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">NoWhitespace</a> = mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#ae4e4d4db9b4b3138089ceb8c77d751c4">GetAttributeBool</a>(<span class="stringliteral">&quot;nowhitespace&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            Dictionary&lt;Identifier, List&lt;string&gt;&gt; texts = <span class="keyword">new</span> Dictionary&lt;Identifier, List&lt;string&gt;&gt;();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> mainElement.Elements())</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> elemName = element.NameAsIdentifier();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">if</span> (!texts.ContainsKey(elemName)) { texts.Add(elemName, <span class="keyword">new</span> List&lt;string&gt;()); }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                texts[elemName].Add(element.ElementInnerText()</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    .Replace(<span class="stringliteral">@&quot;\n&quot;</span>, <span class="stringliteral">&quot;\n&quot;</span>)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;amp;&quot;</span>, <span class="stringliteral">&quot;&amp;&quot;</span>)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;lt;&quot;</span>, <span class="stringliteral">&quot;&lt;&quot;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;gt;&quot;</span>, <span class="stringliteral">&quot;&gt;&quot;</span>)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;quot;&quot;</span>, <span class="stringliteral">&quot;\&quot;&quot;</span>)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;apos;&quot;</span>, <span class="stringliteral">&quot;&#39;&quot;</span>));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">Texts</a> = texts.Select(kvp =&gt; (kvp.Key, kvp.Value.ToImmutableArray())).ToImmutableDictionary();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> CheckForDuplicates(<span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            Dictionary&lt;Identifier, int&gt; tagCounts = <span class="keyword">new</span> Dictionary&lt;Identifier, int&gt;();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            Dictionary&lt;string, int&gt; contentCounts = <span class="keyword">new</span> Dictionary&lt;string, int&gt;();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            XDocument doc = XMLExtensions.TryLoadXml(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a>.<a class="code" href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Path</a>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (doc == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">foreach</span> (var subElement <span class="keywordflow">in</span> doc.Root.Elements())</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                Identifier infoName = subElement.NameAsIdentifier();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">if</span> (!tagCounts.ContainsKey(infoName))</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    tagCounts.Add(infoName, 1);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    tagCounts[infoName] += 1;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordtype">string</span> infoContent = subElement.Value;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(infoContent)) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">if</span> (!contentCounts.ContainsKey(infoContent))</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    contentCounts.Add(infoContent, 1);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    contentCounts[infoContent] += 1;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            sb.Append(<span class="stringliteral">&quot;Language: &quot;</span> + <a class="code" href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">Language</a>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            sb.Append(<span class="stringliteral">&quot;Duplicate tags:&quot;</span>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; tagCounts.Keys.Count; i++)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">if</span> (tagCounts[<a class="code" href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">Texts</a>.Keys.ElementAt(i)] &gt; 1)</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    sb.Append(<a class="code" href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">Texts</a>.Keys.ElementAt(i) + <span class="stringliteral">&quot; | Count: &quot;</span> + tagCounts[<a class="code" href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">Texts</a>.Keys.ElementAt(i)]);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    sb.AppendLine();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            sb.Append(<span class="stringliteral">&quot;Duplicate content:&quot;</span>);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            sb.AppendLine();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; contentCounts.Keys.Count; i++)</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keywordflow">if</span> (contentCounts[contentCounts.Keys.ElementAt(i)] &gt; 1)</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    sb.Append(contentCounts.Keys.ElementAt(i) + <span class="stringliteral">&quot; | Count: &quot;</span> + contentCounts[contentCounts.Keys.ElementAt(i)]);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    sb.AppendLine();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_i_o.html">IO</a>.<a class="code" href="class_barotrauma_1_1_i_o_1_1_file.html">File</a>.WriteAllText($<span class="stringliteral">&quot;duplicate_{Language.ToString().ToLower()}_{index}.txt&quot;</span>, sb.ToString());</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> WriteToCSV(<span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            XDocument doc = XMLExtensions.TryLoadXml(<a class="code" href="class_barotrauma_1_1_text_pack.html#a4efdd66f00c06d195f6b00070d2d4f6a">ContentFile</a>.<a class="code" href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Path</a>);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">if</span> (doc == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            List&lt;(<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value)&gt; texts = <span class="keyword">new</span> List&lt;(<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value)&gt;();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> doc.Root.Elements())</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordtype">string</span> text = element.ElementInnerText()</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;amp;&quot;</span>, <span class="stringliteral">&quot;&amp;&quot;</span>)</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;lt;&quot;</span>, <span class="stringliteral">&quot;&lt;&quot;</span>)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;gt;&quot;</span>, <span class="stringliteral">&quot;&gt;&quot;</span>)</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;quot;&quot;</span>, <span class="stringliteral">&quot;\&quot;&quot;</span>)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;apos;&quot;</span>, <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                texts.Add((element.Name.ToString(), text));</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">foreach</span> ((<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value) in texts)</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                sb.Append(key); <span class="comment">// ID</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                sb.Append(<span class="charliteral">&#39;*&#39;</span>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                sb.Append(value); <span class="comment">// Original</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                sb.Append(<span class="charliteral">&#39;*&#39;</span>);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="comment">// Translated</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                sb.Append(<span class="charliteral">&#39;*&#39;</span>);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="comment">// Comments</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                sb.AppendLine();</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_i_o.html">IO</a>.<a class="code" href="class_barotrauma_1_1_i_o_1_1_file.html">File</a>.WriteAllText($<span class="stringliteral">&quot;csv_{Language.ToString().ToLower()}_{index}.csv&quot;</span>, sb.ToString());</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#a1e937cccbe7a1812bbf5bf32814b6ec8">   52</a></span>&#160;        <span class="keyword">public</span> readonly record <span class="keyword">struct </span><a class="code" href="class_barotrauma_1_1_text_pack.html#a1e937cccbe7a1812bbf5bf32814b6ec8">Text</a>(</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            string String,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            bool IsOverride,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html">TextPack</a> <a class="code" href="class_barotrauma_1_1_text_pack.html">TextPack</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">   57</a></span>&#160;        <span class="keyword">public</span> readonly ImmutableDictionary&lt;Identifier, ImmutableArray&lt;Text&gt;&gt; <a class="code" href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">Texts</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">   58</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">TranslatedName</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">   59</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">NoWhitespace</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_pack.html#affd7c0cd051cf12c646ffc9d50c79440">   61</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#affd7c0cd051cf12c646ffc9d50c79440">TextPack</a>(<a class="code" href="class_barotrauma_1_1_text_file.html">TextFile</a> file, <a class="code" href="class_barotrauma_1_1_content_x_element.html">ContentXElement</a> mainElement, <a class="code" href="struct_barotrauma_1_1_language_identifier.html">LanguageIdentifier</a> language)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a> = file;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            var languageName = mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#afc58374c68a7abeb2fdc903e3abf27ed">GetAttributeIdentifier</a>(<span class="stringliteral">&quot;language&quot;</span>, <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a>.<a class="code" href="struct_barotrauma_1_1_identifier.html#ae915db6c165efdcb2b3913daa4e8c56e">Empty</a>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span> (languageName.IsEmpty)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                DebugConsole.AddWarning($<span class="stringliteral">&quot;Language not defined in text file \&quot;{file.Path}\&quot;. Setting the language as {TextManager.DefaultLanguage}.&quot;</span>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b">ContentPackage</a>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                languageName = TextManager.DefaultLanguage.<a class="code" href="struct_barotrauma_1_1_identifier.html#af73e25198c7b6f0d486b972df54f5504">Value</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">Language</a> = language;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">TranslatedName</a> = mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a15ee93bb098273b1eef516ba3d6e7205">GetAttributeString</a>(<span class="stringliteral">&quot;translatedname&quot;</span>, languageName.Value);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">NoWhitespace</a> = mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#ae4e4d4db9b4b3138089ceb8c77d751c4">GetAttributeBool</a>(<span class="stringliteral">&quot;nowhitespace&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            Dictionary&lt;Identifier, List&lt;Text&gt;&gt; texts = <span class="keyword">new</span> Dictionary&lt;Identifier, List&lt;Text&gt;&gt;();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            LoadElements(mainElement, isOverride: mainElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#ad9723a3cfda82c21d4607cc0f7a1fcf9">IsOverride</a>());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordtype">void</span> LoadElements(XElement parentElement, <span class="keywordtype">bool</span> isOverride)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> parentElement.Elements())</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> elemName = element.NameAsIdentifier();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="keywordflow">if</span> (element.IsOverride())</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        LoadElements(element, isOverride: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="keywordflow">if</span> (!texts.ContainsKey(elemName)) { texts.Add(elemName, <span class="keyword">new</span> List&lt;Text&gt;()); }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                        <span class="keywordtype">string</span> str = element.ElementInnerText()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                            .Replace(<span class="stringliteral">@&quot;\n&quot;</span>, <span class="stringliteral">&quot;\n&quot;</span>)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                            .Replace(<span class="stringliteral">&quot;&amp;amp;&quot;</span>, <span class="stringliteral">&quot;&amp;&quot;</span>)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                            .Replace(<span class="stringliteral">&quot;&amp;lt;&quot;</span>, <span class="stringliteral">&quot;&lt;&quot;</span>)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                            .Replace(<span class="stringliteral">&quot;&amp;gt;&quot;</span>, <span class="stringliteral">&quot;&gt;&quot;</span>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                            .Replace(<span class="stringliteral">&quot;&amp;quot;&quot;</span>, <span class="stringliteral">&quot;\&quot;&quot;</span>)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                            .Replace(<span class="stringliteral">&quot;&amp;apos;&quot;</span>, <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        texts[elemName].Add(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_text_pack.html#a1e937cccbe7a1812bbf5bf32814b6ec8">Text</a>(str, isOverride, <span class="keyword">this</span>));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">Texts</a> = texts.Select(kvp =&gt; (kvp.Key, kvp.Value.ToImmutableArray())).ToImmutableDictionary();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> CheckForDuplicates(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            Dictionary&lt;Identifier, int&gt; tagCounts = <span class="keyword">new</span> Dictionary&lt;Identifier, int&gt;();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            Dictionary&lt;string, int&gt; contentCounts = <span class="keyword">new</span> Dictionary&lt;string, int&gt;();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            XDocument doc = XMLExtensions.TryLoadXml(<a class="code" href="class_barotrauma_1_1_content_file.html">ContentFile</a>.<a class="code" href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Path</a>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (doc == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">foreach</span> (var subElement <span class="keywordflow">in</span> doc.Root.Elements())</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                Identifier infoName = subElement.NameAsIdentifier();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> (!tagCounts.ContainsKey(infoName))</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    tagCounts.Add(infoName, 1);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                    tagCounts[infoName] += 1;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordtype">string</span> infoContent = subElement.Value;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(infoContent)) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">if</span> (!contentCounts.ContainsKey(infoContent))</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    contentCounts.Add(infoContent, 1);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    contentCounts[infoContent] += 1;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            sb.Append(<span class="stringliteral">&quot;Language: &quot;</span> + <a class="code" href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">Language</a>);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            sb.Append(<span class="stringliteral">&quot;Duplicate tags:&quot;</span>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; tagCounts.Keys.Count; i++)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <span class="keywordflow">if</span> (tagCounts[<a class="code" href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">Texts</a>.Keys.ElementAt(i)] &gt; 1)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    sb.Append(<a class="code" href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">Texts</a>.Keys.ElementAt(i) + <span class="stringliteral">&quot; | Count: &quot;</span> + tagCounts[<a class="code" href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">Texts</a>.Keys.ElementAt(i)]);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    sb.AppendLine();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            sb.Append(<span class="stringliteral">&quot;Duplicate content:&quot;</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            sb.AppendLine();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; contentCounts.Keys.Count; i++)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">if</span> (contentCounts[contentCounts.Keys.ElementAt(i)] &gt; 1)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    sb.Append(contentCounts.Keys.ElementAt(i) + <span class="stringliteral">&quot; | Count: &quot;</span> + contentCounts[contentCounts.Keys.ElementAt(i)]);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    sb.AppendLine();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_i_o.html">IO</a>.<a class="code" href="class_barotrauma_1_1_i_o_1_1_file.html">File</a>.WriteAllText($<span class="stringliteral">&quot;duplicate_{Language.ToString().ToLower()}_{index}.txt&quot;</span>, sb.ToString());</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> WriteToCSV(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            XDocument doc = XMLExtensions.TryLoadXml(<a class="code" href="class_barotrauma_1_1_text_pack.html#a4efdd66f00c06d195f6b00070d2d4f6a">ContentFile</a>.<a class="code" href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Path</a>);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">if</span> (doc == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            List&lt;(<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value)&gt; texts = <span class="keyword">new</span> List&lt;(<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value)&gt;();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> doc.Root.Elements())</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordtype">string</span> text = element.ElementInnerText()</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;amp;&quot;</span>, <span class="stringliteral">&quot;&amp;&quot;</span>)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;lt;&quot;</span>, <span class="stringliteral">&quot;&lt;&quot;</span>)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;gt;&quot;</span>, <span class="stringliteral">&quot;&gt;&quot;</span>)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;quot;&quot;</span>, <span class="stringliteral">&quot;\&quot;&quot;</span>)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    .Replace(<span class="stringliteral">&quot;&amp;apos;&quot;</span>, <span class="stringliteral">&quot;&#39;&quot;</span>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                texts.Add((element.Name.ToString(), text));</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">foreach</span> ((<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value) in texts)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                sb.Append(key); <span class="comment">// ID</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                sb.Append(<span class="charliteral">&#39;*&#39;</span>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                sb.Append(value); <span class="comment">// Original</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                sb.Append(<span class="charliteral">&#39;*&#39;</span>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="comment">// Translated</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                sb.Append(<span class="charliteral">&#39;*&#39;</span>);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="comment">// Comments</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                sb.AppendLine();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_i_o.html">IO</a>.<a class="code" href="class_barotrauma_1_1_i_o_1_1_file.html">File</a>.WriteAllText($<span class="stringliteral">&quot;csv_{Language.ToString().ToLower()}_{index}.csv&quot;</span>, sb.ToString());</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_file_html"><div class="ttname"><a href="class_barotrauma_1_1_content_file.html">Barotrauma.ContentFile</a></div><div class="ttdoc">Base class for content file types, which are loaded from filelist.xml via reflection....</div><div class="ttdef"><b>Definition:</b> <a href="_content_file_8cs_source.html#l00022">ContentFile.cs:23</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_content_file_html_a24f202c9fdccfc6b3af5ec71d7d908da"><div class="ttname"><a href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Barotrauma.ContentFile.Path</a></div><div class="ttdeci">readonly ContentPath Path</div><div class="ttdef"><b>Definition:</b> <a href="_content_file_8cs_source.html#l00136">ContentFile.cs:136</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_content_file_html_a24f202c9fdccfc6b3af5ec71d7d908da"><div class="ttname"><a href="class_barotrauma_1_1_content_file.html#a24f202c9fdccfc6b3af5ec71d7d908da">Barotrauma.ContentFile.Path</a></div><div class="ttdeci">readonly ContentPath Path</div><div class="ttdef"><b>Definition:</b> <a href="_content_file_8cs_source.html#l00137">ContentFile.cs:137</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html">Barotrauma.ContentXElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00012">ContentXElement.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a15ee93bb098273b1eef516ba3d6e7205"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a15ee93bb098273b1eef516ba3d6e7205">Barotrauma.ContentXElement.GetAttributeString</a></div><div class="ttdeci">string? GetAttributeString(string key, string? def)</div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a721f23b47e63ead53c2659e813d2947b"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b">Barotrauma.ContentXElement.ContentPackage</a></div><div class="ttdeci">ContentPackage? ContentPackage</div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00014">ContentXElement.cs:14</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_ad9723a3cfda82c21d4607cc0f7a1fcf9"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#ad9723a3cfda82c21d4607cc0f7a1fcf9">Barotrauma.ContentXElement.IsOverride</a></div><div class="ttdeci">bool IsOverride()</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_ae4e4d4db9b4b3138089ceb8c77d751c4"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#ae4e4d4db9b4b3138089ceb8c77d751c4">Barotrauma.ContentXElement.GetAttributeBool</a></div><div class="ttdeci">bool GetAttributeBool(string key, bool def)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_afc58374c68a7abeb2fdc903e3abf27ed"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#afc58374c68a7abeb2fdc903e3abf27ed">Barotrauma.ContentXElement.GetAttributeIdentifier</a></div><div class="ttdeci">Identifier GetAttributeIdentifier(string key, string def)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file.html">Barotrauma.IO.File</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00337">SafeIO.cs:338</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_text_file_html"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html">Barotrauma.TextFile</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00007">TextFile.cs:8</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_file_html"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html">Barotrauma.TextFile</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00008">TextFile.cs:9</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_pack_html"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html">Barotrauma.TextPack</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00045">TextPack.cs:46</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_a1e937cccbe7a1812bbf5bf32814b6ec8"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#a1e937cccbe7a1812bbf5bf32814b6ec8">Barotrauma.TextPack.Text</a></div><div class="ttdeci">readonly record struct Text(string String, bool IsOverride, TextPack TextPack)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_a4efdd66f00c06d195f6b00070d2d4f6a"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#a4efdd66f00c06d195f6b00070d2d4f6a">Barotrauma.TextPack.ContentFile</a></div><div class="ttdeci">readonly TextFile ContentFile</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00047">TextPack.cs:47</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_aa99407cbe0d151ce463a4cee5da81111"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">Barotrauma.TextPack.NoWhitespace</a></div><div class="ttdeci">readonly bool NoWhitespace</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00053">TextPack.cs:53</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_ac82daf1da1876818869e5a9991dd5394"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#ac82daf1da1876818869e5a9991dd5394">Barotrauma.TextPack.Texts</a></div><div class="ttdeci">readonly ImmutableDictionary&lt; Identifier, ImmutableArray&lt; string &gt; &gt; Texts</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00051">TextPack.cs:51</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_a534b76150e1d3be231fadb8ef2bef201"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#a534b76150e1d3be231fadb8ef2bef201">Barotrauma.TextPack.Texts</a></div><div class="ttdeci">readonly ImmutableDictionary&lt; Identifier, ImmutableArray&lt; Text &gt; &gt; Texts</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00057">TextPack.cs:57</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_aa99407cbe0d151ce463a4cee5da81111"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#aa99407cbe0d151ce463a4cee5da81111">Barotrauma.TextPack.NoWhitespace</a></div><div class="ttdeci">readonly bool NoWhitespace</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00059">TextPack.cs:59</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_acbff305fbfb558d94940fee84afb1a19"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#acbff305fbfb558d94940fee84afb1a19">Barotrauma.TextPack.Language</a></div><div class="ttdeci">readonly LanguageIdentifier Language</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00049">TextPack.cs:49</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_ae6e17d2ae2a2a0892e58900b1caf4a6f"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">Barotrauma.TextPack.TranslatedName</a></div><div class="ttdeci">readonly string TranslatedName</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00052">TextPack.cs:52</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_affd7c0cd051cf12c646ffc9d50c79440"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#affd7c0cd051cf12c646ffc9d50c79440">Barotrauma.TextPack.TextPack</a></div><div class="ttdeci">TextPack(TextFile file, ContentXElement mainElement, LanguageIdentifier language)</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00055">TextPack.cs:55</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_ae6e17d2ae2a2a0892e58900b1caf4a6f"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#ae6e17d2ae2a2a0892e58900b1caf4a6f">Barotrauma.TextPack.TranslatedName</a></div><div class="ttdeci">readonly string TranslatedName</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00058">TextPack.cs:58</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_pack_html_affd7c0cd051cf12c646ffc9d50c79440"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html#affd7c0cd051cf12c646ffc9d50c79440">Barotrauma.TextPack.TextPack</a></div><div class="ttdeci">TextPack(TextFile file, ContentXElement mainElement, LanguageIdentifier language)</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00061">TextPack.cs:61</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html">Barotrauma.Identifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00011">Identifier.cs:12</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_identifier_html_ac1a459e2b1b84966362d4110e12f4fbc"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html#ac1a459e2b1b84966362d4110e12f4fbc">Barotrauma.Identifier.ToString</a></div><div class="ttdeci">override string ToString()</div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_identifier_html_aca41564a59c75c43f341011ebe48e8e1"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html#aca41564a59c75c43f341011ebe48e8e1">Barotrauma.Identifier.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div></div>
+<div class="ttc" id="astruct_barotrauma_1_1_identifier_html_ae915db6c165efdcb2b3913daa4e8c56e"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html#ae915db6c165efdcb2b3913daa4e8c56e">Barotrauma.Identifier.Empty</a></div><div class="ttdeci">static readonly Identifier Empty</div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00013">Identifier.cs:13</a></div></div>
+<div class="ttc" id="astruct_barotrauma_1_1_identifier_html_af73e25198c7b6f0d486b972df54f5504"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html#af73e25198c7b6f0d486b972df54f5504">Barotrauma.Identifier.Value</a></div><div class="ttdeci">string Value</div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00020">Identifier.cs:20</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_language_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_language_identifier.html">Barotrauma.LanguageIdentifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00010">TextPack.cs:11</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_language_identifier_html_a0e955bc3c24ce096c7fd262e55988b78"><div class="ttname"><a href="struct_barotrauma_1_1_language_identifier.html#a0e955bc3c24ce096c7fd262e55988b78">Barotrauma.LanguageIdentifier.operator!=</a></div><div class="ttdeci">static bool operator!=(LanguageIdentifier a, LanguageIdentifier b)</div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_language_identifier_html_a196b6df8375c045576089f2297fcc409"><div class="ttname"><a href="struct_barotrauma_1_1_language_identifier.html#a196b6df8375c045576089f2297fcc409">Barotrauma.LanguageIdentifier.LanguageIdentifier</a></div><div class="ttdeci">LanguageIdentifier(Identifier value)</div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00016">TextPack.cs:16</a></div></div>

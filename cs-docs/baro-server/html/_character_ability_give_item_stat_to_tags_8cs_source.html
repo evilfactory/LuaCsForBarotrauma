@@ -98,50 +98,52 @@ $(document).ready(function(){initNavTree('_character_ability_give_item_stat_to_t
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">float</span> value;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span> readonly ImmutableHashSet&lt;Identifier&gt; tags;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> stackable;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">public</span> CharacterAbilityGiveItemStatToTags(CharacterAbilityGroup characterAbilityGroup, ContentXElement abilityElement) : base(characterAbilityGroup, abilityElement)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            stat = abilityElement.GetAttributeEnum(<span class="stringliteral">&quot;stattype&quot;</span>, ItemTalentStats.None);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            value = abilityElement.GetAttributeFloat(<span class="stringliteral">&quot;value&quot;</span>, 0f);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            tags = abilityElement.GetAttributeIdentifierImmutableHashSet(<span class="stringliteral">&quot;tags&quot;</span>, ImmutableHashSet&lt;Identifier&gt;.Empty);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            stackable = abilityElement.GetAttributeBool(<span class="stringliteral">&quot;stackable&quot;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeAbility(<span class="keywordtype">bool</span> addingFirstTime)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (addingFirstTime)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                VerifyState(conditionsMatched: <span class="keyword">true</span>, timeSinceLastUpdate: 0.0f);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> VerifyState(<span class="keywordtype">bool</span> conditionsMatched, <span class="keywordtype">float</span> timeSinceLastUpdate)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">if</span> (conditionsMatched)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#ad878a4b26a520e55e2e547ad9818230d">ApplyEffect</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#ad878a4b26a520e55e2e547ad9818230d">ApplyEffect</a>()</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (Character is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_item.html">Item</a> item <span class="keywordflow">in</span> <a class="code" href="class_item.html">Item</a>.ItemList)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">if</span> (item.Submarine?.TeamID != <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a2c8864b41f450d83b3a33e26fd0ee354">Character</a>.<a class="code" href="class_barotrauma_1_1_character.html#ad77de7c19866b40113b697ade48df404">TeamID</a>) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordflow">if</span> (item.HasTag(tags) || tags.Contains(item.Prefab.Identifier))</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    item.StatManager.ApplyStat(stat, stackable, value, CharacterTalent);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> save;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">public</span> CharacterAbilityGiveItemStatToTags(CharacterAbilityGroup characterAbilityGroup, ContentXElement abilityElement) : base(characterAbilityGroup, abilityElement)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            stat = abilityElement.GetAttributeEnum(<span class="stringliteral">&quot;stattype&quot;</span>, ItemTalentStats.None);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            value = abilityElement.GetAttributeFloat(<span class="stringliteral">&quot;value&quot;</span>, 0f);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            tags = abilityElement.GetAttributeIdentifierImmutableHashSet(<span class="stringliteral">&quot;tags&quot;</span>, ImmutableHashSet&lt;Identifier&gt;.Empty);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            stackable = abilityElement.GetAttributeBool(<span class="stringliteral">&quot;stackable&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            save = abilityElement.GetAttributeBool(<span class="stringliteral">&quot;save&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeAbility(<span class="keywordtype">bool</span> addingFirstTime)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (addingFirstTime)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                VerifyState(conditionsMatched: <span class="keyword">true</span>, timeSinceLastUpdate: 0.0f);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> VerifyState(<span class="keywordtype">bool</span> conditionsMatched, <span class="keywordtype">float</span> timeSinceLastUpdate)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> (conditionsMatched)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#ad878a4b26a520e55e2e547ad9818230d">ApplyEffect</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#ad878a4b26a520e55e2e547ad9818230d">ApplyEffect</a>()</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (Character is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_item.html">Item</a> item <span class="keywordflow">in</span> <a class="code" href="class_item.html">Item</a>.ItemList)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">if</span> (item.Submarine?.TeamID != <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a2c8864b41f450d83b3a33e26fd0ee354">Character</a>.<a class="code" href="class_barotrauma_1_1_character.html#ad77de7c19866b40113b697ade48df404">TeamID</a>) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> (item.HasTag(tags) || tags.Contains(item.Prefab.Identifier))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    item.StatManager.ApplyStat(stat, stackable, save, value, CharacterTalent);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_character_ability_html_a2c8864b41f450d83b3a33e26fd0ee354"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a2c8864b41f450d83b3a33e26fd0ee354">Barotrauma.Abilities.CharacterAbility.Character</a></div><div class="ttdeci">Character Character</div><div class="ttdef"><b>Definition:</b> <a href="_character_ability_8cs_source.html#l00010">CharacterAbility.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_character_ability_html_ad878a4b26a520e55e2e547ad9818230d"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_character_ability.html#ad878a4b26a520e55e2e547ad9818230d">Barotrauma.Abilities.CharacterAbility.ApplyEffect</a></div><div class="ttdeci">virtual void ApplyEffect(AbilityObject abilityObject)</div><div class="ttdef"><b>Definition:</b> <a href="_character_ability_8cs_source.html#l00082">CharacterAbility.cs:82</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_character_html_ad77de7c19866b40113b697ade48df404"><div class="ttname"><a href="class_barotrauma_1_1_character.html#ad77de7c19866b40113b697ade48df404">Barotrauma.Character.TeamID</a></div><div class="ttdeci">CharacterTeamType TeamID</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_8cs_source.html#l00201">BarotraumaShared/SharedSource/Characters/Character.cs:202</a></div></div>
-<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_server_2_server_source_2_items_2_item_event_data_8cs_source.html#l00007">BarotraumaServer/ServerSource/Items/ItemEventData.cs:8</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_character_ability_html_ad878a4b26a520e55e2e547ad9818230d"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_character_ability.html#ad878a4b26a520e55e2e547ad9818230d">Barotrauma.Abilities.CharacterAbility.ApplyEffect</a></div><div class="ttdeci">virtual void ApplyEffect(AbilityObject abilityObject)</div><div class="ttdef"><b>Definition:</b> <a href="_character_ability_8cs_source.html#l00084">CharacterAbility.cs:84</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_character_html_ad77de7c19866b40113b697ade48df404"><div class="ttname"><a href="class_barotrauma_1_1_character.html#ad77de7c19866b40113b697ade48df404">Barotrauma.Character.TeamID</a></div><div class="ttdeci">CharacterTeamType TeamID</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_8cs_source.html#l00209">BarotraumaShared/SharedSource/Characters/Character.cs:210</a></div></div>
+<div class="ttc" id="aclass_item_html"><div class="ttname"><a href="class_item.html">Item</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_server_2_server_source_2_items_2_item_event_data_8cs_source.html#l00010">BarotraumaServer/ServerSource/Items/ItemEventData.cs:11</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_abilities_html"><div class="ttname"><a href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00004">AbilityCondition.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

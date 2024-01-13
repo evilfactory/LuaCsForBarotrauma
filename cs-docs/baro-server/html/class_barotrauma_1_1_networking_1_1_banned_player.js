@@ -1,6 +1,7 @@
 var class_barotrauma_1_1_networking_1_1_banned_player =
 [
     [ "BannedPlayer", "class_barotrauma_1_1_networking_1_1_banned_player.html#ac1d18277702f6fb57f0cc970b5b54260", null ],
+    [ "MatchesClient", "class_barotrauma_1_1_networking_1_1_banned_player.html#ad746feaf8a6d90fd9935e4dc3e3056fd", null ],
     [ "AddressOrAccountId", "class_barotrauma_1_1_networking_1_1_banned_player.html#afb9774118562766142de5ad244fbf406", null ],
     [ "ExpirationTime", "class_barotrauma_1_1_networking_1_1_banned_player.html#a1ef5b7d027f0c5f3d7c1f9299b925080", null ],
     [ "Name", "class_barotrauma_1_1_networking_1_1_banned_player.html#aab780ad5f7de900c498f015784ac1973", null ],

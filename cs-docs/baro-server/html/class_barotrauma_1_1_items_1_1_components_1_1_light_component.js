@@ -2,6 +2,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_light_component =
 [
     [ "LightComponent", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#ab484e0ad84028b2eaa0d5d1478d4ae9f", null ],
     [ "CheckIfNeedsUpdate", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a11e8480537d1e45546d40c9564b839ca", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a29a642ce87a281b77c5160e1f392e5bb", null ],
     [ "Move", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a75d1b338493fe0310a499c0617a6426a", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#af7098fa1437c1154385b978dbc2f26b5", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a150cf30e79804dfe94eaac8728b43c8f", null ],

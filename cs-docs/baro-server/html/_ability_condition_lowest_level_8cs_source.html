@@ -90,30 +90,24 @@ $(document).ready(function(){initNavTree('_ability_condition_lowest_level_8cs_so
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>AbilityConditionLowestLevel : AbilityConditionDataless</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>AbilityConditionLowestLevel : AbilityConditionCharacter</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keyword">public</span> AbilityConditionLowestLevel(CharacterTalent characterTalent, ContentXElement conditionElement) : base(characterTalent, conditionElement) { }</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> MatchesConditionSpecific()</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> MatchesCharacter(Character character)</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="keywordtype">int</span> ownLevel = <a class="code" href="class_barotrauma_1_1_abilities_1_1_ability_condition.html#ae6c5638bf85c080d66432645a605d8da">character</a>.<a class="code" href="class_barotrauma_1_1_character.html#a84ba931e913c568405c043ca7dc69b6f">Info</a>.<a class="code" href="class_barotrauma_1_1_character_info.html#a06dbf201d16405a6accdd32ec6bc1a0d">GetCurrentLevel</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">foreach</span> (Character crew <span class="keywordflow">in</span> GameSession.GetSessionCrewCharacters(<a class="code" href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707">CharacterType</a>.Both))</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <span class="keywordflow">if</span> (crew == character) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordflow">if</span> (crew.Info.GetCurrentLevel() &lt; ownLevel) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_ability_condition_html_ae6c5638bf85c080d66432645a605d8da"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_ability_condition.html#ae6c5638bf85c080d66432645a605d8da">Barotrauma.Abilities.AbilityCondition.character</a></div><div class="ttdeci">Character character</div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00009">AbilityCondition.cs:9</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_character_html_a84ba931e913c568405c043ca7dc69b6f"><div class="ttname"><a href="class_barotrauma_1_1_character.html#a84ba931e913c568405c043ca7dc69b6f">Barotrauma.Character.Info</a></div><div class="ttdeci">CharacterInfo Info</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_8cs_source.html#l00486">BarotraumaShared/SharedSource/Characters/Character.cs:487</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_character_info_html_a06dbf201d16405a6accdd32ec6bc1a0d"><div class="ttname"><a href="class_barotrauma_1_1_character_info.html#a06dbf201d16405a6accdd32ec6bc1a0d">Barotrauma.CharacterInfo.GetCurrentLevel</a></div><div class="ttdeci">int GetCurrentLevel()</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_info_8cs_source.html#l01357">BarotraumaShared/SharedSource/Characters/CharacterInfo.cs:1357</a></div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="keywordtype">int</span> ownLevel = character.Info.GetCurrentLevel();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            <span class="keywordflow">foreach</span> (Character otherCharacter <span class="keywordflow">in</span> GameSession.GetSessionCrewCharacters(<a class="code" href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707">CharacterType</a>.Both))</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <span class="keywordflow">if</span> (otherCharacter == character) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <span class="keywordflow">if</span> (otherCharacter.Info.GetCurrentLevel() &lt; ownLevel) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_abilities_html"><div class="ttname"><a href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00004">AbilityCondition.cs:5</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aa27e6fdb7c241b28d847ecfc36630707"><div class="ttname"><a href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707">Barotrauma.CharacterType</a></div><div class="ttdeci">CharacterType</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00645">Enums.cs:646</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_aa27e6fdb7c241b28d847ecfc36630707"><div class="ttname"><a href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707">Barotrauma.CharacterType</a></div><div class="ttdeci">CharacterType</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00668">Enums.cs:669</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -11,6 +11,7 @@ var class_barotrauma_1_1_wait_for_item_used_action =
     [ "ApplyTagToUser", "class_barotrauma_1_1_wait_for_item_used_action.html#a3b232138be3e8cf9451bf038a11f29f5", null ],
     [ "ItemTag", "class_barotrauma_1_1_wait_for_item_used_action.html#abcef9fb01d97996dc4bafacc20e31490", null ],
     [ "OnUseEventIdentifier", "class_barotrauma_1_1_wait_for_item_used_action.html#a13b4a64e020ab545b224b8b71502714f", null ],
+    [ "RequiredUseCount", "class_barotrauma_1_1_wait_for_item_used_action.html#ab4fcffae4171283125aa59d8f7b92820", null ],
     [ "TargetItemComponent", "class_barotrauma_1_1_wait_for_item_used_action.html#af12be44d8133b7b201e60c12bc7f355b", null ],
     [ "UserTag", "class_barotrauma_1_1_wait_for_item_used_action.html#a7943d7ee5eb9575f02d12f5d3c11d1ce", null ]
 ];

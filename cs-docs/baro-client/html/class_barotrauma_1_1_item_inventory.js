@@ -9,7 +9,7 @@ var class_barotrauma_1_1_item_inventory =
     [ "CreateNetworkEvent", "class_barotrauma_1_1_item_inventory.html#a20f684758d95d5e30efec30d73543c13", null ],
     [ "Draw", "class_barotrauma_1_1_item_inventory.html#a2a0d47003e80c013c8b26a7df45f2315", null ],
     [ "FindAllowedSlot", "class_barotrauma_1_1_item_inventory.html#a6f4de57dde7db2a1e3a6f9e5846aca0b", null ],
-    [ "HowManyCanBePut", "class_barotrauma_1_1_item_inventory.html#a476ad5e2bec3be85b5566f4beb342e8d", null ],
+    [ "HowManyCanBePut", "class_barotrauma_1_1_item_inventory.html#a638f4250bf3fc284f82557a53300284d", null ],
     [ "IsFull", "class_barotrauma_1_1_item_inventory.html#a0a384077202010f6a8811f8cf0a1deb8", null ],
     [ "RemoveItem", "class_barotrauma_1_1_item_inventory.html#a9c93fab09147ff1d8f6a239b6b0c2f66", null ],
     [ "TryPutItem", "class_barotrauma_1_1_item_inventory.html#a03187469e4717755b080ce2a8624cad9", null ],

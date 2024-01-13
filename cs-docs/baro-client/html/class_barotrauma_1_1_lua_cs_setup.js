@@ -12,6 +12,7 @@ var class_barotrauma_1_1_lua_cs_setup =
     [ "ToggleDebugger", "class_barotrauma_1_1_lua_cs_setup.html#a7a1b198cd5d0914d1aaf3ff05a5f2340", null ],
     [ "Update", "class_barotrauma_1_1_lua_cs_setup.html#a504cffd3277bd9a324bd3e5bf1a921b1", null ],
     [ "UpdateConfig", "class_barotrauma_1_1_lua_cs_setup.html#a970023d277ee955bd9d806be8d01c11d", null ],
+    [ "UpdateConfigVars", "class_barotrauma_1_1_lua_cs_setup.html#a92d3b1c258d0263724f9bd5757d6a2af", null ],
     [ "Config", "class_barotrauma_1_1_lua_cs_setup.html#ae3a2034a8bf34159f2bdc2bba3ff9358", null ],
     [ "DebugServer", "class_barotrauma_1_1_lua_cs_setup.html#a657f990e3c576aedab3588ecbaa3b2fe", null ],
     [ "Game", "class_barotrauma_1_1_lua_cs_setup.html#a0a00a08a4523aeb8e4dfa8cb54c5026e", null ],

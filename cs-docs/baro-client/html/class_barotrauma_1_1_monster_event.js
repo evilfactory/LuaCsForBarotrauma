@@ -6,6 +6,7 @@ var class_barotrauma_1_1_monster_event =
     [ "Init", "class_barotrauma_1_1_monster_event.html#a2144bafebbb62b117787f34da1fd5c51", null ],
     [ "ToString", "class_barotrauma_1_1_monster_event.html#a0b9c62303a77a3b7ecc8a2d88706f7ef", null ],
     [ "Update", "class_barotrauma_1_1_monster_event.html#a109b445b0b5257a4c0fa74cd24e0886d", null ],
+    [ "MaxAmount", "class_barotrauma_1_1_monster_event.html#a2d5ac07cccee789622c5cf026259214c", null ],
     [ "MaxAmountPerLevel", "class_barotrauma_1_1_monster_event.html#a97b5a0c209b633b3a9a67c4a1fa9b368", null ],
     [ "MinAmount", "class_barotrauma_1_1_monster_event.html#a6e5001d1d6340ff5d13affa965cf9887", null ],
     [ "SpawnDistance", "class_barotrauma_1_1_monster_event.html#a679fbcc9934f0a636479881f5da1a227", null ],

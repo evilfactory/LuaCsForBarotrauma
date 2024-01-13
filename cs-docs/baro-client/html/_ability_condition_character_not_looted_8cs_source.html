@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('_ability_condition_character_not_loote
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;{</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>AbilityConditionCharacterNotLooted : AbilityConditionData</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>AbilityConditionCharacterNotLooted : AbilityConditionCharacter</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    {</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        <span class="keyword">private</span> readonly Identifier identifier;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
@@ -97,14 +97,12 @@ $(document).ready(function(){initNavTree('_ability_condition_character_not_loote
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;            identifier = conditionElement.GetAttributeIdentifier(<span class="stringliteral">&quot;identifier&quot;</span>, Identifier.Empty);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        }</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> MatchesConditionSpecific(AbilityObject abilityObject)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> MatchesCharacter(Character character)</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">if</span> (abilityObject is not IAbilityCharacter ability) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">return</span> !ability.Character.MarkedAsLooted.Contains(identifier);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">return</span> character != <span class="keyword">null</span> &amp;&amp;!character.MarkedAsLooted.Contains(identifier);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_abilities_html"><div class="ttname"><a href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00004">AbilityCondition.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

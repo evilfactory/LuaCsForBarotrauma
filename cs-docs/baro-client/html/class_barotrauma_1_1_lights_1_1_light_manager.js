@@ -5,6 +5,7 @@ var class_barotrauma_1_1_lights_1_1_light_manager =
     [ "AddRayCastTask", "class_barotrauma_1_1_lights_1_1_light_manager.html#a43ebcee67c3b1f705a1f227ce0de5fb4", null ],
     [ "ClearLights", "class_barotrauma_1_1_lights_1_1_light_manager.html#a018e7834d80350be218e0f5af4af285d", null ],
     [ "DebugDrawLos", "class_barotrauma_1_1_lights_1_1_light_manager.html#a0362a0d636f1d45fa9129a804d3732c5", null ],
+    [ "DebugDrawVertices", "class_barotrauma_1_1_lights_1_1_light_manager.html#a6f8752a3da8539c9fef8e85b5b8ef06c", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_lights_1_1_light_manager.html#aecfd4a4882b83e12d7622e5572267adb", null ],
     [ "RemoveLight", "class_barotrauma_1_1_lights_1_1_light_manager.html#a512f3b63ca582a2bf12aa4898eba2a4e", null ],
     [ "RenderLightMap", "class_barotrauma_1_1_lights_1_1_light_manager.html#aa3d67e777f502f0808d44ea0f548f099", null ],

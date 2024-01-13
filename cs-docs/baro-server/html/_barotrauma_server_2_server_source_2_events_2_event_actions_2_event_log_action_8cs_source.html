@@ -115,34 +115,35 @@ $(document).ready(function(){initNavTree('_barotrauma_server_2_server_source_2_e
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                }</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    DebugConsole.AddWarning($<span class="stringliteral">&quot;{target} is not a valid target for an EventLogAction. The target should be a character.&quot;</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">if</span> (eventLog.<a class="code" href="class_event_log.html#a12d9ec78cc7a058f1aa6f96403b3f651">TryAddEntry</a>(ParentEvent.Prefab.Identifier, Id, displayText, targetClients) &amp;&amp; ShowInServerLog)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                Log(targetClients);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (eventLog != <span class="keyword">null</span> &amp;&amp; eventLog.<a class="code" href="class_event_log.html#a12d9ec78cc7a058f1aa6f96403b3f651">TryAddEntry</a>(ParentEvent.Prefab.Identifier, Id, displayText, GameMain.Server.ConnectedClients) &amp;&amp; ShowInServerLog)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                Log(targetClients: <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> Log(List&lt;Client&gt;? targetClients)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordtype">string</span> clientStr = targetClients == <span class="keyword">null</span> || targetClients.None() ?</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordtype">string</span>.Empty :</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                $<span class="stringliteral">&quot; ({string.Join(&quot;</span>, <span class="stringliteral">&quot;, targetClients.Select(c =&gt; NetworkMember.ClientLogName(c)))})&quot;</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_game_server.html">GameServer</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_server.html#abcb65cfca0f933043316d58c8c9ae0d3">Log</a>($<span class="stringliteral">&quot;Event \&quot;{ParentEvent.Prefab.Name}\&quot;{clientStr}: &quot;</span> + displayText,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                ParentEvent is TraitorEvent ? <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html">ServerLog</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">MessageType</a>.Traitors : <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html">ServerLog</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">MessageType</a>.Chat);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    DebugConsole.AddWarning($<span class="stringliteral">&quot;{target} is not a valid target for an EventLogAction. The target should be a character.&quot;</span>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        ParentEvent.Prefab.ContentPackage);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> (eventLog!.TryAddEntry(ParentEvent.Prefab.Identifier, Id, displayText, targetClients) &amp;&amp; ShowInServerLog)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                Log(targetClients);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (eventLog != <span class="keyword">null</span> &amp;&amp; eventLog.<a class="code" href="class_event_log.html#a12d9ec78cc7a058f1aa6f96403b3f651">TryAddEntry</a>(ParentEvent.Prefab.Identifier, Id, displayText, GameMain.Server.ConnectedClients) &amp;&amp; ShowInServerLog)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                Log(targetClients: <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> Log(List&lt;Client&gt;? targetClients)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordtype">string</span> clientStr = targetClients == <span class="keyword">null</span> || targetClients.None() ?</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordtype">string</span>.Empty :</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                $<span class="stringliteral">&quot; ({string.Join(&quot;</span>, <span class="stringliteral">&quot;, targetClients.Select(c =&gt; NetworkMember.ClientLogName(c)))})&quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_game_server.html">GameServer</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_game_server.html#abcb65cfca0f933043316d58c8c9ae0d3">Log</a>($<span class="stringliteral">&quot;Event \&quot;{ParentEvent.Prefab.Name}\&quot;{clientStr}: &quot;</span> + displayText,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                ParentEvent is TraitorEvent ? <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html">ServerLog</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">MessageType</a>.Traitors : <a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html">ServerLog</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">MessageType</a>.Chat);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_server_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_server.html">Barotrauma.Networking.GameServer</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_server_8cs_source.html#l00019">GameServer.cs:20</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_server_html_abcb65cfca0f933043316d58c8c9ae0d3"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_server.html#abcb65cfca0f933043316d58c8c9ae0d3">Barotrauma.Networking.GameServer.Log</a></div><div class="ttdeci">static void Log(string line, ServerLog.MessageType messageType)</div><div class="ttdef"><b>Definition:</b> <a href="_game_server_8cs_source.html#l04070">GameServer.cs:4070</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_game_server_html_abcb65cfca0f933043316d58c8c9ae0d3"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_game_server.html#abcb65cfca0f933043316d58c8c9ae0d3">Barotrauma.Networking.GameServer.Log</a></div><div class="ttdeci">static void Log(string line, ServerLog.MessageType messageType)</div><div class="ttdef"><b>Definition:</b> <a href="_game_server_8cs_source.html#l04063">GameServer.cs:4063</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html">Barotrauma.Networking.ServerLog</a></div><div class="ttdef"><b>Definition:</b> <a href="_server_log_8cs_source.html#l00009">ServerLog.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_log_html_a9d65041bf3e41c2c1ac43a64559f49ba"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_log.html#a9d65041bf3e41c2c1ac43a64559f49ba">Barotrauma.Networking.ServerLog.MessageType</a></div><div class="ttdeci">MessageType</div><div class="ttdef"><b>Definition:</b> <a href="_server_log_8cs_source.html#l00031">ServerLog.cs:32</a></div></div>
 <div class="ttc" id="aclass_event_log_action_html"><div class="ttname"><a href="class_event_log_action.html">EventLogAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_server_2_server_source_2_events_2_event_actions_2_event_log_action_8cs_source.html#l00010">BarotraumaServer/ServerSource/Events/EventActions/EventLogAction.cs:11</a></div></div>

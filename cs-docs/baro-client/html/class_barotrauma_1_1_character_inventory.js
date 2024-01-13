@@ -6,7 +6,7 @@ var class_barotrauma_1_1_character_inventory =
       [ "Right", "class_barotrauma_1_1_character_inventory.html#a30eae207207741dbffb815a1d4504da2a92b09c7c48c520c3c55e497875da437c", null ],
       [ "Center", "class_barotrauma_1_1_character_inventory.html#a30eae207207741dbffb815a1d4504da2a4f1f6016fc9f3f2353c0cc7c67b292bd", null ]
     ] ],
-    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#a5109582dcd9eecfa4196f96fc75022ed", null ],
+    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#ae3b8336b2fe061f2f8c744c7a2fcd5d2", null ],
     [ "AssignQuickUseNumKeys", "class_barotrauma_1_1_character_inventory.html#af62cb635ff9e87eaac6398442181ad12", null ],
     [ "CalculateBackgroundFrame", "class_barotrauma_1_1_character_inventory.html#a22512be581ca1b55af062d46487801f7", null ],
     [ "CanBeAutoMovedToCorrectSlots", "class_barotrauma_1_1_character_inventory.html#a9d1567aa4ed49701d38be727a021ffac", null ],
@@ -17,6 +17,7 @@ var class_barotrauma_1_1_character_inventory =
     [ "CreateNetworkEvent", "class_barotrauma_1_1_character_inventory.html#a6b4827234bb4ad56629059732f89c527", null ],
     [ "CreateSlots", "class_barotrauma_1_1_character_inventory.html#a1757b1f8906d3695f50b4f74546cb1bd", null ],
     [ "DrawOwn", "class_barotrauma_1_1_character_inventory.html#a7eb971969e049b288c3b963ca5997ed9", null ],
+    [ "FindEquippedItemByTag", "class_barotrauma_1_1_character_inventory.html#abdd8e1436def42aa6f360777580489ce", null ],
     [ "FindLimbSlot", "class_barotrauma_1_1_character_inventory.html#a888420d36a3edec7f5bc9bc3f0ea07ad", null ],
     [ "FlashAllowedSlots", "class_barotrauma_1_1_character_inventory.html#a021f6ee818bd9363c1a9f42e10ec7a89", null ],
     [ "GetActiveEquippedSubInventory", "class_barotrauma_1_1_character_inventory.html#a8a264a45eba3dea50197cdd0bdf9ba7b", null ],

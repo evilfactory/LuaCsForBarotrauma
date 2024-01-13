@@ -60,7 +60,7 @@ var class_barotrauma_1_1_campaign_mode =
     [ "Start", "class_barotrauma_1_1_campaign_mode.html#a35914c3e2ea3ccfbdd2299efdbdc677c", null ],
     [ "SwitchSubs", "class_barotrauma_1_1_campaign_mode.html#a41050253540b27551a548343db0908d3", null ],
     [ "TransferItemsBetweenSubs", "class_barotrauma_1_1_campaign_mode.html#a328b22eae257e57fb7b2a05c01acc85f", null ],
-    [ "TryHireCharacter", "class_barotrauma_1_1_campaign_mode.html#adc4a6c0baa0dcfe7200f9fe1faf2ffdd", null ],
+    [ "TryHireCharacter", "class_barotrauma_1_1_campaign_mode.html#aba0c4cb80c4be24652ab48b6cd07067b", null ],
     [ "TryPurchase", "class_barotrauma_1_1_campaign_mode.html#a1e1ef016f473e9b0a0ab086cdc50d3d4", null ],
     [ "UpdateStoreStock", "class_barotrauma_1_1_campaign_mode.html#adba77c6adb0019288444dfbe5848f214", null ],
     [ "Bank", "class_barotrauma_1_1_campaign_mode.html#a9fd826f8299bb1249110e24fcab50a8a", null ],

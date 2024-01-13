@@ -17,6 +17,7 @@ var class_barotrauma_1_1_sounds_1_1_sound_channel =
     [ "IsPlaying", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#a8ff2e61404772cbf0d71fd423b758116", null ],
     [ "IsStream", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#ab580d9807f1444db02513f2b52aae8cf", null ],
     [ "Looping", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#adf36009bd9f71f502943cc4ba4cb0241", null ],
+    [ "MaxStreamSeekPos", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#a7860e12982028550a408e167e3dd7070", null ],
     [ "Muffled", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#ad671297d7f408af23cffcd6cd6043341", null ],
     [ "Near", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#a6512298bacf8cbc85fd5d5417510c8bc", null ],
     [ "Position", "class_barotrauma_1_1_sounds_1_1_sound_channel.html#ac369e659a1eaed1dc01d354135b6d163", null ],

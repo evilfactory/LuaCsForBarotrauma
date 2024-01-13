@@ -2,7 +2,7 @@ var class_barotrauma_1_1_job =
 [
     [ "Job", "class_barotrauma_1_1_job.html#a7d4a1c42c9e3f722796ed930e16f2067", null ],
     [ "Job", "class_barotrauma_1_1_job.html#a84683c65ec354c0a8c63777e55a62308", null ],
-    [ "Job", "class_barotrauma_1_1_job.html#a965992ea07b9d4883a16b62cb5b8fd9d", null ],
+    [ "Job", "class_barotrauma_1_1_job.html#af584d8ad079087bc9966bc95b3566f01", null ],
     [ "GetSkill", "class_barotrauma_1_1_job.html#a77e64fc87d9ad3828ca5f090c29d75a0", null ],
     [ "GetSkillLevel", "class_barotrauma_1_1_job.html#af69cf470311c3fe1036aec56a565ed79", null ],
     [ "GetSkills", "class_barotrauma_1_1_job.html#a10b08c2d637ddcb3a19453e6a75891bf", null ],

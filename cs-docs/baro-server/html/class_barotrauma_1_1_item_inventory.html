@@ -117,8 +117,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a20bdfb80fb2429445fdc8f4b6044c75f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a431e6d36a9d7ba6208ce75dda7fd886b"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item_inventory.html#a431e6d36a9d7ba6208ce75dda7fd886b">CanBePutInSlot</a> (<a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> itemPrefab, int i, float? condition, int? quality=null)</td></tr>
 <tr class="separator:a431e6d36a9d7ba6208ce75dda7fd886b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a476ad5e2bec3be85b5566f4beb342e8d"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item_inventory.html#a476ad5e2bec3be85b5566f4beb342e8d">HowManyCanBePut</a> (<a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> itemPrefab, int i, float? condition)</td></tr>
-<tr class="separator:a476ad5e2bec3be85b5566f4beb342e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638f4250bf3fc284f82557a53300284d"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item_inventory.html#a638f4250bf3fc284f82557a53300284d">HowManyCanBePut</a> (<a class="el" href="class_barotrauma_1_1_item_prefab.html">ItemPrefab</a> itemPrefab, int i, float? condition, bool ignoreItemsInSlot=false)</td></tr>
+<tr class="separator:a638f4250bf3fc284f82557a53300284d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a384077202010f6a8811f8cf0a1deb8"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item_inventory.html#a0a384077202010f6a8811f8cf0a1deb8">IsFull</a> (bool takeStacksIntoAccount=false)</td></tr>
 <tr class="memdesc:a0a384077202010f6a8811f8cf0a1deb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is there room to put more items in the inventory. Doesn't take stacking into account by default.  <a href="class_barotrauma_1_1_item_inventory.html#a0a384077202010f6a8811f8cf0a1deb8">More...</a><br /></td></tr>
 <tr class="separator:a0a384077202010f6a8811f8cf0a1deb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,6 +214,8 @@ Properties</h2></td></tr>
 <tr class="memitem:a549f339d1718f1063b99bc609f547f47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_barotrauma_1_1_items_1_1_components_1_1_item_container.html">ItemContainer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_item_inventory.html#a549f339d1718f1063b99bc609f547f47">Container</a><code> [get]</code></td></tr>
 <tr class="separator:a549f339d1718f1063b99bc609f547f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_barotrauma_1_1_inventory"><td colspan="2" onclick="javascript:toggleInherit('properties_class_barotrauma_1_1_inventory')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_barotrauma_1_1_inventory.html">Barotrauma.Inventory</a></td></tr>
+<tr class="memitem:a80016ec452065e14db402818fbc1d8f8 inherit properties_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#a80016ec452065e14db402818fbc1d8f8">ExtraStackSize</a><code> [get, set]</code></td></tr>
+<tr class="separator:a80016ec452065e14db402818fbc1d8f8 inherit properties_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2afdf2d157dd1f31fa3d75faeaa71e1 inherit properties_class_barotrauma_1_1_inventory"><td class="memItemLeft" align="right" valign="top">virtual IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_item.html">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1">AllItems</a><code> [get]</code></td></tr>
 <tr class="memdesc:ab2afdf2d157dd1f31fa3d75faeaa71e1 inherit properties_class_barotrauma_1_1_inventory"><td class="mdescLeft">&#160;</td><td class="mdescRight">All items contained in the inventory. Stacked items are returned as individual instances. DO NOT modify the contents of the inventory while enumerating this list.  <a href="class_barotrauma_1_1_inventory.html#ab2afdf2d157dd1f31fa3d75faeaa71e1">More...</a><br /></td></tr>
 <tr class="separator:ab2afdf2d157dd1f31fa3d75faeaa71e1 inherit properties_class_barotrauma_1_1_inventory"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -464,8 +466,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a476ad5e2bec3be85b5566f4beb342e8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a476ad5e2bec3be85b5566f4beb342e8d">&#9670;&nbsp;</a></span>HowManyCanBePut()</h2>
+<a id="a638f4250bf3fc284f82557a53300284d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638f4250bf3fc284f82557a53300284d">&#9670;&nbsp;</a></span>HowManyCanBePut()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -489,7 +491,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float?&#160;</td>
-          <td class="paramname"><em>condition</em>&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ignoreItemsInSlot</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -504,7 +512,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#ad319419dd9c7b71c2a0e91169e543b13">Barotrauma.Inventory</a>.</p>
+<p>Reimplemented from <a class="el" href="class_barotrauma_1_1_inventory.html#a568d38764636cf15dc405caac53d5d0a">Barotrauma.Inventory</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_inventory_8cs_source.html#l00061">61</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_items_2_item_inventory_8cs_source.html">BarotraumaShared/SharedSource/Items/ItemInventory.cs</a>.</p>
 

@@ -31,6 +31,7 @@ var class_barotrauma_1_1_g_u_i_message_box =
     [ "InnerFrame", "class_barotrauma_1_1_g_u_i_message_box.html#ac7d9d7b2a0247df1b1f9a25a9f1ac495", null ],
     [ "IsAnimated", "class_barotrauma_1_1_g_u_i_message_box.html#a0fe30138fe6885928acba213a84e9899", null ],
     [ "MessageBoxType", "class_barotrauma_1_1_g_u_i_message_box.html#ae018de8e6a5035d03a181c785b9b1b10", null ],
+    [ "OnEnterPressed", "class_barotrauma_1_1_g_u_i_message_box.html#ae349f4b16c603cd84a81bab8c9e4d237", null ],
     [ "Tag", "class_barotrauma_1_1_g_u_i_message_box.html#a5b03e3852ed52d5b3bd1911bb49a40db", null ],
     [ "Text", "class_barotrauma_1_1_g_u_i_message_box.html#a587e4b830c29d9d62c0a75cd53e94d85", null ]
 ];

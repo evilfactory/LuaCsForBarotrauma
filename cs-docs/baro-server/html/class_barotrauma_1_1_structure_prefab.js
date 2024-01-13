@@ -11,6 +11,7 @@ var class_barotrauma_1_1_structure_prefab =
     [ "Aliases", "class_barotrauma_1_1_structure_prefab.html#ac836831e231f8a9ecfbce502aa9f4669", null ],
     [ "AllowAttachItems", "class_barotrauma_1_1_structure_prefab.html#a1317c0c7fb8ff8eb9d4f6577ef139b57", null ],
     [ "AllowedLinks", "class_barotrauma_1_1_structure_prefab.html#a0d4b27991b013947c22e8cfe8594978b", null ],
+    [ "AllowRotatingInEditor", "class_barotrauma_1_1_structure_prefab.html#a2e27739e8a414a02fe547a5d2e0a0d54", null ],
     [ "Body", "class_barotrauma_1_1_structure_prefab.html#a6261752e9c9be9b869ef186578e32bba", null ],
     [ "BodyHeight", "class_barotrauma_1_1_structure_prefab.html#a24cd3a99baac4f9ba31e0b544f0b22e7", null ],
     [ "BodyOffset", "class_barotrauma_1_1_structure_prefab.html#a66f36c301e37ea88c1b088280fab3390", null ],

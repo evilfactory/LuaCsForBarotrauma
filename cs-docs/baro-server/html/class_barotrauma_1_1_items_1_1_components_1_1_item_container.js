@@ -51,6 +51,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_item_container =
     [ "ContainedItemCount", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a29fd9c67a2698b578885075354be8b09", null ],
     [ "ContainedNonBrokenItemCount", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a76a9e07bf5cd2454a8e35a22353df8b1", null ],
     [ "DrawInventory", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#ae573b1654a16e49a43f5406f6eb86c7b", null ],
+    [ "ExtraStackSize", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#a6c2f0ca186c225af2de396a03486c09a", null ],
     [ "HideItems", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#ab04e14d3627d593187c49bcebb4539b7", null ],
     [ "ItemInterval", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#ac4d36e40368089845025cd8f60657532", null ],
     [ "ItemPos", "class_barotrauma_1_1_items_1_1_components_1_1_item_container.html#ab357941f9ca4e0885d436e6d60d79bbe", null ],

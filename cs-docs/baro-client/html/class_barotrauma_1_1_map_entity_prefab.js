@@ -5,7 +5,7 @@ var class_barotrauma_1_1_map_entity_prefab =
     [ "CreateInstance", "class_barotrauma_1_1_map_entity_prefab.html#aed6ef0fd1470c912c6af0958a4e1e99e", null ],
     [ "DrawListLine", "class_barotrauma_1_1_map_entity_prefab.html#a61948eba6748479585f51103d17b22df", null ],
     [ "DrawPlacing", "class_barotrauma_1_1_map_entity_prefab.html#a82c5011086cfc13e5df2120a5b5c96b5", null ],
-    [ "DrawPlacing", "class_barotrauma_1_1_map_entity_prefab.html#a5843a8ba2bff888c1634983dc89d2de3", null ],
+    [ "DrawPlacing", "class_barotrauma_1_1_map_entity_prefab.html#a59fa84f296a6191206c878c4f1094afc", null ],
     [ "GetAllowedUpgrades", "class_barotrauma_1_1_map_entity_prefab.html#ab980a65f13fc8d7f5e0e0454d71cff09", null ],
     [ "GetHullNameTextId", "class_barotrauma_1_1_map_entity_prefab.html#a407ccee5e4fd9a4ea4e5525d03d63570", null ],
     [ "GetItemNameTextId", "class_barotrauma_1_1_map_entity_prefab.html#a38b166fcdfaa2094f1f61c5f38c66265", null ],

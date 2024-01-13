@@ -202,7 +202,7 @@ $(document).ready(function(){initNavTree('_struct_serialization_8cs_source.html'
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">self</span> = (T)boxedSelf;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> TryDeserialize(<span class="keyword">this</span> <span class="keywordtype">object</span> boxedSelf, FieldInfo field, XElement element)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> TryDeserialize(<span class="keyword">this</span> <span class="keywordtype">object</span> boxedSelf, FieldInfo field, XElement element)</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordtype">string</span> fieldName = field.Name.ToLowerInvariant();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordtype">string</span> valueStr = element.GetAttributeString(fieldName, field.GetValue(boxedSelf)?.ToString() ?? <span class="stringliteral">&quot;&quot;</span>);</div>

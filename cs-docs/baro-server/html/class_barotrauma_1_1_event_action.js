@@ -2,6 +2,7 @@ var class_barotrauma_1_1_event_action =
 [
     [ "SubactionGroup", "class_barotrauma_1_1_event_action_1_1_subaction_group.html", "class_barotrauma_1_1_event_action_1_1_subaction_group" ],
     [ "EventAction", "class_barotrauma_1_1_event_action.html#a2f8b8146a454f65ba3a1edacc624ec9c", null ],
+    [ "ApplyTagsToHulls", "class_barotrauma_1_1_event_action.html#a886a7809efc502829018be0ab1faa9ad", null ],
     [ "CanBeFinished", "class_barotrauma_1_1_event_action.html#a034380d14daf149c914ef1146e5d0de8", null ],
     [ "GetSubActions", "class_barotrauma_1_1_event_action.html#a04622c0b71ce8919023377a527387104", null ],
     [ "IsFinished", "class_barotrauma_1_1_event_action.html#a8102e01ffd300b14db905c4e3348f801", null ],

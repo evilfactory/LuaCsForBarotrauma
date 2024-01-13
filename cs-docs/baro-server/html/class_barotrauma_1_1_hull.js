@@ -57,6 +57,7 @@ var class_barotrauma_1_1_hull =
     [ "CeilingHeight", "class_barotrauma_1_1_hull.html#a67536e8a40c231cfe267a3265fbad759", null ],
     [ "DisplayName", "class_barotrauma_1_1_hull.html#a19850254a0fb70f9a05ff794d839f3a5", null ],
     [ "FakeFireSources", "class_barotrauma_1_1_hull.html#a707315c81c798759b8dde23a151c6989", null ],
+    [ "FireCount", "class_barotrauma_1_1_hull.html#abe51a2fa04ca0f38e62fb40f68bf17cc", null ],
     [ "FireSources", "class_barotrauma_1_1_hull.html#af3c5075c11397fc2a49d8cbd4ca965f6", null ],
     [ "ForceAsWetRoom", "class_barotrauma_1_1_hull.html#ae9b25682d9dc64bf410f2f72066734e7", null ],
     [ "IsAirlock", "class_barotrauma_1_1_hull.html#ace7611ac9298dc5d743e4214a3f6539c", null ],

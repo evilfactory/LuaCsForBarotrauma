@@ -6,6 +6,7 @@ var class_barotrauma_1_1_store =
       [ "SellSub", "class_barotrauma_1_1_store.html#a4a8f7037e60aae218f593a66444127b8a6e4bef2f9dbc8249c1e32a082c1a12ee", null ]
     ] ],
     [ "Store", "class_barotrauma_1_1_store.html#afe09e7c3dc2b2fb02591ab499548163a", null ],
+    [ "OnDeselected", "class_barotrauma_1_1_store.html#aebfe5c4d80692a999da8f48afa6a6725", null ],
     [ "Refresh", "class_barotrauma_1_1_store.html#a3d4650d27a4e54de551bf29385bfa2eb", null ],
     [ "RefreshItemsToSell", "class_barotrauma_1_1_store.html#a7b712f7dda10affb8e8d630d7d7048b9", null ],
     [ "RefreshItemsToSellFromSub", "class_barotrauma_1_1_store.html#a2eb3efa553fcaed35abb6bcbe6c64243", null ],

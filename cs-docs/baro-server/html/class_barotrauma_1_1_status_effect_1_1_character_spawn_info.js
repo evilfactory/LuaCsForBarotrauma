@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_status_effect_1_1_character_spawn_info =
 [
-    [ "CharacterSpawnInfo", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#ae8bf7a53991376e1c9ad218412731ce1", null ],
+    [ "CharacterSpawnInfo", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a7f03326c92443db4eca451780945038c", null ],
     [ "AfflictionOnSpawn", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#aa308c07a955dc68223561141c2759e9b", null ],
     [ "AfflictionStrength", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a878d87f191f9c873b2358d829c5b0b07", null ],
     [ "Count", "class_barotrauma_1_1_status_effect_1_1_character_spawn_info.html#a4d826903ce6befdaaac539e578dc0811", null ],

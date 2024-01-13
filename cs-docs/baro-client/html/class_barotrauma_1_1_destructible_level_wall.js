@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_destructible_level_wall =
 [
     [ "DestructibleLevelWall", "class_barotrauma_1_1_destructible_level_wall.html#abaecfed6e5ddda310f522ea9e97504ca", null ],
-    [ "AddDamage", "class_barotrauma_1_1_destructible_level_wall.html#a86a335a3bd880a79cf7fe94c1bb00bda", null ],
+    [ "AddDamage", "class_barotrauma_1_1_destructible_level_wall.html#ae1b373dfd68c4552d610c3cc3a287b5a", null ],
     [ "AddDamage", "class_barotrauma_1_1_destructible_level_wall.html#a4a7c17c5530c452028fc32623cda8b70", null ],
     [ "Destroy", "class_barotrauma_1_1_destructible_level_wall.html#adbeee4e492c65a05a4bc305e40ee9af4", null ],
     [ "SetDamage", "class_barotrauma_1_1_destructible_level_wall.html#a5de23c6e9c856931e4b92c76354e6a5c", null ],

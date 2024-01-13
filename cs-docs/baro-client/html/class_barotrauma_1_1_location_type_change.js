@@ -1,7 +1,7 @@
 var class_barotrauma_1_1_location_type_change =
 [
     [ "Requirement", "class_barotrauma_1_1_location_type_change_1_1_requirement.html", "class_barotrauma_1_1_location_type_change_1_1_requirement" ],
-    [ "LocationTypeChange", "class_barotrauma_1_1_location_type_change.html#a51b073d5f2fef88aff1fb2b3bdb81e42", null ],
+    [ "LocationTypeChange", "class_barotrauma_1_1_location_type_change.html#a703ffa19259fdf7104ec36c892d495ca", null ],
     [ "DetermineProbability", "class_barotrauma_1_1_location_type_change.html#ad8fb7aa4d18e528a88b1abb293879f24", null ],
     [ "GetMessages", "class_barotrauma_1_1_location_type_change.html#ad679a5227e9405f92b780a8844397401", null ],
     [ "ChangeToType", "class_barotrauma_1_1_location_type_change.html#a71137e0d88493bdc6c849714233126d1", null ],

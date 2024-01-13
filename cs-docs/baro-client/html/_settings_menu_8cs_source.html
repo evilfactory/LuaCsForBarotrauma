@@ -815,125 +815,139 @@ $(document).ready(function(){initNavTree('_settings_menu_8cs_source.html',''); i
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            Slider(layout, (0.75f, 1.25f), 51, Percentage, unsavedConfig.Graphics.InventoryScale, v =&gt; unsavedConfig.Graphics.InventoryScale = v);</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            Label(layout, TextManager.Get(<span class="stringliteral">&quot;TextScale&quot;</span>), GUIStyle.SubHeadingFont);</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;            Slider(layout, (0.75f, 1.25f), 51, Percentage, unsavedConfig.Graphics.TextScale, v =&gt; unsavedConfig.Graphics.TextScale = v);</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            </div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="preprocessor">#if !OSX</span></div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;            Spacer(layout);</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            var statisticsTickBox = <span class="keyword">new</span> GUITickBox(NewItemRectT(layout), TextManager.Get(<span class="stringliteral">&quot;statisticsconsenttickbox&quot;</span>))</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;            {</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                OnSelected = tickBox =&gt;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                {</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                    GUIMessageBox? loadingBox = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                    <span class="keywordflow">if</span> (!tickBox.Selected)</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                    {</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                        loadingBox = GUIMessageBox.CreateLoadingBox(TextManager.Get(<span class="stringliteral">&quot;PleaseWait&quot;</span>));</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                    }</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                    GameAnalyticsManager.SetConsent(</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                        tickBox.Selected</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                            ? GameAnalyticsManager.Consent.Ask</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                            : GameAnalyticsManager.Consent.No,</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                        onAnswerSent: () =&gt; loadingBox?.Close());</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                }</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;            };</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;            statisticsTickBox.Enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <span class="keywordtype">void</span> updateGATickBoxToolTip()</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                =&gt; statisticsTickBox.ToolTip = TextManager.Get($<span class="stringliteral">&quot;GameAnalyticsStatus.{GameAnalyticsManager.UserConsented}&quot;</span>);</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;            updateGATickBoxToolTip();</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;            </div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            var cachedConsent = GameAnalyticsManager.Consent.Unknown;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;            var statisticsTickBoxUpdater = <span class="keyword">new</span> GUICustomComponent(</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                <span class="keyword">new</span> RectTransform(Vector2.Zero, statisticsTickBox.RectTransform),</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                onUpdate: (deltaTime, component) =&gt;</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;            {</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                bool shouldTickBoxBeSelected = GameAnalyticsManager.UserConsented == GameAnalyticsManager.Consent.Yes;</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                </div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                bool shouldUpdateTickBoxState = cachedConsent != GameAnalyticsManager.UserConsented</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                                                || statisticsTickBox.Selected != shouldTickBoxBeSelected;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160; </div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                if (!shouldUpdateTickBoxState) { return; }</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160; </div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                updateGATickBoxToolTip();</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                cachedConsent = GameAnalyticsManager.UserConsented;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                GUITickBox.OnSelectedHandler prevHandler = statisticsTickBox.OnSelected;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                statisticsTickBox.OnSelected = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                statisticsTickBox.Selected = shouldTickBoxBeSelected;</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                statisticsTickBox.OnSelected = prevHandler;</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                statisticsTickBox.Enabled &amp;= GameAnalyticsManager.UserConsented != GameAnalyticsManager.Consent.Error;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;            });</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        }</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160; </div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreateModsTab(out <a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a> workshopMenu)</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;        {</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            GUIFrame content = CreateNewContentFrame(Tab.Mods);</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            content.RectTransform.RelativeSize = Vector2.One;</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160; </div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;            workshopMenu = Screen.Selected is MainMenuScreen</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                ? (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a>)<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a>(content)</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                : (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a>)new <a class="code" href="class_barotrauma_1_1_steam_1_1_immutable_workshop_menu.html">ImmutableWorkshopMenu</a>(content);</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160; </div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;            GameMain.MainMenuScreen.ResetModUpdateButton();</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;        }</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160; </div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreateBottomButtons()</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        {</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;            <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 1.0f), bottom.RectTransform), text: TextManager.Get(<span class="stringliteral">&quot;Cancel&quot;</span>))</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;            {</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                OnClicked = (btn, obj) =&gt;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                {</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                    Close();</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                }</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            };</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;            <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 1.0f), bottom.RectTransform), text: TextManager.Get(<span class="stringliteral">&quot;applysettingsbutton&quot;</span>))</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            {</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                OnClicked = (btn, obj) =&gt;</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                {</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                    ApplyInstalledModChanges();</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                    mainFrame.Flash(color: GUIStyle.Green);</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                },</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                OnAddedToGUIUpdateList = (GUIComponent component) =&gt;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            Spacer(layout);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            var resetSpamListFilter =</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 1.0f), layout.RectTransform),</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                    TextManager.Get(<span class="stringliteral">&quot;clearserverlistfilters&quot;</span>), style: <span class="stringliteral">&quot;GUIButtonSmall&quot;</span>)</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                {</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                    OnClicked = <span class="keyword">static</span> (_, _) =&gt;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                    {</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                        GUI.AskForConfirmation(</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                            header: TextManager.Get(<span class="stringliteral">&quot;clearserverlistfilters&quot;</span>),</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                            body: TextManager.Get(<span class="stringliteral">&quot;clearserverlistfiltersconfirmation&quot;</span>),</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                            onConfirm: SpamServerFilters.ClearLocalSpamFilter);</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                    }</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                };</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            Spacer(layout);</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor">#if !OSX</span></div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            Spacer(layout);</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;            var statisticsTickBox = <span class="keyword">new</span> GUITickBox(NewItemRectT(layout), TextManager.Get(<span class="stringliteral">&quot;statisticsconsenttickbox&quot;</span>))</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            {</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                OnSelected = tickBox =&gt;</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                {</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                    GUIMessageBox? loadingBox = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                    <span class="keywordflow">if</span> (!tickBox.Selected)</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                    {</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                        loadingBox = GUIMessageBox.CreateLoadingBox(TextManager.Get(<span class="stringliteral">&quot;PleaseWait&quot;</span>));</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                    }</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                    GameAnalyticsManager.SetConsent(</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                        tickBox.Selected</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                            ? GameAnalyticsManager.Consent.Ask</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                            : GameAnalyticsManager.Consent.No,</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                        onAnswerSent: () =&gt; loadingBox?.Close());</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                }</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;            };</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;            statisticsTickBox.Enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;            <span class="keywordtype">void</span> updateGATickBoxToolTip()</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                =&gt; statisticsTickBox.ToolTip = TextManager.Get($<span class="stringliteral">&quot;GameAnalyticsStatus.{GameAnalyticsManager.UserConsented}&quot;</span>);</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;            updateGATickBoxToolTip();</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;            </div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;            var cachedConsent = GameAnalyticsManager.Consent.Unknown;</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;            var statisticsTickBoxUpdater = <span class="keyword">new</span> GUICustomComponent(</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                <span class="keyword">new</span> RectTransform(Vector2.Zero, statisticsTickBox.RectTransform),</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                onUpdate: (deltaTime, component) =&gt;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            {</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                bool shouldTickBoxBeSelected = GameAnalyticsManager.UserConsented == GameAnalyticsManager.Consent.Yes;</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                </div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                bool shouldUpdateTickBoxState = cachedConsent != GameAnalyticsManager.UserConsented</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                                                || statisticsTickBox.Selected != shouldTickBoxBeSelected;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160; </div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                if (!shouldUpdateTickBoxState) { return; }</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160; </div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                updateGATickBoxToolTip();</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                cachedConsent = GameAnalyticsManager.UserConsented;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                GUITickBox.OnSelectedHandler prevHandler = statisticsTickBox.OnSelected;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                statisticsTickBox.OnSelected = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                statisticsTickBox.Selected = shouldTickBoxBeSelected;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                statisticsTickBox.OnSelected = prevHandler;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                statisticsTickBox.Enabled &amp;= GameAnalyticsManager.UserConsented != GameAnalyticsManager.Consent.Error;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;            });</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        }</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160; </div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreateModsTab(out <a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a> workshopMenu)</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        {</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;            GUIFrame content = CreateNewContentFrame(Tab.Mods);</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;            content.RectTransform.RelativeSize = Vector2.One;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160; </div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;            workshopMenu = Screen.Selected is MainMenuScreen</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                ? (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a>)<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a>(content)</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                : (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a>)new <a class="code" href="class_barotrauma_1_1_steam_1_1_immutable_workshop_menu.html">ImmutableWorkshopMenu</a>(content);</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160; </div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            GameMain.MainMenuScreen.ResetModUpdateButton();</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        }</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreateBottomButtons()</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;        {</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 1.0f), bottom.RectTransform), text: TextManager.Get(<span class="stringliteral">&quot;Cancel&quot;</span>))</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            {</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                OnClicked = (btn, obj) =&gt;</div>
 <div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;                {</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                    component.Enabled = </div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                        CurrentTab != Tab.Mods ||</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                        (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a> is <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a> mutableWorkshopMenu &amp;&amp; mutableWorkshopMenu.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">CurrentTab</a> == <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a>.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.InstalledMods &amp;&amp; !mutableWorkshopMenu.ViewingItemDetails);</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                }                </div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            };</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;        }</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160; </div>
-<div class="line"><a name="l00819"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_settings_menu.html#abd2b420f5ac49de122896d52626f60ac">  819</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_settings_menu.html#abd2b420f5ac49de122896d52626f60ac">ApplyInstalledModChanges</a>()</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;        {</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            GameSettings.SetCurrentConfig(unsavedConfig);</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a> is <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a> mutableWorkshopMenu &amp;&amp;</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                mutableWorkshopMenu.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">CurrentTab</a> == <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a>.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.InstalledMods)</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            {</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                mutableWorkshopMenu.Apply();</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            }</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            GameSettings.SaveCurrentConfig();</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        }</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160; </div>
-<div class="line"><a name="l00830"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e">  830</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e">Close</a>()</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;        {</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a> is <span class="keyword">null</span> || GameSettings.CurrentConfig.Audio.VoiceSetting == <a class="code" href="namespace_barotrauma.html#a70a53af53142ae1cc4adeb79f766af75">VoiceMode</a>.Disabled)</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;            {</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html">VoipCapture</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#af0469afb81cdd2d6d270147a641a6c2c">Instance</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Dispose</a>();</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            }</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;            mainFrame.Parent.RemoveChild(mainFrame);</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            <span class="keywordflow">if</span> (Instance == <span class="keyword">this</span>) { Instance = <span class="keyword">null</span>; }</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            GUI.SettingsMenuOpen = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        }</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    }</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;}</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                    Close();</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                }</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            };</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            <span class="keyword">new</span> GUIButton(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 1.0f), bottom.RectTransform), text: TextManager.Get(<span class="stringliteral">&quot;applysettingsbutton&quot;</span>))</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            {</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;                OnClicked = (btn, obj) =&gt;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                {</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                    ApplyInstalledModChanges();</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                    mainFrame.Flash(color: GUIStyle.Green);</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                },</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                OnAddedToGUIUpdateList = (GUIComponent component) =&gt;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                {</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                    component.Enabled = </div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                        CurrentTab != Tab.Mods ||</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                        (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a> is <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a> mutableWorkshopMenu &amp;&amp; mutableWorkshopMenu.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">CurrentTab</a> == <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a>.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.InstalledMods &amp;&amp; !mutableWorkshopMenu.ViewingItemDetails);</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                }                </div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            };</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;        }</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160; </div>
+<div class="line"><a name="l00833"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_settings_menu.html#abd2b420f5ac49de122896d52626f60ac">  833</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_settings_menu.html#abd2b420f5ac49de122896d52626f60ac">ApplyInstalledModChanges</a>()</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;        {</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            GameSettings.SetCurrentConfig(unsavedConfig);</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_steam_1_1_workshop_menu.html">WorkshopMenu</a> is <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a> mutableWorkshopMenu &amp;&amp;</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                mutableWorkshopMenu.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">CurrentTab</a> == <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">MutableWorkshopMenu</a>.<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.InstalledMods)</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;            {</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                mutableWorkshopMenu.Apply();</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            }</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;            GameSettings.SaveCurrentConfig();</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;        }</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160; </div>
+<div class="line"><a name="l00844"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e">  844</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e">Close</a>()</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;        {</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_game_main.html">GameMain</a>.<a class="code" href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Client</a> is <span class="keyword">null</span> || GameSettings.CurrentConfig.Audio.VoiceSetting == <a class="code" href="namespace_barotrauma.html#a70a53af53142ae1cc4adeb79f766af75">VoiceMode</a>.Disabled)</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            {</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html">VoipCapture</a>.<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#af0469afb81cdd2d6d270147a641a6c2c">Instance</a>?.<a class="code" href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Dispose</a>();</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            }</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            mainFrame.Parent.RemoveChild(mainFrame);</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            <span class="keywordflow">if</span> (Instance == <span class="keyword">this</span>) { Instance = <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160; </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;            GUI.SettingsMenuOpen = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;        }</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    }</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_button_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_button.html">Barotrauma.GUIButton</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_button_8cs_source.html#l00008">GUIButton.cs:9</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_frame_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_frame.html">Barotrauma.GUIFrame</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_frame_8cs_source.html#l00007">GUIFrame.cs:8</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_layout_group_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_layout_group.html">Barotrauma.GUILayoutGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_layout_group_8cs_source.html#l00007">GUILayoutGroup.cs:8</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_text_block_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_text_block.html">Barotrauma.GUITextBlock</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_block_8cs_source.html#l00019">GUITextBlock.cs:20</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00182">GameMain.cs:182</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00186">GameMain.cs:186</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html">Barotrauma.Networking.VoipCapture</a></div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00013">VoipCapture.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a14da42c357b539cd46d457debfa8dc5d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a14da42c357b539cd46d457debfa8dc5d">Barotrauma.Networking.VoipCapture.Dispose</a></div><div class="ttdeci">override void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00389">VoipCapture.cs:389</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_voip_capture_html_a1cd7a78fd0ea2cbe736e527156131009"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_voip_capture.html#a1cd7a78fd0ea2cbe736e527156131009">Barotrauma.Networking.VoipCapture.Create</a></div><div class="ttdeci">static void Create(string deviceName, UInt16? storedBufferID=null)</div><div class="ttdef"><b>Definition:</b> <a href="_voip_capture_8cs_source.html#l00065">VoipCapture.cs:65</a></div></div>
@@ -943,12 +957,12 @@ $(document).ready(function(){initNavTree('_settings_menu_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html">Barotrauma.SettingsMenu</a></div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00017">SettingsMenu.cs:18</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_a029b69e5ceb0a3e808a6fb1a228a7f20"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#a029b69e5ceb0a3e808a6fb1a228a7f20">Barotrauma.SettingsMenu.WorkshopMenu</a></div><div class="ttdeci">readonly WorkshopMenu WorkshopMenu</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00040">SettingsMenu.cs:40</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_a3b1e9ebcb201e846ad291f7ceedeec7b"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#a3b1e9ebcb201e846ad291f7ceedeec7b">Barotrauma.SettingsMenu.Tab</a></div><div class="ttdeci">Tab</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00021">SettingsMenu.cs:22</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_a4d9655711de3ba796b3de21a85ac626e"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e">Barotrauma.SettingsMenu.Close</a></div><div class="ttdeci">void Close()</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00830">SettingsMenu.cs:830</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_a4d9655711de3ba796b3de21a85ac626e"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#a4d9655711de3ba796b3de21a85ac626e">Barotrauma.SettingsMenu.Close</a></div><div class="ttdeci">void Close()</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00844">SettingsMenu.cs:844</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_a6a0fb5f949933b13f67b46aa2ba21f6d"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#a6a0fb5f949933b13f67b46aa2ba21f6d">Barotrauma.SettingsMenu.CurrentTab</a></div><div class="ttdeci">Tab CurrentTab</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00030">SettingsMenu.cs:30</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_a7b0f51ef9ad5d308c299110fd0c9c204"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#a7b0f51ef9ad5d308c299110fd0c9c204">Barotrauma.SettingsMenu.SelectTab</a></div><div class="ttdeci">void SelectTab(Tab tab)</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00106">SettingsMenu.cs:106</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_ab0d35588d7274abbbff5494094b535ca"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#ab0d35588d7274abbbff5494094b535ca">Barotrauma.SettingsMenu.Instance</a></div><div class="ttdeci">static ? SettingsMenu Instance</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00019">SettingsMenu.cs:19</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_ab5006279fb65649ca39ca558da19439b"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#ab5006279fb65649ca39ca558da19439b">Barotrauma.SettingsMenu.Create</a></div><div class="ttdeci">static SettingsMenu Create(RectTransform mainParent)</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00050">SettingsMenu.cs:50</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_abd2b420f5ac49de122896d52626f60ac"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#abd2b420f5ac49de122896d52626f60ac">Barotrauma.SettingsMenu.ApplyInstalledModChanges</a></div><div class="ttdeci">void ApplyInstalledModChanges()</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00819">SettingsMenu.cs:819</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_settings_menu_html_abd2b420f5ac49de122896d52626f60ac"><div class="ttname"><a href="class_barotrauma_1_1_settings_menu.html#abd2b420f5ac49de122896d52626f60ac">Barotrauma.SettingsMenu.ApplyInstalledModChanges</a></div><div class="ttdeci">void ApplyInstalledModChanges()</div><div class="ttdef"><b>Definition:</b> <a href="_settings_menu_8cs_source.html#l00833">SettingsMenu.cs:833</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_immutable_workshop_menu_html"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_immutable_workshop_menu.html">Barotrauma.Steam.ImmutableWorkshopMenu</a></div><div class="ttdef"><b>Definition:</b> <a href="_immutable_workshop_menu_8cs_source.html#l00009">ImmutableWorkshopMenu.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html">Barotrauma.Steam.MutableWorkshopMenu</a></div><div class="ttdef"><b>Definition:</b> <a href="_installed_tab_8cs_source.html#l00012">InstalledTab.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a549db403d604b39d1fa8160f7faad97c"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">Barotrauma.Steam.MutableWorkshopMenu.CurrentTab</a></div><div class="ttdeci">Tab CurrentTab</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00029">MutableWorkshopMenu.cs:29</a></div></div>

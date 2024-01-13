@@ -42,6 +42,7 @@ var class_barotrauma_1_1_submarine_info =
     [ "EqualityCheckVal", "class_barotrauma_1_1_submarine_info.html#a393a64e0afda7b538a0f4301bb4f5eb5", null ],
     [ "FilePath", "class_barotrauma_1_1_submarine_info.html#a44c84c9dc3259a71b2f6a43cd64a7aa7", null ],
     [ "GameVersion", "class_barotrauma_1_1_submarine_info.html#a3c1b42c5d80123f0aed653b5704e7c32", null ],
+    [ "GetExtraSubmarineInfo", "class_barotrauma_1_1_submarine_info.html#a761d78da4eaeebe09e175d7a4da15a8e", null ],
     [ "InitialSuppliesSpawned", "class_barotrauma_1_1_submarine_info.html#afd31c6f8ad3810c629d536d1e0bba970", null ],
     [ "IsBeacon", "class_barotrauma_1_1_submarine_info.html#aa48e941ff7335e84abe47aec65242950", null ],
     [ "IsCampaignCompatible", "class_barotrauma_1_1_submarine_info.html#a81f205f1fb1b0315f5828c097d015859", null ],
@@ -64,5 +65,6 @@ var class_barotrauma_1_1_submarine_info =
     [ "SubsLeftBehind", "class_barotrauma_1_1_submarine_info.html#ac18cd6d64ed05ccad0d0c167fc9d4bac", null ],
     [ "Tags", "class_barotrauma_1_1_submarine_info.html#abdfd6c081eb387cc56788c99ba3a379b", null ],
     [ "Tier", "class_barotrauma_1_1_submarine_info.html#a3fed7313cc50e1f5fae3d2543bcb20d9", null ],
-    [ "Type", "class_barotrauma_1_1_submarine_info.html#a032bc1bffdab6c486d5362633961980b", null ]
+    [ "Type", "class_barotrauma_1_1_submarine_info.html#a032bc1bffdab6c486d5362633961980b", null ],
+    [ "WreckInfo", "class_barotrauma_1_1_submarine_info.html#a2566c8fefd6e71f04cc30afd59b863d5", null ]
 ];

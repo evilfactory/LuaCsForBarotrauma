@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_hire_manager.html
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
@@ -106,6 +107,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab2ce246e7337a1a57c3bf4faedbf5914"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hire_manager.html#ab2ce246e7337a1a57c3bf4faedbf5914">RenameCharacter</a> (<a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a> characterInfo, string newName)</td></tr>
 <tr class="separator:ab2ce246e7337a1a57c3bf4faedbf5914"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a51ebf4f7fbb0269a3a84327aa28492bc"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hire_manager.html#a51ebf4f7fbb0269a3a84327aa28492bc">GetSalaryFor</a> (IReadOnlyCollection&lt; <a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a> &gt; hires)</td></tr>
+<tr class="separator:a51ebf4f7fbb0269a3a84327aa28492bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a2f680745bdf2b0a90d64c10edcc0e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hire_manager.html#a10a2f680745bdf2b0a90d64c10edcc0e">GetSalaryFor</a> (<a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a> hire)</td></tr>
+<tr class="separator:a10a2f680745bdf2b0a90d64c10edcc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa91b161908e88a21b992d515614f12c6"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_hire_manager.html#aa91b161908e88a21b992d515614f12c6">PendingHires</a> = new List&lt;<a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a>&gt;()</td></tr>
@@ -123,7 +131,7 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00006">6</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00007">7</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7a4ec04c6e991ca952e0c50549fb2969"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a4ec04c6e991ca952e0c50549fb2969">&#9670;&nbsp;</a></span>HireManager()</h2>
@@ -140,7 +148,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00013">13</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00014">14</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -171,7 +179,63 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00023">23</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00041">41</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a10a2f680745bdf2b0a90d64c10edcc0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a2f680745bdf2b0a90d64c10edcc0e">&#9670;&nbsp;</a></span>GetSalaryFor() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Barotrauma.HireManager.GetSalaryFor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a>&#160;</td>
+          <td class="paramname"><em>hire</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00029">29</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a51ebf4f7fbb0269a3a84327aa28492bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ebf4f7fbb0269a3a84327aa28492bc">&#9670;&nbsp;</a></span>GetSalaryFor() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Barotrauma.HireManager.GetSalaryFor </td>
+          <td>(</td>
+          <td class="paramtype">IReadOnlyCollection&lt; <a class="el" href="class_barotrauma_1_1_character_info.html">CharacterInfo</a> &gt;&#160;</td>
+          <td class="paramname"><em>hires</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00024">24</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -190,7 +254,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00055">55</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00073">73</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -210,7 +274,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00018">18</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00019">19</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -240,7 +304,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00061">61</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00079">79</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -265,7 +329,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00011">11</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00012">12</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -281,7 +345,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00009">9</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00010">10</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>
@@ -306,7 +370,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00008">8</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_hire_manager_8cs_source.html#l00009">9</a> of file <a class="el" href="_hire_manager_8cs_source.html">HireManager.cs</a>.</p>
 
 </div>
 </div>

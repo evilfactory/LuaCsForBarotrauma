@@ -9,7 +9,7 @@ var class_barotrauma_1_1_inventory_1_1_item_slot =
     [ "Empty", "class_barotrauma_1_1_inventory_1_1_item_slot.html#ae0cb6531578111252bf4e4f0c04857c6", null ],
     [ "First", "class_barotrauma_1_1_inventory_1_1_item_slot.html#ab2d1f6c33d3961a374515489b7bfff92", null ],
     [ "FirstOrDefault", "class_barotrauma_1_1_inventory_1_1_item_slot.html#a4b9fa40694820889b9b7b92e984d0a9a", null ],
-    [ "HowManyCanBePut", "class_barotrauma_1_1_inventory_1_1_item_slot.html#a56fc678c850c50e2849cb1b5c67bc0b2", null ],
+    [ "HowManyCanBePut", "class_barotrauma_1_1_inventory_1_1_item_slot.html#a4aef00a589beeca7b69e434951498a22", null ],
     [ "LastOrDefault", "class_barotrauma_1_1_inventory_1_1_item_slot.html#ab705fd518445e3774a6d77d606763981", null ],
     [ "RemoveAllItems", "class_barotrauma_1_1_inventory_1_1_item_slot.html#a1371b33461a91dfc8bb37656b9bd4b5b", null ],
     [ "RemoveItem", "class_barotrauma_1_1_inventory_1_1_item_slot.html#a94fec44d1b57d6294886690e18098387", null ],

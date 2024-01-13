@@ -14,7 +14,7 @@ var class_barotrauma_1_1_networking_1_1_game_client =
     [ "EndGame", "class_barotrauma_1_1_networking_1_1_game_client.html#a42997642d479fa69afe29cadac09df93", null ],
     [ "EnterChatMessage", "class_barotrauma_1_1_networking_1_1_game_client.html#ac63707880497fce26c4b90fd34ce0043", null ],
     [ "ForceNameAndJobUpdate", "class_barotrauma_1_1_networking_1_1_game_client.html#aa3386830ae6b7373aa7df8992862823d", null ],
-    [ "HasConsoleCommandPermission", "class_barotrauma_1_1_networking_1_1_game_client.html#a894667eee6636d327c631d5f1078fe28", null ],
+    [ "HasConsoleCommandPermission", "class_barotrauma_1_1_networking_1_1_game_client.html#a5e2ebfc403e4b7670996e9dfb7c8a3df", null ],
     [ "HasPermission", "class_barotrauma_1_1_networking_1_1_game_client.html#a5d70b13281a221980c8e5d96066c168a", null ],
     [ "InitiateSubmarineChange", "class_barotrauma_1_1_networking_1_1_game_client.html#ace0f430852e0cbbc7e4f9147f48080ae", null ],
     [ "KickPlayer", "class_barotrauma_1_1_networking_1_1_game_client.html#aeb60600c509279f840c7fcbe358dc7e0", null ],

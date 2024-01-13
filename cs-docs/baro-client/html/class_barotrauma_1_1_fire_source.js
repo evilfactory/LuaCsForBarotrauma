@@ -1,6 +1,6 @@
 var class_barotrauma_1_1_fire_source =
 [
-    [ "FireSource", "class_barotrauma_1_1_fire_source.html#a8c93de6f9c89bd3c06a148ced243e1fa", null ],
+    [ "FireSource", "class_barotrauma_1_1_fire_source.html#a27449c59d22d07da0aab47db0888f23f", null ],
     [ "AdjustXPos", "class_barotrauma_1_1_fire_source.html#a6734185b536a30fc1fdc7706e5a018db", null ],
     [ "EmitParticles", "class_barotrauma_1_1_fire_source.html#ae2cf6a26eb1986a4c05817950300131d", null ],
     [ "Extinguish", "class_barotrauma_1_1_fire_source.html#a12de3ce0d7ed6a7e034faede294e5111", null ],
@@ -15,6 +15,7 @@ var class_barotrauma_1_1_fire_source =
     [ "position", "class_barotrauma_1_1_fire_source.html#af2a5b685e76e7dd3112676298699b30e", null ],
     [ "removed", "class_barotrauma_1_1_fire_source.html#ad571c98701fe2ef9894011b9f70be5bc", null ],
     [ "size", "class_barotrauma_1_1_fire_source.html#aaaad34da330e1ac8f2475915360920d7", null ],
+    [ "SourceCharacter", "class_barotrauma_1_1_fire_source.html#af0822ab644e0aac99a20d7310b5f29b7", null ],
     [ "DamageRange", "class_barotrauma_1_1_fire_source.html#a7b270a2bcbaf5b5aa678435e458c1842", null ],
     [ "DamagesCharacters", "class_barotrauma_1_1_fire_source.html#ae65b8d264bb28c2d216cdeaf87781de4", null ],
     [ "DamagesItems", "class_barotrauma_1_1_fire_source.html#a226930229b4293ff41afa623a039918e", null ],

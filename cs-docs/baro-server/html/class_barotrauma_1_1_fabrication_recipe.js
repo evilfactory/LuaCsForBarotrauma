@@ -3,7 +3,7 @@ var class_barotrauma_1_1_fabrication_recipe =
     [ "RequiredItem", "class_barotrauma_1_1_fabrication_recipe_1_1_required_item.html", "class_barotrauma_1_1_fabrication_recipe_1_1_required_item" ],
     [ "RequiredItemByIdentifier", "class_barotrauma_1_1_fabrication_recipe_1_1_required_item_by_identifier.html", "class_barotrauma_1_1_fabrication_recipe_1_1_required_item_by_identifier" ],
     [ "RequiredItemByTag", "class_barotrauma_1_1_fabrication_recipe_1_1_required_item_by_tag.html", "class_barotrauma_1_1_fabrication_recipe_1_1_required_item_by_tag" ],
-    [ "FabricationRecipe", "class_barotrauma_1_1_fabrication_recipe.html#a0e29a53c1f8f83ccce9fcef48103a98f", null ],
+    [ "FabricationRecipe", "class_barotrauma_1_1_fabrication_recipe.html#aa2bdccb671650377f33f5a1d193d9e69", null ],
     [ "Amount", "class_barotrauma_1_1_fabrication_recipe.html#aeca8c15f430b35a809659b6adfb69b49", null ],
     [ "FabricationLimitMin", "class_barotrauma_1_1_fabrication_recipe.html#adf946fac87b20dcf9ce5582991dc8cdd", null ],
     [ "HideForNonTraitors", "class_barotrauma_1_1_fabrication_recipe.html#afa36c306665e0cabe1952ef96e7334c8", null ],

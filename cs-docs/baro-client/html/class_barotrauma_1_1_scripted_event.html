@@ -104,6 +104,8 @@ Inheritance diagram for Barotrauma.ScriptedEvent:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a5f9a2bded43ea79e70c2c26d692dd58a"><td class="memItemLeft" align="right" valign="top">sealed record&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a5f9a2bded43ea79e70c2c26d692dd58a">TargetPredicate</a> (TargetPredicate.EntityType Type, Predicate&lt; <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> &gt; Predicate)</td></tr>
+<tr class="separator:a5f9a2bded43ea79e70c2c26d692dd58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a0134f781c30aaba1307866de5eab37"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a3a0134f781c30aaba1307866de5eab37">ToString</a> ()</td></tr>
 <tr class="separator:a3a0134f781c30aaba1307866de5eab37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26ba81eb5b3cb0000d6b766c6c27c147"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a26ba81eb5b3cb0000d6b766c6c27c147">ScriptedEvent</a> (<a class="el" href="class_barotrauma_1_1_event_prefab.html">EventPrefab</a> <a class="el" href="class_barotrauma_1_1_event.html#acfd75f688b50d4930e06e44c419b209e">prefab</a>)</td></tr>
@@ -119,8 +121,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7add1ecab875b26628a25ff3b8f974de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae59cea1d0265ab15e86a49cf4ad6cf41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#ae59cea1d0265ab15e86a49cf4ad6cf41">AddTarget</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> target)</td></tr>
 <tr class="separator:ae59cea1d0265ab15e86a49cf4ad6cf41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a685558319d0d5a515af39871f3ae3f9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a685558319d0d5a515af39871f3ae3f9b">AddTargetPredicate</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag, Predicate&lt; <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> &gt; predicate)</td></tr>
-<tr class="separator:a685558319d0d5a515af39871f3ae3f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7523e09f37751455a16f9e7b3542e4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#ac7523e09f37751455a16f9e7b3542e4b">AddTargetPredicate</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag, TargetPredicate.EntityType entityType, Predicate&lt; <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> &gt; predicate)</td></tr>
+<tr class="separator:ac7523e09f37751455a16f9e7b3542e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56026262c5653bb8d35021d306771b01"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a56026262c5653bb8d35021d306771b01">GetInitialTargetCount</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag)</td></tr>
 <tr class="separator:a56026262c5653bb8d35021d306771b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefb29933c37f8b407acdbed993b6a839"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#aefb29933c37f8b407acdbed993b6a839">GetTargets</a> (<a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> tag)</td></tr>
@@ -131,6 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abe3bdd05998d73eb099343bec87409b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a768627e4f21a08cd0b97a6df53f17dce"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a768627e4f21a08cd0b97a6df53f17dce">Update</a> (float deltaTime)</td></tr>
 <tr class="separator:a768627e4f21a08cd0b97a6df53f17dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1a3570bb84859ff9bc3f42f46db4e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#ae1a3570bb84859ff9bc3f42f46db4e3b">EntitySpawned</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> entity)</td></tr>
+<tr class="separator:ae1a3570bb84859ff9bc3f42f46db4e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5fb4755ca45cdf54ca5adc973b367a3"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#ae5fb4755ca45cdf54ca5adc973b367a3">LevelMeetsRequirements</a> ()</td></tr>
 <tr class="separator:ae5fb4755ca45cdf54ca5adc973b367a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f4ce31a7b69f1a713d4e1e1edf2affd"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_scripted_event.html#a7f4ce31a7b69f1a713d4e1e1edf2affd">Finish</a> ()</td></tr>
@@ -208,7 +212,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00040">40</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00054">54</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -239,12 +243,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00152">152</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00170">170</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
-<a id="a685558319d0d5a515af39871f3ae3f9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a685558319d0d5a515af39871f3ae3f9b">&#9670;&nbsp;</a></span>AddTargetPredicate()</h2>
+<a id="ac7523e09f37751455a16f9e7b3542e4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7523e09f37751455a16f9e7b3542e4b">&#9670;&nbsp;</a></span>AddTargetPredicate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -254,6 +258,12 @@ Additional Inherited Members</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td>
           <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TargetPredicate.EntityType&#160;</td>
+          <td class="paramname"><em>entityType</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -269,7 +279,27 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00190">190</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00208">208</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae1a3570bb84859ff9bc3f42f46db4e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a3570bb84859ff9bc3f42f46db4e3b">&#9670;&nbsp;</a></span>EntitySpawned()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Barotrauma.ScriptedEvent.EntitySpawned </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_entity.html">Entity</a>&#160;</td>
+          <td class="paramname"><em>entity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00410">410</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -298,7 +328,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#aa3239da23a7a7bd879a4fadefdc2b38f">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00383">383</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00450">450</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -319,7 +349,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Finds all actions in the <a class="el" href="class_barotrauma_1_1_scripted_event.html">ScriptedEvent</a> (recursively going through the subactions as well). Returns a list of tuples where the first value is the indentation level (or "how deep in the hierarchy") the action is. </p>
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00131">131</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00149">149</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -348,7 +378,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#a1ea59d5eea6c5e6bc76cb2e0bfab64e8">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00080">80</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00097">97</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -368,7 +398,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00204">204</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00222">222</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -388,7 +418,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00213">213</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00231">231</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -416,7 +446,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00099">99</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00116">116</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -446,7 +476,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00269">269</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00299">299</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -475,7 +505,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#a408383af91a56d54dff58072f12e297c">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00367">367</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00434">434</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -495,7 +525,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00280">280</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00310">310</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -525,7 +555,37 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_barotrauma_1_1_traitor_event.html#afa6918f9d166df6e4cdeb443b58a0ffe">Barotrauma.TraitorEvent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00122">122</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00140">140</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5f9a2bded43ea79e70c2c26d692dd58a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f9a2bded43ea79e70c2c26d692dd58a">&#9670;&nbsp;</a></span>TargetPredicate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sealed record Barotrauma.ScriptedEvent.TargetPredicate </td>
+          <td>(</td>
+          <td class="paramtype">TargetPredicate.EntityType&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Predicate&lt; <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> &gt;&#160;</td>
+          <td class="paramname"><em>Predicate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00010">10</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -544,7 +604,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00035">35</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00049">49</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -574,7 +634,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event.html#a27a95c84fb98b963a693f75456ba618f">Barotrauma.Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00288">288</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00318">318</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -591,7 +651,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00024">24</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00038">38</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -607,7 +667,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00027">27</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00041">41</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -632,7 +692,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00030">30</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00044">44</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -656,7 +716,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00029">29</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00043">43</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -680,7 +740,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00033">33</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00047">47</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>
@@ -704,7 +764,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00031">31</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_scripted_event_8cs_source.html#l00045">45</a> of file <a class="el" href="_scripted_event_8cs_source.html">ScriptedEvent.cs</a>.</p>
 
 </div>
 </div>

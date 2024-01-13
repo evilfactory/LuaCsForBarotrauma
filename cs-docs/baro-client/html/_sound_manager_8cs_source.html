@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ab0879c318db4ae51dd6a9e6a56e726e4">   40</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ab0879c318db4ae51dd6a9e6a56e726e4">Disconnected</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> Thread streamingThread;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> Thread updateChannelsThread;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">private</span> Vector3 listenerPosition;</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a15fa65c276ad0e2d49135a9ce971671a">   45</a></span>&#160;        <span class="keyword">public</span> Vector3 <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a15fa65c276ad0e2d49135a9ce971671a">ListenerPosition</a></div>
@@ -289,7 +289,7 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#af226e5df6e11fa3fba4d66dde0abb6c5">  201</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#af226e5df6e11fa3fba4d66dde0abb6c5">SoundManager</a>()</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            loadedSounds = <span class="keyword">new</span> List&lt;Sound&gt;();</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            streamingThread = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            updateChannelsThread = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            sourcePools = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_source_pool.html">SoundSourcePool</a>[2];</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            playingChannels[(int)<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa1a56cbb271fe3fd912d30f40b45a642">SourcePoolIndex</a>.Default] = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_channel.html">SoundChannel</a>[<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a544f7a56d72aec03aaed053d208f06de">SOURCE_COUNT</a>];</div>
@@ -784,7 +784,7 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae780aa353802e7ce62fc08c59cf58048">CompressionDynamicRangeGain</a> = 1.0f;</div>
 <div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            }</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; </div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            <span class="keywordflow">if</span> (streamingThread == <span class="keyword">null</span> || streamingThread.ThreadState.HasFlag(ThreadState.Stopped))</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            <span class="keywordflow">if</span> (updateChannelsThread == <span class="keyword">null</span> || updateChannelsThread.ThreadState.HasFlag(ThreadState.Stopped))</div>
 <div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            {</div>
 <div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                <span class="keywordtype">bool</span> startedStreamThread = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; playingChannels.Length; i++)</div>
@@ -796,7 +796,7 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                            <span class="keywordflow">if</span> (playingChannels[i][j] == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                            <span class="keywordflow">if</span> (playingChannels[i][j].IsStream &amp;&amp; playingChannels[i][j].<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a93921822c3afbf88596c7c18f3cbda85">IsPlaying</a>)</div>
 <div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                            {</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                                <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae58507b9fdc3c4428b24334898f5c31d">InitStreamThread</a>();</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                                <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a60ff3e1c15bd791e1f1478e71c093af9">InitUpdateChannelThread</a>();</div>
 <div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                                startedStreamThread = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                            }</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                            <span class="keywordflow">if</span> (startedStreamThread) { <span class="keywordflow">break</span>; }</div>
@@ -815,155 +815,156 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a9b3d88b7b3eaade35b97bf912aa8ac2d">SetCategoryGainMultiplier</a>(<span class="stringliteral">&quot;music&quot;</span>, GameSettings.CurrentConfig.Audio.MusicVolume, 0);</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a9b3d88b7b3eaade35b97bf912aa8ac2d">SetCategoryGainMultiplier</a>(<span class="stringliteral">&quot;voip&quot;</span>, Math.Min(GameSettings.CurrentConfig.Audio.VoiceChatVolume, 1.0f), 0);</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        }</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        </div>
-<div class="line"><a name="l00731"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae58507b9fdc3c4428b24334898f5c31d">  731</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae58507b9fdc3c4428b24334898f5c31d">InitStreamThread</a>()</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        {</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a0d8e609c3eef875a8a9a7a0e99a1891b">Disabled</a>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;            <span class="keywordtype">bool</span> isStreamThreadDying;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            lock (threadDeathMutex)</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            {</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                isStreamThreadDying = !areStreamsPlaying;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;            }</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            <span class="keywordflow">if</span> (streamingThread == <span class="keyword">null</span> || streamingThread.ThreadState.HasFlag(ThreadState.Stopped) || isStreamThreadDying)</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            {</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                <span class="keywordflow">if</span> (streamingThread != <span class="keyword">null</span> &amp;&amp; !streamingThread.Join(1000))</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                {</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Sound stream thread join timed out!&quot;</span>);</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                }</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                areStreamsPlaying = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                streamingThread = <span class="keyword">new</span> Thread(UpdateStreaming)</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                {</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                    Name = <span class="stringliteral">&quot;SoundManager Streaming Thread&quot;</span>,</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                    IsBackground = <span class="keyword">true</span> <span class="comment">//this should kill the thread if the game crashes</span></div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                };</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                streamingThread.Start();</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;            }</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;        }</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160; </div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;        <span class="keywordtype">bool</span> areStreamsPlaying = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        ManualResetEvent streamMre = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
+<div class="line"><a name="l00734"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a60ff3e1c15bd791e1f1478e71c093af9">  734</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a60ff3e1c15bd791e1f1478e71c093af9">InitUpdateChannelThread</a>()</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;        {</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a0d8e609c3eef875a8a9a7a0e99a1891b">Disabled</a>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            <span class="keywordtype">bool</span> isUpdateChannelsThreadDying;</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;            lock (threadDeathMutex)</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            {</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                isUpdateChannelsThreadDying = !needsUpdateChannels;</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;            }</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;            <span class="keywordflow">if</span> (updateChannelsThread == <span class="keyword">null</span> || updateChannelsThread.ThreadState.HasFlag(ThreadState.Stopped) || isUpdateChannelsThreadDying)</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            {</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;                <span class="keywordflow">if</span> (updateChannelsThread != <span class="keyword">null</span> &amp;&amp; !updateChannelsThread.Join(1000))</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                {</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;SoundManager.UpdateChannels thread join timed out!&quot;</span>);</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                }</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                needsUpdateChannels = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                updateChannelsThread = <span class="keyword">new</span> Thread(UpdateChannels)</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                {</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                    Name = <span class="stringliteral">&quot;SoundManager.UpdateChannels Thread&quot;</span>,</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                    IsBackground = <span class="keyword">true</span> <span class="comment">//this should kill the thread if the game crashes</span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                };</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                updateChannelsThread.Start();</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;            }</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        }</div>
 <div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        <span class="keywordtype">void</span> UpdateStreaming()</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        {</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;            streamMre = <span class="keyword">new</span> ManualResetEvent(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;            <span class="keywordtype">bool</span> killThread = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;            <span class="keywordflow">while</span> (!killThread)</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;            {</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                killThread = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; playingChannels.Length; i++)</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                {</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;                    lock (playingChannels[i])</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;                    {</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; playingChannels[i].Length; j++)</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                        {</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                            <span class="keywordflow">if</span> (playingChannels[i][j] == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                            <span class="keywordflow">if</span> (playingChannels[i][j].IsStream)</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                            {</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                                <span class="keywordflow">if</span> (playingChannels[i][j].<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a93921822c3afbf88596c7c18f3cbda85">IsPlaying</a>)</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                                {</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                                    killThread = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                                    playingChannels[i][j].UpdateStream();</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                                }</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                                {</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                                    playingChannels[i][j].Dispose();</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                                    playingChannels[i][j] = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                                }</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                            }</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (playingChannels[i][j].FadingOutAndDisposing)</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                            {</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                                playingChannels[i][j].Gain -= 0.1f;</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                                <span class="keywordflow">if</span> (playingChannels[i][j].Gain &lt;= 0.0f)</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                                {</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                                    playingChannels[i][j].Dispose();</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                                    playingChannels[i][j] = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                                }</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                            }</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                        }</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                    }</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                }</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                streamMre.WaitOne(10);</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                streamMre.Reset();</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                lock (threadDeathMutex)</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                {</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                    areStreamsPlaying = !killThread;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                }</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            }</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        }</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
-<div class="line"><a name="l00806"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a25f3c9701f1b621cc3844ec40d0d1a4f">  806</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a25f3c9701f1b621cc3844ec40d0d1a4f">ForceStreamUpdate</a>()</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;        {</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            streamMre?.Set();</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;        }</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160; </div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ReloadSounds()</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;        {</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = loadedSounds.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;            {</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                loadedSounds[i].InitializeAlBuffers();</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            }</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;        }</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160; </div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ReleaseResources(<span class="keywordtype">bool</span> keepSounds)</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;        {</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; playingChannels.Length; i++)</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;            {</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                lock (playingChannels[i])</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                {</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; playingChannels[i].Length; j++)</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;                    {</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                        <span class="keywordflow">if</span> (playingChannels[i][j] != <span class="keyword">null</span>) playingChannels[i][j].Dispose();</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                    }</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                }</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            }</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160; </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;            streamingThread?.Join();</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = loadedSounds.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            {</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                <span class="keywordflow">if</span> (keepSounds)</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                {</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                    loadedSounds[i].DeleteAlBuffers();</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                }</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                {</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                    loadedSounds[i].Dispose();</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                }</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;            }</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            sourcePools[(int)<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa1a56cbb271fe3fd912d30f40b45a642">SourcePoolIndex</a>.Default]?.Dispose();</div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;            sourcePools[(int)<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa1a56cbb271fe3fd912d30f40b45a642">SourcePoolIndex</a>.Voice]?.Dispose();</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            SoundBuffers.ClearPool();</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        }</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160; </div>
-<div class="line"><a name="l00850"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa00e0cec47506e95b970267f8e251bf9">  850</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa00e0cec47506e95b970267f8e251bf9">Dispose</a>()</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;        {</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a0d8e609c3eef875a8a9a7a0e99a1891b">Disabled</a>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> needsUpdateChannels = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        <span class="keyword">private</span> ManualResetEvent updateChannelsMre = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160; </div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> UpdateChannels()</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        {</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;            updateChannelsMre = <span class="keyword">new</span> ManualResetEvent(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;            <span class="keywordtype">bool</span> killThread = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;            <span class="keywordflow">while</span> (!killThread)</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;            {</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                killThread = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; playingChannels.Length; i++)</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;                {</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;                    lock (playingChannels[i])</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                    {</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; playingChannels[i].Length; j++)</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                        {</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                            <span class="keywordflow">if</span> (playingChannels[i][j] == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                            <span class="keywordflow">if</span> (playingChannels[i][j].IsStream)</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                            {</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;                                <span class="keywordflow">if</span> (playingChannels[i][j].<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a93921822c3afbf88596c7c18f3cbda85">IsPlaying</a>)</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                                {</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                                    killThread = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                                    playingChannels[i][j].UpdateStream();</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                                }</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                                {</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                                    playingChannels[i][j].Dispose();</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                                    playingChannels[i][j] = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                                }</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                            }</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (playingChannels[i][j].FadingOutAndDisposing)</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                            {</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                                killThread = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                                playingChannels[i][j].Gain -= 0.1f;</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                                <span class="keywordflow">if</span> (playingChannels[i][j].Gain &lt;= 0.0f)</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                                {</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                                    playingChannels[i][j].Dispose();</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                                    playingChannels[i][j] = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                                }</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                            }</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                        }</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                    }</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                }</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                updateChannelsMre.WaitOne(10);</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                updateChannelsMre.Reset();</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                lock (threadDeathMutex)</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                {</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                    needsUpdateChannels = !killThread;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                }</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;            }</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;        }</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160; </div>
+<div class="line"><a name="l00813"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a25f3c9701f1b621cc3844ec40d0d1a4f">  813</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a25f3c9701f1b621cc3844ec40d0d1a4f">ForceStreamUpdate</a>()</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;        {</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            updateChannelsMre?.Set();</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;        }</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160; </div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ReloadSounds()</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;        {</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = loadedSounds.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            {</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                loadedSounds[i].InitializeAlBuffers();</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            }</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        }</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160; </div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ReleaseResources(<span class="keywordtype">bool</span> keepSounds)</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;        {</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; playingChannels.Length; i++)</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;            {</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                lock (playingChannels[i])</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                {</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; playingChannels[i].Length; j++)</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;                    {</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;                        playingChannels[i][j]?.Dispose();</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                    }</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                }</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            }</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            updateChannelsThread?.Join();</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = loadedSounds.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;            {</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                <span class="keywordflow">if</span> (keepSounds)</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                {</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;                    loadedSounds[i].DeleteAlBuffers();</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                }</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;                {</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                    loadedSounds[i].Dispose();</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                }</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            }</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            sourcePools[(int)<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa1a56cbb271fe3fd912d30f40b45a642">SourcePoolIndex</a>.Default]?.Dispose();</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;            sourcePools[(int)<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa1a56cbb271fe3fd912d30f40b45a642">SourcePoolIndex</a>.Voice]?.Dispose();</div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160; </div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            ReleaseResources(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160; </div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a03baeea4240cfbcc3d08754448af19bb">MakeContextCurrent</a>(IntPtr.Zero))</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            {</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Failed to detach the current ALC context! (error code: &quot;</span> + <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a68f9bd812fcfce9a4b479df57b84c2c7">GetError</a>(alcDevice).ToString() + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            }</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            SoundBuffers.ClearPool();</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;        }</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160; </div>
+<div class="line"><a name="l00857"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa00e0cec47506e95b970267f8e251bf9">  857</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa00e0cec47506e95b970267f8e251bf9">Dispose</a>()</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        {</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a0d8e609c3eef875a8a9a7a0e99a1891b">Disabled</a>) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160; </div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;            <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a6cd98ebb0ccea87244930948486530ac">DestroyContext</a>(alcContext);</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;            </div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a818bbf7bc46d81ac977b09dddf670945">CloseDevice</a>(alcDevice))</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;            ReleaseResources(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160; </div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a03baeea4240cfbcc3d08754448af19bb">MakeContextCurrent</a>(IntPtr.Zero))</div>
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;            {</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Failed to close ALC device!&quot;</span>);</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Failed to detach the current ALC context! (error code: &quot;</span> + <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a68f9bd812fcfce9a4b479df57b84c2c7">GetError</a>(alcDevice).ToString() + <span class="stringliteral">&quot;)&quot;</span>);</div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            }</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        }</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    }</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;}</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            <a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a6cd98ebb0ccea87244930948486530ac">DestroyContext</a>(alcContext);</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            </div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_open_a_l_1_1_alc.html">Alc</a>.<a class="code" href="class_open_a_l_1_1_alc.html#a818bbf7bc46d81ac977b09dddf670945">CloseDevice</a>(alcDevice))</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;            {</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Failed to close ALC device!&quot;</span>);</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;            }</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        }</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    }</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_path_html_a91615891cea34f4132f32c4e4da1ec68"><div class="ttname"><a href="class_barotrauma_1_1_content_path.html#a91615891cea34f4132f32c4e4da1ec68">Barotrauma.ContentPath.Value</a></div><div class="ttdeci">string???????????? Value</div><div class="ttdef"><b>Definition:</b> <a href="_content_path_8cs_source.html#l00026">ContentPath.cs:27</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html">Barotrauma.ContentXElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00012">ContentXElement.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a671983d7e766fb14c82c4f3daf861c03"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a671983d7e766fb14c82c4f3daf861c03">Barotrauma.ContentXElement.GetAttributeFloat</a></div><div class="ttdeci">float GetAttributeFloat(string key, float def)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_aac6776ea574a6468cd4c095483e1ba68"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#aac6776ea574a6468cd4c095483e1ba68">Barotrauma.ContentXElement.GetAttributeContentPath</a></div><div class="ttdeci">ContentPath? GetAttributeContentPath(string key)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00182">GameMain.cs:182</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a95d3a2085a40a7ee43319ef7e1e899f8"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a95d3a2085a40a7ee43319ef7e1e899f8">Barotrauma.GameMain.Instance</a></div><div class="ttdeci">static GameMain Instance</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00137">GameMain.cs:138</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a922fcab5779b8fc351d2507a659c5451"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a922fcab5779b8fc351d2507a659c5451">Barotrauma.GameMain.Client</a></div><div class="ttdeci">static GameClient Client</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00186">GameMain.cs:186</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_a95d3a2085a40a7ee43319ef7e1e899f8"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#a95d3a2085a40a7ee43319ef7e1e899f8">Barotrauma.GameMain.Instance</a></div><div class="ttdeci">static GameMain Instance</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00141">GameMain.cs:142</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_af9f524266611ba3f2680ad048f63cc35"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#af9f524266611ba3f2680ad048f63cc35">Barotrauma.GameMain.HasLoaded</a></div><div class="ttdeci">bool HasLoaded</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00117">GameMain.cs:117</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_ogg_sound_html"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_ogg_sound.html">Barotrauma.Sounds.OggSound</a></div><div class="ttdef"><b>Definition:</b> <a href="_ogg_sound_8cs_source.html#l00010">OggSound.cs:11</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_ogg_sound_html"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_ogg_sound.html">Barotrauma.Sounds.OggSound</a></div><div class="ttdef"><b>Definition:</b> <a href="_ogg_sound_8cs_source.html#l00009">OggSound.cs:10</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_channel_html"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_channel.html">Barotrauma.Sounds.SoundChannel</a></div><div class="ttdef"><b>Definition:</b> <a href="_sound_channel_8cs_source.html#l00081">SoundChannel.cs:82</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_channel_html_a067374bd3610cc12572a71f6f5c9d331"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_channel.html#a067374bd3610cc12572a71f6f5c9d331">Barotrauma.Sounds.SoundChannel.Far</a></div><div class="ttdeci">float Far</div><div class="ttdef"><b>Definition:</b> <a href="_sound_channel_8cs_source.html#l00194">SoundChannel.cs:195</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_channel_html_a6512298bacf8cbc85fd5d5417510c8bc"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_channel.html#a6512298bacf8cbc85fd5d5417510c8bc">Barotrauma.Sounds.SoundChannel.Near</a></div><div class="ttdeci">float Near</div><div class="ttdef"><b>Definition:</b> <a href="_sound_channel_8cs_source.html#l00172">SoundChannel.cs:173</a></div></div>
@@ -983,13 +984,14 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a1f2f80de518cf09aa3f234b69f15b1cf"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a1f2f80de518cf09aa3f234b69f15b1cf">Barotrauma.Sounds.SoundManager.GetCategoryMuffle</a></div><div class="ttdeci">bool GetCategoryMuffle(string category)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00624">SoundManager.cs:624</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a239ba4f5211f8c81ade9b1272107cf07"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a239ba4f5211f8c81ade9b1272107cf07">Barotrauma.Sounds.SoundManager.GetSourceFromIndex</a></div><div class="ttdeci">uint GetSourceFromIndex(SourcePoolIndex poolIndex, int srcInd)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00395">SoundManager.cs:395</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a241209b3fdeca885feeafa5e38eb5c35"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a241209b3fdeca885feeafa5e38eb5c35">Barotrauma.Sounds.SoundManager.CanDetectDisconnect</a></div><div class="ttdeci">bool CanDetectDisconnect</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00038">SoundManager.cs:38</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a25f3c9701f1b621cc3844ec40d0d1a4f"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a25f3c9701f1b621cc3844ec40d0d1a4f">Barotrauma.Sounds.SoundManager.ForceStreamUpdate</a></div><div class="ttdeci">void ForceStreamUpdate()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00806">SoundManager.cs:806</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a25f3c9701f1b621cc3844ec40d0d1a4f"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a25f3c9701f1b621cc3844ec40d0d1a4f">Barotrauma.Sounds.SoundManager.ForceStreamUpdate</a></div><div class="ttdeci">void ForceStreamUpdate()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00813">SoundManager.cs:813</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a42e868383b10890f44eb10e764811413"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a42e868383b10890f44eb10e764811413">Barotrauma.Sounds.SoundManager.ApplySettings</a></div><div class="ttdeci">void ApplySettings()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00722">SoundManager.cs:722</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a4b822fa3d1dc9c9bfd0480d6bc24e50d"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a4b822fa3d1dc9c9bfd0480d6bc24e50d">Barotrauma.Sounds.SoundManager.RemoveSound</a></div><div class="ttdeci">void RemoveSound(Sound sound)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00511">SoundManager.cs:511</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a4bef2cfe7f0b01c3ba0baae4d46c354b"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a4bef2cfe7f0b01c3ba0baae4d46c354b">Barotrauma.Sounds.SoundManager.LoadedSoundCount</a></div><div class="ttdeci">int LoadedSoundCount</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00153">SoundManager.cs:154</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a4f6f56fe40c6ebf34694018775ea02a8"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a4f6f56fe40c6ebf34694018775ea02a8">Barotrauma.Sounds.SoundManager.MoveSoundToPosition</a></div><div class="ttdeci">void MoveSoundToPosition(Sound sound, int pos)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00526">SoundManager.cs:526</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a544f7a56d72aec03aaed053d208f06de"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a544f7a56d72aec03aaed053d208f06de">Barotrauma.Sounds.SoundManager.SOURCE_COUNT</a></div><div class="ttdeci">const int SOURCE_COUNT</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00014">SoundManager.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a59062d75948ceed47a0776a1c0590fda"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a59062d75948ceed47a0776a1c0590fda">Barotrauma.Sounds.SoundManager.ListenerUpVector</a></div><div class="ttdeci">Vector3 ListenerUpVector</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00077">SoundManager.cs:78</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a60ff3e1c15bd791e1f1478e71c093af9"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a60ff3e1c15bd791e1f1478e71c093af9">Barotrauma.Sounds.SoundManager.InitUpdateChannelThread</a></div><div class="ttdeci">void InitUpdateChannelThread()</div><div class="ttdoc">Initializes the thread that handles streaming audio and fading out and disposing channels that are no...</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00734">SoundManager.cs:734</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a7bad1f1623837a0d50ad70834789ba59"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a7bad1f1623837a0d50ad70834789ba59">Barotrauma.Sounds.SoundManager.GetChannelFromSound</a></div><div class="ttdeci">SoundChannel GetChannelFromSound(Sound sound)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00478">SoundManager.cs:478</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a80c8a8a7b65c03ac31bd2960f4e1082c"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a80c8a8a7b65c03ac31bd2960f4e1082c">Barotrauma.Sounds.SoundManager.PlaybackAmplitude</a></div><div class="ttdeci">float?? PlaybackAmplitude</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00111">SoundManager.cs:112</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a8b2c97943134ca1133dd4bb8630452b0"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a8b2c97943134ca1133dd4bb8630452b0">Barotrauma.Sounds.SoundManager.ListenerGain</a></div><div class="ttdeci">float ListenerGain</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00094">SoundManager.cs:95</a></div></div>
@@ -997,7 +999,7 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a93921822c3afbf88596c7c18f3cbda85"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a93921822c3afbf88596c7c18f3cbda85">Barotrauma.Sounds.SoundManager.IsPlaying</a></div><div class="ttdeci">bool IsPlaying(Sound sound)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00443">SoundManager.cs:443</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a9a66e36a7cbd6e8329bc8ca669d60b3c"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a9a66e36a7cbd6e8329bc8ca669d60b3c">Barotrauma.Sounds.SoundManager.LoadSound</a></div><div class="ttdeci">Sound LoadSound(ContentXElement element, bool stream=false, string overrideFilePath=null)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00364">SoundManager.cs:364</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_a9b3d88b7b3eaade35b97bf912aa8ac2d"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#a9b3d88b7b3eaade35b97bf912aa8ac2d">Barotrauma.Sounds.SoundManager.SetCategoryGainMultiplier</a></div><div class="ttdeci">void SetCategoryGainMultiplier(string category, float gain, int index=0)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00538">SoundManager.cs:538</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_aa00e0cec47506e95b970267f8e251bf9"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa00e0cec47506e95b970267f8e251bf9">Barotrauma.Sounds.SoundManager.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00850">SoundManager.cs:850</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_aa00e0cec47506e95b970267f8e251bf9"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa00e0cec47506e95b970267f8e251bf9">Barotrauma.Sounds.SoundManager.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00857">SoundManager.cs:857</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_aa1a56cbb271fe3fd912d30f40b45a642"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aa1a56cbb271fe3fd912d30f40b45a642">Barotrauma.Sounds.SoundManager.SourcePoolIndex</a></div><div class="ttdeci">SourcePoolIndex</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00025">SoundManager.cs:26</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_ab0879c318db4ae51dd6a9e6a56e726e4"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ab0879c318db4ae51dd6a9e6a56e726e4">Barotrauma.Sounds.SoundManager.Disconnected</a></div><div class="ttdeci">bool Disconnected</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00040">SoundManager.cs:40</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_ab60c9170a8ea6165a88697c07d0f30fd"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ab60c9170a8ea6165a88697c07d0f30fd">Barotrauma.Sounds.SoundManager.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00636">SoundManager.cs:636</a></div></div>
@@ -1005,7 +1007,6 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_abf17c9c5ec8b2134f027155ee6601aa6"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#abf17c9c5ec8b2134f027155ee6601aa6">Barotrauma.Sounds.SoundManager.GetSoundChannelFromIndex</a></div><div class="ttdeci">SoundChannel GetSoundChannelFromIndex(SourcePoolIndex poolIndex, int ind)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00389">SoundManager.cs:389</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_ac6fc28b51b5d6b1b38c6371df3e775d2"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ac6fc28b51b5d6b1b38c6371df3e775d2">Barotrauma.Sounds.SoundManager.UniqueLoadedSoundCount</a></div><div class="ttdeci">int UniqueLoadedSoundCount</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00157">SoundManager.cs:158</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_adf81eed4f5b02a39d898a792f5374edb"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#adf81eed4f5b02a39d898a792f5374edb">Barotrauma.Sounds.SoundManager.ListenerTargetVector</a></div><div class="ttdeci">Vector3 ListenerTargetVector</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00062">SoundManager.cs:63</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_ae58507b9fdc3c4428b24334898f5c31d"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae58507b9fdc3c4428b24334898f5c31d">Barotrauma.Sounds.SoundManager.InitStreamThread</a></div><div class="ttdeci">void InitStreamThread()</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00731">SoundManager.cs:731</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_ae780aa353802e7ce62fc08c59cf58048"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae780aa353802e7ce62fc08c59cf58048">Barotrauma.Sounds.SoundManager.CompressionDynamicRangeGain</a></div><div class="ttdeci">float CompressionDynamicRangeGain</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00139">SoundManager.cs:139</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_aeaab62afa93b8506e80a12b40dccbdbe"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aeaab62afa93b8506e80a12b40dccbdbe">Barotrauma.Sounds.SoundManager.KillChannels</a></div><div class="ttdeci">void KillChannels(Sound sound)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00495">SoundManager.cs:495</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sounds_1_1_sound_manager_html_aec11c823c3814679ee6876ec32c39a56"><div class="ttname"><a href="class_barotrauma_1_1_sounds_1_1_sound_manager.html#aec11c823c3814679ee6876ec32c39a56">Barotrauma.Sounds.SoundManager.AssignFreeSourceToChannel</a></div><div class="ttdeci">int AssignFreeSourceToChannel(SoundChannel newChannel)</div><div class="ttdef"><b>Definition:</b> <a href="_sound_manager_8cs_source.html#l00407">SoundManager.cs:407</a></div></div>
@@ -1045,7 +1046,7 @@ $(document).ready(function(){initNavTree('_sound_manager_8cs_source.html',''); i
 <div class="ttc" id="aclass_open_a_l_1_1_alc_html_af026fa42464a502feed945862ffe6493"><div class="ttname"><a href="class_open_a_l_1_1_alc.html#af026fa42464a502feed945862ffe6493">OpenAL.Alc.IsExtensionPresent</a></div><div class="ttdeci">static bool IsExtensionPresent(IntPtr device, string extname)</div></div>
 <div class="ttc" id="aclass_open_a_l_1_1_alc_html_aff839450eeb740e98430e5075ad6d625"><div class="ttname"><a href="class_open_a_l_1_1_alc.html#aff839450eeb740e98430e5075ad6d625">OpenAL.Alc.GetString</a></div><div class="ttdeci">static string GetString(IntPtr device, int param)</div><div class="ttdef"><b>Definition:</b> <a href="_alc_8cs_source.html#l00215">Alc.cs:215</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_sounds_html"><div class="ttname"><a href="namespace_barotrauma_1_1_sounds.html">Barotrauma.Sounds</a></div><div class="ttdef"><b>Definition:</b> <a href="_ogg_sound_8cs_source.html#l00008">OggSound.cs:9</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_sounds_html"><div class="ttname"><a href="namespace_barotrauma_1_1_sounds.html">Barotrauma.Sounds</a></div><div class="ttdef"><b>Definition:</b> <a href="_ogg_sound_8cs_source.html#l00007">OggSound.cs:8</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ad7a3fdf1351b72249a47454751549deb"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ad7a3fdf1351b72249a47454751549deb">Barotrauma.InputType.Voice</a></div><div class="ttdeci">@ Voice</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_af3c0d87f1b4b6e7828d40a5b173c06e3a88183b946cc5f0e8c96b2e66e1c74a7e"><div class="ttname"><a href="namespace_barotrauma.html#af3c0d87f1b4b6e7828d40a5b173c06e3a88183b946cc5f0e8c96b2e66e1c74a7e">Barotrauma.CauseOfDeathType.Unknown</a></div><div class="ttdeci">@ Unknown</div></div>

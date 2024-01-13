@@ -16,7 +16,7 @@ var class_barotrauma_1_1_sounds_1_1_sound_manager =
     [ "GetSoundChannelFromIndex", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#abf17c9c5ec8b2134f027155ee6601aa6", null ],
     [ "GetSourceFromIndex", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a239ba4f5211f8c81ade9b1272107cf07", null ],
     [ "InitializeAlcDevice", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#af669c6f683a94fb84fc5ed7fc3894129", null ],
-    [ "InitStreamThread", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#ae58507b9fdc3c4428b24334898f5c31d", null ],
+    [ "InitUpdateChannelThread", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a60ff3e1c15bd791e1f1478e71c093af9", null ],
     [ "IsPlaying", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a93921822c3afbf88596c7c18f3cbda85", null ],
     [ "KillChannels", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#aeaab62afa93b8506e80a12b40dccbdbe", null ],
     [ "LoadSound", "class_barotrauma_1_1_sounds_1_1_sound_manager.html#a9a66e36a7cbd6e8329bc8ca669d60b3c", null ],

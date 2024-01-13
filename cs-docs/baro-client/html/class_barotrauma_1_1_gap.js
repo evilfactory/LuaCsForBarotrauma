@@ -29,6 +29,7 @@ var class_barotrauma_1_1_gap =
     [ "LerpedFlowForce", "class_barotrauma_1_1_gap.html#a3c5271a1e352ff56b710a17896f19ba3", null ],
     [ "Name", "class_barotrauma_1_1_gap.html#a50d08580b5158837a930b1fff7277d8d", null ],
     [ "Open", "class_barotrauma_1_1_gap.html#a6c3604c368ea80310fcb285700f5fe2b", null ],
+    [ "PressureDistributionSpeed", "class_barotrauma_1_1_gap.html#a0f6c33b3c7bd0352c1992b8bde9f2063", null ],
     [ "Rect", "class_barotrauma_1_1_gap.html#af4b6015d12be7eb91dc005b0c7ed267c", null ],
     [ "SelectableInEditor", "class_barotrauma_1_1_gap.html#a1dc7fe9d634977599a22abb646b287db", null ],
     [ "SerializableProperties", "class_barotrauma_1_1_gap.html#a3e71a6608f8f0c01bd0d8b61b618ca57", null ],

@@ -324,7 +324,7 @@ $(document).ready(function(){initNavTree('_game_analytics_consent_8cs_source.htm
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        {</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">if</span> (response.ErrorException != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                DebugConsole.ThrowError(TextManager.GetWithVariable(<span class="stringliteral">&quot;MasterServerErrorException&quot;</span>, <span class="stringliteral">&quot;[error]&quot;</span>, response.ErrorException.ToString()));</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                DebugConsole.ThrowErrorLocalized(TextManager.GetWithVariable(<span class="stringliteral">&quot;MasterServerErrorException&quot;</span>, <span class="stringliteral">&quot;[error]&quot;</span>, response.ErrorException.ToString()));</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            }</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
@@ -333,13 +333,13 @@ $(document).ready(function(){initNavTree('_game_analytics_consent_8cs_source.htm
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">switch</span> (response.StatusCode)</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">case</span> HttpStatusCode.NotFound:</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    DebugConsole.ThrowError(TextManager.GetWithVariable(<span class="stringliteral">&quot;MasterServerError404&quot;</span>, <span class="stringliteral">&quot;[masterserverurl]&quot;</span>, consentServerUrl));</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    DebugConsole.ThrowErrorLocalized(TextManager.GetWithVariable(<span class="stringliteral">&quot;MasterServerError404&quot;</span>, <span class="stringliteral">&quot;[masterserverurl]&quot;</span>, consentServerUrl));</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">case</span> HttpStatusCode.ServiceUnavailable:</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    DebugConsole.ThrowError(TextManager.Get(<span class="stringliteral">&quot;MasterServerErrorUnavailable&quot;</span>));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    DebugConsole.ThrowErrorLocalized(TextManager.Get(<span class="stringliteral">&quot;MasterServerErrorUnavailable&quot;</span>));</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    DebugConsole.ThrowError(TextManager.GetWithVariables(<span class="stringliteral">&quot;MasterServerErrorDefault&quot;</span>, </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    DebugConsole.ThrowErrorLocalized(TextManager.GetWithVariables(<span class="stringliteral">&quot;MasterServerErrorDefault&quot;</span>, </div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        (<span class="stringliteral">&quot;[statuscode]&quot;</span>, response.StatusCode.ToString()),</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        (<span class="stringliteral">&quot;[statusdescription]&quot;</span>, response.StatusDescription)));</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    <span class="keywordflow">break</span>;</div>

@@ -64,6 +64,7 @@ var class_barotrauma_1_1_hull =
     [ "DrawOverWater", "class_barotrauma_1_1_hull.html#a8d3f6cc59e8ede9cccd93e0fadee06b4", null ],
     [ "DrawSurface", "class_barotrauma_1_1_hull.html#aef7277e9d33e51b8bb5e1401c32c7b12", null ],
     [ "FakeFireSources", "class_barotrauma_1_1_hull.html#a707315c81c798759b8dde23a151c6989", null ],
+    [ "FireCount", "class_barotrauma_1_1_hull.html#abe51a2fa04ca0f38e62fb40f68bf17cc", null ],
     [ "FireSources", "class_barotrauma_1_1_hull.html#af3c5075c11397fc2a49d8cbd4ca965f6", null ],
     [ "ForceAsWetRoom", "class_barotrauma_1_1_hull.html#ae9b25682d9dc64bf410f2f72066734e7", null ],
     [ "IsAirlock", "class_barotrauma_1_1_hull.html#ace7611ac9298dc5d743e4214a3f6539c", null ],

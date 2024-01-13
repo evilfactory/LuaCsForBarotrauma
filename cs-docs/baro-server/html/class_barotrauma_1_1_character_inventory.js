@@ -1,9 +1,10 @@
 var class_barotrauma_1_1_character_inventory =
 [
-    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#a5109582dcd9eecfa4196f96fc75022ed", null ],
+    [ "CharacterInventory", "class_barotrauma_1_1_character_inventory.html#ae3b8336b2fe061f2f8c744c7a2fcd5d2", null ],
     [ "CanBePutInSlot", "class_barotrauma_1_1_character_inventory.html#adc6d89565de44db69f600b93593ef88d", null ],
     [ "CanBePutInSlot", "class_barotrauma_1_1_character_inventory.html#a11d938048e2e88eaadb2009d9241e355", null ],
     [ "CreateNetworkEvent", "class_barotrauma_1_1_character_inventory.html#a6b4827234bb4ad56629059732f89c527", null ],
+    [ "FindEquippedItemByTag", "class_barotrauma_1_1_character_inventory.html#abdd8e1436def42aa6f360777580489ce", null ],
     [ "FindLimbSlot", "class_barotrauma_1_1_character_inventory.html#a888420d36a3edec7f5bc9bc3f0ea07ad", null ],
     [ "GetItemInLimbSlot", "class_barotrauma_1_1_character_inventory.html#a708f9fe496a455a39ef7923a63076826", null ],
     [ "IsAnySlotAvailable", "class_barotrauma_1_1_character_inventory.html#a0bb7c42226945754ba6dcff84446c0df", null ],

@@ -30,11 +30,8 @@ var NAVTREE =
     [ "Client class documentation", "../baro-client/html/index.html", null ],
     [ "Barotrauma C# modding guide", "index.html", [
       [ "Introduction", "index.html#autotoc_md1", null ],
-      [ "Starting a new mod", "index.html#autotoc_md2", [
-        [ "Important features", "index.html#autotoc_md3", null ],
-        [ "Code example", "index.html#autotoc_md4", null ]
-      ] ],
-      [ "Links to class documentation", "index.html#ltcd", null ]
+      [ "@ref /home/runner/work/LuaCsForBarotrauma/LuaCsForBarotrauma/luacs-docs/cs/setting-up-assembly-mod.md \"Setting up Assembly Mod\"", "index.html#autotoc_md2", null ],
+      [ "@ref /home/runner/work/LuaCsForBarotrauma/LuaCsForBarotrauma/luacs-docs/cs/setting-up-simple-mod.md \"Setting up Simple Mod (Old System)\"", "index.html#autotoc_md3", null ]
     ] ]
   ] ]
 ];

@@ -8,5 +8,7 @@ var class_barotrauma_1_1_check_visibility_action =
     [ "ApplyTagToTarget", "class_barotrauma_1_1_check_visibility_action.html#adb27aa48eff0d303d19d14a5baa2c11d", null ],
     [ "CheckFacing", "class_barotrauma_1_1_check_visibility_action.html#ac8169ab8fc2f9ee5973d0a2a64e82bd8", null ],
     [ "EntityTag", "class_barotrauma_1_1_check_visibility_action.html#a77369663da6eb84aa89ae2e7795b3938", null ],
+    [ "ExcludedEntityTag", "class_barotrauma_1_1_check_visibility_action.html#aeec3148a2e016026675ee493467ffad7", null ],
+    [ "MaxDistance", "class_barotrauma_1_1_check_visibility_action.html#a809cd7c5727a4ee879570dfbef6860e3", null ],
     [ "TargetTag", "class_barotrauma_1_1_check_visibility_action.html#adf174804ffd93afd61f6b7995f89302d", null ]
 ];

@@ -104,54 +104,62 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_e
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">int</span> width = 450,</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">int</span> height = 80)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ObjectiveManager.Segment? segment = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="comment">// Only need to create the segment when it&#39;s being triggered (otherwise the tutorial already has the segment instance)</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> (Type == SegmentActionType.Trigger)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            segment = ObjectiveManager.Segment.CreateInfoBoxSegment(Identifier, ObjectiveTag, autoPlayVideo ? Tutorials.AutoPlayVideo.Yes : Tutorials.AutoPlayVideo.No,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="keyword">new</span> ObjectiveManager.Segment.Text(TextTag, width, height, Anchor.Center),</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keyword">new</span> ObjectiveManager.Segment.Video(videoFile, TextTag, width, height));</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Type == SegmentActionType.Add)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            segment = ObjectiveManager.Segment.CreateObjectiveSegment(Identifier, !ObjectiveTag.IsEmpty ? ObjectiveTag : Identifier);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">if</span> (segment is not <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            segment.CanBeCompleted = CanBeCompleted;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            segment.ParentId = ParentObjectiveId;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">switch</span> (Type)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Trigger:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Add:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                ObjectiveManager.TriggerSegment(segment);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Complete:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                ObjectiveManager.CompleteSegment(Identifier);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Remove:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                ObjectiveManager.RemoveSegment(Identifier);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.CompleteAndRemove:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                ObjectiveManager.CompleteSegment(Identifier);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                ObjectiveManager.RemoveSegment(Identifier);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Fail:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                ObjectiveManager.FailSegment(Identifier);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.FailAndRemove:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                ObjectiveManager.FailSegment(Identifier);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                ObjectiveManager.RemoveSegment(Identifier);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    partial <span class="keywordtype">void</span> UpdateProjSpecific()</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="class_event_objective_action.html#a74204009f622517a7162d54f6f086a98">Trigger</a>(Type, Identifier, ObjectiveTag, ParentObjectiveId, TextTag, CanBeCompleted, AutoPlayVideo, VideoFile, Width, Height);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (Type == SegmentActionType.AddIfNotFound)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span> (ObjectiveManager.IsSegmentActive(Identifier)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ObjectiveManager.Segment? segment = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">// Only need to create the segment when it&#39;s being triggered (otherwise the tutorial already has the segment instance)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span> (Type == SegmentActionType.Trigger)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            segment = ObjectiveManager.Segment.CreateInfoBoxSegment(Identifier, ObjectiveTag, autoPlayVideo ? Tutorials.AutoPlayVideo.Yes : Tutorials.AutoPlayVideo.No,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <span class="keyword">new</span> ObjectiveManager.Segment.Text(TextTag, width, height, Anchor.Center),</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">new</span> ObjectiveManager.Segment.Video(videoFile, TextTag, width, height));</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Type == SegmentActionType.Add ||</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                Type == SegmentActionType.AddIfNotFound)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            segment = ObjectiveManager.Segment.CreateObjectiveSegment(Identifier, !ObjectiveTag.IsEmpty ? ObjectiveTag : Identifier);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (segment is not <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            segment.CanBeCompleted = CanBeCompleted;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            segment.ParentId = ParentObjectiveId;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">switch</span> (Type)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Trigger:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Add:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.AddIfNotFound:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                ObjectiveManager.TriggerSegment(segment);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Complete:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                ObjectiveManager.CompleteSegment(Identifier);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Remove:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                ObjectiveManager.RemoveSegment(Identifier);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.CompleteAndRemove:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                ObjectiveManager.CompleteSegment(Identifier);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                ObjectiveManager.RemoveSegment(Identifier);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.Fail:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                ObjectiveManager.FailSegment(Identifier);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">case</span> SegmentActionType.FailAndRemove:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                ObjectiveManager.FailSegment(Identifier);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                ObjectiveManager.RemoveSegment(Identifier);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    partial <span class="keywordtype">void</span> UpdateProjSpecific()</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="class_event_objective_action.html#a74204009f622517a7162d54f6f086a98">Trigger</a>(Type, Identifier, ObjectiveTag, ParentObjectiveId, TextTag, CanBeCompleted, AutoPlayVideo, VideoFile, Width, Height);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="ttc" id="aclass_event_objective_action_html"><div class="ttname"><a href="class_event_objective_action.html">EventObjectiveAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_event_objective_action_8cs_source.html#l00005">BarotraumaClient/ClientSource/Events/EventActions/EventObjectiveAction.cs:6</a></div></div>
 <div class="ttc" id="aclass_event_objective_action_html_a74204009f622517a7162d54f6f086a98"><div class="ttname"><a href="class_event_objective_action.html#a74204009f622517a7162d54f6f086a98">EventObjectiveAction.Trigger</a></div><div class="ttdeci">static void Trigger(SegmentActionType Type, Identifier Identifier, Identifier ObjectiveTag, Identifier ParentObjectiveId, Identifier TextTag, bool CanBeCompleted, bool autoPlayVideo=false, string videoFile=&quot;&quot;, int width=450, int height=80)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_event_objective_action_8cs_source.html#l00007">BarotraumaClient/ClientSource/Events/EventActions/EventObjectiveAction.cs:7</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>

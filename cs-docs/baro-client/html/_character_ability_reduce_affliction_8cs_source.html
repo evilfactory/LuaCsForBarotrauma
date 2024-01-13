@@ -102,18 +102,19 @@ $(document).ready(function(){initNavTree('_character_ability_reduce_affliction_8
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">if</span> (afflictionId.IsEmpty)</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;Error in {nameof(CharacterAbilityReduceAffliction)} - affliction identifier not set.&quot;</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a792052cc4246e828b85d4dca6b60a1d2">ApplyEffect</a>(AbilityObject abilityObject)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">if</span> (abilityObject is not IAbilityCharacter character) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            character.Character.CharacterHealth.ReduceAfflictionOnAllLimbs(afflictionId, amount);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_character_ability_html_a792052cc4246e828b85d4dca6b60a1d2"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a792052cc4246e828b85d4dca6b60a1d2">Barotrauma.Abilities.CharacterAbility.ApplyEffect</a></div><div class="ttdeci">virtual void ApplyEffect()</div><div class="ttdef"><b>Definition:</b> <a href="_character_ability_8cs_source.html#l00077">CharacterAbility.cs:77</a></div></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;Error in {nameof(CharacterAbilityReduceAffliction)} - affliction identifier not set.&quot;</span>,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                    contentPackage: abilityElement.ContentPackage);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a792052cc4246e828b85d4dca6b60a1d2">ApplyEffect</a>(AbilityObject abilityObject)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (abilityObject is not IAbilityCharacter character) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            character.Character.CharacterHealth.ReduceAfflictionOnAllLimbs(afflictionId, amount);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_character_ability_html_a792052cc4246e828b85d4dca6b60a1d2"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a792052cc4246e828b85d4dca6b60a1d2">Barotrauma.Abilities.CharacterAbility.ApplyEffect</a></div><div class="ttdeci">virtual void ApplyEffect()</div><div class="ttdef"><b>Definition:</b> <a href="_character_ability_8cs_source.html#l00078">CharacterAbility.cs:78</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_abilities_html"><div class="ttname"><a href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00004">AbilityCondition.cs:5</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

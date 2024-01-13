@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('class_barotrauma_1_1_sprite.html','');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_barotrauma_1_1_sprite-members.html">List of all members</a>  </div>
@@ -143,16 +144,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a11e061c5c1dc87de94db5c43328a2977"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#a11e061c5c1dc87de94db5c43328a2977">DrawSilhouette</a> (SpriteBatch spriteBatch, Vector2 pos, Vector2 <a class="el" href="class_barotrauma_1_1_sprite.html#a6ba8326266479a46391c11839727157c">origin</a>, float rotate, Vector2 scale, SpriteEffects spriteEffect=SpriteEffects.None, float? <a class="el" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a>=null)</td></tr>
 <tr class="memdesc:a11e061c5c1dc87de94db5c43328a2977"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a silhouette for the sprite (or outline if the sprite is rendered on top of it)  <a href="class_barotrauma_1_1_sprite.html#a11e061c5c1dc87de94db5c43328a2977">More...</a><br /></td></tr>
 <tr class="separator:a11e061c5c1dc87de94db5c43328a2977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac134204e0206d2c22dea52de69f5f120"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#ac134204e0206d2c22dea52de69f5f120">DrawTiled</a> (ISpriteBatch spriteBatch, Vector2 position, Vector2 targetSize, Color? color=null, Vector2? startOffset=null, Vector2? textureScale=null, float? <a class="el" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a>=null)</td></tr>
-<tr class="separator:ac134204e0206d2c22dea52de69f5f120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0596ea5eca06858273f38522840ff7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#af0596ea5eca06858273f38522840ff7b">DrawTiled</a> (ISpriteBatch spriteBatch, Vector2 position, Vector2 targetSize, float <a class="el" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a>=0f, Vector2? <a class="el" href="class_barotrauma_1_1_sprite.html#a6ba8326266479a46391c11839727157c">origin</a>=null, Color? color=null, Vector2? startOffset=null, Vector2? textureScale=null, float? <a class="el" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a>=null, SpriteEffects? spriteEffects=null)</td></tr>
+<tr class="separator:af0596ea5eca06858273f38522840ff7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a526a85aff68bb184b40461cf9725f8e0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#a526a85aff68bb184b40461cf9725f8e0">GetIdentifier</a> (XElement sourceElement)</td></tr>
 <tr class="memdesc:a526a85aff68bb184b40461cf9725f8e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a supposedly unique identifier from the parent element. If the parent element is not found, uses the sprite element. TODO: If there are multiple elements with exactly the same data, the ids will fail. -&gt; Is there a better way to identify the sprites? ALSO TODO: delete :)  <a href="class_barotrauma_1_1_sprite.html#a526a85aff68bb184b40461cf9725f8e0">More...</a><br /></td></tr>
 <tr class="separator:a526a85aff68bb184b40461cf9725f8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc8cdddea064cf9adcb0a86558b01082"><td class="memItemLeft" align="right" valign="top">static Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#abc8cdddea064cf9adcb0a86558b01082">LoadTexture</a> (string file, bool compress=true)</td></tr>
-<tr class="separator:abc8cdddea064cf9adcb0a86558b01082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af14f9aac3a9820ec162f0cce41929a26"><td class="memItemLeft" align="right" valign="top">static Texture2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#af14f9aac3a9820ec162f0cce41929a26">LoadTexture</a> (string file, bool compress=true, <a class="el" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> contentPackage=null)</td></tr>
+<tr class="separator:af14f9aac3a9820ec162f0cce41929a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -162,6 +163,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a54fd5dd875169e08c70007ee64ef9fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8356c6aefe51d8e83ef0544583244ff3"><td class="memItemLeft" align="right" valign="top">SpriteEffects&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a> = SpriteEffects.None</td></tr>
 <tr class="separator:a8356c6aefe51d8e83ef0544583244ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a76215ddf3fb2c8f60dab417fffe56a6d"><td class="memItemLeft" align="right" valign="top">static readonly Version&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_sprite.html#a76215ddf3fb2c8f60dab417fffe56a6d">LastBrokenTiledSpriteGameVersion</a> = new Version(major: 1, minor: 2, build: 7, revision: 0)</td></tr>
+<tr class="memdesc:a76215ddf3fb2c8f60dab417fffe56a6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last version of the game that had broken handling of sprites that were scaled, flipped and offset  <a href="class_barotrauma_1_1_sprite.html#a76215ddf3fb2c8f60dab417fffe56a6d">More...</a><br /></td></tr>
+<tr class="separator:a76215ddf3fb2c8f60dab417fffe56a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -714,8 +721,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ac134204e0206d2c22dea52de69f5f120"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac134204e0206d2c22dea52de69f5f120">&#9670;&nbsp;</a></span>DrawTiled()</h2>
+<a id="af0596ea5eca06858273f38522840ff7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0596ea5eca06858273f38522840ff7b">&#9670;&nbsp;</a></span>DrawTiled()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -741,6 +748,18 @@ Properties</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rotation</em> = <code>0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2?&#160;</td>
+          <td class="paramname"><em>origin</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">Color?&#160;</td>
           <td class="paramname"><em>color</em> = <code>null</code>, </td>
         </tr>
@@ -760,7 +779,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float?&#160;</td>
-          <td class="paramname"><em>depth</em> = <code>null</code>&#160;</td>
+          <td class="paramname"><em>depth</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SpriteEffects?&#160;</td>
+          <td class="paramname"><em>spriteEffects</em> = <code>null</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -770,7 +795,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00287">287</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html">BarotraumaClient/ClientSource/Sprite/Sprite.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00292">292</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html">BarotraumaClient/ClientSource/Sprite/Sprite.cs</a>.</p>
 
 </div>
 </div>
@@ -843,8 +868,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="abc8cdddea064cf9adcb0a86558b01082"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc8cdddea064cf9adcb0a86558b01082">&#9670;&nbsp;</a></span>LoadTexture()</h2>
+<a id="af14f9aac3a9820ec162f0cce41929a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af14f9aac3a9820ec162f0cce41929a26">&#9670;&nbsp;</a></span>LoadTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -862,7 +887,13 @@ Properties</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>compress</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>compress</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_barotrauma_1_1_content_package.html">ContentPackage</a>&#160;</td>
+          <td class="paramname"><em>contentPackage</em> = <code>null</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1027,6 +1058,32 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00041">41</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html">BarotraumaShared/SharedSource/Sprite/Sprite.cs</a>.</p>
+
+</div>
+</div>
+<a id="a76215ddf3fb2c8f60dab417fffe56a6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76215ddf3fb2c8f60dab417fffe56a6d">&#9670;&nbsp;</a></span>LastBrokenTiledSpriteGameVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Version Barotrauma.Sprite.LastBrokenTiledSpriteGameVersion = new Version(major: 1, minor: 2, build: 7, revision: 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Last version of the game that had broken handling of sprites that were scaled, flipped and offset </p>
+
+<p class="definition">Definition at line <a class="el" href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00290">290</a> of file <a class="el" href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html">BarotraumaClient/ClientSource/Sprite/Sprite.cs</a>.</p>
 
 </div>
 </div>

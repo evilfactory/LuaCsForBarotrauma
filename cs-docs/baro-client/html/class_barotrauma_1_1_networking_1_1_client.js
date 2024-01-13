@@ -10,7 +10,7 @@ var class_barotrauma_1_1_networking_1_1_client =
     [ "ResetVotes", "class_barotrauma_1_1_networking_1_1_client.html#a66b38eaf843cf266c10c06a48dcb5723", null ],
     [ "SessionOrAccountIdMatches", "class_barotrauma_1_1_networking_1_1_client.html#aad19e72b76ed6a95dcbd496a835ccf65", null ],
     [ "SetPermissions", "class_barotrauma_1_1_networking_1_1_client.html#a8215741db5b2c394169447a49ac936a3", null ],
-    [ "SetPermissions", "class_barotrauma_1_1_networking_1_1_client.html#a16230fc8c5bcc81d0673f85972a6a0d7", null ],
+    [ "SetPermissions", "class_barotrauma_1_1_networking_1_1_client.html#a8a67fb904f13d630b86f1ee9f0041ef2", null ],
     [ "SetVote", "class_barotrauma_1_1_networking_1_1_client.html#ad07ec0598cf36f64b76cdd2a62f55e54", null ],
     [ "UpdateVoipSound", "class_barotrauma_1_1_networking_1_1_client.html#ad26fc14302163fab25a25633ab309e19", null ],
     [ "WritePermissions", "class_barotrauma_1_1_networking_1_1_client.html#a7467fbdca578faaae693d5e0e627f3b1", null ],

@@ -14,6 +14,7 @@ var class_barotrauma_1_1_lights_1_1_convex_hull =
     [ "MaxMergeLosVerticesDist", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a4f1f345d80574179e59f9ccab7587254", null ],
     [ "BoundingBox", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a7f76c9cf6bf69dc5511a8ea6b1d25ed8", null ],
     [ "Enabled", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a244a9488ba4e84ee8af8633bb7386846", null ],
+    [ "IsInvalid", "class_barotrauma_1_1_lights_1_1_convex_hull.html#af4aa8456f6ee9399cea5296476d18b30", null ],
     [ "LastVertexChangeTime", "class_barotrauma_1_1_lights_1_1_convex_hull.html#a7b0af7543721c2d5663a67146da6ff99", null ],
     [ "ParentEntity", "class_barotrauma_1_1_lights_1_1_convex_hull.html#ae0bfe39e00a156b5e8a7366561c7aece", null ],
     [ "PenumbraVertexCount", "class_barotrauma_1_1_lights_1_1_convex_hull.html#aefede1df974c15db27677a8e00358de0", null ],

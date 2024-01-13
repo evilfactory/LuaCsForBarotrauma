@@ -108,8 +108,8 @@ Inheritance diagram for Barotrauma.LevelObject:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a14c416ee417ddcced4f0cd04e531b2f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_object.html#a14c416ee417ddcced4f0cd04e531b2f3">LevelObject</a> (<a class="el" href="class_barotrauma_1_1_level_object_prefab.html">LevelObjectPrefab</a> prefab, Vector3 position, float scale, float rotation=0.0f)</td></tr>
 <tr class="separator:a14c416ee417ddcced4f0cd04e531b2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b54f6a388043b69b113642c2e2e68f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_attack_result.html">AttackResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_object.html#a8b54f6a388043b69b113642c2e2e68f0">AddDamage</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> attacker, Vector2 worldPosition, <a class="el" href="class_barotrauma_1_1_attack.html">Attack</a> attack, float deltaTime, bool playSound=true)</td></tr>
-<tr class="separator:a8b54f6a388043b69b113642c2e2e68f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c8485bb6925beda6f902657f2c8e87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_barotrauma_1_1_attack_result.html">AttackResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_object.html#af6c8485bb6925beda6f902657f2c8e87">AddDamage</a> (<a class="el" href="class_barotrauma_1_1_character.html">Character</a> attacker, Vector2 worldPosition, <a class="el" href="class_barotrauma_1_1_attack.html">Attack</a> attack, Vector2 impulseDirection, float deltaTime, bool playSound=true)</td></tr>
+<tr class="separator:af6c8485bb6925beda6f902657f2c8e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a076db6a30ae038898cb6bc9a822b4f85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_object.html#a076db6a30ae038898cb6bc9a822b4f85">AddDamage</a> (float damage, float deltaTime, <a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> attacker, bool isNetworkEvent=false)</td></tr>
 <tr class="separator:a076db6a30ae038898cb6bc9a822b4f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff66fc4773f15ea136085200488f0761"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_level_object.html#aff66fc4773f15ea136085200488f0761">LocalToWorld</a> (Vector2 localPosition, float swingState=0.0f)</td></tr>
@@ -236,8 +236,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8b54f6a388043b69b113642c2e2e68f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b54f6a388043b69b113642c2e2e68f0">&#9670;&nbsp;</a></span>AddDamage() <span class="overload">[1/2]</span></h2>
+<a id="af6c8485bb6925beda6f902657f2c8e87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c8485bb6925beda6f902657f2c8e87">&#9670;&nbsp;</a></span>AddDamage() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,6 +263,12 @@ Properties</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>impulseDirection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>deltaTime</em>, </td>
         </tr>
@@ -280,7 +286,7 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="interface_barotrauma_1_1_i_damageable.html#aa5b20706c0a2d785ac1ca150ef1a8838">Barotrauma.IDamageable</a>.</p>
+<p>Implements <a class="el" href="interface_barotrauma_1_1_i_damageable.html#a1f18ee754be08ab0cdfcfa96cf7c417e">Barotrauma.IDamageable</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_level_object_8cs_source.html#l00163">163</a> of file <a class="el" href="_level_object_8cs_source.html">LevelObject.cs</a>.</p>
 

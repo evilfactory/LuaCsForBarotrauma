@@ -18,6 +18,8 @@ var class_barotrauma_1_1_server_list_screen =
     [ "AddToRecentServers", "class_barotrauma_1_1_server_list_screen.html#a36b79c3ae492392eb2a5024c48bd9fa5", null ],
     [ "Deselect", "class_barotrauma_1_1_server_list_screen.html#a2f62f7f9cc8c116800b4b53e4e42b636", null ],
     [ "Draw", "class_barotrauma_1_1_server_list_screen.html#a70cd50b33de9986600c8ed79858a85ab", null ],
+    [ "FilterServers", "class_barotrauma_1_1_server_list_screen.html#a78dbe07d2c9a14be8f4b4a6680929b1d", null ],
+    [ "HideServerPreview", "class_barotrauma_1_1_server_list_screen.html#a32df2a719b5f2071ba45c42be4682e96", null ],
     [ "IsFavorite", "class_barotrauma_1_1_server_list_screen.html#a4555cf8c258da4646969dbb6d797dd69", null ],
     [ "JoinServer", "class_barotrauma_1_1_server_list_screen.html#a62408138246486a1ff3dfed68a396fd3", null ],
     [ "LoadServerFilters", "class_barotrauma_1_1_server_list_screen.html#ae12f235981a10954ff4265f51412f89e", null ],

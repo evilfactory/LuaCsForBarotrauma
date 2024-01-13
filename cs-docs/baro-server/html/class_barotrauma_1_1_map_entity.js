@@ -8,6 +8,7 @@ var class_barotrauma_1_1_map_entity =
     [ "FlipX", "class_barotrauma_1_1_map_entity.html#a1367dfa143d4818d60582131e6fdbdb2", null ],
     [ "FlipY", "class_barotrauma_1_1_map_entity.html#a61acc75010c3135e1ca5213c5f3306ff", null ],
     [ "GetLinkedEntities< T >", "class_barotrauma_1_1_map_entity.html#a324adbf958e013cbe91a7d4026c46eb0", null ],
+    [ "GetTransformedQuad", "class_barotrauma_1_1_map_entity.html#a7a52c9d0ba2a7b4f38e73239493068c7", null ],
     [ "GetUpgrade", "class_barotrauma_1_1_map_entity.html#af499bc5a499dfcdac2beec67fc5f75c5", null ],
     [ "GetUpgrades", "class_barotrauma_1_1_map_entity.html#a979c2e7b7b2f1e5b11059fdc8a5fbb45", null ],
     [ "HasUpgrade", "class_barotrauma_1_1_map_entity.html#a438aeca8633500f0fe9da303613039e4", null ],

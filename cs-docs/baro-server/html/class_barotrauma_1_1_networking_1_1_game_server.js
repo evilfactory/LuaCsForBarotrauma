@@ -41,6 +41,7 @@ var class_barotrauma_1_1_networking_1_1_game_server =
     [ "UpdateClientPermissions", "class_barotrauma_1_1_networking_1_1_game_server.html#ad1c6285039d6a2ffedec315969046e0e", null ],
     [ "UpdateMissionState", "class_barotrauma_1_1_networking_1_1_game_server.html#a4df73c10debdafeb2dc632ecad62f872", null ],
     [ "UpdateVoteStatus", "class_barotrauma_1_1_networking_1_1_game_server.html#a1673b68fe3c0404242eb36497e8bbabe", null ],
+    [ "JobAssignmentDebugLog", "class_barotrauma_1_1_networking_1_1_game_server.html#a2c6a9b0abbd1258499e1b0396b3d9bd6", null ],
     [ "SubmarineSwitchLoad", "class_barotrauma_1_1_networking_1_1_game_server.html#a43194254565a7f2374619f17f91ebbe3", null ],
     [ "ConnectedClients", "class_barotrauma_1_1_networking_1_1_game_server.html#a2c382f55d9d3dd932e2ab2c1ff2ed077", null ],
     [ "EntityEventManager", "class_barotrauma_1_1_networking_1_1_game_server.html#a7e58c58684339590d5e6d81999daede3", null ],

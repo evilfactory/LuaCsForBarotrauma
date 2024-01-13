@@ -78,105 +78,12 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md_intro"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>C# modding is part of the <b><a href="https://github.com/evilfactory/Barotrauma-lua-attempt">Lua For Barotrauma</a></b> mod and requires the package <code>Cs For <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a></code> to be turned on (<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2795927223">steam workshop</a>), in some cases the package is not needed and a prompt in game will be shown to enable it automatically.</p>
+<p>C# modding is part of the <b><a href="https://github.com/evilfactory/LuaCsForBarotrauma">Lua For Barotrauma</a></b> mod and requires the package <code>Cs For <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a></code> to be turned on (<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2795927223">steam workshop</a>), in some cases the package is not needed and a prompt in game will be shown to enable it automatically.</p>
 <p>This modding requires strict source structure, but comes with the benefits of being handled natively by game engine, witch removes many hurdles with type casting or similar issues.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Starting a new mod</h1>
-<p>The main star of the show is <a class="elRef" href="../baro-server/html/class_barotrauma_1_1_a_cs_mod.html">Barotrauma::ACsMod</a> class. It is what most of your mods will use to hook game methods, and execute custom code. If you are planning on creating new components it's possible to just inherit from ItemComponent.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-Important features</h2>
-<ul>
-<li>Mods have full access to Harmony to allow you to perform any patches you wish.</li>
-<li>All utility classes can be accessed either by their type (i.e that have name that starts with <code>LuaCs...</code>) or through <code>GameMain.LuaCs</code> property (refer to <a href="#ltcd">class documentation</a>).</li>
-<li>All C# code files must be located in <code>&lt;mod_root&gt;/CSharp/*</code> otherwise they won't be compiled</li>
-<li>To configure <b>server / client</b> execution behaviour create <code>RunConfig.xml</code> in <code>CSharp</code> directory, like is shown below (run types are <code>Standard</code>, <code>Forced</code> and <code>None</code>)</li>
-<li>Additionally you can specify what code runs where by either <em><b>filepath</b></em> or <em><b>pre-processor statements</b></em></li>
-<li>In case of filepath, your files must be located in either <code>CSharp/Shared/*</code>, <code>CSharp/Server/*</code> or <code>CSharp/Client/*</code>, for <em>shared</em> code, <em>server-side</em> code or <em>client-side</em> code respectively (in any other case, the code is assumed to be shared)</li>
-<li>I case of pre-processor, you can use <code>SERVER</code> or <code>CLIENT</code> definitions to separate code into <em>server-side</em> code and <em>client-side</em> code respectively</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Code example</h2>
-<p>A generic C# mod boilerplate:</p>
-<p>File-tree:</p>
-<div class="fragment"><div class="line">&lt;mod_root&gt;/</div>
-<div class="line">├─ CSharp/</div>
-<div class="line">│  ├─ RunConfig.xml</div>
-<div class="line">│  ├─ Shared/ExampleMod.cs</div>
-<div class="line">│  ├─ Server/ExampleMod.cs</div>
-<div class="line">│  └─ Client/ExampleMod.cs</div>
-<div class="line">└─ dummyitem.xml</div>
-</div><!-- fragment --><hr  />
-<p> <code>&lt;mod_root&gt;/CSharp/RunConfig.xml</code></p>
-<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;utf-8&quot;</span>?&gt;</div>
-<div class="line">&lt;<span class="keywordtype">RunConfig</span>&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">Server</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Server</span>&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">Client</span>&gt;<span class="keyword">Forced</span>&lt;/<span class="keywordtype">Client</span>&gt;</div>
-<div class="line">&lt;/<span class="keywordtype">RunConfig</span>&gt;</div>
-</div><!-- fragment --><hr  />
-<p> <code>&lt;mod_root&gt;/CSharp/Shared/ExampleMod.cs</code></p>
-<div class="fragment"><div class="line">using System;</div>
-<div class="line">using Barotrauma;</div>
-<div class="line"> </div>
-<div class="line">namespace ExampleNamespace {</div>
-<div class="line">    partial class ExampleMod: ACsMod {</div>
-<div class="line">        public ExampleMod() {</div>
-<div class="line">            // shared code</div>
-<div class="line">            ...</div>
-<div class="line"> </div>
-<div class="line">            #if SERVER</div>
-<div class="line">                InitServer();</div>
-<div class="line">            #elif CLIENT</div>
-<div class="line">                InitClient();</div>
-<div class="line">            #endif</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line">        public override void Stop() {</div>
-<div class="line">            // stopping code, e.g. save custom data</div>
-<div class="line">             #if SERVER</div>
-<div class="line">                // server-side code</div>
-<div class="line">                ...</div>
-<div class="line">            #elif CLIENT</div>
-<div class="line">                // client-side code</div>
-<div class="line">                ...</div>
-<div class="line">            #endif</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-</div><!-- fragment --><hr  />
-<p> <code>&lt;mod_root&gt;/CSharp/Server/ExampleMod.cs</code></p>
-<div class="fragment"><div class="line">using System;</div>
-<div class="line">using Barotrauma;</div>
-<div class="line"> </div>
-<div class="line">namespace ExampleNamespace {</div>
-<div class="line">    partial class ExampleMod {</div>
-<div class="line">        public void InitServer() {</div>
-<div class="line">            // server-side initialization</div>
-<div class="line">            ...</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-</div><!-- fragment --><hr  />
-<p> <code>&lt;mod_root&gt;/CSharp/Client/ExampleMod.cs</code></p>
-<div class="fragment"><div class="line">using System;</div>
-<div class="line">using Barotrauma;</div>
-<div class="line"> </div>
-<div class="line">namespace ExampleNamespace {</div>
-<div class="line">    partial class ExampleMod {</div>
-<div class="line">        public void InitClient() {</div>
-<div class="line">            // client-side initialization</div>
-<div class="line">            ...</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-</div><!-- fragment --><hr  />
-<p> <code>&lt;mod_root&gt;/dummyitem.xml</code></p>
-<div class="fragment"><div class="line">&lt;<span class="keywordtype">Items</span>&gt;&lt;/<span class="keywordtype">Items</span>&gt; </div>
-</div><!-- fragment --><h1><a class="anchor" id="ltcd"></a>
-Links to class documentation</h1>
-<ul>
-<li><a href="../baro-server/html/index.html">Server documentation</a></li>
-<li><a href="../baro-client/html/index.html">Client documentation</a> </li>
-</ul>
+@ref /home/runner/work/LuaCsForBarotrauma/LuaCsForBarotrauma/luacs-docs/cs/setting-up-assembly-mod.md "Setting up Assembly Mod"</h1>
+<h1><a class="anchor" id="autotoc_md3"></a>
+@ref /home/runner/work/LuaCsForBarotrauma/LuaCsForBarotrauma/luacs-docs/cs/setting-up-simple-mod.md "Setting up Simple Mod (Old System)"</h1>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

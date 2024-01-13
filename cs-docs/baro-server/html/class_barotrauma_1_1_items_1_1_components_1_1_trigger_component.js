@@ -5,6 +5,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_trigger_component =
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#a5f4906e2802d04b2cefdba5bedcc87a3", null ],
     [ "OnMapLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#a782d3fb3f7c50202c527e6467b92920b", null ],
     [ "ReceiveSignal", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#a1517900c472f69831357c18363a409e8", null ],
+    [ "RemoveComponentSpecific", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#a2efce2004e1da859351fa0d1481e317d", null ],
     [ "ServerEventWrite", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#a817c9957e6326becec68b44dec0a3c03", null ],
     [ "Update", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#abb4152acae820fb3e220cd08c4bb10a9", null ],
     [ "ApplyEffectsToCharactersInsideSub", "class_barotrauma_1_1_items_1_1_components_1_1_trigger_component.html#aa67e50afcc7d884cca37c3e1fddba87a", null ],

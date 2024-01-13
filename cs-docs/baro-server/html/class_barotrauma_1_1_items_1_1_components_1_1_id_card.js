@@ -20,7 +20,6 @@ var class_barotrauma_1_1_items_1_1_components_1_1_id_card =
     [ "OwnerSkinColor", "class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#a6af2e8bea51677fcfe0bcefcedf5e665", null ],
     [ "OwnerTags", "class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#a8ec1696180e2ba18f12b348b0b56483a", null ],
     [ "OwnerTagSet", "class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#a8128969126e7346d73f786ce3fbe2bc7", null ],
-    [ "SpawnPointTagsGiven", "class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#a59dd3a5fd47d5aec0ed0407d2e90a8a4", null ],
     [ "SubmarineSpecificID", "class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#aba86b273924bacac9fadc280fea55fe2", null ],
     [ "TeamID", "class_barotrauma_1_1_items_1_1_components_1_1_id_card.html#acae9d20287499f3d3db8b0814f709305", null ]
 ];

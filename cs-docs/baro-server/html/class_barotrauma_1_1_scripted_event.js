@@ -2,7 +2,8 @@ var class_barotrauma_1_1_scripted_event =
 [
     [ "ScriptedEvent", "class_barotrauma_1_1_scripted_event.html#a26ba81eb5b3cb0000d6b766c6c27c147", null ],
     [ "AddTarget", "class_barotrauma_1_1_scripted_event.html#ae59cea1d0265ab15e86a49cf4ad6cf41", null ],
-    [ "AddTargetPredicate", "class_barotrauma_1_1_scripted_event.html#a685558319d0d5a515af39871f3ae3f9b", null ],
+    [ "AddTargetPredicate", "class_barotrauma_1_1_scripted_event.html#ac7523e09f37751455a16f9e7b3542e4b", null ],
+    [ "EntitySpawned", "class_barotrauma_1_1_scripted_event.html#ae1a3570bb84859ff9bc3f42f46db4e3b", null ],
     [ "Finish", "class_barotrauma_1_1_scripted_event.html#a7f4ce31a7b69f1a713d4e1e1edf2affd", null ],
     [ "GetAllActions", "class_barotrauma_1_1_scripted_event.html#a7add1ecab875b26628a25ff3b8f974de", null ],
     [ "GetDebugInfo", "class_barotrauma_1_1_scripted_event.html#a3f22560d92c649ccd2e90870f74f83ce", null ],
@@ -13,6 +14,7 @@ var class_barotrauma_1_1_scripted_event =
     [ "LevelMeetsRequirements", "class_barotrauma_1_1_scripted_event.html#ae5fb4755ca45cdf54ca5adc973b367a3", null ],
     [ "RemoveTag", "class_barotrauma_1_1_scripted_event.html#abe3bdd05998d73eb099343bec87409b1", null ],
     [ "ReplaceVariablesInEventText", "class_barotrauma_1_1_scripted_event.html#a8d6a9292e8a7eeec6b5fe94016606aa2", null ],
+    [ "TargetPredicate", "class_barotrauma_1_1_scripted_event.html#a5f9a2bded43ea79e70c2c26d692dd58a", null ],
     [ "ToString", "class_barotrauma_1_1_scripted_event.html#a3a0134f781c30aaba1307866de5eab37", null ],
     [ "Update", "class_barotrauma_1_1_scripted_event.html#a768627e4f21a08cd0b97a6df53f17dce", null ],
     [ "OnRoundEndAction", "class_barotrauma_1_1_scripted_event.html#a6475dd9ad2e0e9adc005a2cb3c60eafb", null ],

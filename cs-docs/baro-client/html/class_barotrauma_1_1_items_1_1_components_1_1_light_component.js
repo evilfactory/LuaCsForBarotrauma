@@ -4,6 +4,7 @@ var class_barotrauma_1_1_items_1_1_components_1_1_light_component =
     [ "CheckIfNeedsUpdate", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a11e8480537d1e45546d40c9564b839ca", null ],
     [ "ClientEventRead", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a6f70012be05c30206457ff9f12e8bb35", null ],
     [ "Draw", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#acc7afe032619dc8abfc953fa092c5401", null ],
+    [ "Drop", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a29a642ce87a281b77c5160e1f392e5bb", null ],
     [ "FlipX", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#aecf8bcd75f67fef105f23ac78ef08417", null ],
     [ "Move", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#a75d1b338493fe0310a499c0617a6426a", null ],
     [ "OnItemLoaded", "class_barotrauma_1_1_items_1_1_components_1_1_light_component.html#af7098fa1437c1154385b978dbc2f26b5", null ],

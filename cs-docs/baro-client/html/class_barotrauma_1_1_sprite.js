@@ -10,7 +10,7 @@ var class_barotrauma_1_1_sprite =
     [ "Draw", "class_barotrauma_1_1_sprite.html#a166a02ce831c83b7f4f65446756f644b", null ],
     [ "Draw", "class_barotrauma_1_1_sprite.html#a893905f03870e75fc1b18a54381b446d", null ],
     [ "DrawSilhouette", "class_barotrauma_1_1_sprite.html#a11e061c5c1dc87de94db5c43328a2977", null ],
-    [ "DrawTiled", "class_barotrauma_1_1_sprite.html#ac134204e0206d2c22dea52de69f5f120", null ],
+    [ "DrawTiled", "class_barotrauma_1_1_sprite.html#af0596ea5eca06858273f38522840ff7b", null ],
     [ "EnsureLazyLoaded", "class_barotrauma_1_1_sprite.html#a3a7c2cfb966a645c6341cce5516f99a2", null ],
     [ "LazyLoadAsync", "class_barotrauma_1_1_sprite.html#a287e5c5d36e77017f3f0f21bcde79111", null ],
     [ "ParseTexturePath", "class_barotrauma_1_1_sprite.html#a82f9787607a501c18709c6cd02c2de6e", null ],

@@ -14,6 +14,7 @@ var class_barotrauma_1_1_event_manager =
     [ "AddTimeStamp", "class_barotrauma_1_1_event_manager.html#a664c57d6b9778c8eb1231fbf0dd8f990", null ],
     [ "ClearEvents", "class_barotrauma_1_1_event_manager.html#aa8314e8657ab8a529a69491cd19c980e", null ],
     [ "EndRound", "class_barotrauma_1_1_event_manager.html#afbdd076abda18141430d2c63db28f863", null ],
+    [ "EntitySpawned", "class_barotrauma_1_1_event_manager.html#a9c35893b26137df6036c9d70fc63b067", null ],
     [ "GetFilesToPreload", "class_barotrauma_1_1_event_manager.html#a0cfbf56bda60a9b6e4d95f8f69c98ad8", null ],
     [ "Load", "class_barotrauma_1_1_event_manager.html#a0ede13277612f0f17ea2213419005b3f", null ],
     [ "PreloadContent", "class_barotrauma_1_1_event_manager.html#ab1fbcf2c6358d91822e7ed2d4c5efe0e", null ],

@@ -106,10 +106,11 @@ Public Types</h2></td></tr>
 <tr class="memitem:aacc8f628a0ee20042e91d9940a5b15d0"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0">SegmentActionType</a> { <br />
 &#160;&#160;<a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0af698f67f5666aff10729d8a1cb1c14d2">Trigger</a>
 , <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0aec211f7c20af43e742bf2570c3cb84f9">Add</a>
+, <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0af05e71dd049ee5687ca450cbd240898d">AddIfNotFound</a>
 , <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0aae94f80b3ce82062a5dd7815daa04f9d">Complete</a>
-, <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a878afa2771abf2bdc510c392c7931653">CompleteAndRemove</a>
 , <br />
-&#160;&#160;<a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a1063e38cb53d94d386f21227fcd84717">Remove</a>
+&#160;&#160;<a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a878afa2771abf2bdc510c392c7931653">CompleteAndRemove</a>
+, <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a1063e38cb53d94d386f21227fcd84717">Remove</a>
 , <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0aceaa0734f0b3c738120c67344d8f3ec1">Fail</a>
 , <a class="el" href="class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a516f3f74864f8ae5f3fa6fc69040e32b">FailAndRemove</a>
 <br />
@@ -173,6 +174,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_barotrauma_1_1_event_action"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_barotrauma_1_1_event_action')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_barotrauma_1_1_event_action.html">Barotrauma.EventAction</a></td></tr>
 <tr class="memitem:a08aceb29dc31d697de414d7f6c8f51bc inherit pub_attribs_class_barotrauma_1_1_event_action"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_barotrauma_1_1_scripted_event.html">ScriptedEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_event_action.html#a08aceb29dc31d697de414d7f6c8f51bc">ParentEvent</a></td></tr>
 <tr class="separator:a08aceb29dc31d697de414d7f6c8f51bc inherit pub_attribs_class_barotrauma_1_1_event_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_barotrauma_1_1_event_action"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_barotrauma_1_1_event_action')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_barotrauma_1_1_event_action.html">Barotrauma.EventAction</a></td></tr>
+<tr class="memitem:a886a7809efc502829018be0ab1faa9ad inherit pro_methods_class_barotrauma_1_1_event_action"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_barotrauma_1_1_event_action.html#a886a7809efc502829018be0ab1faa9ad">ApplyTagsToHulls</a> (<a class="el" href="class_barotrauma_1_1_entity.html">Entity</a> entity, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> hullTag, <a class="el" href="struct_barotrauma_1_1_identifier.html">Identifier</a> linkedHullTag)</td></tr>
+<tr class="separator:a886a7809efc502829018be0ab1faa9ad inherit pro_methods_class_barotrauma_1_1_event_action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -200,6 +204,7 @@ Additional Inherited Members</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aacc8f628a0ee20042e91d9940a5b15d0af698f67f5666aff10729d8a1cb1c14d2"></a>Trigger&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aacc8f628a0ee20042e91d9940a5b15d0aec211f7c20af43e742bf2570c3cb84f9"></a>Add&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aacc8f628a0ee20042e91d9940a5b15d0af05e71dd049ee5687ca450cbd240898d"></a>AddIfNotFound&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aacc8f628a0ee20042e91d9940a5b15d0aae94f80b3ce82062a5dd7815daa04f9d"></a>Complete&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aacc8f628a0ee20042e91d9940a5b15d0a878afa2771abf2bdc510c392c7931653"></a>CompleteAndRemove&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aacc8f628a0ee20042e91d9940a5b15d0a1063e38cb53d94d386f21227fcd84717"></a>Remove&#160;</td><td class="fielddoc"></td></tr>
@@ -333,7 +338,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_barotrauma_1_1_event_action.html#aa22a9ea02d0c26b0a6baaceef35f875d">Barotrauma.EventAction</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_event_objective_action_8cs_source.html#l00062">62</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_event_objective_action_8cs_source.html">BarotraumaShared/SharedSource/Events/EventActions/EventObjectiveAction.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_event_objective_action_8cs_source.html#l00064">64</a> of file <a class="el" href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_event_objective_action_8cs_source.html">BarotraumaShared/SharedSource/Events/EventActions/EventObjectiveAction.cs</a>.</p>
 
 </div>
 </div>

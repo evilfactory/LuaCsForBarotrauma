@@ -17,7 +17,8 @@ var class_barotrauma_1_1_sub_editor_screen =
       [ "WallCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a5c326ecbb694d8d587912723820885fd", null ],
       [ "ItemCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a4715b601daa2cda3d7b42172977bfe2e", null ],
       [ "LightCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a4a5b6d5a20aa8ac28ebe39b2c43acf06", null ],
-      [ "ShadowCastingLightCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a25f15b718c39c0b3304cef28b7f79c30", null ]
+      [ "ShadowCastingLightCount", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a25f15b718c39c0b3304cef28b7f79c30", null ],
+      [ "WaterInHulls", "class_barotrauma_1_1_sub_editor_screen.html#aafc04b6a358fe5d066a7e9de3ca6c8a7a6de9c8e4072a59a30a00215ed0383017", null ]
     ] ],
     [ "SubEditorScreen", "class_barotrauma_1_1_sub_editor_screen.html#a2f7bf1a0343958a64eb0cc19bcfe9b97", null ],
     [ "AddToGUIUpdateList", "class_barotrauma_1_1_sub_editor_screen.html#a3dcfb28345d8352529cea8756b873f8a", null ],

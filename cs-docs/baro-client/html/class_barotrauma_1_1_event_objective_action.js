@@ -3,6 +3,7 @@ var class_barotrauma_1_1_event_objective_action =
     [ "SegmentActionType", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0", [
       [ "Trigger", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0af698f67f5666aff10729d8a1cb1c14d2", null ],
       [ "Add", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0aec211f7c20af43e742bf2570c3cb84f9", null ],
+      [ "AddIfNotFound", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0af05e71dd049ee5687ca450cbd240898d", null ],
       [ "Complete", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0aae94f80b3ce82062a5dd7815daa04f9d", null ],
       [ "CompleteAndRemove", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a878afa2771abf2bdc510c392c7931653", null ],
       [ "Remove", "class_barotrauma_1_1_event_objective_action.html#aacc8f628a0ee20042e91d9940a5b15d0a1063e38cb53d94d386f21227fcd84717", null ],

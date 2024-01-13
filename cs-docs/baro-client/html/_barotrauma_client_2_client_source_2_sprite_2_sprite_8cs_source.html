@@ -199,7 +199,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        partial <span class="keywordtype">void</span> LoadTexture(ref Vector4 sourceVector, ref <span class="keywordtype">bool</span> shouldReturn)</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = LoadTexture(<a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a>.<a class="code" href="class_barotrauma_1_1_content_path.html#a91615891cea34f4132f32c4e4da1ec68">Value</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#ae0ce3495bdf143e9ab9bd0fe80cb0a45">Compress</a>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = LoadTexture(<a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a>.<a class="code" href="class_barotrauma_1_1_content_path.html#a91615891cea34f4132f32c4e4da1ec68">Value</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#ae0ce3495bdf143e9ab9bd0fe80cb0a45">Compress</a>, contentPackage: <a class="code" href="class_barotrauma_1_1_sprite.html#ad4a246fb1743e2fb3b4d3b1abc04f1ea">SourceElement</a>?.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b">ContentPackage</a>);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> == <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>.Dispose();</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = TextureLoader.FromFile(<a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a>.<a class="code" href="class_barotrauma_1_1_content_path.html#a91615891cea34f4132f32c4e4da1ec68">Value</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#ae0ce3495bdf143e9ab9bd0fe80cb0a45">Compress</a>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = TextureLoader.FromFile(<a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a>.<a class="code" href="class_barotrauma_1_1_content_path.html#a91615891cea34f4132f32c4e4da1ec68">Value</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#ae0ce3495bdf143e9ab9bd0fe80cb0a45">Compress</a>, contentPackage: <a class="code" href="class_barotrauma_1_1_sprite.html#ad4a246fb1743e2fb3b4d3b1abc04f1ea">SourceElement</a>?.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b">ContentPackage</a>);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> pathKey = <a class="code" href="class_barotrauma_1_1_sprite.html#a4e3decfaa8aad6f759b9c3da99612578">FullPath</a>.ToIdentifier();</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (textureRefCounts.ContainsKey(pathKey))</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
@@ -283,7 +283,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            sourceRect = <span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>.Width, <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>.Height);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sprite.html#abc8cdddea064cf9adcb0a86558b01082">  198</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Texture2D <a class="code" href="class_barotrauma_1_1_sprite.html#abc8cdddea064cf9adcb0a86558b01082">LoadTexture</a>(<span class="keywordtype">string</span> file, <span class="keywordtype">bool</span> compress = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sprite.html#af14f9aac3a9820ec162f0cce41929a26">  198</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Texture2D <a class="code" href="class_barotrauma_1_1_sprite.html#af14f9aac3a9820ec162f0cce41929a26">LoadTexture</a>(<span class="keywordtype">string</span> file, <span class="keywordtype">bool</span> compress = <span class="keyword">true</span>, <a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> contentPackage = <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrWhiteSpace(file))</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            {</div>
@@ -309,11 +309,11 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="keywordflow">if</span> (!ToolBox.IsProperFilenameCase(file))</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                {</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Texture file \&quot;&quot;</span> + file + <span class="stringliteral">&quot;\&quot; has incorrect case!&quot;</span>);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    DebugConsole.ThrowError(<span class="stringliteral">&quot;Texture file \&quot;&quot;</span> + file + <span class="stringliteral">&quot;\&quot; has incorrect case!&quot;</span>, contentPackage: contentPackage);</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                }</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                Texture2D newTexture = TextureLoader.FromFile(file, compress);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                Texture2D newTexture = TextureLoader.FromFile(file, compress, contentPackage: contentPackage);</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                lock (list)</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                {</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    <span class="keywordflow">if</span> (!textureRefCounts.TryAdd(fullPath,</div>
@@ -369,211 +369,184 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            }</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sprite.html#ac134204e0206d2c22dea52de69f5f120">  287</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sprite.html#ac134204e0206d2c22dea52de69f5f120">DrawTiled</a>(ISpriteBatch spriteBatch, Vector2 position, Vector2 targetSize,</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            Color? color = <span class="keyword">null</span>, Vector2? startOffset = <span class="keyword">null</span>, Vector2? textureScale = <span class="keyword">null</span>, <span class="keywordtype">float</span>? <a class="code" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a> = <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sprite.html#a9c5d39ec84e8b5699883da82086f822a">Texture</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="comment">//Init optional values</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            Vector2 drawOffset = startOffset ?? Vector2.Zero;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            Vector2 scale = textureScale ?? Vector2.One;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            Color drawColor = color ?? Color.White;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordtype">bool</span> flipHorizontal = (<a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a> &amp; SpriteEffects.FlipHorizontally) != 0;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordtype">bool</span> flipVertical = (<a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a> &amp; SpriteEffects.FlipVertically) != 0;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="comment">//wrap the drawOffset inside the sourceRect</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            drawOffset.X = (drawOffset.X / scale.X) % sourceRect.Width;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            drawOffset.Y = (drawOffset.Y / scale.Y) % sourceRect.Height;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            Vector2 flippedDrawOffset = Vector2.Zero;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">if</span> (flipHorizontal)</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keywordtype">float</span> diff = targetSize.X % (sourceRect.Width * scale.X);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                flippedDrawOffset.X = (sourceRect.Width * scale.X - diff) / scale.X;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                flippedDrawOffset.X =</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                    MathUtils.NearlyEqual(flippedDrawOffset.X, MathF.Round(flippedDrawOffset.X)) ?</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    MathF.Round(flippedDrawOffset.X) : flippedDrawOffset.X;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            }</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">if</span> (flipVertical)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordtype">float</span> diff = targetSize.Y % (sourceRect.Height * scale.Y);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                flippedDrawOffset.Y = (sourceRect.Height * scale.Y - diff) / scale.Y;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                flippedDrawOffset.Y =</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    MathUtils.NearlyEqual(flippedDrawOffset.Y, MathF.Round(flippedDrawOffset.Y)) ?</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                    MathF.Round(flippedDrawOffset.Y) : flippedDrawOffset.Y;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            drawOffset += flippedDrawOffset;</div>
+<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sprite.html#a76215ddf3fb2c8f60dab417fffe56a6d">  290</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> readonly Version <a class="code" href="class_barotrauma_1_1_sprite.html#a76215ddf3fb2c8f60dab417fffe56a6d">LastBrokenTiledSpriteGameVersion</a> = <span class="keyword">new</span> Version(major: 1, minor: 2, build: 7, revision: 0);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_sprite.html#af0596ea5eca06858273f38522840ff7b">  292</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_sprite.html#af0596ea5eca06858273f38522840ff7b">DrawTiled</a>(ISpriteBatch spriteBatch,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            Vector2 position,</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            Vector2 targetSize,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordtype">float</span> <a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a> = 0f,</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            Vector2? <a class="code" href="class_barotrauma_1_1_sprite.html#a6ba8326266479a46391c11839727157c">origin</a> = <span class="keyword">null</span>,</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            Color? color = <span class="keyword">null</span>,</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            Vector2? startOffset = <span class="keyword">null</span>,</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            Vector2? textureScale = <span class="keyword">null</span>,</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordtype">float</span>? <a class="code" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a> = <span class="keyword">null</span>,</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            SpriteEffects? spriteEffects = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sprite.html#a9c5d39ec84e8b5699883da82086f822a">Texture</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            spriteEffects ??= <a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordtype">bool</span> flipHorizontal = spriteEffects.Value.HasFlag(SpriteEffects.FlipHorizontally);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordtype">bool</span> flipVertical = spriteEffects.Value.HasFlag(SpriteEffects.FlipVertically);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordtype">float</span> addedRotation = <a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a> + this.<a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordflow">if</span> (flipHorizontal != flipVertical) { addedRotation = -addedRotation; }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            Vector2 advanceX = addedRotation == 0.0f ? Vector2.UnitX : <span class="keyword">new</span> Vector2((<span class="keywordtype">float</span>)Math.Cos(addedRotation), (<span class="keywordtype">float</span>)Math.Sin(addedRotation));</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            Vector2 advanceY = <span class="keyword">new</span> Vector2(-advanceX.Y, advanceX.X);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="comment">//Init optional values</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            Vector2 drawOffset = startOffset ?? Vector2.Zero;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            Vector2 scale = textureScale ?? Vector2.One;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            Color drawColor = color ?? Color.White;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            Vector2 transformedOrigin = <a class="code" href="class_barotrauma_1_1_sprite.html#a6ba8326266479a46391c11839727157c">origin</a> ?? Vector2.Zero;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="comment">//how many times the texture needs to be drawn on the x-axis</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordtype">int</span> xTiles = (int)Math.Ceiling((targetSize.X + drawOffset.X * scale.X) / (sourceRect.Width * scale.X));</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="comment">//how many times the texture needs to be drawn on the y-axis</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordtype">int</span> yTiles = (int)Math.Ceiling((targetSize.Y + drawOffset.Y * scale.Y) / (sourceRect.Height * scale.Y));</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="comment">//where the current tile is being drawn;</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            Vector2 currDrawPosition = position - drawOffset;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <span class="comment">//which part of the texture we are currently drawing</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            Rectangle texPerspective = sourceRect;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; xTiles; x++)</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                texPerspective.X = sourceRect.X;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                texPerspective.Width = sourceRect.Width;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                texPerspective.Height = sourceRect.Height;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="comment">//offset to the left, draw a partial slice</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <span class="keywordflow">if</span> (currDrawPosition.X &lt; position.X)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    <span class="keywordtype">float</span> diff = (position.X - currDrawPosition.X);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    currDrawPosition.X += diff;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    texPerspective.Width -= (int)diff;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    <span class="keywordflow">if</span> (!flipHorizontal)</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                    {</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                        texPerspective.X += (int)diff;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                    }</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    <span class="keywordflow">if</span> (!flipVertical)</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                    {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                        texPerspective.Y += (int)diff;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="comment">//drawing an offset flipped sprite, need to draw an extra slice to the left side</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                <span class="keywordflow">if</span> (currDrawPosition.X &gt; position.X &amp;&amp; x == 0)</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    <span class="keywordflow">if</span> (flipHorizontal)</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    {</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        <span class="keywordtype">int</span> sliceWidth = (int)((currDrawPosition.X - position.X) * scale.X);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        Vector2 slicePos = currDrawPosition;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        slicePos.X = position.X;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                        Rectangle sliceRect = texPerspective;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                        sliceRect.X = <a class="code" href="class_barotrauma_1_1_sprite.html#a5992a3e50967a0f59a4a0abeac9140d5">SourceRect</a>.X;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        sliceRect.Width = (int)(sliceWidth / scale.X);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                        <span class="keywordflow">if</span> (flipVertical)</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                        {</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                            slicePos.Y += flippedDrawOffset.Y;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        }</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                        </div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                        spriteBatch.Draw(<a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>, slicePos, sliceRect, drawColor, <a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a>, Vector2.Zero, scale, <a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a> ?? <span class="keyword">this</span>.depth);                        </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                        currDrawPosition.X = slicePos.X + sliceWidth;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                    }</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                <span class="comment">//make sure the rightmost tiles don&#39;t go over the right side</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordflow">if</span> (x == xTiles - 1)</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    <span class="keywordtype">int</span> diff = (int)(((currDrawPosition.X + texPerspective.Width * scale.X) - (position.X + targetSize.X)) / scale.X);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    texPerspective.Width -= diff;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                    <span class="keywordflow">if</span> (flipHorizontal)</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                        texPerspective.X += diff;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                </div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                currDrawPosition.Y = position.Y - drawOffset.Y;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; yTiles; y++)</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    texPerspective.Y = sourceRect.Y;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    texPerspective.Height = sourceRect.Height;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                    <span class="comment">//offset above the top, draw a partial slice</span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    <span class="keywordflow">if</span> (currDrawPosition.Y &lt; position.Y)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                    {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                        <span class="keywordtype">float</span> diff = (position.Y - currDrawPosition.Y);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        currDrawPosition.Y += diff;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        texPerspective.Height -= (int)diff;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                        <span class="keywordflow">if</span> (!flipVertical)</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                        {</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                            texPerspective.Y += (int)diff;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                        }</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                    }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    <span class="comment">//drawing an offset flipped sprite, need to draw an extra slice to the top</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                    <span class="keywordflow">if</span> (currDrawPosition.Y &gt; position.Y &amp;&amp; y == 0)</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    {</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                        <span class="keywordflow">if</span> (flipVertical)</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                        {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                            <span class="keywordtype">int</span> sliceHeight = (int)((currDrawPosition.Y - position.Y) * scale.Y);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            transformedOrigin = advanceX * transformedOrigin.X + advanceY * transformedOrigin.Y;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordtype">void</span> drawSection(Vector2 slicePos, Rectangle sliceRect)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                Vector2 transformedPos = slicePos;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                <span class="keywordflow">if</span> (flipHorizontal)</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                    transformedPos.X = targetSize.X - transformedPos.X - sliceRect.Width * scale.X;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keywordflow">if</span> (flipVertical)</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                    transformedPos.Y = targetSize.Y - transformedPos.Y - sliceRect.Height * scale.Y;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                transformedPos = advanceX * transformedPos.X + advanceY * transformedPos.Y;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                transformedPos += position - transformedOrigin;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                spriteBatch.Draw(</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>: <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>,</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    position: transformedPos,</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    sourceRectangle: sliceRect,</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    color: drawColor,</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    <a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a>: addedRotation,</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    <a class="code" href="class_barotrauma_1_1_sprite.html#a6ba8326266479a46391c11839727157c">origin</a>: Vector2.Zero,</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                    scale: scale,</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                    <a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a>: spriteEffects.Value,</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                    layerDepth: <a class="code" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a> ?? <span class="keyword">this</span>.depth);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="comment">//wrap the drawOffset inside the sourceRect</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            drawOffset.X = (drawOffset.X / scale.X) % sourceRect.Width;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            drawOffset.Y = (drawOffset.Y / scale.Y) % sourceRect.Height;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="comment">//how many times the texture needs to be drawn on the x-axis</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordtype">int</span> xTiles = (int)Math.Ceiling((targetSize.X + drawOffset.X * scale.X) / (sourceRect.Width * scale.X));</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="comment">//how many times the texture needs to be drawn on the y-axis</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="keywordtype">int</span> yTiles = (int)Math.Ceiling((targetSize.Y + drawOffset.Y * scale.Y) / (sourceRect.Height * scale.Y));</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="comment">//where the current tile is being drawn;</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            Vector2 currDrawPosition = -drawOffset;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            <span class="comment">//which part of the texture we are currently drawing</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            Rectangle texPerspective = sourceRect;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; xTiles; x++)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                texPerspective.X = sourceRect.X;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                texPerspective.Width = sourceRect.Width;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                texPerspective.Height = sourceRect.Height;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                <span class="comment">//offset to the left, draw a partial slice</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                <span class="keywordflow">if</span> (currDrawPosition.X &lt; 0)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                    <span class="keywordtype">float</span> diff = -currDrawPosition.X;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    currDrawPosition.X += diff;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    texPerspective.Width -= (int)diff;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    texPerspective.X += (int)diff;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                <span class="comment">//make sure the rightmost tiles don&#39;t go over the right side</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                <span class="keywordflow">if</span> (x == xTiles - 1)</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    <span class="keywordtype">int</span> diff = (int)(((currDrawPosition.X + texPerspective.Width * scale.X) - targetSize.X) / scale.X);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    texPerspective.Width -= diff;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                currDrawPosition.Y = -drawOffset.Y;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; yTiles; y++)</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    texPerspective.Y = sourceRect.Y;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                    texPerspective.Height = sourceRect.Height;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    <span class="comment">//offset above the top, draw a partial slice</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                    <span class="keywordflow">if</span> (currDrawPosition.Y &lt; 0f)</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        <span class="keywordtype">float</span> diff = -currDrawPosition.Y;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        currDrawPosition.Y += diff;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                        texPerspective.Height -= (int)diff;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                        texPerspective.Y += (int)diff;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                    }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                    <span class="comment">//make sure the bottommost tiles don&#39;t go over the bottom</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                    <span class="keywordflow">if</span> (y == yTiles - 1)</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                        <span class="keywordtype">int</span> diff = (int)(((currDrawPosition.Y + texPerspective.Height * scale.Y) - targetSize.Y) / scale.Y);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                        texPerspective.Height -= diff;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                    drawSection(currDrawPosition, texPerspective);</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                            Vector2 slicePos = currDrawPosition;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                            slicePos.Y = position.Y;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                            Rectangle sliceRect = texPerspective;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                            sliceRect.Y = <a class="code" href="class_barotrauma_1_1_sprite.html#a5992a3e50967a0f59a4a0abeac9140d5">SourceRect</a>.Y;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                            sliceRect.Height = (int)(sliceHeight / scale.Y);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                            spriteBatch.Draw(<a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>, slicePos, sliceRect, drawColor, <a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a>, Vector2.Zero, scale, <a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a> ?? <span class="keyword">this</span>.depth);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                            currDrawPosition.Y = slicePos.Y + sliceHeight;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                        }</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                    }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                    <span class="comment">//make sure the bottommost tiles don&#39;t go over the bottom</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                    <span class="keywordflow">if</span> (y == yTiles - 1)</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                    {</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                        <span class="keywordtype">int</span> diff = (int)(((currDrawPosition.Y + texPerspective.Height * scale.Y) - (position.Y + targetSize.Y)) / scale.Y);</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                        texPerspective.Height -= diff;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                        <span class="keywordflow">if</span> (flipVertical)</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                            texPerspective.Y += diff;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                        }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                    }</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                    spriteBatch.Draw(<a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>, currDrawPosition,</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                        texPerspective, drawColor, <a class="code" href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">rotation</a>, Vector2.Zero, scale, <a class="code" href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">effects</a>, <a class="code" href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">depth</a> ?? <span class="keyword">this</span>.depth);</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                    currDrawPosition.Y += texPerspective.Height * scale.Y;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                }</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                currDrawPosition.X += texPerspective.Width * scale.X;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        partial <span class="keywordtype">void</span> DisposeTexture()</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            disposeStackTrace = Environment.StackTrace;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                <span class="comment">//check if another sprite is using the same texture</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                lock (list)</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                {</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                    <span class="keywordflow">if</span> (!<a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a>.IsNullOrEmpty()) <span class="comment">//file can be empty if the sprite is created directly from a Texture2D instance</span></div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                    {</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                        <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> pathKey = <a class="code" href="class_barotrauma_1_1_sprite.html#a4e3decfaa8aad6f759b9c3da99612578">FullPath</a>.ToIdentifier();</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                        <span class="keywordflow">if</span> (!pathKey.<a class="code" href="struct_barotrauma_1_1_identifier.html#a62c734205451d5a4a63fd676ba3afa84">IsEmpty</a> &amp;&amp; textureRefCounts.ContainsKey(pathKey))</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                        {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                            textureRefCounts[pathKey].RefCount--;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                            <span class="keywordflow">if</span> (textureRefCounts[pathKey].RefCount &lt;= 0)</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                            {</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                                textureRefCounts.Remove(pathKey);</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                            }</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                            {</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                                <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                                <a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a> = ContentPath.<a class="code" href="class_barotrauma_1_1_content_path.html#a70d7b04a5537d07c197c419463264659">Empty</a>;</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                            }</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                        }</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                    }</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                }</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <span class="comment">//if not, free the texture</span></div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                CrossThread.RequestExecutionOnMainThread(() =&gt;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                {</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>.Dispose();</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                });</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            }</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        }</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    }</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;}</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    currDrawPosition.Y += texPerspective.Height * scale.Y;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                currDrawPosition.X += texPerspective.Width * scale.X;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        partial <span class="keywordtype">void</span> DisposeTexture()</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            disposeStackTrace = Environment.StackTrace;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            {</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                <span class="comment">//check if another sprite is using the same texture</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                lock (list)</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                    <span class="keywordflow">if</span> (!<a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a>.IsNullOrEmpty()) <span class="comment">//file can be empty if the sprite is created directly from a Texture2D instance</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                    {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                        <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> pathKey = <a class="code" href="class_barotrauma_1_1_sprite.html#a4e3decfaa8aad6f759b9c3da99612578">FullPath</a>.ToIdentifier();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        <span class="keywordflow">if</span> (!pathKey.<a class="code" href="struct_barotrauma_1_1_identifier.html#a62c734205451d5a4a63fd676ba3afa84">IsEmpty</a> &amp;&amp; textureRefCounts.ContainsKey(pathKey))</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                        {</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                            textureRefCounts[pathKey].RefCount--;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                            <span class="keywordflow">if</span> (textureRefCounts[pathKey].RefCount &lt;= 0)</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                            {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                textureRefCounts.Remove(pathKey);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                            }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                            {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                                <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                                <a class="code" href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">FilePath</a> = ContentPath.<a class="code" href="class_barotrauma_1_1_content_path.html#a70d7b04a5537d07c197c419463264659">Empty</a>;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                            }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                        }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                    }</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                <span class="comment">//if not, free the texture</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                CrossThread.RequestExecutionOnMainThread(() =&gt;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                    <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a>.Dispose();</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                });</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                <a class="code" href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">texture</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        }</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;}</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="ttc" id="aclass_barotrauma_1_1_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html">Barotrauma.ContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00015">ContentPackage.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_path_html"><div class="ttname"><a href="class_barotrauma_1_1_content_path.html">Barotrauma.ContentPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_path_8cs_source.html#l00010">ContentPath.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_path_html_a6809daa1a9b822064c315ce4cbb78130"><div class="ttname"><a href="class_barotrauma_1_1_content_path.html#a6809daa1a9b822064c315ce4cbb78130">Barotrauma.ContentPath.FromRaw</a></div><div class="ttdeci">static ContentPath FromRaw(string? rawValue)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_path_html_a70d7b04a5537d07c197c419463264659"><div class="ttname"><a href="class_barotrauma_1_1_content_path.html#a70d7b04a5537d07c197c419463264659">Barotrauma.ContentPath.Empty</a></div><div class="ttdeci">static readonly ContentPath Empty</div><div class="ttdef"><b>Definition:</b> <a href="_content_path_8cs_source.html#l00012">ContentPath.cs:12</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_path_html_a91615891cea34f4132f32c4e4da1ec68"><div class="ttname"><a href="class_barotrauma_1_1_content_path.html#a91615891cea34f4132f32c4e4da1ec68">Barotrauma.ContentPath.Value</a></div><div class="ttdeci">string???????????? Value</div><div class="ttdef"><b>Definition:</b> <a href="_content_path_8cs_source.html#l00026">ContentPath.cs:27</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a721f23b47e63ead53c2659e813d2947b"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a721f23b47e63ead53c2659e813d2947b">Barotrauma.ContentXElement.ContentPackage</a></div><div class="ttdeci">ContentPackage? ContentPackage</div><div class="ttdef"><b>Definition:</b> <a href="_content_x_element_8cs_source.html#l00014">ContentXElement.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_aaafbfe27b4b725162e6541ce6098c20d"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#aaafbfe27b4b725162e6541ce6098c20d">Barotrauma.ContentXElement.GetAttributeVector2</a></div><div class="ttdeci">Vector2 GetAttributeVector2(string key, in Vector2 def)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00024">GameMain.cs:25</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_ad4906fac3bd98924d80bf9dddd3043cb"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#ad4906fac3bd98924d80bf9dddd3043cb">Barotrauma.GameMain.GraphicsDeviceManager</a></div><div class="ttdeci">static GraphicsDeviceManager GraphicsDeviceManager</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00143">GameMain.cs:144</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_game_main_html_ad4906fac3bd98924d80bf9dddd3043cb"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#ad4906fac3bd98924d80bf9dddd3043cb">Barotrauma.GameMain.GraphicsDeviceManager</a></div><div class="ttdeci">static GraphicsDeviceManager GraphicsDeviceManager</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00147">GameMain.cs:148</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html">Barotrauma.Sprite</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00013">BarotraumaShared/SharedSource/Sprite/Sprite.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a056527d466e85e153ae512475b5c3ae2"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a056527d466e85e153ae512475b5c3ae2">Barotrauma.Sprite.Sprite</a></div><div class="ttdeci">Sprite(ContentXElement element, string path=&quot;&quot;, string file=&quot;&quot;, bool lazyLoad=false)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00110">BarotraumaShared/SharedSource/Sprite/Sprite.cs:110</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a08c4970ba3c6a100669eaebbb769249f"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a08c4970ba3c6a100669eaebbb769249f">Barotrauma.Sprite.depth</a></div><div class="ttdeci">float depth</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00044">BarotraumaShared/SharedSource/Sprite/Sprite.cs:44</a></div></div>
@@ -587,9 +560,9 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a4dffcc82f0984452391456478e0f63ce"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a4dffcc82f0984452391456478e0f63ce">Barotrauma.Sprite.Loaded</a></div><div class="ttdeci">bool Loaded</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00076">BarotraumaClient/ClientSource/Sprite/Sprite.cs:77</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a4e3decfaa8aad6f759b9c3da99612578"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a4e3decfaa8aad6f759b9c3da99612578">Barotrauma.Sprite.FullPath</a></div><div class="ttdeci">string FullPath</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00089">BarotraumaShared/SharedSource/Sprite/Sprite.cs:89</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a54fd5dd875169e08c70007ee64ef9fe3"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a54fd5dd875169e08c70007ee64ef9fe3">Barotrauma.Sprite.rotation</a></div><div class="ttdeci">float rotation</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00038">BarotraumaShared/SharedSource/Sprite/Sprite.cs:38</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a5992a3e50967a0f59a4a0abeac9140d5"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a5992a3e50967a0f59a4a0abeac9140d5">Barotrauma.Sprite.SourceRect</a></div><div class="ttdeci">Rectangle SourceRect</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00046">BarotraumaShared/SharedSource/Sprite/Sprite.cs:47</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a68bea694195cbc41f113aa1bd045d219"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a68bea694195cbc41f113aa1bd045d219">Barotrauma.Sprite.offset</a></div><div class="ttdeci">Vector2 offset</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00024">BarotraumaShared/SharedSource/Sprite/Sprite.cs:24</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a6ba8326266479a46391c11839727157c"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a6ba8326266479a46391c11839727157c">Barotrauma.Sprite.origin</a></div><div class="ttdeci">Vector2 origin</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00032">BarotraumaShared/SharedSource/Sprite/Sprite.cs:32</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a76215ddf3fb2c8f60dab417fffe56a6d"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a76215ddf3fb2c8f60dab417fffe56a6d">Barotrauma.Sprite.LastBrokenTiledSpriteGameVersion</a></div><div class="ttdeci">static readonly Version LastBrokenTiledSpriteGameVersion</div><div class="ttdoc">Last version of the game that had broken handling of sprites that were scaled, flipped and offset</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00290">BarotraumaClient/ClientSource/Sprite/Sprite.cs:290</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a8356c6aefe51d8e83ef0544583244ff3"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a8356c6aefe51d8e83ef0544583244ff3">Barotrauma.Sprite.effects</a></div><div class="ttdeci">SpriteEffects effects</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00041">BarotraumaShared/SharedSource/Sprite/Sprite.cs:41</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a8392c647ad1aae07defb3fba2874895e"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a8392c647ad1aae07defb3fba2874895e">Barotrauma.Sprite.loadingAsync</a></div><div class="ttdeci">volatile bool loadingAsync</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00062">BarotraumaClient/ClientSource/Sprite/Sprite.cs:62</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a85cdb00a2fe1ffd8ceeefb2a74863846"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a85cdb00a2fe1ffd8ceeefb2a74863846">Barotrauma.Sprite.Draw</a></div><div class="ttdeci">void Draw(ISpriteBatch spriteBatch, Vector2 pos, Color color, float rotate=0.0f, float scale=1.0f, SpriteEffects spriteEffect=SpriteEffects.None, float? depth=null)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00255">BarotraumaClient/ClientSource/Sprite/Sprite.cs:255</a></div></div>
@@ -598,14 +571,14 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_s
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_a9c5d39ec84e8b5699883da82086f822a"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#a9c5d39ec84e8b5699883da82086f822a">Barotrauma.Sprite.Texture</a></div><div class="ttdeci">Texture2D Texture</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00065">BarotraumaClient/ClientSource/Sprite/Sprite.cs:66</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_aa0b497296f0ac0bad250c9a730508aaa"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#aa0b497296f0ac0bad250c9a730508aaa">Barotrauma.Sprite.ReloadTexture</a></div><div class="ttdeci">void ReloadTexture()</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00169">BarotraumaClient/ClientSource/Sprite/Sprite.cs:169</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ab130cc9cb6afc6d45fa8d18f8a9a83d8"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ab130cc9cb6afc6d45fa8d18f8a9a83d8">Barotrauma.Sprite.LazyLoad</a></div><div class="ttdeci">bool LazyLoad</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00026">BarotraumaShared/SharedSource/Sprite/Sprite.cs:27</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sprite_html_abc8cdddea064cf9adcb0a86558b01082"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#abc8cdddea064cf9adcb0a86558b01082">Barotrauma.Sprite.LoadTexture</a></div><div class="ttdeci">static Texture2D LoadTexture(string file, bool compress=true)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00198">BarotraumaClient/ClientSource/Sprite/Sprite.cs:198</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ac134204e0206d2c22dea52de69f5f120"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ac134204e0206d2c22dea52de69f5f120">Barotrauma.Sprite.DrawTiled</a></div><div class="ttdeci">void DrawTiled(ISpriteBatch spriteBatch, Vector2 position, Vector2 targetSize, Color? color=null, Vector2? startOffset=null, Vector2? textureScale=null, float? depth=null)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00287">BarotraumaClient/ClientSource/Sprite/Sprite.cs:287</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ac2dd036e6ef48e0a4bd5a6f5a72cede3"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ac2dd036e6ef48e0a4bd5a6f5a72cede3">Barotrauma.Sprite.Sprite</a></div><div class="ttdeci">Sprite(Sprite other)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00081">BarotraumaClient/ClientSource/Sprite/Sprite.cs:81</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ad372e5d0a8e6624eb4ea2f5853e954fb"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ad372e5d0a8e6624eb4ea2f5853e954fb">Barotrauma.Sprite.FilePath</a></div><div class="ttdeci">ContentPath FilePath</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00087">BarotraumaShared/SharedSource/Sprite/Sprite.cs:87</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ad4a246fb1743e2fb3b4d3b1abc04f1ea"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ad4a246fb1743e2fb3b4d3b1abc04f1ea">Barotrauma.Sprite.SourceElement</a></div><div class="ttdeci">ContentXElement SourceElement</div><div class="ttdoc">Reference to the xml element from where the sprite was created. Can be null if the sprite was not def...</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00018">BarotraumaShared/SharedSource/Sprite/Sprite.cs:18</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ad5c3c540a15a6dde0282f69730d61c9d"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ad5c3c540a15a6dde0282f69730d61c9d">Barotrauma.Sprite.texture</a></div><div class="ttdeci">Texture2D texture</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00064">BarotraumaClient/ClientSource/Sprite/Sprite.cs:64</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ae0ce3495bdf143e9ab9bd0fe80cb0a45"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ae0ce3495bdf143e9ab9bd0fe80cb0a45">Barotrauma.Sprite.Compress</a></div><div class="ttdeci">bool Compress</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00091">BarotraumaShared/SharedSource/Sprite/Sprite.cs:91</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html_ae1e582f8a8682fb0c887e1eaaab846a4"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#ae1e582f8a8682fb0c887e1eaaab846a4">Barotrauma.Sprite.LoadedSprites</a></div><div class="ttdeci">static IEnumerable&lt; Sprite &gt; LoadedSprites</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00014">BarotraumaClient/ClientSource/Sprite/Sprite.cs:15</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sprite_html_af0596ea5eca06858273f38522840ff7b"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#af0596ea5eca06858273f38522840ff7b">Barotrauma.Sprite.DrawTiled</a></div><div class="ttdeci">void DrawTiled(ISpriteBatch spriteBatch, Vector2 position, Vector2 targetSize, float rotation=0f, Vector2? origin=null, Color? color=null, Vector2? startOffset=null, Vector2? textureScale=null, float? depth=null, SpriteEffects? spriteEffects=null)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00292">BarotraumaClient/ClientSource/Sprite/Sprite.cs:292</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_sprite_html_af14f9aac3a9820ec162f0cce41929a26"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html#af14f9aac3a9820ec162f0cce41929a26">Barotrauma.Sprite.LoadTexture</a></div><div class="ttdeci">static Texture2D LoadTexture(string file, bool compress=true, ContentPackage contentPackage=null)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_sprite_2_sprite_8cs_source.html#l00198">BarotraumaClient/ClientSource/Sprite/Sprite.cs:198</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html">Barotrauma.Identifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00011">Identifier.cs:12</a></div></div>

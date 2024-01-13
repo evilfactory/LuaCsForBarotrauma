@@ -13,7 +13,7 @@ var class_barotrauma_1_1_rich_string =
     [ "language", "class_barotrauma_1_1_rich_string.html#ab15d54a25bee037347a1a915f3a9e44a", null ],
     [ "loaded", "class_barotrauma_1_1_rich_string.html#ab406016891051535c33cd20c9c1f83ab", null ],
     [ "SanitizedString", "class_barotrauma_1_1_rich_string.html#ac935ac5b33ebff1233df6f6020084f74", null ],
-    [ "fontOrStyleForceUpperCase", "class_barotrauma_1_1_rich_string.html#afa55e06144c0f5346612fdde4d90eb1f", null ],
+    [ "FontOrStyleForceUpperCase", "class_barotrauma_1_1_rich_string.html#a17826cf16db9eeed8ab8a123f86f50e9", null ],
     [ "Length", "class_barotrauma_1_1_rich_string.html#a2544ef0a4e9ccea86d3368f434af3804", null ],
     [ "NestedStr", "class_barotrauma_1_1_rich_string.html#a162cdd457051b116458d2d7518aed303", null ],
     [ "RichTextData", "class_barotrauma_1_1_rich_string.html#a3cea789d2ff1f4e550617e5fcd7d4118", null ],

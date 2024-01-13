@@ -331,27 +331,32 @@ $(document).ready(function(){initNavTree('_i_enumerable_extensions_8cs_source.ht
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                .Where(nullable =&gt; nullable.HasValue)</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                .Select(nullable =&gt; nullable.Value);</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;T&gt; NotNone&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;Option&lt;T&gt;&gt; source)</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keywordflow">foreach</span> (var o <span class="keywordflow">in</span> source)</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordflow">if</span> (o.TryUnwrap(out var v)) { yield <span class="keywordflow">return</span> v; }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;TSuccess&gt; Successes&lt;TSuccess, TFailure&gt;(</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keyword">this</span> IEnumerable&lt;Result&lt;TSuccess, TFailure&gt;&gt; source)</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            =&gt; source</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                .OfType&lt;Success&lt;TSuccess, TFailure&gt;&gt;()</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(s =&gt; s.Value);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;TFailure&gt; Failures&lt;TSuccess, TFailure&gt;(</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keyword">this</span> IEnumerable&lt;Result&lt;TSuccess, TFailure&gt;&gt; source)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            =&gt; source</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                .OfType&lt;Failure&lt;TSuccess, TFailure&gt;&gt;()</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(f =&gt; f.Error);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;}</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;T&gt; NotNull&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            =&gt; source</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                .Where(nullable =&gt; nullable != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                .Select(nullable =&gt; nullable!);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;T&gt; NotNone&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;Option&lt;T&gt;&gt; source)</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">foreach</span> (var o <span class="keywordflow">in</span> source)</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keywordflow">if</span> (o.TryUnwrap(out var v)) { yield <span class="keywordflow">return</span> v; }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;TSuccess&gt; Successes&lt;TSuccess, TFailure&gt;(</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keyword">this</span> IEnumerable&lt;Result&lt;TSuccess, TFailure&gt;&gt; source)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            =&gt; source</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                .OfType&lt;Success&lt;TSuccess, TFailure&gt;&gt;()</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(s =&gt; s.Value);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;TFailure&gt; Failures&lt;TSuccess, TFailure&gt;(</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <span class="keyword">this</span> IEnumerable&lt;Result&lt;TSuccess, TFailure&gt;&gt; source)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            =&gt; source</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                .OfType&lt;Failure&lt;TSuccess, TFailure&gt;&gt;()</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(f =&gt; f.Error);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Barotrauma.InputType.Select</a></div><div class="ttdeci">@ Select</div></div>
 </div><!-- fragment --></div><!-- contents -->
