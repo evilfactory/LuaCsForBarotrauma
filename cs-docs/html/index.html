@@ -81,9 +81,301 @@ Introduction</h1>
 <p>C# modding is part of the <b><a href="https://github.com/evilfactory/LuaCsForBarotrauma">Lua For Barotrauma</a></b> mod and requires the package <code>Cs For <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a></code> to be turned on (<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2795927223">steam workshop</a>), in some cases the package is not needed and a prompt in game will be shown to enable it automatically.</p>
 <p>This modding requires strict source structure, but comes with the benefits of being handled natively by game engine, witch removes many hurdles with type casting or similar issues.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-@ref /home/runner/work/LuaCsForBarotrauma/LuaCsForBarotrauma/luacs-docs/cs/setting-up-assembly-mod.md "Setting up Assembly Mod"</h1>
-<h1><a class="anchor" id="autotoc_md3"></a>
-@ref /home/runner/work/LuaCsForBarotrauma/LuaCsForBarotrauma/luacs-docs/cs/setting-up-simple-mod.md "Setting up Simple Mod (Old System)"</h1>
+Setting Up Assembly Mod</h1>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md4"></a>
+Part 1: General Project Setup</h3>
+<ol type="1">
+<li>Download <a href="https://visualstudio.microsoft.com/vs/">Visual Studio</a>. You may use another version of VS, or another IDE like JetBrains Rider. However, it must support <code>.NET 6</code> as a platform/SDK target and there is no guarantee that the project will function as expected, although there should be little issue.</li>
+</ol>
+<ul>
+<li>Important: You must have <code>Visual Studio Build Tools</code> 2019 or later installed with the Individual Component under <code>SDKs, libraries, and frameworks</code> named <code>Visual Studio SDK Build Tools Core</code> installed.</li>
+</ul>
+<ol type="1">
+<li>Git Clone or Download the following:<ul>
+<li><a href="https://github.com/MapleWheels/LuaCsForBarotrauma/releases">Refs.zip</a>: This contains all references used in the project. Choose the one from the latest release on the Github repo.</li>
+<li><a href="https://github.com/MapleWheels/VSProjectSkeleton">VSProjectSkeleton</a>: This contains the skeleton project that we will be using as the basis for this tutorial. Most things that need to be setup have already been done.</li>
+<li>If you do not have Git Tools installed, it is recommended that you get familiar with them as it makes life easier and is required for Part 2 (optional). <a href="https://git-scm.com/downloads">Download and install it</a>.</li>
+</ul>
+</li>
+<li>Extract the VS Project Skeleton to a folder that you are working out of.\ &ndash; IMPORTANT: This folder should NOT be in your Barotrauma/Luatruama local mods folder!</li>
+<li>Copy the contents of the Refs.zip into the <code>/Refs/</code> folder in the VS Skeleton Project. Your project should then have the below structure. <div class="fragment"><div class="line">./MyModName.sln</div>
+<div class="line">./.gitignore</div>
+<div class="line">./README.txt</div>
+<div class="line">./Build.props</div>
+<div class="line"> </div>
+<div class="line">=== Assets Here ===</div>
+<div class="line">./Assets</div>
+<div class="line">----/Content/ &lt;&lt;=== Your Non-CSharp Content Goes Here (including Lua, XML)!</div>
+<div class="line">Ex:----/Lua/...</div>
+<div class="line">Ex:----/Items/...</div>
+<div class="line">----/filelist.xml</div>
+<div class="line">----/RunConfig.xml</div>
+<div class="line"> </div>
+<div class="line">=== Client CSharp Code Here ===</div>
+<div class="line">./ClientProject</div>
+<div class="line">----/ClientSource/...</div>
+<div class="line">----/LinuxClient.csproj</div>
+<div class="line">----/OSXClient.csproj</div>
+<div class="line">----/WindowsClient.csproj</div>
+<div class="line"> </div>
+<div class="line">=== Server CSharp Code Here ===</div>
+<div class="line">./ServerProject</div>
+<div class="line">----/ServerSource/...</div>
+<div class="line">----/LinuxServer.csproj</div>
+<div class="line">----/OSXServer.csproj</div>
+<div class="line">----/WindowsServer.csproj</div>
+<div class="line"> </div>
+<div class="line">=== Shared CSharp Code Here ===</div>
+<div class="line">./SharedProject</div>
+<div class="line">----/SharedSource/...</div>
+<div class="line"> </div>
+<div class="line">./Refs</div>
+<div class="line">----/Linux/Barotrauma.dll</div>
+<div class="line">----/Linux/DedicatedServer.dll</div>
+<div class="line">----/Windows/Barotrauma.dll</div>
+<div class="line">----/Windows/DedicatedServer.dll</div>
+<div class="line">----/OSX/Barotrauma.dll</div>
+<div class="line">----/OSX/DedicatedServer.dll</div>
+<div class="line">----/0Harmony.dll</div>
+<div class="line">----/Farseer.NetStandard.dll</div>
+<div class="line">----/Lidgren.NetStandard.dll</div>
+<div class="line">----/Mono.Cecil.dll</div>
+<div class="line">----/MonoGame.Framework.Linux.NetStandard.dll</div>
+<div class="line">----/MonoGame.Framework.MacOS.NetStandard.dll</div>
+<div class="line">----/MonoGame.Framework.Windows.NetStandard.dll</div>
+<div class="line">----/MonoMod.Common.dll</div>
+<div class="line">----/MoonSharp.Interpreter.dll</div>
+<div class="line">----/XNATypes.dll</div>
+</div><!-- fragment --></li>
+<li>Rename the Skeleton Project folder to the name of your mod.</li>
+<li>Open up the Solution file (<code>.sln</code>) from the Skeleton Project in Visual Studio. Just verify that there are not errors related to "Unable to find Reference", this means that all assemblies in <code>/Refs</code> have be found successfully.</li>
+<li>Rename the <code>MyModName.sln</code> file to the name of your mod. IE: <code>ModdingToolkit.sln</code>.</li>
+<li>Open the <code>.sln</code> Solution file. In your IDE, you will need to do the following for all <code>.csproj</code> files: <div class="fragment"><div class="line">- Assets.csproj</div>
+<div class="line">- LinuxClient.csproj</div>
+<div class="line">- LinuxServer.csproj</div>
+<div class="line">- OSXClient.csproj</div>
+<div class="line">- OSXServer.csproj</div>
+<div class="line">- WindowsClient.csproj</div>
+<div class="line">- WindowsServer.csproj</div>
+</div><!-- fragment --><ul>
+<li>A. Open the Project Configuration for the <code>.csproj</code> file by right-clicking and selecting <code>Properties</code>.</li>
+<li>B. Change the <code>AssemblyName</code> to the name of your mod WITHOUT SPACES OR SPECIAL CHARACTERS. Example: <code>ModdingToolkit</code></li>
+<li>C. Change the <code>Root Namespace</code> to either your mod's Assembly Name or mod's short version without spaces in plain English. Example: <code>ModdingToolkit</code>.</li>
+</ul>
+</li>
+</ol>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md6"></a>
+Part 2 (Optional, Recommended): Setting up a debug build of LuaCsForBarotrauma</h3>
+<p>This will give us a debug build of LuaCsForBarotrauma. A debug build gives us access to many tools as well as the <code>DEBUG</code> symbol for writing test/print code that will not be run in the release version.</p>
+<ol type="1">
+<li>Clone the <a href="https://github.com/evilfactory/LuaCsForBarotrauma">LuaCsForBarotrauma</a> repository to your local drive. If you do not have Git Tools installed, please <a href="https://git-scm.com/downloads">download and install it</a>.</li>
+</ol>
+<ul>
+<li>Important: When cloning, use the command <code>git clone --recurse-submodules --remote-submodules <a href="https://github.com/evilfactory/LuaCsForBarotrauma.git">https://github.com/evilfactory/LuaCsForBarotrauma.git</a></code>. This will download the submodules automatically.</li>
+</ul>
+<ol type="1">
+<li>Open up the LuaCs Solution in your IDE based on your Operating System, one of: <div class="fragment"><div class="line">- WindowsSolution.sln</div>
+<div class="line">- MacSolution.sln</div>
+<div class="line">- LinuxSolution.sln</div>
+</div><!-- fragment --> &ndash; NOTE: This tutorial assumes that you are using the <code>WindowsSolution.sln</code>. For other platforms, the naming of files may be slightly different (MacXXX, LinuxXXX, where 'XXX' is either "Client" or "Server").\ \</li>
+<li>In the Project Settings for <code>WindowsClient</code> and <code>WindowsServer</code>, you want to change the <code>Platform Target</code> from <code>Any CPU</code> to <code>x64</code>. This is necessary for <a class="elRef" href="../baro-client/html/namespace_open_a_l.html">OpenAL</a> code to build successfully.\ \</li>
+<li>Build the whole Solution (<code>Build -&gt; Build Solution</code>). This will create the necessary dependencies from libraries and make sure that there are no errors at this point.\ \</li>
+<li>For both the <code>WindowsClient</code> and <code>WindowsServer</code> projects, set their output/build type to <code>DEBUG</code> (should be in a drop-down menu at the top next to a green play button).\ \</li>
+<li>Select <code>Build Solution</code>. This will generate Debug builds for use. This debug build will now exist in <code>./Barotrauma/bin/DebugXXX/net6.0/</code> where <code>XXX</code> is based on your Solution choice. IE. <code>./Barotrauma/bin/DebugWindows/net6.0</code>.\ \</li>
+<li>Make the local folder in Barotrauma/LocalMods/ for your mod:</li>
+</ol>
+<ul>
+<li>A. Navigate into the Client Debug Build folder (or game folder if you are coming from Part 3, Step 3) and then into <code>/LocalMods</code>.</li>
+<li>B. CREATE a folder with the name of your mod. Ideally, it should match the name of your <code>.sln</code> file with the extension.</li>
+<li>C. COPY the path to this directory (with your mod) and save it in a sticky note or .txt file. We will be using it shortly.\ </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md7"></a>
+autotoc_md7</h1>
+<h3><a class="anchor" id="autotoc_md8"></a>
+Part 3: Setting up MSBuild to Copy Files into Local Mods.</h3>
+<p>You will have to do the following for the <code>Build.props</code> file found in the main project directory:</p>
+<ol type="1">
+<li>Open the file in your Text Editor or IDE of choice.</li>
+<li>Locate the line <code>ModDeployDir</code>, IE: <div class="fragment"><div class="line">&lt;<span class="keywordtype">PropertyGroup</span>&gt;</div>
+<div class="line">    <span class="comment">&lt;!-- IMPORTANT: Should point to &lt;Barotrauma_Install&gt;\LocalMods&lt;MyModName&gt;\ --&gt;</span></div>
+<div class="line">    <span class="comment">&lt;!-- IMPORTANT: ModDeplyDir Path must end with &#39;\&#39; --&gt;</span></div>
+<div class="line">    &lt;<span class="keywordtype">ModDeployDir</span>&gt;..\<span class="keyword">LUATRAMA_DEBUG_LOCALMODS_MYMODDIR</span>\&lt;/<span class="keywordtype">ModDeployDir</span>&gt;</div>
+<div class="line">    <span class="comment">&lt;!-- IMPORTANT: Avoid the use of special (IE: / : ; , \ &lt; &gt; ?) (periods &quot;.&quot; are good) and non-english characters in the AssemblyName.--&gt;</span></div>
+<div class="line">    &lt;<span class="keywordtype">AssemblyName</span>&gt;<span class="keyword">MyModName</span>&lt;/<span class="keywordtype">AssemblyName</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">PropertyGroup</span>&gt;</div>
+</div><!-- fragment --></li>
+<li>Change the <code>ModDeployDir</code> value from <code>..\LUATRAMA_DEBUG_LOCALMODS_MYMODDIR\</code> to the path to your mod's folder in the <code>/LocalMods</code> folder for LuaCsForBarotrauma from <code>Part 2, Step 7</code>.</li>
+</ol>
+<ul>
+<li>IMPORTANT: The value must end with <code>/</code> or <code>\</code> . IE: <code>\LocalMods\ModdingToolkit\</code>.</li>
+<li>Note: If you did not complete Part 2, then complete only Part 2, Step 7 but use your vanilla <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a> installation location instead.</li>
+<li>Note: If you do not want either the <code>Client</code> plugin or the <code>Server</code> plugin (IE. Client-side or Server-side ONLY mod), then you must delete all projects that end with <code>Server</code>. Example: <code>LinuxServer</code>, <code>WindowsServer</code>. Warning, this is generally irreversible and will require you to setup new Cs Projects if you want a client in the future.</li>
+</ul>
+<ol type="1">
+<li>Replace <code>MyModName</code> with a valid assembly name, this should be similar to your mod name but does not need to match. This name should:</li>
+</ol>
+<ul>
+<li>Not include spaces.</li>
+<li>Not include special characters except periods ( . ), which are allowed.</li>
+<li>Use english characters.</li>
+<li>Recommended: Follow the convention of <code>ModName</code> or <code>PackageName.LibraryName</code> for libraries, IE: <code>ModdingToolkit.GUI</code>.</li>
+</ul>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md10"></a>
+Part 4: Adding Launch Configurations for Debug-Mode Barotrauma Client and Server to the IDE.</h3>
+<p>This part makes life very easy and gives you access to Edit and Continue. It'll let you Debug your build as you go and launch <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a> from the IDE. Note that this is IDE-specific so please follow the links for your IDE while doing the below:\ &ndash; Make two launch options;</p><ul>
+<li>A. One should target <code>Barotrauma.exe</code> or <code>Barotrauma.dll</code>, name it <code>Client</code>.</li>
+<li>B. The other should target <code>DedicatedServer.exe</code> or <code>DedicatedServer.dll</code> and name it <code>Server</code>.</li>
+</ul>
+<p>Follow the link;</p>
+<ul>
+<li>For <a href="https://www.jetbrains.com/help/rider/Run_Debug_Configuration.html#envvars-progargs">Jetbrains Rider IDE</a> (what I use).</li>
+<li>For <a href="https://learn.microsoft.com/en-us/visualstudio/debugger/project-settings-for-csharp-debug-configurations-dotnetcore?view=vs-2022#launch-profile-net-core-net-5">Visual Studio 2022</a> IDE.</li>
+</ul>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md12"></a>
+(Optional) Part 5: Adding Script Dependencies</h3>
+<p>This part is optional and only to be used if your mod relies on the assemblies/code from another mod to run/compile. This will allow you to add Script/Code ContentPackages as dependencies to make sure they load first.</p>
+<ol type="1">
+<li>Open <code>&lt;ProjectDirectory&gt;/Assets/RunConfig.cfg</code> it should look like this: <div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;utf-8&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">RunConfig</span>&gt;</div>
+<div class="line">    <span class="comment">&lt;!--Options: &quot;None&quot; / &quot;Forced&quot; (always) / &quot;Standard&quot; (when enabled)--&gt;</span></div>
+<div class="line">    &lt;<span class="keywordtype">Server</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Server</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Client</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Client</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">RunConfig</span>&gt;</div>
+</div><!-- fragment --></li>
+<li>Add a <code>Dependencies</code> section/node/element: <div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;utf-8&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">RunConfig</span>&gt;</div>
+<div class="line">    <span class="comment">&lt;!--Options: &quot;None&quot; / &quot;Forced&quot; (always) / &quot;Standard&quot; (when enabled)--&gt;</span></div>
+<div class="line">    &lt;<span class="keywordtype">Server</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Server</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Client</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Client</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Dependencies</span>&gt;</div>
+<div class="line">     </div>
+<div class="line">    &lt;/<span class="keywordtype">Dependencies</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">RunConfig</span>&gt;</div>
+</div><!-- fragment --></li>
+<li>Add the STEAMID <b>or</b> Name of your dependencies surrounded by <code>&lt;Dependency&gt;&lt;/Dependency&gt;</code> elements as follows:</li>
+</ol>
+<ul>
+<li><code>&lt;PackageName&gt;Name&lt;/PackageName&gt;</code> for name matching</li>
+<li><code>&lt;SteamWorkshopId&gt;000000&lt;/SteamWorkshopId&gt;</code> and replace zeroes with the dependency's workshop steam id. <div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;utf-8&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">RunConfig</span>&gt;</div>
+<div class="line">    <span class="comment">&lt;!--Options: &quot;None&quot; / &quot;Forced&quot; (always) / &quot;Standard&quot; (when enabled)--&gt;</span></div>
+<div class="line">    &lt;<span class="keywordtype">Server</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Server</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Client</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Client</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Dependencies</span>&gt;</div>
+<div class="line">        &lt;<span class="keywordtype">Dependency</span>&gt;</div>
+<div class="line">            <span class="comment">&lt;!-- You do not need both of these, the SteamWorkshopId is usually enough --&gt;</span></div>
+<div class="line">            &lt;<span class="keywordtype">SteamWorkshopId</span>&gt;<span class="comment">&lt;!--ID goes here--&gt;</span>&lt;/<span class="keywordtype">SteamWorkshopId</span>&gt;</div>
+<div class="line">            &lt;<span class="keywordtype">PackageName</span>&gt;<span class="comment">&lt;!--Name goes here--&gt;</span>&lt;/<span class="keywordtype">PackageName</span>&gt;</div>
+<div class="line">        &lt;/<span class="keywordtype">Dependency</span>&gt;</div>
+<div class="line">        &lt;<span class="keywordtype">Dependency</span>&gt; <span class="comment">&lt;!-- Dependency 2 Example --&gt;</span></div>
+<div class="line">            &lt;<span class="keywordtype">PackageName</span>&gt;<span class="keyword">modding</span> <span class="keyword">toolkit</span>&lt;/<span class="keywordtype">PackageName</span>&gt;</div>
+<div class="line">        &lt;/<span class="keywordtype">Dependency</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">Dependencies</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">RunConfig</span>&gt;</div>
+</div><!-- fragment --></li>
+</ul>
+<p>And you're good to go!</p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Setting Up Simple Mod</h1>
+<p>The main star of the show is <a class="elRef" href="../baro-server/html/class_barotrauma_1_1_a_cs_mod.html">Barotrauma.ACsMod</a> class. It is what most of your mods will use to hook game methods, and execute custom code. If you are planning on creating new components it's possible to just inherit from ItemComponent.</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Important features</h2>
+<ul>
+<li>Mods have full access to Harmony to allow you to perform any patches you wish.</li>
+<li>All utility classes can be accessed either by their type (i.e that have name that starts with <code>LuaCs...</code>) or through <code>GameMain.LuaCs</code> property (refer to <a href="#ltcd">class documentation</a>).</li>
+<li>All C# code files must be located in <code>&lt;mod_root&gt;/CSharp/*</code> otherwise they won't be compiled</li>
+<li>To configure <b>server / client</b> execution behaviour create <code>RunConfig.xml</code> in <code>CSharp</code> directory, like is shown below (run types are <code>Standard</code>, <code>Forced</code> and <code>None</code>)</li>
+<li>Additionally you can specify what code runs where by either <em><b>filepath</b></em> or <em><b>pre-processor statements</b></em></li>
+<li>In case of filepath, your files must be located in either <code>CSharp/Shared/*</code>, <code>CSharp/Server/*</code> or <code>CSharp/Client/*</code>, for <em>shared</em> code, <em>server-side</em> code or <em>client-side</em> code respectively (in any other case, the code is assumed to be shared)</li>
+<li>I case of pre-processor, you can use <code>SERVER</code> or <code>CLIENT</code> definitions to separate code into <em>server-side</em> code and <em>client-side</em> code respectively</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Code example</h2>
+<p>A generic C# mod boilerplate:</p>
+<p>File-tree:</p>
+<div class="fragment"><div class="line">&lt;mod_root&gt;/</div>
+<div class="line">├─ CSharp/</div>
+<div class="line">│  ├─ RunConfig.xml</div>
+<div class="line">│  ├─ Shared/ExampleMod.cs</div>
+<div class="line">│  ├─ Server/ExampleMod.cs</div>
+<div class="line">│  └─ Client/ExampleMod.cs</div>
+<div class="line">└─ dummyitem.xml</div>
+</div><!-- fragment --><hr  />
+<p> <code>&lt;mod_root&gt;/CSharp/RunConfig.xml</code></p>
+<div class="fragment"><div class="line">&lt;?<span class="keyword">xml</span> <span class="keyword">version</span>=<span class="stringliteral">&quot;1.0&quot;</span> <span class="keyword">encoding</span>=<span class="stringliteral">&quot;utf-8&quot;</span>?&gt;</div>
+<div class="line">&lt;<span class="keywordtype">RunConfig</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Server</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Server</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Client</span>&gt;<span class="keyword">Standard</span>&lt;/<span class="keywordtype">Client</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">RunConfig</span>&gt;</div>
+</div><!-- fragment --><hr  />
+<p> <code>&lt;mod_root&gt;/CSharp/Shared/ExampleMod.cs</code></p>
+<div class="fragment"><div class="line">using System;</div>
+<div class="line">using Barotrauma;</div>
+<div class="line"> </div>
+<div class="line">namespace ExampleNamespace {</div>
+<div class="line">    partial class ExampleMod: ACsMod {</div>
+<div class="line">        public ExampleMod() {</div>
+<div class="line">            // shared code</div>
+<div class="line">            ...</div>
+<div class="line"> </div>
+<div class="line">            #if SERVER</div>
+<div class="line">                InitServer();</div>
+<div class="line">            #elif CLIENT</div>
+<div class="line">                InitClient();</div>
+<div class="line">            #endif</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        public override void Stop() {</div>
+<div class="line">            // stopping code, e.g. save custom data</div>
+<div class="line">             #if SERVER</div>
+<div class="line">                // server-side code</div>
+<div class="line">                ...</div>
+<div class="line">            #elif CLIENT</div>
+<div class="line">                // client-side code</div>
+<div class="line">                ...</div>
+<div class="line">            #endif</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><hr  />
+<p> <code>&lt;mod_root&gt;/CSharp/Server/ExampleMod.cs</code></p>
+<div class="fragment"><div class="line">using System;</div>
+<div class="line">using Barotrauma;</div>
+<div class="line"> </div>
+<div class="line">namespace ExampleNamespace {</div>
+<div class="line">    partial class ExampleMod {</div>
+<div class="line">        public void InitServer() {</div>
+<div class="line">            // server-side initialization</div>
+<div class="line">            ...</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><hr  />
+<p> <code>&lt;mod_root&gt;/CSharp/Client/ExampleMod.cs</code></p>
+<div class="fragment"><div class="line">using System;</div>
+<div class="line">using Barotrauma;</div>
+<div class="line"> </div>
+<div class="line">namespace ExampleNamespace {</div>
+<div class="line">    partial class ExampleMod {</div>
+<div class="line">        public void InitClient() {</div>
+<div class="line">            // client-side initialization</div>
+<div class="line">            ...</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><hr  />
+<p> <code>&lt;mod_root&gt;/dummyitem.xml</code></p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">Items</span>&gt;&lt;/<span class="keywordtype">Items</span>&gt; </div>
+</div><!-- fragment --><h1><a class="anchor" id="ltcd"></a>
+Links to class documentation</h1>
+<ul>
+<li><a href="../baro-server/html/index.html">Server documentation</a></li>
+<li><a href="../baro-client/html/index.html">Client documentation</a> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
