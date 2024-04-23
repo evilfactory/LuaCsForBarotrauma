@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('_i_enumerable_extensions_8cs_source.ht
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Linq;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Collections.Immutable;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="namespace_barotrauma_1_1_extensions.html">    6</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>IEnumerableExtensions</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('_i_enumerable_extensions_8cs_source.ht
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Shuffle&lt;T&gt;(<span class="keyword">this</span> IList&lt;T&gt; list, Rand.RandSync randSync = Rand.RandSync.Unsynced)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            =&gt; list.Shuffle(Rand.GetRNG(randSync));</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Shuffle&lt;T&gt;(<span class="keyword">this</span> IList&lt;T&gt; list, Random rng)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Shuffle&lt;T&gt;(<span class="keyword">this</span> IList&lt;T&gt; list, <a class="code" href="namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23">Random</a> rng)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordtype">int</span> n = list.Count;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">while</span> (n &gt; 1)</div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('_i_enumerable_extensions_8cs_source.ht
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> count == 0 ? default : source[Rand.Range(0, count, randSync)];</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T GetRandom&lt;T&gt;(<span class="keyword">this</span> IReadOnlyList&lt;T&gt; source, Random random)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T GetRandom&lt;T&gt;(<span class="keyword">this</span> IReadOnlyList&lt;T&gt; source, <a class="code" href="namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23">Random</a> random)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordtype">int</span> count = source.Count;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> count == 0 ? default : source[random.Next(0, count)];</div>
@@ -156,20 +156,20 @@ $(document).ready(function(){initNavTree('_i_enumerable_extensions_8cs_source.ht
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T GetRandom&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, Random rand)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            where T : PrefabWithUintIdentifier</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T GetRandom&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, <a class="code" href="namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23">Random</a> rand)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            where T : <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> source.OrderBy(p =&gt; p.UintIdentifier).ToArray().GetRandom(rand);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T GetRandom&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, Rand.RandSync randSync)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            where T : PrefabWithUintIdentifier</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            where T : <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> source.OrderBy(p =&gt; p.UintIdentifier).ToArray().GetRandom(randSync);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T GetRandom&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, Func&lt;T, bool&gt; predicate, Rand.RandSync randSync)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            where T : PrefabWithUintIdentifier</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            where T : <a class="code" href="class_barotrauma_1_1_prefab_with_uint_identifier.html">PrefabWithUintIdentifier</a></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span> source.Where(predicate).OrderBy(p =&gt; p.UintIdentifier).ToArray().GetRandom(randSync);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
@@ -244,121 +244,28 @@ $(document).ready(function(){initNavTree('_i_enumerable_extensions_8cs_source.ht
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">if</span> (value != <span class="keyword">null</span>) { source.Add(value); }</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ImmutableDictionary&lt;TKey, TValue&gt; ToImmutableDictionary&lt;TKey, TValue&gt;(<span class="keyword">this</span> IEnumerable&lt;(TKey, TValue)&gt; enumerable)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">return</span> enumerable.ToDictionary().ToImmutableDictionary();</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Dictionary&lt;TKey, TValue&gt; ToDictionary&lt;TKey, TValue&gt;(<span class="keyword">this</span> IEnumerable&lt;(TKey, TValue)&gt; enumerable)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            var dictionary = <span class="keyword">new</span> Dictionary&lt;TKey, TValue&gt;();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">foreach</span> (var (k,v) in enumerable)</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                dictionary.Add(k, v);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> dictionary;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Dictionary&lt;TKey, TValue&gt; ToMutable&lt;TKey, TValue&gt;(<span class="keyword">this</span> ImmutableDictionary&lt;TKey, TValue&gt; immutableDictionary)</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">if</span> (immutableDictionary == <span class="keyword">null</span>) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Dictionary&lt;TKey, TValue&gt;(immutableDictionary);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> NetCollection&lt;T&gt; ToNetCollection&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; enumerable) =&gt; <span class="keyword">new</span> NetCollection&lt;T&gt;(enumerable.ToImmutableArray());</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> AtLeast&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, <span class="keywordtype">int</span> amount, Predicate&lt;T&gt; predicate)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">foreach</span> (T elem <span class="keywordflow">in</span> source)</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                <span class="keywordflow">if</span> (predicate(elem)) { amount--; }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keywordflow">if</span> (amount &lt;= 0) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ICollection&lt;T&gt; CollectionConcat&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; <span class="keyword">self</span>, IEnumerable&lt;T&gt; other)</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            =&gt; <span class="keyword">new</span> CollectionConcat&lt;T&gt;(<span class="keyword">self</span>, other);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IReadOnlyList&lt;T&gt; ListConcat&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; <span class="keyword">self</span>, IEnumerable&lt;T&gt; other)</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            =&gt; <span class="keyword">new</span> ListConcat&lt;T&gt;(<span class="keyword">self</span>, other);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T? MaxOrNull&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; enumerable) where T : <span class="keyword">struct</span>, IComparable&lt;T&gt;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            T? retVal = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">foreach</span> (T v <span class="keywordflow">in</span> enumerable)</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="keywordflow">if</span> (!retVal.HasValue || v.CompareTo(retVal.Value) &gt; 0) { retVal = v; }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> retVal;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> TOut? MaxOrNull&lt;TIn, TOut&gt;(<span class="keyword">this</span> IEnumerable&lt;TIn&gt; enumerable, Func&lt;TIn, TOut&gt; conversion)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            where TOut : <span class="keyword">struct</span>, IComparable&lt;TOut&gt;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            =&gt; enumerable.Select(conversion).MaxOrNull();</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> FindIndex&lt;T&gt;(<span class="keyword">this</span> IReadOnlyList&lt;T&gt; list, Predicate&lt;T&gt; predicate)</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;list.Count; i++)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keywordflow">if</span> (predicate(list[i])) { <span class="keywordflow">return</span> i; }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T? FirstOrNull&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, Func&lt;T, bool&gt; predicate) where T : <span class="keyword">struct</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">if</span> (source.FirstOrDefault(predicate) is var first &amp;&amp; !first.Equals(<span class="keywordflow">default</span>(T)))</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">return</span> first;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T? FirstOrNull&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source) where T : <span class="keyword">struct</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordflow">if</span> (source.FirstOrDefault() is var first &amp;&amp; !first.Equals(<span class="keywordflow">default</span>(T)))</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">return</span> first;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            }</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;T&gt; NotNull&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T?&gt; source) where T : <span class="keyword">struct</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            =&gt; source</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                .Where(nullable =&gt; nullable.HasValue)</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                .Select(nullable =&gt; nullable.Value);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;T&gt; NotNull&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source) where T : <span class="keyword">class</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            =&gt; source</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                .Where(nullable =&gt; nullable != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                .Select(nullable =&gt; nullable!);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;T&gt; NotNone&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;Option&lt;T&gt;&gt; source)</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">foreach</span> (var o <span class="keywordflow">in</span> source)</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keywordflow">if</span> (o.TryUnwrap(out var v)) { yield <span class="keywordflow">return</span> v; }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;TSuccess&gt; Successes&lt;TSuccess, TFailure&gt;(</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keyword">this</span> IEnumerable&lt;Result&lt;TSuccess, TFailure&gt;&gt; source)</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            =&gt; source</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                .OfType&lt;Success&lt;TSuccess, TFailure&gt;&gt;()</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(s =&gt; s.Value);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;TFailure&gt; Failures&lt;TSuccess, TFailure&gt;(</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <span class="keyword">this</span> IEnumerable&lt;Result&lt;TSuccess, TFailure&gt;&gt; source)</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            =&gt; source</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                .OfType&lt;Failure&lt;TSuccess, TFailure&gt;&gt;()</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(f =&gt; f.Error);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
-<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Barotrauma.InputType.Select</a></div><div class="ttdeci">@ Select</div></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> NetCollection&lt;T&gt; ToNetCollection&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; enumerable) =&gt; <span class="keyword">new</span> NetCollection&lt;T&gt;(enumerable.ToImmutableArray());</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> AtLeast&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; source, <span class="keywordtype">int</span> amount, Predicate&lt;T&gt; predicate)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">foreach</span> (T elem <span class="keywordflow">in</span> source)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="keywordflow">if</span> (predicate(elem)) { amount--; }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <span class="keywordflow">if</span> (amount &lt;= 0) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ICollection&lt;T&gt; CollectionConcat&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; <span class="keyword">self</span>, IEnumerable&lt;T&gt; other)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            =&gt; <span class="keyword">new</span> CollectionConcat&lt;T&gt;(<span class="keyword">self</span>, other);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IReadOnlyList&lt;T&gt; ListConcat&lt;T&gt;(<span class="keyword">this</span> IEnumerable&lt;T&gt; <span class="keyword">self</span>, IEnumerable&lt;T&gt; other)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            =&gt; <span class="keyword">new</span> ListConcat&lt;T&gt;(<span class="keyword">self</span>, other);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_prefab_with_uint_identifier_html"><div class="ttname"><a href="class_barotrauma_1_1_prefab_with_uint_identifier.html">Barotrauma.PrefabWithUintIdentifier</a></div><div class="ttdoc">Prefab that has a property serves as a deterministic hash of a prefab's identifier....</div><div class="ttdef"><b>Definition:</b> <a href="_prefab_with_uint_identifier_8cs_source.html#l00011">PrefabWithUintIdentifier.cs:12</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#adea51409ea4734f038f6c91bdcc2c4cfa64663f4646781c9c0110838b905daa23">Barotrauma.Networking.SelectionMode.Random</a></div><div class="ttdeci">@ Random</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -31,7 +31,6 @@ var NAVTREE =
     [ "Barotrauma C# modding guide", "index.html", [
       [ "Introduction", "index.html#autotoc_md1", null ],
       [ "Setting Up Assembly Mod", "index.html#autotoc_md2", null ],
-      [ "autotoc_md7", "index.html#autotoc_md7", null ],
       [ "Setting Up Simple Mod", "index.html#autotoc_md13", [
         [ "Important features", "index.html#autotoc_md14", null ],
         [ "Code example", "index.html#autotoc_md15", null ]

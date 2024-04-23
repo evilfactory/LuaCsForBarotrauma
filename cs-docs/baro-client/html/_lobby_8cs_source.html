@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('_lobby_8cs_source.html',''); initResiz
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_networking.html">Networking</a>;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Globalization;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Linq;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> System.Threading.Tasks;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
@@ -114,165 +114,144 @@ $(document).ready(function(){initNavTree('_lobby_8cs_source.html',''); initResiz
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> CreateLobby(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a> serverSettings)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span> (lobbyState != LobbyState.NotConnected) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            lobbyState = LobbyState.Creating;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            TaskPool.Add(<span class="stringliteral">&quot;CreateLobbyAsync&quot;</span>, Steamworks.SteamMatchmaking.CreateLobbyAsync(serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a05c49eda39e8bc8c2e05072ffe10a542">MaxPlayers</a> + 10),</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                (lobby) =&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    if (lobbyState != LobbyState.Creating)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        LeaveLobby();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        return;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    currentLobby = ((Task&lt;Steamworks.Data.Lobby?&gt;)lobby).Result;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    if (currentLobby == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        DebugConsole.ThrowError(<span class="stringliteral">&quot;Failed to create Steam lobby&quot;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        lobbyState = LobbyState.NotConnected;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    DebugConsole.NewMessage(<span class="stringliteral">&quot;Lobby created!&quot;</span>, Microsoft.Xna.Framework.Color.Lime);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    lobbyState = LobbyState.Owner;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    lobbyID = (currentLobby?.Id).Value;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    SetLobbyPublic(serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#adc1b7e7e80dce0ed2d78dbd14862cefa">IsPublic</a>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    currentLobby?.SetJoinable(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    UpdateLobby(serverSettings);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                });</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetLobbyPublic(<span class="keywordtype">bool</span> isPublic)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (isPublic)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                currentLobby?.SetPublic();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                currentLobby?.SetFriendsOnly();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> UpdateLobby(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a> serverSettings)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (GameMain.Client == <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                LeaveLobby();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (lobbyState == LobbyState.NotConnected)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                CreateLobby(serverSettings);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> (lobbyState != LobbyState.Owner)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            var contentPackages = ContentPackageManager.EnabledPackages.All.Where(cp =&gt; cp.HasMultiplayerSyncedContent);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;name&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a36105be7b54ef363a1f30c31c76447d3">ServerName</a>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;playercount&quot;</span>, (GameMain.Client?.ConnectedClients?.Count ?? 0).ToString());</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;maxplayernum&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a05c49eda39e8bc8c2e05072ffe10a542">MaxPlayers</a>.ToString());</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="comment">//currentLobby?.SetData(&quot;hostipaddress&quot;, lobbyIP);</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">string</span> pingLocation = Steamworks.SteamNetworkingUtils.LocalPingLocation?.ToString();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;pinglocation&quot;</span>, pingLocation ?? <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;lobbyowner&quot;</span>, GetSteamId().TryUnwrap(out var steamId)</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                ? steamId.StringRepresentation</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                : <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Steamworks not initialized&quot;</span>));</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;haspassword&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a17a5954d5a59e554f71e8937feb6ef2e">HasPassword</a>.ToString());</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;message&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a04a8d391ce71b43ae30f7e72469cdbc2">ServerMessageText</a>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;version&quot;</span>, GameMain.Version.ToString());</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;contentpackage&quot;</span>, <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;,&quot;</span>, contentPackages.Select(cp =&gt; cp.Name)));</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;contentpackagehash&quot;</span>, <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;,&quot;</span>, contentPackages.Select(cp =&gt; cp.Hash.StringRepresentation)));</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;contentpackageid&quot;</span>, <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;,&quot;</span>, contentPackages.Select(cp</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                =&gt; cp.UgcId.TryUnwrap(out var ugcId) ? ugcId.StringRepresentation : <span class="stringliteral">&quot;&quot;</span>)));</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;modeselectionmode&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a9d08d942a15c6a25bfffeb677e0cfe4a">ModeSelectionMode</a>.ToString());</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;subselectionmode&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#adfdb4af430132b59774e291bd10de6bc">SubSelectionMode</a>.ToString());</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;voicechatenabled&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a379b70d389cd0871dc7e430b9e96a2e6">VoiceChatEnabled</a>.ToString());</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;allowspectating&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#ada4b7885d67d419f26b3912f722488af">AllowSpectating</a>.ToString());</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;allowrespawn&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a266fef3c8fd41a7581c36df8cd2809b6">AllowRespawn</a>.ToString());</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;karmaenabled&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a8eac4dff71633222e3119e2637355c15">KarmaEnabled</a>.ToString());</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;friendlyfireenabled&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a7bb9993ab434580f27e1566f249ac4eb">AllowFriendlyFire</a>.ToString());</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;traitors&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a512248b43092e0199ecf299b863594e4">TraitorProbability</a>.ToString(CultureInfo.InvariantCulture));</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;gamestarted&quot;</span>, GameMain.Client.GameStarted.ToString());</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;playstyle&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a5914615c43ab06106b0c68a364ffb286">PlayStyle</a>.ToString());</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;gamemode&quot;</span>, GameMain.NetLobbyScreen?.SelectedMode?.Identifier.Value ?? <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;language&quot;</span>, serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a57e5006cb15265f8132cb1067c774c39">Language</a>.<a class="code" href="struct_barotrauma_1_1_language_identifier.html#a4ed85e8866a0d06cf5e72aae1655a84f">ToString</a>());</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetLobbyScreen?.SelectedSub != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                currentLobby?.SetData(<span class="stringliteral">&quot;submarine&quot;</span>, GameMain.NetLobbyScreen.SelectedSub.Name);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            DebugConsole.Log(<span class="stringliteral">&quot;Lobby updated!&quot;</span>);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span> (!SteamManager.IsInitialized) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (lobbyState != LobbyState.NotConnected) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            lobbyState = LobbyState.Creating;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            TaskPool.Add(<span class="stringliteral">&quot;CreateLobbyAsync&quot;</span>, Steamworks.SteamMatchmaking.CreateLobbyAsync(serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a05c49eda39e8bc8c2e05072ffe10a542">MaxPlayers</a> + 10),</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                (lobby) =&gt;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    if (lobbyState != LobbyState.Creating)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        LeaveLobby();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        return;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    currentLobby = ((Task&lt;Steamworks.Data.Lobby?&gt;)lobby).Result;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    if (currentLobby == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        DebugConsole.ThrowError(<span class="stringliteral">&quot;Failed to create Steam lobby&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        lobbyState = LobbyState.NotConnected;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    DebugConsole.NewMessage(<span class="stringliteral">&quot;Lobby created!&quot;</span>, Microsoft.Xna.Framework.Color.Lime);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    lobbyState = LobbyState.Owner;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    lobbyID = (currentLobby?.Id).Value;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    SetLobbyPublic(serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#adc1b7e7e80dce0ed2d78dbd14862cefa">IsPublic</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    currentLobby?.SetJoinable(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    UpdateLobby(serverSettings);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                });</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetLobbyPublic(<span class="keywordtype">bool</span> isPublic)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (isPublic)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                currentLobby?.SetPublic();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                currentLobby?.SetFriendsOnly();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> UpdateLobby(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html">ServerSettings</a> serverSettings)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (GameMain.Client == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                LeaveLobby();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (lobbyState == LobbyState.NotConnected)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                CreateLobby(serverSettings);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (lobbyState != LobbyState.Owner)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            serverSettings.<a class="code" href="class_barotrauma_1_1_networking_1_1_server_settings.html#a259ace89a1dcdbad800df0eb60479f46">UpdateServerListInfo</a>(SetServerListInfo);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            currentLobby?.SetData(<span class="stringliteral">&quot;lobbyowner&quot;</span>, GetSteamId().TryUnwrap(out var steamId)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                ? steamId.StringRepresentation</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                : <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Steamworks not initialized&quot;</span>));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (EosInterface.IdQueries.GetLoggedInPuids() is { Length: &gt; 0 } puids)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                currentLobby?.SetData(<span class="stringliteral">&quot;EosEndpoint&quot;</span>, puids[0].Value);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            DebugConsole.Log(<span class="stringliteral">&quot;Lobby updated!&quot;</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetServerListInfo(Identifier key, <span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">switch</span> (value)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">case</span> IEnumerable&lt;ContentPackage&gt; contentPackages:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    currentLobby?.SetData(<span class="stringliteral">&quot;contentpackage&quot;</span>, contentPackages.Select(p =&gt; p.Name).JoinEscaped(<span class="charliteral">&#39;,&#39;</span>));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    currentLobby?.SetData(<span class="stringliteral">&quot;contentpackagehash&quot;</span>, contentPackages.Select(p =&gt; p.Hash.StringRepresentation).JoinEscaped(<span class="charliteral">&#39;,&#39;</span>));</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    currentLobby?.SetData(<span class="stringliteral">&quot;contentpackageid&quot;</span>, contentPackages</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        .<a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Select</a>(p =&gt; p.UgcId.Select(ugcId =&gt; ugcId.StringRepresentation).Fallback(<span class="stringliteral">&quot;&quot;</span>))</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        .JoinEscaped(<span class="charliteral">&#39;,&#39;</span>));</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            currentLobby?.SetData(key.Value.ToLowerInvariant(), value.ToString());</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> LeaveLobby()</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (lobbyState != LobbyState.NotConnected)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                currentLobby?.Leave(); currentLobby = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                lobbyState = LobbyState.NotConnected;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                lobbyID = 0;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> LeaveLobby()</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">if</span> (lobbyState != LobbyState.NotConnected)</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                currentLobby?.Leave(); currentLobby = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                lobbyState = LobbyState.NotConnected;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                lobbyID = 0;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                Steamworks.SteamMatchmaking.ResetActions();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> JoinLobby(UInt64 <span class="keywordtype">id</span>, <span class="keywordtype">bool</span> joinServer)</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span> (currentLobby.HasValue &amp;&amp; currentLobby.Value.Id == <span class="keywordtype">id</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (lobbyID == <span class="keywordtype">id</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            lobbyState = LobbyState.Joining;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            lobbyID = id;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            TaskPool.Add(<span class="stringliteral">&quot;JoinLobbyAsync&quot;</span>, Steamworks.SteamMatchmaking.JoinLobbyAsync(lobbyID),</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                (lobby) =&gt;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    currentLobby = ((Task&lt;Steamworks.Data.Lobby?&gt;)lobby).Result;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    lobbyState = LobbyState.Joined;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    lobbyID = (currentLobby?.Id).Value;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    if (joinServer)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                    {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        GameMain.Instance.ConnectCommand = Option&lt;ConnectCommand&gt;.Some(</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                            new ConnectCommand(</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                currentLobby?.GetData(<span class="stringliteral">&quot;servername&quot;</span>) ?? <span class="stringliteral">&quot;Server&quot;</span>,</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                new SteamP2PEndpoint(new SteamId(currentLobby?.Owner.Id ?? 0))));</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                });</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html">Barotrauma.Networking.ServerSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00039">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:40</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a04a8d391ce71b43ae30f7e72469cdbc2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a04a8d391ce71b43ae30f7e72469cdbc2">Barotrauma.Networking.ServerSettings.ServerMessageText</a></div><div class="ttdeci">string ServerMessageText</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00342">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:343</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a05c49eda39e8bc8c2e05072ffe10a542"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a05c49eda39e8bc8c2e05072ffe10a542">Barotrauma.Networking.ServerSettings.MaxPlayers</a></div><div class="ttdeci">int MaxPlayers</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00907">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:908</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a17a5954d5a59e554f71e8937feb6ef2e"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a17a5954d5a59e554f71e8937feb6ef2e">Barotrauma.Networking.ServerSettings.HasPassword</a></div><div class="ttdeci">bool??? HasPassword</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00567">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:568</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a266fef3c8fd41a7581c36df8cd2809b6"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a266fef3c8fd41a7581c36df8cd2809b6">Barotrauma.Networking.ServerSettings.AllowRespawn</a></div><div class="ttdeci">bool AllowRespawn</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00592">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:593</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a36105be7b54ef363a1f30c31c76447d3"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a36105be7b54ef363a1f30c31c76447d3">Barotrauma.Networking.ServerSettings.ServerName</a></div><div class="ttdeci">string ServerName</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00325">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:326</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a379b70d389cd0871dc7e430b9e96a2e6"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a379b70d389cd0871dc7e430b9e96a2e6">Barotrauma.Networking.ServerSettings.VoiceChatEnabled</a></div><div class="ttdeci">bool VoiceChatEnabled</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00506">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:507</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a512248b43092e0199ecf299b863594e4"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a512248b43092e0199ecf299b863594e4">Barotrauma.Networking.ServerSettings.TraitorProbability</a></div><div class="ttdeci">float TraitorProbability</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00736">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:737</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a57e5006cb15265f8132cb1067c774c39"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a57e5006cb15265f8132cb1067c774c39">Barotrauma.Networking.ServerSettings.Language</a></div><div class="ttdeci">LanguageIdentifier Language</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00776">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:776</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a5914615c43ab06106b0c68a364ffb286"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a5914615c43ab06106b0c68a364ffb286">Barotrauma.Networking.ServerSettings.PlayStyle</a></div><div class="ttdeci">PlayStyle PlayStyle</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00519">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:520</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a7bb9993ab434580f27e1566f249ac4eb"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a7bb9993ab434580f27e1566f249ac4eb">Barotrauma.Networking.ServerSettings.AllowFriendlyFire</a></div><div class="ttdeci">bool AllowFriendlyFire</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00673">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:674</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a8eac4dff71633222e3119e2637355c15"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a8eac4dff71633222e3119e2637355c15">Barotrauma.Networking.ServerSettings.KarmaEnabled</a></div><div class="ttdeci">bool KarmaEnabled</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00864">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:865</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a9d08d942a15c6a25bfffeb677e0cfe4a"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a9d08d942a15c6a25bfffeb677e0cfe4a">Barotrauma.Networking.ServerSettings.ModeSelectionMode</a></div><div class="ttdeci">SelectionMode ModeSelectionMode</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00793">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:794</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_ada4b7885d67d419f26b3912f722488af"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#ada4b7885d67d419f26b3912f722488af">Barotrauma.Networking.ServerSettings.AllowSpectating</a></div><div class="ttdeci">bool AllowSpectating</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00472">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:473</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_adc1b7e7e80dce0ed2d78dbd14862cefa"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#adc1b7e7e80dce0ed2d78dbd14862cefa">Barotrauma.Networking.ServerSettings.IsPublic</a></div><div class="ttdeci">bool IsPublic</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00388">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:389</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_adfdb4af430132b59774e291bd10de6bc"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#adfdb4af430132b59774e291bd10de6bc">Barotrauma.Networking.ServerSettings.SubSelectionMode</a></div><div class="ttdeci">SelectionMode SubSelectionMode</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00780">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:781</a></div></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                Steamworks.SteamMatchmaking.ResetActions();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> JoinLobby(UInt64 <span class="keywordtype">id</span>, <span class="keywordtype">bool</span> joinServer)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (currentLobby.HasValue &amp;&amp; currentLobby.Value.Id == <span class="keywordtype">id</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">if</span> (lobbyID == <span class="keywordtype">id</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            lobbyState = LobbyState.Joining;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            lobbyID = id;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            TaskPool.Add(<span class="stringliteral">&quot;JoinLobbyAsync&quot;</span>, Steamworks.SteamMatchmaking.JoinLobbyAsync(lobbyID),</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                (lobby) =&gt;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                    currentLobby = ((Task&lt;Steamworks.Data.Lobby?&gt;)lobby).Result;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    lobbyState = LobbyState.Joined;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    lobbyID = (currentLobby?.Id).Value;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    if (joinServer)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        GameMain.Instance.ConnectCommand = Option&lt;ConnectCommand&gt;.Some(</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                            new ConnectCommand(</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                currentLobby?.GetData(<span class="stringliteral">&quot;servername&quot;</span>) ?? <span class="stringliteral">&quot;Server&quot;</span>,</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                new SteamP2PEndpoint(new SteamId(currentLobby?.Owner.Id ?? 0))));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                });</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html">Barotrauma.Networking.ServerSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00040">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:41</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a05c49eda39e8bc8c2e05072ffe10a542"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a05c49eda39e8bc8c2e05072ffe10a542">Barotrauma.Networking.ServerSettings.MaxPlayers</a></div><div class="ttdeci">int MaxPlayers</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00908">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:909</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a259ace89a1dcdbad800df0eb60479f46"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a259ace89a1dcdbad800df0eb60479f46">Barotrauma.Networking.ServerSettings.UpdateServerListInfo</a></div><div class="ttdeci">void UpdateServerListInfo(Action&lt; Identifier, object &gt; setter)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l01145">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:1145</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_adc1b7e7e80dce0ed2d78dbd14862cefa"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#adc1b7e7e80dce0ed2d78dbd14862cefa">Barotrauma.Networking.ServerSettings.IsPublic</a></div><div class="ttdeci">bool IsPublic</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00389">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:390</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a75f9b379e14942a3b0bf906f80d5ba3ea7d50c09f1ad7d098e0a847bcdcab7efb"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3ea7d50c09f1ad7d098e0a847bcdcab7efb">Barotrauma.Networking.PlayerConnectionChangeType.Joined</a></div><div class="ttdeci">@ Joined</div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_steam_2_auth_ticket_8cs_source.html#l00006">BarotraumaShared/SharedSource/Steam/AuthTicket.cs:7</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
-<div class="ttc" id="astruct_barotrauma_1_1_language_identifier_html_a4ed85e8866a0d06cf5e72aae1655a84f"><div class="ttname"><a href="struct_barotrauma_1_1_language_identifier.html#a4ed85e8866a0d06cf5e72aae1655a84f">Barotrauma.LanguageIdentifier.ToString</a></div><div class="ttdeci">override string ToString()</div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_auth_ticket_8cs_source.html#l00006">AuthTicket.cs:7</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Barotrauma.InputType.Select</a></div><div class="ttdeci">@ Select</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

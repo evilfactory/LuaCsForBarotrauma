@@ -99,14 +99,14 @@ $(document).ready(function(){initNavTree('_ability_condition_skill_8cs_source.ht
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            skillIdentifier = conditionElement.<a class="code" href="class_barotrauma_1_1_content_x_element.html#a15ee93bb098273b1eef516ba3d6e7205">GetAttributeString</a>(<span class="stringliteral">&quot;skillidentifier&quot;</span>, <span class="stringliteral">&quot;&quot;</span>).ToLowerInvariant();</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        }</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> MatchesConditionSpecific(<a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> skillIdentifier)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> MatchesConditionSpecific(Identifier skillIdentifier)</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">return</span> this.skillIdentifier == skillIdentifier;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_abilities_1_1_ability_condition_skill.html#abf5693ba85a0665332ece762942e56b2">   19</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_abilities_1_1_ability_condition_skill.html#abf5693ba85a0665332ece762942e56b2">MatchesConditionSpecific</a>(<a class="code" href="class_barotrauma_1_1_abilities_1_1_ability_object.html">AbilityObject</a> abilityObject)</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span> (abilityObject is <a class="code" href="interface_barotrauma_1_1_abilities_1_1_i_ability_skill_identifier.html">IAbilitySkillIdentifier</a> { SkillIdentifier: <a class="code" href="struct_barotrauma_1_1_identifier.html">Identifier</a> skillIdentifier })</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span> (abilityObject is <a class="code" href="interface_barotrauma_1_1_abilities_1_1_i_ability_skill_identifier.html">IAbilitySkillIdentifier</a> { SkillIdentifier: Identifier skillIdentifier })</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <span class="keywordflow">return</span> MatchesConditionSpecific(skillIdentifier);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            }</div>
@@ -130,7 +130,6 @@ $(document).ready(function(){initNavTree('_ability_condition_skill_8cs_source.ht
 <div class="ttc" id="aclass_barotrauma_1_1_content_x_element_html_a15ee93bb098273b1eef516ba3d6e7205"><div class="ttname"><a href="class_barotrauma_1_1_content_x_element.html#a15ee93bb098273b1eef516ba3d6e7205">Barotrauma.ContentXElement.GetAttributeString</a></div><div class="ttdeci">string? GetAttributeString(string key, string? def)</div></div>
 <div class="ttc" id="ainterface_barotrauma_1_1_abilities_1_1_i_ability_skill_identifier_html"><div class="ttname"><a href="interface_barotrauma_1_1_abilities_1_1_i_ability_skill_identifier.html">Barotrauma.Abilities.IAbilitySkillIdentifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_interfaces_8cs_source.html#l00033">AbilityInterfaces.cs:34</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_abilities_html"><div class="ttname"><a href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00004">AbilityCondition.cs:5</a></div></div>
-<div class="ttc" id="astruct_barotrauma_1_1_identifier_html"><div class="ttname"><a href="struct_barotrauma_1_1_identifier.html">Barotrauma.Identifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_identifier_8cs_source.html#l00011">Identifier.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

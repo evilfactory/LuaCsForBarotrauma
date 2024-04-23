@@ -97,309 +97,316 @@ $(document).ready(function(){initNavTree('_network_peer_structs_8cs_source.html'
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    [NetworkSerialize]</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>PeerPacketHeaders : INetSerializableStruct</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>? Initialization;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">public</span> DeliveryMethod DeliveryMethod;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> PacketHeader PacketHeader;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">public</span> ConnectionInitialization? Initialization;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">void</span> Deconstruct(</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            out <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> deliveryMethod,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            out <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a> packetHeader,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            out <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">ConnectionInitialization</a>? initialization)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            out DeliveryMethod deliveryMethod,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            out PacketHeader packetHeader,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            out ConnectionInitialization? initialization)</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            deliveryMethod = <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            packetHeader = <a class="code" href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">PacketHeader</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            deliveryMethod = DeliveryMethod;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            packetHeader = PacketHeader;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            initialization = Initialization;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    [NetworkSerialize(ArrayMaxSize = ushort.MaxValue)]</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ClientSteamTicketAndVersionPacket : INetSerializableStruct</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ClientAuthTicketAndVersionPacket : INetSerializableStruct</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> Name;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">public</span> Option&lt;int&gt; OwnerKey;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">        #warning TODO: do something about the type of this</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// It probably should be Option&lt;SteamId&gt; but we shouldn&#39;t build support for</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// writing SteamIDs to INetSerializableStruct; we should consider adding</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// attributes to give custom behaviors to specific members of a struct</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">public</span> Option&lt;AccountId&gt; SteamId;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">public</span> Option&lt;byte[]&gt; SteamAuthTicket;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> GameVersion;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">public</span> Identifier Language;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    [NetworkSerialize]</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>SteamP2PInitializationRelayPacket : INetSerializableStruct</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">public</span> ulong LobbyID;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">public</span> PeerPacketMessage Message;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    [NetworkSerialize]</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>SteamP2PInitializationOwnerPacket : INetSerializableStruct</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> OwnerName;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    [NetworkSerialize(ArrayMaxSize = ushort.MaxValue)]</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ServerPeerContentPackageOrderPacket : INetSerializableStruct</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> ServerName;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">public</span> ImmutableArray&lt;ServerContentPackage&gt; ContentPackages;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span> Option&lt;AccountId&gt; AccountId;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">public</span> Option&lt;AuthenticationTicket&gt; AuthTicket;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> GameVersion;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">public</span> Identifier Language;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    [NetworkSerialize]</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">internal</span> readonly record <span class="keyword">struct </span>P2POwnerToServerHeader</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        (string? EndpointStr, AccountInfo AccountInfo) : INetSerializableStruct</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span> Option&lt;P2PEndpoint&gt; <a class="code" href="namespace_barotrauma.html#a33c047345b1ea7753ec8f57bb9c49a4ba2a6ba72e93aa7fa676d07973ed2716bb">Endpoint</a> =&gt; <a class="code" href="class_p2_p_endpoint.html">P2PEndpoint</a>.<a class="code" href="class_p2_p_endpoint.html#ae9f817de08cb111c9e5b51e743431296">Parse</a>(EndpointStr ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    [NetworkSerialize]</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">internal</span> readonly record <span class="keyword">struct </span>P2PServerToOwnerHeader</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        (string? EndpointStr) : INetSerializableStruct</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">public</span> Option&lt;P2PEndpoint&gt; <a class="code" href="namespace_barotrauma.html#a33c047345b1ea7753ec8f57bb9c49a4ba2a6ba72e93aa7fa676d07973ed2716bb">Endpoint</a> =&gt; <a class="code" href="class_p2_p_endpoint.html">P2PEndpoint</a>.<a class="code" href="class_p2_p_endpoint.html#ae9f817de08cb111c9e5b51e743431296">Parse</a>(EndpointStr ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    [NetworkSerialize]</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>P2PInitializationRelayPacket : INetSerializableStruct</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">public</span> ulong LobbyID;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> PeerPacketMessage Message;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    [NetworkSerialize]</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">internal</span> readonly record <span class="keyword">struct </span>P2PInitializationOwnerPacket(</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        string Name,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        AccountId AccountId)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    : INetSerializableStruct;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    [NetworkSerialize(ArrayMaxSize = ushort.MaxValue)]</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>PeerPacketMessage : INetSerializableStruct</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] Buffer;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">int</span> Length =&gt; Buffer.Length;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">public</span> readonly IReadMessage GetReadMessageUncompressed() =&gt; <span class="keyword">new</span> ReadWriteMessage(Buffer, 0, Length, copyBuf: <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">public</span> readonly IReadMessage GetReadMessage(<span class="keywordtype">bool</span> isCompressed, NetworkConnection conn) =&gt; <span class="keyword">new</span> ReadOnlyMessage(Buffer, isCompressed, 0, Length, conn);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    [NetworkSerialize(ArrayMaxSize = <span class="keywordtype">byte</span>.MaxValue)]</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ClientPeerPasswordPacket : INetSerializableStruct</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390adc647eb65e6711e155375218212b3964">Password</a>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    [NetworkSerialize]</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ServerPeerPasswordPacket : INetSerializableStruct</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">public</span> Option&lt;int&gt; Salt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">public</span> Option&lt;int&gt; RetriesLeft;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    [NetworkSerialize]</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">internal</span> readonly <span class="keyword">struct </span>PeerDisconnectPacket : INetSerializableStruct</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">public</span> readonly DisconnectReason DisconnectReason;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> AdditionalInformation;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">private</span> PeerDisconnectPacket(</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            DisconnectReason disconnectReason,</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">string</span> additionalInformation = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            DisconnectReason = disconnectReason;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            AdditionalInformation = additionalInformation;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    [NetworkSerialize(ArrayMaxSize = ushort.MaxValue)]</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    internal struct ServerPeerContentPackageOrderPacket : INetSerializableStruct</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> ServerName;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">public</span> ImmutableArray&lt;ServerContentPackage&gt; ContentPackages;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    [NetworkSerialize(ArrayMaxSize = ushort.MaxValue)]</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>PeerPacketMessage : INetSerializableStruct</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] Buffer;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">int</span> Length =&gt; Buffer.Length;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">public</span> readonly IReadMessage GetReadMessageUncompressed() =&gt; <span class="keyword">new</span> ReadWriteMessage(Buffer, 0, Length * 8, copyBuf: <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">public</span> readonly IReadMessage GetReadMessage(<span class="keywordtype">bool</span> isCompressed, NetworkConnection conn) =&gt; <span class="keyword">new</span> ReadOnlyMessage(Buffer, isCompressed, 0, Length, conn);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    [NetworkSerialize(ArrayMaxSize = <span class="keywordtype">byte</span>.MaxValue)]</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ClientPeerPasswordPacket : INetSerializableStruct</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] Password;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    [NetworkSerialize]</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">internal</span> <span class="keyword">struct </span>ServerPeerPasswordPacket : INetSerializableStruct</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">public</span> Option&lt;int&gt; Salt;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">public</span> Option&lt;int&gt; RetriesLeft;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    [NetworkSerialize]</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">internal</span> readonly <span class="keyword">struct </span>PeerDisconnectPacket : INetSerializableStruct</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">public</span> readonly DisconnectReason DisconnectReason;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">string</span> AdditionalInformation;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">public</span> LocalizedString <a class="code" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>(Client c)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            LocalizedString message = DisconnectReason <span class="keywordflow">switch</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                DisconnectReason.Disconnected =&gt; TextManager.GetWithVariable(<span class="stringliteral">&quot;ServerMessage.ClientLeftServer&quot;</span>,</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        <span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                DisconnectReason.Banned =&gt; TextManager.GetWithVariable(<span class="stringliteral">&quot;servermessage.bannedfromserver&quot;</span>, <span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                DisconnectReason.Kicked =&gt; TextManager.GetWithVariable(<span class="stringliteral">&quot;servermessage.kickedfromserver&quot;</span>, <span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                _ =&gt; TextManager.GetWithVariables(<span class="stringliteral">&quot;ChatMsg.DisconnectedWithReason&quot;</span>,</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        (<span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        (<span class="stringliteral">&quot;[reason]&quot;</span>, TextManager.Get($<span class="stringliteral">&quot;ChatMsg.DisconnectReason.{DisconnectReason}&quot;</span>)))</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            };</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(AdditionalInformation) &amp;&amp; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                DisconnectReason is DisconnectReason.Banned or DisconnectReason.Kicked)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                message += <span class="stringliteral">&quot; &quot;</span>+ TextManager.Get(<span class="stringliteral">&quot;banreason&quot;</span>) + <span class="stringliteral">&quot; &quot;</span> + TextManager.GetServerMessage(AdditionalInformation);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">return</span> message;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keyword">private</span> LocalizedString MsgWithReason</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            =&gt; TextManager.Get($<span class="stringliteral">&quot;DisconnectReason.{DisconnectReason}&quot;</span>)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;               + <span class="stringliteral">&quot;\n\n&quot;</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;               + TextManager.Get(<span class="stringliteral">&quot;banreason&quot;</span>) + <span class="stringliteral">&quot; &quot;</span> + TextManager.GetServerMessage(AdditionalInformation);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">private</span> LocalizedString ServerMessage</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            =&gt; TextManager.Get($<span class="stringliteral">&quot;ServerMessage.{DisconnectReason}&quot;</span>);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">public</span> LocalizedString PopupMessage</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            =&gt; DisconnectReason <span class="keywordflow">switch</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                DisconnectReason.Banned =&gt; MsgWithReason,</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                DisconnectReason.Kicked =&gt; MsgWithReason,</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                DisconnectReason.InvalidVersion =&gt; TextManager.GetWithVariables(<span class="stringliteral">&quot;DisconnectMessage.InvalidVersion&quot;</span>,</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    (<span class="stringliteral">&quot;[version]&quot;</span>, AdditionalInformation),</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    (<span class="stringliteral">&quot;[clientversion]&quot;</span>, GameMain.Version.ToString())),</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                DisconnectReason.ExcessiveDesyncOldEvent =&gt; ServerMessage,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                DisconnectReason.ExcessiveDesyncRemovedEvent =&gt; ServerMessage,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                DisconnectReason.SyncTimeout =&gt; ServerMessage,</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                _ =&gt; TextManager.Get($<span class="stringliteral">&quot;DisconnectReason.{DisconnectReason}&quot;</span>).Fallback(TextManager.Get(<span class="stringliteral">&quot;ConnectionLost&quot;</span>))</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            };</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">public</span> LocalizedString ReconnectMessage</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            =&gt; PopupMessage + <span class="stringliteral">&quot;\n\n&quot;</span> + TextManager.Get(<span class="stringliteral">&quot;ConnectionLostReconnecting&quot;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a> ConnectionChangeType</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            =&gt; DisconnectReason <span class="keywordflow">switch</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                DisconnectReason.Banned =&gt; <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>.Banned,</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                DisconnectReason.Kicked =&gt; <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>.Kicked,</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                _ =&gt; <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>.Disconnected</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            };</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> ShouldAttemptReconnect</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            =&gt; DisconnectReason</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                is DisconnectReason.ExcessiveDesyncOldEvent</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                or DisconnectReason.ExcessiveDesyncRemovedEvent</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                or DisconnectReason.Timeout</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                or DisconnectReason.SyncTimeout</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                or DisconnectReason.SteamP2PTimeOut;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> IsEventSyncError</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            =&gt; DisconnectReason</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                is DisconnectReason.ExcessiveDesyncOldEvent</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                or DisconnectReason.ExcessiveDesyncRemovedEvent</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                or DisconnectReason.SyncTimeout;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> ShouldCreateAnalyticsEvent</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            =&gt; DisconnectReason is not (</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                   DisconnectReason.Disconnected</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                   or DisconnectReason.ServerShutdown</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                   or DisconnectReason.ServerFull</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                   or DisconnectReason.Banned</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                   or DisconnectReason.Kicked</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                   or DisconnectReason.TooManyFailedLogins</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                   or DisconnectReason.InvalidVersion);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">string</span> lidgrenSeparator = <span class="stringliteral">&quot;:hankey:&quot;</span>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> ToLidgrenStringRepresentation()</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keyword">static</span> <span class="keywordtype">string</span> strToBase64(<span class="keywordtype">string</span> str)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                =&gt; Convert.ToBase64String(Encoding.UTF8.GetBytes(str));</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">return</span> DisconnectReason</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                   + lidgrenSeparator</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                   + strToBase64(AdditionalInformation);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Option&lt;PeerDisconnectPacket&gt; FromLidgrenStringRepresentation(<span class="keywordtype">string</span> str)</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="comment">// Lidgren has some hardcoded disconnect strings that it uses</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="comment">// when it detects that a connection has failed. We can handle</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="comment">// timeouts, so let&#39;s look for strings related to that and return</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="comment">// an appropriate PeerDisconnectPacket.</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">switch</span> (str)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="keywordflow">case</span> Lidgren.Network.NetConnection.NoResponseMessage:</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">case</span> <span class="stringliteral">&quot;Connection timed out&quot;</span>:</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">case</span> <span class="stringliteral">&quot;Reconnecting&quot;</span>:</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    <span class="keywordflow">return</span> Option&lt;PeerDisconnectPacket&gt;.Some(WithReason(DisconnectReason.Timeout));</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keyword">static</span> <span class="keywordtype">string</span> base64ToStr(<span class="keywordtype">string</span> base64)</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                =&gt; Encoding.UTF8.GetString(Convert.FromBase64String(base64));</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordtype">string</span>[] split = str.Split(lidgrenSeparator);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">if</span> (split.Length != 2) { <span class="keywordflow">return</span> Option&lt;PeerDisconnectPacket&gt;.None(); }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">if</span> (!Enum.TryParse(split[0], out DisconnectReason disconnectReason)) { <span class="keywordflow">return</span> Option&lt;PeerDisconnectPacket&gt;.None(); }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> Option&lt;PeerDisconnectPacket&gt;.Some(<span class="keyword">new</span> PeerDisconnectPacket(disconnectReason, base64ToStr(split[1])));</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket Custom(<span class="keywordtype">string</span> customMessage)</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                DisconnectReason.Unknown,</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                customMessage);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket WithReason(DisconnectReason disconnectReason)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(disconnectReason);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eab795b32b5ff2af716e8c5953cb7dcc37">Kicked</a>(<span class="keywordtype">string</span>? msg)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(DisconnectReason.Kicked, msg ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">private</span> PeerDisconnectPacket(</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            DisconnectReason disconnectReason,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordtype">string</span> additionalInformation = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            DisconnectReason = disconnectReason;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            AdditionalInformation = additionalInformation;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">public</span> LocalizedString <a class="code" href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">ChatMessage</a>(Client c)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            LocalizedString message = DisconnectReason <span class="keywordflow">switch</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                DisconnectReason.Disconnected =&gt; TextManager.GetWithVariable(<span class="stringliteral">&quot;ServerMessage.ClientLeftServer&quot;</span>,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        <span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                DisconnectReason.Banned =&gt; TextManager.GetWithVariable(<span class="stringliteral">&quot;servermessage.bannedfromserver&quot;</span>, <span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                DisconnectReason.Kicked =&gt; TextManager.GetWithVariable(<span class="stringliteral">&quot;servermessage.kickedfromserver&quot;</span>, <span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                _ =&gt; TextManager.GetWithVariables(<span class="stringliteral">&quot;ChatMsg.DisconnectedWithReason&quot;</span>,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        (<span class="stringliteral">&quot;[client]&quot;</span>, c.Name),</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        (<span class="stringliteral">&quot;[reason]&quot;</span>, TextManager.Get($<span class="stringliteral">&quot;ChatMsg.DisconnectReason.{DisconnectReason}&quot;</span>)))</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            };</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(AdditionalInformation) &amp;&amp; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                DisconnectReason is DisconnectReason.Banned or DisconnectReason.Kicked)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                message += <span class="stringliteral">&quot; &quot;</span>+ TextManager.Get(<span class="stringliteral">&quot;banreason&quot;</span>) + <span class="stringliteral">&quot; &quot;</span> + TextManager.GetServerMessage(AdditionalInformation);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">private</span> LocalizedString MsgWithReason</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            =&gt; TextManager.Get($<span class="stringliteral">&quot;DisconnectReason.{DisconnectReason}&quot;</span>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;               + <span class="stringliteral">&quot;\n\n&quot;</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;               + TextManager.Get(<span class="stringliteral">&quot;banreason&quot;</span>) + <span class="stringliteral">&quot; &quot;</span> + TextManager.GetServerMessage(AdditionalInformation);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keyword">private</span> LocalizedString ServerMessage</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            =&gt; TextManager.Get($<span class="stringliteral">&quot;ServerMessage.{DisconnectReason}&quot;</span>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keyword">public</span> LocalizedString PopupMessage</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            =&gt; DisconnectReason <span class="keywordflow">switch</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                DisconnectReason.Banned =&gt; MsgWithReason,</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                DisconnectReason.Kicked =&gt; MsgWithReason,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                DisconnectReason.InvalidVersion =&gt; TextManager.GetWithVariables(<span class="stringliteral">&quot;DisconnectMessage.InvalidVersion&quot;</span>,</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    (<span class="stringliteral">&quot;[version]&quot;</span>, AdditionalInformation),</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    (<span class="stringliteral">&quot;[clientversion]&quot;</span>, GameMain.Version.ToString())),</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                DisconnectReason.ExcessiveDesyncOldEvent =&gt; ServerMessage,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                DisconnectReason.ExcessiveDesyncRemovedEvent =&gt; ServerMessage,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                DisconnectReason.SyncTimeout =&gt; ServerMessage,</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                DisconnectReason.AuthenticationFailed =&gt; TextManager.Get($<span class="stringliteral">&quot;DisconnectReason.{DisconnectReason}&quot;</span>).Fallback(TextManager.Get(<span class="stringliteral">&quot;ChatMsg.DisconnectReason.AuthenticationRequired&quot;</span>)),</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                _ =&gt; TextManager.Get($<span class="stringliteral">&quot;DisconnectReason.{DisconnectReason}&quot;</span>).Fallback($<span class="stringliteral">&quot;{TextManager.Get(&quot;</span>ConnectionLost<span class="stringliteral">&quot;)} ({DisconnectReason})&quot;</span>)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            };</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">public</span> LocalizedString ReconnectMessage</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            =&gt; PopupMessage + <span class="stringliteral">&quot;\n\n&quot;</span> + TextManager.Get(<span class="stringliteral">&quot;ConnectionLostReconnecting&quot;</span>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a> ConnectionChangeType</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            =&gt; DisconnectReason <span class="keywordflow">switch</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                DisconnectReason.Banned =&gt; <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>.Banned,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                DisconnectReason.Kicked =&gt; <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>.Kicked,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                _ =&gt; <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">PlayerConnectionChangeType</a>.Disconnected</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            };</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> ShouldAttemptReconnect</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            =&gt; DisconnectReason</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                is DisconnectReason.ExcessiveDesyncOldEvent</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                or DisconnectReason.ExcessiveDesyncRemovedEvent</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                or DisconnectReason.Timeout</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                or DisconnectReason.SyncTimeout</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                or DisconnectReason.SteamP2PTimeOut;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> IsEventSyncError</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            =&gt; DisconnectReason</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                is DisconnectReason.ExcessiveDesyncOldEvent</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                or DisconnectReason.ExcessiveDesyncRemovedEvent</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                or DisconnectReason.SyncTimeout;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> ShouldCreateAnalyticsEvent</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            =&gt; DisconnectReason is not (</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                   DisconnectReason.Disconnected</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                   or DisconnectReason.ServerShutdown</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                   or DisconnectReason.ServerFull</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                   or DisconnectReason.Banned</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                   or DisconnectReason.Kicked</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                   or DisconnectReason.TooManyFailedLogins</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                   or DisconnectReason.InvalidVersion);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> ToLidgrenStringRepresentation()</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keyword">static</span> <span class="keywordtype">string</span> strToBase64(<span class="keywordtype">string</span> str)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                =&gt; Convert.ToBase64String(Encoding.UTF8.GetBytes(str));</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">return</span> DisconnectReason</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                   + NetworkMagicStrings.LidgrenDisconnectSeparator</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                   + strToBase64(AdditionalInformation);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Option&lt;PeerDisconnectPacket&gt; FromLidgrenStringRepresentation(<span class="keywordtype">string</span> str)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="comment">// Lidgren has some hardcoded disconnect strings that it uses</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="comment">// when it detects that a connection has failed. We can handle</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="comment">// timeouts, so let&#39;s look for strings related to that and return</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="comment">// an appropriate PeerDisconnectPacket.</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">switch</span> (str)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">case</span> Lidgren.Network.NetConnection.NoResponseMessage:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">case</span> <span class="stringliteral">&quot;Connection timed out&quot;</span>:</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordflow">case</span> <span class="stringliteral">&quot;Reconnecting&quot;</span>:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    <span class="keywordflow">return</span> Option.Some(WithReason(DisconnectReason.Timeout));</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keyword">static</span> <span class="keywordtype">string</span> base64ToStr(<span class="keywordtype">string</span> base64)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                =&gt; Encoding.UTF8.GetString(Convert.FromBase64String(base64));</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordtype">string</span>[] split = str.Split(NetworkMagicStrings.LidgrenDisconnectSeparator);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">if</span> (split.Length != 2) { <span class="keywordflow">return</span> Option.None; }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">if</span> (!Enum.TryParse(split[0], out DisconnectReason disconnectReason)) { <span class="keywordflow">return</span> Option.None; }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">return</span> Option.Some(<span class="keyword">new</span> PeerDisconnectPacket(disconnectReason, base64ToStr(split[1])));</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket Custom(<span class="keywordtype">string</span> customMessage)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                DisconnectReason.Unknown,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                customMessage);</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eaa6f2b2df29609876b609c318bdbdf9a1">Banned</a>(<span class="keywordtype">string</span>? msg)</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(DisconnectReason.Banned, msg ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket WithReason(DisconnectReason disconnectReason)</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(disconnectReason);</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket InvalidVersion()</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                DisconnectReason.InvalidVersion,</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                GameMain.Version.ToString());</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket SteamP2PError(Steamworks.P2PSessionError error)</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                DisconnectReason.SteamP2PError,</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                error.ToString());</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket SteamAuthError(Steamworks.BeginAuthResult error)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                DisconnectReason.SteamAuthenticationFailed,</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                $<span class="stringliteral">&quot;{nameof(Steamworks.BeginAuthResult)}.{error}&quot;</span>);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket SteamAuthError(Steamworks.AuthResponse error)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                DisconnectReason.SteamAuthenticationFailed,</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                $<span class="stringliteral">&quot;{nameof(Steamworks.AuthResponse)}.{error}&quot;</span>);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="comment">// ReSharper disable MemberCanBePrivate.Global, FieldCanBeMadeReadOnly.Global, UnassignedField.Global</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html">  260</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html">ServerContentPackage</a> : INetSerializableStruct</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
-<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">  263</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eab795b32b5ff2af716e8c5953cb7dcc37">Kicked</a>(<span class="keywordtype">string</span>? msg)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(DisconnectReason.Kicked, msg ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket <a class="code" href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eaa6f2b2df29609876b609c318bdbdf9a1">Banned</a>(<span class="keywordtype">string</span>? msg)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(DisconnectReason.Banned, msg ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket InvalidVersion()</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                DisconnectReason.InvalidVersion,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                GameMain.Version.ToString());</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket SteamP2PError(Steamworks.P2PSessionError error)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                DisconnectReason.SteamP2PError,</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                error.ToString());</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket SteamAuthError(Steamworks.BeginAuthResult error)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                DisconnectReason.AuthenticationFailed,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                $<span class="stringliteral">&quot;{nameof(Steamworks.BeginAuthResult)}.{error}&quot;</span>);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PeerDisconnectPacket SteamAuthError(Steamworks.AuthResponse error)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            =&gt; <span class="keyword">new</span> PeerDisconnectPacket(</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                DisconnectReason.AuthenticationFailed,</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                $<span class="stringliteral">&quot;{nameof(Steamworks.AuthResponse)}.{error}&quot;</span>);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>(ArrayMaxSize = ushort.MaxValue)]</div>
-<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">  266</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">HashBytes</a> = Array.Empty&lt;<span class="keywordtype">byte</span>&gt;();</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// ReSharper disable MemberCanBePrivate.Global, FieldCanBeMadeReadOnly.Global, UnassignedField.Global</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html">  266</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html">ServerContentPackage</a> : INetSerializableStruct</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    {</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
-<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">  269</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">UgcId</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">  269</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
-<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">  272</a></span>&#160;        <span class="keyword">public</span> uint <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">InstallTimeDiffInSeconds</a>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>(ArrayMaxSize = ushort.MaxValue)]</div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">  272</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">HashBytes</a> = Array.Empty&lt;<span class="keywordtype">byte</span>&gt;();</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
-<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">  275</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">IsMandatory</a>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">  275</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">UgcId</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
-<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">  278</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">IsVanilla</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">  278</a></span>&#160;        <span class="keyword">public</span> uint <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">InstallTimeDiffInSeconds</a>;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a>? cachedHash;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keyword">private</span> DateTime? cachedDateTime;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
+<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">  281</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">IsMandatory</a>;</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">  283</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="keyword">get</span> =&gt; cachedHash ??= <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a>.<a class="code" href="class_barotrauma_1_1_md5_hash.html#a21374f23e4c1af426f37c457c3701b4a">BytesAsHash</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">HashBytes</a>);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keyword">set</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                cachedHash = value;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">HashBytes</a> = value.ByteRepresentation;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a66dfcb000ea636eb34d704eb30140ab7">  293</a></span>&#160;        <span class="keyword">public</span> DateTime <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a66dfcb000ea636eb34d704eb30140ab7">InstallTime</a> =&gt; cachedDateTime ??= DateTime.UtcNow + TimeSpan.FromSeconds(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">InstallTimeDiffInSeconds</a>);</div>
-<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#afc97d0381beeac0c4ecb9df8976d0be0">  294</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a>? <a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a> =&gt; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            ContentPackageManager.RegularPackages.FirstOrDefault(p =&gt; p.Name.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a>) &amp;&amp; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>)) ??</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            ContentPackageManager.RegularPackages.FirstOrDefault(p =&gt; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>));</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a81629c36f8d9374c9d09cfceda1f2e4a">  298</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_core_package.html">CorePackage</a>? <a class="code" href="class_barotrauma_1_1_core_package.html">CorePackage</a> =&gt;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            ContentPackageManager.CorePackages.FirstOrDefault(p =&gt; p.Name.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a>) &amp;&amp; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>)) ??</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            ContentPackageManager.CorePackages.FirstOrDefault(p =&gt; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>));</div>
-<div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa9c9c4ad2977e12b7ade5de3ae311904">  301</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a>? <a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> =&gt; (<a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a>?)<a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a> ?? <a class="code" href="class_barotrauma_1_1_core_package.html">CorePackage</a>;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a2450921a3283e3a5123a5604bc301ebd">  303</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a2450921a3283e3a5123a5604bc301ebd">ServerContentPackage</a>() { }</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        </div>
-<div class="line"><a name="l00305"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aaa31723e50614c56c230d54a4cdbb0bf">  305</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aaa31723e50614c56c230d54a4cdbb0bf">ServerContentPackage</a>(<a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> contentPackage, <a class="code" href="struct_barotrauma_1_1_serializable_date_time.html">SerializableDateTime</a> referenceTime)</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a> = contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a4b98de6918aea261188f5dbdc2e9a0e1">Name</a>;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a> = contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a9d40280ad4339ae4016ba8c4befe58c7">Hash</a>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">UgcId</a> = contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a53b12cee85f1cf77978531205012573c">UgcId</a>.TryUnwrap(out var ugcId)</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                ? ugcId.StringRepresentation</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                : <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">IsMandatory</a> = !contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a1412ca4a9dabd8579b9e76be410be493">Files</a>.All(f =&gt; f is <a class="code" href="class_barotrauma_1_1_submarine_file.html">SubmarineFile</a>);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">IsVanilla</a> = contentPackage == ContentPackageManager.VanillaCorePackage;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">InstallTimeDiffInSeconds</a> =</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a813f60f16327fa63f8b6eef0975d1eba">InstallTime</a>.TryUnwrap(out var installTime)</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    ? (uint)(installTime - referenceTime).TotalSeconds</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    : 0;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#ae6fcf70765a14e0d5aaffece463d297e">  320</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#ae6fcf70765a14e0d5aaffece463d297e">GetPackageStr</a>() =&gt; $<span class="stringliteral">&quot;\&quot;{Name}\&quot; (hash {Hash.ShortRepresentation})&quot;</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        [<a class="code" href="class_barotrauma_1_1_network_serialize.html">NetworkSerialize</a>]</div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">  284</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">IsVanilla</a>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a>? cachedHash;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keyword">private</span> DateTime? cachedDateTime;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">  289</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keyword">get</span> =&gt; cachedHash ??= <a class="code" href="class_barotrauma_1_1_md5_hash.html">Md5Hash</a>.<a class="code" href="class_barotrauma_1_1_md5_hash.html#a21374f23e4c1af426f37c457c3701b4a">BytesAsHash</a>(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">HashBytes</a>);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                cachedHash = value;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">HashBytes</a> = value.ByteRepresentation;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a66dfcb000ea636eb34d704eb30140ab7">  299</a></span>&#160;        <span class="keyword">public</span> DateTime <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a66dfcb000ea636eb34d704eb30140ab7">InstallTime</a> =&gt; cachedDateTime ??= DateTime.UtcNow + TimeSpan.FromSeconds(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">InstallTimeDiffInSeconds</a>);</div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#afc97d0381beeac0c4ecb9df8976d0be0">  300</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a>? <a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a> =&gt; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            ContentPackageManager.RegularPackages.FirstOrDefault(p =&gt; p.Name.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a>) &amp;&amp; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>)) ??</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            ContentPackageManager.RegularPackages.FirstOrDefault(p =&gt; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>));</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a81629c36f8d9374c9d09cfceda1f2e4a">  304</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_core_package.html">CorePackage</a>? <a class="code" href="class_barotrauma_1_1_core_package.html">CorePackage</a> =&gt;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            ContentPackageManager.CorePackages.FirstOrDefault(p =&gt; p.Name.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a>) &amp;&amp; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>)) ??</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            ContentPackageManager.CorePackages.FirstOrDefault(p =&gt; p.Hash.Equals(<a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a>));</div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa9c9c4ad2977e12b7ade5de3ae311904">  307</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a>? <a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> =&gt; (<a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a>?)<a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a> ?? <a class="code" href="class_barotrauma_1_1_core_package.html">CorePackage</a>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a2450921a3283e3a5123a5604bc301ebd">  309</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a2450921a3283e3a5123a5604bc301ebd">ServerContentPackage</a>() { }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        </div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aaa31723e50614c56c230d54a4cdbb0bf">  311</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aaa31723e50614c56c230d54a4cdbb0bf">ServerContentPackage</a>(<a class="code" href="class_barotrauma_1_1_content_package.html">ContentPackage</a> contentPackage, <a class="code" href="struct_barotrauma_1_1_serializable_date_time.html">SerializableDateTime</a> referenceTime)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Name</a> = contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a4b98de6918aea261188f5dbdc2e9a0e1">Name</a>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Hash</a> = contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a9d40280ad4339ae4016ba8c4befe58c7">Hash</a>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">UgcId</a> = contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a53b12cee85f1cf77978531205012573c">UgcId</a>.TryUnwrap(out var ugcId)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                ? ugcId.StringRepresentation</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                : <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">IsMandatory</a> = !contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a1412ca4a9dabd8579b9e76be410be493">Files</a>.All(f =&gt; f is <a class="code" href="class_barotrauma_1_1_submarine_file.html">SubmarineFile</a>);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">IsVanilla</a> = contentPackage == ContentPackageManager.VanillaCorePackage;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">InstallTimeDiffInSeconds</a> =</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                contentPackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a813f60f16327fa63f8b6eef0975d1eba">InstallTime</a>.TryUnwrap(out var installTime)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    ? (uint)(installTime - referenceTime).TotalSeconds</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                    : 0;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#ae6fcf70765a14e0d5aaffece463d297e">  326</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_barotrauma_1_1_networking_1_1_server_content_package.html#ae6fcf70765a14e0d5aaffece463d297e">GetPackageStr</a>() =&gt; $<span class="stringliteral">&quot;\&quot;{Name}\&quot; (hash {Hash.ShortRepresentation})&quot;</span>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html">Barotrauma.ContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00015">ContentPackage.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html_a1412ca4a9dabd8579b9e76be410be493"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html#a1412ca4a9dabd8579b9e76be410be493">Barotrauma.ContentPackage.Files</a></div><div class="ttdeci">ImmutableArray&lt; ContentFile &gt; Files</div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00048">ContentPackage.cs:48</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html_a4b98de6918aea261188f5dbdc2e9a0e1"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html#a4b98de6918aea261188f5dbdc2e9a0e1">Barotrauma.ContentPackage.Name</a></div><div class="ttdeci">readonly string Name</div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00037">ContentPackage.cs:37</a></div></div>
@@ -408,31 +415,30 @@ $(document).ready(function(){initNavTree('_network_peer_structs_8cs_source.html'
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html_a9d40280ad4339ae4016ba8c4befe58c7"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html#a9d40280ad4339ae4016ba8c4befe58c7">Barotrauma.ContentPackage.Hash</a></div><div class="ttdeci">Md5Hash Hash</div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00045">ContentPackage.cs:45</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_core_package_html"><div class="ttname"><a href="class_barotrauma_1_1_core_package.html">Barotrauma.CorePackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_core_package_8cs_source.html#l00031">CorePackage.cs:32</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_md5_hash_html"><div class="ttname"><a href="class_barotrauma_1_1_md5_hash.html">Barotrauma.Md5Hash</a></div><div class="ttdef"><b>Definition:</b> <a href="_md5_hash_8cs_source.html#l00012">Md5Hash.cs:13</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_md5_hash_html_a21374f23e4c1af426f37c457c3701b4a"><div class="ttname"><a href="class_barotrauma_1_1_md5_hash.html#a21374f23e4c1af426f37c457c3701b4a">Barotrauma.Md5Hash.BytesAsHash</a></div><div class="ttdeci">static Md5Hash BytesAsHash(byte[] bytes)</div><div class="ttdef"><b>Definition:</b> <a href="_md5_hash_8cs_source.html#l00117">Md5Hash.cs:117</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_network_serialize_html"><div class="ttname"><a href="class_barotrauma_1_1_network_serialize.html">Barotrauma.NetworkSerialize</a></div><div class="ttdoc">Marks fields and properties as to be serialized and deserialized by INetSerializableStruct....</div><div class="ttdef"><b>Definition:</b> <a href="_i_net_serializable_struct_8cs_source.html#l00038">INetSerializableStruct.cs:39</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html">Barotrauma.Networking.ServerContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00260">NetworkPeerStructs.cs:261</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a061edbffb7dd13c4ab4c39fb9e42c552"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">Barotrauma.Networking.ServerContentPackage.IsMandatory</a></div><div class="ttdeci">bool IsMandatory</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00275">NetworkPeerStructs.cs:275</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a2450921a3283e3a5123a5604bc301ebd"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a2450921a3283e3a5123a5604bc301ebd">Barotrauma.Networking.ServerContentPackage.ServerContentPackage</a></div><div class="ttdeci">ServerContentPackage()</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00303">NetworkPeerStructs.cs:303</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a5636d1183b6c3a9f7ed12b54d7094dd2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Barotrauma.Networking.ServerContentPackage.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00263">NetworkPeerStructs.cs:263</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a66dfcb000ea636eb34d704eb30140ab7"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a66dfcb000ea636eb34d704eb30140ab7">Barotrauma.Networking.ServerContentPackage.InstallTime</a></div><div class="ttdeci">DateTime InstallTime</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00293">NetworkPeerStructs.cs:293</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a7271957546ce733cc1a2bf816a0320be"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Barotrauma.Networking.ServerContentPackage.Hash</a></div><div class="ttdeci">Md5Hash Hash</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00283">NetworkPeerStructs.cs:284</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a7738f56f208979c327e4b83699a23dd6"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">Barotrauma.Networking.ServerContentPackage.HashBytes</a></div><div class="ttdeci">byte[] HashBytes</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00266">NetworkPeerStructs.cs:266</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a8f58e58e407fcb01226ca669e9dee81d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">Barotrauma.Networking.ServerContentPackage.InstallTimeDiffInSeconds</a></div><div class="ttdeci">uint InstallTimeDiffInSeconds</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00272">NetworkPeerStructs.cs:272</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a970ec1d96db80a4012ab938ffa4f21a7"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">Barotrauma.Networking.ServerContentPackage.IsVanilla</a></div><div class="ttdeci">bool IsVanilla</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00278">NetworkPeerStructs.cs:278</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_aa36b9dd4435edaa4b9ed9918ec58174c"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">Barotrauma.Networking.ServerContentPackage.UgcId</a></div><div class="ttdeci">string UgcId</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00269">NetworkPeerStructs.cs:269</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_aaa31723e50614c56c230d54a4cdbb0bf"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aaa31723e50614c56c230d54a4cdbb0bf">Barotrauma.Networking.ServerContentPackage.ServerContentPackage</a></div><div class="ttdeci">ServerContentPackage(ContentPackage contentPackage, SerializableDateTime referenceTime)</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00305">NetworkPeerStructs.cs:305</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_md5_hash_html_a21374f23e4c1af426f37c457c3701b4a"><div class="ttname"><a href="class_barotrauma_1_1_md5_hash.html#a21374f23e4c1af426f37c457c3701b4a">Barotrauma.Md5Hash.BytesAsHash</a></div><div class="ttdeci">static Md5Hash BytesAsHash(byte[] bytes)</div><div class="ttdef"><b>Definition:</b> <a href="_md5_hash_8cs_source.html#l00101">Md5Hash.cs:101</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_network_serialize_html"><div class="ttname"><a href="class_barotrauma_1_1_network_serialize.html">Barotrauma.NetworkSerialize</a></div><div class="ttdoc">Marks fields and properties as to be serialized and deserialized by INetSerializableStruct....</div><div class="ttdef"><b>Definition:</b> <a href="_i_net_serializable_struct_8cs_source.html#l00039">INetSerializableStruct.cs:40</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html">Barotrauma.Networking.ServerContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00266">NetworkPeerStructs.cs:267</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a061edbffb7dd13c4ab4c39fb9e42c552"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a061edbffb7dd13c4ab4c39fb9e42c552">Barotrauma.Networking.ServerContentPackage.IsMandatory</a></div><div class="ttdeci">bool IsMandatory</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00281">NetworkPeerStructs.cs:281</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a2450921a3283e3a5123a5604bc301ebd"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a2450921a3283e3a5123a5604bc301ebd">Barotrauma.Networking.ServerContentPackage.ServerContentPackage</a></div><div class="ttdeci">ServerContentPackage()</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00309">NetworkPeerStructs.cs:309</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a5636d1183b6c3a9f7ed12b54d7094dd2"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a5636d1183b6c3a9f7ed12b54d7094dd2">Barotrauma.Networking.ServerContentPackage.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00269">NetworkPeerStructs.cs:269</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a66dfcb000ea636eb34d704eb30140ab7"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a66dfcb000ea636eb34d704eb30140ab7">Barotrauma.Networking.ServerContentPackage.InstallTime</a></div><div class="ttdeci">DateTime InstallTime</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00299">NetworkPeerStructs.cs:299</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a7271957546ce733cc1a2bf816a0320be"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7271957546ce733cc1a2bf816a0320be">Barotrauma.Networking.ServerContentPackage.Hash</a></div><div class="ttdeci">Md5Hash Hash</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00289">NetworkPeerStructs.cs:290</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a7738f56f208979c327e4b83699a23dd6"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a7738f56f208979c327e4b83699a23dd6">Barotrauma.Networking.ServerContentPackage.HashBytes</a></div><div class="ttdeci">byte[] HashBytes</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00272">NetworkPeerStructs.cs:272</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a8f58e58e407fcb01226ca669e9dee81d"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a8f58e58e407fcb01226ca669e9dee81d">Barotrauma.Networking.ServerContentPackage.InstallTimeDiffInSeconds</a></div><div class="ttdeci">uint InstallTimeDiffInSeconds</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00278">NetworkPeerStructs.cs:278</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_a970ec1d96db80a4012ab938ffa4f21a7"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#a970ec1d96db80a4012ab938ffa4f21a7">Barotrauma.Networking.ServerContentPackage.IsVanilla</a></div><div class="ttdeci">bool IsVanilla</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00284">NetworkPeerStructs.cs:284</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_aa36b9dd4435edaa4b9ed9918ec58174c"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aa36b9dd4435edaa4b9ed9918ec58174c">Barotrauma.Networking.ServerContentPackage.UgcId</a></div><div class="ttdeci">string UgcId</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00275">NetworkPeerStructs.cs:275</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_aaa31723e50614c56c230d54a4cdbb0bf"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#aaa31723e50614c56c230d54a4cdbb0bf">Barotrauma.Networking.ServerContentPackage.ServerContentPackage</a></div><div class="ttdeci">ServerContentPackage(ContentPackage contentPackage, SerializableDateTime referenceTime)</div><div class="ttdef"><b>Definition:</b> <a href="_network_peer_structs_8cs_source.html#l00311">NetworkPeerStructs.cs:311</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_content_package_html_ae6fcf70765a14e0d5aaffece463d297e"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_content_package.html#ae6fcf70765a14e0d5aaffece463d297e">Barotrauma.Networking.ServerContentPackage.GetPackageStr</a></div><div class="ttdeci">string GetPackageStr()</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_regular_package_html"><div class="ttname"><a href="class_barotrauma_1_1_regular_package.html">Barotrauma.RegularPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_regular_package_8cs_source.html#l00005">RegularPackage.cs:6</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_submarine_file_html"><div class="ttname"><a href="class_barotrauma_1_1_submarine_file.html">Barotrauma.SubmarineFile</a></div><div class="ttdef"><b>Definition:</b> <a href="_submarine_file_8cs_source.html#l00038">SubmarineFile.cs:39</a></div></div>
+<div class="ttc" id="aclass_p2_p_endpoint_html"><div class="ttname"><a href="class_p2_p_endpoint.html">P2PEndpoint</a></div><div class="ttdef"><b>Definition:</b> <a href="_p2_p_endpoint_8cs_source.html#l00004">P2PEndpoint.cs:5</a></div></div>
+<div class="ttc" id="aclass_p2_p_endpoint_html_ae9f817de08cb111c9e5b51e743431296"><div class="ttname"><a href="class_p2_p_endpoint.html#ae9f817de08cb111c9e5b51e743431296">P2PEndpoint.Parse</a></div><div class="ttdeci">static new Option&lt; P2PEndpoint &gt; Parse(string str)</div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a111675b637df3fb88ff7ca52061ace9bab604277fe3a4bb9f7344e25320b18727">Barotrauma.Networking.ClientNetSegment.ChatMessage</a></div><div class="ttdeci">@ ChatMessage</div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a5450fc0e47014b79c93923df43f1840e"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">Barotrauma.Networking.DeliveryMethod</a></div><div class="ttdeci">DeliveryMethod</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00005">NetworkEnums.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a75f9b379e14942a3b0bf906f80d5ba3e"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3e">Barotrauma.Networking.PlayerConnectionChangeType</a></div><div class="ttdeci">PlayerConnectionChangeType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_chat_message_8cs_source.html#l00025">BarotraumaShared/SharedSource/Networking/ChatMessage.cs:25</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a75f9b379e14942a3b0bf906f80d5ba3eaa6f2b2df29609876b609c318bdbdf9a1"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eaa6f2b2df29609876b609c318bdbdf9a1">Barotrauma.Networking.PlayerConnectionChangeType.Banned</a></div><div class="ttdeci">@ Banned</div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a75f9b379e14942a3b0bf906f80d5ba3eab795b32b5ff2af716e8c5953cb7dcc37"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a75f9b379e14942a3b0bf906f80d5ba3eab795b32b5ff2af716e8c5953cb7dcc37">Barotrauma.Networking.PlayerConnectionChangeType.Kicked</a></div><div class="ttdeci">@ Kicked</div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a87312a40995de815aa9364726f08c1a9"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a87312a40995de815aa9364726f08c1a9">Barotrauma.Networking.PacketHeader</a></div><div class="ttdeci">PacketHeader</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00025">NetworkEnums.cs:26</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ac8969f4f0d6ecca86b366b63123d3390"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390">Barotrauma.Networking.ConnectionInitialization</a></div><div class="ttdeci">ConnectionInitialization</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00012">NetworkEnums.cs:13</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ac8969f4f0d6ecca86b366b63123d3390adc647eb65e6711e155375218212b3964"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ac8969f4f0d6ecca86b366b63123d3390adc647eb65e6711e155375218212b3964">Barotrauma.Networking.ConnectionInitialization.Password</a></div><div class="ttdeci">@ Password</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_a33c047345b1ea7753ec8f57bb9c49a4ba2a6ba72e93aa7fa676d07973ed2716bb"><div class="ttname"><a href="namespace_barotrauma.html#a33c047345b1ea7753ec8f57bb9c49a4ba2a6ba72e93aa7fa676d07973ed2716bb">Barotrauma.SpamServerFilterType.Endpoint</a></div><div class="ttdeci">@ Endpoint</div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_serializable_date_time_html"><div class="ttname"><a href="struct_barotrauma_1_1_serializable_date_time.html">Barotrauma.SerializableDateTime</a></div><div class="ttdoc">DateTime wrapper that tries to offer a reliable string representation that's also human-friendly</div><div class="ttdef"><b>Definition:</b> <a href="_serializable_date_time_8cs_source.html#l00099">SerializableDateTime.cs:100</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

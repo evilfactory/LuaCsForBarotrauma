@@ -638,136 +638,139 @@ $(document).ready(function(){initNavTree('_editor_node_8cs_source.html',''); ini
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                    width -= 16;</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                }</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                valueText = ToolBox.WrapText(valueText, width, GUIStyle.SubHeadingFont.Value);</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                wrappedText = valueText;</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            }</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        }</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Rectangle GetDrawRectangle()</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        {</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            Rectangle drawRectangle = Rectangle;</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            Vector2 size = GUIStyle.SubHeadingFont.MeasureString(WrappedText ?? <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            drawRectangle.Height = (int) Math.Max(size.Y + 16, drawRectangle.Height);</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            <span class="keywordflow">return</span> drawRectangle;</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        }</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> DrawFront(SpriteBatch spriteBatch)</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        {</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            base.DrawFront(spriteBatch);</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            Vector2 pos = GetDrawRectangle().Location.ToVector2() + (GetDrawRectangle().Size.ToVector2() / 2) - (valueTextSize / 2);</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            Rectangle drawRect = Rectangle;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            drawRect.Inflate(-1, -1);</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            GUI.DrawString(spriteBatch, pos, WrappedText, EventEditorNodeConnection.GetPropertyColor(Type), font: GUIStyle.SubHeadingFont);</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        }</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    }</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160; </div>
-<div class="line"><a name="l00576"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_special_node.html">  576</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_special_node.html">SpecialNode</a> : EditorNode</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    {</div>
-<div class="line"><a name="l00578"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_special_node.html#a2b1a80e18bfff76869d9ec253152769b">  578</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_special_node.html#a2b1a80e18bfff76869d9ec253152769b">SpecialNode</a>(<span class="keywordtype">string</span> name) : base(name)</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        {</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            Size = <span class="keyword">new</span> Vector2(256, 256);</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        }</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
-<div class="line"><a name="l00583"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_special_node.html#a5fc21b89b0cb19e420372729d59f949e">  583</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Rectangle <a class="code" href="class_barotrauma_1_1_special_node.html#a5fc21b89b0cb19e420372729d59f949e">GetDrawRectangle</a>()</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        {</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            <span class="keywordflow">return</span> EventNode.ScaleRectFromConnections(Connections, Rectangle);</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        }</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    }</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160; </div>
-<div class="line"><a name="l00589"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html">  589</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a> : <a class="code" href="class_barotrauma_1_1_special_node.html">SpecialNode</a></div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    {</div>
-<div class="line"><a name="l00591"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a1e4a48744750d4816690274dfa71f8b7">  591</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a1e4a48744750d4816690274dfa71f8b7">CustomNode</a>(<span class="keywordtype">string</span> name) : base(name)</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        {</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;            CanAddConnections = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            RemovableTypes.Add(NodeConnectionType.Value);</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Activate));</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Next));</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Add));</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        }</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160; </div>
-<div class="line"><a name="l00600"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">  600</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">CustomNode</a>() : this(<span class="stringliteral">&quot;Custom&quot;</span>)</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        {</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            Prompt(s =&gt;</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            {</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                Name = s;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            });</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        }</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
-<div class="line"><a name="l00609"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a5f711df3fdc318e8ebd29a51c1e107d5">  609</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a5f711df3fdc318e8ebd29a51c1e107d5">AddOption</a>()</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        {</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;            Prompt(s =&gt;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;            {</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Value, s, typeof(<span class="keywordtype">string</span>)));</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            });</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;        }</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        </div>
-<div class="line"><a name="l00618"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a0621af0eac6b65f64213496d20502837">  618</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> XElement <a class="code" href="class_barotrauma_1_1_custom_node.html#a0621af0eac6b65f64213496d20502837">Save</a>()</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        {</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;            XElement newElement = <span class="keyword">new</span> XElement(nameof(<a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a>));</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;i&quot;</span>, ID));</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;name&quot;</span>, Name));</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;xpos&quot;</span>, Position.X));</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;ypos&quot;</span>, Position.Y));</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            <span class="keywordflow">foreach</span> (EventEditorNodeConnection connection <span class="keywordflow">in</span> Connections.FindAll(connection =&gt; connection.Type == NodeConnectionType.Value))</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;            {</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                newElement.Add(<span class="keyword">new</span> XElement(<span class="stringliteral">&quot;Value&quot;</span>, <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;name&quot;</span>, connection.Attribute)));</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            }</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            <span class="keywordflow">return</span> newElement;</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        }</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
-<div class="line"><a name="l00632"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a62916cdaf6eb331d6d979bb2720d533e">  632</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> EditorNode? <a class="code" href="class_barotrauma_1_1_custom_node.html#a62916cdaf6eb331d6d979bb2720d533e">LoadCustomNode</a>(XElement element)</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        {</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.Equals(element.Name.ToString(), nameof(<a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a>), StringComparison.OrdinalIgnoreCase)) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a> newNode = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">CustomNode</a>(element.GetAttributeString(<span class="stringliteral">&quot;name&quot;</span>, <span class="keywordtype">string</span>.Empty)) { ID = element.GetAttributeInt(<span class="stringliteral">&quot;i&quot;</span>, -1) };</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            <span class="keywordtype">float</span> posX = element.GetAttributeFloat(<span class="stringliteral">&quot;xpos&quot;</span>, 0f);</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;            <span class="keywordtype">float</span> posY = element.GetAttributeFloat(<span class="stringliteral">&quot;ypos&quot;</span>, 0f);</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            newNode.Position = <span class="keyword">new</span> Vector2(posX, posY);</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            <span class="keywordflow">foreach</span> (XElement valueElement <span class="keywordflow">in</span> element.Elements())</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            {</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                newNode.Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(newNode, NodeConnectionType.Value, valueElement.GetAttributeString(<span class="stringliteral">&quot;name&quot;</span>, <span class="keywordtype">string</span>.Empty), typeof(<span class="keywordtype">string</span>)));</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            }</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;            <span class="keywordflow">return</span> newNode;</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        }</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160; </div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Prompt(Func&lt;string, bool&gt; OnAccepted)</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        {</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;            var msgBox = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(TextManager.Get(<span class="stringliteral">&quot;Name&quot;</span>), <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">new</span>[] { TextManager.Get(<span class="stringliteral">&quot;Ok&quot;</span>), TextManager.Get(<span class="stringliteral">&quot;Cancel&quot;</span>) }, <span class="keyword">new</span> Vector2(0.2f, 0.175f), minSize: <span class="keyword">new</span> Point(300, 175));</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            var layout = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_layout_group.html">GUILayoutGroup</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Vector2(1f, 0.25f), msgBox.Content.RectTransform), isHorizontal: <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;            <a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html">GUITextBox</a> nameInput = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html">GUITextBox</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(Vector2.One, layout.RectTransform));</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160; </div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            msgBox.Buttons[1].OnClicked = delegate</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            {</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                msgBox.Close();</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;            };</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160; </div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;            msgBox.Buttons[0].OnClicked = delegate</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;            {</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                OnAccepted.Invoke(nameInput.<a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html#ad6715b059a895f312de48c6b66162d3d">Text</a>);</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                msgBox.Close();</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;            };</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        }</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    }</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;}</div>
-<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html">Barotrauma.CustomNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00589">EditorNode.cs:590</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a0621af0eac6b65f64213496d20502837"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a0621af0eac6b65f64213496d20502837">Barotrauma.CustomNode.Save</a></div><div class="ttdeci">override XElement Save()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00618">EditorNode.cs:618</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a1e4a48744750d4816690274dfa71f8b7"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a1e4a48744750d4816690274dfa71f8b7">Barotrauma.CustomNode.CustomNode</a></div><div class="ttdeci">CustomNode(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00591">EditorNode.cs:591</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a5f711df3fdc318e8ebd29a51c1e107d5"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a5f711df3fdc318e8ebd29a51c1e107d5">Barotrauma.CustomNode.AddOption</a></div><div class="ttdeci">override void AddOption()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00609">EditorNode.cs:609</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a62916cdaf6eb331d6d979bb2720d533e"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a62916cdaf6eb331d6d979bb2720d533e">Barotrauma.CustomNode.LoadCustomNode</a></div><div class="ttdeci">static ? EditorNode LoadCustomNode(XElement element)</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00632">EditorNode.cs:632</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a69277bbd8299681edf8941f0cddff969"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">Barotrauma.CustomNode.CustomNode</a></div><div class="ttdeci">CustomNode()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00600">EditorNode.cs:600</a></div></div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                <span class="keywordflow">if</span> (GUIStyle.SubHeadingFont.Value != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                {</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                    valueText = ToolBox.WrapText(valueText, width, GUIStyle.SubHeadingFont.Value);</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                }</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                wrappedText = valueText;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            }</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        }</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Rectangle GetDrawRectangle()</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            Rectangle drawRectangle = Rectangle;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            Vector2 size = GUIStyle.SubHeadingFont.MeasureString(WrappedText ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            drawRectangle.Height = (int) Math.Max(size.Y + 16, drawRectangle.Height);</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            <span class="keywordflow">return</span> drawRectangle;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        }</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160; </div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> DrawFront(SpriteBatch spriteBatch)</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        {</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            base.DrawFront(spriteBatch);</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            Vector2 pos = GetDrawRectangle().Location.ToVector2() + (GetDrawRectangle().Size.ToVector2() / 2) - (valueTextSize / 2);</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            Rectangle drawRect = Rectangle;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            drawRect.Inflate(-1, -1);</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            GUI.DrawString(spriteBatch, pos, WrappedText, EventEditorNodeConnection.GetPropertyColor(Type), font: GUIStyle.SubHeadingFont);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        }</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    }</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160; </div>
+<div class="line"><a name="l00579"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_special_node.html">  579</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_special_node.html">SpecialNode</a> : EditorNode</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    {</div>
+<div class="line"><a name="l00581"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_special_node.html#a2b1a80e18bfff76869d9ec253152769b">  581</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_special_node.html#a2b1a80e18bfff76869d9ec253152769b">SpecialNode</a>(<span class="keywordtype">string</span> name) : base(name)</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        {</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            Size = <span class="keyword">new</span> Vector2(256, 256);</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        }</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160; </div>
+<div class="line"><a name="l00586"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_special_node.html#a5fc21b89b0cb19e420372729d59f949e">  586</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Rectangle <a class="code" href="class_barotrauma_1_1_special_node.html#a5fc21b89b0cb19e420372729d59f949e">GetDrawRectangle</a>()</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        {</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            <span class="keywordflow">return</span> EventNode.ScaleRectFromConnections(Connections, Rectangle);</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        }</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    }</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160; </div>
+<div class="line"><a name="l00592"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html">  592</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a> : <a class="code" href="class_barotrauma_1_1_special_node.html">SpecialNode</a></div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    {</div>
+<div class="line"><a name="l00594"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a1e4a48744750d4816690274dfa71f8b7">  594</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a1e4a48744750d4816690274dfa71f8b7">CustomNode</a>(<span class="keywordtype">string</span> name) : base(name)</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        {</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            CanAddConnections = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            RemovableTypes.Add(NodeConnectionType.Value);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Activate));</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Next));</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Add));</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        }</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160; </div>
+<div class="line"><a name="l00603"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">  603</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">CustomNode</a>() : this(<span class="stringliteral">&quot;Custom&quot;</span>)</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        {</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            Prompt(s =&gt;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            {</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                Name = s;</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            });</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        }</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
+<div class="line"><a name="l00612"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a5f711df3fdc318e8ebd29a51c1e107d5">  612</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a5f711df3fdc318e8ebd29a51c1e107d5">AddOption</a>()</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        {</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            Prompt(s =&gt;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            {</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(<span class="keyword">this</span>, NodeConnectionType.Value, s, typeof(<span class="keywordtype">string</span>)));</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;            });</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        }</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        </div>
+<div class="line"><a name="l00621"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a0621af0eac6b65f64213496d20502837">  621</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> XElement <a class="code" href="class_barotrauma_1_1_custom_node.html#a0621af0eac6b65f64213496d20502837">Save</a>()</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;        {</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            XElement newElement = <span class="keyword">new</span> XElement(nameof(<a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a>));</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;i&quot;</span>, ID));</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;name&quot;</span>, Name));</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;xpos&quot;</span>, Position.X));</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;            newElement.Add(<span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;ypos&quot;</span>, Position.Y));</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            <span class="keywordflow">foreach</span> (EventEditorNodeConnection connection <span class="keywordflow">in</span> Connections.FindAll(connection =&gt; connection.Type == NodeConnectionType.Value))</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            {</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                newElement.Add(<span class="keyword">new</span> XElement(<span class="stringliteral">&quot;Value&quot;</span>, <span class="keyword">new</span> XAttribute(<span class="stringliteral">&quot;name&quot;</span>, connection.Attribute)));</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            }</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;            <span class="keywordflow">return</span> newElement;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        }</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160; </div>
+<div class="line"><a name="l00635"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_custom_node.html#a62916cdaf6eb331d6d979bb2720d533e">  635</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> EditorNode? <a class="code" href="class_barotrauma_1_1_custom_node.html#a62916cdaf6eb331d6d979bb2720d533e">LoadCustomNode</a>(XElement element)</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        {</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.Equals(element.Name.ToString(), nameof(<a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a>), StringComparison.OrdinalIgnoreCase)) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160; </div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            <a class="code" href="class_barotrauma_1_1_custom_node.html">CustomNode</a> newNode = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">CustomNode</a>(element.GetAttributeString(<span class="stringliteral">&quot;name&quot;</span>, <span class="keywordtype">string</span>.Empty)) { ID = element.GetAttributeInt(<span class="stringliteral">&quot;i&quot;</span>, -1) };</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            <span class="keywordtype">float</span> posX = element.GetAttributeFloat(<span class="stringliteral">&quot;xpos&quot;</span>, 0f);</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <span class="keywordtype">float</span> posY = element.GetAttributeFloat(<span class="stringliteral">&quot;ypos&quot;</span>, 0f);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;            newNode.Position = <span class="keyword">new</span> Vector2(posX, posY);</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            <span class="keywordflow">foreach</span> (XElement valueElement <span class="keywordflow">in</span> element.Elements())</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;            {</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;                newNode.Connections.Add(<span class="keyword">new</span> EventEditorNodeConnection(newNode, NodeConnectionType.Value, valueElement.GetAttributeString(<span class="stringliteral">&quot;name&quot;</span>, <span class="keywordtype">string</span>.Empty), typeof(<span class="keywordtype">string</span>)));</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;            }</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            <span class="keywordflow">return</span> newNode;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        }</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160; </div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Prompt(Func&lt;string, bool&gt; OnAccepted)</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        {</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            var msgBox = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_message_box.html">GUIMessageBox</a>(TextManager.Get(<span class="stringliteral">&quot;Name&quot;</span>), <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">new</span>[] { TextManager.Get(<span class="stringliteral">&quot;Ok&quot;</span>), TextManager.Get(<span class="stringliteral">&quot;Cancel&quot;</span>) }, <span class="keyword">new</span> Vector2(0.2f, 0.175f), minSize: <span class="keyword">new</span> Point(300, 175));</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            var layout = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_layout_group.html">GUILayoutGroup</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(<span class="keyword">new</span> Vector2(1f, 0.25f), msgBox.Content.RectTransform), isHorizontal: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            <a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html">GUITextBox</a> nameInput = <span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html">GUITextBox</a>(<span class="keyword">new</span> <a class="code" href="class_barotrauma_1_1_rect_transform.html">RectTransform</a>(Vector2.One, layout.RectTransform));</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160; </div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;            msgBox.Buttons[1].OnClicked = delegate</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;            {</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                msgBox.Close();</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;            };</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160; </div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;            msgBox.Buttons[0].OnClicked = delegate</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;            {</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;                OnAccepted.Invoke(nameInput.<a class="code" href="class_barotrauma_1_1_g_u_i_text_box.html#ad6715b059a895f312de48c6b66162d3d">Text</a>);</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                msgBox.Close();</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;            };</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        }</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    }</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html">Barotrauma.CustomNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00592">EditorNode.cs:593</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a0621af0eac6b65f64213496d20502837"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a0621af0eac6b65f64213496d20502837">Barotrauma.CustomNode.Save</a></div><div class="ttdeci">override XElement Save()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00621">EditorNode.cs:621</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a1e4a48744750d4816690274dfa71f8b7"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a1e4a48744750d4816690274dfa71f8b7">Barotrauma.CustomNode.CustomNode</a></div><div class="ttdeci">CustomNode(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00594">EditorNode.cs:594</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a5f711df3fdc318e8ebd29a51c1e107d5"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a5f711df3fdc318e8ebd29a51c1e107d5">Barotrauma.CustomNode.AddOption</a></div><div class="ttdeci">override void AddOption()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00612">EditorNode.cs:612</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a62916cdaf6eb331d6d979bb2720d533e"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a62916cdaf6eb331d6d979bb2720d533e">Barotrauma.CustomNode.LoadCustomNode</a></div><div class="ttdeci">static ? EditorNode LoadCustomNode(XElement element)</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00635">EditorNode.cs:635</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_custom_node_html_a69277bbd8299681edf8941f0cddff969"><div class="ttname"><a href="class_barotrauma_1_1_custom_node.html#a69277bbd8299681edf8941f0cddff969">Barotrauma.CustomNode.CustomNode</a></div><div class="ttdeci">CustomNode()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00603">EditorNode.cs:603</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_layout_group_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_layout_group.html">Barotrauma.GUILayoutGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_layout_group_8cs_source.html#l00007">GUILayoutGroup.cs:8</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_message_box_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_message_box.html">Barotrauma.GUIMessageBox</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_message_box_8cs_source.html#l00010">GUIMessageBox.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_text_box_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_text_box.html">Barotrauma.GUITextBox</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_box_8cs_source.html#l00014">GUITextBox.cs:15</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_text_box_html_ad6715b059a895f312de48c6b66162d3d"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_text_box.html#ad6715b059a895f312de48c6b66162d3d">Barotrauma.GUITextBox.Text</a></div><div class="ttdeci">string? Text</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_box_8cs_source.html#l00244">GUITextBox.cs:245</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html">Barotrauma.RectTransform</a></div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00031">RectTransform.cs:32</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_special_node_html"><div class="ttname"><a href="class_barotrauma_1_1_special_node.html">Barotrauma.SpecialNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00576">EditorNode.cs:577</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_special_node_html_a2b1a80e18bfff76869d9ec253152769b"><div class="ttname"><a href="class_barotrauma_1_1_special_node.html#a2b1a80e18bfff76869d9ec253152769b">Barotrauma.SpecialNode.SpecialNode</a></div><div class="ttdeci">SpecialNode(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00578">EditorNode.cs:578</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_special_node_html_a5fc21b89b0cb19e420372729d59f949e"><div class="ttname"><a href="class_barotrauma_1_1_special_node.html#a5fc21b89b0cb19e420372729d59f949e">Barotrauma.SpecialNode.GetDrawRectangle</a></div><div class="ttdeci">override Rectangle GetDrawRectangle()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00583">EditorNode.cs:583</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_special_node_html"><div class="ttname"><a href="class_barotrauma_1_1_special_node.html">Barotrauma.SpecialNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00579">EditorNode.cs:580</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_special_node_html_a2b1a80e18bfff76869d9ec253152769b"><div class="ttname"><a href="class_barotrauma_1_1_special_node.html#a2b1a80e18bfff76869d9ec253152769b">Barotrauma.SpecialNode.SpecialNode</a></div><div class="ttdeci">SpecialNode(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00581">EditorNode.cs:581</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_special_node_html_a5fc21b89b0cb19e420372729d59f949e"><div class="ttname"><a href="class_barotrauma_1_1_special_node.html#a5fc21b89b0cb19e420372729d59f949e">Barotrauma.SpecialNode.GetDrawRectangle</a></div><div class="ttdeci">override Rectangle GetDrawRectangle()</div><div class="ttdef"><b>Definition:</b> <a href="_editor_node_8cs_source.html#l00586">EditorNode.cs:586</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

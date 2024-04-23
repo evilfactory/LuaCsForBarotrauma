@@ -72,13 +72,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div id="doc-content">
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title"><a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a> C# modding guide </div>  </div>
+<div class="title">Barotrauma C# modding guide </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_intro"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>C# modding is part of the <b><a href="https://github.com/evilfactory/LuaCsForBarotrauma">Lua For Barotrauma</a></b> mod and requires the package <code>Cs For <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a></code> to be turned on (<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2795927223">steam workshop</a>), in some cases the package is not needed and a prompt in game will be shown to enable it automatically.</p>
+<p>C# modding is part of the <b><a href="https://github.com/evilfactory/LuaCsForBarotrauma">Lua For Barotrauma</a></b> mod and requires the package <code>Cs For Barotrauma</code> to be turned on (<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2795927223">steam workshop</a>), in some cases the package is not needed and a prompt in game will be shown to enable it automatically.</p>
 <p>This modding requires strict source structure, but comes with the benefits of being handled natively by game engine, witch removes many hurdles with type casting or similar issues.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Setting Up Assembly Mod</h1>
@@ -179,21 +179,20 @@ Part 2 (Optional, Recommended): Setting up a debug build of LuaCsForBarotrauma</
 <li>Open up the LuaCs Solution in your IDE based on your Operating System, one of: <div class="fragment"><div class="line">- WindowsSolution.sln</div>
 <div class="line">- MacSolution.sln</div>
 <div class="line">- LinuxSolution.sln</div>
-</div><!-- fragment --> &ndash; NOTE: This tutorial assumes that you are using the <code>WindowsSolution.sln</code>. For other platforms, the naming of files may be slightly different (MacXXX, LinuxXXX, where 'XXX' is either "Client" or "Server").\ \</li>
-<li>In the Project Settings for <code>WindowsClient</code> and <code>WindowsServer</code>, you want to change the <code>Platform Target</code> from <code>Any CPU</code> to <code>x64</code>. This is necessary for <a class="elRef" href="../baro-client/html/namespace_open_a_l.html">OpenAL</a> code to build successfully.\ \</li>
-<li>Build the whole Solution (<code>Build -&gt; Build Solution</code>). This will create the necessary dependencies from libraries and make sure that there are no errors at this point.\ \</li>
-<li>For both the <code>WindowsClient</code> and <code>WindowsServer</code> projects, set their output/build type to <code>DEBUG</code> (should be in a drop-down menu at the top next to a green play button).\ \</li>
-<li>Select <code>Build Solution</code>. This will generate Debug builds for use. This debug build will now exist in <code>./Barotrauma/bin/DebugXXX/net6.0/</code> where <code>XXX</code> is based on your Solution choice. IE. <code>./Barotrauma/bin/DebugWindows/net6.0</code>.\ \</li>
+</div><!-- fragment --> &ndash; NOTE: This tutorial assumes that you are using the <code>WindowsSolution.sln</code>. For other platforms, the naming of files may be slightly different (MacXXX, LinuxXXX, where 'XXX' is either "Client" or "Server").</li>
+<li>In the Project Settings for <code>WindowsClient</code> and <code>WindowsServer</code>, you want to change the <code>Platform Target</code> from <code>Any CPU</code> to <code>x64</code>. This is necessary for OpenAL code to build successfully.</li>
+<li>Build the whole Solution (<code>Build -&gt; Build Solution</code>). This will create the necessary dependencies from libraries and make sure that there are no errors at this point.\</li>
+<li>For both the <code>WindowsClient</code> and <code>WindowsServer</code> projects, set their output/build type to <code>DEBUG</code> (should be in a drop-down menu at the top next to a green play button).\</li>
+<li>Select <code>Build Solution</code>. This will generate Debug builds for use. This debug build will now exist in <code>./Barotrauma/bin/DebugXXX/net6.0/</code> where <code>XXX</code> is based on your Solution choice. IE. <code>./Barotrauma/bin/DebugWindows/net6.0</code>.</li>
 <li>Make the local folder in Barotrauma/LocalMods/ for your mod:</li>
 </ol>
 <ul>
 <li>A. Navigate into the Client Debug Build folder (or game folder if you are coming from Part 3, Step 3) and then into <code>/LocalMods</code>.</li>
 <li>B. CREATE a folder with the name of your mod. Ideally, it should match the name of your <code>.sln</code> file with the extension.</li>
-<li>C. COPY the path to this directory (with your mod) and save it in a sticky note or .txt file. We will be using it shortly.\ </li>
+<li>C. COPY the path to this directory (with your mod) and save it in a sticky note or .txt file. We will be using it shortly.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
-autotoc_md7</h1>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md8"></a>
 Part 3: Setting up MSBuild to Copy Files into Local Mods.</h3>
 <p>You will have to do the following for the <code>Build.props</code> file found in the main project directory:</p>
 <ol type="1">
@@ -210,7 +209,7 @@ Part 3: Setting up MSBuild to Copy Files into Local Mods.</h3>
 </ol>
 <ul>
 <li>IMPORTANT: The value must end with <code>/</code> or <code>\</code> . IE: <code>\LocalMods\ModdingToolkit\</code>.</li>
-<li>Note: If you did not complete Part 2, then complete only Part 2, Step 7 but use your vanilla <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a> installation location instead.</li>
+<li>Note: If you did not complete Part 2, then complete only Part 2, Step 7 but use your vanilla Barotrauma installation location instead.</li>
 <li>Note: If you do not want either the <code>Client</code> plugin or the <code>Server</code> plugin (IE. Client-side or Server-side ONLY mod), then you must delete all projects that end with <code>Server</code>. Example: <code>LinuxServer</code>, <code>WindowsServer</code>. Warning, this is generally irreversible and will require you to setup new Cs Projects if you want a client in the future.</li>
 </ul>
 <ol type="1">
@@ -225,7 +224,7 @@ Part 3: Setting up MSBuild to Copy Files into Local Mods.</h3>
 <hr  />
  <h3><a class="anchor" id="autotoc_md10"></a>
 Part 4: Adding Launch Configurations for Debug-Mode Barotrauma Client and Server to the IDE.</h3>
-<p>This part makes life very easy and gives you access to Edit and Continue. It'll let you Debug your build as you go and launch <a class="elRef" href="../baro-server/html/namespace_barotrauma.html">Barotrauma</a> from the IDE. Note that this is IDE-specific so please follow the links for your IDE while doing the below:\ &ndash; Make two launch options;</p><ul>
+<p>This part makes life very easy and gives you access to Edit and Continue. It'll let you Debug your build as you go and launch Barotrauma from the IDE. Note that this is IDE-specific so please follow the links for your IDE while doing the below:\ &ndash; Make two launch options;</p><ul>
 <li>A. One should target <code>Barotrauma.exe</code> or <code>Barotrauma.dll</code>, name it <code>Client</code>.</li>
 <li>B. The other should target <code>DedicatedServer.exe</code> or <code>DedicatedServer.dll</code> and name it <code>Server</code>.</li>
 </ul>
@@ -281,7 +280,7 @@ Part 4: Adding Launch Configurations for Debug-Mode Barotrauma Client and Server
 <p>And you're good to go!</p>
 <h1><a class="anchor" id="autotoc_md13"></a>
 Setting Up Simple Mod</h1>
-<p>The main star of the show is <a class="elRef" href="../baro-server/html/class_barotrauma_1_1_a_cs_mod.html">Barotrauma.ACsMod</a> class. It is what most of your mods will use to hook game methods, and execute custom code. If you are planning on creating new components it's possible to just inherit from ItemComponent.</p>
+<p>The main star of the show is Barotrauma.ACsMod class. It is what most of your mods will use to hook game methods, and execute custom code. If you are planning on creating new components it's possible to just inherit from ItemComponent.</p>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Important features</h2>
 <ul>

@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('_ability_condition_holding_item_8cs_so
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">if</span> (tags.Count is 0)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">return</span> HasItemInHand(character, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">return</span> HasItemInHand(character, Identifier.Empty);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">foreach</span> (Identifier tag <span class="keywordflow">in</span> tags)</div>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('_ability_condition_holding_item_8cs_so
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> HasItemInHand(Character character, Identifier? tagOrIdentifier) =&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> HasItemInHand(Character character, Identifier tagOrIdentifier) =&gt;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            character.GetEquippedItem(tagOrIdentifier, <a class="code" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>.RightHand) is not <span class="keyword">null</span> ||</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            character.GetEquippedItem(tagOrIdentifier, <a class="code" href="namespace_barotrauma.html#a4ae31bb5c40e588eec5d81af9e1d1025">InvSlotType</a>.LeftHand) is not <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>

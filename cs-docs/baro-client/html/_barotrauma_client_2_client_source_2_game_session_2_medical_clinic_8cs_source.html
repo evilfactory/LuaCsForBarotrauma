@@ -257,7 +257,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">return</span> requestBucket.TryEnqueue(() =&gt;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            {</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                addRequests.Add(<span class="keyword">new</span> RequestAction&lt;CallbackOnlyRequest&gt;(onReceived, GetTimeout()));</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                ClientSend(<span class="keyword">null</span>, NetworkHeader.ADD_EVERYTHING_TO_PENDING, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                ClientSend(<span class="keyword">null</span>, NetworkHeader.ADD_EVERYTHING_TO_PENDING, DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            });</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
@@ -284,7 +284,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">return</span> requestBucket.TryEnqueue(() =&gt;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            {</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                healAllRequests.Add(<span class="keyword">new</span> RequestAction&lt;HealRequest&gt;(onReceived, GetTimeout()));</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                ClientSend(<span class="keyword">null</span>, NetworkHeader.HEAL_PENDING, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                ClientSend(<span class="keyword">null</span>, NetworkHeader.HEAL_PENDING, DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            });</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
@@ -301,7 +301,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">return</span> requestBucket.TryEnqueue(() =&gt;</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            {</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                clearAllRequests.Add(<span class="keyword">new</span> RequestAction&lt;CallbackOnlyRequest&gt;(onReceived, GetTimeout()));</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                ClientSend(<span class="keyword">null</span>, NetworkHeader.CLEAR_PENDING, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                ClientSend(<span class="keyword">null</span>, NetworkHeader.CLEAR_PENDING, DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            });</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
@@ -345,7 +345,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">return</span> requestBucket.TryEnqueue(() =&gt;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                addRequests.Add(<span class="keyword">new</span> RequestAction&lt;CallbackOnlyRequest&gt;(onReceived, GetTimeout()));</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                ClientSend(crewMember, NetworkHeader.ADD_PENDING, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                ClientSend(crewMember, NetworkHeader.ADD_PENDING, DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            });</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
@@ -368,7 +368,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">return</span> requestBucket.TryEnqueue(() =&gt;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            {</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                removeRequests.Add(<span class="keyword">new</span> RequestAction&lt;CallbackOnlyRequest&gt;(onReceived, GetTimeout()));</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                ClientSend(removedAffliction, NetworkHeader.REMOVE_PENDING, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                ClientSend(removedAffliction, NetworkHeader.REMOVE_PENDING, DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            });</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
@@ -401,12 +401,12 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            INetSerializableStruct crewMember = <span class="keyword">new</span> NetCrewMember(info);</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            ClientSend(crewMember, NetworkHeader.REQUEST_AFFLICTIONS, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Unreliable);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            ClientSend(crewMember, NetworkHeader.REQUEST_AFFLICTIONS, DeliveryMethod.Unreliable);</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SendPendingRequest()</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            ClientSend(<span class="keyword">null</span>, NetworkHeader.REQUEST_PENDING, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            ClientSend(<span class="keyword">null</span>, NetworkHeader.REQUEST_PENDING, DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> AfflictionRequestReceived(<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_read_message.html">IReadMessage</a> inc)</div>
@@ -436,7 +436,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SendUnsubscribeRequest() =&gt; ClientSend(<span class="keyword">null</span>,</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            header: NetworkHeader.UNSUBSCRIBE_ME,</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            deliveryMethod: <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a>.Reliable);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            deliveryMethod: DeliveryMethod.Reliable);</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> StartSending()</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        {</div>
@@ -445,7 +445,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="keywordflow">return</span> writeMessage;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        }</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ClientSend(INetSerializableStruct? netStruct, NetworkHeader header, <a class="code" href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">DeliveryMethod</a> deliveryMethod)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> ClientSend(INetSerializableStruct? netStruct, NetworkHeader header, DeliveryMethod deliveryMethod)</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        {</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            <a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">IWriteMessage</a> msg = StartSending();</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            msg.<a class="code" href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#acceafc32ec4a0eecc51c09ea019b426c">WriteByte</a>((<span class="keywordtype">byte</span>)header);</div>
@@ -491,11 +491,10 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="ttc" id="ainterface_barotrauma_1_1_networking_1_1_i_read_message_html_aa723bf261e28d85b5222ab6835174f16"><div class="ttname"><a href="interface_barotrauma_1_1_networking_1_1_i_read_message.html#aa723bf261e28d85b5222ab6835174f16">Barotrauma.Networking.IReadMessage.ReadByte</a></div><div class="ttdeci">byte ReadByte()</div></div>
 <div class="ttc" id="ainterface_barotrauma_1_1_networking_1_1_i_write_message_html"><div class="ttname"><a href="interface_barotrauma_1_1_networking_1_1_i_write_message.html">Barotrauma.Networking.IWriteMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_write_message_8cs_source.html#l00005">IWriteMessage.cs:6</a></div></div>
 <div class="ttc" id="ainterface_barotrauma_1_1_networking_1_1_i_write_message_html_acceafc32ec4a0eecc51c09ea019b426c"><div class="ttname"><a href="interface_barotrauma_1_1_networking_1_1_i_write_message.html#acceafc32ec4a0eecc51c09ea019b426c">Barotrauma.Networking.IWriteMessage.WriteByte</a></div><div class="ttdeci">void WriteByte(byte val)</div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_extensions_8cs_source.html#l00003">ColorExtensions.cs:4</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a5450fc0e47014b79c93923df43f1840e"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a5450fc0e47014b79c93923df43f1840e">Barotrauma.Networking.DeliveryMethod</a></div><div class="ttdeci">DeliveryMethod</div><div class="ttdef"><b>Definition:</b> <a href="_network_enums_8cs_source.html#l00005">NetworkEnums.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_ade553f03febf0902a0dc7664b8b41775"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#ade553f03febf0902a0dc7664b8b41775">Barotrauma.Networking.ClientPacketHeader</a></div><div class="ttdeci">ClientPacketHeader</div><div class="ttdef"><b>Definition:</b> <a href="_network_member_8cs_source.html#l00009">NetworkMember.cs:10</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_af3c0d87f1b4b6e7828d40a5b173c06e3a73592c8f05d1852819763487c90c94f9"><div class="ttname"><a href="namespace_barotrauma.html#af3c0d87f1b4b6e7828d40a5b173c06e3a73592c8f05d1852819763487c90c94f9">Barotrauma.CauseOfDeathType.Affliction</a></div><div class="ttdeci">@ Affliction</div></div>
 </div><!-- fragment --></div><!-- contents -->

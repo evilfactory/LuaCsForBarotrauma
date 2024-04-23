@@ -323,14 +323,14 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterEither&lt;T1, T2&gt;()</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            DynValue convertEitherIntoDynValue(<a class="code" href="class_barotrauma_1_1_either.html">Either&lt;T1, T2&gt;</a> either)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            DynValue convertEitherIntoDynValue(Either&lt;T1, T2&gt; either)</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="keywordflow">if</span> (either.<a class="code" href="class_barotrauma_1_1_either.html#ab91aa9071914827452a190b805307e3c">TryGet</a>(out T1 value1))</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="keywordflow">if</span> (either.TryGet(out T1 value1))</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                {</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    <span class="keywordflow">return</span> UserData.Create(value1);</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                }</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <span class="keywordflow">if</span> (either.<a class="code" href="class_barotrauma_1_1_either.html#ab91aa9071914827452a190b805307e3c">TryGet</a>(out T2 value2))</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <span class="keywordflow">if</span> (either.TryGet(out T2 value2))</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                {</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    <span class="keywordflow">return</span> UserData.Create(value2);</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                }</div>
@@ -338,9 +338,9 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(<a class="code" href="class_barotrauma_1_1_either_t.html">EitherT&lt;T1, T2&gt;</a>), (Script v, <span class="keywordtype">object</span> obj) =&gt;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(EitherT&lt;T1, T2&gt;), (Script v, <span class="keywordtype">object</span> obj) =&gt;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="keywordflow">if</span> (obj is <a class="code" href="class_barotrauma_1_1_either_t.html">EitherT&lt;T1, T2&gt;</a> either)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="keywordflow">if</span> (obj is EitherT&lt;T1, T2&gt; either)</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                {</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    <span class="keywordflow">return</span> convertEitherIntoDynValue(either);</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                }</div>
@@ -348,9 +348,9 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            });</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(<a class="code" href="class_barotrauma_1_1_either_u.html">EitherU&lt;T1, T2&gt;</a>), (Script v, <span class="keywordtype">object</span> obj) =&gt;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(EitherU&lt;T1, T2&gt;), (Script v, <span class="keywordtype">object</span> obj) =&gt;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">if</span> (obj is <a class="code" href="class_barotrauma_1_1_either_u.html">EitherU&lt;T1, T2&gt;</a> either)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">if</span> (obj is EitherU&lt;T1, T2&gt; either)</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                {</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    <span class="keywordflow">return</span> convertEitherIntoDynValue(either);</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                }</div>
@@ -361,9 +361,9 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RegisterOption&lt;T&gt;(DataType dataType)</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(<a class="code" href="struct_barotrauma_1_1_option.html">Option&lt;T&gt;</a>), (Script v, <span class="keywordtype">object</span> obj) =&gt;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(Option&lt;T&gt;), (Script v, <span class="keywordtype">object</span> obj) =&gt;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">if</span> (obj is <a class="code" href="struct_barotrauma_1_1_option.html">Option&lt;T&gt;</a> option)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">if</span> (obj is Option&lt;T&gt; option)</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                {</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    <span class="keywordflow">if</span> (option.TryUnwrap(out T outValue))</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    {</div>
@@ -374,14 +374,14 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">return</span> DynValue.Nil;</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            });</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(dataType, typeof(<a class="code" href="struct_barotrauma_1_1_option.html">Option&lt;T&gt;</a>), v =&gt;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(dataType, typeof(Option&lt;T&gt;), v =&gt;</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="struct_barotrauma_1_1_option.html">Option&lt;T&gt;</a>.<a class="code" href="struct_barotrauma_1_1_option.html#a884d97dff4e6107e5ecc6a94cc739889">Some</a>(v.ToObject&lt;T&gt;());</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">return</span> Option&lt;T&gt;.Some(v.ToObject&lt;T&gt;());</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            });</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Nil, typeof(<a class="code" href="struct_barotrauma_1_1_option.html">Option&lt;T&gt;</a>), v =&gt;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Nil, typeof(Option&lt;T&gt;), v =&gt;</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            {</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="struct_barotrauma_1_1_option.html">Option&lt;T&gt;</a>.<a class="code" href="struct_barotrauma_1_1_option.html#ad27cf86af40c3cb43b87ff4069db20f6">None</a>();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <span class="keywordflow">return</span> Option&lt;T&gt;.None();</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            });</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
@@ -479,17 +479,13 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="ttc" id="aclass_barotrauma_1_1_character_html"><div class="ttname"><a href="class_barotrauma_1_1_character.html">Barotrauma.Character</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_8cs_source.html#l00031">BarotraumaShared/SharedSource/Characters/Character.cs:32</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_character_html_a2e2ca844929c296832f2f635874988e5"><div class="ttname"><a href="class_barotrauma_1_1_character.html#a2e2ca844929c296832f2f635874988e5">Barotrauma.Character.OnDeathHandler</a></div><div class="ttdeci">delegate void OnDeathHandler(Character character, CauseOfDeath causeOfDeath)</div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_character_html_a6cc4a7ef03d631e212ffbe233f9bffbc"><div class="ttname"><a href="class_barotrauma_1_1_character.html#a6cc4a7ef03d631e212ffbe233f9bffbc">Barotrauma.Character.OnAttackedHandler</a></div><div class="ttdeci">delegate void OnAttackedHandler(Character attacker, AttackResult attackResult)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_either_html"><div class="ttname"><a href="class_barotrauma_1_1_either.html">Barotrauma.Either</a></div><div class="ttdef"><b>Definition:</b> <a href="_either_8cs_source.html#l00006">Either.cs:7</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_either_html_ab91aa9071914827452a190b805307e3c"><div class="ttname"><a href="class_barotrauma_1_1_either.html#ab91aa9071914827452a190b805307e3c">Barotrauma.Either.TryGet</a></div><div class="ttdeci">abstract bool TryGet(out T t)</div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_either_t_html"><div class="ttname"><a href="class_barotrauma_1_1_either_t.html">Barotrauma.EitherT</a></div><div class="ttdef"><b>Definition:</b> <a href="_either_8cs_source.html#l00032">Either.cs:33</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_either_u_html"><div class="ttname"><a href="class_barotrauma_1_1_either_u.html">Barotrauma.EitherU</a></div><div class="ttdef"><b>Definition:</b> <a href="_either_8cs_source.html#l00069">Either.cs:70</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_job_prefab_html"><div class="ttname"><a href="class_barotrauma_1_1_job_prefab.html">Barotrauma.JobPrefab</a></div><div class="ttdef"><b>Definition:</b> <a href="_job_prefab_8cs_source.html#l00073">JobPrefab.cs:74</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html">Barotrauma.LuaCsSetup</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_converters_8cs_source.html#l00011">LuaConverters.cs:12</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html_a58156288b3bbe543091154c953edd4b8"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html#a58156288b3bbe543091154c953edd4b8">Barotrauma.LuaCsSetup.CallLuaFunction</a></div><div class="ttdeci">DynValue CallLuaFunction(object function, params object[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_setup_8cs_source.html#l00256">LuaCsSetup.cs:256</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html_a5d956af0ca41045dd4373624db6903f7"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html#a5d956af0ca41045dd4373624db6903f7">Barotrauma.LuaCsSetup.Lua</a></div><div class="ttdeci">Script Lua</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_setup_8cs_source.html#l00072">LuaCsSetup.cs:72</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html_a58156288b3bbe543091154c953edd4b8"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html#a58156288b3bbe543091154c953edd4b8">Barotrauma.LuaCsSetup.CallLuaFunction</a></div><div class="ttdeci">DynValue CallLuaFunction(object function, params object[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_setup_8cs_source.html#l00282">LuaCsSetup.cs:282</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html_a5d956af0ca41045dd4373624db6903f7"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html#a5d956af0ca41045dd4373624db6903f7">Barotrauma.LuaCsSetup.Lua</a></div><div class="ttdeci">Script Lua</div><div class="ttdef"><b>Definition:</b> <a href="_lua_cs_setup_8cs_source.html#l00084">LuaCsSetup.cs:84</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_pair_html"><div class="ttname"><a href="class_barotrauma_1_1_pair.html">Barotrauma.Pair</a></div><div class="ttdef"><b>Definition:</b> <a href="_tool_box_8cs_source.html#l00018">ToolBox.cs:19</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00008">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:9</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_cached_distance_8cs_source.html#l00003">CachedDistance.cs:4</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a95e1a104871188365937382c8be13570"><div class="ttname"><a href="namespace_barotrauma.html#a95e1a104871188365937382c8be13570">Barotrauma.LuaCsAction</a></div><div class="ttdeci">delegate void LuaCsAction(params object[] args)</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_ab6cb88071351389cda1c6c6b287280a0"><div class="ttname"><a href="namespace_barotrauma.html#ab6cb88071351389cda1c6c6b287280a0">Barotrauma.LuaCsPatchFunc</a></div><div class="ttdeci">delegate DynValue LuaCsPatchFunc(object instance, LuaCsHook.ParameterTable ptable)</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aea7657cdf97ab0564f0d66b5f67ee3bb"><div class="ttname"><a href="namespace_barotrauma.html#aea7657cdf97ab0564f0d66b5f67ee3bb">Barotrauma.LuaCsFunc</a></div><div class="ttdeci">delegate object LuaCsFunc(params object[] args)</div></div>
@@ -503,9 +499,6 @@ $(document).ready(function(){initNavTree('_lua_converters_8cs_source.html',''); 
 <div class="ttc" id="astruct_barotrauma_1_1_lua_u_int16_html"><div class="ttname"><a href="struct_barotrauma_1_1_lua_u_int16.html">Barotrauma.LuaUInt16</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_types_8cs_source.html#l00071">LuaTypes.cs:72</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_lua_u_int32_html"><div class="ttname"><a href="struct_barotrauma_1_1_lua_u_int32.html">Barotrauma.LuaUInt32</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_types_8cs_source.html#l00115">LuaTypes.cs:116</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_lua_u_int64_html"><div class="ttname"><a href="struct_barotrauma_1_1_lua_u_int64.html">Barotrauma.LuaUInt64</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_types_8cs_source.html#l00164">LuaTypes.cs:165</a></div></div>
-<div class="ttc" id="astruct_barotrauma_1_1_option_html"><div class="ttname"><a href="struct_barotrauma_1_1_option.html">Barotrauma.Option</a></div><div class="ttdef"><b>Definition:</b> <a href="_option_8cs_source.html#l00007">Option.cs:8</a></div></div>
-<div class="ttc" id="astruct_barotrauma_1_1_option_html_a884d97dff4e6107e5ecc6a94cc739889"><div class="ttname"><a href="struct_barotrauma_1_1_option.html#a884d97dff4e6107e5ecc6a94cc739889">Barotrauma.Option.Some</a></div><div class="ttdeci">static Option&lt; T &gt; Some(T value)</div></div>
-<div class="ttc" id="astruct_barotrauma_1_1_option_html_ad27cf86af40c3cb43b87ff4069db20f6"><div class="ttname"><a href="struct_barotrauma_1_1_option.html#ad27cf86af40c3cb43b87ff4069db20f6">Barotrauma.Option.None</a></div><div class="ttdeci">static UnspecifiedNone None</div><div class="ttdef"><b>Definition:</b> <a href="_option_8cs_source.html#l00118">Option.cs:119</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
