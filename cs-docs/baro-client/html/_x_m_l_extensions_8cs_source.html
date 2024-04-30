@@ -753,7 +753,7 @@ $(document).ready(function(){initNavTree('_x_m_l_extensions_8cs_source.html','')
 <div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        }</div>
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Rectangle GetAttributeRect(<span class="keyword">this</span> XElement element, <span class="keywordtype">string</span> name, Rectangle defaultValue)</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> GetAttributeRect(<span class="keyword">this</span> XElement element, <span class="keywordtype">string</span> name, Rectangle defaultValue)</div>
 <div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        {</div>
 <div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;            var attribute = element?.GetAttribute(name);</div>
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            <span class="keywordflow">if</span> (attribute == <span class="keyword">null</span>) { <span class="keywordflow">return</span> defaultValue; }</div>
@@ -1051,13 +1051,13 @@ $(document).ready(function(){initNavTree('_x_m_l_extensions_8cs_source.html','')
 <div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Color(components[0], components[1], components[2], components[3]);</div>
 <div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;        }</div>
 <div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;        </div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Rectangle ParseRect(<span class="keywordtype">string</span> stringRect, <span class="keywordtype">bool</span> requireSize, <span class="keywordtype">bool</span> errorMessages = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> ParseRect(<span class="keywordtype">string</span> stringRect, <span class="keywordtype">bool</span> requireSize, <span class="keywordtype">bool</span> errorMessages = <span class="keyword">true</span>)</div>
 <div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;        {</div>
 <div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;            <span class="keywordtype">string</span>[] strComponents = stringRect.Split(<span class="charliteral">&#39;,&#39;</span>);</div>
 <div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;            <span class="keywordflow">if</span> ((strComponents.Length &lt; 3 &amp;&amp; requireSize) || strComponents.Length &lt; 2)</div>
 <div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;            {</div>
 <div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;                <span class="keywordflow">if</span> (errorMessages) { DebugConsole.ThrowError(<span class="stringliteral">&quot;Failed to parse the string \&quot;&quot;</span> + stringRect + <span class="stringliteral">&quot;\&quot; to Rectangle&quot;</span>); }</div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> Rectangle(0, 0, 0, 0);</div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(0, 0, 0, 0);</div>
 <div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;            }</div>
 <div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160; </div>
 <div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;            <span class="keywordtype">int</span>[] components = <span class="keyword">new</span> <span class="keywordtype">int</span>[4] { 0, 0, 0, 0 };</div>
@@ -1066,7 +1066,7 @@ $(document).ready(function(){initNavTree('_x_m_l_extensions_8cs_source.html','')
 <div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;                <span class="keywordtype">int</span>.TryParse(strComponents[i], out components[i]);</div>
 <div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;            }</div>
 <div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160; </div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Rectangle(components[0], components[1], components[2], components[3]);</div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(components[0], components[1], components[2], components[3]);</div>
 <div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;        }</div>
 <div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160; </div>
 <div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span>[] ParseFloatArray(<span class="keywordtype">string</span>[] stringArray)</div>
@@ -1129,47 +1129,49 @@ $(document).ready(function(){initNavTree('_x_m_l_extensions_8cs_source.html','')
 <div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160; </div>
 <div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsOverride(<span class="keyword">this</span> XElement element) =&gt; element.NameAsIdentifier() == <span class="stringliteral">&quot;override&quot;</span>;</div>
 <div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160; </div>
-<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XElement FirstElement(<span class="keyword">this</span> XElement element) =&gt; element.Elements().FirstOrDefault();</div>
-<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160; </div>
-<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XAttribute GetAttribute(<span class="keyword">this</span> XElement element, <span class="keywordtype">string</span> name, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; element.GetAttribute(a =&gt; a.Name.ToString().Equals(name, comparisonMethod));</div>
-<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160; </div>
-<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetAttributeValue(<span class="keyword">this</span> XElement element, <span class="keywordtype">string</span> name, <span class="keywordtype">object</span> value, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; GetAttribute(element, name, comparisonMethod)?.SetValue(value);</div>
+<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XElement GetRootExcludingOverride(<span class="keyword">this</span> XDocument doc) =&gt; doc.Root.IsOverride() ? doc.Root.FirstElement() : doc.Root;</div>
 <div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160; </div>
-<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XAttribute GetAttribute(<span class="keyword">this</span> XElement element, Identifier name) =&gt; element.GetAttribute(name.Value, StringComparison.OrdinalIgnoreCase);</div>
+<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XElement FirstElement(<span class="keyword">this</span> XElement element) =&gt; element.Elements().FirstOrDefault();</div>
 <div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160; </div>
-<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XAttribute GetAttribute(<span class="keyword">this</span> XElement element, Func&lt;XAttribute, bool&gt; predicate) =&gt; element.Attributes().FirstOrDefault(predicate);</div>
+<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XAttribute GetAttribute(<span class="keyword">this</span> XElement element, <span class="keywordtype">string</span> name, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; element.GetAttribute(a =&gt; a.Name.ToString().Equals(name, comparisonMethod));</div>
 <div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160; </div>
-<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XElement GetChildElement(<span class="keyword">this</span> XContainer container, <span class="keywordtype">string</span> name, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; container.Elements().FirstOrDefault(e =&gt; e.Name.ToString().Equals(name, comparisonMethod));</div>
-<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160; </div>
-<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;XElement&gt; GetChildElements(<span class="keyword">this</span> XContainer container, <span class="keywordtype">string</span> name, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; container.Elements().Where(e =&gt; e.Name.ToString().Equals(name, comparisonMethod));</div>
-<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160; </div>
-<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;XElement&gt; GetChildElements(<span class="keyword">this</span> XContainer container, params <span class="keywordtype">string</span>[] names)</div>
-<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;        {</div>
-<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;            <span class="keywordflow">return</span> names.SelectMany(name =&gt; container.GetChildElements(name));</div>
-<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;        }</div>
-<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160; </div>
-<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> ComesAfter(<span class="keyword">this</span> XElement element, XElement other)</div>
-<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;        {</div>
-<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;            <span class="keywordflow">if</span> (element.Parent != other.Parent) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;            <span class="keywordflow">foreach</span> (var child <span class="keywordflow">in</span> element.Parent.Elements())</div>
-<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;            {</div>
-<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;                <span class="keywordflow">if</span> (child == element) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;                <span class="keywordflow">if</span> (child == other) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;            }</div>
-<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;        }</div>
-<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160; </div>
-<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Identifier NameAsIdentifier(<span class="keyword">this</span> XElement elem)</div>
-<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;        {</div>
-<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;            <span class="keywordflow">return</span> elem.Name.LocalName.ToIdentifier();</div>
-<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;        }</div>
-<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160; </div>
-<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Identifier NameAsIdentifier(<span class="keyword">this</span> XAttribute attr)</div>
-<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;        {</div>
-<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;            <span class="keywordflow">return</span> attr.Name.LocalName.ToIdentifier();</div>
-<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;        }</div>
-<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;    }</div>
-<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;}</div>
+<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetAttributeValue(<span class="keyword">this</span> XElement element, <span class="keywordtype">string</span> name, <span class="keywordtype">object</span> value, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; GetAttribute(element, name, comparisonMethod)?.SetValue(value);</div>
+<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160; </div>
+<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XAttribute GetAttribute(<span class="keyword">this</span> XElement element, Identifier name) =&gt; element.GetAttribute(name.Value, StringComparison.OrdinalIgnoreCase);</div>
+<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160; </div>
+<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XAttribute GetAttribute(<span class="keyword">this</span> XElement element, Func&lt;XAttribute, bool&gt; predicate) =&gt; element.Attributes().FirstOrDefault(predicate);</div>
+<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160; </div>
+<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> XElement GetChildElement(<span class="keyword">this</span> XContainer container, <span class="keywordtype">string</span> name, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; container.Elements().FirstOrDefault(e =&gt; e.Name.ToString().Equals(name, comparisonMethod));</div>
+<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160; </div>
+<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;XElement&gt; GetChildElements(<span class="keyword">this</span> XContainer container, <span class="keywordtype">string</span> name, StringComparison comparisonMethod = StringComparison.OrdinalIgnoreCase) =&gt; container.Elements().Where(e =&gt; e.Name.ToString().Equals(name, comparisonMethod));</div>
+<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160; </div>
+<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;XElement&gt; GetChildElements(<span class="keyword">this</span> XContainer container, params <span class="keywordtype">string</span>[] names)</div>
+<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;        {</div>
+<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;            <span class="keywordflow">return</span> names.SelectMany(name =&gt; container.GetChildElements(name));</div>
+<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;        }</div>
+<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160; </div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> ComesAfter(<span class="keyword">this</span> XElement element, XElement other)</div>
+<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;        {</div>
+<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;            <span class="keywordflow">if</span> (element.Parent != other.Parent) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;            <span class="keywordflow">foreach</span> (var child <span class="keywordflow">in</span> element.Parent.Elements())</div>
+<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;            {</div>
+<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;                <span class="keywordflow">if</span> (child == element) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;                <span class="keywordflow">if</span> (child == other) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;            }</div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;        }</div>
+<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160; </div>
+<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Identifier NameAsIdentifier(<span class="keyword">this</span> XElement elem)</div>
+<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;        {</div>
+<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;            <span class="keywordflow">return</span> elem.Name.LocalName.ToIdentifier();</div>
+<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;        }</div>
+<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160; </div>
+<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Identifier NameAsIdentifier(<span class="keyword">this</span> XAttribute attr)</div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;        {</div>
+<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;            <span class="keywordflow">return</span> attr.Name.LocalName.ToIdentifier();</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;        }</div>
+<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;    }</div>
+<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file.html">Barotrauma.IO.File</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00337">SafeIO.cs:338</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_file_stream_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_file_stream.html">Barotrauma.IO.FileStream</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00474">SafeIO.cs:475</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_i_o_1_1_path_html"><div class="ttname"><a href="class_barotrauma_1_1_i_o_1_1_path.html">Barotrauma.IO.Path</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00207">SafeIO.cs:208</a></div></div>
@@ -1177,6 +1179,7 @@ $(document).ready(function(){initNavTree('_x_m_l_extensions_8cs_source.html','')
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aa7f813cc93f53d0ec8011cd10885efbd"><div class="ttname"><a href="namespace_barotrauma.html#aa7f813cc93f53d0ec8011cd10885efbd">Barotrauma.MouseButton</a></div><div class="ttdeci">MouseButton</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_player_input_8cs_source.html#l00011">BarotraumaClient/ClientSource/PlayerInput.cs:12</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

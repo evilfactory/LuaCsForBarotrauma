@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('_g_u_i_color_picker_8cs_source.html','
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_g_u_i_color_picker.html#aac8b63ac3882729c7467ef07218e610c">   17</a></span>&#160;        <span class="keyword">public</span> Color <a class="code" href="class_barotrauma_1_1_g_u_i_color_picker.html#aac8b63ac3882729c7467ef07218e610c">CurrentColor</a> = Color.Black;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> Rectangle MainArea,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> MainArea,</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                          HueArea;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> Texture2D? mainTexture,</div>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('_g_u_i_color_picker_8cs_source.html','
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> Color[]? colorData;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> Rectangle selectedRect;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> selectedRect;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> mouseHeld;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> isInitialized;</div>
@@ -130,8 +130,8 @@ $(document).ready(function(){initNavTree('_g_u_i_color_picker_8cs_source.html','
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">int</span> mainWidth = tWidth - sliceWidth;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordtype">int</span> hueWidth = sliceWidth;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            MainArea = <span class="keyword">new</span> Rectangle(0, 0, mainWidth, <a class="code" href="class_barotrauma_1_1_g_u_i_component.html#abe38a9549e8404863353d22b042596ad">Rect</a>.Height);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            HueArea = <span class="keyword">new</span> Rectangle(mainWidth, 0, hueWidth, <a class="code" href="class_barotrauma_1_1_g_u_i_component.html#abe38a9549e8404863353d22b042596ad">Rect</a>.Height);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            MainArea = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(0, 0, mainWidth, <a class="code" href="class_barotrauma_1_1_g_u_i_component.html#abe38a9549e8404863353d22b042596ad">Rect</a>.Height);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            HueArea = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(mainWidth, 0, hueWidth, <a class="code" href="class_barotrauma_1_1_g_u_i_component.html#abe38a9549e8404863353d22b042596ad">Rect</a>.Height);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            colorData = <span class="keyword">new</span> Color[MainArea.Width * MainArea.Height];</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            </div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('_g_u_i_color_picker_8cs_source.html','
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> (mainTexture == <span class="keyword">null</span> || hueTexture == <span class="keyword">null</span> || !isInitialized) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            Rectangle mainArea = MainArea,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> mainArea = MainArea,</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                      hueArea = HueArea;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            hueArea.Location += <a class="code" href="class_barotrauma_1_1_g_u_i_component.html#abe38a9549e8404863353d22b042596ad">Rect</a>.Location;</div>
@@ -203,7 +203,7 @@ $(document).ready(function(){initNavTree('_g_u_i_color_picker_8cs_source.html','
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (GUI.MouseOn != <span class="keyword">this</span>) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            Rectangle mainArea = MainArea,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> mainArea = MainArea,</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                      hueArea = HueArea;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            hueArea.Location += <a class="code" href="class_barotrauma_1_1_g_u_i_component.html#abe38a9549e8404863353d22b042596ad">Rect</a>.Location;</div>
@@ -317,6 +317,7 @@ $(document).ready(function(){initNavTree('_g_u_i_color_picker_8cs_source.html','
 <div class="ttc" id="aclass_barotrauma_1_1_player_input_html_af86e70a89e023f9881f438ac3dc0d94b"><div class="ttname"><a href="class_barotrauma_1_1_player_input.html#af86e70a89e023f9881f438ac3dc0d94b">Barotrauma.PlayerInput.MouseSpeed</a></div><div class="ttdeci">static Vector2? MouseSpeed</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_player_input_8cs_source.html#l00281">BarotraumaClient/ClientSource/PlayerInput.cs:282</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_rect_transform_html"><div class="ttname"><a href="class_barotrauma_1_1_rect_transform.html">Barotrauma.RectTransform</a></div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00031">RectTransform.cs:32</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

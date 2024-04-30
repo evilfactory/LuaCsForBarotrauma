@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_c
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordtype">bool</span> isEditor = Screen.Selected is { IsEditor: <span class="keyword">true</span> };</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            GUILayoutGroup titleHolder = <span class="keyword">new</span> GUILayoutGroup(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1f, 0.3f), listBox.Content.RectTransform));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(Vector2.One, titleHolder.RectTransform), <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>.Name, font: GUIStyle.LargeFont)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">new</span> GUITextBlock(<span class="keyword">new</span> RectTransform(Vector2.One, titleHolder.RectTransform), <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>.Prefab.Name, font: GUIStyle.LargeFont)</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                TextColor = Color.White,</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                Color = Color.Black</div>
@@ -172,34 +172,37 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_c
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keyword">new</span> GUIFrame(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.02f), listBox.Content.RectTransform), style: <span class="stringliteral">&quot;HorizontalLine&quot;</span>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                var componentEditor = <span class="keyword">new</span> SerializableEntityEditor(listBox.Content.RectTransform, ic, inGame: !isEditor, showName: <span class="keyword">false</span>, titleFont: GUIStyle.SubHeadingFont);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                fieldCount += componentEditor.Fields.Count;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                ic.<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a1a4fccfdd8f7cd0183c6ab187b29b981">CreateEditingHUD</a>(componentEditor);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                componentEditor.Recalculate();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">if</span> (fieldCount == 0)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                frame.Visible = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> frame;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                var componentEditor = <span class="keyword">new</span> SerializableEntityEditor(listBox.Content.RectTransform, ic, inGame: !isEditor, showName: <span class="keyword">false</span>, titleFont: GUIStyle.SubHeadingFont)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    Readonly = CircuitBox.Locked</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                };</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                fieldCount += componentEditor.Fields.Count;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                ic.<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a1a4fccfdd8f7cd0183c6ab187b29b981">CreateEditingHUD</a>(componentEditor);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                componentEditor.Recalculate();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">if</span> (fieldCount == 0)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                frame.Visible = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> DrawHeader(SpriteBatch spriteBatch, RectangleF drawRect, Color color)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="comment">// scale to topRect height</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            Vector2 scale = <span class="keyword">new</span>(drawRect.Height / MathF.Min(Sprite.size.X, Sprite.size.Y)),</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    spritePosition = <span class="keyword">new</span>(drawRect.Left, drawRect.Top);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordtype">float</span> spriteWidth = Sprite.size.X * scale.X;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            Sprite.Draw(spriteBatch, spritePosition, Color.White, Vector2.Zero, 0f, scale);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            GUI.DrawString(spriteBatch, <span class="keyword">new</span> Vector2(spritePosition.X + spriteWidth + CircuitBoxSizes.NodeHeaderTextPadding, drawRect.Center.Y - Label.Size.Y / 2f), Label.Value, GUIStyle.TextColorNormal, font: GUIStyle.LargeFont);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> frame;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> DrawHeader(SpriteBatch spriteBatch, RectangleF drawRect, Color color)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="comment">// scale to topRect height</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            Vector2 scale = <span class="keyword">new</span>(drawRect.Height / MathF.Min(Sprite.size.X, Sprite.size.Y)),</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    spritePosition = <span class="keyword">new</span>(drawRect.Left, drawRect.Top);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordtype">float</span> spriteWidth = Sprite.size.X * scale.X;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            Sprite.Draw(spriteBatch, spritePosition, Color.White, Vector2.Zero, 0f, scale);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            GUI.DrawString(spriteBatch, <span class="keyword">new</span> Vector2(spritePosition.X + spriteWidth + CircuitBoxSizes.NodeHeaderTextPadding, drawRect.Center.Y - Label.Size.Y / 2f), Label.Value, GUIStyle.TextColorNormal, font: GUIStyle.LargeFont);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_holdable_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html">Barotrauma.Items.Components.Holdable</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_holdable_2_holdable_8cs_source.html#l00013">BarotraumaShared/SharedSource/Items/Components/Holdable/Holdable.cs:14</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html">Barotrauma.Items.Components.ItemComponent</a></div><div class="ttdoc">The base class for components holding the different functionalities of the item</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00034">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:35</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_a1a4fccfdd8f7cd0183c6ab187b29b981"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a1a4fccfdd8f7cd0183c6ab187b29b981">Barotrauma.Items.Components.ItemComponent.CreateEditingHUD</a></div><div class="ttdeci">virtual void CreateEditingHUD(SerializableEntityEditor editor)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_items_2_components_2_item_component_8cs_source.html#l00498">BarotraumaClient/ClientSource/Items/Components/ItemComponent.cs:498</a></div></div>

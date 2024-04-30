@@ -92,68 +92,68 @@ $(document).ready(function(){initNavTree('_check_affliction_action_8cs_source.ht
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">internal</span> <span class="keyword">class </span>CheckAfflictionAction : BinaryOptionAction</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        [Serialize(<span class="stringliteral">&quot;&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes)]</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">public</span> Identifier Identifier { <span class="keyword">get</span>; <span class="keyword">set</span>; } = Identifier.Empty;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        [Serialize(<span class="stringliteral">&quot;&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes)]</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> Identifier TargetTag { <span class="keyword">get</span>; <span class="keyword">set</span>; } = Identifier.Empty;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">internal</span> <span class="keyword">class </span>CheckAfflictionAction : BinaryOptionAction</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        [Serialize(<span class="stringliteral">&quot;&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, description: <span class="stringliteral">&quot;Identifier of the affliction.&quot;</span>)]</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> Identifier Identifier { <span class="keyword">get</span>; <span class="keyword">set</span>; } = Identifier.Empty;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        [Serialize(<span class="stringliteral">&quot;&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, description: <span class="stringliteral">&quot;Tag referring to the character who caused the affliction.&quot;</span>)]</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span> Identifier SourceCharacter { <span class="keyword">get</span>; <span class="keyword">set</span>; } = Identifier.Empty;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        [Serialize(<span class="stringliteral">&quot;&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, description: <span class="stringliteral">&quot;Tag of the character to check.&quot;</span>)]</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span> Identifier TargetTag { <span class="keyword">get</span>; <span class="keyword">set</span>; } = Identifier.Empty;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        [Serialize(<a class="code" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>.None, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, <span class="stringliteral">&quot;Only check afflictions on the specified limb type&quot;</span>)]</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a> TargetLimb { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        [Serialize(<span class="stringliteral">&quot;&quot;</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, description: <span class="stringliteral">&quot;Tag referring to the character who caused the affliction. Can be used to require the affliction to be caused by a specific character.&quot;</span>)]</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">public</span> Identifier SourceCharacter { <span class="keyword">get</span>; <span class="keyword">set</span>; } = Identifier.Empty;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        [Serialize(<span class="keyword">true</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, <span class="stringliteral">&quot;When set to false when TargetLimb is not specified prevent checking limb-specific afflictions&quot;</span>)]</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> AllowLimbAfflictions { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        [Serialize(<a class="code" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>.None, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, <span class="stringliteral">&quot;Only check afflictions on the specified limb type.&quot;</span>)]</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a> TargetLimb { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        [Serialize(0.0f, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, <span class="stringliteral">&quot;Minimum strength of the affliction&quot;</span>)]</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> MinStrength { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        [Serialize(<span class="keyword">true</span>, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, <span class="stringliteral">&quot;When set to false, limb-specific afflictions are ignored when not checking a specific limb.&quot;</span>)]</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> AllowLimbAfflictions { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span> CheckAfflictionAction(ScriptedEvent parentEvent, ContentXElement element) : base(parentEvent, element) { }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span>? DetermineSuccess()</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">if</span> (Identifier.IsEmpty || TargetTag.IsEmpty) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            List&lt;Character&gt; targets = <a class="code" href="class_barotrauma_1_1_event_action.html#a08aceb29dc31d697de414d7f6c8f51bc">ParentEvent</a>.<a class="code" href="class_barotrauma_1_1_scripted_event.html#aefb29933c37f8b407acdbed993b6a839">GetTargets</a>(TargetTag).OfType&lt;<a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>&gt;().ToList();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">foreach</span> (var target <span class="keywordflow">in</span> targets)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordflow">if</span> (target.CharacterHealth == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">if</span> (TargetLimb == <a class="code" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>.None)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="keywordflow">if</span> (target.CharacterHealth.GetAfflictionStrengthByIdentifier(Identifier, AllowLimbAfflictions) &gt;= MinStrength) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                IEnumerable&lt;Affliction&gt; afflictions = target.CharacterHealth.GetAllAfflictions().Where(affliction =&gt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    <span class="keywordflow">if</span> (affliction.Prefab.LimbSpecific)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        LimbType? limbType = target.CharacterHealth.GetAfflictionLimb(affliction)?.type;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        if (limbType == null || limbType != TargetLimb) { return false; }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    <span class="keywordflow">if</span> (!SourceCharacter.IsEmpty)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        if (!ParentEvent.GetTargets(SourceCharacter).Contains(affliction.Source)) { return false; }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <span class="keywordflow">return</span> affliction.Strength &gt;= MinStrength;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                });</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">if</span> (afflictions.Any(a =&gt; a.Identifier == Identifier)) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> ToDebugString()</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> $<span class="stringliteral">&quot;{ToolBox.GetDebugSymbol(HasBeenDetermined())} {nameof(CheckAfflictionAction)} -&gt; (TargetTag: {TargetTag.ColorizeObject()}, &quot;</span> +</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                $<span class="stringliteral">&quot;AfflictionIdentifier: {Identifier.ColorizeObject()}, &quot;</span> +</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                $<span class="stringliteral">&quot;TargetLimb: {TargetLimb.ColorizeObject()}, &quot;</span> +</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                $<span class="stringliteral">&quot;Succeeded: {succeeded.ColorizeObject()})&quot;</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        [Serialize(0.0f, <a class="code" href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">IsPropertySaveable</a>.Yes, <span class="stringliteral">&quot;Minimum strength of the affliction.&quot;</span>)]</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> MinStrength { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">public</span> CheckAfflictionAction(ScriptedEvent parentEvent, ContentXElement element) : base(parentEvent, element) { }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span>? DetermineSuccess()</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">if</span> (Identifier.IsEmpty || TargetTag.IsEmpty) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            List&lt;Character&gt; targets = <a class="code" href="class_barotrauma_1_1_event_action.html#a08aceb29dc31d697de414d7f6c8f51bc">ParentEvent</a>.<a class="code" href="class_barotrauma_1_1_scripted_event.html#aefb29933c37f8b407acdbed993b6a839">GetTargets</a>(TargetTag).OfType&lt;<a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>&gt;().ToList();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">foreach</span> (var target <span class="keywordflow">in</span> targets)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">if</span> (target.CharacterHealth == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordflow">if</span> (TargetLimb == <a class="code" href="namespace_barotrauma.html#a0e200852d75ece36161f3bb6b84b46df">LimbType</a>.None)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="keywordflow">if</span> (target.CharacterHealth.GetAfflictionStrengthByIdentifier(Identifier, AllowLimbAfflictions) &gt;= MinStrength) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                IEnumerable&lt;Affliction&gt; afflictions = target.CharacterHealth.GetAllAfflictions().Where(affliction =&gt;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">if</span> (affliction.Prefab.LimbSpecific)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        LimbType? limbType = target.CharacterHealth.GetAfflictionLimb(affliction)?.type;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        if (limbType == null || limbType != TargetLimb) { return false; }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    <span class="keywordflow">if</span> (!SourceCharacter.IsEmpty)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        if (!ParentEvent.GetTargets(SourceCharacter).Contains(affliction.Source)) { return false; }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    <span class="keywordflow">return</span> affliction.Strength &gt;= MinStrength;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                });</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">if</span> (afflictions.Any(a =&gt; a.Identifier == Identifier)) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> ToDebugString()</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> $<span class="stringliteral">&quot;{ToolBox.GetDebugSymbol(HasBeenDetermined())} {nameof(CheckAfflictionAction)} -&gt; (TargetTag: {TargetTag.ColorizeObject()}, &quot;</span> +</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                $<span class="stringliteral">&quot;AfflictionIdentifier: {Identifier.ColorizeObject()}, &quot;</span> +</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                $<span class="stringliteral">&quot;TargetLimb: {TargetLimb.ColorizeObject()}, &quot;</span> +</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                $<span class="stringliteral">&quot;Succeeded: {succeeded.ColorizeObject()})&quot;</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_event_action_html_a08aceb29dc31d697de414d7f6c8f51bc"><div class="ttname"><a href="class_barotrauma_1_1_event_action.html#a08aceb29dc31d697de414d7f6c8f51bc">Barotrauma.EventAction.ParentEvent</a></div><div class="ttdeci">readonly ScriptedEvent ParentEvent</div><div class="ttdef"><b>Definition:</b> <a href="_event_action_8cs_source.html#l00102">EventAction.cs:102</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_scripted_event_html_aefb29933c37f8b407acdbed993b6a839"><div class="ttname"><a href="class_barotrauma_1_1_scripted_event.html#aefb29933c37f8b407acdbed993b6a839">Barotrauma.ScriptedEvent.GetTargets</a></div><div class="ttdeci">IEnumerable&lt; Entity &gt; GetTargets(Identifier tag)</div><div class="ttdef"><b>Definition:</b> <a href="_scripted_event_8cs_source.html#l00231">ScriptedEvent.cs:231</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>

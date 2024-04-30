@@ -109,8 +109,8 @@ $(document).ready(function(){initNavTree('_event_editor_node_connection_8cs_sour
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">public</span> <span class="keyword">enum</span> Side</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a945d5e233cf7d6240f6b783b36a374ff">Left</a>,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a92b09c7c48c520c3c55e497875da437c">Right</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            Left,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            Right</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">public</span> Side NodeSide { <span class="keyword">get</span>; }</div>
@@ -212,7 +212,7 @@ $(document).ready(function(){initNavTree('_event_editor_node_connection_8cs_sour
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">public</span> PropertyInfo? PropertyInfo { <span class="keyword">get</span>; }</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">public</span> Rectangle DrawRectangle = Rectangle.Empty;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> DrawRectangle = <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>.Empty;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">public</span> readonly EditorNode Parent;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
@@ -271,7 +271,7 @@ $(document).ready(function(){initNavTree('_event_editor_node_connection_8cs_sour
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordtype">float</span> camZoom = Screen.Selected is EventEditorScreen eventEditor ? eventEditor.Cam.Zoom : 1.0f;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            Point pos = GetRenderPos(parentRectangle, yOffset);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            DrawRectangle = <span class="keyword">new</span> Rectangle(pos, <span class="keyword">new</span> Point(16, 16));</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            DrawRectangle = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(pos, <span class="keyword">new</span> Point(16, 16));</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            GUI.DrawRectangle(spriteBatch, DrawRectangle, bgColor, isFilled: <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            GUI.DrawRectangle(spriteBatch, DrawRectangle, EndConversation ? GUIStyle.Red : outlineColor, isFilled: <span class="keyword">false</span>, thickness: (<span class="keywordtype">int</span>)Math.Max(1, 1.25f / camZoom));</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
@@ -282,7 +282,7 @@ $(document).ready(function(){initNavTree('_event_editor_node_connection_8cs_sour
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                Vector2 size = GUIStyle.SmallFont.MeasureString(label);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                Vector2 positon = <span class="keyword">new</span> Vector2(pos.X + xPos, pos.Y);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                Rectangle bgRect = <span class="keyword">new</span> Rectangle(positon.ToPoint(), size.ToPoint());</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> bgRect = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(positon.ToPoint(), size.ToPoint());</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                bgRect.Inflate(4, 4);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                GUI.DrawRectangle(spriteBatch, bgRect, Color.Black * 0.6f, isFilled: <span class="keyword">true</span>);</div>
@@ -344,15 +344,15 @@ $(document).ready(function(){initNavTree('_event_editor_node_connection_8cs_sour
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> DrawLabel(SpriteBatch spriteBatch, Vector2 pos, <span class="keywordtype">string</span> text, <span class="keywordtype">string</span> fullText)</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        {</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordtype">float</span> camZoom = Screen.Selected is EventEditorScreen eventEditor ? eventEditor.Cam.Zoom : 1.0f;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            Rectangle valueRect = <span class="keyword">new</span> Rectangle((<span class="keywordtype">int</span>)pos.X, (<span class="keywordtype">int</span>)pos.Y, 96, 20);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> valueRect = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>((<span class="keywordtype">int</span>)pos.X, (<span class="keywordtype">int</span>)pos.Y, 96, 20);</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            Vector2 textSize = GUIStyle.SmallFont.MeasureString(text);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            Vector2 position = valueRect.Location.ToVector2() + valueRect.Size.ToVector2() / 2 - textSize / 2;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            Rectangle drawRect = valueRect;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> drawRect = valueRect;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            drawRect.Inflate(4, 4);</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            GUI.DrawRectangle(spriteBatch, drawRect, <span class="keyword">new</span> Color(50, 50, 50), isFilled: <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            GUI.DrawRectangle(spriteBatch, drawRect, EndConversation ? GUIStyle.Red : outlineColor, isFilled: <span class="keyword">false</span>, thickness: (<span class="keywordtype">int</span>)Math.Max(1, 1.25f / camZoom));</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            GUI.DrawString(spriteBatch, position, text, GetPropertyColor(ValueType), font: GUIStyle.SmallFont);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            DrawRectangle = Rectangle.Union(DrawRectangle, drawRect);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            DrawRectangle = <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>.Union(DrawRectangle, drawRect);</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrWhiteSpace(fullText))</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
@@ -417,8 +417,7 @@ $(document).ready(function(){initNavTree('_event_editor_node_connection_8cs_sour
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87a92b09c7c48c520c3c55e497875da437c"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a92b09c7c48c520c3c55e497875da437c">Barotrauma.InputType.Right</a></div><div class="ttdeci">@ Right</div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87a945d5e233cf7d6240f6b783b36a374ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a945d5e233cf7d6240f6b783b36a374ff">Barotrauma.InputType.Left</a></div><div class="ttdeci">@ Left</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

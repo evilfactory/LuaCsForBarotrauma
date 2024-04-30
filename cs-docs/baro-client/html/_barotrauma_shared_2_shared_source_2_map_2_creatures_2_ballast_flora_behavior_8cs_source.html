@@ -900,7 +900,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_m
 <div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            <span class="keywordflow">if</span> (!isRootGrowth &amp;&amp; parent.IsSideBlocked(side)) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 <div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160; </div>
 <div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            Vector2 pos = forcePosition ?? parent.AdjacentPositions[side];</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            Rectangle rect = VineTile.CreatePlantRect(pos);</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> rect = VineTile.CreatePlantRect(pos);</div>
 <div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160; </div>
 <div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="keywordflow">if</span> (CollidesWithWorld(rect, checkOtherBranches: !isRootGrowth))</div>
 <div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            {</div>
@@ -975,7 +975,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_m
 <div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160; </div>
 <div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> BranchContainsTarget(BallastFloraBranch branch, Item target)</div>
 <div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        {</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;            Rectangle worldRect = branch.Rect;</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> worldRect = branch.Rect;</div>
 <div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;            worldRect.Location = GetWorldPosition().ToPoint() + worldRect.Location;</div>
 <div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;            <span class="keywordflow">return</span> worldRect.IntersectsWorld(target.WorldRect);</div>
 <div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;        }</div>
@@ -1077,15 +1077,15 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_m
 <div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160; </div>
 <div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreateBody(BallastFloraBranch branch)</div>
 <div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;        {</div>
-<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;            Rectangle rect = branch.Rect;</div>
+<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> rect = branch.Rect;</div>
 <div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;            Vector2 pos = Parent.Position + Offset + branch.Position;</div>
 <div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160; </div>
 <div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;            <span class="keywordtype">float</span> scale = branch.IsRoot ? 3.0f : 1f;</div>
 <div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;            Body branchBody = GameMain.World.CreateRectangle(ConvertUnits.ToSimUnits(rect.Width * scale), ConvertUnits.ToSimUnits(rect.Height * scale), 1.5f);</div>
 <div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;            branchBody.BodyType = BodyType.Static;</div>
 <div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;            branchBody.UserData = branch;</div>
-<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;            branchBody.SetCollidesWith(Physics.CollisionRepair);</div>
-<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;            branchBody.SetCollisionCategories(Physics.CollisionRepair);</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;            branchBody.SetCollidesWith(Physics.CollisionRepairableWall);</div>
+<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;            branchBody.SetCollisionCategories(Physics.CollisionRepairableWall);</div>
 <div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;            branchBody.Position = ConvertUnits.ToSimUnits(pos);</div>
 <div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;            branchBody.Enabled = HasBrokenThrough;</div>
 <div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160; </div>
@@ -1387,7 +1387,7 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_m
 <div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;        {</div>
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;            <span class="keywordflow">if</span> (checkOtherBranches &amp;&amp; Branches.Any(g =&gt; g.Rect.Contains(rect))) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160; </div>
-<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;            Rectangle worldRect = rect;</div>
+<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> worldRect = rect;</div>
 <div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;            worldRect.Location = (Parent.Position + Offset).ToPoint() + worldRect.Location;</div>
 <div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;            worldRect.Y -= worldRect.Height;</div>
 <div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160; </div>
@@ -1471,8 +1471,9 @@ $(document).ready(function(){initNavTree('_barotrauma_shared_2_shared_source_2_m
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d"><div class="ttname"><a href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Barotrauma.SpawnType.Submarine</a></div><div class="ttdeci">@ Submarine</div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aa5a0bb684c2fe43c741ccb554727bed1"><div class="ttname"><a href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">Barotrauma.StatTypes</a></div><div class="ttdeci">StatTypes</div><div class="ttdoc">StatTypes are used to alter several traits of a character. They are mostly used by talents.</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00178">Enums.cs:179</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_aa5a0bb684c2fe43c741ccb554727bed1"><div class="ttname"><a href="namespace_barotrauma.html#aa5a0bb684c2fe43c741ccb554727bed1">Barotrauma.StatTypes</a></div><div class="ttdeci">StatTypes</div><div class="ttdoc">StatTypes are used to alter several traits of a character. They are mostly used by talents.</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00179">Enums.cs:180</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4adc4c71563b9bc39a65be853457e6b7b6"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4adc4c71563b9bc39a65be853457e6b7b6">Barotrauma.AttackTarget.Structure</a></div><div class="ttdeci">@ Structure</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87a605669cab962bf944d99ce89cf9e58d9"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87a605669cab962bf944d99ce89cf9e58d9">Barotrauma.InputType.Health</a></div><div class="ttdeci">@ Health</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef74ac760c0c487bd00ad7d0d69b6e50"><div class="ttname"><a href="namespace_barotrauma.html#aef74ac760c0c487bd00ad7d0d69b6e50">Barotrauma.IsPropertySaveable</a></div><div class="ttdeci">IsPropertySaveable</div><div class="ttdef"><b>Definition:</b> <a href="_serializable_property_8cs_source.html#l00018">SerializableProperty.cs:19</a></div></div>
 <div class="ttc" id="astruct_barotrauma_1_1_map_creatures_1_1_behavior_1_1_ballast_flora_behavior_1_1_a_i_target_html"><div class="ttname"><a href="struct_barotrauma_1_1_map_creatures_1_1_behavior_1_1_ballast_flora_behavior_1_1_a_i_target.html">Barotrauma.MapCreatures.Behavior.BallastFloraBehavior.AITarget</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_creatures_2_ballast_flora_behavior_8cs_source.html#l00157">BarotraumaShared/SharedSource/Map/Creatures/BallastFloraBehavior.cs:158</a></div></div>

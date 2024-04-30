@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            Vector2 size = GUIStyle.SmallFont.MeasureString(text);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            Vector2 infoPos = <span class="keyword">new</span> Vector2(GameMain.GraphicsWidth - size.X - 16, pos.Y + 8);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            Rectangle infoRect = <span class="keyword">new</span> Rectangle(infoPos.ToPoint(), size.ToPoint());</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> infoRect = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(infoPos.ToPoint(), size.ToPoint());</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            infoRect.Inflate(8, 8);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            GUI.DrawRectangle(spriteBatch, infoRect, Color.Black * 0.8f, isFilled: <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            GUI.DrawRectangle(spriteBatch, infoRect, Color.White * 0.8f);</div>
@@ -176,8 +176,8 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    y += nameSize.Y + 5;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    Color color = ToolBox.GradientLerp(faction.Reputation.NormalizedValue, Color.Red, Color.Yellow, Color.LightGreen);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    GUI.DrawRectangle(spriteBatch, <span class="keyword">new</span> Rectangle(GameMain.GraphicsWidth - 264, (<span class="keywordtype">int</span>) y, (<span class="keywordtype">int</span>)(faction.Reputation.NormalizedValue * 255), 10), color, isFilled: <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    GUI.DrawRectangle(spriteBatch, <span class="keyword">new</span> Rectangle(GameMain.GraphicsWidth - 264, (<span class="keywordtype">int</span>) y, 256, 10), Color.White);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    GUI.DrawRectangle(spriteBatch, <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(GameMain.GraphicsWidth - 264, (<span class="keywordtype">int</span>) y, (<span class="keywordtype">int</span>)(faction.Reputation.NormalizedValue * 255), 10), color, isFilled: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    GUI.DrawRectangle(spriteBatch, <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(GameMain.GraphicsWidth - 264, (<span class="keywordtype">int</span>) y, 256, 10), Color.White);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    y += 15;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                }</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
@@ -185,6 +185,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_g
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

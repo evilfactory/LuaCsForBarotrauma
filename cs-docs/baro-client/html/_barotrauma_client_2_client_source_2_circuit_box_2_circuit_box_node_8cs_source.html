@@ -95,10 +95,10 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_c
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">internal</span> <span class="keyword">partial class </span>CircuitBoxNode</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">private</span> RectangleF DrawRect,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                           TopDrawRect;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">public</span> RectangleF DrawRect;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span> RectangleF TopDrawRect;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> UpdateDrawRects()</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">protected</span> <span class="keywordtype">void</span> UpdateDrawRects()</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            var drawRect = <span class="keyword">new</span> RectangleF(Position - Size / 2f, Size);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            drawRect.Y = -drawRect.Y;</div>
@@ -114,63 +114,67 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_c
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            UpdatePositions();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawBackground(SpriteBatch spriteBatch, RectangleF drawRect, RectangleF topDrawRect, Color color)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            CircuitBox.NodeFrameSprite?.Draw(spriteBatch, drawRect, color);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            CircuitBox.NodeTopSprite?.Draw(spriteBatch, topDrawRect, color);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> Draw(SpriteBatch spriteBatch, Vector2 drawPos, Color color)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            RectangleF drawRect = OverrideRectLocation(DrawRect, drawPos, Position),</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                       topDrawRect = OverrideRectLocation(TopDrawRect, drawPos, Position);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            DrawBackground(spriteBatch, drawRect, topDrawRect, color);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            DrawHeader(spriteBatch, topDrawRect, color);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            DrawConnectors(spriteBatch, drawPos);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnResized(RectangleF drawRect) { }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawBackground(SpriteBatch spriteBatch, RectangleF drawRect, RectangleF topDrawRect, Color color)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            CircuitBox.NodeFrameSprite?.Draw(spriteBatch, drawRect, color);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            CircuitBox.NodeTopSprite?.Draw(spriteBatch, topDrawRect, color);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> Draw(SpriteBatch spriteBatch, Vector2 drawPos, Color color)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            RectangleF drawRect = OverrideRectLocation(DrawRect, drawPos, Position),</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                       topDrawRect = OverrideRectLocation(TopDrawRect, drawPos, Position);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            DrawBackground(spriteBatch, drawRect, topDrawRect, color);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            DrawHeader(spriteBatch, topDrawRect, color);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            DrawBody(spriteBatch, drawRect, color);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawHUD(SpriteBatch spriteBatch, Camera camera)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">foreach</span> (var c <span class="keywordflow">in</span> Connectors)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                c.DrawHUD(spriteBatch, camera);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> DrawHeader(SpriteBatch spriteBatch, RectangleF rect, Color color) { }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawConnectors(SpriteBatch spriteBatch, Vector2 drawPos)</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            var color = Color.White * Opacity;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">foreach</span> (var c <span class="keywordflow">in</span> Connectors)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                c.Draw(spriteBatch, drawPos, Position, color);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawSelection(SpriteBatch spriteBatch, Color color)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">int</span> pad = GUI.IntScale(8);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            DrawConnectors(spriteBatch, drawPos);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawHUD(SpriteBatch spriteBatch, Camera camera)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">foreach</span> (var c <span class="keywordflow">in</span> Connectors)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                c.DrawHUD(spriteBatch, camera);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> DrawHeader(SpriteBatch spriteBatch, RectangleF rect, Color color) { }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> DrawBody(SpriteBatch spriteBatch, RectangleF rect, Color color) { }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawConnectors(SpriteBatch spriteBatch, Vector2 drawPos)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            var color = Color.White * Opacity;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">foreach</span> (var c <span class="keywordflow">in</span> Connectors)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                c.Draw(spriteBatch, drawPos, Position, color);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            var rect = Rect;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            rect.Y = -rect.Y;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            rect.Y -= rect.Height;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> DrawSelection(SpriteBatch spriteBatch, Color color)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordtype">int</span> pad = GUI.IntScale(8);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            rect.Inflate(pad, pad);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            GUI.DrawFilledRectangle(spriteBatch, rect, color * Opacity);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> RectangleF OverrideRectLocation(RectangleF rect, Vector2 overridePos, Vector2 originalPos)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            rect.Location -= <span class="keyword">new</span> Vector2(originalPos.X, -originalPos.Y);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            rect.Location += <span class="keyword">new</span> Vector2(overridePos.X, -overridePos.Y);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> rect;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            var rect = Rect;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            rect.Y = -rect.Y;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            rect.Y -= rect.Height;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            rect.Inflate(pad, pad);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            GUI.DrawFilledRectangle(spriteBatch, rect, color * Opacity);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> RectangleF OverrideRectLocation(RectangleF rect, Vector2 overridePos, Vector2 originalPos)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            rect.Location -= <span class="keyword">new</span> Vector2(originalPos.X, -originalPos.Y);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            rect.Location += <span class="keyword">new</span> Vector2(overridePos.X, -overridePos.Y);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> rect;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

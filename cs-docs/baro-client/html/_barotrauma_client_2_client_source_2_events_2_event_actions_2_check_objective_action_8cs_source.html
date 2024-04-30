@@ -86,54 +86,52 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_e
 <div class="title">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.<a class="code" href="namespace_barotrauma_1_1_tutorials.html">Tutorials</a>;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> Segment = <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.ObjectiveManager.Segment;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a>;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">partial class </span><a class="code" href="class_check_objective_action.html">CheckObjectiveAction</a> : BinaryOptionAction</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">    8</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        Added,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        Completed,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        Incomplete</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    [Serialize(<a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Completed, IsPropertySaveable.Yes)]</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">   16</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a> <a class="code" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">Type</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    [Serialize(<span class="stringliteral">&quot;&quot;</span>, IsPropertySaveable.Yes)]</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">   19</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a> <a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    partial <span class="keywordtype">void</span> DetermineSuccessProjSpecific(ref <span class="keywordtype">bool</span> success)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        success = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a>.IsEmpty)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            success = ObjectiveManager.AllActiveObjectivesCompleted();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ObjectiveManager.GetObjective(<a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a>) is Segment segment)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            success = <a class="code" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">Type</a> <span class="keywordflow">switch</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Added =&gt; <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Completed =&gt; segment.IsCompleted,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Incomplete =&gt; !segment.IsCompleted,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                _ =&gt; <span class="keyword">false</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            };</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">Type</a> == <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Incomplete)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            success = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="ttc" id="aclass_check_objective_action_html"><div class="ttname"><a href="class_check_objective_action.html">CheckObjectiveAction</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00003">BarotraumaShared/SharedSource/Events/EventActions/CheckObjectiveAction.cs:4</a></div></div>
-<div class="ttc" id="aclass_check_objective_action_html_a0a50a7efd92746f0934470aeb39d626d"><div class="ttname"><a href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckObjectiveAction.CheckType</a></div><div class="ttdeci">CheckType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00008">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs:9</a></div></div>
-<div class="ttc" id="aclass_check_objective_action_html_a4c4d6e97f3e68bd921dece8fb82b8fdc"><div class="ttname"><a href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">CheckObjectiveAction.Identifier</a></div><div class="ttdeci">Identifier Identifier</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00019">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs:19</a></div></div>
-<div class="ttc" id="aclass_check_objective_action_html_ae51e42624ce18a4e4bbb01012c24b85f"><div class="ttname"><a href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">CheckObjectiveAction.Type</a></div><div class="ttdeci">CheckType Type</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00016">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs:16</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_tutorials_html"><div class="ttname"><a href="namespace_barotrauma_1_1_tutorials.html">Barotrauma.Tutorials</a></div><div class="ttdef"><b>Definition:</b> <a href="_tutorial_8cs_source.html#l00007">Tutorial.cs:8</a></div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> Segment = <a class="code" href="namespace_barotrauma.html">Barotrauma</a>.ObjectiveManager.Segment;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma.html">Barotrauma</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">partial class </span><a class="code" href="class_check_objective_action.html">CheckObjectiveAction</a> : BinaryOptionAction</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">   10</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        Added,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        Completed,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        Incomplete</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    [Serialize(<a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Completed, IsPropertySaveable.Yes, description: <span class="stringliteral">&quot;The objective must be in this state for the check to succeed.&quot;</span>)]</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">   18</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a> <a class="code" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">Type</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    [Serialize(<span class="stringliteral">&quot;&quot;</span>, IsPropertySaveable.Yes, description: <span class="stringliteral">&quot;The identifier of the objective to check.&quot;</span>)]</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">   21</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a> <a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    partial <span class="keywordtype">void</span> DetermineSuccessProjSpecific(ref <span class="keywordtype">bool</span> success)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        success = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a>.IsEmpty)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            success = ObjectiveManager.AllActiveObjectivesCompleted();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ObjectiveManager.GetObjective(<a class="code" href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">Identifier</a>) is Segment segment)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            success = <a class="code" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">Type</a> <span class="keywordflow">switch</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Added =&gt; <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Completed =&gt; segment.IsCompleted,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Incomplete =&gt; !segment.IsCompleted,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                _ =&gt; <span class="keyword">false</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            };</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">Type</a> == <a class="code" href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckType</a>.Incomplete)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            success = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="ttc" id="aclass_check_objective_action_html"><div class="ttname"><a href="class_check_objective_action.html">CheckObjectiveAction</a></div><div class="ttdoc">Checks the state of an Objective created using EventObjectiveAction.</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00006">BarotraumaShared/SharedSource/Events/EventActions/CheckObjectiveAction.cs:7</a></div></div>
+<div class="ttc" id="aclass_check_objective_action_html_a0a50a7efd92746f0934470aeb39d626d"><div class="ttname"><a href="class_check_objective_action.html#a0a50a7efd92746f0934470aeb39d626d">CheckObjectiveAction.CheckType</a></div><div class="ttdeci">CheckType</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00010">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs:11</a></div></div>
+<div class="ttc" id="aclass_check_objective_action_html_a4c4d6e97f3e68bd921dece8fb82b8fdc"><div class="ttname"><a href="class_check_objective_action.html#a4c4d6e97f3e68bd921dece8fb82b8fdc">CheckObjectiveAction.Identifier</a></div><div class="ttdeci">Identifier Identifier</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00021">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs:21</a></div></div>
+<div class="ttc" id="aclass_check_objective_action_html_ae51e42624ce18a4e4bbb01012c24b85f"><div class="ttname"><a href="class_check_objective_action.html#ae51e42624ce18a4e4bbb01012c24b85f">CheckObjectiveAction.Type</a></div><div class="ttdeci">CheckType Type</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_events_2_event_actions_2_check_objective_action_8cs_source.html#l00018">BarotraumaClient/ClientSource/Events/EventActions/CheckObjectiveAction.cs:18</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

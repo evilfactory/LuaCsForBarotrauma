@@ -231,58 +231,61 @@ $(document).ready(function(){initNavTree('_mutable_workshop_menu_8cs_source.html
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                OnClicked = (b, _) =&gt;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a0f73d14e58408a56c15c9b42e118d528">SelectTab</a>(tab);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            };</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            button.RectTransform.MaxSize = RectTransform.MaxPoint;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            button.Children.ForEach(c =&gt; c.RectTransform.MaxSize = RectTransform.MaxPoint);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            tabContents.Add(tab, (button, content));</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    <span class="keywordflow">if</span> (tab != <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">CurrentTab</a>)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a0f73d14e58408a56c15c9b42e118d528">SelectTab</a>(tab);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            };</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            button.RectTransform.MaxSize = RectTransform.MaxPoint;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            button.Children.ForEach(c =&gt; c.RectTransform.MaxSize = RectTransform.MaxPoint);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">private</span> GUIFrame CreateNewContentFrame(<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a> tab)</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            var content = <span class="keyword">new</span> GUIFrame(<span class="keyword">new</span> RectTransform(Vector2.One * 0.98f, contentFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.Center, <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a>.Center), style: <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            AddButtonToTabber(tab, content);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">return</span> content;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreatePopularModsTab(out GUIListBox popularModsList)</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            GUIFrame content = CreateNewContentFrame(<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.PopularMods);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">if</span> (!SteamManager.IsInitialized)</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                tabContents[<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.PopularMods].Button.Enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            GUIFrame listFrame = <span class="keyword">new</span> GUIFrame(<span class="keyword">new</span> RectTransform(Vector2.One, content.RectTransform), style: <span class="keyword">null</span>);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            CreateWorkshopItemList(listFrame, out _, out popularModsList, onSelected: PopulateFrameWithItemInfo);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreatePublishTab(out GUIListBox selfModsList)</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            GUIFrame content = CreateNewContentFrame(<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.Publish);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (!SteamManager.IsInitialized)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                tabContents[<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.Publish].Button.Enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            CreateWorkshopItemOrPackageList(content, out _, out selfModsList, onSelected: PopulatePublishTab);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c">  184</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c">Apply</a>()</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            ContentPackageManager.EnabledPackages.SetCore(EnabledCorePackage);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            ContentPackageManager.EnabledPackages.SetRegular(enabledRegularModsList.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                .Select(c =&gt; c.UserData as <a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a>).OfType&lt;<a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a>&gt;().ToArray());</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a4f2c32e88683e582f202fb312c0e5e43">PopulateInstalledModLists</a>(forceRefreshEnabled: <span class="keyword">true</span>, refreshDisabled: <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            ContentPackageManager.LogEnabledRegularPackageErrors();</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            enabledCoreDropdown.<a class="code" href="class_barotrauma_1_1_g_u_i_drop_down.html#a30bd2f2baacf5fe23643cff2132b4501">ButtonTextColor</a> =</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                EnabledCorePackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a8312eb59497550596eedcdb8045c39d0">HasAnyErrors</a></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    ? GUIStyle.Red</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    : GUIStyle.TextColorNormal;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            tabContents.Add(tab, (button, content));</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keyword">private</span> GUIFrame CreateNewContentFrame(<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a> tab)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            var content = <span class="keyword">new</span> GUIFrame(<span class="keyword">new</span> RectTransform(Vector2.One * 0.98f, contentFrame.RectTransform, <a class="code" href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Anchor</a>.Center, <a class="code" href="namespace_barotrauma.html#aae8dcdcf481ce0b00ba3075cec6fb2af">Pivot</a>.Center), style: <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            AddButtonToTabber(tab, content);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">return</span> content;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreatePopularModsTab(out GUIListBox popularModsList)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            GUIFrame content = CreateNewContentFrame(<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.PopularMods);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">if</span> (!SteamManager.IsInitialized)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                tabContents[<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.PopularMods].Button.Enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            GUIFrame listFrame = <span class="keyword">new</span> GUIFrame(<span class="keyword">new</span> RectTransform(Vector2.One, content.RectTransform), style: <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            CreateWorkshopItemList(listFrame, out _, out popularModsList, onSelected: PopulateFrameWithItemInfo);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CreatePublishTab(out GUIListBox selfModsList)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            GUIFrame content = CreateNewContentFrame(<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.Publish);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (!SteamManager.IsInitialized)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                tabContents[<a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Tab</a>.Publish].Button.Enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            CreateWorkshopItemOrPackageList(content, out _, out selfModsList, onSelected: PopulatePublishTab);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c">  187</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c">Apply</a>()</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            ContentPackageManager.EnabledPackages.SetCore(EnabledCorePackage);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            ContentPackageManager.EnabledPackages.SetRegular(enabledRegularModsList.<a class="code" href="class_barotrauma_1_1_g_u_i_list_box.html#a954a27a5622aa98609200c7f24accbc1">Content</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#aeb2ec55d80c3bed69f9ffa003408ff9f">Children</a></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                .Select(c =&gt; c.UserData as <a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a>).OfType&lt;<a class="code" href="class_barotrauma_1_1_regular_package.html">RegularPackage</a>&gt;().ToArray());</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a4f2c32e88683e582f202fb312c0e5e43">PopulateInstalledModLists</a>(forceRefreshEnabled: <span class="keyword">true</span>, refreshDisabled: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            ContentPackageManager.LogEnabledRegularPackageErrors();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            enabledCoreDropdown.<a class="code" href="class_barotrauma_1_1_g_u_i_drop_down.html#a30bd2f2baacf5fe23643cff2132b4501">ButtonTextColor</a> =</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                EnabledCorePackage.<a class="code" href="class_barotrauma_1_1_content_package.html#a8312eb59497550596eedcdb8045c39d0">HasAnyErrors</a></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    ? GUIStyle.Red</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    : GUIStyle.TextColorNormal;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html_a8312eb59497550596eedcdb8045c39d0"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html#a8312eb59497550596eedcdb8045c39d0">Barotrauma.ContentPackage.HasAnyErrors</a></div><div class="ttdeci">bool HasAnyErrors</div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00067">ContentPackage.cs:67</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_button_html"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_button.html">Barotrauma.GUIButton</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_button_8cs_source.html#l00008">GUIButton.cs:9</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html_ad762da6afb11d722a92bbf2803194fc1"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html#ad762da6afb11d722a92bbf2803194fc1">Barotrauma.GUIComponent.Visible</a></div><div class="ttdeci">bool Visible</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00230">GUIComponent.cs:231</a></div></div>
@@ -299,7 +302,7 @@ $(document).ready(function(){initNavTree('_mutable_workshop_menu_8cs_source.html
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a0f73d14e58408a56c15c9b42e118d528"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a0f73d14e58408a56c15c9b42e118d528">Barotrauma.Steam.MutableWorkshopMenu.SelectTab</a></div><div class="ttdeci">void SelectTab(Tab tab)</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00115">MutableWorkshopMenu.cs:115</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a4f2c32e88683e582f202fb312c0e5e43"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a4f2c32e88683e582f202fb312c0e5e43">Barotrauma.Steam.MutableWorkshopMenu.PopulateInstalledModLists</a></div><div class="ttdeci">void PopulateInstalledModLists(bool forceRefreshEnabled=false, bool refreshDisabled=true)</div><div class="ttdef"><b>Definition:</b> <a href="_installed_tab_8cs_source.html#l00549">InstalledTab.cs:549</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a549db403d604b39d1fa8160f7faad97c"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a549db403d604b39d1fa8160f7faad97c">Barotrauma.Steam.MutableWorkshopMenu.CurrentTab</a></div><div class="ttdeci">Tab CurrentTab</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00029">MutableWorkshopMenu.cs:29</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a55f0411d7a95e3cc9a2bf8be8963e84c"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c">Barotrauma.Steam.MutableWorkshopMenu.Apply</a></div><div class="ttdeci">void Apply()</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00184">MutableWorkshopMenu.cs:184</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a55f0411d7a95e3cc9a2bf8be8963e84c"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a55f0411d7a95e3cc9a2bf8be8963e84c">Barotrauma.Steam.MutableWorkshopMenu.Apply</a></div><div class="ttdeci">void Apply()</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00187">MutableWorkshopMenu.cs:187</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_a6a0557fff4da6df092cfd94256e178de"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#a6a0557fff4da6df092cfd94256e178de">Barotrauma.Steam.MutableWorkshopMenu.Tab</a></div><div class="ttdeci">Tab</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00012">MutableWorkshopMenu.cs:13</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_steam_1_1_mutable_workshop_menu_html_adf20a35256489a0a2d2a3ee67d3c7074"><div class="ttname"><a href="class_barotrauma_1_1_steam_1_1_mutable_workshop_menu.html#adf20a35256489a0a2d2a3ee67d3c7074">Barotrauma.Steam.MutableWorkshopMenu.MutableWorkshopMenu</a></div><div class="ttdeci">MutableWorkshopMenu(GUIFrame parent)</div><div class="ttdef"><b>Definition:</b> <a href="_mutable_workshop_menu_8cs_source.html#l00046">MutableWorkshopMenu.cs:46</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>

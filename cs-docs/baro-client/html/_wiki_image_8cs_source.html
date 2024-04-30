@@ -98,9 +98,9 @@ $(document).ready(function(){initNavTree('_wiki_image_8cs_source.html',''); init
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">static</span> <span class="keyword">class </span>WikiImage</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Rectangle CalculateBoundingBox(Character character)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> CalculateBoundingBox(Character character)</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            Rectangle boundingBox = <span class="keyword">new</span> Rectangle(character.WorldPosition.ToPoint(), Point.Zero);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> boundingBox = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>(character.WorldPosition.ToPoint(), Point.Zero);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordtype">void</span> addPointsToBBox(<span class="keywordtype">float</span> extentX, <span class="keywordtype">float</span> extentY, Vector2 worldPos, Vector2 origin, <span class="keywordtype">float</span> rotation)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            {</div>
@@ -158,7 +158,7 @@ $(document).ready(function(){initNavTree('_wiki_image_8cs_source.html',''); init
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Create(Character character)</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            Rectangle boundingBox = CalculateBoundingBox(character);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> boundingBox = CalculateBoundingBox(character);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordtype">int</span> texWidth = Math.Clamp((<span class="keywordtype">int</span>)(boundingBox.Width * 2.5f), 512, 4096);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordtype">float</span> zoom = (float)texWidth / (<span class="keywordtype">float</span>)boundingBox.Width;</div>
@@ -210,7 +210,7 @@ $(document).ready(function(){initNavTree('_wiki_image_8cs_source.html',''); init
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordtype">int</span> width = 4096; <span class="keywordtype">int</span> height = 4096;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            Rectangle subDimensions = sub.CalculateDimensions(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> subDimensions = sub.CalculateDimensions(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            Vector2 viewPos = subDimensions.Center.ToVector2();</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordtype">float</span> scale = Math.Min(width / (<span class="keywordtype">float</span>)subDimensions.Width, height / (<span class="keywordtype">float</span>)subDimensions.Height);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
@@ -256,6 +256,7 @@ $(document).ready(function(){initNavTree('_wiki_image_8cs_source.html',''); init
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d"><div class="ttname"><a href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Barotrauma.SpawnType.Submarine</a></div><div class="ttdeci">@ Submarine</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

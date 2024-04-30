@@ -125,31 +125,32 @@ $(document).ready(function(){initNavTree('_text_file_8cs_source.html',''); initR
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">if</span> (newList.Count != 0) { TextManager.TextPacks.TryAdd(kvp.Key, newList); }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            TextManager.IncrementLanguageVersion();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (!TextManager.TextPacks.ContainsKey(GameSettings.CurrentConfig.Language))</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                DebugConsole.AddWarning($<span class="stringliteral">&quot;The language {GameSettings.CurrentConfig.Language} is no longer available. Switching to {TextManager.DefaultLanguage}...&quot;</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                var config = GameSettings.CurrentConfig;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                config.Language = TextManager.DefaultLanguage;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                GameSettings.SetCurrentConfig(config);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_file.html#a3f9ae2a43aa1eeeaee3cbca9331ced9a">   49</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_text_file.html#a3f9ae2a43aa1eeeaee3cbca9331ced9a">Sort</a>()</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">foreach</span> (var language <span class="keywordflow">in</span> TextManager.TextPacks.Keys.ToList())</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                TextManager.TextPacks[language] =</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    TextManager.TextPacks[language].Sort((t1, t2) =&gt; (t1.ContentFile.ContentPackage?.Index ?? <span class="keywordtype">int</span>.MaxValue) - (t2.ContentFile.ContentPackage?.Index ?? <span class="keywordtype">int</span>.MaxValue));                </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (!TextManager.TextPacks.ContainsKey(GameSettings.CurrentConfig.Language) &amp;&amp; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                GameSettings.CurrentConfig.Language != TextManager.DefaultLanguage)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                DebugConsole.AddWarning($<span class="stringliteral">&quot;The language {GameSettings.CurrentConfig.Language} is no longer available. Switching to {TextManager.DefaultLanguage}...&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                var config = GameSettings.CurrentConfig;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                config.Language = TextManager.DefaultLanguage;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                GameSettings.SetCurrentConfig(config);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_text_file.html#a3f9ae2a43aa1eeeaee3cbca9331ced9a">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_text_file.html#a3f9ae2a43aa1eeeaee3cbca9331ced9a">Sort</a>()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">foreach</span> (var language <span class="keywordflow">in</span> TextManager.TextPacks.Keys.ToList())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                TextManager.TextPacks[language] =</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    TextManager.TextPacks[language].Sort((t1, t2) =&gt; (t1.ContentFile.ContentPackage?.Index ?? <span class="keywordtype">int</span>.MaxValue) - (t2.ContentFile.ContentPackage?.Index ?? <span class="keywordtype">int</span>.MaxValue));                </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_file_html"><div class="ttname"><a href="class_barotrauma_1_1_content_file.html">Barotrauma.ContentFile</a></div><div class="ttdoc">Base class for content file types, which are loaded from filelist.xml via reflection....</div><div class="ttdef"><b>Definition:</b> <a href="_content_file_8cs_source.html#l00022">ContentFile.cs:23</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_package_html"><div class="ttname"><a href="class_barotrauma_1_1_content_package.html">Barotrauma.ContentPackage</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_package_8cs_source.html#l00015">ContentPackage.cs:16</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_content_path_html"><div class="ttname"><a href="class_barotrauma_1_1_content_path.html">Barotrauma.ContentPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_content_path_8cs_source.html#l00010">ContentPath.cs:11</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_file_html"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html">Barotrauma.TextFile</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00008">TextFile.cs:9</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_file_html_a16b8ceadab26c2232a3a6c2d44e61d9a"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html#a16b8ceadab26c2232a3a6c2d44e61d9a">Barotrauma.TextFile.TextFile</a></div><div class="ttdeci">TextFile(ContentPackage contentPackage, ContentPath path)</div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00010">TextFile.cs:10</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_text_file_html_a3f9ae2a43aa1eeeaee3cbca9331ced9a"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html#a3f9ae2a43aa1eeeaee3cbca9331ced9a">Barotrauma.TextFile.Sort</a></div><div class="ttdeci">override void Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00049">TextFile.cs:49</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_text_file_html_a3f9ae2a43aa1eeeaee3cbca9331ced9a"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html#a3f9ae2a43aa1eeeaee3cbca9331ced9a">Barotrauma.TextFile.Sort</a></div><div class="ttdeci">override void Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00050">TextFile.cs:50</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_file_html_ac9f2ae7f9d538f29a3998de4c60e7506"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html#ac9f2ae7f9d538f29a3998de4c60e7506">Barotrauma.TextFile.UnloadFile</a></div><div class="ttdeci">override void UnloadFile()</div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00031">TextFile.cs:31</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_file_html_afaabfe34331ce8b464ec8abbd3cb2238"><div class="ttname"><a href="class_barotrauma_1_1_text_file.html#afaabfe34331ce8b464ec8abbd3cb2238">Barotrauma.TextFile.LoadFile</a></div><div class="ttdeci">override void LoadFile()</div><div class="ttdef"><b>Definition:</b> <a href="_text_file_8cs_source.html#l00012">TextFile.cs:12</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_text_pack_html"><div class="ttname"><a href="class_barotrauma_1_1_text_pack.html">Barotrauma.TextPack</a></div><div class="ttdef"><b>Definition:</b> <a href="_text_pack_8cs_source.html#l00045">TextPack.cs:46</a></div></div>

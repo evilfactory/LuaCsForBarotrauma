@@ -431,7 +431,7 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_editor_image.html#a27f86a509d4b30c163be6466f96f3f3b">  343</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_barotrauma_1_1_editor_image.html#a3828339ac947df963f74a38f351e29ec">DrawTargetType</a> <a class="code" href="class_barotrauma_1_1_editor_image.html#a27f86a509d4b30c163be6466f96f3f3b">DrawTarget</a>;</div>
 <div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_editor_image.html#a3548dbe6197a4e17c43e79701b5bbe05">  344</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_editor_image.html#a3548dbe6197a4e17c43e79701b5bbe05">Selected</a>;</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">  346</a></span>&#160;        <span class="keyword">public</span> Rectangle <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">  346</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a>;</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> prevAngle;</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> disableMove;</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> isDragging;</div>
@@ -528,13 +528,13 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            {</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                widget.MouseDown += () =&gt;</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                {</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                    widget.color = GUIStyle.Green;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                    widget.Color = GUIStyle.Green;</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                    prevAngle = <a class="code" href="class_barotrauma_1_1_editor_image.html#a08429c94cfa63dc704cfbc1f9d0af732">Rotation</a>;</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                    disableMove = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                };</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                widget.Deselected += () =&gt;</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    widget.color = Color.Yellow;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    widget.Color = Color.Yellow;</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                    disableMove = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                };</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                widget.MouseHeld += (deltaTime) =&gt;</div>
@@ -572,7 +572,7 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                };</div>
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                widget.PreDraw += (sprtBtch, deltaTime) =&gt;</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                {</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                    widget.tooltip = $<span class="stringliteral">&quot;Scale: {Math.Round(Scale, 2)}\n&quot;</span> +</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                    widget.Tooltip = $<span class="stringliteral">&quot;Scale: {Math.Round(Scale, 2)}\n&quot;</span> +</div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                                     $<span class="stringliteral">&quot;Rotation: {(int) MathHelper.ToDegrees(Rotation)}&quot;</span>;</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                    <span class="keywordtype">float</span> rotation = <a class="code" href="class_barotrauma_1_1_editor_image.html#a08429c94cfa63dc704cfbc1f9d0af732">Rotation</a> - (float) Math.PI / 2f;</div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                    widget.DrawPos = <a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a> + <span class="keyword">new</span> Vector2((<span class="keywordtype">float</span>) Math.Cos(rotation), (float) Math.Sin(rotation)) * (<a class="code" href="class_barotrauma_1_1_editor_image.html#a96ce8149e8e13af9d5c6b89ba736c184">Scale</a> * widgetSize);</div>
@@ -580,7 +580,7 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;                };</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            });</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            currentWidget.<a class="code" href="class_barotrauma_1_1_widget.html#a1ec4d9450fcdcd635bac07c8f7424a46">Draw</a>(spriteBatch, (<span class="keywordtype">float</span>) Timing.Step);</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            currentWidget.Draw(spriteBatch, (<span class="keywordtype">float</span>) Timing.Step);</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            GUI.DrawLine(spriteBatch, <a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a>, currentWidget.DrawPos, GUIStyle.Green, width: width);</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        }</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
@@ -607,17 +607,17 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        {</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            <span class="keywordflow">if</span> (!widgets.TryGetValue(<span class="keywordtype">id</span>, out Widget? widget))</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            {</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                widget = <span class="keyword">new</span> Widget(<span class="keywordtype">id</span>, size, Widget.Shape.Rectangle)</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                widget = <span class="keyword">new</span> Widget(<span class="keywordtype">id</span>, size, <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfd">WidgetShape</a>.Rectangle)</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                {</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                    color = Color.Yellow,</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                    Color = Color.Yellow,</div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                    RequireMouseOn = <span class="keyword">false</span></div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                };</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                widgets.Add(<span class="keywordtype">id</span>, widget);</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                initMethod?.Invoke(widget);</div>
 <div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            }</div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160; </div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            widget.size = size;</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            widget.thickness = thickness;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            widget.Size = size;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            widget.Thickness = thickness;</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            <span class="keywordflow">return</span> widget;</div>
 <div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        }</div>
 <div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
@@ -625,12 +625,12 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        {</div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_editor_image.html#a8256009491ee0df132f06d9c32ed5e4b">Image</a> == <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            {</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a> = <span class="keyword">new</span> Rectangle((<span class="keywordtype">int</span>) <a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a>.X, (<span class="keywordtype">int</span>) <a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a>.Y, 512, 512);</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a> = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>((<span class="keywordtype">int</span>) <a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a>.X, (<span class="keywordtype">int</span>) <a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a>.Y, 512, 512);</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            }</div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;            Vector2 size = <span class="keyword">new</span> Vector2(<a class="code" href="class_barotrauma_1_1_editor_image.html#a8256009491ee0df132f06d9c32ed5e4b">Image</a>.Width * <a class="code" href="class_barotrauma_1_1_editor_image.html#a96ce8149e8e13af9d5c6b89ba736c184">Scale</a>, <a class="code" href="class_barotrauma_1_1_editor_image.html#a8256009491ee0df132f06d9c32ed5e4b">Image</a>.Height * <a class="code" href="class_barotrauma_1_1_editor_image.html#a96ce8149e8e13af9d5c6b89ba736c184">Scale</a>);</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a> = <span class="keyword">new</span> Rectangle((<a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a> - size / 2f).ToPoint(), size.ToPoint());</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a> = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a>((<a class="code" href="class_barotrauma_1_1_editor_image.html#af7578d4408cfe505f56ae8e515a4a048">Position</a> - size / 2f).ToPoint(), size.ToPoint());</div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        }</div>
 <div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
 <div class="line"><a name="l00548"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_editor_image.html#af8b97f5c04626d49590ef1845d76b169">  548</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_editor_image.html#af8b97f5c04626d49590ef1845d76b169">Draw</a>(SpriteBatch spriteBatch)</div>
@@ -642,7 +642,7 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160; </div>
 <div class="line"><a name="l00555"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_editor_image.html#a89cc97ca7924565600d3e6ef3eb25ce8">  555</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_barotrauma_1_1_editor_image.html#a89cc97ca7924565600d3e6ef3eb25ce8">DrawEditing</a>(SpriteBatch spriteBatch, <a class="code" href="class_barotrauma_1_1_camera.html">Camera</a> cam)</div>
 <div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        {</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            Rectangle bounds = <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a>;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            <a class="code" href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Rectangle</a> bounds = <a class="code" href="class_barotrauma_1_1_editor_image.html#afd9c82c1c9e47391dc82c1df1e9c05c2">Bounds</a>;</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            <span class="keywordtype">int</span> width = 4;</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_barotrauma_1_1_editor_image.html#a27f86a509d4b30c163be6466f96f3f3b">DrawTarget</a> == <a class="code" href="class_barotrauma_1_1_editor_image.html#a3828339ac947df963f74a38f351e29ec">DrawTargetType</a>.World)</div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            {</div>
@@ -710,9 +710,10 @@ $(document).ready(function(){initNavTree('_editor_image_8cs_source.html',''); in
 <div class="ttc" id="aclass_barotrauma_1_1_screen_html_a45c5bab8117378841bb3a09acd6bd3b6"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a45c5bab8117378841bb3a09acd6bd3b6">Barotrauma.Screen.Selected</a></div><div class="ttdeci">static Screen Selected</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_screens_2_screen_8cs_source.html#l00005">BarotraumaShared/SharedSource/Screens/Screen.cs:5</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_screen_html_a521b3e666e78be22518fe0aab848e22d"><div class="ttname"><a href="class_barotrauma_1_1_screen.html#a521b3e666e78be22518fe0aab848e22d">Barotrauma.Screen.Cam</a></div><div class="ttdeci">virtual Camera Cam</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_screens_2_screen_8cs_source.html#l00048">BarotraumaShared/SharedSource/Screens/Screen.cs:48</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_sprite_html"><div class="ttname"><a href="class_barotrauma_1_1_sprite.html">Barotrauma.Sprite</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_sprite_2_sprite_8cs_source.html#l00013">BarotraumaShared/SharedSource/Sprite/Sprite.cs:14</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_widget_html_a1ec4d9450fcdcd635bac07c8f7424a46"><div class="ttname"><a href="class_barotrauma_1_1_widget.html#a1ec4d9450fcdcd635bac07c8f7424a46">Barotrauma.Widget.Draw</a></div><div class="ttdeci">virtual void Draw(SpriteBatch spriteBatch, float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="_widget_8cs_source.html#l00152">Widget.cs:152</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfd"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfd">Barotrauma.WidgetShape</a></div><div class="ttdeci">WidgetShape</div><div class="ttdef"><b>Definition:</b> <a href="_widget_8cs_source.html#l00010">Widget.cs:11</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e"><div class="ttname"><a href="namespace_barotrauma.html#ade3ccbb7d77557d4eb23167dffe46bfdace9291906a4c3b042650b70d7f3b152e">Barotrauma.WidgetShape.Rectangle</a></div><div class="ttdeci">@ Rectangle</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
