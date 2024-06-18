@@ -11,8 +11,8 @@
       <meta property="og:description" content="Barotrauma ItemPrefab class with some additional functions and fields" />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=ddc7c15" />
-    <link rel="stylesheet" href="../../highlight.css?v=f15cceb" />
+    <link rel="stylesheet" href="../../ldoc.css?v=caeaf48" />
+    <link rel="stylesheet" href="../../highlight.css?v=e5afacf" />
   </head>
 
   <body>
@@ -1039,6 +1039,12 @@
                       <span class="realm shared"></span><a href="../../code/character/#CanAccessInventory"><span>CanAccessInventory</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#CanBeDraggedBy"><span>CanBeDraggedBy</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#CanBeHealedBy"><span>CanBeHealedBy</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#CanHearCharacter"><span>CanHearCharacter</span></a>
                     </li>
                     <li>
@@ -1342,6 +1348,9 @@
                       <span class="realm shared"></span><a href="../../code/character/#IsInSameRoomAs"><span>IsInSameRoomAs</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsInventoryAccessibleTo"><span>IsInventoryAccessibleTo</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsItemTakenBySomeoneElse"><span>IsItemTakenBySomeoneElse</span></a>
                     </li>
                     <li>
@@ -1577,9 +1586,6 @@
                       <span class="realm shared"></span><a href="../../code/character/#CanAim"><span>CanAim</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/character/#CanBeDragged"><span>CanBeDragged</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#CanBeSelected"><span>CanBeSelected</span></a>
                     </li>
                     <li>
@@ -1587,9 +1593,6 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#CanInteract"><span>CanInteract</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/character/#CanInventoryBeAccessed"><span>CanInventoryBeAccessed</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#CanMove"><span>CanMove</span></a>
@@ -1811,9 +1814,6 @@
                       <span class="realm shared"></span><a href="../../code/character/#InvisibleTimer"><span>InvisibleTimer</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/character/#IsArrested"><span>IsArrested</span></a>
-                    </li>
-                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsAssistant"><span>IsAssistant</span></a>
                     </li>
                     <li>
@@ -1829,6 +1829,9 @@
                       <span class="realm shared"></span><a href="../../code/character/#IsCommanding"><span>IsCommanding</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsCriminal"><span>IsCriminal</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsDead"><span>IsDead</span></a>
                     </li>
                     <li>
@@ -1836,6 +1839,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsDismissed"><span>IsDismissed</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsDraggable"><span>IsDraggable</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsEngineer"><span>IsEngineer</span></a>
@@ -1854,6 +1860,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsFriendlyNPCTurnedHostile"><span>IsFriendlyNPCTurnedHostile</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#IsHandcuffed"><span>IsHandcuffed</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#IsHostileEscortee"><span>IsHostileEscortee</span></a>
@@ -2048,6 +2057,9 @@
                       <span class="realm shared"></span><a href="../../code/character/#ObstructVision"><span>ObstructVision</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/character/#ObstructVisionAmount"><span>ObstructVisionAmount</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/character/#OnAttacked"><span>OnAttacked</span></a>
                     </li>
                     <li>
@@ -2154,6 +2166,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#TeamID"><span>TeamID</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/character/#TextChatVolume"><span>TextChatVolume</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/character/#TraitorCurrentObjective"><span>TraitorCurrentObjective</span></a>
@@ -2695,13 +2710,13 @@
                       <span class="realm shared"></span><a href="../../code/characterinfo/#LoadHeadAttachments"><span>LoadHeadAttachments</span></a>
                     </li>
                     <li>
-                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
-                    </li>
-                    <li>
                       <span class="realm client"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#RecreateHead"><span>RecreateHead</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinfo/#RefreshHead"><span>RefreshHead</span></a>
@@ -2864,6 +2879,9 @@
                       <span class="realm shared"></span><a href="../../code/characterinfo/#LastResistanceMultiplierSkillLossRespawn"><span>LastResistanceMultiplierSkillLossRespawn</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#LastRewardDistribution"><span>LastRewardDistribution</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/characterinfo/#MinReputationToHire"><span>MinReputationToHire</span></a>
                     </li>
                     <li>
@@ -2883,6 +2901,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinfo/#OriginalName"><span>OriginalName</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/characterinfo/#PermanentlyDead"><span>PermanentlyDead</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/characterinfo/#PersonalityTrait"><span>PersonalityTrait</span></a>
@@ -3340,6 +3361,9 @@
                       <span class="realm shared"></span><a href="../../code/client/#ToString"><span>ToString</span></a>
                     </li>
                     <li>
+                      <span class="realm server"></span><a href="../../code/client/#TryTakeOverBot"><span>TryTakeOverBot</span></a>
+                    </li>
+                    <li>
                       <span class="realm client"></span><a href="../../code/client/#UpdateVoipSound"><span>UpdateVoipSound</span></a>
                     </li>
                     <li>
@@ -3573,6 +3597,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/client/#VoipQueue"><span>VoipQueue</span></a>
+                    </li>
+                    <li>
+                      <span class="realm server"></span><a href="../../code/client/#VoipServerDecoder"><span>VoipServerDecoder</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/client/#VoipSound"><span>VoipSound</span></a>
@@ -4199,6 +4226,9 @@
                 </li>
 
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.gamesession/#AllowHrManagerBotTakeover"><span>AllowHrManagerBotTakeover</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#Campaign"><span>Campaign</span></a>
                     </li>
                     <li>
@@ -4206,6 +4236,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#CrewManager"><span>CrewManager</span></a>
+                    </li>
+                    <li>
+                      <span class="realm client"></span><a href="../../code/game.gamesession/#DeathPrompt"><span>DeathPrompt</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.gamesession/#EndLocation"><span>EndLocation</span></a>
@@ -4601,6 +4634,12 @@
                       <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#NetLobbyScreen.JobInfoFrame"><span>NetLobbyScreen.JobInfoFrame</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#PermadeathMode"><span>PermadeathMode</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#PermanentlyDead"><span>PermanentlyDead</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.netlobbyscreen/#PlayerFrame"><span>PlayerFrame</span></a>
                     </li>
                     <li>
@@ -4778,7 +4817,13 @@
                 </li>
 
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowBotTakeoverOnPermadeath"><span>AllowBotTakeoverOnPermadeath</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowDisguises"><span>AllowDisguises</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowDragAndDropGive"><span>AllowDragAndDropGive</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowEndVoting"><span>AllowEndVoting</span></a>
@@ -4800,9 +4845,6 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowModeVoting"><span>AllowModeVoting</span></a>
-                    </li>
-                    <li>
-                      <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowRespawn"><span>AllowRespawn</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#AllowRewiring"><span>AllowRewiring</span></a>
@@ -4853,6 +4895,9 @@
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#ClientPermissions"><span>ClientPermissions</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#DespawnDisconnectedPermadeathTime"><span>DespawnDisconnectedPermadeathTime</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#DestructibleOutposts"><span>DestructibleOutposts</span></a>
                     </li>
                     <li>
@@ -4881,6 +4926,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#HiddenSubs"><span>HiddenSubs</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#IronmanMode"><span>IronmanMode</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#IsPublic"><span>IsPublic</span></a>
@@ -4967,6 +5015,9 @@
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#Name"><span>Name</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#NewCampaignDefaultSalary"><span>NewCampaignDefaultSalary</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#PlayStyle"><span>PlayStyle</span></a>
                     </li>
                     <li>
@@ -4979,7 +5030,13 @@
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#RandomizeSeed"><span>RandomizeSeed</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#RequireAuthentication"><span>RequireAuthentication</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#RespawnInterval"><span>RespawnInterval</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/game.serversettings/#RespawnMode"><span>RespawnMode</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/game.serversettings/#SaveServerLogs"><span>SaveServerLogs</span></a>
@@ -5948,10 +6005,16 @@
                       <span class="realm shared"></span><a href="../../code/hull/#IsGreen"><span>IsGreen</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#IsHidden"><span>IsHidden</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/hull/#IsHighlighted"><span>IsHighlighted</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/hull/#IsIncludedInSelection"><span>IsIncludedInSelection</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/hull/#IsLayerHidden"><span>IsLayerHidden</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/hull/#IsRed"><span>IsRed</span></a>
@@ -6563,6 +6626,9 @@
                       <span class="realm client"></span><a href="../../code/inventory/#Inventory.EquippedIndicator"><span>Inventory.EquippedIndicator</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/inventory/#Inventory.IsDragAndDropGiveAllowed"><span>Inventory.IsDragAndDropGiveAllowed</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/inventory/#Inventory.IsMouseOnInventory"><span>Inventory.IsMouseOnInventory</span></a>
                     </li>
                     <li>
@@ -6839,6 +6905,9 @@
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/item/#GetSpriteColor"><span>GetSpriteColor</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#GetStackedItems"><span>GetStackedItems</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#GetTags"><span>GetTags</span></a>
@@ -7169,6 +7238,9 @@
                       <span class="realm shared"></span><a href="../../code/item/#EditableWhenEquipped"><span>EditableWhenEquipped</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#Equipper"><span>Equipper</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#ErrorLine"><span>ErrorLine</span></a>
                     </li>
                     <li>
@@ -7217,6 +7289,9 @@
                       <span class="realm shared"></span><a href="../../code/item/#IdFreed"><span>IdFreed</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#Illegitimate"><span>Illegitimate</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#ImpactTolerance"><span>ImpactTolerance</span></a>
                     </li>
                     <li>
@@ -7262,6 +7337,9 @@
                       <span class="realm shared"></span><a href="../../code/item/#IsFullCondition"><span>IsFullCondition</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/item/#IsHidden"><span>IsHidden</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/item/#IsHighlighted"><span>IsHighlighted</span></a>
                     </li>
                     <li>
@@ -7269,6 +7347,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#IsLadder"><span>IsLadder</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/item/#IsLayerHidden"><span>IsLayerHidden</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/item/#IsPlayerTeamInteractable"><span>IsPlayerTeamInteractable</span></a>
@@ -8542,10 +8623,19 @@
                       <span class="realm client"></span><a href="../../code/level/#ClientEventRead"><span>ClientEventRead</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/level/#DamageBeaconStationDevices"><span>DamageBeaconStationDevices</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/level/#DamageBeaconStationWalls"><span>DamageBeaconStationWalls</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/level/#DebugSetEndLocation"><span>DebugSetEndLocation</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/level/#DebugSetStartLocation"><span>DebugSetStartLocation</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/level/#DisconnectBeaconStationWires"><span>DisconnectBeaconStationWires</span></a>
                     </li>
                     <li>
                       <span class="realm client"></span><a href="../../code/level/#DrawBack"><span>DrawBack</span></a>
@@ -8591,6 +8681,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/level/#GetType"><span>GetType</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/level/#IsAllowedDifficulty"><span>IsAllowedDifficulty</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/level/#IsCloseToEnd"><span>IsCloseToEnd</span></a>
@@ -9724,6 +9817,9 @@
                       <span class="realm client"></span><a href="../../code/playerinput/#PlayerInput.PrimaryMouseButtonReleased"><span>PlayerInput.PrimaryMouseButtonReleased</span></a>
                     </li>
                     <li>
+                      <span class="realm client"></span><a href="../../code/playerinput/#PlayerInput.SecondaryDoubleClicked"><span>PlayerInput.SecondaryDoubleClicked</span></a>
+                    </li>
+                    <li>
                       <span class="realm client"></span><a href="../../code/playerinput/#PlayerInput.SecondaryMouseButtonClicked"><span>PlayerInput.SecondaryMouseButtonClicked</span></a>
                     </li>
                     <li>
@@ -10148,6 +10244,9 @@
                       <span class="realm shared"></span><a href="../../code/structure/#Indestructible"><span>Indestructible</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/structure/#IsHidden"><span>IsHidden</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/structure/#IsHighlighted"><span>IsHighlighted</span></a>
                     </li>
                     <li>
@@ -10155,6 +10254,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/structure/#IsIncludedInSelection"><span>IsIncludedInSelection</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/structure/#IsLayerHidden"><span>IsLayerHidden</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/structure/#IsPlatform"><span>IsPlatform</span></a>
@@ -10790,6 +10892,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.LastPickedBodyDist"><span>Submarine.LastPickedBodyDist</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/submarine/#Submarine.LayerExistsInAnySub"><span>Submarine.LayerExistsInAnySub</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/submarine/#Submarine.Load"><span>Submarine.Load</span></a>
@@ -11582,6 +11687,9 @@
                       <span class="realm shared"></span><a href="../../code/waypoint/#InDetectable"><span>InDetectable</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../code/waypoint/#IsHidden"><span>IsHidden</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../code/waypoint/#IsHighlighted"><span>IsHighlighted</span></a>
                     </li>
                     <li>
@@ -11589,6 +11697,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/waypoint/#IsIncludedInSelection"><span>IsIncludedInSelection</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../code/waypoint/#IsLayerHidden"><span>IsLayerHidden</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../code/waypoint/#IsObstructed"><span>IsObstructed</span></a>
@@ -12844,6 +12955,9 @@
                       <span class="realm shared"></span><a href="../../enum/spawntype/#Corpse"><span>Corpse</span></a>
                     </li>
                     <li>
+                      <span class="realm shared"></span><a href="../../enum/spawntype/#Disabled"><span>Disabled</span></a>
+                    </li>
+                    <li>
                       <span class="realm shared"></span><a href="../../enum/spawntype/#Enemy"><span>Enemy</span></a>
                     </li>
                     <li>
@@ -13031,6 +13145,9 @@
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../enum/stattypes/#PoisonMultiplier"><span>PoisonMultiplier</span></a>
+                    </li>
+                    <li>
+                      <span class="realm shared"></span><a href="../../enum/stattypes/#PropulsionSpeed"><span>PropulsionSpeed</span></a>
                     </li>
                     <li>
                       <span class="realm shared"></span><a href="../../enum/stattypes/#RangedAttackSpeed"><span>RangedAttackSpeed</span></a>
@@ -18542,8 +18659,8 @@
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=1dbb1f3"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=9832970"></script>
+    <script type="text/javascript" src="../../app.js?v=a5a149a"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=56e0457"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 

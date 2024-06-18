@@ -556,42 +556,62 @@ $(document).ready(function(){initNavTree('_lidgren_server_peer_8cs_source.html',
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.AuthenticationFailed));</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            }</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span></div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                || !packet.AuthTicket.TryUnwrap(out var authTicket)</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                || !authenticators.TryGetValue(authTicket.Kind, out var authenticator))</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            {</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;Debug server accepts unauthenticated connections&quot;</span>, Microsoft.Xna.Framework.Color.Yellow);</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                acceptClient(<span class="keyword">new</span> AccountInfo(packet.AccountId));</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                rejectClient();</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            }</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            pendingClient.AuthSessionStarted = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            TaskPool.Add($<span class="stringliteral">&quot;{nameof(LidgrenServerPeer)}.ProcessAuth&quot;</span>, authenticator.VerifyTicket(authTicket), t =&gt;</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            {</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                if (!t.TryGetResult(out AccountInfo accountInfo)</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                    || accountInfo.IsNone)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span> &amp;&amp; </div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                GameMain.Server.ServerSettings.RequireAuthentication)</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                DebugConsole.NewMessage(</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                    <span class="stringliteral">&quot;The server is configured to require authentication from clients, but there are no authenticators available. &quot;</span> +</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    $<span class="stringliteral">&quot;If you&#39;re for example trying to host a server in a local network without being connected to Steam or Epic Online Services, please set {nameof(GameMain.Server.ServerSettings.RequireAuthentication)} to false in the server settings.&quot;</span>, </div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                || !packet.AuthTicket.TryUnwrap(out var authTicket)</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                || !authenticators.TryGetValue(authTicket.Kind, out var authenticator))</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            {                </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Debug server accepts unauthenticated connections&quot;</span>, Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                acceptClient(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> UnauthenticatedAccountId(packet.Name)));</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                <span class="keywordflow">if</span> (GameMain.Server.ServerSettings.RequireAuthentication)</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                {</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                    rejectClient();</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                    return;</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;                }</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                acceptClient(accountInfo);</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            });</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        }</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <span class="keyword">private</span> NetSendResult ForwardToLidgren(IWriteMessage msg, NetworkConnection connection, DeliveryMethod deliveryMethod)</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        {</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            ToolBox.ThrowIfNull(netServer);</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            LidgrenConnection conn = (LidgrenConnection)connection;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            <span class="keywordflow">return</span> netServer.SendMessage(msg.ToLidgren(netServer), conn.NetConnection, deliveryMethod.ToLidgren());</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        }</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    }</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;}</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                    DebugConsole.NewMessage(</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                        <span class="stringliteral">&quot;A client attempted to join without an authentication ticket, but the server is configured to require authentication. &quot;</span> +</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;                        $<span class="stringliteral">&quot;If you&#39;re for example trying to host a server in a local network without being connected to Steam or Epic Online Services, please set {nameof(GameMain.Server.ServerSettings.RequireAuthentication)} to false in the server settings.&quot;</span>,</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                        Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                    rejectClient();</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                {</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                    acceptClient(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> UnauthenticatedAccountId(packet.Name)));</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                }</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            }</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            pendingClient.AuthSessionStarted = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            TaskPool.Add($<span class="stringliteral">&quot;{nameof(LidgrenServerPeer)}.ProcessAuth&quot;</span>, authenticator.VerifyTicket(authTicket), t =&gt;</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                if (!t.TryGetResult(out AccountInfo accountInfo)</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                    || accountInfo.IsNone)</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                    rejectClient();</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                    return;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                }</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                acceptClient(accountInfo);</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            });</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        }</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        <span class="keyword">private</span> NetSendResult ForwardToLidgren(IWriteMessage msg, NetworkConnection connection, DeliveryMethod deliveryMethod)</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        {</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            ToolBox.ThrowIfNull(netServer);</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            LidgrenConnection conn = (LidgrenConnection)connection;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <span class="keywordflow">return</span> netServer.SendMessage(msg.ToLidgren(netServer), conn.NetConnection, deliveryMethod.ToLidgren());</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        }</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;}</div>
 <div class="ttc" id="aclass_authenticator_html"><div class="ttname"><a href="class_authenticator.html">Authenticator</a></div><div class="ttdef"><b>Definition:</b> <a href="_authenticator_8cs_source.html#l00009">Authenticator.cs:10</a></div></div>
 <div class="ttc" id="aclass_authenticator_html_ab8142efbb60514540bcdf754368a6640"><div class="ttname"><a href="class_authenticator.html#ab8142efbb60514540bcdf754368a6640">Authenticator.GetAuthenticatorsForHost</a></div><div class="ttdeci">static ImmutableDictionary&lt; AuthenticationTicketKind, Authenticator &gt; GetAuthenticatorsForHost(Option&lt; Endpoint &gt; ownerEndpointOption)</div><div class="ttdef"><b>Definition:</b> <a href="_authenticator_8cs_source.html#l00014">Authenticator.cs:14</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>

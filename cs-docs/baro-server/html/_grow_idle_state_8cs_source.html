@@ -180,7 +180,7 @@ $(document).ready(function(){initNavTree('_grow_idle_state_8cs_source.html','');
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (availableBranches.Count == 0) { <span class="keywordflow">return</span> availableBranches; }</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="comment">//prefer growing from the branches furthest from the root (ones with the largest branch depth)</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            var branch = ToolBox.SelectWeightedRandom(availableBranches, b =&gt; (<span class="keywordtype">float</span>)b.BranchDepth, Rand.RandSync.Unsynced);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            var branch = ToolBox.SelectWeightedRandom(availableBranches, b =&gt; b.BranchDepth, Rand.RandSync.Unsynced);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            TileSide side = branch.GetRandomFreeSide();</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (side == TileSide.None) { <span class="keywordflow">return</span> availableBranches; }</div>

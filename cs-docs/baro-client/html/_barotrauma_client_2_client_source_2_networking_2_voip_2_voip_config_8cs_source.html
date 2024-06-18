@@ -88,35 +88,21 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_n
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> Concentus.Enums;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> Concentus.Structs;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> System.Text;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> System.Threading.Tasks;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">static</span> <span class="keyword">partial class </span>VoipConfig</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">int</span> FREQUENCY = 48000; <span class="comment">//48Khz</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BITRATE = 16000; <span class="comment">//16Kbps</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BUFFER_SIZE = (8 * MAX_COMPRESSED_SIZE * FREQUENCY) / BITRATE; <span class="comment">//20ms window</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> OpusEncoder CreateEncoder()</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            var encoder = <span class="keyword">new</span> OpusEncoder(FREQUENCY, 1, OpusApplication.OPUS_APPLICATION_VOIP);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            encoder.Bandwidth = OpusBandwidth.OPUS_BANDWIDTH_AUTO;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            encoder.Bitrate = BITRATE;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            encoder.SignalType = OpusSignal.OPUS_SIGNAL_VOICE;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">return</span> encoder;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> OpusDecoder CreateDecoder()</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> OpusDecoder(FREQUENCY, 1);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">static</span> <span class="keyword">partial class </span>VoipConfig</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> OpusEncoder CreateEncoder()</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            var encoder = <span class="keyword">new</span> OpusEncoder(FREQUENCY, 1, OpusApplication.OPUS_APPLICATION_VOIP);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            encoder.Bandwidth = OpusBandwidth.OPUS_BANDWIDTH_AUTO;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            encoder.Bitrate = BITRATE;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            encoder.SignalType = OpusSignal.OPUS_SIGNAL_VOICE;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">return</span> encoder;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

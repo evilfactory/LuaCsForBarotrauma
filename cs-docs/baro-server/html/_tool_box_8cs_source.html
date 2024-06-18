@@ -446,7 +446,7 @@ $(document).ready(function(){initNavTree('_tool_box_8cs_source.html',''); initRe
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                objects = objects.OrderBy(p =&gt; (p as PrefabWithUintIdentifier)?.UintIdentifier ?? 0);</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            }</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            List&lt;T&gt; objectList = objects.ToList();</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            List&lt;float&gt; weights = objectList.Select(o =&gt; weightMethod(o)).ToList();</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            List&lt;float&gt; weights = objectList.Select(weightMethod).ToList();</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <span class="keywordflow">return</span> SelectWeightedRandom(objectList, weights, random);</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        }</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
@@ -791,45 +791,91 @@ $(document).ready(function(){initNavTree('_tool_box_8cs_source.html',''); initRe
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">self</span>.Equals(other);</div>
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;        }</div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160; </div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SquareLine GetSquareLineBetweenPoints(Vector2 start, Vector2 end, <span class="keywordtype">float</span> knobLength = 24f)</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        {</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;            Vector2[] points = <span class="keyword">new</span> Vector2[6];</div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160; </div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            <span class="comment">// set the start and end points</span></div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            points[0] = points[1] = points[2] = start;</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            points[5] = points[4] = points[3] = end;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span> ShortAudioSampleToFloat(<span class="keywordtype">short</span> value)</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;        {</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            <span class="keywordflow">return</span> value / 32767f;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        }</div>
 <div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160; </div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;            points[2].X += (points[3].X - points[2].X) / 2;</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            points[2].X = Math.Max(points[2].X, points[0].X + knobLength);</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;            points[3].X = points[2].X;</div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160; </div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;            <span class="keywordtype">bool</span> isBehind = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160; </div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;            <span class="comment">// if the node is &quot;behind&quot; us do some magic to make the line curve to prevent overlapping</span></div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;            <span class="keywordflow">if</span> (points[2].X &lt;= points[0].X + knobLength)</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;            {</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                isBehind = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                points[1].X += knobLength;</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                points[2].X = points[2].X;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                points[2].Y += (points[4].Y - points[1].Y) / 2;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">short</span> FloatToShortAudioSample(<span class="keywordtype">float</span> value)</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;        {</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;            <span class="keywordtype">int</span> temp = (int)(32767 * value);</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;            <span class="keywordflow">if</span> (temp &gt; <span class="keywordtype">short</span>.MaxValue)</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;            {</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                temp = <span class="keywordtype">short</span>.MaxValue;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;            }</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &lt; <span class="keywordtype">short</span>.MinValue)</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;            {</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                temp = <span class="keywordtype">short</span>.MinValue;</div>
 <div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;            }</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160; </div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            <span class="keywordflow">if</span> (points[3].X &gt;= points[5].X - knobLength)</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            {</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;                isBehind = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                points[4].X -= knobLength;</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                points[3].X = points[4].X;</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                points[3].Y -= points[3].Y - points[2].Y;</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;            }</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160; </div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            SquareLine.LineType type = isBehind</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                ? SquareLine.LineType.SixPointBackwardsLine</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;                : SquareLine.LineType.FourPointForwardsLine;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160; </div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SquareLine(points, type);</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;        }</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    }</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;}</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">short</span>)temp;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;        }</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160; </div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SquareLine GetSquareLineBetweenPoints(Vector2 start, Vector2 end, <span class="keywordtype">float</span> knobLength = 24f)</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        {</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;            Vector2[] points = <span class="keyword">new</span> Vector2[6];</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160; </div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;            <span class="comment">// set the start and end points</span></div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            points[0] = points[1] = points[2] = start;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            points[5] = points[4] = points[3] = end;</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160; </div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            points[2].X += (points[3].X - points[2].X) / 2;</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            points[2].X = Math.Max(points[2].X, points[0].X + knobLength);</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;            points[3].X = points[2].X;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160; </div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            <span class="keywordtype">bool</span> isBehind = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160; </div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            <span class="comment">// if the node is &quot;behind&quot; us do some magic to make the line curve to prevent overlapping</span></div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;            <span class="keywordflow">if</span> (points[2].X &lt;= points[0].X + knobLength)</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;            {</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                isBehind = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                points[1].X += knobLength;</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;                points[2].X = points[2].X;</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                points[2].Y += (points[4].Y - points[1].Y) / 2;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            }</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160; </div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="keywordflow">if</span> (points[3].X &gt;= points[5].X - knobLength)</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            {</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                isBehind = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                points[4].X -= knobLength;</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                points[3].X = points[4].X;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;                points[3].Y -= points[3].Y - points[2].Y;</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;            }</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160; </div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            SquareLine.LineType type = isBehind</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                ? SquareLine.LineType.SixPointBackwardsLine</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                : SquareLine.LineType.FourPointForwardsLine;</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160; </div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SquareLine(points, type);</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;        }</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160; </div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Vector2 GetClosestPointOnRectangle(RectangleF rect, Vector2 point)</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        {</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            Vector2 closest = <span class="keyword">new</span> Vector2(</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                MathHelper.Clamp(point.X, rect.Left, rect.Right),</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                MathHelper.Clamp(point.Y, rect.Top, rect.Bottom));</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160; </div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            <span class="keywordflow">if</span> (point.X &lt; rect.Left)</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            {</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                closest.X = rect.Left;</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            }</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (point.X &gt; rect.Right)</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            {</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                closest.X = rect.Right;</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;            }</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160; </div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;            <span class="keywordflow">if</span> (point.Y &lt; rect.Top)</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;            {</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                closest.Y = rect.Top;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            }</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (point.Y &gt; rect.Bottom)</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            {</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                closest.Y = rect.Bottom;</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;            }</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160; </div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            <span class="keywordflow">return</span> closest;</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;        }</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    }</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_pair_html"><div class="ttname"><a href="class_barotrauma_1_1_pair.html">Barotrauma.Pair</a></div><div class="ttdef"><b>Definition:</b> <a href="_tool_box_8cs_source.html#l00018">ToolBox.cs:19</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_pair_html_a8627edf8096cad7c10985f2b7d8ac069"><div class="ttname"><a href="class_barotrauma_1_1_pair.html#a8627edf8096cad7c10985f2b7d8ac069">Barotrauma.Pair.Second</a></div><div class="ttdeci">T2 Second</div><div class="ttdef"><b>Definition:</b> <a href="_tool_box_8cs_source.html#l00021">ToolBox.cs:21</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_pair_html_a9b01b6022c64eb189cc452f982e5101b"><div class="ttname"><a href="class_barotrauma_1_1_pair.html#a9b01b6022c64eb189cc452f982e5101b">Barotrauma.Pair.First</a></div><div class="ttdeci">T1 First</div><div class="ttdef"><b>Definition:</b> <a href="_tool_box_8cs_source.html#l00020">ToolBox.cs:20</a></div></div>

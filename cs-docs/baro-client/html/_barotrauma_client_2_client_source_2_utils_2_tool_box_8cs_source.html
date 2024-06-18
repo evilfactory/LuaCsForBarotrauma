@@ -507,139 +507,140 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_u
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                    var modifiedLine = line;</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                    <span class="keywordflow">while</span> (font.MeasureString($<span class="stringliteral">&quot;{modifiedLine}...&quot;</span>).X &gt; lineX)</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                    {</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                        modifiedLine = modifiedLine[..^1];</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                    }</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    sb.AppendLine($<span class="stringliteral">&quot;{modifiedLine}...&quot;</span>);</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                    <span class="keywordflow">return</span> sb.ToString();</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                }</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                sb.AppendLine(line);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            }</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Color GradientLerp(<span class="keywordtype">float</span> t, params Color[] gradient)</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        {</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="keywordflow">if</span> (!MathUtils.IsValid(t)) { <span class="keywordflow">return</span> Color.Purple; }</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            System.Diagnostics.Debug.Assert(gradient.Length &gt; 0, <span class="stringliteral">&quot;Empty color array passed to the GradientLerp method&quot;</span>);</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <span class="keywordflow">if</span> (gradient.Length == 0)</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            {</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Empty color array passed to the GradientLerp method.\n&quot;</span> + Environment.StackTrace.CleanupStackTrace());</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                GameAnalyticsManager.AddErrorEventOnce(<span class="stringliteral">&quot;ToolBox.GradientLerp:EmptyColorArray&quot;</span>, GameAnalyticsManager.ErrorSeverity.Error,</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                    <span class="stringliteral">&quot;Empty color array passed to the GradientLerp method.\n&quot;</span> + Environment.StackTrace.CleanupStackTrace());</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <span class="keywordflow">return</span> Color.Black;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            }</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="keywordflow">if</span> (t &lt;= 0.0f || !MathUtils.IsValid(t)) { <span class="keywordflow">return</span> gradient[0]; }</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keywordflow">if</span> (t &gt;= 1.0f) { <span class="keywordflow">return</span> gradient[gradient.Length - 1]; }</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordtype">float</span> scaledT = t * (gradient.Length - 1);</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160; </div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            <span class="keywordflow">return</span> Color.Lerp(gradient[(<span class="keywordtype">int</span>)scaledT], gradient[(int)Math.Min(scaledT + 1, gradient.Length - 1)], (scaledT - (int)scaledT));</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        }</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> LocalizedString WrapText(LocalizedString text, <span class="keywordtype">float</span> lineLength, GUIFont font, <span class="keywordtype">float</span> textScale = 1.0f)</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        {</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> WrappedLString(text, lineLength, font, textScale);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        }</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> WrapText(<span class="keywordtype">string</span> text, <span class="keywordtype">float</span> lineLength, ScalableFont font, <span class="keywordtype">float</span> textScale = 1.0f)</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            =&gt; font.WrapText(text, lineLength / textScale);</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> VersionNewerIgnoreRevision(Version a, Version b)</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        {</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            <span class="keywordflow">if</span> (b.Major &gt; a.Major) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">if</span> (b.Major &lt; a.Major) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            <span class="keywordflow">if</span> (b.Minor &gt; a.Minor) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            <span class="keywordflow">if</span> (b.Minor &lt; a.Minor) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            <span class="keywordflow">if</span> (b.Build &gt; a.Build) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            <span class="keywordflow">if</span> (b.Build &lt; a.Build) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        }</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> OpenFileWithShell(<span class="keywordtype">string</span> filename)</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        {</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            ProcessStartInfo startInfo = <span class="keyword">new</span> ProcessStartInfo()</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            {</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                FileName = filename,</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                UseShellExecute = <span class="keyword">true</span></div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            };</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            Process.Start(startInfo);</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        }</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Vector2 PaddingSizeParentRelative(RectTransform parent, <span class="keywordtype">float</span> padding)</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        {</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            var (sizeX, sizeY) = parent.NonScaledSize.ToVector2();</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordtype">float</span> higher = sizeX,</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                  lower = sizeY;</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="keywordtype">bool</span> swap = lower &gt; higher;</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <span class="keywordflow">if</span> (swap) { (higher, lower) = (lower, higher); }</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordtype">float</span> diffY = lower - lower * padding;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            <span class="keywordtype">float</span> paddingX = (higher - diffY) / higher,</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                  paddingY = padding;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <span class="keywordflow">if</span> (swap) { (paddingX, paddingY) = (paddingY, paddingX); }</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(paddingX, paddingY);</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        }</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> ColorSectionOfString(<span class="keywordtype">string</span> text, <span class="keywordtype">int</span> start, <span class="keywordtype">int</span> length, Color color)</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        {</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordtype">int</span> end = start + length;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            <span class="keywordflow">if</span> (start &lt; 0 || length &lt; 0 || end &gt; text.Length)</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            {</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException($<span class="stringliteral">&quot;Invalid start ({start}) or length ({length}) for text \&quot;{text}\&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;            }</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; </div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            <span class="keywordtype">string</span> stichedString = <span class="keywordtype">string</span>.Empty;</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            <span class="keywordflow">if</span> (start &gt; 0)</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;            {</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                stichedString += text[..start];</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            }</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;            <span class="comment">// this is the highlighted part</span></div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            stichedString += ColorString(text[start..end], color);</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160; </div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            <span class="keywordflow">if</span> (end &lt; text.Length)</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            {</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                stichedString += text[end..];</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;            }</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; </div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;            <span class="keywordflow">return</span> stichedString;</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; </div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            <span class="keyword">static</span> <span class="keywordtype">string</span> ColorString(<span class="keywordtype">string</span> text, Color color) =&gt; $<span class="stringliteral">&quot;‖color:{color.ToStringHex()}‖{text}‖end‖&quot;</span>;</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        }</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">byte</span>[] HexStringToBytes(<span class="keywordtype">string</span> raw)</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        {</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="keywordtype">string</span> value = <span class="keywordtype">string</span>.Join(<span class="keywordtype">string</span>.Empty, raw.Split(<span class="stringliteral">&quot; &quot;</span>));</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            List&lt;byte&gt; bytes = <span class="keyword">new</span> List&lt;byte&gt;();</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; value.Length; i += 2)</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            {</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                <span class="keywordtype">string</span> hex = value.Substring(i, 2);</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                <span class="keywordtype">byte</span> b = Convert.ToByte(hex, 16);</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                bytes.Add(b);</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160; </div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">bool</span> IsHexChar(<span class="keywordtype">char</span> c) =&gt; c is </div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                    &gt;= <span class="charliteral">&#39;0&#39;</span> and &lt;= <span class="charliteral">&#39;9&#39;</span> or</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                    &gt;= <span class="charliteral">&#39;A&#39;</span> and &lt;= <span class="charliteral">&#39;F&#39;</span> or</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                    &gt;= <span class="charliteral">&#39;a&#39;</span> and &lt;= <span class="charliteral">&#39;f&#39;</span>;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            }</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160; </div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            <span class="keywordflow">return</span> bytes.ToArray();</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        }</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    }</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;}</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                        <span class="keywordflow">if</span> (modifiedLine.Length == 0) { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                        modifiedLine = modifiedLine[..^1];</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                    sb.AppendLine($<span class="stringliteral">&quot;{modifiedLine}...&quot;</span>);</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                    <span class="keywordflow">return</span> sb.ToString();</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                }</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                sb.AppendLine(line);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        }</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Color GradientLerp(<span class="keywordtype">float</span> t, params Color[] gradient)</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        {</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <span class="keywordflow">if</span> (!MathUtils.IsValid(t)) { <span class="keywordflow">return</span> Color.Purple; }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            System.Diagnostics.Debug.Assert(gradient.Length &gt; 0, <span class="stringliteral">&quot;Empty color array passed to the GradientLerp method&quot;</span>);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">if</span> (gradient.Length == 0)</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                DebugConsole.ThrowError(<span class="stringliteral">&quot;Empty color array passed to the GradientLerp method.\n&quot;</span> + Environment.StackTrace.CleanupStackTrace());</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                GameAnalyticsManager.AddErrorEventOnce(<span class="stringliteral">&quot;ToolBox.GradientLerp:EmptyColorArray&quot;</span>, GameAnalyticsManager.ErrorSeverity.Error,</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                    <span class="stringliteral">&quot;Empty color array passed to the GradientLerp method.\n&quot;</span> + Environment.StackTrace.CleanupStackTrace());</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                <span class="keywordflow">return</span> Color.Black;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keywordflow">if</span> (t &lt;= 0.0f || !MathUtils.IsValid(t)) { <span class="keywordflow">return</span> gradient[0]; }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keywordflow">if</span> (t &gt;= 1.0f) { <span class="keywordflow">return</span> gradient[gradient.Length - 1]; }</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            <span class="keywordtype">float</span> scaledT = t * (gradient.Length - 1);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            <span class="keywordflow">return</span> Color.Lerp(gradient[(<span class="keywordtype">int</span>)scaledT], gradient[(int)Math.Min(scaledT + 1, gradient.Length - 1)], (scaledT - (int)scaledT));</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> LocalizedString WrapText(LocalizedString text, <span class="keywordtype">float</span> lineLength, GUIFont font, <span class="keywordtype">float</span> textScale = 1.0f)</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        {</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> WrappedLString(text, lineLength, font, textScale);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        }</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> WrapText(<span class="keywordtype">string</span> text, <span class="keywordtype">float</span> lineLength, ScalableFont font, <span class="keywordtype">float</span> textScale = 1.0f)</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            =&gt; font.WrapText(text, lineLength / textScale);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> VersionNewerIgnoreRevision(Version a, Version b)</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">if</span> (b.Major &gt; a.Major) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            <span class="keywordflow">if</span> (b.Major &lt; a.Major) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            <span class="keywordflow">if</span> (b.Minor &gt; a.Minor) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            <span class="keywordflow">if</span> (b.Minor &lt; a.Minor) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            <span class="keywordflow">if</span> (b.Build &gt; a.Build) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <span class="keywordflow">if</span> (b.Build &lt; a.Build) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        }</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> OpenFileWithShell(<span class="keywordtype">string</span> filename)</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        {</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            ProcessStartInfo startInfo = <span class="keyword">new</span> ProcessStartInfo()</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            {</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                FileName = filename,</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                UseShellExecute = <span class="keyword">true</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            };</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            Process.Start(startInfo);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        }</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Vector2 PaddingSizeParentRelative(RectTransform parent, <span class="keywordtype">float</span> padding)</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        {</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            var (sizeX, sizeY) = parent.NonScaledSize.ToVector2();</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            <span class="keywordtype">float</span> higher = sizeX,</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                  lower = sizeY;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <span class="keywordtype">bool</span> swap = lower &gt; higher;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            <span class="keywordflow">if</span> (swap) { (higher, lower) = (lower, higher); }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            <span class="keywordtype">float</span> diffY = lower - lower * padding;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            <span class="keywordtype">float</span> paddingX = (higher - diffY) / higher,</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                  paddingY = padding;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            <span class="keywordflow">if</span> (swap) { (paddingX, paddingY) = (paddingY, paddingX); }</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; </div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector2(paddingX, paddingY);</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        }</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> ColorSectionOfString(<span class="keywordtype">string</span> text, <span class="keywordtype">int</span> start, <span class="keywordtype">int</span> length, Color color)</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        {</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            <span class="keywordtype">int</span> end = start + length;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            <span class="keywordflow">if</span> (start &lt; 0 || length &lt; 0 || end &gt; text.Length)</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;            {</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException($<span class="stringliteral">&quot;Invalid start ({start}) or length ({length}) for text \&quot;{text}\&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;            }</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160; </div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            <span class="keywordtype">string</span> stichedString = <span class="keywordtype">string</span>.Empty;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;            <span class="keywordflow">if</span> (start &gt; 0)</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            {</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                stichedString += text[..start];</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160; </div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            <span class="comment">// this is the highlighted part</span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;            stichedString += ColorString(text[start..end], color);</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <span class="keywordflow">if</span> (end &lt; text.Length)</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                stichedString += text[end..];</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            }</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            <span class="keywordflow">return</span> stichedString;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160; </div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            <span class="keyword">static</span> <span class="keywordtype">string</span> ColorString(<span class="keywordtype">string</span> text, Color color) =&gt; $<span class="stringliteral">&quot;‖color:{color.ToStringHex()}‖{text}‖end‖&quot;</span>;</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        }</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">byte</span>[] HexStringToBytes(<span class="keywordtype">string</span> raw)</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        {</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <span class="keywordtype">string</span> value = <span class="keywordtype">string</span>.Join(<span class="keywordtype">string</span>.Empty, raw.Split(<span class="stringliteral">&quot; &quot;</span>));</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            List&lt;byte&gt; bytes = <span class="keyword">new</span> List&lt;byte&gt;();</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; value.Length; i += 2)</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                <span class="keywordtype">string</span> hex = value.Substring(i, 2);</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                <span class="keywordtype">byte</span> b = Convert.ToByte(hex, 16);</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                bytes.Add(b);</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160; </div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">bool</span> IsHexChar(<span class="keywordtype">char</span> c) =&gt; c is </div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                    &gt;= <span class="charliteral">&#39;0&#39;</span> and &lt;= <span class="charliteral">&#39;9&#39;</span> or</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                    &gt;= <span class="charliteral">&#39;A&#39;</span> and &lt;= <span class="charliteral">&#39;F&#39;</span> or</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                    &gt;= <span class="charliteral">&#39;a&#39;</span> and &lt;= <span class="charliteral">&#39;f&#39;</span>;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="keywordflow">return</span> bytes.ToArray();</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        }</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    }</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_a1535396b8a6ea16210c86c93214bd2b3"><div class="ttname"><a href="namespace_barotrauma.html#a1535396b8a6ea16210c86c93214bd2b3">Barotrauma.Direction</a></div><div class="ttdeci">Direction</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00017">BarotraumaShared/SharedSource/Map/Submarine.cs:18</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_html_a1535396b8a6ea16210c86c93214bd2b3"><div class="ttname"><a href="namespace_barotrauma.html#a1535396b8a6ea16210c86c93214bd2b3">Barotrauma.Direction</a></div><div class="ttdeci">Direction</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_map_2_submarine_8cs_source.html#l00018">BarotraumaShared/SharedSource/Map/Submarine.cs:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
