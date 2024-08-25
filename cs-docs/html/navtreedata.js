@@ -26,12 +26,12 @@ var NAVTREE =
 [
   [ "LuaCsForBarotrauma", "index.html", [
     [ "Introduction", "index.html", [
-      [ "Enabling", "index.html#autotoc_md17", null ],
-      [ "Development", "index.html#autotoc_md18", null ]
+      [ "Enabling", "index.html#autotoc_md18", null ],
+      [ "Development", "index.html#autotoc_md19", null ]
     ] ],
     [ "Development", "usergroup0.html", [
       [ "In-memory CSharp Mod", "md_manual_inmemorymod.html", null ],
-      [ "Assembly CSharp Mod", "md_setting_up_assembly_mod.html", null ],
+      [ "Assembly CSharp Mod", "md_manual_assemblymod.html", null ],
       [ "Using Harmony", "md_manual_harmony.html", null ]
     ] ],
     [ "Generated Documentation", "usergroup1.html", [

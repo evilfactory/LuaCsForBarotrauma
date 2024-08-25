@@ -26,7 +26,7 @@ var menudata={children:[
 {text:"Main Page",url:"index.html"},
 {text:"Development",url:"usergroup0.html",children:[
 {text:"In-memory CSharp Mod",url:"md_manual_inmemorymod.html"},
-{text:"Assembly CSharp Mod",url:"md_setting_up_assembly_mod.html"},
+{text:"Assembly CSharp Mod",url:"md_manual_assemblymod.html"},
 {text:"Using Harmony",url:"md_manual_harmony.html"}]},
 {text:"Generated Documentation",url:"usergroup1.html",children:[
 {text:"Server Documentation",url:"../baro-server/html/index.html"},
