@@ -87,38 +87,38 @@ Getting Started</h1>
 Example mod</h2>
 <hr  />
 <p> <code>&lt;mod_root&gt;/CSharp/Shared/ExampleMod.cs</code></p>
-<div class="fragment"><div class="line">using System;</div>
-<div class="line">using Barotrauma;</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> System;</div>
+<div class="line"><span class="keyword">using</span> Barotrauma;</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">// This is required so that the .NET runtime doesn&#39;t complain about you trying to access internal Types and Members</div>
-<div class="line">[assembly: IgnoreAccessChecksTo(&quot;Barotrauma&quot;)]</div>
-<div class="line">[assembly: IgnoreAccessChecksTo(&quot;BarotraumaCore&quot;)]</div>
-<div class="line">[assembly: IgnoreAccessChecksTo(&quot;DedicatedServer&quot;)]</div>
-<div class="line">namespace ExampleNamespace {</div>
-<div class="line">    partial class ExampleMod : IAssemblyPlugin {</div>
-<div class="line">        public void Initialize()</div>
+<div class="line"><span class="comment">// This is required so that the .NET runtime doesn&#39;t complain about you trying to access internal Types and Members</span></div>
+<div class="line">[assembly: IgnoreAccessChecksTo(<span class="stringliteral">&quot;Barotrauma&quot;</span>)]</div>
+<div class="line">[assembly: IgnoreAccessChecksTo(<span class="stringliteral">&quot;BarotraumaCore&quot;</span>)]</div>
+<div class="line">[assembly: IgnoreAccessChecksTo(<span class="stringliteral">&quot;DedicatedServer&quot;</span>)]</div>
+<div class="line"><span class="keyword">namespace </span>ExampleNamespace {</div>
+<div class="line">    <span class="keyword">partial class </span>ExampleMod : IAssemblyPlugin {</div>
+<div class="line">        <span class="keyword">public</span> <span class="keywordtype">void</span> Initialize()</div>
 <div class="line">        {</div>
-<div class="line">            // When your plugin is loading, use this instead of the constructor</div>
-<div class="line">            // Put any code here that does not rely on other plugins.</div>
-<div class="line">            LuaCsLogger.Log(&quot;ExampleMod loaded!&quot;);</div>
+<div class="line">            <span class="comment">// When your plugin is loading, use this instead of the constructor</span></div>
+<div class="line">            <span class="comment">// Put any code here that does not rely on other plugins.</span></div>
+<div class="line">            LuaCsLogger.Log(<span class="stringliteral">&quot;ExampleMod loaded!&quot;</span>);</div>
 <div class="line">        }</div>
 <div class="line"> </div>
-<div class="line">        public void OnLoadCompleted()</div>
+<div class="line">        <span class="keyword">public</span> <span class="keywordtype">void</span> OnLoadCompleted()</div>
 <div class="line">        {</div>
-<div class="line">            // After all plugins have loaded</div>
-<div class="line">            // Put code that interacts with other plugins here.</div>
+<div class="line">            <span class="comment">// After all plugins have loaded</span></div>
+<div class="line">            <span class="comment">// Put code that interacts with other plugins here.</span></div>
 <div class="line">        }</div>
 <div class="line"> </div>
-<div class="line">        public void PreInitPatching()</div>
+<div class="line">        <span class="keyword">public</span> <span class="keywordtype">void</span> PreInitPatching()</div>
 <div class="line">        {</div>
-<div class="line">            // Not yet supported: Called during the Barotrauma startup phase before vanilla content is loaded.</div>
+<div class="line">            <span class="comment">// Not yet supported: Called during the Barotrauma startup phase before vanilla content is loaded.</span></div>
 <div class="line">        }</div>
 <div class="line"> </div>
-<div class="line">        public void Dispose()</div>
+<div class="line">        <span class="keyword">public</span> <span class="keywordtype">void</span> Dispose()</div>
 <div class="line">        {</div>
-<div class="line">            // Cleanup your plugin!</div>
-<div class="line">            LuaCsLogger.Log(&quot;ExampleMod disposed!&quot;);</div>
+<div class="line">            <span class="comment">// Cleanup your plugin!</span></div>
+<div class="line">            LuaCsLogger.Log(<span class="stringliteral">&quot;ExampleMod disposed!&quot;</span>);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">}</div>
