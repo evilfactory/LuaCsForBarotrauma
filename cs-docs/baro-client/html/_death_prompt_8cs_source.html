@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Barotrauma Client Doc: DeathPrompt.cs Source File</title>
+<title>Client LuaCsForBarotrauma: DeathPrompt.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -17,7 +17,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -26,7 +27,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Barotrauma Client Doc
+   <div id="projectname">Client LuaCsForBarotrauma
    </div>
   </td>
  </tr>
@@ -509,7 +510,7 @@ $(document).ready(function(){initNavTree('_death_prompt_8cs_source.html',''); in
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        var botList = <span class="keyword">new</span> GUIListBox(<span class="keyword">new</span> RectTransform(<span class="keyword">new</span> Vector2(1.0f, 0.9f), content.RectTransform));</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <span class="keywordflow">foreach</span> (CharacterInfo c <span class="keywordflow">in</span> GetAvailableBots())</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            var characterFrame = campaign.CampaignUI?.CrewManagement.CreateCharacterFrame(c, botList, hideSalary: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            var characterFrame = campaign.CampaignUI?.HRManagerUI.CreateCharacterFrame(c, botList, hideSalary: <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordflow">if</span> (characterFrame != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            {</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                characterFrame.UserData = c;</div>
@@ -616,7 +617,7 @@ $(document).ready(function(){initNavTree('_death_prompt_8cs_source.html',''); in
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_respawn_manager_html_aea458c5ca407aa969828919d01653f8e"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_respawn_manager.html#aea458c5ca407aa969828919d01653f8e">Barotrauma.Networking.RespawnManager.UseDeathPrompt</a></div><div class="ttdeci">static bool? UseDeathPrompt</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_respawn_manager_8cs_source.html#l00028">BarotraumaShared/SharedSource/Networking/RespawnManager.cs:29</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_respawn_manager_html_afb6e30f6a0c0f43b3bbbb2c41240168c"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_respawn_manager.html#afb6e30f6a0c0f43b3bbbb2c41240168c">Barotrauma.Networking.RespawnManager.SkillLossPercentageOnImmediateRespawn</a></div><div class="ttdeci">static float SkillLossPercentageOnImmediateRespawn</div><div class="ttdoc">How much more the skills drop towards the job's default skill levels when dying, in addition to Skill...</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_respawn_manager_8cs_source.html#l00024">BarotraumaShared/SharedSource/Networking/RespawnManager.cs:24</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html">Barotrauma.Networking.ServerSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00048">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:49</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a55e5c4d8339dacb310c73e40905eabcd"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a55e5c4d8339dacb310c73e40905eabcd">Barotrauma.Networking.ServerSettings.RespawnMode</a></div><div class="ttdeci">RespawnMode RespawnMode</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00648">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:649</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_networking_1_1_server_settings_html_a55e5c4d8339dacb310c73e40905eabcd"><div class="ttname"><a href="class_barotrauma_1_1_networking_1_1_server_settings.html#a55e5c4d8339dacb310c73e40905eabcd">Barotrauma.Networking.ServerSettings.RespawnMode</a></div><div class="ttdeci">RespawnMode RespawnMode</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00658">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:659</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_af25d856c5b66cb8aa5ee5539608e156d"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#af25d856c5b66cb8aa5ee5539608e156d">Barotrauma.Networking.RespawnMode</a></div><div class="ttdeci">RespawnMode</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_networking_2_server_settings_8cs_source.html#l00034">BarotraumaShared/SharedSource/Networking/ServerSettings.cs:35</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>

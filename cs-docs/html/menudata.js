@@ -23,7 +23,11 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Documentation introduction",url:"./index.html"},
-{text:"Server class documentation",url:"../baro-server/html/index.html"},
-{text:"Client class documentation",url:"../baro-client/html/index.html"},
-{text:"Main Page",url:"index.html"}]}
+{text:"Main Page",url:"index.html"},
+{text:"Development",url:"usergroup0.html",children:[
+{text:"In-memory CSharp Mod",url:"md_manual_2inmemorymod.html"},
+{text:"Assembly CSharp Mod",url:"md_manual_2assemblymod.html"},
+{text:"Using Harmony",url:"md_manual_2harmony.html"}]},
+{text:"Generated Documentation",url:"usergroup1.html",children:[
+{text:"Server Documentation",url:"../baro-server/html/index.html"},
+{text:"Client Documentation",url:"../baro-client/html/index.html"}]}]}

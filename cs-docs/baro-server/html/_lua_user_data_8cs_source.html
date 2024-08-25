@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Barotrauma Server Doc: LuaUserData.cs Source File</title>
+<title>Server LuaCsForBarotrauma: LuaUserData.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -17,7 +17,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -26,7 +27,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Barotrauma Server Doc
+   <div id="projectname">Server LuaCsForBarotrauma
    </div>
   </td>
  </tr>
@@ -372,19 +373,51 @@ $(document).ready(function(){initNavTree('_lua_user_data_8cs_source.html',''); i
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            descriptor.RemoveMember(memberName);</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">  293</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> DynValue <a class="code" href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">CreateUserDataFromDescriptor</a>(DynValue scriptObject, IUserDataDescriptor desiredTypeDescriptor)</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">return</span> UserData.Create(scriptObject.ToObject(desiredTypeDescriptor.Type), desiredTypeDescriptor);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_user_data.html#ad604502d285ce57d9403159f16fc83da">  312</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> DynValue <a class="code" href="class_barotrauma_1_1_lua_user_data.html#ad604502d285ce57d9403159f16fc83da">CreateUserDataFromType</a>(DynValue scriptObject, Type desiredType)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            IUserDataDescriptor descriptor = UserData.GetDescriptorForType(desiredType, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            descriptor ??= <span class="keyword">new</span> StandardUserDataDescriptor(desiredType, InteropAccessMode.Default);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">CreateUserDataFromDescriptor</a>(scriptObject, descriptor);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_user_data.html#adb78f4470d94cfab05d228aaf75b9028">  287</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_barotrauma_1_1_lua_user_data.html#adb78f4470d94cfab05d228aaf75b9028">HasMember</a>(<span class="keywordtype">object</span> obj, <span class="keywordtype">string</span> memberName)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">if</span> (obj == <span class="keyword">null</span>) { <span class="keywordflow">throw</span> <span class="keyword">new</span> ScriptRuntimeException(<span class="stringliteral">&quot;object is nil&quot;</span>); }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            Type type;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">if</span> (obj is Type)</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                type = (Type)obj;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(obj is IUserDataDescriptor descriptor)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                type = descriptor.Type;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="keywordflow">if</span> (((StandardUserDataDescriptor)descriptor).HasMember(memberName))</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                type = obj.GetType();</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">if</span> (type.GetMember(memberName).Length == 0)</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">  325</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> DynValue <a class="code" href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">CreateUserDataFromDescriptor</a>(DynValue scriptObject, IUserDataDescriptor desiredTypeDescriptor)</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">return</span> UserData.Create(scriptObject.ToObject(desiredTypeDescriptor.Type), desiredTypeDescriptor);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="class_barotrauma_1_1_lua_user_data.html#ad604502d285ce57d9403159f16fc83da">  344</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> DynValue <a class="code" href="class_barotrauma_1_1_lua_user_data.html#ad604502d285ce57d9403159f16fc83da">CreateUserDataFromType</a>(DynValue scriptObject, Type desiredType)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            IUserDataDescriptor descriptor = UserData.GetDescriptorForType(desiredType, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            descriptor ??= <span class="keyword">new</span> StandardUserDataDescriptor(desiredType, InteropAccessMode.Default);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">CreateUserDataFromDescriptor</a>(scriptObject, descriptor);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html">Barotrauma.GameMain</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00019">GameMain.cs:20</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_game_main_html_ab7fc54e9f74a0aeac0e0a9894fe0f927"><div class="ttname"><a href="class_barotrauma_1_1_game_main.html#ab7fc54e9f74a0aeac0e0a9894fe0f927">Barotrauma.GameMain.LuaCs</a></div><div class="ttdeci">static LuaCsSetup LuaCs</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_8cs_source.html#l00037">GameMain.cs:37</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_cs_setup_html"><div class="ttname"><a href="class_barotrauma_1_1_lua_cs_setup.html">Barotrauma.LuaCsSetup</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_converters_8cs_source.html#l00011">LuaConverters.cs:12</a></div></div>
@@ -401,10 +434,11 @@ $(document).ready(function(){initNavTree('_lua_user_data_8cs_source.html',''); i
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_a7164afd1f10dcc98f5765dd45dfdf7e7"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#a7164afd1f10dcc98f5765dd45dfdf7e7">Barotrauma.LuaUserData.CreateStatic</a></div><div class="ttdeci">static object CreateStatic(string typeName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00082">LuaUserData.cs:82</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_a90825542b4b7539e93dccabe5536adcd"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#a90825542b4b7539e93dccabe5536adcd">Barotrauma.LuaUserData.IsTargetType</a></div><div class="ttdeci">static bool IsTargetType(object obj, string typeName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00065">LuaUserData.cs:65</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ab2fc13d65afdab8a5abf734879fbfbf8"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ab2fc13d65afdab8a5abf734879fbfbf8">Barotrauma.LuaUserData.MakePropertyAccessible</a></div><div class="ttdeci">static void MakePropertyAccessible(IUserDataDescriptor IUUD, string propertyName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00227">LuaUserData.cs:227</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_abfe1cd01663cb4e2ce99ed7bff8008c5"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">Barotrauma.LuaUserData.CreateUserDataFromDescriptor</a></div><div class="ttdeci">static DynValue CreateUserDataFromDescriptor(DynValue scriptObject, IUserDataDescriptor desiredTypeDescriptor)</div><div class="ttdoc">See CreateUserDataFromType.</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00293">LuaUserData.cs:293</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_abfe1cd01663cb4e2ce99ed7bff8008c5"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#abfe1cd01663cb4e2ce99ed7bff8008c5">Barotrauma.LuaUserData.CreateUserDataFromDescriptor</a></div><div class="ttdeci">static DynValue CreateUserDataFromDescriptor(DynValue scriptObject, IUserDataDescriptor desiredTypeDescriptor)</div><div class="ttdoc">See CreateUserDataFromType.</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00325">LuaUserData.cs:325</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ac90f045b10188bf0b00e44c96320b5a4"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ac90f045b10188bf0b00e44c96320b5a4">Barotrauma.LuaUserData.MakeFieldAccessible</a></div><div class="ttdeci">static void MakeFieldAccessible(IUserDataDescriptor IUUD, string fieldName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00129">LuaUserData.cs:129</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ad4c55dee047f5c5cb3b8add2d161c591"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ad4c55dee047f5c5cb3b8add2d161c591">Barotrauma.LuaUserData.RegisterType</a></div><div class="ttdeci">static IUserDataDescriptor RegisterType(string typeName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00014">LuaUserData.cs:14</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ad604502d285ce57d9403159f16fc83da"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ad604502d285ce57d9403159f16fc83da">Barotrauma.LuaUserData.CreateUserDataFromType</a></div><div class="ttdeci">static DynValue CreateUserDataFromType(DynValue scriptObject, Type desiredType)</div><div class="ttdoc">Converts a Lua value to a CLR object of a desired type and wraps it in a userdata....</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00312">LuaUserData.cs:312</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ad604502d285ce57d9403159f16fc83da"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ad604502d285ce57d9403159f16fc83da">Barotrauma.LuaUserData.CreateUserDataFromType</a></div><div class="ttdeci">static DynValue CreateUserDataFromType(DynValue scriptObject, Type desiredType)</div><div class="ttdoc">Converts a Lua value to a CLR object of a desired type and wraps it in a userdata....</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00344">LuaUserData.cs:344</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_adb78f4470d94cfab05d228aaf75b9028"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#adb78f4470d94cfab05d228aaf75b9028">Barotrauma.LuaUserData.HasMember</a></div><div class="ttdeci">static bool HasMember(object obj, string memberName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00287">LuaUserData.cs:287</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ade8acfe4ed0e2f5f8c1c4ae1f29af679"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ade8acfe4ed0e2f5f8c1c4ae1f29af679">Barotrauma.LuaUserData.TypeOf</a></div><div class="ttdeci">static string TypeOf(object obj)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00075">LuaUserData.cs:75</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ae42012c065e67311f3f238c1465b2abd"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ae42012c065e67311f3f238c1465b2abd">Barotrauma.LuaUserData.MakeMethodAccessible</a></div><div class="ttdeci">static void MakeMethodAccessible(IUserDataDescriptor IUUD, string methodName, string[] parameters=null)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00169">LuaUserData.cs:169</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_lua_user_data_html_ae8ffe837818b009e6b121d3c08114336"><div class="ttname"><a href="class_barotrauma_1_1_lua_user_data.html#ae8ffe837818b009e6b121d3c08114336">Barotrauma.LuaUserData.RemoveMember</a></div><div class="ttdeci">static void RemoveMember(IUserDataDescriptor IUUD, string memberName)</div><div class="ttdef"><b>Definition:</b> <a href="_lua_user_data_8cs_source.html#l00276">LuaUserData.cs:276</a></div></div>

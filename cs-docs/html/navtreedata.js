@@ -24,18 +24,19 @@
 */
 var NAVTREE =
 [
-  [ "Barotrauma Doc", "index.html", [
-    [ "Documentation introduction", "./index.html", null ],
-    [ "Server class documentation", "../baro-server/html/index.html", null ],
-    [ "Client class documentation", "../baro-client/html/index.html", null ],
-    [ "Barotrauma C# modding guide", "index.html", [
-      [ "Introduction", "index.html#autotoc_md1", null ],
-      [ "Setting Up Assembly Mod", "index.html#autotoc_md2", null ],
-      [ "Setting Up Simple Mod", "index.html#autotoc_md13", [
-        [ "Important features", "index.html#autotoc_md14", null ],
-        [ "Code example", "index.html#autotoc_md15", null ]
-      ] ],
-      [ "Links to class documentation", "index.html#ltcd", null ]
+  [ "LuaCsForBarotrauma", "index.html", [
+    [ "Introduction", "index.html", [
+      [ "Enabling", "index.html#autotoc_md17", null ],
+      [ "Development", "index.html#autotoc_md18", null ]
+    ] ],
+    [ "Development", "usergroup0.html", [
+      [ "In-memory CSharp Mod", "md_manual_2inmemorymod.html", null ],
+      [ "Assembly CSharp Mod", "md_manual_2assemblymod.html", null ],
+      [ "Using Harmony", "md_manual_2harmony.html", null ]
+    ] ],
+    [ "Generated Documentation", "usergroup1.html", [
+      [ "Server Documentation", "../baro-server/html/index.html", null ],
+      [ "Client Documentation", "../baro-client/html/index.html", null ]
     ] ]
   ] ]
 ];
