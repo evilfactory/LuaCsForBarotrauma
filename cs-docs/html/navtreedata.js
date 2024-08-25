@@ -30,9 +30,9 @@ var NAVTREE =
       [ "Development", "index.html#autotoc_md18", null ]
     ] ],
     [ "Development", "usergroup0.html", [
-      [ "In-memory CSharp Mod", "md_manual_2inmemorymod.html", null ],
-      [ "Assembly CSharp Mod", "md_manual_2assemblymod.html", null ],
-      [ "Using Harmony", "md_manual_2harmony.html", null ]
+      [ "In-memory CSharp Mod", "md_manual_inmemorymod.html", null ],
+      [ "Assembly CSharp Mod", "md_setting_up_assembly_mod.html", null ],
+      [ "Using Harmony", "md_manual_harmony.html", null ]
     ] ],
     [ "Generated Documentation", "usergroup1.html", [
       [ "Server Documentation", "../baro-server/html/index.html", null ],
