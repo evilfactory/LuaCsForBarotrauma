@@ -13,11 +13,11 @@
 The manual installation of the mod involves the simple task of just replacing some files in your game files, so lets get into how to do that.
 
  Server patch vs Client patch
-The client patch is for when when you need to install client-side support, this ..." />
+- The client patch is for when when you need to install client-side + server-sid..." />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro" />
-    <link rel="stylesheet" href="../../ldoc.css?v=81b59fc" />
-    <link rel="stylesheet" href="../../highlight.css?v=92f5150" />
+    <link rel="stylesheet" href="../../ldoc.css?v=a384d19" />
+    <link rel="stylesheet" href="../../highlight.css?v=ab8d4cf" />
   </head>
 
   <body>
@@ -22006,9 +22006,11 @@ The client patch is for when when you need to install client-side support, this 
 <p>The manual installation of the mod involves the simple task of just replacing some files in your game files, so lets get into how to do that.</p>
 
 <h2>Server patch vs Client patch<a name="Server_patch_vs_Client_patch"></a></h2>
-<p>The client patch is for when when you need to install client-side support, this will provide your game with singleplayer support and some other mods that require client-side to be installed to work in multiplayer.
-The server patch will replace your Vanilla executable (the one you use by default when hosting) with the LuaCs one, this allows you to host servers with LuaCs without having the LuaCsForBarotrauma content package enabled.
-The two patches can both be used at same time, for when you need both client-side and server-side in your game.</p>
+<p>- The client patch is for when when you need to install client-side + server-side support, installing the client patch will allow you to use the mod in singleplayer, provide features that require client-side in multiplayer, and allow you to host servers with LuaCs.
+- The server patch only affects the server files, this patch is more useful for dedicated servers, since they have don't have the client part.
+- Both patches will replace your server Vanilla executable (the one you use by default when hosting) with the LuaCs one, this allows you to host servers with LuaCs without having the  content package enabled or having to select the server executable.</p>
+
+<h3>Do NOT select the server executable after installing the patch, leave it as Vanilla, the patch replaces the Vanilla server executable. You also don't need the content package at all anymore.</h3>
 
 <h2>How to apply a patch to my game files/my dedicated server<a name="How_to_apply_a_patch_to_my_game_files_my_dedicated_server"></a></h2>
 <p>First you need to download the correct patch that corresponds to your platform, head over to <code>https://github.com/evilfactory/LuaCsForBarotrauma/releases/tag/latest</code> and choose which patch you want to install. For example, if i want to install both client-side and server-side on my windows machine, i'll download both <code>luacsforbarotrauma_patch_windows_server.zip</code> and <code>luacsforbarotrauma_patch_windows_client.zip</code>.</p>
@@ -22042,8 +22044,8 @@ After that, it's done, you can test if it was successfully installed by testing 
       </article>
     </main>
 
-    <script type="text/javascript" src="../../app.js?v=2da1fe1"></script>
-    <script type="text/javascript" src="../../highlight.min.js?v=2e98cf5"></script>
+    <script type="text/javascript" src="../../app.js?v=e16b151"></script>
+    <script type="text/javascript" src="../../highlight.min.js?v=229c457"></script>
     <script type="text/javascript">
       var elements = document.querySelectorAll("pre code")
 
