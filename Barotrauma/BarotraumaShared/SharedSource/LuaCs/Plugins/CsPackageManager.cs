@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Steam;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -149,23 +150,23 @@ public sealed class CsPackageManager : IDisposable
     #endregion
     
     /// <summary>
-    /// Whether or not assemblies have been loaded.
+    /// Whether assemblies have been loaded.
     /// </summary>
     public bool AssembliesLoaded { get; private set; }
     
     
     /// <summary>
-    /// Whether or not loaded plugins had their preloader run.
+    /// Whether loaded plugins had their preloader run.
     /// </summary>
     public bool PluginsPreInit { get; private set; }
     
     /// <summary>
-    /// Whether or not plugins' types have been instantiated.
+    /// Whether plugins' types have been instantiated.
     /// </summary>
     public bool PluginsInitialized { get; private set; }
 
     /// <summary>
-    /// Whether or not plugins are fully loaded.
+    /// Whether plugins are fully loaded.
     /// </summary>
     public bool PluginsLoaded { get; private set; }
 
@@ -966,7 +967,7 @@ public sealed class CsPackageManager : IDisposable
     /// <param name="cannotLoadPackages">Packages with errors or cyclic dependencies. Element is error message. Null if empty.</param>
     /// <param name="packageChecksPredicate">Optional: Allows for a custom checks to be performed on each package.
     /// Returns a bool indicating if the package is ready to load.</param>
-    /// <returns>Whether or not the process produces a usable list.</returns>
+    /// <returns>Whether the process produces a usable list.</returns>
     private static bool OrderAndFilterPackagesByDependencies(
         Dictionary<ContentPackage, ImmutableList<ContentPackage>> packages,
         out IEnumerable<ContentPackage> readyToLoad,
