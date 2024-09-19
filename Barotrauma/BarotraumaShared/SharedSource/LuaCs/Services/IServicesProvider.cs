@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LightInject;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -14,9 +15,10 @@ public interface IServicesProvider
     /// Registers a type as a service for a given interface.
     /// </summary>
     /// <param name="lifetime"></param>
+    /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime) where TSvcInterface : class, IService where TService : class, IService;
+    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService;
     
     /// <summary>
     /// Removes a type's registration from being available for the given interface.
