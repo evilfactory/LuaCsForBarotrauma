@@ -7,13 +7,14 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
+using Barotrauma.LuaCs.Services;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 
 [assembly: InternalsVisibleTo("CompiledAssembly")]
 
-namespace Barotrauma;
+namespace Barotrauma.LuaCs;
 
 /// <summary>
 /// AssemblyLoadContext to compile from syntax trees in memory and to load from disk/file. Provides dependency resolution.
@@ -31,11 +32,11 @@ public class MemoryFileAssemblyContextLoader : AssemblyLoadContext
     // internal
     private readonly Dictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();       // path-folder, resolver
     protected bool IsResolving;   //this is to avoid circular dependency lookup.
-    private AssemblyManager _assemblyManager;
+    private IAssemblyManagementService _assemblyManager;
     public bool IsTemplateMode { get; set; }
     public bool IsDisposed { get; private set; }
     
-    public MemoryFileAssemblyContextLoader(AssemblyManager assemblyManager) : base(isCollectible: true)
+    public MemoryFileAssemblyContextLoader(IAssemblyManagementService assemblyManager) : base(isCollectible: true)
     {
         this._assemblyManager = assemblyManager;
         this.IsDisposed = false;

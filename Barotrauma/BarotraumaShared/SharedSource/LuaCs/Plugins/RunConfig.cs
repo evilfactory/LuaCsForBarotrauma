@@ -1,25 +1,26 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma;
 
 [Serializable]
-public sealed class RunConfig
+public sealed class RunConfig : IRunConfig
 {
     /// <summary>
     /// How should scripts be run on the server.
     /// </summary>
     [XmlElement(ElementName = "Server")] 
     [DefaultValue("Standard")]
-    public string Server;
+    public string Server { get; set; }
 
     /// <summary>
     /// How should scripts be run on the client. 
     /// </summary>
     [XmlElement(ElementName = "Client")] 
     [DefaultValue("Standard")]
-    public string Client;
+    public string Client { get; set; }
 
     /// <summary>
     /// List of dependencies by either Steam Workshop ID or by Partial Inclusive Name (ie. "ModDep" will match a mod named "A ModDependency").

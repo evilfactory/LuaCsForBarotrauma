@@ -11,6 +11,7 @@ using MoonSharp.VsCodeDebugger;
 using System.Reflection;
 using System.Runtime.Loader;
 using System.Xml.Linq;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
 namespace Barotrauma
@@ -99,7 +100,7 @@ namespace Barotrauma
         public CsPackageManager PluginPackageManager => _pluginPackageManager ??= new CsPackageManager(AssemblyManager, this);
 
         public LuaCsModStore ModStore { get; private set; }
-        private LuaRequire require { get; set; }
+        private LuaRequire Require { get; set; }
         public LuaCsSetupConfig Config { get; private set; }
         public MoonSharpVsCodeDebugServer DebugServer { get; private set; }
         public bool IsInitialized { get; private set; }
@@ -320,6 +321,7 @@ namespace Barotrauma
 #endif
         }
 
+        
         public void Stop()
         {
             PluginPackageManager.UnloadPlugins();            
@@ -393,7 +395,7 @@ namespace Barotrauma
             Lua.Options.CheckThreadAccess = false;
             Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
 
-            require = new LuaRequire(Lua);
+            Require = new LuaRequire(Lua);
 
             Game = new LuaGame();
             Networking = new LuaCsNetworking();
@@ -426,7 +428,7 @@ namespace Barotrauma
 
             Lua.Globals["dofile"] = (Func<string, Table, string, DynValue>)DoFile;
             Lua.Globals["loadfile"] = (Func<string, Table, string, DynValue>)LoadFile;
-            Lua.Globals["require"] = (Func<string, Table, DynValue>)require.Require;
+            Lua.Globals["require"] = (Func<string, Table, DynValue>)Require.Require;
 
             Lua.Globals["dostring"] = (Func<string, Table, string, DynValue>)Lua.DoString;
             Lua.Globals["load"] = (Func<string, Table, string, DynValue>)Lua.LoadString;
