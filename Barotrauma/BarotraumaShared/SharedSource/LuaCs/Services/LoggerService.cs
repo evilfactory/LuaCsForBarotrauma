@@ -123,6 +123,4 @@ public partial class LoggerService : ILoggerService
         }
 #endif
     }
-
-    public void Dispose() { }
 }
