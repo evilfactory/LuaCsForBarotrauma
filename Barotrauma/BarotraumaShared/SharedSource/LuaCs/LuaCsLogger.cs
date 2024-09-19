@@ -19,7 +19,7 @@ namespace Barotrauma
 
 #if SERVER
         private const string LogPrefix = "SV";
-        private const int NetMaxLength = 1024;
+        private const int NetMaxLength = 1024;  // character limit of vanilla Barotrauma's chat system.
         private const int NetMaxMessages = 60;
 
         // This is used so its possible to call logging functions inside the serverLog
