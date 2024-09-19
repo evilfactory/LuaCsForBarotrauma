@@ -9,8 +9,17 @@ namespace Barotrauma.LuaCs.Services;
 /// </summary>
 public interface ILoggerService : IService
 {
-    void HandleException(Exception exception, string prefix = null);
+    void HandleException(Exception exception, LuaCsMessageOrigin origin);
+    void LogError(string message, LuaCsMessageOrigin origin);
     void LogError(string message);
     void LogMessage(string message, Color? serverColor = null, Color? clientColor = null);
-    void Log(string message, Color? color = null, ServerLog.MessageType messageType = ServerLog.MessageType.ServerMessage);
+    void Log(string message, Color? serverColor = null, ServerLog.MessageType messageType = ServerLog.MessageType.ServerMessage);
+}
+
+public enum LuaCsMessageOrigin
+{
+    LuaCs,
+    Unknown,
+    LuaMod,
+    CSharpMod,
 }
