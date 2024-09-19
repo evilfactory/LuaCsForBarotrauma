@@ -320,6 +320,7 @@ namespace Barotrauma
 #endif
         }
 
+        
         public void Stop()
         {
             PluginPackageManager.UnloadPlugins();            
