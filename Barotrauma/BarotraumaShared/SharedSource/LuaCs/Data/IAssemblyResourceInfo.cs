@@ -2,7 +2,7 @@
 
 namespace Barotrauma.LuaCs.Data;
 
-public interface IAssemblyResourceInfo
+public interface IAssemblyResourceInfo : IResourceInfo
 {
     /// <summary>
     /// The friendly name of the assembly. Script files belonging to the same assembly should all have the same name.
@@ -21,12 +21,4 @@ public interface IAssemblyResourceInfo
     /// Path to the file.
     /// </summary>
     public string Path { get; }
-    /// <summary>
-    /// All supported platforms.
-    /// </summary>
-    public Platform Platforms { get; }
-    /// <summary>
-    /// All supported run targets (client and/or server)
-    /// </summary>
-    public Target Targets { get; }
 }
