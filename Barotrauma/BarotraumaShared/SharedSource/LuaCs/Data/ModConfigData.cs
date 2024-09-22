@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Globalization;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -10,8 +11,14 @@ public readonly struct ModConfigData
     
     public DependencyInfo[] Dependencies { get; init; }
     public AssemblyResourceInfo[] LoadableAssemblies { get; init; }
+    public LocalizationResourceInfo[] LocalizationFiles { get; init; }
 
-
+    public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
+    {
+        public CultureInfo TargetCulture { get; init; }
+        public ImmutableArray<string> FilePaths { get; init; }
+    }
+    
     public readonly struct ConfigInitData
     {
         // TODO: complete struct, data here should be already parsed and ready-to-use by the config service.    
