@@ -3,7 +3,7 @@
 namespace Barotrauma.LuaCs.Data;
 
 // TODO: Finish
-public interface IConfigDefinitionInfo
+public interface IConfigInfo
 {
     public string Name { get; }
     public string PackageName { get; }
