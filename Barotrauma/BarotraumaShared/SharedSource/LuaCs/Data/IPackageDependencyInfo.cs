@@ -13,7 +13,7 @@ public interface IPackageDependencyInfo
     /// <summary>
     /// Steam ID of the package. 
     /// </summary>
-    public int SteamId { get; }
+    public ulong SteamWorkshopId { get; }
     /// <summary>
     /// The dependency package, if found.
     /// </summary>
