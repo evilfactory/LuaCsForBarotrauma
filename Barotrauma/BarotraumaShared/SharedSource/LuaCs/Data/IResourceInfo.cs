@@ -1,5 +1,11 @@
-﻿namespace Barotrauma.LuaCs.Data;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 
+namespace Barotrauma.LuaCs.Data;
+
+/// <summary>
+/// ResourceInfos contain metadata about a resource.
+/// </summary>
 public interface IResourceInfo
 {
     /// <summary>
@@ -10,5 +16,10 @@ public interface IResourceInfo
     /// <summary>
     /// Targets that these localization files should be loaded for.
     /// </summary>
-    Target SupportedTargets { get; init; }
+    Target SupportedTargets { get; }
+    
+    /// <summary>
+    /// Resource absolute file paths.
+    /// </summary>
+    ImmutableArray<string> FilePaths { get; }
 }
