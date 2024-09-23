@@ -1,5 +1,9 @@
 ﻿namespace Barotrauma.LuaCs.Services;
 
+// TODO: Rework interface to support resource infos.
+/// <summary>
+/// Loads XML Style assets from the given content package.
+/// </summary>
 public interface IXmlAssetService : IService
 {
     /// <summary>
