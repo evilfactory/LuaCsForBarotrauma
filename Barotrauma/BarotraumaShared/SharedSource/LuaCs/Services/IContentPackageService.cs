@@ -2,10 +2,10 @@
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IContentPackageProcessorService : IService
+public interface IContentPackageService : IService
 {
     bool TryLoadPackageData(ContentPackage package);
-    ModConfigData GetModConfigData();
+    ModConfigInfo GetModConfigData();
     ContentPackage TryFindPackage(string packageName, bool prioritizeLocal = true);
     ContentPackage TryFindPackage(int steamId);
     ContentPath GetContentPath();

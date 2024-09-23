@@ -10,15 +10,11 @@ public interface IAssemblyResourceInfo : IResourceInfo
     /// </summary>
     public string Name { get; }
     /// <summary>
-    /// Is this entry referring to a script file.
+    /// Is this entry referring to a script file collection.
     /// </summary>
-    public bool IsScriptFile { get; }
+    public bool IsScript { get; }
     /// <summary>
     /// Should this be compiled or loaded immediately or stored for On-Demand compilation.
     /// </summary>
     public bool LazyLoad { get; }
-    /// <summary>
-    /// Path to the file.
-    /// </summary>
-    public string Path { get; }
 }
