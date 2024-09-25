@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Globalization;
 
 namespace Barotrauma.LuaCs.Data;
@@ -7,11 +6,8 @@ namespace Barotrauma.LuaCs.Data;
 public interface IConfigResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo { }
 public interface IConfigProfileResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo { }
 public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo { }
-/// <summary>
-/// Represents loadable Lua files.
-/// </summary>
-public interface ILuaResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, ILazyLoadableResourceInfo { }
-public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, ILazyLoadableResourceInfo
+
+public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo
 {
     /// <summary>
     /// The friendly name of the assembly. Script files belonging to the same assembly should all have the same name.
@@ -22,24 +18,8 @@ public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IP
     /// Is this entry referring to a script file collection.
     /// </summary>
     public bool IsScript { get; }
+    /// <summary>
+    /// Should this be compiled/loaded immediately or stored until demanded.
+    /// </summary>
+    public bool LazyLoad { get; }
 }
-
-
-#region Collections
-
-public interface IAssembliesResourcesInfo
-{
-    ImmutableArray<IAssemblyResourceInfo> Assemblies { get; }
-}
-
-public interface ILocalizationsResourcesInfo
-{
-    ImmutableArray<ILocalizationResourceInfo> Localizations { get; }
-}
-
-public interface ILuaScriptsResourcesInfo
-{
-    ImmutableArray<ILuaResourceInfo> LuaScripts { get; }
-}
-
-#endregion

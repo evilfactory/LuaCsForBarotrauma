@@ -4,7 +4,6 @@ using Barotrauma.LuaCs.Data;
 namespace Barotrauma.LuaCs.Services.Processing;
 
 #region XmlToResourceParsers
-
-public interface IXmlStylesToResParser : IResourceParser<XElement, IStylesResourceInfo> { }
+public interface IXmlStylesToResConverterService : IXmlResourceConverterService<IStylesResourceInfo> { }
 
 #endregion

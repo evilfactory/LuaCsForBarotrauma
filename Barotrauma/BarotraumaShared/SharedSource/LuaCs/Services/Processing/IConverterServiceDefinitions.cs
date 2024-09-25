@@ -6,11 +6,10 @@ namespace Barotrauma.LuaCs.Services.Processing;
 
 #region TypeDef
 
-// ReSharper disable once TypeParameterCanBeVariant
 public interface IConverterService<TSrc, TOut> : IService
 {
-    bool TryParseResource(TSrc src, out TOut resources);
-    bool TryParseResources(IEnumerable<TSrc> sources, out List<TOut> resources);
+    bool TryParseResource(in TSrc src, out TOut resources);
+    bool TryParseResources(in IEnumerable<TSrc> sources, out List<TOut> resources);
 }
 
 public interface IXmlResourceConverterService<TOut> : IConverterService<XElement, TOut> { }
@@ -35,10 +34,6 @@ public interface IXmlLocalizationResConverterService : IXmlResourceConverterServ
 #region XmlToInfoParsers
 public interface IXmlDependencyConverterService : IXmlResourceConverterService<IPackageDependencyInfo> { }
 public interface IXmlModConfigConverterService : IXmlResourceConverterService<IModConfigInfo> { }
-/// <summary>
-/// Parses legacy packages that make use of the RunConfig.xml structure to produce a ModConfig.
-/// </summary>
-public interface IXmlLegacyModConfigConverterService : IXmlResourceConverterService<IModConfigInfo> { }
 
 #endregion
 

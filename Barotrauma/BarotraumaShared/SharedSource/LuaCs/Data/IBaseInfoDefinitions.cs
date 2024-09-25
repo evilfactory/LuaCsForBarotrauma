@@ -37,19 +37,5 @@ public interface IResourceCultureInfo
     /// <summary>
     /// List of supported cultures by this resource.
     /// </summary>
-    ImmutableArray<CultureInfo> SupportedCultures { get; }
-}
-
-
-public interface ILazyLoadableResourceInfo
-{
-    /// <summary>
-    /// The name that will be used when trying to reference this resource for execution or loading.
-    /// </summary>
-    public string InternalName { get; }
-    
-    /// <summary>
-    /// Should this be compiled/loaded immediately or stored until demanded.
-    /// </summary>
-    public bool LazyLoad { get; }
+    ImmutableArray<CultureInfo> SupportedCultures { get; init; }
 }
