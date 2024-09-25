@@ -1,6 +1,17 @@
-﻿namespace Barotrauma.LuaCs.Data;
+﻿using System.Collections.Immutable;
 
-public interface IModConfigInfo
+namespace Barotrauma.LuaCs.Data;
+
+public interface IModConfigInfo : IPackageDependenciesInfo, IResourceCultureInfo
 {
+    // package info
+    ContentPackage Package { get; }
+    string PackageName { get; }
     
+    // loadable content metadata
+    ImmutableArray<IAssemblyResourceInfo> LoadableAssemblies { get; }
+    ImmutableArray<ILocalizationResourceInfo> LocalizationFiles { get; }
+    
+    // configuration
+    TargetRunMode RunModes { get; }
 }
