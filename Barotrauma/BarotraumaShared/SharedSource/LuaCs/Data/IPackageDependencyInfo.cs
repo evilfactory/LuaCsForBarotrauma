@@ -1,4 +1,6 @@
-﻿namespace Barotrauma.LuaCs.Data;
+﻿using System.Collections.Immutable;
+
+namespace Barotrauma.LuaCs.Data;
 
 public interface IPackageDependencyInfo
 {
@@ -15,7 +17,20 @@ public interface IPackageDependencyInfo
     /// </summary>
     public ulong SteamWorkshopId { get; }
     /// <summary>
-    /// The dependency package, if found.
+    /// The dependency package, if found in the ALL Packages List.
     /// </summary>
     public ContentPackage DependencyPackage { get; }
+    /// <summary>
+    /// Marks this dependency optional (ie. Cross-CP content). Setting this to true will allow the dependency system to
+    /// try and order the loading but not fail if it runs into circular dependency issues.
+    /// </summary>
+    bool Optional { get; }
+}
+
+public interface IPackageDependenciesInfo
+{
+    /// <summary>
+    /// List of required packages.
+    /// </summary>
+    ImmutableArray<IPackageDependencyInfo> Dependencies { get; }
 }
