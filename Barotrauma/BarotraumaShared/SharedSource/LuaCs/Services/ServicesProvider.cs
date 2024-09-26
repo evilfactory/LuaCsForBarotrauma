@@ -1,13 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using LightInject;
 
 namespace Barotrauma.LuaCs.Services;
 
+
 public class ServicesProvider : IServicesProvider
 {
-    private ServiceContainer _serviceContainer = new();
+    private ServiceContainer _serviceContainerInst;
+    private ServiceContainer ServiceContainer
+    {
+        get
+        {
+            // ReSharper disable once ConvertIfStatementToNullCoalescingExpression
+            if (_serviceContainerInst is null)
+                _serviceContainerInst = new ServiceContainer();
+            return _serviceContainerInst;
+        }
+    }
+    
+    private readonly ReaderWriterLockSlim _serviceLock = new();
     
     public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new()
     {
@@ -30,8 +46,18 @@ public class ServicesProvider : IServicesProvider
                     break;
             }
         }
-
-        _serviceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
+        
+        try
+        {
+            _serviceLock.EnterReadLock();
+            ServiceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
+            ServiceContainer.Compile<TService>();
+            OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
     public void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime,
@@ -62,46 +88,120 @@ public class ServicesProvider : IServicesProvider
             }
         }
 
-        _serviceContainer.Register<TSvcInterface, TService>(name, lifetimeInstance);
+        try
+        {
+            _serviceLock.EnterReadLock();
+            ServiceContainer.Register<TSvcInterface, TService>(name, lifetimeInstance);
+            ServiceContainer.Compile<TService>();
+            OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
-    public void UnregisterServiceType<TSvcInterface, TService>() where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new()
+    public void Compile()
     {
-        throw new NotImplementedException();
+        try
+        {
+            _serviceLock.EnterReadLock();
+            ServiceContainer?.Compile();
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
     public event Action<Type, Type> OnServiceRegistered;
     
     public void InjectServices<T>(T inst) where T : class
     {
-        throw new NotImplementedException();
+        try
+        {
+            _serviceLock.EnterReadLock();
+            ServiceContainer.InjectProperties(inst);
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
-    public bool TryGetService<TSvcInterface>(out IService service, out ServiceLifetime lifetime) where TSvcInterface : class, IService
+    public bool TryGetService<TSvcInterface>(out IService service) where TSvcInterface : class, IService
     {
-        throw new NotImplementedException();
+        try
+        {
+            _serviceLock.EnterReadLock();
+            service = ServiceContainer.TryGetInstance<TSvcInterface>();
+            return service is not null;
+        }
+        catch
+        {
+            service = null;
+            return false;
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
-    public bool TryGetService<TSvcInterface>(string name, out IService service, out ServiceLifetime lifetime) where TSvcInterface : class, IService
+    public bool TryGetService<TSvcInterface>(string name, out IService service) where TSvcInterface : class, IService
     {
-        throw new NotImplementedException();
+        try
+        {
+            _serviceLock.EnterReadLock();
+            service = ServiceContainer.TryGetInstance<TSvcInterface>(name);
+            return service is not null;
+        }
+        catch
+        {
+            service = null;
+            return false;
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
     public event Action<Type, IService> OnServiceInstanced;
     
-    public List<TSvc> GetAllServices<TSvc>() where TSvc : class, IService
+    public ImmutableArray<TSvc> GetAllServices<TSvc>() where TSvc : class, IService
     {
-        throw new NotImplementedException();
+        try
+        {
+            _serviceLock.EnterReadLock();
+            return ServiceContainer.GetAllInstances<TSvc>().ToImmutableArray();
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
     }
 
-    public void DisposeServicesOfType<TSvc>() where TSvc : class, IService
+    [MethodImpl(MethodImplOptions.Synchronized | MethodImplOptions.PreserveSig | MethodImplOptions.NoInlining)]
+    public void DisposeAndReset()
     {
-        throw new NotImplementedException();
-    }
+        // Plugins should never be allowed to execute this.
+        if (Assembly.GetCallingAssembly() != Assembly.GetExecutingAssembly())
+        {
+            throw new MethodAccessException(
+                $"Assembly {Assembly.GetCallingAssembly().FullName} attempted to call DisposeAllServices().");
+        }
 
-    public void DisposeAllServices()
-    {
-        throw new NotImplementedException();
+        try
+        {
+            _serviceLock.EnterWriteLock();
+            _serviceContainerInst.Dispose();
+            _serviceContainerInst = new ServiceContainer();
+        }
+        finally
+        {
+            _serviceLock.ExitWriteLock();
+        }
     }
 }
 

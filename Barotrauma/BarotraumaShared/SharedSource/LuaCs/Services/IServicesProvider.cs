@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using LightInject;
 
 namespace Barotrauma.LuaCs.Services;
@@ -29,13 +30,6 @@ public interface IServicesProvider
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
     void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
-    
-    /// <summary>
-    /// Removes a type's registration from being available for the given interface.
-    /// </summary>
-    /// <typeparam name="TSvcInterface"></typeparam>
-    /// <typeparam name="TService"></typeparam>
-    void UnregisterServiceType<TSvcInterface, TService>() where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
 
     /// <summary>
     /// Called whenever a new service type for a given interface is implemented.
@@ -43,6 +37,11 @@ public interface IServicesProvider
     /// Args[1]: Implementing type
     /// </summary>
     event System.Action<Type, Type> OnServiceRegistered;
+
+    /// <summary>
+    /// Runs compilation of registered services.
+    /// </summary>
+    public void Compile();
     
     #endregion
 
@@ -62,7 +61,7 @@ public interface IServicesProvider
     /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(out IService service, out ServiceLifetime lifetime) where TSvcInterface : class, IService;
+    bool TryGetService<TSvcInterface>(out IService service) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Tries to get a service for the given name and interface, returns success/failure.
@@ -72,7 +71,7 @@ public interface IServicesProvider
     /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(string name, out IService service, out ServiceLifetime lifetime) where TSvcInterface : class, IService;
+    bool TryGetService<TSvcInterface>(string name, out IService service) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Called whenever a new service is created/instanced.
@@ -90,22 +89,17 @@ public interface IServicesProvider
     /// </summary>
     /// <typeparam name="TSvc"></typeparam>
     /// <returns></returns>
-    List<TSvc> GetAllServices<TSvc>() where TSvc : class, IService;
+    ImmutableArray<TSvc> GetAllServices<TSvc>() where TSvc : class, IService;
 
     #endregion
 
+    // Notes: Left public due to the common use of Publicizers
     #region Internal_Use
     
     /// <summary>
-    /// Disposes of all services for a type. Warning: unable to dispose of services held by other objects.
+    /// Notes: Internal use only if hosted by LuaCsForBarotrauma. Disposes of all services and resets DI container. Warning: unable to dispose of services held by other objects.
     /// </summary>
-    /// <typeparam name="TSvc"></typeparam>
-    internal void DisposeServicesOfType<TSvc>() where TSvc : class, IService;
-    
-    /// <summary>
-    /// Disposes of all services and resets DI container. Warning: unable to dispose of services held by other objects.
-    /// </summary>
-    internal void DisposeAllServices();
+    void DisposeAndReset();
 
     #endregion
 }
