@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -182,7 +181,7 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    [MethodImpl(MethodImplOptions.Synchronized | MethodImplOptions.PreserveSig | MethodImplOptions.NoInlining)]
+    [MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.NoInlining)]
     public void DisposeAndReset()
     {
         // Plugins should never be allowed to execute this.
@@ -195,7 +194,7 @@ public class ServicesProvider : IServicesProvider
         try
         {
             _serviceLock.EnterWriteLock();
-            _serviceContainerInst.Dispose();
+            _serviceContainerInst?.Dispose();
             _serviceContainerInst = new ServiceContainer();
         }
         finally
