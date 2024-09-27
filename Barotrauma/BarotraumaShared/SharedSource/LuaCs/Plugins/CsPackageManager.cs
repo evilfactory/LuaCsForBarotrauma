@@ -831,7 +831,7 @@ public sealed class CsPackageManager : IDisposable
         catch (Exception e)
         {
             ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Error while running {messageMethodName}() on plugin of type {messageTypeName}");
-            ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e.Message} | {e.InnerException}");
+            ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e}");
         }
     }
     
