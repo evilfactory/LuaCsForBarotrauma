@@ -830,8 +830,14 @@ public sealed class CsPackageManager : IDisposable
         }
         catch (Exception e)
         {
+            StackTrace st = new StackTrace(e);
+            String s = String.Join('\n',
+               st.GetFrames().SkipLast(1)
+               .Select(f => $"at {f.GetMethod().DeclaringType}.{f.GetMethod().Name}()")
+            );
+            
             ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Error while running {messageMethodName}() on plugin of type {messageTypeName}");
-            ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e}");
+            ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e.Message}\n{s}");
         }
     }
     
