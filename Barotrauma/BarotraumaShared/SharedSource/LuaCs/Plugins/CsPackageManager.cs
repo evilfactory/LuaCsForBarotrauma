@@ -833,11 +833,14 @@ public sealed class CsPackageManager : IDisposable
             StackTrace st = new StackTrace(e);
             String s = String.Join('\n',
                st.GetFrames().SkipLast(1)
-               .Select(f => $"at {f.GetMethod().DeclaringType}.{f.GetMethod().Name}()")
+               .Select(f => $"  at {f.GetMethod().DeclaringType}.{f.GetMethod().Name}()")
             );
             
             ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Error while running {messageMethodName}() on plugin of type {messageTypeName}");
             ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e.Message}\n{s}");
+            if(e.InnerException != null){
+              ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Inner Exception: {e.InnerException}");
+            }
         }
     }
     
