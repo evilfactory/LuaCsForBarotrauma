@@ -1,12 +1,13 @@
-﻿using Barotrauma.LuaCs.Data;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
+using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
 public interface IContentPackageService : IService
 {
-    bool TryLoadPackageData(ContentPackage package);
-    ModConfigInfo GetModConfigData();
-    ContentPackage TryFindPackage(string packageName, bool prioritizeLocal = true);
-    ContentPackage TryFindPackage(int steamId);
-    ContentPath GetContentPath();
+    bool TryParsePackage(ContentPackage package);
+    ContentPackage Package { get; }
+    IModConfigInfo ModConfigInfo { get; }
 }
+
