@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace Barotrauma.LuaCs.Data;
 
 #region ModConfigurationInfo
 
-public readonly struct ModConfigInfo : IModConfigInfo
+[StructLayout(LayoutKind.Auto)] // because we have a partial readonly struct
+public readonly partial struct ModConfigInfo : IModConfigInfo
 {
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
@@ -28,6 +30,7 @@ public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
 {
     public string FriendlyName { get; init; }
     public bool IsScript { get; init; }
+    public string InternalName { get; init; }
     public bool LazyLoad { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
@@ -53,6 +56,17 @@ public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+}
+
+public readonly struct LuaScriptResourceInfo : ILuaResourceInfo
+{
+    public Platform SupportedPlatforms { get; init; }
+    public Target SupportedTargets { get; init; }
+    public ImmutableArray<string> FilePaths { get; init; }
+    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
+    public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public string InternalName { get; init; }
+    public bool LazyLoad { get; init; }
 }
 
 #endregion
