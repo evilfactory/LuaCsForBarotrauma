@@ -1,42 +1,29 @@
 ﻿using System;
-using System.Collections.Immutable;
-using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
 
 namespace Barotrauma.LuaCs.Services;
 
-public partial class PackageService : IStylesResourcesInfo
+public partial class PackageService
 {
-    private readonly Lazy<IStylesService> _stylesService;
+    private readonly Lazy<IXmlStylesToResConverterService> _stylesConverterService;
     
     public PackageService(
         Lazy<IXmlModConfigConverterService> converterService, 
-        Lazy<ILegacyConfigService> legacyConfigService,
-        Lazy<ILuaScriptService> luaScriptService,
-        Lazy<ILocalizationService> localizationService,
-        Lazy<IPluginService> pluginService,
-        Lazy<IStylesService> stylesService,
-        IPluginManagementService pluginManagementService,
-        IPackageManagementService packageManagementService,
+        Lazy<IXmlLegacyModConfigConverterService> legacyConfigConverterService,
+        Lazy<IXmlLocalizationResConverterService> localizationConverterService,
+        Lazy<IXmlStylesToResConverterService> stylesConverterService,
         IStorageService storageService,
         ILoggerService loggerService)
     {
         _modConfigConverterService = converterService;
-        _legacyConfigService = legacyConfigService;
-        _luaScriptService = luaScriptService;
-        _localizationService = localizationService;
-        _pluginService = pluginService;
-        _stylesService = stylesService;
-        _pluginManagementService = pluginManagementService;
-        _packageManagementService = packageManagementService;
+        _legacyConfigConverterService = legacyConfigConverterService;
+        _localizationConverterService = localizationConverterService;
+        _stylesConverterService = stylesConverterService;
         _storageService = storageService;
         _loggerService = loggerService;
     }
-
-    public ImmutableArray<IStylesResourceInfo> StylesResourceInfos => ModConfigInfo?.StylesResourceInfos ?? ImmutableArray<IStylesResourceInfo>.Empty;
-
-    public partial bool TryLoadStyles()
+    partial void TryParsePackageClient(ContentPackage package)
     {
         throw new NotImplementedException();
-    }   
+    }
 }

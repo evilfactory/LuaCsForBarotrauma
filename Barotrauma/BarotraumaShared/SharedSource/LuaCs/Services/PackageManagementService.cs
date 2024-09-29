@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class PackageManagementService : IPackageManagementService, IPluginManagementService
+public class PackageManagementService : IPackageManagementService
 {
-    private readonly Func<IContentPackageService> _contentPackageServiceFactory;
+    private Func<IContentPackageService> GetPackageServiceInstance { get; init; }
 
     public PackageManagementService(Func<IContentPackageService> getPackageService)
     {
-        this._contentPackageServiceFactory = getPackageService;
+        this.GetPackageServiceInstance = getPackageService;
     }
     
     public void Dispose()

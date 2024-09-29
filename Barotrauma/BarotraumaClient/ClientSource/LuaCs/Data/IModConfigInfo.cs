@@ -2,4 +2,10 @@
 
 namespace Barotrauma.LuaCs.Data;
 
-public partial interface IModConfigInfo : IStylesResourcesInfo { }
+public partial interface IModConfigInfo
+{
+    /// <summary>
+    /// Collection of loadable styles data.
+    /// </summary>
+    ImmutableArray<IStylesResourceInfo> StylesResourceInfos { get; }
+}

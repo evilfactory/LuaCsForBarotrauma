@@ -34,6 +34,10 @@ public interface IXmlLocalizationResConverterService : IXmlResourceConverterServ
 #region XmlToInfoParsers
 public interface IXmlDependencyConverterService : IXmlResourceConverterService<IPackageDependencyInfo> { }
 public interface IXmlModConfigConverterService : IXmlResourceConverterService<IModConfigInfo> { }
+/// <summary>
+/// Parses legacy packages that make use of the RunConfig.xml structure to produce a ModConfig.
+/// </summary>
+public interface IXmlLegacyModConfigConverterService : IXmlResourceConverterService<IModConfigInfo> { }
 
 #endregion
 
