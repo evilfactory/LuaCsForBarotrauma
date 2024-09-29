@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -832,7 +833,7 @@ public sealed class CsPackageManager : IDisposable
         {
             StackTrace st = new StackTrace(e);
             String s = String.Join('\n',
-               st.GetFrames().SkipLast(1)
+               st.GetFrames().SkipLast(2)
                .Select(f => $"  at {f.GetMethod().DeclaringType}.{f.GetMethod().Name}()")
             );
             
