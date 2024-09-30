@@ -10,6 +10,7 @@ public interface IStorageService : IService
     bool TryLoadLocalXml(ContentPackage package, string localFilePath, out XDocument document);
     bool TryLoadLocalBinary(ContentPackage package, string localFilePath, out byte[] bytes);
     bool TryLoadLocalText(ContentPackage package, string localFilePath, out string text);
+    bool FileExistsInLocalData(ContentPackage package, string localFilePath);
 
     #endregion
     
@@ -23,6 +24,7 @@ public interface IStorageService : IService
     ImmutableArray<bool> TryLoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePath, out ImmutableArray<string> text);
 
     bool FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively, out ImmutableArray<string> localFilePaths);
+    bool FileExistsInPackage(ContentPackage package, string localFilePath);
     
     #endregion
     
