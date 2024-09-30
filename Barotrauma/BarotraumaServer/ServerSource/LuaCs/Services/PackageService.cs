@@ -7,13 +7,13 @@ public partial class PackageService
 {
     public PackageService(
         Lazy<IXmlModConfigConverterService> converterService, 
-        Lazy<IXmlLegacyModConfigConverterService> legacyConfigConverterService,
+        Lazy<ILegacyConfigService> legacyConfigService,
         Lazy<IXmlLocalizationResConverterService> localizationConverterService,
         IStorageService storageService,
         ILoggerService loggerService)
     {
         _modConfigConverterService = converterService;
-        _legacyConfigConverterService = legacyConfigConverterService;
+        _legacyConfigService = legacyConfigService;
         _localizationConverterService = localizationConverterService;
         _storageService = storageService;
         _loggerService = loggerService;
