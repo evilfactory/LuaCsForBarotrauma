@@ -20,26 +20,32 @@ public partial class PackageService : IContentPackageService
 
     public bool TryParsePackage(ContentPackage package)
     {
-        if (_storageService.TryLoadPackageXml(package, "ModConfig.xml", out var config))
+        if (_storageService.TryLoadPackageXml(package, "ModConfig.xml", out var configXml)
+            && configXml.Root is not null)
         {
-            
-            
+            if (_modConfigConverterService.Value.TryParseResource(configXml.Root, out IModConfigInfo configInfo))
+            {
+                ModConfigInfo = configInfo;
+            }
+            else
+            {
+                _loggerService.LogError($"Failed to parse ModConfig.xml for package {package.Name}");
+                return false;
+            }
+        }
+        else if (_legacyConfigService.Value.TryBuildModConfigFromLegacy(package, out var legacyConfig))
+        {
+            ModConfigInfo = legacyConfig;
         }
         else
         {
-            if (_legacyConfigService.Value.TryBuildModConfigFromLegacy(package, out var legacyConfig))
-            {
-                ModConfigInfo = legacyConfig;
-                // no support for newer features, end here.
-                return true;
-            }
-            
-            // no mod data present, either a vanilla mod or broken.
+            // vanilla mod or broken
+            return false;
         }
         
-        // load resources info for: config, assemblies, lua files, localization
-        
-        throw new NotImplementedException();
+        // load client resources
+        TryParsePackageClient(package);
+        return true;
     }
 
     partial void TryParsePackageClient(ContentPackage package);
