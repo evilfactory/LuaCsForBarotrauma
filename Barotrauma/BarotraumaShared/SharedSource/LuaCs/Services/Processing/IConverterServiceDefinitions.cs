@@ -6,10 +6,11 @@ namespace Barotrauma.LuaCs.Services.Processing;
 
 #region TypeDef
 
+// ReSharper disable once TypeParameterCanBeVariant
 public interface IConverterService<TSrc, TOut> : IService
 {
-    bool TryParseResource(in TSrc src, out TOut resources);
-    bool TryParseResources(in IEnumerable<TSrc> sources, out List<TOut> resources);
+    bool TryParseResource(TSrc src, out TOut resources);
+    bool TryParseResources(IEnumerable<TSrc> sources, out List<TOut> resources);
 }
 
 public interface IXmlResourceConverterService<TOut> : IConverterService<XElement, TOut> { }
