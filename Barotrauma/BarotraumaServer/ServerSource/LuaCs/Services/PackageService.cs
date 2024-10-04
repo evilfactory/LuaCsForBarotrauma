@@ -1,6 +1,7 @@
 ﻿using System;
 using Barotrauma.LuaCs.Services.Processing;
 
+// ReSharper disable once CheckNamespace
 namespace Barotrauma.LuaCs.Services;
 
 public partial class PackageService
@@ -8,16 +9,28 @@ public partial class PackageService
     public PackageService(
         Lazy<IXmlModConfigConverterService> converterService, 
         Lazy<ILegacyConfigService> legacyConfigService,
-        Lazy<IXmlLocalizationResConverterService> localizationConverterService,
+        Lazy<ILuaScriptService> luaScriptService,
+        Lazy<ILocalizationService> localizationService,
+        Lazy<IPluginService> pluginService,
+        IPluginManagementService pluginManagementService,
+        IPackageManagementService packageManagementService,
         IStorageService storageService,
         ILoggerService loggerService)
     {
         _modConfigConverterService = converterService;
         _legacyConfigService = legacyConfigService;
-        _localizationConverterService = localizationConverterService;
+        _luaScriptService = luaScriptService;
+        _localizationService = localizationService;
+        _pluginService = pluginService;
+        _pluginManagementService = pluginManagementService;
+        _packageManagementService = packageManagementService;
         _storageService = storageService;
         _loggerService = loggerService;
     }
-    // No implementation
-    partial void TryParsePackageClient(ContentPackage package) {}
+
+    // The server doesn't use styles data.
+    public partial bool TryLoadStyles()
+    {
+        return true;
+    }
 }
