@@ -37,7 +37,7 @@ public interface IResourceCultureInfo
     /// <summary>
     /// List of supported cultures by this resource.
     /// </summary>
-    ImmutableArray<CultureInfo> SupportedCultures { get; init; }
+    ImmutableArray<CultureInfo> SupportedCultures { get; }
 }
 
 

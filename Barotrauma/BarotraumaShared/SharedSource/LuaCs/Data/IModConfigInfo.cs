@@ -2,15 +2,12 @@
 
 namespace Barotrauma.LuaCs.Data;
 
-public partial interface IModConfigInfo : IPackageDependenciesInfo, IResourceCultureInfo
+public partial interface IModConfigInfo : IPackageDependenciesInfo, IResourceCultureInfo, IAssembliesResourcesInfo, ILocalizationsResourcesInfo, ILuaScriptsResourcesInfo
 {
     // package info
     ContentPackage Package { get; }
     string PackageName { get; }
     
-    // loadable content metadata
-    ImmutableArray<IAssemblyResourceInfo> LoadableAssemblies { get; }
-    ImmutableArray<ILocalizationResourceInfo> LocalizationFiles { get; }
     
     // configuration
     TargetRunMode RunModes { get; }

@@ -14,12 +14,12 @@ public readonly partial struct ModConfigInfo : IModConfigInfo
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
     public TargetRunMode RunModes { get; init; }
-    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     
-    // metadata
+    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
-    public ImmutableArray<IAssemblyResourceInfo> LoadableAssemblies { get; init; }
-    public ImmutableArray<ILocalizationResourceInfo> LocalizationFiles { get; init; }
+    public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
+    public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
+    public ImmutableArray<ILuaResourceInfo> LuaScripts { get; init; }
 }
 
 #endregion
