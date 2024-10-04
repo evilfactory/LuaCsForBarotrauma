@@ -1,29 +1,42 @@
 ﻿using System;
+using System.Collections.Immutable;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
 
 namespace Barotrauma.LuaCs.Services;
 
-public partial class PackageService
+public partial class PackageService : IStylesResourcesInfo
 {
-    private readonly Lazy<IXmlStylesToResConverterService> _stylesConverterService;
+    private readonly Lazy<IStylesService> _stylesService;
     
     public PackageService(
         Lazy<IXmlModConfigConverterService> converterService, 
         Lazy<ILegacyConfigService> legacyConfigService,
-        Lazy<IXmlLocalizationResConverterService> localizationConverterService,
-        Lazy<IXmlStylesToResConverterService> stylesConverterService,
+        Lazy<ILuaScriptService> luaScriptService,
+        Lazy<ILocalizationService> localizationService,
+        Lazy<IPluginService> pluginService,
+        Lazy<IStylesService> stylesService,
+        IPluginManagementService pluginManagementService,
+        IPackageManagementService packageManagementService,
         IStorageService storageService,
         ILoggerService loggerService)
     {
         _modConfigConverterService = converterService;
         _legacyConfigService = legacyConfigService;
-        _localizationConverterService = localizationConverterService;
-        _stylesConverterService = stylesConverterService;
+        _luaScriptService = luaScriptService;
+        _localizationService = localizationService;
+        _pluginService = pluginService;
+        _stylesService = stylesService;
+        _pluginManagementService = pluginManagementService;
+        _packageManagementService = packageManagementService;
         _storageService = storageService;
         _loggerService = loggerService;
     }
-    partial void TryParsePackageClient(ContentPackage package)
+
+    public ImmutableArray<IStylesResourceInfo> StylesResourceInfos => ModConfigInfo?.StylesResourceInfos ?? ImmutableArray<IStylesResourceInfo>.Empty;
+
+    public partial bool TryLoadStyles()
     {
         throw new NotImplementedException();
-    }
+    }   
 }

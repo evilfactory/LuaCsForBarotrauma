@@ -6,13 +6,13 @@ using System.Xml.Linq;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class XmlAssetService : IXmlAssetService
+public class StylesService : IStylesService
 {
     private readonly Dictionary<string, UIStyleProcessor> _loadedProcessors = new();
     private readonly IStorageService _storageService;
     private readonly ILoggerService _loggerService;
 
-    public XmlAssetService(IStorageService storageService, ILoggerService loggerService)
+    public StylesService(IStorageService storageService, ILoggerService loggerService)
     {
         _storageService = storageService;
         _loggerService = loggerService;

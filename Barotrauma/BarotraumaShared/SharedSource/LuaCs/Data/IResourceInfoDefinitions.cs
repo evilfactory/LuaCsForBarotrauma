@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Globalization;
 
 namespace Barotrauma.LuaCs.Data;
@@ -22,3 +23,23 @@ public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IP
     /// </summary>
     public bool IsScript { get; }
 }
+
+
+#region Collections
+
+public interface IAssembliesResourcesInfo
+{
+    ImmutableArray<IAssemblyResourceInfo> Assemblies { get; }
+}
+
+public interface ILocalizationsResourcesInfo
+{
+    ImmutableArray<ILocalizationResourceInfo> Localizations { get; }
+}
+
+public interface ILuaScriptsResourcesInfo
+{
+    ImmutableArray<ILuaResourceInfo> LuaScripts { get; }
+}
+
+#endregion
