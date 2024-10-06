@@ -8,8 +8,7 @@ namespace Barotrauma.LuaCs.Data;
 
 #region ModConfigurationInfo
 
-[StructLayout(LayoutKind.Auto)] // because we have a partial readonly struct
-public readonly partial struct ModConfigInfo : IModConfigInfo
+public partial class ModConfigInfo : IModConfigInfo
 {
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
@@ -28,6 +27,7 @@ public readonly partial struct ModConfigInfo : IModConfigInfo
 
 public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
 {
+    public ContentPackage OwnerPackage { get; init; }
     public string FriendlyName { get; init; }
     public bool IsScript { get; init; }
     public string InternalName { get; init; }
@@ -41,6 +41,7 @@ public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
 
 public readonly struct DependencyInfo : IPackageDependencyInfo
 {
+    public ContentPackage OwnerPackage { get; init; }
     public string FolderPath { get; init; }
     public string PackageName { get; init; }
     public ulong SteamWorkshopId { get; init; }
@@ -50,6 +51,7 @@ public readonly struct DependencyInfo : IPackageDependencyInfo
 
 public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
 {
+    public ContentPackage OwnerPackage { get; init; }
     public CultureInfo TargetCulture { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
@@ -60,6 +62,7 @@ public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
 
 public readonly struct LuaScriptResourceInfo : ILuaResourceInfo
 {
+    public ContentPackage OwnerPackage { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
     public ImmutableArray<string> FilePaths { get; init; }

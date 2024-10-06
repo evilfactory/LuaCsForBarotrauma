@@ -1,11 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Reflection;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface ILuaScriptService
+public interface ILuaScriptService : IService
+{
+    #region Script_File_Runner
+
+    void AddScriptFiles(IEnumerable<string> filePaths);
+    void RemoveScriptFiles(IEnumerable<string> filePaths);
+    ImmutableArray<string> GetScriptFiles();
+
+    #endregion
+}
+
+public interface ILuaScriptManagementService : IService
 {
     #region Type_Registration
 
@@ -18,7 +31,7 @@ public interface ILuaScriptService
     void UnregisterAllTypes();
     
     #endregion
-
+    
     #region Type_Checks_&Utilities
     
     bool IsRegistered(Type type);
@@ -39,13 +52,5 @@ public interface ILuaScriptService
     DynValue CreateUserDataFromDescriptor(DynValue scriptObject, IUserDataDescriptor descriptor);
     DynValue CreateUserDataFromType(DynValue scriptObject, Type desiredType);
     
-    #endregion
-    
-    #region Script_File_Runner
-
-    void AddScriptFiles(string[] filePaths);
-    void RemoveScriptFiles(string[] filePaths);
-    void RunLoadedScripts();
-
     #endregion
 }

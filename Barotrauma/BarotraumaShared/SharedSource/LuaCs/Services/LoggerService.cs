@@ -124,5 +124,15 @@ public partial class LoggerService : ILoggerService
 #endif
     }
 
+    public void LogDebug(string message, Color? color = null)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LogDebugError(string message)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Dispose() { }
 }

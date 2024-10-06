@@ -19,6 +19,15 @@ public interface IPlatformInfo
 
 
 /// <summary>
+/// Which package does the following data belong to?
+/// </summary>
+public interface IPackageInfo
+{
+    ContentPackage OwnerPackage { get; }
+}
+
+
+/// <summary>
 /// ResourceInfos contain metadata about a resource.
 /// </summary>
 public interface IResourceInfo : IPlatformInfo

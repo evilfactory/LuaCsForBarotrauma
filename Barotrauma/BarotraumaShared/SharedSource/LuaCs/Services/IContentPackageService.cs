@@ -17,7 +17,7 @@ public interface IContentPackageService : IService,
     /// <returns>Whether the package was parsed without errors and any information was found. Will return false for purely vanilla packages.</returns>
     bool TryLoadResourcesInfo(ContentPackage package);
 
-    bool TryLoadAssemblies();
+    bool TryLoadPlugins(IAssembliesResourcesInfo assembliesInfo = null);
     bool TryLoadLocalizations();
     bool TryLoadLuaScripts();
     bool TryLoadStyles();
