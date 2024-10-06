@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -15,4 +16,5 @@ public interface ILocalizationService : IService
     string GetLocalizedString(string key, CultureInfo targetCulture);
     bool TryRegisterLocalizationResolver(CultureInfo targetCulture, Func<string, CultureInfo, string> factoryResolver);
     bool ReplaceSymbols(string text, string symbolExpr);
+    bool IsCurrentCultureSupported(IResourceCultureInfo culturesInfo);
 }

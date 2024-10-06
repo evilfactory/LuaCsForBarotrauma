@@ -1,6 +1,10 @@
-﻿namespace Barotrauma.LuaCs.Services;
+﻿using System.Collections.Generic;
+using Barotrauma.LuaCs.Data;
+
+namespace Barotrauma.LuaCs.Services;
 
 public interface IPackageManagementService : IService
 {
-    
+    bool CheckDependencyLoaded(IPackageDependencyInfo info);
+    bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos);
 }

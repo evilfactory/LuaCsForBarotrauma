@@ -2,7 +2,7 @@
 
 namespace Barotrauma.LuaCs.Data;
 
-public readonly partial struct ModConfigInfo : IModConfigInfo
+public partial class ModConfigInfo : IModConfigInfo
 {
     public ImmutableArray<IStylesResourceInfo> StylesResourceInfos { get; init; }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Globalization;
+using System.Linq;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
 
@@ -8,6 +10,8 @@ namespace Barotrauma.LuaCs.Services;
 
 public partial class PackageService : IContentPackageService
 {
+    
+    
     // mod config / package scanners/parsers
     private readonly Lazy<IXmlModConfigConverterService> _modConfigConverterService;
     private readonly Lazy<ILegacyConfigService> _legacyConfigService;
@@ -24,7 +28,6 @@ public partial class PackageService : IContentPackageService
     public ContentPackage Package { get; private set; }
 
     #region DataContracts
-    
     public IModConfigInfo ModConfigInfo { get; private set; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies => ModConfigInfo?.Dependencies ?? ImmutableArray<IPackageDependencyInfo>.Empty;
     public ImmutableArray<CultureInfo> SupportedCultures => ModConfigInfo?.SupportedCultures ?? ImmutableArray<CultureInfo>.Empty;
@@ -36,6 +39,9 @@ public partial class PackageService : IContentPackageService
     
     public bool TryLoadResourcesInfo(ContentPackage package)
     {
+        Package = null;
+        ModConfigInfo = null;
+        
         // try loading the ModConfig.xml. If it fails, use the Legacy loader to try and construct one from the package structure.
         if (_storageService.TryLoadPackageXml(package, "ModConfig.xml", out var configXml)
             && configXml.Root is not null)
@@ -60,11 +66,42 @@ public partial class PackageService : IContentPackageService
             return false;
         }
 
-        throw new NotImplementedException();
+        Package = package;
+        return true;
     }
 
-    public bool TryLoadAssemblies()
+    public bool TryLoadPlugins(IAssembliesResourcesInfo assembliesInfo = null)
     {
+        if (Package is null)
+        {
+            _loggerService.LogError($"PackageService: tried to load plugins without a package being set!");
+            return false;
+        }
+
+        if (!assembliesInfo?.Assemblies.IsDefaultOrEmpty ?? false)
+        {
+            foreach (var assemblyInfo in assembliesInfo.Assemblies)
+            {
+                if (assemblyInfo.OwnerPackage is not null && assemblyInfo.OwnerPackage == this.Package) 
+                    continue;
+                
+                // log it then throw
+                _loggerService.LogError($"Package Service: tried to load assemblies for an unrelated package! Owner package {assemblyInfo.OwnerPackage?.Name}, package service current: {this.Package}.");
+                throw new ArgumentException(
+                    $"Package Service: tried to load assemblies for an unrelated package! Owner package {assemblyInfo.OwnerPackage?.Name}, package service current: {this.Package}.");
+            }
+        }
+        else
+        {
+            // either the list is empty or was null
+            assembliesInfo = this;
+        }
+
+        // what we need to load
+        IEnumerable<AssemblyResourceInfo> info;
+        
+
+
         throw new NotImplementedException();
     }
 

@@ -13,4 +13,6 @@ public interface ILoggerService : IService
     void LogError(string message);
     void LogMessage(string message, Color? serverColor = null, Color? clientColor = null);
     void Log(string message, Color? color = null, ServerLog.MessageType messageType = ServerLog.MessageType.ServerMessage);
+    void LogDebug(string message, Color? color = null);
+    void LogDebugError(string message);
 }
