@@ -5,4 +5,7 @@ namespace Barotrauma.LuaCs.Services;
 public interface IPluginService : IService
 {
     bool IsPlatformSupported(Platform supportedPlatforms);
+    bool IsAssemblyLoaded(string friendlyName);
+    bool IsAssemblyLoadedGlobal(string friendlyName);
+    
 }
