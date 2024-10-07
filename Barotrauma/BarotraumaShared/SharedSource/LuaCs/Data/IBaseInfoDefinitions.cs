@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace Barotrauma.LuaCs.Data;
@@ -9,11 +10,13 @@ public interface IPlatformInfo
     /// <summary>
     /// Platforms that these localization files should be loaded for.
     /// </summary>
+    [Required]
     Platform SupportedPlatforms { get; }
     
     /// <summary>
     /// Targets that these localization files should be loaded for.
     /// </summary>
+    [Required]
     Target SupportedTargets { get; }   
 }
 
@@ -35,6 +38,7 @@ public interface IResourceInfo : IPlatformInfo
     /// <summary>
     /// Resource absolute file paths.
     /// </summary>
+    [Required]
     ImmutableArray<string> FilePaths { get; }
 }
 
@@ -55,6 +59,7 @@ public interface ILazyLoadableResourceInfo
     /// <summary>
     /// The name that will be used when trying to reference this resource for execution or loading.
     /// </summary>
+    [Required]
     public string InternalName { get; }
     
     /// <summary>

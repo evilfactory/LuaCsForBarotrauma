@@ -2,7 +2,7 @@
 
 namespace Barotrauma.LuaCs.Data;
 
-public interface IPackageDependencyInfo
+public interface IPackageDependencyInfo : IPackageInfo
 {
     /// <summary>
     /// Root folder of the content package.
