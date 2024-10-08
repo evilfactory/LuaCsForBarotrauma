@@ -6,5 +6,5 @@ namespace Barotrauma.LuaCs.Services;
 public interface IPackageManagementService : IService
 {
     bool CheckDependencyLoaded(IPackageDependencyInfo info);
-    bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos);
+    bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages);
 }
