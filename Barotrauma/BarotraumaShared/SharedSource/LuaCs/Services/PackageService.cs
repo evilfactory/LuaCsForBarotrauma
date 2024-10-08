@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
 
@@ -67,7 +68,9 @@ public partial class PackageService : IContentPackageService
     public ImmutableArray<ILuaResourceInfo> LuaScripts => ModConfigInfo?.LuaScripts ?? ImmutableArray<ILuaResourceInfo>.Empty;
 
     #endregion
-    
+
+    #region PublicAPI
+
     public bool TryLoadResourcesInfo(ContentPackage package)
     {
         _operationsUsageLock.EnterUpgradeableReadLock();
@@ -136,17 +139,18 @@ public partial class PackageService : IContentPackageService
 
             if (!assembliesInfo?.Assemblies.IsDefaultOrEmpty ?? false)
             {
+                // never load another package's assemblies in this service
+                if (!AreContentsFromPackage(assembliesInfo.Assemblies))
+                {
+                    // log it then throw
+                    _loggerService.LogError(
+                        $"Package Service: tried to load assemblies for an unrelated package! Package service current: {this.Package}.");
+                    throw new ArgumentException(
+                        $"Package Service: tried to load assemblies for an unrelated package! Package service current: {this.Package}.");
+                }
+                
                 foreach (var assemblyInfo in assembliesInfo.Assemblies)
                 {
-                    if (assemblyInfo.OwnerPackage is null || assemblyInfo.OwnerPackage != this.Package)
-                    {
-                        // log it then throw
-                        _loggerService.LogError(
-                            $"Package Service: tried to load assemblies for an unrelated package! Owner package {assemblyInfo.OwnerPackage?.Name}, package service current: {this.Package}.");
-                        throw new ArgumentException(
-                            $"Package Service: tried to load assemblies for an unrelated package! Owner package {assemblyInfo.OwnerPackage?.Name}, package service current: {this.Package}.");
-                    }
-
                     // All assemblies must have an internal name
                     if (assemblyInfo.InternalName.IsNullOrWhiteSpace())
                     {
@@ -158,10 +162,10 @@ public partial class PackageService : IContentPackageService
 
 #if DEBUG
                     // Something has already loaded this assembly. This shouldn't stop execution since there's no isolation but this may be a package issue for devs,
-                    // or it could just be a common library that both content packages contain.
+                    // or it could just be a common library that multiple content packages contain.
                     if (_pluginService.Value.IsAssemblyLoadedGlobal(assemblyInfo.InternalName))
                     {
-                        _loggerService.LogDebugWarning($"Package Service: The assembly {assemblyInfo.InternalName}");
+                        _loggerService.LogDebugWarning($"Package Service: The assembly {assemblyInfo.InternalName} is already loaded.");
                     }
 #endif
                 }
@@ -178,12 +182,28 @@ public partial class PackageService : IContentPackageService
             }
 
             // what we need to filter to load
-                // must have dependencies already loaded if not in the same package, throw otherwise
-                    // should we request that they be loaded on-demand instead?
-                // check platform, target and culture supported.
-                // must not be lazy loadable (unless required by another package to be loaded)
-                // if marked as optional, load if dependent packages are loaded, do not throw
-                
+            // must have dependencies already loaded if not in the same package, throw otherwise
+            // should we request that they be loaded on-demand instead?
+            // check platform, target and culture supported.
+            // must not be lazy loadable (unless required by another package to be loaded)
+            // if marked as optional, load if dependent packages are loaded, do not throw
+
+            foreach (IAssemblyResourceInfo resourceInfo in assembliesInfo.Assemblies)
+            {
+                if (resourceInfo.Dependencies.IsDefaultOrEmpty)
+                    continue;
+                if (!_packageManagementService.CheckDependenciesLoaded(resourceInfo.Dependencies, out var missingPackages) && !resourceInfo.LazyLoad)
+                {
+                    _loggerService.LogError($"Package Service: not all dependencies for package {resourceInfo.OwnerPackage?.Name} are loaded. Missing Packages:");
+                    if (missingPackages.Any())
+                    {
+                        missingPackages.ForEach(p => _loggerService.LogError($">> SteamID: {p.SteamWorkshopId} | Name: {p.PackageName}"));
+                    }
+                    throw new MissingContentPackageException(this.Package, $"Package Service: Missing dependency packages for package {resourceInfo.OwnerPackage?.Name}");
+                }
+            }
+            
+            
 
             
 
@@ -217,6 +237,18 @@ public partial class PackageService : IContentPackageService
     {
         throw new NotImplementedException();
     }
+
+    #endregion
+
+
+    #region Internal
+
+    private bool AreContentsFromPackage(IEnumerable<IPackageInfo> packages)
+    {
+        return packages is null || packages.All(package => package.OwnerPackage is not null && package.OwnerPackage == this.Package);
+    }
+
+    #endregion
 
     
 }
