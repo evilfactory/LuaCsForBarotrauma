@@ -51,7 +51,7 @@ jobs:
           tar -czf "$CI_ARTIFACTS_DIR"/lua.tar.gz -C "$DOCS_LUA_ROOT"/build .
 
       - name: Upload tarball
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
+        uses: actions/upload-artifact@84480863f228bb9747b473957fcc9e309aa96097 # v4.4.2
         with:
           name: docs-lua
           path: ${{ env.CI_ARTIFACTS_DIR }}/lua.tar.gz
@@ -75,7 +75,7 @@ jobs:
           tar -czf "$CI_ARTIFACTS_DIR"/cs.tar.gz -C "$DOCS_CS_ROOT"/build .
 
       - name: Upload tarball
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
+        uses: actions/upload-artifact@84480863f228bb9747b473957fcc9e309aa96097 # v4.4.2
         with:
           name: docs-cs
           path: ${{ env.CI_ARTIFACTS_DIR }}/cs.tar.gz
