@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -830,8 +831,17 @@ public sealed class CsPackageManager : IDisposable
         }
         catch (Exception e)
         {
+            StackTrace st = new StackTrace(e);
+            String s = String.Join('\n',
+               st.GetFrames().SkipLast(2)
+               .Select(f => $"  at {f.GetMethod().DeclaringType}.{f.GetMethod().Name}()")
+            );
+            
             ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Error while running {messageMethodName}() on plugin of type {messageTypeName}");
-            ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e.Message} | {e.InnerException}");
+            ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Details: {e.Message}\n{s}");
+            if(e.InnerException != null){
+              ModUtils.Logging.PrintError($"{nameof(CsPackageManager)}: Inner Exception: {e.InnerException}");
+            }
         }
     }
     
