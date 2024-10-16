@@ -24,12 +24,12 @@ public interface IContentPackageService : IService,
     /// <param name="assembliesInfo"></param>
     /// <param name="ignoreDependencySorting"></param>
     /// <returns>Whether loading is successful. Returns true on an empty list.</returns>
-    bool TryLoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false);
-    bool TryLoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo);
-    bool TryLoadLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo);
+    void LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false);
+    void LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo);
+    void LoadLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo);
 #if CLIENT
-    bool TryLoadStyles([NotNull]IStylesResourcesInfo stylesInfo);
+    void LoadStyles([NotNull]IStylesResourcesInfo stylesInfo);
 #endif
-    bool TryLoadConfig();
+    void LoadConfig();
 }
 

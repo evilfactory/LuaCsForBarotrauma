@@ -36,7 +36,7 @@ public partial class PackageService : IStylesResourcesInfo
 
     public ImmutableArray<IStylesResourceInfo> StylesResourceInfos => ModConfigInfo?.StylesResourceInfos ?? ImmutableArray<IStylesResourceInfo>.Empty;
 
-    public bool TryLoadStyles([NotNull]IStylesResourcesInfo stylesInfo)
+    public void LoadStyles([NotNull]IStylesResourcesInfo stylesInfo)
     {
         throw new NotImplementedException();
     }   
