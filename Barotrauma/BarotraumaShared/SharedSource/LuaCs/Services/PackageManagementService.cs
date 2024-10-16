@@ -33,7 +33,7 @@ public class PackageManagementService : IPackageManagementService, IPluginManage
         throw new NotImplementedException();
     }
 
-    public bool CheckEnvironmentSupported(IPlatformInfo platform, IResourceCultureInfo cultureInfos)
+    public bool CheckEnvironmentSupported(IPlatformInfo platform)
     {
         throw new NotImplementedException();
     }

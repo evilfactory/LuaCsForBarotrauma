@@ -31,7 +31,35 @@ public partial class PackageService : IContentPackageService
     
     // .ctor in server source and client source
     
-    public ContentPackage Package { get; private set; }
+    private readonly ReaderWriterLockSlim _packageAccessLock = new();
+    private ContentPackage _package;
+    public ContentPackage Package
+    {
+        get
+        {
+            _packageAccessLock.EnterReadLock();
+            try
+            {
+                return _package;
+            }
+            finally
+            {
+                _packageAccessLock.ExitReadLock();
+            }
+        }
+        private set
+        {
+            _packageAccessLock.EnterWriteLock();
+            try
+            {
+                _package = value;
+            }
+            finally
+            {
+                _packageAccessLock.ExitWriteLock();
+            }
+        }
+    }
 
     #region DataContracts
 
@@ -128,81 +156,13 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public bool TryLoadPlugins([NotNull] IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
+    public void LoadPlugins([NotNull] IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
     {
         _operationsUsageLock.EnterReadLock();
         try
         {
-            if (assembliesInfo is null)
-            {
-                _loggerService.LogError($"Package Service: assemblies resources list is null!");
-                throw new NullReferenceException($"Package Service: assemblies resources list is null!");
-            }
-
-            if (this.Package is null)
-            {
-                _loggerService.LogError($"Package Service: package not set at TryLoadPlugins()!");
-                throw new NullReferenceException($"Package Service: package not set at TryLoadPlugins()!");
-            }
-
-            // Check if assemblies list is empty. Nothing more to do.
-            if (assembliesInfo.Assemblies.IsDefaultOrEmpty)
-                return true;
-
-            // Check if all assembly resources in the list are from this package, throw if not.
-            foreach (var resourceInfo in assembliesInfo.Assemblies)
-            {
-                if (resourceInfo.OwnerPackage is null)
-                {
-                    _loggerService.LogError(
-                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not have a package name set! Run by {this.Package.Name}.");
-                    throw new ArgumentException(
-                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not have a package name set! Run by {this.Package.Name}.");
-                }
-
-                if (resourceInfo.OwnerPackage != this.Package)
-                {
-                    _loggerService.LogError(
-                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
-                    throw new ArgumentException(
-                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
-                }
-            }
-
-            // Check if external dependencies are loaded and if current environment is supported, throw if not.
-            foreach (var resourceInfo in assembliesInfo.Assemblies)
-            {
-                if (resourceInfo.Dependencies.IsDefaultOrEmpty)
-                    continue;
-                bool resourceMissing = false;
-                
-                resourceInfo.Dependencies.ForEach(pdi =>
-                {
-                    // for clarification: assemblies passed to the function should always be loaded.
-                    // optional assemblies should be filtered out before the list is sent.
-                    /*if (pdi.Optional)
-                        return;*/
-                    if (!_packageManagementService.CheckDependencyLoaded(pdi))
-                    {
-                        resourceMissing = true;
-                        _loggerService.LogError(
-                            $"Package Service: the following dependency for package {resourceInfo.OwnerPackage.Name} is not loaded: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}");
-                    }
-                });
-
-                if (!resourceMissing)
-                {
-                    throw new FileLoadException(
-                        $"Package Service: dependencies for package {resourceInfo.OwnerPackage.Name} are not loaded");
-                }
-                
-                // check environment
-                if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo, resourceInfo))
-                {
-                    throw new PlatformNotSupportedException(
-                        $"Package service: the assembly {resourceInfo.InternalName} is not supported on this platform.");
-                }
-            }
+            SanitationChecksCore(assembliesInfo, "assemblies", nameof(LoadPlugins));
+            SanitationChecksEnumerable(assembliesInfo.Assemblies, "assemblies", nameof(LoadPlugins));
 
             // Order these assemblies by internal dependencies
             ImmutableArray<IAssemblyResourceInfo> resources;
@@ -220,11 +180,8 @@ public partial class PackageService : IContentPackageService
             // Try loading them, throw on failure.
             if (!_pluginService.Value.TryLoadAndInstanceTypes<IAssemblyPlugin>(resources, true, out var instancedTypes))
             {
-                _loggerService.LogError($"PackageService: unable to load assemblies for package {this.Package.Name}! Aborting loading!");
-                return false;
+                throw new TypeLoadException($"PackageService: unable to load assemblies for package {this.Package.Name}! Aborting loading!");
             }
-
-            return true;
         }
         finally
         {
@@ -232,17 +189,31 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public bool TryLoadLocalizations(ILocalizationsResourcesInfo localizationsInfo)
+    public void LoadLocalizations(ILocalizationsResourcesInfo localizationsInfo)
+    {
+        _operationsUsageLock.EnterReadLock();
+        try
+        {
+            SanitationChecksCore(localizationsInfo, "localizations", nameof(LoadLocalizations));
+            SanitationChecksEnumerable(localizationsInfo.Localizations, "localizations", nameof(LoadLocalizations));
+
+            if (!_localizationService.Value.TryLoadLocalizations(localizationsInfo.Localizations))
+            {
+                throw new FileLoadException($"Package Service: unable to load localizations for package {this.Package.Name}! Aborting!");
+            }
+        }
+        finally
+        {
+            _operationsUsageLock.ExitReadLock();
+        }
+    }
+
+    public void LoadLuaScripts(ILuaScriptsResourcesInfo luaScriptsInfo)
     {
         throw new NotImplementedException();
     }
 
-    public bool TryLoadLuaScripts(ILuaScriptsResourcesInfo luaScriptsInfo)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool TryLoadConfig()
+    public void LoadConfig()
     {
         throw new NotImplementedException();
     }
@@ -250,6 +221,86 @@ public partial class PackageService : IContentPackageService
     public void Dispose()
     {
         throw new NotImplementedException();
+    }
+
+    #endregion
+
+    #region INTERNAL
+
+    private void SanitationChecksCore(object o, string resTypeInfoName, string callerName)
+    {
+        if (o is null)
+        {
+            _loggerService.LogError($"Package Service: {resTypeInfoName} resources list is null!");
+            throw new NullReferenceException($"Package Service: {resTypeInfoName} resources list is null!");
+        }
+
+        if (this.Package is null)
+        {
+            _loggerService.LogError($"Package Service: package not set at {callerName}()!");
+            throw new NullReferenceException($"Package Service: package not set at {callerName}()!");
+        }
+    }
+    
+    private void SanitationChecksEnumerable<T>(ImmutableArray<T> resourceInfos, string resTypeInfoName, string callerName) where T : IResourceInfo, IResourceCultureInfo, IPackageInfo, IPackageDependenciesInfo
+    {
+        // Check if list is empty. Nothing more to do.
+        if (resourceInfos.IsDefaultOrEmpty)
+            return;
+
+        // Check if all resources in the list are from this package, throw if not.
+        foreach (var resourceInfo in resourceInfos)
+        {
+            // ownership checks
+            if (resourceInfo.OwnerPackage is null)
+            {
+                throw new ArgumentException($"Package Service: {resTypeInfoName} info for resource does not have a package name set! Run by {this.Package.Name}.");
+            }
+
+            if (resourceInfo.OwnerPackage != this.Package)
+            {
+                throw new ArgumentException(
+                    $"Package Service: {resTypeInfoName} info does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
+            }
+            
+            // Check if external dependencies are loaded and if current environment is supported, throw if not
+            if (resourceInfo.Dependencies.IsDefaultOrEmpty)
+                continue;
+            
+            bool resourceMissing = false;
+            
+            resourceInfo.Dependencies.ForEach(pdi =>
+            {
+                // for clarification: assemblies passed to the function should always be loaded.
+                // optional assemblies should be filtered out before the list is sent.
+                // left this as a reminder :)
+                /*if (pdi.Optional)
+                    return;*/
+                if (!_packageManagementService.CheckDependencyLoaded(pdi))
+                {
+                    resourceMissing = true;
+                    _loggerService.LogError(
+                        $"Package Service: the following dependency for package {resourceInfo.OwnerPackage.Name} is not loaded: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}");
+                }
+            });
+
+            if (!resourceMissing)
+            {
+                throw new FileLoadException($"Package Service: dependencies for package {resourceInfo.OwnerPackage.Name} are not loaded.");
+            }
+            
+            // check runtime platform
+            if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo))
+            {
+                throw new PlatformNotSupportedException($"Package service: the {resTypeInfoName} from {resourceInfo.OwnerPackage.Name} is not supported on this platform.");
+            }
+            
+            // check local culture
+            if (!_localizationService.Value.IsCurrentCultureSupported(resourceInfo))
+            {
+                throw new PlatformNotSupportedException($"Package service: the {resTypeInfoName} from {resourceInfo.OwnerPackage.Name} is not supported in this culture.");
+            }
+        }
     }
 
     #endregion

@@ -9,5 +9,5 @@ public interface IPackageManagementService : IService
 {
     bool CheckDependencyLoaded(IPackageDependencyInfo info);
     bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages);
-    bool CheckEnvironmentSupported(IPlatformInfo platform, IResourceCultureInfo cultureInfos);
+    bool CheckEnvironmentSupported(IPlatformInfo platform);
 }

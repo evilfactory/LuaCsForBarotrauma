@@ -42,11 +42,9 @@ public interface IXmlLegacyModConfigConverterService : IXmlResourceConverterServ
 
 #endregion
 
-/// <summary>
-/// 
-/// </summary>
-#region ResToInfoParsers
 
+#region ResToInfoParsers
+public interface ILocalizationResToInfoParser : IConverterService<ILocalizationResourceInfo, ILocalizationInfo> { }
 public interface IConfigResConverterService : IConverterService<IConfigResourceInfo, IConfigInfo> { }
 public interface IConfigProfileResConverterService : IConverterService<IConfigProfileResourceInfo, IConfigProfileInfo> { }
 
