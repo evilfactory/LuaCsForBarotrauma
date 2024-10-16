@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
 
@@ -35,7 +36,7 @@ public partial class PackageService : IStylesResourcesInfo
 
     public ImmutableArray<IStylesResourceInfo> StylesResourceInfos => ModConfigInfo?.StylesResourceInfos ?? ImmutableArray<IStylesResourceInfo>.Empty;
 
-    public partial bool TryLoadStyles()
+    public bool TryLoadStyles([NotNull]IStylesResourcesInfo stylesInfo)
     {
         throw new NotImplementedException();
     }   

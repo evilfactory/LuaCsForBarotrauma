@@ -23,6 +23,16 @@ public class PackageManagementService : IPackageManagementService, IPluginManage
         throw new NotImplementedException();
     }
 
+    public bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool CheckEnvironmentSupported(IPlatformInfo platform, IResourceCultureInfo cultureInfos)
+    {
+        throw new NotImplementedException();
+    }
+
     public bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos)
     {
         throw new NotImplementedException();
