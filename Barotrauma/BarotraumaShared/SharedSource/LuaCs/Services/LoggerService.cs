@@ -66,6 +66,11 @@ public partial class LoggerService : ILoggerService
         Log($"{message}", Color.Red, ServerLog.MessageType.Error);
     }
 
+    public void LogWarning(string message)
+    {
+        throw new NotImplementedException();
+    }
+
     public void LogMessage(string message, Color? serverColor = null, Color? clientColor = null)
     {
         serverColor ??= Color.MediumPurple;
@@ -125,6 +130,11 @@ public partial class LoggerService : ILoggerService
     }
 
     public void LogDebug(string message, Color? color = null)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LogDebugWarning(string message)
     {
         throw new NotImplementedException();
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Barotrauma.LuaCs.Services.Processing;
 
 // ReSharper disable once CheckNamespace
@@ -26,11 +27,5 @@ public partial class PackageService
         _packageManagementService = packageManagementService;
         _storageService = storageService;
         _loggerService = loggerService;
-    }
-
-    // The server doesn't use styles data.
-    public partial bool TryLoadStyles()
-    {
-        return true;
     }
 }

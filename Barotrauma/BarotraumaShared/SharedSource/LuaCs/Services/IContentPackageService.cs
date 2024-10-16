@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
@@ -15,12 +16,13 @@ public interface IContentPackageService : IService,
     /// </summary>
     /// <param name="package"></param>
     /// <returns>Whether the package was parsed without errors and any information was found. Will return false for purely vanilla packages.</returns>
-    bool TryLoadResourcesInfo(ContentPackage package);
-
-    bool TryLoadPlugins(IAssembliesResourcesInfo assembliesInfo = null);
-    bool TryLoadLocalizations();
-    bool TryLoadLuaScripts();
-    bool TryLoadStyles();
+    bool TryLoadResourcesInfo([NotNull]ContentPackage package);
+    bool TryLoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false);
+    bool TryLoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo);
+    bool TryLoadLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo);
+#if CLIENT
+    bool TryLoadStyles([NotNull]IStylesResourcesInfo stylesInfo);
+#endif
     bool TryLoadConfig();
 }
 

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
+using Barotrauma.Steam;
+using QuikGraph;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -126,86 +130,107 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public bool TryLoadPlugins(IAssembliesResourcesInfo assembliesInfo = null)
+    public bool TryLoadPlugins([NotNull] IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
     {
         _operationsUsageLock.EnterReadLock();
         try
         {
-            if (Package is null)
+            if (assembliesInfo is null)
             {
-                _loggerService.LogError($"PackageService: tried to load plugins without a package being set!");
+                _loggerService.LogError($"Package Service: assemblies resources list is null!");
+                throw new NullReferenceException($"Package Service: assemblies resources list is null!");
+            }
+
+            if (this.Package is null)
+            {
+                _loggerService.LogError($"Package Service: package not set at TryLoadPlugins()!");
+                throw new NullReferenceException($"Package Service: package not set at TryLoadPlugins()!");
+            }
+
+            // Check if assemblies list is empty. Return false if it is.
+            if (assembliesInfo.Assemblies.IsDefaultOrEmpty)
                 return false;
-            }
 
-            if (!assembliesInfo?.Assemblies.IsDefaultOrEmpty ?? false)
+            // Check if all assembly resources in the list are from this package, throw if not.
+            foreach (var resourceInfo in assembliesInfo.Assemblies)
             {
-                // never load another package's assemblies in this service
-                if (!AreContentsFromPackage(assembliesInfo.Assemblies))
+                if (resourceInfo.OwnerPackage is null)
                 {
-                    // log it then throw
                     _loggerService.LogError(
-                        $"Package Service: tried to load assemblies for an unrelated package! Package service current: {this.Package}.");
+                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not have a package name set! Run by {this.Package.Name}.");
                     throw new ArgumentException(
-                        $"Package Service: tried to load assemblies for an unrelated package! Package service current: {this.Package}.");
+                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not have a package name set! Run by {this.Package.Name}.");
                 }
-                
-                foreach (var assemblyInfo in assembliesInfo.Assemblies)
-                {
-                    // All assemblies must have an internal name
-                    if (assemblyInfo.InternalName.IsNullOrWhiteSpace())
-                    {
-                        _loggerService.LogError(
-                            $"Package Service: assembly info in package {assemblyInfo.OwnerPackage.Name} does not have an InternalName (see ModConfig.xml). Cannot continue.");
-                        throw new ArgumentException(
-                            $"Package Service: tried to load assemblies for an unrelated package! Owner package {assemblyInfo.OwnerPackage?.Name}, package service current: {this.Package}.");
-                    }
 
-#if DEBUG
-                    // Something has already loaded this assembly. This shouldn't stop execution since there's no isolation but this may be a package issue for devs,
-                    // or it could just be a common library that multiple content packages contain.
-                    if (_pluginService.Value.IsAssemblyLoadedGlobal(assemblyInfo.InternalName))
-                    {
-                        _loggerService.LogDebugWarning($"Package Service: The assembly {assemblyInfo.InternalName} is already loaded.");
-                    }
-#endif
-                }
-            }
-            else
-            {
-                // either the list is empty or was null, so we load the default set
-                assembliesInfo = this;
-                if (assembliesInfo.Assemblies.IsDefaultOrEmpty)
+                if (resourceInfo.OwnerPackage != this.Package)
                 {
-                    // nothing to load
-                    return true;
+                    _loggerService.LogError(
+                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
+                    throw new ArgumentException(
+                        $"Package Service: assembly info for assembly {resourceInfo.InternalName} does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
                 }
             }
 
-            // what we need to filter to load
-            // must have dependencies already loaded if not in the same package, throw otherwise
-            // should we request that they be loaded on-demand instead?
-            // check platform, target and culture supported.
-            // must not be lazy loadable (unless required by another package to be loaded)
-            // if marked as optional, load if dependent packages are loaded, do not throw
-
-            foreach (IAssemblyResourceInfo resourceInfo in assembliesInfo.Assemblies)
+            // Check if external dependencies are loaded and if current environment is supported, throw if not.
+            foreach (var resourceInfo in assembliesInfo.Assemblies)
             {
                 if (resourceInfo.Dependencies.IsDefaultOrEmpty)
                     continue;
-                if (!_packageManagementService.CheckDependenciesLoaded(resourceInfo.Dependencies, out var missingPackages) && !resourceInfo.LazyLoad)
+                bool resourceMissing = false;
+                
+                resourceInfo.Dependencies.ForEach(pdi =>
                 {
-                    _loggerService.LogError($"Package Service: not all dependencies for package {resourceInfo.OwnerPackage?.Name} are loaded. Missing Packages:");
-                    if (missingPackages.Any())
+                    // for clarification: assemblies passed to the function should always be loaded.
+                    // optional assemblies should be filtered out before the list is sent.
+                    /*if (pdi.Optional)
+                        return;*/
+                    if (!_packageManagementService.CheckDependencyLoaded(pdi))
                     {
-                        missingPackages.ForEach(p => _loggerService.LogError($">> SteamID: {p.SteamWorkshopId} | Name: {p.PackageName}"));
+                        resourceMissing = true;
+                        _loggerService.LogError(
+                            $"Package Service: the following dependency for package {resourceInfo.OwnerPackage.Name} is not loaded: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}");
                     }
-                    throw new MissingContentPackageException(this.Package, $"Package Service: Missing dependency packages for package {resourceInfo.OwnerPackage?.Name}");
+                });
+
+                if (!resourceMissing)
+                {
+                    throw new FileLoadException(
+                        $"Package Service: dependencies for package {resourceInfo.OwnerPackage.Name} are not loaded");
+                }
+                
+                // check environment
+                if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo, resourceInfo))
+                {
+                    throw new PlatformNotSupportedException(
+                        $"Package service: the assembly {resourceInfo.InternalName} is not supported on this platform.");
                 }
             }
-            
-            
 
+            // Order these assemblies by internal dependencies
+            ImmutableArray<IAssemblyResourceInfo> resources;
+            if (ignoreDependencySorting)
+            {
+                resources = assembliesInfo.Assemblies;
+            }
+            else
+            {
+                Dictionary<Guid, IAssemblyResourceInfo> resourceGuids = new();
+                var graph = new AdjacencyGraph<Guid, Edge<Guid>>();
+
+                foreach (var assemblyInfo in assembliesInfo.Assemblies) 
+                {
+                    resourceGuids.Add(Guid.NewGuid(), assemblyInfo);
+                }
+
+                // build a graph edge list, include only intramod dependencies.
+                foreach (var resourceGuid in resourceGuids)
+                {
+                    
+                }
+                
+            }
             
+            // Try loading them, return success states.
 
 
             throw new NotImplementedException();
@@ -216,17 +241,15 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public bool TryLoadLocalizations()
+    public bool TryLoadLocalizations(ILocalizationsResourcesInfo localizationsInfo)
     {
         throw new NotImplementedException();
     }
 
-    public bool TryLoadLuaScripts()
+    public bool TryLoadLuaScripts(ILuaScriptsResourcesInfo luaScriptsInfo)
     {
         throw new NotImplementedException();
     }
-
-    public partial bool TryLoadStyles();
 
     public bool TryLoadConfig()
     {
