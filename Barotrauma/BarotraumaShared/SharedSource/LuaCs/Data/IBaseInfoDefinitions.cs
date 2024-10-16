@@ -36,6 +36,12 @@ public interface IPackageInfo
 public interface IResourceInfo : IPlatformInfo
 {
     /// <summary>
+    /// [Optional]
+    /// Allows you to specify the loading order for all assets of the same type (ie. styles, assemblies, etc.).
+    /// </summary>
+    int LoadPriority { get; }
+    
+    /// <summary>
     /// Resource absolute file paths.
     /// </summary>
     [Required]

@@ -9,8 +9,6 @@ using System.Threading;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
-using Barotrauma.Steam;
-using QuikGraph;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -147,9 +145,9 @@ public partial class PackageService : IContentPackageService
                 throw new NullReferenceException($"Package Service: package not set at TryLoadPlugins()!");
             }
 
-            // Check if assemblies list is empty. Return false if it is.
+            // Check if assemblies list is empty. Nothing more to do.
             if (assembliesInfo.Assemblies.IsDefaultOrEmpty)
-                return false;
+                return true;
 
             // Check if all assembly resources in the list are from this package, throw if not.
             foreach (var resourceInfo in assembliesInfo.Assemblies)
@@ -212,28 +210,21 @@ public partial class PackageService : IContentPackageService
             {
                 resources = assembliesInfo.Assemblies;
             }
-            else
+            else // sort by load order
             {
-                Dictionary<Guid, IAssemblyResourceInfo> resourceGuids = new();
-                var graph = new AdjacencyGraph<Guid, Edge<Guid>>();
-
-                foreach (var assemblyInfo in assembliesInfo.Assemblies) 
-                {
-                    resourceGuids.Add(Guid.NewGuid(), assemblyInfo);
-                }
-
-                // build a graph edge list, include only intramod dependencies.
-                foreach (var resourceGuid in resourceGuids)
-                {
-                    
-                }
-                
+                resources = assembliesInfo.Assemblies
+                    .OrderByDescending(a => a.LoadPriority)
+                    .ToImmutableArray();
             }
             
-            // Try loading them, return success states.
+            // Try loading them, throw on failure.
+            if (!_pluginService.Value.TryLoadAndInstanceTypes<IAssemblyPlugin>(resources, true, out var instancedTypes))
+            {
+                _loggerService.LogError($"PackageService: unable to load assemblies for package {this.Package.Name}! Aborting loading!");
+                return false;
+            }
 
-
-            throw new NotImplementedException();
+            return true;
         }
         finally
         {
@@ -262,16 +253,4 @@ public partial class PackageService : IContentPackageService
     }
 
     #endregion
-
-
-    #region Internal
-
-    private bool AreContentsFromPackage(IEnumerable<IPackageInfo> packages)
-    {
-        return packages is null || packages.All(package => package.OwnerPackage is not null && package.OwnerPackage == this.Package);
-    }
-
-    #endregion
-
-    
 }

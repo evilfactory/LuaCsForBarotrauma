@@ -18,6 +18,11 @@ public class PackageManagementService : IPackageManagementService, IPluginManage
         throw new System.NotImplementedException();
     }
 
+    public bool IsAssemblyLoadedGlobal(string friendlyName)
+    {
+        throw new NotImplementedException();
+    }
+
     public bool CheckDependencyLoaded(IPackageDependencyInfo info)
     {
         throw new NotImplementedException();
