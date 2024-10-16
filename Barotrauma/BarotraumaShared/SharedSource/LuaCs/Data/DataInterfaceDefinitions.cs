@@ -34,6 +34,7 @@ public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
     public bool LazyLoad { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
+    public int LoadPriority { get; init; }
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
@@ -55,6 +56,7 @@ public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
     public CultureInfo TargetCulture { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
+    public int LoadPriority { get; init; }
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
@@ -65,6 +67,7 @@ public readonly struct LuaScriptResourceInfo : ILuaResourceInfo
     public ContentPackage OwnerPackage { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
+    public int LoadPriority { get; init; }
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
