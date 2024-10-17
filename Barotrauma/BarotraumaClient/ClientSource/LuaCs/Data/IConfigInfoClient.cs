@@ -5,7 +5,7 @@ namespace Barotrauma.LuaCs.Data;
 /// <summary>
 /// Client-only information for IConfigInfo contract, such as icons and display resources.
 /// </summary>
-public interface IConfigInfoClient
+public partial interface IConfigInfo
 {
     string Description { get; }
     /// <summary>

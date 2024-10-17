@@ -1,6 +1,12 @@
-﻿namespace Barotrauma.LuaCs.Services;
+﻿using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
+using Barotrauma.LuaCs.Data;
+
+namespace Barotrauma.LuaCs.Services;
 
 public interface IConfigService : IService
 {
+    bool TryAddConfigs(ImmutableArray<IConfigResourceInfo> configResources);
+    bool TryAddConfigsProfiles(ImmutableArray<IConfigProfileResourceInfo> configProfileResources);
     
 }

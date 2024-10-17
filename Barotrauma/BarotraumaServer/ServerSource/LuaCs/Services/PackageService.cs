@@ -13,6 +13,7 @@ public partial class PackageService
         Lazy<ILuaScriptService> luaScriptService,
         Lazy<ILocalizationService> localizationService,
         Lazy<IPluginService> pluginService,
+        Lazy<IConfigService> configService,
         IPluginManagementService pluginManagementService,
         IPackageManagementService packageManagementService,
         IStorageService storageService,
@@ -23,6 +24,7 @@ public partial class PackageService
         _luaScriptService = luaScriptService;
         _localizationService = localizationService;
         _pluginService = pluginService;
+        _configService = configService;
         _pluginManagementService = pluginManagementService;
         _packageManagementService = packageManagementService;
         _storageService = storageService;
