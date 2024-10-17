@@ -24,6 +24,7 @@ public partial class PackageService : IContentPackageService
     private readonly Lazy<ILuaScriptService> _luaScriptService;
     private readonly Lazy<ILocalizationService> _localizationService;
     private readonly Lazy<IPluginService> _pluginService;
+    private readonly Lazy<IConfigService> _configService;
     private readonly IPluginManagementService _pluginManagementService;
     private readonly IPackageManagementService _packageManagementService;
     private readonly IStorageService _storageService;
@@ -156,7 +157,7 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public void LoadPlugins([NotNull] IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
+    public void LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
     {
         _operationsUsageLock.EnterReadLock();
         try
@@ -189,7 +190,7 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public void LoadLocalizations(ILocalizationsResourcesInfo localizationsInfo)
+    public void LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo)
     {
         _operationsUsageLock.EnterReadLock();
         try
@@ -208,14 +209,54 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public void LoadLuaScripts(ILuaScriptsResourcesInfo luaScriptsInfo)
+    public void LoadLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
     {
-        throw new NotImplementedException();
+        _operationsUsageLock.EnterReadLock();
+        try
+        {
+            SanitationChecksCore(luaScriptsInfo, "luaScripts", nameof(LoadLuaScripts));
+            SanitationChecksEnumerable(luaScriptsInfo.LuaScripts, "luaScripts", nameof(LoadLuaScripts));
+
+            if (!_luaScriptService.Value.TryAddScriptFiles(luaScriptsInfo.LuaScripts))
+            {
+                throw new ArgumentException(
+                    $"Package Service: unable to add lua files for package {this.Package.Name}! Aborting!");
+            }
+        }
+        finally
+        {
+            _operationsUsageLock.ExitReadLock();
+        }
     }
 
-    public void LoadConfig()
+    public void LoadConfig(
+        [NotNull]IConfigsResourcesInfo configsResourcesInfo, 
+        [NotNull]IConfigProfilesResourcesInfo configProfilesResourcesInfo)
     {
-        throw new NotImplementedException();
+        _operationsUsageLock.EnterReadLock();
+        try
+        {
+            SanitationChecksCore(configsResourcesInfo, "config", nameof(LoadConfig));
+            SanitationChecksCore(configProfilesResourcesInfo, "config profiles", nameof(LoadConfig));
+            SanitationChecksEnumerable(configsResourcesInfo.Configs, "config", nameof(LoadConfig));
+            SanitationChecksEnumerable(configProfilesResourcesInfo.ConfigProfiles, "config profiles", nameof(LoadConfig));
+
+            if (!_configService.Value.TryAddConfigs(configsResourcesInfo.Configs))
+            {
+                throw new ArgumentException(
+                    $"Package Service: unable to add configs for package {this.Package.Name}! Aborting!");
+            }
+            
+            if (!_configService.Value.TryAddConfigsProfiles(configProfilesResourcesInfo.ConfigProfiles))
+            {
+                throw new ArgumentException(
+                    $"Package Service: unable to add configs profiles for package {this.Package.Name}! Aborting!");
+            }
+        }
+        finally
+        {
+            _operationsUsageLock.ExitReadLock();
+        }
     }
 
     public void Dispose()

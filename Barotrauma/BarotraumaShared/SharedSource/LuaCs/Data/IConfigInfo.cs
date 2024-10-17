@@ -4,7 +4,7 @@ using Barotrauma.Networking;
 namespace Barotrauma.LuaCs.Data;
 
 // TODO: Finish
-public interface IConfigInfo
+public partial interface IConfigInfo
 {
     string Name { get; }
     string PackageName { get; }

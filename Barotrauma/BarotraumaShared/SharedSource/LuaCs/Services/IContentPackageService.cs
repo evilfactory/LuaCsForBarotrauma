@@ -30,6 +30,6 @@ public interface IContentPackageService : IService,
 #if CLIENT
     void LoadStyles([NotNull]IStylesResourcesInfo stylesInfo);
 #endif
-    void LoadConfig();
+    void LoadConfig([NotNull]IConfigsResourcesInfo configsResourcesInfo, [NotNull]IConfigProfilesResourcesInfo configProfilesResourcesInfo);
 }
 

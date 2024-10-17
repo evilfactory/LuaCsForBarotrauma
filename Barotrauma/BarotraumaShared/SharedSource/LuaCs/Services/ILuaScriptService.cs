@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Reflection;
+using Barotrauma.LuaCs.Data;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
 
@@ -11,9 +12,19 @@ public interface ILuaScriptService : IService
 {
     #region Script_File_Runner
 
-    void AddScriptFiles(IEnumerable<string> filePaths);
-    void RemoveScriptFiles(IEnumerable<string> filePaths);
-    ImmutableArray<string> GetScriptFiles();
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="filePaths"></param>
+    /// <returns></returns>
+    bool TryAddScriptFiles(ImmutableArray<ILuaResourceInfo> filePaths);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="filePaths"></param>
+    /// <returns></returns>
+    bool TryRemoveScriptFiles(ImmutableArray<ILuaResourceInfo> filePaths);
+    ImmutableArray<ILuaResourceInfo> GetScriptFiles();
 
     #endregion
 }

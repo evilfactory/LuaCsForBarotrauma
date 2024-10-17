@@ -42,4 +42,14 @@ public interface ILuaScriptsResourcesInfo
     ImmutableArray<ILuaResourceInfo> LuaScripts { get; }
 }
 
+public interface IConfigsResourcesInfo
+{
+    ImmutableArray<IConfigResourceInfo> Configs { get; }
+}
+
+public interface IConfigProfilesResourcesInfo
+{
+    ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; }
+}
+
 #endregion
