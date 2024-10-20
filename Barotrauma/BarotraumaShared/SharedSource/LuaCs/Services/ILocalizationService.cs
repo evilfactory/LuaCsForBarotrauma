@@ -9,7 +9,7 @@ namespace Barotrauma.LuaCs.Services;
 public interface ILocalizationService : IService
 {
     IReadOnlyCollection<CultureInfo> GetLoadedLocales();
-    void UnloadAll();
+    void Remove(ImmutableArray<ILocalizationResourceInfo> localizations);
     bool TrySetCurrentCulture(CultureInfo culture);
     bool TrySetCurrentCulture(string cultureName);
     bool TryLoadLocalizations(ImmutableArray<ILocalizationResourceInfo> localizationResources);

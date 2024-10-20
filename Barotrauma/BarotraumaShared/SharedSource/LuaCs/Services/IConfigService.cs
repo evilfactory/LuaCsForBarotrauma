@@ -8,5 +8,6 @@ public interface IConfigService : IService
 {
     bool TryAddConfigs(ImmutableArray<IConfigResourceInfo> configResources);
     bool TryAddConfigsProfiles(ImmutableArray<IConfigProfileResourceInfo> configProfileResources);
-    
+    void RemoveConfigs(ImmutableArray<IConfigResourceInfo> configResources);
+    void RemoveConfigsProfiles(ImmutableArray<IConfigProfileResourceInfo> configProfilesResources);
 }
