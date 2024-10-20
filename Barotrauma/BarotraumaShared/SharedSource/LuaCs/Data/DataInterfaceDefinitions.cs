@@ -19,6 +19,8 @@ public partial class ModConfigInfo : IModConfigInfo
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
     public ImmutableArray<ILuaResourceInfo> LuaScripts { get; init; }
+    public ImmutableArray<IConfigResourceInfo> Configs { get; init; }
+    public ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; init; }
 }
 
 #endregion

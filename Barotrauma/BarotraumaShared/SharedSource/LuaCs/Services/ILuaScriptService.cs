@@ -15,16 +15,16 @@ public interface ILuaScriptService : IService
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="filePaths"></param>
+    /// <param name="luaResource"></param>
     /// <returns></returns>
-    bool TryAddScriptFiles(ImmutableArray<ILuaResourceInfo> filePaths);
+    bool TryAddScriptFiles(ImmutableArray<ILuaResourceInfo> luaResource);
     /// <summary>
-    /// 
+    /// Removes the specific resources from the script runner. Important: Does not stop the
+    /// execution of any code related to the files nor guarantee cleanup of resources! 
     /// </summary>
-    /// <param name="filePaths"></param>
-    /// <returns></returns>
-    bool TryRemoveScriptFiles(ImmutableArray<ILuaResourceInfo> filePaths);
-    ImmutableArray<ILuaResourceInfo> GetScriptFiles();
+    /// <param name="luaResource"></param>
+    void RemoveScriptFiles(ImmutableArray<ILuaResourceInfo> luaResource);
+    ImmutableArray<ILuaResourceInfo> GetScriptResources();
 
     #endregion
 }
