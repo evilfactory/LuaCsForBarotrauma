@@ -28,7 +28,6 @@ public interface IPackageService : IService,
     void LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false);
     void LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo);
     void AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo);
-    bool TryExecuteLuaScripts(bool pauseExecutionOnScriptError = false, bool verboseScriptLogging = false);
 #if CLIENT
     void LoadStyles([NotNull]IStylesResourcesInfo stylesInfo);
 #endif
