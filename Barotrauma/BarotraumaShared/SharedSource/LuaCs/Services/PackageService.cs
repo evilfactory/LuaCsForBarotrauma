@@ -327,24 +327,6 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public bool TryExecuteLuaScripts(bool pauseExecutionOnScriptError = false, bool verboseScriptLogging = false)
-    {
-        _operationsUsageLock.EnterReadLock();
-        try
-        {
-            SanitationChecksCore(this, "lua scripts", nameof(TryExecuteLuaScripts));
-            return _luaScriptService.Value.TryExecuteScripts(pauseExecutionOnScriptError, verboseScriptLogging);
-        }
-        catch(Exception e) when (e is not NullReferenceException)
-        {
-            return false;
-        }
-        finally
-        {
-            _operationsUsageLock.ExitReadLock();
-        }
-    }
-
     public void LoadConfig(
         [NotNull]IConfigsResourcesInfo configsResourcesInfo, 
         [NotNull]IConfigProfilesResourcesInfo configProfilesResourcesInfo)
