@@ -13,7 +13,7 @@ using Barotrauma.LuaCs.Services.Processing;
 
 namespace Barotrauma.LuaCs.Services;
 
-public partial class PackageService : IContentPackageService
+public partial class PackageService : IPackageService
 {
     private readonly ReaderWriterLockSlim _operationsUsageLock = new();
     // only stops race conditions for pointer access
@@ -289,7 +289,7 @@ public partial class PackageService : IContentPackageService
         }
     }
 
-    public void LoadLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
+    public void AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
@@ -300,8 +300,8 @@ public partial class PackageService : IContentPackageService
                 throw new ObjectDisposedException($"This package service instance is disposed!");
             }
             
-            SanitationChecksCore(luaScriptsInfo, "luaScripts", nameof(LoadLuaScripts));
-            SanitationChecksEnumerable(luaScriptsInfo.LuaScripts, "luaScripts", nameof(LoadLuaScripts));
+            SanitationChecksCore(luaScriptsInfo, "luaScripts", nameof(AddLuaScripts));
+            SanitationChecksEnumerable(luaScriptsInfo.LuaScripts, "luaScripts", nameof(AddLuaScripts));
 
 #if DEBUG
             luaScriptsInfo.LuaScripts.ForEach(ri =>
@@ -323,6 +323,24 @@ public partial class PackageService : IContentPackageService
         finally
         {
             LoadingOperationsRunning = false;
+            _operationsUsageLock.ExitReadLock();
+        }
+    }
+
+    public bool TryExecuteLuaScripts(bool pauseExecutionOnScriptError = false, bool verboseScriptLogging = false)
+    {
+        _operationsUsageLock.EnterReadLock();
+        try
+        {
+            SanitationChecksCore(this, "lua scripts", nameof(TryExecuteLuaScripts));
+            return _luaScriptService.Value.TryExecuteScripts(pauseExecutionOnScriptError, verboseScriptLogging);
+        }
+        catch(Exception e) when (e is not NullReferenceException)
+        {
+            return false;
+        }
+        finally
+        {
             _operationsUsageLock.ExitReadLock();
         }
     }

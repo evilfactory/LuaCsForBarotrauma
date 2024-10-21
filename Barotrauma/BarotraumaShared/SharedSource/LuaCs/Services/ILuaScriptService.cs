@@ -10,20 +10,28 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface ILuaScriptService : IService
 {
-    #region Script_File_Runner
+    #region Script_File_Collector
 
     /// <summary>
-    /// 
+    /// Adds the script files to the runner but does not execute them.
     /// </summary>
     /// <param name="luaResource"></param>
     /// <returns></returns>
     bool TryAddScriptFiles(ImmutableArray<ILuaResourceInfo> luaResource);
     /// <summary>
     /// Removes the specific resources from the script runner. Important: Does not stop the
-    /// execution of any code related to the files nor guarantee cleanup of resources! 
+    /// execution of any code related to the files nor guarantee cleanup of resources!
     /// </summary>
     /// <param name="luaResource"></param>
     void RemoveScriptFiles(ImmutableArray<ILuaResourceInfo> luaResource);
+
+    /// <summary>
+    /// Executes loaded script files on the management service.
+    /// </summary>
+    /// <param name="pauseExecutionOnScriptError"></param>
+    /// <param name="verboseLogging"></param>
+    /// <returns></returns>
+    bool TryExecuteScripts(bool pauseExecutionOnScriptError = false, bool verboseLogging = false);
     ImmutableArray<ILuaResourceInfo> GetScriptResources();
 
     #endregion
@@ -31,6 +39,14 @@ public interface ILuaScriptService : IService
 
 public interface ILuaScriptManagementService : IService
 {
+    #region Script_File_Execution
+
+    bool TryExecuteLoadedScripts(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    bool TryExecuteLoadedScripts(ImmutableArray<ILuaResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    bool TryExecuteLoadedScripts(bool pauseExecutionOnError = false, bool verboseLogging = false);
+
+    #endregion
+    
     #region Type_Registration
 
     IUserDataDescriptor RegisterType(Type type);

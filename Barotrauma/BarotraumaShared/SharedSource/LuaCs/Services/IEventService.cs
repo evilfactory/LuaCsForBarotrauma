@@ -1,6 +1,6 @@
 ﻿namespace Barotrauma.LuaCs.Services;
 
-public interface IHookMgmtService : IService
+public interface IEventService
 {
     
 }
