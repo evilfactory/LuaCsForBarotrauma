@@ -6,7 +6,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IContentPackageService : IService, 
+public interface IPackageService : IService, 
     // These allow us the pass the IContentPackageService to anything that needs the data without having to directly reference the member
     IPackageDependenciesInfo, IResourceCultureInfo, IAssembliesResourcesInfo, ILocalizationsResourcesInfo, ILuaScriptsResourcesInfo
 {
@@ -27,7 +27,8 @@ public interface IContentPackageService : IService,
     /// <returns>Whether loading is successful. Returns true on an empty list.</returns>
     void LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false);
     void LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo);
-    void LoadLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo);
+    void AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo);
+    bool TryExecuteLuaScripts(bool pauseExecutionOnScriptError = false, bool verboseScriptLogging = false);
 #if CLIENT
     void LoadStyles([NotNull]IStylesResourcesInfo stylesInfo);
 #endif
