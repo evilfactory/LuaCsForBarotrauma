@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('_test_screen_8cs_source.html',''); ini
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Camera Cam { <span class="keyword">get</span>; }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>? miniMapItem;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>? miniMapItem;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>? dummyCharacter;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Effect? BlueprintEffect;</div>
@@ -138,82 +138,85 @@ $(document).ready(function(){initNavTree('_test_screen_8cs_source.html',''); ini
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            dummyCharacter = <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>.Create(CharacterPrefab.HumanSpeciesName, Vector2.Zero, <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">id</span>: Entity.DummyID, hasAi: <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            dummyCharacter.Info.Job = <span class="keyword">new</span> Job(JobPrefab.Prefabs.FirstOrDefault(<span class="keyword">static</span> jp =&gt; jp.Identifier == <span class="stringliteral">&quot;captain&quot;</span>));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            dummyCharacter.Info.Job = <span class="keyword">new</span> Job(JobPrefab.Prefabs.FirstOrDefault(<span class="keyword">static</span> jp =&gt; jp.Identifier == <span class="stringliteral">&quot;captain&quot;</span>), isPvP: <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            dummyCharacter.Info.Name = <span class="stringliteral">&quot;Galldren&quot;</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            dummyCharacter.Inventory.CreateSlots();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            dummyCharacter.Info.GiveExperience(999999);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            miniMapItem = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>(ItemPrefab.Find(<span class="keyword">null</span>, <span class="stringliteral">&quot;circuitbox&quot;</span>.ToIdentifier()), Vector2.Zero, <span class="keyword">null</span>, 1337, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            miniMapItem = <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>(ItemPrefab.Find(<span class="keyword">null</span>, <span class="stringliteral">&quot;circuitbox&quot;</span>.ToIdentifier()), Vector2.Zero, <span class="keyword">null</span>, 1337, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            miniMapItem.GetComponent&lt;<a class="code" href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html">Holdable</a>&gt;().AttachToWall();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Character</a>.Controlled = dummyCharacter;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            GameMain.World.ProcessChanges();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="class_barotrauma_1_1_screen.html#afc3fadecadedb61af4bf71b0a57e011c">Frame</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#a507f4028f9588870b5b744b1329e9c0d">AddToGUIUpdateList</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="class_character_h_u_d.html">CharacterHUD</a>.AddToGUIUpdateList(dummyCharacter);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            dummyCharacter?.SelectedItem?.AddToGUIUpdateList();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            TabMenu?.AddToGUIUpdateList();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">double</span> deltaTime)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            base.Update(deltaTime);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            TabMenu?.Update((<span class="keywordtype">float</span>)deltaTime);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (dummyCharacter is { } dummy &amp;&amp; miniMapItem is { } item)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">if</span> (dummy.SelectedItem != item)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    dummy.SelectedItem = item;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                dummy.SelectedItem?.UpdateHUD(Cam, dummy, (<span class="keywordtype">float</span>)deltaTime);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                item.SendSignal(<span class="stringliteral">&quot;1&quot;</span>, <span class="stringliteral">&quot;signal_in1&quot;</span>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                Vector2 pos = FarseerPhysics.ConvertUnits.ToSimUnits(item.Position);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">foreach</span> (Limb limb <span class="keywordflow">in</span> dummy.AnimController.Limbs)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    limb.body.SetTransform(pos, 0.0f);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">if</span> (dummy.AnimController?.Collider is { } collider)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    collider.SetTransform(pos, 0);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                dummy.ControlLocalPlayer((<span class="keywordtype">float</span>)deltaTime, Cam, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                dummy.Control((<span class="keywordtype">float</span>)deltaTime, Cam);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Draw(<span class="keywordtype">double</span> deltaTime, GraphicsDevice graphics, SpriteBatch spriteBatch)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            base.Draw(deltaTime, graphics, spriteBatch);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            graphics.Clear(BackgroundColor);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: Cam.Transform);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            miniMapItem?.Draw(spriteBatch, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">if</span> (dummyCharacter is { } dummy)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                dummyCharacter.DrawFront(spriteBatch, Cam);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                dummyCharacter.Draw(spriteBatch, Cam);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            spriteBatch.End();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: GUI.SamplerState);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            GUI.Draw(Cam, spriteBatch);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            dummyCharacter?.DrawHUD(spriteBatch, Cam, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            spriteBatch.End();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            dummyCharacter.Info.TalentRefundPoints = 2;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            TabMenu = <span class="keyword">new</span> TabMenu();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="class_barotrauma_1_1_screen.html#afc3fadecadedb61af4bf71b0a57e011c">Frame</a>.<a class="code" href="class_barotrauma_1_1_g_u_i_component.html#a507f4028f9588870b5b744b1329e9c0d">AddToGUIUpdateList</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="class_character_h_u_d.html">CharacterHUD</a>.AddToGUIUpdateList(dummyCharacter);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            dummyCharacter?.SelectedItem?.AddToGUIUpdateList();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            TabMenu?.AddToGUIUpdateList();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">double</span> deltaTime)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            base.Update(deltaTime);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            TabMenu?.Update((<span class="keywordtype">float</span>)deltaTime);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (dummyCharacter is { } dummy &amp;&amp; miniMapItem is { } item)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">if</span> (dummy.SelectedItem != item)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    dummy.SelectedItem = item;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                dummy.SelectedItem?.UpdateHUD(Cam, dummy, (<span class="keywordtype">float</span>)deltaTime);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                item.SendSignal(<span class="stringliteral">&quot;1&quot;</span>, <span class="stringliteral">&quot;signal_in1&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                Vector2 pos = FarseerPhysics.ConvertUnits.ToSimUnits(item.Position);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">foreach</span> (Limb limb <span class="keywordflow">in</span> dummy.AnimController.Limbs)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    limb.body.SetTransform(pos, 0.0f);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">if</span> (dummy.AnimController?.Collider is { } collider)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    collider.SetTransform(pos, 0);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                dummy.ControlLocalPlayer((<span class="keywordtype">float</span>)deltaTime, Cam, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                dummy.Control((<span class="keywordtype">float</span>)deltaTime, Cam);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Draw(<span class="keywordtype">double</span> deltaTime, GraphicsDevice graphics, SpriteBatch spriteBatch)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            base.Draw(deltaTime, graphics, spriteBatch);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            graphics.Clear(BackgroundColor);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: Cam.Transform);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            miniMapItem?.Draw(spriteBatch, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">if</span> (dummyCharacter is { } dummy)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                dummyCharacter.DrawFront(spriteBatch, Cam);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                dummyCharacter.Draw(spriteBatch, Cam);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            spriteBatch.End();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: GUI.SamplerState);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            GUI.Draw(Cam, spriteBatch);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            dummyCharacter?.DrawHUD(spriteBatch, Cam, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            spriteBatch.End();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html_a507f4028f9588870b5b744b1329e9c0d"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html#a507f4028f9588870b5b744b1329e9c0d">Barotrauma.GUIComponent.AddToGUIUpdateList</a></div><div class="ttdeci">virtual void AddToGUIUpdateList(bool ignoreChildren=false, int order=0)</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00429">GUIComponent.cs:429</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html_ae533a6d13e682e9e913bc1e5068766b2"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html#ae533a6d13e682e9e913bc1e5068766b2">Barotrauma.GUIComponent.RectTransform</a></div><div class="ttdeci">RectTransform RectTransform</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00389">GUIComponent.cs:390</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_holdable_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_holdable.html">Barotrauma.Items.Components.Holdable</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_holdable_2_holdable_8cs_source.html#l00015">BarotraumaShared/SharedSource/Items/Components/Holdable/Holdable.cs:16</a></div></div>
@@ -222,9 +225,9 @@ $(document).ready(function(){initNavTree('_test_screen_8cs_source.html',''); ini
 <div class="ttc" id="anamespace_barotrauma_1_1_items_1_1_components_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items_1_1_components.html">Barotrauma.Items.Components</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:15</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_items_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items.html">Barotrauma.Items</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:15</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div><div class="ttdoc">Characters only</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Barotrauma.AttackTarget.Item</a></div><div class="ttdeci">@ Item</div><div class="ttdoc">Items only</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff"><div class="ttname"><a href="namespace_barotrauma.html#aef3e8dd1c7f82d86897cdd111f258f87ae0626222614bdee31951d84c64e5e9ff">Barotrauma.InputType.Select</a></div><div class="ttdeci">@ Select</div></div>
-<div class="ttc" id="anamespace_barotrauma_html_af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Barotrauma.WearableType.Item</a></div><div class="ttdeci">@ Item</div></div>
 <div class="ttc" id="anamespace_voronoi2_html_a422879e361ad339cba5e3b8ecb130825a93f07b720ebf7d1246512569761a5804"><div class="ttname"><a href="namespace_voronoi2.html#a422879e361ad339cba5e3b8ecb130825a93f07b720ebf7d1246512569761a5804">Voronoi2.CellType.Removed</a></div><div class="ttdeci">@ Removed</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

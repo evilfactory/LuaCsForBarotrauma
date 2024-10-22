@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('_character_ability_give_talent_points_
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span> (!addingFirstTime) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">foreach</span> (Character character <span class="keywordflow">in</span> GameSession.GetSessionCrewCharacters(<a class="code" href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707">CharacterType</a>.Both))</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">foreach</span> (Character character <span class="keywordflow">in</span> <a class="code" href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a2c8864b41f450d83b3a33e26fd0ee354">Character</a>.<a class="code" href="class_barotrauma_1_1_character.html#a09ff6258b8930f34a5fa54708fa3139f">GetFriendlyCrew</a>(Character))</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">if</span> (character.Info is <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                character.Info.AdditionalTalentPoints += amount;</div>
@@ -117,8 +117,9 @@ $(document).ready(function(){initNavTree('_character_ability_give_talent_points_
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="ttc" id="aclass_barotrauma_1_1_abilities_1_1_character_ability_html_a2c8864b41f450d83b3a33e26fd0ee354"><div class="ttname"><a href="class_barotrauma_1_1_abilities_1_1_character_ability.html#a2c8864b41f450d83b3a33e26fd0ee354">Barotrauma.Abilities.CharacterAbility.Character</a></div><div class="ttdeci">Character Character</div><div class="ttdef"><b>Definition:</b> <a href="_character_ability_8cs_source.html#l00010">CharacterAbility.cs:10</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_character_html_a09ff6258b8930f34a5fa54708fa3139f"><div class="ttname"><a href="class_barotrauma_1_1_character.html#a09ff6258b8930f34a5fa54708fa3139f">Barotrauma.Character.GetFriendlyCrew</a></div><div class="ttdeci">static IEnumerable&lt; Character &gt; GetFriendlyCrew(Character character)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_characters_2_character_8cs_source.html#l05738">BarotraumaShared/SharedSource/Characters/Character.cs:5738</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_abilities_html"><div class="ttname"><a href="namespace_barotrauma_1_1_abilities.html">Barotrauma.Abilities</a></div><div class="ttdef"><b>Definition:</b> <a href="_ability_condition_8cs_source.html#l00004">AbilityCondition.cs:5</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_aa27e6fdb7c241b28d847ecfc36630707"><div class="ttname"><a href="namespace_barotrauma.html#aa27e6fdb7c241b28d847ecfc36630707">Barotrauma.CharacterType</a></div><div class="ttdeci">CharacterType</div><div class="ttdef"><b>Definition:</b> <a href="_enums_8cs_source.html#l00684">Enums.cs:685</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('_localization_c_s_vto_x_m_l_8cs_source
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                Dictionary&lt;string, List&lt;string&gt;&gt; xmlContent;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    xmlContent = ConvertInfoTextToXML(File.ReadAllLines(textFilePath, Encoding.UTF8));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    xmlContent = ConvertInfoTextToXML(File.ReadAllLines(textFilePath, Encoding.UTF8, catchUnauthorizedAccessExceptions: <span class="keyword">false</span>));</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">catch</span> (Exception e)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                {</div>
@@ -245,7 +245,7 @@ $(document).ready(function(){initNavTree('_localization_c_s_vto_x_m_l_8cs_source
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    List&lt;string&gt; xmlContent;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                    <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        xmlContent = ConvertInfoTextToXML(File.ReadAllLines(infoTextFiles[j], Encoding.UTF8), language);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        xmlContent = ConvertInfoTextToXML(File.ReadAllLines(infoTextFiles[j], Encoding.UTF8, catchUnauthorizedAccessExceptions: <span class="keyword">false</span>), language);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    {</div>
@@ -585,7 +585,7 @@ $(document).ready(function(){initNavTree('_localization_c_s_vto_x_m_l_8cs_source
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    }</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;}</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00012">SafeIO.cs:13</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_i_o_html"><div class="ttname"><a href="namespace_barotrauma_1_1_i_o.html">Barotrauma.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_safe_i_o_8cs_source.html#l00013">SafeIO.cs:14</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a1facbb66071c90d3ef193f31bc827657aed36a1ef76a59ee3f15180e0441188ad"><div class="ttname"><a href="namespace_barotrauma.html#a1facbb66071c90d3ef193f31bc827657aed36a1ef76a59ee3f15180e0441188ad">Barotrauma.AttackContext.Any</a></div><div class="ttdeci">@ Any</div></div>
 </div><!-- fragment --></div><!-- contents -->

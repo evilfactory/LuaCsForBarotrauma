@@ -124,7 +124,7 @@ $(document).ready(function(){initNavTree('_circuit_box_u_i_8cs_source.html','');
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">public</span> List&lt;CircuitBoxWireRenderer&gt; VirtualWires = <span class="keyword">new</span>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> Locked =&gt; CircuitBox.Locked;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> Locked =&gt; CircuitBox.IsLocked();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">public</span> CircuitBoxUI(CircuitBox box)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
@@ -875,86 +875,87 @@ $(document).ready(function(){initNavTree('_circuit_box_u_i_8cs_source.html','');
 <div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                if (wireOption.TryUnwrap(out var wire))</div>
 <div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                {</div>
 <div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                    CircuitBox.RemoveWires(wire.IsSelected ? wireSelection : ImmutableArray.Create(wire));</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                }</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160; </div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;                switch (nodeOption)</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                {</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                    <span class="keywordflow">case</span> CircuitBoxComponent node:</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                        CircuitBox.RemoveComponents(node.IsSelected ? nodeSelection : ImmutableArray.Create(node));</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                    <span class="keywordflow">case</span> CircuitBoxLabelNode label:</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                        CircuitBox.RemoveLabel(label.IsSelected ? labels : ImmutableArray.Create(label));</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                }</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            });</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160; </div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;            var editLabel = <span class="keyword">new</span> ContextMenuOption(TextManager.Get(<span class="stringliteral">&quot;circuitboxeditlabel&quot;</span>), isEnabled: nodeOption is CircuitBoxLabelNode &amp;&amp; !Locked, () =&gt;</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            {</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                if (circuitComponent is null) { return; }</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                if (nodeOption is not CircuitBoxLabelNode label) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160; </div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                label.PromptEditText(circuitComponent);</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;            });</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160; </div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;            var editConnections = <span class="keyword">new</span> ContextMenuOption(TextManager.Get(<span class="stringliteral">&quot;circuitboxrenameconnections&quot;</span>), isEnabled: nodeOption is CircuitBoxInputOutputNode &amp;&amp; !Locked, () =&gt;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            {</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;                if (circuitComponent is null) { return; }</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                if (nodeOption is not CircuitBoxInputOutputNode io) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160; </div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;                io.PromptEdit(circuitComponent);</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            });</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160; </div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;            var addLabelOption = <span class="keyword">new</span> ContextMenuOption(TextManager.Get(<span class="stringliteral">&quot;circuitboxaddlabel&quot;</span>), isEnabled: !Locked, () =&gt;</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;            {</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;                CircuitBox.AddLabel(cursorPos);</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            });</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160; </div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            ContextMenuOption[] allOptions = { addLabelOption, editLabel, editConnections, option };</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160; </div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;            <span class="comment">// show component name in the header to better indicate what is about to be deleted</span></div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="keywordflow">if</span> (nodeOption is CircuitBoxComponent comp)</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            {</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;                GUIContextMenu.CreateContextMenu(PlayerInput.MousePosition, comp.Item.Name, comp.Item.Prefab.SignalComponentColor, allOptions);</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            }</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160; </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;            <span class="comment">// also check if a wire is being deleted</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;            <span class="keywordflow">if</span> (wireOption.TryUnwrap(out var foundWire))</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            {</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;                GUIContextMenu.CreateContextMenu(PlayerInput.MousePosition, foundWire.UsedItemPrefab.Name, foundWire.Color, allOptions);</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            }</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            GUIContextMenu.CreateContextMenu(allOptions);</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        }</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160; </div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;        <span class="keyword">public</span> CircuitBoxNode? GetTopmostNode(ImmutableHashSet&lt;CircuitBoxNode&gt; nodes)</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;        {</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            CircuitBoxNode? foundNode = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160; </div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;            var allNodes = MouseSnapshotHandler.Nodes.ToImmutableArray();</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160; </div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = allNodes.Length - 1; i &gt;= 0; i--)</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            {</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                CircuitBoxNode node = allNodes[i];</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160; </div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                <span class="keywordflow">if</span> (nodes.Contains(node))</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                {</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                    foundNode = node;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                }</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            }</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160; </div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            <span class="keywordflow">return</span> foundNode;</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;        }</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160; </div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        {</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;            toggleMenuButton?.AddToGUIUpdateList();</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;            selectedWireFrame?.AddToGUIUpdateList();</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;        }</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    }</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;}</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;                    return;</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;                }</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160; </div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                switch (nodeOption)</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                {</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                    <span class="keywordflow">case</span> CircuitBoxComponent node:</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;                        CircuitBox.RemoveComponents(node.IsSelected ? nodeSelection : ImmutableArray.Create(node));</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                    <span class="keywordflow">case</span> CircuitBoxLabelNode label:</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                        CircuitBox.RemoveLabel(label.IsSelected ? labels : ImmutableArray.Create(label));</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                }</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;            });</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160; </div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            var editLabel = <span class="keyword">new</span> ContextMenuOption(TextManager.Get(<span class="stringliteral">&quot;circuitboxeditlabel&quot;</span>), isEnabled: nodeOption is CircuitBoxLabelNode &amp;&amp; !Locked, () =&gt;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;            {</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;                if (circuitComponent is null) { return; }</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                if (nodeOption is not CircuitBoxLabelNode label) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160; </div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                label.PromptEditText(circuitComponent);</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            });</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160; </div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            var editConnections = <span class="keyword">new</span> ContextMenuOption(TextManager.Get(<span class="stringliteral">&quot;circuitboxrenameconnections&quot;</span>), isEnabled: nodeOption is CircuitBoxInputOutputNode &amp;&amp; !Locked, () =&gt;</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            {</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;                if (circuitComponent is null) { return; }</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                if (nodeOption is not CircuitBoxInputOutputNode io) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160; </div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;                io.PromptEdit(circuitComponent);</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            });</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160; </div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;            var addLabelOption = <span class="keyword">new</span> ContextMenuOption(TextManager.Get(<span class="stringliteral">&quot;circuitboxaddlabel&quot;</span>), isEnabled: !Locked, () =&gt;</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;            {</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                CircuitBox.AddLabel(cursorPos);</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;            });</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160; </div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            ContextMenuOption[] allOptions = { addLabelOption, editLabel, editConnections, option };</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160; </div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="comment">// show component name in the header to better indicate what is about to be deleted</span></div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            <span class="keywordflow">if</span> (nodeOption is CircuitBoxComponent comp)</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;            {</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                GUIContextMenu.CreateContextMenu(PlayerInput.MousePosition, comp.Item.Name, comp.Item.Prefab.SignalComponentColor, allOptions);</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;            }</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160; </div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;            <span class="comment">// also check if a wire is being deleted</span></div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            <span class="keywordflow">if</span> (wireOption.TryUnwrap(out var foundWire))</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            {</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;                GUIContextMenu.CreateContextMenu(PlayerInput.MousePosition, foundWire.UsedItemPrefab.Name, foundWire.Color, allOptions);</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;            }</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160; </div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            GUIContextMenu.CreateContextMenu(allOptions);</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;        }</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160; </div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;        <span class="keyword">public</span> CircuitBoxNode? GetTopmostNode(ImmutableHashSet&lt;CircuitBoxNode&gt; nodes)</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;        {</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;            CircuitBoxNode? foundNode = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            var allNodes = MouseSnapshotHandler.Nodes.ToImmutableArray();</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160; </div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = allNodes.Length - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            {</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                CircuitBoxNode node = allNodes[i];</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160; </div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                <span class="keywordflow">if</span> (nodes.Contains(node))</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                {</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;                    foundNode = node;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                }</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;            }</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160; </div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;            <span class="keywordflow">return</span> foundNode;</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;        }</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160; </div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> AddToGUIUpdateList()</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        {</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;            toggleMenuButton?.AddToGUIUpdateList();</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            selectedWireFrame?.AddToGUIUpdateList();</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        }</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    }</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_1_1_items_1_1_components_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items_1_1_components.html">Barotrauma.Items.Components</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:15</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_items_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items.html">Barotrauma.Items</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:15</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
@@ -963,7 +964,7 @@ $(document).ready(function(){initNavTree('_circuit_box_u_i_8cs_source.html','');
 <div class="ttc" id="anamespace_barotrauma_html_a5ef5c80d5ec148feef256bc03bd8f389"><div class="ttname"><a href="namespace_barotrauma.html#a5ef5c80d5ec148feef256bc03bd8f389">Barotrauma.Anchor</a></div><div class="ttdeci">Anchor</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00010">RectTransform.cs:11</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d"><div class="ttname"><a href="namespace_barotrauma.html#a8545771a73613f0c4b69529cd91c5ac9a0d234e5bcf75c768eb0db6bf96e3c22d">Barotrauma.SpawnType.Submarine</a></div><div class="ttdeci">@ Submarine</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_ac49165d669015d696c8c77df7d01f1dd"><div class="ttname"><a href="namespace_barotrauma.html#ac49165d669015d696c8c77df7d01f1dd">Barotrauma.ScaleBasis</a></div><div class="ttdeci">ScaleBasis</div><div class="ttdef"><b>Definition:</b> <a href="_rect_transform_8cs_source.html#l00024">RectTransform.cs:25</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div><div class="ttdoc">Characters only</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

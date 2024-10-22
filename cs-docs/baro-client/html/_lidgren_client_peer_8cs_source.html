@@ -313,76 +313,79 @@ $(document).ready(function(){initNavTree('_lidgren_client_peer_8cs_source.html',
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            ToolBox.ThrowIfNull(netPeerConfiguration);</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            netPeerConfiguration.SimulatedDuplicatesChance = GameMain.Client.SimulatedDuplicatesChance;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            netPeerConfiguration.SimulatedMinimumLatency = GameMain.Client.SimulatedMinimumLatency;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            netPeerConfiguration.SimulatedRandomLatency = GameMain.Client.SimulatedRandomLatency;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            netPeerConfiguration.SimulatedLoss = GameMain.Client.SimulatedLoss;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordtype">byte</span>[] bufAux = msg.PrepareForSending(compressPastThreshold, out <span class="keywordtype">bool</span> isCompressed, out _);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            var headers = <span class="keyword">new</span> PeerPacketHeaders</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                DeliveryMethod = deliveryMethod,</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                PacketHeader = isCompressed ? PacketHeader.IsCompressed : PacketHeader.None,</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                Initialization = <span class="keyword">null</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            };</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            var body = <span class="keyword">new</span> PeerPacketMessage</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                Buffer = bufAux</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            };</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            SendMsgInternal(headers, body);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> SendMsgInternal(PeerPacketHeaders headers, INetSerializableStruct? body)</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            ToolBox.ThrowIfNull(netClient);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            IWriteMessage msg = <span class="keyword">new</span> WriteOnlyMessage();</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            msg.WriteNetSerializableStruct(headers);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            body?.Write(msg);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            NetSendResult result = ForwardToLidgren(msg, DeliveryMethod.Reliable);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (result != NetSendResult.Queued &amp;&amp; result != NetSendResult.Sent)</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;Failed to send message to host: {result}\n{Environment.StackTrace}&quot;</span>);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keyword">private</span> NetSendResult ForwardToLidgren(IWriteMessage msg, DeliveryMethod deliveryMethod)</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            ToolBox.ThrowIfNull(netClient);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> netClient.SendMessage(msg.ToLidgren(netClient), deliveryMethod.ToLidgren());</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">if</span> (GameMain.Client != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                netPeerConfiguration.SimulatedDuplicatesChance = GameMain.Client.SimulatedDuplicatesChance;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                netPeerConfiguration.SimulatedMinimumLatency = GameMain.Client.SimulatedMinimumLatency;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                netPeerConfiguration.SimulatedRandomLatency = GameMain.Client.SimulatedRandomLatency;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                netPeerConfiguration.SimulatedLoss = GameMain.Client.SimulatedLoss;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keywordtype">byte</span>[] bufAux = msg.PrepareForSending(compressPastThreshold, out <span class="keywordtype">bool</span> isCompressed, out _);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            var headers = <span class="keyword">new</span> PeerPacketHeaders</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                DeliveryMethod = deliveryMethod,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                PacketHeader = isCompressed ? PacketHeader.IsCompressed : PacketHeader.None,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                Initialization = <span class="keyword">null</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            };</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            var body = <span class="keyword">new</span> PeerPacketMessage</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                Buffer = bufAux</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            };</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            SendMsgInternal(headers, body);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> SendMsgInternal(PeerPacketHeaders headers, INetSerializableStruct? body)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            ToolBox.ThrowIfNull(netClient);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            IWriteMessage msg = <span class="keyword">new</span> WriteOnlyMessage();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            msg.WriteNetSerializableStruct(headers);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            body?.Write(msg);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            NetSendResult result = ForwardToLidgren(msg, DeliveryMethod.Reliable);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span> (result != NetSendResult.Queued &amp;&amp; result != NetSendResult.Sent)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;Failed to send message to host: {result}\n{Environment.StackTrace}&quot;</span>);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keyword">private</span> NetSendResult ForwardToLidgren(IWriteMessage msg, DeliveryMethod deliveryMethod)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            ToolBox.ThrowIfNull(netClient);</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> async Task&lt;Option&lt;AccountId&gt;&gt; GetAccountId()</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> (!EosInterface.Core.IsInitialized) { <span class="keywordflow">return</span> SteamManager.GetSteamId().Select(<span class="keywordtype">id</span> =&gt; (AccountId)<span class="keywordtype">id</span>); }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            var selfPuids = EosInterface.IdQueries.GetLoggedInPuids();</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">if</span> (selfPuids.None()) { <span class="keywordflow">return</span> Option.None; }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            var accountIdsResult = await EosInterface.IdQueries.GetSelfExternalAccountIds(selfPuids.First());</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">return</span> accountIdsResult.TryUnwrapSuccess(out var accountIds) &amp;&amp; accountIds.Length &gt; 0</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                ? Option.Some(accountIds[0])</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                : Option.None;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordflow">return</span> netClient.SendMessage(msg.ToLidgren(netClient), deliveryMethod.ToLidgren());</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> async Task&lt;Option&lt;AccountId&gt;&gt; GetAccountId()</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">if</span> (!EosInterface.Core.IsInitialized) { <span class="keywordflow">return</span> SteamManager.GetSteamId().Select(<span class="keywordtype">id</span> =&gt; (AccountId)<span class="keywordtype">id</span>); }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            var selfPuids = EosInterface.IdQueries.GetLoggedInPuids();</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="keywordflow">if</span> (selfPuids.None()) { <span class="keywordflow">return</span> Option.None; }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            var accountIdsResult = await EosInterface.IdQueries.GetSelfExternalAccountIds(selfPuids.First());</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">return</span> accountIdsResult.TryUnwrapSuccess(out var accountIds) &amp;&amp; accountIds.Length &gt; 0</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                ? Option.Some(accountIds[0])</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                : Option.None;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> ForceTimeOut()</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            netClient?.ServerConnection?.ForceTimeOut();</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        }</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> DebugSendRawMessage(IWriteMessage msg)</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            =&gt; ForwardToLidgren(msg, DeliveryMethod.Reliable);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
-<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> ForceTimeOut()</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            netClient?.ServerConnection?.ForceTimeOut();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> DebugSendRawMessage(IWriteMessage msg)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            =&gt; ForwardToLidgren(msg, DeliveryMethod.Reliable);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00008">IEnumerableExtensions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_lua_barotrauma_additions_8cs_source.html#l00008">LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a3861060f411baddb298f4ea43f5e5517"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">Barotrauma.Networking.NetworkConnectionStatus</a></div><div class="ttdeci">NetworkConnectionStatus</div><div class="ttdef"><b>Definition:</b> <a href="_network_connection_8cs_source.html#l00005">NetworkConnection.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_steam_html"><div class="ttname"><a href="namespace_barotrauma_1_1_steam.html">Barotrauma.Steam</a></div><div class="ttdef"><b>Definition:</b> <a href="_auth_ticket_8cs_source.html#l00006">AuthTicket.cs:7</a></div></div>

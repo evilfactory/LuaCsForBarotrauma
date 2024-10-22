@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('_interaction_label_manager_8cs_source.
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span> <span class="keyword">class </span>LabelData</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> readonly Camera drawCamera;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span> readonly <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a> <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span> readonly <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a> <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">public</span> RectangleF TextRect { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('_interaction_label_manager_8cs_source.
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">public</span> LabelData(Item item, RectangleF textRect, Camera drawCamera)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a> = item;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a> = item;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            TextRect = textRect;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            OriginalItemPosition = item.Position;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            this.drawCamera = drawCamera;</div>
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('_interaction_label_manager_8cs_source.
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordtype">float</span> scale = cam.Zoom;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            RectangleF screenDrawRect = TextRect;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                screenDrawRect.Location = drawCamera</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    .WorldToScreen(screenDrawRect.Location + (<a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>.Submarine?.DrawPosition ?? Vector2.Zero));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    .WorldToScreen(screenDrawRect.Location + (<a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>.Submarine?.DrawPosition ?? Vector2.Zero));</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> RectangleF(</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                screenDrawRect.X, </div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('_interaction_label_manager_8cs_source.
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">public</span> Vector2 GetInteractableDrawPositionScreen()</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> drawCamera.WorldToScreen(<a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>.DrawPosition);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> drawCamera.WorldToScreen(<a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>.DrawPosition);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('_interaction_label_manager_8cs_source.
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> readonly  List&lt;Item&gt; interactablesInRange = <span class="keyword">new</span>();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">internal</span> <span class="keyword">static</span> <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>? HoveredItem { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">internal</span> <span class="keyword">static</span> <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>? HoveredItem { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">internal</span> <span class="keyword">static</span> <span class="keywordtype">void</span> RefreshInteractablesInRange(List&lt;Item&gt; interactables)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
@@ -412,12 +412,12 @@ $(document).ready(function(){initNavTree('_interaction_label_manager_8cs_source.
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_pickable_html"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_pickable.html">Barotrauma.Items.Components.Pickable</a></div><div class="ttdef"><b>Definition:</b> <a href="_pickable_8cs_source.html#l00010">Pickable.cs:11</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00008">IEnumerableExtensions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_items_1_1_components_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items_1_1_components.html">Barotrauma.Items.Components</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:15</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_items_html"><div class="ttname"><a href="namespace_barotrauma_1_1_items.html">Barotrauma.Items</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_docking_port_8cs_source.html#l00014">BarotraumaShared/SharedSource/Items/Components/DockingPort.cs:15</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a608a471d4321f9ed70671998f4468b8a"><div class="ttname"><a href="namespace_barotrauma.html#a608a471d4321f9ed70671998f4468b8a">Barotrauma.InteractionLabelDisplayMode</a></div><div class="ttdeci">InteractionLabelDisplayMode</div><div class="ttdef"><b>Definition:</b> <a href="_game_settings_8cs_source.html#l00045">GameSettings.cs:46</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Barotrauma.WearableType.Item</a></div><div class="ttdeci">@ Item</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Barotrauma.AttackTarget.Item</a></div><div class="ttdeci">@ Item</div><div class="ttdoc">Items only</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_af4a2d29cb2cc8d51ebb6b7c192b8c5ef"><div class="ttname"><a href="namespace_barotrauma.html#af4a2d29cb2cc8d51ebb6b7c192b8c5ef">Barotrauma.ForceUpperCase</a></div><div class="ttdeci">ForceUpperCase</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_text_block_8cs_source.html#l00012">GUITextBlock.cs:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

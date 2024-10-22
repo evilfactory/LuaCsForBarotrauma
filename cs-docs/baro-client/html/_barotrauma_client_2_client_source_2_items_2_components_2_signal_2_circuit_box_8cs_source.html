@@ -214,7 +214,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RemoveComponents(IReadOnlyCollection&lt;CircuitBoxComponent&gt; node)</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            var ids = node.Select(<span class="keyword">static</span> n =&gt; n.ID).ToImmutableArray();</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
@@ -231,7 +231,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faaae90d8c2661227c3438ab4cbc8288819">AddWire</a>(CircuitBoxConnection one, CircuitBoxConnection two)</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                Connect(one, two, <span class="keyword">static</span> delegate { }, CircuitBoxWire.SelectedWirePrefab);</div>
@@ -245,7 +245,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RemoveWires(IReadOnlyCollection&lt;CircuitBoxWire&gt; wires)</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            var ids = wires.Select(<span class="keyword">static</span> w =&gt; w.ID).ToImmutableArray();</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            {</div>
@@ -315,7 +315,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faa02b9ce5d08af7afe14d61dabb514f605">MoveComponent</a>(Vector2 moveAmount, IReadOnlyCollection&lt;CircuitBoxNode&gt; moveables)</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            var ids = ImmutableArray.CreateBuilder&lt;ushort&gt;();</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            var ios = ImmutableArray.CreateBuilder&lt;CircuitBoxInputOutputNode.Type&gt;();</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            var labelIds = ImmutableArray.CreateBuilder&lt;ushort&gt;();</div>
@@ -350,7 +350,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faa877c451adc2f90e8dee412768d71c49d">AddComponent</a>(ItemPrefab prefab, Vector2 pos)</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                ItemPrefab resource;</div>
@@ -377,7 +377,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faa9edc12697ef151c896ac8e9c28e8d1e3">RenameLabel</a>(CircuitBoxLabelNode label, Color color, NetLimitedString header, NetLimitedString body)</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            {</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                label.EditText(header, body);</div>
@@ -401,7 +401,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> ResizeNode(CircuitBoxNode node, CircuitBoxResizeDirection dir, Vector2 amount)</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            var resize = node.ResizeBy(dir, amount);</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            {</div>
@@ -426,7 +426,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faad4854094a74fd19ac541b68e575ace87">AddLabel</a>(Vector2 pos)</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            {</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                AddLabelInternal(ICircuitBoxIdentifiable.FindFreeID(Labels), GUIStyle.Blue, pos, CircuitBoxLabelNode.DefaultHeaderText, NetLimitedString.Empty);</div>
@@ -438,7 +438,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faa292fa686ef3985816735f492490292a3">RemoveLabel</a>(IReadOnlyCollection&lt;CircuitBoxLabelNode&gt; labels)</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">if</span> (Locked) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">if</span> (IsLocked()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="keywordflow">if</span> (!labels.Any()) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            var ids = labels.Select(<span class="keyword">static</span> n =&gt; n.ID).ToImmutableArray();</div>
@@ -720,7 +720,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;}</div>
 <div class="ttc" id="aclass_barotrauma_1_1_entity_html_ab60566c1da45d1ca4c66002a5d9cf172"><div class="ttname"><a href="class_barotrauma_1_1_entity.html#ab60566c1da45d1ca4c66002a5d9cf172">Barotrauma.Entity.ID</a></div><div class="ttdeci">readonly ushort ID</div><div class="ttdoc">Unique, but non-persistent identifier. Stays the same if the entities are created in the exactly same...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cs_source.html#l00043">Entity.cs:43</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_g_u_i_component_html_a9e5820c37fac2ed33e04f6697357b15e"><div class="ttname"><a href="class_barotrauma_1_1_g_u_i_component.html#a9e5820c37fac2ed33e04f6697357b15e">Barotrauma.GUIComponent.ClearChildren</a></div><div class="ttdeci">virtual void ClearChildren()</div><div class="ttdef"><b>Definition:</b> <a href="_g_u_i_component_8cs_source.html#l00134">GUIComponent.cs:134</a></div></div>
-<div class="ttc" id="aclass_barotrauma_1_1_item_html_aead13e04ba550bbadaface35f9f72838"><div class="ttname"><a href="class_barotrauma_1_1_item.html#aead13e04ba550bbadaface35f9f72838">Barotrauma.Item.GetComponentIndex</a></div><div class="ttdeci">int GetComponentIndex(ItemComponent component)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01535">BarotraumaShared/SharedSource/Items/Item.cs:1535</a></div></div>
+<div class="ttc" id="aclass_barotrauma_1_1_item_html_aead13e04ba550bbadaface35f9f72838"><div class="ttname"><a href="class_barotrauma_1_1_item.html#aead13e04ba550bbadaface35f9f72838">Barotrauma.Item.GetComponentIndex</a></div><div class="ttdeci">int GetComponentIndex(ItemComponent component)</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_item_8cs_source.html#l01530">BarotraumaShared/SharedSource/Items/Item.cs:1530</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_a01a0f6be5502a91a956080502cd65f46"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#a01a0f6be5502a91a956080502cd65f46">Barotrauma.Items.Components.ItemComponent.Item</a></div><div class="ttdeci">Item Item</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00243">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:244</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_aa041575bba89d1f45931d50fe892810e"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa041575bba89d1f45931d50fe892810e">Barotrauma.Items.Components.ItemComponent.item</a></div><div class="ttdeci">Item item</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_items_2_components_2_item_component_8cs_source.html#l00036">BarotraumaShared/SharedSource/Items/Components/ItemComponent.cs:36</a></div></div>
 <div class="ttc" id="aclass_barotrauma_1_1_items_1_1_components_1_1_item_component_html_aa73b04dd430cc28ca3b17a7a9b786888"><div class="ttname"><a href="class_barotrauma_1_1_items_1_1_components_1_1_item_component.html#aa73b04dd430cc28ca3b17a7a9b786888">Barotrauma.Items.Components.ItemComponent.GuiFrame</a></div><div class="ttdeci">GUIFrame GuiFrame</div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_client_2_client_source_2_items_2_components_2_item_component_8cs_source.html#l00151">BarotraumaClient/ClientSource/Items/Components/ItemComponent.cs:151</a></div></div>
@@ -744,7 +744,7 @@ $(document).ready(function(){initNavTree('_barotrauma_client_2_client_source_2_i
 <div class="ttc" id="anamespace_barotrauma_html_a2957dff5680fa17690fcf2d0483ca3faa9edc12697ef151c896ac8e9c28e8d1e3"><div class="ttname"><a href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faa9edc12697ef151c896ac8e9c28e8d1e3">Barotrauma.CircuitBoxOpcode.RenameLabel</a></div><div class="ttdeci">@ RenameLabel</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a2957dff5680fa17690fcf2d0483ca3faaae90d8c2661227c3438ab4cbc8288819"><div class="ttname"><a href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faaae90d8c2661227c3438ab4cbc8288819">Barotrauma.CircuitBoxOpcode.AddWire</a></div><div class="ttdeci">@ AddWire</div></div>
 <div class="ttc" id="anamespace_barotrauma_html_a2957dff5680fa17690fcf2d0483ca3faad4854094a74fd19ac541b68e575ace87"><div class="ttname"><a href="namespace_barotrauma.html#a2957dff5680fa17690fcf2d0483ca3faad4854094a74fd19ac541b68e575ace87">Barotrauma.CircuitBoxOpcode.AddLabel</a></div><div class="ttdeci">@ AddLabel</div></div>
-<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a76a40e4f974fd895a0a2598c1cee28b4">Barotrauma.AttackTarget.Character</a></div><div class="ttdeci">@ Character</div><div class="ttdoc">Characters only</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -368,254 +368,263 @@ $(document).ready(function(){initNavTree('_lidgren_server_peer_8cs_source.html',
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">switch</span> (inc.SenderConnection.Status)</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="keywordflow">case</span> NetConnectionStatus.Disconnected:</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    LidgrenConnection? conn = connectedClients.Select(c =&gt; c.Connection).FirstOrDefault(c =&gt; c.NetConnection == inc.SenderConnection);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    <span class="keywordflow">if</span> (conn != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        <span class="keywordflow">if</span> (conn == OwnerConnection)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                            DebugConsole.NewMessage(<span class="stringliteral">&quot;Owner disconnected: closing the server...&quot;</span>);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                            GameServer.Log(<span class="stringliteral">&quot;Owner disconnected: closing the server...&quot;</span>, <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2a083782830dc8e347f99260cb224b7098">ServerLog</a>.MessageType.ServerMessage);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                            Close();</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        {</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                            Disconnect(conn, PeerDisconnectPacket.WithReason(DisconnectReason.Disconnected));</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                    }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                    {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                        PendingClient? pendingClient = pendingClients.Find(c =&gt; c.Connection is LidgrenConnection l &amp;&amp; l.NetConnection == inc.SenderConnection);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        <span class="keywordflow">if</span> (pendingClient != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                        {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                            RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.Disconnected));</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                    }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnSteamAuthChange(Steamworks.SteamId steamId, Steamworks.SteamId ownerId, Steamworks.AuthResponse status)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            PendingClient? pendingClient = pendingClients.Find(c =&gt; c.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var <span class="keywordtype">id</span>) &amp;&amp; <span class="keywordtype">id</span>.Value == steamId);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            DebugConsole.Log($<span class="stringliteral">&quot;{steamId} validation: {status}, {(pendingClient != null)}&quot;</span>);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (pendingClient is <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="keywordflow">if</span> (status == Steamworks.AuthResponse.OK) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                <span class="keywordflow">if</span> (connectedClients.Find(c</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        =&gt; c.Connection.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var <span class="keywordtype">id</span>) &amp;&amp; <span class="keywordtype">id</span>.Value == steamId)</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                    is { Connection: LidgrenConnection connection })</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                    Disconnect(connection,  PeerDisconnectPacket.SteamAuthError(status));</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            LidgrenConnection pendingConnection = (LidgrenConnection)pendingClient.Connection;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            if (serverSettings.BanList.IsBanned(pendingConnection.Endpoint, out <span class="keywordtype">string</span> banReason)</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                || serverSettings.BanList.IsBanned(<span class="keyword">new</span> SteamId(steamId), out banReason)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                || serverSettings.BanList.IsBanned(<span class="keyword">new</span> SteamId(ownerId), out banReason))</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.Banned(banReason));</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">if</span> (status == Steamworks.AuthResponse.OK)</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                pendingClient.Connection.SetAccountInfo(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> SteamId(steamId), <span class="keyword">new</span> SteamId(ownerId)));</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                pendingClient.InitializationStep = serverSettings.HasPassword ? ConnectionInitialization.Password : ConnectionInitialization.ContentPackageOrder;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                pendingClient.UpdateTime = Timing.TotalTime;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.SteamAuthError(status));</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Send(IWriteMessage msg, NetworkConnection conn, DeliveryMethod deliveryMethod, <span class="keywordtype">bool</span> compressPastThreshold = <span class="keyword">true</span>)</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="keywordflow">if</span> (conn is not LidgrenConnection lidgrenConnection)</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;Tried to send message to connection of incorrect type: expected {nameof(LidgrenConnection)}, got {conn.GetType().Name}&quot;</span>);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            }</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <span class="keywordflow">if</span> (!connectedClients.Any(cc =&gt; cc.Connection == lidgrenConnection))</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;Tried to send message to unauthenticated connection: {lidgrenConnection.Endpoint.StringRepresentation}&quot;</span>);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordtype">byte</span>[] bufAux = msg.PrepareForSending(compressPastThreshold, out <span class="keywordtype">bool</span> isCompressed, out _);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            ToolBox.ThrowIfNull(netPeerConfiguration);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            netPeerConfiguration.SimulatedDuplicatesChance = GameMain.Server.SimulatedDuplicatesChance;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            netPeerConfiguration.SimulatedMinimumLatency = GameMain.Server.SimulatedMinimumLatency;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            netPeerConfiguration.SimulatedRandomLatency = GameMain.Server.SimulatedRandomLatency;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            netPeerConfiguration.SimulatedLoss = GameMain.Server.SimulatedLoss;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            var headers = <span class="keyword">new</span> PeerPacketHeaders</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            {</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                DeliveryMethod = deliveryMethod,</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                PacketHeader = isCompressed ? PacketHeader.IsCompressed : PacketHeader.None,</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                Initialization = <span class="keyword">null</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            };</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            var body = <span class="keyword">new</span> PeerPacketMessage</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                Buffer = bufAux</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            };</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            SendMsgInternal(lidgrenConnection, headers, body);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Disconnect(NetworkConnection conn, PeerDisconnectPacket peerDisconnectPacket)</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <span class="keywordflow">if</span> (conn is not LidgrenConnection lidgrenConn) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <span class="keywordflow">if</span> (connectedClients.FindIndex(cc =&gt; cc.Connection == lidgrenConn) is &gt;= 0 and var ccIndex)</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                lidgrenConn.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">NetworkConnectionStatus</a>.Disconnected;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                connectedClients.RemoveAt(ccIndex);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                callbacks.OnDisconnect.Invoke(conn, peerDisconnectPacket);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                <span class="keywordflow">if</span> (conn.AccountInfo.AccountId.TryUnwrap(out var accountId))</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                {</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    authenticators?.Values.ForEach(authenticator =&gt; authenticator.EndAuthSession(accountId));</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            }</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            lidgrenConn.NetConnection.Disconnect(peerDisconnectPacket.ToLidgrenStringRepresentation());</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        }</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> SendMsgInternal(LidgrenConnection conn, PeerPacketHeaders headers, INetSerializableStruct? body)</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        {</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            IWriteMessage msgToSend = <span class="keyword">new</span> WriteOnlyMessage();</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            msgToSend.WriteNetSerializableStruct(headers);</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            body?.Write(msgToSend);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            NetSendResult result = ForwardToLidgren(msgToSend, conn, headers.DeliveryMethod);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordflow">if</span> (result != NetSendResult.Sent &amp;&amp; result != NetSendResult.Queued)</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;Failed to send message to {conn.Endpoint}: {result}&quot;</span>, Microsoft.Xna.Framework.Color.Yellow);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            NetConnectionStatus status = inc.ReadHeader&lt;NetConnectionStatus&gt;();</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">switch</span> (status)</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="keywordflow">case</span> NetConnectionStatus.Disconnected:</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    LidgrenConnection? conn = connectedClients.Select(c =&gt; c.Connection).FirstOrDefault(c =&gt; c.NetConnection == inc.SenderConnection);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                    <span class="keywordtype">string</span> disconnectMsg = inc.ReadString();</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                    var peerDisconnectPacket = </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        PeerDisconnectPacket.FromLidgrenStringRepresentation(disconnectMsg).Fallback(PeerDisconnectPacket.WithReason(DisconnectReason.Unknown));</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                    <span class="keywordflow">if</span> (conn != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                    {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        <span class="keywordflow">if</span> (conn == OwnerConnection)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                            DebugConsole.NewMessage(<span class="stringliteral">&quot;Owner disconnected: closing the server...&quot;</span>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                            GameServer.Log(<span class="stringliteral">&quot;Owner disconnected: closing the server...&quot;</span>, <a class="code" href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2a083782830dc8e347f99260cb224b7098">ServerLog</a>.MessageType.ServerMessage);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                            Close();</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                        {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                            Disconnect(conn, peerDisconnectPacket);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                    }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                    {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                        PendingClient? pendingClient = pendingClients.Find(c =&gt; c.Connection is LidgrenConnection l &amp;&amp; l.NetConnection == inc.SenderConnection);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        <span class="keywordflow">if</span> (pendingClient != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                        {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                            RemovePendingClient(pendingClient, peerDisconnectPacket);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                    }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnSteamAuthChange(Steamworks.SteamId steamId, Steamworks.SteamId ownerId, Steamworks.AuthResponse status)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            PendingClient? pendingClient = pendingClients.Find(c =&gt; c.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var <span class="keywordtype">id</span>) &amp;&amp; <span class="keywordtype">id</span>.Value == steamId);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            DebugConsole.Log($<span class="stringliteral">&quot;{steamId} validation: {status}, {(pendingClient != null)}&quot;</span>);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">if</span> (pendingClient is <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                <span class="keywordflow">if</span> (status == Steamworks.AuthResponse.OK) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                <span class="keywordflow">if</span> (connectedClients.Find(c</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                        =&gt; c.Connection.AccountInfo.AccountId.TryUnwrap&lt;SteamId&gt;(out var <span class="keywordtype">id</span>) &amp;&amp; <span class="keywordtype">id</span>.Value == steamId)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                    is { Connection: LidgrenConnection connection })</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    Disconnect(connection,  PeerDisconnectPacket.SteamAuthError(status));</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            LidgrenConnection pendingConnection = (LidgrenConnection)pendingClient.Connection;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            if (serverSettings.BanList.IsBanned(pendingConnection.Endpoint, out <span class="keywordtype">string</span> banReason)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                || serverSettings.BanList.IsBanned(<span class="keyword">new</span> SteamId(steamId), out banReason)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                || serverSettings.BanList.IsBanned(<span class="keyword">new</span> SteamId(ownerId), out banReason))</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.Banned(banReason));</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">if</span> (status == Steamworks.AuthResponse.OK)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                pendingClient.Connection.SetAccountInfo(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> SteamId(steamId), <span class="keyword">new</span> SteamId(ownerId)));</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                pendingClient.InitializationStep = ShouldAskForPassword(serverSettings, pendingClient.Connection)</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                    ? ConnectionInitialization.Password</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    : ConnectionInitialization.ContentPackageOrder;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                pendingClient.UpdateTime = Timing.TotalTime;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            }</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.SteamAuthError(status));</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Send(IWriteMessage msg, NetworkConnection conn, DeliveryMethod deliveryMethod, <span class="keywordtype">bool</span> compressPastThreshold = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keywordflow">if</span> (conn is not LidgrenConnection lidgrenConnection)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;Tried to send message to connection of incorrect type: expected {nameof(LidgrenConnection)}, got {conn.GetType().Name}&quot;</span>);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <span class="keywordflow">if</span> (!connectedClients.Any(cc =&gt; cc.Connection == lidgrenConnection))</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                DebugConsole.ThrowError($<span class="stringliteral">&quot;Tried to send message to unauthenticated connection: {lidgrenConnection.Endpoint.StringRepresentation}&quot;</span>);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordtype">byte</span>[] bufAux = msg.PrepareForSending(compressPastThreshold, out <span class="keywordtype">bool</span> isCompressed, out _);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            ToolBox.ThrowIfNull(netPeerConfiguration);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            netPeerConfiguration.SimulatedDuplicatesChance = GameMain.Server.SimulatedDuplicatesChance;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            netPeerConfiguration.SimulatedMinimumLatency = GameMain.Server.SimulatedMinimumLatency;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            netPeerConfiguration.SimulatedRandomLatency = GameMain.Server.SimulatedRandomLatency;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            netPeerConfiguration.SimulatedLoss = GameMain.Server.SimulatedLoss;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            var headers = <span class="keyword">new</span> PeerPacketHeaders</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                DeliveryMethod = deliveryMethod,</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                PacketHeader = isCompressed ? PacketHeader.IsCompressed : PacketHeader.None,</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                Initialization = <span class="keyword">null</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            };</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            var body = <span class="keyword">new</span> PeerPacketMessage</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                Buffer = bufAux</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            };</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            SendMsgInternal(lidgrenConnection, headers, body);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Disconnect(NetworkConnection conn, PeerDisconnectPacket peerDisconnectPacket)</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordflow">if</span> (netServer == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordflow">if</span> (conn is not LidgrenConnection lidgrenConn) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            <span class="keywordflow">if</span> (connectedClients.FindIndex(cc =&gt; cc.Connection == lidgrenConn) is &gt;= 0 and var ccIndex)</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            {</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                lidgrenConn.Status = <a class="code" href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">NetworkConnectionStatus</a>.Disconnected;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                connectedClients.RemoveAt(ccIndex);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                callbacks.OnDisconnect.Invoke(conn, peerDisconnectPacket);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                <span class="keywordflow">if</span> (conn.AccountInfo.AccountId.TryUnwrap(out var accountId))</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    authenticators?.Values.ForEach(authenticator =&gt; authenticator.EndAuthSession(accountId));</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            }</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            lidgrenConn.NetConnection.Disconnect(peerDisconnectPacket.ToLidgrenStringRepresentation());</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> SendMsgInternal(LidgrenConnection conn, PeerPacketHeaders headers, INetSerializableStruct? body)</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            IWriteMessage msgToSend = <span class="keyword">new</span> WriteOnlyMessage();</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            msgToSend.WriteNetSerializableStruct(headers);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            body?.Write(msgToSend);</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> CheckOwnership(PendingClient pendingClient)</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        {</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <span class="keywordflow">if</span> (OwnerConnection != <span class="keyword">null</span></div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                || pendingClient.Connection is not LidgrenConnection l</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                || !IPAddress.IsLoopback(l.NetConnection.RemoteEndPoint.Address)</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                || !ownerKey.IsSome() || pendingClient.OwnerKey != ownerKey)</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            {</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            }</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            ownerKey = Option.None;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            OwnerConnection = pendingClient.Connection;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            callbacks.OnOwnerDetermined.Invoke(OwnerConnection);</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        }</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        <span class="keyword">private</span> <span class="keyword">enum</span> AuthResult</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        {</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            Success,</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            Failure</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        }</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> ProcessAuthTicket(ClientAuthTicketAndVersionPacket packet, PendingClient pendingClient)</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordflow">if</span> (pendingClient.AccountInfo.AccountId.IsSome())</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                <span class="keywordflow">if</span> (pendingClient.AccountInfo.AccountId != packet.AccountId)</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                    RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.AuthenticationFailed));</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            <span class="keywordtype">void</span> acceptClient(AccountInfo accountInfo)</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            {</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                pendingClient.Connection.SetAccountInfo(accountInfo);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                pendingClient.Name = packet.Name;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                pendingClient.OwnerKey = packet.OwnerKey;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                pendingClient.InitializationStep = serverSettings.HasPassword ? ConnectionInitialization.Password : ConnectionInitialization.ContentPackageOrder;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            }</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="keywordtype">void</span> rejectClient()</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            {</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.AuthenticationFailed));</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            }</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span> &amp;&amp; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                GameMain.Server.ServerSettings.RequireAuthentication)</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            {</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                DebugConsole.NewMessage(</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                    <span class="stringliteral">&quot;The server is configured to require authentication from clients, but there are no authenticators available. &quot;</span> +</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    $<span class="stringliteral">&quot;If you&#39;re for example trying to host a server in a local network without being connected to Steam or Epic Online Services, please set {nameof(GameMain.Server.ServerSettings.RequireAuthentication)} to false in the server settings.&quot;</span>, </div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            NetSendResult result = ForwardToLidgren(msgToSend, conn, headers.DeliveryMethod);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            <span class="keywordflow">if</span> (result != NetSendResult.Sent &amp;&amp; result != NetSendResult.Queued)</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                DebugConsole.NewMessage($<span class="stringliteral">&quot;Failed to send message to {conn.Endpoint}: {result}&quot;</span>, Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            }</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> CheckOwnership(PendingClient pendingClient)</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        {</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">if</span> (OwnerConnection != <span class="keyword">null</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                || pendingClient.Connection is not LidgrenConnection l</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                || !IPAddress.IsLoopback(l.NetConnection.RemoteEndPoint.Address)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                || !ownerKey.IsSome() || pendingClient.OwnerKey != ownerKey)</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            }</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            ownerKey = Option.None;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            OwnerConnection = pendingClient.Connection;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            callbacks.OnOwnerDetermined.Invoke(OwnerConnection);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keyword">private</span> <span class="keyword">enum</span> AuthResult</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            Success,</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            Failure</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        }</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> ProcessAuthTicket(ClientAuthTicketAndVersionPacket packet, PendingClient pendingClient)</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            <span class="keywordflow">if</span> (pendingClient.AccountInfo.AccountId.IsSome())</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            {</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                <span class="keywordflow">if</span> (pendingClient.AccountInfo.AccountId != packet.AccountId)</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                    RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.AuthenticationFailed));</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordtype">void</span> acceptClient(AccountInfo accountInfo)</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            {</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                pendingClient.Connection.SetAccountInfo(accountInfo);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                pendingClient.Name = packet.Name;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                pendingClient.OwnerKey = packet.OwnerKey;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                pendingClient.InitializationStep = ShouldAskForPassword(serverSettings, pendingClient.Connection)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                                                       ? ConnectionInitialization.Password</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                                                       : ConnectionInitialization.ContentPackageOrder;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordtype">void</span> rejectClient()</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            {</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.AuthenticationFailed));</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            }</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                || !packet.AuthTicket.TryUnwrap(out var authTicket)</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                || !authenticators.TryGetValue(authTicket.Kind, out var authenticator))</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            {                </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Debug server accepts unauthenticated connections&quot;</span>, Microsoft.Xna.Framework.Color.Yellow);</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                acceptClient(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> UnauthenticatedAccountId(packet.Name)));</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                <span class="keywordflow">if</span> (GameMain.Server.ServerSettings.RequireAuthentication)</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                {</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                    DebugConsole.NewMessage(</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                        <span class="stringliteral">&quot;A client attempted to join without an authentication ticket, but the server is configured to require authentication. &quot;</span> +</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;                        $<span class="stringliteral">&quot;If you&#39;re for example trying to host a server in a local network without being connected to Steam or Epic Online Services, please set {nameof(GameMain.Server.ServerSettings.RequireAuthentication)} to false in the server settings.&quot;</span>,</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                        Microsoft.Xna.Framework.Color.Yellow);</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                    rejectClient();</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                }</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                {</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                    acceptClient(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> UnauthenticatedAccountId(packet.Name)));</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                }</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            }</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            pendingClient.AuthSessionStarted = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            TaskPool.Add($<span class="stringliteral">&quot;{nameof(LidgrenServerPeer)}.ProcessAuth&quot;</span>, authenticator.VerifyTicket(authTicket), t =&gt;</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            {</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                if (!t.TryGetResult(out AccountInfo accountInfo)</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                    || accountInfo.IsNone)</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                {</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                    rejectClient();</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                    return;</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                }</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                acceptClient(accountInfo);</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            });</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        }</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        <span class="keyword">private</span> NetSendResult ForwardToLidgren(IWriteMessage msg, NetworkConnection connection, DeliveryMethod deliveryMethod)</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        {</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            ToolBox.ThrowIfNull(netServer);</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            LidgrenConnection conn = (LidgrenConnection)connection;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <span class="keywordflow">return</span> netServer.SendMessage(msg.ToLidgren(netServer), conn.NetConnection, deliveryMethod.ToLidgren());</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        }</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    }</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;}</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span> &amp;&amp; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                GameMain.Server.ServerSettings.RequireAuthentication)</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            {</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                DebugConsole.NewMessage(</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                    <span class="stringliteral">&quot;The server is configured to require authentication from clients, but there are no authenticators available. &quot;</span> +</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                    $<span class="stringliteral">&quot;If you&#39;re for example trying to host a server in a local network without being connected to Steam or Epic Online Services, please set {nameof(GameMain.Server.ServerSettings.RequireAuthentication)} to false in the server settings.&quot;</span>, </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                    Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            }</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            <span class="keywordflow">if</span> (authenticators is <span class="keyword">null</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                || !packet.AuthTicket.TryUnwrap(out var authTicket)</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                || !authenticators.TryGetValue(authTicket.Kind, out var authenticator))</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                DebugConsole.NewMessage(<span class="stringliteral">&quot;Debug server accepts unauthenticated connections&quot;</span>, Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                acceptClient(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> UnauthenticatedAccountId(packet.Name)));</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                <span class="keywordflow">if</span> (GameMain.Server.ServerSettings.RequireAuthentication)</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                    DebugConsole.NewMessage(</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                        <span class="stringliteral">&quot;A client attempted to join without an authentication ticket, but the server is configured to require authentication. &quot;</span> +</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                        $<span class="stringliteral">&quot;If you&#39;re for example trying to host a server in a local network without being connected to Steam or Epic Online Services, please set {nameof(GameMain.Server.ServerSettings.RequireAuthentication)} to false in the server settings.&quot;</span>,</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                        Microsoft.Xna.Framework.Color.Yellow);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                    rejectClient();</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                }</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                    acceptClient(<span class="keyword">new</span> AccountInfo(<span class="keyword">new</span> UnauthenticatedAccountId(packet.Name)));</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                }</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            }</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            pendingClient.AuthSessionStarted = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            TaskPool.Add($<span class="stringliteral">&quot;{nameof(LidgrenServerPeer)}.ProcessAuth&quot;</span>, authenticator.VerifyTicket(authTicket), t =&gt;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            {</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                if (!t.TryGetResult(out AccountInfo accountInfo)</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                    || accountInfo.IsNone)</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                {</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                    rejectClient();</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                    return;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                acceptClient(accountInfo);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            });</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="keyword">private</span> NetSendResult ForwardToLidgren(IWriteMessage msg, NetworkConnection connection, DeliveryMethod deliveryMethod)</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        {</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            ToolBox.ThrowIfNull(netServer);</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160; </div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            LidgrenConnection conn = (LidgrenConnection)connection;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            <span class="keywordflow">return</span> netServer.SendMessage(msg.ToLidgren(netServer), conn.NetConnection, deliveryMethod.ToLidgren());</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        }</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    }</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;}</div>
 <div class="ttc" id="aclass_authenticator_html"><div class="ttname"><a href="class_authenticator.html">Authenticator</a></div><div class="ttdef"><b>Definition:</b> <a href="_authenticator_8cs_source.html#l00009">Authenticator.cs:10</a></div></div>
 <div class="ttc" id="aclass_authenticator_html_ab8142efbb60514540bcdf754368a6640"><div class="ttname"><a href="class_authenticator.html#ab8142efbb60514540bcdf754368a6640">Authenticator.GetAuthenticatorsForHost</a></div><div class="ttdeci">static ImmutableDictionary&lt; AuthenticationTicketKind, Authenticator &gt; GetAuthenticatorsForHost(Option&lt; Endpoint &gt; ownerEndpointOption)</div><div class="ttdef"><b>Definition:</b> <a href="_authenticator_8cs_source.html#l00014">Authenticator.cs:14</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00006">IEnumerableExtensions.cs:7</a></div></div>
+<div class="ttc" id="anamespace_barotrauma_1_1_extensions_html"><div class="ttname"><a href="namespace_barotrauma_1_1_extensions.html">Barotrauma.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_enumerable_extensions_8cs_source.html#l00008">IEnumerableExtensions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html">Barotrauma.Networking</a></div><div class="ttdef"><b>Definition:</b> <a href="_barotrauma_shared_2_shared_source_2_lua_cs_2_lua_2_lua_barotrauma_additions_8cs_source.html#l00008">BarotraumaShared/SharedSource/LuaCs/Lua/LuaBarotraumaAdditions.cs:9</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_a3861060f411baddb298f4ea43f5e5517"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#a3861060f411baddb298f4ea43f5e5517">Barotrauma.Networking.NetworkConnectionStatus</a></div><div class="ttdeci">NetworkConnectionStatus</div><div class="ttdef"><b>Definition:</b> <a href="_network_connection_8cs_source.html#l00005">NetworkConnection.cs:6</a></div></div>
 <div class="ttc" id="anamespace_barotrauma_1_1_networking_html_add3372db2e3cffdc066c7a035266a7b2a083782830dc8e347f99260cb224b7098"><div class="ttname"><a href="namespace_barotrauma_1_1_networking.html#add3372db2e3cffdc066c7a035266a7b2a083782830dc8e347f99260cb224b7098">Barotrauma.Networking.ChatMessageType.ServerLog</a></div><div class="ttdeci">@ ServerLog</div></div>

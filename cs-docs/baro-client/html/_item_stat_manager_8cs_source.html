@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('_item_stat_manager_8cs_source.html',''
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>ItemStatManager</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;TalentStatIdentifier, float&gt; talentStats = <span class="keyword">new</span>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a> item;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a> item;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">public</span> ItemStatManager(Item item) =&gt; this.item = item;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
@@ -156,7 +156,7 @@ $(document).ready(function(){initNavTree('_item_stat_manager_8cs_source.html',''
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#if SERVER</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (GameMain.NetworkMember is { IsServer: true } server)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                server.CreateEntityEvent(item, <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Item</a>.SetItemStatEventData(talentStats));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                server.CreateEntityEvent(item, <span class="keyword">new</span> <a class="code" href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Item</a>.SetItemStatEventData(talentStats));</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
@@ -221,7 +221,7 @@ $(document).ready(function(){initNavTree('_item_stat_manager_8cs_source.html',''
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
 <div class="ttc" id="anamespace_barotrauma_html"><div class="ttname"><a href="namespace_barotrauma.html">Barotrauma</a></div><div class="ttdef"><b>Definition:</b> <a href="_achievement_manager_8cs_source.html#l00011">AchievementManager.cs:12</a></div></div>
-<div class="ttc" id="anamespace_barotrauma_html_af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#af22238dc2b76a4392541f8b2214c8108a7d74f3b92b19da5e606d737d339a9679">Barotrauma.WearableType.Item</a></div><div class="ttdeci">@ Item</div></div>
+<div class="ttc" id="anamespace_barotrauma_html_ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679"><div class="ttname"><a href="namespace_barotrauma.html#ace0a154441ef8d85d2f2c0f636a001c4a7d74f3b92b19da5e606d737d339a9679">Barotrauma.AttackTarget.Item</a></div><div class="ttdeci">@ Item</div><div class="ttdoc">Items only</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
