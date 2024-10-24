@@ -16,6 +16,7 @@ public partial class ModConfigInfo : IModConfigInfo
     
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public bool Optional { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
     public ImmutableArray<ILuaResourceInfo> LuaScripts { get; init; }
@@ -40,6 +41,7 @@ public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public bool Optional { get; init; }
 }
 
 public readonly struct DependencyInfo : IPackageDependencyInfo
@@ -49,7 +51,6 @@ public readonly struct DependencyInfo : IPackageDependencyInfo
     public string PackageName { get; init; }
     public ulong SteamWorkshopId { get; init; }
     public ContentPackage DependencyPackage { get; init; }
-    public bool Optional { get; init; }
 }
 
 public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
@@ -62,6 +63,7 @@ public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public bool Optional { get; init; }
 }
 
 public readonly struct LuaScriptResourceInfo : ILuaResourceInfo
@@ -73,6 +75,7 @@ public readonly struct LuaScriptResourceInfo : ILuaResourceInfo
     public ImmutableArray<string> FilePaths { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public bool Optional { get; init; }
     public string InternalName { get; init; }
     public bool LazyLoad { get; init; }
 }

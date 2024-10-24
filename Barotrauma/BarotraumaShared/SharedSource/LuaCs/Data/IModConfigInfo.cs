@@ -9,8 +9,6 @@ public partial interface IModConfigInfo : IPackageDependenciesInfo, IResourceCul
     // package info
     ContentPackage Package { get; }
     string PackageName { get; }
-    
-    
     // configuration
     TargetRunMode RunModes { get; }
 }
