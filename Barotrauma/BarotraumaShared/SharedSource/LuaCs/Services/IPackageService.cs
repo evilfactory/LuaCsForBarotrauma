@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IPackageService : IService, 
     // These allow us the pass the IContentPackageService to anything that needs the data without having to directly reference the member
-    IPackageDependenciesInfo, IResourceCultureInfo, IAssembliesResourcesInfo, ILocalizationsResourcesInfo, ILuaScriptsResourcesInfo
+    IResourceCultureInfo, IAssembliesResourcesInfo, ILocalizationsResourcesInfo, ILuaScriptsResourcesInfo
 {
     ContentPackage Package { get; }
     IModConfigInfo ModConfigInfo { get; }

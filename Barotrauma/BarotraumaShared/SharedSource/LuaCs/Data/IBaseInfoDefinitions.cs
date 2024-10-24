@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -66,16 +67,11 @@ public interface IResourceCultureInfo
 }
 
 
-public interface ILazyLoadableResourceInfo
+public interface ILoadableResourceInfo
 {
     /// <summary>
-    /// The name that will be used when trying to reference this resource for execution or loading.
+    /// [UNIQUE] The name that will be used when trying to reference this resource for execution or loading.
     /// </summary>
     [Required]
     public string InternalName { get; }
-    
-    /// <summary>
-    /// Should this be compiled/loaded immediately or stored until demanded.
-    /// </summary>
-    public bool LazyLoad { get; }
 }
