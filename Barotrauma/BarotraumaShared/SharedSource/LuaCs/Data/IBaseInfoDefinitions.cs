@@ -46,6 +46,12 @@ public interface IResourceInfo : IPlatformInfo
     /// </summary>
     [Required]
     ImmutableArray<string> FilePaths { get; }
+    
+    /// <summary>
+    /// Marks this resource as optional (ie. Cross-CP content). Setting this to true will allow the dependency system to
+    /// try and order the loading but not fail if it runs into circular dependency issues.
+    /// </summary>
+    bool Optional { get; }
 }
 
 /// <summary>

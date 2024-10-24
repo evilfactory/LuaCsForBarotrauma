@@ -16,7 +16,6 @@ public partial class ModConfigInfo : IModConfigInfo
     
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
-    public bool Optional { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
     public ImmutableArray<ILuaResourceInfo> LuaScripts { get; init; }

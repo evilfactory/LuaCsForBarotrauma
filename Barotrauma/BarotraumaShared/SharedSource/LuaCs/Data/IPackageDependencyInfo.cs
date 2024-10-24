@@ -28,9 +28,4 @@ public interface IPackageDependenciesInfo
     /// List of required packages.
     /// </summary>
     ImmutableArray<IPackageDependencyInfo> Dependencies { get; }
-    /// <summary>
-    /// Marks this dependency optional (ie. Cross-CP content). Setting this to true will allow the dependency system to
-    /// try and order the loading but not fail if it runs into circular dependency issues.
-    /// </summary>
-    bool Optional { get; }
 }
