@@ -20,11 +20,6 @@ public interface IPackageDependencyInfo : IPackageInfo
     /// The dependency package, if found in the ALL Packages List.
     /// </summary>
     public ContentPackage DependencyPackage { get; }
-    /// <summary>
-    /// Marks this dependency optional (ie. Cross-CP content). Setting this to true will allow the dependency system to
-    /// try and order the loading but not fail if it runs into circular dependency issues.
-    /// </summary>
-    bool Optional { get; }
 }
 
 public interface IPackageDependenciesInfo
@@ -33,4 +28,9 @@ public interface IPackageDependenciesInfo
     /// List of required packages.
     /// </summary>
     ImmutableArray<IPackageDependencyInfo> Dependencies { get; }
+    /// <summary>
+    /// Marks this dependency optional (ie. Cross-CP content). Setting this to true will allow the dependency system to
+    /// try and order the loading but not fail if it runs into circular dependency issues.
+    /// </summary>
+    bool Optional { get; }
 }

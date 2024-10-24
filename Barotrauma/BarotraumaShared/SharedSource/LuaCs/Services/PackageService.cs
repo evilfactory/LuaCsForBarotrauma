@@ -409,7 +409,7 @@ public partial class PackageService : IPackageService
             /*
              * To be graceful, we want to ensure that any async calls and other threads are allowed to be processed before we begin
              * disposal to reduce friction with other thread operations, so we release the lock and periodically check it
-             * to see of other threads have finished operations before cleaning everythng up.
+             * to see of other threads have finished operations before cleaning everything up.
              */
 
             IsDisposed = true; // set stop flag, callers should handle exception cases
