@@ -1815,8 +1815,8 @@ namespace Barotrauma
                     return;
                 }
             }
-            GameMain.LuaCs.Hook.Call("character.giveJobItems", this, spawnPoint, isPvPMode);
             info.Job?.GiveJobItems(this, isPvPMode, spawnPoint);
+            GameMain.LuaCs.Hook.Call("character.giveJobItems", this, spawnPoint, isPvPMode);
         }
 
         public void GiveIdCardTags(WayPoint spawnPoint, bool createNetworkEvent = false)
