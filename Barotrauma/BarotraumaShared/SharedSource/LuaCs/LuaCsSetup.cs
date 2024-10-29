@@ -71,7 +71,7 @@ namespace Barotrauma
             get
             {
 #if SERVER
-                return Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) == Directory.GetCurrentDirectory();
+                return Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) != Directory.GetCurrentDirectory();
 #else
                 return false; // unnecessary but just keeps things clear that this is NOT for client stuff
 #endif
