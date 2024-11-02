@@ -14,7 +14,6 @@ public partial class PackageService
         Lazy<ILocalizationService> localizationService,
         Lazy<IPluginService> pluginService,
         Lazy<IConfigService> configService,
-        IPluginManagementService pluginManagementService,
         IPackageManagementService packageManagementService,
         IStorageService storageService,
         ILoggerService loggerService)
@@ -25,7 +24,6 @@ public partial class PackageService
         _localizationService = localizationService;
         _pluginService = pluginService;
         _configService = configService;
-        _pluginManagementService = pluginManagementService;
         _packageManagementService = packageManagementService;
         _storageService = storageService;
         _loggerService = loggerService;

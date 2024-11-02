@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Data;
 
 #region ModConfigurationInfo
 
-public partial class ModConfigInfo : IModConfigInfo
+public partial record ModConfigInfo : IModConfigInfo
 {
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
@@ -26,7 +26,7 @@ public partial class ModConfigInfo : IModConfigInfo
 
 #region DataContracts
 
-public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
+public record AssemblyResourceInfo : IAssemblyResourceInfo
 {
     public ContentPackage OwnerPackage { get; init; }
     public string FriendlyName { get; init; }
@@ -42,7 +42,7 @@ public readonly struct AssemblyResourceInfo : IAssemblyResourceInfo
     public bool Optional { get; init; }
 }
 
-public readonly struct DependencyInfo : IPackageDependencyInfo
+public record DependencyInfo : IPackageDependencyInfo
 {
     public ContentPackage OwnerPackage { get; init; }
     public string FolderPath { get; init; }
@@ -51,7 +51,7 @@ public readonly struct DependencyInfo : IPackageDependencyInfo
     public ContentPackage DependencyPackage { get; init; }
 }
 
-public readonly struct LocalizationResourceInfo : ILocalizationResourceInfo
+public record LocalizationResourceInfo : ILocalizationResourceInfo
 {
     public ContentPackage OwnerPackage { get; init; }
     public CultureInfo TargetCulture { get; init; }

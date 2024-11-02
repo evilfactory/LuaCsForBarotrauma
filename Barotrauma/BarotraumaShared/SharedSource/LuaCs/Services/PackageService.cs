@@ -26,7 +26,6 @@ public partial class PackageService : IPackageService
     private readonly Lazy<ILocalizationService> _localizationService;
     private readonly Lazy<IPluginService> _pluginService;
     private readonly Lazy<IConfigService> _configService;
-    private readonly IPluginManagementService _pluginManagementService;
     private readonly IPackageManagementService _packageManagementService;
     private readonly IStorageService _storageService;
     private readonly ILoggerService _loggerService;

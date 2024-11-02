@@ -18,7 +18,6 @@ public partial class PackageService : IStylesResourcesInfo
         Lazy<IPluginService> pluginService,
         Lazy<IStylesService> stylesService,
         Lazy<IConfigService> configService,
-        IPluginManagementService pluginManagementService,
         IPackageManagementService packageManagementService,
         IStorageService storageService,
         ILoggerService loggerService)
@@ -30,7 +29,6 @@ public partial class PackageService : IStylesResourcesInfo
         _pluginService = pluginService;
         _stylesService = stylesService;
         _configService = configService;
-        _pluginManagementService = pluginManagementService;
         _packageManagementService = packageManagementService;
         _storageService = storageService;
         _loggerService = loggerService;

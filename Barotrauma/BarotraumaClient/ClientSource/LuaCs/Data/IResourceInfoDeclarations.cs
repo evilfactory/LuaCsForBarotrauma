@@ -2,6 +2,8 @@
 
 namespace Barotrauma.LuaCs.Data;
 
+public partial interface IModConfigInfo : IStylesResourcesInfo { }
+
 public interface IStylesResourceInfo : IResourceInfo, IResourceCultureInfo, ILoadableResourceInfo, IPackageDependenciesInfo { }
 
 public interface IStylesResourcesInfo
