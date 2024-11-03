@@ -1,6 +1,6 @@
 ﻿namespace Barotrauma.LuaCs.Services.Safe;
 
-public interface ILuaConfigService
+public interface ILuaConfigService : ILuaService
 {
     
 }

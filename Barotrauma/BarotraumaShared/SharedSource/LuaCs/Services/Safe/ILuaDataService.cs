@@ -5,7 +5,7 @@ namespace Barotrauma.LuaCs.Services.Safe;
 /// <summary>
 /// Service for providing stateful functions and in-memory storage for lua functions 
 /// </summary>
-public interface ILuaDataService : IService
+public interface ILuaDataService : ILuaService
 {
     /// <summary>
     /// Returns stored table for the given object if it exists.
