@@ -2,4 +2,4 @@ using Barotrauma.LuaCs.Configuration;
 
 namespace Barotrauma.LuaCs.Data;
 
-public partial interface IConfigInfo : IDisplayableConfig { }
+public partial interface IConfigInfo : IDisplayableData { }
