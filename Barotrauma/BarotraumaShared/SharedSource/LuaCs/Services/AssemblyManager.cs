@@ -739,6 +739,11 @@ public class AssemblyManager : IAssemblyManagementService
     {
         TryBeginDispose();
     }
+
+    public void Reset()
+    {
+        TryBeginDispose();
+    }
 }
 
 public static class AssemblyExtensions

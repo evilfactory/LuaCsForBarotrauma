@@ -7,16 +7,25 @@ namespace Barotrauma.LuaCs.Services;
 public class PackageManagementService : IPackageManagementService, IPluginManagementService
 {
     private readonly Func<IPackageService> _contentPackageServiceFactory;
+    private readonly Lazy<IAssemblyManagementService> _assemblyManagementService;
 
-    public PackageManagementService(Func<IPackageService> getPackageService)
+    public PackageManagementService(
+        Func<IPackageService> getPackageService,
+        Lazy<IAssemblyManagementService> assemblyManagementService)
     {
         this._contentPackageServiceFactory = getPackageService;
+        this._assemblyManagementService = assemblyManagementService;
     }
 
 
     public void Dispose()
     {
         // TODO release managed resources here
+    }
+
+    public void Reset()
+    {
+        throw new NotImplementedException();
     }
 
     public bool IsAssemblyLoadedGlobal(string friendlyName)

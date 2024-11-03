@@ -48,7 +48,7 @@ public class StylesService : IStylesService
 
     public void UnloadAllStyles()
     {
-        if (NoProcessorsLoaded())
+        if (NoProcessorsLoaded)
             return;
         
         foreach (var processor in _loadedProcessors)
@@ -60,7 +60,7 @@ public class StylesService : IStylesService
 
     public GUIFont GetFont(string fontName)
     {
-        if (NoProcessorsLoaded())
+        if (NoProcessorsLoaded)
             return null;
         foreach (var processor in _loadedProcessors.Values)
         {
@@ -73,7 +73,7 @@ public class StylesService : IStylesService
 
     public GUISprite GetSprite(string spriteName)
     {
-        if (NoProcessorsLoaded())
+        if (NoProcessorsLoaded)
             return null;
         foreach (var processor in _loadedProcessors.Values)
         {
@@ -86,7 +86,7 @@ public class StylesService : IStylesService
 
     public GUISpriteSheet GetSpriteSheet(string spriteSheetName)
     {
-        if (NoProcessorsLoaded())
+        if (NoProcessorsLoaded)
             return null;
         foreach (var processor in _loadedProcessors.Values)
         {
@@ -99,7 +99,7 @@ public class StylesService : IStylesService
 
     public GUICursor GetCursor(string cursorName)
     {
-        if (NoProcessorsLoaded())
+        if (NoProcessorsLoaded)
             return null;
         foreach (var processor in _loadedProcessors.Values)
         {
@@ -112,7 +112,7 @@ public class StylesService : IStylesService
 
     public GUIColor GetColor(string colorName)
     {
-        if (NoProcessorsLoaded())
+        if (NoProcessorsLoaded)
             return null;
         foreach (var processor in _loadedProcessors.Values)
         {
@@ -123,9 +123,15 @@ public class StylesService : IStylesService
         return null;
     }
 
-    private bool NoProcessorsLoaded() => _loadedProcessors.Count < 1;
+    private bool NoProcessorsLoaded => _loadedProcessors.Count < 1;
 
     public void Dispose()
+    {
+        UnloadAllStyles();
+        GC.SuppressFinalize(this);
+    }
+
+    public void Reset()
     {
         UnloadAllStyles();
     }

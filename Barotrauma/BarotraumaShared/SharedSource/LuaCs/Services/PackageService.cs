@@ -33,7 +33,7 @@ public partial class PackageService : IPackageService
     // .ctor in server source and client source
     
     // state monitors
-    private int _configsLoaded, _localizationsLoaded, _luaScriptsLoaded, _isDisposed;
+    private int _configsLoaded, _localizationsLoaded, _luaScriptsLoaded, _pluginsLoaded, _isDisposed;
     private int _loadingOperationsRunning;
 
     public bool ConfigsLoaded
@@ -50,6 +50,11 @@ public partial class PackageService : IPackageService
     {
         get => GetThreadSafeBool(ref _luaScriptsLoaded);
         private set => SetThreadSafeBool(ref _luaScriptsLoaded, value);
+    }
+    public bool PluginsLoaded
+    {
+        get => GetThreadSafeBool(ref _pluginsLoaded);
+        private set => SetThreadSafeBool(ref _pluginsLoaded, value);
     }
     public bool IsDisposed
     {
@@ -242,6 +247,8 @@ public partial class PackageService : IPackageService
             {
                 throw new TypeLoadException($"PackageService: unable to load assemblies for package {this.Package.Name}! Aborting loading!");
             }
+
+            PluginsLoaded = true;
         }
         finally
         {
@@ -279,6 +286,8 @@ public partial class PackageService : IPackageService
             {
                 throw new FileLoadException($"Package Service: unable to load localizations for package {this.Package.Name}! Aborting!");
             }
+
+            LocalizationsLoaded = true;
         }
         finally
         {
@@ -317,6 +326,8 @@ public partial class PackageService : IPackageService
                 throw new ArgumentException(
                     $"Package Service: unable to add lua files for package {this.Package.Name}! Aborting!");
             }
+
+            LuaScriptsLoaded = true;
         }
         finally
         {
@@ -374,6 +385,7 @@ public partial class PackageService : IPackageService
                 throw new ArgumentException(
                     $"Package Service: unable to add configs profiles for package {this.Package.Name}! Aborting!");
             }
+            ConfigsLoaded = true;
         }
         finally
         {
@@ -444,6 +456,70 @@ public partial class PackageService : IPackageService
         {
             _loggerService.LogError($"Package Service: exception while running Dispose().");
             throw;
+        }
+        finally
+        {
+            _operationsUsageLock.ExitWriteLock();
+        }
+    }
+
+    public void Reset()
+    {
+        _operationsUsageLock.EnterWriteLock();
+        try
+        {
+            if (this.Package is null)
+            {
+                _loggerService.LogError(
+                    $"Package Service: cannot Dispose of service as ContentPackage and info is not set!");
+                return;
+            }
+
+            if (this.ModConfigInfo is null)
+            {
+                _loggerService.LogError($"Package Service: cannot Dispose of service as ModConfigInfo is not loaded!");
+                return;
+            }
+            
+            Interlocked.MemoryBarrier(); //ensure cache states 
+
+            DateTime timeoutLimit = DateTime.Now.AddSeconds(10);
+            while (LoadingOperationsRunning)
+            {
+                _operationsUsageLock.ExitWriteLock();
+                Thread.Sleep(1);
+                _operationsUsageLock.EnterWriteLock();
+                if (timeoutLimit < DateTime.Now)
+                {
+                    _loggerService.LogError($"Package Service: Dispose() time out reached while waiting for other operations. Continuing.");
+                    break;
+                }
+            }
+
+            if (LuaScriptsLoaded)
+            {
+                _luaScriptService.Value.RemoveScriptFiles(this.LuaScripts);
+                LuaScriptsLoaded = false;
+            }
+
+            if (PluginsLoaded)
+            {
+                _pluginService.Value.DisposePlugins();
+                PluginsLoaded = false;
+            }
+
+            if (ConfigsLoaded)
+            {
+                _configService.Value.RemoveConfigsProfiles(this.ConfigProfiles);
+                _configService.Value.RemoveConfigs(this.Configs);
+                ConfigsLoaded = false;
+            }
+
+            if (LocalizationsLoaded)
+            {
+                _localizationService.Value.Remove(this.Localizations);
+                LocalizationsLoaded = false;
+            }
         }
         finally
         {
