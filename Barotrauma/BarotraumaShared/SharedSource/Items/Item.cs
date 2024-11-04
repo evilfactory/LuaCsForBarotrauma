@@ -1356,7 +1356,7 @@ namespace Barotrauma
             if (Components.Any(ic => ic is Wire) && Components.All(ic => ic is Wire || ic is Holdable)) { isWire = true; }
             if (HasTag(Barotrauma.Tags.LogicItem)) { isLogic = true; }
 
-            GameMain.LuaCs.Hook.Call("item.created", this);
+            GameMain.LuaCs.Hook.Call<Item>("item.created", this);
 
             ApplyStatusEffects(ActionType.OnSpawn, 1.0f);
 
@@ -4537,7 +4537,7 @@ namespace Barotrauma
                 body = null;
             }
 
-            GameMain.LuaCs.Hook.Call("item.removed", this);
+            GameMain.LuaCs.Hook.Call<Item>("item.removed", this);
         }
 
         public override void Remove()
@@ -4623,7 +4623,7 @@ namespace Barotrauma
 
             RemoveProjSpecific();
 
-            GameMain.LuaCs.Hook.Call("item.removed", this);
+            GameMain.LuaCs.Hook.Call<Item>("item.removed", this);
         }
 
         private void RemoveFromLists()

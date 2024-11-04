@@ -9,4 +9,6 @@ public interface IConfigEntry<T> : IConfigBase, INetVar where T : IConvertible, 
     bool TrySetValue(T value);
     bool IsAssignable(T value);
     void Initialize(IVarId id, T defaultValue);
+    
+    
 }

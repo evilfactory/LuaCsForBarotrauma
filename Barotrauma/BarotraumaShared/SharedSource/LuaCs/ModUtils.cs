@@ -1,341 +1,534 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Xml.Serialization;
 using Barotrauma;
 using Barotrauma.Items.Components;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using OneOf;
+using Platform = Barotrauma.LuaCs.Data.Platform;
 
-namespace Barotrauma;
-
-public static class ModUtils
+namespace Barotrauma.LuaCs
 {
-    #region LOGGING
 
-    public static class Logging
+    public static class ModUtils
     {
-        public static void PrintMessage(string s)
+        public static class Environment
         {
-#if SERVER
-            LuaCsLogger.LogMessage($"[Server] {s}");
+            internal static void SetCurrentThreadAsMain() => MainThreadId = Thread.CurrentThread.ManagedThreadId;
+            public static int MainThreadId { get; private set; } = Int32.MinValue;
+            public static bool IsMainThread
+            {
+                get
+                {
+                    if (MainThreadId == Int32.MinValue)
+                        throw new ArgumentNullException("MainThread ID not set.");
+                    return Thread.CurrentThread.ManagedThreadId == MainThreadId;
+                }
+            }
+            
+            public static readonly Platform CurrentPlatform =
+#if WINDOWS
+                Platform.Windows;
+#elif MACOS
+                Platform.MacOS;
+#elif LINUX
+                Platform.Linux;
 #else
-            LuaCsLogger.LogMessage($"[Client] {s}");
+                Platform.Linux;
 #endif
-        }
 
-        public static void PrintWarning(string s)
-        {
-#if SERVER
-            LuaCsLogger.Log($"[Server] {s}", Color.Yellow);
+            public static readonly Target CurrentTarget =
+#if CLIENT
+                Target.Client;
+#elif SERVER
+                Target.Server;
 #else
-            LuaCsLogger.Log($"[Client] {s}", Color.Yellow);
+                Target.Server;
 #endif
+
         }
         
-        public static void PrintError(string s)
+        #region LOGGING
+
+        public static class Logging
         {
+            public static void PrintMessage(string s)
+            {
 #if SERVER
-            LuaCsLogger.LogError($"[Server] {s}");
+                LuaCsLogger.LogMessage($"[Server] {s}");
 #else
-            LuaCsLogger.LogError($"[Client] {s}");
+                LuaCsLogger.LogMessage($"[Client] {s}");
 #endif
-        }
-    }
-
-    #endregion
-    
-    #region FILE_IO
-
-    // ReSharper disable once InconsistentNaming
-    public static class IO
-    {
-        public static IEnumerable<string> FindAllFilesInDirectory(string folder, string pattern,
-            SearchOption option)
-        {
-            try
-            {
-                return Directory.GetFiles(folder, pattern, option);
             }
-            catch (DirectoryNotFoundException e)
+
+            public static void PrintWarning(string s)
             {
-                return new string[] { };
+#if SERVER
+                LuaCsLogger.Log($"[Server] {s}", Color.Yellow);
+#else
+                LuaCsLogger.Log($"[Client] {s}", Color.Yellow);
+#endif
+            }
+
+            public static void PrintError(string s)
+            {
+#if SERVER
+                LuaCsLogger.LogError($"[Server] {s}");
+#else
+                LuaCsLogger.LogError($"[Client] {s}");
+#endif
             }
         }
 
-        public static string PrepareFilePathString(string filePath) =>
-            PrepareFilePathString(Path.GetDirectoryName(filePath)!, Path.GetFileName(filePath));
+        #endregion
 
-        public static string PrepareFilePathString(string path, string fileName) => 
-            Path.Combine(SanitizePath(path), SanitizeFileName(fileName));
+        #region FILE_IO
 
-        public static string SanitizeFileName(string fileName)
+        // ReSharper disable once InconsistentNaming
+        public static class IO
         {
-            foreach (char c in Barotrauma.IO.Path.GetInvalidFileNameCharsCrossPlatform())
-                fileName = fileName.Replace(c, '_');
-            return fileName;
-        }
-
-        /// <summary>
-        /// Gets the sanitized path for the top-level directory for a given content package.
-        /// </summary>
-        /// <param name="package"></param>
-        /// <returns></returns>
-        public static string GetContentPackageDir(ContentPackage package)
-        {
-            return SanitizePath(Path.GetFullPath(package.Dir));
-        }
-
-        public static string SanitizePath(string path)
-        {
-            foreach (char c in Path.GetInvalidPathChars())
-                path = path.Replace(c.ToString(), "_");
-            return path.CleanUpPath();
-        }
-
-        public static IOActionResultState GetOrCreateFileText(string filePath, out string fileText, Func<string> fileDataFactory = null, bool createFile = true)
-        {
-            fileText = null;
-            string fp = Path.GetFullPath(SanitizePath(filePath));
-
-            IOActionResultState ioActionResultState = IOActionResultState.Success;
-            if (createFile)
-            {
-                ioActionResultState = CreateFilePath(SanitizePath(filePath), out fp, fileDataFactory);
-            }
-            else if (!File.Exists(fp))
-            {
-                return IOActionResultState.FileNotFound;
-            }
-
-            if (ioActionResultState == IOActionResultState.Success)
+            public static IEnumerable<string> FindAllFilesInDirectory(string folder, string pattern,
+                SearchOption option)
             {
                 try
                 {
-                    fileText = File.ReadAllText(fp!);
-                    return IOActionResultState.Success;
+                    return Directory.GetFiles(folder, pattern, option);
                 }
-                catch (ArgumentNullException ane)
+                catch (DirectoryNotFoundException e)
                 {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: An argument is null. path: {fp ?? "null"} | Exception Details: {ane.Message}");
-                    return IOActionResultState.FilePathNull;
-                }
-                catch (ArgumentException ae)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: An argument is invalid. path: {fp ?? "null"} | Exception Details: {ae.Message}");
-                    return IOActionResultState.FilePathInvalid;
-                }
-                catch (DirectoryNotFoundException dnfe)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: Cannot find directory. path: {fp ?? "null"} | Exception Details: {dnfe.Message}");
-                    return IOActionResultState.DirectoryMissing;
-                }
-                catch (PathTooLongException ptle)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: path length is over 200 characters. path: {fp ?? "null"} | Exception Details: {ptle.Message}");
-                    return IOActionResultState.PathTooLong;
-                }
-                catch (NotSupportedException nse)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: Operation not supported on your platform/environment (permissions?). path: {fp ?? "null"}  | Exception Details: {nse.Message}");
-                    return IOActionResultState.InvalidOperation;
-                }
-                catch (IOException ioe)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: IO tasks failed (Operation not supported). path: {fp ?? "null"}  | Exception Details: {ioe.Message}");
-                    return IOActionResultState.IOFailure;
-                }
-                catch (Exception e)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: Unknown/Other Exception. path: {fp ?? "null"} | ExceptionMessage: {e.Message}");
-                    return IOActionResultState.UnknownError;
+                    return new string[] { };
                 }
             }
 
-            return ioActionResultState;
-        }
+            public static string PrepareFilePathString(string filePath) =>
+                PrepareFilePathString(Path.GetDirectoryName(filePath)!, Path.GetFileName(filePath));
 
-        public static IOActionResultState CreateFilePath(string filePath, out string formattedFilePath, Func<string> fileDataFactory = null)
-        {
-            string file = Path.GetFileName(filePath);
-            string path = Path.GetDirectoryName(filePath)!;
+            public static string PrepareFilePathString(string path, string fileName) =>
+                Path.Combine(SanitizePath(path), SanitizeFileName(fileName));
 
-            formattedFilePath = IO.PrepareFilePathString(path, file);
-            try
+            public static string SanitizeFileName(string fileName)
             {
-                if (!Directory.Exists(path))
-                    Directory.CreateDirectory(path);
-                if (!File.Exists(formattedFilePath))
-                    File.WriteAllText(formattedFilePath, fileDataFactory is null ? "" : fileDataFactory.Invoke());
-                return IOActionResultState.Success;
-            }
-            catch (ArgumentNullException ane)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: An argument is null. path: {formattedFilePath ?? "null"}  | Exception Details: {ane.Message}");
-                return IOActionResultState.FilePathNull;
-            }
-            catch (ArgumentException ae)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: An argument is invalid. path: {formattedFilePath ?? "null"} | Exception Details: {ae.Message}");
-                return IOActionResultState.FilePathInvalid;
-            }
-            catch (DirectoryNotFoundException dnfe)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: Cannot find directory. path: {path ?? "null"} | Exception Details: {dnfe.Message}");
-                return IOActionResultState.DirectoryMissing;
-            }
-            catch (PathTooLongException ptle)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: path length is over 200 characters. path: {formattedFilePath ?? "null"} | Exception Details: {ptle.Message}");
-                return IOActionResultState.PathTooLong;
-            }
-            catch (NotSupportedException nse)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: Operation not supported on your platform/environment (permissions?). path: {formattedFilePath ?? "null"} | Exception Details: {nse.Message}");
-                return IOActionResultState.InvalidOperation;
-            }
-            catch (IOException ioe)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: IO tasks failed (Operation not supported). path: {formattedFilePath ?? "null"} | Exception Details: {ioe.Message}");
-                return IOActionResultState.IOFailure;
-            }
-            catch (Exception e)
-            {
-                ModUtils.Logging.PrintError($"ModUtils::CreateFilePath() | Exception: Unknown/Other Exception. path: {path ?? "null"} | Exception Details: {e.Message}");
-                return IOActionResultState.UnknownError;
-            }
-        }
-
-        public static IOActionResultState WriteFileText(string filePath, string fileText)
-        {
-            IOActionResultState ioActionResultState = CreateFilePath(filePath, out var fp);
-            if (ioActionResultState == IOActionResultState.Success)
-            {
-                try
-                {
-                    File.WriteAllText(fp!, fileText);
-                    return IOActionResultState.Success;
-                }
-                catch (ArgumentNullException ane)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: An argument is null. path: {fp ?? "null"} | Exception Details: {ane.Message}");
-                    return IOActionResultState.FilePathNull;
-                }
-                catch (ArgumentException ae)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: An argument is invalid. path: {fp ?? "null"} | Exception Details: {ae.Message}");
-                    return IOActionResultState.FilePathInvalid;
-                }
-                catch (DirectoryNotFoundException dnfe)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: Cannot find directory. path: {fp ?? "null"} | Exception Details: {dnfe.Message}");
-                    return IOActionResultState.DirectoryMissing;
-                }
-                catch (PathTooLongException ptle)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: path length is over 200 characters. path: {fp ?? "null"} | Exception Details: {ptle.Message}");
-                    return IOActionResultState.PathTooLong;
-                }
-                catch (NotSupportedException nse)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: Operation not supported on your platform/environment (permissions?). path: {fp ?? "null"} | Exception Details: {nse.Message}");
-                    return IOActionResultState.InvalidOperation;
-                }
-                catch (IOException ioe)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: IO tasks failed (Operation not supported). path: {fp ?? "null"} | Exception Details: {ioe.Message}");
-                    return IOActionResultState.IOFailure;
-                }
-                catch (Exception e)
-                {
-                    ModUtils.Logging.PrintError($"ModUtils::WriteFileText() | Exception: Unknown/Other Exception. path: {fp ?? "null"} | ExceptionMessage: {e.Message}");
-                    return IOActionResultState.UnknownError;
-                }
+                foreach (char c in Barotrauma.IO.Path.GetInvalidFileNameCharsCrossPlatform())
+                    fileName = fileName.Replace(c, '_');
+                return fileName;
             }
 
-            return ioActionResultState;
-        }
+            /// <summary>
+            /// Gets the sanitized path for the top-level directory for a given content package.
+            /// </summary>
+            /// <param name="package"></param>
+            /// <returns></returns>
+            public static string GetContentPackageDir(ContentPackage package)
+            {
+                return SanitizePath(Path.GetFullPath(package.Dir));
+            }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="instance"></param>
-        /// <param name="filepath"></param>
-        /// <param name="typeFactory"></param>
-        /// <param name="createFile"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static bool LoadOrCreateTypeXml<T>(out T instance, 
-            string filepath, Func<T> typeFactory = null, bool createFile = true) where T : class, new()
-        {
-            instance = null;
-            filepath = filepath.CleanUpPath();
-            if (IOActionResultState.Success == GetOrCreateFileText(
-                    filepath, out string fileText, typeFactory is not null ? () =>
+            public static string SanitizePath(string path)
+            {
+                foreach (char c in Path.GetInvalidPathChars())
+                    path = path.Replace(c.ToString(), "_");
+                return path.CleanUpPath();
+            }
+
+            public static IOActionResultState GetOrCreateFileText(string filePath, out string fileText,
+                Func<string> fileDataFactory = null, bool createFile = true)
+            {
+                fileText = null;
+                string fp = Path.GetFullPath(SanitizePath(filePath));
+
+                IOActionResultState ioActionResultState = IOActionResultState.Success;
+                if (createFile)
+                {
+                    ioActionResultState = CreateFilePath(SanitizePath(filePath), out fp, fileDataFactory);
+                }
+                else if (!File.Exists(fp))
+                {
+                    return IOActionResultState.FileNotFound;
+                }
+
+                if (ioActionResultState == IOActionResultState.Success)
+                {
+                    try
                     {
-                        using StringWriter sw = new StringWriter();
-                        T t = typeFactory?.Invoke();
-                        if (t is not null)
-                        {
-                            XmlSerializer s = new XmlSerializer(typeof(T));
-                            s.Serialize(sw, t);
-                            return sw.ToString();
-                        }
-                        return "";
-                    } : null, createFile))
+                        fileText = File.ReadAllText(fp!);
+                        return IOActionResultState.Success;
+                    }
+                    catch (ArgumentNullException ane)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: An argument is null. path: {fp ?? "null"} | Exception Details: {ane.Message}");
+                        return IOActionResultState.FilePathNull;
+                    }
+                    catch (ArgumentException ae)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: An argument is invalid. path: {fp ?? "null"} | Exception Details: {ae.Message}");
+                        return IOActionResultState.FilePathInvalid;
+                    }
+                    catch (DirectoryNotFoundException dnfe)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: Cannot find directory. path: {fp ?? "null"} | Exception Details: {dnfe.Message}");
+                        return IOActionResultState.DirectoryMissing;
+                    }
+                    catch (PathTooLongException ptle)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: path length is over 200 characters. path: {fp ?? "null"} | Exception Details: {ptle.Message}");
+                        return IOActionResultState.PathTooLong;
+                    }
+                    catch (NotSupportedException nse)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: Operation not supported on your platform/environment (permissions?). path: {fp ?? "null"}  | Exception Details: {nse.Message}");
+                        return IOActionResultState.InvalidOperation;
+                    }
+                    catch (IOException ioe)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: IO tasks failed (Operation not supported). path: {fp ?? "null"}  | Exception Details: {ioe.Message}");
+                        return IOActionResultState.IOFailure;
+                    }
+                    catch (Exception e)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::CreateFilePath() | Exception: Unknown/Other Exception. path: {fp ?? "null"} | ExceptionMessage: {e.Message}");
+                        return IOActionResultState.UnknownError;
+                    }
+                }
+
+                return ioActionResultState;
+            }
+
+            public static IOActionResultState CreateFilePath(string filePath, out string formattedFilePath,
+                Func<string> fileDataFactory = null)
             {
-                XmlSerializer s = new XmlSerializer(typeof(T));
+                string file = Path.GetFileName(filePath);
+                string path = Path.GetDirectoryName(filePath)!;
+
+                formattedFilePath = IO.PrepareFilePathString(path, file);
                 try
                 {
-                    using TextReader tr = new StringReader(fileText);
-                    instance = (T)s.Deserialize(tr);
-                    return true;
+                    if (!Directory.Exists(path))
+                        Directory.CreateDirectory(path);
+                    if (!File.Exists(formattedFilePath))
+                        File.WriteAllText(formattedFilePath, fileDataFactory is null ? "" : fileDataFactory.Invoke());
+                    return IOActionResultState.Success;
                 }
-                catch(InvalidOperationException ioe)
+                catch (ArgumentNullException ane)
                 {
-                    ModUtils.Logging.PrintError($"Error while parsing type data for {typeof(T)}.");
-    #if DEBUG
-                    ModUtils.Logging.PrintError($"Exception: {ioe.Message}. Details: {ioe.InnerException?.Message}");
-    #endif
-                    instance = null;
-                    return false;
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: An argument is null. path: {formattedFilePath ?? "null"}  | Exception Details: {ane.Message}");
+                    return IOActionResultState.FilePathNull;
+                }
+                catch (ArgumentException ae)
+                {
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: An argument is invalid. path: {formattedFilePath ?? "null"} | Exception Details: {ae.Message}");
+                    return IOActionResultState.FilePathInvalid;
+                }
+                catch (DirectoryNotFoundException dnfe)
+                {
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: Cannot find directory. path: {path ?? "null"} | Exception Details: {dnfe.Message}");
+                    return IOActionResultState.DirectoryMissing;
+                }
+                catch (PathTooLongException ptle)
+                {
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: path length is over 200 characters. path: {formattedFilePath ?? "null"} | Exception Details: {ptle.Message}");
+                    return IOActionResultState.PathTooLong;
+                }
+                catch (NotSupportedException nse)
+                {
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: Operation not supported on your platform/environment (permissions?). path: {formattedFilePath ?? "null"} | Exception Details: {nse.Message}");
+                    return IOActionResultState.InvalidOperation;
+                }
+                catch (IOException ioe)
+                {
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: IO tasks failed (Operation not supported). path: {formattedFilePath ?? "null"} | Exception Details: {ioe.Message}");
+                    return IOActionResultState.IOFailure;
+                }
+                catch (Exception e)
+                {
+                    ModUtils.Logging.PrintError(
+                        $"ModUtils::CreateFilePath() | Exception: Unknown/Other Exception. path: {path ?? "null"} | Exception Details: {e.Message}");
+                    return IOActionResultState.UnknownError;
                 }
             }
 
-            return false;
+            public static IOActionResultState WriteFileText(string filePath, string fileText)
+            {
+                IOActionResultState ioActionResultState = CreateFilePath(filePath, out var fp);
+                if (ioActionResultState == IOActionResultState.Success)
+                {
+                    try
+                    {
+                        File.WriteAllText(fp!, fileText);
+                        return IOActionResultState.Success;
+                    }
+                    catch (ArgumentNullException ane)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: An argument is null. path: {fp ?? "null"} | Exception Details: {ane.Message}");
+                        return IOActionResultState.FilePathNull;
+                    }
+                    catch (ArgumentException ae)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: An argument is invalid. path: {fp ?? "null"} | Exception Details: {ae.Message}");
+                        return IOActionResultState.FilePathInvalid;
+                    }
+                    catch (DirectoryNotFoundException dnfe)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: Cannot find directory. path: {fp ?? "null"} | Exception Details: {dnfe.Message}");
+                        return IOActionResultState.DirectoryMissing;
+                    }
+                    catch (PathTooLongException ptle)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: path length is over 200 characters. path: {fp ?? "null"} | Exception Details: {ptle.Message}");
+                        return IOActionResultState.PathTooLong;
+                    }
+                    catch (NotSupportedException nse)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: Operation not supported on your platform/environment (permissions?). path: {fp ?? "null"} | Exception Details: {nse.Message}");
+                        return IOActionResultState.InvalidOperation;
+                    }
+                    catch (IOException ioe)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: IO tasks failed (Operation not supported). path: {fp ?? "null"} | Exception Details: {ioe.Message}");
+                        return IOActionResultState.IOFailure;
+                    }
+                    catch (Exception e)
+                    {
+                        ModUtils.Logging.PrintError(
+                            $"ModUtils::WriteFileText() | Exception: Unknown/Other Exception. path: {fp ?? "null"} | ExceptionMessage: {e.Message}");
+                        return IOActionResultState.UnknownError;
+                    }
+                }
+
+                return ioActionResultState;
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="instance"></param>
+            /// <param name="filepath"></param>
+            /// <param name="typeFactory"></param>
+            /// <param name="createFile"></param>
+            /// <typeparam name="T"></typeparam>
+            /// <returns></returns>
+            public static bool LoadOrCreateTypeXml<T>(out T instance,
+                string filepath, Func<T> typeFactory = null, bool createFile = true) where T : class, new()
+            {
+                instance = null;
+                filepath = filepath.CleanUpPath();
+                if (IOActionResultState.Success == GetOrCreateFileText(
+                        filepath, out string fileText, typeFactory is not null
+                            ? () =>
+                            {
+                                using StringWriter sw = new StringWriter();
+                                T t = typeFactory?.Invoke();
+                                if (t is not null)
+                                {
+                                    XmlSerializer s = new XmlSerializer(typeof(T));
+                                    s.Serialize(sw, t);
+                                    return sw.ToString();
+                                }
+
+                                return "";
+                            }
+                            : null, createFile))
+                {
+                    XmlSerializer s = new XmlSerializer(typeof(T));
+                    try
+                    {
+                        using TextReader tr = new StringReader(fileText);
+                        instance = (T)s.Deserialize(tr);
+                        return true;
+                    }
+                    catch (InvalidOperationException ioe)
+                    {
+                        ModUtils.Logging.PrintError($"Error while parsing type data for {typeof(T)}.");
+#if DEBUG
+                        ModUtils.Logging.PrintError(
+                            $"Exception: {ioe.Message}. Details: {ioe.InnerException?.Message}");
+#endif
+                        instance = null;
+                        return false;
+                    }
+                }
+
+                return false;
+            }
+
+            public enum IOActionResultState
+            {
+                Success,
+                FileNotFound,
+                FilePathNull,
+                FilePathInvalid,
+                DirectoryMissing,
+                PathTooLong,
+                InvalidOperation,
+                IOFailure,
+                UnknownError
+            }
         }
 
-        public enum IOActionResultState
+        #endregion
+
+        #region GAME
+
+        public static class Game
         {
-            Success, FileNotFound, FilePathNull, FilePathInvalid, DirectoryMissing, PathTooLong, InvalidOperation, IOFailure, UnknownError
+            /// <summary>
+            /// Returns whether or not there is a round running.
+            /// </summary>
+            /// <returns></returns>
+            public static bool IsRoundInProgress()
+            {
+#if CLIENT
+                if (Screen.Selected is not null
+                    && Screen.Selected.IsEditor)
+                    return false;
+#endif
+                return GameMain.GameSession is not null && Level.Loaded is not null;
+            }
+
         }
+
+        #endregion
+        
+        #region THREADING
+
+        public static class Threading
+        {
+            /// <summary>
+            /// Gets the boolean value of an integer with thread-safety via <code>Interlocked</code>.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool GetBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) > 0;
+    
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static void SetBool(ref int var, bool value)
+            {
+                if (value)
+                {
+                    Interlocked.CompareExchange(ref var, 1, 0);
+                }
+                else
+                {
+                    Interlocked.CompareExchange(ref var, 0, 1);
+                }
+            }
+
+            /// <summary>
+            /// Gets if the integer is under 1 (is zero/false) and, if so, sets the value to one/true.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool CheckClearAndSetBool(ref int var)
+            {
+                return Interlocked.CompareExchange(ref var, 1, 0) < 1;
+            }
+
+            /// <summary>
+            /// Gets if the integer is over 0 (is one/true) and, if so, sets the value to zero/false.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool CheckSetAndClearBool(ref int var)
+            {
+                return Interlocked.CompareExchange(ref var, 0, 1) > 0;
+            }
+        }
+            
+        #endregion
+        
+        #region UTILITIES_CORE
+        
+        public static V TryGetOrSet<K, V>(this IDictionary<K,V> dict, K key, Func<V> valueFactory) where K : IEquatable<K>
+        {
+            if (dict.TryGetValue(key, out var dictValue)) return dictValue;
+            if (valueFactory is not null)
+                dict.Add(key, valueFactory());
+            else
+                return default;
+            return dict[key];
+        }
+        
+        #endregion
     }
     
-    #endregion
-
-    #region GAME
-
-    public static class Game
+    public static class AssemblyExtensions
     {
         /// <summary>
-        /// Returns whether or not there is a round running.
+        /// Gets all types in the given assembly. Handles invalid type scenarios.
         /// </summary>
-        /// <returns></returns>
-        public static bool IsRoundInProgress()
+        /// <param name="assembly">The assembly to scan</param>
+        /// <returns>An enumerable collection of types.</returns>
+        public static IEnumerable<Type> GetSafeTypes(this Assembly assembly)
         {
-#if CLIENT
-            if (Screen.Selected is not null
-                && Screen.Selected.IsEditor)
-                return false;
-#endif
-            return GameMain.GameSession is not null && Level.Loaded is not null;
+            // Based on https://github.com/Qkrisi/ktanemodkit/blob/master/Assets/Scripts/ReflectionHelper.cs#L53-L67
+
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException re)
+            {
+                try
+                {
+                    return re.Types.Where(x => x != null)!;
+                }
+                catch (InvalidOperationException)   
+                {
+                    return new List<Type>();
+                }
+            }
+            catch (Exception)
+            {
+                return new List<Type>();
+            }
         }
-
     }
-
-    #endregion
 }
+
+#region ExceptionData
+
+namespace FluentResults.LuaCs
+{
+    public static class MetadataType
+    {
+        public static string ExceptionDetails = nameof(ExceptionDetails);
+        public static string ExceptionObject = nameof(ExceptionObject);
+        public static string RootObject = nameof(RootObject);
+        public static string Sources = nameof(Sources);
+        public static string StackTrace  = nameof(StackTrace);
+    }
+}
+
+#endregion
