@@ -21,14 +21,10 @@ public interface IPlatformInfo
     Target SupportedTargets { get; }   
 }
 
-
 /// <summary>
-/// Which package does the following data belong to?
+/// All info we should have on a package for a given resource.
 /// </summary>
-public interface IPackageInfo
-{
-    ContentPackage OwnerPackage { get; }
-}
+public interface IPackageInfo : IDataInfo { }
 
 
 /// <summary>
@@ -64,14 +60,4 @@ public interface IResourceCultureInfo
     /// List of supported cultures by this resource.
     /// </summary>
     ImmutableArray<CultureInfo> SupportedCultures { get; }
-}
-
-
-public interface ILoadableResourceInfo
-{
-    /// <summary>
-    /// [UNIQUE] The name that will be used when trying to reference this resource for execution or loading.
-    /// </summary>
-    [Required]
-    public string InternalName { get; }
 }

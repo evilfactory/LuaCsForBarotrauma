@@ -2,15 +2,17 @@ using Microsoft.Xna.Framework;
 
 namespace Barotrauma.LuaCs.Configuration;
 
-public class DisplayableData : IDisplayableData
+public record DisplayableData : IDisplayableData
 {
-    public string Name { get; private set; }
-    public string ModName { get; private set; }
-    public string DisplayName { get; private set; }
-    public string DisplayModName { get; private set; }
-    public string DisplayCategory { get; private set; }
-    public string Tooltip { get; private set; }
-    public string ImageIcon { get; private set; }
-    public Point IconResolution { get; private set; }
-    public bool ShowWhenNotLoaded { get; private set; }
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public string FallbackPackageName { get; init; }
+    public string DisplayName { get; init; }
+    public string DisplayModName { get; init; }
+    public string DisplayCategory { get; init; }
+    public string Tooltip { get; init; }
+    public string ImageIcon { get; init; }
+    public Point IconResolution { get; init; }
+    public bool ShowWhenNotLoaded { get; init; }
+    public string Description { get; init; }
 }

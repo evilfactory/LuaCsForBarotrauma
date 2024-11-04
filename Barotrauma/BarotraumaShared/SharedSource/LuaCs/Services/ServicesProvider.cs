@@ -24,7 +24,7 @@ public class ServicesProvider : IServicesProvider
     
     private readonly ReaderWriterLockSlim _serviceLock = new();
     
-    public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new()
+    public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface
     {
         if (lifetimeInstance is null)
         {
@@ -50,7 +50,6 @@ public class ServicesProvider : IServicesProvider
         {
             _serviceLock.EnterReadLock();
             ServiceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
-            ServiceContainer.Compile<TService>();
             OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
         }
         finally
@@ -60,7 +59,7 @@ public class ServicesProvider : IServicesProvider
     }
 
     public void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime,
-        ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new()
+        ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface
     {
         if (name.IsNullOrWhiteSpace())
         {
@@ -91,7 +90,6 @@ public class ServicesProvider : IServicesProvider
         {
             _serviceLock.EnterReadLock();
             ServiceContainer.Register<TSvcInterface, TService>(name, lifetimeInstance);
-            ServiceContainer.Compile<TService>();
             OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
         }
         finally
@@ -128,7 +126,7 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    public bool TryGetService<TSvcInterface>(out IService service) where TSvcInterface : class, IService
+    public bool TryGetService<TSvcInterface>(out TSvcInterface service) where TSvcInterface : class, IService
     {
         try
         {
@@ -147,7 +145,7 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    public bool TryGetService<TSvcInterface>(string name, out IService service) where TSvcInterface : class, IService
+    public bool TryGetService<TSvcInterface>(string name, out TSvcInterface service) where TSvcInterface : class, IService
     {
         try
         {
