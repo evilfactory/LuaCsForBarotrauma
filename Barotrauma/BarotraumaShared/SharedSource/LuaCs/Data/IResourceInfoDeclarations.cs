@@ -10,8 +10,8 @@ public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo
 /// <summary>
 /// Represents loadable Lua files.
 /// </summary>
-public interface ILuaResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, ILoadableResourceInfo, IPackageInfo { }
-public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, ILoadableResourceInfo, IPackageInfo
+public interface ILuaResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
+public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo
 {
     /// <summary>
     /// The friendly name of the assembly. Script files belonging to the same assembly should all have the same name.

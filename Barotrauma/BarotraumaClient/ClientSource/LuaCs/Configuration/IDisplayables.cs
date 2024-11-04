@@ -1,4 +1,5 @@
 using System.Numerics;
+using Barotrauma.LuaCs.Data;
 using Microsoft.Xna.Framework;
 
 namespace Barotrauma.LuaCs.Configuration;
@@ -6,16 +7,8 @@ namespace Barotrauma.LuaCs.Configuration;
 /// <summary>
 /// Contains the Display Data for use with Menus.
 /// </summary>
-public interface IDisplayableData
+public interface IDisplayableData : IDataInfo
 {
-    /// <summary>
-    /// Internal name of the instance.
-    /// </summary>
-    string Name { get; }
-    /// <summary>
-    /// Internal mod name of the instance. ContentPackage name will be used by default.
-    /// </summary>
-    string ModName { get; } 
     /// <summary>
     /// The name to display in GUIs and Menus.
     /// </summary>
@@ -53,8 +46,8 @@ public interface IDisplayableInitialize
     // copy this as needed
     /*public void Initialize(IDisplayableData values)
     {
-        this.Name = values.Name;
-        this.ModName = values.ModName;
+        this.InternalName = values.InternalName;
+        this.OwnerPackage = values.OwnerPackage;
         this.DisplayName = values.DisplayName;
         this.DisplayModName = values.DisplayModName;
         this.DisplayCategory = values.DisplayCategory;

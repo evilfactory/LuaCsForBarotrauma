@@ -23,3 +23,8 @@ public interface INetVar : IVarId
     void WriteNetMessage(INetWriteMessage message);
     void Initialize(ushort netId, NetSync syncMode, ClientPermissions writePermissions);
 }
+
+public enum NetSync
+{
+    None, TwoWay, ServerAuthority, ClientOneWay
+}

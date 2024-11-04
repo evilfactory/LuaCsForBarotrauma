@@ -4,11 +4,13 @@ using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services.Safe;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IConfigService : IService
+public partial interface IConfigService : IService, ILuaConfigService
 {
     /*
      * Resource Files.
@@ -43,6 +45,14 @@ public interface IConfigService : IService
         ClientPermissions permissions = ClientPermissions.None,
         Func<IConfigList, int, bool> valueChangePredicate = null,
         Action<IConfigList, int> onValueChanged = null);
+    
+    IConfigRangeEntry<T> AddConfigRangeEntry<T>(ContentPackage package, string name,
+        T defaultValue, T minValue, T maxValue,
+        Func<IConfigRangeEntry<T>, int> getStepCount,
+        NetSync syncMode = NetSync.None,
+        ClientPermissions permissions = ClientPermissions.None,
+        Func<T, bool> valueChangePredicate = null,
+        Action<IConfigEntry<T>> onValueChanged = null) where T : IConvertible, IEquatable<T>;
     
     IReadOnlyDictionary<string, IConfigBase> GetConfigsForPackage(ContentPackage package);
     IReadOnlyDictionary<string, IConfigBase> GetConfigsForPackage(string packageName);

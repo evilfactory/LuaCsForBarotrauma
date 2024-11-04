@@ -44,6 +44,7 @@ public record AssemblyResourceInfo : IAssemblyResourceInfo
 
 public record DependencyInfo : IPackageDependencyInfo
 {
+    public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
     public string FolderPath { get; init; }
     public string PackageName { get; init; }
@@ -53,6 +54,7 @@ public record DependencyInfo : IPackageDependencyInfo
 
 public record LocalizationResourceInfo : ILocalizationResourceInfo
 {
+    public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
     public CultureInfo TargetCulture { get; init; }
     public Platform SupportedPlatforms { get; init; }
