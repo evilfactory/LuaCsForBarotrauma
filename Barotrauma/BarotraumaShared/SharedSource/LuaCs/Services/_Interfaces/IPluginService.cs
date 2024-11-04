@@ -6,7 +6,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPluginService : IService
+public interface IPluginService : IReusableService
 {
     bool IsAssemblyLoaded(string friendlyName);
     /// <summary>
@@ -17,21 +17,21 @@ public interface IPluginService : IService
     /// <param name="typeInstances"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    bool TryLoadAndInstanceTypes<T>(IEnumerable<IAssemblyResourceInfo> assemblyResourcesInfo, bool injectServices, out ImmutableArray<T> typeInstances) where T : class, IAssemblyPlugin;
-    ImmutableArray<T> GetLoadedPluginTypesInPackage<T>() where T : class, IAssemblyPlugin;
+    FluentResults.Result LoadAndInstanceTypes<T>(IEnumerable<IAssemblyResourceInfo> assemblyResourcesInfo, bool injectServices, out ImmutableArray<T> typeInstances) where T : class, IAssemblyPlugin;
+    FluentResults.Result<ImmutableArray<T>> GetLoadedPluginTypesInPackage<T>() where T : class, IAssemblyPlugin;
     /// <summary>
     /// Advances the loading/execution state of the plugin. IMPORTANT: You cannot set the execution state of plugins
     /// to 'Disposed'. You must instead call the 'DisposePlugins' method. 
     /// </summary>
     /// <param name="newState"></param>
     /// <returns></returns>
-    bool AdvancePluginStates(PluginRunState newState);
+    FluentResults.Result AdvancePluginStates(PluginRunState newState);
 
     /// <summary>
     /// Disposes of all running plugins hosted by the service and releases their references to allow unloading.
     /// </summary>
     /// <returns>Success of the operation. Returns false if any plugin threw errors during disposal.</returns>
-    bool DisposePlugins();
+    FluentResults.Result DisposePlugins();
 
     /// <summary>
     /// Gets the current plugin execution state.

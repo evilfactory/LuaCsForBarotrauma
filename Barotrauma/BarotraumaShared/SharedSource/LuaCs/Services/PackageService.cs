@@ -10,6 +10,9 @@ using System.Threading;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
+using FluentResults;
+using FluentResults.LuaCs;
+using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -20,8 +23,7 @@ public partial class PackageService : IPackageService
     
     
     // mod config / package scanners/parsers
-    private readonly Lazy<IXmlModConfigConverterService> _modConfigConverterService;
-    private readonly Lazy<ILegacyConfigService> _legacyConfigService;
+    private readonly Lazy<IModConfigParserService> _configParserService;
     private readonly Lazy<ILuaScriptService> _luaScriptService;
     private readonly Lazy<ILocalizationService> _localizationService;
     private readonly Lazy<IPluginService> _pluginService;
@@ -35,31 +37,32 @@ public partial class PackageService : IPackageService
     // state monitors
     private int _configsLoaded, _localizationsLoaded, _luaScriptsLoaded, _pluginsLoaded, _isDisposed;
     private int _loadingOperationsRunning;
+    private int _isEnabledInModList;
 
     public bool ConfigsLoaded
     {
-        get => GetThreadSafeBool(ref _configsLoaded);
-        private set => SetThreadSafeBool(ref _configsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _configsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _configsLoaded, value);
     }
     public bool LocalizationsLoaded
     {
-        get => GetThreadSafeBool(ref _localizationsLoaded);
-        private set => SetThreadSafeBool(ref _localizationsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _localizationsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _localizationsLoaded, value);
     }
     public bool LuaScriptsLoaded
     {
-        get => GetThreadSafeBool(ref _luaScriptsLoaded);
-        private set => SetThreadSafeBool(ref _luaScriptsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _luaScriptsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _luaScriptsLoaded, value);
     }
     public bool PluginsLoaded
     {
-        get => GetThreadSafeBool(ref _pluginsLoaded);
-        private set => SetThreadSafeBool(ref _pluginsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _pluginsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _pluginsLoaded, value);
     }
     public bool IsDisposed
     {
-        get => GetThreadSafeBool(ref _isDisposed);
-        private set => SetThreadSafeBool(ref _isDisposed, value);
+        get => ModUtils.Threading.GetBool(ref _isDisposed);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
     }
 
     private bool LoadingOperationsRunning
@@ -146,6 +149,12 @@ public partial class PackageService : IPackageService
         }
     }
 
+    public bool IsEnabledInModList
+    {
+        get => ModUtils.Threading.GetBool(ref _isEnabledInModList);
+        private set => ModUtils.Threading.SetBool(ref _isEnabledInModList, value);
+    }
+
     #endregion
     
     public ImmutableArray<CultureInfo> SupportedCultures => ModConfigInfo?.SupportedCultures ?? ImmutableArray<CultureInfo>.Empty;
@@ -159,43 +168,48 @@ public partial class PackageService : IPackageService
 
     #region PublicAPI
 
-    public bool TryLoadResourcesInfo(ContentPackage package)
+    public FluentResults.Result LoadResourcesInfo(LoadablePackage cpackage)
     {
+        if (cpackage.Package == null)
+        {
+            return FluentResults.Result.Fail(new Error($"{nameof(LoadResourcesInfo)}: Package is null!")
+                .WithMetadata(MetadataType.ExceptionObject,this)
+                .WithMetadata(MetadataType.RootObject, cpackage));
+        }
+        ContentPackage package = cpackage.Package;
+        
         _operationsUsageLock.EnterWriteLock();
         LoadingOperationsRunning = true;
         try
         {
             if (IsDisposed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return FluentResults.Result.Fail(
+                    new Error("Service is disposed.")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, package));
             }
 
-            // try loading the ModConfig.xml. If it fails, use the Legacy loader to try and construct one from the package structure.
-            if (_storageService.TryLoadPackageXml(package, "ModConfig.xml", out var configXml)
-                && configXml.Root is not null)
+            var res = _configParserService.Value.BuildConfigForPackage(package);
+
+            if (res.IsFailed)
             {
-                if (_modConfigConverterService.Value.TryParseResource(configXml.Root, out IModConfigInfo configInfo))
-                {
-                    ModConfigInfo = configInfo;
-                }
-                else
-                {
-                    _loggerService.LogError(
-                        $"Failed to parse ModConfig.xml for package {package.Name}, package mod content not loaded.");
-                    return false;
-                }
-            }
-            else if (_legacyConfigService.Value.TryBuildModConfigFromLegacy(package, out var legacyConfig))
-            {
-                ModConfigInfo = legacyConfig;
-            }
-            else
-            {
-                // vanilla mod or broken
-                return false;
+                return FluentResults.Result.Fail(res.Errors)
+                    .WithError(new Error("PackageService failed to load ModConfigInfo")
+                        .WithMetadata(MetadataType.ExceptionObject, _configParserService)
+                        .WithMetadata(MetadataType.RootObject, package));
             }
 
-            return true;
+            this.ModConfigInfo = res.Value;
+            this.IsEnabledInModList = cpackage.IsEnabled;
+            return FluentResults.Result.Ok();
+        }
+        catch (Exception e)
+        {
+            return FluentResults.Result.Fail(new Error(e.Message)
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.RootObject, package)
+                .WithMetadata(MetadataType.StackTrace, e.StackTrace));
         }
         finally
         {
@@ -204,30 +218,18 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
+    public FluentResults.Result LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                    IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT0(assembliesInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
-            
-            SanitationChecksCore(assembliesInfo, "assemblies", nameof(LoadPlugins));
-            SanitationChecksEnumerable(assembliesInfo.Assemblies, "assemblies", nameof(LoadPlugins));
-
-#if DEBUG
-            assembliesInfo.Assemblies.ForEach(ari =>
-            {
-                if (!this.Assemblies.Contains(ari))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the assembly resource {ari.InternalName} for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            });      
-#endif
             
             // Order these assemblies by internal dependencies
             ImmutableArray<IAssemblyResourceInfo> resources;
@@ -243,12 +245,15 @@ public partial class PackageService : IPackageService
             }
             
             // Try loading them, throw on failure.
-            if (!_pluginService.Value.TryLoadAndInstanceTypes<IAssemblyPlugin>(resources, true, out var instancedTypes))
+            if (_pluginService.Value.LoadAndInstanceTypes<IAssemblyPlugin>(resources, true, out var instancedTypes) is { IsFailed: true} failed2)
             {
-                throw new TypeLoadException($"PackageService: unable to load assemblies for package {this.Package.Name}! Aborting loading!");
+                return failed2.WithError(new Error($"{nameof(LoadPlugins)}: Failed to load plugins for {this.Package.Name}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, assembliesInfo));
             }
 
             PluginsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -257,37 +262,28 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo)
+    public FluentResults.Result LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT1(localizationsInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
             
-            SanitationChecksCore(localizationsInfo, "localizations", nameof(LoadLocalizations));
-            SanitationChecksEnumerable(localizationsInfo.Localizations, "localizations", nameof(LoadLocalizations));
-
-#if DEBUG
-            localizationsInfo.Localizations.ForEach(ri =>
+            if (_localizationService.Value.LoadLocalizations(localizationsInfo.Localizations) is { IsFailed: true} failed2)
             {
-                if (!this.Localizations.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the localization resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            });      
-#endif
-            
-            if (!_localizationService.Value.TryLoadLocalizations(localizationsInfo.Localizations))
-            {
-                throw new FileLoadException($"Package Service: unable to load localizations for package {this.Package.Name}! Aborting!");
+                return failed2.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load localizations")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, localizationsInfo));
             }
 
             LocalizationsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -296,38 +292,28 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
+    public FluentResults.Result AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT4(luaScriptsInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
             
-            SanitationChecksCore(luaScriptsInfo, "luaScripts", nameof(AddLuaScripts));
-            SanitationChecksEnumerable(luaScriptsInfo.LuaScripts, "luaScripts", nameof(AddLuaScripts));
-
-#if DEBUG
-            luaScriptsInfo.LuaScripts.ForEach(ri =>
+            if (_luaScriptService.Value.AddScriptFiles(luaScriptsInfo.LuaScripts) is { IsFailed: true} failed2)
             {
-                if (!this.LuaScripts.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the lua script resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            });      
-#endif
-            
-            if (!_luaScriptService.Value.TryAddScriptFiles(luaScriptsInfo.LuaScripts))
-            {
-                throw new ArgumentException(
-                    $"Package Service: unable to add lua files for package {this.Package.Name}! Aborting!");
+                return failed2.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load lua scripts.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, luaScriptsInfo));
             }
 
             LuaScriptsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -336,7 +322,7 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void LoadConfig(
+    public FluentResults.Result LoadConfig(
         [NotNull]IConfigsResourcesInfo configsResourcesInfo, 
         [NotNull]IConfigProfilesResourcesInfo configProfilesResourcesInfo)
     {
@@ -344,48 +330,38 @@ public partial class PackageService : IPackageService
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            // register configs
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT2(configsResourcesInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
             
-            SanitationChecksCore(configsResourcesInfo, "config", nameof(LoadConfig));
-            SanitationChecksCore(configProfilesResourcesInfo, "config profiles", nameof(LoadConfig));
-            SanitationChecksEnumerable(configsResourcesInfo.Configs, "config", nameof(LoadConfig));
-            SanitationChecksEnumerable(configProfilesResourcesInfo.ConfigProfiles, "config profiles", nameof(LoadConfig));
-
-#if DEBUG
-            configsResourcesInfo.Configs.ForEach(ri =>
+            if (_configService.Value.AddConfigs(configsResourcesInfo.Configs) is { IsFailed: true} failed2)
             {
-                if (!this.Configs.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the configs resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            }); 
-            
-            configProfilesResourcesInfo.ConfigProfiles.ForEach(ri =>
-            {
-                if (!this.ConfigProfiles.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the localization resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            }); 
-#endif
-            
-            if (!_configService.Value.TryAddConfigs(configsResourcesInfo.Configs))
-            {
-                throw new ArgumentException(
-                    $"Package Service: unable to add configs for package {this.Package.Name}! Aborting!");
+                return failed2.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load configs.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, configsResourcesInfo));
             }
             
-            if (!_configService.Value.TryAddConfigsProfiles(configProfilesResourcesInfo.ConfigProfiles))
+            // register config profiles
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT3(configProfilesResourcesInfo)) is { IsFailed: true } failed3)
             {
-                throw new ArgumentException(
-                    $"Package Service: unable to add configs profiles for package {this.Package.Name}! Aborting!");
+                return failed3;
             }
+            
+            if (_configService.Value.AddConfigsProfiles(configProfilesResourcesInfo.ConfigProfiles) is { IsFailed: true} failed4)
+            {
+                return failed4.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load config profiles.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, configProfilesResourcesInfo));
+            }
+            
             ConfigsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -463,22 +439,24 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void Reset()
+    public FluentResults.Result Reset()
     {
         _operationsUsageLock.EnterWriteLock();
+        
         try
         {
             if (this.Package is null)
             {
-                _loggerService.LogError(
-                    $"Package Service: cannot Dispose of service as ContentPackage and info is not set!");
-                return;
+                return FluentResults.Result.Fail(new Error($"Package Service: cannot Dispose of service as ContentPackage and info is not set!")
+                    .WithMetadata(MetadataType.ExceptionDetails, nameof(Reset))
+                    .WithMetadata(MetadataType.ExceptionObject, this));
             }
 
             if (this.ModConfigInfo is null)
             {
-                _loggerService.LogError($"Package Service: cannot Dispose of service as ModConfigInfo is not loaded!");
-                return;
+                return FluentResults.Result.Fail(new Error($"Package Service: cannot Dispose of service as ModConfigInfo is not set!")
+                    .WithMetadata(MetadataType.ExceptionDetails, nameof(Reset))
+                    .WithMetadata(MetadataType.ExceptionObject, this));
             }
             
             Interlocked.MemoryBarrier(); //ensure cache states 
@@ -491,7 +469,7 @@ public partial class PackageService : IPackageService
                 _operationsUsageLock.EnterWriteLock();
                 if (timeoutLimit < DateTime.Now)
                 {
-                    _loggerService.LogError($"Package Service: Dispose() time out reached while waiting for other operations. Continuing.");
+                    _loggerService.LogError($"Package Service: Dispose() grace time-out reached while waiting for other operations. Continuing.");
                     break;
                 }
             }
@@ -520,6 +498,7 @@ public partial class PackageService : IPackageService
                 _localizationService.Value.Remove(this.Localizations);
                 LocalizationsLoaded = false;
             }
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -531,96 +510,176 @@ public partial class PackageService : IPackageService
 
     #region INTERNAL
 
-    private void SanitationChecksCore(object o, string resTypeInfoName, string callerName)
+    /// <summary>
+    /// [Thread Unsafe] Performs sanitation and null checks on resources and returns the results.
+    /// NOTE: Requires that resource locks be set by the caller.
+    /// </summary>
+    /// <param name="resourcesInfos"></param>
+    /// <returns></returns>
+    private FluentResults.Result CheckResourceSanitation(
+        OneOf.OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo,
+            IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo> resourcesInfos)
     {
-        if (o is null)
+        // execute checks based on known types
+        return resourcesInfos.Match<FluentResults.Result>(
+            ass => ChecksDispatcher(ass, nameof(ass.Assemblies), nameof(LoadPlugins), 
+                ass.Assemblies, this.Assemblies),
+            loc => ChecksDispatcher(loc, nameof(loc.Localizations), nameof(LoadLocalizations), 
+                loc.Localizations, this.Localizations),
+            cfg => ChecksDispatcher(cfg, nameof(cfg.Configs), nameof(LoadConfig), 
+                cfg.Configs, this.Configs),
+            cfp => ChecksDispatcher(cfp, nameof(cfp.ConfigProfiles), nameof(LoadConfig), 
+                cfp.ConfigProfiles, this.ConfigProfiles),
+            lua => ChecksDispatcher(lua, nameof(lua.LuaScripts), nameof(AddLuaScripts), 
+                lua.LuaScripts, this.LuaScripts));
+        
+        
+        /*
+         * Helper functions
+         */
+        FluentResults.Result ChecksDispatcher<T>(object obj, string resName, string callerName,
+            ImmutableArray<T> resList, ImmutableArray<T> compareList) 
+            where T : class, IPackageInfo, IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo
         {
-            _loggerService.LogError($"Package Service: {resTypeInfoName} resources list is null!");
-            throw new NullReferenceException($"Package Service: {resTypeInfoName} resources list is null!");
+            string errMsg = $"{callerName}: Failed to load {resName}.";
+            if (DisposeCheck(obj) is { IsFailed: true } failed)
+                return failed;
+            if (SanitationChecksCore(obj, resName, callerName) is { IsFailed: true } failed1)
+                return failed1.WithError(new Error(errMsg));
+            if (SanitationChecksEnumerable(resList, resName, callerName) is { IsFailed: true } failed2)
+                return failed2.WithError(new Error(errMsg));
+            if (DebugCheck(resList, compareList, resName) is {IsFailed: true} failed3)
+                return failed3.WithError(new Error(errMsg));
+            return FluentResults.Result.Ok();
+        }
+
+        FluentResults.Result DisposeCheck(object obj)
+        {
+            if (IsDisposed)
+            {
+                return FluentResults.Result.Fail(new Error($"{nameof(PackageService)}: Tried to load resources when disposed.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, obj));
+            }
+            return FluentResults.Result.Ok();
+        }
+
+        FluentResults.Result DebugCheck<T>(ImmutableArray<T> resList, ImmutableArray<T> compareList, string resName)
+            where T : class, IPackageInfo
+        {
+#if DEBUG
+            Stack<Error> errors = new();
+            resList.ForEach(res =>
+            {
+                if (!compareList.Contains(res))
+                {
+                    errors.Push(new Error($"Failed to load {resName} for: {this.Package.Name}")
+                        .WithMetadata(MetadataType.ExceptionDetails, $"Tries to load {resName} resource {res.InternalName} but it is not from this package!")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, res));
+                }
+            });
+            if (errors.Count > 0)
+            {
+                return FluentResults.Result.Fail(errors).WithError(
+                    new Error($"{nameof(LoadPlugins)}: errors in {resName} resources.")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, this.Package));
+            }
+#endif
+            return FluentResults.Result.Ok();
+        }
+    }
+    
+    private FluentResults.Result SanitationChecksCore(object obj, string resTypeInfoName, string callerName)
+    {
+        Error e = null;
+        
+        if (obj is null)
+        {
+            e = new Error($"{nameof(SanitationChecksCore)}: null checks failed!")
+                .WithMetadata(MetadataType.ExceptionDetails, "Object is null!")
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.Sources, new List<string>() { resTypeInfoName, callerName });
         }
 
         if (this.Package is null)
         {
-            _loggerService.LogError($"Package Service: package not set at {callerName}()!");
-            throw new NullReferenceException($"Package Service: package not set at {callerName}()!");
+            e = (e ?? new Error($"{nameof(SanitationChecksCore)}: null checks failed!"))
+                .WithMetadata(MetadataType.ExceptionDetails, "The Package is null!")
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.Sources, new List<string>() { resTypeInfoName, callerName });
         }
+
+        return e is null ? FluentResults.Result.Ok() : FluentResults.Result.Fail(e);
     }
     
-    private void SanitationChecksEnumerable<T>(ImmutableArray<T> resourceInfos, string resTypeInfoName, string callerName) where T : IResourceInfo, IResourceCultureInfo, IPackageInfo, IPackageDependenciesInfo
+    private FluentResults.Result SanitationChecksEnumerable<T>(ImmutableArray<T> resourceInfos, string resTypeInfoName, string callerName) where T : IResourceInfo, IResourceCultureInfo, IPackageInfo, IPackageDependenciesInfo
     {
         // Check if list is empty. Nothing more to do.
         if (resourceInfos.IsDefaultOrEmpty)
-            return;
+            return FluentResults.Result.Ok();
 
+        Stack<Error> errors = new();
+        
         // Check if all resources in the list are registered to this package, throw if not.
         foreach (var resourceInfo in resourceInfos)
         {
             // ownership checks
             if (resourceInfo.OwnerPackage is null)
-            {
-                throw new ArgumentException($"Package Service: {resTypeInfoName} info for resource does not have a package name set! Run by {this.Package.Name}.");
+            { 
+                errors.Push(new Error($"Error for resource: {resTypeInfoName}. OwnerPackage is null!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
+                continue;
             }
 
             if (resourceInfo.OwnerPackage != this.Package)
             {
-                throw new ArgumentException(
-                    $"Package Service: {resTypeInfoName} info does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
+                errors.Push(new Error($"Error for resource: {resTypeInfoName}. $\"OwnerPackage {{resourceInfo.OwnerPackage?.Name}} is not the same as this package: {{this.Package}}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
+                continue;
             }
             
-            // Check if external dependencies are loaded and if current environment is supported, throw if not
             if (resourceInfo.Dependencies.IsDefaultOrEmpty)
                 continue;
-            
-            bool resourceMissing = false;
-            
-            resourceInfo.Dependencies.ForEach(pdi =>
+
+            // ReSharper disable once ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
+            foreach (var pdi in resourceInfo.Dependencies)
             {
-                // for clarification: assemblies passed to the function should always be loaded.
-                // optional assemblies should be filtered out before the list is sent.
+                // for clarification: all resources passed to the function should always be loaded.
+                // unneeded optional resources should be filtered out before the list is sent.
                 // left this as a reminder :)
                 /*if (pdi.Optional)
                     return;*/
                 if (!_packageManagementService.CheckDependencyLoaded(pdi))
                 {
-                    resourceMissing = true;
-                    _loggerService.LogError(
-                        $"Package Service: the following dependency for package {resourceInfo.OwnerPackage.Name} is not loaded: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}");
+                    errors.Push(new Error($"Dependency missing for resource: {resourceInfo.OwnerPackage.Name}")
+                        .WithMetadata(MetadataType.ExceptionDetails, $"Missing dependency: {pdi.DependencyPackage?.Name ?? (pdi.FallbackPackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.FallbackPackageName)}")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, resourceInfo));
                 }
-            });
-
-            if (!resourceMissing)
-            {
-                throw new FileLoadException($"Package Service: dependencies for package {resourceInfo.OwnerPackage.Name} are not loaded.");
             }
             
             // check runtime platform
             if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo))
             {
-                throw new PlatformNotSupportedException($"Package service: the {resTypeInfoName} from {resourceInfo.OwnerPackage.Name} is not supported on this platform.");
+                errors.Push(new Error($"The resource {resourceInfo.OwnerPackage?.Name} does not support the current platform!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
             }
             
             // check local culture
             if (!_localizationService.Value.IsCurrentCultureSupported(resourceInfo))
             {
-                throw new PlatformNotSupportedException($"Package service: the {resTypeInfoName} from {resourceInfo.OwnerPackage.Name} is not supported in this culture.");
+                errors.Push(new Error($"The resource {resourceInfo.OwnerPackage?.Name} does not support the current culture/region!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
             }
         }
-    }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static bool GetThreadSafeBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) == 1;
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static void SetThreadSafeBool(ref int var, bool value)
-    {
-        if (value)
-        {
-            Interlocked.CompareExchange(ref var, 1, 0);
-        }
-        else
-        {
-            Interlocked.CompareExchange(ref var, 0, 1);
-        }
+        return errors.Count > 0 ? FluentResults.Result.Fail(errors) : FluentResults.Result.Ok();
     }
     
     #endregion

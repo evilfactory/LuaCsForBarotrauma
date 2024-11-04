@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Threading;
+using FluentResults;
+using FluentResults.LuaCs;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
@@ -25,7 +27,8 @@ namespace Barotrauma.LuaCs.Services;
 /// Provides functionality for the loading, unloading and management of plugins implementing IAssemblyPlugin.
 /// All plugins are loaded into their own AssemblyLoadContext along with their dependencies.
 /// </summary>
-public class AssemblyManager : IAssemblyManagementService
+[Obsolete]
+public class AssemblyManager : IAssemblyManagementService, IPluginManagementService
 {
     #region ExternalAPI
 
@@ -275,6 +278,11 @@ public class AssemblyManager : IAssemblyManagementService
         }
     }
 
+    public bool IsAssemblyLoadedGlobal(string friendlyName)
+    {
+        throw new NotImplementedException();
+    }
+    
     #endregion
 
     #region InternalAPI
@@ -740,41 +748,12 @@ public class AssemblyManager : IAssemblyManagementService
         TryBeginDispose();
     }
 
-    public void Reset()
+    public FluentResults.Result Reset()
     {
-        TryBeginDispose();
+        return TryBeginDispose() ? FluentResults.Result.Ok() 
+            : FluentResults.Result.Fail(new Error($"{nameof(AssemblyManager)}: failed to Reset service.")
+                .WithMetadata(MetadataType.ExceptionObject, this));
     }
 }
 
-public static class AssemblyExtensions
-{
-    /// <summary>
-    /// Gets all types in the given assembly. Handles invalid type scenarios.
-    /// </summary>
-    /// <param name="assembly">The assembly to scan</param>
-    /// <returns>An enumerable collection of types.</returns>
-    public static IEnumerable<Type> GetSafeTypes(this Assembly assembly)
-    {
-        // Based on https://github.com/Qkrisi/ktanemodkit/blob/master/Assets/Scripts/ReflectionHelper.cs#L53-L67
 
-        try
-        {
-            return assembly.GetTypes();
-        }
-        catch (ReflectionTypeLoadException re)
-        {
-            try
-            {
-                return re.Types.Where(x => x != null)!;
-            }
-            catch (InvalidOperationException)   
-            {
-                return new List<Type>();
-            }
-        }
-        catch (Exception)
-        {
-            return new List<Type>();
-        }
-    }
-}

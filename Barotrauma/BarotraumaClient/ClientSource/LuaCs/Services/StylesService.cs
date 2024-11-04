@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using FluentResults;
+using FluentResults.LuaCs;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -18,44 +20,53 @@ public class StylesService : IStylesService
         _loggerService = loggerService;
     }
     
-    public bool TryLoadStylesFile(ContentPackage package, ContentPath path)
+    public FluentResults.Result LoadStylesFile(ContentPackage package, ContentPath path)
     {
         //check if file already in dict
         if (_loadedProcessors.ContainsKey(path.FullPath))
         {
-            return true;
+            return FluentResults.Result.Ok();
         }
         //check if file exists
-        if (_storageService.FileExists(path.FullPath))
+        if (_storageService.FileExists(path.FullPath) is {} result 
+            && result.IsFailed | (result.IsSuccess & result.Value == false))
         {
-            try
-            {
-                var styleProcessor = new UIStyleProcessor(package, path);
-                styleProcessor.LoadFile();
-                _loadedProcessors.Add(path.FullPath, styleProcessor);
-            }
-            catch (InvalidDataException exception)
-            {
-                _loggerService.LogError($"XmlAssetService.TryLoadStylesFile failed for ContentPackage {package.Name}: Exception: {exception.Message}");
-                return false;
-            }
-
-            return true;
+            return FluentResults.Result.Fail(result.Errors)
+                .WithError(new Error($"{nameof(StylesService)}.{nameof(LoadStylesFile)} file does not exist!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, package));
         }
 
-        return false;
+        try
+        {
+            var styleProcessor = new UIStyleProcessor(package, path);
+            styleProcessor.LoadFile();
+            _loadedProcessors.Add(path.FullPath, styleProcessor);
+        }
+        catch (InvalidDataException exception)
+        {
+            return FluentResults.Result.Fail(new Error($"{nameof(StylesService)}.{nameof(LoadStylesFile)} failed for ContentPackage {package.Name}: Exception: {exception.Message}")
+                .WithMetadata(MetadataType.ExceptionDetails, exception.Message)
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.RootObject, package)
+                .WithMetadata(MetadataType.StackTrace, exception.StackTrace));
+        }
+
+        return FluentResults.Result.Ok();
     }
 
-    public void UnloadAllStyles()
+    public FluentResults.Result UnloadAllStyles()
     {
         if (NoProcessorsLoaded)
-            return;
+            return FluentResults.Result.Fail(new Error($"{nameof(StylesService)}.{nameof(UnloadAllStyles)}: No processors have been loaded.")
+                .WithMetadata(MetadataType.ExceptionObject, this));
         
         foreach (var processor in _loadedProcessors)
         {
             processor.Value.UnloadFile();
         }
         _loadedProcessors.Clear();
+        return FluentResults.Result.Ok();
     }
 
     public GUIFont GetFont(string fontName)
@@ -131,8 +142,8 @@ public class StylesService : IStylesService
         GC.SuppressFinalize(this);
     }
 
-    public void Reset()
+    public FluentResults.Result Reset()
     {
-        UnloadAllStyles();
+        return UnloadAllStyles();
     }
 }

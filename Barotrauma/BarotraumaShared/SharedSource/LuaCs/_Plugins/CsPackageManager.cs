@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using Barotrauma.LuaCs;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Steam;
 using Microsoft.CodeAnalysis;
@@ -630,8 +631,9 @@ public sealed class CsPackageManager : IDisposable
 
         bool ShouldRunPackage(ContentPackage package, RunConfig config)
         {
-            return (!_luaCsSetup.Config.TreatForcedModsAsNormal && config.IsForced())
-                   || (ContentPackageManager.EnabledPackages.All.Contains(package) && config.IsForcedOrStandard());
+            throw new NotImplementedException();
+            /*return (!_luaCsSetup.Config.TreatForcedModsAsNormal && config.IsForced())
+                   || (ContentPackageManager.EnabledPackages.All.Contains(package) && config.IsForcedOrStandard());*/
         }
 
         void UpdatePackagesToDisable(ref HashSet<ContentPackage> set, 
