@@ -8,7 +8,7 @@ using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface ILuaScriptService : IService
+public interface ILuaScriptService : IReusableService
 {
     #region Script_File_Collector
 
@@ -17,7 +17,8 @@ public interface ILuaScriptService : IService
     /// </summary>
     /// <param name="luaResource"></param>
     /// <returns></returns>
-    bool TryAddScriptFiles(ImmutableArray<ILuaResourceInfo> luaResource);
+    FluentResults.Result AddScriptFiles(ImmutableArray<ILuaResourceInfo> luaResource);
+    
     /// <summary>
     /// Removes the specific resources from the script runner. Important: Does not stop the
     /// execution of any code related to the files nor guarantee cleanup of resources!
@@ -31,19 +32,20 @@ public interface ILuaScriptService : IService
     /// <param name="pauseExecutionOnScriptError"></param>
     /// <param name="verboseLogging"></param>
     /// <returns></returns>
-    bool TryExecuteScripts(bool pauseExecutionOnScriptError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteScripts(bool pauseExecutionOnScriptError = false, bool verboseLogging = false);
+    
     ImmutableArray<ILuaResourceInfo> GetScriptResources();
 
     #endregion
 }
 
-public interface ILuaScriptManagementService : IService
+public interface ILuaScriptManagementService : IReusableService
 {
     #region Script_File_Execution
 
-    bool TryExecuteLoadedScripts(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
-    bool TryExecuteLoadedScripts(ImmutableArray<ILuaResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false);
-    bool TryExecuteLoadedScripts(bool pauseExecutionOnError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteLoadedScripts(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteLoadedScripts(bool pauseExecutionOnError = false, bool verboseLogging = false);
 
     #endregion
     

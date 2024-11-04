@@ -603,7 +603,7 @@ namespace Barotrauma.Networking
         {
             ServerPacketHeader header = (ServerPacketHeader)inc.ReadByte();
 
-            GameMain.LuaCs.Networking.NetMessageReceived(inc, header);
+            GameMain.LuaCs.NetworkingService.NetMessageReceived(inc, header);
 
             if (roundInitStatus == RoundInitStatus.WaitingForStartGameFinalize
                 && header is not (

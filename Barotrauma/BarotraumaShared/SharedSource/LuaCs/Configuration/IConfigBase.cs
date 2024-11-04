@@ -1,4 +1,5 @@
 ﻿using System;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Configuration;
@@ -13,9 +14,7 @@ public partial interface IConfigBase : IVarId
     void Initialize(IVarId id, string defaultValue);
 }
 
-public interface IVarId
+public interface IVarId : IDataInfo
 {
     Guid InstanceId { get; }
-    string InternalName { get; }
-    ContentPackage OwnerPackage { get; }
 }
