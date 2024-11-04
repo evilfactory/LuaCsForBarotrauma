@@ -4,7 +4,7 @@
 /// <summary>
 /// Loads XML Style assets from the given content package.
 /// </summary>
-public interface IStylesService : IService
+public interface IStylesService : IReusableService
 {
     /// <summary>
     /// Tries to load the styles file for the given contentpackage and path into a new UIStylesProcessor instance.
@@ -12,11 +12,11 @@ public interface IStylesService : IService
     /// <param name="package"></param>
     /// <param name="path"></param>
     /// <returns></returns>
-    bool TryLoadStylesFile(ContentPackage package, ContentPath path);
+    FluentResults.Result LoadStylesFile(ContentPackage package, ContentPath path);
     /// <summary>
     /// Unloads all styles assets and UIStyleProcessor instances.
     /// </summary>
-    void UnloadAllStyles();
+    FluentResults.Result UnloadAllStyles();
     
     /// <summary>
     /// Tries to the get the font asset by xml asset name, returns null on failure.
