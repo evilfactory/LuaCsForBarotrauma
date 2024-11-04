@@ -740,7 +740,7 @@ namespace Barotrauma
 
         public void Clear()
         {
-            harmony?.UnpatchAll();
+            harmony?.UnpatchSelf();
 
             foreach (var (_, patch) in registeredPatches)
             {
@@ -817,7 +817,7 @@ namespace Barotrauma
                     if (luaCs.PerformanceCounter.EnablePerformanceCounter)
                     {
                         performanceMeasurement.Stop();
-                        luaCs.PerformanceCounter.SetHookElapsedTicks(name, key, performanceMeasurement.ElapsedTicks);
+                        //luaCs.PerformanceCounter.SetHookElapsedTicks(name, key, performanceMeasurement.ElapsedTicks); TODO
                         performanceMeasurement.Reset();
                     }
                 }

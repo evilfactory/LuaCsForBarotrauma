@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Data;
+using FluentResults;
 
 namespace Barotrauma.LuaCs.Services.Processing;
 
 #region TypeDef
 
 // ReSharper disable once TypeParameterCanBeVariant
-public interface IConverterService<TSrc, TOut> : IService
+public interface IConverterService<TSrc, TOut> : IReusableService
 {
-    bool TryParseResource(TSrc src, out TOut resources);
-    bool TryParseResources(IEnumerable<TSrc> sources, out List<TOut> resources);
+    Result<TOut> TryParseResource(TSrc src);
+    Result<TOut> TryParseResources(IEnumerable<TSrc> sources);
 }
 
 public interface IXmlResourceConverterService<TOut> : IConverterService<XElement, TOut> { }
