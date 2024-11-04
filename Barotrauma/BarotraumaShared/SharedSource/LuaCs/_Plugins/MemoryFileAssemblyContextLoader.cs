@@ -14,7 +14,7 @@ using Microsoft.CodeAnalysis.CSharp;
 
 [assembly: InternalsVisibleTo("CompiledAssembly")]
 
-namespace Barotrauma.LuaCs;
+namespace Barotrauma.LuaCs.Services;
 
 /// <summary>
 /// AssemblyLoadContext to compile from syntax trees in memory and to load from disk/file. Provides dependency resolution.

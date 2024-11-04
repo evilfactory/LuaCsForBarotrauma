@@ -463,7 +463,12 @@ namespace Barotrauma
 
         public List<DebugConsole.Command> Commands => DebugConsole.Commands;
 
-        public void AssignOnExecute(string names, object onExecute) => DebugConsole.AssignOnExecute(names, (string[] a) => { GameMain.LuaCs.CallLuaFunction(onExecute, new object[] { a }); });
+        public void AssignOnExecute(string names, object onExecute) => DebugConsole.AssignOnExecute(names,
+            (string[] a) =>
+            {
+                //GameMain.LuaCs.CallLuaFunction(onExecute, new object[] { a });
+                throw new NotImplementedException();
+            });
 
         public void SaveGame(string path)
         {

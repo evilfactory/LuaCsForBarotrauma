@@ -17,5 +17,6 @@ public record StylesResourceInfo : IStylesResourceInfo
     public bool Optional { get; init; }
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
 }

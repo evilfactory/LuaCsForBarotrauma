@@ -8,8 +8,7 @@ namespace Barotrauma.LuaCs.Services;
 public partial class PackageService
 {
     public PackageService(
-        Lazy<IXmlModConfigConverterService> converterService, 
-        Lazy<ILegacyConfigService> legacyConfigService,
+        Lazy<IModConfigParserService> configParserService,
         Lazy<ILuaScriptService> luaScriptService,
         Lazy<ILocalizationService> localizationService,
         Lazy<IPluginService> pluginService,
@@ -18,8 +17,7 @@ public partial class PackageService
         IStorageService storageService,
         ILoggerService loggerService)
     {
-        _modConfigConverterService = converterService;
-        _legacyConfigService = legacyConfigService;
+        _configParserService = configParserService;
         _luaScriptService = luaScriptService;
         _localizationService = localizationService;
         _pluginService = pluginService;
