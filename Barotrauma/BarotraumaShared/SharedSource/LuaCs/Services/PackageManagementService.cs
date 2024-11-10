@@ -4,7 +4,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class PackageManagementService : IPackageManagementService, IPluginManagementService
+public class PackageManagementService : IPackageManagementService
 {
     private readonly Func<IPackageService> _contentPackageServiceFactory;
     private readonly Lazy<IAssemblyManagementService> _assemblyManagementService;

@@ -11,8 +11,7 @@ public partial class PackageService : IStylesResourcesInfo
     private readonly Lazy<IStylesService> _stylesService;
     
     public PackageService(
-        Lazy<IXmlModConfigConverterService> converterService, 
-        Lazy<ILegacyConfigService> legacyConfigService,
+        Lazy<IModConfigParserService> configParserService,
         Lazy<ILuaScriptService> luaScriptService,
         Lazy<ILocalizationService> localizationService,
         Lazy<IPluginService> pluginService,
@@ -22,8 +21,7 @@ public partial class PackageService : IStylesResourcesInfo
         IStorageService storageService,
         ILoggerService loggerService)
     {
-        _modConfigConverterService = converterService;
-        _legacyConfigService = legacyConfigService;
+        _configParserService = configParserService;
         _luaScriptService = luaScriptService;
         _localizationService = localizationService;
         _pluginService = pluginService;
@@ -36,7 +34,7 @@ public partial class PackageService : IStylesResourcesInfo
 
     public ImmutableArray<IStylesResourceInfo> StylesResourceInfos => ModConfigInfo?.StylesResourceInfos ?? ImmutableArray<IStylesResourceInfo>.Empty;
 
-    public void LoadStyles([NotNull]IStylesResourcesInfo stylesInfo)
+    public FluentResults.Result LoadStyles([NotNull]IStylesResourcesInfo stylesInfo)
     {
         throw new NotImplementedException();
     }   

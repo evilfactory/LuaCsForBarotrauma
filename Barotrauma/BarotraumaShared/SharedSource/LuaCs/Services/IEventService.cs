@@ -1,6 +1,8 @@
-﻿namespace Barotrauma.LuaCs.Services;
+﻿using Barotrauma.LuaCs.Services.Safe;
 
-public interface IEventService
+namespace Barotrauma.LuaCs.Services;
+
+public interface IEventService : IService, ILuaEventService
 {
     
 }

@@ -25,7 +25,8 @@ namespace Barotrauma.LuaCs.Services;
 /// Provides functionality for the loading, unloading and management of plugins implementing IAssemblyPlugin.
 /// All plugins are loaded into their own AssemblyLoadContext along with their dependencies.
 /// </summary>
-public class AssemblyManager : IAssemblyManagementService
+[Obsolete]
+public class AssemblyManager : IAssemblyManagementService, IPluginManagementService
 {
     #region ExternalAPI
 
@@ -275,6 +276,11 @@ public class AssemblyManager : IAssemblyManagementService
         }
     }
 
+    public bool IsAssemblyLoadedGlobal(string friendlyName)
+    {
+        throw new NotImplementedException();
+    }
+    
     #endregion
 
     #region InternalAPI
