@@ -11,6 +11,7 @@ using MoonSharp.VsCodeDebugger;
 using System.Reflection;
 using System.Runtime.Loader;
 using System.Xml.Linq;
+using Barotrauma.LuaCs;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 

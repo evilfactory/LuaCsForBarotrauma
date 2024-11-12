@@ -11,5 +11,5 @@ public interface IService : IDisposable
     /// Returns the service to its original state (post-instantiation).
     /// Allows a service instance to be reused without disposing of the instance. 
     /// </summary>
-    void Reset();
+    FluentResults.Result Reset();
 }

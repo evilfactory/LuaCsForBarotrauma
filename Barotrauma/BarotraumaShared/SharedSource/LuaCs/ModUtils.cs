@@ -384,9 +384,11 @@ namespace FluentResults.LuaCs
 {
     public static class MetadataType
     {
+        public static string ExceptionDetails = nameof(ExceptionDetails);
         public static string ExceptionObject = nameof(ExceptionObject);
         public static string RootObject = nameof(RootObject);
         public static string Sources = nameof(Sources);
+        public static string StackTrace  = nameof(StackTrace);
     }
 }
 

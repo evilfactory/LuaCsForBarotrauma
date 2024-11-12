@@ -10,6 +10,8 @@ using System.Threading;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
+using FluentResults;
+using FluentResults.LuaCs;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -158,7 +160,7 @@ public partial class PackageService : IPackageService
 
     #region PublicAPI
 
-    public bool TryLoadResourcesInfo(ContentPackage package)
+    public FluentResults.Result LoadResourcesInfo(ContentPackage package)
     {
         _operationsUsageLock.EnterWriteLock();
         LoadingOperationsRunning = true;
@@ -166,35 +168,31 @@ public partial class PackageService : IPackageService
         {
             if (IsDisposed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return FluentResults.Result.Fail(
+                    new Error("Service is disposed.")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, package));
             }
 
-            // try loading the ModConfig.xml. If it fails, use the Legacy loader to try and construct one from the package structure.
-            if (_storageService.TryLoadPackageXml(package, "ModConfig.xml", out var configXml)
-                && configXml.Root is not null)
+            var res = _configParserService.Value.BuildConfigForPackage(package);
+
+            if (res.IsFailed)
             {
-                if (_modConfigConverterService.Value.TryParseResource(configXml.Root, out IModConfigInfo configInfo))
-                {
-                    ModConfigInfo = configInfo;
-                }
-                else
-                {
-                    _loggerService.LogError(
-                        $"Failed to parse ModConfig.xml for package {package.Name}, package mod content not loaded.");
-                    return false;
-                }
-            }
-            else if (_legacyConfigService.Value.TryBuildModConfigFromLegacy(package, out var legacyConfig))
-            {
-                ModConfigInfo = legacyConfig;
-            }
-            else
-            {
-                // vanilla mod or broken
-                return false;
+                return FluentResults.Result.Fail(res.Errors)
+                    .WithError(new Error("PackageService failed to load ModConfigInfo")
+                        .WithMetadata(MetadataType.ExceptionObject, _configParserService)
+                        .WithMetadata(MetadataType.RootObject, package));
             }
 
-            return true;
+            this.ModConfigInfo = res.Value;
+            return FluentResults.Result.Ok();
+        }
+        catch (Exception e)
+        {
+            return FluentResults.Result.Fail(new Error(e.Message)
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.RootObject, package)
+                .WithMetadata(MetadataType.StackTrace, e.StackTrace));
         }
         finally
         {
@@ -203,7 +201,7 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
+    public FluentResults.Result LoadPlugins([NotNull]IAssembliesResourcesInfo assembliesInfo, bool ignoreDependencySorting = false)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
@@ -256,7 +254,7 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo)
+    public FluentResults.Result LoadLocalizations([NotNull]ILocalizationsResourcesInfo localizationsInfo)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
@@ -295,7 +293,7 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
+    public FluentResults.Result AddLuaScripts([NotNull]ILuaScriptsResourcesInfo luaScriptsInfo)
     {
         _operationsUsageLock.EnterReadLock();
         LoadingOperationsRunning = true;
@@ -335,7 +333,7 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void LoadConfig(
+    public FluentResults.Result LoadConfig(
         [NotNull]IConfigsResourcesInfo configsResourcesInfo, 
         [NotNull]IConfigProfilesResourcesInfo configProfilesResourcesInfo)
     {
@@ -462,22 +460,24 @@ public partial class PackageService : IPackageService
         }
     }
 
-    public void Reset()
+    public FluentResults.Result Reset()
     {
         _operationsUsageLock.EnterWriteLock();
+        
         try
         {
             if (this.Package is null)
             {
-                _loggerService.LogError(
-                    $"Package Service: cannot Dispose of service as ContentPackage and info is not set!");
-                return;
+                return FluentResults.Result.Fail(new Error($"Package Service: cannot Dispose of service as ContentPackage and info is not set!")
+                    .WithMetadata(MetadataType.ExceptionDetails, nameof(Reset))
+                    .WithMetadata(MetadataType.ExceptionObject, this));
             }
 
             if (this.ModConfigInfo is null)
             {
-                _loggerService.LogError($"Package Service: cannot Dispose of service as ModConfigInfo is not loaded!");
-                return;
+                return FluentResults.Result.Fail(new Error($"Package Service: cannot Dispose of service as ModConfigInfo is not set!")
+                    .WithMetadata(MetadataType.ExceptionDetails, nameof(Reset))
+                    .WithMetadata(MetadataType.ExceptionObject, this));
             }
             
             Interlocked.MemoryBarrier(); //ensure cache states 
@@ -490,7 +490,7 @@ public partial class PackageService : IPackageService
                 _operationsUsageLock.EnterWriteLock();
                 if (timeoutLimit < DateTime.Now)
                 {
-                    _loggerService.LogError($"Package Service: Dispose() time out reached while waiting for other operations. Continuing.");
+                    _loggerService.LogError($"Package Service: Dispose() grace time-out reached while waiting for other operations. Continuing.");
                     break;
                 }
             }
@@ -519,6 +519,7 @@ public partial class PackageService : IPackageService
                 _localizationService.Value.Remove(this.Localizations);
                 LocalizationsLoaded = false;
             }
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -530,47 +531,59 @@ public partial class PackageService : IPackageService
 
     #region INTERNAL
 
-    private void SanitationChecksCore(object o, string resTypeInfoName, string callerName)
+    private FluentResults.Result SanitationChecksCore(object obj, string resTypeInfoName, string callerName)
     {
-        if (o is null)
+        Error e = null;
+        
+        if (obj is null)
         {
-            _loggerService.LogError($"Package Service: {resTypeInfoName} resources list is null!");
-            throw new NullReferenceException($"Package Service: {resTypeInfoName} resources list is null!");
+            e = new Error($"{nameof(SanitationChecksCore)}: null checks failed!")
+                .WithMetadata(MetadataType.ExceptionDetails, "Object is null!")
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.Sources, new List<string>() { resTypeInfoName, callerName });
         }
 
         if (this.Package is null)
         {
-            _loggerService.LogError($"Package Service: package not set at {callerName}()!");
-            throw new NullReferenceException($"Package Service: package not set at {callerName}()!");
+            e = (e ?? new Error($"{nameof(SanitationChecksCore)}: null checks failed!"))
+                .WithMetadata(MetadataType.ExceptionDetails, "The Package is null!")
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.Sources, new List<string>() { resTypeInfoName, callerName });
         }
+
+        return e is null ? FluentResults.Result.Ok() : FluentResults.Result.Fail(e);
     }
     
-    private void SanitationChecksEnumerable<T>(ImmutableArray<T> resourceInfos, string resTypeInfoName, string callerName) where T : IResourceInfo, IResourceCultureInfo, IPackageInfo, IPackageDependenciesInfo
+    private FluentResults.Result SanitationChecksEnumerable<T>(ImmutableArray<T> resourceInfos, string resTypeInfoName, string callerName) where T : IResourceInfo, IResourceCultureInfo, IPackageInfo, IPackageDependenciesInfo
     {
         // Check if list is empty. Nothing more to do.
         if (resourceInfos.IsDefaultOrEmpty)
-            return;
+            return FluentResults.Result.Ok();
 
+        Stack<Error> errors = new();
+        
         // Check if all resources in the list are registered to this package, throw if not.
         foreach (var resourceInfo in resourceInfos)
         {
             // ownership checks
             if (resourceInfo.OwnerPackage is null)
-            {
-                throw new ArgumentException($"Package Service: {resTypeInfoName} info for resource does not have a package name set! Run by {this.Package.Name}.");
+            { 
+                errors.Push(new Error($"Error for resource: {resTypeInfoName}. OwnerPackage is null!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
+                continue;
             }
 
             if (resourceInfo.OwnerPackage != this.Package)
             {
-                throw new ArgumentException(
-                    $"Package Service: {resTypeInfoName} info does not belong to this package! Owned by {resourceInfo.OwnerPackage.Name} but is run by {this.Package.Name}.");
+                errors.Push(new Error($"Error for resource: {resTypeInfoName}. $\"OwnerPackage {{resourceInfo.OwnerPackage?.Name}} is not the same as this package: {{this.Package}}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
+                continue;
             }
             
-            // Check if external dependencies are loaded and if current environment is supported, throw if not
             if (resourceInfo.Dependencies.IsDefaultOrEmpty)
                 continue;
-            
-            bool resourceMissing = false;
             
             resourceInfo.Dependencies.ForEach(pdi =>
             {
@@ -581,29 +594,31 @@ public partial class PackageService : IPackageService
                     return;*/
                 if (!_packageManagementService.CheckDependencyLoaded(pdi))
                 {
-                    resourceMissing = true;
-                    _loggerService.LogError(
-                        $"Package Service: the following dependency for package {resourceInfo.OwnerPackage.Name} is not loaded: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}");
+                    errors.Push(new Error($"Dependency missing for resource: {resourceInfo.OwnerPackage.Name}")
+                        .WithMetadata(MetadataType.ExceptionDetails, $"Missing dependency: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, resourceInfo));
                 }
             });
-
-            if (!resourceMissing)
-            {
-                throw new FileLoadException($"Package Service: dependencies for package {resourceInfo.OwnerPackage.Name} are not loaded.");
-            }
             
             // check runtime platform
             if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo))
             {
-                throw new PlatformNotSupportedException($"Package service: the {resTypeInfoName} from {resourceInfo.OwnerPackage.Name} is not supported on this platform.");
+                errors.Push(new Error($"The resource {resourceInfo.OwnerPackage?.Name} does not support the current platform!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
             }
             
             // check local culture
             if (!_localizationService.Value.IsCurrentCultureSupported(resourceInfo))
             {
-                throw new PlatformNotSupportedException($"Package service: the {resTypeInfoName} from {resourceInfo.OwnerPackage.Name} is not supported in this culture.");
+                errors.Push(new Error($"The resource {resourceInfo.OwnerPackage?.Name} does not support the current culture/region!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, resourceInfo));
             }
         }
+
+        return errors.Count > 0 ? FluentResults.Result.Fail(errors) : FluentResults.Result.Ok();
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
