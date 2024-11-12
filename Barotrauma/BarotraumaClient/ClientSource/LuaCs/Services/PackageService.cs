@@ -9,6 +9,7 @@ namespace Barotrauma.LuaCs.Services;
 public partial class PackageService : IStylesResourcesInfo
 {
     private readonly Lazy<IStylesService> _stylesService;
+    public IStylesService Styles => _stylesService.Value;
     
     public PackageService(
         Lazy<IModConfigParserService> configParserService,

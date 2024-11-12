@@ -12,6 +12,7 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
 using FluentResults;
 using FluentResults.LuaCs;
+using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -207,24 +208,12 @@ public partial class PackageService : IPackageService
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                    IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT0(assembliesInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
-            
-            SanitationChecksCore(assembliesInfo, "assemblies", nameof(LoadPlugins));
-            SanitationChecksEnumerable(assembliesInfo.Assemblies, "assemblies", nameof(LoadPlugins));
-
-#if DEBUG
-            assembliesInfo.Assemblies.ForEach(ari =>
-            {
-                if (!this.Assemblies.Contains(ari))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the assembly resource {ari.InternalName} for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            });      
-#endif
             
             // Order these assemblies by internal dependencies
             ImmutableArray<IAssemblyResourceInfo> resources;
@@ -240,12 +229,15 @@ public partial class PackageService : IPackageService
             }
             
             // Try loading them, throw on failure.
-            if (!_pluginService.Value.TryLoadAndInstanceTypes<IAssemblyPlugin>(resources, true, out var instancedTypes))
+            if (_pluginService.Value.LoadAndInstanceTypes<IAssemblyPlugin>(resources, true, out var instancedTypes) is { IsFailed: true} failed2)
             {
-                throw new TypeLoadException($"PackageService: unable to load assemblies for package {this.Package.Name}! Aborting loading!");
+                return failed2.WithError(new Error($"{nameof(LoadPlugins)}: Failed to load plugins for {this.Package.Name}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, assembliesInfo));
             }
 
             PluginsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -260,31 +252,22 @@ public partial class PackageService : IPackageService
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT1(localizationsInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
             
-            SanitationChecksCore(localizationsInfo, "localizations", nameof(LoadLocalizations));
-            SanitationChecksEnumerable(localizationsInfo.Localizations, "localizations", nameof(LoadLocalizations));
-
-#if DEBUG
-            localizationsInfo.Localizations.ForEach(ri =>
+            if (_localizationService.Value.LoadLocalizations(localizationsInfo.Localizations) is { IsFailed: true} failed2)
             {
-                if (!this.Localizations.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the localization resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            });      
-#endif
-            
-            if (!_localizationService.Value.TryLoadLocalizations(localizationsInfo.Localizations))
-            {
-                throw new FileLoadException($"Package Service: unable to load localizations for package {this.Package.Name}! Aborting!");
+                return failed2.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load localizations")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, localizationsInfo));
             }
 
             LocalizationsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -299,32 +282,22 @@ public partial class PackageService : IPackageService
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT4(luaScriptsInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
             
-            SanitationChecksCore(luaScriptsInfo, "luaScripts", nameof(AddLuaScripts));
-            SanitationChecksEnumerable(luaScriptsInfo.LuaScripts, "luaScripts", nameof(AddLuaScripts));
-
-#if DEBUG
-            luaScriptsInfo.LuaScripts.ForEach(ri =>
+            if (_luaScriptService.Value.AddScriptFiles(luaScriptsInfo.LuaScripts) is { IsFailed: true} failed2)
             {
-                if (!this.LuaScripts.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the lua script resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            });      
-#endif
-            
-            if (!_luaScriptService.Value.TryAddScriptFiles(luaScriptsInfo.LuaScripts))
-            {
-                throw new ArgumentException(
-                    $"Package Service: unable to add lua files for package {this.Package.Name}! Aborting!");
+                return failed2.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load lua scripts.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, luaScriptsInfo));
             }
 
             LuaScriptsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -341,48 +314,38 @@ public partial class PackageService : IPackageService
         LoadingOperationsRunning = true;
         try
         {
-            if (IsDisposed)
+            // register configs
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT2(configsResourcesInfo)) is { IsFailed: true } failed)
             {
-                throw new ObjectDisposedException($"This package service instance is disposed!");
+                return failed;
             }
             
-            SanitationChecksCore(configsResourcesInfo, "config", nameof(LoadConfig));
-            SanitationChecksCore(configProfilesResourcesInfo, "config profiles", nameof(LoadConfig));
-            SanitationChecksEnumerable(configsResourcesInfo.Configs, "config", nameof(LoadConfig));
-            SanitationChecksEnumerable(configProfilesResourcesInfo.ConfigProfiles, "config profiles", nameof(LoadConfig));
-
-#if DEBUG
-            configsResourcesInfo.Configs.ForEach(ri =>
+            if (_configService.Value.AddConfigs(configsResourcesInfo.Configs) is { IsFailed: true} failed2)
             {
-                if (!this.Configs.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the configs resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            }); 
-            
-            configProfilesResourcesInfo.ConfigProfiles.ForEach(ri =>
-            {
-                if (!this.ConfigProfiles.Contains(ri))
-                {
-                    throw new ArgumentException(
-                        $"Package Service: tried to load the localization resource for package {this.Package.Name} but it is not in the list for this package.");
-                }
-            }); 
-#endif
-            
-            if (!_configService.Value.TryAddConfigs(configsResourcesInfo.Configs))
-            {
-                throw new ArgumentException(
-                    $"Package Service: unable to add configs for package {this.Package.Name}! Aborting!");
+                return failed2.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load configs.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, configsResourcesInfo));
             }
             
-            if (!_configService.Value.TryAddConfigsProfiles(configProfilesResourcesInfo.ConfigProfiles))
+            // register config profiles
+            if (CheckResourceSanitation(OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo, 
+                        IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo>
+                    .FromT3(configProfilesResourcesInfo)) is { IsFailed: true } failed3)
             {
-                throw new ArgumentException(
-                    $"Package Service: unable to add configs profiles for package {this.Package.Name}! Aborting!");
+                return failed3;
             }
+            
+            if (_configService.Value.AddConfigsProfiles(configProfilesResourcesInfo.ConfigProfiles) is { IsFailed: true} failed4)
+            {
+                return failed4.WithError(new Error($"{nameof(LoadLocalizations)}: Failed to load config profiles.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, configProfilesResourcesInfo));
+            }
+            
             ConfigsLoaded = true;
+            return FluentResults.Result.Ok();
         }
         finally
         {
@@ -531,6 +494,87 @@ public partial class PackageService : IPackageService
 
     #region INTERNAL
 
+    /// <summary>
+    /// [Thread Unsafe] Performs sanitation and null checks on resources and returns the results.
+    /// NOTE: Requires that resource locks be set by the caller.
+    /// </summary>
+    /// <param name="resourcesInfos"></param>
+    /// <returns></returns>
+    private FluentResults.Result CheckResourceSanitation(
+        OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo,
+            IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo> resourcesInfos)
+    {
+        // execute checks based on known types
+        return resourcesInfos.Match<FluentResults.Result>(
+            ass => ChecksDispatcher(ass, nameof(ass.Assemblies), nameof(LoadPlugins), 
+                ass.Assemblies, this.Assemblies),
+            loc => ChecksDispatcher(loc, nameof(loc.Localizations), nameof(LoadLocalizations), 
+                loc.Localizations, this.Localizations),
+            cfg => ChecksDispatcher(cfg, nameof(cfg.Configs), nameof(LoadConfig), 
+                cfg.Configs, this.Configs),
+            cfp => ChecksDispatcher(cfp, nameof(cfp.ConfigProfiles), nameof(LoadConfig), 
+                cfp.ConfigProfiles, this.ConfigProfiles),
+            lua => ChecksDispatcher(lua, nameof(lua.LuaScripts), nameof(AddLuaScripts), 
+                lua.LuaScripts, this.LuaScripts));
+        
+        
+        /*
+         * Helper functions
+         */
+        FluentResults.Result ChecksDispatcher<T>(object obj, string resName, string callerName,
+            ImmutableArray<T> resList, ImmutableArray<T> compareList) 
+            where T : class, IPackageInfo, IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo
+        {
+            string errMsg = $"{callerName}: Failed to load {resName}.";
+            if (DisposeCheck(obj) is { IsFailed: true } failed)
+                return failed;
+            if (SanitationChecksCore(obj, resName, callerName) is { IsFailed: true } failed1)
+                return failed1.WithError(new Error(errMsg));
+            if (SanitationChecksEnumerable(resList, resName, callerName) is { IsFailed: true } failed2)
+                return failed2.WithError(new Error(errMsg));
+            if (DebugCheck(resList, compareList, resName) is {IsFailed: true} failed3)
+                return failed3.WithError(new Error(errMsg));
+            return FluentResults.Result.Ok();
+        }
+
+        FluentResults.Result DisposeCheck(object obj)
+        {
+            if (IsDisposed)
+            {
+                return FluentResults.Result.Fail(new Error($"{nameof(PackageService)}: Tried to load resources when disposed.")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, obj));
+            }
+            return FluentResults.Result.Ok();
+        }
+
+        FluentResults.Result DebugCheck<T>(ImmutableArray<T> resList, ImmutableArray<T> compareList, string resName)
+            where T : class, IPackageInfo
+        {
+#if DEBUG
+            Stack<Error> errors = new();
+            resList.ForEach(res =>
+            {
+                if (!compareList.Contains(res))
+                {
+                    errors.Push(new Error($"Failed to load {resName} for: {this.Package.Name}")
+                        .WithMetadata(MetadataType.ExceptionDetails, $"Tries to load {resName} resource {res.InternalName} but it is not from this package!")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, res));
+                }
+            });
+            if (errors.Count > 0)
+            {
+                return FluentResults.Result.Fail(errors).WithError(
+                    new Error($"{nameof(LoadPlugins)}: errors in {resName} resources.")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, this.Package));
+            }
+#endif
+            return FluentResults.Result.Ok();
+        }
+    }
+    
     private FluentResults.Result SanitationChecksCore(object obj, string resTypeInfoName, string callerName)
     {
         Error e = null;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
@@ -23,7 +24,7 @@ public class PackageManagementService : IPackageManagementService
         // TODO release managed resources here
     }
 
-    public void Reset()
+    public FluentResults.Result Reset()
     {
         throw new NotImplementedException();
     }
@@ -33,18 +34,17 @@ public class PackageManagementService : IPackageManagementService
         throw new NotImplementedException();
     }
 
-    public void AddPackages(ref ReadOnlySpan<(ContentPackage, bool)> packages, bool executeImmediately = false, bool errorOnFailures = false,
-        bool errorOnExistingPackageFound = false)
+    public FluentResults.Result AddPackages(ImmutableArray<LoadablePackage> packages)
     {
         throw new NotImplementedException();
     }
 
-    public void LoadPackages(bool onlyUnloadedPackages = true, bool rescanPackages = false)
+    public FluentResults.Result LoadPackages(bool onlyUnloadedPackages = true, bool rescanPackages = false)
     {
         throw new NotImplementedException();
     }
 
-    public void UnloadPackages(bool errorOnFailures = true)
+    public FluentResults.Result UnloadPackages(bool errorOnFailures = true)
     {
         throw new NotImplementedException();
     }

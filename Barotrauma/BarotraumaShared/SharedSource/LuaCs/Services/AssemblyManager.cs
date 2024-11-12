@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Threading;
+using FluentResults;
+using FluentResults.LuaCs;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
@@ -746,9 +748,11 @@ public class AssemblyManager : IAssemblyManagementService, IPluginManagementServ
         TryBeginDispose();
     }
 
-    public void Reset()
+    public FluentResults.Result Reset()
     {
-        TryBeginDispose();
+        return TryBeginDispose() ? FluentResults.Result.Ok() 
+            : FluentResults.Result.Fail(new Error($"{nameof(AssemblyManager)}: failed to Reset service.")
+                .WithMetadata(MetadataType.ExceptionObject, this));
     }
 }
 

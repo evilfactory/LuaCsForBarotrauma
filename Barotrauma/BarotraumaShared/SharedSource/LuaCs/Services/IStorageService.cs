@@ -7,36 +7,36 @@ public interface IStorageService : IService
 {
     #region LocalGameData
 
-    bool TryLoadLocalXml(ContentPackage package, string localFilePath, out XDocument document);
-    bool TryLoadLocalBinary(ContentPackage package, string localFilePath, out byte[] bytes);
-    bool TryLoadLocalText(ContentPackage package, string localFilePath, out string text);
-    bool FileExistsInLocalData(ContentPackage package, string localFilePath);
+    FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
+    FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);
+    FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath);
+    FluentResults.Result<bool> FileExistsInLocalData(ContentPackage package, string localFilePath);
 
     #endregion
     
     #region ContentPackageData
-    bool TryLoadPackageXml(ContentPackage package, string localFilePath, out XDocument document);
-    bool TryLoadPackageBinary(ContentPackage package, string localFilePath, out byte[] bytes);
-    bool TryLoadPackageText(ContentPackage package, string localFilePath, out string text);
+    FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath, out XDocument document);
+    FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath, out byte[] bytes);
+    FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath, out string text);
     
-    ImmutableArray<bool> TryLoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePath, out ImmutableArray<XDocument> document);
-    ImmutableArray<bool> TryLoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePath, out ImmutableArray<byte[]> bytes);
-    ImmutableArray<bool> TryLoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePath, out ImmutableArray<string> text);
+    FluentResults.Result<ImmutableArray<XDocument>> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePath);
+    FluentResults.Result<ImmutableArray<byte[]>> TryLoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePath);
+    FluentResults.Result<ImmutableArray<string>> TryLoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePath);
 
-    bool FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively, out ImmutableArray<string> localFilePaths);
-    bool FileExistsInPackage(ContentPackage package, string localFilePath);
+    FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively);
+    FluentResults.Result<bool> FileExistsInPackage(ContentPackage package, string localFilePath);
     
     #endregion
     
     #region AbsolutePaths
 
-    bool TryLoadXml(string filePath, out XDocument document);
-    bool TrySaveXml(string filePath, in XDocument document);
-    bool TryLoadBinary(string filePath, out byte[] bytes);
-    bool TrySaveBinary(string filePath, in byte[] bytes);
-    bool TryLoadText(string filePath, out string text);
-    bool TrySaveText(string filePath, string text);
-    bool FileExists(string filePath);
+    FluentResults.Result<XDocument> TryLoadXml(string filePatht);
+    FluentResults.Result TrySaveXml(string filePath, in XDocument document);
+    FluentResults.Result<byte[]> TryLoadBinary(string filePath);
+    FluentResults.Result TrySaveBinary(string filePath, in byte[] bytes);
+    FluentResults.Result<string> TryLoadText(string filePath);
+    FluentResults.Result TrySaveText(string filePath, string text);
+    FluentResults.Result<bool> FileExists(string filePath);
 
     #endregion
 }

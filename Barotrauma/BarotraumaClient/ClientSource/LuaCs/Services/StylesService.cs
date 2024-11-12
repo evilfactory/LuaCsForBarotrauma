@@ -28,11 +28,13 @@ public class StylesService : IStylesService
             return FluentResults.Result.Ok();
         }
         //check if file exists
-        if (!_storageService.FileExists(path.FullPath))
+        if (_storageService.FileExists(path.FullPath) is {} result 
+            && result.IsFailed | (result.IsSuccess & result.Value == false))
         {
-            return FluentResults.Result.Fail(new Error($"{nameof(StylesService)}.{nameof(LoadStylesFile)} file does not exist!")
-                .WithMetadata(MetadataType.ExceptionObject, this)
-                .WithMetadata(MetadataType.RootObject, package));
+            return FluentResults.Result.Fail(result.Errors)
+                .WithError(new Error($"{nameof(StylesService)}.{nameof(LoadStylesFile)} file does not exist!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, package));
         }
 
         try
