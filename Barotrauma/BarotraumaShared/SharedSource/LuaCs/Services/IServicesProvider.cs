@@ -19,7 +19,7 @@ public interface IServicesProvider
     /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
+    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface;
     
     /// <summary>
     /// Registers a type as a service for a given interface that can be requested by name.
@@ -29,7 +29,7 @@ public interface IServicesProvider
     /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
+    void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface;
 
     /// <summary>
     /// Called whenever a new service type for a given interface is implemented.

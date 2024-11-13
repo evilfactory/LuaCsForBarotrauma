@@ -58,6 +58,10 @@ namespace Barotrauma
         public static ContentPackageId CsForBarotraumaId = new SteamWorkshopId(2795927223);
         private const string configFileName = "LuaCsSetupConfig.xml";
 
+        public PerformanceCounterService PerformanceCounter => _servicesProvider.TryGetService<PerformanceCounterService>(out var svc)
+            ? svc
+            : throw new NullReferenceException("Performance counter service not found!");
+
         protected ILoggerService Logger => _servicesProvider.TryGetService<ILoggerService>(out var svc) 
             ? svc 
             : throw new NullReferenceException("Logger service not found!");
@@ -84,9 +88,6 @@ namespace Barotrauma
             }
         }
 
-        private static int executionNumber = 0;
-
-
         public Script Lua { get; private set; }
         public LuaScriptLoader LuaScriptLoader { get; private set; }
 
@@ -95,7 +96,6 @@ namespace Barotrauma
         public LuaCsTimer Timer { get; private set; }
         public LuaCsNetworking Networking { get; private set; }
         public LuaCsSteam Steam { get; private set; }
-        public LuaCsPerformanceCounter PerformanceCounter { get; private set; }
 
         // must be available at anytime
         private static AssemblyManager _assemblyManager;
@@ -124,6 +124,11 @@ namespace Barotrauma
         {
             _servicesProvider = new ServicesProvider();
             _servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
+            _servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
+            _servicesProvider.RegisterServiceType<IPackageService, PackageService>(ServiceLifetime.Singleton);
+            _servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
+            _servicesProvider.RegisterServiceType<ILuaScriptService, LuaScriptService>(ServiceLifetime.Singleton);
+            _servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptService>(ServiceLifetime.Singleton);
         }
 
         [Obsolete("Use AssemblyManager::GetTypesByName()")]
@@ -333,7 +338,7 @@ namespace Barotrauma
 
             IsInitialized = true;
 
-            Logger.Log($"Initializing LuaCs, git revision = {AssemblyInfo.GitRevision}.");
+            Logger.Log($"Initializing LuaCs, git revision = {AssemblyInfo.GitRevision}");
 
 
         }

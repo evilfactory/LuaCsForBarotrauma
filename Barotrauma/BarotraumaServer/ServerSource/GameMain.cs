@@ -360,7 +360,7 @@ namespace Barotrauma
                     performanceCounterTimer.Stop();
                     if (GameMain.LuaCs.PerformanceCounter.EnablePerformanceCounter)
                     {
-                        GameMain.LuaCs.PerformanceCounter.UpdateElapsedTime = (double)performanceCounterTimer.ElapsedTicks / Stopwatch.Frequency;
+                        GameMain.LuaCs.PerformanceCounter.AddElapsedTicks(new SimplePerformanceData("Update", performanceCounterTimer.ElapsedTicks));
                     }
                     performanceCounterTimer.Reset();
 
