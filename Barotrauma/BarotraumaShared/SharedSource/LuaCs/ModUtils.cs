@@ -1,21 +1,63 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Xml.Serialization;
 using Barotrauma;
 using Barotrauma.Items.Components;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using OneOf;
+using Platform = Barotrauma.LuaCs.Data.Platform;
 
 namespace Barotrauma.LuaCs
 {
 
     public static class ModUtils
     {
+        public static class Environment
+        {
+            internal static void SetCurrentThreadAsMain() => MainThreadId = Thread.CurrentThread.ManagedThreadId;
+            public static int MainThreadId { get; private set; } = Int32.MinValue;
+            public static bool IsMainThread
+            {
+                get
+                {
+                    if (MainThreadId == Int32.MinValue)
+                        throw new ArgumentNullException("MainThread ID not set.");
+                    return Thread.CurrentThread.ManagedThreadId == MainThreadId;
+                }
+            }
+            
+            public static readonly Platform CurrentPlatform =
+#if WINDOWS
+                Platform.Windows;
+#elif MACOS
+                Platform.MacOS;
+#elif LINUX
+                Platform.Linux;
+#else
+                Platform.Linux;
+#endif
+
+            public static readonly Target CurrentTarget =
+#if CLIENT
+                Target.Client;
+#elif SERVER
+                Target.Server;
+#else
+                Target.Server;
+#endif
+
+        }
+        
         #region LOGGING
 
         public static class Logging
@@ -374,9 +416,58 @@ namespace Barotrauma.LuaCs
         }
 
         #endregion
+        
+        #region THREADING
+
+        public static class Threading
+        {
+            /// <summary>
+            /// Gets the boolean value of an integer with thread-safety via <code>Interlocked</code>.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool GetBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) > 0;
+    
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static void SetBool(ref int var, bool value)
+            {
+                if (value)
+                {
+                    Interlocked.CompareExchange(ref var, 1, 0);
+                }
+                else
+                {
+                    Interlocked.CompareExchange(ref var, 0, 1);
+                }
+            }
+
+            /// <summary>
+            /// Gets if the integer is under 1 (is zero/false) and, if so, sets the value to one/true.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool CheckClearAndSetBool(ref int var)
+            {
+                return Interlocked.CompareExchange(ref var, 1, 0) < 1;
+            }
+
+            /// <summary>
+            /// Gets if the integer is over 0 (is one/true) and, if so, sets the value to zero/false.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool CheckSetAndClearBool(ref int var)
+            {
+                return Interlocked.CompareExchange(ref var, 0, 1) > 0;
+            }
+        }
+            
+        #endregion
     }
 }
-
 
 #region ExceptionData
 

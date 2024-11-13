@@ -11,7 +11,7 @@ using Microsoft.CodeAnalysis.CSharp;
 namespace Barotrauma.LuaCs.Services;
 
 
-public interface IAssemblyManagementService : IService
+public interface IAssemblyManagementService : IReusableService
 {
     #region Public API
 

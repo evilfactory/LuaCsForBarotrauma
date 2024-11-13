@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IStorageService : IService
+public interface IStorageService : IReusableService
 {
     #region LocalGameData
 

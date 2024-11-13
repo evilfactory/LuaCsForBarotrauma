@@ -1,11 +1,12 @@
 ﻿using System;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services.Compatibility;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface INetworkingService : IService
+internal interface INetworkingService : IReusableService, ILuaCsNetworking
 {
     bool IsActive { get; }
     bool IsSynchronized { get; }

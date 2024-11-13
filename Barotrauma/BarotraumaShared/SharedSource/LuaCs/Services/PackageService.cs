@@ -37,31 +37,32 @@ public partial class PackageService : IPackageService
     // state monitors
     private int _configsLoaded, _localizationsLoaded, _luaScriptsLoaded, _pluginsLoaded, _isDisposed;
     private int _loadingOperationsRunning;
+    private int _isEnabledInModList;
 
     public bool ConfigsLoaded
     {
-        get => GetThreadSafeBool(ref _configsLoaded);
-        private set => SetThreadSafeBool(ref _configsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _configsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _configsLoaded, value);
     }
     public bool LocalizationsLoaded
     {
-        get => GetThreadSafeBool(ref _localizationsLoaded);
-        private set => SetThreadSafeBool(ref _localizationsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _localizationsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _localizationsLoaded, value);
     }
     public bool LuaScriptsLoaded
     {
-        get => GetThreadSafeBool(ref _luaScriptsLoaded);
-        private set => SetThreadSafeBool(ref _luaScriptsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _luaScriptsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _luaScriptsLoaded, value);
     }
     public bool PluginsLoaded
     {
-        get => GetThreadSafeBool(ref _pluginsLoaded);
-        private set => SetThreadSafeBool(ref _pluginsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _pluginsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _pluginsLoaded, value);
     }
     public bool IsDisposed
     {
-        get => GetThreadSafeBool(ref _isDisposed);
-        private set => SetThreadSafeBool(ref _isDisposed, value);
+        get => ModUtils.Threading.GetBool(ref _isDisposed);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
     }
 
     private bool LoadingOperationsRunning
@@ -148,6 +149,12 @@ public partial class PackageService : IPackageService
         }
     }
 
+    public bool IsEnabledInModList
+    {
+        get => ModUtils.Threading.GetBool(ref _isEnabledInModList);
+        private set => ModUtils.Threading.SetBool(ref _isEnabledInModList, value);
+    }
+
     #endregion
     
     public ImmutableArray<CultureInfo> SupportedCultures => ModConfigInfo?.SupportedCultures ?? ImmutableArray<CultureInfo>.Empty;
@@ -161,8 +168,16 @@ public partial class PackageService : IPackageService
 
     #region PublicAPI
 
-    public FluentResults.Result LoadResourcesInfo(ContentPackage package)
+    public FluentResults.Result LoadResourcesInfo(LoadablePackage cpackage)
     {
+        if (cpackage.Package == null)
+        {
+            return FluentResults.Result.Fail(new Error($"{nameof(LoadResourcesInfo)}: Package is null!")
+                .WithMetadata(MetadataType.ExceptionObject,this)
+                .WithMetadata(MetadataType.RootObject, cpackage));
+        }
+        ContentPackage package = cpackage.Package;
+        
         _operationsUsageLock.EnterWriteLock();
         LoadingOperationsRunning = true;
         try
@@ -186,6 +201,7 @@ public partial class PackageService : IPackageService
             }
 
             this.ModConfigInfo = res.Value;
+            this.IsEnabledInModList = cpackage.IsEnabled;
             return FluentResults.Result.Ok();
         }
         catch (Exception e)
@@ -501,7 +517,7 @@ public partial class PackageService : IPackageService
     /// <param name="resourcesInfos"></param>
     /// <returns></returns>
     private FluentResults.Result CheckResourceSanitation(
-        OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo,
+        OneOf.OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo,
             IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo> resourcesInfos)
     {
         // execute checks based on known types
@@ -628,22 +644,23 @@ public partial class PackageService : IPackageService
             
             if (resourceInfo.Dependencies.IsDefaultOrEmpty)
                 continue;
-            
-            resourceInfo.Dependencies.ForEach(pdi =>
+
+            // ReSharper disable once ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
+            foreach (var pdi in resourceInfo.Dependencies)
             {
-                // for clarification: assemblies passed to the function should always be loaded.
-                // optional assemblies should be filtered out before the list is sent.
+                // for clarification: all resources passed to the function should always be loaded.
+                // unneeded optional resources should be filtered out before the list is sent.
                 // left this as a reminder :)
                 /*if (pdi.Optional)
                     return;*/
                 if (!_packageManagementService.CheckDependencyLoaded(pdi))
                 {
                     errors.Push(new Error($"Dependency missing for resource: {resourceInfo.OwnerPackage.Name}")
-                        .WithMetadata(MetadataType.ExceptionDetails, $"Missing dependency: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}")
+                        .WithMetadata(MetadataType.ExceptionDetails, $"Missing dependency: {pdi.DependencyPackage?.Name ?? (pdi.FallbackPackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.FallbackPackageName)}")
                         .WithMetadata(MetadataType.ExceptionObject, this)
                         .WithMetadata(MetadataType.RootObject, resourceInfo));
                 }
-            });
+            }
             
             // check runtime platform
             if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo))
@@ -663,22 +680,6 @@ public partial class PackageService : IPackageService
         }
 
         return errors.Count > 0 ? FluentResults.Result.Fail(errors) : FluentResults.Result.Ok();
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static bool GetThreadSafeBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) == 1;
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static void SetThreadSafeBool(ref int var, bool value)
-    {
-        if (value)
-        {
-            Interlocked.CompareExchange(ref var, 1, 0);
-        }
-        else
-        {
-            Interlocked.CompareExchange(ref var, 0, 1);
-        }
     }
     
     #endregion

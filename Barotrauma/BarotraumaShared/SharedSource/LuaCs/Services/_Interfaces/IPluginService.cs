@@ -6,7 +6,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPluginService : IService
+public interface IPluginService : IReusableService
 {
     bool IsAssemblyLoaded(string friendlyName);
     /// <summary>

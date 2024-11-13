@@ -11,7 +11,7 @@ namespace Barotrauma.LuaCs.Networking;
 public interface INetWriteMessage
 {
     internal IWriteMessage Message { get; }
-    internal void SetMessage(IWriteMessage msg);
+    internal INetWriteMessage SetMessage(IWriteMessage msg);
 
     void WriteBoolean(bool val) => Message.WriteBoolean(val);
 
@@ -84,7 +84,7 @@ public interface INetWriteMessage
 public interface INetReadMessage
 {
     internal IReadMessage Message { get; }
-    internal void SetMessage(IReadMessage msg);
+    internal INetReadMessage SetMessage(IReadMessage msg);
 
     bool ReadBoolean() => Message.ReadBoolean();
     void ReadPadBits() => Message.ReadPadBits();
@@ -131,10 +131,19 @@ public class NetWriteMessage : INetWriteMessage
 
     IWriteMessage INetWriteMessage.Message => Message;
 
-    void INetWriteMessage.SetMessage(IWriteMessage msg)
+    INetWriteMessage INetWriteMessage.SetMessage(IWriteMessage msg)
     {
         Message = msg;
+        return this;
     }
+}
+
+internal static class NetHelperExtensions
+{
+    internal static INetWriteMessage ToNetWriteMessage(this IWriteMessage msg) =>
+        ((INetWriteMessage)new NetWriteMessage()).SetMessage(msg);
+    internal static INetReadMessage ToNetReadMessage(this IReadMessage msg) =>
+        ((INetReadMessage)new NetReadMessage()).SetMessage(msg);
 }
 
 public class NetReadMessage : INetReadMessage
@@ -142,9 +151,10 @@ public class NetReadMessage : INetReadMessage
     private IReadMessage Message { get; set; }
     IReadMessage INetReadMessage.Message => Message;
 
-    void INetReadMessage.SetMessage(IReadMessage msg)
+    INetReadMessage INetReadMessage.SetMessage(IReadMessage msg)
     {
         Message = msg;
+        return this;
     }
 }
 

@@ -260,7 +260,8 @@ namespace Barotrauma
 
         private static Type[] LoadDocTypes(XElement typesElem)
         {
-            var result = new List<Type>();
+            throw new NotImplementedException();
+            /*var result = new List<Type>();
             var loadedTypes = LuaCsSetup.AssemblyManager
                 .GetAllTypesInLoadedAssemblies()
                 .ToImmutableHashSet();
@@ -277,7 +278,7 @@ namespace Barotrauma
                 result.AddRange(typesFound);
             }
 
-            return result.ToArray();
+            return result.ToArray();*/
         }
 
         private static IEnumerable<XElement> SaveDocTypes(IEnumerable<Type> types)
