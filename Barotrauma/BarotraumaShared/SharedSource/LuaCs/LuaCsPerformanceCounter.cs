@@ -11,14 +11,13 @@ namespace Barotrauma
         public double UpdateElapsedTime;
         public Dictionary<string, Dictionary<string, double>> HookElapsedTime = new Dictionary<string, Dictionary<string, double>>();
 
-        public static float MemoryUsage
+        public static double MemoryUsage
         {
             get
             {
                 Process proc = Process.GetCurrentProcess();
-                float memory = MathF.Round(proc.PrivateMemorySize64 / (1024 * 1024), 2);
+                double memory = Math.Round(proc.PrivateMemorySize64 / (1024.0 * 1024.0), 2);
                 proc.Dispose();
-
                 return memory;
             }
         }
