@@ -50,7 +50,7 @@ public class ServicesProvider : IServicesProvider
         {
             _serviceLock.EnterReadLock();
             ServiceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
-            ServiceContainer.Compile<TService>();
+            ServiceContainer.Compile();
             OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
         }
         finally

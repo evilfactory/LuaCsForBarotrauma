@@ -58,9 +58,11 @@ namespace Barotrauma
         public static ContentPackageId CsForBarotraumaId = new SteamWorkshopId(2795927223);
         private const string configFileName = "LuaCsSetupConfig.xml";
 
-        protected ILoggerService Logger { get; private set; }
+        protected ILoggerService Logger => _servicesProvider.TryGetService<ILoggerService>(out var svc) 
+            ? svc 
+            : throw new NullReferenceException("Logger service not found!");
 
-        private IServicesProvider servicesProvider;
+        private readonly IServicesProvider _servicesProvider;
 
 #if SERVER
         public const bool IsServer = true;
@@ -120,13 +122,8 @@ namespace Barotrauma
 
         public LuaCsSetup()
         {
-            servicesProvider = new ServicesProvider();
-            servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
-
-            if (servicesProvider.TryGetService(out ILoggerService logger))
-            {
-                Logger = logger;
-            }
+            _servicesProvider = new ServicesProvider();
+            _servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
         }
 
         [Obsolete("Use AssemblyManager::GetTypesByName()")]
