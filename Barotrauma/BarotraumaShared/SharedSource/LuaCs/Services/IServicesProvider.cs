@@ -19,7 +19,7 @@ public interface IServicesProvider
     /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
+    FluentResults.Result RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
     
     /// <summary>
     /// Registers a type as a service for a given interface that can be requested by name.
@@ -29,7 +29,7 @@ public interface IServicesProvider
     /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
+    FluentResults.Result RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface, new();
 
     /// <summary>
     /// Called whenever a new service type for a given interface is implemented.
@@ -57,21 +57,17 @@ public interface IServicesProvider
     /// <summary>
     /// Tries to get a service for the given interface, returns success/failure.
     /// </summary>
-    /// <param name="service"></param>
-    /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(out IService service) where TSvcInterface : class, IService;
+    FluentResults.Result<TSvcInterface> GetService<TSvcInterface>() where TSvcInterface : class, IService;
     
     /// <summary>
     /// Tries to get a service for the given name and interface, returns success/failure.
     /// </summary>
     /// <param name="name"></param>
-    /// <param name="service"></param>
-    /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(string name, out IService service) where TSvcInterface : class, IService;
+    FluentResults.Result<TSvcInterface> GetService<TSvcInterface>(string name) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Called whenever a new service is created/instanced.
@@ -89,7 +85,7 @@ public interface IServicesProvider
     /// </summary>
     /// <typeparam name="TSvc"></typeparam>
     /// <returns></returns>
-    ImmutableArray<TSvc> GetAllServices<TSvc>() where TSvc : class, IService;
+    FluentResults.Result<ImmutableArray<TSvc>> GetAllServices<TSvc>() where TSvc : class, IService;
 
     #endregion
 
@@ -99,7 +95,7 @@ public interface IServicesProvider
     /// <summary>
     /// Notes: Internal use only if hosted by LuaCsForBarotrauma. Disposes of all services and resets DI container. Warning: unable to dispose of services held by other objects.
     /// </summary>
-    void DisposeAndReset();
+    void Reset();
 
     #endregion
 }
