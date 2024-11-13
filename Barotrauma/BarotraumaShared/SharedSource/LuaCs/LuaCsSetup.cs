@@ -56,9 +56,11 @@ namespace Barotrauma
 #endif
 
         public static ContentPackageId CsForBarotraumaId = new SteamWorkshopId(2795927223);
-
-
         private const string configFileName = "LuaCsSetupConfig.xml";
+
+        protected ILoggerService Logger { get; private set; }
+
+        private IServicesProvider servicesProvider;
 
 #if SERVER
         public const bool IsServer = true;
@@ -118,17 +120,15 @@ namespace Barotrauma
 
         public LuaCsSetup()
         {
-            Script.GlobalOptions.Platform = new LuaPlatformAccessor();
+            servicesProvider = new ServicesProvider();
+            servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
 
-            Hook = new LuaCsHook(this);
-
-            Game = new LuaGame();
-            Networking = new LuaCsNetworking();
-            DebugServer = new MoonSharpVsCodeDebugServer();
-
-            ReadSettings();
+            if (servicesProvider.TryGetService(out ILoggerService logger))
+            {
+                Logger = logger;
+            }
         }
-        
+
         [Obsolete("Use AssemblyManager::GetTypesByName()")]
         public static Type GetType(string typeName, bool throwOnError = false, bool ignoreCase = false)
         {
@@ -322,48 +322,7 @@ namespace Barotrauma
         
         public void Stop()
         {
-            PluginPackageManager.UnloadPlugins();            
-            
-            // unregister types
-            foreach (Type type in AssemblyManager.GetAllLoadedACLs().SelectMany(
-                         acl => acl.AssembliesTypes.Select(kvp => kvp.Value)))
-            {
-                UserData.UnregisterType(type, true);
-            }
 
-            if (Lua?.Globals is not null)
-            {
-                Lua.Globals.Remove("CsPackageManager");
-                Lua.Globals.Remove("AssemblyManager");
-            }
-
-            if (Thread.CurrentThread == GameMain.MainThread) 
-            {
-                Hook?.Call("stop");
-            }
-
-            if (Lua != null && DebugServer.IsStarted)
-            {
-                DebugServer.Detach(Lua);
-            }
-
-            Game?.Stop();
-
-            Hook?.Clear();
-            LuaScriptLoader = null;
-            Lua = null;
-            
-            // we can only unload assemblies after clearing ModStore/references.
-            PluginPackageManager.Dispose();
-#pragma warning disable CS0618
-            ACsMod.LoadedMods.Clear();
-#pragma warning restore CS0618
-            
-            Game = new LuaGame();
-            Networking = new LuaCsNetworking();
-            Timer = new LuaCsTimer();
-            Steam = new LuaCsSteam();
-            PerformanceCounter = new LuaCsPerformanceCounter();
 
             IsInitialized = false;
         }
@@ -377,166 +336,9 @@ namespace Barotrauma
 
             IsInitialized = true;
 
-            LuaCsLogger.LogMessage("Lua! Version " + AssemblyInfo.GitRevision);
-
-            bool csActive = ShouldRunCs || forceEnableCs;
-
-            LuaScriptLoader = new LuaScriptLoader();
-            LuaScriptLoader.ModulePaths = new string[] { };
-
-            RegisterLuaConverters();
-
-            Lua = new Script(CoreModules.Preset_SoftSandbox | CoreModules.Debug | CoreModules.IO | CoreModules.OS_System);
-            Lua.Options.DebugPrint = (o) => { LuaCsLogger.LogMessage(o); };
-            Lua.Options.ScriptLoader = LuaScriptLoader;
-            Lua.Options.CheckThreadAccess = false;
-            Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
-
-            Require = new LuaRequire(Lua);
-
-            Game = new LuaGame();
-            Networking = new LuaCsNetworking();
-            Timer = new LuaCsTimer();
-            Steam = new LuaCsSteam();
-            PerformanceCounter = new LuaCsPerformanceCounter();
-            Hook.Initialize();
-            Networking.Initialize();
-
-            UserData.RegisterType<LuaCsLogger>();
-            UserData.RegisterType<LuaCsConfig>();
-            UserData.RegisterType<LuaCsSetupConfig>();
-            UserData.RegisterType<LuaCsAction>();
-            UserData.RegisterType<LuaCsFile>();
-            UserData.RegisterType<LuaCsCompatPatchFunc>();
-            UserData.RegisterType<LuaCsPatchFunc>();
-            UserData.RegisterType<LuaGame>();
-            UserData.RegisterType<LuaCsTimer>();
-            UserData.RegisterType<LuaCsFile>();
-            UserData.RegisterType<LuaCsNetworking>();
-            UserData.RegisterType<LuaCsSteam>();
-            UserData.RegisterType<LuaUserData>();
-            UserData.RegisterType<LuaCsPerformanceCounter>();
-            UserData.RegisterType<IUserDataDescriptor>();
-
-            Lua.Globals["printerror"] = (DynValue o) => { LuaCsLogger.LogError(o.ToString(), LuaCsMessageOrigin.LuaMod); };
-
-            Lua.Globals["setmodulepaths"] = (Action<string[]>)SetModulePaths;
-
-            Lua.Globals["dofile"] = (Func<string, Table, string, DynValue>)DoFile;
-            Lua.Globals["loadfile"] = (Func<string, Table, string, DynValue>)LoadFile;
-            Lua.Globals["require"] = (Func<string, Table, DynValue>)Require.Require;
-
-            Lua.Globals["dostring"] = (Func<string, Table, string, DynValue>)Lua.DoString;
-            Lua.Globals["load"] = (Func<string, Table, string, DynValue>)Lua.LoadString;
-
-            Lua.Globals["Logger"] = UserData.CreateStatic<LuaCsLogger>();
-            Lua.Globals["LuaUserData"] = UserData.CreateStatic<LuaUserData>();
-            Lua.Globals["Game"] = Game;
-            Lua.Globals["Hook"] = Hook;
-            Lua.Globals["Timer"] = Timer;
-            Lua.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
-            Lua.Globals["Networking"] = Networking;
-            Lua.Globals["Steam"] = Steam;
-            Lua.Globals["PerformanceCounter"] = PerformanceCounter;
-            Lua.Globals["LuaCsConfig"] = new LuaCsSetupConfig(Config);
-
-            Lua.Globals["ExecutionNumber"] = executionNumber;
-            Lua.Globals["CSActive"] = csActive;
-
-            Lua.Globals["SERVER"] = IsServer;
-            Lua.Globals["CLIENT"] = IsClient;
-
-            if (DebugServer.IsStarted)
-            {
-                AttachDebugger();
-            }
-
-            if (csActive)
-            {
-                LuaCsLogger.LogMessage("Cs! Version " + AssemblyInfo.GitRevision);
-
-                UserData.RegisterType<CsPackageManager>();
-                UserData.RegisterType<AssemblyManager>();
-                UserData.RegisterType<IAssemblyPlugin>();
-
-                Lua.Globals["PluginPackageManager"] = PluginPackageManager;
-                Lua.Globals["AssemblyManager"] = AssemblyManager;
-                
-                try
-                {
-                    Stopwatch taskTimer = new();
-                    taskTimer.Start();
-                    
-                    var state = PluginPackageManager.LoadAssemblyPackages();
-                    if (state is AssemblyLoadingSuccessState.Success or AssemblyLoadingSuccessState.AlreadyLoaded)
-                    {
-                        if(!PluginPackageManager.PluginsInitialized)
-                            PluginPackageManager.InstantiatePlugins(true);
-                        if(!PluginPackageManager.PluginsPreInit)
-                            PluginPackageManager.RunPluginsPreInit();   // this is intended to be called at startup in the future
-                        if(!PluginPackageManager.PluginsLoaded)
-                            PluginPackageManager.RunPluginsInit();
-                        state = AssemblyLoadingSuccessState.Success;
-                        taskTimer.Stop();
-                        ModUtils.Logging.PrintMessage($"{nameof(LuaCsSetup)}: Completed assembly loading. Total time {taskTimer.ElapsedMilliseconds}ms.");
-                    }
-                    else
-                    {
-                        PluginPackageManager.Dispose(); // cleanup if there's an error
-                    }
-                    
-                    if(state is not AssemblyLoadingSuccessState.Success)
-                    {
-                        ModUtils.Logging.PrintError($"{nameof(LuaCsSetup)}: Error while loading Cs-Assembly Mods | Err: {state}");
-                        taskTimer.Stop();
-                    }
-                }
-                catch (Exception e)
-                {
-                    ModUtils.Logging.PrintError($"{nameof(LuaCsSetup)}::{nameof(Initialize)}() | Error while loading assemblies! Details: {e.Message} | {e.StackTrace}");
-                }
-            }
+            Logger.Log($"Initializing LuaCs, git revision = {AssemblyInfo.GitRevision}.");
 
 
-            ContentPackage luaPackage = GetPackage(LuaForBarotraumaId);
-
-            void RunLocal()
-            {
-                LuaCsLogger.LogMessage("Using LuaSetup.lua from the Barotrauma Lua/ folder.");
-                string luaPath = LuaSetupFile;
-                CallLuaFunction(Lua.LoadFile(luaPath), Path.GetDirectoryName(Path.GetFullPath(luaPath)));
-            }
-
-            void RunWorkshop()
-            {
-                LuaCsLogger.LogMessage("Using LuaSetup.lua from the content package.");
-                string luaPath = Path.Combine(Path.GetDirectoryName(luaPackage.Path), "Binary/Lua/LuaSetup.lua");
-                CallLuaFunction(Lua.LoadFile(luaPath), Path.GetDirectoryName(Path.GetFullPath(luaPath)));
-            }
-
-            void RunNone()
-            {
-                LuaCsLogger.LogError("LuaSetup.lua not found! Lua/LuaSetup.lua, no Lua scripts will be executed or work.", LuaCsMessageOrigin.LuaMod);
-            }
-
-            if (Config.PreferToUseWorkshopLuaSetup)
-            {
-                if (luaPackage != null) { RunWorkshop(); }
-                else if (File.Exists(LuaSetupFile)) { RunLocal(); }
-                else { RunNone(); }
-            }
-            else
-            {
-                if (File.Exists(LuaSetupFile)) { RunLocal(); }
-                else if (luaPackage != null) { RunWorkshop(); }
-                else { RunNone(); }
-            }
-
-#if SERVER
-            GameMain.Server.ServerSettings.LoadClientPermissions();
-#endif
-
-            executionNumber++;
         }
     }
 }

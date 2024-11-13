@@ -128,7 +128,7 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    public bool TryGetService<TSvcInterface>(out IService service) where TSvcInterface : class, IService
+    public bool TryGetService<TSvcInterface>(out TSvcInterface service) where TSvcInterface : class, IService
     {
         try
         {
@@ -147,7 +147,7 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    public bool TryGetService<TSvcInterface>(string name, out IService service) where TSvcInterface : class, IService
+    public bool TryGetService<TSvcInterface>(string name, out TSvcInterface service) where TSvcInterface : class, IService
     {
         try
         {

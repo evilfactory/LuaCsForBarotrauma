@@ -61,7 +61,7 @@ public interface IServicesProvider
     /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(out IService service) where TSvcInterface : class, IService;
+    bool TryGetService<TSvcInterface>(out TSvcInterface service) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Tries to get a service for the given name and interface, returns success/failure.
@@ -71,7 +71,7 @@ public interface IServicesProvider
     /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(string name, out IService service) where TSvcInterface : class, IService;
+    bool TryGetService<TSvcInterface>(string name, out TSvcInterface service) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Called whenever a new service is created/instanced.
