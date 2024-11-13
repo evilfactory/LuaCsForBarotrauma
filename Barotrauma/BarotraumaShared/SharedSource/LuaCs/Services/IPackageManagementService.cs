@@ -9,8 +9,21 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IPackageManagementService : IService
 {
-    FluentResults.Result AddPackages(ImmutableArray<LoadablePackage> packages);
-    FluentResults.Result LoadPackages(bool onlyUnloadedPackages = true, bool rescanPackages = false);
+    /// <summary>
+    /// Adds packages to the queue of loadable packages without initializing them.
+    /// </summary>
+    /// <param name="packages"></param>
+    /// <returns></returns>
+    FluentResults.Result QueuePackages(ImmutableArray<LoadablePackage> packages);
+    
+    /// <summary>
+    /// Loads queued packages, skips already loaded packages.
+    /// </summary>
+    /// <param name="rescanPackages"></param>
+    /// <param name="loadParallel"></param>
+    /// <param name="reportFailOnDuplicates"></param>
+    /// <returns></returns>
+    FluentResults.Result ProcessQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false);
     FluentResults.Result UnloadPackages(bool errorOnFailures = true);
     bool IsPackageLoaded(ContentPackage package);
     bool CheckDependencyLoaded(IPackageDependencyInfo info);

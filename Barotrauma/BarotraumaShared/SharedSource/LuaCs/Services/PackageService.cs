@@ -37,6 +37,7 @@ public partial class PackageService : IPackageService
     // state monitors
     private int _configsLoaded, _localizationsLoaded, _luaScriptsLoaded, _pluginsLoaded, _isDisposed;
     private int _loadingOperationsRunning;
+    private int _isEnabledInModList;
 
     public bool ConfigsLoaded
     {
@@ -148,6 +149,12 @@ public partial class PackageService : IPackageService
         }
     }
 
+    public bool IsEnabledInModList
+    {
+        get => GetThreadSafeBool(ref _isEnabledInModList);
+        private set => SetThreadSafeBool(ref _isEnabledInModList, value);
+    }
+
     #endregion
     
     public ImmutableArray<CultureInfo> SupportedCultures => ModConfigInfo?.SupportedCultures ?? ImmutableArray<CultureInfo>.Empty;
@@ -161,8 +168,16 @@ public partial class PackageService : IPackageService
 
     #region PublicAPI
 
-    public FluentResults.Result LoadResourcesInfo(ContentPackage package)
+    public FluentResults.Result LoadResourcesInfo(LoadablePackage cpackage)
     {
+        if (cpackage.Package == null)
+        {
+            return FluentResults.Result.Fail(new Error($"{nameof(LoadResourcesInfo)}: Package is null!")
+                .WithMetadata(MetadataType.ExceptionObject,this)
+                .WithMetadata(MetadataType.RootObject, cpackage));
+        }
+        ContentPackage package = cpackage.Package;
+        
         _operationsUsageLock.EnterWriteLock();
         LoadingOperationsRunning = true;
         try
@@ -186,6 +201,7 @@ public partial class PackageService : IPackageService
             }
 
             this.ModConfigInfo = res.Value;
+            this.IsEnabledInModList = cpackage.IsEnabled;
             return FluentResults.Result.Ok();
         }
         catch (Exception e)

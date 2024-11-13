@@ -50,6 +50,7 @@ public record DependencyInfo : IPackageDependencyInfo
     public string PackageName { get; init; }
     public ulong SteamWorkshopId { get; init; }
     public ContentPackage DependencyPackage { get; init; }
+    public bool IsMissing { get; init; }
 }
 
 public record LocalizationResourceInfo : ILocalizationResourceInfo

@@ -20,6 +20,11 @@ public interface IPackageDependencyInfo : IPackageInfo
     /// The dependency package, if found in the ALL Packages List.
     /// </summary>
     public ContentPackage DependencyPackage { get; }
+    
+    /// <summary>
+    /// This dependency was not found.
+    /// </summary>
+    public bool IsMissing { get; }
 }
 
 public interface IPackageDependenciesInfo

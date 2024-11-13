@@ -13,12 +13,13 @@ public interface IPackageService : IService,
 {
     ContentPackage Package { get; }
     IModConfigInfo ModConfigInfo { get; }
+    bool IsEnabledInModList { get; }
     /// <summary>
     /// Try to load the XML config and resources information from the given package.
     /// </summary>
     /// <param name="package"></param>
     /// <returns>Whether the package was parsed without errors.</returns>
-    FluentResults.Result LoadResourcesInfo([NotNull]ContentPackage package);
+    FluentResults.Result LoadResourcesInfo([NotNull]LoadablePackage package);
     /// <summary>
     /// Tries to load all assemblies and instance plugins for the given resources list, regardless whether they're marked as optional and/or lazy load.
     /// Will sort by load priority unless overriden/bypassed.
