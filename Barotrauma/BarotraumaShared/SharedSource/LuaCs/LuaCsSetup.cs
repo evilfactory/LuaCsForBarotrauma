@@ -99,8 +99,6 @@ namespace Barotrauma
         
         private CsPackageManager _pluginPackageManager;
         public CsPackageManager PluginPackageManager => _pluginPackageManager ??= new CsPackageManager(AssemblyManager, this);
-
-        public LuaCsModStore ModStore { get; private set; }
         private LuaRequire Require { get; set; }
         public LuaCsSetupConfig Config { get; private set; }
         public MoonSharpVsCodeDebugServer DebugServer { get; private set; }
@@ -123,7 +121,6 @@ namespace Barotrauma
             Script.GlobalOptions.Platform = new LuaPlatformAccessor();
 
             Hook = new LuaCsHook(this);
-            ModStore = new LuaCsModStore();
 
             Game = new LuaGame();
             Networking = new LuaCsNetworking();
@@ -353,7 +350,6 @@ namespace Barotrauma
             Game?.Stop();
 
             Hook?.Clear();
-            ModStore.Clear();
             LuaScriptLoader = null;
             Lua = null;
             
@@ -404,7 +400,6 @@ namespace Barotrauma
             Steam = new LuaCsSteam();
             PerformanceCounter = new LuaCsPerformanceCounter();
             Hook.Initialize();
-            ModStore.Initialize();
             Networking.Initialize();
 
             UserData.RegisterType<LuaCsLogger>();
@@ -438,7 +433,6 @@ namespace Barotrauma
             Lua.Globals["LuaUserData"] = UserData.CreateStatic<LuaUserData>();
             Lua.Globals["Game"] = Game;
             Lua.Globals["Hook"] = Hook;
-            Lua.Globals["ModStore"] = ModStore;
             Lua.Globals["Timer"] = Timer;
             Lua.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
             Lua.Globals["Networking"] = Networking;
@@ -472,7 +466,6 @@ namespace Barotrauma
                 {
                     Stopwatch taskTimer = new();
                     taskTimer.Start();
-                    ModStore.Clear();
                     
                     var state = PluginPackageManager.LoadAssemblyPackages();
                     if (state is AssemblyLoadingSuccessState.Success or AssemblyLoadingSuccessState.AlreadyLoaded)
