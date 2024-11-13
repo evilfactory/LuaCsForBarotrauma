@@ -8,12 +8,14 @@ namespace Barotrauma.LuaCs.Events;
  * types being internal by default.
 */
 
+public interface IEvent { }
+
 #region GameEvents
 
 /// <summary>
 /// Called as soon as round begins to load before any loading takes place.
 /// </summary>
-public interface IEventRoundStarting
+public interface IEventRoundStarting : IEvent
 {
     void OnRoundStarting();
 }
@@ -21,7 +23,7 @@ public interface IEventRoundStarting
 /// <summary>
 /// Called when a round has started and fully loaded.
 /// </summary>
-public interface IEventRoundStarted
+public interface IEventRoundStarted : IEvent
 {
     void OnRoundStart();
 }
@@ -30,7 +32,7 @@ public interface IEventRoundStarted
 /// Called on game loop normal update.
 /// </summary>
 
-public interface IEventUpdate
+public interface IEventUpdate : IEvent
 {
     void OnUpdate();
 }
@@ -38,7 +40,7 @@ public interface IEventUpdate
 /// <summary>
 /// Called on game loop fixed update (physics)
 /// </summary>
-public interface IEventFixedUpdate
+public interface IEventFixedUpdate : IEvent
 {
     void OnFixedUpdate();
 }
@@ -53,7 +55,7 @@ public interface IEventFixedUpdate
 /// <summary>
 /// Called when a client connects to the server and has loaded into the lobby.
 /// </summary>
-interface IEventClientConnected
+interface IEventClientConnected : IEvent
 {
     /// <summary>
     /// Called when a client connects to the server.
@@ -69,7 +71,7 @@ interface IEventClientConnected
 /// <summary>
 /// Called when the client has connected to the server and loaded to the lobby.
 /// </summary>
-public interface IEventServerConnected 
+public interface IEventServerConnected : IEvent
 {
     void OnServerConnected();
 }
@@ -83,7 +85,7 @@ public interface IEventServerConnected
 /// <summary>
 /// Called on plugin normal, use this for basic/core loading that does not rely on any other modded content.
 /// </summary>
-public interface IEventPluginInitialize
+public interface IEventPluginInitialize : IEvent
 {
     void Initialize();
 }
@@ -91,7 +93,7 @@ public interface IEventPluginInitialize
 /// <summary>
 /// Called once all plugins have been loaded. if you have integrations with any other mod, put that code here.
 /// </summary>
-public interface IEventPluginLoadCompleted
+public interface IEventPluginLoadCompleted : IEvent
 {
     void OnLoadCompleted();
 }
@@ -100,7 +102,7 @@ public interface IEventPluginLoadCompleted
 /// Called before Barotrauma initializes plugins. Use if you want to patch another plugin's behaviour 'unofficially'.
 /// WARNING: This method is called before Initialize()!
 /// </summary>
-public interface IEventPluginPreInitialize
+public interface IEventPluginPreInitialize : IEvent
 {
     void PreInitPatching();
 }
