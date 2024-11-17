@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Barotrauma.Extensions;
@@ -21,7 +22,11 @@ public class PackageManagementService : IPackageManagementService
     private readonly ConcurrentDictionary<ContentPackage, IPackageService> _contentPackages = new();
     private readonly ConcurrentQueue<LoadablePackage> _queuedPackages = new();
 
-    private readonly ReaderWriterLockSlim _contentPackagesQueueLock = new();
+    /// <summary>
+    /// ConcurrentDictionary handles access synchronization. This is to ensure that we are not trying to
+    /// load/unload/modify the collection from multiple threads.
+    /// </summary>
+    private readonly ReaderWriterLockSlim _contentPackagesModificationsLock = new();
     
     public PackageManagementService(
         Func<IPackageService> getPackageService,
@@ -48,7 +53,7 @@ public class PackageManagementService : IPackageManagementService
 
     public FluentResults.Result QueuePackages(ImmutableArray<LoadablePackage> packages)
     {
-        _contentPackagesQueueLock.EnterWriteLock();
+        _contentPackagesModificationsLock.EnterWriteLock();
         try
         {
             foreach (LoadablePackage package in packages)
@@ -59,13 +64,16 @@ public class PackageManagementService : IPackageManagementService
         }
         finally
         {
-            _contentPackagesQueueLock.ExitWriteLock();
+            _contentPackagesModificationsLock.ExitWriteLock();
         }
     }
 
     public FluentResults.Result ProcessQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false)
     {
-        _contentPackagesQueueLock.EnterReadLock();
+        if (!ModUtils.Environment.IsMainThread)
+            throw new InvalidOperationException($"{nameof(ProcessQueuedPackages)}: This method can only be called on the main thread.");
+        
+        _contentPackagesModificationsLock.EnterReadLock();
         try
         {
             if (_queuedPackages.IsEmpty)
@@ -220,32 +228,49 @@ public class PackageManagementService : IPackageManagementService
         }
         finally
         {
-            _contentPackagesQueueLock.ExitReadLock();
+            _contentPackagesModificationsLock.ExitReadLock();
         }
     }
 
-    public FluentResults.Result UnloadPackages(bool errorOnFailures = true)
+    public FluentResults.Result UnloadPackages()
     {
+        if (!ModUtils.Environment.IsMainThread)
+            throw new InvalidOperationException($"{nameof(UnloadPackages)}: This method can only be called on the main thread.");
+
+        var res = new FluentResults.Result();
+        _contentPackagesModificationsLock.EnterWriteLock();
+        try
+        {
+            
+        }
+        finally
+        {
+            _contentPackagesModificationsLock.ExitWriteLock();
+        }
+
         throw new NotImplementedException();
     }
 
-    public bool IsPackageLoaded(ContentPackage package)
-    {
-        throw new NotImplementedException();
-    }
+    public bool IsPackageLoaded(ContentPackage package) => package is not null && _contentPackages.ContainsKey(package);
 
-    public bool CheckDependencyLoaded(IPackageDependencyInfo info)
-    {
-        throw new NotImplementedException();
-    }
+    public bool CheckDependencyLoaded(IPackageDependencyInfo info) =>
+        info is not null && IsPackageLoaded(info.DependencyPackage);
 
     public bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages)
     {
-        throw new NotImplementedException();
+        var missing = new List<IPackageDependencyInfo>();
+        foreach (IPackageDependencyInfo info in infos)
+        {
+            if (!CheckDependencyLoaded(info))
+                missing.Add(info);
+        }
+        missingPackages = missing;
+        return missing.Count == 0;
     }
-
+    
     public bool CheckEnvironmentSupported(IPlatformInfo platform)
     {
-        throw new NotImplementedException();
+        return (platform.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
+            && (platform.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable InconsistentNaming
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -6,7 +7,7 @@ namespace Barotrauma.LuaCs.Data;
 public enum Platform
 {
     Linux=0x1, 
-    OSX=0x2, 
+    MacOS=0x2, 
     Windows=0x4
 }
     

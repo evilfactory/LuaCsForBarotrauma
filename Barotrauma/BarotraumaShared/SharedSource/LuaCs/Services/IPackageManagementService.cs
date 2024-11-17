@@ -24,7 +24,7 @@ public interface IPackageManagementService : IService
     /// <param name="reportFailOnDuplicates"></param>
     /// <returns></returns>
     FluentResults.Result ProcessQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false);
-    FluentResults.Result UnloadPackages(bool errorOnFailures = true);
+    FluentResults.Result UnloadPackages();
     bool IsPackageLoaded(ContentPackage package);
     bool CheckDependencyLoaded(IPackageDependencyInfo info);
     bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages);

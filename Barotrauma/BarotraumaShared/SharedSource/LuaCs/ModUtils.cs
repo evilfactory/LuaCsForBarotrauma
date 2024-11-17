@@ -4,18 +4,57 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Xml.Serialization;
 using Barotrauma;
 using Barotrauma.Items.Components;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using Platform = Barotrauma.LuaCs.Data.Platform;
 
 namespace Barotrauma.LuaCs
 {
 
     public static class ModUtils
     {
+        public static class Environment
+        {
+            internal static void SetCurrentThreadAsMain() => MainThreadId = Thread.CurrentThread.ManagedThreadId;
+            public static int MainThreadId { get; private set; } = Int32.MinValue;
+            public static bool IsMainThread
+            {
+                get
+                {
+                    if (MainThreadId == Int32.MinValue)
+                        throw new ArgumentNullException("MainThread ID not set.");
+                    return Thread.CurrentThread.ManagedThreadId == MainThreadId;
+                }
+            }
+            
+            public static readonly Platform CurrentPlatform =
+#if WINDOWS
+                Platform.Windows;
+#elif MACOS
+                Platform.MacOS;
+#elif LINUX
+                Platform.Linux;
+#else
+                Platform.Linux;
+#endif
+
+            public static readonly Target CurrentTarget =
+#if CLIENT
+                Target.Client;
+#elif SERVER
+                Target.Server;
+#else
+                Target.Server;
+#endif
+
+        }
+        
         #region LOGGING
 
         public static class Logging
