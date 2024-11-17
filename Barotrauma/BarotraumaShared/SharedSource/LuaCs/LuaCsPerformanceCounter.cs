@@ -26,13 +26,13 @@ namespace Barotrauma
 
     public class PerformanceCounterService : IService
     {
-        public bool EnablePerformanceCounter = false;
+        public bool EnablePerformanceCounter { get; set; } = false;
 
         private Dictionary<string, List<IPerformanceData>> _data = new Dictionary<string, List<IPerformanceData>>();
 
         public void AddElapsedTicks(IPerformanceData data)
         {
-            if (EnablePerformanceCounter) { return; }
+            if (!EnablePerformanceCounter) { return; }
 
             if (!_data.ContainsKey(data.Identifier))
             {
@@ -44,20 +44,20 @@ namespace Barotrauma
             Trim(data.Identifier, 100);
         }
 
-        public PerformanceData GetLatestSnapshot<PerformanceData>(string identifier) where PerformanceData : IPerformanceData
+        public T GetLatestSnapshot<T>(string identifier) where T : class, IPerformanceData
         {
             if (!_data.ContainsKey(identifier)) { return default; }
 
-            return (PerformanceData)_data[identifier].Last();
+            return (T)_data[identifier].Last();
         }
 
-        public PerformanceData[] GetSnapshot<PerformanceData>(string identifier, int length) where PerformanceData : IPerformanceData
+        public T[] GetSnapshot<T>(string identifier, int length) where T : class, IPerformanceData, new()
         {
-            if (!_data.ContainsKey(identifier)) { return new PerformanceData[] { }; }
+            if (!_data.ContainsKey(identifier)) { return new T[] { }; }
 
             length = Math.Min(length, _data[identifier].Count);
 
-            return _data[identifier].GetRange(_data[identifier].Count - length, length).Cast<PerformanceData>().ToArray();
+            return _data[identifier].GetRange(_data[identifier].Count - length, length).Cast<T>().ToArray();
         }
 
         public void Trim(string identifier, int maxSize)
