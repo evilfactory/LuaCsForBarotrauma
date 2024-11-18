@@ -644,11 +644,12 @@ public partial class PackageService : IPackageService
             
             if (resourceInfo.Dependencies.IsDefaultOrEmpty)
                 continue;
-            
-            resourceInfo.Dependencies.ForEach(pdi =>
+
+            // ReSharper disable once ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
+            foreach (var pdi in resourceInfo.Dependencies)
             {
-                // for clarification: assemblies passed to the function should always be loaded.
-                // optional assemblies should be filtered out before the list is sent.
+                // for clarification: all resources passed to the function should always be loaded.
+                // unneeded optional resources should be filtered out before the list is sent.
                 // left this as a reminder :)
                 /*if (pdi.Optional)
                     return;*/
@@ -659,7 +660,7 @@ public partial class PackageService : IPackageService
                         .WithMetadata(MetadataType.ExceptionObject, this)
                         .WithMetadata(MetadataType.RootObject, resourceInfo));
                 }
-            });
+            }
             
             // check runtime platform
             if (!_packageManagementService.CheckEnvironmentSupported(resourceInfo))

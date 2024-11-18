@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -165,6 +166,8 @@ public class PackageManagementService : IPackageManagementService
             /*
              * Helper functions
              */
+            
+            // register in the list so we can check against it.
             FluentResults.Result LoadPackageInfo(LoadablePackage package)
             {
                 try
@@ -199,18 +202,42 @@ public class PackageManagementService : IPackageManagementService
             }
 
             /*
-             * Return array: (Normal, MissingDeps)
+             * Return array: (Normal, MissingDepsRes, MissingDeps)
              */
-            FluentResults.Result<(ImmutableArray<T>, ImmutableArray<T>)> GetLoadablePackages<T>(ImmutableArray<T> resources, bool errorForPacksMissingDeps = false)
+            FluentResults.Result<(ImmutableArray<T>, ImmutableArray<T>, ImmutableArray<IPackageDependencyInfo>)> GetLoadablePackages<T>(ImmutableArray<T> resources, bool errorForPacksMissingDeps = false)
                 where T : class, IPackageDependenciesInfo, IPackageInfo, IResourceInfo, IResourceCultureInfo
             {
-                throw new NotImplementedException();
                 
                 // filter optional resources (process later)
                 // add back in optional packages that are required by other required packages
                 // filter and log required packages that are missing dependencies
                 // re-include optionals where dependencies are available
                 // return both lists (A normal, B missingDeps).
+
+                HashSet<IPackageDependencyInfo> missingDeps = new();
+                var missingDepsBuilder = ImmutableArray.CreateBuilder<T>();
+                
+                var reqPacks = resources.Where(r => !r.Optional).Select(r => r.OwnerPackage).Distinct().ToImmutableHashSet();
+                var optPack = resources.Where(r => r.Optional).Select(r => r.OwnerPackage).Distinct().ToImmutableHashSet();
+                var req = resources
+                    .Where(r => !r.Optional)
+                    .Where(CheckEnvironmentSupported)
+                    .Where(r =>
+                    {
+                        if (r.Dependencies.Length == 0)
+                            return true;
+
+                        if (CheckDependenciesLoaded(r.Dependencies, out var missingDepsList)) 
+                            return true;
+                        
+                        missingDepsBuilder.Add(r);
+                        missingDeps.UnionWith(missingDepsList);
+                        return false;
+                    });
+                var reqOptionals = resources.Where(r => r.Optional && optPack.Contains(r.OwnerPackage));
+                var notReqOptionals = resources.Where(r => r.Optional && !optPack.Contains(r.OwnerPackage));
+                
+                throw new NotImplementedException();
             }
 
             FluentResults.Result<ImmutableArray<T>> SortByDependencies<T>(ImmutableArray<T> resources)
@@ -235,7 +262,11 @@ public class PackageManagementService : IPackageManagementService
     public FluentResults.Result UnloadPackages()
     {
         if (!ModUtils.Environment.IsMainThread)
-            throw new InvalidOperationException($"{nameof(UnloadPackages)}: This method can only be called on the main thread.");
+        {
+            return FluentResults.Result.Fail(
+                new ExceptionalError(new InvalidOperationException($"{nameof(UnloadPackages)}: This method can only be called on the main thread."))
+                    .WithMetadata(MetadataType.ExceptionObject, this));
+        }
 
         var res = new FluentResults.Result();
         _contentPackagesModificationsLock.EnterWriteLock();
@@ -256,16 +287,15 @@ public class PackageManagementService : IPackageManagementService
     public bool CheckDependencyLoaded(IPackageDependencyInfo info) =>
         info is not null && IsPackageLoaded(info.DependencyPackage);
 
-    public bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages)
+    public bool CheckDependenciesLoaded([NotNull]IEnumerable<IPackageDependencyInfo> infos, out ImmutableArray<IPackageDependencyInfo> missingPackages)
     {
-        var missing = new List<IPackageDependencyInfo>();
-        foreach (IPackageDependencyInfo info in infos)
-        {
-            if (!CheckDependencyLoaded(info))
-                missing.Add(info);
-        }
-        missingPackages = missing;
-        return missing.Count == 0;
+        var missing = ImmutableArray.CreateBuilder<IPackageDependencyInfo>();
+        missing.AddRange(infos
+            .Where(i => i.DependencyPackage is not null)
+            .DistinctBy(i => i.DependencyPackage)
+            .Where(i => !CheckDependencyLoaded(i)));
+        missingPackages = missing.MoveToImmutable();
+        return missingPackages.Length == 0;
     }
     
     public bool CheckEnvironmentSupported(IPlatformInfo platform)

@@ -51,6 +51,59 @@ public record DependencyInfo : IPackageDependencyInfo
     public ulong SteamWorkshopId { get; init; }
     public ContentPackage DependencyPackage { get; init; }
     public bool IsMissing { get; init; }
+    public bool IsWorkshopInstallation { get; init; }
+
+    public virtual bool Equals(DependencyInfo other) => Equals(this, other);
+
+    public override int GetHashCode()
+    {
+        if (DependencyPackage is not null)
+            return DependencyPackage.GetHashCode();
+        if (SteamWorkshopId != 0)
+            return SteamWorkshopId.GetHashCode();
+        if (!PackageName.IsNullOrWhiteSpace() && !FolderPath.IsNullOrWhiteSpace())
+            return string.Concat(PackageName, FolderPath).GetHashCode();
+        if (!InternalName.IsNullOrWhiteSpace() && !FolderPath.IsNullOrWhiteSpace())
+            return string.Concat(InternalName, FolderPath).GetHashCode();
+        
+        return base.GetHashCode();
+    }
+
+    public bool Equals(IPackageDependencyInfo x, IPackageDependencyInfo y)
+    {
+        if (x is null)
+            return false;
+        if (y is null)
+            return false;
+        if (x == y)
+            return true;
+        
+        if (x.DependencyPackage is not null && y.DependencyPackage is not null)
+            return y.DependencyPackage == x.DependencyPackage;
+        
+        if (!x.FolderPath.IsNullOrWhiteSpace()
+            && !y.FolderPath.IsNullOrWhiteSpace()
+            && y.FolderPath == x.FolderPath)
+            return true;
+        
+        if (!x.FolderPath.IsNullOrWhiteSpace() != !y.FolderPath.IsNullOrWhiteSpace()) 
+            return false;
+        
+        if (!x.PackageName.IsNullOrWhiteSpace() 
+            && !y.PackageName.IsNullOrWhiteSpace() 
+            && y.PackageName == x.PackageName)
+            return true;
+        
+        if (x.SteamWorkshopId != 0 && y.SteamWorkshopId == x.SteamWorkshopId)
+            return true;
+
+        return false;
+    }
+
+    public int GetHashCode(IPackageDependencyInfo obj)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public record LocalizationResourceInfo : ILocalizationResourceInfo

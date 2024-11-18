@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
@@ -27,7 +28,7 @@ public interface IPackageManagementService : IService
     FluentResults.Result UnloadPackages();
     bool IsPackageLoaded(ContentPackage package);
     bool CheckDependencyLoaded(IPackageDependencyInfo info);
-    bool CheckDependenciesLoaded(IEnumerable<IPackageDependencyInfo> infos, out IReadOnlyList<IPackageDependencyInfo> missingPackages);
+    bool CheckDependenciesLoaded([NotNull]IEnumerable<IPackageDependencyInfo> infos, out ImmutableArray<IPackageDependencyInfo> missingPackages);
     bool CheckEnvironmentSupported(IPlatformInfo platform);
 }
 
