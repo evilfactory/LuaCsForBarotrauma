@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -102,8 +104,34 @@ public record DependencyInfo : IPackageDependencyInfo
 
     public int GetHashCode(IPackageDependencyInfo obj)
     {
-        throw new NotImplementedException();
+        int hashCode = Seed;
+        hashCode = ApplyHashString(hashCode, obj.PackageName);
+        hashCode = ApplyHashString(hashCode, obj.InternalName);
+        if (obj.SteamWorkshopId > 0)
+            hashCode ^= (int)obj.SteamWorkshopId;
+        
+
+        int ApplyHashString(int currentValue, string str)
+        {
+            try
+            {
+                if (str is null || str.Length < 1)
+                    return currentValue;
+                byte[] b = Encoding.UTF8.GetBytes(str);
+                foreach (var b1 in b)
+                    currentValue ^= b1;
+                return currentValue;
+            }
+            catch
+            {
+                return currentValue;
+            }
+        }
+
+        return hashCode;
     }
+    
+    private static readonly int Seed = new Random().Next(436457, int.MaxValue-900);
 }
 
 public record LocalizationResourceInfo : ILocalizationResourceInfo
