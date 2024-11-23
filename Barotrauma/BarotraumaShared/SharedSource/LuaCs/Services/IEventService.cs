@@ -1,4 +1,5 @@
-﻿using Barotrauma.LuaCs.Services.Safe;
+﻿using Barotrauma.LuaCs.Services.Compatibility;
+using Barotrauma.LuaCs.Services.Safe;
 
 namespace Barotrauma.LuaCs.Services;
 
