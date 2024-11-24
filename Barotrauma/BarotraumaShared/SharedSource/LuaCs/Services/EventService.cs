@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using Barotrauma.LuaCs.Events;
 using Barotrauma.LuaCs.Services.Compatibility;
 using Barotrauma.LuaCs.Services.Safe;
 
@@ -28,6 +30,8 @@ public class EventService : IEventService
 
     #endregion
 
+    #region DynamicHooks
+
     public Guid Add(string methodId, string identifier, LuaCsFunc callback)
     {
         throw new NotImplementedException();
@@ -55,6 +59,55 @@ public class EventService : IEventService
 
     #endregion
 
+    #region TypeEventSystem
+
+    public void RegisterEventType<T>() where T : IEvent
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UnregisterEventType<T>() where T : IEvent
+    {
+        throw new NotImplementedException();
+    }
+
+    /*
+     * Note: Plugin wrapper for PublishEvent that handles the returned results. 
+     */
+    public void PublishPluginEvent<T>(Action<T> eventInvoker) where T : IEvent
+    {
+        _loggerService.LogResults(this.PublishEvent(eventInvoker));
+    }
+
+    public void ClearAllEventSubscribers<T>() where T : IEvent
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ClearAllSubscribers()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Subscribe<T>(T observer) where T : class, IEvent
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SubscribeAllCompat<T>(T observer) where T : class, IEvent
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result PublishEvent<T>(Action<T> eventInvoker) where T : IEvent
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion
+
+    #endregion
+
     #region InternalAPI
 
     public void Dispose()
@@ -72,6 +125,13 @@ public class EventService : IEventService
 
     #region ClassFunctions
 
+    public EventService(ILoggerService loggerService)
+    {
+        _loggerService = loggerService;
+    }
+    
+    private readonly ILoggerService _loggerService;
+    
     private sealed record LuaDetour
     {
         /// <summary>

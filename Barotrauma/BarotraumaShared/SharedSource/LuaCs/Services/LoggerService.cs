@@ -129,6 +129,11 @@ public partial class LoggerService : ILoggerService
 #endif
     }
 
+    public void LogResults(FluentResults.Result result)
+    {
+        throw new NotImplementedException();
+    }
+
     public void LogDebug(string message, Color? color = null)
     {
         throw new NotImplementedException();

@@ -1,4 +1,5 @@
-﻿using Barotrauma.Networking;
+﻿using Barotrauma.LuaCs.Services;
+using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Events;
 
@@ -81,6 +82,15 @@ public interface IEventServerConnected : IEvent
 #endregion
 
 #region PluginEvents
+
+/// <summary>
+/// Allows registration of events and services before plugins are initialized.
+/// </summary>
+public interface IEventTypeRegistrationProvider : IEvent
+{
+    void RegisterEvents(IPluginEventService service);
+    void UnregisterEvents(IPluginEventService service);
+}
 
 /// <summary>
 /// Called on plugin normal, use this for basic/core loading that does not rely on any other modded content.
