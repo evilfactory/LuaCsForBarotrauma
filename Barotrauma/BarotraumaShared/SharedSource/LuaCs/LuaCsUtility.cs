@@ -149,6 +149,9 @@ namespace Barotrauma
             if (!IsPathAllowedException(path))
                 return;
 
+            if (!IsPathAllowedException(destination))
+                return;
+
             File.Move(path, destination, true);
         }
 
