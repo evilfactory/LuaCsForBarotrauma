@@ -37,6 +37,10 @@ public interface IDisplayableData : IDataInfo
     /// Whether to show the entry in the menu when not loaded.
     /// </summary>
     bool ShowWhenNotLoaded { get; }
+    /// <summary>
+    /// What does this setting do?
+    /// </summary>
+    string Description { get; }
 }
 
 public interface IDisplayableInitialize

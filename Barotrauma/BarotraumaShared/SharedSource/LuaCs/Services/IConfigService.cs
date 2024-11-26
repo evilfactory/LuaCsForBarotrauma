@@ -22,7 +22,7 @@ public partial interface IConfigService : IService, ILuaConfigService
     
     
     /*
-     * Already processed
+     * From resources
      */
     FluentResults.Result AddConfigs(ImmutableArray<IConfigInfo> configs);
     FluentResults.Result AddConfigsProfiles(ImmutableArray<IConfigProfileInfo> configProfiles);
@@ -30,7 +30,7 @@ public partial interface IConfigService : IService, ILuaConfigService
     FluentResults.Result RemoveConfigsProfiles(ImmutableArray<IConfigProfileInfo> configProfiles);
     
     /*
-     * Immediate mode, does not have displayable functionality
+     * Immediate mode
      */
     FluentResults.Result<IConfigEntry<T>> AddConfigEntry<T>(ContentPackage package, string name,
         T defaultValue,
@@ -47,6 +47,28 @@ public partial interface IConfigService : IService, ILuaConfigService
         Action<IConfigList, int> onValueChanged = null);
     
     FluentResults.Result<IConfigRangeEntry<T>> AddConfigRangeEntry<T>(ContentPackage package, string name,
+        T defaultValue, T minValue, T maxValue,
+        Func<IConfigRangeEntry<T>, int> getStepCount,
+        NetSync syncMode = NetSync.None,
+        ClientPermissions permissions = ClientPermissions.None,
+        Func<T, bool> valueChangePredicate = null,
+        Action<IConfigEntry<T>> onValueChanged = null) where T : IConvertible, IEquatable<T>;
+    
+    FluentResults.Result<IConfigEntry<T>> AddConfigEntry<T>(string packageName, string name,
+        T defaultValue,
+        NetSync syncMode = NetSync.None,
+        ClientPermissions permissions = ClientPermissions.None,
+        Func<T, bool> valueChangePredicate = null,
+        Action<IConfigEntry<T>> onValueChanged = null) where T : IConvertible, IEquatable<T>;
+
+    FluentResults.Result<IConfigList> AddConfigList(string packageName, string name,
+        int defaultIndex, IReadOnlyList<string> values,
+        NetSync syncMode = NetSync.None,
+        ClientPermissions permissions = ClientPermissions.None,
+        Func<IConfigList, int, bool> valueChangePredicate = null,
+        Action<IConfigList, int> onValueChanged = null);
+    
+    FluentResults.Result<IConfigRangeEntry<T>> AddConfigRangeEntry<T>(string packageName, string name,
         T defaultValue, T minValue, T maxValue,
         Func<IConfigRangeEntry<T>, int> getStepCount,
         NetSync syncMode = NetSync.None,

@@ -12,4 +12,5 @@ public interface ILuaCsHook : ILuaCsShim
     [Obsolete("Use ILuaEventService.RemoveAll() instead.")]
     void Remove(string methodId, string identifier);
     T Call<T>(string eventName, params object[] args);
+    void Call(string eventName, params object[] args);
 }

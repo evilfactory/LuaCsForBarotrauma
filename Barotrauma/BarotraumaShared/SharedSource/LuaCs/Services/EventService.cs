@@ -57,6 +57,11 @@ public class EventService : IEventService
         throw new NotImplementedException();
     }
 
+    public void Call(string eventName, params object[] args)
+    {
+        throw new NotImplementedException();
+    }
+
     #endregion
 
     #region TypeEventSystem

@@ -631,8 +631,9 @@ public sealed class CsPackageManager : IDisposable
 
         bool ShouldRunPackage(ContentPackage package, RunConfig config)
         {
-            return (!_luaCsSetup.Config.TreatForcedModsAsNormal && config.IsForced())
-                   || (ContentPackageManager.EnabledPackages.All.Contains(package) && config.IsForcedOrStandard());
+            throw new NotImplementedException();
+            /*return (!_luaCsSetup.Config.TreatForcedModsAsNormal && config.IsForced())
+                   || (ContentPackageManager.EnabledPackages.All.Contains(package) && config.IsForcedOrStandard());*/
         }
 
         void UpdatePackagesToDisable(ref HashSet<ContentPackage> set, 

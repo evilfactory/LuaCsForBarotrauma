@@ -30,6 +30,24 @@ public interface IPackageManagementService : IService
     bool CheckDependencyLoaded(IPackageDependencyInfo info);
     bool CheckDependenciesLoaded([NotNull]IEnumerable<IPackageDependencyInfo> infos, out ImmutableArray<IPackageDependencyInfo> missingPackages);
     bool CheckEnvironmentSupported(IPlatformInfo platform);
+    /// <summary>
+    /// Gets or creates a package dependency record to refer to that specific package.
+    /// </summary>
+    /// <param name="package"></param>
+    /// <returns></returns>
+    FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ContentPackage package);
+    
+    /// <summary>
+    /// Gets or creates a package dependency record to refer to that specific package.
+    /// </summary>
+    /// <param name="steamWorkshopId"></param>
+    /// <returns></returns>
+    FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ulong steamWorkshopId);
+
+    FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(string packageName);
+
+    public IPackageDependencyInfo CreateMissingPackageDependencyInfoRecord(string packageName, 
+        string packagePath, ulong steamWorkshopId);
 }
 
 public readonly record struct LoadablePackage

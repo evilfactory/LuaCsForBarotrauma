@@ -444,7 +444,7 @@ namespace Barotrauma
         public void Exit()
         {
             ShouldRun = false;
-            GameMain.LuaCs.Stop();
+            GameMain.LuaCs.Dispose();
         }
     }
 }

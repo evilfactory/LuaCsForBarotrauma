@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,6 +13,7 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
+using OneOf;
 using Platform = Barotrauma.LuaCs.Data.Platform;
 
 namespace Barotrauma.LuaCs
@@ -416,6 +418,14 @@ namespace Barotrauma.LuaCs
     }
 }
 
+#region Utils
+
+namespace OneOf.LuaCs
+{
+    
+}
+
+#endregion
 
 #region ExceptionData
 

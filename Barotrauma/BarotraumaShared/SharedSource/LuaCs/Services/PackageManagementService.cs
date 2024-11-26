@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.Steam;
 using FluentResults;
 using FluentResults.LuaCs;
 using QuikGraph;
@@ -22,6 +23,7 @@ public class PackageManagementService : IPackageManagementService
     private readonly Lazy<IAssemblyManagementService> _assemblyManagementService;
     private readonly ConcurrentDictionary<ContentPackage, IPackageService> _contentPackages = new();
     private readonly ConcurrentQueue<LoadablePackage> _queuedPackages = new();
+    private readonly ConcurrentDictionary<OneOf.OneOf<ContentPackage, string, ulong>, IPackageDependencyInfo> _packageDependencyInfos = new();
 
     /// <summary>
     /// ConcurrentDictionary handles access synchronization. This is to ensure that we are not trying to
@@ -302,5 +304,82 @@ public class PackageManagementService : IPackageManagementService
     {
         return (platform.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
             && (platform.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0;
+    }
+
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ContentPackage package)
+    {
+        if (package is null)
+            return new FluentResults.Result<IPackageDependencyInfo>()
+                .WithError(new Error($"{nameof(GetPackageDependencyInfoRecord)}: Package is null!")
+                    .WithMetadata(MetadataType.ExceptionObject, this));
+        if (!_packageDependencyInfos.TryGetValue(package, out var info))
+            return AddDependencyRecord(package, package.Name, package.Path, package.TryExtractSteamWorkshopId(out var id) ? id.Value : 0, id != null);
+        return new Result<IPackageDependencyInfo>()
+            .WithValue(info)
+            .WithSuccess($"Existing value.");
+    }
+
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ulong steamWorkshopId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(string packageName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IPackageDependencyInfo CreateMissingPackageDependencyInfoRecord(
+        string packageName,
+        string packagePath,
+        ulong steamWorkshopId)
+    {
+        return new DependencyInfo()
+        {
+            DependencyPackage = null,
+            FallbackPackageName = packageName,
+            FolderPath = packagePath.IsNullOrWhiteSpace() ? null : System.IO.Path.GetFullPath(packagePath),
+            SteamWorkshopId = steamWorkshopId,
+            IsMissing = true,
+            IsWorkshopInstallation = false
+        };
+    }
+
+    private Result<IPackageDependencyInfo> AddDependencyRecord(
+        ContentPackage package,
+        string packageName,
+        string folderPath,
+        ulong steamWorkshopId,
+        bool isMissing)
+    {
+        try
+        {
+            var dependencyInfo = new DependencyInfo()
+            {
+                DependencyPackage = package,
+                FallbackPackageName = packageName,
+                FolderPath = System.IO.Path.GetFullPath(folderPath),
+                SteamWorkshopId = steamWorkshopId,
+                IsMissing = isMissing,
+                IsWorkshopInstallation = steamWorkshopId != 0
+            };
+            if (package is not null)
+            {
+                _packageDependencyInfos.AddOrUpdate(package, pack => dependencyInfo,
+                (pack, dep) => dependencyInfo);
+            }
+            return new FluentResults.Result<IPackageDependencyInfo>()
+                .WithValue(dependencyInfo)
+                .WithSuccess($"New value created.");
+        }
+        catch (Exception ex)
+        {
+            return new FluentResults.Result<IPackageDependencyInfo>()
+                .WithError(new ExceptionalError(ex)
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.ExceptionDetails, ex.Message)
+                    .WithMetadata(MetadataType.RootObject, package)
+                    .WithMetadata(MetadataType.StackTrace, ex.StackTrace ?? "StackTrace not available"));
+        }
     }
 }

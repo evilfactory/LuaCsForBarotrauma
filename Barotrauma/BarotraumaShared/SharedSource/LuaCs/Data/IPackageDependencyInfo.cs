@@ -12,10 +12,6 @@ public interface IPackageDependencyInfo : IPackageInfo,
     /// </summary>
     public string FolderPath { get; }
     /// <summary>
-    /// Name of the package.
-    /// </summary>
-    public string PackageName { get; }
-    /// <summary>
     /// Steam ID of the package. 
     /// </summary>
     public ulong SteamWorkshopId { get; }

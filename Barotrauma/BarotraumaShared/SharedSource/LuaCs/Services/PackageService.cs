@@ -517,7 +517,7 @@ public partial class PackageService : IPackageService
     /// <param name="resourcesInfos"></param>
     /// <returns></returns>
     private FluentResults.Result CheckResourceSanitation(
-        OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo,
+        OneOf.OneOf<IAssembliesResourcesInfo, ILocalizationsResourcesInfo,
             IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo> resourcesInfos)
     {
         // execute checks based on known types
@@ -656,7 +656,7 @@ public partial class PackageService : IPackageService
                 if (!_packageManagementService.CheckDependencyLoaded(pdi))
                 {
                     errors.Push(new Error($"Dependency missing for resource: {resourceInfo.OwnerPackage.Name}")
-                        .WithMetadata(MetadataType.ExceptionDetails, $"Missing dependency: {pdi.DependencyPackage?.Name ?? (pdi.PackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.PackageName)}")
+                        .WithMetadata(MetadataType.ExceptionDetails, $"Missing dependency: {pdi.DependencyPackage?.Name ?? (pdi.FallbackPackageName.IsNullOrWhiteSpace() ? pdi.SteamWorkshopId.ToString() : pdi.FallbackPackageName)}")
                         .WithMetadata(MetadataType.ExceptionObject, this)
                         .WithMetadata(MetadataType.RootObject, resourceInfo));
                 }
