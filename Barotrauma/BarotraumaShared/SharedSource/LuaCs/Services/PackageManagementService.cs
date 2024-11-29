@@ -23,7 +23,7 @@ public class PackageManagementService : IPackageManagementService
     private readonly Lazy<IAssemblyManagementService> _assemblyManagementService;
     private readonly ConcurrentDictionary<ContentPackage, IPackageService> _contentPackages = new();
     private readonly ConcurrentQueue<LoadablePackage> _queuedPackages = new();
-    private readonly ConcurrentDictionary<OneOf.OneOf<ContentPackage, string, ulong>, IPackageDependencyInfo> _packageDependencyInfos = new();
+    private readonly ConcurrentDictionary<DependencyEntryKey, IPackageDependencyInfo> _packageDependencyInfos = new();
 
     /// <summary>
     /// ConcurrentDictionary handles access synchronization. This is to ensure that we are not trying to
@@ -45,11 +45,6 @@ public class PackageManagementService : IPackageManagementService
     }
 
     public FluentResults.Result Reset()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool IsAssemblyLoadedGlobal(string friendlyName)
     {
         throw new NotImplementedException();
     }
@@ -206,7 +201,11 @@ public class PackageManagementService : IPackageManagementService
             /*
              * Return array: (Normal, MissingDepsRes, MissingDeps)
              */
-            FluentResults.Result<(ImmutableArray<T>, ImmutableArray<T>, ImmutableArray<IPackageDependencyInfo>)> GetLoadablePackages<T>(ImmutableArray<T> resources, bool errorForPacksMissingDeps = false)
+            FluentResults.Result<(
+                (ContentPackage, ImmutableArray<T>), // Normal, Loadable
+                (ContentPackage, ImmutableArray<T>), // Packs missing deps
+                ImmutableArray<IPackageDependencyInfo>)> // Missing deps
+                GetLoadablePackages<T>(ImmutableArray<T> resources, bool errorForPacksMissingDeps = false)
                 where T : class, IPackageDependenciesInfo, IPackageInfo, IResourceInfo, IResourceCultureInfo
             {
                 
@@ -245,6 +244,8 @@ public class PackageManagementService : IPackageManagementService
             FluentResults.Result<ImmutableArray<T>> SortByDependencies<T>(ImmutableArray<T> resources)
                 where T : class, IPackageDependenciesInfo, IPackageInfo, IResourceInfo
             {
+                
+                
                 throw new NotImplementedException();
                 // construct node-dependencies array
                 // add to nodes to graph
@@ -381,5 +382,88 @@ public class PackageManagementService : IPackageManagementService
                     .WithMetadata(MetadataType.RootObject, package)
                     .WithMetadata(MetadataType.StackTrace, ex.StackTrace ?? "StackTrace not available"));
         }
+    }
+
+    private readonly record struct DependencyEntryKey : IEqualityComparer<DependencyEntryKey>, IEquatable<DependencyEntryKey>
+    {
+        public ContentPackage Package { get; init; }
+        public string FolderPath { get; init; }
+        public string PackageName { get; init; }
+        public ulong SteamWorkshopId { get; init; }
+
+        public DependencyEntryKey(ContentPackage package)
+        {
+            Package = package ?? throw new ArgumentNullException(nameof(package), $"{nameof(DependencyEntryKey)}.ctor: Package cannot be null!");
+            PackageName = package.Name;
+            SteamWorkshopId = package.TryExtractSteamWorkshopId(out var id) ? id.Value : (ulong)0;
+            FolderPath = package.Path;
+        }
+
+        public DependencyEntryKey(string packageName, string folderPath, ulong steamWorkshopId)
+        {
+            PackageName = packageName;
+            SteamWorkshopId = steamWorkshopId;
+            FolderPath = folderPath;
+            Package = null;
+        }
+
+        public DependencyEntryKey(string packageName, ulong steamWorkshopId)
+        {
+            PackageName = packageName;
+            SteamWorkshopId = steamWorkshopId;
+            FolderPath = null;
+            Package = null;
+        }
+
+        public bool Equals(DependencyEntryKey other)
+        {
+            return Equals(this, other);
+        }
+
+        public override int GetHashCode()
+        {
+            return GetHashCode(this);
+        }
+
+        public bool Equals(DependencyEntryKey x, DependencyEntryKey y)
+        {
+            if (x == y)
+                return true;
+            
+            if (x.Package is not null && y.Package is not null && x.Package == Package)
+                return true;
+
+            if (!x.FolderPath.IsNullOrWhiteSpace() && !y.FolderPath.IsNullOrWhiteSpace() &&
+                x.FolderPath == FolderPath)
+                return true;
+
+            if (!x.PackageName.IsNullOrWhiteSpace() && !y.PackageName.IsNullOrWhiteSpace() && x.PackageName == PackageName)
+                return true;
+
+            if (x.SteamWorkshopId != 0 && y.SteamWorkshopId != 0 &&
+                x.SteamWorkshopId == y.SteamWorkshopId)
+                return true;
+
+            return false;
+        }
+
+        public int GetHashCode(DependencyEntryKey obj)
+        {
+            if (!obj.PackageName.IsNullOrWhiteSpace())
+                return obj.PackageName.GetHashCode();
+            if (obj.SteamWorkshopId != 0)
+                return obj.SteamWorkshopId.GetHashCode();
+            if (obj.Package is not null)
+                return obj.Package.GetHashCode();
+            // We don't want to check the FolderPath because we want to resolve dependencies using packages
+            // that might be local instead in the workshop folder.
+            return 2342568; // random const value: collisions are fine as we want to call Equals()
+        }
+        
+        public static implicit operator DependencyEntryKey(ContentPackage package) => new(package);
+        public static implicit operator DependencyEntryKey((string packageName, ulong steamWorkshopId) tuple1) => 
+            new (tuple1.packageName, tuple1.steamWorkshopId);
+        public static implicit operator DependencyEntryKey((string packageName, ulong steamWorkshopId, string folderPath) tuple1) => 
+            new (tuple1.packageName, tuple1.folderPath, tuple1.steamWorkshopId);
     }
 }
