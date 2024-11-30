@@ -14,17 +14,17 @@ public interface IPackageManagementService : IService
     /// Adds packages to the queue of loadable packages without initializing them.
     /// </summary>
     /// <param name="packages"></param>
-    /// <returns></returns>
-    FluentResults.Result QueuePackages(ImmutableArray<LoadablePackage> packages);
+    void QueuePackages(ImmutableArray<LoadablePackage> packages);
     
     /// <summary>
-    /// Loads queued packages, skips already loaded packages.
+    /// Generates the ModConfigInfo for all queued packages and then loads them.
     /// </summary>
-    /// <param name="rescanPackages"></param>
-    /// <param name="loadParallel"></param>
-    /// <param name="reportFailOnDuplicates"></param>
-    /// <returns></returns>
-    FluentResults.Result ProcessQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false);
+    /// <param name="rescanPackages">Whether duplicate queued packages that are already prepared should be discarded and regenerated.</param>
+    /// <param name="loadParallel">Use multithreaded loading.</param>
+    /// <param name="reportFailOnDuplicates">Whether duplicate packages should be reported as errors.</param>
+    /// <returns>Failure/Success records for each package.</returns>
+    FluentResults.Result LoadQueuedPackages(bool rescanPackages = false, bool loadParallel = true, 
+        bool reportFailOnDuplicates = false);
     FluentResults.Result UnloadPackages();
     bool IsPackageLoaded(ContentPackage package);
     bool CheckDependencyLoaded(IPackageDependencyInfo info);
@@ -46,7 +46,7 @@ public interface IPackageManagementService : IService
 
     FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(string packageName);
 
-    public IPackageDependencyInfo CreateMissingPackageDependencyInfoRecord(string packageName, 
+    public IPackageDependencyInfo CreateOrphanPackageDependencyInfoRecord(string packageName, 
         string packagePath, ulong steamWorkshopId);
 }
 

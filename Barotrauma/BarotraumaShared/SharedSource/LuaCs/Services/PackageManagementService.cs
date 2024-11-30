@@ -26,10 +26,15 @@ public class PackageManagementService : IPackageManagementService
     private readonly ConcurrentDictionary<DependencyEntryKey, IPackageDependencyInfo> _packageDependencyInfos = new();
 
     /// <summary>
-    /// ConcurrentDictionary handles access synchronization. This is to ensure that we are not trying to
-    /// load/unload/modify the collection from multiple threads.
+    /// ConcurrentDictionary handles access/read synchronization. This is to ensure that we are not trying to
+    /// access the collection during a load/unload/modify operation.
     /// </summary>
     private readonly ReaderWriterLockSlim _contentPackagesModificationsLock = new();
+    /// <summary>
+    /// This lock ensures that we are not adding new entries to the queue between when we read the contents and
+    /// empty the buffer. 
+    /// </summary>
+    private readonly ReaderWriterLockSlim _packageQueueProcessingLock = new();
     
     public PackageManagementService(
         Func<IPackageService> getPackageService,
@@ -38,7 +43,9 @@ public class PackageManagementService : IPackageManagementService
         this._contentPackageServiceFactory = getPackageService;
         this._assemblyManagementService = assemblyManagementService;
     }
-    
+
+    #region STATE_RESET
+
     public void Dispose()
     {
         // TODO release managed resources here
@@ -49,216 +56,157 @@ public class PackageManagementService : IPackageManagementService
         throw new NotImplementedException();
     }
 
-    public FluentResults.Result QueuePackages(ImmutableArray<LoadablePackage> packages)
+    #endregion
+
+    public void QueuePackages(ImmutableArray<LoadablePackage> packages)
     {
+        _packageQueueProcessingLock.EnterReadLock();
+        try
+        {
+            foreach (LoadablePackage package in packages) 
+                _queuedPackages.Enqueue(package);
+        }
+        finally
+        {
+            _packageQueueProcessingLock.ExitReadLock();
+        }
+    }
+
+    public FluentResults.Result LoadQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false)
+    {
+        if (!ModUtils.Environment.IsMainThread)
+            throw new InvalidOperationException($"{nameof(LoadQueuedPackages)}: This method can only be called on the main thread.");
+        
+        ImmutableArray<LoadablePackage> packagesToProcess = ImmutableArray<LoadablePackage>.Empty;
+        
+        _packageQueueProcessingLock.EnterWriteLock();
+        try
+        {
+            Interlocked.MemoryBarrier();
+            if (_queuedPackages.IsEmpty)
+                return FluentResults.Result.Ok().WithSuccess($"{nameof(LoadQueuedPackages)}: The Queue is empty.");
+            packagesToProcess = _queuedPackages.Distinct().ToImmutableArray();
+            _queuedPackages.Clear();
+        }
+        finally
+        {
+            _packageQueueProcessingLock.ExitWriteLock();
+        }
+        
+        FluentResults.Result[] loadResults = new FluentResults.Result[packagesToProcess.Length];
+        FluentResults.Result res = new FluentResults.Result();
+        
+        // Load ModConfigInfo
         _contentPackagesModificationsLock.EnterWriteLock();
         try
         {
-            foreach (LoadablePackage package in packages)
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+           
+            Interlocked.MemoryBarrier();
+            if (loadParallel)
             {
-                _queuedPackages.Enqueue(package);
+                Parallel.For(0, loadResults.Length, new ParallelOptions()
+                {
+                    /*
+                     * This is an IO-bound operation. The purpose of parallelism here is to allow loaded package
+                     * data to be processed while another package is waiting on the storage device for its info.
+                     * Assuming defragmentation and consolidation/optimization on spinning disks, this is especially
+                     * useful as it reduces the head seek time.
+                     */
+                    MaxDegreeOfParallelism = 2  
+                },i =>
+                {
+                    loadResults[i] = LoadPackageInfo(packagesToProcess[i]);
+                });
             }
-            return FluentResults.Result.Ok();
+            else
+            {
+                for (int i = 0; i < loadResults.Length; i++)
+                {   
+                    loadResults[i] = LoadPackageInfo(packagesToProcess[i]);
+                }
+            }
+            
+            stopwatch.Stop();
+
+            res.WithSuccess(new Success(
+                $"Completed parsing of {loadResults.Length} packages in {stopwatch.ElapsedMilliseconds} milliseconds."));
+            
+            for (int i = 0; i < loadResults.Length; i++)
+            {
+                res = loadResults[i].IsSuccess 
+                    ? res.WithSuccesses(loadResults[i].Successes) 
+                    : res.WithErrors(loadResults[i].Errors);
+            }
+
+            // TODO: filter, sort and load packages.
+            throw new NotImplementedException();
+            
+            return res;
+        }
+        catch (AggregateException ae)
+        {
+            return FluentResults.Result.Fail(new Error($"{nameof(LoadQueuedPackages)}: Failed to load packages! AE.")
+                .WithMetadata(MetadataType.ExceptionDetails, ae.InnerException?.Message ?? ae.Message)
+                .WithMetadata(MetadataType.StackTrace, ae.StackTrace)
+                .WithMetadata(MetadataType.ExceptionObject, this));
+        }
+        catch (ArgumentNullException ane)
+        {
+            return FluentResults.Result.Fail(
+                new Error($"{nameof(LoadQueuedPackages)}: Failed to load packages! ANE.")
+                    .WithMetadata(MetadataType.ExceptionDetails, ane.InnerException?.Message ?? ane.Message)
+                    .WithMetadata(MetadataType.StackTrace, ane.StackTrace)
+                    .WithMetadata(MetadataType.ExceptionObject, this));
         }
         finally
         {
             _contentPackagesModificationsLock.ExitWriteLock();
         }
-    }
 
-    public FluentResults.Result ProcessQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false)
-    {
-        if (!ModUtils.Environment.IsMainThread)
-            throw new InvalidOperationException($"{nameof(ProcessQueuedPackages)}: This method can only be called on the main thread.");
         
-        _contentPackagesModificationsLock.EnterReadLock();
-        try
+        /*
+         * Helper functions
+         */
+        
+        // register in the list so we can check against it.
+        FluentResults.Result LoadPackageInfo(LoadablePackage package)
         {
-            if (_queuedPackages.IsEmpty)
-            {
-                return FluentResults.Result.Ok()
-                    .WithSuccess($"{nameof(ProcessQueuedPackages)}: The Queue is empty.");
-            }
-            
-            ConcurrentStack<IError> errors = new();
-            ConcurrentStack<ISuccess> successes = new();
-            
-            // Load ModConfigInfo
             try
             {
-                
-                FluentResults.Result res = new FluentResults.Result();
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                if (loadParallel)
+                if (package.Package == null)
                 {
-                    var ret = Parallel.ForEach(_queuedPackages, package =>
-                    {
-                        var r = LoadPackageInfo(package);
-                        if (r.IsFailed)
-                        {
-                            errors.Push(new Error(
-                                $"{nameof(ProcessQueuedPackages)}: Package {package.Package?.Name} failed to load."));
-                            errors.PushRange(r.Errors.ToArray());
-                        }
-                        else
-                        {
-                            successes.Push(new Success($"Successfully loaded Package Info for {package.Package?.Name}"));
-                        }
-                    });
+                     return FluentResults.Result.Fail(
+                         new Error($"{nameof(LoadPackageInfo)}: Package is null!")
+                         .WithMetadata(MetadataType.ExceptionObject, this)
+                         .WithMetadata(MetadataType.RootObject, package));
                 }
-                else
-                {
-                    _queuedPackages.ForEach(package =>
-                    {
-                        var r = LoadPackageInfo(package);
-                        if (r.IsFailed)
-                        {
-                            errors.Push(new Error($"{nameof(ProcessQueuedPackages)}: Package {package.Package?.Name} failed to load."));
-                            errors.PushRange(r.Errors.ToArray());
-                        }
-                        else
-                        {
-                            successes.Push(new Success($"Successfully loaded Package Info for {package.Package?.Name}"));
-                        }
-                    });
-                }
-                stopwatch.Stop();
-                res = res.WithReason(new Success($"Completed ModConfigInfo loading in {stopwatch.Elapsed}."))
-                    .WithSuccesses(successes)
-                    .WithErrors(errors);
-                
-                successes.Clear();
-                errors.Clear();
-                stopwatch.Reset();
-                
-                // Sort all resources by dependencies, check for errors, then:
-                // load localizations
-                // load assemblies and cs scripts, no type init.
-                // register types as needed for resolutions
-                // load configs and profiles
-                // load styles
-                // init types/plugins
-                // register types for events
-                // load lua scripts
-            }
-            catch (AggregateException ae)
-            {
-                return FluentResults.Result.Fail(new Error($"{nameof(ProcessQueuedPackages)}: Failed to load packages! AE.")
-                    .WithMetadata(MetadataType.ExceptionDetails, ae.InnerException?.Message ?? ae.Message)
-                    .WithMetadata(MetadataType.StackTrace, ae.StackTrace)
-                    .WithMetadata(MetadataType.ExceptionObject, this));
-            }
-            catch (ArgumentNullException ane)
-            {
-                return FluentResults.Result.Fail(new Error($"{nameof(ProcessQueuedPackages)}: Failed to load packages! ANE.")
-                    .WithMetadata(MetadataType.ExceptionDetails, ane.InnerException?.Message ?? ane.Message)
-                    .WithMetadata(MetadataType.StackTrace, ane.StackTrace)
-                    .WithMetadata(MetadataType.ExceptionObject, this));
-            }
-            
-            return FluentResults.Result.Ok();
 
-            
-            /*
-             * Helper functions
-             */
-            
-            // register in the list so we can check against it.
-            FluentResults.Result LoadPackageInfo(LoadablePackage package)
-            {
-                try
+                if (_contentPackages.TryGetValue(package.Package, out var packageService))
                 {
-                    if (_contentPackages.ContainsKey(package.Package))
+                    if (reportFailOnDuplicates)
                     {
-                        if (reportFailOnDuplicates)
-                        {
-                            return FluentResults.Result.Fail(new Error($"The package {package.Package?.Name} is already loaded.")
-                                .WithMetadata(MetadataType.ExceptionObject, this)
-                                .WithMetadata(MetadataType.RootObject, package.Package));
-                        }
-                        return FluentResults.Result.Ok();
-                    }
-                    if (package.Package == null)
-                    {
-                        return FluentResults.Result.Fail(new Error($"{nameof(LoadPackageInfo)}: Package is null!")
+                        return FluentResults.Result.Fail(new Error($"The package {package.Package?.Name} is already loaded.")
                             .WithMetadata(MetadataType.ExceptionObject, this)
-                            .WithMetadata(MetadataType.RootObject, package));
+                            .WithMetadata(MetadataType.RootObject, package.Package));
                     }
 
-                    return _contentPackages[package.Package].LoadResourcesInfo(package);
+                    return rescanPackages ? packageService.LoadResourcesInfo(package) : FluentResults.Result.Ok();
                 }
-                catch (NullReferenceException nre)
-                {
-                    return FluentResults.Result.Fail(new Error($"{nameof(LoadPackageInfo)}: NRE while loading package {package.Package?.Name}!")
-                        .WithMetadata(MetadataType.ExceptionObject, this)
-                        .WithMetadata(MetadataType.StackTrace, nre.StackTrace ?? "StackTrace not available")
-                        .WithMetadata(MetadataType.ExceptionDetails, nre.InnerException?.Message ?? nre.Message)
-                        .WithMetadata(MetadataType.RootObject, package));
-                }
+                
+                packageService = _contentPackageServiceFactory.Invoke();
+                _contentPackages[package.Package] = packageService;
+                return packageService.LoadResourcesInfo(package);
             }
-
-            /*
-             * Return array: (Normal, MissingDepsRes, MissingDeps)
-             */
-            FluentResults.Result<(
-                (ContentPackage, ImmutableArray<T>), // Normal, Loadable
-                (ContentPackage, ImmutableArray<T>), // Packs missing deps
-                ImmutableArray<IPackageDependencyInfo>)> // Missing deps
-                GetLoadablePackages<T>(ImmutableArray<T> resources, bool errorForPacksMissingDeps = false)
-                where T : class, IPackageDependenciesInfo, IPackageInfo, IResourceInfo, IResourceCultureInfo
+            catch (NullReferenceException nre)
             {
-                
-                // filter optional resources (process later)
-                // add back in optional packages that are required by other required packages
-                // filter and log required packages that are missing dependencies
-                // re-include optionals where dependencies are available
-                // return both lists (A normal, B missingDeps).
-
-                HashSet<IPackageDependencyInfo> missingDeps = new();
-                var missingDepsBuilder = ImmutableArray.CreateBuilder<T>();
-                
-                var reqPacks = resources.Where(r => !r.Optional).Select(r => r.OwnerPackage).Distinct().ToImmutableHashSet();
-                var optPack = resources.Where(r => r.Optional).Select(r => r.OwnerPackage).Distinct().ToImmutableHashSet();
-                var req = resources
-                    .Where(r => !r.Optional)
-                    .Where(CheckEnvironmentSupported)
-                    .Where(r =>
-                    {
-                        if (r.Dependencies.Length == 0)
-                            return true;
-
-                        if (CheckDependenciesLoaded(r.Dependencies, out var missingDepsList)) 
-                            return true;
-                        
-                        missingDepsBuilder.Add(r);
-                        missingDeps.UnionWith(missingDepsList);
-                        return false;
-                    });
-                var reqOptionals = resources.Where(r => r.Optional && optPack.Contains(r.OwnerPackage));
-                var notReqOptionals = resources.Where(r => r.Optional && !optPack.Contains(r.OwnerPackage));
-                
-                throw new NotImplementedException();
+                return FluentResults.Result.Fail(new Error($"{nameof(LoadPackageInfo)}: NRE while loading package {package.Package?.Name}!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.StackTrace, nre.StackTrace ?? "StackTrace not available")
+                    .WithMetadata(MetadataType.ExceptionDetails, nre.InnerException?.Message ?? nre.Message)
+                    .WithMetadata(MetadataType.RootObject, package));
             }
-
-            FluentResults.Result<ImmutableArray<T>> SortByDependencies<T>(ImmutableArray<T> resources)
-                where T : class, IPackageDependenciesInfo, IPackageInfo, IResourceInfo
-            {
-                
-                
-                throw new NotImplementedException();
-                // construct node-dependencies array
-                // add to nodes to graph
-                // add edges (deps) to graph
-                // see if acyclic
-                    // log errors if not
-                // return resulting array
-            }
-            
-        }
-        finally
-        {
-            _contentPackagesModificationsLock.ExitReadLock();
         }
     }
 
@@ -330,7 +278,7 @@ public class PackageManagementService : IPackageManagementService
         throw new NotImplementedException();
     }
 
-    public IPackageDependencyInfo CreateMissingPackageDependencyInfoRecord(
+    public IPackageDependencyInfo CreateOrphanPackageDependencyInfoRecord(
         string packageName,
         string packagePath,
         ulong steamWorkshopId)
@@ -353,6 +301,7 @@ public class PackageManagementService : IPackageManagementService
         ulong steamWorkshopId,
         bool isMissing)
     {
+        // TODO: Redo
         try
         {
             var dependencyInfo = new DependencyInfo()
@@ -433,9 +382,14 @@ public class PackageManagementService : IPackageManagementService
             if (x.Package is not null && y.Package is not null && x.Package == Package)
                 return true;
 
+            // folder should be a unique key if not unset.
             if (!x.FolderPath.IsNullOrWhiteSpace() && !y.FolderPath.IsNullOrWhiteSpace() &&
                 x.FolderPath == FolderPath)
                 return true;
+
+            if (!x.PackageName.IsNullOrWhiteSpace() && !y.PackageName.IsNullOrWhiteSpace() 
+                                                    && x.SteamWorkshopId != 0 && y.SteamWorkshopId != 0)
+                return x.PackageName == y.PackageName && x.SteamWorkshopId == y.SteamWorkshopId;
 
             if (!x.PackageName.IsNullOrWhiteSpace() && !y.PackageName.IsNullOrWhiteSpace() && x.PackageName == PackageName)
                 return true;
