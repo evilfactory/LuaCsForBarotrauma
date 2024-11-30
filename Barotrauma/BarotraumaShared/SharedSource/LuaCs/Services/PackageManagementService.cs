@@ -72,10 +72,10 @@ public class PackageManagementService : IPackageManagementService
         }
     }
 
-    public FluentResults.Result LoadQueuedPackages(bool rescanPackages = false, bool loadParallel = true, bool reportFailOnDuplicates = false)
+    public FluentResults.Result ParseQueuedPackages(bool loadParallel = true, bool reportFailOnDuplicates = false)
     {
         if (!ModUtils.Environment.IsMainThread)
-            throw new InvalidOperationException($"{nameof(LoadQueuedPackages)}: This method can only be called on the main thread.");
+            throw new InvalidOperationException($"{nameof(ParseQueuedPackages)}: This method can only be called on the main thread.");
         
         ImmutableArray<LoadablePackage> packagesToProcess = ImmutableArray<LoadablePackage>.Empty;
         
@@ -84,7 +84,7 @@ public class PackageManagementService : IPackageManagementService
         {
             Interlocked.MemoryBarrier();
             if (_queuedPackages.IsEmpty)
-                return FluentResults.Result.Ok().WithSuccess($"{nameof(LoadQueuedPackages)}: The Queue is empty.");
+                return FluentResults.Result.Ok().WithSuccess($"{nameof(ParseQueuedPackages)}: The Queue is empty.");
             packagesToProcess = _queuedPackages.Distinct().ToImmutableArray();
             _queuedPackages.Clear();
         }
@@ -111,10 +111,8 @@ public class PackageManagementService : IPackageManagementService
                     /*
                      * This is an IO-bound operation. The purpose of parallelism here is to allow loaded package
                      * data to be processed while another package is waiting on the storage device for its info.
-                     * Assuming defragmentation and consolidation/optimization on spinning disks, this is especially
-                     * useful as it reduces the head seek time.
                      */
-                    MaxDegreeOfParallelism = 2  
+                    MaxDegreeOfParallelism = 2
                 },i =>
                 {
                     loadResults[i] = LoadPackageInfo(packagesToProcess[i]);
@@ -139,15 +137,12 @@ public class PackageManagementService : IPackageManagementService
                     ? res.WithSuccesses(loadResults[i].Successes) 
                     : res.WithErrors(loadResults[i].Errors);
             }
-
-            // TODO: filter, sort and load packages.
-            throw new NotImplementedException();
             
             return res;
         }
         catch (AggregateException ae)
         {
-            return FluentResults.Result.Fail(new Error($"{nameof(LoadQueuedPackages)}: Failed to load packages! AE.")
+            return FluentResults.Result.Fail(new Error($"{nameof(ParseQueuedPackages)}: Failed to load packages! AE.")
                 .WithMetadata(MetadataType.ExceptionDetails, ae.InnerException?.Message ?? ae.Message)
                 .WithMetadata(MetadataType.StackTrace, ae.StackTrace)
                 .WithMetadata(MetadataType.ExceptionObject, this));
@@ -155,7 +150,7 @@ public class PackageManagementService : IPackageManagementService
         catch (ArgumentNullException ane)
         {
             return FluentResults.Result.Fail(
-                new Error($"{nameof(LoadQueuedPackages)}: Failed to load packages! ANE.")
+                new Error($"{nameof(ParseQueuedPackages)}: Failed to load packages! ANE.")
                     .WithMetadata(MetadataType.ExceptionDetails, ane.InnerException?.Message ?? ane.Message)
                     .WithMetadata(MetadataType.StackTrace, ane.StackTrace)
                     .WithMetadata(MetadataType.ExceptionObject, this));
@@ -192,7 +187,7 @@ public class PackageManagementService : IPackageManagementService
                             .WithMetadata(MetadataType.RootObject, package.Package));
                     }
 
-                    return rescanPackages ? packageService.LoadResourcesInfo(package) : FluentResults.Result.Ok();
+                    return FluentResults.Result.Ok();
                 }
                 
                 packageService = _contentPackageServiceFactory.Invoke();
@@ -210,6 +205,16 @@ public class PackageManagementService : IPackageManagementService
         }
     }
 
+    public FluentResults.Result LoadPackageConfigsResourcesGroup(bool loadParallel = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result LoadAllPackageResources(bool loadParallel = true, bool safeResourcesOnly = true)
+    {
+        throw new NotImplementedException();
+    }
+
     public FluentResults.Result UnloadPackages()
     {
         if (!ModUtils.Environment.IsMainThread)
@@ -223,7 +228,7 @@ public class PackageManagementService : IPackageManagementService
         _contentPackagesModificationsLock.EnterWriteLock();
         try
         {
-            
+            // TODO: Finish him
         }
         finally
         {
@@ -255,28 +260,58 @@ public class PackageManagementService : IPackageManagementService
             && (platform.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0;
     }
 
-    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ContentPackage package)
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ContentPackage package, bool addIfMissing = false)
     {
         if (package is null)
+        {
             return new FluentResults.Result<IPackageDependencyInfo>()
                 .WithError(new Error($"{nameof(GetPackageDependencyInfoRecord)}: Package is null!")
                     .WithMetadata(MetadataType.ExceptionObject, this));
-        if (!_packageDependencyInfos.TryGetValue(package, out var info))
-            return AddDependencyRecord(package, package.Name, package.Path, package.TryExtractSteamWorkshopId(out var id) ? id.Value : 0, id != null);
-        return new Result<IPackageDependencyInfo>()
-            .WithValue(info)
-            .WithSuccess($"Existing value.");
+        }
+
+        if (_packageDependencyInfos.TryGetValue(package, out var result))
+        {
+            return new FluentResults.Result<IPackageDependencyInfo>()
+                .WithValue(result);
+        }
+        
+        if (addIfMissing)
+        {
+            return AddDependencyRecord(package, package.Name, package.Path, 
+                package.TryExtractSteamWorkshopId(out var id) ? id.Value : 0,
+                false);
+        }
+
+        return FluentResults.Result.Fail<IPackageDependencyInfo>(new Error($"Could not find package {package.Name}!")
+            .WithMetadata(MetadataType.ExceptionObject, this)
+            .WithMetadata(MetadataType.RootObject, package));
     }
 
-    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ulong steamWorkshopId)
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ulong steamWorkshopId, string packageName, string folderPath = null,
+        bool addIfMissing = false)
+    {
+        if (packageName.IsNullOrWhiteSpace() || folderPath.IsNullOrWhiteSpace())
+        {
+            return new FluentResults.Result<IPackageDependencyInfo>()
+                .WithError(new Error($"{nameof(GetPackageDependencyInfoRecord)}: folder path and/or package name are null!")
+                    .WithMetadata(MetadataType.ExceptionObject, this));
+        }
+
+        if (_packageDependencyInfos.TryGetValue((packageName,steamWorkshopId,folderPath), out var result))
+        {
+            return new FluentResults.Result<IPackageDependencyInfo>()
+                .WithValue(result);
+        }
+
+        // TODO: Finish this
+        throw new NotImplementedException();
+    }
+
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(string folderPath)
     {
         throw new NotImplementedException();
     }
 
-    public Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(string packageName)
-    {
-        throw new NotImplementedException();
-    }
 
     public IPackageDependencyInfo CreateOrphanPackageDependencyInfoRecord(
         string packageName,
