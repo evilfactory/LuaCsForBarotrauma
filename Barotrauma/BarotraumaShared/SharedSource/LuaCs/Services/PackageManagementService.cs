@@ -85,7 +85,8 @@ public class PackageManagementService : IPackageManagementService
             Interlocked.MemoryBarrier();
             if (_queuedPackages.IsEmpty)
                 return FluentResults.Result.Ok().WithSuccess($"{nameof(ParseQueuedPackages)}: The Queue is empty.");
-            packagesToProcess = _queuedPackages.Distinct().ToImmutableArray();
+            packagesToProcess = _queuedPackages.Where(p => p.Package is not null)
+                .Distinct().ToImmutableArray();
             _queuedPackages.Clear();
         }
         finally

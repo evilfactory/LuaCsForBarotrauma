@@ -1,4 +1,5 @@
-﻿using Barotrauma.LuaCs.Services;
+﻿using System.Reflection;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Events;
@@ -81,7 +82,7 @@ public interface IEventServerConnected : IEvent
 
 #endregion
 
-#region PluginEvents
+#region Assembly_PluginEvents
 
 /// <summary>
 /// Allows registration of events and services before plugins are initialized.
@@ -115,6 +116,22 @@ public interface IEventPluginLoadCompleted : IEvent
 public interface IEventPluginPreInitialize : IEvent
 {
     void PreInitPatching();
+}
+
+/// <summary>
+/// Called whenever a new assembly is loaded.
+/// </summary>
+public interface IEventAssemblyLoaded : IEvent
+{
+    void OnAssemblyLoaded(Assembly assembly);
+}
+
+/// <summary>
+/// Called whenever an <see cref="AssemblyLoader"/> begins unloading.
+/// </summary>
+public interface IEventAssemblyContextUnloaded : IEvent
+{
+    void OnAssemblyUnloaded(AssemblyLoader ctx);
 }
 
 #endregion
