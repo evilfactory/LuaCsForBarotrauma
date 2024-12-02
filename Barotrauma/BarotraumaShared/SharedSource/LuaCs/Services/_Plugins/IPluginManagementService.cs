@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Immutable;
 using System.Reflection;
+using Barotrauma.LuaCs.Data;
+using Microsoft.CodeAnalysis;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -22,4 +24,30 @@ public interface IPluginManagementService : IService
         bool includeAbstractTypes = false,
         bool includeDefaultContext = true,
         bool includeExplicitAssembliesOnly = false);
+    
+    /// <summary>
+    /// Gets the assembly <c>MetadataReference</c> collection for the BCL and base game assemblies. 
+    /// </summary>
+    /// <returns></returns>
+    ImmutableArray<MetadataReference> GetStandardMetadataReferences();
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    ImmutableArray<MetadataReference> GetPluginMetadataReferences();
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="package"></param>
+    /// <returns></returns>
+    FluentResults.Result<ImmutableArray<IAssemblyResourceInfo>> GetCachedAssembliesForPackage(ContentPackage package);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="resource"></param>
+    /// <returns>Success/Failure and list of failed resources, if any.</returns>
+    FluentResults.Result<ImmutableArray<IAssemblyResourceInfo>> LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource);
 }

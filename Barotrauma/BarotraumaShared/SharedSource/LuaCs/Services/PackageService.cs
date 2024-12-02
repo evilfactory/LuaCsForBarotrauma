@@ -41,28 +41,28 @@ public partial class PackageService : IPackageService
 
     public bool ConfigsLoaded
     {
-        get => GetThreadSafeBool(ref _configsLoaded);
-        private set => SetThreadSafeBool(ref _configsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _configsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _configsLoaded, value);
     }
     public bool LocalizationsLoaded
     {
-        get => GetThreadSafeBool(ref _localizationsLoaded);
-        private set => SetThreadSafeBool(ref _localizationsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _localizationsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _localizationsLoaded, value);
     }
     public bool LuaScriptsLoaded
     {
-        get => GetThreadSafeBool(ref _luaScriptsLoaded);
-        private set => SetThreadSafeBool(ref _luaScriptsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _luaScriptsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _luaScriptsLoaded, value);
     }
     public bool PluginsLoaded
     {
-        get => GetThreadSafeBool(ref _pluginsLoaded);
-        private set => SetThreadSafeBool(ref _pluginsLoaded, value);
+        get => ModUtils.Threading.GetBool(ref _pluginsLoaded);
+        private set => ModUtils.Threading.SetBool(ref _pluginsLoaded, value);
     }
     public bool IsDisposed
     {
-        get => GetThreadSafeBool(ref _isDisposed);
-        private set => SetThreadSafeBool(ref _isDisposed, value);
+        get => ModUtils.Threading.GetBool(ref _isDisposed);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
     }
 
     private bool LoadingOperationsRunning
@@ -151,8 +151,8 @@ public partial class PackageService : IPackageService
 
     public bool IsEnabledInModList
     {
-        get => GetThreadSafeBool(ref _isEnabledInModList);
-        private set => SetThreadSafeBool(ref _isEnabledInModList, value);
+        get => ModUtils.Threading.GetBool(ref _isEnabledInModList);
+        private set => ModUtils.Threading.SetBool(ref _isEnabledInModList, value);
     }
 
     #endregion
@@ -680,22 +680,6 @@ public partial class PackageService : IPackageService
         }
 
         return errors.Count > 0 ? FluentResults.Result.Fail(errors) : FluentResults.Result.Ok();
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static bool GetThreadSafeBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) == 1;
-    
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static void SetThreadSafeBool(ref int var, bool value)
-    {
-        if (value)
-        {
-            Interlocked.CompareExchange(ref var, 1, 0);
-        }
-        else
-        {
-            Interlocked.CompareExchange(ref var, 0, 1);
-        }
     }
     
     #endregion

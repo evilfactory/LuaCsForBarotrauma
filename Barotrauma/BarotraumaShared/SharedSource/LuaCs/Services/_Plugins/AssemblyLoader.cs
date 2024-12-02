@@ -1,23 +1,40 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
+using System.Threading;
 using Barotrauma.LuaCs.Services;
 using Microsoft.CodeAnalysis;
+using Basic.Reference.Assemblies;
 using Microsoft.CodeAnalysis.CSharp;
 
 [assembly: InternalsVisibleTo(AssemblyLoader.InternalsAwareAssemblyName)]
 
 namespace Barotrauma.LuaCs.Services;
-public class AssemblyLoader : AssemblyLoadContext
+public sealed class AssemblyLoader : AssemblyLoadContext, IDisposable
 {
     //public
     public Guid Id { get; init; }
+    /// <summary>
+    /// Indicates that the assemblies in this load context are metadata references only and not
+    /// intended for execution.
+    /// </summary>
     public bool IsReferenceOnlyMode { get; init; }
-    public bool IsDisposed { get; init; }
+
+    /// <summary>
+    /// Indicates that Unload was called on this context and that all strong references to it should be discarded. 
+    /// </summary>
+    public bool IsDisposed
+    {
+        get => ModUtils.Threading.GetBool(ref _isDisposed);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
+    }
+    private int _isDisposed;
     /// <summary>
     /// Runtime value of constant <see cref="InternalsAwareAssemblyName"/> for extensibility use.
     /// </summary>
@@ -30,7 +47,13 @@ public class AssemblyLoader : AssemblyLoadContext
     //internal
     private readonly IPluginManagementService _pluginManagementService;
     private readonly Action<AssemblyLoader> _onUnload;
-    protected bool IsResolving; // cyclic resolution exit
+    /// <summary>
+    /// This lock is just to ensure that we do not  
+    /// </summary>
+    private readonly ReaderWriterLockSlim _operationsLock = new(LockRecursionPolicy.SupportsRecursion);
+    private readonly ConcurrentDictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();
+    
+    private ThreadLocal<bool> _isResolving = new(static()=>false); // cyclic resolution exit
     
 
     #region PublicAPI
@@ -135,9 +158,32 @@ public class AssemblyLoader : AssemblyLoadContext
     {
         base.Unloading -= OnUnload;
         _onUnload?.Invoke(this);
+        this.Dispose(true);
 
         throw new NotImplementedException();
     }
 
     #endregion
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    private void Dispose(bool disposing)
+    {
+        if (ModUtils.Threading.CheckClearAndSetBool(ref _isDisposed))
+        {
+            _operationsLock.EnterWriteLock();
+            try
+            {
+                
+            }
+            finally
+            {
+                _operationsLock.ExitWriteLock();
+            }
+        }
+    }
 }

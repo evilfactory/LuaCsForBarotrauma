@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Xml.Serialization;
@@ -415,17 +416,58 @@ namespace Barotrauma.LuaCs
         }
 
         #endregion
+        
+        #region THREADING
+
+        public static class Threading
+        {
+            /// <summary>
+            /// Gets the boolean value of an integer with thread-safety via <code>Interlocked</code>.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool GetBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) > 0;
+    
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static void SetBool(ref int var, bool value)
+            {
+                if (value)
+                {
+                    Interlocked.CompareExchange(ref var, 1, 0);
+                }
+                else
+                {
+                    Interlocked.CompareExchange(ref var, 0, 1);
+                }
+            }
+
+            /// <summary>
+            /// Gets if the integer is under 1 (is zero/false) and, if so, sets the value to one/true.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool CheckClearAndSetBool(ref int var)
+            {
+                return Interlocked.CompareExchange(ref var, 1, 0) < 1;
+            }
+
+            /// <summary>
+            /// Gets if the integer is over 0 (is one/true) and, if so, sets the value to zero/false.
+            /// </summary>
+            /// <param name="var"></param>
+            /// <returns></returns>
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public static bool CheckSetAndClearBool(ref int var)
+            {
+                return Interlocked.CompareExchange(ref var, 0, 1) > 0;
+            }
+        }
+            
+        #endregion
     }
 }
-
-#region Utils
-
-namespace OneOf.LuaCs
-{
-    
-}
-
-#endregion
 
 #region ExceptionData
 
