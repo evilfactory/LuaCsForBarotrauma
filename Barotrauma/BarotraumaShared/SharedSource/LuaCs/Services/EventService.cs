@@ -13,41 +13,36 @@ public class EventService : IEventService
     #region Compatibility
 
     [Obsolete("Use ILuaEventService.Add() instead.")]
-    void ILuaCsHook.Add(string methodId, string identifier, LuaCsFunc callback, ACsMod mod = null)
+    void ILuaCsHook.Add(string eventName, string identifier, LuaCsFunc callback, ACsMod mod = null)
     {
-        Add(methodId, identifier, callback);
+        Add(eventName, identifier, callback);
     }
     [Obsolete("Use ILuaEventService.Add() instead.")]
-    void ILuaCsHook.Add(string methodId, LuaCsFunc callback, ACsMod mod = null)
+    void ILuaCsHook.Add(string eventName, LuaCsFunc callback, ACsMod mod = null)
     {
-        Add(methodId, callback);
-    }
-    [Obsolete("Use ILuaEventService.RemoveAll() instead.")]
-    void ILuaCsHook.Remove(string methodId, string identifier)
-    {
-        RemoveAll(methodId, identifier);
+        Add(eventName, callback);
     }
 
     #endregion
 
     #region DynamicHooks
 
-    public Guid Add(string methodId, string identifier, LuaCsFunc callback)
+    public void Add(string eventName, string identifier, LuaCsFunc callback)
     {
         throw new NotImplementedException();
     }
 
-    public Guid Add(string methodId, LuaCsFunc callback)
+    public void Add(string eventName, LuaCsFunc callback)
     {
         throw new NotImplementedException();
     }
 
-    public bool Exists(string methodId, string identifier)
+    public bool Exists(string eventName, string identifier)
     {
         throw new NotImplementedException();
     }
 
-    public void RemoveAll(string methodId, string identifier)
+    public void Remove(string eventName, string identifier)
     {
         throw new NotImplementedException();
     }
@@ -66,24 +61,6 @@ public class EventService : IEventService
 
     #region TypeEventSystem
 
-    public void RegisterEventType<T>() where T : IEvent
-    {
-        throw new NotImplementedException();
-    }
-
-    public void UnregisterEventType<T>() where T : IEvent
-    {
-        throw new NotImplementedException();
-    }
-
-    /*
-     * Note: Plugin wrapper for PublishEvent that handles the returned results. 
-     */
-    public void PublishPluginEvent<T>(Action<T> eventInvoker) where T : IEvent
-    {
-        _loggerService.LogResults(this.PublishEvent(eventInvoker));
-    }
-
     public void ClearAllEventSubscribers<T>() where T : IEvent
     {
         throw new NotImplementedException();
@@ -94,12 +71,7 @@ public class EventService : IEventService
         throw new NotImplementedException();
     }
 
-    public void Subscribe<T>(T observer) where T : class, IEvent
-    {
-        throw new NotImplementedException();
-    }
-
-    public void SubscribeAllCompat<T>(T observer) where T : class, IEvent
+    public void SubscribeAll(object observer)
     {
         throw new NotImplementedException();
     }

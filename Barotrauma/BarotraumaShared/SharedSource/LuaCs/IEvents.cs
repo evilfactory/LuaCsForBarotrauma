@@ -86,15 +86,6 @@ public interface IEventServerConnected : IEvent
 #region Assembly_PluginEvents
 
 /// <summary>
-/// Allows registration of events and services before plugins are initialized.
-/// </summary>
-public interface IEventTypeRegistrationProvider : IEvent
-{
-    void RegisterEvents(IPluginEventService service);
-    void UnregisterEvents(IPluginEventService service);
-}
-
-/// <summary>
 /// Called on plugin normal, use this for basic/core loading that does not rely on any other modded content.
 /// </summary>
 public interface IEventPluginInitialize : IEvent
