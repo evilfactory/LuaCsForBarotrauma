@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Services;
 /// <summary>
 /// Provides console and debug logging services
 /// </summary>
-public interface ILoggerService : IService
+public interface ILoggerService : IReusableService
 {
     void HandleException(Exception exception, string prefix = null);
     void LogError(string message);

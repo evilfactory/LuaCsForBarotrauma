@@ -8,7 +8,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPackageManagementService : IService
+public interface IPackageManagementService : IReusableService
 {
     /// <summary>
     /// Adds packages to the queue of loadable packages without initializing them.

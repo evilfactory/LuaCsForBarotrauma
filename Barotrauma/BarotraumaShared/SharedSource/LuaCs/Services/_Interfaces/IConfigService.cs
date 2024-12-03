@@ -10,7 +10,7 @@ using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Services;
 
-public partial interface IConfigService : IService, ILuaConfigService
+public partial interface IConfigService : IReusableService, ILuaConfigService
 {
     /*
      * Resource Files.

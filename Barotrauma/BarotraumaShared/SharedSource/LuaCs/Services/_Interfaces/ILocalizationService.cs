@@ -6,7 +6,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface ILocalizationService : IService
+public interface ILocalizationService : IReusableService
 {
     IReadOnlyCollection<CultureInfo> GetLoadedLocales();
     void Remove(ImmutableArray<ILocalizationResourceInfo> localizations);

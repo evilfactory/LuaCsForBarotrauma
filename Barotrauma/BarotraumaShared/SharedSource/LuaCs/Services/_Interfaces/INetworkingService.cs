@@ -6,7 +6,7 @@ using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Services;
 
-internal interface INetworkingService : IService, ILuaCsNetworking
+internal interface INetworkingService : IReusableService, ILuaCsNetworking
 {
     bool IsActive { get; }
     bool IsSynchronized { get; }

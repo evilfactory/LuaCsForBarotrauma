@@ -7,7 +7,7 @@ using FluentResults;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPackageService : IService, 
+public interface IPackageService : IReusableService, 
     // These allow us the pass the IContentPackageService to anything that needs the data without having to directly reference the member
     IResourceCultureInfo, IAssembliesResourcesInfo, ILocalizationsResourcesInfo, ILuaScriptsResourcesInfo
 {

@@ -4,7 +4,7 @@
 /// <summary>
 /// Loads XML Style assets from the given content package.
 /// </summary>
-public interface IStylesService : IService
+public interface IStylesService : IReusableService
 {
     /// <summary>
     /// Tries to load the styles file for the given contentpackage and path into a new UIStylesProcessor instance.

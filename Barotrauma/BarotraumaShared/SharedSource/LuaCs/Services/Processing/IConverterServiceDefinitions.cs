@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Services.Processing;
 #region TypeDef
 
 // ReSharper disable once TypeParameterCanBeVariant
-public interface IConverterService<TSrc, TOut> : IService
+public interface IConverterService<TSrc, TOut> : IReusableService
 {
     Result<TOut> TryParseResource(TSrc src);
     Result<TOut> TryParseResources(IEnumerable<TSrc> sources);

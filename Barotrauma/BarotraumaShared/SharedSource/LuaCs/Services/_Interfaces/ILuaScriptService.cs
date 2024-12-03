@@ -8,7 +8,7 @@ using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface ILuaScriptService : IService
+public interface ILuaScriptService : IReusableService
 {
     #region Script_File_Collector
 
@@ -39,7 +39,7 @@ public interface ILuaScriptService : IService
     #endregion
 }
 
-public interface ILuaScriptManagementService : IService
+public interface ILuaScriptManagementService : IReusableService
 {
     #region Script_File_Execution
 

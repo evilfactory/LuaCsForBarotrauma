@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPluginManagementService : IService
+public interface IPluginManagementService : IReusableService
 {
     /// <summary>
     /// Checks if an assembly with either the fully-qualified name globally or a 'friendly name' within loaded plugins

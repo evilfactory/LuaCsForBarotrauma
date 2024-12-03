@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
@@ -127,11 +128,19 @@ public interface IEventAssemblyLoaded : IEvent
 }
 
 /// <summary>
-/// Called whenever an <see cref="AssemblyLoader"/> begins unloading.
+/// Called whenever an <see cref="IAssemblyLoaderService"/> is instanced.
 /// </summary>
-public interface IEventAssemblyContextUnloaded : IEvent
+public interface IEventAssemblyContextCreated : IEvent
 {
-    void OnAssemblyUnloaded(AssemblyLoader ctx);
+    void OnAssemblyCreated(IAssemblyLoaderService loaderService);
+}
+
+/// <summary>
+/// Called whenever an <see cref="IAssemblyLoaderService"/> begins unloading.
+/// </summary>
+public interface IEventAssemblyContextUnloading : IEvent
+{
+    void OnAssemblyUnloading(WeakReference<IAssemblyLoaderService> loaderService);
 }
 
 #endregion

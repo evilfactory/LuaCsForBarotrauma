@@ -6,7 +6,7 @@ using Barotrauma.LuaCs.Services.Safe;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IEventService : IService, ILuaEventService, IPluginEventService
+public interface IEventService : IReusableService, ILuaEventService, IPluginEventService
 {
     /// <summary>
     /// Clears all subscribers for a given event type.

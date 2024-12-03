@@ -24,7 +24,7 @@ namespace Barotrauma
         }
     }
 
-    public class PerformanceCounterService : IService
+    public class PerformanceCounterService : IReusableService
     {
         public bool EnablePerformanceCounter { get; set; } = false;
 

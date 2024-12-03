@@ -2,7 +2,7 @@
 
 namespace Barotrauma.LuaCs.Services.Processing;
 
-public interface IModConfigParserService : IService
+public interface IModConfigParserService : IReusableService
 {
     FluentResults.Result<IModConfigInfo> BuildConfigForPackage(ContentPackage package);
     FluentResults.Result<IModConfigInfo> BuildConfigFromManifest(string manifestPath);

@@ -1,40 +1,44 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.Loader;
-using System.Threading;
 using Barotrauma.LuaCs.Services;
 using Microsoft.CodeAnalysis;
-using Basic.Reference.Assemblies;
 using Microsoft.CodeAnalysis.CSharp;
 
-[assembly: InternalsVisibleTo(AssemblyLoader.InternalsAwareAssemblyName)]
+namespace Barotrauma.LuaCs;
 
-namespace Barotrauma.LuaCs.Services;
-public sealed class AssemblyLoader : AssemblyLoadContext, IDisposable
+public interface IAssemblyLoaderService : IService
 {
-    //public
-    public Guid Id { get; init; }
+    /// <summary>
+    /// Assembly loader factory for DI registration.
+    /// </summary>
+    /// <param name="pluginManagementService">The hosting management service</param>
+    /// <param name="eventService">The event service for publishing.</param>
+    /// <param name="id">The referencing ID. Intended to be used to distinguish between instances.</param>
+    /// <param name="name">The name of the friendly name instance, used for error messages.</param>
+    /// <param name="isReferenceOnlyMode">Loaded assemblies are not intended for execution, just MetadataReferences.</param>
+    delegate IAssemblyLoaderService AssemblyLoaderDelegate(
+        IPluginManagementService pluginManagementService, 
+        IEventService eventService, Guid id, string name, 
+        bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload);
+    
+    /// <summary>
+    /// ID for this instance. 
+    /// </summary>
+    Guid Id { get; }
     /// <summary>
     /// Indicates that the assemblies in this load context are metadata references only and not
     /// intended for execution.
     /// </summary>
-    public bool IsReferenceOnlyMode { get; init; }
-
+    bool IsReferenceOnlyMode { get; }
     /// <summary>
     /// Indicates that Unload was called on this context and that all strong references to it should be discarded. 
     /// </summary>
-    public bool IsDisposed
-    {
-        get => ModUtils.Threading.GetBool(ref _isDisposed);
-        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
-    }
-    private int _isDisposed;
+    public bool IsDisposed { get; }
+    
     /// <summary>
     /// Runtime value of constant <see cref="InternalsAwareAssemblyName"/> for extensibility use.
     /// </summary>
@@ -43,34 +47,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IDisposable
     /// Name for all runtime-compiled assemblies requiring access to <c>internal</c> assembly components. <seealso cref="InternalsVisibleToAttribute"/>
     /// </summary>
     public const string InternalsAwareAssemblyName = "InternalsAwareAssembly";
-    
-    //internal
-    private readonly IPluginManagementService _pluginManagementService;
-    private readonly Action<AssemblyLoader> _onUnload;
-    /// <summary>
-    /// This lock is just to ensure that we do not  
-    /// </summary>
-    private readonly ReaderWriterLockSlim _operationsLock = new(LockRecursionPolicy.SupportsRecursion);
-    private readonly ConcurrentDictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();
-    
-    private ThreadLocal<bool> _isResolving = new(static()=>false); // cyclic resolution exit
-    
-
-    #region PublicAPI
-
-    public AssemblyLoader(IPluginManagementService pluginManagementService, Guid id, string name, 
-        bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload) 
-        : base(isCollectible: true, name: name)
-    {
-        _pluginManagementService = pluginManagementService;
-        Id = id;
-        IsReferenceOnlyMode = isReferenceOnlyMode;
-        _onUnload = onUnload;
-        if (_onUnload is not null)
-        {
-            base.Unloading += OnUnload;
-        }
-    }
 
     /// <summary>
     /// Compiles the supplied syntaxtrees and options into an in-memory assembly image.
@@ -100,10 +76,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IDisposable
         [NotNull] IEnumerable<SyntaxTree> syntaxTrees,
         ImmutableArray<MetadataReference> externMetadataReferences,
         [NotNull] CSharpCompilationOptions compilationOptions,
-        ImmutableArray<Assembly> externFileAssemblyReferences)
-    {
-        throw new NotImplementedException();
-    }
+        ImmutableArray<Assembly> externFileAssemblyReferences);
 
     /// <summary>
     /// Loads the assembly from the provided location and registers all new paths provided with dependency resolution.
@@ -111,22 +84,15 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IDisposable
     /// <param name="assemblyFilePath">Absolute path to the managed assembly.</param>
     /// <param name="additionalDependencyPaths">Additional paths for dependency resolution.</param>
     /// <returns>Success and reference to the assembly if successful.</returns>
-    public FluentResults.Result<Assembly> LoadAssemblyFromFile(string assemblyFilePath, 
-        ImmutableArray<string> additionalDependencyPaths)
-    {
-        // TODO: Include runtime error diagnostics from Github issue.
-        throw new NotImplementedException();
-    }
+    public FluentResults.Result<Assembly> LoadAssemblyFromFile(string assemblyFilePath,
+        ImmutableArray<string> additionalDependencyPaths);
 
     /// <summary>
     /// Returns the already loaded assembly with the same name.
     /// </summary>
     /// <param name="assemblyName">Name of the assembly.</param>
-    /// <returns></returns>
-    public FluentResults.Result<Assembly> GetAssemblyByName(string assemblyName)
-    {
-        throw new NotImplementedException();
-    }
+    /// <returns>Operation success on assembly found and assembly.</returns>
+    public FluentResults.Result<Assembly> GetAssemblyByName(string assemblyName);
 
     /// <summary>
     /// Gets the list of <c>Type</c>s from loaded assemblies.
@@ -134,56 +100,12 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IDisposable
     /// <param name="includeReferenceExplicitOnly">Only include assemblies that were explicitly loaded and not automatically
     /// loaded dependencies.</param>
     /// <returns></returns>
-    public FluentResults.Result<ImmutableArray<Type>> GetTypesInAssemblies(bool includeReferenceExplicitOnly = false)
-    {
-        throw new NotImplementedException();
-    }
-
-    #endregion
-
-    #region Internals
-
-    protected override Assembly Load(AssemblyName assemblyName)
-    {
-        throw new NotImplementedException();
-    }
-
-    protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
-    {
-        // TODO: Implement NativeLibrary::InternalLoadUnmanagedDll()
-        throw new NotImplementedException();
-    }
+    public FluentResults.Result<ImmutableArray<Type>> GetTypesInAssemblies(bool includeReferenceExplicitOnly = false);
     
-    private void OnUnload(AssemblyLoadContext context)
-    {
-        base.Unloading -= OnUnload;
-        _onUnload?.Invoke(this);
-        this.Dispose(true);
-
-        throw new NotImplementedException();
-    }
-
-    #endregion
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    private void Dispose(bool disposing)
-    {
-        if (ModUtils.Threading.CheckClearAndSetBool(ref _isDisposed))
-        {
-            _operationsLock.EnterWriteLock();
-            try
-            {
-                
-            }
-            finally
-            {
-                _operationsLock.ExitWriteLock();
-            }
-        }
-    }
+    /// <summary>
+    /// List of loaded assemblies.
+    /// </summary>
+    public IEnumerable<Assembly> Assemblies { get; }
 }
+
+
