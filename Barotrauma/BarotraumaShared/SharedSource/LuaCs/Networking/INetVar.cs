@@ -1,4 +1,5 @@
-﻿using Barotrauma.LuaCs.Configuration;
+﻿using System;
+using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Networking;
 using Barotrauma.Networking;
@@ -7,10 +8,6 @@ namespace Barotrauma.LuaCs.Networking;
 
 public interface INetVar : IVarId
 {
-    /// <summary>
-    /// Synchronized network id, uninitialized if value is zero/0. Used by Networking service.
-    /// </summary>
-    ushort NetId { get; }
     /// <summary>
     /// Synchronization type
     /// </summary>
