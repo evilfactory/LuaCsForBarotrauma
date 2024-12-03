@@ -1,27 +1,10 @@
 ﻿using System;
 using System.IO;
-using MoonSharp.Interpreter;
-using MoonSharp.Interpreter.Interop;
-using System.Runtime.CompilerServices;
-using System.Linq;
-using System.Threading;
-using LuaCsCompatPatchFunc = Barotrauma.LuaCsPatch;
-using System.Diagnostics;
-using MoonSharp.VsCodeDebugger;
-using System.Reflection;
-using System.Runtime.Loader;
-using System.Xml.Linq;
-using Barotrauma.LuaCs;
 using Barotrauma.LuaCs.Configuration;
-using Barotrauma.LuaCs.Events;
-using Barotrauma.LuaCs.Networking;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.LuaCs.Services.Compatibility;
 using Barotrauma.LuaCs.Services.Processing;
-using Barotrauma.LuaCs.Services.Safe;
 using Barotrauma.Networking;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 
 namespace Barotrauma
 {
@@ -132,7 +115,7 @@ namespace Barotrauma
                         return cfgRes.Value;
                     }
                     Logger.LogResults(cfgRes.ToResult());
-                    throw new ContentLoadException($"LuaCsSetup: Failed to load config for {internalName}!");
+                    throw new Exception($"LuaCsSetup: Failed to load config for {internalName}!");
                 }
             }
             
