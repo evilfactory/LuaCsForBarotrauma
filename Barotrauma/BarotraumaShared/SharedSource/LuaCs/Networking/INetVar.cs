@@ -16,9 +16,9 @@ public interface INetVar : IVarId
     /// Permissions needed by clients to send net-events or receive net messages. 
     /// </summary>
     ClientPermissions WritePermissions { get; }
+
     void ReadNetMessage(INetReadMessage message);
     void WriteNetMessage(INetWriteMessage message);
-    void Initialize(ushort netId, NetSync syncMode, ClientPermissions writePermissions);
 }
 
 public enum NetSync
