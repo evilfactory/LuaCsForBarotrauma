@@ -62,21 +62,18 @@ public interface IAssemblyLoaderService : IService
     /// <param name="assemblyInternalName">The real assembly name used in compilation.
     /// <para><b>[IMPORTANT]</b>Cannot be null or empty if <see cref="compileWithInternalAccess"/> is false.</para></param>
     /// <param name="syntaxTrees"><c>[NotNull]</c>Syntax trees to compile into the assembly.</param>
-    /// <param name="externMetadataReferences">Metadata to be used for compilation.
+    /// <param name="metadataReferences">All <c>MetadataReference<c/>s to be used for compilation.
     /// [IMPORTANT] This method builds metadata from loaded assemblies, only supply your own if you have in-memory
     /// images not managed by the AssemblyManager class.</param>
     /// <param name="compilationOptions"><c>[NotNull]</c>CSharp compilation options. This method automatically adds the 'IgnoreAccessChecks' property for compilation.</param>
-    /// <param name="externFileAssemblyReferences">Additional assemblies located in the FileSystem to build metadata references from.
-    /// Assemblies here will have duplicates by the same name that are currently loaded filtered out.</param>
     /// <returns>Success state of the operation.</returns>
     public FluentResults.Result<Assembly> CompileScriptAssembly(
         [NotNull] string friendlyAssemblyName,
         bool compileWithInternalAccess,
         string assemblyInternalName,
         [NotNull] IEnumerable<SyntaxTree> syntaxTrees,
-        ImmutableArray<MetadataReference> externMetadataReferences,
-        [NotNull] CSharpCompilationOptions compilationOptions,
-        ImmutableArray<Assembly> externFileAssemblyReferences);
+        ImmutableArray<MetadataReference> metadataReferences,
+        [NotNull] CSharpCompilationOptions compilationOptions);
 
     /// <summary>
     /// Loads the assembly from the provided location and registers all new paths provided with dependency resolution.

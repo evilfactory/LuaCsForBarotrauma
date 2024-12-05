@@ -11,26 +11,17 @@ public interface IEventService : IReusableService, ILuaEventService
     /// <summary>
     /// Clears all subscribers for a given event type.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    void ClearAllEventSubscribers<T>() where T : IEvent;
+    /// <typeparam name="T">The event type.</typeparam>
+    void ClearAllEventSubscribers<T>() where T : IEvent<T>;
     /// <summary>
     /// Clears all subscribers lists.
     /// </summary>
     void ClearAllSubscribers();
     /// <summary>
-    /// Subscribes instance to all registered events the given type implements.
-    /// Note: The event system holds WeakRef to the type and requires
-    /// that instance refs be maintained elsewhere.
+    /// Invokes all alive subscribers of the given event using the provided invocation factory.
     /// </summary>
-    /// <param name="observer"></param>
-    /// <typeparam name="T"></typeparam>
-    void SubscribeAll(object observer);
-    /// <summary>
-    /// Invokes all alive subscribers of the given event using the provided
-    /// invocation factory.
-    /// </summary>
-    /// <param name="eventInvoker"></param>
+    /// <param name="action"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    FluentResults.Result PublishEvent<T>(Action<T> eventInvoker) where T : IEvent;
+    FluentResults.Result PublishEvent<T>(Action<T> action) where T : IEvent<T>;
 }

@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -29,23 +30,28 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     
     //internal
     private readonly IPluginManagementService _pluginManagementService;
+    private readonly IEventService _eventService;
     private readonly Action<AssemblyLoader> _onUnload;
     /// <summary>
     /// This lock is just to ensure that we do not load while disposing
     /// </summary>
     private readonly ReaderWriterLockSlim _operationsLock = new(LockRecursionPolicy.SupportsRecursion);
     private readonly ConcurrentDictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();
+    private readonly ConcurrentDictionary<string, Assembly> _memoryCompiledAssemblies = new();
     
     private ThreadLocal<bool> _isResolving = new(static()=>false); // cyclic resolution exit
     
 
     #region PublicAPI
 
-    public AssemblyLoader(IPluginManagementService pluginManagementService, Guid id, string name, 
+    public AssemblyLoader(IPluginManagementService pluginManagementService, 
+        IEventService eventService, 
+        Guid id, string name, 
         bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload) 
         : base(isCollectible: true, name: name)
     {
         _pluginManagementService = pluginManagementService;
+        _eventService = eventService;
         Id = id;
         IsReferenceOnlyMode = isReferenceOnlyMode;
         _onUnload = onUnload;
@@ -60,9 +66,8 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         bool compileWithInternalAccess,
         string assemblyInternalName,
         [NotNull] IEnumerable<SyntaxTree> syntaxTrees,
-        ImmutableArray<MetadataReference> externMetadataReferences,
-        [NotNull] CSharpCompilationOptions compilationOptions,
-        ImmutableArray<Assembly> externFileAssemblyReferences)
+        ImmutableArray<MetadataReference> metadataReferences,
+        [NotNull] CSharpCompilationOptions compilationOptions)
     {
         throw new NotImplementedException();
     }

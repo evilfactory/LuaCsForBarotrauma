@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
+using Dynamitey;
+using ImpromptuInterface;
 
 namespace Barotrauma.LuaCs.Events;
 
@@ -11,41 +14,69 @@ namespace Barotrauma.LuaCs.Events;
  * types being internal by default.
 */
 
-public interface IEvent { }
+public interface IEvent<out T> where T : IEvent<T>
+{
+    static virtual bool IsLuaSafe => false;
+    static virtual T GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+    {
+        // throw error if not overriden since we don't have 'static abstract'.
+        // Implementers must provide the runner. 
+        throw new NotImplementedException();
+    }
+}
 
 #region GameEvents
 
 /// <summary>
 /// Called as soon as round begins to load before any loading takes place.
 /// </summary>
-public interface IEventRoundStarting : IEvent
+public interface IEventRoundStarting : IEvent<IEventRoundStarting>
 {
+    static bool IEvent<IEventRoundStarting>.IsLuaSafe => true;
     void OnRoundStarting();
+    static IEventRoundStarting IEvent<IEventRoundStarting>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnRoundStarting = ReturnVoid.Arguments(() => luaFunc[nameof(OnRoundStarting)]()) 
+    }.ActLike<IEventRoundStarting>();
 }
 
 /// <summary>
 /// Called when a round has started and fully loaded.
 /// </summary>
-public interface IEventRoundStarted : IEvent
+public interface IEventRoundStarted : IEvent<IEventRoundStarted>
 {
+    static bool IEvent<IEventRoundStarted>.IsLuaSafe => true;
     void OnRoundStart();
+    static IEventRoundStarted IEvent<IEventRoundStarted>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnRoundStart = ReturnVoid.Arguments(() => luaFunc[nameof(OnRoundStart)]())
+    }.ActLike<IEventRoundStarted>();
 }
 
 /// <summary>
 /// Called on game loop normal update.
 /// </summary>
-
-public interface IEventUpdate : IEvent
+public interface IEventUpdate : IEvent<IEventUpdate>
 {
-    void OnUpdate();
+    static bool IEvent<IEventUpdate>.IsLuaSafe => true;
+    void OnUpdate(float fixedDeltaTime);
+    static IEventUpdate IEvent<IEventUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnUpdate = ReturnVoid.Arguments<float>((fixedDeltaTime) => luaFunc[nameof(OnUpdate)](fixedDeltaTime))
+    }.ActLike<IEventUpdate>();
 }
 
 /// <summary>
-/// Called on game loop fixed update (physics)
+/// Called on game loop draw update.
 /// </summary>
-public interface IEventFixedUpdate : IEvent
+public interface IEventDrawUpdate : IEvent<IEventDrawUpdate>
 {
-    void OnFixedUpdate();
+    static bool IEvent<IEventDrawUpdate>.IsLuaSafe => true;
+    void OnDrawUpdate(float deltaTime);
+    static IEventDrawUpdate IEvent<IEventDrawUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnDrawUpdate = ReturnVoid.Arguments<float>((deltaTime) => luaFunc[nameof(OnDrawUpdate)](deltaTime))
+    }.ActLike<IEventDrawUpdate>();
 }
 
 #endregion
@@ -58,13 +89,19 @@ public interface IEventFixedUpdate : IEvent
 /// <summary>
 /// Called when a client connects to the server and has loaded into the lobby.
 /// </summary>
-interface IEventClientConnected : IEvent
+interface IEventClientConnected : IEvent<IEventClientConnected>
 {
     /// <summary>
     /// Called when a client connects to the server.
     /// </summary>
     /// <param name="client">The connecting client.</param>
     void OnClientConnected(Client client);
+    static bool IEvent<IEventClientConnected>.IsLuaSafe => true;
+
+    static IEventClientConnected IEvent<IEventClientConnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnClientConnected = ReturnVoid.Arguments<Client>((client) => luaFunc[nameof(OnClientConnected)](client))
+    }.ActLike<IEventClientConnected>();
 }
 #endif
 #endregion
@@ -74,9 +111,14 @@ interface IEventClientConnected : IEvent
 /// <summary>
 /// Called when the client has connected to the server and loaded to the lobby.
 /// </summary>
-public interface IEventServerConnected : IEvent
+public interface IEventServerConnected : IEvent<IEventServerConnected>
 {
     void OnServerConnected();
+    static bool IEvent<IEventServerConnected>.IsLuaSafe => true;
+    static IEventServerConnected IEvent<IEventServerConnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) =>  new
+    {
+        OnServerConnected = ReturnVoid.Arguments(() => luaFunc[nameof(OnServerConnected)]())
+    }.ActLike<IEventServerConnected>();
 }
 #endif
 #endregion
@@ -88,50 +130,74 @@ public interface IEventServerConnected : IEvent
 /// <summary>
 /// Called on plugin normal, use this for basic/core loading that does not rely on any other modded content.
 /// </summary>
-public interface IEventPluginInitialize : IEvent
+public interface IEventPluginInitialize : IEvent<IEventPluginInitialize>
 {
     void Initialize();
+    static IEventPluginInitialize IEvent<IEventPluginInitialize>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnInitialize = ReturnVoid.Arguments(() => luaFunc[nameof(Initialize)]())
+    }.ActLike<IEventPluginInitialize>();
 }
 
 /// <summary>
 /// Called once all plugins have been loaded. if you have integrations with any other mod, put that code here.
 /// </summary>
-public interface IEventPluginLoadCompleted : IEvent
+public interface IEventPluginLoadCompleted : IEvent<IEventPluginLoadCompleted>
 {
     void OnLoadCompleted();
+    static IEventPluginLoadCompleted IEvent<IEventPluginLoadCompleted>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnLoadCompleted = ReturnVoid.Arguments(() => luaFunc[nameof(OnLoadCompleted)]())
+    }.ActLike<IEventPluginLoadCompleted>();
 }
 
 /// <summary>
 /// Called before Barotrauma initializes plugins. Use if you want to patch another plugin's behaviour 'unofficially'.
 /// WARNING: This method is called before Initialize()!
 /// </summary>
-public interface IEventPluginPreInitialize : IEvent
+public interface IEventPluginPreInitialize : IEvent<IEventPluginPreInitialize>
 {
     void PreInitPatching();
+    static IEventPluginPreInitialize IEvent<IEventPluginPreInitialize>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnPreInitialize = ReturnVoid.Arguments(() => luaFunc[nameof(PreInitPatching)]())
+    }.ActLike<IEventPluginPreInitialize>();
 }
 
 /// <summary>
 /// Called whenever a new assembly is loaded.
 /// </summary>
-public interface IEventAssemblyLoaded : IEvent
+public interface IEventAssemblyLoaded : IEvent<IEventAssemblyLoaded>
 {
     void OnAssemblyLoaded(Assembly assembly);
+    static IEventAssemblyLoaded IEvent<IEventAssemblyLoaded>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnAssemblyLoaded = ReturnVoid.Arguments<Assembly>((ass) => luaFunc[nameof(OnAssemblyLoaded)](ass))
+    }.ActLike<IEventAssemblyLoaded>();
 }
 
 /// <summary>
 /// Called whenever an <see cref="IAssemblyLoaderService"/> is instanced.
 /// </summary>
-public interface IEventAssemblyContextCreated : IEvent
+public interface IEventAssemblyContextCreated : IEvent<IEventAssemblyContextCreated>
 {
     void OnAssemblyCreated(IAssemblyLoaderService loaderService);
+    static IEventAssemblyContextCreated IEvent<IEventAssemblyContextCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnAssemblyContextCreated = ReturnVoid.Arguments<IAssemblyLoaderService>((loader) => luaFunc[nameof(OnAssemblyCreated)](loader))
+    }.ActLike<IEventAssemblyContextCreated>();
 }
 
 /// <summary>
 /// Called whenever an <see cref="IAssemblyLoaderService"/> begins unloading.
 /// </summary>
-public interface IEventAssemblyContextUnloading : IEvent
+public interface IEventAssemblyContextUnloading : IEvent<IEventAssemblyContextUnloading>
 {
     void OnAssemblyUnloading(WeakReference<IAssemblyLoaderService> loaderService);
+    static IEventAssemblyContextUnloading IEvent<IEventAssemblyContextUnloading>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        OnAssemblyUnloading = ReturnVoid.Arguments<WeakReference<IAssemblyLoaderService>>((loader) => luaFunc[nameof(OnAssemblyUnloading)](loader))
+    }.ActLike<IEventAssemblyContextUnloading>();
 }
 
 #endregion

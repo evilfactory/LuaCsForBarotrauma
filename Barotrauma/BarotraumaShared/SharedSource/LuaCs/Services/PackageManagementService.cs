@@ -456,4 +456,6 @@ public class PackageManagementService : IPackageManagementService
         public static implicit operator DependencyEntryKey((string packageName, ulong steamWorkshopId, string folderPath) tuple1) => 
             new (tuple1.packageName, tuple1.folderPath, tuple1.steamWorkshopId);
     }
+    
+    
 }
