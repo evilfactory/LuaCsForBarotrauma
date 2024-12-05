@@ -20,5 +20,10 @@ public interface IReusableService : IService
 /// </summary>
 public interface IService : IDisposable
 {
-    
+    bool IsDisposed { get; }
+    virtual void CheckDisposed()
+    {
+        if (IsDisposed) 
+            throw new ObjectDisposedException($"Tried to call method on disposed object '{this.GetType().Name}'!");
+    }
 }
