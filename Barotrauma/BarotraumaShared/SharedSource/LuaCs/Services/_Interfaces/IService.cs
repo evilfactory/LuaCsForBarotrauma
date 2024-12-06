@@ -21,7 +21,7 @@ public interface IReusableService : IService
 public interface IService : IDisposable
 {
     bool IsDisposed { get; }
-    virtual void CheckDisposed()
+    public void CheckDisposed()
     {
         if (IsDisposed) 
             throw new ObjectDisposedException($"Tried to call method on disposed object '{this.GetType().Name}'!");

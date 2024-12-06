@@ -1,18 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using Barotrauma.LuaCs.Events;
 using Barotrauma.LuaCs.Services.Compatibility;
 
 namespace Barotrauma.LuaCs.Services.Safe;
 
-public interface ILuaEventService : ILuaService, ILuaCsHook
+public interface ILuaSafeEventService : ILuaService, ILuaCsHook
 {
-    void Add(string eventName, string identifier, LuaCsFunc callback);
-    void Add(string eventName, LuaCsFunc callback);
+    void Subscribe(string interfaceName, string identifier, IDictionary<string, LuaCsFunc> callbacks);
+    /// <summary>
+    /// Removes a subscriber from an event that subscribed under the given identifier.
+    /// </summary>
+    /// <param name="eventName"></param>
+    /// <param name="identifier"></param>
     void Remove(string eventName, string identifier);
     /// <summary>
-    /// Lua call
+    /// Send an event to all subscribers to an interface.
     /// </summary>
     /// <param name="interfaceName">Name of the interface (must be registered with Lua).</param>
-    /// <param name="runner">Execution runner, the subscriber is provided as the first element in the array to the lua runner.</param>
+    /// <param name="runner">Execution runner, the subscriber is provided as the first argument in the lua runner.</param>
     /// <returns></returns>
-    FluentResults.Result PublishLuaEvent(string interfaceName, LuaCsFunc runner);
+    void PublishLuaEvent(string interfaceName, LuaCsFunc runner);
+}
+
+public interface ILuaEventService : ILuaSafeEventService
+{
+    public FluentResults.Result RegisterSafeEvent<T>() where T : IEvent<T>;
+    public FluentResults.Result UnregisterSafeEvent<T>() where T : IEvent<T>;
 }
