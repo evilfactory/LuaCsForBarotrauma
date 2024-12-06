@@ -9,10 +9,37 @@ namespace Barotrauma.LuaCs.Services;
 public interface IEventService : IReusableService, ILuaEventService
 {
     /// <summary>
-    /// Clears all subscribers for a given event type.
+    /// Tries to add an alias to the event for string callback subscriptions (lua).
+    /// </summary>
+    /// <param name="alias"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    FluentResults.Result AddEventAlias<T>(string alias) where T : IEvent<T>;
+    /// <summary>
+    /// Tries to add an alias to the event for string callback subscriptions (lua).
+    /// </summary>
+    /// <param name="alias"></param>
+    /// <param name="eventTypeName"></param>
+    /// <returns></returns>
+    FluentResults.Result AddEventAlias(string alias, string eventTypeName);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="subscriber"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    FluentResults.Result Subscribe<T>(T subscriber) where T : IEvent<T>;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="subscriber"></param>
+    /// <typeparam name="T"></typeparam>
+    void Unsubscribe<T>(T subscriber) where T : IEvent;
+    /// <summary>
+    /// Clears all subscribers for a given event type and removes any registration to the type.
     /// </summary>
     /// <typeparam name="T">The event type.</typeparam>
-    void ClearAllEventSubscribers<T>() where T : IEvent<T>;
+    void ClearAllEventSubscribers<T>() where T : IEvent;
     /// <summary>
     /// Clears all subscribers lists.
     /// </summary>
