@@ -756,35 +756,4 @@ public class AssemblyManager : IAssemblyManagementService, IPluginManagementServ
     }
 }
 
-public static class AssemblyExtensions
-{
-    /// <summary>
-    /// Gets all types in the given assembly. Handles invalid type scenarios.
-    /// </summary>
-    /// <param name="assembly">The assembly to scan</param>
-    /// <returns>An enumerable collection of types.</returns>
-    public static IEnumerable<Type> GetSafeTypes(this Assembly assembly)
-    {
-        // Based on https://github.com/Qkrisi/ktanemodkit/blob/master/Assets/Scripts/ReflectionHelper.cs#L53-L67
 
-        try
-        {
-            return assembly.GetTypes();
-        }
-        catch (ReflectionTypeLoadException re)
-        {
-            try
-            {
-                return re.Types.Where(x => x != null)!;
-            }
-            catch (InvalidOperationException)   
-            {
-                return new List<Type>();
-            }
-        }
-        catch (Exception)
-        {
-            return new List<Type>();
-        }
-    }
-}
