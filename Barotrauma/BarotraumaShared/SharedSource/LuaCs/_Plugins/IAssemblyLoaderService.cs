@@ -35,11 +35,6 @@ public interface IAssemblyLoaderService : IService
     /// </summary>
     bool IsReferenceOnlyMode { get; }
     /// <summary>
-    /// Indicates that Unload was called on this context and that all strong references to it should be discarded. 
-    /// </summary>
-    public bool IsDisposed { get; }
-    
-    /// <summary>
     /// Runtime value of constant <see cref="InternalsAwareAssemblyName"/> for extensibility use.
     /// </summary>
     public static readonly string InternalsAccessAssemblyName = InternalsAwareAssemblyName;
@@ -49,17 +44,23 @@ public interface IAssemblyLoaderService : IService
     public const string InternalsAwareAssemblyName = "InternalsAwareAssembly";
 
     /// <summary>
+    /// Add additional locations for dependency resolution to use.
+    /// </summary>
+    /// <param name="paths"></param>
+    /// <returns></returns>
+    public FluentResults.Result AddDependencyPaths(ImmutableArray<string> paths);
+
+    /// <summary>
     /// Compiles the supplied syntaxtrees and options into an in-memory assembly image.
     /// Builds metadata from loaded assemblies, only supply your own if you have in-memory images not managed by the
     /// AssemblyManager class. 
     /// </summary>
-    /// <param name="friendlyAssemblyName"><c>[NotNull]</c>Name reference of the assembly.
+    /// <param name="assemblyName"><c>[NotNull]</c>Name reference of the assembly.
     /// <para><b>[IMPORTANT]</b> This is used to reference this assembly as the true name will be forced if
     /// publicized assemblies are not used (InternalsVisibleTo Attrib).</para>
     /// Must be supplied for in-memory assemblies.
     /// <para>Must be unique to all other assemblies explicitly loaded using this context.</para></param>
     /// <param name="compileWithInternalAccess">Forces the assembly name to <see cref="InternalsAccessAssemblyName"/> and grants access to <c>internal</c>.</param>
-    /// <param name="assemblyInternalName">The real assembly name used in compilation.
     /// <para><b>[IMPORTANT]</b>Cannot be null or empty if <see cref="compileWithInternalAccess"/> is false.</para></param>
     /// <param name="syntaxTrees"><c>[NotNull]</c>Syntax trees to compile into the assembly.</param>
     /// <param name="metadataReferences">All <c>MetadataReference<c/>s to be used for compilation.
@@ -68,12 +69,11 @@ public interface IAssemblyLoaderService : IService
     /// <param name="compilationOptions"><c>[NotNull]</c>CSharp compilation options. This method automatically adds the 'IgnoreAccessChecks' property for compilation.</param>
     /// <returns>Success state of the operation.</returns>
     public FluentResults.Result<Assembly> CompileScriptAssembly(
-        [NotNull] string friendlyAssemblyName,
+        [NotNull] string assemblyName,
         bool compileWithInternalAccess,
-        string assemblyInternalName,
-        [NotNull] IEnumerable<SyntaxTree> syntaxTrees,
+        ImmutableArray<SyntaxTree> syntaxTrees,
         ImmutableArray<MetadataReference> metadataReferences,
-        [NotNull] CSharpCompilationOptions compilationOptions);
+        CSharpCompilationOptions compilationOptions = null);
 
     /// <summary>
     /// Loads the assembly from the provided location and registers all new paths provided with dependency resolution.
@@ -94,10 +94,8 @@ public interface IAssemblyLoaderService : IService
     /// <summary>
     /// Gets the list of <c>Type</c>s from loaded assemblies.
     /// </summary>
-    /// <param name="includeReferenceExplicitOnly">Only include assemblies that were explicitly loaded and not automatically
-    /// loaded dependencies.</param>
     /// <returns></returns>
-    public FluentResults.Result<ImmutableArray<Type>> GetTypesInAssemblies(bool includeReferenceExplicitOnly = false);
+    public FluentResults.Result<ImmutableArray<Type>> GetTypesInAssemblies();
     
     /// <summary>
     /// List of loaded assemblies.
