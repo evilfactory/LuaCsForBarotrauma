@@ -8,20 +8,11 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IEventService : IReusableService, ILuaEventService
 {
-    /// <summary>
-    /// Tries to add an alias to the event for string callback subscriptions (lua).
-    /// </summary>
-    /// <param name="alias"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    FluentResults.Result AddEventAlias<T>(string alias) where T : IEvent<T>;
-    /// <summary>
-    /// Tries to add an alias to the event for string callback subscriptions (lua).
-    /// </summary>
-    /// <param name="alias"></param>
-    /// <param name="eventTypeName"></param>
-    /// <returns></returns>
-    FluentResults.Result AddEventAlias(string alias, string eventTypeName);
+    FluentResults.Result SetLegacyLuaRunnerFactory<T>(Func<LuaCsFunc, T> runnerFactory) where T : IEvent<T>;
+    void RemoveLegacyLuaRunnerFactory<T>() where T : IEvent<T>;
+    void SetAliasToEvent<T>(string alias) where T : IEvent<T>;
+    void RemoveEventAlias(string alias);
+    void RemoveAllEventAliases<T>() where T : IEvent<T>;
     /// <summary>
     /// 
     /// </summary>

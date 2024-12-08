@@ -71,6 +71,10 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
     private readonly Lazy<IPluginManagementService> _pluginManagementService;
     private readonly Dictionary<TypeStringKey, Action<string, IDictionary<string, LuaCsFunc>>> _luaSubscriptionFactories = new();
     /// <summary>
+    /// A collection of factories to produce subscribers from a single lua function handle. For legacy Add() API.
+    /// </summary>
+    private readonly Dictionary<TypeStringKey, Action<string, LuaCsFunc>> _luaLegacySubscriptionFactories = new();
+    /// <summary>
     /// A collection of lua event subscribers from Add() that had neither a valid event name nor an event alias pointing to one.
     /// Only actionable via Call().
     /// </summary>
@@ -105,6 +109,7 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
             return true;
         return false;
     }
+    
     [Obsolete("Part of the legacy events API, only works for Lua-only custom events.")]
     public T Call<T>(string eventName, params object[] args)
     {
@@ -138,12 +143,18 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         var eventKey = eventName;
         if (_eventTypeNameAliases.TryGetValue(eventName, out var aliasType))
             eventKey = aliasType;
-        throw new NotImplementedException();
+        if (_luaLegacySubscriptionFactories.TryGetValue(eventKey, out var factory))
+        {
+            factory(identifier, callback);
+            return;
+        }
+        _luaOrphanSubscribers.TryGetOrSet(eventName, () => new Dictionary<string, LuaCsFunc>())
+            .Add(identifier.IsNullOrWhiteSpace() ? string.Empty : identifier, callback);
     }
 
     public void Add(string eventName, LuaCsFunc callback)
     {
-        throw new NotImplementedException();
+        Add(eventName, string.Empty, callback);
     }
 
     public void Remove(string eventName, string identifier)
@@ -217,15 +228,6 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         return FluentResults.Result.Ok();
     }
 
-    public FluentResults.Result AddEventAlias<T>(string alias) where T : IEvent<T> => AddEventAlias(alias, typeof(T).Name);
-    public FluentResults.Result AddEventAlias(string alias, string eventTypeName)
-    {
-        ((IService)this).CheckDisposed();
-        return !_eventTypeNameAliases.TryAdd(alias, eventTypeName) 
-            ? FluentResults.Result.Fail($"Duplicate event alias already exists for '{eventTypeName}'") 
-            : FluentResults.Result.Ok();
-    }
-
     // lua subscribe
     public void Subscribe(string interfaceName, string identifier, IDictionary<string, LuaCsFunc> callbacks)
     {
@@ -233,7 +235,48 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         if (_luaSubscriptionFactories.TryGetValue(interfaceName, out var subFactory))
             subFactory(identifier, callbacks);
     }
-    
+
+    public FluentResults.Result SetLegacyLuaRunnerFactory<T>(Func<LuaCsFunc, T> runnerFactory) where T : IEvent<T>
+    {
+        var type = typeof(T);
+        if (!_luaSubscriptionFactories.TryGetValue(type, out var dict))
+            return FluentResults.Result.Fail(new Error($"Tried to add legacy lua factory for an event not registered for lua subscriptions."));
+        
+        _luaLegacySubscriptionFactories[type] = (ident, func) =>
+        {
+            var runner = runnerFactory(func);
+            _subscriptions.TryGetOrSet(type, () => new Dictionary<OneOf<string, IEvent>, IEvent>())[ident] = runner;
+        };
+        return FluentResults.Result.Ok();
+    }
+
+    public void RemoveLegacyLuaRunnerFactory<T>() where T : IEvent<T>
+    {
+        _luaLegacySubscriptionFactories.Remove(typeof(T));
+    }
+
+    public void SetAliasToEvent<T>(string alias) where T : IEvent<T>
+    {
+        if (alias.IsNullOrWhiteSpace())
+            return;
+        _eventTypeNameAliases[alias] = typeof(T).Name;
+    }
+
+    public void RemoveEventAlias(string alias)
+    {
+        _eventTypeNameAliases.Remove(alias);
+    }
+
+    public void RemoveAllEventAliases<T>() where T : IEvent<T>
+    {
+        foreach (var keys in _eventTypeNameAliases
+                     .Where(kvp => kvp.Value.IsNullOrWhiteSpace() || kvp.Value == typeof(T).Name)
+                     .Select(kvp => kvp.Key).ToImmutableArray())
+        {
+            _eventTypeNameAliases.Remove(keys);
+        }
+    }
+
     public FluentResults.Result Subscribe<T>(T subscriber) where T : IEvent<T>
     {
         ((IService)this).CheckDisposed();
