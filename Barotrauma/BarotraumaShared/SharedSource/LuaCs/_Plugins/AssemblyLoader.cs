@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Threading;
 using Barotrauma.LuaCs;
+using Barotrauma.LuaCs.Events;
 using Microsoft.CodeAnalysis;
 using Basic.Reference.Assemblies;
 using FluentResults;
@@ -35,7 +36,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     private int _isDisposed;
     
     //internal
-    private readonly IPluginManagementService _pluginManagementService;
+    private readonly IAssemblyManagementService _assemblyManagementService;
     private readonly IEventService _eventService;
     private readonly Action<AssemblyLoader> _onUnload;
     /// <summary>
@@ -49,13 +50,13 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 
     #region PublicAPI
 
-    public AssemblyLoader(IPluginManagementService pluginManagementService, 
+    public AssemblyLoader(IAssemblyManagementService assemblyManagementService, 
         IEventService eventService, 
         Guid id, string name, 
         bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload) 
         : base(isCollectible: true, name: name)
     {
-        _pluginManagementService = pluginManagementService;
+        _assemblyManagementService = assemblyManagementService;
         _eventService = eventService;
         Id = id;
         IsReferenceOnlyMode = isReferenceOnlyMode;
@@ -64,6 +65,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         {
             base.Unloading += OnUnload;
         }
+        
     }
 
     public FluentResults.Result AddDependencyPaths(ImmutableArray<string> paths)
@@ -251,10 +253,23 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             return new FluentResults.Result<Assembly>().WithSuccess(new Success($"Assembly found")).WithValue(data.Assembly);
         }
 
-        foreach (var assembly1 in this.Assemblies)
+        foreach (var assembly1 in this.Assemblies.Where(a => !_loadedAssemblyData.ContainsKey(a)))
         {
             if (assembly1.GetName().FullName == assemblyName)
             {
+                try
+                {
+                    if (!assembly1.Location.IsNullOrWhiteSpace())
+                    {
+                        _loadedAssemblyData[assembly1] = new AssemblyData(assembly1, assembly1.Location);
+                    }
+                    // we don't have the original byte array so we can't store it.
+                }
+                catch (NotSupportedException nse) // dynamic assembly or location property threw
+                {
+                    // ignored
+                }
+
                 return new FluentResults.Result<Assembly>().WithSuccess(new Success($"Assembly found")).WithValue(assembly1);
             }
         }
@@ -266,12 +281,18 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     {
         try
         {
-            return new FluentResults.Result<ImmutableArray<Type>>().WithValue([.._loadedAssemblyData.SelectMany(kvp=> kvp.Value.Types)]);
+            return new FluentResults.Result<ImmutableArray<Type>>().WithValue(_loadedAssemblyData.SelectMany(kvp=> kvp.Value.Types).ToImmutableArray());
         }
         catch (Exception e)
         {
             return FluentResults.Result.Fail(new ExceptionalError(e));
         }
+    }
+    
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 
     #endregion
@@ -282,35 +303,42 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     {
         if (_isResolving.Value)
             return null;
-
+        
+        _isResolving.Value = true;
         try
         {
-            _isResolving.Value = true;
-            throw new NotImplementedException();
+            if (_loadedAssemblyData.TryGetValue(assemblyName.FullName, out var data))
+                return data.Assembly;
+            var idSpan = new[] { this.Id };
+            if (_assemblyManagementService.GetLoadedAssembly(assemblyName, in idSpan) is { IsSuccess: true } ret)
+                return ret.Value;
+            return null;
+        }
+        catch (ArgumentNullException _)
+        {
+            return null;
+        }
+        finally
+        {
+            _isResolving.Value = false;
         }
     }
 
-    protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
+    // Use the default import resolver since native libraries are niche and not blocking for unloading.
+    // Implement if conflicts become an issue.
+    /*protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
     {
-        // TODO: Implement NativeLibrary::InternalLoadUnmanagedDll()
+        // Implement NativeLibrary::InternalLoadUnmanagedDll()
         throw new NotImplementedException();
-    }
+    }*/
     
     private void OnUnload(AssemblyLoadContext context)
     {
         base.Unloading -= OnUnload;
+        var wf = new WeakReference<IAssemblyLoaderService>(this);
+        _eventService.PublishEvent<IEventAssemblyContextUnloading>((sub) => sub.OnAssemblyUnloading(wf));
         _onUnload?.Invoke(this);
         this.Dispose(true);
-
-        throw new NotImplementedException();
-    }
-
-    #endregion
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
     }
 
     private void Dispose(bool disposing)
@@ -320,6 +348,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             _operationsLock.EnterWriteLock();
             try
             {
+                _loadedAssemblyData.Clear();
                 
             }
             finally
@@ -341,7 +370,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             Assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
             AssemblyImageOrPath = assemblyImage ?? throw new ArgumentNullException(nameof(assemblyImage));
             AssemblyReference = MetadataReference.CreateFromImage(assemblyImage);
-            Types = [..assembly.GetSafeTypes()];
+            Types = assembly.GetSafeTypes().ToImmutableArray();
         }
 
         public AssemblyData(Assembly assembly, string path)
@@ -349,7 +378,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             Assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
             AssemblyImageOrPath = path ?? throw new ArgumentNullException(nameof(path));
             AssemblyReference = MetadataReference.CreateFromFile(path);
-            Types = [..assembly.GetSafeTypes()];
+            Types = assembly.GetSafeTypes().ToImmutableArray();
         }
     }
 
@@ -394,4 +423,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         public static implicit operator AssemblyOrStringKey(Assembly assembly) => new AssemblyOrStringKey(assembly);
         public static implicit operator AssemblyOrStringKey(string name) => new AssemblyOrStringKey(name);
     }
+    
+    #endregion
 }

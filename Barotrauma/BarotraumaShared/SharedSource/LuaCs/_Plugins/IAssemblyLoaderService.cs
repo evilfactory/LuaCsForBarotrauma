@@ -15,13 +15,13 @@ public interface IAssemblyLoaderService : IService
     /// <summary>
     /// Assembly loader factory for DI registration.
     /// </summary>
-    /// <param name="pluginManagementService">The hosting management service</param>
+    /// <param name="assemblyManagementService">The assembly hosting management service.</param>
     /// <param name="eventService">The event service for publishing.</param>
     /// <param name="id">The referencing ID. Intended to be used to distinguish between instances.</param>
     /// <param name="name">The name of the friendly name instance, used for error messages.</param>
     /// <param name="isReferenceOnlyMode">Loaded assemblies are not intended for execution, just MetadataReferences.</param>
     delegate IAssemblyLoaderService AssemblyLoaderDelegate(
-        IPluginManagementService pluginManagementService, 
+        IAssemblyManagementService assemblyManagementService, 
         IEventService eventService, Guid id, string name, 
         bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload);
     
