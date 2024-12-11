@@ -457,7 +457,7 @@ namespace Barotrauma.Networking
             {
                 if (pendingClient.AccountInfo.AccountId != packet.AccountId)
                 {
-                    RemovePendingClient(pendingClient, PeerDisconnectPacket.WithReason(DisconnectReason.AuthenticationFailed));
+                    rejectClient();
                 }
                 return;
             }
@@ -513,10 +513,16 @@ namespace Barotrauma.Networking
             pendingClient.AuthSessionStarted = true;
             TaskPool.Add($"{nameof(LidgrenServerPeer)}.ProcessAuth", authenticator.VerifyTicket(authTicket), t =>
             {
-                if (!t.TryGetResult(out AccountInfo accountInfo)
-                    || accountInfo.IsNone)
+                if (!t.TryGetResult(out AccountInfo accountInfo) || accountInfo.IsNone)
                 {
-                    rejectClient();
+                    if (GameMain.Server.ServerSettings.RequireAuthentication)
+                    {
+                        rejectClient();
+                    }
+                    else
+                    {
+                        acceptClient(new AccountInfo(new UnauthenticatedAccountId(packet.Name)));
+                    }
                     return;
                 }
 

@@ -2765,6 +2765,11 @@ namespace Barotrauma
                 {
                     GameMain.Server.CreateEntityEvent(wall);
                 }
+                foreach (Hull hull in Hull.HullList)
+                {
+                    if (hull.IdFreed) { continue; }
+                    hull.CreateStatusEvent();
+                }
             }));
             commands.Add(new Command("stallfiletransfers", "stallfiletransfers [seconds]: A debug command that makes all file transfers take at least the specified duration.", (string[] args) =>
             {
