@@ -23,6 +23,11 @@ namespace Barotrauma.LuaCs
 
     public static class ModUtils
     {
+        public static class Definitions
+        {
+            public const string LuaCsForBarotrauma = nameof(LuaCsForBarotrauma);
+        }
+        
         public static class Environment
         {
             internal static void SetCurrentThreadAsMain() => MainThreadId = Thread.CurrentThread.ManagedThreadId;
