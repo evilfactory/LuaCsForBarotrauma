@@ -12,6 +12,7 @@ using Barotrauma.LuaCs.Networking;
 using Barotrauma.Steam;
 using FluentResults;
 using FluentResults.LuaCs;
+using Microsoft.CodeAnalysis;
 using OneOf.Types;
 using Error = FluentResults.Error;
 using File = Barotrauma.IO.File;
@@ -64,110 +65,143 @@ public class StorageService : IStorageService
         _kLocalFilePathRules = null;
     }
 
-    public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath)
-    {
-        var r = LoadLocalText(package, localFilePath);
-        if (r is { IsSuccess: true, Value: not null })
-            return XDocument.Parse(r.Value);
-        else
-        {
-            return r.ToResult<XDocument>(s => null)
-                .WithError(GetGeneralError(nameof(LoadLocalXml), localFilePath, package));
-        }
-    }
+    public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? TryLoadXml(r.Value) : r.ToResult();
+    public FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? TryLoadBinary(r.Value) : r.ToResult();
+    public FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? TryLoadText(r.Value) : r.ToResult();
+    public FluentResults.Result SaveLocalXml(ContentPackage package, string localFilePath, XDocument document) =>
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+            ? TrySaveXml(r.Value, document) : r.ToResult();
+    public FluentResults.Result SaveLocalBinary(ContentPackage package, string localFilePath, in byte[] bytes) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+            ? TrySaveBinary(r.Value, bytes) : r.ToResult();
+    public FluentResults.Result SaveLocalText(ContentPackage package, string localFilePath, in string text) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+            ? TrySaveText(r.Value, text) : r.ToResult();
+    public async Task<FluentResults.Result<XDocument>> LoadLocalXmlAsync(ContentPackage package, string localFilePath) =>
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? await TryLoadXmlAsync(r.Value) : r.ToResult();
+    public async Task<FluentResults.Result<byte[]>> LoadLocalBinaryAsync(ContentPackage package, string localFilePath) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? await TryLoadBinaryAsync(r.Value) : r.ToResult();
+    public async Task<FluentResults.Result<string>> LoadLocalTextAsync(ContentPackage package, string localFilePath) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? await TryLoadTextAsync(r.Value) : r.ToResult();
+    public async Task<FluentResults.Result> SaveLocalXmlAsync(ContentPackage package, string localFilePath, XDocument document) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+            ? await TrySaveXmlAsync(r.Value, document) : r.ToResult();
+    public async Task<FluentResults.Result> SaveLocalBinaryAsync(ContentPackage package, string localFilePath, byte[] bytes) => 
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+            ? await TrySaveBinaryAsync(r.Value, bytes) : r.ToResult();
+    public async Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text) =>
+        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+            ? await TrySaveTextAsync(r.Value, text) : r.ToResult();
+    public FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath) =>
+        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? TryLoadXml(r.Value) : r.ToResult();
+    public FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath) => 
+        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? TryLoadBinary(r.Value) : r.ToResult();
+    public FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath) => 
+        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? TryLoadText(r.Value) : r.ToResult();
     
-        
-    public FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath) => TryLoadBinary(GetAbsFromLocal(package, localFilePath));
-    public FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath) => TryLoadText(GetAbsFromLocal(package, localFilePath));
-    public FluentResults.Result SaveLocalXml(ContentPackage package, string localFilePath, XDocument document) => TrySaveXml(GetAbsFromLocal(package, localFilePath), document);
-
-    public FluentResults.Result SaveLocalBinary(ContentPackage package, string localFilePath, in byte[] bytes) => TrySaveBinary(GetAbsFromLocal(package, localFilePath), bytes);
-
-    public FluentResults.Result SaveLocalText(ContentPackage package, string localFilePath, in string text) => TrySaveText(GetAbsFromLocal(package, localFilePath), text);
-
-    public async Task<FluentResults.Result<XDocument>> LoadLocalXmlAsync(ContentPackage package, string localFilePath)
-    {
-        var r = await LoadLocalTextAsync(package, localFilePath);
-        if (r is { IsSuccess: true, Value: not null })
-            return XDocument.Parse(r.Value);
-        else
-        {
-            return r.ToResult<XDocument>(s => null)
-                .WithError(GetGeneralError(nameof(LoadLocalXml), localFilePath, package));
-        }
-    }
-
-    public Task<FluentResults.Result<byte[]>> LoadLocalBinaryAsync(ContentPackage package, string localFilePath) => 
-        TryLoadBinaryAsync(GetAbsFromLocal(package, localFilePath));
-    public Task<FluentResults.Result<string>> LoadLocalTextAsync(ContentPackage package, string localFilePath) => TryLoadTextAsync(GetAbsFromLocal(package, localFilePath));
-    public Task<FluentResults.Result> SaveLocalXmlAsync(ContentPackage package, string localFilePath, XDocument document) => TrySaveXmlAsync(GetAbsFromLocal(package, localFilePath), document);
-    public Task<FluentResults.Result> SaveLocalBinaryAsync(ContentPackage package, string localFilePath, byte[] bytes) => TrySaveBinaryAsync(GetAbsFromLocal(package, localFilePath), bytes);
-    public Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text) => TrySaveTextAsync(GetAbsFromLocal(package, localFilePath), text);
-    public FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath) => TryLoadXml(Path.GetFullPath(package.Path.CleanUpPath()));
-    public FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath) => TryLoadBinary(Path.GetFullPath(package.Path.CleanUpPath()));
-    public FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath) => TryLoadText(Path.GetFullPath(package.Path.CleanUpPath()));
-    public FluentResults.Result<ImmutableArray<XDocument>> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public ImmutableArray<(string, FluentResults.Result<XDocument>)> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
-            return new FluentResults.Result<ImmutableArray<XDocument>>().WithError(new ExceptionalError(new ArgumentNullException(nameof(localFilePaths))));
-        var builder = ImmutableArray.CreateBuilder<XDocument>();
+            return ImmutableArray<(string, FluentResults.Result<XDocument>)>.Empty;
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<XDocument>)>(localFilePaths.Length);
         foreach (var path in localFilePaths)
-        {
-            if (TryLoadXml(path) is { IsSuccess: true, Value: var document })
-            {
-                
-            }
-        }
+            builder.Add((path, LoadPackageXml(package, path)));
+        return builder.MoveToImmutable();
     }
 
-    public FluentResults.Result<ImmutableArray<byte[]>> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
-        throw new NotImplementedException();
+        if (localFilePaths.IsDefaultOrEmpty)
+            return ImmutableArray<(string, FluentResults.Result<byte[]>)>.Empty;
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<byte[]>)>(localFilePaths.Length);
+        foreach (var path in localFilePaths)
+            builder.Add((path, LoadPackageBinary(package, path)));
+        return builder.MoveToImmutable();
     }
 
-    public FluentResults.Result<ImmutableArray<string>> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
-        throw new NotImplementedException();
+        if (localFilePaths.IsDefaultOrEmpty)
+            return ImmutableArray<(string, FluentResults.Result<string>)>.Empty;
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<string>)>(localFilePaths.Length);
+        foreach (var path in localFilePaths)
+            builder.Add((path, LoadPackageText(package, path)));
+        return builder.MoveToImmutable();
     }
 
     public FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively)
     {
         ((IService)this).CheckDisposed();
-        throw new NotImplementedException();
+        var r = GetAbsFromPackage(package, localSubfolder);
+        if (r is { IsFailed: true })
+            return r.ToResult();
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<ImmutableArray<string>>)>();
+        var sOption = searchRecursively ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
+        string[] arr = Directory.GetFiles(localSubfolder, regexFilter.IsNullOrWhiteSpace() ? "*.*" : regexFilter, sOption);
+        return new FluentResults.Result<ImmutableArray<string>>().WithSuccess($"Files found.")
+            .WithValue(arr.ToImmutableArray());
     }
 
-    public Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath)
+    public async Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath) =>
+        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? await TryLoadXmlAsync(r.Value) : r.ToResult();
+
+    public async Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath) =>
+        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? await TryLoadBinaryAsync(r.Value) : r.ToResult();
+
+    public async Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath) =>
+        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+            ? await TryLoadTextAsync(r.Value) : r.ToResult();
+
+    public async Task<ImmutableArray<(string, FluentResults.Result<XDocument>)>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        if (localFilePaths.IsDefaultOrEmpty)
+            return ImmutableArray<(string, FluentResults.Result<XDocument>)>.Empty;
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<XDocument>)>(localFilePaths.Length);
+        foreach (var path in localFilePaths)
+            builder.Add((path, await LoadPackageXmlAsync(package, path)));
+        return builder.MoveToImmutable();
     }
 
-    public Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath)
+    public async Task<ImmutableArray<(string, FluentResults.Result<byte[]>)>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        if (localFilePaths.IsDefaultOrEmpty)
+            return ImmutableArray<(string, FluentResults.Result<byte[]>)>.Empty;
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<byte[]>)>(localFilePaths.Length);
+        foreach (var path in localFilePaths)
+            builder.Add((path, await LoadPackageBinaryAsync(package, path)));
+        return builder.MoveToImmutable();
     }
 
-    public Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath)
+    public async Task<ImmutableArray<(string, FluentResults.Result<string>)>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        if (localFilePaths.IsDefaultOrEmpty)
+            return ImmutableArray<(string, FluentResults.Result<string>)>.Empty;
+        var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<string>)>(localFilePaths.Length);
+        foreach (var path in localFilePaths)
+            builder.Add((path, await LoadPackageTextAsync(package, path)));
+        return builder.MoveToImmutable();
     }
 
-    public Task<FluentResults.Result<ImmutableArray<XDocument>>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<FluentResults.Result<ImmutableArray<byte[]>>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<FluentResults.Result<ImmutableArray<string>>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
-    {
-        throw new NotImplementedException();
-    }
 
     public FluentResults.Result<XDocument> TryLoadXml(string filePath, Encoding encoding = null)
     {
@@ -206,64 +240,178 @@ public class StorageService : IStorageService
         });
     }
 
-    public FluentResults.Result TrySaveXml(string filePath, in XDocument document, Encoding encoding = null)
-    {
-        ((IService)this).CheckDisposed();
-        return IOExceptionsOperationRunner(nameof(TrySaveXml), filePath, () =>
-        {
-            
-        });
-    }
-
+    public FluentResults.Result TrySaveXml(string filePath, in XDocument document, Encoding encoding = null) => TrySaveText(filePath, document.ToString(), encoding);
     public FluentResults.Result TrySaveText(string filePath, in string text, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        throw new NotImplementedException();
+        if (text.IsNullOrWhiteSpace())
+        {
+            return FluentResults.Result.Fail($"Contents are empty for {filePath}")
+                .WithError(new Error($"Contents are empty for {filePath}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.Sources, filePath));
+        }
+
+        string t = text; //copy
+        return IOExceptionsOperationRunner(nameof(TrySaveText), filePath, () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            System.IO.File.WriteAllText(fp, t, encoding);
+            return new FluentResults.Result().WithSuccess($"Saved to file successfully");
+        });
     }
 
     public FluentResults.Result TrySaveBinary(string filePath, in byte[] bytes)
     {
         ((IService)this).CheckDisposed();
-        throw new NotImplementedException();
+        if (bytes is null || bytes.Length == 0)
+        {
+            return FluentResults.Result.Fail($"Byte array is null or empty for {filePath}")
+                .WithError(new Error($"Byte array is null or empty for {filePath}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.Sources, filePath));
+        }
+        byte[] b = new byte[bytes.Length];
+        System.Buffer.BlockCopy(bytes, 0, b, 0, bytes.Length);
+        return IOExceptionsOperationRunner(nameof(TrySaveBinary), filePath, () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            System.IO.File.WriteAllBytes(fp, b);
+            return new FluentResults.Result().WithSuccess($"Saved to file successfully");
+        });
     }
 
     public FluentResults.Result<bool> FileExists(string filePath)
     {
         ((IService)this).CheckDisposed();
-        throw new NotImplementedException();
+        return IOExceptionsOperationRunner<bool>(nameof(FileExists), filePath, () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            return System.IO.File.Exists(fp);
+        });
     }
 
     public async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
     {
-        throw new NotImplementedException();
+        var r = await TryLoadTextAsync(filePath, encoding);
+        if (r is { IsSuccess: true, Value: {} value } && !value.IsNullOrWhiteSpace())
+            return XDocument.Parse(value);
+        return FluentResults.Result.Fail<XDocument>(GetGeneralError(nameof(TryLoadXml), filePath));
     }
 
     public async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        return await IOExceptionsOperationRunnerAsync<string>(nameof(TryLoadTextAsync), filePath, async () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            return await System.IO.File.ReadAllTextAsync(fp);
+        });
     }
 
     public async Task<FluentResults.Result<byte[]>> TryLoadBinaryAsync(string filePath)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        return await IOExceptionsOperationRunnerAsync<byte[]>(nameof(TryLoadTextAsync), filePath, async () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            return await System.IO.File.ReadAllBytesAsync(fp);
+        });
     }
 
-    public async Task<FluentResults.Result> TrySaveXmlAsync(string filePath, XDocument document, Encoding encoding = null)
-    {
-        throw new NotImplementedException();
-    }
-
+    public async Task<FluentResults.Result> TrySaveXmlAsync(string filePath, XDocument document, Encoding encoding = null) => await TrySaveTextAsync(filePath, document.ToString(), encoding);
     public async Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        if (text.IsNullOrWhiteSpace())
+        {
+            return FluentResults.Result.Fail($"Contents are empty for {filePath}")
+                .WithError(new Error($"Contents are empty for {filePath}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.Sources, filePath));
+        }
+
+        string t = text.ToString(); //copy
+        return await IOExceptionsOperationRunnerAsync(nameof(TrySaveText), filePath, async () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            await System.IO.File.WriteAllTextAsync(fp, t, encoding);
+            return new FluentResults.Result().WithSuccess($"Saved to file successfully");
+        });
     }
 
     public async Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        if (bytes is null || bytes.Length == 0)
+        {
+            return FluentResults.Result.Fail($"Byte array is null or empty for {filePath}")
+                .WithError(new Error($"Byte array is null or empty for {filePath}")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.Sources, filePath));
+        }
+        byte[] b = new byte[bytes.Length];
+        System.Buffer.BlockCopy(bytes, 0, b, 0, bytes.Length);
+        return await IOExceptionsOperationRunnerAsync(nameof(TrySaveBinary), filePath, async () =>
+        {
+            var fp = filePath.CleanUpPath();
+            fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            await System.IO.File.WriteAllBytesAsync(fp, b);
+            return new FluentResults.Result().WithSuccess($"Saved to file successfully");
+        });
     }
-
+    
     private async Task<FluentResults.Result<T>> IOExceptionsOperationRunnerAsync<T>(string funcName, string filepath, Func<Task<FluentResults.Result<T>>> operation) 
+    {
+        try
+        {
+            return await operation?.Invoke()!;
+        }
+        catch (ArgumentNullException ane)
+        {
+            return ReturnException(ane, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (ArgumentException ae)
+        {
+            return ReturnException(ae, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (PathTooLongException ptle)
+        {
+            return ReturnException(ptle, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (NotSupportedException nse)
+        {
+            return ReturnException(nse, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (UnauthorizedAccessException uae)
+        {
+            return ReturnException(uae, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (DirectoryNotFoundException dnfe)
+        {
+            return ReturnException(dnfe, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            return ReturnException(fnfe, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (SecurityException se)
+        {
+            return ReturnException(se, filepath).WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (IOException ioe)
+        {
+            return ReturnException(ioe, filepath).WithError(GetGeneralError(nameof(SaveLocalXml), filepath));
+        }
+    }
+    
+    private async Task<FluentResults.Result> IOExceptionsOperationRunnerAsync(string funcName, string filepath, Func<Task<FluentResults.Result>> operation) 
     {
         try
         {
@@ -360,6 +508,59 @@ public class StorageService : IStorageService
         }
     }
     
+    private FluentResults.Result IOExceptionsOperationRunner(string funcName, string filepath, Func<FluentResults.Result> operation)
+    {
+        try
+        {
+            return operation?.Invoke();
+        }
+        catch (ArgumentNullException ane)
+        {
+            return ReturnException(ane, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (ArgumentException ae)
+        {
+            return ReturnException(ae, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (PathTooLongException ptle)
+        {
+            return ReturnException(ptle, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (NotSupportedException nse)
+        {
+            return ReturnException(nse, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (UnauthorizedAccessException uae)
+        {
+            return ReturnException(uae, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (DirectoryNotFoundException dnfe)
+        {
+            return ReturnException(dnfe, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            return ReturnException(fnfe, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (SecurityException se)
+        {
+            return ReturnException(se, filepath)
+                .WithError(GetGeneralError(funcName, filepath));
+        }
+        catch (IOException ioe)
+        {
+            return ReturnException(ioe, filepath)
+                .WithError(GetGeneralError(nameof(SaveLocalXml), filepath));
+        }
+    }
+    
     private Error GetGeneralError(string funcName, string localfp, ContentPackage package) =>
         new Error($"{funcName}: Failed to load local file.")
             .WithMetadata(MetadataType.ExceptionObject, this)
@@ -370,10 +571,27 @@ public class StorageService : IStorageService
         new Error($"{funcName}: Failed to load local file.")
             .WithMetadata(MetadataType.ExceptionObject, this)
             .WithMetadata(MetadataType.Sources, localfp);
-
-    private string GetAbsFromLocal(ContentPackage package, string localFilePath)
+    
+    private FluentResults.Result<string> GetAbsFromLocal(ContentPackage package, string localFilePath)
     {
-        return System.IO.Path.GetFullPath(System.IO.Path.Combine(
+        if (Path.IsPathRooted(localFilePath))
+        {
+            return new FluentResults.Result<string>().WithError(
+                new Error($"The path '{localFilePath}' is a rooted path. Must be relative!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, localFilePath));
+        }
+
+        if (package is null)
+        {
+            return new FluentResults.Result<string>().WithError(
+                new Error($"{nameof(GetAbsFromPackage)} The package reference for {localFilePath} is null!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, localFilePath));
+        }
+        
+        return new FluentResults.Result<string>().WithSuccess($"Path constructed")
+            .WithValue( System.IO.Path.GetFullPath(System.IO.Path.Combine(
             _runLocation,
             LocalStoragePath.Value,
             LocalFilePathRule.Value.Replace(_packagePathKeyword, package.Name.IsNullOrWhiteSpace()
@@ -381,7 +599,36 @@ public class StorageService : IStorageService
                     ? id.Value.ToString()
                     : "_fallbackFolder"
                 : package.Name),
-            localFilePath));
+            localFilePath)));
+    }
+
+    private FluentResults.Result<string> GetAbsFromPackage(ContentPackage package, string localFilePath)
+    {
+        if (package is null)
+        {
+            return new FluentResults.Result<string>().WithError(
+                new Error($"{nameof(GetAbsFromPackage)} The package reference for {localFilePath} is null!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, localFilePath));
+        }
+        
+        if (localFilePath.IsNullOrWhiteSpace())
+        {
+            return new FluentResults.Result<string>().WithValue(Path.GetFullPath(package.Path.CleanUpPath()));
+        }
+        
+        var path = localFilePath.CleanUpPath();
+        
+        if (Path.IsPathRooted(path))
+        {
+            return new FluentResults.Result<string>().WithError(
+                new Error($"The path '{localFilePath}' is a rooted path. Must be relative!")
+                    .WithMetadata(MetadataType.ExceptionObject, this)
+                    .WithMetadata(MetadataType.RootObject, localFilePath));
+        }
+        
+        return new FluentResults.Result<string>().WithSuccess($"Path constructed")
+            .WithValue(Path.Combine(Path.GetFullPath(package.Path.CleanUpPath()), path));
     }
     
     private FluentResults.Result<TReturn> ReturnException<TReturn, TException>(TException exception, ContentPackage package) where TException : Exception
