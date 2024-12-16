@@ -31,9 +31,9 @@ public interface IStorageService : IService
     FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath);
     FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath);
     // collections
-    FluentResults.Result<ImmutableArray<XDocument>> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
-    FluentResults.Result<ImmutableArray<byte[]>> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
-    FluentResults.Result<ImmutableArray<string>> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
+    ImmutableArray<(string, FluentResults.Result<XDocument>)> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
+    ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
+    ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
     FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively);
     // async
     // singles
@@ -41,9 +41,9 @@ public interface IStorageService : IService
     Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath);
     Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath);
     // collections
-    Task<FluentResults.Result<ImmutableArray<XDocument>>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
-    Task<FluentResults.Result<ImmutableArray<byte[]>>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
-    Task<FluentResults.Result<ImmutableArray<string>>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
+    Task<ImmutableArray<(string, FluentResults.Result<XDocument>)>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
+    Task<ImmutableArray<(string, FluentResults.Result<byte[]>)>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
+    Task<ImmutableArray<(string, FluentResults.Result<string>)>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
     
     #endregion
     
