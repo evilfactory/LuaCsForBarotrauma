@@ -101,6 +101,8 @@ public interface IAssemblyLoaderService : IService
     /// List of loaded assemblies.
     /// </summary>
     public IEnumerable<Assembly> Assemblies { get; }
+    
+    public IEnumerable<MetadataReference> AssemblyReferences { get; }
 }
 
 
