@@ -7,8 +7,7 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IStorageService : IService
 {
-    #region LocalGameData
-
+    // -- local game folder storage
     FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);
     FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath);
@@ -22,10 +21,8 @@ public interface IStorageService : IService
     Task<FluentResults.Result> SaveLocalXmlAsync(ContentPackage package, string localFilePath, XDocument document);
     Task<FluentResults.Result> SaveLocalBinaryAsync(ContentPackage package, string localFilePath, byte[] bytes);
     Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text);
-
-    #endregion
     
-    #region ContentPackageData
+    // -- package directory
     // singles
     FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath);
@@ -45,9 +42,7 @@ public interface IStorageService : IService
     Task<ImmutableArray<(string, FluentResults.Result<byte[]>)>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
     Task<ImmutableArray<(string, FluentResults.Result<string>)>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
     
-    #endregion
-    
-    #region AbsolutePaths
+    // -- absolute paths
     FluentResults.Result<XDocument> TryLoadXml(string filePath, Encoding encoding = null);
     FluentResults.Result<string> TryLoadText(string filePath, Encoding encoding = null);
     FluentResults.Result<byte[]> TryLoadBinary(string filePath);
@@ -62,5 +57,4 @@ public interface IStorageService : IService
     Task<FluentResults.Result> TrySaveXmlAsync(string filePath, XDocument document, Encoding encoding = null);
     Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null);
     Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes);
-    #endregion
 }

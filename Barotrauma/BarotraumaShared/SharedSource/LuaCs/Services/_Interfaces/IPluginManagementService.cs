@@ -18,7 +18,6 @@ public interface IPluginManagementService : IReusableService
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="package"></param>
     /// <param name="namespacePrefix"></param>
     /// <param name="includeInterfaces"></param>
     /// <param name="includeAbstractTypes"></param>
@@ -27,19 +26,11 @@ public interface IPluginManagementService : IReusableService
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     FluentResults.Result<ImmutableArray<T>> GetTypes<T>(
-        ContentPackage package = null,
         string namespacePrefix = null,
         bool includeInterfaces = false,
         bool includeAbstractTypes = false,
         bool includeDefaultContext = true,
         bool includeExplicitAssembliesOnly = false);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="package"></param>
-    /// <returns></returns>
-    FluentResults.Result<ImmutableArray<IAssemblyResourceInfo>> GetCachedAssembliesForPackage(ContentPackage package);
 
     /// <summary>
     /// 
