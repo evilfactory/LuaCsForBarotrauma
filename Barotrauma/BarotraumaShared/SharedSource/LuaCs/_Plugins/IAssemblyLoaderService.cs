@@ -98,9 +98,24 @@ public interface IAssemblyLoaderService : IService
     public FluentResults.Result<ImmutableArray<Type>> GetTypesInAssemblies();
     
     /// <summary>
+    /// Gets the list of <c>Type</c>s from loaded assemblies. Does not create a defensive copy and blocks loading/unloading.
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerable<Type> UnsafeGetTypesInAssemblies();
+    
+    /// <summary>
+    /// Returns the first found type given it's fully qualified name.
+    /// </summary>
+    /// <param name="typeName"></param>
+    /// <returns></returns>
+    public FluentResults.Result<Type> GetTypeInAssemblies(string typeName);
+    
+    /// <summary>
     /// List of loaded assemblies.
     /// </summary>
     public IEnumerable<Assembly> Assemblies { get; }
+    
+    public IEnumerable<MetadataReference> AssemblyReferences { get; }
 }
 
 
