@@ -19,7 +19,7 @@ public interface IServicesProvider
     /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IReusableService where TService : class, IReusableService, TSvcInterface;
+    void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface;
     
     /// <summary>
     /// Registers a type as a service for a given interface that can be requested by name.
@@ -29,7 +29,7 @@ public interface IServicesProvider
     /// <param name="lifetimeInstance"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <typeparam name="TService"></typeparam>
-    void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IReusableService where TService : class, IReusableService, TSvcInterface;
+    void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface;
 
     /// <summary>
     /// Called whenever a new service type for a given interface is implemented.
@@ -58,27 +58,25 @@ public interface IServicesProvider
     /// Tries to get a service for the given interface, returns success/failure.
     /// </summary>
     /// <param name="service"></param>
-    /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(out TSvcInterface service) where TSvcInterface : class, IReusableService;
+    bool TryGetService<TSvcInterface>(out TSvcInterface service) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Tries to get a service for the given name and interface, returns success/failure.
     /// </summary>
     /// <param name="name"></param>
     /// <param name="service"></param>
-    /// <param name="lifetime"></param>
     /// <typeparam name="TSvcInterface"></typeparam>
     /// <returns></returns>
-    bool TryGetService<TSvcInterface>(string name, out TSvcInterface service) where TSvcInterface : class, IReusableService;
+    bool TryGetService<TSvcInterface>(string name, out TSvcInterface service) where TSvcInterface : class, IService;
     
     /// <summary>
     /// Called whenever a new service is created/instanced.
     /// Args[0]: The interface type of the service.
     /// Args[1]: The instance of the service.
     /// </summary>
-    event System.Action<Type, IReusableService> OnServiceInstanced;
+    event System.Action<Type, IService> OnServiceInstanced;
 
     #endregion
 
@@ -89,7 +87,7 @@ public interface IServicesProvider
     /// </summary>
     /// <typeparam name="TSvc"></typeparam>
     /// <returns></returns>
-    ImmutableArray<TSvc> GetAllServices<TSvc>() where TSvc : class, IReusableService;
+    ImmutableArray<TSvc> GetAllServices<TSvc>() where TSvc : class, IService;
 
     #endregion
 

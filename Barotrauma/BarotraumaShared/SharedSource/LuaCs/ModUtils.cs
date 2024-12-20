@@ -18,6 +18,7 @@ using Microsoft.Xna.Framework;
 using OneOf;
 using Platform = Barotrauma.LuaCs.Data.Platform;
 
+// This file is cursed, we put everything in it, and I'm not sorry about it.
 namespace Barotrauma.LuaCs
 {
 
