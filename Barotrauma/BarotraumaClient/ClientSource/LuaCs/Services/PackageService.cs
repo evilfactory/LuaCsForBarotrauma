@@ -12,7 +12,7 @@ public partial class PackageService : IStylesResourcesInfo
     public IStylesService Styles => _stylesService.Value;
     
     public PackageService(
-        Lazy<IModConfigParserService> configParserService,
+        Lazy<IModConfigCreatorService> configParserService,
         Lazy<ILuaScriptService> luaScriptService,
         Lazy<ILocalizationService> localizationService,
         Lazy<IPluginService> pluginService,
