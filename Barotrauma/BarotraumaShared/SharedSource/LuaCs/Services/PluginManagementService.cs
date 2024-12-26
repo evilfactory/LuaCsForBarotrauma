@@ -3,9 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.Loader;
 using System.Threading;
+using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using FluentResults;
 using Microsoft.CodeAnalysis;
@@ -27,17 +30,76 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
     private readonly ConcurrentDictionary<IAssemblyResourceInfo, Guid> _resourceData = new();
     private readonly Lazy<IEventService> _eventService;
     private readonly Func<IAssemblyLoaderService> _assemblyServiceFactory;
-    
+    private ImmutableDictionary<string, Type> _cachedTypes = null;
+    private ImmutableDictionary<string, Type> DefaultTypeCache => _cachedTypes ??= AssemblyLoadContext.Default.Assemblies
+        .SelectMany(ass => ass.GetSafeTypes()).ToImmutableDictionary(type => type.FullName, type => type);
+
 
     public bool IsResourceLoaded<T>(T resource) where T : IAssemblyResourceInfo
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        return _resourceData.ContainsKey(resource);
     }
 
-    public Result<ImmutableArray<T>> GetTypes<T>(string namespacePrefix = null, bool includeInterfaces = false,
-        bool includeAbstractTypes = false, bool includeDefaultContext = true, bool includeExplicitAssembliesOnly = false)
+    public Result<ImmutableArray<Type>> GetImplementingTypes<T>(string namespacePrefix = null, bool includeInterfaces = false,
+        bool includeAbstractTypes = false, bool includeDefaultContext = true)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        var types = ImmutableArray.CreateBuilder<Type>();
+        _operationsLock.EnterReadLock();
+        try
+        {
+            if (AssemblyLoaderServices.Any())
+            {
+                types.AddRange(AssemblyLoaderServices
+                    .SelectMany(als => als.UnsafeGetTypesInAssemblies())
+                    .Where(t => t is not null)
+                    .Where(type => typeof(T).IsAssignableFrom(type))
+                    .Where(type => includeInterfaces || !type.IsInterface)
+                    .Where(type => includeAbstractTypes || !type.IsAbstract)
+                    .Where(type => namespacePrefix is not null && type.FullName is not null && type.FullName.StartsWith(namespacePrefix)));
+            }
+
+            if (includeDefaultContext)
+            {
+                types.AddRange(AssemblyLoadContext.Default.Assemblies
+                    .SelectMany(ass => ass.GetSafeTypes())
+                    .Where(t => t is not null)
+                    .Where(type => typeof(T).IsAssignableFrom(type))
+                    .Where(type => includeInterfaces || !type.IsInterface)
+                    .Where(type => includeAbstractTypes || !type.IsAbstract)
+                    .Where(type => namespacePrefix is not null && type.FullName is not null && type.FullName.StartsWith(namespacePrefix)));
+            }
+
+            return types.MoveToImmutable();
+        }
+        finally
+        {
+            _operationsLock.ExitReadLock();
+        }
+    }
+
+    public Type GetType(string typeName)
+    {
+        ((IService)this).CheckDisposed();
+        _operationsLock.EnterReadLock();
+        try
+        {
+            if (DefaultTypeCache.TryGetValue(typeName, out var type))
+                return type;
+            if (AssemblyLoaderServices.None())
+                return null;
+            foreach (var loaderService in AssemblyLoaderServices)
+            {
+                if (loaderService.GetTypeInAssemblies(typeName) is { IsSuccess: true, Value: not null } ret)
+                    return ret.Value;
+            }
+            return null;
+        }
+        finally
+        {
+            _operationsLock.ExitReadLock();
+        }
     }
 
     public Result<ImmutableArray<IAssemblyResourceInfo>> LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)

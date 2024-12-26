@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Threading;
+using Barotrauma.Extensions;
 using Barotrauma.LuaCs;
 using Microsoft.CodeAnalysis;
 using FluentResults;
@@ -363,6 +364,56 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         }
     }
 
+    public IEnumerable<Type> UnsafeGetTypesInAssemblies()
+    {
+        if (IsDisposed)
+            yield return null;
+        AreOperationRunning = true;
+        try
+        {
+            if (_loadedAssemblyData.None())
+            {
+                yield return null;
+            }
+            else
+            {
+                foreach (var assemblyData in _loadedAssemblyData.Values)
+                {
+                    foreach (var type in assemblyData.Types)
+                    {
+                        yield return type;
+                    }
+                }
+            }
+        }
+        finally
+        {
+            AreOperationRunning = false;
+        }
+    }
+
+    public Result<Type> GetTypeInAssemblies(string typeName)
+    {
+        if (IsDisposed)
+            return FluentResults.Result.Fail(new Error($"Loader is disposed!"));
+        AreOperationRunning = true;
+        try
+        {
+            if (_loadedAssemblyData.IsEmpty)
+                return FluentResults.Result.Fail(new Error($"No assemblies loaded!"));
+            foreach (var assemblyData in _loadedAssemblyData)
+            {
+                if (assemblyData.Value.TypesByName.TryGetValue(typeName, out var type))
+                    return new FluentResults.Result<Type>().WithSuccess($"Found type.").WithValue(type);
+            }
+            return FluentResults.Result.Fail(new Error($"No matching types found for { typeName }!"));
+        }
+        finally
+        {
+            AreOperationRunning = false;
+        }
+    }
+
     public void Dispose()
     {
         if (IsDisposed)
@@ -431,6 +482,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         public readonly OneOf<byte[], string> AssemblyImageOrPath;
         public readonly MetadataReference AssemblyReference;
         public readonly ImmutableArray<Type> Types;
+        public readonly ImmutableDictionary<string, Type> TypesByName;
 
         public AssemblyData(Assembly assembly, byte[] assemblyImage)
         {
@@ -438,6 +490,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             AssemblyImageOrPath = assemblyImage ?? throw new ArgumentNullException(nameof(assemblyImage));
             AssemblyReference = MetadataReference.CreateFromImage(assemblyImage);
             Types = assembly.GetSafeTypes().ToImmutableArray();
+            TypesByName = Types.ToImmutableDictionary(type => type.FullName, type => type);
         }
 
         public AssemblyData(Assembly assembly, string path)
@@ -446,6 +499,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             AssemblyImageOrPath = path ?? throw new ArgumentNullException(nameof(path));
             AssemblyReference = MetadataReference.CreateFromFile(path);
             Types = assembly.GetSafeTypes().ToImmutableArray();
+            TypesByName = Types.ToImmutableDictionary(type => type.FullName, type => type);
         }
     }
 
