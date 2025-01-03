@@ -43,7 +43,7 @@ namespace Barotrauma
             RegisterServices();
             
             // load manifest
-            if (!_servicesProvider.TryGetService(out IModConfigParserService modConfigSvc))
+            if (!_servicesProvider.TryGetService(out IModConfigCreatorService modConfigSvc))
                 throw new NullReferenceException("LuaCsSetup: Failed to get mod config parser service!");   // we should crash here
             var luaConfig = modConfigSvc.BuildConfigFromManifest(Directory.GetCurrentDirectory() + LuaCsConfigFile);
             if (!luaConfig.IsSuccess)

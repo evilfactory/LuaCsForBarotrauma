@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Services;
 public partial class PackageService
 {
     public PackageService(
-        Lazy<IModConfigParserService> configParserService,
+        Lazy<IModConfigCreatorService> configParserService,
         Lazy<ILuaScriptService> luaScriptService,
         Lazy<ILocalizationService> localizationService,
         Lazy<IPluginService> pluginService,

@@ -23,7 +23,7 @@ public partial class PackageService : IPackageService
     
     
     // mod config / package scanners/parsers
-    private readonly Lazy<IModConfigParserService> _configParserService;
+    private readonly Lazy<IModConfigCreatorService> _configParserService;
     private readonly Lazy<ILuaScriptService> _luaScriptService;
     private readonly Lazy<ILocalizationService> _localizationService;
     private readonly Lazy<IPluginService> _pluginService;
