@@ -421,7 +421,7 @@ namespace Barotrauma
 #endif
         }
 
-        
+        */
         public void Stop()
         {
 
@@ -439,7 +439,7 @@ namespace Barotrauma
             IsInitialized = true;
 
             Logger.Log($"Initializing LuaCs, git revision = {AssemblyInfo.GitRevision}");
-        }*/
+        }
         
         public void Update()
         {
