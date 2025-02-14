@@ -43,6 +43,7 @@
             GUI.SettingsMenuOpen = false;
 #endif
             Selected = this;
+            GameMain.LuaCs.EventService.PublishEvent<LuaCs.Events.IEventScreenSelected>(sub => sub.OnScreenSelected(this));
         }
 
         public virtual Camera Cam => null;
