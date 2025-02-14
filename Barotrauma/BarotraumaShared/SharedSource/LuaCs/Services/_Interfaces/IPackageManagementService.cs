@@ -3,89 +3,61 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Threading.Tasks;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPackageManagementService : IReusableService
+public interface IPackageManagementService : IReusableService, ILocalizationsResourcesInfo, IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo, IAssembliesResourcesInfo
+#if CLIENT
+    ,IStylesResourcesInfo
+#endif
+
 {
     /// <summary>
-    /// Adds packages to the queue of loadable packages without initializing them.
+    /// Loads and parses the provided <see cref="ContentPackage"/> for <see cref="IResourceInfo"/> supported by the current runtime environment.
     /// </summary>
     /// <param name="packages"></param>
-    void QueuePackages(ImmutableArray<LoadablePackage> packages);
+    /// <returns></returns>
+    Task<FluentResults.Result> LoadPackageInfosAsync(ContentPackage packages);
+    /// <summary>
+    /// Loads and parses the provided <see cref="ContentPackage"/> collection for <see cref="IResourceInfo"/> supported by the current runtime environment.
+    /// </summary>
+    /// <param name="packages"></param>
+    /// <returns></returns>
+    Task<IReadOnlyList<(ContentPackage, FluentResults.Result)>> LoadPackagesInfosAsync(IReadOnlyList<ContentPackage> packages);
+    IReadOnlyList<ContentPackage> GetAllLoadedPackages();
+    void DisposePackageInfos(ContentPackage package);
+    void DisposePackagesInfos(IReadOnlyList<ContentPackage> packages);
+    void DisposeAllPackagesInfos();
     
-    /// <summary>
-    /// Generates the ModConfigInfo for all queued packages and adds them to the store.
-    /// </summary>
-    /// <param name="loadParallel">Use multithreaded loading.</param>
-    /// <param name="reportFailOnDuplicates">Whether duplicate packages should be reported as errors.</param>
-    /// <returns>Failure/Success records for each package.</returns>
-    FluentResults.Result ParseQueuedPackages(bool loadParallel = true, bool reportFailOnDuplicates = false);
-    /// <summary>
-    /// Loads only the localizations, configs, and config profiles for stored packages. 
-    /// </summary>
-    /// <param name="loadParallel"></param>
-    /// <returns></returns>
-    FluentResults.Result LoadPackageConfigsResourcesGroup(bool loadParallel = true);
-    /// <summary>
-    /// Loads all resources for stored packages.
-    /// </summary>
-    /// <param name="loadParallel">Use multithreaded loading.</param>
-    /// <param name="safeResourcesOnly">Only load safe scripting resources, such as Lua. C# plugins disabled.</param>
-    /// <returns></returns>
-    FluentResults.Result LoadAllPackageResources(bool loadParallel = true, bool safeResourcesOnly = true);
-    FluentResults.Result UnloadPackages();
-    bool IsPackageLoaded(ContentPackage package);
-    bool CheckDependencyLoaded(IPackageDependencyInfo info);
-    bool CheckDependenciesLoaded([NotNull]IEnumerable<IPackageDependencyInfo> infos, out ImmutableArray<IPackageDependencyInfo> missingPackages);
-    bool CheckEnvironmentSupported(IPlatformInfo platform);
-    /// <summary>
-    /// Tries to get the package dependency record to refer to that specific package if it exists, optionally create it.
-    /// </summary>
-    /// <param name="package">ContentPackage reference</param>
-    /// <param name="addIfMissing">Register a new IPackageDependencyInfo reference.</param>
-    /// <returns></returns>
-    FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ContentPackage package, 
-        bool addIfMissing = false);
-    /// <summary>
-    /// Tries to get the package dependency record to refer to that specific package if it exists, optionally create it.
-    /// </summary>
-    /// <param name="steamWorkshopId">The Steam Workshop ID, if available, if not enter zero ('0').</param>
-    /// <param name="packageName">The name of the package.</param>
-    /// <param name="folderPath">The folder path, as formatted in [ContentPackage.Path].</param>
-    /// <param name="addIfMissing">Register a new IPackageDependencyInfo reference.</param>
-    /// <returns></returns>
-    FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(ulong steamWorkshopId, 
-        string packageName, string folderPath = null, bool addIfMissing = false);
-    /// <summary>
-    /// Tries to get the package dependency record to refer to that specific package if it exists.
-    /// Note: This overload does not allow the registration of a new dependency.
-    /// </summary>
-    /// <param name="folderPath">The folder path, as formatted in [ContentPackage.Path].</param>
-    /// <returns></returns>
-    FluentResults.Result<IPackageDependencyInfo> GetPackageDependencyInfoRecord(string folderPath);
-
-    IPackageDependencyInfo CreateOrphanPackageDependencyInfoRecord(string packageName, 
-        string packagePath, ulong steamWorkshopId);
-}
-
-public readonly record struct LoadablePackage
-{
-    public ContentPackage Package { get; }
-    public bool IsEnabled { get; }
-
-    public LoadablePackage(ContentPackage package, bool isEnabled)
-    {
-        Package = package;
-        IsEnabled = isEnabled;
-    }
+    // single
+    FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true);
+    FluentResults.Result<IConfigsResourcesInfo> GetConfigsInfos(ContentPackage package, bool onlySupportedResources = true);
+    FluentResults.Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(ContentPackage package, bool onlySupportedResources = true);
+    FluentResults.Result<ILocalizationsResourcesInfo> GetLocalizationsInfos(ContentPackage package, bool onlySupportedResources = true);
+    FluentResults.Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(ContentPackage package, bool onlySupportedResources = true);
+#if CLIENT
+    FluentResults.Result<IStylesResourcesInfo> GetStylesInfos(ContentPackage package, bool onlySupportedResources = true);
+#endif
+    // collection
+    FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    FluentResults.Result<IConfigsResourcesInfo> GetConfigsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    FluentResults.Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    FluentResults.Result<ILocalizationsResourcesInfo> GetLocalizationsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    FluentResults.Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+#if CLIENT
+    FluentResults.Result<IStylesResourcesInfo> GetStylesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+#endif
     
-    public static ImmutableArray<LoadablePackage> FromEnumerable(IEnumerable<ContentPackage> packages, bool isEnabled)
-    {
-        var builder = ImmutableArray.CreateBuilder<LoadablePackage>();
-        packages.ForEach(p => builder.Add(new LoadablePackage(p, isEnabled)));
-        return builder.ToImmutable();
-    }
+    Task<FluentResults.Result<IAssembliesResourcesInfo>> GetAssembliesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    Task<FluentResults.Result<IConfigsResourcesInfo>> GetConfigsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    Task<FluentResults.Result<IConfigProfilesResourcesInfo>> GetConfigProfilesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    Task<FluentResults.Result<ILocalizationsResourcesInfo>> GetLocalizationsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+    Task<FluentResults.Result<ILuaScriptsResourcesInfo>> GetLuaScriptsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+#if CLIENT
+    Task<FluentResults.Result<IStylesResourcesInfo>> GetStylesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
+#endif
+    
 }

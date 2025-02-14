@@ -33,26 +33,25 @@ public class StorageService : IStorageService
     private IConfigEntry<string> _kLocalFilePathRules = null;
     private const string _packagePathKeyword = "<PACKNAME>";
     private readonly string _runLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location.CleanUpPath());
+    
+    // TODO: Rewrite the config to get info from .ctor.
     private IConfigEntry<string> LocalStoragePath => _kLocalStoragePath ??= GetOrCreateConfig(nameof(LocalStoragePath), "/Data/Mods");
     private IConfigEntry<string> LocalFilePathRule => _kLocalFilePathRules ??= GetOrCreateConfig(nameof(LocalFilePathRule), _packagePathKeyword);
     private IConfigEntry<string> GetOrCreateConfig(string name, string defaultValue)
     {
         var c = _configService.Value
             .GetConfig<IConfigEntry<string>>(ModUtils.Definitions.LuaCsForBarotrauma, name);
-        if (c.IsSuccess)
-        {
-            return c.Value;
-        }
-        else
-        {
-            c = _configService.Value.AddConfigEntry(
-                ModUtils.Definitions.LuaCsForBarotrauma,
-                name, defaultValue, NetSync.None, valueChangePredicate: (value) => false);
-            if (c.IsSuccess)
-                return c.Value;
-            else
-                throw new KeyNotFoundException("Cannot find storage value for key: " + name);
-        }
+        if (c is not null)
+            return c;
+        
+        var c1 = _configService.Value.AddConfigEntry(
+            ModUtils.Definitions.LuaCsForBarotrauma,
+            name, defaultValue, NetSync.None, valueChangePredicate: (value) => false);
+        if (c1.IsSuccess)
+            return c1.Value;
+        
+        throw new KeyNotFoundException("Cannot find storage value for key: " + name);
+    
     }
     public bool IsDisposed { get; private set; }
 

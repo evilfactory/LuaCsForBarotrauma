@@ -83,6 +83,7 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
     public EventService(Lazy<IPluginManagementService> pluginManagementService)
     {
         _pluginManagementService = pluginManagementService ?? throw new ArgumentNullException(nameof(pluginManagementService));
+        this.Subscribe<IEventAssemblyContextUnloading>(this);
     }
 
     public bool IsDisposed { get; private set; } = false;
@@ -301,8 +302,19 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         dict.Remove(OneOf<string, IEvent>.FromT1(subscriber));
     }
 
-    public void ClearAllEventSubscribers<T>() where T : IEvent => _subscriptions.Remove(typeof(T));
-    public void ClearAllSubscribers() => _subscriptions.Clear();
+    public void ClearAllEventSubscribers<T>() where T : IEvent 
+    {
+        _subscriptions.Remove(typeof(T));
+        if (typeof(IEventAssemblyContextUnloading) == typeof(T))
+        {
+            this.Subscribe<IEventAssemblyContextUnloading>(this);
+        }
+    }
+    public void ClearAllSubscribers() 
+    {
+        _subscriptions.Clear();
+        this.Subscribe<IEventAssemblyContextUnloading>(this);
+    }
 
     public FluentResults.Result PublishEvent<T>(Action<T> action) where T : IEvent<T>
     {

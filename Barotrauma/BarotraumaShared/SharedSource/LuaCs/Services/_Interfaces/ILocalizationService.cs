@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Threading.Tasks;
 using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
@@ -10,9 +11,10 @@ public interface ILocalizationService : IReusableService
 {
     IReadOnlyCollection<CultureInfo> GetLoadedLocales();
     void Remove(ImmutableArray<ILocalizationResourceInfo> localizations);
+    void DisposePackage(ContentPackage package);
     FluentResults.Result SetCurrentCulture(CultureInfo culture);
     FluentResults.Result SetCurrentCulture(string cultureName);
-    FluentResults.Result LoadLocalizations(ImmutableArray<ILocalizationResourceInfo> localizationResources);
+    Task<FluentResults.Result> LoadLocalizations(ImmutableArray<ILocalizationResourceInfo> localizationResources);
     
     /// <summary>
     /// Tries to get a localized string without a fallback. Returns success/failure and associated data.

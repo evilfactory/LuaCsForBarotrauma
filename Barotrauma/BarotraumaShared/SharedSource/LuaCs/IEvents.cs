@@ -29,6 +29,35 @@ public interface IEvent<out T> : IEvent where T : IEvent<T>
     }
 }
 
+#region RuntimeEvents
+
+/// <summary>
+/// Called when the current <see cref="Screen"/> (game state) changes. Upstream Type 'Screen' is internal. 
+/// </summary>
+internal interface IEventScreenSelected : IEvent<IEventScreenSelected>
+{
+    void OnScreenSelected(Screen screen);
+}
+
+/// <summary>
+/// Called whenever the list of all <see cref="ContentPackage"/> (enabled and disabled) on disk has changed.
+/// </summary>
+internal interface IEventAllPackageListChanged : IEvent<IEventAllPackageListChanged>
+{
+    void OnAllPackageListChanged(IEnumerable<CorePackage> corePackages, IEnumerable<RegularPackage> regularPackages);
+}
+
+/// <summary>
+/// Called whenever the list of enabled <see cref="ContentPackage"/> has changed.
+/// </summary>
+internal interface IEventEnabledPackageListChanged : IEvent<IEventEnabledPackageListChanged>
+{
+    void OnEnabledPackageListChanged(CorePackage package, IEnumerable<RegularPackage> regularPackages);
+}
+
+
+#endregion
+
 #region GameEvents
 
 /// <summary>
@@ -62,11 +91,11 @@ public interface IEventRoundStarted : IEvent<IEventRoundStarted>
 /// </summary>
 public interface IEventUpdate : IEvent<IEventUpdate>
 {
-    void OnUpdate(float fixedDeltaTime);
+    void OnUpdate(double fixedDeltaTime);
     static IEventUpdate IEvent<IEventUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnUpdate = ReturnVoid.Arguments<float>((fixedDeltaTime) => luaFunc[nameof(OnUpdate)](fixedDeltaTime))
+        OnUpdate = ReturnVoid.Arguments<double>((fixedDeltaTime) => luaFunc[nameof(OnUpdate)](fixedDeltaTime))
     }.ActLike<IEventUpdate>();
 }
 
@@ -75,11 +104,11 @@ public interface IEventUpdate : IEvent<IEventUpdate>
 /// </summary>
 public interface IEventDrawUpdate : IEvent<IEventDrawUpdate>
 {
-    void OnDrawUpdate(float deltaTime);
+    void OnDrawUpdate(double deltaTime);
     static IEventDrawUpdate IEvent<IEventDrawUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnDrawUpdate = ReturnVoid.Arguments<float>((deltaTime) => luaFunc[nameof(OnDrawUpdate)](deltaTime))
+        OnDrawUpdate = ReturnVoid.Arguments<double>((deltaTime) => luaFunc[nameof(OnDrawUpdate)](deltaTime))
     }.ActLike<IEventDrawUpdate>();
 }
 
