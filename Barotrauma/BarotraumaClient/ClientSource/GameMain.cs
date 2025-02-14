@@ -18,12 +18,14 @@ using System.Reflection;
 using System.Threading;
 using Barotrauma.Extensions;
 using System.Collections.Immutable;
+using Barotrauma.LuaCs.Events;
 
 namespace Barotrauma
 {
     class GameMain : Game
     {
-        public static LuaCsSetup LuaCs;
+        private static LuaCsSetup _luaCs;
+        public static LuaCsSetup LuaCs => _luaCs ??= new LuaCsSetup();
         public static bool ShowFPS;
         public static bool ShowPerf;
         public static bool DebugDraw;
@@ -242,8 +244,6 @@ namespace Barotrauma
             {
                 throw new Exception("Content folder not found. If you are trying to compile the game from the source code and own a legal copy of the game, you can copy the Content folder from the game's files to BarotraumaShared/Content.");
             }
-
-            LuaCs = new LuaCsSetup();
 
             GameSettings.Init();
             CreatureMetrics.Init();
@@ -1016,7 +1016,7 @@ namespace Barotrauma
 
                 SoundManager?.Update();
 
-                GameMain.LuaCs.Update();
+                LuaCs.EventService.PublishEvent<IEventUpdate>(sub => sub.OnUpdate(Timing.Step));
 
                 Timing.Accumulator -= Timing.Step;
 
@@ -1197,8 +1197,6 @@ namespace Barotrauma
             GUIMessageBox.CloseAll();
             MainMenuScreen.Select();
             GameSession = null;
-
-            GameMain.LuaCs.Stop();
         }
 
         public void ShowBugReporter()
