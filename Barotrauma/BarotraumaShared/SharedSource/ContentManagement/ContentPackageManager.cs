@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
 using Barotrauma.IO;
+using Barotrauma.LuaCs.Events;
 using Barotrauma.Steam;
 using Microsoft.Xna.Framework;
 
@@ -48,7 +49,12 @@ namespace Barotrauma
                 public static ImmutableArray<RegularPackage>? Regular;
             }
 
-            public static void SetCore(CorePackage newCore) => SetCoreEnumerable(newCore).Consume();
+            public static void SetCore(CorePackage newCore)
+            {
+                SetCoreEnumerable(newCore).Consume();
+                GameMain.LuaCs.EventService.PublishEvent<IEventEnabledPackageListChanged>(
+                    sub => sub.OnEnabledPackageListChanged(Core, Regular));
+            }
             
             public static IEnumerable<LoadProgress> SetCoreEnumerable(CorePackage newCore)
             {
@@ -85,7 +91,11 @@ namespace Barotrauma
             }
 
             public static void SetRegular(IReadOnlyList<RegularPackage> newRegular)
-                => SetRegularEnumerable(newRegular).Consume();
+            {
+                SetRegularEnumerable(newRegular).Consume();
+                GameMain.LuaCs.EventService.PublishEvent<IEventEnabledPackageListChanged>(
+                    sub => sub.OnEnabledPackageListChanged(Core, Regular));
+            }
             
             public static IEnumerable<LoadProgress> SetRegularEnumerable(IReadOnlyList<RegularPackage> inNewRegular)
             {
@@ -327,6 +337,12 @@ namespace Barotrauma
 
                     Debug.WriteLine($"Loaded \"{newPackage.Name}\"");
                 }
+                
+                GameMain.LuaCs.EventService.PublishEvent<IEventAllPackageListChanged>(sub => 
+                    sub.OnAllPackageListChanged(corePackages
+                        .Select((ContentPackage p) => p)
+                        .Union(regularPackages.Select((ContentPackage p) => p))
+                        .ToImmutableArray()));
             }
 
             private readonly string directory;
@@ -565,6 +581,12 @@ namespace Barotrauma
             {
                 yield return p.Transform(loadingRange);
             }
+
+            GameMain.LuaCs.EventService.PublishEvent<IEventAllPackageListChanged>(
+                sub => sub.OnAllPackageListChanged(CorePackages, RegularPackages));
+            
+            GameMain.LuaCs.EventService.PublishEvent<IEventEnabledPackageListChanged>(
+                sub => sub.OnEnabledPackageListChanged(EnabledPackages.Core, EnabledPackages.Regular));
 
             yield return LoadProgress.Progress(1.0f);
         }

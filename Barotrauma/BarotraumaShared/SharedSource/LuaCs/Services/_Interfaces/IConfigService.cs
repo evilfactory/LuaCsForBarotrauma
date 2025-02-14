@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Networking;
@@ -15,19 +16,13 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
     /*
      * Resource Files.
      */
-    FluentResults.Result AddConfigs(ImmutableArray<IConfigResourceInfo> configResources);
-    FluentResults.Result AddConfigsProfiles(ImmutableArray<IConfigProfileResourceInfo> configProfileResources);
-    FluentResults.Result RemoveConfigs(ImmutableArray<IConfigResourceInfo> configResources);
-    FluentResults.Result RemoveConfigsProfiles(ImmutableArray<IConfigProfileResourceInfo> configProfilesResources);
+    Task<FluentResults.Result> LoadConfigsAsync(ImmutableArray<IConfigResourceInfo> configResources);
+    Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigProfileResourceInfo> configProfileResources);
+    FluentResults.Result DisposeConfigs(ImmutableArray<IConfigResourceInfo> configResources);
+    FluentResults.Result DisposeConfigsProfiles(ImmutableArray<IConfigProfileResourceInfo> configProfilesResources);
+    FluentResults.Result DisposeConfigs(ContentPackage package);
+    FluentResults.Result DisposeConfigsProfiles(ContentPackage package);
     
-    
-    /*
-     * From resources
-     */
-    FluentResults.Result AddConfigs(ImmutableArray<IConfigInfo> configs);
-    FluentResults.Result AddConfigsProfiles(ImmutableArray<IConfigProfileInfo> configProfiles);
-    FluentResults.Result RemoveConfigs(ImmutableArray<IConfigInfo> configs);
-    FluentResults.Result RemoveConfigsProfiles(ImmutableArray<IConfigProfileInfo> configProfiles);
     
     /*
      * Immediate mode
@@ -79,8 +74,6 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
     FluentResults.Result<IReadOnlyDictionary<string, IConfigBase>> GetConfigsForPackage(ContentPackage package);
     FluentResults.Result<IReadOnlyDictionary<string, IConfigBase>> GetConfigsForPackage(string packageName);
     IReadOnlyDictionary<(ContentPackage, string), IConfigBase> GetAllConfigs();
-    FluentResults.Result<IConfigBase> GetConfig(ContentPackage package, string name);
-    FluentResults.Result<IConfigBase> GetConfig(string packageName, string name);
-    FluentResults.Result<T> GetConfig<T>(ContentPackage package, string name) where T : IConfigBase;
-    FluentResults.Result<T> GetConfig<T>(string packageName, string name) where T : IConfigBase;
+    T GetConfig<T>(ContentPackage package, string name) where T : IConfigBase;
+    T GetConfig<T>(string packageName, string name) where T : IConfigBase;
 }

@@ -10,7 +10,7 @@ public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo
 /// <summary>
 /// Represents loadable Lua files.
 /// </summary>
-public interface ILuaResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
+public interface ILuaScriptResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
 public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo
 {
     /// <summary>
@@ -39,7 +39,7 @@ public interface ILocalizationsResourcesInfo
 
 public interface ILuaScriptsResourcesInfo
 {
-    ImmutableArray<ILuaResourceInfo> LuaScripts { get; }
+    ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; }
 }
 
 public interface IConfigsResourcesInfo

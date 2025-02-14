@@ -151,4 +151,6 @@ public partial class LoggerService : ILoggerService
 
     public void Dispose() { }
     public FluentResults.Result Reset() => FluentResults.Result.Ok();
+    
+    public bool IsDisposed { get; }
 }

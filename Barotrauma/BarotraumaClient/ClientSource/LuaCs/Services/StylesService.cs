@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using FluentResults;
 using FluentResults.LuaCs;
 
 namespace Barotrauma.LuaCs.Services;
 
+// TODO: Complete rewrite
 public class StylesService : IStylesService
 {
-    private readonly Dictionary<string, UIStyleProcessor> _loadedProcessors = new();
+    private readonly ConcurrentDictionary<string, UIStyleProcessor> _loadedProcessors = new();
     private readonly IStorageService _storageService;
     private readonly ILoggerService _loggerService;
 
@@ -19,40 +22,11 @@ public class StylesService : IStylesService
         _storageService = storageService;
         _loggerService = loggerService;
     }
-    
-    public FluentResults.Result LoadStylesFile(ContentPackage package, ContentPath path)
+
+
+    public async Task<FluentResults.Result> LoadStylesFileAsync(ContentPackage package, ContentPath path)
     {
-        //check if file already in dict
-        if (_loadedProcessors.ContainsKey(path.FullPath))
-        {
-            return FluentResults.Result.Ok();
-        }
-        //check if file exists
-        if (_storageService.FileExists(path.FullPath) is {} result 
-            && result.IsFailed | (result.IsSuccess & result.Value == false))
-        {
-            return FluentResults.Result.Fail(result.Errors)
-                .WithError(new Error($"{nameof(StylesService)}.{nameof(LoadStylesFile)} file does not exist!")
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, package));
-        }
-
-        try
-        {
-            var styleProcessor = new UIStyleProcessor(package, path);
-            styleProcessor.LoadFile();
-            _loadedProcessors.Add(path.FullPath, styleProcessor);
-        }
-        catch (InvalidDataException exception)
-        {
-            return FluentResults.Result.Fail(new Error($"{nameof(StylesService)}.{nameof(LoadStylesFile)} failed for ContentPackage {package.Name}: Exception: {exception.Message}")
-                .WithMetadata(MetadataType.ExceptionDetails, exception.Message)
-                .WithMetadata(MetadataType.ExceptionObject, this)
-                .WithMetadata(MetadataType.RootObject, package)
-                .WithMetadata(MetadataType.StackTrace, exception.StackTrace));
-        }
-
-        return FluentResults.Result.Ok();
+        throw new NotImplementedException();
     }
 
     public FluentResults.Result UnloadAllStyles()
@@ -134,7 +108,7 @@ public class StylesService : IStylesService
         return null;
     }
 
-    private bool NoProcessorsLoaded => _loadedProcessors.Count < 1;
+    private bool NoProcessorsLoaded => _loadedProcessors.IsEmpty;
 
     public void Dispose()
     {
@@ -146,4 +120,6 @@ public class StylesService : IStylesService
     {
         return UnloadAllStyles();
     }
+
+    public bool IsDisposed { get; private set; }
 }
