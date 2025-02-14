@@ -107,6 +107,22 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         throw new NotImplementedException();
     }
 
+    public IReadOnlyList<Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
+        bool hostInstanceReference = false) where T : IDisposable
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result UnloadHostedReferences()
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result UnloadAllAssemblyResources()
+    {
+        throw new NotImplementedException();
+    }
+
     public Result<Assembly> GetLoadedAssembly(string assemblyName, in Guid[] excludedContexts)
     {
         ((IService)this).CheckDisposed();

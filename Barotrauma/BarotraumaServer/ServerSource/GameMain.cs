@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using MoonSharp.Interpreter;
 using System.Net;
 using Barotrauma.Extensions;
+using Barotrauma.LuaCs.Events;
 
 namespace Barotrauma
 {
@@ -34,7 +35,8 @@ namespace Barotrauma
             set { world = value; }
         }
 
-        public static LuaCsSetup LuaCs;
+        private static LuaCsSetup _luaCs;
+        public static LuaCsSetup LuaCs => _luaCs ??= new LuaCsSetup();
 
         public static GameServer Server;
         public static NetworkMember NetworkMember
@@ -364,7 +366,7 @@ namespace Barotrauma
                     TaskPool.Update();
                     CoroutineManager.Update(paused: false, (float)Timing.Step);
 
-                    GameMain.LuaCs.Update();
+                    LuaCs.EventService.PublishEvent<IEventUpdate>(sub => sub.OnUpdate(Timing.Step));
                     performanceCounterTimer.Stop();
                     if (GameMain.LuaCs.PerformanceCounter.EnablePerformanceCounter)
                     {

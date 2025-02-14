@@ -19,7 +19,7 @@ public partial record ModConfigInfo : IModConfigInfo
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
-    public ImmutableArray<ILuaResourceInfo> LuaScripts { get; init; }
+    public ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; init; }
     public ImmutableArray<IConfigResourceInfo> Configs { get; init; }
     public ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; init; }
 }
@@ -160,7 +160,7 @@ public record LocalizationResourceInfo : ILocalizationResourceInfo
     public bool Optional { get; init; }
 }
 
-public readonly struct LuaScriptResourceInfo : ILuaResourceInfo
+public readonly struct LuaScriptScriptResourceInfo : ILuaScriptResourceInfo
 {
     public ContentPackage OwnerPackage { get; init; }
     public string FallbackPackageName { get; init; }

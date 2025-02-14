@@ -19,65 +19,55 @@ namespace Barotrauma
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Enable CSharp Scripting")
             {
-                Selected = GameMain.LuaCs.Config.EnableCsScripting,
+                Selected = GameMain.LuaCs.IsCsEnabled?.Value ?? false,
                 ToolTip = "This enables CSharp Scripting for mods to use, WARNING: CSharp is NOT sandboxed, be careful with what mods you download.",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.Config.EnableCsScripting = tick.Selected;
-                    GameMain.LuaCs.WriteSettings();
-
+                    GameMain.LuaCs.IsCsEnabled?.TrySetValue(tick.Selected);
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Treat Forced Mods As Normal")
             {
-                Selected = GameMain.LuaCs.Config.TreatForcedModsAsNormal,
+                Selected = GameMain.LuaCs.TreatForcedModsAsNormal?.Value ?? false,
                 ToolTip = "This makes mods that were setup to run even when disabled to only run when enabled.",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.Config.TreatForcedModsAsNormal = tick.Selected;
-                    GameMain.LuaCs.WriteSettings();
-
+                    GameMain.LuaCs.TreatForcedModsAsNormal?.TrySetValue(tick.Selected);
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Prefer To Use Workshop Lua Setup")
             {
-                Selected = GameMain.LuaCs.Config.PreferToUseWorkshopLuaSetup,
+                Selected = GameMain.LuaCs.PreferToUseWorkshopLuaSetup?.Value ?? false,
                 ToolTip = "This makes Lua look first for the Lua/LuaSetup.lua located in the Workshop package instead of the one located locally.",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.Config.PreferToUseWorkshopLuaSetup = tick.Selected;
-                    GameMain.LuaCs.WriteSettings();
-
+                    GameMain.LuaCs.PreferToUseWorkshopLuaSetup?.TrySetValue(tick.Selected);
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Disable Error GUI Overlay")
             {
-                Selected = GameMain.LuaCs.Config.DisableErrorGUIOverlay,
+                Selected = GameMain.LuaCs.DisableErrorGUIOverlay?.Value ?? false,
                 ToolTip = "",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.Config.DisableErrorGUIOverlay = tick.Selected;
-                    GameMain.LuaCs.WriteSettings();
-
+                    GameMain.LuaCs.DisableErrorGUIOverlay?.TrySetValue(tick.Selected);
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Hide usernames In Error Logs")
             {
-                Selected = GameMain.LuaCs.Config.HideUserNames,
+                Selected = GameMain.LuaCs.HideUserNamesInLogs?.Value ?? false,
                 ToolTip = "Hides the operating system username when displaying error logs (eg your username on windows).",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.Config.HideUserNames = tick.Selected;
-                    GameMain.LuaCs.WriteSettings();
-
+                    GameMain.LuaCs.HideUserNamesInLogs?.TrySetValue(tick.Selected);
                     return true;
                 }
             };
@@ -100,7 +90,6 @@ namespace Barotrauma
                 OnClicked = (GUIButton button, object obj) =>
                 {
                     Close();
-
                     return true;
                 }
             };
