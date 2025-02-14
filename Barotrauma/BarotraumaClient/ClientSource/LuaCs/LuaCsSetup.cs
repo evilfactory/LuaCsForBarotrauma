@@ -1,6 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
+using System.Linq;
 using System.Text;
+using Barotrauma.CharacterEditor;
+using Barotrauma.LuaCs.Services;
+
+// ReSharper disable ObjectCreationAsStatement
 
 namespace Barotrauma
 {
@@ -8,47 +15,42 @@ namespace Barotrauma
     {
         public void AddToGUIUpdateList()
         {
-            if (!GameMain.LuaCs.Config.DisableErrorGUIOverlay)
+            if (!DisableErrorGUIOverlay.Value)
             {
                 LuaCsLogger.AddToGUIUpdateList();
             }
         }
 
-        public void CheckInitialize()
-        {
-            List<ContentPackage> csharpMods = new List<ContentPackage>();
-            foreach (ContentPackage cp in ContentPackageManager.EnabledPackages.All)
-            {
-                if (Directory.Exists(cp.Dir + "/CSharp") || Directory.Exists(cp.Dir + "/bin"))
-                {
-                    csharpMods.Add(cp);
-                }
-            }
+        private partial bool ShouldRunCs() => IsCsEnabled.Value;
+        
+        public IStylesManagementService StylesManagementService => _servicesProvider.TryGetService<IStylesManagementService>(out var svc) 
+            ? svc : throw new NullReferenceException("Networking Manager service not found!");
 
-            if (csharpMods.Count == 0 || ShouldRunCs)
-            {
-                Initialize();
+        public void CheckCsEnabled()
+        {
+
+            var csharpMods = PackageManagementService.Assemblies
+                .GroupBy(ass => ass.OwnerPackage)
+                .Select(grp => grp.Key)
+                .Where(ContentPackageManager.EnabledPackages.All.Contains)
+                .ToImmutableArray();
+
+            if (!csharpMods.Any())
                 return;
-            }
 
             StringBuilder sb = new StringBuilder();
 
             foreach (ContentPackage cp in csharpMods)
             {
                 if (cp.UgcId.TryUnwrap(out ContentPackageId id))
-                {
                     sb.AppendLine($"- {cp.Name} ({id})");
-                }
                 else
-                {
                     sb.AppendLine($"- {cp.Name} (Not On Workshop)");
-                }
             }
 
             if (GameMain.Client == null || GameMain.Client.IsServerOwner)
             {
                 new GUIMessageBox("", $"You have CSharp mods enabled but don't have the CSharp Scripting enabled, those mods might not work, go to the Main Menu, click on LuaCs Settings and check Enable CSharp Scripting.\n\n{sb}");
-                Initialize();
                 return;
             }
 
@@ -59,17 +61,51 @@ namespace Barotrauma
 
             msg.Buttons[0].OnClicked = (GUIButton button, object obj) =>
             {
-                Initialize(true);
-                msg.Close();
+                this.IsCsEnabled.TrySetValue(true);
                 return true;
             };
 
             msg.Buttons[1].OnClicked = (GUIButton button, object obj) =>
             {
-                Initialize();
-                msg.Close();
+                this.IsCsEnabled.TrySetValue(false);
                 return true;
             };
+        }
+
+        /// <summary>
+        /// Handles changes in game states tracked by screen changes.
+        /// </summary>
+        /// <param name="screen">The new game screen.</param>
+        public partial void OnScreenSelected(Screen screen)
+        {
+            switch (screen)
+            {
+                // menus and navigation states
+                case MainMenuScreen:
+                case ModDownloadScreen: 
+                case ServerListScreen: 
+                    SetRunState(RunState.Configuration);
+                    break;
+                 // running lobby or editor states
+                case CampaignEndScreen:    
+                case CharacterEditorScreen:
+                case EventEditorScreen:
+                case GameScreen:
+                case LevelEditorScreen:
+                case NetLobbyScreen:
+                case ParticleEditorScreen:
+                case RoundSummaryScreen:
+                case SpriteEditorScreen:
+                case SubEditorScreen: 
+                case TestScreen:        // notes: TestScreen is a Linux edge case editor screen and is deprecated.
+                    CheckCsEnabled();
+                    SetRunState(RunState.Running);
+                    break;
+                default:
+                    Logger.LogError($"{nameof(LuaCsSetup)}: Received an unknown screen {screen?.GetType().Name ?? "'null screen'"}. Retarding load state to 'unloaded'.");
+                    SetRunState(RunState.Unloaded);
+                    break;
+            }
         }
     }
 }

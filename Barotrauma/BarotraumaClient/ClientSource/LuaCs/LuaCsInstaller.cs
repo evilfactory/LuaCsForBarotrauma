@@ -59,7 +59,7 @@ namespace Barotrauma
         {
             if (!File.Exists(LuaCsSetup.VersionFile)) { return; }
 
-            ContentPackage luaPackage = LuaCsSetup.GetPackage(LuaCsSetup.LuaForBarotraumaId);
+            ContentPackage luaPackage = LuaCsSetup.GetPackage(new SteamWorkshopId(GameMain.LuaCs.LuaForBarotraumaSteamId?.Value ?? 0));
 
             if (luaPackage == null) { return; }
 

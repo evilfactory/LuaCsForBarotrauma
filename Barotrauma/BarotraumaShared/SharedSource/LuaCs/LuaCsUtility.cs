@@ -60,7 +60,8 @@ namespace Barotrauma
 
             foreach (var package in ContentPackageManager.AllPackages)
             {
-                if (package.UgcId.ValueEquals(LuaCsSetup.LuaForBarotraumaId) && pathStartsWith(getFullPath(package.Path)))
+                if (package.UgcId.ValueEquals(new SteamWorkshopId(GameMain.LuaCs.LuaForBarotraumaSteamId?.Value ?? 0ul)) 
+                    && pathStartsWith(getFullPath(package.Path)))
                 {
                     return false;
                 }

@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Barotrauma.Extensions;
 using Barotrauma.IO;
+using Barotrauma.LuaCs.Events;
 using Barotrauma.Networking;
 using Barotrauma.Steam;
 using Microsoft.Xna.Framework;
@@ -118,7 +119,6 @@ namespace Barotrauma
                     ContentPackageManager.EnabledPackages.SetRegular(regularPackages);
                 }
                 GameMain.NetLobbyScreen.Select();
-                GameMain.LuaCs.CheckInitialize();
                 return;
             }
 
@@ -366,7 +366,7 @@ namespace Barotrauma
                     ContentPackageManager.EnabledPackages.BackUp();
                     ContentPackageManager.EnabledPackages.SetCore(corePackage);
                     ContentPackageManager.EnabledPackages.SetRegular(regularPackages);
-
+                    
                     //see if any of the packages we enabled contain subs that we were missing previously, and update their paths
                     foreach (var serverSub in GameMain.Client.ServerSubmarines)
                     {
@@ -379,7 +379,6 @@ namespace Barotrauma
                     }
                     GameMain.NetLobbyScreen.UpdateSubList(GameMain.NetLobbyScreen.SubList, GameMain.Client.ServerSubmarines);
                     GameMain.NetLobbyScreen.Select();
-                    GameMain.LuaCs.CheckInitialize();
                 }
             }
             else if (GameMain.Client.FileReceiver.ActiveTransfers.None())
