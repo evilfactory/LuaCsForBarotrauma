@@ -6,7 +6,7 @@ namespace Barotrauma.LuaCs.Services;
 /// <summary>
 /// Loads XML Style assets from the given content package.
 /// </summary>
-public interface IStylesService : IReusableService
+public interface IStylesService : IService
 {
     /// <summary>
     /// Tries to load the styles file for the given <see cref="ContentPackage"/> and path into a new <see cref="UIStyleProcessor"/> instance.

@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.LuaCs.Services.Safe;
 using Barotrauma.Networking;
 

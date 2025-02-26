@@ -542,8 +542,10 @@ namespace Barotrauma
                 }
             };
 
-            string version = File.Exists(LuaCsSetup.VersionFile) ? File.ReadAllText(LuaCsSetup.VersionFile) : "Github";
-
+            // TODO: Implement version reading.
+            //string version = File.Exists(LuaCsSetup.VersionFile) ? File.ReadAllText(LuaCsSetup.VersionFile) : "Github";
+            string version = "NOT_IMPLEMENTED";
+            
             new GUITextBlock(new RectTransform(new Point(300, 30), Frame.RectTransform, Anchor.TopLeft) { AbsoluteOffset = new Point(10, 10) }, $"Using LuaCsForBarotrauma revision {AssemblyInfo.GitRevision} version {version}", Color.Red)
             {
                 IgnoreLayoutGroups = false
@@ -703,8 +705,6 @@ namespace Barotrauma
         #region Selection
         public override void Select()
         {
-            GameMain.LuaCs.Stop();
-
             ResetModUpdateButton();
 
             if (WorkshopItemsToUpdate.Any())
@@ -1314,8 +1314,6 @@ namespace Barotrauma
                 return;
             }
 
-            GameMain.LuaCs.CheckInitialize();
-
             selectedSub = new SubmarineInfo(Path.Combine(SaveUtil.TempPath, selectedSub.Name + ".sub"));
             
             GameMain.GameSession = new GameSession(selectedSub, Option.None, CampaignDataPath.CreateRegular(savePath), GameModePreset.SinglePlayerCampaign, settings, mapSeed);
@@ -1330,8 +1328,6 @@ namespace Barotrauma
         private void LoadGame(string path, Option<uint> backupIndex)
         {
             if (string.IsNullOrWhiteSpace(path)) return;
-
-            GameMain.LuaCs.CheckInitialize();
 
             try
             {

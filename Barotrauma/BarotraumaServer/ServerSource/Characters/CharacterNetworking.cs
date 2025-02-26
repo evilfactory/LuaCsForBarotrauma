@@ -815,7 +815,7 @@ namespace Barotrauma
 
                 var tempBuffer = new ReadWriteMessage();
                 WriteStatus(tempBuffer, forceAfflictionData: true);
-                if (msgLengthBeforeStatus + tempBuffer.LengthBytes >= 255 && restrictMessageSize && GameMain.LuaCs.Networking.RestrictMessageSize)
+                if (msgLengthBeforeStatus + tempBuffer.LengthBytes >= 255 && restrictMessageSize && (GameMain.LuaCs.RestrictMessageSize?.Value ?? false))
                 { 
                     msg.WriteBoolean(false);
                     if (msgLengthBeforeStatus < 255)

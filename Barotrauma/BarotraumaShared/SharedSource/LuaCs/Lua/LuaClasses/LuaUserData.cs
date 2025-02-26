@@ -1,24 +1,15 @@
-﻿using MoonSharp.Interpreter;
-using MoonSharp.Interpreter.Interop;
+﻿/*
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using MoonSharp.Interpreter;
+using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma
 {
     partial class LuaUserData
     {
-        public static ReadOnlyDictionary<string, IUserDataDescriptor> Descriptors => new ReadOnlyDictionary<string, IUserDataDescriptor>(descriptors);
-        private static ConcurrentDictionary<string, IUserDataDescriptor> descriptors = new ConcurrentDictionary<string, IUserDataDescriptor>();
-
-        public IUserDataDescriptor this[string index]
-        {
-            get => Descriptors.GetValueOrDefault(index);
-        }
-
         public static Type GetType(string typeName) => LuaCsSetup.GetType(typeName);
 
         public static IUserDataDescriptor RegisterType(string typeName)
@@ -30,15 +21,7 @@ namespace Barotrauma
                 throw new ScriptRuntimeException($"tried to register a type that doesn't exist: {typeName}.");
             }
 
-            var descriptor = UserData.RegisterType(type);
-            descriptors.TryAdd(typeName, descriptor);
-
-            return descriptor;
-        }
-
-        public static IUserDataDescriptor RegisterTypeBarotrauma(string typeName)
-        {
-            return RegisterType($"Barotrauma.{typeName}");
+            return UserData.RegisterType(type);
         }
 
         public static void RegisterExtensionType(string typeName)
@@ -120,9 +103,7 @@ namespace Barotrauma
 
             MethodInfo method = typeof(UserData).GetMethod(nameof(UserData.CreateStatic), 1, new Type[0]);
             MethodInfo generic = method.MakeGenericMethod(type);
-            var result = generic.Invoke(null, null);
-
-            return result;
+            return generic.Invoke(null, null);
         }
 
         public static object CreateEnumTable(string typeName)
@@ -379,13 +360,6 @@ namespace Barotrauma
             descriptor ??= new StandardUserDataDescriptor(desiredType, InteropAccessMode.Default);
             return CreateUserDataFromDescriptor(scriptObject, descriptor);
         }
-
-        public static void AddCallMetaTable(object userdata) { }
-
-
-        public static void Clear()
-        {
-            descriptors.Clear();
-        }
     }
 }
+*/

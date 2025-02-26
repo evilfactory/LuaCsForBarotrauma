@@ -19,7 +19,7 @@ using MonoMod.Utils;
 
 namespace Barotrauma;
 
-public sealed class CsPackageManager : IDisposable
+/*public sealed class CsPackageManager : IDisposable
 {
     #region PRIVATE_FUNCDATA
 
@@ -632,8 +632,6 @@ public sealed class CsPackageManager : IDisposable
         bool ShouldRunPackage(ContentPackage package, RunConfig config)
         {
             throw new NotImplementedException();
-            /*return (!_luaCsSetup.Config.TreatForcedModsAsNormal && config.IsForced())
-                   || (ContentPackageManager.EnabledPackages.All.Contains(package) && config.IsForcedOrStandard());*/
         }
 
         void UpdatePackagesToDisable(ref HashSet<ContentPackage> set, 
@@ -1098,3 +1096,4 @@ public sealed class CsPackageManager : IDisposable
 
     #endregion
 }
+*/

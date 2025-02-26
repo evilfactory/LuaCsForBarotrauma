@@ -5,10 +5,11 @@ using System.IO;
 using System.Reflection;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Configuration;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Steam;
 using FluentResults;
 using FluentResults.LuaCs;
@@ -293,12 +294,31 @@ public class StorageService : IStorageService
         });
     }
 
+    public FluentResults.Result<bool> DirectoryExists(string directoryPath)
+    {
+        ((IService)this).CheckDisposed();
+        try
+        {
+            var di = new DirectoryInfo(directoryPath);
+            return di.Exists;
+        }
+        catch (Exception ex)
+        {
+            return new FluentResults.Result<bool>().WithError(ex.Message);
+        }
+    }
+
     public async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
     {
-        var r = await TryLoadTextAsync(filePath, encoding);
-        if (r is { IsSuccess: true, Value: {} value } && !value.IsNullOrWhiteSpace())
-            return XDocument.Parse(value);
-        return FluentResults.Result.Fail<XDocument>(GetGeneralError(nameof(TryLoadXml), filePath));
+        try
+        {
+            await using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            return await XDocument.LoadAsync(fs, LoadOptions.PreserveWhitespace, CancellationToken.None);
+        }
+        catch (Exception e)
+        {
+            return FluentResults.Result.Fail<XDocument>(GetGeneralError(nameof(TryLoadXmlAsync), filePath));
+        }
     }
 
     public async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
@@ -601,7 +621,7 @@ public class StorageService : IStorageService
             localFilePath)));
     }
 
-    private FluentResults.Result<string> GetAbsFromPackage(ContentPackage package, string localFilePath)
+    public FluentResults.Result<string> GetAbsFromPackage(ContentPackage package, string localFilePath)
     {
         if (package is null)
         {

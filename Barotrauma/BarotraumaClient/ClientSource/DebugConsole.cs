@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Barotrauma.LuaCs.Events;
 using static Barotrauma.FabricationRecipe;
 
 namespace Barotrauma
@@ -664,8 +665,6 @@ namespace Barotrauma
                 {
                     bool.TryParse(args[3], out luaCsEnabled);
                 }
-
-                if (luaCsEnabled) { GameMain.LuaCs.Initialize(); }
 
                 GameMain.MainMenuScreen.QuickStart(fixedSeed: false, subName, difficulty, levelGenerationParams);
 
@@ -4226,7 +4225,8 @@ namespace Barotrauma
 
             commands.Add(new Command("cl_lua", $"cl_lua: Runs a string on the client.", (string[] args) =>
             {
-                if (GameMain.Client != null && !GameMain.Client.HasPermission(ClientPermissions.ConsoleCommands))
+                throw new NotImplementedException();
+                /*if (GameMain.Client != null && !GameMain.Client.HasPermission(ClientPermissions.ConsoleCommands))
                 {
                     ThrowError("Command not permitted.");
                     return;
@@ -4245,12 +4245,12 @@ namespace Barotrauma
                 catch(Exception ex)
                 {
                     LuaCsLogger.HandleException(ex, LuaCsMessageOrigin.LuaMod);
-                }
+                }*/
             }));
 
             commands.Add(new Command("cl_reloadlua|cl_reloadcs|cl_reloadluacs", "Re-initializes the LuaCs environment.", (string[] args) =>
             {
-                GameMain.LuaCs.Initialize();
+                GameMain.LuaCs.EventService.PublishEvent<IEventReloadAllPackages>(sub => sub.OnReloadAllPackages());
             }));
 
             commands.Add(new Command("cl_toggleluadebug", "Toggles the MoonSharp Debug Server.", (string[] args) =>
@@ -4262,7 +4262,8 @@ namespace Barotrauma
                     int.TryParse(args[0], out port);
                 }
 
-                GameMain.LuaCs.ToggleDebugger(port);
+                throw new NotImplementedException();
+                //GameMain.LuaCs.ToggleDebugger(port);
             }));
         }
 

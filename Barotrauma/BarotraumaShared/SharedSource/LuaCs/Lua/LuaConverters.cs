@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using MoonSharp.Interpreter;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
@@ -391,3 +392,4 @@ namespace Barotrauma
         }
     }
 }
+*/

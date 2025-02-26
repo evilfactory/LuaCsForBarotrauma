@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Barotrauma.LuaCs.Configuration;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Services;

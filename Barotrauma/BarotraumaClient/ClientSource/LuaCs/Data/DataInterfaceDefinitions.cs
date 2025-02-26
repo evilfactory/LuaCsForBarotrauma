@@ -5,7 +5,7 @@ namespace Barotrauma.LuaCs.Data;
 
 public partial record ModConfigInfo : IModConfigInfo
 {
-    public ImmutableArray<IStylesResourceInfo> StylesResourceInfos { get; init; }
+    public ImmutableArray<IStylesResourceInfo> Styles { get; init; }
 }
 
 public record StylesResourceInfo : IStylesResourceInfo
@@ -18,6 +18,6 @@ public record StylesResourceInfo : IStylesResourceInfo
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
-    public string FallbackPackageName { get; }
-    public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public string FallbackPackageName { get; init; }
+    public ImmutableArray<IPackageDependency> Dependencies { get; init; }
 }

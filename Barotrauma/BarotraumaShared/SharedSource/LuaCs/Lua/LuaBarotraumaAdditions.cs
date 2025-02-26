@@ -59,8 +59,8 @@ namespace Barotrauma
     {
         public object GetComponentString(string component)
         {
-            Type type = LuaUserData.GetType("Barotrauma.Items.Components." + component);
-
+            Type type = GameMain.LuaCs.PluginManagementService.GetType("Barotrauma.Items.Components." + component);
+            
             if (type == null)
             {
                 return null;
