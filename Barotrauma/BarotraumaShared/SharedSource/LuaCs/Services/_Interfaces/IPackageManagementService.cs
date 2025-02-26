@@ -17,20 +17,22 @@ public interface IPackageManagementService : IReusableService, ILocalizationsRes
 {
     /// <summary>
     /// Loads and parses the provided <see cref="ContentPackage"/> for <see cref="IResourceInfo"/> supported by the current runtime environment.
+    /// Will overwrite any existing package data.
     /// </summary>
-    /// <param name="packages"></param>
+    /// <param name="packages">Package to load.</param>
     /// <returns></returns>
-    Task<FluentResults.Result> LoadPackageInfosAsync(ContentPackage packages);
+    Task<FluentResults.Result> LoadPackageInfosAsync(ContentPackage package);
     /// <summary>
     /// Loads and parses the provided <see cref="ContentPackage"/> collection for <see cref="IResourceInfo"/> supported by the current runtime environment.
+    /// Will overwrite any existing package data.
     /// </summary>
-    /// <param name="packages"></param>
+    /// <param name="packages">List of packages to load.</param>
     /// <returns></returns>
     Task<IReadOnlyList<(ContentPackage, FluentResults.Result)>> LoadPackagesInfosAsync(IReadOnlyList<ContentPackage> packages);
     IReadOnlyList<ContentPackage> GetAllLoadedPackages();
     void DisposePackageInfos(ContentPackage package);
     void DisposePackagesInfos(IReadOnlyList<ContentPackage> packages);
-    void DisposeAllPackagesInfos();
+    FluentResults.Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName, ulong steamWorkshopId);
     
     // single
     FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true);

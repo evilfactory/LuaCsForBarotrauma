@@ -9,7 +9,9 @@ namespace Barotrauma
     {
         public static void Install()
         {
-            ContentPackage luaPackage = LuaCsSetup.GetPackage(LuaCsSetup.LuaForBarotraumaId);
+            throw new NotImplementedException();
+            // TODO: Refactor the installer to not be dependent on LuaCsSetup.
+            /*ContentPackage luaPackage = LuaCsSetup.GetPackage();
 
             if (luaPackage == null)
             {
@@ -64,7 +66,7 @@ namespace Barotrauma
                 return;
             }
 
-            GameMain.Server.SendChatMessage("Client-Side LuaCs installed, restart your game to apply changes.", ChatMessageType.ServerMessageBox);
+            GameMain.Server.SendChatMessage("Client-Side LuaCs installed, restart your game to apply changes.", ChatMessageType.ServerMessageBox);*/
         }
     }
 }

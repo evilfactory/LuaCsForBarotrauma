@@ -2862,8 +2862,6 @@ namespace Barotrauma.Networking
 
         public void Quit()
         {
-            GameMain.LuaCs.Stop();
-            
             ClientPeer?.Close(PeerDisconnectPacket.WithReason(DisconnectReason.Disconnected));
             
             GUIMessageBox.MessageBoxes.RemoveAll(c => c?.UserData is RoundSummary);

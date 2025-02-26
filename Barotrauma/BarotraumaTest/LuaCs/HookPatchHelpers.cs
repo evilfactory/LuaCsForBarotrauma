@@ -73,7 +73,8 @@ namespace TestProject.LuaCs
                 LuaCsHook.HookMethodType.After => "Hook.HookMethodType.After",
                 _ => throw new NotImplementedException(),
             });
-            return luaCs.Lua.DoString($"return Hook.Patch({string.Join(", ", args)})");
+            throw new NotImplementedException();
+            //return luaCs.Lua.DoString($"return Hook.Patch({string.Join(", ", args)})");
         }
 
         private static DynValue DoHookRemovePatch(
@@ -91,7 +92,8 @@ namespace TestProject.LuaCs
                 LuaCsHook.HookMethodType.After => "Hook.HookMethodType.After",
                 _ => throw new NotImplementedException(),
             });
-            return luaCs.Lua.DoString($"return Hook.RemovePatch({string.Join(", ", args)})");
+            throw new NotImplementedException();
+            //return luaCs.Lua.DoString($"return Hook.RemovePatch({string.Join(", ", args)})");
         }
 
         public static PatchHandle AddPrefix<T>(this LuaCsSetup luaCs, string body, string methodName, string[]? parameters = null, string? patchId = null)
