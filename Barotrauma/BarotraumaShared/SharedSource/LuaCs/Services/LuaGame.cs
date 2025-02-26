@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Barotrauma.Items.Components;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using MoonSharp.Interpreter;
 
-namespace Barotrauma
+namespace Barotrauma.LuaCs.Services
 {
-    partial class LuaGame
+    partial class LuaGame : IReusableService
     {
         public bool IsSingleplayer => GameMain.IsSingleplayer;
         public bool IsMultiplayer => GameMain.IsMultiplayer;
@@ -463,6 +464,8 @@ namespace Barotrauma
 
         public List<DebugConsole.Command> Commands => DebugConsole.Commands;
 
+        public bool IsDisposed => throw new NotImplementedException();
+
         public void AssignOnExecute(string names, object onExecute) => DebugConsole.AssignOnExecute(names,
             (string[] a) =>
             {
@@ -529,7 +532,7 @@ namespace Barotrauma
             GameMain.Server.EndGame();
         }
 
-        public void AssignOnClientRequestExecute(string names, object onExecute) => DebugConsole.AssignOnClientRequestExecute(names, (Client a, Vector2 b, string[] c) => { GameMain.LuaCs.CallLuaFunction(onExecute, new object[] { a, b, c }); });
+        //public void AssignOnClientRequestExecute(string names, object onExecute) => DebugConsole.AssignOnClientRequestExecute(names, (Client a, Vector2 b, string[] c) => { GameMain.LuaCs.CallLuaFunction(onExecute, new object[] { a, b, c }); });
 
 #endif
 
@@ -542,6 +545,17 @@ namespace Barotrauma
             {
                 DebugConsole.Commands.Remove(cmd);
             }
+        }
+
+        public FluentResults.Result Reset()
+        {
+            Stop();
+            return FluentResults.Result.Ok();
+        }
+
+        public void Dispose()
+        {
+            Stop();
         }
     }
 
