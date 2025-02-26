@@ -49,6 +49,7 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
+                _servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
                 // TODO: ILocalizationService
                 // TODO: IConfigService
                 // TODO: INetworkingService
@@ -109,6 +110,8 @@ namespace Barotrauma
             ? svc : throw new NullReferenceException("Networking Manager service not found!");
         public IEventService EventService => _servicesProvider.TryGetService<IEventService>(out var svc) 
             ? svc : throw new NullReferenceException("Networking Manager service not found!");
+        public LuaGame Game => _servicesProvider.TryGetService<LuaGame>(out var svc)
+            ? svc : throw new NullReferenceException("LuaGame service not found!");
 
         /*
          * === Config Vars 
@@ -175,8 +178,7 @@ namespace Barotrauma
 
         #region LegacyRedirects
 
-        public ILuaCsHook Hook => this.EventService;
-        
+        public ILuaCsHook Hook => this.EventService;        
 
         #endregion
 
