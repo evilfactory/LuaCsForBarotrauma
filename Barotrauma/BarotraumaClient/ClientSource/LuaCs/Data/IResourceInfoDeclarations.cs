@@ -4,12 +4,12 @@ namespace Barotrauma.LuaCs.Data;
 
 public partial interface IModConfigInfo : IStylesResourcesInfo { }
 
-public interface IStylesResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageInfo, IPackageDependenciesInfo { }
+public interface IStylesResourceInfo : IResourceInfo, IResourceCultureInfo, IDataInfo, IPackageDependenciesInfo { }
 
 public interface IStylesResourcesInfo
 {
     /// <summary>
     /// Collection of loadable styles data.
     /// </summary>
-    ImmutableArray<IStylesResourceInfo> StylesResourceInfos { get; }
+    ImmutableArray<IStylesResourceInfo> Styles { get; }
 }

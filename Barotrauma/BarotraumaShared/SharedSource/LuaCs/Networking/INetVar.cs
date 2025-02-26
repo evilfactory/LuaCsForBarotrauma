@@ -1,10 +1,10 @@
 ﻿using System;
 using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
-namespace Barotrauma.LuaCs.Networking;
+namespace Barotrauma.LuaCs.Services;
 
 public interface INetVar : IVarId
 {

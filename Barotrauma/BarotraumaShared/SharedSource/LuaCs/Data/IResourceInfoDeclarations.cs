@@ -4,14 +4,22 @@ using System.Globalization;
 
 namespace Barotrauma.LuaCs.Data;
 
-public interface IConfigResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
-public interface IConfigProfileResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
-public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
+public interface IConfigResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo { }
+public interface IConfigProfileResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo { }
+public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo { }
+
 /// <summary>
 /// Represents loadable Lua files.
 /// </summary>
-public interface ILuaScriptResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
-public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo
+public interface ILuaScriptResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo
+{
+    /// <summary>
+    /// Should this script be run automatically.
+    /// </summary>
+    public bool IsAutorun { get; }
+}
+
+public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo
 {
     /// <summary>
     /// The friendly name of the assembly. Script files belonging to the same assembly should all have the same name.

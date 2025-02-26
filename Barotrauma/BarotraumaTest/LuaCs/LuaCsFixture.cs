@@ -1,8 +1,11 @@
-﻿extern alias Client;
+﻿/*
+extern alias Client;
 
 using Client::Barotrauma;
 using System;
 using System.Runtime.ExceptionServices;
+
+// TODO: Rewrite all of this.
 
 namespace TestProject.LuaCs
 {
@@ -31,3 +34,4 @@ namespace TestProject.LuaCs
         void IDisposable.Dispose() => LuaCs.Stop();
     }
 }
+*/

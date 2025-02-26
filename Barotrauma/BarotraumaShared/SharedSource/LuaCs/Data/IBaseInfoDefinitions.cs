@@ -21,11 +21,6 @@ public interface IPlatformInfo
     Target SupportedTargets { get; }   
 }
 
-/// <summary>
-/// All info we should have on a package for a given resource.
-/// </summary>
-public interface IPackageInfo : IDataInfo { }
-
 
 /// <summary>
 /// ResourceInfos contain metadata about a resource.

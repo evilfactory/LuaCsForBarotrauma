@@ -16,10 +16,6 @@ public interface IDataInfo : IEqualityComparer<IDataInfo>, IEquatable<IDataInfo>
     /// The package this information belongs to.
     /// </summary>
     ContentPackage OwnerPackage { get; }
-    /// <summary>
-    /// Used in place of the package data when the OwnerPackage is missing.
-    /// </summary>
-    string FallbackPackageName { get; }
 
     bool IEqualityComparer<IDataInfo>.Equals(IDataInfo x, IDataInfo y)
     {

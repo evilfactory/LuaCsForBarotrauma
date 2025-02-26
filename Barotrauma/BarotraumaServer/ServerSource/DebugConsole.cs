@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Barotrauma.Steam;
 using Barotrauma.Extensions;
+using Barotrauma.LuaCs.Events;
 
 namespace Barotrauma
 {
@@ -1296,7 +1297,8 @@ namespace Barotrauma
             {
                 try
                 {
-                    GameMain.LuaCs.Lua.DoString(string.Join(" ", args));
+                    throw new NotImplementedException();
+                    //GameMain.LuaCs.Lua.DoString(string.Join(" ", args));
                 }
                 catch (Exception ex)
                 {
@@ -1306,7 +1308,8 @@ namespace Barotrauma
 
             commands.Add(new Command("reloadlua|reloadcs|reloadluacs", "Re-initializes the LuaCs environment.", (string[] args) =>
             {
-                GameMain.LuaCs.Initialize();
+                //GameMain.LuaCs.Initialize();
+                GameMain.LuaCs.EventService.PublishEvent<IEventReloadAllPackages>(sub => sub.OnReloadAllPackages());
             }));
 
             commands.Add(new Command("toggleluadebug", "Toggles the MoonSharp Debug Server.", (string[] args) =>
@@ -1318,7 +1321,8 @@ namespace Barotrauma
                     int.TryParse(args[0], out port);
                 }
 
-                GameMain.LuaCs.ToggleDebugger(port);
+                throw new NotImplementedException();
+                //GameMain.LuaCs.ToggleDebugger(port);
             }));
 
             commands.Add(new Command("install_cl_lua|install_cl|install_cl_cs|install_cl_luacs", "Installs Client-Side LuaCs into your client.", (string[] args) =>

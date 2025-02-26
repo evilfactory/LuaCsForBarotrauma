@@ -238,7 +238,6 @@ namespace Barotrauma.Networking
 
             VoipServer = new VoipServer(serverPeer);
 
-            GameMain.LuaCs.Initialize();
             Log("Server started", ServerLog.MessageType.ServerMessage);
 
             GameMain.NetLobbyScreen.Select();
@@ -817,7 +816,7 @@ namespace Barotrauma.Networking
 
             ClientPacketHeader header = (ClientPacketHeader)inc.ReadByte();
             
-            GameMain.LuaCs.Networking.NetMessageReceived(inc, header, connectedClient);
+            GameMain.LuaCs.NetworkingService.NetMessageReceived(inc, header, connectedClient);
 
             switch (header)
             {

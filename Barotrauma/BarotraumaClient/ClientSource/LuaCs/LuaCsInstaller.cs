@@ -57,6 +57,9 @@ namespace Barotrauma
 
         public static void CheckUpdate()
         {
+            throw new NotImplementedException();
+            /*// TODO: Rewrite this to not rely on LuaCsSetup.
+            
             if (!File.Exists(LuaCsSetup.VersionFile)) { return; }
 
             ContentPackage luaPackage = LuaCsSetup.GetPackage(new SteamWorkshopId(GameMain.LuaCs.LuaForBarotraumaSteamId?.Value ?? 0));
@@ -116,6 +119,7 @@ namespace Barotrauma
                 msg.Close();
                 return true;
             };
+            */
             
         }
     }

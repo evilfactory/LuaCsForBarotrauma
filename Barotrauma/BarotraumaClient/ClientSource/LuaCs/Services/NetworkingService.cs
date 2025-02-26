@@ -3,9 +3,9 @@ using Barotrauma.Networking;
 using System;
 using System.Collections.Generic;
 
-namespace Barotrauma.LuaCs.Networking;
+namespace Barotrauma.LuaCs.Services;
 
-partial class NetworkingService
+partial class NetworkingService : INetworkingService
 {
     private Dictionary<ushort, Queue<IReadMessage>> receiveQueue = new Dictionary<ushort, Queue<IReadMessage>>();
 
@@ -42,6 +42,11 @@ partial class NetworkingService
                 ReadIds(netMessage);
                 break;
         }
+    }
+
+    public void NetMessageReceived(IReadMessage message, ServerPacketHeader header)
+    {
+        throw new NotImplementedException();
     }
 
     public INetWriteMessage Start(Guid netId)
