@@ -1,4 +1,4 @@
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 
 namespace Barotrauma.LuaCs.Configuration;
 

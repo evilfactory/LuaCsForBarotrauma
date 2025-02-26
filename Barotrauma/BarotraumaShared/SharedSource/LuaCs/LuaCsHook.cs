@@ -840,7 +840,7 @@ namespace Barotrauma
 
         private static MethodBase ResolveMethod(string className, string methodName, string[] parameters)
         {
-            var classType = LuaUserData.GetType(className);
+            var classType = GameMain.LuaCs.PluginManagementService.GetType(className);
             if (classType == null) throw new ScriptRuntimeException($"invalid class name '{className}'");
 
             const BindingFlags BINDING_FLAGS = BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
@@ -855,7 +855,7 @@ namespace Barotrauma
 
                     for (int i = 0; i < parameters.Length; i++)
                     {
-                        Type type = LuaUserData.GetType(parameters[i]);
+                        Type type = GameMain.LuaCs.PluginManagementService.GetType(parameters[i]);
                         if (type == null)
                         {
                             throw new ScriptRuntimeException($"invalid parameter type '{parameters[i]}'");

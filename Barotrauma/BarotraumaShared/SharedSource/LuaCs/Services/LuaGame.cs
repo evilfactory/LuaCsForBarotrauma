@@ -272,8 +272,9 @@ namespace Barotrauma.LuaCs.Services
 
         public LuaGame()
         {
-            LuaUserData.MakeFieldAccessible(UserData.RegisterType(typeof(GameSettings)), "currentConfig");
-            Settings = UserData.CreateStatic(typeof(GameSettings));
+            throw new NotImplementedException();
+            /*LuaUserData.MakeFieldAccessible(UserData.RegisterType(typeof(GameSettings)), "currentConfig");
+            Settings = UserData.CreateStatic(typeof(GameSettings));*/
         }
 
         public void OverrideTraitors(bool o)

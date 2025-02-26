@@ -116,10 +116,5 @@ public class StylesService : IStylesService
         GC.SuppressFinalize(this);
     }
 
-    public FluentResults.Result Reset()
-    {
-        return UnloadAllStyles();
-    }
-
     public bool IsDisposed { get; private set; }
 }

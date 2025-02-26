@@ -77,5 +77,6 @@ namespace Barotrauma
         }
 
         public void Dispose() { }
+        public bool IsDisposed { get; }
     }
 }

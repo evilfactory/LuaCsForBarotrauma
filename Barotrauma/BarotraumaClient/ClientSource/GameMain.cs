@@ -1299,6 +1299,19 @@ namespace Barotrauma
         {
             IsExiting = true;
             CreatureMetrics.Save();
+            try
+            {
+                if (_luaCs is not null)
+                {
+                    _luaCs.Dispose();
+                    _luaCs = null;
+                }
+            }
+            catch (Exception e)
+            {
+                DebugConsole.ThrowError($"Error while disposing of LuaCsForBarotrauma: {e.Message} | {e.StackTrace}");
+            }
+            
             DebugConsole.NewMessage("Exiting...");
             Client?.Quit();
             SteamManager.ShutDown();

@@ -1,7 +1,7 @@
 ﻿using Barotrauma.Networking;
 using Microsoft.Xna.Framework;
 
-namespace Barotrauma.LuaCs.Networking;
+namespace Barotrauma.LuaCs.Services;
 
 #region Wrapper-IWriteMessage
 

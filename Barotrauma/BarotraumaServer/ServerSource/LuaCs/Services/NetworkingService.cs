@@ -4,9 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Barotrauma.LuaCs.Networking;
+// ReSharper disable once CheckNamespace
+namespace Barotrauma.LuaCs.Services;
 
-partial class NetworkingService
+partial class NetworkingService : INetworkingService
 {
     private const int MaxRegisterPerClient = 1000;
 

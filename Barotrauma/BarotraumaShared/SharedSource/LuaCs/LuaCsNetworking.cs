@@ -131,20 +131,24 @@ namespace Barotrauma
                     }
                 }
 
+                throw new NotImplementedException();
+
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                GameMain.LuaCs.Timer.Wait((object[] par) => 
+                /*GameMain.LuaCs.Timer.Wait((object[] par) => 
                 { 
                     callback(responseBody, (int)response.StatusCode, response.Headers); 
-                }, 0);
+                }, 0);*/
             }
             catch (HttpRequestException e)
             {
-                GameMain.LuaCs.Timer.Wait((object[] par) => { callback(e.Message, e.StatusCode, null); }, 0);
+                throw new NotImplementedException();
+                //GameMain.LuaCs.Timer.Wait((object[] par) => { callback(e.Message, e.StatusCode, null); }, 0);
             }
             catch (Exception e)
             {
-                GameMain.LuaCs.Timer.Wait((object[] par) => { callback(e.Message, null, null); }, 0);
+                throw new NotImplementedException();
+                //GameMain.LuaCs.Timer.Wait((object[] par) => { callback(e.Message, null, null); }, 0);
             }
         }
 

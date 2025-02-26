@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Barotrauma.LuaCs.Networking;
+namespace Barotrauma.LuaCs.Services;
 
 public partial interface INetCallback
 {
