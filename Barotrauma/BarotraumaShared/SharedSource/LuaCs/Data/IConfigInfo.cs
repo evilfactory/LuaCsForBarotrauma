@@ -1,5 +1,5 @@
 ﻿using System;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Data;

@@ -22,7 +22,7 @@ namespace Barotrauma
     internal delegate void LuaCsErrorHandler(Exception ex, LuaCsMessageOrigin origin);
     internal delegate void LuaCsExceptionHandler(Exception ex, LuaCsMessageOrigin origin);
 
-    partial class LuaCsSetup : IDisposable, IEventScreenSelected, IEventAllPackageListChanged, IEventEnabledPackageListChanged
+    partial class LuaCsSetup : IDisposable, IEventScreenSelected, IEventAllPackageListChanged, IEventEnabledPackageListChanged, IEventReloadAllPackages
     {
         public LuaCsSetup()
         {
@@ -35,7 +35,7 @@ namespace Barotrauma
             return;
             // == end
             
-            // == helpers
+            // == sub processes
             void RegisterServices()
             {
                 _servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
@@ -61,7 +61,9 @@ namespace Barotrauma
             // Validates LuaCs assets in /Content are valid and ready to use.
             void ValidateLuaCsContent()
             {
-                throw new NotImplementedException();
+                // check if /Content/Lua/ModConfig.xml exists
+                // if not, try to copy it from the Workshop Mod
+                // if that fails, throw an error and exit.
             }
         }
         
@@ -70,6 +72,7 @@ namespace Barotrauma
             EventService.Subscribe<IEventScreenSelected>(this); // game state hook in
             EventService.Subscribe<IEventAllPackageListChanged>(this); 
             EventService.Subscribe<IEventEnabledPackageListChanged>(this); 
+            EventService.Subscribe<IEventReloadAllPackages>(this);
         }
         
         #region CONST_DEF
@@ -157,6 +160,11 @@ namespace Barotrauma
         /// Intended for development use, or when packages are expected to change outside of External Updates (ie. Steam Workshop). 
         /// </summary>
         public IConfigEntry<bool> ReloadPackagesOnLobbyStart { get; private set; }
+        
+        /// <summary>
+        /// TODO: @evilfactory@users.noreply.github.com
+        /// </summary>
+        public IConfigEntry<bool> RestrictMessageSize { get; private set; }
 
         /**
          * == Ops Vars
@@ -300,6 +308,22 @@ namespace Barotrauma
         public void OnEnabledPackageListChanged(CorePackage corePackage, IEnumerable<RegularPackage> regularPackages)
         { 
             UpdateLoadedPackagesList();
+        }
+        
+        public void OnReloadAllPackages()
+        {
+            if (CurrentRunState <= RunState.Unloaded)
+                return;
+            var state = CurrentRunState;
+            SetRunState(RunState.Unloaded);
+            SetRunState(CurrentRunState);
+        }
+
+        public void ForceRunState(RunState newState)
+        {
+            if (CurrentRunState == newState)
+                return;
+            SetRunState(newState);
         }
 
         private void UpdateLoadedPackagesList()
@@ -489,6 +513,11 @@ namespace Barotrauma
                                       ?? throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
             CsForBarotraumaSteamId = ConfigService.GetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "CsForBarotraumaSteamId") 
                                      ?? throw new NullReferenceException($"{nameof(CsForBarotraumaSteamId)} cannot be loaded.");
+            RestrictMessageSize = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize") 
+                                  ?? throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
+            ReloadPackagesOnLobbyStart = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "ReloadPackagesOnLobbyStart") 
+                                         ?? throw new NullReferenceException($"{nameof(ReloadPackagesOnLobbyStart)} cannot be loaded.");
+            
         }
 
         void DisposeLuaCsConfig()
@@ -499,6 +528,8 @@ namespace Barotrauma
             HideUserNamesInLogs = null;
             LuaForBarotraumaSteamId = null;
             CsForBarotraumaSteamId = null;
+            RestrictMessageSize = null;
+            ReloadPackagesOnLobbyStart = null;
         }
 
         async Task LoadStaticAssetsAsync(IReadOnlyList<ContentPackage> packages)
@@ -726,6 +757,8 @@ namespace Barotrauma
                 _runState = RunState.Configuration;
             }
         }
+
+        
     }
 
     /// <summary>

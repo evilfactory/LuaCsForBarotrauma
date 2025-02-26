@@ -3,7 +3,7 @@ using Barotrauma.Networking;
 using System;
 using System.Collections.Generic;
 
-namespace Barotrauma.LuaCs.Networking;
+namespace Barotrauma.LuaCs.Services;
 
 internal partial class NetworkingService : INetworkingService
 {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Configuration;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Steam;
 using FluentResults;
 using FluentResults.LuaCs;

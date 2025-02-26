@@ -1,6 +1,6 @@
 ﻿using System;
 using Barotrauma.LuaCs.Data;
-using Barotrauma.LuaCs.Networking;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.LuaCs.Services.Compatibility;
 using Barotrauma.Networking;
 
@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Services;
 
 internal delegate void NetMessageReceived(IReadMessage netMessage);
 
-internal interface INetworkingService : IReusableService, ILuaCsNetworking
+internal partial interface INetworkingService : IReusableService, ILuaCsNetworking
 {
     bool IsActive { get; }
     bool IsSynchronized { get; }
