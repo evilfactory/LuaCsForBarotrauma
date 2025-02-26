@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Barotrauma;
 using Barotrauma.Items.Components;
@@ -17,6 +18,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using OneOf;
 using Platform = Barotrauma.LuaCs.Data.Platform;
+// ReSharper disable ConvertClosureToMethodGroup
 
 // This file is cursed, we put everything in it, and I'm not sorry about it.
 namespace Barotrauma.LuaCs
@@ -435,7 +437,7 @@ namespace Barotrauma.LuaCs
             /// <returns></returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static bool GetBool(ref int var) => Interlocked.CompareExchange(ref var, 1, 1) > 0;
-    
+
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public static void SetBool(ref int var, bool value)
             {
@@ -455,7 +457,7 @@ namespace Barotrauma.LuaCs
             /// <param name="var"></param>
             /// <returns></returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static bool CheckClearAndSetBool(ref int var)
+            public static bool CheckIfClearAndSetBool(ref int var)
             {
                 return Interlocked.CompareExchange(ref var, 1, 0) < 1;
             }
@@ -466,7 +468,7 @@ namespace Barotrauma.LuaCs
             /// <param name="var"></param>
             /// <returns></returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static bool CheckSetAndClearBool(ref int var)
+            public static bool CheckIfSetAndClearBool(ref int var)
             {
                 return Interlocked.CompareExchange(ref var, 0, 1) > 0;
             }
@@ -521,7 +523,42 @@ namespace Barotrauma.LuaCs
             }
         }
     }
+
+    public static class CollectionExtensions
+    {
+        /// <summary>
+        /// Executes a series of asynchronous tasks with limited parallelism to maintain execution efficiency.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="funcBody"></param>
+        /// <param name="maxDegreeOfParallelism"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Task ParallelForEachAsync<T>(this IEnumerable<T> source, Func<T, Task> funcBody, int maxDegreeOfParallelism = 4)
+        {
+            async Task AwaitParallelLimit(IEnumerator<T> partition)
+            {
+                using (partition)
+                {
+                    while (partition.MoveNext())
+                    {
+                        await Task.Yield(); // prevents a sync/hot thread hangup
+                        await funcBody(partition.Current);
+                    }
+                }
+            }
+
+            return Task.WhenAll(
+                Partitioner
+                    .Create(source)
+                    .GetPartitions(maxDegreeOfParallelism)
+                    .AsParallel()
+                    .Select(p => AwaitParallelLimit(p)));
+        }
+    }
 }
+
+
 
 #region ExceptionData
 

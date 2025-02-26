@@ -12,6 +12,7 @@ using Barotrauma.IO;
 using Barotrauma.LuaCs.Events;
 using Barotrauma.Steam;
 using Microsoft.Xna.Framework;
+using OneOf.Types;
 
 namespace Barotrauma
 {
@@ -339,10 +340,7 @@ namespace Barotrauma
                 }
                 
                 GameMain.LuaCs.EventService.PublishEvent<IEventAllPackageListChanged>(sub => 
-                    sub.OnAllPackageListChanged(corePackages
-                        .Select((ContentPackage p) => p)
-                        .Union(regularPackages.Select((ContentPackage p) => p))
-                        .ToImmutableArray()));
+                    sub.OnAllPackageListChanged(ContentPackageManager.CorePackages, ContentPackageManager.RegularPackages));
             }
 
             private readonly string directory;

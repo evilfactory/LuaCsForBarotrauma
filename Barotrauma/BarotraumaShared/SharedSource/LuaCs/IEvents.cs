@@ -55,6 +55,10 @@ internal interface IEventEnabledPackageListChanged : IEvent<IEventEnabledPackage
     void OnEnabledPackageListChanged(CorePackage package, IEnumerable<RegularPackage> regularPackages);
 }
 
+internal interface IEventReloadAllPackages : IEvent<IEventReloadAllPackages>
+{
+    void OnReloadAllPackages();
+}
 
 #endregion
 

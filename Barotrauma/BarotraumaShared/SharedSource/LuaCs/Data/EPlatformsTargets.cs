@@ -7,7 +7,7 @@ namespace Barotrauma.LuaCs.Data;
 public enum Platform
 {
     Linux=0x1, 
-    MacOS=0x2, 
+    OSX=0x2, 
     Windows=0x4
 }
     
@@ -16,13 +16,4 @@ public enum Target
 {
     Client=0x1, 
     Server=0x2
-}
-
-[Flags]
-public enum TargetRunMode
-{
-    ClientEnabled = 0x1,
-    ClientAlways = 0x2,
-    ServerEnabled = 0x4,
-    ServerAlways = 0x8
 }

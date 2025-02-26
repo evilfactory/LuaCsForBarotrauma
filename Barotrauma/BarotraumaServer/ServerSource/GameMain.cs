@@ -132,8 +132,6 @@ namespace Barotrauma
             NetLobbyScreen = new NetLobbyScreen();
 
             CheckContentPackage();
-
-            LuaCs = new LuaCsSetup();
         }
 
 
@@ -454,7 +452,18 @@ namespace Barotrauma
         public void Exit()
         {
             ShouldRun = false;
-            GameMain.LuaCs.Dispose();
+            try
+            {
+                if (_luaCs is not null)
+                {
+                    _luaCs.Dispose();
+                    _luaCs = null;
+                }
+            }
+            catch (Exception e)
+            {
+                DebugConsole.ThrowError($"Error while disposing of LuaCsForBarotrauma: {e.Message} | {e.StackTrace}");
+            }
         }
     }
 }
