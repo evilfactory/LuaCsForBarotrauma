@@ -18,6 +18,7 @@ public interface IReusableService : IService
 /// <summary>
 /// Base interface inherited by all services.
 /// </summary>
+/// <exception cref="ObjectDisposedException">Throws exception if `IsDisposed` return true.</exception>
 public interface IService : IDisposable
 {
     bool IsDisposed { get; }

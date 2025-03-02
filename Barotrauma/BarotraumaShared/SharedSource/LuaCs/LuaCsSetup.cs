@@ -588,7 +588,7 @@ namespace Barotrauma
             {
                 var res = await PackageManagementService.GetStylesInfosAsync(packages);
                 if (res.IsSuccess)
-                    styleRes = res.Value.StylesResourceInfos;
+                    styleRes = res.Value.Styles;
                 if (res.Errors.Any())
                     ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
                         res.ToResult());

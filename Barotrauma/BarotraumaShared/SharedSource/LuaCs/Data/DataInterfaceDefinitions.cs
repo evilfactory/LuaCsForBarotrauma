@@ -14,7 +14,6 @@ public partial record ModConfigInfo : IModConfigInfo
 {
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
-    public TargetRunMode RunModes { get; init; }
     
     public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }

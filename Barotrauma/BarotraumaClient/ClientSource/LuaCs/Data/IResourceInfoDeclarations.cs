@@ -11,5 +11,5 @@ public interface IStylesResourcesInfo
     /// <summary>
     /// Collection of loadable styles data.
     /// </summary>
-    ImmutableArray<IStylesResourceInfo> StylesResourceInfos { get; }
+    ImmutableArray<IStylesResourceInfo> Styles { get; }
 }

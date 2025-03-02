@@ -5,7 +5,7 @@ namespace Barotrauma.LuaCs.Data;
 
 public partial record ModConfigInfo : IModConfigInfo
 {
-    public ImmutableArray<IStylesResourceInfo> StylesResourceInfos { get; init; }
+    public ImmutableArray<IStylesResourceInfo> Styles { get; init; }
 }
 
 public record StylesResourceInfo : IStylesResourceInfo

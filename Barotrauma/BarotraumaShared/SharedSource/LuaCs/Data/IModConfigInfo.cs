@@ -9,6 +9,4 @@ public partial interface IModConfigInfo : IResourceCultureInfo, IAssembliesResou
     // package info
     ContentPackage Package { get; }
     string PackageName { get; }
-    // configuration
-    TargetRunMode RunModes { get; }
 }
