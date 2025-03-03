@@ -6,8 +6,6 @@ using FluentResults;
 
 namespace Barotrauma.LuaCs.Services.Processing;
 
-#region TypeDef
-
 public interface IConverterService<in TSrc, TOut> : IReusableService
 {
     Result<TOut> TryParseResource(TSrc src);
@@ -20,4 +18,12 @@ public interface IConverterServiceAsync<in TSrc, TOut> : IReusableService
     Task<Result<TOut>> TryParseResourcesAsync(IEnumerable<TSrc> sources);
 }
 
-#endregion
+public interface IProcessorService<in TSrc, TOut> : IService
+{
+    TOut Process(TSrc src);
+}
+
+public interface IProcessorServiceAsync<in TSrc, TOut> : IService
+{
+    Task<TOut> ProcessAsync(TSrc src);
+}

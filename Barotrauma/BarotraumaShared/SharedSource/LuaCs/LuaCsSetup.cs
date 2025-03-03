@@ -55,6 +55,13 @@ namespace Barotrauma
                 // TODO: INetworkingService
                 // TODO: [Resource Converter/Parser Services]
                 
+                // IResourceInfo wrappers and mutators.
+                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
+                
                 _servicesProvider.Compile();
             }
 
@@ -62,7 +69,7 @@ namespace Barotrauma
             void ValidateLuaCsContent()
             {
                 // check if /Content/Lua/ModConfig.xml exists
-                // if not, try to copy it from the Workshop Mod
+                // if not, try to copy it from the Workshop Mod (ie. installation mode)
                 // if that fails, throw an error and exit.
             }
         }

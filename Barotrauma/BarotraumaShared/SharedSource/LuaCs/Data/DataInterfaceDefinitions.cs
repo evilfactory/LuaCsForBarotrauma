@@ -27,7 +27,13 @@ public partial record ModConfigInfo : IModConfigInfo
 
 #region DataContracts
 
-public record AssemblyResourceInfo : IAssemblyResourceInfo
+public record AssemblyResourcesInfo(ImmutableArray<IAssemblyResourceInfo> Assemblies) : IAssembliesResourcesInfo;
+public record LocalizationResourcesInfo(ImmutableArray<ILocalizationResourceInfo> Localizations) : ILocalizationsResourcesInfo;
+public record LuaScriptsResourcesInfo(ImmutableArray<ILuaScriptResourceInfo> LuaScripts) : ILuaScriptsResourcesInfo;
+public record ConfigResourcesInfo(ImmutableArray<IConfigResourceInfo> Configs) : IConfigsResourcesInfo;
+public record ConfigProfilesResourcesInfo(ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles) : IConfigProfilesResourcesInfo;
+
+public record AssemblyResourceInfo : IAssemblyResourceInfo 
 {
     public ContentPackage OwnerPackage { get; init; }
     public string FallbackPackageName { get; init; }

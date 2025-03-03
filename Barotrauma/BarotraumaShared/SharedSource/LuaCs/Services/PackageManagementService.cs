@@ -18,11 +18,11 @@ public partial class PackageManagementService : IPackageManagementService
     private readonly IConverterServiceAsync<ContentPackage, IModConfigInfo> _modConfigParserService;
     private int _isDisposed;
     private readonly ConcurrentDictionary<ContentPackage, IModConfigInfo> _modInfos = new();
-    private readonly Func<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> _assemblyInfoConverter;
-    private readonly Func<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> _configsInfoConverter;
-    private readonly Func<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> _configProfilesConverter;
-    private readonly Func<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo> _localizationsConverter;
-    private readonly Func<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> _luaScriptsConverter;
+    private readonly IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> _assemblyInfoConverter;
+    private readonly IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> _configsInfoConverter;
+    private readonly IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> _configProfilesConverter;
+    private readonly IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo> _localizationsConverter;
+    private readonly IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> _luaScriptsConverter;
     
     
     public void Dispose()
@@ -128,7 +128,7 @@ public partial class PackageManagementService : IPackageManagementService
         if (package is null)
             return FluentResults.Result.Fail($"{nameof(GetAssembliesInfos)}: ContentPackage is null.");
         if (_modInfos.TryGetValue(package, out var result))
-            return FluentResults.Result.Ok<IAssembliesResourcesInfo>(_assemblyInfoConverter(onlySupportedResources?
+            return FluentResults.Result.Ok<IAssembliesResourcesInfo>(_assemblyInfoConverter.Process(onlySupportedResources?
                 result.Assemblies.Where(r => 
                     (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
                     && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
@@ -146,7 +146,7 @@ public partial class PackageManagementService : IPackageManagementService
         
         if (_modInfos.TryGetValue(package, out var result))
         {
-            return FluentResults.Result.Ok<IConfigsResourcesInfo>(_configsInfoConverter(onlySupportedResources?
+            return FluentResults.Result.Ok<IConfigsResourcesInfo>(_configsInfoConverter.Process(onlySupportedResources?
                 result.Configs.Where(r => 
                     (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
                     && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
@@ -166,7 +166,7 @@ public partial class PackageManagementService : IPackageManagementService
         
         if (_modInfos.TryGetValue(package, out var result))
         {
-            return FluentResults.Result.Ok<IConfigProfilesResourcesInfo>(_configProfilesConverter(onlySupportedResources?
+            return FluentResults.Result.Ok<IConfigProfilesResourcesInfo>(_configProfilesConverter.Process(onlySupportedResources?
                 result.ConfigProfiles.Where(r => 
                     (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
                     && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
@@ -186,7 +186,7 @@ public partial class PackageManagementService : IPackageManagementService
         
         if (_modInfos.TryGetValue(package, out var result))
         {
-            return FluentResults.Result.Ok<ILocalizationsResourcesInfo>(_localizationsConverter(onlySupportedResources?
+            return FluentResults.Result.Ok<ILocalizationsResourcesInfo>(_localizationsConverter.Process(onlySupportedResources?
                 result.Localizations.Where(r => 
                     (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
                     && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
@@ -206,7 +206,7 @@ public partial class PackageManagementService : IPackageManagementService
         
         if (_modInfos.TryGetValue(package, out var result))
         {
-            return FluentResults.Result.Ok<ILuaScriptsResourcesInfo>(_luaScriptsConverter(onlySupportedResources?
+            return FluentResults.Result.Ok<ILuaScriptsResourcesInfo>(_luaScriptsConverter.Process(onlySupportedResources?
                 result.LuaScripts.Where(r => 
                     (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
                     && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
@@ -236,7 +236,7 @@ public partial class PackageManagementService : IPackageManagementService
             }
         }
 
-        return FluentResults.Result.Ok(_assemblyInfoConverter(builder.MoveToImmutable()));
+        return FluentResults.Result.Ok(_assemblyInfoConverter.Process(builder.MoveToImmutable()));
     }
 
     public Result<IConfigsResourcesInfo> GetConfigsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
@@ -257,7 +257,7 @@ public partial class PackageManagementService : IPackageManagementService
             }
         }
 
-        return FluentResults.Result.Ok(_configsInfoConverter(builder.MoveToImmutable()));
+        return FluentResults.Result.Ok(_configsInfoConverter.Process(builder.MoveToImmutable()));
     }
 
     public Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
@@ -278,7 +278,7 @@ public partial class PackageManagementService : IPackageManagementService
             }
         }
 
-        return FluentResults.Result.Ok(_configProfilesConverter(builder.MoveToImmutable()));
+        return FluentResults.Result.Ok(_configProfilesConverter.Process(builder.MoveToImmutable()));
     }
 
     public Result<ILocalizationsResourcesInfo> GetLocalizationsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
@@ -299,7 +299,7 @@ public partial class PackageManagementService : IPackageManagementService
             }
         }
 
-        return FluentResults.Result.Ok(_localizationsConverter(builder.MoveToImmutable()));
+        return FluentResults.Result.Ok(_localizationsConverter.Process(builder.MoveToImmutable()));
     }
 
     public Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
@@ -320,7 +320,7 @@ public partial class PackageManagementService : IPackageManagementService
             }
         }
 
-        return FluentResults.Result.Ok(_luaScriptsConverter(builder.MoveToImmutable()));
+        return FluentResults.Result.Ok(_luaScriptsConverter.Process(builder.MoveToImmutable()));
     }
 
     public async Task<Result<IAssembliesResourcesInfo>> GetAssembliesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
