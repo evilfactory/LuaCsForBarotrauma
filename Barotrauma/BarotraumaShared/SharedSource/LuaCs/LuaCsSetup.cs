@@ -62,6 +62,11 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 
+                _servicesProvider.RegisterServiceType<IConverterService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
+                
+                
+                
                 _servicesProvider.Compile();
             }
 

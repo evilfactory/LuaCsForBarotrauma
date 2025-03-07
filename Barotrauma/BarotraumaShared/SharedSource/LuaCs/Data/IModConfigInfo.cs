@@ -2,7 +2,7 @@
 
 namespace Barotrauma.LuaCs.Data;
 
-public partial interface IModConfigInfo : IResourceCultureInfo, IAssembliesResourcesInfo, 
+public partial interface IModConfigInfo : IAssembliesResourcesInfo, 
     ILocalizationsResourcesInfo, ILuaScriptsResourcesInfo, IConfigsResourcesInfo,
     IConfigProfilesResourcesInfo
 {

@@ -7,10 +7,18 @@ namespace Barotrauma.LuaCs.Data;
 public interface IConfigResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
 public interface IConfigProfileResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
 public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
+
 /// <summary>
 /// Represents loadable Lua files.
 /// </summary>
-public interface ILuaScriptResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo { }
+public interface ILuaScriptResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo
+{
+    /// <summary>
+    /// Should this script be run automatically.
+    /// </summary>
+    public bool IsAutorun { get; }
+}
+
 public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IPackageInfo
 {
     /// <summary>

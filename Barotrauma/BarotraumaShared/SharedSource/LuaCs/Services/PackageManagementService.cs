@@ -122,6 +122,16 @@ public partial class PackageManagementService : IPackageManagementService
         _modInfos.Clear();
     }
 
+    public Result<ContentPackage> FindPackage(string packageName, ulong steamWorkshopId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Result<IPackageDependencyInfo> GetPackageDependencyInfo(string packageName, ulong steamWorkshopId, bool createIfNotExists = true)
+    {
+        throw new NotImplementedException();
+    }
+
     public Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true)
     {
         ((IService)this).CheckDisposed();

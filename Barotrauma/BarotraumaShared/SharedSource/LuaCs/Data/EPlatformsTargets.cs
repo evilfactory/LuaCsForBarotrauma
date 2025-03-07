@@ -7,7 +7,7 @@ namespace Barotrauma.LuaCs.Data;
 public enum Platform
 {
     Linux=0x1, 
-    MacOS=0x2, 
+    OSX=0x2, 
     Windows=0x4
 }
     

@@ -32,6 +32,7 @@ public interface IStorageService : IService
     ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
     ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
     FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively);
+    FluentResults.Result<string> GetAbsFromPackage(ContentPackage package, string localFilePath);
     // async
     // singles
     Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath);
@@ -50,6 +51,8 @@ public interface IStorageService : IService
     FluentResults.Result TrySaveText(string filePath, in string text, Encoding encoding = null);
     FluentResults.Result TrySaveBinary(string filePath, in byte[] bytes);
     FluentResults.Result<bool> FileExists(string filePath);
+    FluentResults.Result<bool> DirectoryExists(string directoryPath);
+    
     //async
     Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null);
     Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null);

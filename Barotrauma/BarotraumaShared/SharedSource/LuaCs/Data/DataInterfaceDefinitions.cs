@@ -14,8 +14,6 @@ public partial record ModConfigInfo : IModConfigInfo
 {
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
-    
-    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
     public ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; init; }
@@ -150,12 +148,39 @@ public record DependencyInfo : IPackageDependencyInfo
     private static readonly int Seed = new Random().Next(436457, int.MaxValue-900);
 }
 
+public record ConfigResourceInfo : IConfigResourceInfo
+{
+    public Platform SupportedPlatforms { get; init; }
+    public Target SupportedTargets { get; init; }
+    public int LoadPriority { get; init; }
+    public ImmutableArray<string> FilePaths { get; init; }
+    public bool Optional { get; init; }
+    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
+    public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public string FallbackPackageName { get; init; }
+}
+
+public record ConfigProfileResourceInfo : IConfigProfileResourceInfo
+{
+    public Platform SupportedPlatforms { get; init; }
+    public Target SupportedTargets { get; init; }
+    public int LoadPriority { get; init; }
+    public ImmutableArray<string> FilePaths { get; init; }
+    public bool Optional { get; init; }
+    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
+    public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public string FallbackPackageName { get; init; }
+}
+
 public record LocalizationResourceInfo : ILocalizationResourceInfo
 {
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
     public string FallbackPackageName { get; init; }
-    public CultureInfo TargetCulture { get; init; }
     public Platform SupportedPlatforms { get; init; }
     public Target SupportedTargets { get; init; }
     public int LoadPriority { get; init; }
@@ -177,7 +202,7 @@ public readonly struct LuaScriptScriptResourceInfo : ILuaScriptResourceInfo
     public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
     public bool Optional { get; init; }
     public string InternalName { get; init; }
-    public bool LazyLoad { get; init; }
+    public bool IsAutorun { get; init; }
 }
 
 #endregion
