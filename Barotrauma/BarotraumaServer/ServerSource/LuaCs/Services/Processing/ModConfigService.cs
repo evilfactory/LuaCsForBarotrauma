@@ -23,11 +23,11 @@ public partial class ModConfigService
         {
             Package = package,
             PackageName = package.Name,
-            Assemblies = asm.Any() ? await GetAssemblies(package, asm) : ImmutableArray<IAssemblyResourceInfo>.Empty,
-            Localizations = loc.Any() ? await GetLocalizations(package, loc) : ImmutableArray<ILocalizationResourceInfo>.Empty,
-            Configs = cfg.Any() ? await GetConfigs(package, cfg) : ImmutableArray<IConfigResourceInfo>.Empty,
-            ConfigProfiles = cfg.Any() ? await GetConfigProfiles(package, cfg) : ImmutableArray<IConfigProfileResourceInfo>.Empty,
-            LuaScripts = lua.Any() ? await GetLuaScripts(package, lua) : ImmutableArray<ILuaScriptResourceInfo>.Empty
+            Assemblies = asm.Any() ? GetAssemblies(package, asm) : ImmutableArray<IAssemblyResourceInfo>.Empty,
+            Localizations = loc.Any() ? GetLocalizations(package, loc) : ImmutableArray<ILocalizationResourceInfo>.Empty,
+            Configs = cfg.Any() ? GetConfigs(package, cfg) : ImmutableArray<IConfigResourceInfo>.Empty,
+            ConfigProfiles = cfg.Any() ? GetConfigProfiles(package, cfg) : ImmutableArray<IConfigProfileResourceInfo>.Empty,
+            LuaScripts = lua.Any() ? GetLuaScripts(package, lua) : ImmutableArray<ILuaScriptResourceInfo>.Empty
         });
     }
 }

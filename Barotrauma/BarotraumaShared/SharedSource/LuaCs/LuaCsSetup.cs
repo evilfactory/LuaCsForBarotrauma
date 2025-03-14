@@ -38,6 +38,7 @@ namespace Barotrauma
             // == sub processes
             void RegisterServices()
             {
+                _servicesProvider.RegisterServiceType<IPackageInfoLookupService, ContentPackageInfoLookup>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
@@ -552,7 +553,7 @@ namespace Barotrauma
             var luaRes = ImmutableArray<ILuaScriptResourceInfo>.Empty;
 
 #if CLIENT
-            var styleRes = ImmutableArray<IStylesResourceInfo>.Empty;
+            var styleRes = ImmutableArray<IStylesResourceInfo2>.Empty;
 #endif
             
             var tasksBuilder = ImmutableArray.CreateBuilder<Task>();

@@ -457,7 +457,7 @@ namespace Barotrauma.LuaCs
             /// <param name="var"></param>
             /// <returns></returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static bool CheckClearAndSetBool(ref int var)
+            public static bool CheckIfClearAndSetBool(ref int var)
             {
                 return Interlocked.CompareExchange(ref var, 1, 0) < 1;
             }
@@ -468,7 +468,7 @@ namespace Barotrauma.LuaCs
             /// <param name="var"></param>
             /// <returns></returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static bool CheckSetAndClearBool(ref int var)
+            public static bool CheckIfSetAndClearBool(ref int var)
             {
                 return Interlocked.CompareExchange(ref var, 0, 1) > 0;
             }

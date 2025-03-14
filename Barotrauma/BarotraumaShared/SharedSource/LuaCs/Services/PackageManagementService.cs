@@ -8,23 +8,29 @@ using System.Threading;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Processing;
+using Barotrauma.Steam;
 using FluentResults;
+using OneOf;
+
 // ReSharper disable UseCollectionExpression
 
 namespace Barotrauma.LuaCs.Services;
 
 public partial class PackageManagementService : IPackageManagementService
 {
-    private readonly IConverterServiceAsync<ContentPackage, IModConfigInfo> _modConfigParserService;
     private int _isDisposed;
     private readonly ConcurrentDictionary<ContentPackage, IModConfigInfo> _modInfos = new();
+    // lookup caches
+    private readonly IPackageInfoLookupService _packageInfoLookupService;
+    // processors
+    private readonly IConverterServiceAsync<ContentPackage, IModConfigInfo> _modConfigParserService;
     private readonly IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> _assemblyInfoConverter;
     private readonly IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> _configsInfoConverter;
     private readonly IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> _configProfilesConverter;
     private readonly IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo> _localizationsConverter;
     private readonly IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> _luaScriptsConverter;
-    
-    
+
+
     public void Dispose()
     {
         IsDisposed = true;
@@ -34,7 +40,7 @@ public partial class PackageManagementService : IPackageManagementService
     public bool IsDisposed
     {
         get => ModUtils.Threading.GetBool(ref _isDisposed);
-        set => ModUtils.Threading.SetBool(ref _isDisposed, value);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
     }
 
     public FluentResults.Result Reset()
@@ -68,12 +74,23 @@ public partial class PackageManagementService : IPackageManagementService
         ((IService)this).CheckDisposed();
         if (package is null)
             return FluentResults.Result.Fail(new ExceptionalError(new NullReferenceException($"{nameof(LoadPackageInfosAsync)}: ContentPackage is null.")));
+        RegisterPackageInLookupCaches(package);
         var result = await _modConfigParserService.TryParseResourceAsync(package);
         if (result.IsFailed)
             return FluentResults.Result.Fail($"$Could not parse package mod config.").WithErrors(result.Errors);
         if (!_modInfos.TryAdd(package, result.Value))
             return FluentResults.Result.Fail($"Failed to add ModInfo for {package.Name}.");
         return FluentResults.Result.Ok();
+    }
+
+    private void RegisterPackageInLookupCaches(ContentPackage package)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void RemovePackageFromLookupCaches(ContentPackage package)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<IReadOnlyList<(ContentPackage, FluentResults.Result)>> LoadPackagesInfosAsync(IReadOnlyList<ContentPackage> packages)
@@ -102,6 +119,7 @@ public partial class PackageManagementService : IPackageManagementService
         ((IService)this).CheckDisposed();
         if (package is null)
             return;
+        RemovePackageFromLookupCaches(package);
         _modInfos.TryRemove(package, out _);
     }
 
@@ -116,19 +134,39 @@ public partial class PackageManagementService : IPackageManagementService
         }
     }
 
-    public void DisposeAllPackagesInfos()
-    {
-        ((IService)this).CheckDisposed();
-        _modInfos.Clear();
-    }
-
     public Result<ContentPackage> FindPackage(string packageName, ulong steamWorkshopId)
     {
-        throw new NotImplementedException();
+        
     }
 
-    public Result<IPackageDependencyInfo> GetPackageDependencyInfo(string packageName, ulong steamWorkshopId, bool createIfNotExists = true)
+    public Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName,
+        ulong steamWorkshopId, bool createIfNotExists = true)
     {
+        ((IService)this).CheckDisposed();
+        // validate
+        if (ownerPackage is null)
+            throw new ArgumentNullException($"GetPackageDependencyInfo: ownerPackage is null.");
+        if (packageName.IsNullOrWhiteSpace() && steamWorkshopId == 0)
+        {       
+            return FluentResults.Result.Fail<IPackageDependency>(
+                $"GetPackageDependencyInfo: packageName is null and workshopId is zero.");
+        }
+
+        // try to find dependency package in local caches
+        int hashCode;
+        if (steamWorkshopId != 0 && !_packageHashCodes.TryGetValue(steamWorkshopId, out hashCode))
+        {
+            if (!createIfNotExists)
+                return FluentResults.Result.Fail($"Could not find the dependent package.");
+            
+        }
+        else if (!packageName.IsNullOrWhiteSpace() && _packageHashCodes.TryGetValue(packageName, out hashCode))
+        {
+            
+        }
+        
+        
+        // if create is true, try finding the package 
         throw new NotImplementedException();
     }
 
@@ -341,7 +379,6 @@ public partial class PackageManagementService : IPackageManagementService
     public async Task<Result<IConfigsResourcesInfo>> GetConfigsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         return await Task.Run(() => GetConfigsInfos(packages, onlySupportedResources));
-
     }
 
     public async Task<Result<IConfigProfilesResourcesInfo>> GetConfigProfilesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
@@ -352,12 +389,12 @@ public partial class PackageManagementService : IPackageManagementService
     public async Task<Result<ILocalizationsResourcesInfo>> GetLocalizationsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         return await Task.Run(() => GetLocalizationsInfos(packages, onlySupportedResources));
-
     }
 
     public async Task<Result<ILuaScriptsResourcesInfo>> GetLuaScriptsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         return await Task.Run(() => GetLuaScriptsInfos(packages, onlySupportedResources));
-
     }
+    
+    
 }

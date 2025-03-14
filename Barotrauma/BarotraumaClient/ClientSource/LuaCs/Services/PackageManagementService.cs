@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Services.Processing;
 using FluentResults;
 // ReSharper disable UseCollectionExpression
 
@@ -11,6 +12,25 @@ namespace Barotrauma.LuaCs.Services;
 
 public partial class PackageManagementService : IPackageManagementService
 {
+    public PackageManagementService(
+        IConverterServiceAsync<ContentPackage, IModConfigInfo> modConfigParserService, 
+        IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> assemblyInfoConverter, 
+        IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> configsInfoConverter, 
+        IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> configProfilesConverter, 
+        IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo> localizationsConverter, 
+        IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> luaScriptsConverter, 
+        IPackageInfoLookupService packageInfoLookupService, Func<IReadOnlyList<IStylesResourceInfo>, IStylesResourcesInfo> stylesInfoConverter)
+    {
+        _stylesInfoConverter = stylesInfoConverter;
+        _modConfigParserService = modConfigParserService;
+        _assemblyInfoConverter = assemblyInfoConverter;
+        _configsInfoConverter = configsInfoConverter;
+        _configProfilesConverter = configProfilesConverter;
+        _localizationsConverter = localizationsConverter;
+        _luaScriptsConverter = luaScriptsConverter;
+        _packageInfoLookupService = packageInfoLookupService;
+    }
+    
     private readonly Func<IReadOnlyList<IStylesResourceInfo>, IStylesResourcesInfo> _stylesInfoConverter;
     
     public ImmutableArray<IStylesResourceInfo> Styles => _modInfos.IsEmpty ? ImmutableArray<IStylesResourceInfo>.Empty 

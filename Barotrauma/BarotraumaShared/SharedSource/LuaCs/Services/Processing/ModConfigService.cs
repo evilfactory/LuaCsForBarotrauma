@@ -106,7 +106,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
-                FallbackPackageName = src.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
                 SupportedCultures = info.SupportedCultures,
@@ -142,7 +141,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
-                FallbackPackageName = src.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
                 SupportedCultures = info.SupportedCultures,
@@ -171,7 +169,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
-                FallbackPackageName = src.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
                 SupportedCultures = info.SupportedCultures,
@@ -208,7 +205,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
-                FallbackPackageName = src.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
                 SupportedCultures = info.SupportedCultures,
@@ -242,7 +238,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
-                FallbackPackageName = src.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
                 SupportedCultures = info.SupportedCultures,
@@ -276,7 +271,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
-                FallbackPackageName = src.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
                 SupportedCultures = info.SupportedCultures,
@@ -393,12 +387,12 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         }
     }
 
-    private ImmutableArray<IPackageDependencyInfo> GetElementsDependenciesData(XElement element, ContentPackage src)
+    private ImmutableArray<IPackageDependency> GetElementsDependenciesData(XElement element, ContentPackage src)
     {
         if (element.GetChildElement("Dependencies") is not {} dependencies
             || dependencies.GetChildElements("Dependency").ToImmutableArray() is not { Length: >0 } depsList)
-            return ImmutableArray<IPackageDependencyInfo>.Empty;
-        var builder = ImmutableArray.CreateBuilder<IPackageDependencyInfo>();
+            return ImmutableArray<IPackageDependency>.Empty;
+        var builder = ImmutableArray.CreateBuilder<IPackageDependency>();
         foreach (var dep in depsList)
         {
             var packName = dep.GetAttributeString("PackageName", string.Empty);
@@ -408,7 +402,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             if (packName.IsNullOrWhiteSpace() && packId == 0)
                 continue;
 
-            if (_packageManagementService.Value.GetPackageDependencyInfo(packName, packId) is
+            if (_packageManagementService.Value.GetPackageDependencyInfo(src, packName, packId) is
                 { IsSuccess: true, Value: { } depsInfo })
             {
                 builder.Add(depsInfo);
@@ -426,8 +420,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesSrvLin,
                     FriendlyName = "AssembliesServerLinux",
                     InternalName = "AssembliesServerLinux",
@@ -448,8 +441,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesSrvOsx,
                     FriendlyName = "AssembliesServerOSX",
                     InternalName = "AssembliesServerOSX",
@@ -470,8 +462,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesSrvWin,
                     FriendlyName = "AssembliesServerWin",
                     InternalName = "AssembliesServerWin",
@@ -492,8 +483,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesCliLin,
                     FriendlyName = "AssembliesClientLinux",
                     InternalName = "AssembliesClientLinux",
@@ -514,8 +504,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesCliOsx,
                     FriendlyName = "AssembliesClientOSX",
                     InternalName = "AssembliesClientOSX",
@@ -536,8 +525,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesCliWin,
                     FriendlyName = "AssembliesClientWin",
                     InternalName = "AssembliesClientWin",
@@ -561,8 +549,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = sharedFound ? filesCssServer.Concat(filesCssShared).ToImmutableArray() : filesCssServer,
                     FriendlyName = "CssServer",
                     InternalName = "CssServer",
@@ -583,8 +570,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                    FallbackPackageName = src.Name,
+                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = sharedFound ? filesCssClient.Concat(filesCssShared).ToImmutableArray() : filesCssClient,
                     FriendlyName = "CssClient",
                     InternalName = "CssClient",
@@ -610,8 +596,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         {
             builder.Add(new LuaScriptScriptResourceInfo()
             {
-                Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                FallbackPackageName = src.Name,
+                Dependencies = ImmutableArray<IPackageDependency>.Empty,
                 FilePaths = fileAll.Where(path => !path.Contains("Autorun")).ToImmutableArray(),
                 InternalName = "LuaScriptsNormal",
                 Optional = false,
@@ -624,8 +609,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             
             builder.Add(new LuaScriptScriptResourceInfo()
             {
-                Dependencies = ImmutableArray<IPackageDependencyInfo>.Empty,
-                FallbackPackageName = src.Name,
+                Dependencies = ImmutableArray<IPackageDependency>.Empty,
                 FilePaths = fileAll.Where(path => path.Contains("Autorun")).ToImmutableArray(),
                 InternalName = "LuaScriptsAutorun",
                 Optional = false,

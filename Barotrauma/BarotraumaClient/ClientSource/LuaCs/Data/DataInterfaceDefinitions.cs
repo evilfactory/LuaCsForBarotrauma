@@ -19,5 +19,5 @@ public record StylesResourceInfo : IStylesResourceInfo
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
     public string FallbackPackageName { get; init; }
-    public ImmutableArray<IPackageDependencyInfo> Dependencies { get; init; }
+    public ImmutableArray<IPackageDependency> Dependencies { get; init; }
 }
