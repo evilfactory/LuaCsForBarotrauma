@@ -2815,7 +2815,7 @@ namespace Barotrauma
                 passedCommandPermissionCheck = false;
             }
             
-            var bypass = GameMain.LuaCs.Hook.Call<bool?>("onConsoleCommand", client, splitCommand, passedConsolePermissionCheck, passedCommandPermissionCheck) ?? false;
+            var bypass = GameMain.LuaCs.Hook.Call<bool?>("onConsoleCommand", client, splitCommand, matchingCommand, passedConsolePermissionCheck, passedCommandPermissionCheck) ?? false;
             
             if (!bypass)
             {
