@@ -2429,7 +2429,7 @@ namespace Barotrauma
                 {
                     Command matchingCommand = commands.Find(c => c.Names.Contains(firstCommand));
 
-                    var bypass = GameMain.LuaCs.Hook.Call<bool?>("console.bypassClientSendCheck", firstCommand, matchingCommand) ?? false;
+                    var bypass = GameMain.LuaCs.Hook.Call<bool?>("onClientConsoleCommand", firstCommand, matchingCommand) ?? false;
                     if (matchingCommand == null || bypass)
                     {
                         //if the command is not defined client-side, we'll relay it anyway because it may be a custom command at the server's side

@@ -2810,12 +2810,12 @@ namespace Barotrauma
 
             string[] splitCommand = ToolBox.SplitCommand(command);
             Command matchingCommand = commands.Find(c => c.Names.Contains(splitCommand[0].ToIdentifier()));
-            if (matchingCommand != null && !client.PermittedConsoleCommands.Contains(matchingCommand) && client.Connection != GameMain.Server.OwnerConnection)
+            if (matchingCommand == null || !client.PermittedConsoleCommands.Contains(matchingCommand) && client.Connection != GameMain.Server.OwnerConnection)
             {
                 passedCommandPermissionCheck = false;
             }
             
-            var bypass = GameMain.LuaCs.Hook.Call<bool?>("console.bypassCommandPermissionCheck", client, splitCommand, passedConsolePermissionCheck, passedCommandPermissionCheck) ?? false;
+            var bypass = GameMain.LuaCs.Hook.Call<bool?>("onConsoleCommand", client, splitCommand, passedConsolePermissionCheck, passedCommandPermissionCheck) ?? false;
             
             if (!bypass)
             {
