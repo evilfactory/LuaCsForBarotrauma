@@ -32,7 +32,7 @@ public sealed class ContentPackageInfoLookup : IPackageInfoLookupService, IEvent
     private readonly AsyncReaderWriterLock _packageSetsLock = new();
     // services
     private readonly IEventService _eventService;
-    private readonly IPackageListService _packageListService;
+    private readonly IPackageListRetrievalService _packageListRetrievalService;
     
     private int _isDisposed = 0;
     private uint _idCounter = 0;
@@ -260,11 +260,11 @@ public sealed class ContentPackageInfoLookup : IPackageInfoLookupService, IEvent
 
     #endregion
 
-    public ContentPackageInfoLookup(IEventService eventService, IPackageListService packageListService)
+    public ContentPackageInfoLookup(IEventService eventService, IPackageListRetrievalService packageListRetrievalService)
     {
         _eventService = eventService ?? throw new ArgumentNullException(
             $"{nameof(ContentPackageInfoLookup)}: {nameof(eventService)} cannot be null.");
-        _packageListService = packageListService ?? throw new ArgumentNullException(nameof(packageListService));
+        _packageListRetrievalService = packageListRetrievalService ?? throw new ArgumentNullException(nameof(packageListRetrievalService));
         this._enabledPackages = new HashSet<ContentPackage>();
         this._allPackages = new HashSet<ContentPackage>();
     }
@@ -376,8 +376,8 @@ public sealed class ContentPackageInfoLookup : IPackageInfoLookupService, IEvent
         ((IService)this).CheckDisposed();
         if (Thread.CurrentThread != GameMain.MainThread)
             throw new InvalidOperationException($"{nameof(ContentPackageInfoLookup)}: {nameof(RefreshPackageLists)} must be run on the main thread.");
-        var enabledPackages = _packageListService.GetEnabledContentPackages().ToImmutableArray();
-        var allPackages = _packageListService.GetAllContentPackages().ToImmutableArray();
+        var enabledPackages = _packageListRetrievalService.GetEnabledContentPackages().ToImmutableArray();
+        var allPackages = _packageListRetrievalService.GetAllContentPackages().ToImmutableArray();
         SyncPackagesLists(enabledPackages, allPackages).GetAwaiter().GetResult();
     }
 }

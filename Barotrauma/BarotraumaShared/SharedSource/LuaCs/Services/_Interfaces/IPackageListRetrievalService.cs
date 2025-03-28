@@ -2,7 +2,7 @@
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPackageListService : IService
+public interface IPackageListRetrievalService : IService
 {
     IEnumerable<ContentPackage> GetEnabledContentPackages();
     IEnumerable<ContentPackage> GetAllContentPackages();
