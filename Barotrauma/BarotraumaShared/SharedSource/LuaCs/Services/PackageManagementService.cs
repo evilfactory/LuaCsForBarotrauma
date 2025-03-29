@@ -74,23 +74,12 @@ public partial class PackageManagementService : IPackageManagementService
         ((IService)this).CheckDisposed();
         if (package is null)
             return FluentResults.Result.Fail(new ExceptionalError(new NullReferenceException($"{nameof(LoadPackageInfosAsync)}: ContentPackage is null.")));
-        RegisterPackageInLookupCaches(package);
         var result = await _modConfigParserService.TryParseResourceAsync(package);
         if (result.IsFailed)
             return FluentResults.Result.Fail($"$Could not parse package mod config.").WithErrors(result.Errors);
         if (!_modInfos.TryAdd(package, result.Value))
             return FluentResults.Result.Fail($"Failed to add ModInfo for {package.Name}.");
         return FluentResults.Result.Ok();
-    }
-
-    private void RegisterPackageInLookupCaches(ContentPackage package)
-    {
-        throw new NotImplementedException();
-    }
-
-    private void RemovePackageFromLookupCaches(ContentPackage package)
-    {
-        throw new NotImplementedException();
     }
 
     public async Task<IReadOnlyList<(ContentPackage, FluentResults.Result)>> LoadPackagesInfosAsync(IReadOnlyList<ContentPackage> packages)
@@ -116,58 +105,60 @@ public partial class PackageManagementService : IPackageManagementService
 
     public void DisposePackageInfos(ContentPackage package)
     {
-        ((IService)this).CheckDisposed();
-        if (package is null)
-            return;
-        RemovePackageFromLookupCaches(package);
         _modInfos.TryRemove(package, out _);
     }
 
     public void DisposePackagesInfos(IReadOnlyList<ContentPackage> packages)
     {
-        ((IService)this).CheckDisposed();
         if (packages is null || packages.Count == 0)
             return;
+        
         foreach (var package in packages)
         {
             DisposePackageInfos(package);
         }
     }
 
-    public Result<ContentPackage> FindPackage(string packageName, ulong steamWorkshopId)
-    {
-        
-    }
-
     public Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName,
-        ulong steamWorkshopId, bool createIfNotExists = true)
+        ulong steamWorkshopId)
     {
         ((IService)this).CheckDisposed();
-        // validate
+        
         if (ownerPackage is null)
-            throw new ArgumentNullException($"GetPackageDependencyInfo: ownerPackage is null.");
-        if (packageName.IsNullOrWhiteSpace() && steamWorkshopId == 0)
-        {       
-            return FluentResults.Result.Fail<IPackageDependency>(
-                $"GetPackageDependencyInfo: packageName is null and workshopId is zero.");
-        }
+            return FluentResults.Result.Fail($"OwnerPackage is null.");
+        var nameGood = !packageName.IsNullOrWhiteSpace();
+        
+        if (!nameGood && steamWorkshopId == 0)
+            FluentResults.Result.Fail($"PackageName and SteamId cannot both be invalid.");
 
-        // try to find dependency package in local caches
-        int hashCode;
-        if (steamWorkshopId != 0 && !_packageHashCodes.TryGetValue(steamWorkshopId, out hashCode))
+        IPackageInfo depInfo = null;
+        
+        // complex key
+        if (nameGood && steamWorkshopId != 0
+                     && _packageInfoLookupService.Lookup(packageName, steamWorkshopId).GetAwaiter().GetResult() is
+                     { IsSuccess: true, Value: {} dep1 })
         {
-            if (!createIfNotExists)
-                return FluentResults.Result.Fail($"Could not find the dependent package.");
-            
+            depInfo = dep1;
         }
-        else if (!packageName.IsNullOrWhiteSpace() && _packageHashCodes.TryGetValue(packageName, out hashCode))
+        // name key
+        else if (nameGood && _packageInfoLookupService.Lookup(packageName).GetAwaiter().GetResult() is
+                 { IsSuccess: true, Value: { } dep2 })
         {
-            
+            depInfo = dep2;
+        }
+        // steamid key
+        else if (_packageInfoLookupService.Lookup(steamWorkshopId).GetAwaiter().GetResult() is
+                 { IsSuccess: true, Value: { } dep3 })
+        {
+            depInfo = dep3;
+        }
+        // this should never be null so we return an exception
+        else
+        {
+            return FluentResults.Result.Fail($"Package Dependency for {ownerPackage.Name} was not found.");
         }
         
-        
-        // if create is true, try finding the package 
-        throw new NotImplementedException();
+        return FluentResults.Result.Ok<IPackageDependency>(new PackageDependency(ownerPackage, depInfo, ownerPackage.Name));
     }
 
     public Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true)

@@ -32,8 +32,7 @@ public interface IPackageManagementService : IReusableService, ILocalizationsRes
     IReadOnlyList<ContentPackage> GetAllLoadedPackages();
     void DisposePackageInfos(ContentPackage package);
     void DisposePackagesInfos(IReadOnlyList<ContentPackage> packages);
-    FluentResults.Result<ContentPackage> FindPackage(string packageName, ulong steamWorkshopId);
-    FluentResults.Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName, ulong steamWorkshopId, bool createIfNotExists = true);
+    FluentResults.Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName, ulong steamWorkshopId);
     
     // single
     FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true);
