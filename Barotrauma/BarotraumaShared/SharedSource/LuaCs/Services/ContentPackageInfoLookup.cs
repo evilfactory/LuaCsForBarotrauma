@@ -326,7 +326,17 @@ public sealed class ContentPackageInfoLookup : IPackageInfoLookupService, IEvent
                 .ToImmutableArray()
             ).GetAwaiter().GetResult();
     }
-    
+
+    public bool IsPackageEnabled(ContentPackage package)
+    {
+        if (package is null)
+            return false;
+        using (_packageSetsLock.AcquireReaderLock().GetAwaiter().GetResult())
+        {
+            return _enabledPackages.Contains(package);
+        }
+    }
+
     public async Task<Result<IPackageInfo>> Lookup(string packageName)
     {
         ((IService)this).CheckDisposed();
