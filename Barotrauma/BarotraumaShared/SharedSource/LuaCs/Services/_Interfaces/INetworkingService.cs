@@ -8,7 +8,7 @@ namespace Barotrauma.LuaCs.Services;
 
 internal delegate void NetMessageReceived(IReadMessage netMessage);
 
-internal partial interface INetworkingService : IReusableService, ILuaCsNetworking
+internal partial interface INetworkingService : IReusableService, ILuaCsNetworking, IEntityNetworkingService
 {
     bool IsActive { get; }
     bool IsSynchronized { get; }
@@ -20,6 +20,11 @@ internal partial interface INetworkingService : IReusableService, ILuaCsNetworki
 #elif CLIENT
     public void Send(IWriteMessage netMessage, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable);
 #endif
-    public void RegisterNetVar(INetVar netVar);
-    public void SendNetVar(INetVar netVar);
+    
+}
+
+public interface IEntityNetworkingService
+{
+    public void RegisterNetVar(INetworkSyncEntity netVar);
+    public void SendNetVar(INetworkSyncEntity netVar);
 }

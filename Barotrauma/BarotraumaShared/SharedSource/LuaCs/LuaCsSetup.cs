@@ -44,15 +44,11 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IEventService, EventService>(ServiceLifetime.Singleton);
-#if CLIENT
-                _servicesProvider.RegisterServiceType<IStylesService, StylesService>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IStylesManagementService, StylesManagementService>(ServiceLifetime.Singleton);
-#endif
                 _servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
-                // TODO: ILocalizationService
+                
                 // TODO: IConfigService
                 // TODO: INetworkingService
                 // TODO: [Resource Converter/Parser Services]
@@ -61,13 +57,12 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 
+                // Loaders and Processors (yes the naming is reversed, oops).
                 _servicesProvider.RegisterServiceType<IConverterService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
-                
-                
+                _servicesProvider.RegisterServiceType<IConfigIOService, ConfigIOService>(ServiceLifetime.Transient);
                 
                 _servicesProvider.Compile();
             }
@@ -121,8 +116,6 @@ namespace Barotrauma
             ? svc : throw new NullReferenceException("Plugin Manager service not found!");
         public ILuaScriptManagementService LuaScriptManagementService => _servicesProvider.TryGetService<ILuaScriptManagementService>(out var svc) 
             ? svc : throw new NullReferenceException("Lua Script Manager service not found!");
-        public ILocalizationService LocalizationService => _servicesProvider.TryGetService<ILocalizationService>(out var svc) 
-            ? svc : throw new NullReferenceException("Localization Manager service not found!");
         public INetworkingService NetworkingService => _servicesProvider.TryGetService<INetworkingService>(out var svc) 
             ? svc : throw new NullReferenceException("Networking Manager service not found!");
         public IEventService EventService => _servicesProvider.TryGetService<IEventService>(out var svc) 
@@ -179,6 +172,11 @@ namespace Barotrauma
         /// TODO: @evilfactory@users.noreply.github.com
         /// </summary>
         public IConfigEntry<bool> RestrictMessageSize { get; private set; }
+        
+        /// <summary>
+        /// The local save path for all local data storage for mods.
+        /// </summary>
+        public IConfigEntry<string> LocalDataSavePath { get; private set; }
 
         /**
          * == Ops Vars
@@ -287,11 +285,7 @@ namespace Barotrauma
                 
                 PluginManagementService.Dispose();
                 LuaScriptManagementService.Dispose();
-#if CLIENT
-                StylesManagementService.Dispose();
-#endif
                 ConfigService.Dispose();
-                LocalizationService.Dispose();
                 PackageManagementService.Dispose();
                 // TODO: Add all missing services.
                 //NetworkingService.Dispose();
@@ -372,12 +366,7 @@ namespace Barotrauma
             while (_toUnload.TryDequeue(out var cp))
             {
                 LuaScriptManagementService.DisposePackageResources(cp);
-                ConfigService.DisposeConfigsProfiles(cp);
-                ConfigService.DisposeConfigs(cp);
-#if CLIENT
-                StylesManagementService.DisposeStylesForPackage(cp);
-#endif
-                LocalizationService.DisposePackage(cp);
+                ConfigService.DisposePackageData(cp);
                 PackageManagementService.DisposePackageInfos(cp);
             }
             
@@ -515,23 +504,22 @@ namespace Barotrauma
 
         void LoadLuaCsConfig()
         {
-            IsCsEnabled = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled") 
-                          ?? throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            TreatForcedModsAsNormal = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal") 
-                                      ?? throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
-            DisableErrorGUIOverlay = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay") 
-                                     ?? throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            HideUserNamesInLogs = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs") 
-                                  ?? throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            LuaForBarotraumaSteamId = ConfigService.GetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId") 
-                                      ?? throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            CsForBarotraumaSteamId = ConfigService.GetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "CsForBarotraumaSteamId") 
-                                     ?? throw new NullReferenceException($"{nameof(CsForBarotraumaSteamId)} cannot be loaded.");
-            RestrictMessageSize = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize") 
-                                  ?? throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
-            ReloadPackagesOnLobbyStart = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "ReloadPackagesOnLobbyStart") 
-                                         ?? throw new NullReferenceException($"{nameof(ReloadPackagesOnLobbyStart)} cannot be loaded.");
-            
+            IsCsEnabled = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
+                          : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
+            TreatForcedModsAsNormal = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
+                                      : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
+            DisableErrorGUIOverlay = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
+                                     : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
+            HideUserNamesInLogs = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
+                                  : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
+            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
+                                      : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
+            CsForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "CsForBarotraumaSteamId", out var val6) ? val6
+                                     : throw new NullReferenceException($"{nameof(CsForBarotraumaSteamId)} cannot be loaded.");
+            RestrictMessageSize = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
+                                  : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
+            ReloadPackagesOnLobbyStart = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "ReloadPackagesOnLobbyStart", out var val8) ? val8
+                                         : throw new NullReferenceException($"{nameof(ReloadPackagesOnLobbyStart)} cannot be loaded.");
         }
 
         void DisposeLuaCsConfig()
@@ -548,27 +536,14 @@ namespace Barotrauma
 
         async Task LoadStaticAssetsAsync(IReadOnlyList<ContentPackage> packages)
         {
-            var locRes = ImmutableArray<ILocalizationResourceInfo>.Empty;
             var cfgRes = ImmutableArray<IConfigResourceInfo>.Empty;
             var cfpRes = ImmutableArray<IConfigProfileResourceInfo>.Empty;
             var luaRes = ImmutableArray<ILuaScriptResourceInfo>.Empty;
-
-#if CLIENT
-            var styleRes = ImmutableArray<IStylesResourceInfo>.Empty;
-#endif
             
             var tasksBuilder = ImmutableArray.CreateBuilder<Task>();
                 
             //---- get resource infos
-            tasksBuilder.AddRange(new Func<Task>(async () =>
-                {
-                    var res = await PackageManagementService.GetLocalizationsInfosAsync(packages);
-                    if (res.IsSuccess)
-                        locRes = res.Value.Localizations;
-                    if (res.Errors.Any())
-                        ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
-                            res.ToResult());
-                })(),
+            tasksBuilder.AddRange(
                 new Func<Task>(async () =>
                 {
                     var res = await PackageManagementService.GetConfigsInfosAsync(packages);
@@ -596,18 +571,7 @@ namespace Barotrauma
                         ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
                             res.ToResult());
                 })());
-
-#if CLIENT
-            tasksBuilder.Add(new Func<Task>(async () =>
-            {
-                var res = await PackageManagementService.GetStylesInfosAsync(packages);
-                if (res.IsSuccess)
-                    styleRes = res.Value.Styles;
-                if (res.Errors.Any())
-                    ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
-                        res.ToResult());
-            })());
-#endif
+            
             await Task.WhenAll(tasksBuilder.MoveToImmutable());
             tasksBuilder.Clear();
       
@@ -627,23 +591,6 @@ namespace Barotrauma
                     if (res.Errors.Any())
                         Logger.LogResults(res);
                 })());
-
-#if CLIENT
-            tasksBuilder.Add(new Func<Task>(async () =>
-            {
-                var res = await StylesManagementService.LoadStylesAsync(styleRes);
-                if (res.Errors.Any())
-                    Logger.LogResults(res);
-            })());
-#endif
-            
-            // load localizations first
-            if (!locRes.IsDefaultOrEmpty)
-            {
-                var res = await LocalizationService.LoadLocalizations(locRes);
-                if (res.Errors.Any())
-                    Logger.LogResults(res);
-            }
 
             await Task.WhenAll(tasksBuilder.MoveToImmutable());
         }
@@ -706,22 +653,18 @@ namespace Barotrauma
             }
 
             //lua
-            var luaRes = PackageManagementService.GetLuaScriptsInfos(PackageManagementService
-                .GetAllLoadedPackages()
+            var luaRes = PackageManagementService.LuaScripts
+                .Select(ls => ls.OwnerPackage)
+                .Where(p => p is not null)
                 .Where(ContentPackageManager.EnabledPackages.All.Contains)
-                .ToList());
-            if (luaRes.IsFailed)
+                .ToImmutableArray();
+            if (luaRes.IsDefaultOrEmpty)
             {
                 Logger.LogError($"{nameof(RunScripts)}: Failed to get enabled lua script resources!");
-                Logger.LogResults(luaRes.ToResult());
                 return;
             }
             
-            if (luaRes.Errors.Any())
-                Logger.LogResults(luaRes.ToResult());
-            
-            
-            LuaScriptManagementService.ExecuteLoadedScripts(luaRes.Value.LuaScripts);
+            LuaScriptManagementService.ExecuteLoadedScriptsForPackages(luaRes);
             
             if (CurrentRunState < RunState.Running)
                 _runState = RunState.Running;
@@ -748,10 +691,6 @@ namespace Barotrauma
             PluginManagementService.Reset();    
             LuaScriptManagementService.Reset();
             ConfigService.Reset();
-#if CLIENT
-            StylesManagementService.Reset();
-#endif
-            LocalizationService.Reset();
 
             if (CurrentRunState >= RunState.Configuration)
             {

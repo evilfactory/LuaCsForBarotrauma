@@ -6,7 +6,6 @@ namespace Barotrauma.LuaCs.Data;
 
 public interface IConfigResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo { }
 public interface IConfigProfileResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo { }
-public interface ILocalizationResourceInfo : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo, IDataInfo { }
 
 /// <summary>
 /// Represents loadable Lua files.
@@ -38,11 +37,6 @@ public interface IAssemblyResourceInfo : IResourceInfo, IResourceCultureInfo, IP
 public interface IAssembliesResourcesInfo
 {
     ImmutableArray<IAssemblyResourceInfo> Assemblies { get; }
-}
-
-public interface ILocalizationsResourcesInfo
-{
-    ImmutableArray<ILocalizationResourceInfo> Localizations { get; }
 }
 
 public interface ILuaScriptsResourcesInfo

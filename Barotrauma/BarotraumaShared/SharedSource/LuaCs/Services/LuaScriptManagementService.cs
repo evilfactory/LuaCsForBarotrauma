@@ -2,13 +2,216 @@
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Globalization;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Barotrauma.LuaCs.Services.Safe;
+using FluentResults;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using MoonSharp.Interpreter.Loaders;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class LuaScriptManagementService : ILuaScriptManagementService
+public class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 {
+    public LuaScriptManagementService(ILuaScriptLoader loader, ILuaScriptServicesConfig luaScriptServicesConfig)
+    {
+        _luaScriptLoader = loader;
+        _luaScriptServicesConfig = luaScriptServicesConfig;
+    }
     
+    private readonly ILuaScriptLoader  _luaScriptLoader;
+    private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
+    
+    public void Dispose()
+    {
+        _luaScriptLoader.Dispose();
+    }
+
+    public bool IsDisposed
+    {
+        get => throw new NotImplementedException();
+    }
+
+    public FluentResults.Result Reset()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Result<object> GetGlobalTableValue(string tableName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo)
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package)
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages)
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result ExecuteLoadedScripts()
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result DisposePackageResources(ContentPackage package)
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result UnloadActiveScripts()
+    {
+        throw new NotImplementedException();
+    }
+
+    public FluentResults.Result DisposeAllPackageResources()
+    {
+        throw new NotImplementedException();
+    }
+
+    public IUserDataDescriptor RegisterType(Type type)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IUserDataDescriptor RegisterGenericType(Type type)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IUserDataDescriptor GetTypeInfo(string typeName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IUserDataDescriptor GetGenericTypeInfo(string typeName, params string[] typeNameArgs)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UnregisterType(Type type)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool IsRegistered(Type type)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool IsTargetType(object obj, string typeName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string TypeOf(object obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    public object CreateStatic(string typeName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public object CreateEnumTable(string typeName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public FieldInfo FindFieldRecursively(Type type, string fieldName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void MakeFieldAccessible(IUserDataDescriptor descriptor, string fieldName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public MethodInfo FindMethodRecursively(Type type, string methodName, Type[] types = null)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void MakeMethodAccessible(IUserDataDescriptor descriptor, string methodName, string[] parameters = null)
+    {
+        throw new NotImplementedException();
+    }
+
+    public PropertyInfo FindPropertyRecursively(Type type, string propertyName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void MakePropertyAccessible(IUserDataDescriptor descriptor, string propertyName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddMethod(IUserDataDescriptor descriptor, string methodName, object function)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddField(IUserDataDescriptor descriptor, string fieldName, DynValue value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void RemoveMember(IUserDataDescriptor descriptor, string memberName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool HasMember(object obj, string memberName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public DynValue CreateUserDataFromDescriptor(DynValue scriptObject, IUserDataDescriptor descriptor)
+    {
+        throw new NotImplementedException();
+    }
+
+    public DynValue CreateUserDataFromType(DynValue scriptObject, Type desiredType)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Table GetObjectTable(object obj, string tableName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Table GetTable(string tableName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Table GetOrCreateObjectTable(object obj, string tableName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Table GetOrCreateTable(string tableName)
+    {
+        throw new NotImplementedException();
+    }
 }

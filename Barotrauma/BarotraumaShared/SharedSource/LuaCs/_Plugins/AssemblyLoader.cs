@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 using System.Threading;
 using Barotrauma.Extensions;
@@ -55,22 +56,131 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     //internal
     private readonly IAssemblyManagementService _assemblyManagementService;
     private readonly Action<AssemblyLoader> _onUnload;
+    private readonly Func<AssemblyLoadContext, AssemblyName, Assembly> _onResolvingManaged;
+    private readonly Func<Assembly, string, IntPtr> _onResolvingUnmanagedDll;
     private readonly ConcurrentDictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();
     private readonly ConcurrentDictionary<AssemblyOrStringKey, AssemblyData> _loadedAssemblyData = new();
     
     private readonly ThreadLocal<bool> _isResolving = new(static()=>false); // cyclic resolution exit
+    private readonly ThreadLocal<bool> _isResolvingNative = new(static () => false);
 
-    public AssemblyLoader(IAssemblyManagementService assemblyManagementService, 
+    public AssemblyLoader(
+        IAssemblyManagementService assemblyManagementService, 
         Guid id, string name, 
-        bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload) 
+        bool isReferenceOnlyMode, 
+        Action<AssemblyLoader> onUnload = null) 
         : base(isCollectible: true, name: name)
     {
         _assemblyManagementService = assemblyManagementService;
         Id = id;
         IsReferenceOnlyMode = isReferenceOnlyMode;
-        _onUnload = onUnload;
-        if (_onUnload is not null)
-            base.Unloading += OnUnload;
+        base.Unloading += OnUnload;
+        base.Resolving += OnResolvingManagedAssembly;
+        base.ResolvingUnmanagedDll += OnResolvingUnmanagedDll;
+    }
+
+    private IntPtr OnResolvingUnmanagedDll(Assembly invokingAssembly, string assemblyName)
+    {
+        if (IsDisposed)
+            return 0;
+
+        if (_isResolvingNative.Value)
+            return 0;
+        
+        AreOperationRunning = true;
+        _isResolvingNative.Value = true;
+        try
+        {
+            if (!_dependencyResolvers.IsEmpty)
+            {
+                foreach (var resolver in _dependencyResolvers)
+                {
+                    try
+                    {
+                        var path = resolver.Value.ResolveUnmanagedDllToPath(assemblyName);
+                        if (path.IsNullOrWhiteSpace())
+                            continue;
+                        return base.LoadUnmanagedDllFromPath(path);
+                    }
+                    catch
+                    {
+                        // ignored
+                        continue;
+                    }
+                }
+            }
+        
+            if (_onResolvingUnmanagedDll is not null)
+            {
+                try
+                {
+                    return _onResolvingUnmanagedDll(invokingAssembly, assemblyName);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+
+            return 0;
+        }
+        finally
+        {
+            AreOperationRunning = false;
+            _isResolvingNative.Value = false;
+        }
+    }
+
+    private Assembly OnResolvingManagedAssembly(AssemblyLoadContext assemblyLoadContext, AssemblyName assemblyName)
+    {
+        if (IsDisposed)
+            return null;
+
+        if (_isResolving.Value)
+            return null;
+        
+        AreOperationRunning = true;
+        _isResolving.Value = true;
+        try
+        {
+            if (!_dependencyResolvers.IsEmpty)
+            {
+                foreach (var resolver in _dependencyResolvers)
+                {
+                    try
+                    {
+                        var path = resolver.Value.ResolveAssemblyToPath(assemblyName);
+                        if (path.IsNullOrWhiteSpace())
+                            continue;
+                        return assemblyLoadContext.LoadFromAssemblyPath(path);
+                    }
+                    catch
+                    {
+                        // ignored
+                        continue;
+                    }
+                }
+            }
+
+            if (_onResolvingManaged is not null)
+            {
+                try
+                {
+                    return _onResolvingManaged(assemblyLoadContext, assemblyName);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+
+            return null;
+        }
+        finally
+        {
+            AreOperationRunning = false;
+            _isResolving.Value = false;
+        }
     }
 
     public IEnumerable<MetadataReference> AssemblyReferences
@@ -107,10 +217,13 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
                 }
                 catch (Exception ex)
                 {
-                    return res.WithError(new ExceptionalError(ex)
+                    res = res.WithError(new ExceptionalError(ex)
                         .WithMetadata(MetadataType.Sources, path));
                 }
             }
+            
+            if (res.Errors.Any())
+                return FluentResults.Result.Fail(res.Errors);
             return FluentResults.Result.Ok();
         }
         finally
@@ -140,13 +253,16 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 
             if (_loadedAssemblyData.ContainsKey(assemblyName))
             {
-                return new Result<Assembly>().WithError(new Error($"The name provided is already assigned to an assembly!")
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, syntaxTrees));
+                return new Result<Assembly>().WithError(
+                    new Error($"The name provided is already assigned to an assembly!")
+                        .WithMetadata(MetadataType.ExceptionObject, this)
+                        .WithMetadata(MetadataType.RootObject, syntaxTrees));
             }
-        
-            var compilationAssemblyName = compileWithInternalAccess ? IAssemblyLoaderService.InternalsAwareAssemblyName : assemblyName;
-        
+
+            var compilationAssemblyName = compileWithInternalAccess
+                ? IAssemblyLoaderService.InternalsAwareAssemblyName
+                : assemblyName;
+
             compilationOptions ??= new CSharpCompilationOptions(
                 outputKind: OutputKind.DynamicallyLinkedLibrary,
                 optimizationLevel: OptimizationLevel.Release,
@@ -158,7 +274,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             {
                 typeof(CSharpCompilationOptions)
                     .GetProperty("TopLevelBinderFlags", BindingFlags.Instance | BindingFlags.NonPublic)
-                    ?.SetValue(compilationOptions, 
+                    ?.SetValue(compilationOptions,
                         (uint)1 << 25 // CSharp.BinderFlags.AllowAwaitInUnsafeContext
                         | (uint)1 << 22 // CSharp.BinderFlags.IgnoreAccessibility
                         | (uint)1 << 1 // CSharp.BinderFlags.SuppressObsoleteChecks
@@ -166,34 +282,39 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             }
 
             using var asmMemoryStream = new MemoryStream();
-            var result = CSharpCompilation.Create(compilationAssemblyName, syntaxTrees, metadataReferences, compilationOptions).Emit(asmMemoryStream);
+            var result = CSharpCompilation
+                .Create(compilationAssemblyName, syntaxTrees, metadataReferences, compilationOptions)
+                .Emit(asmMemoryStream);
             if (!result.Success)
             {
                 var res = new FluentResults.Result().WithError(
                     new Error($"Compilation failed for assembly {assemblyName}!")
                         .WithMetadata(MetadataType.ExceptionObject, this)
                         .WithMetadata(MetadataType.RootObject, syntaxTrees));
-                var failuresDiag = result.Diagnostics.Where(d => d.IsWarningAsError || d.Severity == DiagnosticSeverity.Error);
+                var failuresDiag =
+                    result.Diagnostics.Where(d => d.IsWarningAsError || d.Severity == DiagnosticSeverity.Error);
                 foreach (var diag in failuresDiag)
                 {
                     res = res.WithError(new Error(diag.GetMessage())
                         .WithMetadata(MetadataType.ExceptionObject, this)
                         .WithMetadata(MetadataType.ExceptionDetails, diag.Descriptor.Description));
-                } 
+                }
+
                 return res;
             }
-        
+
             asmMemoryStream.Seek(0, SeekOrigin.Begin);
-            try
-            {
-                var data = new AssemblyData(LoadFromStream(asmMemoryStream), asmMemoryStream.ToArray());
-                _loadedAssemblyData[data.Assembly] = data;
-                return new Result<Assembly>().WithSuccess($"Compiled assembly {assemblyName} successful.").WithValue(data.Assembly);
-            }
-            catch (Exception ex)
-            {
-                return new FluentResults.Result().WithError(new ExceptionalError(ex));
-            }
+            var data = new AssemblyData(LoadFromStream(asmMemoryStream), asmMemoryStream.ToArray());
+            _loadedAssemblyData[data.Assembly] = data;
+            return new Result<Assembly>().WithSuccess($"Compiled assembly {assemblyName} successful.")
+                .WithValue(data.Assembly);
+        }
+        catch (Exception ex)
+        {
+            return  new FluentResults.Result().WithError(new ExceptionalError(ex)
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.RootObject, assemblyName)
+                .WithMetadata(MetadataType.Sources, syntaxTrees));
         }
         finally
         {
@@ -211,7 +332,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         try
         {
             if (assemblyFilePath.IsNullOrWhiteSpace())
-                return new Result<Assembly>().WithError(new Error($"The path provided is null!"));
+                return new Result<Assembly>().WithError(new Error($"The path provided is empty."));
         
             if (additionalDependencyPaths.Any())
             {
@@ -219,7 +340,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
                 if (!r.IsFailed)
                 {
                     // we have errors, loading may not work.
-                    return FluentResults.Result.Fail(new Error($"Failed to load dependency paths")
+                    return FluentResults.Result.Fail(new Error($"Failed to load dependency paths.")
                             .WithMetadata(MetadataType.ExceptionObject, this)
                             .WithMetadata(MetadataType.RootObject, assemblyFilePath))
                         .WithErrors(r.Errors);
@@ -240,60 +361,50 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             {
                 var assembly = LoadFromAssemblyPath(sanitizedFilePath);
                 _loadedAssemblyData[assembly] = new AssemblyData(assembly, sanitizedFilePath);
-                return new Result<Assembly>().WithSuccess($"Loaded assembly'{assembly.GetName()}'").WithValue(assembly);
-            }
-            catch (ArgumentNullException ane)
-            {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(ane)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, ane.Message)
-                    .WithMetadata(MetadataType.StackTrace, ane.StackTrace));
-            }
-            catch (ArgumentException ae)
-            {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(ae)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, ae.Message)
-                    .WithMetadata(MetadataType.StackTrace, ae.StackTrace));
-            }
-            catch (FileLoadException fle)
-            {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(fle)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, fle.Message)
-                    .WithMetadata(MetadataType.StackTrace, fle.StackTrace));
+                return new Result<Assembly>().WithSuccess($"Loaded assembly '{assembly.GetName()}'").WithValue(assembly);
             }
             catch (FileNotFoundException fnfe)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(fnfe)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, fnfe.Message)
-                    .WithMetadata(MetadataType.StackTrace, fnfe.StackTrace));
-            }
-            catch (BadImageFormatException bife)
-            {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(bife)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, bife.Message)
-                    .WithMetadata(MetadataType.StackTrace, bife.StackTrace));
+                // last attempt
+                try
+                {
+                    var assemblyName = new AssemblyName(System.IO.Path.GetFileName(sanitizedFilePath));
+                    foreach (var resolver in _dependencyResolvers)
+                    {
+                        try
+                        {
+                            var path = resolver.Value.ResolveAssemblyToPath(assemblyName);
+                            return base.LoadFromAssemblyPath(path);
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+                    return GenerateExceptionReturn(fnfe);
+                }
+                catch (Exception e)
+                {
+                      return GenerateExceptionReturn(fnfe);
+                }
             }
             catch (Exception e)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(e)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, e.Message)
-                    .WithMetadata(MetadataType.StackTrace, e.StackTrace));
+                return GenerateExceptionReturn(e);
             }
         }
         finally
         {
             AreOperationRunning = false;
+        }
+
+        FluentResults.Result<Assembly> GenerateExceptionReturn<T>(T exception) where T : Exception
+        {
+            return FluentResults.Result.Fail<Assembly>(new ExceptionalError(exception)
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.RootObject, assemblyFilePath)
+                .WithMetadata(MetadataType.ExceptionDetails, exception.Message)
+                .WithMetadata(MetadataType.StackTrace, exception.StackTrace));
         }
     }
 
@@ -303,7 +414,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             return FluentResults.Result.Fail(new Error($"Loader is disposed!"));
         if (assemblyName.IsNullOrWhiteSpace())
         {
-            return FluentResults.Result.Fail(new Error($"Assembly name is null")
+            return FluentResults.Result.Fail(new Error($"Assembly name is empty.")
                 .WithMetadata(MetadataType.ExceptionObject, this));
         }
         AreOperationRunning = true;
@@ -311,7 +422,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         {
             if (_loadedAssemblyData.TryGetValue(assemblyName, out var data))
             {
-                return new Result<Assembly>().WithSuccess(new Success($"Assembly found")).WithValue(data.Assembly);
+                return new Result<Assembly>().WithSuccess(new Success($"Assembly found.")).WithValue(data.Assembly);
             }
 
             // search any assemblies that were background loaded and we're unaware of.
@@ -332,11 +443,11 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
                         // ignored
                     }
 
-                    return new Result<Assembly>().WithSuccess(new Success($"Assembly found")).WithValue(assembly1);
+                    return new Result<Assembly>().WithSuccess(new Success($"Assembly found.")).WithValue(assembly1);
                 }
             }
 
-            return FluentResults.Result.Fail(new Error($"Assembly named { assemblyName } not found!"));
+            return FluentResults.Result.Fail(new Error($"Assembly named '{ assemblyName }' not found!"));
         }
         finally
         {
@@ -420,60 +531,97 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             return; // we don't want to invoke events twice nor cause strong GC handles.
         IsDisposed = true;
         this.Unload();
+        this.DisposeInternal();
+    }
+
+    ~AssemblyLoader()
+    {
+        this.DisposeInternal();
+    }
+    
+    private void OnUnload(AssemblyLoadContext context)
+    {
+        // Try to wait for loading ops on other threads if they happen to occur with a timeout.
+        // This should be an edge, should it even occur.
+        DateTime timeout = DateTime.Now.AddSeconds(2);
+        while (timeout > DateTime.Now)
+        {
+            if (!AreOperationRunning)
+                break;
+            Thread.Sleep(1000/Timing.FixedUpdateRate-1);
+        }
+        
+        var wf = new WeakReference<IAssemblyLoaderService>(this);
+        _onUnload?.Invoke(this);
+    }
+
+    private void DisposeInternal()
+    {
+        IsDisposed = true;
+        base.Resolving -= OnResolvingManagedAssembly;
+        base.ResolvingUnmanagedDll -= OnResolvingUnmanagedDll;
+        base.Unloading -= OnUnload;
+        this._dependencyResolvers.Clear();
+        this._loadedAssemblyData.Clear();
         GC.SuppressFinalize(this);
     }
 
     protected override Assembly Load(AssemblyName assemblyName)
     {
-        if (_isResolving.Value)
+        if (IsDisposed)
             return null;
-        
-        _isResolving.Value = true;
+        AreOperationRunning = true;
         try
         {
-            if (_loadedAssemblyData.TryGetValue(assemblyName.FullName, out var data))
-                return data.Assembly;
-            var ids = new[] { this.Id };
-            if (_assemblyManagementService.GetLoadedAssembly(assemblyName, in ids) is { IsSuccess: true } ret)
-                return ret.Value;
+            if (_loadedAssemblyData.TryGetValue(assemblyName.FullName, out var assembly))
+                return assembly.Assembly;
             return null;
         }
-        catch (ArgumentNullException _)
+        catch
         {
             return null;
         }
         finally
         {
-            _isResolving.Value = false;
+            AreOperationRunning = false;
         }
     }
 
-    // Use the default import resolver since native libraries are niche and not blocking for unloading.
-    // Implement if conflicts become an issue.
-    /*protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
+    protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
     {
-        // Implement NativeLibrary::InternalLoadUnmanagedDll()
-        throw new NotImplementedException();
-    }*/
-    
-    private void OnUnload(AssemblyLoadContext context)
-    {
-        IsDisposed = true;
-        
-        // Try to wait for loading ops on other threads if they happen to occur.
-        // Minor race condition on the loop exit but this loader is not intended to be thread-safe by design, this is just to cover edge cases.
-        DateTime timeout = DateTime.Now.AddSeconds(5);
-        while (timeout > DateTime.Now)
+        if (IsDisposed)
+            return 0;
+
+        GCHandle? handle = null;
+        AreOperationRunning = true;
+        try
         {
-            if (!AreOperationRunning)
-                break;
+            if (_loadedAssemblyData.TryGetValue(unmanagedDllName, out var assemblyData))
+            {
+                handle = GCHandle.Alloc(assemblyData.Assembly, GCHandleType.Pinned);
+                nint asmPtr = GCHandle.ToIntPtr(handle.Value);
+                return asmPtr;
+            }
         }
-        
-        base.Unloading -= OnUnload;
-        var wf = new WeakReference<IAssemblyLoaderService>(this);
-        _onUnload?.Invoke(this);
-        this._dependencyResolvers.Clear();
-        this._loadedAssemblyData.Clear();
+        catch
+        {
+            return 0;
+        }
+        finally
+        {
+            AreOperationRunning = false;
+            try
+            {
+                if (handle.HasValue)
+                    handle.Value.Free();
+            }
+            catch
+            {
+                // ignored. We just want to ensure that free is called.
+            }
+        }
+
+        return 0;
     }
 
     private readonly record struct AssemblyData
@@ -538,7 +686,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 
         public int GetHashCode(AssemblyOrStringKey obj)
         {
-            return obj.HashCode;
+            return this.HashCode;
         }
         
         public static implicit operator AssemblyOrStringKey(Assembly assembly) => new AssemblyOrStringKey(assembly);

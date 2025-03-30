@@ -1,13 +1,14 @@
 ﻿using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Barotrauma.LuaCs.Services;
 
 partial class NetworkingService : INetworkingService
 {
-    private Dictionary<ushort, Queue<IReadMessage>> receiveQueue = new Dictionary<ushort, Queue<IReadMessage>>();
+    private ConcurrentDictionary<ushort, ConcurrentQueue<IReadMessage>> receiveQueue = new();
 
     public void SendSyncMessage()
     {
@@ -99,7 +100,7 @@ partial class NetworkingService : INetworkingService
         }
         else
         {
-            if (!receiveQueue.ContainsKey(id)) { receiveQueue[id] = new Queue<IReadMessage>(); }
+            if (!receiveQueue.ContainsKey(id)) { receiveQueue[id] = new ConcurrentQueue<IReadMessage>(); }
             receiveQueue[id].Enqueue(netMessage);
 
             if (GameSettings.CurrentConfig.VerboseLogging)

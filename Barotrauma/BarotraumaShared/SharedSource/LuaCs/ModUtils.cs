@@ -567,8 +567,17 @@ namespace FluentResults.LuaCs
     public static class MetadataType
     {
         public static string ExceptionDetails = nameof(ExceptionDetails);
+        /// <summary>
+        /// The object that threw the exception.
+        /// </summary>
         public static string ExceptionObject = nameof(ExceptionObject);
+        /// <summary>
+        /// The parameter-object responsible for the exception thrown (not the exception thrower).
+        /// </summary>
         public static string RootObject = nameof(RootObject);
+        /// <summary>
+        /// Additional exception sources.
+        /// </summary>
         public static string Sources = nameof(Sources);
         public static string StackTrace  = nameof(StackTrace);
     }

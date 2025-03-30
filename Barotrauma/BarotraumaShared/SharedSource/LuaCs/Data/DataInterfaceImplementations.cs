@@ -5,7 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Xml.Linq;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Steam;
+using OneOf;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -16,7 +19,6 @@ public partial record ModConfigInfo : IModConfigInfo
     public ContentPackage Package { get; init; }
     public string PackageName { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
-    public ImmutableArray<ILocalizationResourceInfo> Localizations { get; init; }
     public ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; init; }
     public ImmutableArray<IConfigResourceInfo> Configs { get; init; }
     public ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; init; }
@@ -24,10 +26,9 @@ public partial record ModConfigInfo : IModConfigInfo
 
 #endregion
 
-#region DataContracts
+#region DataContracts_Resources
 
 public record AssemblyResourcesInfo(ImmutableArray<IAssemblyResourceInfo> Assemblies) : IAssembliesResourcesInfo;
-public record LocalizationResourcesInfo(ImmutableArray<ILocalizationResourceInfo> Localizations) : ILocalizationsResourcesInfo;
 public record LuaScriptsResourcesInfo(ImmutableArray<ILuaScriptResourceInfo> LuaScripts) : ILuaScriptsResourcesInfo;
 public record ConfigResourcesInfo(ImmutableArray<IConfigResourceInfo> Configs) : IConfigsResourcesInfo;
 public record ConfigProfilesResourcesInfo(ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles) : IConfigProfilesResourcesInfo;
@@ -161,20 +162,7 @@ public record ConfigProfileResourceInfo : IConfigProfileResourceInfo
     public ContentPackage OwnerPackage { get; init; }
 }
 
-public record LocalizationResourceInfo : ILocalizationResourceInfo
-{
-    public string InternalName { get; init; }
-    public ContentPackage OwnerPackage { get; init; }
-    public Platform SupportedPlatforms { get; init; }
-    public Target SupportedTargets { get; init; }
-    public int LoadPriority { get; init; }
-    public ImmutableArray<string> FilePaths { get; init; }
-    public ImmutableArray<CultureInfo> SupportedCultures { get; init; }
-    public ImmutableArray<IPackageDependency> Dependencies { get; init; }
-    public bool Optional { get; init; }
-}
-
-public readonly struct LuaScriptScriptResourceInfo : ILuaScriptResourceInfo
+public readonly struct LuaScriptsResourceInfo : ILuaScriptResourceInfo
 {
     public ContentPackage OwnerPackage { get; init; }
     public Platform SupportedPlatforms { get; init; }
@@ -186,6 +174,37 @@ public readonly struct LuaScriptScriptResourceInfo : ILuaScriptResourceInfo
     public bool Optional { get; init; }
     public string InternalName { get; init; }
     public bool IsAutorun { get; init; }
+}
+
+#endregion
+
+#region DataContracts_ParsedInfo
+
+public record ConfigInfo : IConfigInfo
+{
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public Type DataType { get; init; }
+    public OneOf<string, XElement> DefaultValue { get; init; }
+    public OneOf<string, XElement> Value { get; init; }
+    public RunState EditableStates { get; init; }
+    public NetSync NetSync { get; init; }
+    
+#if CLIENT // IConfigDisplayInfo
+    public string DisplayName { get; init; }
+    public string Description { get; init; }
+    public string DisplayCategory { get; init; }
+    public bool ShowInMenus { get; init; }
+    public string Tooltip { get; init; }
+    public string ImageIconPath { get; init; }
+#endif
+}
+
+public record ConfigProfileInfo : IConfigProfileInfo
+{
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public IReadOnlyList<(string ConfigName, OneOf<string, XElement> Value)> ProfileValues { get; init; }
 }
 
 #endregion

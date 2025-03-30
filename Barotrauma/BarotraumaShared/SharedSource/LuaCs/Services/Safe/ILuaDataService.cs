@@ -25,6 +25,8 @@ public interface ILuaDataService : ILuaService
     /// <summary>
     /// Returns stored table data for the given object or creates a new table if one doesn't exist.
     /// </summary>
+    /// <remarks>Note: tables are stored using weak references and will be automatically deleted when the object is
+    /// garbage collected.</remarks>
     /// <param name="obj"></param>
     /// <param name="tableName"></param>
     /// <returns></returns>

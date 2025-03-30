@@ -22,7 +22,7 @@ internal partial class NetworkingService : INetworkingService
         ReceiveIds
     }
 
-    private Dictionary<Guid, INetVar> netVars = new Dictionary<Guid, INetVar>();
+    private Dictionary<Guid, INetworkSyncEntity> netVars = new Dictionary<Guid, INetworkSyncEntity>();
     private Dictionary<Guid, NetMessageReceived> netReceives = new Dictionary<Guid, NetMessageReceived>();
     private Dictionary<ushort, Guid> packetToId = new Dictionary<ushort, Guid>();
     private Dictionary<Guid, ushort> idToPacket = new Dictionary<Guid, ushort>();
@@ -46,7 +46,7 @@ internal partial class NetworkingService : INetworkingService
 #endif
     }
 
-    public void RegisterNetVar(INetVar netVar)
+    public void RegisterNetVar(INetworkSyncEntity netVar)
     {
         netVars[netVar.InstanceId] = netVar;
 
@@ -58,7 +58,7 @@ internal partial class NetworkingService : INetworkingService
         };
     }
 
-    public void SendNetVar(INetVar netVar)
+    public void SendNetVar(INetworkSyncEntity netVar)
     {
         if (netVars.ContainsKey(netVar.InstanceId))
         {
