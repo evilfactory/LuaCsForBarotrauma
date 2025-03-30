@@ -103,6 +103,25 @@ public partial class PackageManagementService : IPackageManagementService
             : _modInfos.Select(kvp => kvp.Key).ToImmutableArray();
     }
 
+    public bool IsPackageLoaded(ContentPackage package)
+    {
+        return package is not null && _modInfos.ContainsKey(package);
+    }
+
+    public ImmutableArray<T> FilterUnloadableResources<T>(IReadOnlyList<T> resources, bool enabledPackagesOnly = false) 
+        where T : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo
+    {
+        return resources
+            .Where(r => r is not null)
+            .Where(r => (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0)
+            .Where(r => (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0)
+            .Where(r => !r.Dependencies.Any() || r.Dependencies.All(d => 
+                            d.Dependency.GetPackage() is {} p   // cp is valid
+                            && _modInfos.ContainsKey(p)                      // cp is parsed
+                            && (!enabledPackagesOnly || _packageInfoLookupService.IsPackageEnabled(p)))) // cp is enabled
+            .ToImmutableArray();
+    }
+
     public void DisposePackageInfos(ContentPackage package)
     {
         _modInfos.TryRemove(package, out _);

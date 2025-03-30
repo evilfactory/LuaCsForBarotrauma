@@ -30,6 +30,20 @@ public interface IPackageManagementService : IReusableService, ILocalizationsRes
     /// <returns></returns>
     Task<IReadOnlyList<(ContentPackage, FluentResults.Result)>> LoadPackagesInfosAsync(IReadOnlyList<ContentPackage> packages);
     IReadOnlyList<ContentPackage> GetAllLoadedPackages();
+    bool IsPackageLoaded(ContentPackage package);
+
+    /// <summary>
+    /// Filters out resources not suitable for the current environment using the following criteria: <br/>
+    /// - Platform (Operating System)<br/>
+    /// - Target (Client|Server)<br/>
+    /// - Null/Invalid<br/>
+    /// - Dependency Package Registered in PMS<br/>
+    /// </summary>
+    /// <param name="resources"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    ImmutableArray<T> FilterUnloadableResources<T>(IReadOnlyList<T> resources, bool enabledPackagesOnly = false)
+        where T : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo;
     void DisposePackageInfos(ContentPackage package);
     void DisposePackagesInfos(IReadOnlyList<ContentPackage> packages);
     FluentResults.Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName, ulong steamWorkshopId);

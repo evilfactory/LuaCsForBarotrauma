@@ -5,8 +5,7 @@ namespace Barotrauma.LuaCs.Data;
 
 public interface ILocalizationInfo : IDataInfo
 {
-    string Symbol { get; }
-    IReadOnlyDictionary<CultureInfo, RawLString> LocalizedValues { get; }
-    RawLString GetLocalizedString(CultureInfo locale);
-    RawLString GetLocalizedString(string cultureCode);
+    int LoadPriority { get; }
+    string Key { get; }
+    IReadOnlyList<(CultureInfo Culture, string Value)> Translations { get; }
 }

@@ -24,7 +24,7 @@ public partial record ModConfigInfo : IModConfigInfo
 
 #endregion
 
-#region DataContracts
+#region DataContracts_Resources
 
 public record AssemblyResourcesInfo(ImmutableArray<IAssemblyResourceInfo> Assemblies) : IAssembliesResourcesInfo;
 public record LocalizationResourcesInfo(ImmutableArray<ILocalizationResourceInfo> Localizations) : ILocalizationsResourcesInfo;
@@ -186,6 +186,19 @@ public readonly struct LuaScriptScriptResourceInfo : ILuaScriptResourceInfo
     public bool Optional { get; init; }
     public string InternalName { get; init; }
     public bool IsAutorun { get; init; }
+}
+
+#endregion
+
+#region DataContracts_ParsedInfo
+
+public record LocalizationInfo : ILocalizationInfo
+{
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public int LoadPriority { get; init; }
+    public string Key { get; init; }
+    public IReadOnlyList<(CultureInfo Culture, string Value)> Translations { get; init; }
 }
 
 #endregion
