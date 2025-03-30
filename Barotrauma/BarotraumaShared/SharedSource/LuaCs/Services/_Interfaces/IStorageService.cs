@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -7,6 +8,26 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IStorageService : IService
 {
+    
+    bool UseCaching { get; set; }
+    
+    /// <summary>
+    /// Deletes all cached file data.
+    /// </summary>
+    void PurgeCache();
+    
+    /// <summary>
+    /// Deletes the data for the supplied file path from the data cache.
+    /// </summary>
+    /// <param name="absolutePath"></param>
+    void PurgeFileFromCache(string absolutePath);
+    
+    /// <summary>
+    /// Deletes the data from the supplied file paths from the data cache.
+    /// </summary>
+    /// <param name="absolutePaths"></param>
+    void PurgeFilesFromCache(params string[] absolutePaths);
+    
     // -- local game folder storage
     FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);

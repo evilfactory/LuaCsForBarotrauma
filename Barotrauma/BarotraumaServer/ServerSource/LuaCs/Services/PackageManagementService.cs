@@ -11,7 +11,6 @@ public partial class PackageManagementService
         IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> assemblyInfoConverter, 
         IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> configsInfoConverter, 
         IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> configProfilesConverter, 
-        IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo> localizationsConverter, 
         IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> luaScriptsConverter, 
         IPackageInfoLookupService packageInfoLookupService)
     {
@@ -19,7 +18,6 @@ public partial class PackageManagementService
         _assemblyInfoConverter = assemblyInfoConverter;
         _configsInfoConverter = configsInfoConverter;
         _configProfilesConverter = configProfilesConverter;
-        _localizationsConverter = localizationsConverter;
         _luaScriptsConverter = luaScriptsConverter;
         _packageInfoLookupService = packageInfoLookupService;
     }

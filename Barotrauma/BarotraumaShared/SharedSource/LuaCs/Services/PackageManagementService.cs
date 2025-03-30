@@ -27,7 +27,6 @@ public partial class PackageManagementService : IPackageManagementService
     private readonly IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> _assemblyInfoConverter;
     private readonly IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> _configsInfoConverter;
     private readonly IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> _configProfilesConverter;
-    private readonly IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo> _localizationsConverter;
     private readonly IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> _luaScriptsConverter;
 
 
@@ -56,9 +55,7 @@ public partial class PackageManagementService : IPackageManagementService
         }
         return FluentResults.Result.Ok();
     }
-
-    public ImmutableArray<ILocalizationResourceInfo> Localizations => _modInfos.IsEmpty ? ImmutableArray<ILocalizationResourceInfo>.Empty 
-        : _modInfos.SelectMany(kvp => kvp.Value.Localizations).ToImmutableArray();
+    
     public ImmutableArray<IConfigResourceInfo> Configs => _modInfos.IsEmpty ? ImmutableArray<IConfigResourceInfo>.Empty 
         : _modInfos.SelectMany(kvp => kvp.Value.Configs).ToImmutableArray();
     public ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles => _modInfos.IsEmpty ? ImmutableArray<IConfigProfileResourceInfo>.Empty 
@@ -101,6 +98,25 @@ public partial class PackageManagementService : IPackageManagementService
         ((IService)this).CheckDisposed();
         return _modInfos.IsEmpty ? ImmutableArray<ContentPackage>.Empty 
             : _modInfos.Select(kvp => kvp.Key).ToImmutableArray();
+    }
+
+    public bool IsPackageLoaded(ContentPackage package)
+    {
+        return package is not null && _modInfos.ContainsKey(package);
+    }
+
+    public ImmutableArray<T> FilterUnloadableResources<T>(IReadOnlyList<T> resources, bool enabledPackagesOnly = false) 
+        where T : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo
+    {
+        return resources
+            .Where(r => r is not null)
+            .Where(r => (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0)
+            .Where(r => (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0)
+            .Where(r => !r.Dependencies.Any() || r.Dependencies.All(d => 
+                            d.Dependency.GetPackage() is {} p   // cp is valid
+                            && _modInfos.ContainsKey(p)                      // cp is parsed
+                            && (!enabledPackagesOnly || _packageInfoLookupService.IsPackageEnabled(p)))) // cp is enabled
+            .ToImmutableArray();
     }
 
     public void DisposePackageInfos(ContentPackage package)
@@ -217,26 +233,6 @@ public partial class PackageManagementService : IPackageManagementService
             $"{nameof(GetConfigProfilesInfos)}: ContentPackage {package.Name} is not registered.");
     }
 
-    public Result<ILocalizationsResourcesInfo> GetLocalizationsInfos(ContentPackage package, bool onlySupportedResources = true)
-    {
-        ((IService)this).CheckDisposed();
-        if (package is null)
-            return FluentResults.Result.Fail($"{nameof(GetLocalizationsInfos)}: ContentPackage is null.");
-        
-        if (_modInfos.TryGetValue(package, out var result))
-        {
-            return FluentResults.Result.Ok<ILocalizationsResourcesInfo>(_localizationsConverter.Process(onlySupportedResources?
-                result.Localizations.Where(r => 
-                    (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
-                    && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
-                : result.Localizations
-            ));
-        }
-
-        return FluentResults.Result.Fail(
-            $"{nameof(GetLocalizationsInfos)}: ContentPackage {package.Name} is not registered.");
-    }
-
     public Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(ContentPackage package, bool onlySupportedResources = true)
     {
         ((IService)this).CheckDisposed();
@@ -320,27 +316,6 @@ public partial class PackageManagementService : IPackageManagementService
         return FluentResults.Result.Ok(_configProfilesConverter.Process(builder.MoveToImmutable()));
     }
 
-    public Result<ILocalizationsResourcesInfo> GetLocalizationsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
-    {
-        ((IService)this).CheckDisposed();
-        if (packages is null || packages.Count == 0)
-            return FluentResults.Result.Fail($"{nameof(GetLocalizationsInfos)}: ContentPackage list is null or empty.");
-        var builder = ImmutableArray.CreateBuilder<ILocalizationResourceInfo>();
-        foreach (var package in packages)
-        {
-            if (_modInfos.TryGetValue(package, out var result) && result.Localizations is { IsEmpty: false })
-            {
-                builder.AddRange(onlySupportedResources?
-                    result.Localizations.Where(r => 
-                        (r.SupportedPlatforms & ModUtils.Environment.CurrentPlatform) > 0
-                        && (r.SupportedTargets & ModUtils.Environment.CurrentTarget) > 0).ToImmutableArray()
-                    : result.Localizations);
-            }
-        }
-
-        return FluentResults.Result.Ok(_localizationsConverter.Process(builder.MoveToImmutable()));
-    }
-
     public Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         ((IService)this).CheckDisposed();
@@ -375,11 +350,6 @@ public partial class PackageManagementService : IPackageManagementService
     public async Task<Result<IConfigProfilesResourcesInfo>> GetConfigProfilesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         return await Task.Run(() => GetConfigProfilesInfos(packages, onlySupportedResources));
-    }
-
-    public async Task<Result<ILocalizationsResourcesInfo>> GetLocalizationsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
-    {
-        return await Task.Run(() => GetLocalizationsInfos(packages, onlySupportedResources));
     }
 
     public async Task<Result<ILuaScriptsResourcesInfo>> GetLuaScriptsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)

@@ -22,9 +22,6 @@ namespace Barotrauma
         }
 
         private partial bool ShouldRunCs() => IsCsEnabled.Value;
-        
-        public IStylesManagementService StylesManagementService => _servicesProvider.TryGetService<IStylesManagementService>(out var svc) 
-            ? svc : throw new NullReferenceException("Networking Manager service not found!");
 
         public void CheckCsEnabled()
         {

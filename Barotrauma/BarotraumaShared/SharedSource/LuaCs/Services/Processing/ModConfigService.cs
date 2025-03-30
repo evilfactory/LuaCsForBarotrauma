@@ -69,12 +69,8 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 LuaScripts = lua,
                 Configs = ImmutableArray<IConfigResourceInfo>.Empty,
                 ConfigProfiles = ImmutableArray<IConfigProfileResourceInfo>.Empty,
-                Localizations = ImmutableArray<ILocalizationResourceInfo>.Empty,
                 Package = src,
                 PackageName = src.Name
-#if CLIENT
-                ,Styles = ImmutableArray<IStylesResourceInfo>.Empty
-#endif
             };
         }
         catch (Exception e)
@@ -84,40 +80,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
     }
     
     private partial Task<Result<IModConfigInfo>> GetModConfigInfoAsync(ContentPackage package, XElement root);
-    
-    private ImmutableArray<ILocalizationResourceInfo> GetLocalizations(ContentPackage src, IEnumerable<XElement> elements)
-    {
-        var builder = ImmutableArray.CreateBuilder<ILocalizationResourceInfo>();
-        
-        if (GetXmlFilesList(src, elements, "Localizations")
-            is not { IsSuccess: true, Value: { } xmlFiles }) 
-            return ImmutableArray<ILocalizationResourceInfo>.Empty;
-        
-        foreach (var file in xmlFiles)
-        {
-            // get dependencies
-            var deps = GetElementsDependenciesData(file.Item1, src);
-            // get platform, culture and target architecture
-            var info = GetElementsAttributesData(file.Item1, file.Item2.First());
-            
-            builder.Add(new LocalizationResourceInfo()
-            {
-                Dependencies = deps,
-                Optional = info.IsOptional,
-                FilePaths = file.Item2,
-                InternalName = info.Name,
-                LoadPriority = info.LoadPriority,
-                OwnerPackage = src,
-                SupportedCultures = info.SupportedCultures,
-                SupportedPlatforms = info.SupportedPlatforms,
-                SupportedTargets = info.SupportedTargets
-            });
-        }
-        
-        return builder.Count > 0 
-            ? builder.ToImmutable()
-            : ImmutableArray<ILocalizationResourceInfo>.Empty;
-    }
         
     private ImmutableArray<IAssemblyResourceInfo> GetAssemblies(ContentPackage src, IEnumerable<XElement> elements)
     {
@@ -265,7 +227,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             // get platform, culture and target architecture
             var info = GetElementsAttributesData(file.Item1, file.Item2.First());
             
-            builder.Add(new LuaScriptScriptResourceInfo()
+            builder.Add(new LuaScriptsResourceInfo()
             {
                 Dependencies = deps,
                 Optional = info.IsOptional,
@@ -539,9 +501,16 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                     SupportedTargets = Target.Client
                 });
             }
-            
-            var sharedFound = _storageService.FindFilesInPackage(src, "CSharp/Shared", "*.cs", true)
-                is { IsSuccess: true, Value: { IsDefaultOrEmpty: false } filesCssShared };
+
+            var sharedCsBuilder = ImmutableArray.CreateBuilder<string>();
+            if (_storageService.FindFilesInPackage(src, "CSharp/Shared", "*.cs", true)
+                is { IsSuccess: true, Value: { IsDefaultOrEmpty: false } files })
+            {
+                sharedCsBuilder.AddRange<string>(files);
+            }
+
+            var filesCssShared = sharedCsBuilder.MoveToImmutable();
+            var sharedFound = !filesCssShared.IsDefaultOrEmpty;
             
             // source files legacy: server
             if (_storageService.FindFilesInPackage(src, "CSharp/Server", "*.cs", true)
@@ -550,7 +519,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 builder.Add(new AssemblyResourceInfo()
                 {
                     Dependencies = ImmutableArray<IPackageDependency>.Empty,
-                    FilePaths = sharedFound ? filesCssServer.Concat(filesCssShared).ToImmutableArray() : filesCssServer,
+                    FilePaths =  sharedFound ? filesCssServer.Concat(filesCssShared).ToImmutableArray() : filesCssServer,
                     FriendlyName = "CssServer",
                     InternalName = "CssServer",
                     IsScript = true,
@@ -594,7 +563,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         if (_storageService.FindFilesInPackage(src, "Lua", "*.lua", true)
             is { IsSuccess: true, Value: { IsDefaultOrEmpty: false } fileAll })
         {
-            builder.Add(new LuaScriptScriptResourceInfo()
+            builder.Add(new LuaScriptsResourceInfo()
             {
                 Dependencies = ImmutableArray<IPackageDependency>.Empty,
                 FilePaths = fileAll.Where(path => !path.Contains("Autorun")).ToImmutableArray(),
@@ -607,7 +576,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 SupportedTargets = Target.Client | Target.Server
             });
             
-            builder.Add(new LuaScriptScriptResourceInfo()
+            builder.Add(new LuaScriptsResourceInfo()
             {
                 Dependencies = ImmutableArray<IPackageDependency>.Empty,
                 FilePaths = fileAll.Where(path => path.Contains("Autorun")).ToImmutableArray(),

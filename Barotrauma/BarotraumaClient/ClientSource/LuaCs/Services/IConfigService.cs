@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Barotrauma.LuaCs.Configuration;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
@@ -8,28 +10,8 @@ namespace Barotrauma.LuaCs.Services;
 
 public partial interface IConfigService
 {
-    /*
-     * Immediate mode
-     */
-    FluentResults.Result<IConfigEntry<T>> AddConfigEntry<T>(IDisplayableData data,
-        T defaultValue,
-        NetSync syncMode = NetSync.None,
-        ClientPermissions permissions = ClientPermissions.None,
-        Func<T, bool> valueChangePredicate = null,
-        Action<IConfigEntry<T>> onValueChanged = null) where T : IConvertible, IEquatable<T>;
-
-    FluentResults.Result<IConfigList> AddConfigList(IDisplayableData data,
-        int defaultIndex, IReadOnlyList<string> values,
-        NetSync syncMode = NetSync.None,
-        ClientPermissions permissions = ClientPermissions.None,
-        Func<IConfigList, int, bool> valueChangePredicate = null,
-        Action<IConfigList, int> onValueChanged = null);
+    ImmutableArray<IDisplayableConfigBase> GetDisplayableConfigs();
+    ImmutableArray<IDisplayableConfigBase> GetDisplayableConfigsForPackage(ContentPackage package);
     
-    FluentResults.Result<IConfigRangeEntry<T>> AddConfigRangeEntry<T>(IDisplayableData data,
-        T defaultValue, T minValue, T maxValue,
-        Func<IConfigRangeEntry<T>, int> getStepCount,
-        NetSync syncMode = NetSync.None,
-        ClientPermissions permissions = ClientPermissions.None,
-        Func<T, bool> valueChangePredicate = null,
-        Action<IConfigEntry<T>> onValueChanged = null) where T : IConvertible, IEquatable<T>;
+    FluentResults.Result<IConfigControl> AddConfigControl(IConfigInfo configInfo);
 }

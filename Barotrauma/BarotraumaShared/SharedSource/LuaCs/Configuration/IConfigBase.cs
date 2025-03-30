@@ -1,20 +1,17 @@
 ﻿using System;
+using System.Xml.Linq;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Configuration;
 
-public partial interface IConfigBase : IVarId
+public partial interface IConfigBase : IDataInfo, IEquatable<IConfigBase>, IDisposable
 {
-    bool IsInitialized { get; }
-    string GetValue();
-    bool TrySetValue(string value);
-    bool IsAssignable(string value);
     Type GetValueType();
-    void Initialize(IVarId id, string defaultValue);
-}
-
-public interface IVarId : IDataInfo
-{
-    Guid InstanceId { get; }
+    string GetValue();
+    bool TrySetValue(OneOf.OneOf<string, XElement> value);
+    bool IsAssignable(OneOf.OneOf<string, XElement> value);
+    event Action<IConfigBase> OnValueChanged;
+    OneOf.OneOf<string, XElement> GetSerializableValue();
 }

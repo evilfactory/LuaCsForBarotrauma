@@ -9,7 +9,6 @@ public partial class ResourceInfoArrayPacker :
     IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo>,
     IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo>,
     IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo>,
-    IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo>,
     IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo>
 {
     private bool _isDisposed;
@@ -26,11 +25,6 @@ public partial class ResourceInfoArrayPacker :
     public IConfigProfilesResourcesInfo Process(IReadOnlyList<IConfigProfileResourceInfo> src)
     {
         return new ConfigProfilesResourcesInfo(src.ToImmutableArray());
-    }
-
-    public ILocalizationsResourcesInfo Process(IReadOnlyList<ILocalizationResourceInfo> src)
-    {
-        return new LocalizationResourcesInfo(src.ToImmutableArray());
     }
 
     public ILuaScriptsResourcesInfo Process(IReadOnlyList<ILuaScriptResourceInfo> src)
