@@ -1,13 +1,14 @@
 ﻿using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Barotrauma.LuaCs.Services;
 
 partial class NetworkingService : INetworkingService
 {
-    private Dictionary<ushort, Queue<IReadMessage>> receiveQueue = new Dictionary<ushort, Queue<IReadMessage>>();
+    private ConcurrentDictionary<ushort, ConcurrentQueue<IReadMessage>> receiveQueue = new();
 
     public void SendSyncMessage()
     {
@@ -42,6 +43,11 @@ partial class NetworkingService : INetworkingService
                 ReadIds(netMessage);
                 break;
         }
+    }
+
+    public void SendNetVar(INetworkSyncEntity netVar)
+    {
+        throw new NotImplementedException();
     }
 
     public void NetMessageReceived(IReadMessage message, ServerPacketHeader header)
@@ -87,6 +93,11 @@ partial class NetworkingService : INetworkingService
     public void Send(IWriteMessage netMessage, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
     {
         GameMain.Client.ClientPeer.Send(netMessage, deliveryMethod);
+    }
+
+    public void RegisterNetVar(INetworkSyncEntity netVar)
+    {
+        throw new NotImplementedException();
     }
 
     private void HandleNetMessageId(IReadMessage netMessage, Client client = null)

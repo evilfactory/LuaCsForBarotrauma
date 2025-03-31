@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Reflection;
@@ -8,61 +7,31 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Barotrauma.LuaCs.Configuration;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs.Data;
 using Barotrauma.Steam;
 using FluentResults;
 using FluentResults.LuaCs;
-using Microsoft.CodeAnalysis;
-using OneOf.Types;
 using Error = FluentResults.Error;
-using File = Barotrauma.IO.File;
 using Path = Barotrauma.IO.Path;
-using Success = OneOf.Types.Success;
 
 namespace Barotrauma.LuaCs.Services;
 
 public class StorageService : IStorageService
 {
     
-    public StorageService(Lazy<IConfigService> configService)
+    public StorageService(IStorageConfigData configData)
     {
-        _configService = configService;
+        _configData = configData;
     }
-    private readonly Lazy<IConfigService> _configService;
-    private IConfigEntry<string> _kLocalStoragePath = null;
-    private IConfigEntry<string> _kLocalFilePathRules = null;
-    private const string _packagePathKeyword = "<PACKNAME>";
+    
+    private readonly IStorageConfigData _configData;
     private readonly string _runLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location.CleanUpPath());
-    
-    // TODO: Rewrite the config to get info from .ctor.
-    private IConfigEntry<string> LocalStoragePath => _kLocalStoragePath ??= GetOrCreateConfig(nameof(LocalStoragePath), "/Data/Mods");
-    private IConfigEntry<string> LocalFilePathRule => _kLocalFilePathRules ??= GetOrCreateConfig(nameof(LocalFilePathRule), _packagePathKeyword);
-    private IConfigEntry<string> GetOrCreateConfig(string name, string defaultValue)
-    {
-        var c = _configService.Value
-            .GetConfig<IConfigEntry<string>>(ModUtils.Definitions.LuaCsForBarotrauma, name);
-        if (c is not null)
-            return c;
-        
-        var c1 = _configService.Value.AddConfigEntry(
-            ModUtils.Definitions.LuaCsForBarotrauma,
-            name, defaultValue, NetSync.None, valueChangePredicate: (value) => false);
-        if (c1.IsSuccess)
-            return c1.Value;
-        
-        throw new KeyNotFoundException("Cannot find storage value for key: " + name);
-    
-    }
-    public bool IsDisposed { get; private set; }
 
+    public bool IsDisposed => ModUtils.Threading.GetBool(ref _isDisposed);
+    private int _isDisposed = 0;
     public void Dispose()
     {
-        if (IsDisposed)
-            return;
-        IsDisposed = true;
-        _kLocalStoragePath = null;
-        _kLocalFilePathRules = null;
+        ModUtils.Threading.SetBool(ref _isDisposed, true);
     }
 
     public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
@@ -610,14 +579,11 @@ public class StorageService : IStorageService
         }
         
         return new FluentResults.Result<string>().WithSuccess($"Path constructed")
-            .WithValue( System.IO.Path.GetFullPath(System.IO.Path.Combine(
+            .WithValue(System.IO.Path.GetFullPath(System.IO.Path.Combine(
             _runLocation,
-            LocalStoragePath.Value,
-            LocalFilePathRule.Value.Replace(_packagePathKeyword, package.Name.IsNullOrWhiteSpace()
-                ? package.TryExtractSteamWorkshopId(out var id)
-                    ? id.Value.ToString()
-                    : "_fallbackFolder"
-                : package.Name),
+            _configData.LocalPackagePath.Replace(
+                _configData.LocalDataPathRegex, 
+                package.TryExtractSteamWorkshopId(out var id) ? id.Value.ToString() : package.Name), 
             localFilePath)));
     }
 
