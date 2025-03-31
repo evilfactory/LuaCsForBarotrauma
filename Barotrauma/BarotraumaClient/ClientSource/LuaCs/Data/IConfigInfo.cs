@@ -2,8 +2,22 @@ using Barotrauma.LuaCs.Configuration;
 
 namespace Barotrauma.LuaCs.Data;
 
-public partial interface IConfigInfo
+public partial interface IConfigInfo : IConfigDisplayInfo { }
+
+public interface IConfigDisplayInfo
 {
+    /// <summary>
+    /// User-friendly name or Localization Token.
+    /// </summary>
+    string DisplayName { get; }
+    /// <summary>
+    /// User-friendly description or Localization Token.
+    /// </summary>
+    string Description { get; }
+    /// <summary>
+    /// The menu category to display under. Used for filtering.
+    /// </summary>
+    string DisplayCategory { get; }
     /// <summary>
     /// Should this config be displayed in end-user menus.
     /// </summary>

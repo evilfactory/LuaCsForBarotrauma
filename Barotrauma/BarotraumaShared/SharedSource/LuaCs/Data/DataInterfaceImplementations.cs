@@ -5,7 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Xml.Linq;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Steam;
+using OneOf;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -199,6 +202,33 @@ public record LocalizationInfo : ILocalizationInfo
     public int LoadPriority { get; init; }
     public string Key { get; init; }
     public IReadOnlyList<(CultureInfo Culture, string Value)> Translations { get; init; }
+}
+
+public record ConfigInfo : IConfigInfo
+{
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public Type DataType { get; init; }
+    public string DefaultValue { get; init; }
+    public OneOf<string, XElement> Value { get; init; }
+    public RunState EditableStates { get; init; }
+    public NetSync NetSync { get; init; }
+    
+#if CLIENT // IConfigDisplayInfo
+    public string DisplayName { get; init; }
+    public string Description { get; init; }
+    public string DisplayCategory { get; init; }
+    public bool ShowInMenus { get; init; }
+    public string Tooltip { get; init; }
+    public string ImageIconPath { get; init; }
+#endif
+}
+
+public record ConfigProfileInfo : IConfigProfileInfo
+{
+    public string InternalName { get; init; }
+    public ContentPackage OwnerPackage { get; init; }
+    public IReadOnlyList<(string ConfigName, OneOf<string, XElement> Value)> ProfileValues { get; init; }
 }
 
 #endregion

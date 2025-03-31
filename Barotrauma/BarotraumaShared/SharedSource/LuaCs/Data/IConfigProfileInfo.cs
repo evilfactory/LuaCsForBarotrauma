@@ -1,6 +1,9 @@
-﻿namespace Barotrauma.LuaCs.Data;
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
 
-public interface IConfigProfileInfo
+namespace Barotrauma.LuaCs.Data;
+
+public interface IConfigProfileInfo : IDataInfo
 {
-    
+    IReadOnlyList<(string ConfigName, OneOf.OneOf<string, XElement> Value)> ProfileValues { get; }
 }
