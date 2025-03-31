@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 using Dynamitey;
@@ -58,6 +59,11 @@ internal interface IEventEnabledPackageListChanged : IEvent<IEventEnabledPackage
 internal interface IEventReloadAllPackages : IEvent<IEventReloadAllPackages>
 {
     void OnReloadAllPackages();
+}
+
+internal interface IEventConfigVarInstanced : IEvent<IEventConfigVarInstanced>
+{
+    void OnConfigCreated(IConfigBase config);
 }
 
 #endregion

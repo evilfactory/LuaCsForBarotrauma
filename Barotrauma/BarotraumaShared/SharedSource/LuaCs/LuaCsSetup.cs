@@ -68,7 +68,8 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IConverterService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ILocalizationResourceInfo, ImmutableArray<ILocalizationInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
-                
+                _servicesProvider.RegisterServiceType<IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
                 
                 
                 _servicesProvider.Compile();
@@ -181,6 +182,11 @@ namespace Barotrauma
         /// TODO: @evilfactory@users.noreply.github.com
         /// </summary>
         public IConfigEntry<bool> RestrictMessageSize { get; private set; }
+        
+        /// <summary>
+        /// The local save path for all local data storage for mods.
+        /// </summary>
+        public IConfigEntry<string> LocalDataSavePath { get; private set; }
 
         /**
          * == Ops Vars
@@ -374,8 +380,7 @@ namespace Barotrauma
             while (_toUnload.TryDequeue(out var cp))
             {
                 LuaScriptManagementService.DisposePackageResources(cp);
-                ConfigService.DisposeConfigsProfiles(cp);
-                ConfigService.DisposeConfigs(cp);
+                ConfigService.DisposePackageData(cp);
 #if CLIENT
                 StylesManagementService.DisposeStylesForPackage(cp);
 #endif
@@ -517,23 +522,22 @@ namespace Barotrauma
 
         void LoadLuaCsConfig()
         {
-            IsCsEnabled = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled") 
-                          ?? throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            TreatForcedModsAsNormal = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal") 
-                                      ?? throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
-            DisableErrorGUIOverlay = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay") 
-                                     ?? throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            HideUserNamesInLogs = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs") 
-                                  ?? throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            LuaForBarotraumaSteamId = ConfigService.GetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId") 
-                                      ?? throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            CsForBarotraumaSteamId = ConfigService.GetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "CsForBarotraumaSteamId") 
-                                     ?? throw new NullReferenceException($"{nameof(CsForBarotraumaSteamId)} cannot be loaded.");
-            RestrictMessageSize = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize") 
-                                  ?? throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
-            ReloadPackagesOnLobbyStart = ConfigService.GetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "ReloadPackagesOnLobbyStart") 
-                                         ?? throw new NullReferenceException($"{nameof(ReloadPackagesOnLobbyStart)} cannot be loaded.");
-            
+            IsCsEnabled = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
+                          : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
+            TreatForcedModsAsNormal = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
+                                      : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
+            DisableErrorGUIOverlay = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
+                                     : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
+            HideUserNamesInLogs = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
+                                  : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
+            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
+                                      : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
+            CsForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "CsForBarotraumaSteamId", out var val6) ? val6
+                                     : throw new NullReferenceException($"{nameof(CsForBarotraumaSteamId)} cannot be loaded.");
+            RestrictMessageSize = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
+                                  : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
+            ReloadPackagesOnLobbyStart = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "ReloadPackagesOnLobbyStart", out var val8) ? val8
+                                         : throw new NullReferenceException($"{nameof(ReloadPackagesOnLobbyStart)} cannot be loaded.");
         }
 
         void DisposeLuaCsConfig()
