@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -54,10 +55,10 @@ public class LocalizationService : ILocalizationService
     public CultureInfo CurrentCulture { get; private set; }
     private readonly ConcurrentDictionary<ContentPackage, PackageLocalizations> _packageLocalizations = new();
     private int _isDisposed;
-    private readonly IConverterServiceAsync<ILocalizationResourceInfo, ILocalizationInfo> _localizationLoader;
+    private readonly IConverterServiceAsync<ILocalizationResourceInfo, ImmutableArray<ILocalizationInfo>> _localizationLoader;
     private readonly Lazy<IPackageManagementService> _packageManagementService;
     
-    public LocalizationService(IConverterServiceAsync<ILocalizationResourceInfo, ILocalizationInfo> localizationLoader, 
+    public LocalizationService(IConverterServiceAsync<ILocalizationResourceInfo, ImmutableArray<ILocalizationInfo>> localizationLoader, 
         Lazy<IPackageManagementService> packageManagementService)
     {
         _localizationLoader = localizationLoader;
@@ -139,7 +140,7 @@ public class LocalizationService : ILocalizationService
         // errors
         var resArrSuccesses = resArr
             .Where(r => r.IsSuccess)
-            .Select(r => r.Value)
+            .SelectMany(r => r.Value)
             .GroupBy(r => r.OwnerPackage);
         // errors to log
         var resArrErrors = resArr
@@ -199,20 +200,6 @@ public class LocalizationService : ILocalizationService
         }
 
         return res;
-
-        bool AllDependenciesLoaded(ImmutableArray<IPackageDependency> deps)
-        {
-            if (deps.IsDefaultOrEmpty)
-                return true;
-
-            bool ready = true;
-            foreach (var dep in deps)
-            {
-                ready &= !dep.Dependency.IsMissing;
-            }
-
-            return ready;
-        }
     }
 
     public Result<string> GetLocalizedStringForPackage(ContentPackage package, string key) 

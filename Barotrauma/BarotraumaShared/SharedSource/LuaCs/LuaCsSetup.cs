@@ -52,7 +52,8 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
-                // TODO: ILocalizationService
+                _servicesProvider.RegisterServiceType<ILocalizationService, LocalizationService>(ServiceLifetime.Singleton);
+                
                 // TODO: IConfigService
                 // TODO: INetworkingService
                 // TODO: [Resource Converter/Parser Services]
@@ -66,6 +67,7 @@ namespace Barotrauma
                 
                 _servicesProvider.RegisterServiceType<IConverterService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IConverterServiceAsync<ILocalizationResourceInfo, ImmutableArray<ILocalizationInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
                 
                 
                 
