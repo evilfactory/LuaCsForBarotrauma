@@ -181,6 +181,11 @@ namespace Barotrauma
         /// TODO: @evilfactory@users.noreply.github.com
         /// </summary>
         public IConfigEntry<bool> RestrictMessageSize { get; private set; }
+        
+        /// <summary>
+        /// The local save path for all local data storage for mods.
+        /// </summary>
+        public IConfigEntry<string> LocalDataSavePath { get; private set; }
 
         /**
          * == Ops Vars
@@ -374,8 +379,7 @@ namespace Barotrauma
             while (_toUnload.TryDequeue(out var cp))
             {
                 LuaScriptManagementService.DisposePackageResources(cp);
-                ConfigService.DisposeConfigsProfiles(cp);
-                ConfigService.DisposeConfigs(cp);
+                ConfigService.DisposePackageData(cp);
 #if CLIENT
                 StylesManagementService.DisposeStylesForPackage(cp);
 #endif

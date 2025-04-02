@@ -44,6 +44,11 @@ partial class NetworkingService : INetworkingService
         }
     }
 
+    public void SendNetVar(INetworkSyncEntity netVar)
+    {
+        throw new NotImplementedException();
+    }
+
     public void NetMessageReceived(IReadMessage message, ServerPacketHeader header)
     {
         throw new NotImplementedException();
@@ -87,6 +92,11 @@ partial class NetworkingService : INetworkingService
     public void Send(IWriteMessage netMessage, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
     {
         GameMain.Client.ClientPeer.Send(netMessage, deliveryMethod);
+    }
+
+    public void RegisterNetVar(INetworkSyncEntity netVar)
+    {
+        throw new NotImplementedException();
     }
 
     private void HandleNetMessageId(IReadMessage netMessage, Client client = null)

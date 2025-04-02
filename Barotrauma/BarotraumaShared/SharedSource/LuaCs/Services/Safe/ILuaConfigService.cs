@@ -14,6 +14,7 @@ public interface ILuaConfigService : ILuaService
     Vector2 GetConfigVector2(string packageName, string configName);
     Vector3 GetConfigVector3(string packageName, string configName);
     Color GetConfigColor(string packageName, string configName);
+    string GetConfigList(string packageName, string configName);
     // set
     void SetConfigBool(string packageName, string configName, bool value);
     void SetConfigInt(string packageName, string configName, int value);
@@ -23,4 +24,5 @@ public interface ILuaConfigService : ILuaService
     void SetConfigVector2(string packageName, string configName, Vector2 value);
     void SetConfigVector3(string packageName, string configName, Vector3 value);
     void SetConfigColor(string packageName, string configName, Color value);
+    void SetConfigList(string packageName, string configName, string value);
 }

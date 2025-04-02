@@ -8,11 +8,21 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.LuaCs.Services.Safe;
 using Barotrauma.Networking;
+using FluentResults;
 
 namespace Barotrauma.LuaCs.Services;
 
 public partial interface IConfigService : IReusableService, ILuaConfigService
 {
+    /// <summary>
+    /// Registers a type initializer from instancing config types by indicated type from config.
+    /// </summary>
+    /// <param name="initializer"></param>
+    /// <typeparam name="TData">The <see cref="Type"/> as parsed from the configuration info.</typeparam>
+    /// <typeparam name="TConfig">The resulting configuration instance.</typeparam>
+    void RegisterTypeInitializer<TData, TConfig>(IConfigTypeInitializer<TData, TConfig> initializer)
+        where TData : IEquatable<TData> where TConfig : IConfigBase;
+    
     // Config Files/Resources
     Task<FluentResults.Result> LoadConfigsAsync(ImmutableArray<IConfigResourceInfo> configResources);
     Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigProfileResourceInfo> configProfileResources);
@@ -41,10 +51,16 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
         Action<IConfigEntry<T>> onValueChanged = null) where T : IConvertible, IEquatable<T>;
     
     // Utility
+    FluentResults.Result ApplyProfileSettings(ContentPackage package, string profileName);
     FluentResults.Result DisposePackageData(ContentPackage package);
     FluentResults.Result<IReadOnlyDictionary<string, IConfigBase>> GetConfigsForPackage(ContentPackage package);
     FluentResults.Result<IReadOnlyDictionary<string, IConfigBase>> GetConfigsForPackage(string packageName);
     IReadOnlyDictionary<(ContentPackage, string), IConfigBase> GetAllConfigs();
     T GetConfig<T>(ContentPackage package, string name) where T : IConfigBase;
     T GetConfig<T>(string packageName, string name) where T : IConfigBase;
+}
+
+public interface IConfigTypeInitializer<TData, TConfig> where TData : IEquatable<TData> where TConfig : IConfigBase
+{
+    FluentResults.Result<TConfig> GetConfig(IConfigInfo configInfo);
 }
