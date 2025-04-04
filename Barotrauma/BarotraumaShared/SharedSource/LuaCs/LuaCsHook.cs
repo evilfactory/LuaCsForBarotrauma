@@ -740,7 +740,7 @@ namespace Barotrauma
 
         public void Clear()
         {
-            harmony?.UnpatchAll();
+            harmony?.UnpatchSelf();
 
             foreach (var (_, patch) in registeredPatches)
             {
