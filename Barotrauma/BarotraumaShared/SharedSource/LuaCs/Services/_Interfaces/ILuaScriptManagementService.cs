@@ -13,13 +13,61 @@ public interface ILuaScriptManagementService : IReusableService
 {
     #region Script_Ops
 
+    /// <summary>
+    /// Parses and loads script sources (code) into a memory cache without executing it.
+    /// </summary>
+    /// <param name="resourcesInfo"></param>
+    /// <returns></returns>
+    // [Required]
     Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo);
     
-    FluentResults.Result ExecuteLoadedScripts(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
-    FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    /// <summary>
+    /// Executes cached scripts (code) for the given <see cref="ContentPackage"/>.
+    /// </summary>
+    /// <param name="package"></param>
+    /// <param name="pauseExecutionOnError"></param>
+    /// <param name="verboseLogging"></param>
+    /// <returns></returns>
+    // [Required]
+    FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    
+    /// <summary>
+    /// Immediately (re)loads from disk, caches, and executes the supplied script resources.
+    /// </summary>
+    /// <param name="scripts"></param>
+    /// <param name="pauseExecutionOnError"></param>
+    /// <param name="verboseLogging"></param>
+    /// <returns></returns>
+    FluentResults.Result LoadExecuteImmediate(ImmutableArray<ILuaScriptResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pauseExecutionOnError"></param>
+    /// <param name="verboseLogging"></param>
+    /// <returns></returns>
+    // [Required]
     FluentResults.Result ExecuteLoadedScripts(bool pauseExecutionOnError = false, bool verboseLogging = false);
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="package"></param>
+    /// <returns></returns>
+    // [Required]
     FluentResults.Result DisposePackageResources(ContentPackage package);
+    
+    /// <summary>
+    /// Calls dispose on, and clears active refs for, currently running scripts. Does not clear caches.
+    /// </summary>
+    /// <returns></returns>
     FluentResults.Result UnloadActiveScripts();
+    
+    /// <summary>
+    /// Unloads all scripts and clears all caches/references.
+    /// </summary>
+    /// <returns></returns>
+    /// <remarks>May be functionally equivalent to <see cref="IReusableService.Reset"/></remarks>
     FluentResults.Result DisposeAllPackageResources();
 
     #endregion
