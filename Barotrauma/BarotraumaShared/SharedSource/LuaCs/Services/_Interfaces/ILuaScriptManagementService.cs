@@ -32,6 +32,16 @@ public interface ILuaScriptManagementService : IReusableService
     FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
     
     /// <summary>
+    /// Executes cached scripts (code) for the given collection <see cref="ContentPackage"/>.
+    /// </summary>
+    /// <param name="packages"></param>
+    /// <param name="pauseExecutionOnError"></param>
+    /// <param name="verboseLogging"></param>
+    /// <returns></returns>
+    // [Required]
+    FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    
+    /// <summary>
     /// Immediately (re)loads from disk, caches, and executes the supplied script resources.
     /// </summary>
     /// <param name="scripts"></param>
