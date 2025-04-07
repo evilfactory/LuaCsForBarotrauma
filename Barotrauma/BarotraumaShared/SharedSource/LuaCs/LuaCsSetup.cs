@@ -712,22 +712,18 @@ namespace Barotrauma
             }
 
             //lua
-            var luaRes = PackageManagementService.GetLuaScriptsInfos(PackageManagementService
-                .GetAllLoadedPackages()
+            var luaRes = PackageManagementService.LuaScripts
+                .Select(ls => ls.OwnerPackage)
+                .Where(p => p is not null)
                 .Where(ContentPackageManager.EnabledPackages.All.Contains)
-                .ToList());
-            if (luaRes.IsFailed)
+                .ToImmutableArray();
+            if (luaRes.IsDefaultOrEmpty)
             {
                 Logger.LogError($"{nameof(RunScripts)}: Failed to get enabled lua script resources!");
-                Logger.LogResults(luaRes.ToResult());
                 return;
             }
             
-            if (luaRes.Errors.Any())
-                Logger.LogResults(luaRes.ToResult());
-            
-            
-            LuaScriptManagementService.ExecuteLoadedScripts(luaRes.Value.LuaScripts);
+            LuaScriptManagementService.ExecuteLoadedScriptsForPackages(luaRes);
             
             if (CurrentRunState < RunState.Running)
                 _runState = RunState.Running;
