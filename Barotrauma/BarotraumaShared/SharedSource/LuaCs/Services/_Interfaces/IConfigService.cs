@@ -22,7 +22,7 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
     /// <param name="replaceIfExists"></param>
     /// <typeparam name="TData">The <see cref="Type"/> as parsed from the configuration info.</typeparam>
     /// <typeparam name="TConfig">The resulting configuration instance.</typeparam>
-    void RegisterTypeInitializer<TData, TConfig>(IConfigTypeInitializer<TConfig> initializer, bool replaceIfExists = false)
+    void RegisterTypeInitializer<TData, TConfig>(Func<IConfigInfo, FluentResults.Result<TConfig>> initializer, bool replaceIfExists = false)
         where TData : IEquatable<TData> where TConfig : IConfigBase;
     
     // Config Files/Resources
@@ -40,9 +40,7 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
         GetProfilesForPackage(ContentPackage package);
     IReadOnlyDictionary<(ContentPackage Package, string Name), IConfigBase> GetAllConfigs();
     bool TryGetConfig<T>(ContentPackage package, string name, out T config) where T : IConfigBase;
-}
-
-public interface IConfigTypeInitializer<TConfig> where TConfig : IConfigBase 
-{
-    FluentResults.Result<TConfig> Initialize(IConfigInfo configInfo);
+    Task<FluentResults.Result> SaveAllConfigs();
+    Task<FluentResults.Result> SaveConfigsForPackage(ContentPackage package);
+    Task<FluentResults.Result> SaveConfig((ContentPackage Package, string ConfigName) config);
 }

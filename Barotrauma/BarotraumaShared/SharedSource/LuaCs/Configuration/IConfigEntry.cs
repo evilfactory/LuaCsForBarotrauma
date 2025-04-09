@@ -8,4 +8,5 @@ public interface IConfigEntry<T> : IConfigBase, INetworkSyncEntity where T : IEq
     T Value { get; }
     bool TrySetValue(T value);
     bool IsAssignable(T value);
+    new event Action<IConfigEntry<T>> OnValueChanged;
 }
