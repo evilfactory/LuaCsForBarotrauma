@@ -19,12 +19,12 @@ namespace Barotrauma.LuaCs.Services;
 public class StorageService : IStorageService
 {
     
-    public StorageService(IStorageConfigData configData)
+    public StorageService(IStorageServiceConfig configData)
     {
         _configData = configData;
     }
     
-    private readonly IStorageConfigData _configData;
+    private readonly IStorageServiceConfig _configData;
     private readonly string _runLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location.CleanUpPath());
 
     public bool IsDisposed => ModUtils.Threading.GetBool(ref _isDisposed);
