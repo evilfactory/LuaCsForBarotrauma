@@ -12,4 +12,6 @@ public partial interface IConfigBase : IDataInfo, IEquatable<IConfigBase>, IDisp
     string GetValue();
     bool TrySetValue(OneOf.OneOf<string, XElement> value);
     bool IsAssignable(OneOf.OneOf<string, XElement> value);
+    event Action<IConfigBase> OnValueChanged;
+    OneOf.OneOf<string, XElement> GetSerializableValue();
 }

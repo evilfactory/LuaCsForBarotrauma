@@ -3,13 +3,15 @@ using System.IO;
 
 namespace Barotrauma.LuaCs.Data;
 
-public interface IStorageConfigData
+
+// --- Storage Service
+public interface IStorageServiceConfig
 {
     string LocalDataPathRegex { get; }
     string LocalPackagePath { get; }
 }
 
-public class StorageConfigData : IStorageConfigData
+public class StorageServiceConfig : IStorageServiceConfig
 {
     public string LocalDataPathRegex => "<PACKAGENAME>";
 

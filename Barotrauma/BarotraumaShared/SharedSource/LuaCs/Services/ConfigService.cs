@@ -3,7 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Configuration;
@@ -15,6 +17,7 @@ using Dynamitey.DynamicObjects;
 using FluentResults;
 using Microsoft.Xna.Framework;
 using OneOf;
+using Path = Barotrauma.IO.Path;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -22,18 +25,19 @@ public partial class ConfigService : IConfigService
 {
     //--- Internals
     public ConfigService(IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> configProfileResourceConverter, 
-        IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> configResourceConverter, IEventService eventService)
+        IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> configResourceConverter, IEventService eventService, System.Lazy<IStorageService> storageService)
     {
         _configProfileResourceConverter = configProfileResourceConverter;
         _configResourceConverter = configResourceConverter;
         _eventService = eventService;
+        _storageService = storageService;
         this._base = this;
     }
     
     // data, states
     private readonly IService _base;
     private int _isDisposed = 0;
-    private readonly ConcurrentDictionary<Type, IConfigTypeInitializer<IConfigBase>> _configTypeInitializers = new();
+    private readonly ConcurrentDictionary<Type, Func<IConfigInfo, FluentResults.Result<IConfigBase>>> _configTypeInitializers = new();
     private readonly ConcurrentDictionary<(ContentPackage Package, string ConfigName), IConfigBase> _configs = new();
     private readonly ConcurrentDictionary<ContentPackage, ConcurrentBag<(ContentPackage Package, string ConfigName)>> _packageConfigReverseLookup = new();
     private readonly ConcurrentDictionary<(ContentPackage Package, string ProfileName), ImmutableArray<(string ConfigName, OneOf.OneOf<string, XElement> Value)>> _configProfiles = new();
@@ -46,6 +50,7 @@ public partial class ConfigService : IConfigService
     private readonly IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> _configResourceConverter;
     private readonly IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> _configProfileResourceConverter;
     private readonly IEventService _eventService;
+    private readonly System.Lazy<IStorageService> _storageService;
     
     //--- GC
     public bool IsDisposed => ModUtils.Threading.GetBool(ref _isDisposed);
@@ -58,7 +63,17 @@ public partial class ConfigService : IConfigService
         ModUtils.Threading.SetBool(ref _isDisposed, true);
         
         _configTypeInitializers.Clear();
-        _configs.Clear();
+        if (!_configs.IsEmpty)
+        {
+            foreach (var config in _configs)
+            {
+                if (config.Value is IDisposable disposable)
+                    disposable.Dispose();
+                config.Value.OnValueChanged -= this.SaveConfigEvent;
+            }
+            _configs.Clear();
+        }
+        
         _configProfiles.Clear();
         _packageConfigReverseLookup.Clear();
         _packageNameMap.Clear();
@@ -248,7 +263,7 @@ public partial class ConfigService : IConfigService
 
     #endregion
 
-    public void RegisterTypeInitializer<TData, TConfig>(IConfigTypeInitializer<TConfig> initializer, bool replaceIfExists = false) 
+    public void RegisterTypeInitializer<TData, TConfig>(Func<IConfigInfo, FluentResults.Result<TConfig>> initializer, bool replaceIfExists = false) 
         where TData : IEquatable<TData> where TConfig : IConfigBase
     {
         using var lck = _disposeOpsLock.AcquireReaderLock().GetAwaiter().GetResult();
@@ -257,7 +272,13 @@ public partial class ConfigService : IConfigService
         Type dataType = typeof(TData);
         if (_configTypeInitializers.ContainsKey(dataType) && !replaceIfExists)
             return;
-        _configTypeInitializers[dataType] = (IConfigTypeInitializer<IConfigBase>)initializer;
+        _configTypeInitializers[dataType] = (info =>
+        {
+            var res = initializer(info);
+            if (res.IsFailed)
+                return FluentResults.Result.Fail($"Failed to initialize config type {dataType.Name}").WithErrors(res.Errors);
+            return res.Value;
+        });
     }
 
     private void AddConfigInstance((ContentPackage Package, string ConfigName) key, IConfigBase instance)
@@ -271,6 +292,8 @@ public partial class ConfigService : IConfigService
             _packageConfigReverseLookup[key.Package] = list;
         }
         list.Add(key);
+        // save hook
+        instance.OnValueChanged += this.SaveConfigEvent;
         _eventService.PublishEvent<IEventConfigVarInstanced>(sub => sub.OnConfigCreated(instance));
     }
 
@@ -318,8 +341,10 @@ public partial class ConfigService : IConfigService
                     ret.Errors.Add(new Error($"{nameof(LoadConfigsAsync)} No type initializer for {configInfo.DataType}"));
                     continue;
                 }
+                
+                
 
-                var cfg = initializer.Initialize(configInfo);
+                var cfg = initializer(configInfo);
                 if (cfg.Errors.Any())
                     ret.Errors.AddRange(cfg.Errors);
                 if (cfg.IsFailed || cfg.Value is not {} val)
@@ -380,7 +405,7 @@ public partial class ConfigService : IConfigService
         
         try
         {
-            var cfg = initializer.Initialize(configInfo);
+            var cfg = initializer(configInfo);
             if (cfg.Errors.Any())
                 errList.AddRange(cfg.Errors);
             if (cfg.IsFailed || cfg.Value is null)
@@ -517,4 +542,149 @@ public partial class ConfigService : IConfigService
             return false;
         }
     }
+
+    public async Task<FluentResults.Result> SaveAllConfigs()
+    {
+        using var lck = await _disposeOpsLock.AcquireReaderLock();
+        _base.CheckDisposed();
+        if (_configs.IsEmpty)
+            return FluentResults.Result.Ok();
+        var toSave = _configs.Where(kvp => kvp.Value is not null).Select(kvp => kvp.Value)
+            .ToImmutableArray();
+        var errList = ImmutableArray.CreateBuilder<IError>();
+        foreach (var config in toSave)
+        {
+            var res = await SaveConfigInternal(config);
+            if (res.Errors.Any())
+                errList.AddRange(res.Errors);
+        }
+        return FluentResults.Result.Ok().WithErrors(errList.MoveToImmutable());
+    }
+
+    public async Task<FluentResults.Result> SaveConfigsForPackage(ContentPackage package)
+    {
+        if (package is null)
+            return FluentResults.Result.Fail($"{nameof(SaveConfigsForPackage)}: Package was null.");
+        using var lck = await _disposeOpsLock.AcquireReaderLock();
+        _base.CheckDisposed();
+        if (!_packageConfigReverseLookup.TryGetValue(package, out var keys) || keys.IsEmpty)
+            return FluentResults.Result.Fail($"No configs found for package {package.Name}");
+        ConcurrentQueue<IConfigBase> toSave = new();
+        foreach (var key in keys)
+        {
+            if (_configs.TryGetValue(key, out var config))
+                toSave.Enqueue(config);
+        }
+        if (toSave.IsEmpty)
+            return FluentResults.Result.Fail($"No configs found for package {package.Name}");
+        var errList = ImmutableArray.CreateBuilder<IError>();
+        while (toSave.TryDequeue(out var config))
+        {
+            var res = await SaveConfigInternal(config);
+            if (res.Errors.Any())
+                errList.AddRange(res.Errors);
+        }
+        return FluentResults.Result.Ok().WithErrors(errList.MoveToImmutable());
+    }
+
+    public async Task<FluentResults.Result> SaveConfig((ContentPackage Package, string ConfigName) config)
+    {
+        if (config.Package is null || config.ConfigName.IsNullOrWhiteSpace())
+            return FluentResults.Result.Fail($"{nameof(SaveConfig)}: Config properties were null or empty.");
+        using var lck = await _disposeOpsLock.AcquireReaderLock();
+        _base.CheckDisposed();
+        if (!_configs.TryGetValue(config, out var instance))
+            return FluentResults.Result.Fail($"{nameof(SaveConfig)}: No config found for package {config.Package.Name} and name {config.ConfigName}");
+        return await SaveConfigInternal(instance);
+    }
+
+    private void SaveConfigEvent(IConfigBase instance)
+    {
+        using var lck = _disposeOpsLock.AcquireWriterLock().GetAwaiter().GetResult();
+        _base.CheckDisposed();
+        SaveConfigInternal(instance).GetAwaiter().GetResult();
+    }
+    
+    private async Task<FluentResults.Result> SaveConfigInternal(IConfigBase instance)
+    {
+        var localStorePath = Path.Combine("Config", SanitizedFileName($"{instance.OwnerPackage.Name}.xml)"));
+        // Locking and checks must be handled by the caller.
+        var val = instance.GetSerializableValue();
+        var docRes = await _storageService.Value.LoadLocalXmlAsync(instance.OwnerPackage, localStorePath);
+        XDocument doc;
+        XElement cfgElement;
+        XElement valueElement;
+        
+        // structure is
+        /*
+         * <Config ContentPackage="[PackageName]">
+         *      <[instance.InternalName]>
+         *          <Value>
+         *              <--Contents Here->
+         *          </Value>
+         *      </[instance.InternalName]>
+         * </Config>
+         */
+        
+        if (docRes.IsFailed || docRes.Value is null)
+        {
+            doc = new XDocument(
+                new XElement("Config", new XAttribute("ContentPackage", instance.OwnerPackage.Name),
+                    cfgElement = new XElement(instance.InternalName, valueElement = new XElement("Value"))));
+        }
+        else
+        {
+            doc = docRes.Value;
+            var e1 = doc.GetChildElement("Config");
+            if (e1 is null)
+            {
+                e1 = new XElement("Config");
+                doc.Add(e1);
+            }
+            
+            cfgElement = e1.GetChildElement(instance.InternalName);
+            if (cfgElement is null)
+            {
+                cfgElement = new XElement(instance.InternalName);
+                e1.Add(cfgElement);
+            }
+
+            valueElement = cfgElement.GetChildElement("Value");
+            if (valueElement is null)
+            {
+                valueElement = new XElement("Value");
+                cfgElement.Add(valueElement);
+            }
+        }
+        
+        valueElement.Remove();  // remove from cfg
+        
+        // get potential updated element
+        var updatedElement = val.Match<XElement>(str =>
+        {
+            valueElement.RemoveAll();
+            valueElement.Value = str;
+            return valueElement;
+        }, element =>
+        {
+            valueElement.RemoveAll();
+            valueElement.Add(element);
+            return valueElement;
+        });
+        
+        // (re) add updated element.
+        cfgElement.Add(updatedElement);
+       
+        return await _storageService.Value.SaveLocalXmlAsync(instance.OwnerPackage, localStorePath, doc);
+    }
+    
+    private static readonly Regex RemoveInvalidChars = new Regex($"[{Regex.Escape(new string(System.IO.Path.GetInvalidFileNameChars()))}]",
+        RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+    private string SanitizedFileName(string fileName, string replacement = "_")
+    {
+        return RemoveInvalidChars.Replace(fileName, replacement);
+    }
+    
+    
 }
