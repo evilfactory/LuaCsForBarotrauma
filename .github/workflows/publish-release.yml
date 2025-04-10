@@ -3,6 +3,7 @@
 name: Publish release
 
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       target:
@@ -55,8 +56,8 @@ env:
     MoonSharp.VsCodeDebugger.dll
     MonoMod.Backports.dll
     MonoMod.Core.dll
-    MonoMod.ILHelpers.dll
     MonoMod.RuntimeDetour.dll
+    MonoMod.ILHelpers.dll
     MonoMod.Utils.dll
     MonoMod.Iced.dll
     Mono.Cecil.dll
