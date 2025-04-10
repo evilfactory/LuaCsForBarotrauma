@@ -1561,7 +1561,7 @@ namespace Barotrauma
                             string errorMsg =
                                 $"Attempted to move the anchor B of a limb's pull joint extremely far from the limb in {nameof(DragCharacter)}. " +
                                 $"Character in sub: {character.Submarine != null}, target in sub: {target.Submarine != null}.";
-                            GameAnalyticsManager.AddErrorEventOnce("DragCharacter:PullJointTooFar", GameAnalyticsManager.ErrorSeverity.Error, errorMsg);
+                            GameAnalyticsManager.AddErrorEventOnce("DragCharacter:PullJointTooFar", GameAnalyticsManager.ErrorSeverity.Warning, errorMsg);
 #if DEBUG
                             DebugConsole.ThrowError(errorMsg);
 #endif
