@@ -8,7 +8,7 @@ namespace Barotrauma
     static partial class LuaCsInstaller
     {
         private static string[] trackingFiles = new string[]
-        {
+        { 
             "Barotrauma.dll", "Barotrauma.deps.json", "Barotrauma.pdb", "BarotraumaCore.dll", "BarotraumaCore.pdb",
             "0Harmony.dll", "Mono.Cecil.dll",
             "Sigil.dll",
