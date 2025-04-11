@@ -7,19 +7,17 @@ using OneOf;
 
 namespace Barotrauma.LuaCs.Configuration;
 
-public class ConfigEntry<T> : IConfigEntry<T>, INetworkSyncEntity where T : IEquatable<T>
+public class ConfigEntry<T> : IConfigEntry<T> where T : IEquatable<T>
 {
     
     private readonly Action<ConfigEntry<T>, INetReadMessage> _readMessageHandler;
     private readonly Action<ConfigEntry<T>, INetWriteMessage> _writeMessageHandler;
-    private IEntityNetworkingService _networkingService;
     
     public ConfigEntry(IConfigInfo configInfo, Action<ConfigEntry<T>, INetReadMessage> readMessageHandler, 
-        Action<ConfigEntry<T>, INetWriteMessage> writeMessageHandler, IEntityNetworkingService networkingService)
+        Action<ConfigEntry<T>, INetWriteMessage> writeMessageHandler)
     {
         _readMessageHandler = readMessageHandler;
         _writeMessageHandler = writeMessageHandler;
-        _networkingService = networkingService;
     }
         
     public string InternalName { get; init; }
@@ -29,7 +27,7 @@ public class ConfigEntry<T> : IConfigEntry<T>, INetworkSyncEntity where T : IEqu
     {
         if (ReferenceEquals(this, other))
             return true;
-        
+        throw new NotImplementedException();
     }
 
     public void Dispose()
@@ -68,6 +66,11 @@ public class ConfigEntry<T> : IConfigEntry<T>, INetworkSyncEntity where T : IEqu
     {
         add => _onValueChanged += value;
         remove => _onValueChanged -= value;
+    }
+    
+    public OneOf<string, XElement> GetSerializableValue()
+    {
+        throw new NotImplementedException();
     }
 
     public Guid InstanceId => throw new NotImplementedException();
