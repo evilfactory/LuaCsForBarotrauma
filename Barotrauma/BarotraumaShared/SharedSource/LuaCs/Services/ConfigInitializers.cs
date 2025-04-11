@@ -12,11 +12,9 @@ namespace Barotrauma.LuaCs.Services;
 
 public class ConfigInitializers : IService
 {
-    private readonly IEntityNetworkingService _networkingService;
-
-    public ConfigInitializers(IEntityNetworkingService networkingService)
+    // parameterless .ctor
+    public ConfigInitializers()
     {
-        this._networkingService = networkingService;
     }
 
     public void Dispose()
@@ -35,7 +33,7 @@ public class ConfigInitializers : IService
     {
         try
         {
-            var ice = new ConfigEntry<T>(configInfo, readHandler, writeHandler, this._networkingService);
+            var ice = new ConfigEntry<T>(configInfo, readHandler, writeHandler);
             return FluentResults.Result.Ok<IConfigEntry<T>>(ice);
         }
         catch (Exception e)
@@ -45,11 +43,14 @@ public class ConfigInitializers : IService
         }
     }
     
-    private Result<IConfigList> CreateConfigList(IConfigInfo configInfo)
+    private Result<IConfigList<T>> CreateConfigList<T>(IConfigInfo configInfo, 
+        Action<IConfigList<T>, INetReadMessage> readHandler, Action<IConfigList<T>, INetWriteMessage> writeHandler) 
+        where T : IEquatable<T>
     {
         try
         {
-            var icl = 
+            var icl = new ConfigList<T>(configInfo, readHandler, writeHandler);
+            return FluentResults.Result.Ok<IConfigList<T>>(icl);
         }
         catch (Exception e)
         {

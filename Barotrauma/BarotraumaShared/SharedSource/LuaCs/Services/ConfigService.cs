@@ -170,7 +170,7 @@ public partial class ConfigService : IConfigService
             return false;
         if (!_configs.TryGetValue((package, configName), out var config))
             return false;
-        if (config is not IConfigList entry)
+        if (config is not IConfigList<string> entry)
             return false;
         value = entry.Options;
         return value is not null && value.Count > 0;
@@ -239,7 +239,7 @@ public partial class ConfigService : IConfigService
             return;
         if (!_configs.TryGetValue((package, configName), out var config))
             return;
-        if (config is not IConfigList entry)
+        if (config is not IConfigList<string> entry)
             return;
         entry.TrySetValue(value);
     }
