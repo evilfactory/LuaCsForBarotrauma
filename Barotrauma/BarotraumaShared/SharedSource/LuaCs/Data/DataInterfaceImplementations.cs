@@ -209,7 +209,7 @@ public record ConfigInfo : IConfigInfo
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
     public Type DataType { get; init; }
-    public string DefaultValue { get; init; }
+    public OneOf<string, XElement> DefaultValue { get; init; }
     public OneOf<string, XElement> Value { get; init; }
     public RunState EditableStates { get; init; }
     public NetSync NetSync { get; init; }

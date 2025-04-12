@@ -15,11 +15,11 @@ public partial interface IConfigInfo : IDataInfo
     /// </summary>
     Type DataType { get; }
     /// <summary>
-    /// String version of the default value.
+    /// The default value.
     /// </summary>
-    string DefaultValue { get; }
+    OneOf.OneOf<string, XElement> DefaultValue { get; }
     /// <summary>
-    /// The value the last time this config was saved.
+    /// The value the last time this config was saved. If not found, returns the default value.
     /// <br/><b>[If(Type='<see cref="string"/>')]</b><br/>
     /// The value is from the 'Value' Attribute. Typically used for types with single/simple values, such as primitives.
     /// <br/><b>[If(Type='<see cref="XElement"/>')]</b><br/>

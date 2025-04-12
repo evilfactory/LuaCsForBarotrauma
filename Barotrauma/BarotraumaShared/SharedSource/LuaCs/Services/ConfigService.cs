@@ -629,7 +629,7 @@ public partial class ConfigService : IConfigService
         if (docRes.IsFailed || docRes.Value is null)
         {
             doc = new XDocument(
-                new XElement("Config", new XAttribute("ContentPackage", instance.OwnerPackage.Name),
+                new XElement("Config", new XAttribute("ContentPackage", instance.OwnerPackage.Name), 
                     cfgElement = new XElement(instance.InternalName, valueElement = new XElement("Value"))));
         }
         else

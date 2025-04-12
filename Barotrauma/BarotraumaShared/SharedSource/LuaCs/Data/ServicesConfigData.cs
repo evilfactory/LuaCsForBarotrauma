@@ -11,7 +11,7 @@ public interface IStorageServiceConfig
     string LocalPackagePath { get; }
 }
 
-public class StorageServiceConfig : IStorageServiceConfig
+public record StorageServiceConfig : IStorageServiceConfig
 {
     public string LocalDataPathRegex => "<PACKAGENAME>";
 
@@ -28,4 +28,16 @@ public class StorageServiceConfig : IStorageServiceConfig
     {
         throw new NotImplementedException();
     }
+}
+
+public interface IConfigServiceConfig
+{
+    string LocalConfigPathPartial { get; }
+    string FileNamePattern { get; }
+}
+
+public record ConfigServiceConfig : IConfigServiceConfig
+{
+    public string LocalConfigPathPartial => $"/Config/{FileNamePattern}.xml";
+    public string FileNamePattern => "<ConfigName>";
 }
