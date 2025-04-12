@@ -3,7 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Data;
@@ -16,20 +18,22 @@ public class ResourceInfoLoaders : IConverterServiceAsync<ILocalizationResourceI
     IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>>
 {
     private readonly IStorageService _storageService;
+    private readonly IConfigServiceConfig _configServiceConfig;
 
-    public ResourceInfoLoaders(IStorageService storageService)
+    public ResourceInfoLoaders(IStorageService storageService, IConfigServiceConfig configServiceConfig)
     {
         _storageService = storageService;
+        _configServiceConfig = configServiceConfig;
     }
     
     
     /// <summary>
-    /// This class is stateless nor can it nullify its dependency references.
+    /// This class is stateless and cannot clear its dependency references.
     /// </summary>
     public void Dispose() {}
     
     /// <summary>
-    /// This class is stateless nor can it nullify its dependency references.
+    /// This class is stateless and cannot clear its dependency references.
     /// </summary>
     public bool IsDisposed => false;
 
@@ -160,31 +164,57 @@ public class ResourceInfoLoaders : IConverterServiceAsync<ILocalizationResourceI
                     if (info.Item2.IsFailed || info.Item2.Value is not { } configXDoc)
                     {
                         errList.Add(new Error($"Unable to parse file: {info.Item1}"));
-                        return null;
+                        return default;
                     }
 
-                    return configXDoc;
+                    return (info.Item1, configXDoc);
                 })
-                .Where(doc => doc != null)
-                .SelectMany(doc => doc.Root.GetChildElements("Configuration"))
-                .SelectMany(cfgContainer => cfgContainer.GetChildElements("Configs"))
-                .SelectMany(cfgContainer => cfgContainer.GetChildElements("Config"))
-                .Select(cfgElement =>
+                .Where(doc => !doc.Item1.IsNullOrWhiteSpace() && doc.configXDoc != null)
+                .SelectMany(doc => doc.configXDoc.Root.GetChildElements("Configuration")
+                    .Select(element => (doc.Item1, element)))
+                .SelectMany(cfgContainer => cfgContainer.element.GetChildElements("Configs")
+                        .Select(element => (cfgContainer.Item1, element)))
+                .SelectMany(cfgContainer => cfgContainer.element.GetChildElements("Config")
+                        .Select(element => (cfgContainer.Item1, element)))
+                .Select(async pathElement =>
                 {
+                    var cfgElement = pathElement.element;
+                    
                     try
                     {
+                        OneOf.OneOf<string, XElement> defaultValue = cfgElement.GetChildElement("Value");
+                        if (defaultValue.AsT1 is null)
+                            defaultValue = cfgElement.GetAttributeString("Value", string.Empty);
+
+                        var internalName = cfgElement.GetAttributeString("Name", pathElement.Item1);
+
+                        var localRes = await _storageService.LoadLocalXmlAsync(src.OwnerPackage,
+                            _configServiceConfig.LocalConfigPathPartial.Replace(
+                                _configServiceConfig.FileNamePattern, 
+                                SanitizedFileName(src.OwnerPackage.Name)));
+
+                        OneOf.OneOf<string, XElement> val;
+
+                        if (localRes.IsFailed || localRes.Value is not { Root: { } root } 
+                                              || root.GetChildElement(internalName)?.GetChildElement("Value") is not {} value )
+                        {
+                            val = defaultValue;
+                        }
+                        else
+                        {
+                            val = value;
+                        }
+                        
                         return new ConfigInfo()
                         {
                             DataType = Type.GetType(cfgElement.GetAttributeString("Type", "string")),
                             OwnerPackage = src.OwnerPackage,
-                            DefaultValue = cfgElement.GetAttributeString("DefaultValue", string.Empty),
-                            Value = cfgElement.Attribute("Value")?.Value is { } value
-                                ? value
-                                : cfgElement.GetChildElement("Value"),
+                            DefaultValue = defaultValue,
+                            Value = val,
                             EditableStates = cfgElement.GetAttributeBool("ReadOnly", false)
-                                ? RunState.Unloaded
-                                : RunState.Running,
-                            InternalName = cfgElement.GetAttributeString("Name", null),
+                                ? RunState.Unloaded // read-only
+                                : RunState.Running, // editable at runtime
+                            InternalName = internalName,
                             NetSync = Enum.Parse<NetSync>(
                                 cfgElement.GetAttributeString("NetSync", nameof(NetSync.None))),
 #if CLIENT
@@ -204,10 +234,12 @@ public class ResourceInfoLoaders : IConverterServiceAsync<ILocalizationResourceI
                         return null;
                     }
                 })
-                .Where(cfgInfo => cfgInfo != null && !cfgInfo.InternalName.IsNullOrWhiteSpace())
+                .Where(task => task is not null)
                 .ToImmutableArray();
 
-            var ret = FluentResults.Result.Ok((IReadOnlyList<IConfigInfo>)resList);
+            var result = (await Task.WhenAll(resList)).ToImmutableArray();
+
+            var ret = FluentResults.Result.Ok((IReadOnlyList<IConfigInfo>)result);
             if (errList.Any())
                 ret.Errors.AddRange(errList);
             return ret;
@@ -325,5 +357,13 @@ public class ResourceInfoLoaders : IConverterServiceAsync<ILocalizationResourceI
         }, 2);  // we only need 2 parallels to buffer against disk loading.
         
         return results.ToImmutableArray();
+    }
+    
+    private static readonly Regex RemoveInvalidChars = new Regex($"[{Regex.Escape(new string(System.IO.Path.GetInvalidFileNameChars()))}]",
+        RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+    private string SanitizedFileName(string fileName, string replacement = "_")
+    {
+        return RemoveInvalidChars.Replace(fileName, replacement);
     }
 }
