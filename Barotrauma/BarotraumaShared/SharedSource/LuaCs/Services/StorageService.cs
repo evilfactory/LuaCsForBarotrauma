@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.IO;
 using System.Reflection;
@@ -23,7 +24,8 @@ public class StorageService : IStorageService
     {
         _configData = configData;
     }
-    
+
+    private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
     private readonly IStorageServiceConfig _configData;
     private readonly string _runLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location.CleanUpPath());
 
@@ -32,6 +34,18 @@ public class StorageService : IStorageService
     public void Dispose()
     {
         ModUtils.Threading.SetBool(ref _isDisposed, true);
+    }
+
+    public void PurgeCache()
+    {
+        _fsCache.Clear();
+    }
+
+    private int _useCaching;
+    public bool UseCaching
+    {
+        get => ModUtils.Threading.GetBool(ref _useCaching);
+        set => ModUtils.Threading.SetBool(ref _useCaching, value);
     }
 
     public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
@@ -144,8 +158,11 @@ public class StorageService : IStorageService
         if (localFilePaths.IsDefaultOrEmpty)
             return ImmutableArray<(string, FluentResults.Result<XDocument>)>.Empty;
         var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<XDocument>)>(localFilePaths.Length);
-        foreach (var path in localFilePaths)
+        
+        await localFilePaths.ParallelForEachAsync(async path =>
+        {
             builder.Add((path, await LoadPackageXmlAsync(package, path)));
+        }, maxDegreeOfParallelism: 2);
         return builder.MoveToImmutable();
     }
 
@@ -155,8 +172,10 @@ public class StorageService : IStorageService
         if (localFilePaths.IsDefaultOrEmpty)
             return ImmutableArray<(string, FluentResults.Result<byte[]>)>.Empty;
         var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<byte[]>)>(localFilePaths.Length);
-        foreach (var path in localFilePaths)
+        await localFilePaths.ParallelForEachAsync(async path =>
+        {
             builder.Add((path, await LoadPackageBinaryAsync(package, path)));
+        }, maxDegreeOfParallelism: 2);
         return builder.MoveToImmutable();
     }
 
@@ -166,8 +185,10 @@ public class StorageService : IStorageService
         if (localFilePaths.IsDefaultOrEmpty)
             return ImmutableArray<(string, FluentResults.Result<string>)>.Empty;
         var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<string>)>(localFilePaths.Length);
-        foreach (var path in localFilePaths)
+        await localFilePaths.ParallelForEachAsync(async path =>
+        {
             builder.Add((path, await LoadPackageTextAsync(package, path)));
+        }, maxDegreeOfParallelism: 2);
         return builder.MoveToImmutable();
     }
 
@@ -188,11 +209,19 @@ public class StorageService : IStorageService
     public FluentResults.Result<string> TryLoadText(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
+        if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
+                       && result.TryPickT1(out var cachedVal, out _))
+        {
+            return FluentResults.Result.Ok(cachedVal);
+        }
+        
         return IOExceptionsOperationRunner(nameof(TryLoadText), filePath, () =>
         {
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
             var fileText = encoding is null ? System.IO.File.ReadAllText(fp) : System.IO.File.ReadAllText(fp, encoding);
+            if (UseCaching)
+                _fsCache[filePath] = fileText;
             return new FluentResults.Result<string>().WithSuccess($"Loaded file successfully").WithValue(fileText);
         });
     }
@@ -200,11 +229,19 @@ public class StorageService : IStorageService
     public FluentResults.Result<byte[]> TryLoadBinary(string filePath)
     {
         ((IService)this).CheckDisposed();
+        if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
+                       && result.TryPickT0(out var cachedVal, out _))
+        {
+            return FluentResults.Result.Ok(cachedVal);
+        }
+        
         return IOExceptionsOperationRunner(nameof(TryLoadBinary), filePath, () =>
         {
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
             var fileData = System.IO.File.ReadAllBytes(fp);
+            if (UseCaching)
+                _fsCache[filePath] = fileData;
             return new FluentResults.Result<byte[]>().WithSuccess($"Loaded file successfully").WithValue(fileData);
         });
     }
@@ -220,13 +257,14 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
-
         string t = text; //copy
         return IOExceptionsOperationRunner(nameof(TrySaveText), filePath, () =>
         {
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
             System.IO.File.WriteAllText(fp, t, encoding);
+            if (UseCaching)
+                _fsCache[filePath] = t;
             return new FluentResults.Result().WithSuccess($"Saved to file successfully");
         });
     }
@@ -248,6 +286,8 @@ public class StorageService : IStorageService
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
             System.IO.File.WriteAllBytes(fp, b);
+            if (UseCaching)
+                _fsCache[filePath] = b;
             return new FluentResults.Result().WithSuccess($"Saved to file successfully");
         });
     }
@@ -279,10 +319,16 @@ public class StorageService : IStorageService
 
     public async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
     {
+        if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
+                       && cachedVal.TryPickT2(out var cachedDoc, out _))
+            return FluentResults.Result.Ok(cachedDoc);
         try
         {
             await using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            return await XDocument.LoadAsync(fs, LoadOptions.PreserveWhitespace, CancellationToken.None);
+            var doc = await XDocument.LoadAsync(fs, LoadOptions.PreserveWhitespace, CancellationToken.None);
+            if (UseCaching)
+                _fsCache[filePath] = doc;
+            return FluentResults.Result.Ok(doc);
         }
         catch (Exception e)
         {
@@ -293,17 +339,30 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
+        if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
+                       && cachedVal.TryPickT1(out var cachedTxt, out _))
+            return FluentResults.Result.Ok(cachedTxt);
+            
         return await IOExceptionsOperationRunnerAsync<string>(nameof(TryLoadTextAsync), filePath, async () =>
         {
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
-            return await System.IO.File.ReadAllTextAsync(fp);
+            var txt = await System.IO.File.ReadAllTextAsync(fp);
+            if (UseCaching)
+                _fsCache[filePath] = txt;
+            return FluentResults.Result.Ok(txt);
         });
     }
 
     public async Task<FluentResults.Result<byte[]>> TryLoadBinaryAsync(string filePath)
     {
         ((IService)this).CheckDisposed();
+        if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal)
+                       && cachedVal.TryPickT0(out var cachedBin, out _))
+        {
+            return cachedBin;
+        }
+        
         return await IOExceptionsOperationRunnerAsync<byte[]>(nameof(TryLoadTextAsync), filePath, async () =>
         {
             var fp = filePath.CleanUpPath();
@@ -330,6 +389,8 @@ public class StorageService : IStorageService
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
             await System.IO.File.WriteAllTextAsync(fp, t, encoding);
+            if (UseCaching)
+                _fsCache[filePath] = t;
             return new FluentResults.Result().WithSuccess($"Saved to file successfully");
         });
     }
@@ -351,6 +412,8 @@ public class StorageService : IStorageService
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
             await System.IO.File.WriteAllBytesAsync(fp, b);
+            if (UseCaching)
+                _fsCache[filePath] = b;
             return new FluentResults.Result().WithSuccess($"Saved to file successfully");
         });
     }

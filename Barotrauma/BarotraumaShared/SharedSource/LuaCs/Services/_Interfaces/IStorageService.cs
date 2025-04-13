@@ -7,6 +7,8 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IStorageService : IService
 {
+    void PurgeCache();
+    bool UseCaching { get; set; }
     // -- local game folder storage
     FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);
