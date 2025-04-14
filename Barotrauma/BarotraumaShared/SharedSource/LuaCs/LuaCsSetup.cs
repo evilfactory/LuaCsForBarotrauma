@@ -65,12 +65,11 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILocalizationResourceInfo>, ILocalizationsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
                 
+                // Loaders and Processors (yes the naming is reversed, oops).
                 _servicesProvider.RegisterServiceType<IConverterService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ILocalizationResourceInfo, ImmutableArray<ILocalizationInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>>, ResourceInfoLoaders>(ServiceLifetime.Transient);
-                
+                _servicesProvider.RegisterServiceType<IConfigIOService, ConfigIOService>(ServiceLifetime.Transient);
                 
                 _servicesProvider.Compile();
             }
