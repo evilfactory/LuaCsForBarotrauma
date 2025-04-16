@@ -2694,7 +2694,7 @@ namespace Barotrauma
                 return false;
             }
             if (character == this) { return true; }
-            if (IsKnockedDown || LockHands) { return true; }
+            if (IsKnockedDownOrRagdolled || LockHands) { return true; }
             return accessLevel switch
             {
                 CharacterInventory.AccessLevel.Restricted => false,
