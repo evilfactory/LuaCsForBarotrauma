@@ -122,6 +122,8 @@ namespace Barotrauma
                 RegisterHandler(f => (GUITickBox.OnSelectedHandler)(
                 (a1) => Call(f, a1)?.CastToBool() ?? default));
 
+                RegisterHandler(f => (GUITextBlock.ClickableArea.OnClickDelegate)(
+                (a1, a2) => Call(f, a1, a2)));
             }
 #endif
 
