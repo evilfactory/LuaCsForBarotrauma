@@ -677,6 +677,7 @@ namespace Barotrauma
                 {
                     msg.WriteUInt32(CauseOfDeath.Affliction.UintIdentifier);
                 }
+                msg.WriteUInt16(CauseOfDeath.Killer?.ID ?? NullEntityID);
                 msg.WriteBoolean(forceAfflictionData);
                 if (forceAfflictionData)
                 {

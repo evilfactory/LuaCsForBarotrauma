@@ -176,9 +176,7 @@ namespace Barotrauma.Networking
                 }
                 else
                 {
-                    ChatMessage denyMsg = Create("", TextManager.Get("SpamFilterBlocked").Value, ChatMessageType.Server, null);
-                    c.ChatSpamTimer = 10.0f;
-                    GameMain.Server.SendDirectChatMessage(denyMsg, c);
+                    BlockBySpamFilter();
                 }
                 flaggedAsSpam = true;
                 return;
@@ -188,14 +186,20 @@ namespace Barotrauma.Networking
 
             if (c.ChatSpamTimer > 0.0f && !isSpamExempt)
             {
-                ChatMessage denyMsg = Create("", TextManager.Get("SpamFilterBlocked").Value, ChatMessageType.Server, null);
-                c.ChatSpamTimer = 10.0f;
-                GameMain.Server.SendDirectChatMessage(denyMsg, c);
+                BlockBySpamFilter();
                 flaggedAsSpam = true;
                 return;
             }
 
             flaggedAsSpam = false;
+
+            void BlockBySpamFilter()
+            {
+                ChatMessage denyMsg = Create("", TextManager.Get("SpamFilterBlocked").Value, ChatMessageType.BlockedBySpamFilter, null);
+                c.ChatSpamTimer = BlockedBySpamFilterTime;
+                GameMain.Server.SendDirectChatMessage(denyMsg, c);
+                GameServer.Log(c.Name + " blocked by spam filter", ServerLog.MessageType.ServerMessage);
+            }
         }
 
         public int EstimateLengthBytesServer(Client c)
