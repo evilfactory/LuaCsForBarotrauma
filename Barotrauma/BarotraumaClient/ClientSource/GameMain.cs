@@ -461,7 +461,10 @@ namespace Barotrauma
 
             Eos.EosAccount.LoginPlatformSpecific();
 
-            initialLoadingThread = new Thread(Load);
+            initialLoadingThread = new Thread(Load)
+            {
+                Name = "Load"
+            };
             initialLoadingThread.Start();
         }
 
