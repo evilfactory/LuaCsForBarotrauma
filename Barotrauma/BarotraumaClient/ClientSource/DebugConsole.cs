@@ -399,6 +399,8 @@ namespace Barotrauma
 
         private static void InitProjectSpecific()
         {
+            InitShowSoldItems();
+            
             commands.Add(new Command("eosStat", "Query and display all logged in EOS users. Normally this is at most two users, but in a developer environment it could be more.", args =>
             {
                 if (!EosInterface.Core.IsInitialized)
@@ -3476,6 +3478,13 @@ namespace Barotrauma
                     }
                 }
             }));
+
+            commands.Add(new Command("multiclienttestmode", "Makes the client enable some special logic (such as using a client-specific folder for downloads) to prevent conflicts between multiple clients on the same machine. Useful for testing the campaign with multiple clients running locally.", (string[] args) =>
+            {
+                GameClient.MultiClientTestMode = !GameClient.MultiClientTestMode;
+                NewMessage($"{(GameClient.MultiClientTestMode ? "Enabled" : "Disabled")} MultiClientTestMode on the client.");                
+            }));
+            AssignRelayToServer("multiclienttestmode", false);
 #endif
 
             commands.Add(new Command("reloadcorepackage", "", (string[] args) =>
@@ -4257,6 +4266,8 @@ namespace Barotrauma
             }));
         }
 
+
+
         private static void ReloadWearables(Character character, int variant = 0)
         {
             foreach (var limb in character.AnimController.Limbs)
@@ -4493,7 +4504,9 @@ namespace Barotrauma
 #endif
                     System.Threading.Thread.Sleep(1000);
                 }
-
+#if DEBUG
+                GameClient.MultiClientTestMode = true;
+#endif
                 GameMain.Client = new GameClient("client1",
                     new LidgrenEndpoint(System.Net.IPAddress.Loopback, NetConfig.DefaultPort), "localhost", Option<int>.None());
             
@@ -4505,9 +4518,9 @@ namespace Barotrauma
                     {
                         System.Threading.Thread.Sleep(1000);
 #if WINDOWS
-                        Process.Start("Barotrauma.exe", arguments: "-connect server localhost -username client" + i);
+                        Process.Start("Barotrauma.exe", arguments: "-connect server localhost -username client" + i + " -multiclienttestmode");
 #else
-                        Process.Start("./Barotrauma", arguments: "-connect server localhost -username client" + i);
+                        Process.Start("./Barotrauma", arguments: "-connect server localhost -username client" + i + " -multiclienttestmode");
 #endif
                     }
                 }

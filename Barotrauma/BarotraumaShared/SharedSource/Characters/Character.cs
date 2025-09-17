@@ -2418,7 +2418,9 @@ namespace Barotrauma
 
             if (Inventory != null)
             {
-                if (IsKeyHit(InputType.DropItem) && Screen.Selected is { IsEditor: false })
+                //this doesn't need to be run by the server, clients sync the contents of their inventory with the server instead of the inputs used to manipulate the inventory
+#if CLIENT
+                if (IsKeyHit(InputType.DropItem) && Screen.Selected is { IsEditor: false } && CharacterHUD.ShouldDrawInventory(this))
                 {
                     foreach (Item item in HeldItems)
                     {
@@ -2436,6 +2438,7 @@ namespace Barotrauma
                         break;
                     }
                 }
+#endif
 
                 bool CanUseItemsWhenSelected(Item item) => item == null || !item.Prefab.DisableItemUsageWhenSelected;
                 if (CanUseItemsWhenSelected(SelectedItem) && CanUseItemsWhenSelected(SelectedSecondaryItem))
@@ -2639,6 +2642,7 @@ namespace Barotrauma
         public bool Unequip(Item item)
         {
             if (!HasEquippedItem(item)) { return false; }
+            if (!item.IsInteractable(this)) { return false; }
             if (!TryPutItemInAnySlot(item))
             {
                 if (!TryPutItemInBag(item))
@@ -2649,7 +2653,7 @@ namespace Barotrauma
             return true;
         }
 
-        public bool CanAccessInventory(Inventory inventory, CharacterInventory.AccessLevel accessLevel = CharacterInventory.AccessLevel.Limited)
+        public bool CanAccessInventory(Inventory inventory, CharacterInventory.AccessLevel accessLevel = CharacterInventory.AccessLevel.AllowBotsAndPets)
         {
             if (!CanInteract || inventory.Locked) { return false; }
             
@@ -2693,7 +2697,7 @@ namespace Barotrauma
         /// <summary>
         /// Is the inventory accessible to the character? Doesn't check if the character can actually interact with it (distance checks etc).
         /// </summary>
-        public bool IsInventoryAccessibleTo(Character character, CharacterInventory.AccessLevel accessLevel = CharacterInventory.AccessLevel.Limited)
+        public bool IsInventoryAccessibleTo(Character character, CharacterInventory.AccessLevel accessLevel = CharacterInventory.AccessLevel.AllowBotsAndPets)
         {
             if (Removed || Inventory == null) { return false; }
             if (!Inventory.AccessibleWhenAlive && !IsDead)
@@ -2708,9 +2712,9 @@ namespace Barotrauma
             if (IsKnockedDownOrRagdolled || LockHands) { return true; }
             return accessLevel switch
             {
-                CharacterInventory.AccessLevel.Restricted => false,
-                CharacterInventory.AccessLevel.Limited => (IsBot && IsOnSameTeam()) || IsFriendlyPet(),
-                CharacterInventory.AccessLevel.Allowed => IsOnSameTeam() || IsFriendlyPet(),
+                CharacterInventory.AccessLevel.OnlyIfIncapacitated => false,
+                CharacterInventory.AccessLevel.AllowBotsAndPets => (IsBot && IsOnSameTeam()) || IsFriendlyPet(),
+                CharacterInventory.AccessLevel.AllowFriendly => IsOnSameTeam() || IsFriendlyPet(),
                 _ => throw new NotImplementedException()
             };
             
@@ -5740,7 +5744,7 @@ namespace Barotrauma
 
         public bool HasRecipeForItem(Identifier recipeIdentifier)
         {
-            if (GameMain.GameSession != null && GameMain.GameSession.UnlockedRecipes.Contains(recipeIdentifier)) { return true; }
+            if (GameMain.GameSession != null && GameMain.GameSession.HasUnlockedRecipe(this, recipeIdentifier)) { return true; }
             return characterTalents.Any(t => t.UnlockedRecipes.Contains(recipeIdentifier));
         }
 
