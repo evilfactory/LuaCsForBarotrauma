@@ -2815,22 +2815,42 @@ namespace Barotrauma
         {
             if (GameMain.Server == null) return;
             if (string.IsNullOrWhiteSpace(command)) return;
+
+            var passedConsolePermissionCheck = true;
+            var passedCommandPermissionCheck = true;
+            
             if (!client.HasPermission(ClientPermissions.ConsoleCommands) && client.Connection != GameMain.Server.OwnerConnection)
             {
-                GameMain.Server.SendConsoleMessage("You are not permitted to use console commands!", client, Color.Red);
-                GameServer.Log(GameServer.ClientLogName(client) + " attempted to execute the console command \"" + command + "\" without a permission to use console commands.", ServerLog.MessageType.ConsoleUsage);
-                return;
+                passedConsolePermissionCheck = false;
             }
 
             string[] splitCommand = ToolBox.SplitCommand(command);
             Command matchingCommand = commands.Find(c => c.Names.Contains(splitCommand[0].ToIdentifier()));
-            if (matchingCommand != null && !client.PermittedConsoleCommands.Contains(matchingCommand) && client.Connection != GameMain.Server.OwnerConnection)
+            if (matchingCommand == null || !client.PermittedConsoleCommands.Contains(matchingCommand) && client.Connection != GameMain.Server.OwnerConnection)
             {
-                GameMain.Server.SendConsoleMessage("You are not permitted to use the command\"" + matchingCommand.Names[0] + "\"!", client, Color.Red);
-                GameServer.Log(GameServer.ClientLogName(client) + " attempted to execute the console command \"" + command + "\" without a permission to use the command.", ServerLog.MessageType.ConsoleUsage);
-                return;
+                passedCommandPermissionCheck = false;
             }
-            else if (matchingCommand == null)
+            
+            var bypass = GameMain.LuaCs.Hook.Call<bool?>("onConsoleCommand", client, splitCommand, matchingCommand, passedConsolePermissionCheck, passedCommandPermissionCheck) ?? false;
+            
+            if (!bypass)
+            {
+                if (!passedConsolePermissionCheck)
+                {
+                    GameMain.Server.SendConsoleMessage("You are not permitted to use console commands!", client, Color.Red);
+                    GameServer.Log(GameServer.ClientLogName(client) + " attempted to execute the console command \"" + command + "\" without a permission to use console commands.", ServerLog.MessageType.ConsoleUsage);
+                    return;
+                }
+
+                if (!passedCommandPermissionCheck)
+                {
+                    GameMain.Server.SendConsoleMessage("You are not permitted to use the command\"" + matchingCommand.Names[0] + "\"!", client, Color.Red);
+                    GameServer.Log(GameServer.ClientLogName(client) + " attempted to execute the console command \"" + command + "\" without a permission to use the command.", ServerLog.MessageType.ConsoleUsage);
+                    return;
+                }
+            }
+
+            if (matchingCommand == null)
             {
                 GameMain.Server.SendConsoleMessage("Command \"" + splitCommand[0] + "\" not found.", client, Color.Red);
                 return;
