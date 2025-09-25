@@ -664,6 +664,10 @@ namespace Barotrauma
                 }
             }
 
+            foreach (Gap gap in Gap.GapList)
+            {
+                gap.ResetWaterFlowThisFrame();
+            }
             //update gaps in random order, because otherwise in rooms with multiple gaps
             //the water/air will always tend to flow through the first gap in the list,
             //which may lead to weird behavior like water draining down only through
