@@ -2491,7 +2491,9 @@ namespace Barotrauma
                 if (GameMain.Client != null)
                 {
                     Command matchingCommand = commands.Find(c => c.Names.Contains(firstCommand));
-                    if (matchingCommand == null)
+
+                    var bypass = GameMain.LuaCs.Hook.Call<bool?>("onClientConsoleCommand", splitCommand, matchingCommand) ?? false;
+                    if (matchingCommand == null || bypass)
                     {
                         //if the command is not defined client-side, we'll relay it anyway because it may be a custom command at the server's side
                         GameMain.Client.SendConsoleCommand(command);
