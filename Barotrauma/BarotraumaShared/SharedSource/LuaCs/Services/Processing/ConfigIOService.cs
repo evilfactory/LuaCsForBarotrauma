@@ -250,6 +250,7 @@ public class ConfigIOService : IConfigIOService
 
         var res = await LoadPackageConfigDocInternal(package);
 
+        throw new NotImplementedException(); //TODO: Complete once the locally saved data structure is finalized.
     }
 
     public async Task<Result<OneOf<string, XElement>>> LoadConfigDataFromLocal(ContentPackage package, string configName)
@@ -262,6 +263,8 @@ public class ConfigIOService : IConfigIOService
             $"{SanitizedFileName(package.Name)}.xml");
 
         var res = await _storageService.LoadLocalXmlAsync(package, filePath);
+        
+        throw new NotImplementedException(); //TODO: Complete once the locally saved data structure is finalized.
     }
 
     private async Task<FluentResults.Result<XDocument>> LoadPackageConfigDocInternal(ContentPackage package)
@@ -269,5 +272,7 @@ public class ConfigIOService : IConfigIOService
         var filePath = _configServiceConfig.LocalConfigPathPartial.Replace(
             _configServiceConfig.FileNamePattern,
             $"{SanitizedFileName(package.Name)}.xml");
+        
+        throw new NotImplementedException(); //TODO: Complete once the locally saved data structure is finalized.
     }
 }

@@ -539,9 +539,16 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                     SupportedTargets = Target.Client
                 });
             }
-            
-            var sharedFound = _storageService.FindFilesInPackage(src, "CSharp/Shared", "*.cs", true)
-                is { IsSuccess: true, Value: { IsDefaultOrEmpty: false } filesCssShared };
+
+            var sharedCsBuilder = ImmutableArray.CreateBuilder<string>();
+            if (_storageService.FindFilesInPackage(src, "CSharp/Shared", "*.cs", true)
+                is { IsSuccess: true, Value: { IsDefaultOrEmpty: false } files })
+            {
+                sharedCsBuilder.AddRange<string>(files);
+            }
+
+            var filesCssShared = sharedCsBuilder.MoveToImmutable();
+            var sharedFound = !filesCssShared.IsDefaultOrEmpty;
             
             // source files legacy: server
             if (_storageService.FindFilesInPackage(src, "CSharp/Server", "*.cs", true)
@@ -550,7 +557,7 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 builder.Add(new AssemblyResourceInfo()
                 {
                     Dependencies = ImmutableArray<IPackageDependency>.Empty,
-                    FilePaths = sharedFound ? filesCssServer.Concat(filesCssShared).ToImmutableArray() : filesCssServer,
+                    FilePaths =  sharedFound ? filesCssServer.Concat(filesCssShared).ToImmutableArray() : filesCssServer,
                     FriendlyName = "CssServer",
                     InternalName = "CssServer",
                     IsScript = true,
