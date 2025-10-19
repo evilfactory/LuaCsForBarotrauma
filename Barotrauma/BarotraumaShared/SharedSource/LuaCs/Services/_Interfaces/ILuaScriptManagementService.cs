@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Reflection;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs.Data;
+using FluentResults;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
 
@@ -13,6 +14,8 @@ public interface ILuaScriptManagementService : IReusableService
 {
     #region Script_Ops
 
+    Result<object> GetGlobalTableValue(string tableName);
+    
     /// <summary>
     /// Parses and loads script sources (code) into a memory cache without executing it.
     /// </summary>
