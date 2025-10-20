@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentResults;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -112,11 +114,8 @@ public class LuaScriptManagementService : ILuaScriptManagementService
         return FluentResults.Result.Ok();
     }
 
-    public FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package, bool pauseExecutionOnError = false,
-        bool verboseLogging = false)
+    private FluentResults.Result CheckScriptEngineReady()
     {
-        ((IService)this).CheckDisposed();
-
         if (!ModUtils.Environment.IsMainThread)
         {
             return FluentResults.Result.Fail(new ExceptionalError($"LuaService: Tried to execute scripts on worker thread.", new InvalidOperationException())
@@ -128,20 +127,16 @@ public class LuaScriptManagementService : ILuaScriptManagementService
             return FluentResults.Result.Fail(new ExceptionalError($"LuaService: No active script session.", new InvalidOperationException())
                 .WithMetadata(FluentResults.LuaCs.MetadataType.ExceptionObject, this));
         }
+        
+        return FluentResults.Result.Ok();
+    }
 
-        if (package == null)
-        {
-            return FluentResults.Result.Fail($"LuaService: Package is null.");
-        }
-
-        if (!_cpScripts.TryGetValue(package, out var result))
-        {
-            return FluentResults.Result.Fail($"LuaService: No scripts found for package {package.Name}.");
-        }
-
+    private FluentResults.Result RunScript(Script session, string luaScript, ContentPackage package)
+    {
         try
         {
-            _sharedSession.DoString(result.ToString()); // add to runtime
+            session.DoString(luaScript); 
+            // TODO: Call autorun functions.
         }
         catch (ScriptRuntimeException sre)
         {
@@ -158,45 +153,140 @@ public class LuaScriptManagementService : ILuaScriptManagementService
         return FluentResults.Result.Ok();
     }
 
-    public FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages, bool pauseExecutionOnError = false,
-        bool verboseLogging = false)
+    public FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+
+        if (CheckScriptEngineReady() is { IsFailed: true } failure)
+            return failure;
+        
+        if (package is null)
+            return FluentResults.Result.Fail($"LuaService: package is null.");
+        
+        if (!_cpScripts.TryGetValue(package, out var result))
+        {
+            return FluentResults.Result.Fail($"LuaService: No scripts found for package {package.Name}.");
+        }
+
+        return RunScript(_sharedSession, result.ToString(), package);
     }
 
-    public FluentResults.Result LoadExecuteImmediate(ImmutableArray<ILuaScriptResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false)
+    public FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        
+        if (packages is null)
+            return FluentResults.Result.Fail($"LuaService: Packages enumerator is null.");
+        
+        if (CheckScriptEngineReady() is { IsFailed: true } failure)
+            return failure;
+
+        var runRes = new FluentResults.Result();
+        
+        foreach (var package in packages)
+        {
+            if (package is null)
+                continue;
+            if (!_cpScripts.TryGetValue(package, out var result))
+                continue;
+            
+            runRes = runRes.WithErrors(RunScript(_sharedSession, result.ToString(), package).Errors);
+        }
+
+        return runRes.WithSuccess($"LuaService: completed execution of cached lua scripts.");
     }
 
-    public FluentResults.Result ExecuteLoadedScripts(bool pauseExecutionOnError = false, bool verboseLogging = false)
+    public FluentResults.Result ExecuteLoadedScripts()
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        
+        if (CheckScriptEngineReady() is { IsFailed: true } failure)
+            return failure;
+        
+        if (_cpScripts.Count == 0)
+            return FluentResults.Result.Fail($"LuaService: No scripts are loaded.");
+
+        var runRes = new FluentResults.Result();
+        
+        foreach (var script in _cpScripts)
+        {
+            if (script.Value is null || script.Value.ToString().IsNullOrWhiteSpace())
+                continue;
+            
+            runRes = runRes.WithErrors(RunScript(_sharedSession, script.Value.ToString(), script.Key).Errors);
+        }
+        
+        return runRes.WithSuccess($"LuaService: completed execution of cached lua scripts.");
     }
 
     public FluentResults.Result DisposePackageResources(ContentPackage package)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+
+        if (UnloadActiveScripts() is { IsFailed: true } fail)
+            return fail;
+
+        if (package is null)
+            return FluentResults.Result.Fail($"LuaService: cannot dispose of null package.");
+
+        _cpScripts.TryRemove(package, out _);
+        
+        return FluentResults.Result.Ok();
     }
 
     public FluentResults.Result UnloadActiveScripts()
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+
+        if (CheckScriptEngineReady() is { IsFailed: true } fail)
+            return fail;
+
+        try
+        {
+            _sharedSession.Call(_sharedSession.Globals["Stop"]);
+        }
+        finally
+        {
+            _sharedSession = new Script();
+        }
+        
+        return FluentResults.Result.Ok();
     }
 
     public FluentResults.Result DisposeAllPackageResources()
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+
+        if (UnloadActiveScripts() is { IsFailed: true } fail)
+            return fail;
+        
+        _cpScripts.Clear();
+        
+        return FluentResults.Result.Ok();
     }
 
     public IUserDataDescriptor RegisterType(Type type)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return MoonSharp.Interpreter.UserData.RegisterType(type);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 
     public IUserDataDescriptor RegisterGenericType(Type type)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return MoonSharp.Interpreter.UserData.RegisterType(type);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 
     public IUserDataDescriptor GetTypeInfo(string typeName)

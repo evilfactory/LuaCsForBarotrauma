@@ -28,39 +28,24 @@ public interface ILuaScriptManagementService : IReusableService
     /// Executes cached scripts (code) for the given <see cref="ContentPackage"/>.
     /// </summary>
     /// <param name="package"></param>
-    /// <param name="pauseExecutionOnError"></param>
-    /// <param name="verboseLogging"></param>
     /// <returns></returns>
     // [Required]
-    FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package);
     
     /// <summary>
     /// Executes cached scripts (code) for the given collection <see cref="ContentPackage"/>.
     /// </summary>
     /// <param name="packages"></param>
-    /// <param name="pauseExecutionOnError"></param>
-    /// <param name="verboseLogging"></param>
     /// <returns></returns>
     // [Required]
-    FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages, bool pauseExecutionOnError = false, bool verboseLogging = false);
-    
-    /// <summary>
-    /// Immediately (re)loads from disk, caches, and executes the supplied script resources.
-    /// </summary>
-    /// <param name="scripts"></param>
-    /// <param name="pauseExecutionOnError"></param>
-    /// <param name="verboseLogging"></param>
-    /// <returns></returns>
-    FluentResults.Result LoadExecuteImmediate(ImmutableArray<ILuaScriptResourceInfo> scripts, bool pauseExecutionOnError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages);
     
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="pauseExecutionOnError"></param>
-    /// <param name="verboseLogging"></param>
     /// <returns></returns>
     // [Required]
-    FluentResults.Result ExecuteLoadedScripts(bool pauseExecutionOnError = false, bool verboseLogging = false);
+    FluentResults.Result ExecuteLoadedScripts();
     
     /// <summary>
     /// 
