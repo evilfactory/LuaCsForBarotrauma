@@ -184,6 +184,8 @@ namespace Barotrauma.Networking
 
     abstract partial class NetworkMember
     {
+        protected const int MaxSubNameLengthInErrorMessages = 16;
+
         public UInt16 LastClientListUpdateID
         {
             get;
