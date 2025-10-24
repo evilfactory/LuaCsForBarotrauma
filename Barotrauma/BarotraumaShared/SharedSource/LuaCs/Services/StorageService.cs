@@ -27,7 +27,6 @@ public class StorageService : IStorageService
 
     private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
     private readonly IStorageServiceConfig _configData;
-    private readonly string _runLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location.CleanUpPath());
 
     public bool IsDisposed => ModUtils.Threading.GetBool(ref _isDisposed);
     private int _isDisposed = 0;
@@ -643,8 +642,8 @@ public class StorageService : IStorageService
         
         return new FluentResults.Result<string>().WithSuccess($"Path constructed")
             .WithValue(System.IO.Path.GetFullPath(System.IO.Path.Combine(
-            _runLocation,
-            _configData.LocalPackagePath.Replace(
+            _configData.RunLocation,
+            _configData.LocalPackageDataPath.Replace(
                 _configData.LocalDataPathRegex, 
                 package.TryExtractSteamWorkshopId(out var id) ? id.Value.ToString() : package.Name), 
             localFilePath)));
