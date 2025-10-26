@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Security;
 using System.Text;
@@ -23,6 +25,7 @@ public class StorageService : IStorageService
     public StorageService(IStorageServiceConfig configData)
     {
         _configData = configData;
+        IsSafeModeIO = configData.GlobalSafeIOEnabled;
     }
 
     private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
@@ -45,6 +48,61 @@ public class StorageService : IStorageService
     {
         get => ModUtils.Threading.GetBool(ref _useCaching);
         set => ModUtils.Threading.SetBool(ref _useCaching, value);
+    }
+
+    private int _isSafeModeIO;
+
+    public bool IsSafeModeIO
+    {
+        get => ModUtils.Threading.GetBool(ref _isSafeModeIO);
+        private set => ModUtils.Threading.SetBool(ref _isSafeModeIO, value);
+    }
+
+    public void EnableSafeModeIO()
+    {
+        IsSafeModeIO = true;
+    }
+
+    public bool IsFileAccessible(string path, bool readOnly, bool checkSafeOnly = false)
+    {
+        if (path.IsNullOrWhiteSpace())
+            return false;
+        
+        try
+        {
+            path = GetFullPath(path);
+
+            bool pathIsSafe = false;
+            if (IsSafeModeIO)
+            {
+                var dirs = readOnly ? _configData.SafeIOReadDirectories : _configData.SafeIOWriteDirectories;
+
+                if (dirs.Count == 0)
+                    return false;
+
+                foreach (var dir in dirs)
+                {
+                    if (PathStartsWith(path, dir))
+                    {
+                        pathIsSafe = true;
+                        break;
+                    }
+                }
+
+                if (checkSafeOnly || !pathIsSafe)
+                    return pathIsSafe;
+            }
+            
+            using FileStream fs = new FileStream(path, FileMode.Open, readOnly ? FileAccess.Read : FileAccess.ReadWrite, FileShare.Read);
+            return readOnly ? fs.CanRead : fs.CanWrite;
+        }
+        catch
+        {
+            return false;
+        }
+        
+        bool PathStartsWith(string path, string prefix) => path.StartsWith(prefix, StringComparison.OrdinalIgnoreCase);
+        string GetFullPath(string path) => System.IO.Path.GetFullPath(path).CleanUpPath();
     }
 
     public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
@@ -92,6 +150,8 @@ public class StorageService : IStorageService
     public FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath) => 
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadText(r.Value) : r.ToResult();
+    
+    
     
     public ImmutableArray<(string, FluentResults.Result<XDocument>)> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
@@ -208,6 +268,8 @@ public class StorageService : IStorageService
     public FluentResults.Result<string> TryLoadText(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+            return FluentResults.Result.Fail<string>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
                        && result.TryPickT1(out var cachedVal, out _))
         {
@@ -228,6 +290,8 @@ public class StorageService : IStorageService
     public FluentResults.Result<byte[]> TryLoadBinary(string filePath)
     {
         ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+            return FluentResults.Result.Fail<byte[]>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
                        && result.TryPickT0(out var cachedVal, out _))
         {
@@ -256,6 +320,8 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
+        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+            return FluentResults.Result.Fail($"StorageService: Cannot write to file '{filePath}'. SafeMode enabled.");
         string t = text; //copy
         return IOExceptionsOperationRunner(nameof(TrySaveText), filePath, () =>
         {
@@ -278,6 +344,8 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
+        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+            return FluentResults.Result.Fail($"StorageService: Cannot write to file '{filePath}'. SafeMode enabled.");
         byte[] b = new byte[bytes.Length];
         System.Buffer.BlockCopy(bytes, 0, b, 0, bytes.Length);
         return IOExceptionsOperationRunner(nameof(TrySaveBinary), filePath, () =>
@@ -318,6 +386,9 @@ public class StorageService : IStorageService
 
     public async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
     {
+        ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+            return FluentResults.Result.Fail<XDocument>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
                        && cachedVal.TryPickT2(out var cachedDoc, out _))
             return FluentResults.Result.Ok(cachedDoc);
@@ -338,6 +409,8 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+            return FluentResults.Result.Fail<string>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
                        && cachedVal.TryPickT1(out var cachedTxt, out _))
             return FluentResults.Result.Ok(cachedTxt);
@@ -356,6 +429,8 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result<byte[]>> TryLoadBinaryAsync(string filePath)
     {
         ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+            return FluentResults.Result.Fail<byte[]>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal)
                        && cachedVal.TryPickT0(out var cachedBin, out _))
         {
@@ -374,6 +449,8 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+            return FluentResults.Result.Fail($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (text.IsNullOrWhiteSpace())
         {
             return FluentResults.Result.Fail($"Contents are empty for {filePath}")
@@ -397,6 +474,8 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes)
     {
         ((IService)this).CheckDisposed();
+        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+            return FluentResults.Result.Fail($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (bytes is null || bytes.Length == 0)
         {
             return FluentResults.Result.Fail($"Byte array is null or empty for {filePath}")

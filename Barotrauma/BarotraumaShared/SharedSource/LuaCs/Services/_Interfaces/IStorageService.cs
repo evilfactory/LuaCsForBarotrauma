@@ -9,6 +9,21 @@ public interface IStorageService : IService
 {
     void PurgeCache();
     bool UseCaching { get; set; }
+    bool IsSafeModeIO { get; }
+    /// <summary>
+    /// Limits the reading and writing permissions to safe files only (ie. no assemblies).
+    /// </summary>
+    /// <remarks>Cannot be turned off once enabled for the service instance.</remarks>
+    void EnableSafeModeIO();
+
+    /// <summary>
+    /// Checks the given file path to see if it can be read. This includes any permission and OS checks.
+    /// </summary>
+    /// <param name="path">The absolute path to the file.</param>
+    /// <param name="readOnly">Whether to only check for read permissions only, or full RWM if false.</param>
+    /// <param name="checkSafeOnly">Whether to only check if the file is safe to access, without checking accessibility at the OS level.</param>
+    /// <returns>Whether the file is accessible.</returns>
+    bool IsFileAccessible(string path, bool readOnly, bool skipAccessChecks = false);
     // -- local game folder storage
     FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);

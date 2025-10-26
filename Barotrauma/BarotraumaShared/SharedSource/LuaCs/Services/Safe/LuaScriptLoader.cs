@@ -28,7 +28,7 @@ namespace Barotrauma.LuaCs.Services.Safe
         {
             ((IService)this).CheckDisposed();
 
-            if (!Barotrauma.LuaCsFile.CanReadFromPath(file))
+            if (!CanReadFromPath(file))
             {
                 LogErrors<string>($"File access to \"{file}\" is not allowed.");
                 return null;
@@ -53,7 +53,7 @@ namespace Barotrauma.LuaCs.Services.Safe
         {
             ((IService)this).CheckDisposed();
 
-            if (!Barotrauma.LuaCsFile.CanReadFromPath(file))
+            if (!CanReadFromPath(file))
             {
                 LogErrors<string>($"File access to \"{file}\" is not allowed.");
                 return false;
@@ -72,12 +72,12 @@ namespace Barotrauma.LuaCs.Services.Safe
 
         private bool CanReadFromPath(string file)
         {
-            
+            return _storageService.IsFileAccessible(file, true, false);
         }
 
         private bool CanWriteToPath(string file)
         {
-            
+            return _storageService.IsFileAccessible(file, false, false);
         }
 
         private void LogErrors<T>(string message, FluentResults.Result<T> result = null)
@@ -95,9 +95,14 @@ namespace Barotrauma.LuaCs.Services.Safe
 
         public void Dispose()
         {
-            // TODO release managed resources here
+            if (IsDisposed)
+                return;
+            IsDisposed = true;
+            
+            _storageService.Dispose();
+            _loggerService.Value.Dispose();
         }
 
-        public bool IsDisposed => throw new NotImplementedException();
+        public bool IsDisposed { get; private set; }
     }
 }
