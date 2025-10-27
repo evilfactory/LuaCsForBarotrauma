@@ -18,6 +18,7 @@ namespace Barotrauma.LuaCs.Services.Safe
             this._loggerService = loggerService;
             this._luaScriptServicesConfig = luaScriptServicesConfig;
             _storageService.UseCaching = false;
+            _storageService.EnableSafeModeIO();
         }
         
         private readonly IStorageService _storageService;
