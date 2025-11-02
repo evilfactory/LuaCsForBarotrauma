@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -40,7 +41,54 @@ public class StorageService : IStorageService
 
     public void PurgeCache()
     {
+        ((IService)this).CheckDisposed();
         _fsCache.Clear();
+    }
+
+    public void PurgeFileFromCache(string absolutePath)
+    {
+        ((IService)this).CheckDisposed();
+
+        if (absolutePath.IsNullOrWhiteSpace())
+            return;
+
+        try
+        {
+            //sanitation pass
+            absolutePath = System.IO.Path.GetFullPath(absolutePath).CleanUpPath();
+            _fsCache.Remove(absolutePath, out _);
+        }
+        catch
+        {
+            // ignored
+            return;
+        }
+    }
+
+    public void PurgeFilesFromCache(params string[] absolutePaths)
+    {
+        ((IService)this).CheckDisposed();
+
+        if (absolutePaths.Length < 1)
+            return;
+
+        foreach (var path in absolutePaths)
+        {
+            try
+            {
+                if (path.IsNullOrWhiteSpace())
+                    continue;
+                
+                //sanitation pass
+                var path2 = System.IO.Path.GetFullPath(path).CleanUpPath();
+                _fsCache.Remove(path2, out _);
+            }
+            catch
+            {
+                // ignored
+                continue;
+            }
+        }
     }
 
     private int _useCaching;
@@ -60,11 +108,14 @@ public class StorageService : IStorageService
 
     public void EnableSafeModeIO()
     {
+        ((IService)this).CheckDisposed();
         IsSafeModeIO = true;
     }
 
     public bool IsFileAccessible(string path, bool readOnly, bool checkSafeOnly = false)
     {
+        ((IService)this).CheckDisposed();
+        
         if (path.IsNullOrWhiteSpace())
             return false;
         

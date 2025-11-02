@@ -17,8 +17,9 @@ namespace Barotrauma.LuaCs.Services.Safe
             this._storageService = storageService;
             this._loggerService = loggerService;
             this._luaScriptServicesConfig = luaScriptServicesConfig;
-            _storageService.UseCaching = false;
-            _storageService.EnableSafeModeIO();
+            _storageService.UseCaching = _luaScriptServicesConfig.UseCaching;
+            if (_luaScriptServicesConfig.SafeLuaIOEnabled)
+                _storageService.EnableSafeModeIO();
         }
         
         private readonly IStorageService _storageService;
@@ -48,6 +49,12 @@ namespace Barotrauma.LuaCs.Services.Safe
             }
 
             return script.Value;
+        }
+
+        public void ClearCaches()
+        {
+            ((IService)this).CheckDisposed();
+            _storageService?.PurgeCache();
         }
 
         public override bool ScriptFileExists(string file)
@@ -100,8 +107,8 @@ namespace Barotrauma.LuaCs.Services.Safe
                 return;
             IsDisposed = true;
             
-            _storageService.Dispose();
-            _loggerService.Value.Dispose();
+            _storageService?.Dispose();
+            _loggerService?.Value.Dispose();
         }
 
         public bool IsDisposed { get; private set; }

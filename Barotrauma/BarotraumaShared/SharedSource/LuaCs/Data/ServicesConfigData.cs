@@ -136,9 +136,11 @@ public record ConfigServiceConfig : IConfigServiceConfig
 public interface ILuaScriptServicesConfig
 {
     bool SafeLuaIOEnabled { get; }
+    bool UseCaching { get; }
 }
 
 public record LuaScriptServicesConfig : ILuaScriptServicesConfig
 {
     public bool SafeLuaIOEnabled => true;
+    public bool UseCaching => true;
 }

@@ -7,15 +7,33 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IStorageService : IService
 {
-    void PurgeCache();
+    
     bool UseCaching { get; set; }
+    
+    /// <summary>
+    /// Deletes all cached file data.
+    /// </summary>
+    void PurgeCache();
+    
+    /// <summary>
+    /// Deletes the data for the supplied file path from the data cache.
+    /// </summary>
+    /// <param name="absolutePath"></param>
+    void PurgeFileFromCache(string absolutePath);
+    
+    /// <summary>
+    /// Deletes the data from the supplied file paths from the data cache.
+    /// </summary>
+    /// <param name="absolutePaths"></param>
+    void PurgeFilesFromCache(params string[] absolutePaths);
+    
     bool IsSafeModeIO { get; }
     /// <summary>
     /// Limits the reading and writing permissions to safe files only (ie. no assemblies).
     /// </summary>
     /// <remarks>Cannot be turned off once enabled for the service instance.</remarks>
     void EnableSafeModeIO();
-
+    
     /// <summary>
     /// Checks the given file path to see if it can be read. This includes any permission and OS checks.
     /// </summary>
