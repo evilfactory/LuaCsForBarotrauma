@@ -26,7 +26,7 @@ public class StorageService : IStorageService
     public StorageService(IStorageServiceConfig configData)
     {
         _configData = configData;
-        IsSafeModeIO = configData.GlobalSafeIOEnabled;
+        IsGlobalWhitelistEnabled = configData.GlobalSafeIOEnabled;
     }
 
     private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
@@ -100,16 +100,21 @@ public class StorageService : IStorageService
 
     private int _isSafeModeIO;
 
-    public bool IsSafeModeIO
+    public bool IsGlobalWhitelistEnabled
     {
         get => ModUtils.Threading.GetBool(ref _isSafeModeIO);
         private set => ModUtils.Threading.SetBool(ref _isSafeModeIO, value);
     }
 
-    public void EnableSafeModeIO()
+    public void EnableWhitelistOnly()
     {
         ((IService)this).CheckDisposed();
-        IsSafeModeIO = true;
+        IsGlobalWhitelistEnabled = true;
+    }
+
+    public void SetLocalWhitelist(ImmutableArray<string> filePaths)
+    {
+        throw new NotImplementedException();
     }
 
     public bool IsFileAccessible(string path, bool readOnly, bool checkSafeOnly = false)
@@ -124,7 +129,7 @@ public class StorageService : IStorageService
             path = GetFullPath(path);
 
             bool pathIsSafe = false;
-            if (IsSafeModeIO)
+            if (IsGlobalWhitelistEnabled)
             {
                 var dirs = readOnly ? _configData.SafeIOReadDirectories : _configData.SafeIOWriteDirectories;
 
@@ -319,7 +324,7 @@ public class StorageService : IStorageService
     public FluentResults.Result<string> TryLoadText(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
             return FluentResults.Result.Fail<string>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
                        && result.TryPickT1(out var cachedVal, out _))
@@ -341,7 +346,7 @@ public class StorageService : IStorageService
     public FluentResults.Result<byte[]> TryLoadBinary(string filePath)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
             return FluentResults.Result.Fail<byte[]>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
                        && result.TryPickT0(out var cachedVal, out _))
@@ -371,7 +376,7 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
-        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
             return FluentResults.Result.Fail($"StorageService: Cannot write to file '{filePath}'. SafeMode enabled.");
         string t = text; //copy
         return IOExceptionsOperationRunner(nameof(TrySaveText), filePath, () =>
@@ -395,7 +400,7 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
-        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
             return FluentResults.Result.Fail($"StorageService: Cannot write to file '{filePath}'. SafeMode enabled.");
         byte[] b = new byte[bytes.Length];
         System.Buffer.BlockCopy(bytes, 0, b, 0, bytes.Length);
@@ -438,7 +443,7 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
             return FluentResults.Result.Fail<XDocument>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
                        && cachedVal.TryPickT2(out var cachedDoc, out _))
@@ -460,7 +465,7 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
             return FluentResults.Result.Fail<string>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
                        && cachedVal.TryPickT1(out var cachedTxt, out _))
@@ -480,7 +485,7 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result<byte[]>> TryLoadBinaryAsync(string filePath)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, true, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
             return FluentResults.Result.Fail<byte[]>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal)
                        && cachedVal.TryPickT0(out var cachedBin, out _))
@@ -500,7 +505,7 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
             return FluentResults.Result.Fail($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (text.IsNullOrWhiteSpace())
         {
@@ -525,7 +530,7 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes)
     {
         ((IService)this).CheckDisposed();
-        if (IsSafeModeIO && !IsFileAccessible(filePath, false, true))
+        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
             return FluentResults.Result.Fail($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (bytes is null || bytes.Length == 0)
         {

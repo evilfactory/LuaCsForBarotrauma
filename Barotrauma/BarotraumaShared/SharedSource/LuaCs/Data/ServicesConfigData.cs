@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
@@ -22,8 +23,13 @@ public interface IStorageServiceConfig
     string TempDownloadsDirectory { get; }
 #endif
     
-    ReadOnlyCollection<string> SafeIOReadDirectories { get; }
-    ReadOnlyCollection<string> SafeIOWriteDirectories { get; }
+    //ReadOnlyCollection<string> SafeIOReadDirectories { get; }
+    //ReadOnlyCollection<string> SafeIOWriteDirectories { get; }
+    IEnumerable<string> GlobalIOReadWhitelist();
+    IEnumerable<string> GlobalIOWriteWhitelist();
+    
+    bool IOReadWhiteListContains(string filePath);
+    bool IOWriteWhiteListContains(string filePath);
     
     string LocalDataSavePath { get; }
     string LocalDataPathRegex { get; }
@@ -34,8 +40,8 @@ public interface IStorageServiceConfig
 
 internal interface IStorageServiceConfigUpdate
 {
-    public FluentResults.Result SetSafeReadDirectories(string[] directories);
-    public FluentResults.Result SetSafeWriteDirectories(string[] directories);
+    public FluentResults.Result SetSafeReadFilePaths(string[] filePaths);
+    public FluentResults.Result SetSafeWriteFilePaths(string[] filePaths);
 }
 
 public record StorageServiceConfig : IStorageServiceConfig, IStorageServiceConfigUpdate
@@ -52,11 +58,55 @@ public record StorageServiceConfig : IStorageServiceConfig, IStorageServiceConfi
     public string TempDownloadsDirectory { get; init; } = System.IO.Path.GetFullPath(ModReceiver.DownloadFolder).CleanUpPath();
 #endif
 
-    private string[] _safeIOReadDirectories = Array.Empty<string>();
-    public ReadOnlyCollection<string> SafeIOReadDirectories => Array.AsReadOnly(_safeIOReadDirectories);
+    private readonly AsyncReaderWriterLock _safeIOReadLock = new();
+    private readonly AsyncReaderWriterLock _safeIOWriteLock = new();
+    private readonly ConcurrentDictionary<string,byte> _safeIOReadFilePaths = new();
 
-    private string[] _safeIOWriteDirectories = Array.Empty<string>();
-    public ReadOnlyCollection<string> SafeIOWriteDirectories => Array.AsReadOnly(_safeIOWriteDirectories);
+    private readonly ConcurrentDictionary<string,byte> _safeIOWriteFilePaths = new();
+
+    public IEnumerable<string> GlobalIOReadWhitelist()
+    {
+        using var lck = _safeIOReadLock.AcquireReaderLock().GetAwaiter().GetResult();
+
+        if (_safeIOReadFilePaths.Count == 0)
+        {
+            yield break;
+        }
+        
+        foreach (var path in _safeIOReadFilePaths)
+        {
+            yield return path.Key;
+        }
+    }
+
+    public IEnumerable<string> GlobalIOWriteWhitelist()
+    {
+        using var lck = _safeIOWriteLock.AcquireReaderLock().GetAwaiter().GetResult();
+
+        if (_safeIOWriteFilePaths.Count == 0)
+        {
+            yield break;
+        }
+        
+        foreach (var path in _safeIOWriteFilePaths)
+        {
+            yield return path.Key;
+        }
+    }
+
+    public bool IOReadWhiteListContains(string filePath)
+    {
+        if (filePath.IsNullOrWhiteSpace())
+            return false;
+        return _safeIOReadFilePaths.ContainsKey(filePath);
+    }
+
+    public bool IOWriteWhiteListContains(string filePath)
+    {
+        if (filePath.IsNullOrWhiteSpace())
+            return false;
+        return _safeIOWriteFilePaths.ContainsKey(filePath);
+    }
 
     public string LocalDataSavePath => Path.Combine(ExecutionLocation, "/Data/Mods/");
 
@@ -80,41 +130,51 @@ public record StorageServiceConfig : IStorageServiceConfig, IStorageServiceConfi
     }
 
     
-    public FluentResults.Result SetSafeReadDirectories(string[] directories)
+    public FluentResults.Result SetSafeReadFilePaths(string[] filePaths)
     {
-        return SetSafeDirectory(ref _safeIOReadDirectories, directories);
+        using var lck = _safeIOReadLock.AcquireWriterLock().GetAwaiter().GetResult();
+        return SetSafeDirectory(_safeIOReadFilePaths, filePaths);
     }
 
-    public FluentResults.Result SetSafeWriteDirectories(string[] directories)
+    public FluentResults.Result SetSafeWriteFilePaths(string[] filePaths)
     {
-        return SetSafeDirectory(ref _safeIOWriteDirectories, directories);
+        using  var lck = _safeIOWriteLock.AcquireWriterLock().GetAwaiter().GetResult();
+        return SetSafeDirectory(_safeIOWriteFilePaths, filePaths);
     }
 
-    private FluentResults.Result SetSafeDirectory(ref string[] target, string[] directories)
+    private FluentResults.Result SetSafeDirectory(ConcurrentDictionary<string,byte> target, string[] filePaths)
     {
-        if (directories is null || directories.Length < 1)
+        if (filePaths is null || filePaths.Length < 1)
         {
-            _safeIOReadDirectories = Array.Empty<string>();
+            target.Clear();
             return FluentResults.Result.Ok();
         }
         
-        try
+        FluentResults.Result result = new();
+            
+        target.Clear();
+        foreach (string path in filePaths)
         {
-            string[] dirs = new string[directories.Length];
-            Array.Copy(directories, dirs, directories.Length);
-            for (int i = 0; i < dirs.Length; i++)
+            if (path.IsNullOrWhiteSpace())
             {
-                dirs[i] = System.IO.Path.GetFullPath(dirs[i]).CleanUpPath();
+                result = result.WithError($"ServicesConfigData: A supplied whitelist path was null.");
+                continue;
             }
+                
+            try
+            {
+                var path2 = Path.GetFullPath(path);
+                target.TryAdd(path2, 0);
+            }
+            catch (Exception e)
+            {
+                result = result.WithError(
+                    new ExceptionalError(e).WithMetadata(FluentResults.LuaCs.MetadataType.ExceptionObject, this));
+                continue;
+            }
+        }
 
-            target = dirs;
-            return FluentResults.Result.Ok();
-        }
-        catch (Exception e)
-        {
-            return FluentResults.Result.Fail(
-                new ExceptionalError(e).WithMetadata(FluentResults.LuaCs.MetadataType.ExceptionObject, this));
-        }
+        return result.WithSuccess($"Whitelist updated.");
     }
 }
 

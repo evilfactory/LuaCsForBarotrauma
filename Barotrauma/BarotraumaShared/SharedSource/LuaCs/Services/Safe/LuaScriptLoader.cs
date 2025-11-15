@@ -19,7 +19,7 @@ namespace Barotrauma.LuaCs.Services.Safe
             this._luaScriptServicesConfig = luaScriptServicesConfig;
             _storageService.UseCaching = _luaScriptServicesConfig.UseCaching;
             if (_luaScriptServicesConfig.SafeLuaIOEnabled)
-                _storageService.EnableSafeModeIO();
+                _storageService.EnableWhitelistOnly();
         }
         
         private readonly IStorageService _storageService;
