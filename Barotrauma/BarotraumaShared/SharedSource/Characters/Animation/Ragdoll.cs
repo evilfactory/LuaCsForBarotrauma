@@ -76,7 +76,7 @@ namespace Barotrauma
             get { return frozen; }
             set
             {
-                if (frozen == value) return;
+                if (frozen == value) { return; }
 
                 frozen = value;
 
@@ -1063,7 +1063,8 @@ namespace Barotrauma
             }
         }
 
-        public void FindHull(Vector2? worldPosition = null, bool setSubmarine = true)
+        /// <param name="setInWater">Should the character be immediately considered "in water" if it's outside hulls (normally checked in Update)</param>
+        public void FindHull(Vector2? worldPosition = null, bool setSubmarine = true, bool setInWater = false)
         {
             Vector2 findPos = worldPosition == null ? this.WorldPosition : (Vector2)worldPosition;
             if (!MathUtils.IsValid(findPos))
@@ -1076,6 +1077,10 @@ namespace Barotrauma
             }
 
             Hull newHull = Hull.FindHull(findPos, currentHull);
+            if (setInWater && newHull == null)
+            {
+                inWater = true;
+            }
 
             if (newHull == currentHull) { return; }
 

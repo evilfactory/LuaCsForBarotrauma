@@ -17,8 +17,8 @@ namespace Barotrauma.Networking
     
     abstract class NetworkConnection
     {
-        public static double TimeoutThreshold = 60.0; //full minute for timeout because loading screens can take quite a while
-        public static double TimeoutThresholdInGame = 10.0;
+        public static double TimeoutThresholdNotInGame => GameMain.NetworkMember?.ServerSettings?.TimeoutThresholdNotInGame ?? 60.0; //full minute for timeout because loading screens can take quite a while
+        public static double TimeoutThresholdInGame => GameMain.NetworkMember?.ServerSettings?.TimeoutThresholdInGame ?? 10.0;
 
         public AccountInfo AccountInfo { get; private set; } = AccountInfo.None;
 

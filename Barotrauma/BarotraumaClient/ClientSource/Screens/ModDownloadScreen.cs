@@ -382,6 +382,10 @@ namespace Barotrauma
                     GameMain.LuaCs.CheckInitialize();
                 }
             }
+            else if (GameMain.Client.FileReceiver.ActiveTransfers.None())
+            {
+                GameMain.Client.RequestFile(FileTransferType.Mod, currentDownload.Name, currentDownload.Hash.StringRepresentation);
+            }
         }
 
         public void CurrentDownloadFinished(FileReceiver.FileTransferIn transfer)
