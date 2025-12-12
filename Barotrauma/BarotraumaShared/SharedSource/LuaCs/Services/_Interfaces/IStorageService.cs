@@ -32,6 +32,17 @@ public interface IStorageService : IService
     /// Whether IO operations are limited by the global whitelist.
     /// </summary>
     bool IsGlobalWhitelistEnabled { get; }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    bool StrictWhitelistModeEnabled { get; }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    void EnableStrictWhitelistMode();
+    
     /// <summary>
     /// Limits the reading and writing permissions to whitelisted files only.
     /// </summary>

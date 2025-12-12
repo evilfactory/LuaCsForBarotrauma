@@ -31,6 +31,7 @@ public class StorageService : IStorageService
 
     private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
     private readonly IStorageServiceConfig _configData;
+    private readonly ConcurrentDictionary<string, object> _localFilePathWhitelist = new();
 
     public bool IsDisposed => ModUtils.Threading.GetBool(ref _isDisposed);
     private int _isDisposed = 0;
@@ -112,9 +113,18 @@ public class StorageService : IStorageService
         IsGlobalWhitelistEnabled = true;
     }
 
+    private bool IsLocalWhitelistEnabled => !_localFilePathWhitelist.IsEmpty;
+
     public void SetLocalWhitelist(ImmutableArray<string> filePaths)
     {
-        throw new NotImplementedException();
+        ((IService)this).CheckDisposed();
+        this._localFilePathWhitelist.Clear();
+        if (filePaths.IsDefaultOrEmpty)
+            return;
+        foreach (var filePath in filePaths)
+        {
+            this._localFilePathWhitelist.TryAdd(filePath, 0);
+        }
     }
 
     public bool IsFileAccessible(string path, bool readOnly, bool checkSafeOnly = false)
@@ -128,37 +138,34 @@ public class StorageService : IStorageService
         {
             path = GetFullPath(path);
 
-            bool pathIsSafe = false;
+            if ((_configData.GlobalSafeIOEnabled && IsPathValidGlobal(path)) ||
+                (IsLocalWhitelistEnabled && IsPathValidLocal(path)))
+            {
+                
+            }
+            
+            /*// TODO: THIS WHOLE SECTION IS SCUFFED.
+
             if (IsGlobalWhitelistEnabled)
             {
-                var dirs = readOnly ? _configData.SafeIOReadDirectories : _configData.SafeIOWriteDirectories;
+                pathIsSafe = readOnly ? _configData.IOReadWhiteListContains(path) :  _configData.IOWriteWhiteListContains(path);
 
-                if (dirs.Count == 0)
-                    return false;
-
-                foreach (var dir in dirs)
-                {
-                    if (PathStartsWith(path, dir))
-                    {
-                        pathIsSafe = true;
-                        break;
-                    }
-                }
-
-                if (checkSafeOnly || !pathIsSafe)
-                    return pathIsSafe;
+                if (!pathIsSafe && IsLocalWhitelistEnabled)
+                    pathIsSafe = _localFilePathWhitelist.ContainsKey(path);
             }
             
             using FileStream fs = new FileStream(path, FileMode.Open, readOnly ? FileAccess.Read : FileAccess.ReadWrite, FileShare.Read);
-            return readOnly ? fs.CanRead : fs.CanWrite;
+            return readOnly ? fs.CanRead : fs.CanWrite;*/
         }
         catch
         {
             return false;
         }
-        
-        bool PathStartsWith(string path, string prefix) => path.StartsWith(prefix, StringComparison.OrdinalIgnoreCase);
+
+        bool IsPathValidGlobal(string path) => readOnly ? _configData.IOReadWhiteListContains(path) :  _configData.IOWriteWhiteListContains(path);
+        bool IsPathValidLocal(string path) => _localFilePathWhitelist.ContainsKey(path);
         string GetFullPath(string path) => System.IO.Path.GetFullPath(path).CleanUpPath();
+        
     }
 
     public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
