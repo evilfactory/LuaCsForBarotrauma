@@ -26,12 +26,10 @@ public class StorageService : IStorageService
     public StorageService(IStorageServiceConfig configData)
     {
         _configData = configData;
-        IsGlobalWhitelistEnabled = configData.GlobalSafeIOEnabled;
     }
 
     private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
-    private readonly IStorageServiceConfig _configData;
-    private readonly ConcurrentDictionary<string, object> _localFilePathWhitelist = new();
+    protected readonly IStorageServiceConfig _configData;
 
     public bool IsDisposed => ModUtils.Threading.GetBool(ref _isDisposed);
     private int _isDisposed = 0;
@@ -99,124 +97,55 @@ public class StorageService : IStorageService
         set => ModUtils.Threading.SetBool(ref _useCaching, value);
     }
 
-    private int _isSafeModeIO;
-
-    public bool IsGlobalWhitelistEnabled
-    {
-        get => ModUtils.Threading.GetBool(ref _isSafeModeIO);
-        private set => ModUtils.Threading.SetBool(ref _isSafeModeIO, value);
-    }
-
-    public void EnableWhitelistOnly()
-    {
-        ((IService)this).CheckDisposed();
-        IsGlobalWhitelistEnabled = true;
-    }
-
-    private bool IsLocalWhitelistEnabled => !_localFilePathWhitelist.IsEmpty;
-
-    public void SetLocalWhitelist(ImmutableArray<string> filePaths)
-    {
-        ((IService)this).CheckDisposed();
-        this._localFilePathWhitelist.Clear();
-        if (filePaths.IsDefaultOrEmpty)
-            return;
-        foreach (var filePath in filePaths)
-        {
-            this._localFilePathWhitelist.TryAdd(filePath, 0);
-        }
-    }
-
-    public bool IsFileAccessible(string path, bool readOnly, bool checkSafeOnly = false)
-    {
-        ((IService)this).CheckDisposed();
-        
-        if (path.IsNullOrWhiteSpace())
-            return false;
-        
-        try
-        {
-            path = GetFullPath(path);
-
-            if ((_configData.GlobalSafeIOEnabled && IsPathValidGlobal(path)) ||
-                (IsLocalWhitelistEnabled && IsPathValidLocal(path)))
-            {
-                
-            }
-            
-            /*// TODO: THIS WHOLE SECTION IS SCUFFED.
-
-            if (IsGlobalWhitelistEnabled)
-            {
-                pathIsSafe = readOnly ? _configData.IOReadWhiteListContains(path) :  _configData.IOWriteWhiteListContains(path);
-
-                if (!pathIsSafe && IsLocalWhitelistEnabled)
-                    pathIsSafe = _localFilePathWhitelist.ContainsKey(path);
-            }
-            
-            using FileStream fs = new FileStream(path, FileMode.Open, readOnly ? FileAccess.Read : FileAccess.ReadWrite, FileShare.Read);
-            return readOnly ? fs.CanRead : fs.CanWrite;*/
-        }
-        catch
-        {
-            return false;
-        }
-
-        bool IsPathValidGlobal(string path) => readOnly ? _configData.IOReadWhiteListContains(path) :  _configData.IOWriteWhiteListContains(path);
-        bool IsPathValidLocal(string path) => _localFilePathWhitelist.ContainsKey(path);
-        string GetFullPath(string path) => System.IO.Path.GetFullPath(path).CleanUpPath();
-        
-    }
-
-    public FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
+    public virtual FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadXml(r.Value) : r.ToResult();
-    public FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath) => 
+    public virtual FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadBinary(r.Value) : r.ToResult();
-    public FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath) => 
+    public virtual FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadText(r.Value) : r.ToResult();
-    public FluentResults.Result SaveLocalXml(ContentPackage package, string localFilePath, XDocument document) =>
+    public virtual FluentResults.Result SaveLocalXml(ContentPackage package, string localFilePath, XDocument document) =>
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? TrySaveXml(r.Value, document) : r.ToResult();
-    public FluentResults.Result SaveLocalBinary(ContentPackage package, string localFilePath, in byte[] bytes) => 
+    public virtual FluentResults.Result SaveLocalBinary(ContentPackage package, string localFilePath, in byte[] bytes) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? TrySaveBinary(r.Value, bytes) : r.ToResult();
-    public FluentResults.Result SaveLocalText(ContentPackage package, string localFilePath, in string text) => 
+    public virtual FluentResults.Result SaveLocalText(ContentPackage package, string localFilePath, in string text) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? TrySaveText(r.Value, text) : r.ToResult();
-    public async Task<FluentResults.Result<XDocument>> LoadLocalXmlAsync(ContentPackage package, string localFilePath) =>
+    public virtual async Task<FluentResults.Result<XDocument>> LoadLocalXmlAsync(ContentPackage package, string localFilePath) =>
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadXmlAsync(r.Value) : r.ToResult();
-    public async Task<FluentResults.Result<byte[]>> LoadLocalBinaryAsync(ContentPackage package, string localFilePath) => 
+    public virtual async Task<FluentResults.Result<byte[]>> LoadLocalBinaryAsync(ContentPackage package, string localFilePath) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadBinaryAsync(r.Value) : r.ToResult();
-    public async Task<FluentResults.Result<string>> LoadLocalTextAsync(ContentPackage package, string localFilePath) => 
+    public virtual async Task<FluentResults.Result<string>> LoadLocalTextAsync(ContentPackage package, string localFilePath) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadTextAsync(r.Value) : r.ToResult();
-    public async Task<FluentResults.Result> SaveLocalXmlAsync(ContentPackage package, string localFilePath, XDocument document) => 
+    public virtual async Task<FluentResults.Result> SaveLocalXmlAsync(ContentPackage package, string localFilePath, XDocument document) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? await TrySaveXmlAsync(r.Value, document) : r.ToResult();
-    public async Task<FluentResults.Result> SaveLocalBinaryAsync(ContentPackage package, string localFilePath, byte[] bytes) => 
+    public virtual async Task<FluentResults.Result> SaveLocalBinaryAsync(ContentPackage package, string localFilePath, byte[] bytes) => 
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? await TrySaveBinaryAsync(r.Value, bytes) : r.ToResult();
-    public async Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text) =>
+    public virtual async Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text) =>
         GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? await TrySaveTextAsync(r.Value, text) : r.ToResult();
-    public FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath) =>
+    public virtual FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath) =>
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadXml(r.Value) : r.ToResult();
-    public FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath) => 
+    public virtual FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath) => 
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadBinary(r.Value) : r.ToResult();
-    public FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath) => 
+    public virtual FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath) => 
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadText(r.Value) : r.ToResult();
     
     
     
-    public ImmutableArray<(string, FluentResults.Result<XDocument>)> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public virtual ImmutableArray<(string, FluentResults.Result<XDocument>)> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
@@ -227,7 +156,7 @@ public class StorageService : IStorageService
         return builder.MoveToImmutable();
     }
 
-    public ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public virtual ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
@@ -238,7 +167,7 @@ public class StorageService : IStorageService
         return builder.MoveToImmutable();
     }
 
-    public ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public virtual ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
@@ -249,7 +178,7 @@ public class StorageService : IStorageService
         return builder.MoveToImmutable();
     }
 
-    public FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively)
+    public virtual FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively)
     {
         ((IService)this).CheckDisposed();
         var r = GetAbsFromPackage(package, localSubfolder);
@@ -262,19 +191,19 @@ public class StorageService : IStorageService
             .WithValue(arr.ToImmutableArray());
     }
 
-    public async Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath) =>
+    public virtual async Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath) =>
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadXmlAsync(r.Value) : r.ToResult();
 
-    public async Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath) =>
+    public virtual async Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath) =>
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadBinaryAsync(r.Value) : r.ToResult();
 
-    public async Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath) =>
+    public virtual async Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath) =>
         GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadTextAsync(r.Value) : r.ToResult();
 
-    public async Task<ImmutableArray<(string, FluentResults.Result<XDocument>)>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public virtual async Task<ImmutableArray<(string, FluentResults.Result<XDocument>)>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
@@ -288,7 +217,7 @@ public class StorageService : IStorageService
         return builder.MoveToImmutable();
     }
 
-    public async Task<ImmutableArray<(string, FluentResults.Result<byte[]>)>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public virtual async Task<ImmutableArray<(string, FluentResults.Result<byte[]>)>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
@@ -301,7 +230,7 @@ public class StorageService : IStorageService
         return builder.MoveToImmutable();
     }
 
-    public async Task<ImmutableArray<(string, FluentResults.Result<string>)>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
+    public virtual async Task<ImmutableArray<(string, FluentResults.Result<string>)>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
     {
         ((IService)this).CheckDisposed();
         if (localFilePaths.IsDefaultOrEmpty)
@@ -315,7 +244,7 @@ public class StorageService : IStorageService
     }
 
 
-    public FluentResults.Result<XDocument> TryLoadXml(string filePath, Encoding encoding = null)
+    public virtual FluentResults.Result<XDocument> TryLoadXml(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
         var r = TryLoadText(filePath, encoding);
@@ -328,11 +257,9 @@ public class StorageService : IStorageService
         }
     }
 
-    public FluentResults.Result<string> TryLoadText(string filePath, Encoding encoding = null)
+    public virtual FluentResults.Result<string> TryLoadText(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
-            return FluentResults.Result.Fail<string>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
                        && result.TryPickT1(out var cachedVal, out _))
         {
@@ -350,11 +277,9 @@ public class StorageService : IStorageService
         });
     }
 
-    public FluentResults.Result<byte[]> TryLoadBinary(string filePath)
+    public virtual FluentResults.Result<byte[]> TryLoadBinary(string filePath)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
-            return FluentResults.Result.Fail<byte[]>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var result) 
                        && result.TryPickT0(out var cachedVal, out _))
         {
@@ -372,8 +297,8 @@ public class StorageService : IStorageService
         });
     }
 
-    public FluentResults.Result TrySaveXml(string filePath, in XDocument document, Encoding encoding = null) => TrySaveText(filePath, document.ToString(), encoding);
-    public FluentResults.Result TrySaveText(string filePath, in string text, Encoding encoding = null)
+    public virtual FluentResults.Result TrySaveXml(string filePath, in XDocument document, Encoding encoding = null) => TrySaveText(filePath, document.ToString(), encoding);
+    public virtual FluentResults.Result TrySaveText(string filePath, in string text, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
         if (text.IsNullOrWhiteSpace())
@@ -383,8 +308,6 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
-            return FluentResults.Result.Fail($"StorageService: Cannot write to file '{filePath}'. SafeMode enabled.");
         string t = text; //copy
         return IOExceptionsOperationRunner(nameof(TrySaveText), filePath, () =>
         {
@@ -397,7 +320,7 @@ public class StorageService : IStorageService
         });
     }
 
-    public FluentResults.Result TrySaveBinary(string filePath, in byte[] bytes)
+    public virtual FluentResults.Result TrySaveBinary(string filePath, in byte[] bytes)
     {
         ((IService)this).CheckDisposed();
         if (bytes is null || bytes.Length == 0)
@@ -407,8 +330,6 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.Sources, filePath));
         }
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
-            return FluentResults.Result.Fail($"StorageService: Cannot write to file '{filePath}'. SafeMode enabled.");
         byte[] b = new byte[bytes.Length];
         System.Buffer.BlockCopy(bytes, 0, b, 0, bytes.Length);
         return IOExceptionsOperationRunner(nameof(TrySaveBinary), filePath, () =>
@@ -422,7 +343,7 @@ public class StorageService : IStorageService
         });
     }
 
-    public FluentResults.Result<bool> FileExists(string filePath)
+    public virtual FluentResults.Result<bool> FileExists(string filePath)
     {
         ((IService)this).CheckDisposed();
         return IOExceptionsOperationRunner<bool>(nameof(FileExists), filePath, () =>
@@ -433,7 +354,7 @@ public class StorageService : IStorageService
         });
     }
 
-    public FluentResults.Result<bool> DirectoryExists(string directoryPath)
+    public virtual FluentResults.Result<bool> DirectoryExists(string directoryPath)
     {
         ((IService)this).CheckDisposed();
         try
@@ -447,11 +368,9 @@ public class StorageService : IStorageService
         }
     }
 
-    public async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
+    public virtual async Task<FluentResults.Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
-            return FluentResults.Result.Fail<XDocument>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
                        && cachedVal.TryPickT2(out var cachedDoc, out _))
             return FluentResults.Result.Ok(cachedDoc);
@@ -469,11 +388,9 @@ public class StorageService : IStorageService
         }
     }
 
-    public async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
+    public virtual async Task<FluentResults.Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
-            return FluentResults.Result.Fail<string>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal) 
                        && cachedVal.TryPickT1(out var cachedTxt, out _))
             return FluentResults.Result.Ok(cachedTxt);
@@ -489,11 +406,9 @@ public class StorageService : IStorageService
         });
     }
 
-    public async Task<FluentResults.Result<byte[]>> TryLoadBinaryAsync(string filePath)
+    public virtual async Task<FluentResults.Result<byte[]>> TryLoadBinaryAsync(string filePath)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, true, true))
-            return FluentResults.Result.Fail<byte[]>($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (UseCaching && _fsCache.TryGetValue(filePath, out var cachedVal)
                        && cachedVal.TryPickT0(out var cachedBin, out _))
         {
@@ -508,12 +423,10 @@ public class StorageService : IStorageService
         });
     }
 
-    public async Task<FluentResults.Result> TrySaveXmlAsync(string filePath, XDocument document, Encoding encoding = null) => await TrySaveTextAsync(filePath, document.ToString(), encoding);
-    public async Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null)
+    public virtual async Task<FluentResults.Result> TrySaveXmlAsync(string filePath, XDocument document, Encoding encoding = null) => await TrySaveTextAsync(filePath, document.ToString(), encoding);
+    public virtual async Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
-            return FluentResults.Result.Fail($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (text.IsNullOrWhiteSpace())
         {
             return FluentResults.Result.Fail($"Contents are empty for {filePath}")
@@ -534,11 +447,9 @@ public class StorageService : IStorageService
         });
     }
 
-    public async Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes)
+    public virtual async Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes)
     {
         ((IService)this).CheckDisposed();
-        if (IsGlobalWhitelistEnabled && !IsFileAccessible(filePath, false, true))
-            return FluentResults.Result.Fail($"StorageService: Cannot access file '{filePath}'. SafeMode enabled.");
         if (bytes is null || bytes.Length == 0)
         {
             return FluentResults.Result.Fail($"Byte array is null or empty for {filePath}")

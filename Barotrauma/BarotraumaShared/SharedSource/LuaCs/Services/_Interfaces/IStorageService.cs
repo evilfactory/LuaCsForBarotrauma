@@ -28,46 +28,6 @@ public interface IStorageService : IService
     /// <param name="absolutePaths"></param>
     void PurgeFilesFromCache(params string[] absolutePaths);
     
-    /// <summary>
-    /// Whether IO operations are limited by the global whitelist.
-    /// </summary>
-    bool IsGlobalWhitelistEnabled { get; }
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    bool StrictWhitelistModeEnabled { get; }
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    void EnableStrictWhitelistMode();
-    
-    /// <summary>
-    /// Limits the reading and writing permissions to whitelisted files only.
-    /// </summary>
-    /// <remarks>Cannot be turned off once enabled for the service instance.</remarks>
-    void EnableWhitelistOnly();
-
-    /// <summary>
-    /// Sets and enables the local whitelist filtering for the instance.
-    /// </summary>
-    /// <remarks>
-    /// Note: Local whitelist does not allow the global whitelist to be bypassed (if enabled).
-    /// </remarks>
-    /// <param name="filePaths">List of absolute file paths allowed.</param>
-    void SetLocalWhitelist(ImmutableArray<string> filePaths);
-    
-    
-    /// <summary>
-    /// Checks the given file path to see if it can be read. This includes any permissions, whitelists and OS checks.
-    /// </summary>
-    /// <param name="path">The absolute path to the file.</param>
-    /// <param name="readOnly">Whether to only check for read permissions only, or full RWM if false.</param>
-    /// <param name="checkSafeOnly">Whether to only check if the file is safe to access, without checking accessibility at the OS level.</param>
-    /// <returns>Whether the file is accessible.</returns>
-    bool IsFileAccessible(string path, bool readOnly, bool skipAccessChecks = false);
-    
     // -- local game folder storage
     FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);
