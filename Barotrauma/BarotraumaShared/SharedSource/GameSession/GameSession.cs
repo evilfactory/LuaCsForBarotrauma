@@ -408,6 +408,7 @@ namespace Barotrauma
 
         public void LoadPreviousSave()
         {
+            GameMain.LuaCs.Hook.Call("roundEnd");
             AchievementManager.OnRoundEnded(this, roundInterrupted: true);
             Submarine.Unload();
             SaveUtil.LoadGame(DataPath);
