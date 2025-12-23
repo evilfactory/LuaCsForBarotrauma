@@ -55,22 +55,36 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     //internal
     private readonly IAssemblyManagementService _assemblyManagementService;
     private readonly Action<AssemblyLoader> _onUnload;
+    private readonly Func<AssemblyLoadContext, AssemblyName, Assembly> _onResolvingManaged;
+    private readonly Func<Assembly, string, IntPtr> _onResolvingUnmanagedDll;
     private readonly ConcurrentDictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();
     private readonly ConcurrentDictionary<AssemblyOrStringKey, AssemblyData> _loadedAssemblyData = new();
     
     private readonly ThreadLocal<bool> _isResolving = new(static()=>false); // cyclic resolution exit
 
-    public AssemblyLoader(IAssemblyManagementService assemblyManagementService, 
+    public AssemblyLoader(
+        IAssemblyManagementService assemblyManagementService, 
         Guid id, string name, 
-        bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload) 
+        bool isReferenceOnlyMode, 
+        Action<AssemblyLoader> onUnload = null) 
         : base(isCollectible: true, name: name)
     {
         _assemblyManagementService = assemblyManagementService;
         Id = id;
         IsReferenceOnlyMode = isReferenceOnlyMode;
-        _onUnload = onUnload;
-        if (_onUnload is not null)
-            base.Unloading += OnUnload;
+        base.Unloading += OnUnload;
+        base.Resolving += OnResolvingManagedAssembly;
+        base.ResolvingUnmanagedDll += OnResolvingUnmanagedDll;
+    }
+
+    private IntPtr OnResolvingUnmanagedDll(Assembly assembly, string assemblyName)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Assembly OnResolvingManagedAssembly(AssemblyLoadContext assemblyLoadContext, AssemblyName assemblyName)
+    {
+        throw new NotImplementedException();
     }
 
     public IEnumerable<MetadataReference> AssemblyReferences
@@ -238,62 +252,50 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 
             try
             {
-                var assembly = LoadFromAssemblyPath(sanitizedFilePath);
+                /*var assembly = LoadFromAssemblyPath(sanitizedFilePath);
                 _loadedAssemblyData[assembly] = new AssemblyData(assembly, sanitizedFilePath);
-                return new Result<Assembly>().WithSuccess($"Loaded assembly'{assembly.GetName()}'").WithValue(assembly);
+                return new Result<Assembly>().WithSuccess($"Loaded assembly'{assembly.GetName()}'").WithValue(assembly);*/
+                
+                // TODO: Load assembly using dependency resolvers.
+                throw new NotImplementedException();
             }
             catch (ArgumentNullException ane)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(ane)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, ane.Message)
-                    .WithMetadata(MetadataType.StackTrace, ane.StackTrace));
+                return GenerateExceptionReturn(ane);
             }
             catch (ArgumentException ae)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(ae)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, ae.Message)
-                    .WithMetadata(MetadataType.StackTrace, ae.StackTrace));
+                return GenerateExceptionReturn(ae);
             }
             catch (FileLoadException fle)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(fle)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, fle.Message)
-                    .WithMetadata(MetadataType.StackTrace, fle.StackTrace));
+                return GenerateExceptionReturn(fle);
             }
             catch (FileNotFoundException fnfe)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(fnfe)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, fnfe.Message)
-                    .WithMetadata(MetadataType.StackTrace, fnfe.StackTrace));
+                return GenerateExceptionReturn(fnfe);
             }
             catch (BadImageFormatException bife)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(bife)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, bife.Message)
-                    .WithMetadata(MetadataType.StackTrace, bife.StackTrace));
+                return GenerateExceptionReturn(bife);
             }
             catch (Exception e)
             {
-                return FluentResults.Result.Fail<Assembly>(new ExceptionalError(e)
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, assemblyFilePath)
-                    .WithMetadata(MetadataType.ExceptionDetails, e.Message)
-                    .WithMetadata(MetadataType.StackTrace, e.StackTrace));
+                return GenerateExceptionReturn(e);
             }
         }
         finally
         {
             AreOperationRunning = false;
+        }
+
+        FluentResults.Result<Assembly> GenerateExceptionReturn<T>(T exception) where T : Exception
+        {
+            return FluentResults.Result.Fail<Assembly>(new ExceptionalError(exception)
+                .WithMetadata(MetadataType.ExceptionObject, this)
+                .WithMetadata(MetadataType.RootObject, assemblyFilePath)
+                .WithMetadata(MetadataType.ExceptionDetails, exception.Message)
+                .WithMetadata(MetadataType.StackTrace, exception.StackTrace));
         }
     }
 
@@ -420,6 +422,38 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             return; // we don't want to invoke events twice nor cause strong GC handles.
         IsDisposed = true;
         this.Unload();
+        this.DisposeInternal();
+    }
+
+    ~AssemblyLoader()
+    {
+        this.DisposeInternal();
+    }
+    
+    private void OnUnload(AssemblyLoadContext context)
+    {
+        // Try to wait for loading ops on other threads if they happen to occur with a timeout.
+        // This should be an edge, should it even occur.
+        DateTime timeout = DateTime.Now.AddSeconds(2);
+        while (timeout > DateTime.Now)
+        {
+            if (!AreOperationRunning)
+                break;
+            Thread.Sleep(1000/GameMain.CurrentUpdateRate+1);
+        }
+        
+        var wf = new WeakReference<IAssemblyLoaderService>(this);
+        _onUnload?.Invoke(this);
+    }
+
+    private void DisposeInternal()
+    {
+        IsDisposed = true;
+        base.Resolving -= OnResolvingManagedAssembly;
+        base.ResolvingUnmanagedDll -= OnResolvingUnmanagedDll;
+        base.Unloading -= OnUnload;
+        this._dependencyResolvers.Clear();
+        this._loadedAssemblyData.Clear();
         GC.SuppressFinalize(this);
     }
 
@@ -431,12 +465,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         _isResolving.Value = true;
         try
         {
-            if (_loadedAssemblyData.TryGetValue(assemblyName.FullName, out var data))
-                return data.Assembly;
-            var ids = new[] { this.Id };
-            if (_assemblyManagementService.GetLoadedAssembly(assemblyName, in ids) is { IsSuccess: true } ret)
-                return ret.Value;
-            return null;
+            // TODO: Resolve against in-memory types.
         }
         catch (ArgumentNullException _)
         {
@@ -446,34 +475,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         {
             _isResolving.Value = false;
         }
-    }
-
-    // Use the default import resolver since native libraries are niche and not blocking for unloading.
-    // Implement if conflicts become an issue.
-    /*protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
-    {
-        // Implement NativeLibrary::InternalLoadUnmanagedDll()
-        throw new NotImplementedException();
-    }*/
-    
-    private void OnUnload(AssemblyLoadContext context)
-    {
-        IsDisposed = true;
-        
-        // Try to wait for loading ops on other threads if they happen to occur.
-        // Minor race condition on the loop exit but this loader is not intended to be thread-safe by design, this is just to cover edge cases.
-        DateTime timeout = DateTime.Now.AddSeconds(5);
-        while (timeout > DateTime.Now)
-        {
-            if (!AreOperationRunning)
-                break;
-        }
-        
-        base.Unloading -= OnUnload;
-        var wf = new WeakReference<IAssemblyLoaderService>(this);
-        _onUnload?.Invoke(this);
-        this._dependencyResolvers.Clear();
-        this._loadedAssemblyData.Clear();
     }
 
     private readonly record struct AssemblyData
@@ -538,7 +539,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 
         public int GetHashCode(AssemblyOrStringKey obj)
         {
-            return obj.HashCode;
+            return this.HashCode;
         }
         
         public static implicit operator AssemblyOrStringKey(Assembly assembly) => new AssemblyOrStringKey(assembly);
