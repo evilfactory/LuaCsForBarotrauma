@@ -363,18 +363,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
                 _loadedAssemblyData[assembly] = new AssemblyData(assembly, sanitizedFilePath);
                 return new Result<Assembly>().WithSuccess($"Loaded assembly '{assembly.GetName()}'").WithValue(assembly);
             }
-            catch (ArgumentNullException ane)
-            {
-                return GenerateExceptionReturn(ane);
-            }
-            catch (ArgumentException ae)
-            {
-                return GenerateExceptionReturn(ae);
-            }
-            catch (FileLoadException fle)
-            {
-                return GenerateExceptionReturn(fle);
-            }
             catch (FileNotFoundException fnfe)
             {
                 // last attempt
@@ -399,10 +387,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
                 {
                       return GenerateExceptionReturn(fnfe);
                 }
-            }
-            catch (BadImageFormatException bife)
-            {
-                return GenerateExceptionReturn(bife);
             }
             catch (Exception e)
             {
