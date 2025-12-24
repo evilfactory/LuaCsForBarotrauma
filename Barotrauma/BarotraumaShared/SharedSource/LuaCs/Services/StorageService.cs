@@ -476,41 +476,9 @@ public class StorageService : IStorageService
         {
             return await operation?.Invoke()!;
         }
-        catch (ArgumentNullException ane)
+        catch (Exception e)
         {
-            return ReturnException(ane, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (ArgumentException ae)
-        {
-            return ReturnException(ae, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (PathTooLongException ptle)
-        {
-            return ReturnException(ptle, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (NotSupportedException nse)
-        {
-            return ReturnException(nse, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (UnauthorizedAccessException uae)
-        {
-            return ReturnException(uae, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (DirectoryNotFoundException dnfe)
-        {
-            return ReturnException(dnfe, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (FileNotFoundException fnfe)
-        {
-            return ReturnException(fnfe, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (SecurityException se)
-        {
-            return ReturnException(se, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (IOException ioe)
-        {
-            return ReturnException(ioe, filepath).WithError(GetGeneralError(nameof(SaveLocalXml), filepath));
+            return ReturnException(e, filepath).WithError(GetGeneralError(funcName, filepath));
         }
     }
     
@@ -520,41 +488,9 @@ public class StorageService : IStorageService
         {
             return await operation?.Invoke()!;
         }
-        catch (ArgumentNullException ane)
+        catch (Exception e)
         {
-            return ReturnException(ane, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (ArgumentException ae)
-        {
-            return ReturnException(ae, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (PathTooLongException ptle)
-        {
-            return ReturnException(ptle, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (NotSupportedException nse)
-        {
-            return ReturnException(nse, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (UnauthorizedAccessException uae)
-        {
-            return ReturnException(uae, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (DirectoryNotFoundException dnfe)
-        {
-            return ReturnException(dnfe, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (FileNotFoundException fnfe)
-        {
-            return ReturnException(fnfe, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (SecurityException se)
-        {
-            return ReturnException(se, filepath).WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (IOException ioe)
-        {
-            return ReturnException(ioe, filepath).WithError(GetGeneralError(nameof(SaveLocalXml), filepath));
+            return ReturnException(e, filepath).WithError(GetGeneralError(funcName, filepath));
         }
     }
     
@@ -564,50 +500,9 @@ public class StorageService : IStorageService
         {
             return operation?.Invoke();
         }
-        catch (ArgumentNullException ane)
+        catch (Exception e)
         {
-            return ReturnException(ane, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (ArgumentException ae)
-        {
-            return ReturnException(ae, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (PathTooLongException ptle)
-        {
-            return ReturnException(ptle, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (NotSupportedException nse)
-        {
-            return ReturnException(nse, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (UnauthorizedAccessException uae)
-        {
-            return ReturnException(uae, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (DirectoryNotFoundException dnfe)
-        {
-            return ReturnException(dnfe, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (FileNotFoundException fnfe)
-        {
-            return ReturnException(fnfe, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (SecurityException se)
-        {
-            return ReturnException(se, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (IOException ioe)
-        {
-            return ReturnException(ioe, filepath)
-                .WithError(GetGeneralError(nameof(SaveLocalXml), filepath));
+            return ReturnException(e, filepath).WithError(GetGeneralError(funcName, filepath));
         }
     }
     
@@ -617,50 +512,9 @@ public class StorageService : IStorageService
         {
             return operation?.Invoke();
         }
-        catch (ArgumentNullException ane)
+        catch (Exception e)
         {
-            return ReturnException(ane, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (ArgumentException ae)
-        {
-            return ReturnException(ae, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (PathTooLongException ptle)
-        {
-            return ReturnException(ptle, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (NotSupportedException nse)
-        {
-            return ReturnException(nse, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (UnauthorizedAccessException uae)
-        {
-            return ReturnException(uae, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (DirectoryNotFoundException dnfe)
-        {
-            return ReturnException(dnfe, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (FileNotFoundException fnfe)
-        {
-            return ReturnException(fnfe, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (SecurityException se)
-        {
-            return ReturnException(se, filepath)
-                .WithError(GetGeneralError(funcName, filepath));
-        }
-        catch (IOException ioe)
-        {
-            return ReturnException(ioe, filepath)
-                .WithError(GetGeneralError(nameof(SaveLocalXml), filepath));
+            return ReturnException(e, filepath).WithError(GetGeneralError(funcName, filepath));
         }
     }
     
