@@ -664,7 +664,7 @@ namespace Barotrauma
                 return;
             }
             
-            LuaScriptManagementService.ExecuteLoadedScriptsForPackages(luaRes);
+            LuaScriptManagementService.ExecuteLoadedScripts();
             
             if (CurrentRunState < RunState.Running)
                 _runState = RunState.Running;
