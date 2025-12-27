@@ -1,217 +1,171 @@
-﻿using Barotrauma.LuaCs.Data;
+﻿#nullable enable
+
+using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Services.Safe;
+using FluentResults;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
+using MoonSharp.Interpreter.Loaders;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Barotrauma.LuaCs.Services.Safe;
-using FluentResults;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using MoonSharp.Interpreter.Loaders;
 
 namespace Barotrauma.LuaCs.Services;
 
 public class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 {
-    public LuaScriptManagementService(ILuaScriptLoader loader, ILuaScriptServicesConfig luaScriptServicesConfig)
+    private Script? _script;
+    private bool _isRunning;
+    [MemberNotNullWhen(true, nameof(_script))]
+    public bool IsRunning => _isRunning;
+    private List<ILuaScriptResourceInfo> _resourcesInfo = new List<ILuaScriptResourceInfo>();
+    private readonly ILuaScriptLoader _luaScriptLoader;
+    private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
+    private readonly ILoggerService _loggerService;
+
+    public LuaScriptManagementService(ILoggerService loggerService, ILuaScriptLoader loader, ILuaScriptServicesConfig luaScriptServicesConfig)
     {
         _luaScriptLoader = loader;
         _luaScriptServicesConfig = luaScriptServicesConfig;
-    }
-    
-    private readonly ILuaScriptLoader  _luaScriptLoader;
-    private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
-    
-    public void Dispose()
-    {
-        _luaScriptLoader.Dispose();
+        _loggerService = loggerService;
     }
 
-    public bool IsDisposed
+    public bool IsDisposed { get; private set; }
+
+    public Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo)
     {
-        get => throw new NotImplementedException();
+        _resourcesInfo.AddRange(resourcesInfo.OrderBy(static r => r.LoadPriority));
+
+        // TODO disk caching
+
+        return Task.FromResult(FluentResults.Result.Ok());
     }
 
-    public FluentResults.Result Reset()
+    private void SetupEnvironment()
     {
-        throw new NotImplementedException();
-    }
+        _script = new Script(CoreModules.Preset_SoftSandbox | CoreModules.Debug | CoreModules.IO | CoreModules.OS_System);
+        _script.Options.DebugPrint = (string msg) =>
+        {
+            _loggerService.Log(msg);
+        };
+        _script.Options.ScriptLoader = _luaScriptLoader;
+        _script.Options.CheckThreadAccess = false;
 
-    public Result<object> GetGlobalTableValue(string tableName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo)
-    {
-        throw new NotImplementedException();
-    }
-
-    public FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package)
-    {
-        throw new NotImplementedException();
-    }
-
-    public FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages)
-    {
-        throw new NotImplementedException();
+        Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
     }
 
     public FluentResults.Result ExecuteLoadedScripts()
     {
-        throw new NotImplementedException();
+        if (_isRunning) 
+        { 
+            return FluentResults.Result.Fail("Tried to execute Lua scripts without unloading first."); 
+        }
+
+        SetupEnvironment();
+
+        _isRunning = true;
+
+        var result = FluentResults.Result.Ok();
+
+        foreach (var resource in _resourcesInfo)
+        {
+            foreach (var filePath in resource.FilePaths)
+            {
+                try
+                {
+                    _script?.Call(_script.LoadFile(filePath));
+                }
+                catch(Exception e)
+                {
+                    result = result.WithError(new ExceptionalError(e));
+                }
+            }
+        }
+
+        return result;
     }
 
-    public FluentResults.Result DisposePackageResources(ContentPackage package)
+    public DynValue? CallFunction(DynValue luaFunction, params object[] args)
     {
-        throw new NotImplementedException();
+        if (!IsRunning) { return null; }
+
+        lock (_script)
+        {
+            try
+            {
+                return _script.Call(luaFunction, args);
+            }
+            catch (Exception e)
+            {
+                _loggerService.HandleException(e);
+            }
+            return null;
+        }
     }
 
     public FluentResults.Result UnloadActiveScripts()
     {
-        throw new NotImplementedException();
+        _isRunning = false;
+
+        _script = null;
+
+        // todo unregister everything
+
+        return FluentResults.Result.Ok();
+    }
+
+    public FluentResults.Result DisposePackageResources(ContentPackage package)
+    {
+        return FluentResults.Result.Fail("Not supported for Lua");
     }
 
     public FluentResults.Result DisposeAllPackageResources()
     {
-        throw new NotImplementedException();
+        if (IsRunning)
+        {
+            UnloadActiveScripts();
+        }
+
+        _resourcesInfo.Clear();
+
+        return FluentResults.Result.Ok();
+    }
+
+    public FluentResults.Result Reset()
+    {
+        return DisposeAllPackageResources();
+    }
+
+    public void Dispose()
+    {
+        _luaScriptLoader.Dispose();
+        IsDisposed = true;
     }
 
     public IUserDataDescriptor RegisterType(Type type)
     {
-        throw new NotImplementedException();
+        return UserData.RegisterType(type);
     }
-
-    public IUserDataDescriptor RegisterGenericType(Type type)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IUserDataDescriptor GetTypeInfo(string typeName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IUserDataDescriptor GetGenericTypeInfo(string typeName, params string[] typeNameArgs)
-    {
-        throw new NotImplementedException();
-    }
-
     public void UnregisterType(Type type)
     {
-        throw new NotImplementedException();
+        UserData.UnregisterType(type, true);
     }
 
-    public bool IsRegistered(Type type)
+    public object? GetGlobalTableValue(string tableName)
     {
-        throw new NotImplementedException();
-    }
+        if (!IsRunning) { return null; }
 
-    public bool IsTargetType(object obj, string typeName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public string TypeOf(object obj)
-    {
-        throw new NotImplementedException();
-    }
-
-    public object CreateStatic(string typeName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public object CreateEnumTable(string typeName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public FieldInfo FindFieldRecursively(Type type, string fieldName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void MakeFieldAccessible(IUserDataDescriptor descriptor, string fieldName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public MethodInfo FindMethodRecursively(Type type, string methodName, Type[] types = null)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void MakeMethodAccessible(IUserDataDescriptor descriptor, string methodName, string[] parameters = null)
-    {
-        throw new NotImplementedException();
-    }
-
-    public PropertyInfo FindPropertyRecursively(Type type, string propertyName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void MakePropertyAccessible(IUserDataDescriptor descriptor, string propertyName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void AddMethod(IUserDataDescriptor descriptor, string methodName, object function)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void AddField(IUserDataDescriptor descriptor, string fieldName, DynValue value)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void RemoveMember(IUserDataDescriptor descriptor, string memberName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool HasMember(object obj, string memberName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public DynValue CreateUserDataFromDescriptor(DynValue scriptObject, IUserDataDescriptor descriptor)
-    {
-        throw new NotImplementedException();
-    }
-
-    public DynValue CreateUserDataFromType(DynValue scriptObject, Type desiredType)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Table GetObjectTable(object obj, string tableName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Table GetTable(string tableName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Table GetOrCreateObjectTable(object obj, string tableName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Table GetOrCreateTable(string tableName)
-    {
-        throw new NotImplementedException();
+        return _script.Globals[tableName];
     }
 }
