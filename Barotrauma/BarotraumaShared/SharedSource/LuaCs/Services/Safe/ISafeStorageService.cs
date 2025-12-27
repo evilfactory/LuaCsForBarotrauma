@@ -42,15 +42,4 @@ public interface ISafeStorageService : IStorageService
     /// Deletes all paths from all white lists.
     /// </summary>
     void ClearAllWhitelists();
-
-    /// <summary>
-    /// Whether the service instance is in file read-only mode.
-    /// </summary>
-    bool IsReadOnlyMode { get; }
-    
-    /// <summary>
-    /// Sets the service into file read-only mode. Cannot be undone.
-    /// </summary>
-    /// <returns></returns>
-    bool EnableReadOnlyMode();
 }

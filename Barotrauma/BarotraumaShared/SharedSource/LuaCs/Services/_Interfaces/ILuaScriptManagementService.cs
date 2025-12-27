@@ -25,22 +25,6 @@ public interface ILuaScriptManagementService : IReusableService
     Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo);
     
     /// <summary>
-    /// Executes cached scripts (code) for the given <see cref="ContentPackage"/>.
-    /// </summary>
-    /// <param name="package"></param>
-    /// <returns></returns>
-    // [Required]
-    FluentResults.Result ExecuteLoadedScriptsForPackage(ContentPackage package);
-    
-    /// <summary>
-    /// Executes cached scripts (code) for the given collection <see cref="ContentPackage"/>.
-    /// </summary>
-    /// <param name="packages"></param>
-    /// <returns></returns>
-    // [Required]
-    FluentResults.Result ExecuteLoadedScriptsForPackages(IEnumerable<ContentPackage> packages);
-    
-    /// <summary>
     /// 
     /// </summary>
     /// <returns></returns>
