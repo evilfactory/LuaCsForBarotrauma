@@ -12,6 +12,7 @@ using Barotrauma.LuaCs.Events;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.LuaCs.Services.Compatibility;
 using Barotrauma.LuaCs.Services.Processing;
+using Barotrauma.LuaCs.Services.Safe;
 using Barotrauma.Networking;
 using FluentResults;
 using ImpromptuInterface;
@@ -47,6 +48,7 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
+                _servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
                 
                 // TODO: IConfigService
@@ -64,6 +66,12 @@ namespace Barotrauma
                 _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConfigIOService, ConfigIOService>(ServiceLifetime.Transient);
                 
+                // service config data
+                _servicesProvider.RegisterServiceType<IStorageServiceConfig, StorageServiceConfig>(ServiceLifetime.Singleton);
+                _servicesProvider.RegisterServiceType<ILuaScriptServicesConfig, LuaScriptServicesConfig>(ServiceLifetime.Singleton);
+                _servicesProvider.RegisterServiceType<IConfigServiceConfig, ConfigServiceConfig>(ServiceLifetime.Singleton);
+                
+                // gen IL
                 _servicesProvider.Compile();
             }
 
@@ -702,7 +710,7 @@ namespace Barotrauma
         {
             EventService.ClearAllSubscribers();
             LuaScriptManagementService.UnloadActiveScripts();
-            PluginManagementService.UnloadAllAssemblyResources();
+            PluginManagementService.UnloadManagedAssemblies();
             SubscribeToLuaCsEvents();
 
             if (IsCodeRunning)

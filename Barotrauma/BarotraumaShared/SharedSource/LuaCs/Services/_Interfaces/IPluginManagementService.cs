@@ -10,33 +10,27 @@ namespace Barotrauma.LuaCs.Services;
 public interface IPluginManagementService : IReusableService
 {
     /// <summary>
-    /// Checks if the supplied resource is currently loaded.
+    /// Gets all  types in searched <see cref="IAssemblyLoaderService"/> that implement the type supplied.
     /// </summary>
-    /// <param name="resource">The resource to check.</param>
-    /// <returns></returns>
-    bool IsResourceLoaded<T>(T resource) where T : IAssemblyResourceInfo;
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="namespacePrefix"></param>
     /// <param name="includeInterfaces"></param>
     /// <param name="includeAbstractTypes"></param>
     /// <param name="includeDefaultContext"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     FluentResults.Result<ImmutableArray<Type>> GetImplementingTypes<T>(
-        string namespacePrefix = null,
         bool includeInterfaces = false,
         bool includeAbstractTypes = false,
         bool includeDefaultContext = true);
     
     /// <summary>
-    /// Tries to get the Type given the fully qualified name.
+    /// Tries to find the type given the fully qualified name and filters.
     /// </summary>
     /// <param name="typeName"></param>
+    /// <param name="isByRefType"></param>
+    /// <param name="includeInterfaces"></param>
+    /// <param name="includeDefaultContext"></param>
     /// <returns></returns>
-    Type GetType(string typeName);
+    Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false, bool includeDefaultContext = true);
 
     /// <summary>
     /// Loads the provided assembly resources in the order of their dependencies and intra-mod priority load order.
@@ -56,11 +50,9 @@ public interface IPluginManagementService : IReusableService
     IReadOnlyList<FluentResults.Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
         bool hostInstanceReference = false) where T : IDisposable;
     
-    FluentResults.Result UnloadHostedReferences();
-
     /// <summary>
-    /// Tries to gracefully unload all hosted plugin references 
+    /// Unloads all managed <see cref="IAssemblyPlugin"/>, <see cref="Assembly"/>, and <see cref="IAssemblyLoaderService"/>s.
     /// </summary>
-    /// <returns></returns>
-    FluentResults.Result UnloadAllAssemblyResources();
+    /// <returns>Success of the operation. <br/><b>Note: does not guarantee .NET runtime assembly unloading success.<b/></returns>
+    FluentResults.Result UnloadManagedAssemblies();
 }

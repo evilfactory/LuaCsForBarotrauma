@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -13,17 +14,26 @@ namespace Barotrauma.LuaCs;
 public interface IAssemblyLoaderService : IService
 {
     /// <summary>
-    /// Assembly loader factory for DI registration.
+    /// Constructor record for instancing.
     /// </summary>
-    /// <param name="assemblyManagementService">The assembly hosting management service.</param>
-    /// <param name="eventService">The event service for publishing.</param>
-    /// <param name="id">The referencing ID. Intended to be used to distinguish between instances.</param>
-    /// <param name="name">The name of the friendly name instance, used for error messages.</param>
-    /// <param name="isReferenceOnlyMode">Loaded assemblies are not intended for execution, just MetadataReferences.</param>
-    delegate IAssemblyLoaderService AssemblyLoaderDelegate(
-        IAssemblyManagementService assemblyManagementService, 
-        IEventService eventService, Guid id, string name, 
-        bool isReferenceOnlyMode, Action<AssemblyLoader> onUnload);
+    /// <param name="AssemblyManagementService"></param>
+    /// <param name="InstanceId"></param>
+    /// <param name="Name"></param>
+    /// <param name="IsReferenceMode">Assemblies and Types in this context are for <see cref="MetadataReference"/> only.
+    /// Execution of assembly data is forbidden.</param>
+    /// <param name="OwnerPackage"></param>
+    /// <param name="OnUnload"></param>
+    /// <param name="OnResolvingManaged"></param>
+    /// <param name="OnResolvingUnmanagedDll"></param>
+    public record LoaderInitData(
+        [Required][NotNull] IAssemblyManagementService AssemblyManagementService,
+        [Required] Guid InstanceId,
+        [Required][NotNull] string Name,
+        [Required] bool IsReferenceMode,
+        ContentPackage OwnerPackage,
+        Action<IAssemblyLoaderService> OnUnload,
+        Func<IAssemblyLoaderService, AssemblyName, Assembly> OnResolvingManaged,
+        Func<Assembly, string, IntPtr> OnResolvingUnmanagedDll);
     
     /// <summary>
     /// ID for this instance. 

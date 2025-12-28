@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.AccessControl;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 using FluentResults;
 
@@ -14,7 +15,8 @@ namespace Barotrauma.LuaCs.Data;
 
 
 // --- Storage Service
-public interface IStorageServiceConfig
+// TODO: Configs should not be services, add new registration path for them.
+public interface IStorageServiceConfig : IService
 {
     string LocalModsDirectory { get; }
     string WorkshopModsDirectory { get; }
@@ -176,10 +178,17 @@ public record StorageServiceConfig : IStorageServiceConfig, IStorageServiceConfi
 
         return result.WithSuccess($"Whitelist updated.");
     }
+
+    public void Dispose()
+    {
+        // cannot be disposed.
+    }
+
+    public bool IsDisposed => false;
 }
 
 // --- Config Service
-public interface IConfigServiceConfig
+public interface IConfigServiceConfig : IService
 {
     string LocalConfigPathPartial { get; }
     string FileNamePattern { get; }
@@ -189,11 +198,16 @@ public record ConfigServiceConfig : IConfigServiceConfig
 {
     public string LocalConfigPathPartial => $"/Config/{FileNamePattern}.xml";
     public string FileNamePattern => "<ConfigName>";
+    public void Dispose()
+    {
+        // ignored
+    }
+    public bool IsDisposed => false;
 }
 
 
 // --- Lua Scripts Service
-public interface ILuaScriptServicesConfig
+public interface ILuaScriptServicesConfig : IService
 {
     bool SafeLuaIOEnabled { get; }
     bool UseCaching { get; }
@@ -203,4 +217,10 @@ public record LuaScriptServicesConfig : ILuaScriptServicesConfig
 {
     public bool SafeLuaIOEnabled => true;
     public bool UseCaching => true;
+    public void Dispose()
+    {
+        // ignored
+    }
+
+    public bool IsDisposed => false;
 }

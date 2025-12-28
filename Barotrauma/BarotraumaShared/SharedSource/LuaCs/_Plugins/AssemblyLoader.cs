@@ -25,6 +25,7 @@ namespace Barotrauma.LuaCs.Services;
 public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 {
     public Guid Id { get; init; }
+    public ContentPackage OwnerPackage { get; private set; }
     public bool IsReferenceOnlyMode { get; init; }
     public bool IsDisposed
     {
@@ -55,8 +56,8 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     
     //internal
     private readonly IAssemblyManagementService _assemblyManagementService;
-    private readonly Action<AssemblyLoader> _onUnload;
-    private readonly Func<AssemblyLoadContext, AssemblyName, Assembly> _onResolvingManaged;
+    private readonly Action<IAssemblyLoaderService> _onUnload;
+    private readonly Func<IAssemblyLoaderService, AssemblyName, Assembly> _onResolvingManaged;
     private readonly Func<Assembly, string, IntPtr> _onResolvingUnmanagedDll;
     private readonly ConcurrentDictionary<string, AssemblyDependencyResolver> _dependencyResolvers = new();
     private readonly ConcurrentDictionary<AssemblyOrStringKey, AssemblyData> _loadedAssemblyData = new();
@@ -64,16 +65,16 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     private readonly ThreadLocal<bool> _isResolving = new(static()=>false); // cyclic resolution exit
     private readonly ThreadLocal<bool> _isResolvingNative = new(static () => false);
 
-    public AssemblyLoader(
-        IAssemblyManagementService assemblyManagementService, 
-        Guid id, string name, 
-        bool isReferenceOnlyMode, 
-        Action<AssemblyLoader> onUnload = null) 
-        : base(isCollectible: true, name: name)
+    public AssemblyLoader(IAssemblyLoaderService.LoaderInitData initData) 
+        : base(isCollectible: true, name: initData.Name)
     {
-        _assemblyManagementService = assemblyManagementService;
-        Id = id;
-        IsReferenceOnlyMode = isReferenceOnlyMode;
+        _assemblyManagementService = initData.AssemblyManagementService;
+        Id = initData.InstanceId;
+        IsReferenceOnlyMode = initData.IsReferenceMode;
+        this._onUnload = initData.OnUnload;
+        this._onResolvingManaged = initData.OnResolvingManaged;
+        this._onResolvingUnmanagedDll = initData.OnResolvingUnmanagedDll;
+        this.OwnerPackage = initData.OwnerPackage;
         base.Unloading += OnUnload;
         base.Resolving += OnResolvingManagedAssembly;
         base.ResolvingUnmanagedDll += OnResolvingUnmanagedDll;
@@ -138,6 +139,9 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 
         if (_isResolving.Value)
             return null;
+
+        if (assemblyLoadContext != this)
+            return null;
         
         AreOperationRunning = true;
         _isResolving.Value = true;
@@ -166,7 +170,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             {
                 try
                 {
-                    return _onResolvingManaged(assemblyLoadContext, assemblyName);
+                    return _onResolvingManaged(this, assemblyName);
                 }
                 catch
                 {

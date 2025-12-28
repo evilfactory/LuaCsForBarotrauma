@@ -134,7 +134,7 @@ public class ServicesProvider : IServicesProvider
             service = ServiceContainer.TryGetInstance<TSvcInterface>();
             return service is not null;
         }
-        catch
+        catch  
         {
             service = null;
             return false;

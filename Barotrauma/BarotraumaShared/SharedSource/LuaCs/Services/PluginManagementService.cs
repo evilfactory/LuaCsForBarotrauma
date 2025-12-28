@@ -10,96 +10,116 @@ using System.Runtime.Loader;
 using System.Threading;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Events;
 using FluentResults;
 using Microsoft.CodeAnalysis;
+using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
 
 public class PluginManagementService : IPluginManagementService, IAssemblyManagementService
 {
+    private readonly Func<IAssemblyLoaderService.LoaderInitData, IAssemblyLoaderService> _assemblyLoaderServiceFactory;
+    private readonly ConcurrentDictionary<ContentPackage, (List<IAssemblyResourceInfo> ResourceInfos, IAssemblyLoaderService Loader)> _packageAssemblyResources;
+    private readonly ConcurrentDictionary<ContentPackage, List<IDisposable>> _pluginInstances;
+    private readonly Lazy<IEventService> _eventService;
+    private readonly ConditionalWeakTable<IAssemblyLoaderService, ContentPackage> _unloadingAssemblyLoaders;
+    private readonly ConditionalWeakTable<Assembly, ConcurrentDictionary<string, Type>> _assemblyTypesCache;
+
+    public PluginManagementService(
+        Func<IAssemblyLoaderService.LoaderInitData, IAssemblyLoaderService> assemblyLoaderServiceFactory,
+        Lazy<IEventService> eventService)
+    {
+        _assemblyLoaderServiceFactory = assemblyLoaderServiceFactory;
+        _eventService = eventService;
+        AppDomain.CurrentDomain.AssemblyLoad += OnAssemblyLoadedGlobal;
+    }
+
+    private void OnAssemblyLoadedGlobal(object sender, AssemblyLoadEventArgs args)
+    {
+        // cache types by name
+        try
+        {
+            var context = AssemblyLoadContext.GetLoadContext(args.LoadedAssembly);
+            if (context is not IAssemblyLoaderService loaderService)
+                return;
+            _eventService.Value.PublishEvent<IEventAssemblyLoaded>(sub => sub.OnAssemblyLoaded(args.LoadedAssembly));
+            var lookupDict = new ConcurrentDictionary<string, Type>();
+            foreach (var type in args.LoadedAssembly.GetSafeTypes())
+            {
+                lookupDict[type.FullName ??  type.Name] = type;
+            }
+            _assemblyTypesCache.AddOrUpdate(args.LoadedAssembly, lookupDict);
+        }
+        catch (Exception e)
+        {
+            // ignored
+            return;
+        }
+    }
+
+    private int _isDisposed = 0;
     public bool IsDisposed
     {
         get => ModUtils.Threading.GetBool(ref _isDisposed);
-        set => ModUtils.Threading.SetBool(ref _isDisposed, value);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
     }
-    private int _isDisposed;
-    
-    private readonly ReaderWriterLockSlim _operationsLock = new(LockRecursionPolicy.SupportsRecursion);
-    
-    private readonly ConcurrentDictionary<Guid, IAssemblyLoaderService> _assemblyServices = new();
-    private readonly ConcurrentDictionary<IAssemblyResourceInfo, Guid> _resourceData = new();
-    private readonly Lazy<IEventService> _eventService;
-    private readonly Func<IAssemblyLoaderService> _assemblyServiceFactory;
-    private ImmutableDictionary<string, Type> _cachedTypes = null;
-    private ImmutableDictionary<string, Type> DefaultTypeCache => _cachedTypes ??= AssemblyLoadContext.Default.Assemblies
-        .SelectMany(ass => ass.GetSafeTypes()).ToImmutableDictionary(type => type.FullName, type => type);
 
-
-    public bool IsResourceLoaded<T>(T resource) where T : IAssemblyResourceInfo
+    public void Dispose()
     {
-        ((IService)this).CheckDisposed();
-        return _resourceData.ContainsKey(resource);
+        throw new NotImplementedException();
     }
 
-    public Result<ImmutableArray<Type>> GetImplementingTypes<T>(string namespacePrefix = null, bool includeInterfaces = false,
+    public FluentResults.Result Reset()
+    {
+        if (IsDisposed)
+            return FluentResults.Result.Fail($"{nameof(PluginManagementService)} is disposed!");
+
+        throw new NotImplementedException();
+    }
+
+    public Result<ImmutableArray<Type>> GetImplementingTypes<T>(bool includeInterfaces = false,
         bool includeAbstractTypes = false, bool includeDefaultContext = true)
     {
-        ((IService)this).CheckDisposed();
-        var types = ImmutableArray.CreateBuilder<Type>();
-        _operationsLock.EnterReadLock();
-        try
-        {
-            if (AssemblyLoaderServices.Any())
-            {
-                types.AddRange(AssemblyLoaderServices
-                    .SelectMany(als => als.UnsafeGetTypesInAssemblies())
-                    .Where(t => t is not null)
-                    .Where(type => typeof(T).IsAssignableFrom(type))
-                    .Where(type => includeInterfaces || !type.IsInterface)
-                    .Where(type => includeAbstractTypes || !type.IsAbstract)
-                    .Where(type => namespacePrefix is not null && type.FullName is not null && type.FullName.StartsWith(namespacePrefix)));
-            }
+        var builder = ImmutableArray.CreateBuilder<Type>();
 
-            if (includeDefaultContext)
-            {
-                types.AddRange(AssemblyLoadContext.Default.Assemblies
-                    .SelectMany(ass => ass.GetSafeTypes())
-                    .Where(t => t is not null)
-                    .Where(type => typeof(T).IsAssignableFrom(type))
-                    .Where(type => includeInterfaces || !type.IsInterface)
-                    .Where(type => includeAbstractTypes || !type.IsAbstract)
-                    .Where(type => namespacePrefix is not null && type.FullName is not null && type.FullName.StartsWith(namespacePrefix)));
-            }
-
-            return types.MoveToImmutable();
-        }
-        finally
+        if (this._packageAssemblyResources.Any())
         {
-            _operationsLock.ExitReadLock();
+            foreach (var resource in this._packageAssemblyResources
+                         .Where(res => !res.Value.Loader.IsReferenceOnlyMode))
+            {
+                builder.AddRange(resource.Value.Loader.Assemblies
+                    .SelectMany(assembly => assembly.GetSafeTypes())
+                    .Where(type => type.IsAssignableTo(typeof(T)))
+                    .Where(type => includeInterfaces || !type.IsInterface)
+                    .Where(type => includeAbstractTypes || !type.IsAbstract));
+            }
         }
+
+        if (includeDefaultContext)
+        {
+            builder.AddRange(AssemblyLoadContext.Default.Assemblies
+                .SelectMany(assembly => assembly.GetSafeTypes())
+                .Where(type => type.IsAssignableTo(typeof(T)))
+                .Where(type => includeInterfaces || !type.IsInterface)
+                .Where(type => includeAbstractTypes || !type.IsAbstract));
+        }
+        
+        return builder.Count == 0 
+            ? FluentResults.Result.Fail($"Failed to find any types that implement {typeof(T).Name})") 
+            : FluentResults.Result.Ok(builder.ToImmutable());
     }
 
-    public Type GetType(string typeName)
+    public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false,
+        bool includeDefaultContext = true)
     {
-        ((IService)this).CheckDisposed();
-        _operationsLock.EnterReadLock();
-        try
+        if (includeDefaultContext)
         {
-            if (DefaultTypeCache.TryGetValue(typeName, out var type))
-                return type;
-            if (AssemblyLoaderServices.None())
-                return null;
-            foreach (var loaderService in AssemblyLoaderServices)
-            {
-                if (loaderService.GetTypeInAssemblies(typeName) is { IsSuccess: true, Value: not null } ret)
-                    return ret.Value;
-            }
-            return null;
+            var type = Type.GetType(typeName, false);
         }
-        finally
-        {
-            _operationsLock.ExitReadLock();
-        }
+        
+        // TODO: implement by-ref type resolution
+        throw new NotImplementedException();
     }
 
     public Result<ImmutableArray<IAssemblyResourceInfo>> LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)
@@ -113,72 +133,20 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         throw new NotImplementedException();
     }
 
-    public FluentResults.Result UnloadHostedReferences()
+    public FluentResults.Result UnloadManagedAssemblies()
     {
         throw new NotImplementedException();
     }
 
-    public FluentResults.Result UnloadAllAssemblyResources()
+    public Result<Assembly> GetLoadedAssembly(OneOf<AssemblyName, string> assemblyName, in Guid[] excludedContexts)
     {
         throw new NotImplementedException();
     }
 
-    public Result<Assembly> GetLoadedAssembly(string assemblyName, in Guid[] excludedContexts)
+    public ImmutableArray<MetadataReference> GetDefaultMetadataReferences(bool includeDefaultContext = true)
     {
-        ((IService)this).CheckDisposed();
-        _operationsLock.EnterReadLock();
-        try
-        {
-            foreach (var (guid, context) in _assemblyServices)
-            {
-                if (excludedContexts.Length > 0 && excludedContexts.Contains(guid))
-                    continue;
-                if (context.GetAssemblyByName(assemblyName) is { IsSuccess: true, Value: not null } ret)
-                    return ret.Value;
-            }
-            return FluentResults.Result.Fail($"Could not find assembly {assemblyName}");
-        }
-        finally
-        {
-            _operationsLock.ExitReadLock();
-        }
-    }
-
-    public Result<Assembly> GetLoadedAssembly(AssemblyName assemblyName, in Guid[] excludedContexts) 
-        => GetLoadedAssembly(assemblyName.FullName, excludedContexts);
-
-    public ImmutableArray<MetadataReference> GetDefaultMetadataReferences() => 
-        Basic.Reference.Assemblies.Net60.References.All.Select(Unsafe.As<MetadataReference>).ToImmutableArray();
-
-    public ImmutableArray<MetadataReference> GetAddInContextsMetadataReferences()
-    {
-        ((IService)this).CheckDisposed();
-        _operationsLock.EnterReadLock();
-        try
-        {
-            if (_assemblyServices.IsEmpty)
-                return ImmutableArray<MetadataReference>.Empty;
-            var builder = ImmutableArray.CreateBuilder<MetadataReference>();
-            foreach (var context in _assemblyServices.Values)
-                builder.AddRange(context.AssemblyReferences);
-            return builder.ToImmutable();
-        }
-        finally
-        {
-            _operationsLock.ExitReadLock();
-        }
+        throw new NotImplementedException();
     }
 
     public ImmutableArray<IAssemblyLoaderService> AssemblyLoaderServices { get; }
-
-    public void Dispose()
-    {
-        // TODO release managed resources here
-        throw new NotImplementedException();
-    }
-    
-    public FluentResults.Result Reset()
-    {
-        throw new NotImplementedException();
-    }
 }
