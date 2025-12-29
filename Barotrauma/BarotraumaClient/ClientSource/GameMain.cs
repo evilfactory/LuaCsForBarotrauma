@@ -636,9 +636,6 @@ namespace Barotrauma
             HasLoaded = true;
 
             log("LOADING COROUTINE FINISHED");
-#if CLIENT
-            LuaCsInstaller.CheckUpdate();
-#endif
 
             contentLoaded = true;
             while (postContentLoadActions.TryDequeue(out Action action))
