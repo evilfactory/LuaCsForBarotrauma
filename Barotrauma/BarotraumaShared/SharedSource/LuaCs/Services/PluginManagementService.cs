@@ -12,6 +12,7 @@ using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Events;
 using FluentResults;
+using FluentResults.LuaCs;
 using Microsoft.CodeAnalysis;
 using OneOf;
 
@@ -135,7 +136,58 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
 
     public FluentResults.Result UnloadManagedAssemblies()
     {
-        throw new NotImplementedException();
+        var res = new FluentResults.Result();
+        
+        // cleanup managed plugins
+        if (_pluginInstances.Any())
+        {
+            foreach (var packageInstances in _pluginInstances)
+            {
+                if (!packageInstances.Value.Any())
+                    continue;
+                
+                foreach (var disposable in packageInstances.Value)
+                {
+                    try
+                    {
+                        disposable.Dispose();
+                    }
+                    catch (Exception e)
+                    {
+                        res = res.WithError(new ExceptionalError(e)
+                            .WithMetadata(MetadataType.ExceptionObject, this));
+                    }
+                }
+            }
+            _pluginInstances.Clear();
+        }
+        
+        _assemblyTypesCache.Clear();
+            
+        // cleanup running assembly contexts
+        if (_packageAssemblyResources.Any())
+        {
+            foreach (var resource in _packageAssemblyResources.ToImmutableDictionary())
+            {
+                if (resource.Value.Loader is not null)
+                {
+                    try
+                    {
+                        resource.Value.Loader.Dispose();
+                        _unloadingAssemblyLoaders.AddOrUpdate(resource.Value.Loader, resource.Key);
+                        _packageAssemblyResources.TryRemove(resource);
+                        _packageAssemblyResources.TryAdd(resource.Key, (resource.Value.ResourceInfos, null));
+                    }
+                    catch (Exception e)
+                    {
+                        res = res.WithError(new ExceptionalError(e)
+                            .WithMetadata(MetadataType.ExceptionObject, this));
+                    }
+                }
+            }
+        }
+
+        return res.WithSuccess($"Unloading of managed assemblies started successfully,");
     }
 
     public Result<Assembly> GetLoadedAssembly(OneOf<AssemblyName, string> assemblyName, in Guid[] excludedContexts)
