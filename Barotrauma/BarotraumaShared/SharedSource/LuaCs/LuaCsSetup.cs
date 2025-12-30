@@ -501,7 +501,7 @@ namespace Barotrauma
 
         void LoadStaticAssets()
         {
-            if (CurrentRunState <= RunState.Parsed)
+            if (CurrentRunState < RunState.Parsed)
             {
                 throw new InvalidOperationException($"{nameof(LoadStaticAssets)} cannot load assets in the '{CurrentRunState}' state.");
             }
