@@ -29,6 +29,21 @@ public partial class PackageManagementService : IPackageManagementService
     private readonly IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> _configProfilesConverter;
     private readonly IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> _luaScriptsConverter;
 
+    public PackageManagementService(
+        IConverterServiceAsync<ContentPackage, IModConfigInfo> modConfigParserService,
+        IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo> assemblyInfoConverter,
+        IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo> configsInfoConverter,
+        IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo> configProfilesConverter,
+        IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo> luaScriptsConverter,
+        IPackageInfoLookupService packageInfoLookupService)
+    {
+        _modConfigParserService = modConfigParserService;
+        _assemblyInfoConverter = assemblyInfoConverter;
+        _configsInfoConverter = configsInfoConverter;
+        _configProfilesConverter = configProfilesConverter;
+        _luaScriptsConverter = luaScriptsConverter;
+        _packageInfoLookupService = packageInfoLookupService;
+    }
 
     public void Dispose()
     {
