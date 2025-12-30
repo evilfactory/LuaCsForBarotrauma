@@ -68,7 +68,12 @@ public partial class LoggerService : ILoggerService
 
     public void LogWarning(string message)
     {
-        throw new NotImplementedException();
+        if (HideUserNames && !Environment.UserName.IsNullOrEmpty())
+        {
+            message = message.Replace(Environment.UserName, "USERNAME");
+        }
+
+        Log($"{message}", Color.Yellow, ServerLog.MessageType.ServerMessage);
     }
 
     public void LogMessage(string message, Color? serverColor = null, Color? clientColor = null)
@@ -131,7 +136,7 @@ public partial class LoggerService : ILoggerService
 
     public void LogResults(FluentResults.Result result)
     {
-        throw new NotImplementedException();
+        LogError("LogResults not implemented");
     }
 
     public void LogDebug(string message, Color? color = null)

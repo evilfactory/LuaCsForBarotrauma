@@ -400,20 +400,30 @@ namespace Barotrauma
                 return;
             if (runState > CurrentRunState)
             {
-                if (CurrentRunState < RunState.Parsed)
+                if (CurrentRunState <= RunState.Parsed)
+                {
                     LoadCurrentContentPackageInfos();
-                
-                if (runState <= CurrentRunState)
-                    return;
+                }
 
-                if (CurrentRunState < RunState.Configuration)
+                if (runState <= CurrentRunState)
+                {
+                    return;
+                }
+
+                if (CurrentRunState <= RunState.Configuration)
+                {
                     LoadStaticAssets();
+                }
 
                 if (runState <= CurrentRunState)
+                {
                     return;
+                }
 
-                if (CurrentRunState < RunState.Running)
+                if (CurrentRunState <= RunState.Running)
+                {
                     RunScripts();
+                }
             }
             else if (runState < CurrentRunState)
             {
@@ -423,18 +433,22 @@ namespace Barotrauma
                     ProcessPackagesListDifferences();
                     _runState = RunState.Configuration;
                 }
-                
+
                 if (runState >= CurrentRunState)
+                {
                     return;
+                }
 
                 if (CurrentRunState == RunState.Configuration)
                 {
                     UnloadStaticAssets();
                     _runState = RunState.Parsed;
                 }
-                
+
                 if (runState >= CurrentRunState)
+                {
                     return;
+                }
 
                 if (CurrentRunState == RunState.Parsed)
                 {
@@ -487,7 +501,7 @@ namespace Barotrauma
 
         void LoadStaticAssets()
         {
-            if (CurrentRunState < RunState.Parsed)
+            if (CurrentRunState <= RunState.Parsed)
             {
                 throw new InvalidOperationException($"{nameof(LoadStaticAssets)} cannot load assets in the '{CurrentRunState}' state.");
             }
