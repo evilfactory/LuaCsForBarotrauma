@@ -58,21 +58,11 @@ public partial class LoggerService : ILoggerService
 
     public void LogError(string message)
     {
-        if (HideUserNames && !Environment.UserName.IsNullOrEmpty())
-        {
-            message = message.Replace(Environment.UserName, "USERNAME");
-        }
-
         Log($"{message}", Color.Red, ServerLog.MessageType.Error);
     }
 
     public void LogWarning(string message)
     {
-        if (HideUserNames && !Environment.UserName.IsNullOrEmpty())
-        {
-            message = message.Replace(Environment.UserName, "USERNAME");
-        }
-
         Log($"{message}", Color.Yellow, ServerLog.MessageType.ServerMessage);
     }
 
@@ -90,6 +80,11 @@ public partial class LoggerService : ILoggerService
 
     public void Log(string message, Color? color = null, ServerLog.MessageType messageType = ServerLog.MessageType.ServerMessage)
     {
+        if (HideUserNames && !Environment.UserName.IsNullOrEmpty())
+        {
+            message = message.Replace(Environment.UserName, "USERNAME");
+        }
+
         DebugConsole.NewMessage(message, color);
 
 #if SERVER
@@ -136,7 +131,29 @@ public partial class LoggerService : ILoggerService
 
     public void LogResults(FluentResults.Result result)
     {
-        LogError("LogResults not implemented");
+        if (result == null)
+        {
+            LogError("Result is null");
+            return;
+        }
+
+        if (result.IsSuccess)
+        {
+            return;
+        }
+
+        foreach (var error in result.Errors)
+        {
+            LogError(error.Message);
+
+            if (error.Reasons != null)
+            {
+                foreach (var reason in error.Reasons)
+                {
+                    LogError($" - {reason.Message}");
+                }
+            }
+        }
     }
 
     public void LogDebug(string message, Color? color = null)
