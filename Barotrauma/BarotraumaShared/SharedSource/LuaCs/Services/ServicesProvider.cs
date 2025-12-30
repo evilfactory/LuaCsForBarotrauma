@@ -11,18 +11,14 @@ namespace Barotrauma.LuaCs.Services;
 public class ServicesProvider : IServicesProvider
 {
     private ServiceContainer _serviceContainerInst;
-    private ServiceContainer ServiceContainer
-    {
-        get
-        {
-            // ReSharper disable once ConvertIfStatementToNullCoalescingExpression
-            if (_serviceContainerInst is null)
-                _serviceContainerInst = new ServiceContainer();
-            return _serviceContainerInst;
-        }
-    }
+    private ServiceContainer ServiceContainer => _serviceContainerInst;
     
     private readonly ReaderWriterLockSlim _serviceLock = new();
+
+    public ServicesProvider()
+    {
+        _serviceContainerInst = new ServiceContainer();
+    }
     
     public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface
     {
@@ -39,9 +35,9 @@ public class ServicesProvider : IServicesProvider
                 // treat these as transient
                 case ServiceLifetime.Transient:
                 case ServiceLifetime.Invalid:
-                case ServiceLifetime.Custom:    // lifetime should not be null here
+                case ServiceLifetime.Custom:
                 default:
-                    lifetimeInstance = new PerRequestLifeTime();
+                    lifetimeInstance = null;
                     break;
             }
         }
@@ -49,7 +45,10 @@ public class ServicesProvider : IServicesProvider
         try
         {
             _serviceLock.EnterReadLock();
-            ServiceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
+            if (lifetimeInstance is not null)
+                ServiceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
+            else
+                ServiceContainer.Register<TSvcInterface, TService>();
             OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
         }
         finally
@@ -138,6 +137,19 @@ public class ServicesProvider : IServicesProvider
         {
             service = null;
             return false;
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
+    }
+
+    public TSvcInterface GetService<TSvcInterface>() where TSvcInterface : class, IService
+    {
+        try
+        {
+            _serviceLock.EnterReadLock();
+            return ServiceContainer.GetInstance<TSvcInterface>();
         }
         finally
         {

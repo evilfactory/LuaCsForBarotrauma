@@ -111,25 +111,20 @@ namespace Barotrauma
          */
         
         private readonly IServicesProvider _servicesProvider;
-        
-        public PerformanceCounterService PerformanceCounter => _servicesProvider.TryGetService<PerformanceCounterService>(out var svc)
-            ? svc : throw new NullReferenceException("Performance counter service not found!");
-        public ILoggerService Logger => _servicesProvider.TryGetService<ILoggerService>(out var svc) 
-            ? svc : throw new NullReferenceException("Logger service not found!");
-        public IConfigService ConfigService => _servicesProvider.TryGetService<IConfigService>(out var svc) 
-            ? svc : throw new NullReferenceException("Config Manager service not found!");
-        public IPackageManagementService PackageManagementService => _servicesProvider.TryGetService<IPackageManagementService>(out var svc) 
-            ? svc : throw new NullReferenceException("Package Manager service not found!");
-        public IPluginManagementService PluginManagementService => _servicesProvider.TryGetService<IPluginManagementService>(out var svc) 
-            ? svc : throw new NullReferenceException("Plugin Manager service not found!");
-        public ILuaScriptManagementService LuaScriptManagementService => _servicesProvider.TryGetService<ILuaScriptManagementService>(out var svc) 
-            ? svc : throw new NullReferenceException("Lua Script Manager service not found!");
-        public INetworkingService NetworkingService => _servicesProvider.TryGetService<INetworkingService>(out var svc) 
-            ? svc : throw new NullReferenceException("Networking Manager service not found!");
-        public IEventService EventService => _servicesProvider.TryGetService<IEventService>(out var svc) 
-            ? svc : throw new NullReferenceException("Networking Manager service not found!");
-        public LuaGame Game => _servicesProvider.TryGetService<LuaGame>(out var svc)
-            ? svc : throw new NullReferenceException("LuaGame service not found!");
+
+        public PerformanceCounterService PerformanceCounter => 
+            _servicesProvider.GetService<PerformanceCounterService>();
+        public ILoggerService Logger => _servicesProvider.GetService<ILoggerService>();
+        public IConfigService ConfigService => _servicesProvider.GetService<IConfigService>();
+        public IPackageManagementService PackageManagementService =>
+            _servicesProvider.GetService<IPackageManagementService>();
+        public IPluginManagementService PluginManagementService =>
+            _servicesProvider.GetService<IPluginManagementService>();
+        public ILuaScriptManagementService LuaScriptManagementService =>
+            _servicesProvider.GetService<ILuaScriptManagementService>();
+        public INetworkingService NetworkingService => _servicesProvider.GetService<INetworkingService>();
+        public IEventService EventService => _servicesProvider.GetService<IEventService>();
+        public LuaGame Game => _servicesProvider.GetService<LuaGame>();
 
         /*
          * === Config Vars 

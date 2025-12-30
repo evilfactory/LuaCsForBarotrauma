@@ -63,6 +63,13 @@ public interface IServicesProvider
     bool TryGetService<TSvcInterface>(out TSvcInterface service) where TSvcInterface : class, IService;
     
     /// <summary>
+    /// Tries to get a service for the given interface, throws an exception upon failure.
+    /// </summary>
+    /// <typeparam name="TSvcInterface"></typeparam>
+    /// <returns></returns>
+    TSvcInterface GetService<TSvcInterface>() where TSvcInterface : class, IService;
+    
+    /// <summary>
     /// Tries to get a service for the given name and interface, returns success/failure.
     /// </summary>
     /// <param name="name"></param>
