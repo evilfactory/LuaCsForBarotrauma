@@ -39,10 +39,9 @@ public interface IPackageManagementService : IReusableService, IConfigsResources
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     ImmutableArray<T> FilterUnloadableResources<T>(IReadOnlyList<T> resources, bool enabledPackagesOnly = false)
-        where T : IResourceInfo, IResourceCultureInfo, IPackageDependenciesInfo;
+        where T : IResourceInfo;
     void DisposePackageInfos(ContentPackage package);
     void DisposePackagesInfos(IReadOnlyList<ContentPackage> packages);
-    FluentResults.Result<IPackageDependency> GetPackageDependencyInfo(ContentPackage ownerPackage, string packageName, ulong steamWorkshopId);
     
     // single
     FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true);

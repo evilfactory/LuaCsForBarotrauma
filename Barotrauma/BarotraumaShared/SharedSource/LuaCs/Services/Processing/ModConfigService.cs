@@ -92,25 +92,20 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         
         foreach (var file in xmlFiles)
         {
-            // get dependencies
-            var deps = GetElementsDependenciesData(file.Item1, src);
             // get platform, culture and target architecture
             var info = GetElementsAttributesData(file.Item1, file.Item2.First());
             
             builder.Add(new AssemblyResourceInfo()
             {
-                Dependencies = deps,
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
-                SupportedCultures = info.SupportedCultures,
                 SupportedPlatforms = info.SupportedPlatforms,
                 SupportedTargets = info.SupportedTargets,
                 FriendlyName = file.Item1.GetAttributeString("Name", info.Name),
-                IsScript = false,
-                LazyLoad = !file.Item1.GetAttributeBool("RunFile", true)
+                IsScript = false
             });
         }
         
@@ -120,25 +115,20 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         
         foreach (var file in xmlFiles2)
         {
-            // get dependencies
-            var deps = GetElementsDependenciesData(file.Item1, src);
             // get platform, culture and target architecture
             var info = GetElementsAttributesData(file.Item1, file.Item2.First());
             
             builder.Add(new AssemblyResourceInfo()
             {
-                Dependencies = deps,
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
-                SupportedCultures = info.SupportedCultures,
                 SupportedPlatforms = info.SupportedPlatforms,
                 SupportedTargets = info.SupportedTargets,
                 FriendlyName = file.Item1.GetAttributeString("Name", info.Name),
-                IsScript = true,
-                LazyLoad = !file.Item1.GetAttributeBool("RunFile", true)
+                IsScript = true
             });
         }
         
@@ -156,20 +146,16 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         
         foreach (var file in xmlFiles)
         {
-            // get dependencies
-            var deps = GetElementsDependenciesData(file.Item1, src);
             // get platform, culture and target architecture
             var info = GetElementsAttributesData(file.Item1, file.Item2.First());
             
             builder.Add(new ConfigResourceInfo()
             {
-                Dependencies = deps,
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
-                SupportedCultures = info.SupportedCultures,
                 SupportedPlatforms = info.SupportedPlatforms,
                 SupportedTargets = info.SupportedTargets
             });
@@ -189,20 +175,16 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         
         foreach (var file in xmlFiles)
         {
-            // get dependencies
-            var deps = GetElementsDependenciesData(file.Item1, src);
             // get platform, culture and target architecture
             var info = GetElementsAttributesData(file.Item1, file.Item2.First());
             
             builder.Add(new ConfigProfileResourceInfo()
             {
-                Dependencies = deps,
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
-                SupportedCultures = info.SupportedCultures,
                 SupportedPlatforms = info.SupportedPlatforms,
                 SupportedTargets = info.SupportedTargets
             });
@@ -222,20 +204,16 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         
         foreach (var file in xmlFiles)
         {
-            // get dependencies
-            var deps = GetElementsDependenciesData(file.Item1, src);
             // get platform, culture and target architecture
             var info = GetElementsAttributesData(file.Item1, file.Item2.First());
             
             builder.Add(new LuaScriptsResourceInfo()
             {
-                Dependencies = deps,
                 Optional = info.IsOptional,
                 FilePaths = file.Item2,
                 InternalName = info.Name,
                 LoadPriority = info.LoadPriority,
                 OwnerPackage = src,
-                SupportedCultures = info.SupportedCultures,
                 SupportedPlatforms = info.SupportedPlatforms,
                 SupportedTargets = info.SupportedTargets,
                 IsAutorun = file.Item1.GetAttributeBool("RunFile", true)
@@ -348,30 +326,6 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
                 : new[] { CultureInfo.InvariantCulture }.ToImmutableArray();
         }
     }
-
-    private ImmutableArray<IPackageDependency> GetElementsDependenciesData(XElement element, ContentPackage src)
-    {
-        if (element.GetChildElement("Dependencies") is not {} dependencies
-            || dependencies.GetChildElements("Dependency").ToImmutableArray() is not { Length: >0 } depsList)
-            return ImmutableArray<IPackageDependency>.Empty;
-        var builder = ImmutableArray.CreateBuilder<IPackageDependency>();
-        foreach (var dep in depsList)
-        {
-            var packName = dep.GetAttributeString("PackageName", string.Empty);
-            var packId = dep.GetAttributeUInt64("PackageId", 0);
-            
-            // invalid entry
-            if (packName.IsNullOrWhiteSpace() && packId == 0)
-                continue;
-
-            if (_packageManagementService.Value.GetPackageDependencyInfo(src, packName, packId) is
-                { IsSuccess: true, Value: { } depsInfo })
-            {
-                builder.Add(depsInfo);
-            }
-        }
-        return builder.ToImmutable();
-    }
     
     private ImmutableArray<IAssemblyResourceInfo> GetAssembliesLegacy(ContentPackage src)
         {
@@ -382,16 +336,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesSrvLin,
                     FriendlyName = "AssembliesServerLinux",
                     InternalName = "AssembliesServerLinux",
                     IsScript = false,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.Linux,
                     SupportedTargets = Target.Server
                 });
@@ -403,16 +354,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesSrvOsx,
                     FriendlyName = "AssembliesServerOSX",
                     InternalName = "AssembliesServerOSX",
                     IsScript = false,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.OSX,
                     SupportedTargets = Target.Server
                 });
@@ -424,16 +372,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesSrvWin,
                     FriendlyName = "AssembliesServerWin",
                     InternalName = "AssembliesServerWin",
                     IsScript = false,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.Windows,
                     SupportedTargets = Target.Server
                 });
@@ -445,16 +390,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesCliLin,
                     FriendlyName = "AssembliesClientLinux",
                     InternalName = "AssembliesClientLinux",
                     IsScript = false,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.Linux,
                     SupportedTargets = Target.Client
                 });
@@ -466,16 +408,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesCliOsx,
                     FriendlyName = "AssembliesClientOSX",
                     InternalName = "AssembliesClientOSX",
                     IsScript = false,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.OSX,
                     SupportedTargets = Target.Client
                 });
@@ -487,16 +426,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = filesCliWin,
                     FriendlyName = "AssembliesClientWin",
                     InternalName = "AssembliesClientWin",
                     IsScript = false,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.Windows,
                     SupportedTargets = Target.Client
                 });
@@ -518,16 +454,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths =  sharedFound ? filesCssServer.Concat(filesCssShared).ToImmutableArray() : filesCssServer,
                     FriendlyName = "CssServer",
                     InternalName = "CssServer",
                     IsScript = true,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.Linux | Platform.OSX | Platform.Windows,
                     SupportedTargets = Target.Server
                 });
@@ -539,16 +472,13 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
             {
                 builder.Add(new AssemblyResourceInfo()
                 {
-                    Dependencies = ImmutableArray<IPackageDependency>.Empty,
                     FilePaths = sharedFound ? filesCssClient.Concat(filesCssShared).ToImmutableArray() : filesCssClient,
                     FriendlyName = "CssClient",
                     InternalName = "CssClient",
                     IsScript = true,
-                    LazyLoad = false,
                     LoadPriority = 1,
                     Optional = false,
                     OwnerPackage = src,
-                    SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                     SupportedPlatforms = Platform.Linux | Platform.OSX | Platform.Windows,
                     SupportedTargets = Target.Client
                 });
@@ -565,26 +495,22 @@ public partial class ModConfigService : IConverterServiceAsync<ContentPackage, I
         {
             builder.Add(new LuaScriptsResourceInfo()
             {
-                Dependencies = ImmutableArray<IPackageDependency>.Empty,
                 FilePaths = fileAll.Where(path => !path.Contains("Autorun")).ToImmutableArray(),
                 InternalName = "LuaScriptsNormal",
                 Optional = false,
                 IsAutorun = false,
                 OwnerPackage = src,
-                SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                 SupportedPlatforms = Platform.Linux | Platform.OSX | Platform.Windows,
                 SupportedTargets = Target.Client | Target.Server
             });
             
             builder.Add(new LuaScriptsResourceInfo()
             {
-                Dependencies = ImmutableArray<IPackageDependency>.Empty,
                 FilePaths = fileAll.Where(path => path.Contains("Autorun")).ToImmutableArray(),
                 InternalName = "LuaScriptsAutorun",
                 Optional = false,
                 IsAutorun = true,
                 OwnerPackage = src,
-                SupportedCultures = new CultureInfo[]{ CultureInfo.InvariantCulture }.ToImmutableArray(),
                 SupportedPlatforms = Platform.Linux | Platform.OSX | Platform.Windows,
                 SupportedTargets = Target.Client | Target.Server
             });

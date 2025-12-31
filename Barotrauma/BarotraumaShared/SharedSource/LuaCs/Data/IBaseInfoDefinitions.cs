@@ -37,22 +37,11 @@ public interface IResourceInfo : IPlatformInfo
     /// Resource absolute file paths.
     /// </summary>
     [Required]
-    ImmutableArray<string> FilePaths { get; }
+    ImmutableArray<ContentPath> FilePaths { get; }
     
     /// <summary>
     /// Marks this resource as optional (ie. Cross-CP content). Setting this to true will allow the dependency system to
     /// try and order the loading but not fail if it runs into circular dependency issues.
     /// </summary>
     bool Optional { get; }
-}
-
-/// <summary>
-/// Information about supported cultures. It is intended to be ignored if the array is ImmutableArray.Empty .
-/// </summary>
-public interface IResourceCultureInfo
-{
-    /// <summary>
-    /// List of supported cultures by this resource.
-    /// </summary>
-    ImmutableArray<CultureInfo> SupportedCultures { get; }
 }
