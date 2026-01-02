@@ -40,7 +40,6 @@ namespace Barotrauma
             void RegisterServices()
             {
                 _servicesProvider.RegisterServiceType<IPackageListRetrievalService, PackageListRetrievalService>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IPackageInfoLookupService, ContentPackageInfoLookup>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
@@ -55,15 +54,9 @@ namespace Barotrauma
                 // TODO: INetworkingService
                 // TODO: [Resource Converter/Parser Services]
                 
-                // IResourceInfo wrappers and mutators.
-                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IAssemblyResourceInfo>, IAssembliesResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IConfigResourceInfo>, IConfigsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<IConfigProfileResourceInfo>, IConfigProfilesResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IProcessorService<IReadOnlyList<ILuaScriptResourceInfo>, ILuaScriptsResourcesInfo>, ResourceInfoArrayPacker>(ServiceLifetime.Transient);
-                
                 // Loaders and Processors (yes the naming is reversed, oops).
-                _servicesProvider.RegisterServiceType<IConverterService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IConverterServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IParserService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IParserServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<IConfigIOService, ConfigIOService>(ServiceLifetime.Transient);
                 
                 // service config data

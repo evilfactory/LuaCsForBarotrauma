@@ -1,25 +1,24 @@
 <Project>
-  <ItemGroup>
-    <PackageReference Include="Luatrauma.Internal.AssemblyPublicizer.MSBuild" Version="0.1.4" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
-    <PackageReference Include="HarmonyX" Version="2.13.0" />
-    <PackageReference Include="Sigil" Version="5.0.0" />
-    <PackageReference Include="LightInject" Version="6.6.4" />
-    <PackageReference Include="QuikGraph" Version="2.5.0" />
-    <PackageReference Include="OneOf" Version="3.0.271" />
-    <PackageReference Include="FluentResults" Version="3.16.0" />
-    <PackageReference Include="Basic.Reference.Assemblies.Net60" Version="1.7.9" />
-    <PackageReference Include="ImpromptuInterface " Version="8.0.4" />
-    <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\Libraries\moonsharp\MoonSharp.Interpreter\MoonSharp.Interpreter.csproj" />
-    <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\Libraries\moonsharp\MoonSharp.VsCodeDebugger\MoonSharp.VsCodeDebugger.csproj" />
-  </ItemGroup>
-
-  <!--
+    <ItemGroup>
+        <PackageReference Include="Luatrauma.Internal.AssemblyPublicizer.MSBuild" Version="0.1.4" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
+        <PackageReference Include="HarmonyX" Version="2.13.0" />
+        <PackageReference Include="Sigil" Version="5.0.0" />
+        <PackageReference Include="LightInject" Version="6.6.4" />
+        <PackageReference Include="OneOf" Version="3.0.271" />
+        <PackageReference Include="FluentResults" Version="3.16.0" />
+        <PackageReference Include="Basic.Reference.Assemblies.Net60" Version="1.7.9" />
+        <PackageReference Include="ImpromptuInterface " Version="8.0.4" />
+        <PackageReference Include="Microsoft.Toolkit.Diagnostics" Version="7.1.2"/>
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\Libraries\moonsharp\MoonSharp.Interpreter\MoonSharp.Interpreter.csproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\Libraries\moonsharp\MoonSharp.VsCodeDebugger\MoonSharp.VsCodeDebugger.csproj" />
+    </ItemGroup>
+    <!--
     The `Microsoft.CodeAnalysis.CSharp.Scripting` package includes satellites
     assemblies, which end up polluting the build folder.
     This suppresses the extra satellite assemblies.
-  -->
-  <PropertyGroup>
-    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-  </PropertyGroup>
+    -->
+    <PropertyGroup>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    </PropertyGroup>
 </Project>

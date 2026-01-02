@@ -53,7 +53,7 @@ public interface IStorageService : IService
     ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
     ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
     FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively);
-    FluentResults.Result<string> GetAbsFromPackage(ContentPackage package, string localFilePath);
+    FluentResults.Result<string> GetAbsoluePathFromPackage(ContentPackage package, string localFilePath);
     // async
     // singles
     Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath);

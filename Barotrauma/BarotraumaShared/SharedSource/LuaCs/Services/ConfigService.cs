@@ -24,11 +24,11 @@ namespace Barotrauma.LuaCs.Services;
 public partial class ConfigService : IConfigService
 {
     //--- Internals
-    public ConfigService(IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> configProfileResourceConverter, 
-        IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> configResourceConverter, IEventService eventService, System.Lazy<IStorageService> storageService)
+    public ConfigService(IParserServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> configProfileResourceParser, 
+        IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> configResourceParser, IEventService eventService, System.Lazy<IStorageService> storageService)
     {
-        _configProfileResourceConverter = configProfileResourceConverter;
-        _configResourceConverter = configResourceConverter;
+        _configProfileResourceParser = configProfileResourceParser;
+        _configResourceParser = configResourceParser;
         _eventService = eventService;
         _storageService = storageService;
         this._base = this;
@@ -47,8 +47,8 @@ public partial class ConfigService : IConfigService
     private readonly AsyncReaderWriterLock _disposeOpsLock = new();
     
     // extern services
-    private readonly IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> _configResourceConverter;
-    private readonly IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> _configProfileResourceConverter;
+    private readonly IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> _configResourceParser;
+    private readonly IParserServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> _configProfileResourceParser;
     private readonly IEventService _eventService;
     private readonly System.Lazy<IStorageService> _storageService;
     
@@ -318,7 +318,7 @@ public partial class ConfigService : IConfigService
         if (configResources.IsDefaultOrEmpty)
             return FluentResults.Result.Fail($"{nameof(LoadConfigsAsync)}: Array is empty.");
             
-        var results = await _configResourceConverter.TryParseResourcesAsync(configResources);
+        var results = await _configResourceParser.TryParseResourcesAsync(configResources);
         var ret = new FluentResults.Result();
         
         foreach (var result in results)
@@ -365,7 +365,7 @@ public partial class ConfigService : IConfigService
         if (configProfileResources.IsDefaultOrEmpty)
             return FluentResults.Result.Fail($"{nameof(LoadConfigsProfilesAsync)}: Array is empty.");
             
-        var results = await _configProfileResourceConverter.TryParseResourcesAsync(configProfileResources);
+        var results = await _configProfileResourceParser.TryParseResourcesAsync(configProfileResources);
         var ret = new FluentResults.Result();
         
         foreach (var result in results)

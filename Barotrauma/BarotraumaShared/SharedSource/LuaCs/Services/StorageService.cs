@@ -15,6 +15,7 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.Steam;
 using FluentResults;
 using FluentResults.LuaCs;
+using Microsoft.Toolkit.Diagnostics;
 using Error = FluentResults.Error;
 using Path = Barotrauma.IO.Path;
 
@@ -98,49 +99,49 @@ public class StorageService : IStorageService
     }
 
     public virtual FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath) =>
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadXml(r.Value) : r.ToResult();
     public virtual FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadBinary(r.Value) : r.ToResult();
     public virtual FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadText(r.Value) : r.ToResult();
     public virtual FluentResults.Result SaveLocalXml(ContentPackage package, string localFilePath, XDocument document) =>
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? TrySaveXml(r.Value, document) : r.ToResult();
     public virtual FluentResults.Result SaveLocalBinary(ContentPackage package, string localFilePath, in byte[] bytes) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? TrySaveBinary(r.Value, bytes) : r.ToResult();
     public virtual FluentResults.Result SaveLocalText(ContentPackage package, string localFilePath, in string text) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? TrySaveText(r.Value, text) : r.ToResult();
     public virtual async Task<FluentResults.Result<XDocument>> LoadLocalXmlAsync(ContentPackage package, string localFilePath) =>
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadXmlAsync(r.Value) : r.ToResult();
     public virtual async Task<FluentResults.Result<byte[]>> LoadLocalBinaryAsync(ContentPackage package, string localFilePath) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadBinaryAsync(r.Value) : r.ToResult();
     public virtual async Task<FluentResults.Result<string>> LoadLocalTextAsync(ContentPackage package, string localFilePath) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadTextAsync(r.Value) : r.ToResult();
     public virtual async Task<FluentResults.Result> SaveLocalXmlAsync(ContentPackage package, string localFilePath, XDocument document) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? await TrySaveXmlAsync(r.Value, document) : r.ToResult();
     public virtual async Task<FluentResults.Result> SaveLocalBinaryAsync(ContentPackage package, string localFilePath, byte[] bytes) => 
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? await TrySaveBinaryAsync(r.Value, bytes) : r.ToResult();
     public virtual async Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text) =>
-        GetAbsFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
+        GetAbsoluePathFromLocal(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null }
             ? await TrySaveTextAsync(r.Value, text) : r.ToResult();
     public virtual FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath) =>
-        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadXml(r.Value) : r.ToResult();
     public virtual FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath) => 
-        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadBinary(r.Value) : r.ToResult();
     public virtual FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath) => 
-        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? TryLoadText(r.Value) : r.ToResult();
     
     
@@ -181,7 +182,7 @@ public class StorageService : IStorageService
     public virtual FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively)
     {
         ((IService)this).CheckDisposed();
-        var r = GetAbsFromPackage(package, localSubfolder);
+        var r = GetAbsoluePathFromPackage(package, localSubfolder);
         if (r is { IsFailed: true })
             return r.ToResult();
         var builder = ImmutableArray.CreateBuilder<(string, FluentResults.Result<ImmutableArray<string>>)>();
@@ -192,15 +193,15 @@ public class StorageService : IStorageService
     }
 
     public virtual async Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath) =>
-        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadXmlAsync(r.Value) : r.ToResult();
 
     public virtual async Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath) =>
-        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadBinaryAsync(r.Value) : r.ToResult();
 
     public virtual async Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath) =>
-        GetAbsFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
+        GetAbsoluePathFromPackage(package, localFilePath) is var r && r is { IsSuccess: true, Value: not null } 
             ? await TryLoadTextAsync(r.Value) : r.ToResult();
 
     public virtual async Task<ImmutableArray<(string, FluentResults.Result<XDocument>)>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths)
@@ -529,7 +530,7 @@ public class StorageService : IStorageService
             .WithMetadata(MetadataType.ExceptionObject, this)
             .WithMetadata(MetadataType.Sources, localfp);
     
-    private FluentResults.Result<string> GetAbsFromLocal(ContentPackage package, string localFilePath)
+    private FluentResults.Result<string> GetAbsoluePathFromLocal(ContentPackage package, string localFilePath)
     {
         if (Path.IsPathRooted(localFilePath))
         {
@@ -539,13 +540,7 @@ public class StorageService : IStorageService
                     .WithMetadata(MetadataType.RootObject, localFilePath));
         }
 
-        if (package is null)
-        {
-            return new FluentResults.Result<string>().WithError(
-                new Error($"{nameof(GetAbsFromPackage)} The package reference for {localFilePath} is null!")
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, localFilePath));
-        }
+        Guard.IsNotNull(package, nameof(package));
         
         return new FluentResults.Result<string>().WithSuccess($"Path constructed")
             .WithValue(System.IO.Path.GetFullPath(System.IO.Path.Combine(
@@ -556,15 +551,9 @@ public class StorageService : IStorageService
             localFilePath)));
     }
 
-    public FluentResults.Result<string> GetAbsFromPackage(ContentPackage package, string localFilePath)
+    public FluentResults.Result<string> GetAbsoluePathFromPackage(ContentPackage package, string localFilePath)
     {
-        if (package is null)
-        {
-            return new FluentResults.Result<string>().WithError(
-                new Error($"{nameof(GetAbsFromPackage)} The package reference for {localFilePath} is null!")
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, localFilePath));
-        }
+        Guard.IsNotNull(package, nameof(package));
         
         if (localFilePath.IsNullOrWhiteSpace())
         {

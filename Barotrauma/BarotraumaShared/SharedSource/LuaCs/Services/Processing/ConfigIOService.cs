@@ -46,7 +46,7 @@ public class ConfigIOService : IConfigIOService
         
         try
         {
-            var infos = await _storageService.LoadPackageXmlFilesAsync(src.OwnerPackage, src.FilePaths);
+            var infos = await _storageService.LoadPackageXmlFilesAsync(src.OwnerPackage, [..src.FilePaths.Select(fp => fp.FullPath)]);
             if (infos.IsDefaultOrEmpty)
                 return FluentResults.Result.Fail($"{nameof(TryParseResourceAsync)}: No resources found.");
 

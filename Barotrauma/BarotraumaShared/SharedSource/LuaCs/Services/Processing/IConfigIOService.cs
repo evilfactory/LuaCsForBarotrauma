@@ -7,8 +7,8 @@ using Barotrauma.LuaCs.Services.Processing;
 namespace Barotrauma.LuaCs.Services.Processing;
 
 public interface IConfigIOService : IReusableService, 
-    IConverterServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>>,
-    IConverterServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>>
+    IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>>,
+    IParserServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>>
 {
     Task<FluentResults.Result> SaveConfigDataLocal(ContentPackage package, string configName, XElement serializedValue);
     Task<FluentResults.Result<OneOf.OneOf<string, XElement>>> LoadConfigDataFromLocal(ContentPackage package, string configName);
