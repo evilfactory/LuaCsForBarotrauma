@@ -78,13 +78,13 @@ public class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataS
 
         var result = FluentResults.Result.Ok();
 
-        foreach (var resource in _resourcesInfo)
+        foreach (ILuaScriptResourceInfo resource in _resourcesInfo)
         {
-            foreach (var filePath in resource.FilePaths)
+            foreach (ContentPath filePath in resource.FilePaths)
             {
                 try
                 {
-                    _script?.Call(_script.LoadFile(filePath));
+                    _script?.Call(_script.LoadFile(filePath.Value));
                 }
                 catch(Exception e)
                 {
