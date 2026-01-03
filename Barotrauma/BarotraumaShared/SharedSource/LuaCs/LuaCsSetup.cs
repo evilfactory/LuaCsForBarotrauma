@@ -54,10 +54,7 @@ namespace Barotrauma
                 // TODO: INetworkingService
                 // TODO: [Resource Converter/Parser Services]
                 
-                // Loaders and Processors (yes the naming is reversed, oops).
-                _servicesProvider.RegisterServiceType<IParserService<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IParserServiceAsync<ContentPackage, IModConfigInfo>, ModConfigService>(ServiceLifetime.Transient);
-                _servicesProvider.RegisterServiceType<IConfigIOService, ConfigIOService>(ServiceLifetime.Transient);
+                _servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);
                 
                 // service config data
                 _servicesProvider.RegisterServiceType<IStorageServiceConfig, StorageServiceConfig>(ServiceLifetime.Singleton);

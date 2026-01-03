@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Data;
 using FluentResults;
+using Microsoft.Toolkit.Diagnostics;
+using MoonSharp.VsCodeDebugger.SDK;
 
 namespace Barotrauma.LuaCs.Services.Processing;
 
@@ -33,7 +35,7 @@ public sealed class ModConfigService : IModConfigService
         _configProfileParserService = configProfileParserService;
     } 
     
-    #region Disposal
+    #region Dispose
 
     public void Dispose()
     {
@@ -44,15 +46,14 @@ public sealed class ModConfigService : IModConfigService
     public bool IsDisposed
     {
         get => ModUtils.Threading.GetBool(ref _isDisposed);
-        protected set => ModUtils.Threading.SetBool(ref _isDisposed, value);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
     }
 
     #endregion
 
     public async Task<Result<IModConfigInfo>> CreateConfigAsync(ContentPackage src)
     {
-        if (src is null)
-            ArgumentNullException.ThrowIfNull($"{nameof(CreateConfigAsync)}: Source is null.");
+        Guard.IsNotNull(src, nameof(src));
         
         if (await TryGetModConfigXmlAsync(src) is { IsSuccess: true, Value: { } config })
         {
@@ -64,20 +65,23 @@ public sealed class ModConfigService : IModConfigService
 
     public async Task<ImmutableArray<(ContentPackage Source, Result<IModConfigInfo> Config)>> CreateConfigsAsync(ImmutableArray<ContentPackage> src)
     {
-        var builder = ImmutableArray.CreateBuilder<(ContentPackage Source, Result<IModConfigInfo> Config)>();
+        var builder = new ConcurrentQueue<(ContentPackage Source, Result<IModConfigInfo> Config)>();
 
-        foreach (var package in src)
+        await src.ParallelForEachAsync(async package =>
         {
-            builder.Add((package, await CreateConfigAsync(package)));
-        }
-        
-        return builder.ToImmutable();
+            var res = await CreateConfigAsync(package);
+            builder.Enqueue((package, res));
+        });
+
+        return builder.OrderBy(pkg => src.IndexOf(pkg.Source)).ToImmutableArray();
     }
 
     //--- Helpers
     private async Task<Result<XElement>> TryGetModConfigXmlAsync(ContentPackage src)
     {
-        
+        return await _storageService.LoadPackageXmlAsync(src, "ModConfig.xml") is { IsSuccess: true, Value: { Root: {} config} } 
+            ? FluentResults.Result.Ok(config) 
+            : FluentResults.Result.Fail<XElement>("ModConfig.xml not found");
     }
 
     private async Task<Result<IModConfigInfo>> CreateFromConfigXmlAsync(XElement src)
