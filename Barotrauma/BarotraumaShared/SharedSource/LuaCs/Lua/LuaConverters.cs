@@ -1,17 +1,26 @@
-﻿/*
-using System;
+﻿using System;
 using MoonSharp.Interpreter;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Dynamics;
 using LuaCsCompatPatchFunc = Barotrauma.LuaCsPatch;
 using Barotrauma.Networking;
 using System.Collections.Immutable;
+using Barotrauma.LuaCs.Services;
 
 namespace Barotrauma
 {
-    partial class LuaCsSetup
+    public class LuaConverters
     {
-        private void RegisterLuaConverters()
+        private readonly Script _script;
+
+        public LuaConverters(Script script)
+        {
+            _script = script;
+        }
+
+        private DynValue Call(object function, params object[] arguments) => _script.Call(function, arguments);
+
+        public void RegisterLuaConverters()
         {
             RegisterAction<Item>();
             RegisterAction<Character>();
@@ -25,41 +34,40 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsAction), v => (LuaCsAction)(args =>
             {
-                if (v.Function.OwnerScript == Lua)
+                if (v.Function.OwnerScript == _script)
                 {
-                    CallLuaFunction(v.Function, args);
+                    Call(v.Function, args);
                 }
             }));
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsFunc), v => (LuaCsFunc)(args =>
             {
-                if (v.Function.OwnerScript == Lua)
+                if (v.Function.OwnerScript == _script)
                 {
-                    return CallLuaFunction(v.Function, args);
+                    return Call(v.Function, args);
                 }
                 return default;
             }));
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsCompatPatchFunc), v => (LuaCsCompatPatchFunc)((self, args) =>
             {
-                if (v.Function.OwnerScript == Lua)
+                if (v.Function.OwnerScript == _script)
                 {
-                    return CallLuaFunction(v.Function, self, args);
+                    return Call(v.Function, self, args);
                 }
                 return default;
             }));
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsPatchFunc), v => (LuaCsPatchFunc)((self, args) =>
             {
-                if (v.Function.OwnerScript == Lua)
+                if (v.Function.OwnerScript == _script)
                 {
-                    return CallLuaFunction(v.Function, self, args);
+                    return Call(v.Function, self, args);
                 }
                 return default;
             }));
 
 
-            DynValue Call(object function, params object[] arguments) => CallLuaFunction(function, arguments);
             void RegisterHandler<T>(Func<Closure, T> converter) => Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(T), v => converter(v.Function));
 
             RegisterHandler(f => (Character.OnDeathHandler)((a1, a2) => Call(f, a1, a2)));
@@ -229,7 +237,7 @@ namespace Barotrauma
             RegisterImmutableArray<FactionPrefab.HireableCharacter>();
         }
 
-        private void RegisterImmutableArray<T>()
+        private static void RegisterImmutableArray<T>()
         {
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Table, typeof(ImmutableArray<T>), v =>
             {
@@ -237,7 +245,7 @@ namespace Barotrauma
             });
         }
 
-        private void RegisterEither<T1, T2>()
+        private static void RegisterEither<T1, T2>()
         {
             DynValue convertEitherIntoDynValue(Either<T1, T2> either)
             {
@@ -275,7 +283,7 @@ namespace Barotrauma
             });
         }
 
-        private void RegisterOption<T>(DataType dataType)
+        private static void RegisterOption<T>(DataType dataType)
         {
             Script.GlobalOptions.CustomConverters.SetClrToScriptCustomConversion(typeof(Option<T>), (Script v, object obj) =>
             {
@@ -306,13 +314,13 @@ namespace Barotrauma
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(Action<T>), v =>
             {
                 var function = v.Function;
-                return (Action<T>)(p => CallLuaFunction(function, p));
+                return (Action<T>)(p => Call(function, p));
             });
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.ClrFunction, typeof(Action<T>), v =>
             {
                 var function = v.Function;
-                return (Action<T>)(p => CallLuaFunction(function, p));
+                return (Action<T>)(p => Call(function, p));
             });
         }
 
@@ -321,13 +329,13 @@ namespace Barotrauma
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(Action<T1, T2>), v =>
             {
                 var function = v.Function;
-                return (Action<T1, T2>)((a1, a2) => CallLuaFunction(function, a1, a2));
+                return (Action<T1, T2>)((a1, a2) => Call(function, a1, a2));
             });
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.ClrFunction, typeof(Action<T1, T2>), v =>
             {
                 var function = v.Function;
-                return (Action<T1, T2>)((a1, a2) => CallLuaFunction(function, a1, a2));
+                return (Action<T1, T2>)((a1, a2) => Call(function, a1, a2));
             });
         }
 
@@ -336,13 +344,13 @@ namespace Barotrauma
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(Action), v => 
             {
                 var function = v.Function;
-                return (Action)(() => CallLuaFunction(function));
+                return (Action)(() => Call(function));
             });
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.ClrFunction, typeof(Action), v =>
             {
                 var function = v.Function;
-                return (Action)(() => CallLuaFunction(function));
+                return (Action)(() => Call(function));
             });
         }
 
@@ -392,4 +400,3 @@ namespace Barotrauma
         }
     }
 }
-*/

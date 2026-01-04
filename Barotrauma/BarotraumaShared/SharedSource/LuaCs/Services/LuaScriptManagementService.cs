@@ -1,10 +1,13 @@
 ﻿#nullable enable
 
 using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Services.Compatibility;
 using Barotrauma.LuaCs.Services.Safe;
+using Barotrauma.Networking;
 using FluentResults;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using MonoMod.RuntimeDetour;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
 using MoonSharp.Interpreter.Loaders;
@@ -20,25 +23,46 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static Barotrauma.GameSettings;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
+class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 {
     private Script? _script;
     private bool _isRunning;
     [MemberNotNullWhen(true, nameof(_script))]
     public bool IsRunning => _isRunning;
     private List<ILuaScriptResourceInfo> _resourcesInfo = new List<ILuaScriptResourceInfo>();
+    
     private readonly ILuaScriptLoader _luaScriptLoader;
     private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
     private readonly ILoggerService _loggerService;
+    private readonly LuaGame _luaGame;
+    private readonly ILuaCsHook _luaCsHook;
+    private readonly ILuaCsNetworking _luaCsNetworking;
+    private readonly ILuaCsUtility _luaCsUtility;
+    private readonly ILuaCsTimer _luaCsTimer;
 
-    public LuaScriptManagementService(ILoggerService loggerService, ILuaScriptLoader loader, ILuaScriptServicesConfig luaScriptServicesConfig)
+    public LuaScriptManagementService(
+        ILoggerService loggerService, 
+        ILuaScriptLoader loader, 
+        ILuaScriptServicesConfig luaScriptServicesConfig,
+        LuaGame luaGame,
+        ILuaCsHook luaCsHook,
+        ILuaCsNetworking luaCsNetworking,
+        ILuaCsUtility luaCsUtility,
+        ILuaCsTimer luaCsTimer)
     {
         _luaScriptLoader = loader;
         _luaScriptServicesConfig = luaScriptServicesConfig;
         _loggerService = loggerService;
+
+        _luaGame = luaGame;
+        _luaCsHook = luaCsHook;
+        _luaCsNetworking = luaCsNetworking;
+        _luaCsUtility = luaCsUtility;
+        _luaCsTimer = luaCsTimer;
     }
 
     public bool IsDisposed { get; private set; }
@@ -63,6 +87,33 @@ public class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataS
         _script.Options.CheckThreadAccess = false;
 
         Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
+
+        RegisterType(typeof(LuaGame));
+        RegisterType(typeof(ILuaCsHook));
+        RegisterType(typeof(ILuaCsNetworking));
+        RegisterType(typeof(ILuaCsUtility));
+        RegisterType(typeof(ILuaCsTimer));
+        RegisterType(typeof(LuaCsFile));
+
+        new LuaConverters(_script).RegisterLuaConverters();
+
+        _script.Globals["printerror"] = (DynValue o) => { LuaCsLogger.LogError(o.ToString()); };
+
+        _script.Globals["dostring"] = (Func<string, Table, string, DynValue>)_script.DoString;
+        _script.Globals["load"] = (Func<string, Table, string, DynValue>)_script.LoadString;
+
+        _script.Globals["Game"] = _luaGame;
+        _script.Globals["Hook"] = _luaCsHook;
+        _script.Globals["Timer"] = _luaCsTimer;
+        _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
+        _script.Globals["Networking"] = _luaCsNetworking;
+        //_script.Globals["Steam"] = Steam;
+
+        _script.Globals["ExecutionNumber"] = 0;
+        _script.Globals["CSActive"] = false;
+
+        _script.Globals["SERVER"] = LuaCsSetup.IsServer;
+        _script.Globals["CLIENT"] = LuaCsSetup.IsClient;
     }
 
     public FluentResults.Result ExecuteLoadedScripts()

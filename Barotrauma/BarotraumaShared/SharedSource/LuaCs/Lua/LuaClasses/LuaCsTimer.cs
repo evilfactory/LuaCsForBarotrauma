@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs.Services.Compatibility;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Barotrauma
 {
-    public class LuaCsTimer
+    public class LuaCsTimer : ILuaCsTimer
     {
         public static double Time => Timing.TotalTime;
         public static double GetTime() => Time;
