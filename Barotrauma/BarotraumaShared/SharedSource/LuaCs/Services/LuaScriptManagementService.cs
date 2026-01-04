@@ -135,7 +135,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
             {
                 try
                 {
-                    _script?.Call(_script.LoadFile(filePath.Value));
+                    _script?.Call(_script.LoadFile(filePath.FullPath));
                 }
                 catch(Exception e)
                 {
