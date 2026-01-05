@@ -5,7 +5,7 @@ using System.Globalization;
 namespace Barotrauma.LuaCs.Data;
 
 
-public interface IBaseResourceInfo : IResourceInfo, IDataInfo {}
+public interface IBaseResourceInfo : IResourceInfo, IDataInfo, IDependencyInfo {}
 
 public interface IConfigResourceInfo : IBaseResourceInfo {}
 

@@ -6,6 +6,18 @@ using System.Globalization;
 
 namespace Barotrauma.LuaCs.Data;
 
+public interface IDependencyInfo
+{
+    /// <summary>
+    /// List of dependency packages required by this resource.
+    /// </summary>
+    ImmutableArray<Identifier> RequiredPackages { get; }
+    /// <summary>
+    /// List of packages incompatible with this resource.
+    /// </summary>
+    ImmutableArray<Identifier> IncompatiblePackages { get; }
+}
+
 public interface IPlatformInfo
 {
     /// <summary>

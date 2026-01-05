@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Xml.Linq;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -8,5 +9,10 @@ public partial interface IModConfigInfo : IAssembliesResourcesInfo,
 {
     // package info
     ContentPackage Package { get; }
-    string PackageName { get; }
 }
+
+public record ResourceParserInfo(
+    ContentPackage Owner,
+    XElement Element,
+    ImmutableArray<Identifier> Required,
+    ImmutableArray<Identifier> Incompatible);

@@ -14,10 +14,9 @@ namespace Barotrauma.LuaCs.Data;
 
 #region ModConfigurationInfo
 
-public partial record ModConfigInfo : IModConfigInfo
+public record ModConfigInfo : IModConfigInfo
 {
     public ContentPackage Package { get; init; }
-    public string PackageName { get; init; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; init; }
     public ImmutableArray<IConfigResourceInfo> Configs { get; init; }
@@ -42,6 +41,8 @@ public record BaseResourceInfo : IBaseResourceInfo
     public bool Optional { get; init; }
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
+    public ImmutableArray<Identifier> RequiredPackages { get; init; }
+    public ImmutableArray<Identifier> IncompatiblePackages { get; init; }
 }
 
 public record AssemblyResourceInfo : BaseResourceInfo, IAssemblyResourceInfo 
