@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Barotrauma.Networking;
 using Microsoft.Xna.Framework;
 using MoonSharp.Interpreter;
@@ -80,6 +81,8 @@ public partial class LoggerService : ILoggerService
 
     public void Log(string message, Color? color = null, ServerLog.MessageType messageType = ServerLog.MessageType.ServerMessage)
     {
+        // TODO: Make this thread Async compatible.
+        
         if (HideUserNames && !Environment.UserName.IsNullOrEmpty())
         {
             message = message.Replace(Environment.UserName, "USERNAME");
@@ -142,15 +145,18 @@ public partial class LoggerService : ILoggerService
             return;
         }
 
-        foreach (var error in result.Errors)
+        if (result.Errors.Any())
         {
-            LogError(error.Message);
-
-            if (error.Reasons != null)
+            foreach (var error in result.Errors)
             {
-                foreach (var reason in error.Reasons)
+                LogError(error.Message);
+
+                if (error.Reasons != null)
                 {
-                    LogError($" - {reason.Message}");
+                    foreach (var reason in error.Reasons)
+                    {
+                        LogError($" - {reason.Message}");
+                    }
                 }
             }
         }
