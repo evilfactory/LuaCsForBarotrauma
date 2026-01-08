@@ -112,7 +112,7 @@ public record StorageServiceConfig : IStorageServiceConfig, IStorageServiceConfi
 
     public string LocalDataSavePath => Path.Combine(ExecutionLocation, "/Data/Mods/");
 
-    public string LocalDataPathRegex => "<PACKAGENAME>";
+    public string LocalDataPathRegex => "%ModDir%";
 
     public string RunLocation => ExecutionLocation;
     public bool GlobalSafeIOEnabled => false;

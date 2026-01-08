@@ -9,8 +9,6 @@ public interface IBaseResourceInfo : IResourceInfo, IDataInfo, IDependencyInfo {
 
 public interface IConfigResourceInfo : IBaseResourceInfo {}
 
-public interface IConfigProfileResourceInfo :IBaseResourceInfo {}
-
 /// <summary>
 /// Represents loadable Lua files.
 /// </summary>
@@ -51,11 +49,6 @@ public interface ILuaScriptsResourcesInfo
 public interface IConfigsResourcesInfo
 {
     ImmutableArray<IConfigResourceInfo> Configs { get; }
-}
-
-public interface IConfigProfilesResourcesInfo
-{
-    ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; }
 }
 
 #endregion

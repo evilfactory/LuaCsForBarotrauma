@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using FluentResults;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -28,7 +29,7 @@ public interface IStorageService : IService
     /// <param name="absolutePaths"></param>
     void PurgeFilesFromCache(params string[] absolutePaths);
     
-    // -- local game folder storage
+    // -- local game folder storage 
     FluentResults.Result<XDocument> LoadLocalXml(ContentPackage package, string localFilePath);
     FluentResults.Result<byte[]> LoadLocalBinary(ContentPackage package, string localFilePath);
     FluentResults.Result<string> LoadLocalText(ContentPackage package, string localFilePath);
@@ -45,24 +46,23 @@ public interface IStorageService : IService
     
     // -- package directory
     // singles
-    FluentResults.Result<XDocument> LoadPackageXml(ContentPackage package, string localFilePath);
-    FluentResults.Result<byte[]> LoadPackageBinary(ContentPackage package, string localFilePath);
-    FluentResults.Result<string> LoadPackageText(ContentPackage package, string localFilePath);
+    Result<XDocument> LoadPackageXml(ContentPath filePath);
+    Result<byte[]> LoadPackageBinary(ContentPath filePath);
+    Result<string> LoadPackageText(ContentPath filePath);
     // collections
-    ImmutableArray<(string, FluentResults.Result<XDocument>)> LoadPackageXmlFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
-    ImmutableArray<(string, FluentResults.Result<byte[]>)> LoadPackageBinaryFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
-    ImmutableArray<(string, FluentResults.Result<string>)> LoadPackageTextFiles(ContentPackage package, ImmutableArray<string> localFilePaths);
+    ImmutableArray<(ContentPath, Result<XDocument>)> LoadPackageXmlFiles(ImmutableArray<ContentPath> filePaths);
+    ImmutableArray<(ContentPath, Result<byte[]>)> LoadPackageBinaryFiles(ImmutableArray<ContentPath> filePaths);
+    ImmutableArray<(ContentPath, Result<string>)> LoadPackageTextFiles(ImmutableArray<ContentPath> filePaths);
     FluentResults.Result<ImmutableArray<string>> FindFilesInPackage(ContentPackage package, string localSubfolder, string regexFilter, bool searchRecursively);
-    FluentResults.Result<string> GetAbsoluePathFromPackage(ContentPackage package, string localFilePath);
     // async
     // singles
-    Task<FluentResults.Result<XDocument>> LoadPackageXmlAsync(ContentPackage package, string localFilePath);
-    Task<FluentResults.Result<byte[]>> LoadPackageBinaryAsync(ContentPackage package, string localFilePath);
-    Task<FluentResults.Result<string>> LoadPackageTextAsync(ContentPackage package, string localFilePath);
+    Task<Result<XDocument>> LoadPackageXmlAsync(ContentPath filePath);
+    Task<Result<byte[]>> LoadPackageBinaryAsync(ContentPath filePath);
+    Task<Result<string>> LoadPackageTextAsync(ContentPath filePath);
     // collections
-    Task<ImmutableArray<(string, FluentResults.Result<XDocument>)>> LoadPackageXmlFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
-    Task<ImmutableArray<(string, FluentResults.Result<byte[]>)>> LoadPackageBinaryFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
-    Task<ImmutableArray<(string, FluentResults.Result<string>)>> LoadPackageTextFilesAsync(ContentPackage package, ImmutableArray<string> localFilePaths);
+    Task<ImmutableArray<(ContentPath, Result<XDocument>)>> LoadPackageXmlFilesAsync(ImmutableArray<ContentPath> filePaths);
+    Task<ImmutableArray<(ContentPath, Result<byte[]>)>> LoadPackageBinaryFilesAsync(ImmutableArray<ContentPath> filePaths);
+    Task<ImmutableArray<(ContentPath, Result<string>)>> LoadPackageTextFilesAsync(ImmutableArray<ContentPath> filePaths);
     
     // -- absolute paths
     FluentResults.Result<XDocument> TryLoadXml(string filePath, Encoding encoding = null);

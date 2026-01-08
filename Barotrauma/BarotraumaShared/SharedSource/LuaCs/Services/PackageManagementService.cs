@@ -27,7 +27,6 @@ public partial class PackageManagementService : IPackageManagementService
     }
 
     public ImmutableArray<IConfigResourceInfo> Configs { get; }
-    public ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; }
     public ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; }
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; }
     public async Task<FluentResults.Result> LoadPackageInfosAsync(ContentPackage package)
@@ -75,11 +74,6 @@ public partial class PackageManagementService : IPackageManagementService
         throw new System.NotImplementedException();
     }
 
-    public Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(ContentPackage package, bool onlySupportedResources = true)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(ContentPackage package, bool onlySupportedResources = true)
     {
         throw new System.NotImplementedException();
@@ -95,11 +89,6 @@ public partial class PackageManagementService : IPackageManagementService
         throw new System.NotImplementedException();
     }
 
-    public Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         throw new System.NotImplementedException();
@@ -111,11 +100,6 @@ public partial class PackageManagementService : IPackageManagementService
     }
 
     public async Task<Result<IConfigsResourcesInfo>> GetConfigsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public async Task<Result<IConfigProfilesResourcesInfo>> GetConfigProfilesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true)
     {
         throw new System.NotImplementedException();
     }

@@ -1,18 +1,18 @@
 ﻿using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Linq;
 
 namespace Barotrauma.LuaCs.Data;
 
 public partial interface IModConfigInfo : IAssembliesResourcesInfo, 
-    ILuaScriptsResourcesInfo, IConfigsResourcesInfo,
-    IConfigProfilesResourcesInfo
+    ILuaScriptsResourcesInfo, IConfigsResourcesInfo
 {
     // package info
     ContentPackage Package { get; }
 }
 
 public record ResourceParserInfo(
-    ContentPackage Owner,
-    XElement Element,
+    [NotNull] ContentPackage Owner,
+    [NotNull] XElement Element,
     ImmutableArray<Identifier> Required,
     ImmutableArray<Identifier> Incompatible);

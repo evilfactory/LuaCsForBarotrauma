@@ -27,7 +27,7 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
     
     // Config Files/Resources
     Task<FluentResults.Result> LoadConfigsAsync(ImmutableArray<IConfigResourceInfo> configResources);
-    Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigProfileResourceInfo> configProfileResources);
+    Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigResourceInfo> configProfileResources);
     
     // Immediate Mode
     FluentResults.Result<TConfig> AddConfig<TConfig>(IConfigInfo configInfo) where TConfig : IConfigBase;

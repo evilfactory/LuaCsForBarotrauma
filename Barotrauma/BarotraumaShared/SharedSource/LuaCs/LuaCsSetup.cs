@@ -544,7 +544,6 @@ namespace Barotrauma
         async Task LoadStaticAssetsAsync(IReadOnlyList<ContentPackage> packages)
         {
             var cfgRes = ImmutableArray<IConfigResourceInfo>.Empty;
-            var cfpRes = ImmutableArray<IConfigProfileResourceInfo>.Empty;
             var luaRes = ImmutableArray<ILuaScriptResourceInfo>.Empty;
             
             var tasksBuilder = ImmutableArray.CreateBuilder<Task>();
@@ -556,15 +555,6 @@ namespace Barotrauma
                     var res = await PackageManagementService.GetConfigsInfosAsync(packages);
                     if (res.IsSuccess)
                         cfgRes = res.Value.Configs;
-                    if (res.Errors.Any())
-                        ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
-                            res.ToResult());
-                })(),
-                new Func<Task>(async () =>
-                {
-                    var res = await PackageManagementService.GetConfigProfilesInfosAsync(packages);
-                    if (res.IsSuccess)
-                        cfpRes = res.Value.ConfigProfiles;
                     if (res.Errors.Any())
                         ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
                             res.ToResult());
@@ -586,9 +576,6 @@ namespace Barotrauma
             tasksBuilder.AddRange(new Func<Task>(async () =>
                 {
                     var res = await ConfigService.LoadConfigsAsync(cfgRes);
-                    if (res.Errors.Any())
-                        Logger.LogResults(res);
-                    res = await ConfigService.LoadConfigsProfilesAsync(cfpRes);
                     if (res.Errors.Any())
                         Logger.LogResults(res);
                 })(),

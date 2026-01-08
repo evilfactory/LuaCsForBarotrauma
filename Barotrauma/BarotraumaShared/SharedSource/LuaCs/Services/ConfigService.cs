@@ -24,7 +24,7 @@ namespace Barotrauma.LuaCs.Services;
 public partial class ConfigService : IConfigService
 {
     //--- Internals
-    public ConfigService(IParserServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> configProfileResourceParser, 
+    public ConfigService(IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigProfileInfo>> configProfileResourceParser, 
         IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> configResourceParser, IEventService eventService, System.Lazy<IStorageService> storageService)
     {
         _configProfileResourceParser = configProfileResourceParser;
@@ -48,7 +48,7 @@ public partial class ConfigService : IConfigService
     
     // extern services
     private readonly IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigInfo>> _configResourceParser;
-    private readonly IParserServiceAsync<IConfigProfileResourceInfo, IReadOnlyList<IConfigProfileInfo>> _configProfileResourceParser;
+    private readonly IParserServiceAsync<IConfigResourceInfo, IReadOnlyList<IConfigProfileInfo>> _configProfileResourceParser;
     private readonly IEventService _eventService;
     private readonly System.Lazy<IStorageService> _storageService;
     
@@ -357,7 +357,7 @@ public partial class ConfigService : IConfigService
         return ret;
     }
 
-    public async Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigProfileResourceInfo> configProfileResources)
+    public async Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigResourceInfo> configProfileResources)
     {
         using var lck = await _disposeOpsLock.AcquireReaderLock();
         _base.CheckDisposed();

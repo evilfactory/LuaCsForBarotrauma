@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Toolkit.Diagnostics;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -25,6 +26,12 @@ public interface IService : IDisposable
     public void CheckDisposed()
     {
         if (IsDisposed) 
-            throw new ObjectDisposedException($"Tried to call method on disposed object '{this.GetType().Name}'!");
+            ThrowHelper.ThrowObjectDisposedException($"Tried to call method on disposed object '{this.GetType().Name}'!");
+    }
+
+    static void CheckDisposed(IService service)
+    {
+        if (service.IsDisposed) 
+            ThrowHelper.ThrowObjectDisposedException($"Tried to call method on disposed object '{service.GetType().Name}'!");
     }
 }

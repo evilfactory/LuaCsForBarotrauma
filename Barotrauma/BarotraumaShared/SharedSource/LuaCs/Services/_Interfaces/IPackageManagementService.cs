@@ -9,7 +9,7 @@ using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Services;
 
-public interface IPackageManagementService : IReusableService, IConfigsResourcesInfo, IConfigProfilesResourcesInfo, ILuaScriptsResourcesInfo, IAssembliesResourcesInfo
+public interface IPackageManagementService : IReusableService, IConfigsResourcesInfo, ILuaScriptsResourcesInfo, IAssembliesResourcesInfo
 {
     /// <summary>
     /// Loads and parses the provided <see cref="ContentPackage"/> for <see cref="IResourceInfo"/> supported by the current runtime environment.
@@ -46,16 +46,13 @@ public interface IPackageManagementService : IReusableService, IConfigsResources
     // single
     FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(ContentPackage package, bool onlySupportedResources = true);
     FluentResults.Result<IConfigsResourcesInfo> GetConfigsInfos(ContentPackage package, bool onlySupportedResources = true);
-    FluentResults.Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(ContentPackage package, bool onlySupportedResources = true);
     FluentResults.Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(ContentPackage package, bool onlySupportedResources = true);
     // collection
     FluentResults.Result<IAssembliesResourcesInfo> GetAssembliesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
     FluentResults.Result<IConfigsResourcesInfo> GetConfigsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
-    FluentResults.Result<IConfigProfilesResourcesInfo> GetConfigProfilesInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
   FluentResults.Result<ILuaScriptsResourcesInfo> GetLuaScriptsInfos(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
     
     Task<FluentResults.Result<IAssembliesResourcesInfo>> GetAssembliesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
     Task<FluentResults.Result<IConfigsResourcesInfo>> GetConfigsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
-    Task<FluentResults.Result<IConfigProfilesResourcesInfo>> GetConfigProfilesInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
   Task<FluentResults.Result<ILuaScriptsResourcesInfo>> GetLuaScriptsInfosAsync(IReadOnlyList<ContentPackage> packages, bool onlySupportedResources = true);
 }

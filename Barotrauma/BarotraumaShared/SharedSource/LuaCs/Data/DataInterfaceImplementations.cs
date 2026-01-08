@@ -20,7 +20,6 @@ public record ModConfigInfo : IModConfigInfo
     public ImmutableArray<IAssemblyResourceInfo> Assemblies { get; init; }
     public ImmutableArray<ILuaScriptResourceInfo> LuaScripts { get; init; }
     public ImmutableArray<IConfigResourceInfo> Configs { get; init; }
-    public ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles { get; init; }
 }
 
 #endregion
@@ -30,7 +29,6 @@ public record ModConfigInfo : IModConfigInfo
 public record AssemblyResourcesInfo(ImmutableArray<IAssemblyResourceInfo> Assemblies) : IAssembliesResourcesInfo;
 public record LuaScriptsResourcesInfo(ImmutableArray<ILuaScriptResourceInfo> LuaScripts) : ILuaScriptsResourcesInfo;
 public record ConfigResourcesInfo(ImmutableArray<IConfigResourceInfo> Configs) : IConfigsResourcesInfo;
-public record ConfigProfilesResourcesInfo(ImmutableArray<IConfigProfileResourceInfo> ConfigProfiles) : IConfigProfilesResourcesInfo;
 
 public record BaseResourceInfo : IBaseResourceInfo
 {
@@ -51,9 +49,10 @@ public record AssemblyResourceInfo : BaseResourceInfo, IAssemblyResourceInfo
     public bool IsScript { get; init; }
 }
 
+/// <summary>
+/// Note: Config settings and settings-profiles are stored in the same files.
+/// </summary>
 public record ConfigResourceInfo : BaseResourceInfo, IConfigResourceInfo {}
-
-public record ConfigProfileResourceInfo : BaseResourceInfo, IConfigProfileResourceInfo {}
 
 public record LuaScriptsResourceInfo : BaseResourceInfo, ILuaScriptResourceInfo
 {
