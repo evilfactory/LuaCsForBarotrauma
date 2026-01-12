@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Barotrauma.LuaCs.Data;
 
-public partial interface IModConfigInfo : IAssembliesResourcesInfo, 
+public interface IModConfigInfo : IAssembliesResourcesInfo, 
     ILuaScriptsResourcesInfo, IConfigsResourcesInfo
 {
     // package info
