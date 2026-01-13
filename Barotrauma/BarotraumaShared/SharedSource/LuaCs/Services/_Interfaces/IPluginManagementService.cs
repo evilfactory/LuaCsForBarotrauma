@@ -47,12 +47,13 @@ public interface IPluginManagementService : IReusableService
     /// <param name="serviceInjection"></param>
     /// <param name="hostInstanceReference"></param>
     /// <returns></returns>
-    IReadOnlyList<FluentResults.Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
+    ImmutableArray<FluentResults.Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
         bool hostInstanceReference = false) where T : IDisposable;
+    
     
     /// <summary>
     /// Unloads all managed <see cref="IAssemblyPlugin"/>, <see cref="Assembly"/>, and <see cref="IAssemblyLoaderService"/>s.
     /// </summary>
-    /// <returns>Success of the operation. <br/><b>Note: does not guarantee .NET runtime assembly unloading success.<b/></returns>
+    /// <returns>Success of the operation. <br/><b>Note: does not guarantee .NET runtime assembly unloading success.</b></returns>
     FluentResults.Result UnloadManagedAssemblies();
 }

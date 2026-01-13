@@ -35,6 +35,7 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
     // Utility
     FluentResults.Result ApplyProfileSettings(ContentPackage package, string profileName);
     FluentResults.Result DisposePackageData(ContentPackage package);
+    FluentResults.Result DisposeAllPackageData();
     FluentResults.Result<IReadOnlyDictionary<(ContentPackage Package, string ConfigName), IConfigBase>> GetConfigsForPackage(ContentPackage package);
     FluentResults.Result<IReadOnlyDictionary<(ContentPackage Package, string ConfigName), ImmutableArray<(string ConfigName, OneOf.OneOf<string, XElement> Value)>>> 
         GetProfilesForPackage(ContentPackage package);

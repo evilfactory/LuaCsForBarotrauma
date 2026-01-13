@@ -116,8 +116,10 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["CLIENT"] = LuaCsSetup.IsClient;
     }
 
-    public FluentResults.Result ExecuteLoadedScripts()
+    public FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder)
     {
+        throw new NotImplementedException($"Need to implement {nameof(executionOrder)} logic.");
+        
         if (_isRunning) 
         { 
             return FluentResults.Result.Fail("Tried to execute Lua scripts without unloading first."); 

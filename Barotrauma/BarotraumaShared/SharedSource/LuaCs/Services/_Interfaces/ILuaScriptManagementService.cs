@@ -27,11 +27,12 @@ public interface ILuaScriptManagementService : IReusableService
     Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo);
     
     /// <summary>
-    /// 
+    /// Executes already loaded into memory scripts data, in the supplied order.
     /// </summary>
+    /// <param name="executionOrder"></param>
     /// <returns></returns>
     // [Required]
-    FluentResults.Result ExecuteLoadedScripts();
+    FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder);
     
     /// <summary>
     /// 

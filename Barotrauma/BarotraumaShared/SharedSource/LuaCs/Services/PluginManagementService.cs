@@ -128,7 +128,7 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         throw new NotImplementedException();
     }
 
-    public IReadOnlyList<Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
+    public ImmutableArray<Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
         bool hostInstanceReference = false) where T : IDisposable
     {
         throw new NotImplementedException();

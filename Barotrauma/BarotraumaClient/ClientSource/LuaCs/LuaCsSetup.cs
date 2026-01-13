@@ -25,8 +25,9 @@ namespace Barotrauma
 
         public void CheckCsEnabled()
         {
-
-            var csharpMods = PackageManagementService.Assemblies
+            throw new NotImplementedException($"Replace PMS.Assemblies with checks on ContentPackageManager.EnabledPackages");            
+            
+            /*var csharpMods = PackageManagementService.Assemblies
                 .GroupBy(ass => ass.OwnerPackage)
                 .Select(grp => grp.Key)
                 .Where(ContentPackageManager.EnabledPackages.All.Contains)
@@ -66,7 +67,7 @@ namespace Barotrauma
             {
                 this.IsCsEnabled.TrySetValue(false);
                 return true;
-            };
+            };*/
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ using System.Security.AccessControl;
 using Barotrauma.LuaCs.Services;
 using Barotrauma.Networking;
 using FluentResults;
+using OneOf.Types;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -223,4 +224,21 @@ public record LuaScriptServicesConfig : ILuaScriptServicesConfig
     }
 
     public bool IsDisposed => false;
+}
+
+// --- Package Management Service
+public interface IPackageManagementServiceConfig : IService
+{
+    bool IsCsEnabled { get; }
+}
+
+public class PackageManagementServiceConfig : IPackageManagementServiceConfig
+{
+    public void Dispose()
+    {
+        // ignored
+    }
+
+    public bool IsDisposed => false;
+    public bool IsCsEnabled =>  true;
 }

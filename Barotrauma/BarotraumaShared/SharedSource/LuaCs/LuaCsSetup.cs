@@ -340,7 +340,6 @@ namespace Barotrauma
             foreach (var package in toRemove)
                 _toUnload.Enqueue(package);
             
-            
             ProcessPackagesListDifferences();
         }
 
@@ -358,16 +357,14 @@ namespace Barotrauma
             
             while (_toUnload.TryDequeue(out var cp))
             {
-                LuaScriptManagementService.DisposePackageResources(cp);
-                ConfigService.DisposePackageData(cp);
-                PackageManagementService.DisposePackageInfos(cp);
+                
             }
             
             var ls = new List<ContentPackage>();
                 
             while (_toLoad.TryDequeue(out var cp))
             {
-                if (PackageManagementService.LoadPackageInfosAsync(cp).GetAwaiter().GetResult() is
+                if (PackageManagementService.LoadPackageInfo(cp) is
                     { IsFailed: true } failure)
                 {
                     Logger.LogError($"Failed to load package infos for {cp.Name}");
@@ -456,8 +453,7 @@ namespace Barotrauma
                 return;
             
             // load core
-            var result1 = PackageManagementService.LoadPackageInfosAsync(ContentPackageManager.VanillaCorePackage)
-                .GetAwaiter().GetResult();
+            var result1 = PackageManagementService.LoadPackageInfo(ContentPackageManager.VanillaCorePackage);
             if (result1.IsFailed)
             {
                 Logger.LogError($"Unable to load LuaCs CorePackage resources! Running in degraded mode.");
@@ -477,16 +473,9 @@ namespace Barotrauma
 
         void LoadContentPackagesInfos(IReadOnlyList<ContentPackage> packages)
         {
-            var result2 = PackageManagementService.LoadPackagesInfosAsync(packages)
-                .GetAwaiter().GetResult();
-            
-            foreach (var entry in result2)
-            {
-                if (entry.Item2.IsSuccess)
-                    Logger.LogMessage($"Successfully parsed package: {entry.Item1.Name}");
-                else if (entry.Item2.IsFailed)
-                    Logger.LogResults(entry.Item2);
-            }
+            var result2 = PackageManagementService.LoadPackagesInfo([..packages]);
+            if (result2.IsFailed)
+                Logger.LogResults(result2);
         }
 
         void LoadStaticAssets()
@@ -500,7 +489,7 @@ namespace Barotrauma
                 return;
 
             while (_toUnload.TryDequeue(out var cp))
-                PackageManagementService.DisposePackageInfos(cp);
+                PackageManagementService.UnloadPackage(cp);
             
             LoadStaticAssetsAsync(PackageManagementService.GetAllLoadedPackages()).GetAwaiter().GetResult();
             LoadLuaCsConfig();
@@ -543,11 +532,13 @@ namespace Barotrauma
 
         async Task LoadStaticAssetsAsync(IReadOnlyList<ContentPackage> packages)
         {
-            var cfgRes = ImmutableArray<IConfigResourceInfo>.Empty;
-            var luaRes = ImmutableArray<ILuaScriptResourceInfo>.Empty;
+            throw new NotImplementedException();
             
+            /*var cfgRes = ImmutableArray<IConfigResourceInfo>.Empty;
+            var luaRes = ImmutableArray<ILuaScriptResourceInfo>.Empty;
+
             var tasksBuilder = ImmutableArray.CreateBuilder<Task>();
-                
+
             //---- get resource infos
             tasksBuilder.AddRange(
                 new Func<Task>(async () =>
@@ -568,10 +559,10 @@ namespace Barotrauma
                         ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
                             res.ToResult());
                 })());
-            
+
             await Task.WhenAll(tasksBuilder.MoveToImmutable());
             tasksBuilder.Clear();
-      
+
             //---- load resources
             tasksBuilder.AddRange(new Func<Task>(async () =>
                 {
@@ -586,12 +577,12 @@ namespace Barotrauma
                         Logger.LogResults(res);
                 })());
 
-            await Task.WhenAll(tasksBuilder.MoveToImmutable());
+            await Task.WhenAll(tasksBuilder.MoveToImmutable());*/
         }
         
         void RunScripts()
         {   
-            if (!IsStaticAssetsLoaded)
+            /*if (!IsStaticAssetsLoaded)
             {
                 throw new InvalidOperationException($"{nameof(RunScripts)} cannot load assets in the '{CurrentRunState}' state.");
             }
@@ -661,23 +652,23 @@ namespace Barotrauma
             LuaScriptManagementService.ExecuteLoadedScripts();
             
             if (CurrentRunState < RunState.Running)
-                _runState = RunState.Running;
+                _runState = RunState.Running;*/
         }
 
         void UnloadContentPackageInfos()
         {
-            if (IsStaticAssetsLoaded)
+            /*if (IsStaticAssetsLoaded)
             {
                 throw new InvalidOperationException($"{nameof(UnloadStaticAssets)}: Cannot unload static assets when the current run state is {CurrentRunState}.");
             }
 
             PackageManagementService.Reset();
-            _toUnload.Clear();
+            _toUnload.Clear();*/
         }
 
         void UnloadStaticAssets()
         {
-            if (IsCodeRunning)
+            /*if (IsCodeRunning)
             {
                 throw new InvalidOperationException($"{nameof(UnloadStaticAssets)}: Cannot unload static assets when the current run state is {CurrentRunState}.");
             }
@@ -689,12 +680,12 @@ namespace Barotrauma
             if (CurrentRunState >= RunState.Configuration)
             {
                 _runState = RunState.Parsed;
-            }
+            }*/
         }
 
         void StopScripts()
         {
-            EventService.ClearAllSubscribers();
+            /*EventService.ClearAllSubscribers();
             LuaScriptManagementService.UnloadActiveScripts();
             PluginManagementService.UnloadManagedAssemblies();
             SubscribeToLuaCsEvents();
@@ -702,7 +693,7 @@ namespace Barotrauma
             if (IsCodeRunning)
             {
                 _runState = RunState.Configuration;
-            }
+            }*/
         }
 
         
