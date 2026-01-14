@@ -23,6 +23,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Diagnostics;
 using static Barotrauma.GameSettings;
 
 namespace Barotrauma.LuaCs.Services;
@@ -34,6 +35,8 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     [MemberNotNullWhen(true, nameof(_script))]
     public bool IsRunning => _isRunning;
     private List<ILuaScriptResourceInfo> _resourcesInfo = new List<ILuaScriptResourceInfo>();
+
+    private readonly AsyncReaderWriterLock _operationsLock = new ();
     
     private readonly ILuaScriptLoader _luaScriptLoader;
     private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
@@ -67,13 +70,30 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
     public bool IsDisposed { get; private set; }
 
-    public Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo)
+    public async Task<FluentResults.Result> LoadScriptResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourcesInfo)
     {
+        // Do any exception checks you can before acquiring a lock to avoid needlessly holding up resources.
+        if (resourcesInfo.IsDefaultOrEmpty)
+            ThrowHelper.ThrowArgumentNullException($"{nameof(LoadScriptResourcesAsync)}: The parameter is empty!");
+        
+        // Acquire a lock:
+        // Reader = Allow parallel operations (try to avoid nesting acquiring the lock when possible)
+        // Writer = Exclusive use (ie. executing scripts or Dispose())
+        using var lck = await _operationsLock.AcquireWriterLock();   // IDisposable using with generate a try-finally and release for you.
+        IService.CheckDisposed(this);                                    // Check disposed after you have the lock  
+        
+        // If you use a ConcurrentDictionary instead of a List, it will handle threading issues for you.
         _resourcesInfo.AddRange(resourcesInfo.OrderBy(static r => r.LoadPriority));
 
-        // TODO disk caching
-
-        return Task.FromResult(FluentResults.Result.Ok());
+        // Use the StorageService's caching function by just loading the file with caching turned on.
+        // Right now the LuaScriptLoader has this on by default.
+        var cacheRes = await _luaScriptLoader.CacheResourcesAsync(resourcesInfo);
+        
+        // Aggregate and return results to the caller to deal with. Optionally, log here if you want.
+        // Automatically converted to a Task<T> when 'async' is in the method declaration.
+        if (cacheRes.IsFailed)
+            return cacheRes.ToResult();
+        return new FluentResults.Result().WithReasons(cacheRes.Value.SelectMany(cr => cr.Item2.Reasons));
     }
 
     private void SetupEnvironment()

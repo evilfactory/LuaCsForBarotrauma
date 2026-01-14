@@ -16,6 +16,7 @@ using Barotrauma.LuaCs.Services.Safe;
 using Barotrauma.Networking;
 using FluentResults;
 using ImpromptuInterface;
+using Microsoft.Toolkit.Diagnostics;
 
 namespace Barotrauma
 {
@@ -39,7 +40,6 @@ namespace Barotrauma
             // == sub processes
             void RegisterServices()
             {
-                _servicesProvider.RegisterServiceType<IPackageListRetrievalService, PackageListRetrievalService>(ServiceLifetime.Transient);
                 _servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
                 _servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
@@ -194,18 +194,7 @@ namespace Barotrauma
         public ILuaCsHook Hook => this.EventService;        
 
         #endregion
-
-        public static bool IsRunningInsideWorkshop
-        {
-            get
-            {
-#if SERVER
-                return Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) != Directory.GetCurrentDirectory();
-#else
-                return false; // unnecessary but just keeps things clear that this is NOT for client stuff
-#endif
-            }
-        }
+        
 
         private partial bool ShouldRunCs();
         
@@ -329,6 +318,8 @@ namespace Barotrauma
 
         private void UpdateLoadedPackagesList()
         {
+            throw new NotImplementedException($"Rewrite the loading state system.");
+            
             var newPackSet = ContentPackageManager.AllPackages
                 .Union(ContentPackageManager.EnabledPackages.All)
                 .ToHashSet();
@@ -340,10 +331,10 @@ namespace Barotrauma
             foreach (var package in toRemove)
                 _toUnload.Enqueue(package);
             
-            ProcessPackagesListDifferences();
+            //ProcessPackagesListDifferences();
         }
 
-        void ProcessPackagesListDifferences()
+        /*void ProcessPackagesListDifferences()
         {
             if (IsCodeRunning)
                 return;
@@ -379,13 +370,13 @@ namespace Barotrauma
             {
                 LoadStaticAssetsAsync(ls).GetAwaiter().GetResult();
             }
-        }
+        }*/
         
         void SetRunState(RunState runState)
         {
             if (CurrentRunState == runState)
                 return;
-            if (runState > CurrentRunState)
+            /*if (runState > CurrentRunState)
             {
                 if (CurrentRunState <= RunState.Parsed)
                 {
@@ -444,58 +435,7 @@ namespace Barotrauma
                 }
                 
                 // we should be unloaded completely now | RunState.Unloaded
-            }
-        }
-
-        void LoadCurrentContentPackageInfos()
-        {
-            if (CurrentRunState >= RunState.Parsed)
-                return;
-            
-            // load core
-            var result1 = PackageManagementService.LoadPackageInfo(ContentPackageManager.VanillaCorePackage);
-            if (result1.IsFailed)
-            {
-                Logger.LogError($"Unable to load LuaCs CorePackage resources! Running in degraded mode.");
-                Logger.LogResults(result1);
-            }
-            
-            // load regular
-            var list = ContentPackageManager.RegularPackages
-                .Union(ContentPackageManager.EnabledPackages.All)
-                .ToImmutableList();
-            
-            LoadContentPackagesInfos(list);
-            
-            if (CurrentRunState < RunState.Parsed)
-                _runState = RunState.Parsed;
-        }
-
-        void LoadContentPackagesInfos(IReadOnlyList<ContentPackage> packages)
-        {
-            var result2 = PackageManagementService.LoadPackagesInfo([..packages]);
-            if (result2.IsFailed)
-                Logger.LogResults(result2);
-        }
-
-        void LoadStaticAssets()
-        {
-            if (CurrentRunState < RunState.Parsed)
-            {
-                throw new InvalidOperationException($"{nameof(LoadStaticAssets)} cannot load assets in the '{CurrentRunState}' state.");
-            }
-            
-            if (CurrentRunState >= RunState.Configuration)
-                return;
-
-            while (_toUnload.TryDequeue(out var cp))
-                PackageManagementService.UnloadPackage(cp);
-            
-            LoadStaticAssetsAsync(PackageManagementService.GetAllLoadedPackages()).GetAwaiter().GetResult();
-            LoadLuaCsConfig();
-            
-            if (CurrentRunState < RunState.Configuration)
-                _runState = RunState.Configuration;
+            }*/
         }
 
         void LoadLuaCsConfig()
@@ -528,172 +468,6 @@ namespace Barotrauma
             CsForBarotraumaSteamId = null;
             RestrictMessageSize = null;
             ReloadPackagesOnLobbyStart = null;
-        }
-
-        async Task LoadStaticAssetsAsync(IReadOnlyList<ContentPackage> packages)
-        {
-            throw new NotImplementedException();
-            
-            /*var cfgRes = ImmutableArray<IConfigResourceInfo>.Empty;
-            var luaRes = ImmutableArray<ILuaScriptResourceInfo>.Empty;
-
-            var tasksBuilder = ImmutableArray.CreateBuilder<Task>();
-
-            //---- get resource infos
-            tasksBuilder.AddRange(
-                new Func<Task>(async () =>
-                {
-                    var res = await PackageManagementService.GetConfigsInfosAsync(packages);
-                    if (res.IsSuccess)
-                        cfgRes = res.Value.Configs;
-                    if (res.Errors.Any())
-                        ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
-                            res.ToResult());
-                })(),
-                new Func<Task>(async () =>
-                {
-                    var res = await PackageManagementService.GetLuaScriptsInfosAsync(packages);
-                    if (res.IsSuccess)
-                        luaRes = res.Value.LuaScripts;
-                    if (res.Errors.Any())
-                        ThreadPool.QueueUserWorkItem(state => Logger.LogResults((FluentResults.Result)state),
-                            res.ToResult());
-                })());
-
-            await Task.WhenAll(tasksBuilder.MoveToImmutable());
-            tasksBuilder.Clear();
-
-            //---- load resources
-            tasksBuilder.AddRange(new Func<Task>(async () =>
-                {
-                    var res = await ConfigService.LoadConfigsAsync(cfgRes);
-                    if (res.Errors.Any())
-                        Logger.LogResults(res);
-                })(),
-                new Func<Task>(async () =>
-                {
-                    var res = await LuaScriptManagementService.LoadScriptResourcesAsync(luaRes);
-                    if (res.Errors.Any())
-                        Logger.LogResults(res);
-                })());
-
-            await Task.WhenAll(tasksBuilder.MoveToImmutable());*/
-        }
-        
-        void RunScripts()
-        {   
-            /*if (!IsStaticAssetsLoaded)
-            {
-                throw new InvalidOperationException($"{nameof(RunScripts)} cannot load assets in the '{CurrentRunState}' state.");
-            }
-            
-            if (CurrentRunState >= RunState.Running)
-                return;
-
-            if (ShouldRunCs())
-            {
-                var asmRes =
-                    PackageManagementService.GetAssembliesInfos(PackageManagementService
-                        .GetAllLoadedPackages()
-                        .Where(ContentPackageManager.EnabledPackages.All.Contains)
-                        .ToList());
-                if (asmRes.IsFailed)
-                {
-                    Logger.LogError($"{nameof(RunScripts)}: Errors will retrieving assembly resources, cannot load scripts!");
-                    Logger.LogResults(asmRes.ToResult());
-                    return;
-                }
-                var res = PluginManagementService.LoadAssemblyResources(asmRes.Value.Assemblies);
-                if (res.IsFailed)
-                {
-                    Logger.LogError($"{nameof(RunScripts)}: Failed to initialize scripts!");
-                    Logger.LogResults(res.ToResult());
-                }
-                else
-                {
-                    if (res.Errors.Any())
-                        Logger.LogResults(res.ToResult());
-                    if (PluginManagementService.GetImplementingTypes<IAssemblyPlugin>() is {IsSuccess: true} types)
-                    {
-                        var typeInst = PluginManagementService.ActivateTypeInstances<IAssemblyPlugin>(types.Value, true, true);
-                        foreach (var loadRes in typeInst)
-                        {
-                            if (loadRes is { IsSuccess: true, Value: { Item2: { } pluginInstance } })
-                            {
-                                EventService.Subscribe<IEventPluginPreInitialize>(pluginInstance);
-                                EventService.Subscribe<IEventPluginInitialize>(pluginInstance);
-                                EventService.Subscribe<IEventPluginLoadCompleted>(pluginInstance);
-                            }
-                            else
-                            {
-                                Logger.LogResults(loadRes.ToResult());
-                            }
-                        }
-
-                        EventService.PublishEvent<IEventPluginPreInitialize>(sub => sub.PreInitPatching());
-                        EventService.PublishEvent<IEventPluginInitialize>(sub => sub.Initialize());
-                        EventService.PublishEvent<IEventPluginLoadCompleted>(sub => sub.OnLoadCompleted());
-                    }  
-                }
-            }
-
-            //lua
-            var luaRes = PackageManagementService.LuaScripts
-                .Select(ls => ls.OwnerPackage)
-                .Where(p => p is not null)
-                .Where(ContentPackageManager.EnabledPackages.All.Contains)
-                .ToImmutableArray();
-            if (luaRes.IsDefaultOrEmpty)
-            {
-                Logger.LogError($"{nameof(RunScripts)}: Failed to get enabled lua script resources!");
-                return;
-            }
-            
-            LuaScriptManagementService.ExecuteLoadedScripts();
-            
-            if (CurrentRunState < RunState.Running)
-                _runState = RunState.Running;*/
-        }
-
-        void UnloadContentPackageInfos()
-        {
-            /*if (IsStaticAssetsLoaded)
-            {
-                throw new InvalidOperationException($"{nameof(UnloadStaticAssets)}: Cannot unload static assets when the current run state is {CurrentRunState}.");
-            }
-
-            PackageManagementService.Reset();
-            _toUnload.Clear();*/
-        }
-
-        void UnloadStaticAssets()
-        {
-            /*if (IsCodeRunning)
-            {
-                throw new InvalidOperationException($"{nameof(UnloadStaticAssets)}: Cannot unload static assets when the current run state is {CurrentRunState}.");
-            }
-
-            PluginManagementService.Reset();    
-            LuaScriptManagementService.Reset();
-            ConfigService.Reset();
-
-            if (CurrentRunState >= RunState.Configuration)
-            {
-                _runState = RunState.Parsed;
-            }*/
-        }
-
-        void StopScripts()
-        {
-            /*EventService.ClearAllSubscribers();
-            LuaScriptManagementService.UnloadActiveScripts();
-            PluginManagementService.UnloadManagedAssemblies();
-            SubscribeToLuaCsEvents();
-
-            if (IsCodeRunning)
-            {
-                _runState = RunState.Configuration;
-            }*/
         }
 
         

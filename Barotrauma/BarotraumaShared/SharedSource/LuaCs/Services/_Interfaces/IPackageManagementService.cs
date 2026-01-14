@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
+using FluentResults;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -20,4 +21,5 @@ public interface IPackageManagementService : IReusableService
     public FluentResults.Result UnloadAllPackages();
     public ImmutableArray<ContentPackage> GetAllLoadedPackages();
     public bool IsPackageRunning(ContentPackage package);
+    public ImmutableArray<ContentPackage> GetLoadedAssemblyPackages();
 }

@@ -141,16 +141,31 @@ public sealed class PackageManagementService : IPackageManagementService
 
     private FluentResults.Result UnsafeAddPackageInternal(ContentPackage package, IModConfigInfo config)
     {
-        if (_loadedPackages.TryGetValue(package, out var result))
+        if (_loadedPackages.TryGetValue(package, out _))
         {
             _logger.LogWarning($"Tried to load already-loaded package {package.Name}.");
             return FluentResults.Result.Ok();
         }
 
         _loadedPackages[package] = config;
-        var res = new FluentResults.Result();
-        res.WithReasons(_luaScriptManagementService.LoadScriptResourcesAsync(config.LuaScripts).ConfigureAwait(false).GetAwaiter().GetResult().Reasons);
-        return res;
+        try
+        {
+            var res = new FluentResults.Result();
+            var r = Task.WhenAll(
+                new Task<Task<FluentResults.Result>>(async Task<FluentResults.Result> () => new FluentResults.Result()
+                    .WithReasons((await _configService.LoadConfigsAsync(config.Configs)).Reasons)
+                    .WithReasons((await _configService.LoadConfigsProfilesAsync(config.Configs)).Reasons)),
+                new Task<Task<FluentResults.Result>>(async () => await _luaScriptManagementService.LoadScriptResourcesAsync(config.LuaScripts))
+            ).ConfigureAwait(false).GetAwaiter().GetResult();
+
+            foreach (var task in r)
+                res.WithReasons(task.ConfigureAwait(false).GetAwaiter().GetResult().Reasons);
+            return res;
+        }
+        catch (Exception e)
+        {
+            return FluentResults.Result.Fail(new ExceptionalError(e));
+        }
     }
 
     public FluentResults.Result ExecuteLoadedPackages(ImmutableArray<ContentPackage> executionOrder)
@@ -291,5 +306,16 @@ public sealed class PackageManagementService : IPackageManagementService
         using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
         return _runningPackages.ContainsKey(package);
+    }
+
+    public ImmutableArray<ContentPackage> GetLoadedAssemblyPackages()
+    {
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        if (_loadedPackages.IsEmpty)
+            return ImmutableArray<ContentPackage>.Empty;
+        return [.._loadedPackages.Values
+                .Where(cfg => !cfg.Assemblies.IsDefaultOrEmpty)
+                .Select(cfg => cfg.Package)];
     }
 }

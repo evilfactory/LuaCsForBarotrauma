@@ -1,4 +1,6 @@
-﻿using Barotrauma.Networking;
+﻿using System;
+using System.IO;
+using Barotrauma.Networking;
 
 namespace Barotrauma;
 
@@ -19,4 +21,10 @@ partial class LuaCsSetup
     private partial bool ShouldRunCs() => IsCsEnabled.Value || 
                                           (GetPackage(new SteamWorkshopId(CsForBarotraumaSteamId.Value), false, false) is { } 
                                           && GameMain.Server.ServerPeer is LidgrenServerPeer);
+
+    // ReSharper disable once InconsistentNaming
+    private static readonly Lazy<bool> isRunningInsideWorkshop = new Lazy<bool>(() =>
+        Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly()!.Location) !=
+        Directory.GetCurrentDirectory());
+    public static bool IsRunningInsideWorkshop => isRunningInsideWorkshop.Value;
 }

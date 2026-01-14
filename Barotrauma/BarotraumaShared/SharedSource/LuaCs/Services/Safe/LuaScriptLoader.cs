@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Text;
 using System.IO;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Loaders;
 using System.Linq;
+using System.Threading.Tasks;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Services.Safe;
+using FluentResults;
 
 namespace Barotrauma.LuaCs.Services.Safe
 {
@@ -57,6 +60,15 @@ namespace Barotrauma.LuaCs.Services.Safe
         {
             ((IService)this).CheckDisposed();
             _storageService?.PurgeCache();
+        }
+
+        public async Task<Result<ImmutableArray<(ContentPath Path, Result<string>)>>> CacheResourcesAsync(ImmutableArray<ILuaScriptResourceInfo> resourceInfos)
+        {
+            // TODO: Needs an async lock?
+            IService.CheckDisposed(this);
+            if (!_storageService.UseCaching)
+                return FluentResults.Result.Fail($"Caching is not enabled.");
+            return await this._storageService.LoadPackageTextFilesAsync([..resourceInfos.SelectMany(ri => ri.FilePaths)]);
         }
 
         public override bool ScriptFileExists(string file)
