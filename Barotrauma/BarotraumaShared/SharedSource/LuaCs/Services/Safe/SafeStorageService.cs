@@ -11,33 +11,47 @@ using Barotrauma.LuaCs.Data;
 using FarseerPhysics.Common;
 using FluentResults;
 using FluentResults.LuaCs;
+using Microsoft.Toolkit.Diagnostics;
 using Path = System.IO.Path;
 
 namespace Barotrauma.LuaCs.Services.Safe;
 
 public class SafeStorageService : StorageService, ISafeStorageService
 {
-    private ConcurrentDictionary<string, byte> _fileListRead = new (), _fileListWrite = new();
+    private ConcurrentDictionary<string, byte> 
+        _fileListRead = new (), 
+        _fileListWrite = new();
+    private readonly AsyncReaderWriterLock _higherOperationsLock = new(); 
     
     public SafeStorageService(IStorageServiceConfig configData) : base(configData)
     {
+        IsReadOperationAllowedEval = async Task<bool> (fp) => IsFileAccessible(fp, true, true);
+        IsWriteOperationAllowedEval = async Task<bool> (fp) => IsFileAccessible(fp, false, true);
     }
     
     private string GetFullPath(string path) => System.IO.Path.GetFullPath(path).CleanUpPathCrossPlatform();
 
     public bool IsFileAccessible(string path, bool readOnly, bool checkWhitelistOnly = true)
     {
-        ((IService)this).CheckDisposed();
+        Guard.IsNotNullOrWhiteSpace(path,  nameof(path));
+        using var lck = _higherOperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
         
         try
         {
             path = GetFullPath(path);
             if (!_fileListRead.ContainsKey(path))
+            {
                 return false;
+            }
             if (!readOnly && !_fileListWrite.ContainsKey(path))
+            {
                 return false;
+            }
             if (checkWhitelistOnly)
+            {
                 return true;
+            }
             using var fs = System.IO.File.Open(
                 path, FileMode.Open, readOnly ? FileAccess.Read : FileAccess.ReadWrite, FileShare.ReadWrite);
             return readOnly ?  fs.CanRead : fs.CanWrite;
@@ -50,13 +64,18 @@ public class SafeStorageService : StorageService, ISafeStorageService
 
     public void AddFileToWhitelist(string path, bool readOnly = true)
     {
-        ((IService)this).CheckDisposed();
+        Guard.IsNotNullOrWhiteSpace(path,  nameof(path));
+        using var lck = _higherOperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
         try
         {
             path = GetFullPath(path);
             _fileListRead.AddOrUpdate(path, s => 0, (s, b) => 0);
             if (!readOnly)
+            {
                 _fileListWrite.AddOrUpdate(path, s => 0, (s, b) => 0);
+            }
         }
         catch
         {
@@ -64,9 +83,23 @@ public class SafeStorageService : StorageService, ISafeStorageService
         }
     }
 
+    public void AddFilesToWhitelist(ImmutableArray<string> paths, bool readOnly = true)
+    {
+        if (paths.IsDefaultOrEmpty)
+            ThrowHelper.ThrowArgumentNullException(nameof(paths));
+        foreach (var path in paths)
+        {
+            AddFileToWhitelist(path, readOnly);
+        }
+    }
+
+
     public void RemoveFileFromAllWhitelists(string path)
     {
-        ((IService)this).CheckDisposed();
+        Guard.IsNotNullOrWhiteSpace(path,  nameof(path));
+        using var lck = _higherOperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
         try
         {
             path = GetFullPath(path);
@@ -81,13 +114,18 @@ public class SafeStorageService : StorageService, ISafeStorageService
 
     public FluentResults.Result SetReadOnlyWhitelist(ImmutableArray<string> filePaths)
     {
-        ((IService)this).CheckDisposed();
+        using var lck = _higherOperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
         if (filePaths.IsDefaultOrEmpty)
+        {
             return FluentResults.Result.Fail($"{nameof(SetReadOnlyWhitelist)}: FilePaths cannot be empty.");
+        }
+        
         _fileListRead.Clear();
         var res = new FluentResults.Result();
         foreach (var path in filePaths)
         {
+            Guard.IsNotNullOrWhiteSpace(path, nameof(path));
             try
             {
                 var p = Path.GetFullPath(path.CleanUpPathCrossPlatform());
@@ -121,14 +159,19 @@ public class SafeStorageService : StorageService, ISafeStorageService
 
     public FluentResults.Result SetReadWriteWhitelist(ImmutableArray<string> filePaths)
     {
-        ((IService)this).CheckDisposed();
         if (filePaths.IsDefaultOrEmpty)
+        {
             return FluentResults.Result.Fail($"{nameof(SetReadOnlyWhitelist)}: FilePaths cannot be empty.");
+        }
+        using var lck = _higherOperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
         _fileListRead.Clear();
         _fileListWrite.Clear();
         var res = new FluentResults.Result();
         foreach (var path in filePaths)
         {
+            Guard.IsNotNullOrWhiteSpace(path, nameof(path));
             try
             {
                 var p = Path.GetFullPath(path.CleanUpPathCrossPlatform());
@@ -167,115 +210,9 @@ public class SafeStorageService : StorageService, ISafeStorageService
 
     public void ClearAllWhitelists()
     {
-        ((IService)this).CheckDisposed();
+        using var lck = _higherOperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
         _fileListRead.Clear();
         _fileListWrite.Clear();
     }
-
-    #region Base_Overrides
-
-    private bool ReadCheck(string path)
-    {
-        return IsFileAccessible(path, true, true);
-    }
-
-    private bool WriteCheck(string path)
-    {
-        return IsFileAccessible(path, false, true);
-    }
-    
-    public override Result<bool> FileExists(string filePath)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return base.FileExists(filePath);
-    }
-
-    public override Result<byte[]> TryLoadBinary(string filePath)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return base.TryLoadBinary(filePath);
-    }
-
-    public override async Task<Result<byte[]>> TryLoadBinaryAsync(string filePath)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return await base.TryLoadBinaryAsync(filePath);
-    }
-
-    public override Result<string> TryLoadText(string filePath, Encoding encoding = null)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return base.TryLoadText(filePath, encoding);
-    }
-
-    public override async Task<Result<string>> TryLoadTextAsync(string filePath, Encoding encoding = null)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return await base.TryLoadTextAsync(filePath, encoding);
-    }
-
-    public override Result<XDocument> TryLoadXml(string filePath, Encoding encoding = null)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return base.TryLoadXml(filePath, encoding);
-    }
-
-    public override async Task<Result<XDocument>> TryLoadXmlAsync(string filePath, Encoding encoding = null)
-    {
-        if (!ReadCheck(filePath))
-            return FluentResults.Result.Fail("Cannot access file.");
-        return await base.TryLoadXmlAsync(filePath, encoding);
-    }
-
-    public override FluentResults.Result TrySaveBinary(string filePath, in byte[] bytes)
-    {
-        if (!WriteCheck(filePath))
-            return FluentResults.Result.Fail("Cannot write to file.");
-        return base.TrySaveBinary(filePath, in bytes);
-    }
-
-    public override async Task<FluentResults.Result> TrySaveBinaryAsync(string filePath, byte[] bytes)
-    {
-        if (!WriteCheck(filePath))
-            return FluentResults.Result.Fail("Cannot write to file.");
-        return await base.TrySaveBinaryAsync(filePath, bytes);
-    }
-
-    public override FluentResults.Result TrySaveText(string filePath, in string text, Encoding encoding = null)
-    {
-        if (!WriteCheck(filePath))
-            return FluentResults.Result.Fail("Cannot write to file.");
-        return base.TrySaveText(filePath, in text, encoding);
-    }
-
-    public override async Task<FluentResults.Result> TrySaveTextAsync(string filePath, string text, Encoding encoding = null)
-    {
-        if (!WriteCheck(filePath))
-            return FluentResults.Result.Fail("Cannot write to file.");
-        return await base.TrySaveTextAsync(filePath, text, encoding);
-    }
-
-    public override FluentResults.Result TrySaveXml(string filePath, in XDocument document, Encoding encoding = null)
-    {
-        if (!WriteCheck(filePath))
-            return FluentResults.Result.Fail("Cannot write to file.");
-        return base.TrySaveXml(filePath, in document, encoding);
-    }
-
-    public override async Task<FluentResults.Result> TrySaveXmlAsync(string filePath, XDocument document, Encoding encoding = null)
-    {
-        if (!WriteCheck(filePath))
-            return FluentResults.Result.Fail("Cannot write to file.");
-        return await base.TrySaveXmlAsync(filePath, document, encoding);
-    }
-    
-    #endregion
-    
-    
 }
