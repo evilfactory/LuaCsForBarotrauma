@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,10 @@ using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma
 {
-    partial class LuaUserData
+    internal class LuaUserData
     {
-        public static Type GetType(string typeName) => LuaCsSetup.GetType(typeName);
+        [Obsolete("Use IPluginManagementService::GetTypesByName()")]
+        public static Type GetType(string typeName) => throw new NotImplementedException(); //LuaCsSetup.GetType(typeName);
 
         public static IUserDataDescriptor RegisterType(string typeName)
         {
@@ -362,4 +363,4 @@ namespace Barotrauma
         }
     }
 }
-*/
+

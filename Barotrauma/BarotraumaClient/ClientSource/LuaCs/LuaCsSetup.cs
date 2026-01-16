@@ -73,7 +73,7 @@ namespace Barotrauma
                 case MainMenuScreen:
                 case ModDownloadScreen: 
                 case ServerListScreen: 
-                    SetRunState(RunState.Configuration);
+                    SetRunState(RunState.LoadedNoExec);
                     break;
                  // running lobby or editor states
                 case CampaignEndScreen:    
