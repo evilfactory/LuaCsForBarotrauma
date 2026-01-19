@@ -231,10 +231,9 @@ public class StorageService : IStorageService
         IService.CheckDisposed(this);
         if (!filePath.FullPath.StartsWith(ConfigData.WorkshopModsDirectory) 
             && !filePath.FullPath.StartsWith(ConfigData.LocalModsDirectory)
-            && !filePath.FullPath.StartsWith(ConfigData.TempDownloadsDirectory)
             && !filePath.FullPath.StartsWith(ContentPackageManager.VanillaCorePackage!.Dir)
 #if CLIENT
-            && !filePath.FullPath.StartsWith(ModReceiver.DownloadFolder)
+            && !filePath.FullPath.StartsWith(ConfigData.TempDownloadsDirectory)
 #endif
             )
         {
