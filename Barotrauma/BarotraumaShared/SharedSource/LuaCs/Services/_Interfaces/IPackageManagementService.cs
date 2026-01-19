@@ -15,11 +15,14 @@ public interface IPackageManagementService : IReusableService
     public FluentResults.Result LoadPackageInfo(ContentPackage package);
     public FluentResults.Result LoadPackagesInfo(ImmutableArray<ContentPackage> packages);
     public FluentResults.Result ExecuteLoadedPackages(ImmutableArray<ContentPackage> executionOrder);
+    public FluentResults.Result SyncLoadedPackagesList(ImmutableArray<ContentPackage> packages);
     public FluentResults.Result StopRunningPackages();
     public FluentResults.Result UnloadPackage(ContentPackage package);      
     public FluentResults.Result UnloadPackages(ImmutableArray<ContentPackage> packages);
     public FluentResults.Result UnloadAllPackages();
     public ImmutableArray<ContentPackage> GetAllLoadedPackages();
-    public bool IsPackageRunning(ContentPackage package);
     public ImmutableArray<ContentPackage> GetLoadedAssemblyPackages();
+    public bool IsPackageRunning(ContentPackage package);
+    public bool IsAnyPackageLoaded();
+    public bool IsAnyPackageRunning();
 }

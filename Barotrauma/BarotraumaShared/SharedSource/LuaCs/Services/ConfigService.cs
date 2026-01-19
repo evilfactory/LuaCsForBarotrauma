@@ -34,6 +34,8 @@ public partial class ConfigService : IConfigService
         throw new NotImplementedException();
     }
 
+    #region LuaInterface
+
     public bool TryGetConfigBool(string packageName, string configName, out bool value)
     {
         throw new NotImplementedException();
@@ -128,7 +130,10 @@ public partial class ConfigService : IConfigService
     {
         throw new NotImplementedException();
     }
+    
 
+    #endregion
+    
     public void RegisterTypeInitializer<TData, TConfig>(Func<IConfigInfo, Result<TConfig>> initializer, bool replaceIfExists = false) where TData : IEquatable<TData> where TConfig : IConfigBase
     {
         throw new NotImplementedException();
@@ -136,11 +141,17 @@ public partial class ConfigService : IConfigService
 
     public async Task<FluentResults.Result> LoadConfigsAsync(ImmutableArray<IConfigResourceInfo> configResources)
     {
+#if DEBUG
+        return FluentResults.Result.Ok();    // just for startup testing
+#endif
         throw new NotImplementedException();
     }
 
     public async Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigResourceInfo> configProfileResources)
     {
+#if DEBUG
+        return FluentResults.Result.Ok();    // just for startup testing
+#endif
         throw new NotImplementedException();
     }
 
@@ -156,11 +167,17 @@ public partial class ConfigService : IConfigService
 
     public FluentResults.Result DisposePackageData(ContentPackage package)
     {
+#if DEBUG
+        return FluentResults.Result.Ok();    // just for startup testing
+#endif
         throw new NotImplementedException();
     }
 
     public FluentResults.Result DisposeAllPackageData()
     {
+#if DEBUG
+        return FluentResults.Result.Ok();    // just for startup testing
+#endif
         throw new NotImplementedException();
     }
 
@@ -181,6 +198,10 @@ public partial class ConfigService : IConfigService
 
     public bool TryGetConfig<T>(ContentPackage package, string name, out T config) where T : IConfigBase
     {
+#if DEBUG
+        config = default(T);
+        return true;    // just for startup testing
+#endif
         throw new NotImplementedException();
     }
 

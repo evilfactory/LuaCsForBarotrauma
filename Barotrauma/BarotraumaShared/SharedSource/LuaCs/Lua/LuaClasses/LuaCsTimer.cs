@@ -120,5 +120,12 @@ namespace Barotrauma
             TimedAction timedAction = new TimedAction(action, 0);
             AddTimer(timedAction);
         }
+
+        public void Dispose()
+        {
+            // ignored
+        }
+
+        public bool IsDisposed => false;
     }
 }

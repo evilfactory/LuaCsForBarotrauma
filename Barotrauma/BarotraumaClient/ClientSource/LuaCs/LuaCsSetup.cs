@@ -21,8 +21,6 @@ namespace Barotrauma
             }
         }
 
-        private partial bool ShouldRunCs() => IsCsEnabled.Value;
-
         public void CheckCsEnabled()
         {
             var csharpMods = PackageManagementService.GetLoadedAssemblyPackages();

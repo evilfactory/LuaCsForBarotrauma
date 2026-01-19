@@ -61,11 +61,6 @@ internal interface IEventReloadAllPackages : IEvent<IEventReloadAllPackages>
     void OnReloadAllPackages();
 }
 
-internal interface IEventConfigVarInstanced : IEvent<IEventConfigVarInstanced>
-{
-    void OnConfigCreated(IConfigBase config);
-}
-
 #endregion
 
 #region GameEvents
@@ -215,11 +210,6 @@ public interface IEventPluginPreInitialize : IEvent<IEventPluginPreInitialize>
 public interface IEventAssemblyLoaded : IEvent<IEventAssemblyLoaded>
 {
     void OnAssemblyLoaded(Assembly assembly);
-    static IEventAssemblyLoaded IEvent<IEventAssemblyLoaded>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
-    {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnAssemblyLoaded = ReturnVoid.Arguments<Assembly>((ass) => luaFunc[nameof(OnAssemblyLoaded)](ass))
-    }.ActLike<IEventAssemblyLoaded>();
 }
 
 /// <summary>
@@ -228,11 +218,6 @@ public interface IEventAssemblyLoaded : IEvent<IEventAssemblyLoaded>
 public interface IEventAssemblyContextCreated : IEvent<IEventAssemblyContextCreated>
 {
     void OnAssemblyCreated(IAssemblyLoaderService loaderService);
-    static IEventAssemblyContextCreated IEvent<IEventAssemblyContextCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
-    {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnAssemblyContextCreated = ReturnVoid.Arguments<IAssemblyLoaderService>((loader) => luaFunc[nameof(OnAssemblyCreated)](loader))
-    }.ActLike<IEventAssemblyContextCreated>();
 }
 
 /// <summary>
@@ -241,11 +226,6 @@ public interface IEventAssemblyContextCreated : IEvent<IEventAssemblyContextCrea
 public interface IEventAssemblyContextUnloading : IEvent<IEventAssemblyContextUnloading>
 {
     void OnAssemblyUnloading(WeakReference<IAssemblyLoaderService> loaderService);
-    static IEventAssemblyContextUnloading IEvent<IEventAssemblyContextUnloading>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
-    {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnAssemblyUnloading = ReturnVoid.Arguments<WeakReference<IAssemblyLoaderService>>((loader) => luaFunc[nameof(OnAssemblyUnloading)](loader))
-    }.ActLike<IEventAssemblyContextUnloading>();
 }
 
 #endregion

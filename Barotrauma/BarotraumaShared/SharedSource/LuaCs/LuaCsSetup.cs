@@ -27,59 +27,22 @@ namespace Barotrauma
     internal delegate void LuaCsErrorHandler(Exception ex, LuaCsMessageOrigin origin);
     internal delegate void LuaCsExceptionHandler(Exception ex, LuaCsMessageOrigin origin);
 
-    partial class LuaCsSetup : IDisposable, IEventScreenSelected, IEventAllPackageListChanged, IEventEnabledPackageListChanged, 
+    partial class LuaCsSetup : IDisposable, IEventScreenSelected, IEventEnabledPackageListChanged, 
         IEventReloadAllPackages
     {
         public LuaCsSetup()
         {
             // == startup
-            _servicesProvider = new ServicesProvider();
-            RegisterServices(_servicesProvider);
+            _servicesProvider = SetupServicesProvider();
             if (!ValidateLuaCsContent())
             {
                 Logger.LogError($"{nameof(LuaCsSetup)}: ModConfigXml missing. Unable to continue.");
                 throw new ApplicationException($"{nameof(LuaCsSetup)}: Lua ModConfig.xml is missing. Unable to continue.");
             }
-            SubscribeToLuaCsEvents();
             _runStateMachine = SetupStateMachine();
-            //LoadLuaCsConfig();
-            
-            return;
-            // == end
-            
-            StateMachine<RunState> SetupStateMachine() 
-            {
-                return new StateMachine<RunState>(false, RunState.Unloaded, RunStateUnloaded_OnEnter, null)
-                    .AddState(RunState.LoadedNoExec, RunStateLoadedNoExec_OnEnter, RunStateLoadedNoExec_OnExit)
-                    .AddState(RunState.Running, RunStateRunning_OnEnter, RunStateRunning_OnExit);
-
-                // ReSharper disable InconsistentNaming
-                void RunStateUnloaded_OnEnter(State<RunState> currentState)
-                {
-                    
-                }
-
-                void RunStateLoadedNoExec_OnEnter(State<RunState> currentState)
-                {
-                    
-                }
-                
-                void RunStateLoadedNoExec_OnExit(State<RunState> currentState)
-                {
-                    
-                }
-                
-                void RunStateRunning_OnEnter(State<RunState> currentState)
-                {
-                    
-                }
-                
-                void RunStateRunning_OnExit(State<RunState> currentState)
-                {
-                    
-                }
-                // ReSharper restore InconsistentNaming
-            }
+            SubscribeToLuaCsEvents();
+            SetRunState(RunState.LoadedNoExec);
+            LoadLuaCsConfig();
         }
         
         bool ValidateLuaCsContent()
@@ -88,44 +51,16 @@ namespace Barotrauma
             // TODO: we just wanna boot for now
             return true;
 #endif
-            // check if /Content/Lua/ModConfig.xml exists
-            // if not, try to copy it from the Local Mods folder 
-            // if not, try to copy it from the Workshop Mods folder
+            // check if /Content/ModConfig.xml exists
+            // if not, try to copy missing files from the Local Mods folder 
+            // if not, try to copy missing files from the Workshop Mods folder
             // if that fails, throw an error and exit.
             throw new NotImplementedException();
-        }
-        
-        void RegisterServices(IServicesProvider servicesProvider)
-        {
-            servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IEventService, EventService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
-            
-            // TODO: IConfigService
-            // TODO: INetworkingService
-            // TODO: [Resource Converter/Parser Services]
-            
-            servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);
-            
-            // service config data
-            servicesProvider.RegisterServiceType<IStorageServiceConfig, StorageServiceConfig>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<ILuaScriptServicesConfig, LuaScriptServicesConfig>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IConfigServiceConfig, ConfigServiceConfig>(ServiceLifetime.Singleton);
-            
-            // gen IL
-            servicesProvider.Compile();
         }
         
         void SubscribeToLuaCsEvents()
         {
             EventService.Subscribe<IEventScreenSelected>(this); // game state hook in
-            EventService.Subscribe<IEventAllPackageListChanged>(this); 
             EventService.Subscribe<IEventEnabledPackageListChanged>(this); 
             EventService.Subscribe<IEventReloadAllPackages>(this);
         }
@@ -141,14 +76,14 @@ namespace Barotrauma
 
         #endregion
         
-        #region Services_ConfigVars
+        #region Services_CVars
         
         /*
          * === Singleton Services
          */
         
         private readonly IServicesProvider _servicesProvider;
-
+        
         public PerformanceCounterService PerformanceCounter => _servicesProvider.GetService<PerformanceCounterService>();
         public ILoggerService Logger => _servicesProvider.GetService<ILoggerService>();
         public IConfigService ConfigService => _servicesProvider.GetService<IConfigService>();
@@ -158,14 +93,8 @@ namespace Barotrauma
         public INetworkingService NetworkingService => _servicesProvider.GetService<INetworkingService>();
         public IEventService EventService => _servicesProvider.GetService<IEventService>();
         public LuaGame Game => _servicesProvider.GetService<LuaGame>();
-
         
-        #region LuaCsInternal
-
-        
-        /*
-         * === Config Vars
-         */
+        internal IStorageService StorageService => _servicesProvider.GetService<IStorageService>();
         
         /// <summary>
         /// Whether C# plugin code is enabled.
@@ -207,13 +136,58 @@ namespace Barotrauma
         /// </summary>
         internal IConfigEntry<string> LocalDataSavePath { get; private set; }
 
+        void LoadLuaCsConfig()
+        {
+            IsCsEnabled = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
+                : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
+            TreatForcedModsAsNormal = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
+                : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
+            DisableErrorGUIOverlay = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
+                : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
+            HideUserNamesInLogs = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
+                : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
+            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
+                : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
+            RestrictMessageSize = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
+                : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
+        }
+        
+        private IServicesProvider SetupServicesProvider()
+        {
+            var servicesProvider = new ServicesProvider();
+            
+            servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<ISafeStorageService, SafeStorageService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IEventService, EventService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<ILuaCsHook, EventService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
+            // TODO: INetworkingService
+            servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>, ConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>, ConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>, ConfigFileParserService>(ServiceLifetime.Transient);
+            // service config data
+            servicesProvider.RegisterServiceType<IStorageServiceConfig, StorageServiceConfig>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<ILuaScriptServicesConfig, LuaScriptServicesConfig>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IConfigServiceConfig, ConfigServiceConfig>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IPackageManagementServiceConfig, PackageManagementServiceConfig>(ServiceLifetime.Singleton);
+            // gen IL
+            servicesProvider.Compile();
+            return servicesProvider;
+        }
+        
         #endregion
 
-        /**
-         * == Ops Vars
-         */
+        #region StateMachine
+        
         private RunState _runState;
-
         /// <summary>
         /// The current run state of all services managed by LuaCs. 
         /// </summary>
@@ -222,14 +196,116 @@ namespace Barotrauma
             get => _runState;
             private set => _runState = value;
         }
-
-
+        
         private readonly StateMachine<RunState> _runStateMachine;
-        private readonly ConcurrentQueue<ContentPackage> _toLoad = new();
-        private readonly ConcurrentQueue<ContentPackage> _toUnload = new();
+
+        public void OnEnabledPackageListChanged(CorePackage package, IEnumerable<RegularPackage> regularPackages)
+        {
+            ProcessEnabledPackageChanges(new []{ package }.Concat<ContentPackage>(regularPackages).ToImmutableArray());
+        }
+
+        public void OnReloadAllPackages()
+        {
+            if (CurrentRunState <= RunState.Unloaded)
+            {
+                return;
+            }
+            
+            var state = CurrentRunState;
+            SetRunState(RunState.Unloaded);
+            SetRunState(state);
+        }
+
+        private void ProcessEnabledPackageChanges(ImmutableArray<ContentPackage> packages)
+        {
+            if (CurrentRunState < RunState.LoadedNoExec)
+            {
+                return;
+            }
+            
+            var state = CurrentRunState;
+            if (CurrentRunState > RunState.LoadedNoExec)
+            {
+                SetRunState(RunState.LoadedNoExec);
+            }
+            
+            PackageManagementService.SyncLoadedPackagesList(packages);
+            SetRunState(state); // restore
+        }
+        
+        private void SetRunState(RunState targetRunState)
+        {
+            if (CurrentRunState == targetRunState)
+            {
+                return;
+            }
+            _runStateMachine.GotoState(targetRunState);
+        }
+        
+        private StateMachine<RunState> SetupStateMachine() 
+        {
+            return new StateMachine<RunState>(false, RunState.Unloaded, RunStateUnloaded_OnEnter, null)
+                .AddState(RunState.LoadedNoExec, RunStateLoadedNoExec_OnEnter, null)
+                .AddState(RunState.Running, RunStateRunning_OnEnter, RunStateRunning_OnExit);
+
+            // ReSharper disable InconsistentNaming
+            void RunStateUnloaded_OnEnter(State<RunState> currentState)
+            {
+                if (PackageManagementService.IsAnyPackageRunning())
+                {
+                    Logger.LogResults(PackageManagementService.StopRunningPackages());
+                }
+
+                if (PackageManagementService.IsAnyPackageRunning())
+                {
+                    DisposeLuaCsConfig();
+                    Logger.LogResults(PackageManagementService.UnloadAllPackages());
+                }
+                
+                CurrentRunState = RunState.Unloaded;
+            }
+
+            void RunStateLoadedNoExec_OnEnter(State<RunState> currentState)
+            {
+                if (PackageManagementService.IsAnyPackageRunning())
+                {
+                    Logger.LogResults(PackageManagementService.StopRunningPackages());
+                }
+
+                if (!PackageManagementService.IsAnyPackageLoaded())
+                {
+                    Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+                    LoadLuaCsConfig();
+                }
+
+                CurrentRunState = RunState.LoadedNoExec;
+            }
+                
+            void RunStateRunning_OnEnter(State<RunState> currentState)
+            {
+                if (!PackageManagementService.IsAnyPackageLoaded())
+                {
+                    Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+                    LoadLuaCsConfig();
+                }
+
+                if (!PackageManagementService.IsAnyPackageRunning())
+                {
+                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+                }
+                
+                CurrentRunState = RunState.Running;
+            }
+                
+            void RunStateRunning_OnExit(State<RunState> currentState)
+            {
+                Logger.LogResults(PackageManagementService.StopRunningPackages());
+            }
+            // ReSharper restore InconsistentNaming
+        }
         
         #endregion
-
+        
         #region LegacyRedirects
 
         public ILuaCsHook Hook => this.EventService;        
@@ -276,72 +352,7 @@ namespace Barotrauma
         /// <param name="screen">The new game screen.</param>
         public partial void OnScreenSelected(Screen screen);
 
-        public void OnAllPackageListChanged(IEnumerable<CorePackage> corePackages, IEnumerable<RegularPackage> regularPackages)
-        {
-            UpdateLoadedPackagesList();
-        }
-
-        public void OnEnabledPackageListChanged(CorePackage corePackage, IEnumerable<RegularPackage> regularPackages)
-        { 
-            UpdateLoadedPackagesList();
-        }
         
-        public void OnReloadAllPackages()
-        {
-            if (CurrentRunState <= RunState.Unloaded)
-                return;
-            var state = CurrentRunState;
-            SetRunState(RunState.Unloaded);
-            SetRunState(CurrentRunState);
-        }
-
-        public void ForceRunState(RunState newState)
-        {
-            if (CurrentRunState == newState)
-                return;
-            SetRunState(newState);
-        }
-
-        private void UpdateLoadedPackagesList()
-        {
-            throw new NotImplementedException($"Rewrite the loading state system.");
-            
-            var newPackSet = ContentPackageManager.AllPackages
-                .Union(ContentPackageManager.EnabledPackages.All)
-                .ToHashSet();
-            var currPackSet = PackageManagementService.GetAllLoadedPackages().ToHashSet();
-            var toAdd = newPackSet.Except(currPackSet);
-            var toRemove = currPackSet.Except(newPackSet);
-            foreach (var package in toAdd)
-                _toLoad.Enqueue(package);
-            foreach (var package in toRemove)
-                _toUnload.Enqueue(package);
-            
-            //ProcessPackagesListDifferences();
-        }
-        
-        void SetRunState(RunState newRunState)
-        {
-            if (CurrentRunState == newRunState)
-                return;
-            
-        }
-
-        void LoadLuaCsConfig()
-        {
-            IsCsEnabled = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
-                          : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            TreatForcedModsAsNormal = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
-                                      : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
-            DisableErrorGUIOverlay = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
-                                     : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            HideUserNamesInLogs = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
-                                  : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
-                                      : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            RestrictMessageSize = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
-                                  : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
-        }
 
         void DisposeLuaCsConfig()
         {

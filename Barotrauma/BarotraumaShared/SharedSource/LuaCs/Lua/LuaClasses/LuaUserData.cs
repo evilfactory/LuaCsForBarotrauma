@@ -269,9 +269,10 @@ namespace Barotrauma
             descriptor.RemoveMember(methodName);
             descriptor.AddMember(methodName, new ObjectCallbackMemberDescriptor(methodName, (object arg1, ScriptExecutionContext arg2, CallbackArguments arg3) =>
             {
-                if (GameMain.LuaCs != null)
+                /*if (GameMain.LuaCs != null)
                     return GameMain.LuaCs.CallLuaFunction(function, arg3.GetArray());
-                return null;
+                return null;*/
+                throw new NotImplementedException();
             }));
         }
 

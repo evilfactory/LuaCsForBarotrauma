@@ -43,19 +43,20 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     private readonly ILoggerService _loggerService;
     private readonly LuaGame _luaGame;
     private readonly ILuaCsHook _luaCsHook;
-    private readonly ILuaCsNetworking _luaCsNetworking;
-    private readonly ILuaCsUtility _luaCsUtility;
-    private readonly ILuaCsTimer _luaCsTimer;
+    //private readonly ILuaCsNetworking _luaCsNetworking;
+    //private readonly ILuaCsUtility _luaCsUtility;
+    //private readonly ILuaCsTimer _luaCsTimer;
 
     public LuaScriptManagementService(
         ILoggerService loggerService, 
         ILuaScriptLoader loader, 
         ILuaScriptServicesConfig luaScriptServicesConfig,
         LuaGame luaGame,
-        ILuaCsHook luaCsHook,
-        ILuaCsNetworking luaCsNetworking,
-        ILuaCsUtility luaCsUtility,
-        ILuaCsTimer luaCsTimer)
+        ILuaCsHook luaCsHook
+        //ILuaCsNetworking luaCsNetworking,
+        //ILuaCsUtility luaCsUtility,
+        //ILuaCsTimer luaCsTimer
+        )
     {
         _luaScriptLoader = loader;
         _luaScriptServicesConfig = luaScriptServicesConfig;
@@ -63,9 +64,9 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         _luaGame = luaGame;
         _luaCsHook = luaCsHook;
-        _luaCsNetworking = luaCsNetworking;
-        _luaCsUtility = luaCsUtility;
-        _luaCsTimer = luaCsTimer;
+        //_luaCsNetworking = luaCsNetworking;
+        //_luaCsUtility = luaCsUtility;
+        //_luaCsTimer = luaCsTimer;
     }
 
     public bool IsDisposed { get; private set; }
@@ -124,9 +125,9 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         _script.Globals["Game"] = _luaGame;
         _script.Globals["Hook"] = _luaCsHook;
-        _script.Globals["Timer"] = _luaCsTimer;
+        //_script.Globals["Timer"] = _luaCsTimer;
         _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
-        _script.Globals["Networking"] = _luaCsNetworking;
+        //_script.Globals["Networking"] = _luaCsNetworking;
         //_script.Globals["Steam"] = Steam;
 
         _script.Globals["ExecutionNumber"] = 0;

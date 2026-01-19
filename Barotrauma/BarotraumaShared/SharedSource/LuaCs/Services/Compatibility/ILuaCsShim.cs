@@ -1,6 +1,6 @@
 ﻿namespace Barotrauma.LuaCs.Services.Compatibility;
 
-public interface ILuaCsShim
+public interface ILuaCsShim : IService
 {
     
 }

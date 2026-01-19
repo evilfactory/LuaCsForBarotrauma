@@ -223,7 +223,30 @@ public sealed class PackageManagementService : IPackageManagementService
         
         return result;
     }
-    
+
+    public FluentResults.Result SyncLoadedPackagesList(ImmutableArray<ContentPackage> packages)
+    {
+        if (packages.IsDefaultOrEmpty)
+            ThrowHelper.ThrowArgumentNullException(nameof(packages));
+        if (!_runningPackages.IsEmpty)
+            ThrowHelper.ThrowInvalidOperationException($"{nameof(SyncLoadedPackagesList)}: There are packages running!");
+        
+        var toRemove = _loadedPackages.Keys.Except(packages).ToImmutableArray();
+        var toAdd = packages.Except(_loadedPackages.Keys)
+            .OrderBy(pack => packages.IndexOf(pack)).ToImmutableArray();
+
+        var result = new FluentResults.Result();
+
+        result.WithReasons(UnloadPackages(toRemove).Reasons);
+        
+        if (result.IsFailed)
+        {
+            return result;
+        }
+
+        return result.WithReasons(LoadPackagesInfo(toAdd).Reasons);
+    }
+
     public FluentResults.Result StopRunningPackages()
     {
         using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -306,6 +329,20 @@ public sealed class PackageManagementService : IPackageManagementService
         using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
         return _runningPackages.ContainsKey(package);
+    }
+
+    public bool IsAnyPackageLoaded()
+    {
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        return !_loadedPackages.IsEmpty;
+    }
+
+    public bool IsAnyPackageRunning()
+    {
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        return !_runningPackages.IsEmpty;
     }
 
     public ImmutableArray<ContentPackage> GetLoadedAssemblyPackages()
