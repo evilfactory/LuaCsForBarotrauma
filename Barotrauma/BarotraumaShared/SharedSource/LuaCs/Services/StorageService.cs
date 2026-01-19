@@ -3,11 +3,13 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.Networking;
 using FluentResults;
 using FluentResults.LuaCs;
 using Microsoft.Toolkit.Diagnostics;
@@ -227,8 +229,17 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(filePath.FullPath,  nameof(filePath.FullPath));
         using var lck = OperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
-        if (!filePath.FullPath.StartsWith(ConfigData.WorkshopModsDirectory) && !filePath.FullPath.StartsWith(ConfigData.LocalModsDirectory))
+        if (!filePath.FullPath.StartsWith(ConfigData.WorkshopModsDirectory) 
+            && !filePath.FullPath.StartsWith(ConfigData.LocalModsDirectory)
+            && !filePath.FullPath.StartsWith(ConfigData.TempDownloadsDirectory)
+            && !filePath.FullPath.StartsWith(ContentPackageManager.VanillaCorePackage!.Dir)
+#if CLIENT
+            && !filePath.FullPath.StartsWith(ModReceiver.DownloadFolder)
+#endif
+            )
+        {
             ThrowHelper.ThrowUnauthorizedAccessException($"{nameof(LoadPackageData)}: The filepath of `{filePath.FullPath}' is not in a package directory!");
+        }
         return dataLoader(filePath.FullPath);
     }
 
