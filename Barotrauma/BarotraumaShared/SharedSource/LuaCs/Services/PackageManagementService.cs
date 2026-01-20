@@ -151,12 +151,17 @@ public sealed class PackageManagementService : IPackageManagementService
         try
         {
             var res = new FluentResults.Result();
-            var r = Task.WhenAll(
-                new Task<Task<FluentResults.Result>>(async Task<FluentResults.Result> () => new FluentResults.Result()
+            var configsTask = new Task<Task<FluentResults.Result>>(async Task<FluentResults.Result> () =>
+                new FluentResults.Result()
                     .WithReasons((await _configService.LoadConfigsAsync(config.Configs)).Reasons)
-                    .WithReasons((await _configService.LoadConfigsProfilesAsync(config.Configs)).Reasons)),
-                new Task<Task<FluentResults.Result>>(async () => await _luaScriptManagementService.LoadScriptResourcesAsync(config.LuaScripts))
-            ).ConfigureAwait(false).GetAwaiter().GetResult();
+                    .WithReasons((await _configService.LoadConfigsProfilesAsync(config.Configs)).Reasons));
+            var luaScriptsTask = new Task<Task<FluentResults.Result>>(async () =>
+                await _luaScriptManagementService.LoadScriptResourcesAsync(config.LuaScripts));
+            
+            configsTask.Start();
+            luaScriptsTask.Start();
+            
+            var r = Task.WhenAll(configsTask, luaScriptsTask).ConfigureAwait(false).GetAwaiter().GetResult();
 
             foreach (var task in r)
                 res.WithReasons(task.ConfigureAwait(false).GetAwaiter().GetResult().Reasons);

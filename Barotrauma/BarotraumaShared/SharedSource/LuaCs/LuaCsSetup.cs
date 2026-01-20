@@ -36,8 +36,8 @@ namespace Barotrauma
             _servicesProvider = SetupServicesProvider();
             if (!ValidateLuaCsContent())
             {
-                Logger.LogError($"{nameof(LuaCsSetup)}: ModConfigXml missing. Unable to continue.");
-                throw new ApplicationException($"{nameof(LuaCsSetup)}: Lua ModConfig.xml is missing. Unable to continue.");
+                Logger.LogError($"{nameof(LuaCsSetup)}: ModConfig.xml missing. Unable to continue.");
+                throw new ApplicationException($"{nameof(LuaCsSetup)}: Lua's ModConfig.xml is missing. Unable to continue.");
             }
             _runStateMachine = SetupStateMachine();
             SubscribeToLuaCsEvents();

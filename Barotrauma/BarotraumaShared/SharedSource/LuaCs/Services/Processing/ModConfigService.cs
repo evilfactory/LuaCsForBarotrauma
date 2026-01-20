@@ -235,6 +235,7 @@ public sealed class ModConfigService : IModConfigService
     
     private async Task<Result<IModConfigInfo>> CreateFromLegacyAsync(ContentPackage src)
     {
+        // TODO: Implement legacy mod analysis
         return new ModConfigInfo() 
         { 
             Package = src, 
