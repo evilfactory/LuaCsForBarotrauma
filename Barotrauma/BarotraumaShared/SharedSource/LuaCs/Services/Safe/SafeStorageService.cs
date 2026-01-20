@@ -25,8 +25,8 @@ public class SafeStorageService : StorageService, ISafeStorageService
     
     public SafeStorageService(IStorageServiceConfig configData) : base(configData)
     {
-        IsReadOperationAllowedEval = async Task<bool> (fp) => IsFileAccessible(fp, true, true);
-        IsWriteOperationAllowedEval = async Task<bool> (fp) => IsFileAccessible(fp, false, true);
+        IsReadOperationAllowedEval = (fp) => IsFileAccessible(fp, true, true);
+        IsWriteOperationAllowedEval = (fp) => IsFileAccessible(fp, false, true);
     }
     
     private string GetFullPath(string path) => System.IO.Path.GetFullPath(path).CleanUpPathCrossPlatform();

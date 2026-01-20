@@ -23,27 +23,16 @@ public class StorageService : IStorageService
     public StorageService(IStorageServiceConfig configData)
     {
         ConfigData = configData;
-        IsReadOperationAllowedEval = async Task<bool> (str) => true;
-        IsWriteOperationAllowedEval = async Task<bool> (str) => true;
-    }
-
-    public StorageService(IStorageServiceConfig configData, 
-        Func<string, Task<bool>> isReadOperationAllowedEval, 
-        Func<string, Task<bool>> isWriteOperationAllowedEval)
-    {
-        Guard.IsNotNull(isReadOperationAllowedEval, nameof(isReadOperationAllowedEval));
-        Guard.IsNotNull(isWriteOperationAllowedEval, nameof(isWriteOperationAllowedEval));
-        ConfigData = configData;
-        IsReadOperationAllowedEval = isReadOperationAllowedEval;
-        IsWriteOperationAllowedEval = isWriteOperationAllowedEval;
+        IsReadOperationAllowedEval = bool (str) => true;
+        IsWriteOperationAllowedEval = bool (str) => true;
     }
 
     private readonly ConcurrentDictionary<string, OneOf.OneOf<byte[], string, XDocument>> _fsCache = new();
     protected readonly IStorageServiceConfig ConfigData;
     protected readonly AsyncReaderWriterLock OperationsLock = new();
 
-    private Func<string, Task<bool>> _isReadOperationAllowedEval;
-    protected Func<string, Task<bool>> IsReadOperationAllowedEval
+    private Func<string, bool> _isReadOperationAllowedEval;
+    protected Func<string, bool> IsReadOperationAllowedEval
     {
         get => _isReadOperationAllowedEval;
         set
@@ -53,8 +42,8 @@ public class StorageService : IStorageService
         }
     }
 
-    private Func<string, Task<bool>> _isWriteOperationAllowedEval;
-    protected Func<string, Task<bool>> IsWriteOperationAllowedEval
+    private Func<string, bool> _isWriteOperationAllowedEval;
+    protected Func<string, bool> IsWriteOperationAllowedEval
     {
         get => _isWriteOperationAllowedEval;
         set
@@ -221,25 +210,28 @@ public class StorageService : IStorageService
     public async Task<FluentResults.Result> SaveLocalTextAsync(ContentPackage package, string localFilePath, string text)
         => await SaveLocalDataAsync(package, localFilePath, text, async (path, txt) => await TrySaveTextAsync(path, txt));
 
+    private bool IsPackagePathValid(ContentPath contentPath)
+    {
+        return contentPath.FullPath.StartsWith(ConfigData.WorkshopModsDirectory)
+            || contentPath.FullPath.StartsWith(ConfigData.LocalModsDirectory)
+#if CLIENT
+            || contentPath.FullPath.StartsWith(ConfigData.TempDownloadsDirectory)
+#endif
+            || contentPath.FullPath.StartsWith(Path.GetFullPath(ContentPackageManager.VanillaCorePackage!.Dir).CleanUpPathCrossPlatform());
+    }
     
     // --- Package Content
-    private Result<T> LoadPackageData<T>(ContentPath filePath, Func<string, Result<T>> dataLoader)
+    private Result<T> LoadPackageData<T>(ContentPath contentPath, Func<string, Result<T>> dataLoader)
     {
-        Guard.IsNotNull(filePath, nameof(filePath));
-        Guard.IsNotNullOrWhiteSpace(filePath.FullPath,  nameof(filePath.FullPath));
+        Guard.IsNotNull(contentPath, nameof(contentPath));
+        Guard.IsNotNullOrWhiteSpace(contentPath.FullPath,  nameof(contentPath.FullPath));
         using var lck = OperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
-        if (!filePath.FullPath.StartsWith(ConfigData.WorkshopModsDirectory) 
-            && !filePath.FullPath.StartsWith(ConfigData.LocalModsDirectory)
-            && !filePath.FullPath.StartsWith(ContentPackageManager.VanillaCorePackage!.Dir)
-#if CLIENT
-            && !filePath.FullPath.StartsWith(ConfigData.TempDownloadsDirectory)
-#endif
-            )
+        if (!IsPackagePathValid(contentPath))
         {
-            ThrowHelper.ThrowUnauthorizedAccessException($"{nameof(LoadPackageData)}: The filepath of `{filePath.FullPath}' is not in a package directory!");
+            ThrowHelper.ThrowUnauthorizedAccessException($"{nameof(LoadPackageData)}: The filepath of `{contentPath.FullPath}' is not in a package directory!");
         }
-        return dataLoader(filePath.FullPath);
+        return dataLoader(contentPath.FullPath);
     }
 
     public Result<XDocument> LoadPackageXml(ContentPath filePath)
@@ -292,18 +284,17 @@ public class StorageService : IStorageService
     }
     
     
-    private async Task<Result<T>> LoadPackageDataAsync<T>(ContentPath filePath, Func<string, Task<Result<T>>> dataLoader)
+    private async Task<Result<T>> LoadPackageDataAsync<T>(ContentPath contentPath, Func<string, Task<Result<T>>> dataLoader)
     {
-        Guard.IsNotNull(filePath, nameof(filePath));
-        Guard.IsNotNullOrWhiteSpace(filePath.FullPath,  nameof(filePath.FullPath));
+        Guard.IsNotNull(contentPath, nameof(contentPath));
+        Guard.IsNotNullOrWhiteSpace(contentPath.FullPath,  nameof(contentPath.FullPath));
         using var lck = await OperationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        if (!filePath.FullPath.StartsWith(ConfigData.WorkshopModsDirectory) && !filePath.FullPath.StartsWith(ConfigData.LocalModsDirectory))
+        if (!IsPackagePathValid(contentPath))
         {
-            ThrowHelper.ThrowUnauthorizedAccessException(
-                $"{nameof(LoadPackageData)}: The filepath of `{filePath.FullPath}' is not in a package directory!");
+            ThrowHelper.ThrowUnauthorizedAccessException($"{nameof(LoadPackageDataAsync)}: The filepath of `{contentPath.FullPath}' is not in a package directory!");
         }
-        return await dataLoader(filePath.FullPath);
+        return await dataLoader(contentPath.FullPath);
     }
     
     public async Task<Result<XDocument>> LoadPackageXmlAsync(ContentPath filePath)
@@ -371,7 +362,7 @@ public class StorageService : IStorageService
         using var lck = OperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
         
-        if (IsReadOperationAllowedEval?.Invoke(filePath).ConfigureAwait(false).GetAwaiter().GetResult() is not true)
+        if (IsReadOperationAllowedEval?.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TryLoadText)}: File '{filePath}' is not allowed.");
         }
@@ -399,7 +390,7 @@ public class StorageService : IStorageService
         using var lck = OperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
         
-        if (IsReadOperationAllowedEval?.Invoke(filePath).ConfigureAwait(false).GetAwaiter().GetResult() is not true)
+        if (IsReadOperationAllowedEval?.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TryLoadBinary)}: File '{filePath}' is not allowed.");
         }
@@ -430,7 +421,7 @@ public class StorageService : IStorageService
         using var lck = OperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
         
-        if (IsWriteOperationAllowedEval?.Invoke(filePath).ConfigureAwait(false).GetAwaiter().GetResult() is not true)
+        if (IsWriteOperationAllowedEval?.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TrySaveText)}: File '{filePath}' is not allowed.");
         }
@@ -456,7 +447,7 @@ public class StorageService : IStorageService
         using var lck = OperationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
         
-        if (IsWriteOperationAllowedEval?.Invoke(filePath).ConfigureAwait(false).GetAwaiter().GetResult() is not true)
+        if (IsWriteOperationAllowedEval?.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TrySaveBinary)}: File '{filePath}' is not allowed.");
         }
@@ -479,7 +470,7 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(filePath, nameof(filePath));
         IService.CheckDisposed(this);
         // lock not needed
-        if (IsReadOperationAllowedEval?.Invoke(filePath).ConfigureAwait(false).GetAwaiter().GetResult() is not true)
+        if (IsReadOperationAllowedEval?.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(FileExists)}: File '{filePath}' is not allowed.");
         }
@@ -497,7 +488,7 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(directoryPath, nameof(directoryPath));
         IService.CheckDisposed(this);
         // lock not needed
-        if (IsReadOperationAllowedEval?.Invoke(directoryPath).ConfigureAwait(false).GetAwaiter().GetResult() is not true)
+        if (IsReadOperationAllowedEval?.Invoke(directoryPath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(DirectoryExists)}: File '{directoryPath}' is not allowed.");
         }
@@ -518,7 +509,7 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(filePath, nameof(filePath));
         using var lck = await OperationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        if (await IsReadOperationAllowedEval.Invoke(filePath) is not true)
+        if (IsReadOperationAllowedEval.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TryLoadXmlAsync)}: File '{filePath}' is not allowed.");
         }
@@ -548,7 +539,7 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(filePath, nameof(filePath));
         using var lck = await OperationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        if (await IsReadOperationAllowedEval.Invoke(filePath) is not true)
+        if (IsReadOperationAllowedEval.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TryLoadTextAsync)}: File '{filePath}' is not allowed.");
         }
@@ -575,7 +566,7 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(filePath, nameof(filePath));
         using var lck = await OperationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        if (await IsReadOperationAllowedEval.Invoke(filePath) is not true)
+        if (IsReadOperationAllowedEval.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TryLoadBinaryAsync)}: File '{filePath}' is not allowed.");
         }
@@ -601,7 +592,7 @@ public class StorageService : IStorageService
         Guard.IsNotNullOrWhiteSpace(text, nameof(text));
         using var lck = await OperationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        if (await IsWriteOperationAllowedEval.Invoke(filePath) is not true)
+        if (IsWriteOperationAllowedEval.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TrySaveTextAsync)}: File '{filePath}' is not allowed.");
         }
@@ -625,7 +616,7 @@ public class StorageService : IStorageService
         Guard.HasSizeGreaterThanOrEqualTo(bytes, 1, nameof(bytes));
         using var lck = await OperationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        if (await IsWriteOperationAllowedEval.Invoke(filePath) is not true)
+        if (IsWriteOperationAllowedEval.Invoke(filePath) is not true)
         {
             return FluentResults.Result.Fail($"{nameof(TrySaveBinaryAsync)}: File '{filePath}' is not allowed.");
         }

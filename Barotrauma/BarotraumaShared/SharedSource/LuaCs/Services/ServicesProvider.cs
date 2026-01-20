@@ -17,7 +17,10 @@ public class ServicesProvider : IServicesProvider
 
     public ServicesProvider()
     {
-        _serviceContainerInst = new ServiceContainer();
+        _serviceContainerInst = new ServiceContainer(new ContainerOptions()
+        {
+            EnablePropertyInjection = false
+        });
     }
     
     public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface

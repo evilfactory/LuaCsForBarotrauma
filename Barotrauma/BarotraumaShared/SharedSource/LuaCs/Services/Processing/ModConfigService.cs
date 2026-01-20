@@ -235,6 +235,12 @@ public sealed class ModConfigService : IModConfigService
     
     private async Task<Result<IModConfigInfo>> CreateFromLegacyAsync(ContentPackage src)
     {
-        throw new NotImplementedException();
+        return new ModConfigInfo() 
+        { 
+            Package = src, 
+            Assemblies = ImmutableArray<IAssemblyResourceInfo>.Empty, 
+            Configs = ImmutableArray<IConfigResourceInfo>.Empty, 
+            LuaScripts = ImmutableArray<ILuaScriptResourceInfo>.Empty 
+        };
     }
 }
