@@ -275,7 +275,8 @@ namespace Barotrauma
                 if (!PackageManagementService.IsAnyPackageLoaded())
                 {
                     Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
-                    LoadLuaCsConfig();
+                    // TODO: Implement full xml content necessary for this to work.
+                    //LoadLuaCsConfig();
                 }
 
                 CurrentRunState = RunState.LoadedNoExec;
