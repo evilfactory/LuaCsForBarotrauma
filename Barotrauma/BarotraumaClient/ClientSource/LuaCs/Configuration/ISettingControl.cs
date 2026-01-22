@@ -2,9 +2,9 @@
 
 namespace Barotrauma.LuaCs.Configuration;
 
-public interface IConfigControl : IConfigBase
+public interface ISettingControl : ISettingBase
 {
-    event Action<IConfigControl> OnDown;
+    event Action<ISettingControl> OnDown;
     KeyOrMouse Value { get; }
     bool IsAssignable(KeyOrMouse value);
     bool TrySetValue(KeyOrMouse value);

@@ -15,33 +15,18 @@ namespace Barotrauma.LuaCs.Services;
 
 public partial interface IConfigService : IReusableService, ILuaConfigService
 {
+    void RegisterSettingTypeInitializer<T>(string typeIdentifier, Func<IConfigInfo, T> settingFactory)
+        where T : class, ISettingBase;
     /// <summary>
-    /// Registers a type initializer from instancing config types by indicated type from config.
+    /// 
     /// </summary>
-    /// <param name="initializer"></param>
-    /// <param name="replaceIfExists"></param>
-    /// <typeparam name="TData">The <see cref="Type"/> as parsed from the configuration info.</typeparam>
-    /// <typeparam name="TConfig">The resulting configuration instance.</typeparam>
-    void RegisterTypeInitializer<TData, TConfig>(Func<IConfigInfo, FluentResults.Result<TConfig>> initializer, bool replaceIfExists = false)
-        where TData : IEquatable<TData> where TConfig : IConfigBase;
-    
-    // Config Files/Resources
+    /// <param name="configResources"></param>
+    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <returns></returns>
     Task<FluentResults.Result> LoadConfigsAsync(ImmutableArray<IConfigResourceInfo> configResources);
     Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigResourceInfo> configProfileResources);
-    
-    // Immediate Mode
-    FluentResults.Result<TConfig> AddConfig<TConfig>(IConfigInfo configInfo) where TConfig : IConfigBase;
-    
-    // Utility
-    FluentResults.Result ApplyProfileSettings(ContentPackage package, string profileName);
     FluentResults.Result DisposePackageData(ContentPackage package);
     FluentResults.Result DisposeAllPackageData();
-    FluentResults.Result<IReadOnlyDictionary<(ContentPackage Package, string ConfigName), IConfigBase>> GetConfigsForPackage(ContentPackage package);
-    FluentResults.Result<IReadOnlyDictionary<(ContentPackage Package, string ConfigName), ImmutableArray<(string ConfigName, OneOf.OneOf<string, XElement> Value)>>> 
-        GetProfilesForPackage(ContentPackage package);
-    IReadOnlyDictionary<(ContentPackage Package, string Name), IConfigBase> GetAllConfigs();
-    bool TryGetConfig<T>(ContentPackage package, string name, out T config) where T : IConfigBase;
-    Task<FluentResults.Result> SaveAllConfigs();
-    Task<FluentResults.Result> SaveConfigsForPackage(ContentPackage package);
-    Task<FluentResults.Result> SaveConfig((ContentPackage Package, string ConfigName) config);
+    bool TryGetConfig<T>(ContentPackage package, string internalName, out T instance) where T : ISettingBase;
 }

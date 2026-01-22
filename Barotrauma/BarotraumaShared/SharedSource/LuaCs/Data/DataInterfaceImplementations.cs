@@ -67,9 +67,8 @@ public record ConfigInfo : IConfigInfo
 {
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
-    public Type DataType { get; init; }
-    public OneOf<string, XElement> DefaultValue { get; init; }
-    public OneOf<string, XElement> Value { get; init; }
+    public string DataType { get; init; }
+    public XElement Element { get; init; }
     public RunState EditableStates { get; init; }
     public NetSync NetSync { get; init; }
     
@@ -79,7 +78,7 @@ public record ConfigInfo : IConfigInfo
     public string DisplayCategory { get; init; }
     public bool ShowInMenus { get; init; }
     public string Tooltip { get; init; }
-    public string ImageIconPath { get; init; }
+    public ContentPath ImageIconPath { get; init; }
 #endif
 }
 
@@ -87,7 +86,7 @@ public record ConfigProfileInfo : IConfigProfileInfo
 {
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
-    public IReadOnlyList<(string ConfigName, OneOf<string, XElement> Value)> ProfileValues { get; init; }
+    public IReadOnlyList<(string ConfigName, XElement Element)> ProfileValues { get; init; }
 }
 
 #endregion

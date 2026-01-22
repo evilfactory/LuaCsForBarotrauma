@@ -5,5 +5,5 @@ namespace Barotrauma.LuaCs.Data;
 
 public interface IConfigProfileInfo : IDataInfo
 {
-    IReadOnlyList<(string ConfigName, OneOf.OneOf<string, XElement> Value)> ProfileValues { get; }
+    IReadOnlyList<(string ConfigName, XElement Element)> ProfileValues { get; }
 }

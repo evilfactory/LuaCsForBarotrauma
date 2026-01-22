@@ -10,7 +10,7 @@ using Microsoft.Toolkit.Diagnostics;
 
 namespace Barotrauma.LuaCs.Services.Processing;
 
-public sealed class ConfigFileParserService : 
+public sealed class ModConfigFileParserService : 
     IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>, 
     IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>, 
     IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>
@@ -18,7 +18,7 @@ public sealed class ConfigFileParserService :
     private IStorageService _storageService;
     private readonly AsyncReaderWriterLock _operationsLock = new();
 
-    public ConfigFileParserService(IStorageService storageService)
+    public ModConfigFileParserService(IStorageService storageService)
     {
         _storageService = storageService;
     }

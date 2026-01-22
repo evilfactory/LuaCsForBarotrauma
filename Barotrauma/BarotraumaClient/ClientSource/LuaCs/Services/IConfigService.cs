@@ -13,5 +13,5 @@ public partial interface IConfigService
     ImmutableArray<IDisplayableConfigBase> GetDisplayableConfigs();
     ImmutableArray<IDisplayableConfigBase> GetDisplayableConfigsForPackage(ContentPackage package);
     
-    FluentResults.Result<IConfigControl> AddConfigControl(IConfigInfo configInfo);
+    FluentResults.Result<ISettingControl> AddConfigControl(IConfigInfo configInfo);
 }

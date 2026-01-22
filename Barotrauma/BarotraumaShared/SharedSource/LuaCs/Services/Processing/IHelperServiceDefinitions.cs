@@ -18,3 +18,8 @@ public interface IParserServiceAsync<in TSrc, TOut> : IService
     Task<Result<TOut>> TryParseResourceAsync(TSrc src);
     Task<ImmutableArray<Result<TOut>>> TryParseResourcesAsync(IEnumerable<TSrc> sources);
 }
+
+public interface IParserServiceOneToManyAsync<in TSrc, TOut> : IService
+{
+    Task<Result<ImmutableArray<TOut>>> TryParseResourcesAsync(TSrc src);
+}

@@ -19,7 +19,7 @@ public partial class ConfigService
         throw new NotImplementedException();
     }
 
-    public Result<IConfigControl> AddConfigControl(IConfigInfo configInfo)
+    public Result<ISettingControl> AddConfigControl(IConfigInfo configInfo)
     {
         throw new NotImplementedException();
     }

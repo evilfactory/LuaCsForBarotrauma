@@ -21,8 +21,20 @@ namespace Barotrauma
             }
         }
 
-        public void CheckCsEnabled()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Returns whether the IsCsEnabled has been changed to true/enabled. Returns false if already enabled.</returns>
+        public bool CheckCsEnabled()
         {
+            // fast exit if enabled or unavailable.
+            if (this.IsCsEnabled?.Value ?? true )
+            {
+                return false;
+            }
+            
+            bool isCsValueChanged = false;
+            
             var csharpMods = PackageManagementService.GetLoadedAssemblyPackages();
 
             StringBuilder sb = new StringBuilder();
@@ -38,7 +50,7 @@ namespace Barotrauma
             if (GameMain.Client == null || GameMain.Client.IsServerOwner)
             {
                 new GUIMessageBox("", $"You have CSharp mods enabled but don't have the CSharp Scripting enabled, those mods might not work, go to the Main Menu, click on LuaCs Settings and check Enable CSharp Scripting.\n\n{sb}");
-                return;
+                return false;
             }
 
             GUIMessageBox msg = new GUIMessageBox(
@@ -49,6 +61,7 @@ namespace Barotrauma
             msg.Buttons[0].OnClicked = (GUIButton button, object obj) =>
             {
                 this.IsCsEnabled.TrySetValue(true);
+                isCsValueChanged = true;
                 return true;
             };
 
@@ -57,6 +70,8 @@ namespace Barotrauma
                 this.IsCsEnabled.TrySetValue(false);
                 return true;
             };
+
+            return isCsValueChanged;
         }
 
         /// <summary>
@@ -85,7 +100,10 @@ namespace Barotrauma
                 case SpriteEditorScreen:
                 case SubEditorScreen: 
                 case TestScreen:        // notes: TestScreen is a Linux edge case editor screen and is deprecated.
-                    CheckCsEnabled();
+                    if (CheckCsEnabled() && this.CurrentRunState >= RunState.Running)
+                    {
+                        SetRunState(RunState.LoadedNoExec);
+                    }
                     SetRunState(RunState.Running);
                     break;
                 default:

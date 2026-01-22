@@ -7,11 +7,11 @@ public partial interface IConfigInfo : IConfigDisplayInfo { }
 public interface IConfigDisplayInfo
 {
     /// <summary>
-    /// User-friendly name or Localization Token.
+    /// Localization Token for display name.
     /// </summary>
     string DisplayName { get; }
     /// <summary>
-    /// User-friendly description or Localization Token.
+    /// Localization Token for description.
     /// </summary>
     string Description { get; }
     /// <summary>
@@ -29,5 +29,5 @@ public interface IConfigDisplayInfo
     /// <summary>
     /// Icon for display in menus, if available.
     /// </summary>
-    string ImageIconPath { get; }
+    ContentPath ImageIconPath { get; }
 }

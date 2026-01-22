@@ -3,7 +3,7 @@ using Barotrauma.LuaCs.Services;
 
 namespace Barotrauma.LuaCs.Configuration;
 
-public interface IConfigEnum : IConfigBase, INetworkSyncEntity
+public interface ISettingEnum : ISettingBase, INetworkSyncEntity
 {
     
 }

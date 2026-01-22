@@ -325,6 +325,9 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
             }
             catch (Exception e)
             {
+#if DEBUG
+                throw; //make errors apparent       
+#endif
                 errors.Enqueue(new Error($"Error while executing runner for {eventType.Name} on type {eventSub.GetType().Name}.")
                     .WithMetadata(MetadataType.ExceptionObject, this)
                     .WithMetadata(MetadataType.RootObject, eventSub)

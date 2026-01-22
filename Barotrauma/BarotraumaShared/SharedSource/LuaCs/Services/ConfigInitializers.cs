@@ -26,37 +26,19 @@ public class ConfigInitializers : IService
     // stateless service
     public bool IsDisposed => false;
 
-    private Result<IConfigEntry<T>> CreateConfigEntry<T>(IConfigInfo configInfo,
-        Action<ConfigEntry<T>, INetReadMessage> readHandler, 
-        Action<ConfigEntry<T>, INetWriteMessage> writeHandler)
+    private Result<ISettingEntry<T>> CreateConfigEntry<T>(IConfigInfo configInfo,
+        Action<SettingEntry<T>, INetReadMessage> readHandler, 
+        Action<SettingEntry<T>, INetWriteMessage> writeHandler)
         where T : IEquatable<T>
     {
-        try
-        {
-            var ice = new ConfigEntry<T>(configInfo, readHandler, writeHandler);
-            return FluentResults.Result.Ok<IConfigEntry<T>>(ice);
-        }
-        catch (Exception e)
-        {
-            return FluentResults.Result.Fail($"Error while initializing config var: {configInfo?.OwnerPackage} - {configInfo?.InternalName}")
-                .WithError(new ExceptionalError(e));
-        }
+        throw new NotImplementedException();
     }
     
-    private Result<IConfigList<T>> CreateConfigList<T>(IConfigInfo configInfo, 
-        Action<IConfigList<T>, INetReadMessage> readHandler, Action<IConfigList<T>, INetWriteMessage> writeHandler) 
+    private Result<ISettingList<T>> CreateConfigList<T>(IConfigInfo configInfo, 
+        Action<ISettingList<T>, INetReadMessage> readHandler, Action<ISettingList<T>, INetWriteMessage> writeHandler) 
         where T : IEquatable<T>
     {
-        try
-        {
-            var icl = new ConfigList<T>(configInfo, readHandler, writeHandler);
-            return FluentResults.Result.Ok<IConfigList<T>>(icl);
-        }
-        catch (Exception e)
-        {
-            return FluentResults.Result.Fail($"Error while initializing config var: {configInfo?.OwnerPackage} - {configInfo?.InternalName}")
-                .WithError(new ExceptionalError(e));
-        }
+        throw new NotImplementedException();
     }
 
     public void RegisterTypeInitializers(IConfigService configService)
@@ -64,30 +46,30 @@ public class ConfigInitializers : IService
         if (configService == null) 
             throw new ArgumentNullException($"{nameof(RegisterTypeInitializers)}: {nameof(IConfigService)} is null.");
         
-        configService.RegisterTypeInitializer<bool, IConfigEntry<bool>>(this.CreateConfigBool);
-        configService.RegisterTypeInitializer<sbyte, IConfigEntry<sbyte>>(this.CreateConfigSbyte);
-        configService.RegisterTypeInitializer<byte, IConfigEntry<byte>>(this.CreateConfigByte);
-        configService.RegisterTypeInitializer<short, IConfigEntry<short>>(this.CreateConfigShort);
-        configService.RegisterTypeInitializer<ushort, IConfigEntry<ushort>>(this.CreateConfigUShort);
-        configService.RegisterTypeInitializer<int, IConfigEntry<int>>(this.CreateConfigInt32);
-        configService.RegisterTypeInitializer<uint, IConfigEntry<uint>>(this.CreateConfigUInt32);
-        configService.RegisterTypeInitializer<long, IConfigEntry<long>>(this.CreateConfigInt64);
-        configService.RegisterTypeInitializer<ulong, IConfigEntry<ulong>>(this.CreateConfigUInt64);
-        configService.RegisterTypeInitializer<float, IConfigEntry<float>>(this.CreateConfigFloat32);
-        configService.RegisterTypeInitializer<double, IConfigEntry<double>>(this.CreateConfigFloat64);
-        configService.RegisterTypeInitializer<decimal, IConfigEntry<decimal>>(this.CreateConfigFloat128);
-        configService.RegisterTypeInitializer<char, IConfigEntry<char>>(this.CreateConfigChar);
-        configService.RegisterTypeInitializer<string, IConfigEntry<string>>(this.CreateConfigString);
-        configService.RegisterTypeInitializer<Color, IConfigEntry<Color>>(this.CreateConfigColor);
-        configService.RegisterTypeInitializer<Vector2, IConfigEntry<Vector2>>(this.CreateConfigVector2);
-        configService.RegisterTypeInitializer<Vector3, IConfigEntry<Vector3>>(this.CreateConfigVector3);
-        configService.RegisterTypeInitializer<Vector4, IConfigEntry<Vector4>>(this.CreateConfigVector4);
+        /*configService.RegisterTypeInitializer<bool, ISettingEntry<bool>>(this.CreateConfigBool);
+        configService.RegisterTypeInitializer<sbyte, ISettingEntry<sbyte>>(this.CreateConfigSbyte);
+        configService.RegisterTypeInitializer<byte, ISettingEntry<byte>>(this.CreateConfigByte);
+        configService.RegisterTypeInitializer<short, ISettingEntry<short>>(this.CreateConfigShort);
+        configService.RegisterTypeInitializer<ushort, ISettingEntry<ushort>>(this.CreateConfigUShort);
+        configService.RegisterTypeInitializer<int, ISettingEntry<int>>(this.CreateConfigInt32);
+        configService.RegisterTypeInitializer<uint, ISettingEntry<uint>>(this.CreateConfigUInt32);
+        configService.RegisterTypeInitializer<long, ISettingEntry<long>>(this.CreateConfigInt64);
+        configService.RegisterTypeInitializer<ulong, ISettingEntry<ulong>>(this.CreateConfigUInt64);
+        configService.RegisterTypeInitializer<float, ISettingEntry<float>>(this.CreateConfigFloat32);
+        configService.RegisterTypeInitializer<double, ISettingEntry<double>>(this.CreateConfigFloat64);
+        configService.RegisterTypeInitializer<decimal, ISettingEntry<decimal>>(this.CreateConfigFloat128);
+        configService.RegisterTypeInitializer<char, ISettingEntry<char>>(this.CreateConfigChar);
+        configService.RegisterTypeInitializer<string, ISettingEntry<string>>(this.CreateConfigString);
+        configService.RegisterTypeInitializer<Color, ISettingEntry<Color>>(this.CreateConfigColor);
+        configService.RegisterTypeInitializer<Vector2, ISettingEntry<Vector2>>(this.CreateConfigVector2);
+        configService.RegisterTypeInitializer<Vector3, ISettingEntry<Vector3>>(this.CreateConfigVector3);
+        configService.RegisterTypeInitializer<Vector4, ISettingEntry<Vector4>>(this.CreateConfigVector4);*/
     }
         
     
     #region InitializerWrappers_NetworkInjected
 
-    private void AssignValueConditional<T>(T val, IConfigEntry<T> inst) where T : IEquatable<T>
+    private void AssignValueConditional<T>(T val, ISettingEntry<T> inst) where T : IEquatable<T>
     {
 #if SERVER
         if (inst.SyncType is NetSync.None or NetSync.ServerAuthority)
@@ -100,7 +82,7 @@ public class ConfigInitializers : IService
 #endif
     }
 
-    private Result<IConfigEntry<bool>> CreateConfigBool(IConfigInfo configInfo)
+    private Result<ISettingEntry<bool>> CreateConfigBool(IConfigInfo configInfo)
     {
         return CreateConfigEntry<bool>(configInfo, (inst, readMsg) =>
         {
@@ -112,7 +94,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<sbyte>> CreateConfigSbyte(IConfigInfo configInfo)
+    private Result<ISettingEntry<sbyte>> CreateConfigSbyte(IConfigInfo configInfo)
     {
         return CreateConfigEntry<sbyte>(configInfo, (inst, readMsg) =>
         {
@@ -124,7 +106,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<byte>> CreateConfigByte(IConfigInfo configInfo)
+    private Result<ISettingEntry<byte>> CreateConfigByte(IConfigInfo configInfo)
     {
         return CreateConfigEntry<byte>(configInfo, (inst, readMsg) =>
         {
@@ -136,7 +118,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<short>> CreateConfigShort(IConfigInfo configInfo)
+    private Result<ISettingEntry<short>> CreateConfigShort(IConfigInfo configInfo)
     {
         return CreateConfigEntry<short>(configInfo, (inst, readMsg) =>
         {
@@ -148,7 +130,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<ushort>> CreateConfigUShort(IConfigInfo configInfo)
+    private Result<ISettingEntry<ushort>> CreateConfigUShort(IConfigInfo configInfo)
     {
         return CreateConfigEntry<ushort>(configInfo, (inst, readMsg) =>
         {
@@ -160,7 +142,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<int>> CreateConfigInt32(IConfigInfo configInfo)
+    private Result<ISettingEntry<int>> CreateConfigInt32(IConfigInfo configInfo)
     {
         return CreateConfigEntry<int>(configInfo, (inst, readMsg) =>
         {
@@ -172,7 +154,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<uint>> CreateConfigUInt32(IConfigInfo configInfo)
+    private Result<ISettingEntry<uint>> CreateConfigUInt32(IConfigInfo configInfo)
     {
         return CreateConfigEntry<uint>(configInfo, (inst, readMsg) =>
         {
@@ -184,7 +166,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<long>> CreateConfigInt64(IConfigInfo configInfo)
+    private Result<ISettingEntry<long>> CreateConfigInt64(IConfigInfo configInfo)
     {
         return CreateConfigEntry<long>(configInfo, (inst, readMsg) =>
         {
@@ -196,7 +178,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<ulong>> CreateConfigUInt64(IConfigInfo configInfo)
+    private Result<ISettingEntry<ulong>> CreateConfigUInt64(IConfigInfo configInfo)
     {
         return CreateConfigEntry<ulong>(configInfo, (inst, readMsg) =>
         {
@@ -208,7 +190,7 @@ public class ConfigInitializers : IService
         });
     }
     
-    private Result<IConfigEntry<float>> CreateConfigFloat32(IConfigInfo configInfo)
+    private Result<ISettingEntry<float>> CreateConfigFloat32(IConfigInfo configInfo)
     {
         return CreateConfigEntry<float>(configInfo, (inst, readMsg) =>
         {
@@ -220,7 +202,7 @@ public class ConfigInitializers : IService
         });
     }
     
-    private Result<IConfigEntry<double>> CreateConfigFloat64(IConfigInfo configInfo)
+    private Result<ISettingEntry<double>> CreateConfigFloat64(IConfigInfo configInfo)
     {
         return CreateConfigEntry<double>(configInfo, (inst, readMsg) =>
         {
@@ -232,7 +214,7 @@ public class ConfigInitializers : IService
         });
     }
     
-    private Result<IConfigEntry<decimal>> CreateConfigFloat128(IConfigInfo configInfo)
+    private Result<ISettingEntry<decimal>> CreateConfigFloat128(IConfigInfo configInfo)
     {
         return CreateConfigEntry<decimal>(configInfo, (inst, readMsg) =>
         {
@@ -253,7 +235,7 @@ public class ConfigInitializers : IService
         });
     }
     
-    private Result<IConfigEntry<char>> CreateConfigChar(IConfigInfo configInfo)
+    private Result<ISettingEntry<char>> CreateConfigChar(IConfigInfo configInfo)
     {
         return CreateConfigEntry<char>(configInfo, (inst, readMsg) =>
         {
@@ -265,7 +247,7 @@ public class ConfigInitializers : IService
         });
     }
     
-    private Result<IConfigEntry<string>> CreateConfigString(IConfigInfo configInfo)
+    private Result<ISettingEntry<string>> CreateConfigString(IConfigInfo configInfo)
     {
         return CreateConfigEntry<string>(configInfo, (inst, readMsg) =>
         {
@@ -277,7 +259,7 @@ public class ConfigInitializers : IService
         });
     }
     
-    private Result<IConfigEntry<Color>> CreateConfigColor(IConfigInfo configInfo)
+    private Result<ISettingEntry<Color>> CreateConfigColor(IConfigInfo configInfo)
     {
         return CreateConfigEntry<Color>(configInfo, (inst, readMsg) =>
         {
@@ -289,7 +271,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<Vector2>> CreateConfigVector2(IConfigInfo configInfo)
+    private Result<ISettingEntry<Vector2>> CreateConfigVector2(IConfigInfo configInfo)
     {
         return CreateConfigEntry<Vector2>(configInfo, (inst, readMsg) =>
         {
@@ -302,7 +284,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<Vector3>> CreateConfigVector3(IConfigInfo configInfo)
+    private Result<ISettingEntry<Vector3>> CreateConfigVector3(IConfigInfo configInfo)
     {
         return CreateConfigEntry<Vector3>(configInfo, (inst, readMsg) =>
         {
@@ -316,7 +298,7 @@ public class ConfigInitializers : IService
         });
     }
 
-    private Result<IConfigEntry<Vector4>> CreateConfigVector4(IConfigInfo configInfo)
+    private Result<ISettingEntry<Vector4>> CreateConfigVector4(IConfigInfo configInfo)
     {
         return CreateConfigEntry<Vector4>(configInfo, (inst, readMsg) =>
         {

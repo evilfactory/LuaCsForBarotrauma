@@ -99,56 +99,56 @@ namespace Barotrauma
         /// <summary>
         /// Whether C# plugin code is enabled.
         /// </summary>
-        internal IConfigEntry<bool> IsCsEnabled { get; private set; }
+        internal ISettingEntry<bool> IsCsEnabled { get; private set; }
         
         /// <summary>
         /// Whether mods marked as 'forced' or 'always load' should only be loaded if they're in the enabled mods list.
         /// </summary>
-        internal IConfigEntry<bool> TreatForcedModsAsNormal { get; private set; }
+        internal ISettingEntry<bool> TreatForcedModsAsNormal { get; private set; }
         
         /// <summary>
         /// Whether the lua script runner from Workshop package should be used over the in-built version.
         /// </summary>
-        internal IConfigEntry<bool> PreferToUseWorkshopLuaSetup { get; private set; }
+        internal ISettingEntry<bool> PreferToUseWorkshopLuaSetup { get; private set; }
         
         /// <summary>
         /// Whether the popup error GUI should be hidden/suppressed.
         /// </summary>
-        internal IConfigEntry<bool> DisableErrorGUIOverlay { get; private set; }
+        internal ISettingEntry<bool> DisableErrorGUIOverlay { get; private set; }
         
         /// <summary>
         /// Whether usernames are anonymized or show in logs. 
         /// </summary>
-        internal IConfigEntry<bool> HideUserNamesInLogs { get; private set; }
+        internal ISettingEntry<bool> HideUserNamesInLogs { get; private set; }
         
         /// <summary>
         /// The SteamId of the Workshop LuaCs CPackage in use, if available.
         /// </summary>
-        internal IConfigEntry<ulong> LuaForBarotraumaSteamId { get; private set; }
+        internal ISettingEntry<ulong> LuaForBarotraumaSteamId { get; private set; }
         
         /// <summary>
         /// TODO: @evilfactory@users.noreply.github.com
         /// </summary>
-        internal IConfigEntry<bool> RestrictMessageSize { get; private set; }
+        internal ISettingEntry<bool> RestrictMessageSize { get; private set; }
         
         /// <summary>
         /// The local save path for all local data storage for mods.
         /// </summary>
-        internal IConfigEntry<string> LocalDataSavePath { get; private set; }
+        internal ISettingEntry<string> LocalDataSavePath { get; private set; }
 
         void LoadLuaCsConfig()
         {
-            IsCsEnabled = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
+            IsCsEnabled = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
                 : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            TreatForcedModsAsNormal = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
+            TreatForcedModsAsNormal = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
                 : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
-            DisableErrorGUIOverlay = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
+            DisableErrorGUIOverlay = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
                 : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            HideUserNamesInLogs = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
+            HideUserNamesInLogs = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
                 : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<IConfigEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
+            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<ISettingEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
                 : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            RestrictMessageSize = ConfigService.TryGetConfig<IConfigEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
+            RestrictMessageSize = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
                 : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
         }
         
@@ -170,9 +170,11 @@ namespace Barotrauma
             // TODO: INetworkingService
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>, ConfigFileParserService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>, ConfigFileParserService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>, ConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigInfo>, SettingsFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigProfileInfo>, SettingsFileParserService>(ServiceLifetime.Transient);
             // service config data
             servicesProvider.RegisterServiceType<IStorageServiceConfig, StorageServiceConfig>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaScriptServicesConfig, LuaScriptServicesConfig>(ServiceLifetime.Singleton);

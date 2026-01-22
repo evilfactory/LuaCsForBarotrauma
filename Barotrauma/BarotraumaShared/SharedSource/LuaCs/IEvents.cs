@@ -30,7 +30,7 @@ public interface IEvent<out T> : IEvent where T : IEvent<T>
     }
 }
 
-#region RuntimeEvents
+#region RuntimeServiceEvents
 
 /// <summary>
 /// Called when the current <see cref="Screen"/> (game state) changes. Upstream Type 'Screen' is internal. 
@@ -59,6 +59,12 @@ internal interface IEventEnabledPackageListChanged : IEvent<IEventEnabledPackage
 internal interface IEventReloadAllPackages : IEvent<IEventReloadAllPackages>
 {
     void OnReloadAllPackages();
+}
+
+internal interface IEventSettingInstanceLifetime : IEvent<IEventSettingInstanceLifetime>
+{
+    void OnSettingInstanceCreated<T>(T configInstance) where T : ISettingBase;
+    void OnSettingInstanceDisposed<T>(T configInstance) where T : ISettingBase;
 }
 
 #endregion
