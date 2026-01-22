@@ -41,8 +41,6 @@ namespace Barotrauma
             }
             _runStateMachine = SetupStateMachine();
             SubscribeToLuaCsEvents();
-            SetRunState(RunState.LoadedNoExec);
-            LoadLuaCsConfig();
         }
         
         bool ValidateLuaCsContent()
@@ -258,7 +256,7 @@ namespace Barotrauma
                     Logger.LogResults(PackageManagementService.StopRunningPackages());
                 }
 
-                if (PackageManagementService.IsAnyPackageRunning())
+                if (PackageManagementService.IsAnyPackageLoaded())
                 {
                     DisposeLuaCsConfig();
                     Logger.LogResults(PackageManagementService.UnloadAllPackages());
@@ -353,9 +351,7 @@ namespace Barotrauma
         /// </summary>
         /// <param name="screen">The new game screen.</param>
         public partial void OnScreenSelected(Screen screen);
-
         
-
         void DisposeLuaCsConfig()
         {
             IsCsEnabled = null;

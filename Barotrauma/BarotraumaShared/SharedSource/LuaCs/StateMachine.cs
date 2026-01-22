@@ -87,7 +87,7 @@ public class State<T> where T : Enum
 {
     public T StateId;
     private Action<State<T>> _onEnter, _onExit;
-    public State(T stateId, Action<State<T>> onExitState, Action<State<T>> onEnterState)
+    public State(T stateId, Action<State<T>> onEnterState, Action<State<T>> onExitState)
     {
         StateId = stateId;
         _onEnter = onEnterState;
