@@ -37,7 +37,7 @@ public interface IPluginManagementService : IReusableService
     /// </summary>
     /// <param name="resource"></param>
     /// <returns>Success/Failure and list of failed resources, if any.</returns>
-    FluentResults.Result<ImmutableArray<IAssemblyResourceInfo>> LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource);
+    FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource);
 
     /// <summary>
     /// Creates instances of the given type and provides Property Injection and instance reference caching. Disposes of

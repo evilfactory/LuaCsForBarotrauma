@@ -30,7 +30,7 @@ public class StateMachine<T> where T : Enum
             ThrowHelper.ThrowArgumentException($"State with id {stateId} already exists.");
         }
         
-        _states[stateId] = new State<T>(stateId, onEnter, onExit);
+        _states[stateId] = new State<T>(stateId, onEnterState: onEnter, onExitState: onExit);
         return this;
     }
 

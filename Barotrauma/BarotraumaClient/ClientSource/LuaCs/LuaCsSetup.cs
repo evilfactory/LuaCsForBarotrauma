@@ -15,7 +15,7 @@ namespace Barotrauma
     {
         public void AddToGUIUpdateList()
         {
-            if (!DisableErrorGUIOverlay.Value)
+            if (!DisableErrorGUIOverlay)
             {
                 LuaCsLogger.AddToGUIUpdateList();
             }
@@ -28,7 +28,7 @@ namespace Barotrauma
         public bool CheckCsEnabled()
         {
             // fast exit if enabled or unavailable.
-            if (this.IsCsEnabled?.Value ?? true )
+            if (this.IsCsEnabled)
             {
                 return false;
             }
@@ -60,14 +60,14 @@ namespace Barotrauma
 
             msg.Buttons[0].OnClicked = (GUIButton button, object obj) =>
             {
-                this.IsCsEnabled.TrySetValue(true);
+                this.IsCsEnabled = true;
                 isCsValueChanged = true;
                 return true;
             };
 
             msg.Buttons[1].OnClicked = (GUIButton button, object obj) =>
             {
-                this.IsCsEnabled.TrySetValue(false);
+                this.IsCsEnabled = false;
                 return true;
             };
 

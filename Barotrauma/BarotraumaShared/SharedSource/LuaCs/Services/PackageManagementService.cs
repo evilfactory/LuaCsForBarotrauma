@@ -151,17 +151,28 @@ public sealed class PackageManagementService : IPackageManagementService
         try
         {
             var res = new FluentResults.Result();
-            var configsTask = new Task<Task<FluentResults.Result>>(async Task<FluentResults.Result> () =>
-                new FluentResults.Result()
-                    .WithReasons((await _configService.LoadConfigsAsync(config.Configs)).Reasons)
-                    .WithReasons((await _configService.LoadConfigsProfilesAsync(config.Configs)).Reasons));
-            var luaScriptsTask = new Task<Task<FluentResults.Result>>(async () =>
-                await _luaScriptManagementService.LoadScriptResourcesAsync(config.LuaScripts));
+            var tasks = ImmutableArray.CreateBuilder<Task<Task<FluentResults.Result>>>();
+
+            if (!config.Configs.IsDefaultOrEmpty)
+            {
+                tasks.Add(Task.Factory.StartNew(async Task<FluentResults.Result> () =>
+                    new FluentResults.Result()
+                        .WithReasons((await _configService.LoadConfigsAsync(config.Configs)).Reasons)
+                        .WithReasons((await _configService.LoadConfigsProfilesAsync(config.Configs)).Reasons)));
+            }
+
+            if (!config.LuaScripts.IsDefaultOrEmpty)
+            {
+                tasks.Add(Task.Factory.StartNew(async () =>
+                    await _luaScriptManagementService.LoadScriptResourcesAsync(config.LuaScripts)));
+            }
+
+            if (tasks.Count == 0)
+            {
+                return FluentResults.Result.Ok();
+            }
             
-            configsTask.Start();
-            luaScriptsTask.Start();
-            
-            var r = Task.WhenAll(configsTask, luaScriptsTask).ConfigureAwait(false).GetAwaiter().GetResult();
+            var r = Task.WhenAll(tasks.ToArray()).ConfigureAwait(false).GetAwaiter().GetResult();
 
             foreach (var task in r)
                 res.WithReasons(task.ConfigureAwait(false).GetAwaiter().GetResult().Reasons);
@@ -180,7 +191,9 @@ public sealed class PackageManagementService : IPackageManagementService
         IService.CheckDisposed(this);
 
         if (executionOrder.IsDefaultOrEmpty)
+        {
             return FluentResults.Result.Fail($"{nameof(ExecuteLoadedPackages)}: No packages in the execution order list.");
+        }
         
         if (!_runningPackages.IsEmpty)
         {
@@ -190,7 +203,9 @@ public sealed class PackageManagementService : IPackageManagementService
         }
 
         if (_loadedPackages.IsEmpty)
+        {
             return FluentResults.Result.Fail($"{nameof(ExecuteLoadedPackages)}: No packages loaded. Nothing to run!)");
+        }
 
         var result = new FluentResults.Result();
         
@@ -198,24 +213,16 @@ public sealed class PackageManagementService : IPackageManagementService
         var loadingOrderedPackages = _loadedPackages.OrderBy(pkg => executionOrder.IndexOf(pkg.Key))
             .ToImmutableArray();
         
-        //mod settings
-        var settings = loadingOrderedPackages
-            .SelectMany(pkg => pkg.Value.Configs.OrderBy(scr => scr.LoadPriority))
-            .ToImmutableArray();
-        if (!settings.IsDefaultOrEmpty)
-        {
-            result.WithReasons(_configService.LoadConfigsAsync(settings).ConfigureAwait(false).GetAwaiter()
-                .GetResult().Reasons);
-            result.WithReasons(_configService.LoadConfigsProfilesAsync(settings).ConfigureAwait(false)
-                .GetAwaiter().GetResult().Reasons);
-        }
+        // NOTE: Config/Settings are instanced in LoadPackages()
         
         //lua scripts
         var luaScripts = loadingOrderedPackages
             .SelectMany(pkg => pkg.Value.LuaScripts.OrderBy(scr => scr.LoadPriority))
             .ToImmutableArray();
         if (!luaScripts.IsDefaultOrEmpty)
+        {
             result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts).Reasons);
+        }
 
         if (_runConfig.IsCsEnabled)
         {
@@ -223,7 +230,9 @@ public sealed class PackageManagementService : IPackageManagementService
                 loadingOrderedPackages.SelectMany(pkg => pkg.Value.Assemblies.OrderBy(scr => scr.LoadPriority))
                     .ToImmutableArray();
             if (!plugins.IsDefaultOrEmpty)
+            {
                 result.WithReasons(_pluginManagementService.LoadAssemblyResources(plugins).Reasons);
+            }
         }
         
         return result;

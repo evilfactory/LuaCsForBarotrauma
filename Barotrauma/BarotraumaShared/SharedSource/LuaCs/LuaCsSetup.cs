@@ -5,6 +5,7 @@ using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs;
@@ -93,60 +94,102 @@ namespace Barotrauma
         public LuaGame Game => _servicesProvider.GetService<LuaGame>();
         
         internal IStorageService StorageService => _servicesProvider.GetService<IStorageService>();
-        
+
         /// <summary>
         /// Whether C# plugin code is enabled.
         /// </summary>
-        internal ISettingEntry<bool> IsCsEnabled { get; private set; }
-        
+        public bool IsCsEnabled
+        {
+            get => _isCsEnabled?.Value ?? false;
+            internal set => _isCsEnabled?.TrySetValue(value);
+        }
+
+        private ISettingEntry<bool> _isCsEnabled;
+
         /// <summary>
         /// Whether mods marked as 'forced' or 'always load' should only be loaded if they're in the enabled mods list.
         /// </summary>
-        internal ISettingEntry<bool> TreatForcedModsAsNormal { get; private set; }
-        
+        public bool TreatForcedModsAsNormal
+        {
+            get => _treatForcedModsAsNormal?.Value ?? true;
+            internal set => _treatForcedModsAsNormal?.TrySetValue(value);
+        }
+
+        private ISettingEntry<bool> _treatForcedModsAsNormal;
+
         /// <summary>
         /// Whether the lua script runner from Workshop package should be used over the in-built version.
         /// </summary>
-        internal ISettingEntry<bool> PreferToUseWorkshopLuaSetup { get; private set; }
-        
+        public bool PreferToUseWorkshopLuaSetup
+        {
+            get => _preferToUseWorkshopLuaSetup?.Value ?? false;
+            internal set => _preferToUseWorkshopLuaSetup?.TrySetValue(value);
+        }
+        private ISettingEntry<bool> _preferToUseWorkshopLuaSetup;
+
         /// <summary>
         /// Whether the popup error GUI should be hidden/suppressed.
         /// </summary>
-        internal ISettingEntry<bool> DisableErrorGUIOverlay { get; private set; }
-        
+        public bool DisableErrorGUIOverlay
+        {
+            get => _disableErrorGUIOverlay?.Value ?? false;
+            internal set => _disableErrorGUIOverlay?.TrySetValue(value);
+        }
+        private ISettingEntry<bool> _disableErrorGUIOverlay;
+
         /// <summary>
         /// Whether usernames are anonymized or show in logs. 
         /// </summary>
-        internal ISettingEntry<bool> HideUserNamesInLogs { get; private set; }
-        
+        public bool HideUserNamesInLogs
+        {
+            get => _hideUserNamesInLogs?.Value ?? false;
+            internal set => _hideUserNamesInLogs?.TrySetValue(value);
+        }
+        private ISettingEntry<bool> _hideUserNamesInLogs;
+
         /// <summary>
         /// The SteamId of the Workshop LuaCs CPackage in use, if available.
         /// </summary>
-        internal ISettingEntry<ulong> LuaForBarotraumaSteamId { get; private set; }
-        
+        public ulong LuaForBarotraumaSteamId
+        {
+            get => _luaForBarotraumaSteamId?.Value ?? 0;
+            internal set => _luaForBarotraumaSteamId?.TrySetValue(value);
+        }
+        private ISettingEntry<ulong> _luaForBarotraumaSteamId;
+
         /// <summary>
         /// TODO: @evilfactory@users.noreply.github.com
         /// </summary>
-        internal ISettingEntry<bool> RestrictMessageSize { get; private set; }
-        
+        public bool RestrictMessageSize
+        {
+            get => _restrictMessageSize?.Value ?? false;
+            internal set => _restrictMessageSize?.TrySetValue(value);
+        }
+        private ISettingEntry<bool> _restrictMessageSize;
+
         /// <summary>
         /// The local save path for all local data storage for mods.
         /// </summary>
-        internal ISettingEntry<string> LocalDataSavePath { get; private set; }
+        public string LocalDataSavePath
+        {
+            get => _localDataSavePath?.Value ?? Path.Combine(Directory.GetCurrentDirectory(), "/Data/Mods");
+            internal set => _localDataSavePath?.TrySetValue(value);
+        }
+        private ISettingEntry<string> _localDataSavePath;
 
         void LoadLuaCsConfig()
         {
-            IsCsEnabled = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
+            _isCsEnabled = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
                 : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            TreatForcedModsAsNormal = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
+            _treatForcedModsAsNormal = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
                 : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
-            DisableErrorGUIOverlay = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
+            _disableErrorGUIOverlay = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
                 : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            HideUserNamesInLogs = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
+            _hideUserNamesInLogs = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
                 : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            LuaForBarotraumaSteamId = ConfigService.TryGetConfig<ISettingEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
+            _luaForBarotraumaSteamId = ConfigService.TryGetConfig<ISettingEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
                 : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            RestrictMessageSize = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
+            _restrictMessageSize = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
                 : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
         }
         
@@ -244,9 +287,9 @@ namespace Barotrauma
         
         private StateMachine<RunState> SetupStateMachine() 
         {
-            return new StateMachine<RunState>(false, RunState.Unloaded, RunStateUnloaded_OnEnter, null)
-                .AddState(RunState.LoadedNoExec, RunStateLoadedNoExec_OnEnter, null)
-                .AddState(RunState.Running, RunStateRunning_OnEnter, RunStateRunning_OnExit);
+            return new StateMachine<RunState>(false, RunState.Unloaded, onEnter: RunStateUnloaded_OnEnter, null)
+                .AddState(RunState.LoadedNoExec, onEnter: RunStateLoadedNoExec_OnEnter, null)
+                .AddState(RunState.Running, onEnter: RunStateRunning_OnEnter, RunStateRunning_OnExit);
 
             // ReSharper disable InconsistentNaming
             void RunStateUnloaded_OnEnter(State<RunState> currentState)
@@ -355,12 +398,12 @@ namespace Barotrauma
         
         void DisposeLuaCsConfig()
         {
-            IsCsEnabled = null;
-            TreatForcedModsAsNormal = null;
-            DisableErrorGUIOverlay = null;
-            HideUserNamesInLogs = null;
-            LuaForBarotraumaSteamId = null;
-            RestrictMessageSize = null;
+            _isCsEnabled = null;
+            _treatForcedModsAsNormal = null;
+            _disableErrorGUIOverlay = null;
+            _hideUserNamesInLogs = null;
+            _luaForBarotraumaSteamId = null;
+            _restrictMessageSize = null;
         }
     }
 

@@ -13,6 +13,7 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Events;
 using FluentResults;
 using FluentResults.LuaCs;
+using ImpromptuInterface.Build;
 using Microsoft.CodeAnalysis;
 using OneOf;
 
@@ -21,14 +22,15 @@ namespace Barotrauma.LuaCs.Services;
 public class PluginManagementService : IPluginManagementService, IAssemblyManagementService
 {
     private readonly Func<IAssemblyLoaderService.LoaderInitData, IAssemblyLoaderService> _assemblyLoaderServiceFactory;
-    private readonly ConcurrentDictionary<ContentPackage, (List<IAssemblyResourceInfo> ResourceInfos, IAssemblyLoaderService Loader)> _packageAssemblyResources;
-    private readonly ConcurrentDictionary<ContentPackage, List<IDisposable>> _pluginInstances;
+    private readonly ConcurrentDictionary<ContentPackage, (List<IAssemblyResourceInfo> ResourceInfos, IAssemblyLoaderService Loader)> _packageAssemblyResources = new();
+    private readonly ConcurrentDictionary<ContentPackage, List<IDisposable>> _pluginInstances = new();
     private readonly Lazy<IEventService> _eventService;
-    private readonly ConditionalWeakTable<IAssemblyLoaderService, ContentPackage> _unloadingAssemblyLoaders;
-    private readonly ConditionalWeakTable<Assembly, ConcurrentDictionary<string, Type>> _assemblyTypesCache;
+    private readonly ConditionalWeakTable<IAssemblyLoaderService, ContentPackage> _unloadingAssemblyLoaders = new();
+    private readonly ConditionalWeakTable<Assembly, ConcurrentDictionary<string, Type>> _assemblyTypesCache = new();
 
     public PluginManagementService(
-        Func<IAssemblyLoaderService.LoaderInitData, IAssemblyLoaderService> assemblyLoaderServiceFactory,
+        Func<IAssemblyLoaderService.LoaderInitData, 
+            IAssemblyLoaderService> assemblyLoaderServiceFactory,
         Lazy<IEventService> eventService)
     {
         _assemblyLoaderServiceFactory = assemblyLoaderServiceFactory;
@@ -123,14 +125,20 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         throw new NotImplementedException();
     }
 
-    public Result<ImmutableArray<IAssemblyResourceInfo>> LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)
+    public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)
     {
+#if DEBUG
+        return FluentResults.Result.Fail($"{nameof(LoadAssemblyResources)}: Plugin loading not currently implemented.");
+#endif
         throw new NotImplementedException();
     }
 
     public ImmutableArray<Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
         bool hostInstanceReference = false) where T : IDisposable
     {
+#if DEBUG
+        return ImmutableArray<Result<(Type, T)>>.Empty;
+#endif
         throw new NotImplementedException();
     }
 

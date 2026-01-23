@@ -19,55 +19,55 @@ namespace Barotrauma
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Enable CSharp Scripting")
             {
-                Selected = GameMain.LuaCs.IsCsEnabled?.Value ?? false,
+                Selected = GameMain.LuaCs.IsCsEnabled,
                 ToolTip = "This enables CSharp Scripting for mods to use, WARNING: CSharp is NOT sandboxed, be careful with what mods you download.",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.IsCsEnabled?.TrySetValue(tick.Selected);
+                    GameMain.LuaCs.IsCsEnabled = tick.Selected;
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Treat Forced Mods As Normal")
             {
-                Selected = GameMain.LuaCs.TreatForcedModsAsNormal?.Value ?? false,
+                Selected = GameMain.LuaCs.TreatForcedModsAsNormal,
                 ToolTip = "This makes mods that were setup to run even when disabled to only run when enabled.",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.TreatForcedModsAsNormal?.TrySetValue(tick.Selected);
+                    GameMain.LuaCs.TreatForcedModsAsNormal = tick.Selected;
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Prefer To Use Workshop Lua Setup")
             {
-                Selected = GameMain.LuaCs.PreferToUseWorkshopLuaSetup?.Value ?? false,
+                Selected = GameMain.LuaCs.PreferToUseWorkshopLuaSetup,
                 ToolTip = "This makes Lua look first for the Lua/LuaSetup.lua located in the Workshop package instead of the one located locally.",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.PreferToUseWorkshopLuaSetup?.TrySetValue(tick.Selected);
+                    GameMain.LuaCs.PreferToUseWorkshopLuaSetup = tick.Selected;
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Disable Error GUI Overlay")
             {
-                Selected = GameMain.LuaCs.DisableErrorGUIOverlay?.Value ?? false,
+                Selected = GameMain.LuaCs.DisableErrorGUIOverlay,
                 ToolTip = "",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.DisableErrorGUIOverlay?.TrySetValue(tick.Selected);
+                    GameMain.LuaCs.DisableErrorGUIOverlay = tick.Selected;
                     return true;
                 }
             };
 
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Hide usernames In Error Logs")
             {
-                Selected = GameMain.LuaCs.HideUserNamesInLogs?.Value ?? false,
+                Selected = GameMain.LuaCs.HideUserNamesInLogs,
                 ToolTip = "Hides the operating system username when displaying error logs (eg your username on windows).",
                 OnSelected = (GUITickBox tick) =>
                 {
-                    GameMain.LuaCs.HideUserNamesInLogs?.TrySetValue(tick.Selected);
+                    GameMain.LuaCs.HideUserNamesInLogs = tick.Selected;
                     return true;
                 }
             };
