@@ -193,7 +193,7 @@ public sealed class ModConfigService : IModConfigService
                 }
                 resources.Add(result.Value);
             }
-            return resources.MoveToImmutable();
+            return resources.ToImmutable();
         }
 
         ImmutableArray<ResourceParserInfo> GetResourceElementsWithName(ContentPackage package, XElement root, string elemName, string groupName)
@@ -221,7 +221,7 @@ public sealed class ModConfigService : IModConfigService
                 }
             }
 
-            return elems.MoveToImmutable();
+            return elems.ToImmutable();
         }
         
         ImmutableArray<Identifier> GetDependencyIdentifiers(XElement fg, bool depsLoadedSetting)
