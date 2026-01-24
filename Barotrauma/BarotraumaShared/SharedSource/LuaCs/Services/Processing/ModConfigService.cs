@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using FluentResults;
 using Microsoft.Toolkit.Diagnostics;
@@ -120,12 +121,15 @@ public sealed class ModConfigService : IModConfigService
         ImmutableArray<IConfigResourceInfo> configResources = default;
         ImmutableArray<ILuaScriptResourceInfo> luaResources = default;
 
-        var res = await Task.WhenAll(new[]
+        var tasks = new[]
         {
             new Task<Task>(async () => assemblyResources = await GetAssembliesFromXml(owner, src)),
             new Task<Task>(async () => configResources = await GetConfigsFromXml(owner, src)),
             new Task<Task>(async () => luaResources = await GetLuaScriptsFromXml(owner, src)),
-        });
+        };
+
+        tasks.ForEach(t => t.Start());
+        var res = await Task.WhenAll(tasks);
 
         bool isFaulted = false;
         foreach (var task in res)
