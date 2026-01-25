@@ -130,16 +130,14 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
             }
         }
 
-        //TODO: the lag situation here is craazy
-        var t = AssemblyLoadContext.All
-            .SelectMany(alc => alc.Assemblies)
-            .SelectMany(ass => ass.GetSafeTypes())
-            .FirstOrDefault(tp => tp.FullName?.Equals(typeName) ?? tp.Name.Equals(typeName), null);
-
-        return t;
-        
-        //TODO: implement ALC resolutions.
-        throw new NotImplementedException();
+        foreach (var ass in AssemblyLoadContext.All.SelectMany(alc => alc.Assemblies))
+        {
+            if (ass.GetType(typeName, false) is not { } type)
+            {
+                continue;
+            }
+            return isByRefType ? type.MakeByRefType() : type;
+        }
     }
 
     public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)
