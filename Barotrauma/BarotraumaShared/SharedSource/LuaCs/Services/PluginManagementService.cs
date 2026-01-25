@@ -119,9 +119,18 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         if (includeDefaultContext)
         {
             var type = Type.GetType(typeName, false);
+            if (type is not null)
+            {
+                if (isByRefType)
+                {
+                    return type.MakeByRefType();
+                }
+
+                return type;
+            }
         }
-        
-        // TODO: implement by-ref type resolution
+
+        //TODO: implement ALC resolutions.
         throw new NotImplementedException();
     }
 
