@@ -136,8 +136,11 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
             {
                 continue;
             }
+
             return isByRefType ? type.MakeByRefType() : type;
         }
+
+        return null;
     }
 
     public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)
