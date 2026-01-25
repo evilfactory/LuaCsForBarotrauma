@@ -234,6 +234,11 @@ public sealed class PackageManagementService : IPackageManagementService
                 result.WithReasons(_pluginManagementService.LoadAssemblyResources(plugins).Reasons);
             }
         }
+
+        foreach (var package in loadingOrderedPackages)
+        {
+            _runningPackages[package.Key] = package.Value;
+        }
         
         return result;
     }
