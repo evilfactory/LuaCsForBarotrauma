@@ -130,6 +130,14 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
             }
         }
 
+        //TODO: the lag situation here is craazy
+        var t = AssemblyLoadContext.All
+            .SelectMany(alc => alc.Assemblies)
+            .SelectMany(ass => ass.GetSafeTypes())
+            .FirstOrDefault(tp => tp.FullName?.Equals(typeName) ?? tp.Name.Equals(typeName), null);
+
+        return t;
+        
         //TODO: implement ALC resolutions.
         throw new NotImplementedException();
     }
