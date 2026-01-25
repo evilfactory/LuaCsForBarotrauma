@@ -28,28 +28,6 @@ namespace Barotrauma
                 }
             };
 
-            new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Treat Forced Mods As Normal")
-            {
-                Selected = GameMain.LuaCs.TreatForcedModsAsNormal,
-                ToolTip = "This makes mods that were setup to run even when disabled to only run when enabled.",
-                OnSelected = (GUITickBox tick) =>
-                {
-                    GameMain.LuaCs.TreatForcedModsAsNormal = tick.Selected;
-                    return true;
-                }
-            };
-
-            new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Prefer To Use Workshop Lua Setup")
-            {
-                Selected = GameMain.LuaCs.PreferToUseWorkshopLuaSetup,
-                ToolTip = "This makes Lua look first for the Lua/LuaSetup.lua located in the Workshop package instead of the one located locally.",
-                OnSelected = (GUITickBox tick) =>
-                {
-                    GameMain.LuaCs.PreferToUseWorkshopLuaSetup = tick.Selected;
-                    return true;
-                }
-            };
-
             new GUITickBox(new RectTransform(new Vector2(0.8f, 0.1f), list.Content.RectTransform), "Disable Error GUI Overlay")
             {
                 Selected = GameMain.LuaCs.DisableErrorGUIOverlay,

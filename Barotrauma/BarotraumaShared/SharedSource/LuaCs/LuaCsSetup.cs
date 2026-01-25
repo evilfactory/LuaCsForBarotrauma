@@ -107,27 +107,6 @@ namespace Barotrauma
         private ISettingEntry<bool> _isCsEnabled;
 
         /// <summary>
-        /// Whether mods marked as 'forced' or 'always load' should only be loaded if they're in the enabled mods list.
-        /// </summary>
-        public bool TreatForcedModsAsNormal
-        {
-            get => _treatForcedModsAsNormal?.Value ?? true;
-            internal set => _treatForcedModsAsNormal?.TrySetValue(value);
-        }
-
-        private ISettingEntry<bool> _treatForcedModsAsNormal;
-
-        /// <summary>
-        /// Whether the lua script runner from Workshop package should be used over the in-built version.
-        /// </summary>
-        public bool PreferToUseWorkshopLuaSetup
-        {
-            get => _preferToUseWorkshopLuaSetup?.Value ?? false;
-            internal set => _preferToUseWorkshopLuaSetup?.TrySetValue(value);
-        }
-        private ISettingEntry<bool> _preferToUseWorkshopLuaSetup;
-
-        /// <summary>
         /// Whether the popup error GUI should be hidden/suppressed.
         /// </summary>
         public bool DisableErrorGUIOverlay
@@ -181,8 +160,6 @@ namespace Barotrauma
         {
             _isCsEnabled = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
                 : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            _treatForcedModsAsNormal = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "TreatForcedModsAsNormal", out var val2) ? val2
-                : throw new NullReferenceException($"{nameof(TreatForcedModsAsNormal)} cannot be loaded.");
             _disableErrorGUIOverlay = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
                 : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
             _hideUserNamesInLogs = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
@@ -191,6 +168,8 @@ namespace Barotrauma
                 : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
             _restrictMessageSize = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
                 : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
+            _localDataSavePath = ConfigService.TryGetConfig<ISettingEntry<string>>(ContentPackageManager.VanillaCorePackage, "LocalDataSavePath", out var val8) ? val8
+                : throw new NullReferenceException($"{nameof(LocalDataSavePath)} cannot be loaded.");
         }
         
         private IServicesProvider SetupServicesProvider()
@@ -330,7 +309,8 @@ namespace Barotrauma
                 if (!PackageManagementService.IsAnyPackageLoaded())
                 {
                     Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
-                    LoadLuaCsConfig();
+                    // TODO: Enable later
+                    //LoadLuaCsConfig();
                 }
 
                 if (!PackageManagementService.IsAnyPackageRunning())
@@ -399,7 +379,6 @@ namespace Barotrauma
         void DisposeLuaCsConfig()
         {
             _isCsEnabled = null;
-            _treatForcedModsAsNormal = null;
             _disableErrorGUIOverlay = null;
             _hideUserNamesInLogs = null;
             _luaForBarotraumaSteamId = null;
