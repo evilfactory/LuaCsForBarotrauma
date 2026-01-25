@@ -44,7 +44,7 @@ namespace Barotrauma
             SubscribeToLuaCsEvents();
         }
         
-        bool ValidateLuaCsContent()
+        private bool ValidateLuaCsContent()
         {
 #if DEBUG
             // TODO: we just wanna boot for now
@@ -57,7 +57,7 @@ namespace Barotrauma
             throw new NotImplementedException();
         }
         
-        void SubscribeToLuaCsEvents()
+        private void SubscribeToLuaCsEvents()
         {
             EventService.Subscribe<IEventScreenSelected>(this); // game state hook in
             EventService.Subscribe<IEventEnabledPackageListChanged>(this); 
@@ -283,7 +283,13 @@ namespace Barotrauma
                     DisposeLuaCsConfig();
                     Logger.LogResults(PackageManagementService.UnloadAllPackages());
                 }
-                
+
+                LuaScriptManagementService.Reset();
+                PackageManagementService.Reset();
+                EventService.Reset();
+
+                SubscribeToLuaCsEvents();
+
                 CurrentRunState = RunState.Unloaded;
             }
 

@@ -85,7 +85,8 @@ namespace Barotrauma
                 // menus and navigation states
                 case MainMenuScreen:
                 case ModDownloadScreen: 
-                case ServerListScreen: 
+                case ServerListScreen:
+                    SetRunState(RunState.Unloaded);
                     SetRunState(RunState.LoadedNoExec);
                     break;
                  // running lobby or editor states

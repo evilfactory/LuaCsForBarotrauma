@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Barotrauma.IO;
+using Barotrauma.LuaCs.Data;
+using Barotrauma.Networking;
+using FarseerPhysics.Common;
+using FluentResults;
+using FluentResults.LuaCs;
+using Microsoft.Toolkit.Diagnostics;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.IO;
@@ -6,12 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Barotrauma.IO;
-using Barotrauma.LuaCs.Data;
-using FarseerPhysics.Common;
-using FluentResults;
-using FluentResults.LuaCs;
-using Microsoft.Toolkit.Diagnostics;
 using Path = System.IO.Path;
 
 namespace Barotrauma.LuaCs.Services.Safe;
@@ -40,6 +41,17 @@ public class SafeStorageService : StorageService, ISafeStorageService
         try
         {
             path = GetFullPath(path);
+
+            if (path.StartsWith(ConfigData.WorkshopModsDirectory)
+                || path.StartsWith(ConfigData.LocalModsDirectory)
+#if CLIENT
+                || path.StartsWith(ConfigData.TempDownloadsDirectory)
+#endif
+                )
+            {
+                return true;
+            }
+
             if (!_fileListRead.ContainsKey(path))
             {
                 return false;

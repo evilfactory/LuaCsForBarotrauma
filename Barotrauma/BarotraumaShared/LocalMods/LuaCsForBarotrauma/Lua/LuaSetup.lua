@@ -1,8 +1,8 @@
 LuaSetup = {}
 
-local path = table.pack(...)[1]
+local path, resourcesToExecute = ...
 
-package.path = {path .. "/?.lua"}
+package.path = {path .. "/Lua/?.lua"}
 
 setmodulepaths(package.path)
 
@@ -44,4 +44,8 @@ require("PostSetup")
 
 LuaSetup = nil
 
-require("ModLoader")
+for resource in resourcesToExecute do
+    for path in resource.FilePaths do
+        dofile(path)
+    end
+end

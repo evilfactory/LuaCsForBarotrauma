@@ -2,11 +2,11 @@
 
 local compatibilityLib = {}
 
-local networking = LuaUserData.RegisterType("Barotrauma.LuaCsNetworking")
+-- local networking = LuaUserData.RegisterType("Barotrauma.LuaCsNetworking")
 
-LuaUserData.AddMethod(networking, "RequestGetHTTP", Networking.HttpGet)
+-- LuaUserData.AddMethod(networking, "RequestGetHTTP", Networking.HttpGet)
 
-LuaUserData.AddMethod(networking, "RequestPostHTTP", Networking.HttpPost)
+-- LuaUserData.AddMethod(networking, "RequestPostHTTP", Networking.HttpPost)
 
 compatibilityLib.CreateVector2 = Vector2.__new
 compatibilityLib.CreateVector3 = Vector3.__new

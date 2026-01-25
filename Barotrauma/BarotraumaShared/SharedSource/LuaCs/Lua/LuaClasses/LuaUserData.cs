@@ -11,7 +11,7 @@ namespace Barotrauma
     internal class LuaUserData
     {
         [Obsolete("Use IPluginManagementService::GetTypesByName()")]
-        public static Type GetType(string typeName) => throw new NotImplementedException(); //LuaCsSetup.GetType(typeName);
+        public static Type GetType(string typeName) => GameMain.LuaCs.PluginManagementService.GetType(typeName); //LuaCsSetup.GetType(typeName);
 
         public static IUserDataDescriptor RegisterType(string typeName)
         {

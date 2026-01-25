@@ -78,7 +78,7 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         if (IsDisposed)
             return FluentResults.Result.Fail($"{nameof(PluginManagementService)} is disposed!");
 
-        throw new NotImplementedException();
+        return FluentResults.Result.Fail("not implemented");
     }
 
     public Result<ImmutableArray<Type>> GetImplementingTypes<T>(bool includeInterfaces = false,

@@ -7,10 +7,12 @@ using Barotrauma.Networking;
 using FluentResults;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Toolkit.Diagnostics;
 using MonoMod.RuntimeDetour;
 using MoonSharp.Interpreter;
 using MoonSharp.Interpreter.Interop;
 using MoonSharp.Interpreter.Loaders;
+using RestSharp.Validation;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -18,12 +20,12 @@ using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Toolkit.Diagnostics;
 using static Barotrauma.GameSettings;
 
 namespace Barotrauma.LuaCs.Services;
@@ -97,6 +99,46 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         return new FluentResults.Result().WithReasons(cacheRes.Value.SelectMany(cr => cr.Item2.Reasons));
     }
 
+    private DynValue DoFile(string file, Table? globalContext = null, string? codeStringFriendly = null)
+    {
+        if (_script == null)
+        {
+            throw new Exception("Not running");
+        }
+
+        if (!LuaCsFile.CanReadFromPath(file))
+        {
+            throw new ScriptRuntimeException($"dofile: File access to {file} not allowed.");
+        }
+
+        if (!LuaCsFile.Exists(file))
+        {
+            throw new ScriptRuntimeException($"dofile: File {file} not found.");
+        }
+
+        return _script.DoFile(file, globalContext, codeStringFriendly);
+    }
+
+    private DynValue LoadFile(string file, Table? globalContext = null, string? codeStringFriendly = null)
+    {
+        if (_script == null)
+        {
+            throw new Exception("Not running");
+        }
+
+        if (!LuaCsFile.CanReadFromPath(file))
+        {
+            throw new ScriptRuntimeException($"loadfile: File access to {file} not allowed.");
+        }
+
+        if (!LuaCsFile.Exists(file))
+        {
+            throw new ScriptRuntimeException($"loadfile: File {file} not found.");
+        }
+
+        return _script.LoadFile(file, globalContext, codeStringFriendly);
+    }
+
     private void SetupEnvironment()
     {
         _script = new Script(CoreModules.Preset_SoftSandbox | CoreModules.Debug | CoreModules.IO | CoreModules.OS_System);
@@ -115,8 +157,20 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         RegisterType(typeof(ILuaCsUtility));
         RegisterType(typeof(ILuaCsTimer));
         RegisterType(typeof(LuaCsFile));
+        RegisterType(typeof(ILuaScriptResourceInfo));
+        RegisterType(typeof(IResourceInfo));
+        RegisterType(typeof(LuaUserData));
+        RegisterType(typeof(IUserDataDescriptor));
 
         new LuaConverters(_script).RegisterLuaConverters();
+
+        var luaRequire = new LuaRequire(_script);
+
+        _script.Globals["setmodulepaths"] = (string[] str) => ((LuaScriptLoader)_luaScriptLoader).ModulePaths = str;
+
+        _script.Globals["dofile"] = (Func<string, Table, string, DynValue>)DoFile;
+        _script.Globals["loadfile"] = (Func<string, Table, string, DynValue>)LoadFile;
+        _script.Globals["require"] = (Func<string, Table, DynValue>)luaRequire.Require;
 
         _script.Globals["printerror"] = (DynValue o) => { LuaCsLogger.LogError(o.ToString()); };
 
@@ -129,6 +183,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
         //_script.Globals["Networking"] = _luaCsNetworking;
         //_script.Globals["Steam"] = Steam;
+        _script.Globals["LuaUserData"] = UserData.CreateStatic<LuaUserData>();
 
         _script.Globals["ExecutionNumber"] = 0;
         _script.Globals["CSActive"] = false;
@@ -138,9 +193,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     }
 
     public FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder)
-    {
-        throw new NotImplementedException($"Need to implement {nameof(executionOrder)} logic.");
-        
+    {        
         if (_isRunning) 
         { 
             return FluentResults.Result.Fail("Tried to execute Lua scripts without unloading first."); 
@@ -152,13 +205,16 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         var result = FluentResults.Result.Ok();
 
-        foreach (ILuaScriptResourceInfo resource in _resourcesInfo)
+        List<ILuaScriptResourceInfo> initializationScripts = executionOrder.Where(x => x.OwnerPackage.Name == "LuaCsForBarotrauma").ToList();
+        List<ILuaScriptResourceInfo> otherScripts = executionOrder.Except(initializationScripts).ToList();
+
+        foreach (ILuaScriptResourceInfo resource in initializationScripts)
         {
             foreach (ContentPath filePath in resource.FilePaths)
             {
                 try
                 {
-                    _script?.Call(_script.LoadFile(filePath.FullPath));
+                    _script?.Call(_script.LoadFile(filePath.FullPath), Path.GetDirectoryName(resource.OwnerPackage.Path), otherScripts.ToList());
                 }
                 catch(Exception e)
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Barotrauma.Networking;
+using FluentResults;
 using Microsoft.Xna.Framework;
 using MoonSharp.Interpreter;
 
@@ -132,6 +133,42 @@ public partial class LoggerService : ILoggerService
 #endif
     }
 
+    public void HandleException(Exception ex)
+    {
+        string errorString = "";
+        switch (ex)
+        {
+            case NetRuntimeException netRuntimeException:
+                if (netRuntimeException.DecoratedMessage == null)
+                {
+                    errorString = netRuntimeException.ToString();
+                }
+                else
+                {
+                    // FIXME: netRuntimeException.ToString() doesn't print the InnerException's stack trace...
+                    errorString = $"{netRuntimeException.DecoratedMessage}: {netRuntimeException}";
+                }
+                break;
+            case InterpreterException interpreterException:
+                if (interpreterException.DecoratedMessage == null)
+                {
+                    errorString = interpreterException.ToString();
+                }
+                else
+                {
+                    errorString = interpreterException.DecoratedMessage;
+                }
+                break;
+            default:
+                errorString = ex.StackTrace != null
+                    ? ex.ToString()
+                    : $"{ex}\n{Environment.StackTrace}";
+                break;
+        }
+
+        LogError(errorString);
+    }
+
     public void LogResults(FluentResults.Result result)
     {
         if (result == null)
@@ -149,7 +186,15 @@ public partial class LoggerService : ILoggerService
         {
             foreach (var error in result.Errors)
             {
-                LogError(error.Message);
+                if (error is ExceptionalError exceptionalError)
+                {
+                    HandleException(exceptionalError.Exception);
+                }
+                else
+                {
+                    LogError(error.Message);
+                }
+
 
                 if (error.Reasons != null)
                 {

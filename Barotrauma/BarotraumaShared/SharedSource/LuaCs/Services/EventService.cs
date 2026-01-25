@@ -348,6 +348,7 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         _subscriptions.Clear();
         _luaSubscriptionFactories.Clear();
         _eventTypeNameAliases.Clear();
+        _luaLegacySubscriptionFactories.Clear();
         GC.SuppressFinalize(this);
     }
 
@@ -357,6 +358,7 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         _subscriptions.Clear();
         _luaSubscriptionFactories.Clear();
         _eventTypeNameAliases.Clear();
+        _luaLegacySubscriptionFactories.Clear();
         return FluentResults.Result.Ok();
     }
 
