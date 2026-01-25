@@ -95,16 +95,26 @@ public sealed class ModConfigService : IModConfigService
             ThrowHelper.ThrowArgumentNullException($"{nameof(CreateConfigsAsync)}: The supplied array is default or empty!");
         using var lck = await _operationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
-        
-        var builder = new ConcurrentQueue<(ContentPackage Source, Result<IModConfigInfo> Config)>();
 
-        await src.ParallelForEachAsync(async package =>
+        var builder = ImmutableArray.CreateBuilder<Task<Task<Result<IModConfigInfo>>>>(src.Length);
+        foreach (var srcItem in src)
         {
-            var res = await CreateConfigAsync(package);
-            builder.Enqueue((package, res));
-        });
+            builder.Add(Task.Factory.StartNew(async Task<Result<IModConfigInfo>> () => await CreateConfigAsync(srcItem)));
+        }
+        var taskResults = await Task.WhenAll(builder.ToImmutable());
+        var returnResults = ImmutableArray.CreateBuilder<(ContentPackage Source, Result<IModConfigInfo> Config)>();
+        foreach (var taskResult in taskResults)
+        {
+            if (taskResult.IsFaulted)
+            {
+                ThrowHelper.ThrowInvalidOperationException($"{nameof(CreateConfigsAsync)}: Task failed: {taskResult.Exception?.Message}");
+            }
 
-        return builder.OrderBy(pkg => src.IndexOf(pkg.Source)).ToImmutableArray();
+            var r = await taskResult;
+            returnResults.Add((r.Value.Package, r));
+        }
+
+        return returnResults.ToImmutable();
     }
 
     //--- Helpers
@@ -117,42 +127,18 @@ public sealed class ModConfigService : IModConfigService
 
     private async Task<Result<IModConfigInfo>> CreateFromConfigXmlAsync(ContentPackage owner, XElement src)
     {
-        ImmutableArray<IAssemblyResourceInfo> assemblyResources = default;
-        ImmutableArray<IConfigResourceInfo> configResources = default;
-        ImmutableArray<ILuaScriptResourceInfo> luaResources = default;
-
-        var tasks = new[]
-        {
-            new Task<Task>(async () => assemblyResources = await GetAssembliesFromXml(owner, src)),
-            new Task<Task>(async () => configResources = await GetConfigsFromXml(owner, src)),
-            new Task<Task>(async () => luaResources = await GetLuaScriptsFromXml(owner, src)),
-        };
-
-        tasks.ForEach(t => t.Start());
-        var res = await Task.WhenAll(tasks);
-
-        bool isFaulted = false;
-        foreach (var task in res)
-        {
-            if (task.IsFaulted)
-            {
-                _logger.LogError($"{nameof(CreateFromConfigXmlAsync)}: {task.Exception?.ToString()}");
-                isFaulted = true;
-            }
-        }
-
-        if (isFaulted)
-        {
-            _logger.LogError($"{nameof(CreateFromConfigXmlAsync)}: Failed to process content package: {owner.Name}");
-            return FluentResults.Result.Fail($"{nameof(CreateFromConfigXmlAsync)}: Failed to process content package: {owner.Name}");
-        }
+        var asmTask = Task.Factory.StartNew(async () => await GetAssembliesFromXml(owner, src));
+        var cfgTask = Task.Factory.StartNew(async () => await GetConfigsFromXml(owner, src));
+        var luaTask = Task.Factory.StartNew(async () => await GetLuaScriptsFromXml(owner, src));
+        
+        await Task.WhenAll(asmTask, cfgTask, luaTask);
 
         return FluentResults.Result.Ok<IModConfigInfo>(new ModConfigInfo()
         {
             Package = owner,
-            Assemblies = assemblyResources,
-            Configs = configResources,
-            LuaScripts = luaResources
+            Assemblies = await await asmTask,
+            Configs = await await cfgTask,
+            LuaScripts = await await luaTask
         });
 
         async Task<ImmutableArray<ILuaScriptResourceInfo>> GetLuaScriptsFromXml(ContentPackage contentPackage, 

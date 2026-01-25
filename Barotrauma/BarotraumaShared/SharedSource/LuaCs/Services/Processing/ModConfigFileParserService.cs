@@ -53,14 +53,14 @@ public sealed class ModConfigFileParserService :
     // --- Assemblies
     async Task<Result<IAssemblyResourceInfo>> IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>.TryParseResourceAsync(ResourceParserInfo src)
     {
-        using var lck = await _operationsLock.AcquireWriterLock();
+        using var lck = await _operationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
         
         if (CheckThrowNullRefs(src, "Assembly") is { IsFailed: true } fail)
             return fail;
 
         var runtimeEnv = GetRuntimeEnvironment(src.Element);
-        var fileResults = await GetCheckedFiles(src.Element, src.Owner, ".dll");
+        var fileResults = await UnsafeGetCheckedFiles(src.Element, src.Owner, ".dll");
         
         if (fileResults.IsFailed)
             return FluentResults.Result.Fail(fileResults.Errors);
@@ -91,15 +91,14 @@ public sealed class ModConfigFileParserService :
     
     async Task<Result<IConfigResourceInfo>> IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>.TryParseResourceAsync(ResourceParserInfo src)
     {
-        
-        using var lck = await _operationsLock.AcquireWriterLock();
+        using var lck = await _operationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
         
         if (CheckThrowNullRefs(src, "Config") is { IsFailed: true } fail)
             return fail;
 
         var runtimeEnv = GetRuntimeEnvironment(src.Element);
-        var fileResults = await GetCheckedFiles(src.Element, src.Owner, ".xml");
+        var fileResults = await UnsafeGetCheckedFiles(src.Element, src.Owner, ".xml");
         
         if (fileResults.IsFailed)
             return FluentResults.Result.Fail(fileResults.Errors);
@@ -126,14 +125,14 @@ public sealed class ModConfigFileParserService :
     // --- Lua Scripts    
     async Task<Result<ILuaScriptResourceInfo>> IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>.TryParseResourceAsync(ResourceParserInfo src)
     {
-        using var lck = await _operationsLock.AcquireWriterLock();
+        using var lck = await _operationsLock.AcquireReaderLock();
         IService.CheckDisposed(this);
         
         if (CheckThrowNullRefs(src, "Lua") is { IsFailed: true } fail)
             return fail;
 
         var runtimeEnv = GetRuntimeEnvironment(src.Element);
-        var fileResults = await GetCheckedFiles(src.Element, src.Owner, ".lua");
+        var fileResults = await UnsafeGetCheckedFiles(src.Element, src.Owner, ".lua");
         
         if (fileResults.IsFailed)
             return FluentResults.Result.Fail(fileResults.Errors);
@@ -174,34 +173,39 @@ public sealed class ModConfigFileParserService :
     }
     
     // --- Helpers
-    private async Task<Result<ImmutableArray<ContentPath>>> GetCheckedFiles(XElement srcElement, ContentPackage srcOwner, string fileExtension)
+    private async Task<Result<ImmutableArray<ContentPath>>> UnsafeGetCheckedFiles(XElement srcElement, ContentPackage srcOwner, string fileExtension)
     {
-        using var lck = await _operationsLock.AcquireWriterLock();
-        IService.CheckDisposed(this);
-        
         var builder = ImmutableArray.CreateBuilder<ContentPath>();
-        var filePath = srcElement.GetAttributeString("File",  string.Empty);
-        var folderPath = srcElement.GetAttributeString("Folder",  string.Empty);
+        var filePath = srcElement.GetAttributeContentPath("File",  srcOwner);
+        var folderPath = srcElement.GetAttributeContentPath("Folder",  srcOwner);
 
+        var res = new FluentResults.Result<ImmutableArray<ContentPath>>();
+        
         if (!filePath.IsNullOrWhiteSpace())
         {
-            var cp = ContentPath.FromRaw(srcOwner, filePath);
-            if (_storageService.FileExists(cp.FullPath) is { IsSuccess: true, Value: true })
+            if (_storageService.FileExists(filePath.FullPath) is { IsSuccess: true, Value: true })
             {
-                builder.Add(cp);
+                builder.Add(filePath);
+            }
+            else
+            {
+                res.WithError($"{srcOwner.Name}: The file '{filePath}' is missing!");
             }
         }
 
         if (!folderPath.IsNullOrWhiteSpace())
         {
-            var cp = ContentPath.FromRaw(srcOwner, folderPath);
-            if (_storageService.DirectoryExists(cp.FullPath) is { IsSuccess: true, Value: true })
+            if (_storageService.DirectoryExists(folderPath.FullPath) is { IsSuccess: true, Value: true })
             {
-                var files = _storageService.FindFilesInPackage(cp.ContentPackage, cp.Value, fileExtension, true);
+                var files = _storageService.FindFilesInPackage(srcOwner, folderPath.Value, fileExtension, true);
+            }
+            else
+            {
+                res.WithError($"{srcOwner.Name}: The folder '{filePath}' is missing!");
             }
         }
-            
-        throw new NotImplementedException();
+
+        return res.WithValue(builder.ToImmutable());
     }    
     private (Platform Platform, Target Target) GetRuntimeEnvironment(XElement element)
     {
