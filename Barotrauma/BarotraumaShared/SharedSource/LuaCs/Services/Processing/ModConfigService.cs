@@ -225,13 +225,40 @@ public sealed class ModConfigService : IModConfigService
     
     private async Task<Result<IModConfigInfo>> CreateFromLegacyAsync(ContentPackage src)
     {
-        // TODO: Implement legacy mod analysis
-        return new ModConfigInfo() 
-        { 
-            Package = src, 
-            Assemblies = ImmutableArray<IAssemblyResourceInfo>.Empty, 
-            Configs = ImmutableArray<IConfigResourceInfo>.Empty, 
-            LuaScripts = ImmutableArray<ILuaScriptResourceInfo>.Empty 
+        List<ILuaScriptResourceInfo> luaScripts = new List<ILuaScriptResourceInfo>();
+
+        if (_storageService.DirectoryExists(Path.Combine(src.Path, "Lua", "Autorun")) is { IsSuccess: true, Value: true })
+        {
+            var result = _storageService.FindFilesInPackage(src, "Lua/Autorun", "*.lua", true);
+            if (result.IsSuccess)
+            {
+                List<ContentPath> contentPaths = new List<ContentPath>();
+
+                foreach (var path in result.Value)
+                {
+                    contentPaths.Add(ContentPath.FromRaw(src, $"%ModDir%/{Path.GetFullPath(path, src.Dir)}"));
+                }
+
+                luaScripts.Add(new LuaScriptsResourceInfo()
+                {
+                    IsAutorun = true,
+                    SupportedPlatforms = Platform.Any,
+                    SupportedTargets = Target.Any,
+                    InternalName = "legacy",
+                    OwnerPackage = src,
+                    IncompatiblePackages = ImmutableArray<Identifier>.Empty,
+                    RequiredPackages = ImmutableArray<Identifier>.Empty,
+                    FilePaths = contentPaths.ToImmutableArray()
+                });
+            }
+        }
+
+        return new ModConfigInfo()
+        {
+            Package = src,
+            Assemblies = ImmutableArray<IAssemblyResourceInfo>.Empty,
+            Configs = ImmutableArray<IConfigResourceInfo>.Empty,
+            LuaScripts = luaScripts.ToImmutableArray()
         };
     }
 }
