@@ -26,10 +26,6 @@ public record ModConfigInfo : IModConfigInfo
 
 #region DataContracts_Resources
 
-public record AssemblyResourcesInfo(ImmutableArray<IAssemblyResourceInfo> Assemblies) : IAssembliesResourcesInfo;
-public record LuaScriptsResourcesInfo(ImmutableArray<ILuaScriptResourceInfo> LuaScripts) : ILuaScriptsResourcesInfo;
-public record ConfigResourcesInfo(ImmutableArray<IConfigResourceInfo> Configs) : IConfigsResourcesInfo;
-
 public record BaseResourceInfo : IBaseResourceInfo
 {
     public Platform SupportedPlatforms { get; init; }
