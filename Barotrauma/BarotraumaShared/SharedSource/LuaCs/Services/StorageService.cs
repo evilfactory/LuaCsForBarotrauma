@@ -267,8 +267,8 @@ public class StorageService : IStorageService
         try
         {
             var fullPath = localSubfolder.IsNullOrWhiteSpace()
-                ? Path.GetFullPath(package.Path)
-                : Path.GetFullPath(package.Path, localSubfolder);
+                ? Path.GetFullPath(package.Dir)
+                : Path.GetFullPath(package.Dir, localSubfolder);
             return System.IO.Directory.GetFiles(fullPath, regexFilter, 
                 searchRecursively ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)
                 .ToImmutableArray();
