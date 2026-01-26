@@ -15,6 +15,7 @@ using FluentResults;
 using FluentResults.LuaCs;
 using ImpromptuInterface.Build;
 using Microsoft.CodeAnalysis;
+using Microsoft.Toolkit.Diagnostics;
 using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
@@ -118,8 +119,8 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
     {
         if (includeDefaultContext)
         {
-            var type = Type.GetType(typeName, false);
-            if (type is not null)
+            var type = Type.GetType(typeName, false, false);
+            if (type is not null && (includeInterfaces || !type.IsInterface))
             {
                 if (isByRefType)
                 {
@@ -132,7 +133,7 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
 
         foreach (var ass in AssemblyLoadContext.All.SelectMany(alc => alc.Assemblies))
         {
-            if (ass.GetType(typeName, false) is not { } type)
+            if (ass.GetType(typeName, false, false) is not {} type || (!includeInterfaces && type.IsInterface))
             {
                 continue;
             }
@@ -143,11 +144,14 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         return null;
     }
 
-    public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource)
+    public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resources)
     {
-#if DEBUG
-        return FluentResults.Result.Fail($"{nameof(LoadAssemblyResources)}: Plugin loading not currently implemented.");
-#endif
+        IService.CheckDisposed(this);
+        if (resources.IsDefaultOrEmpty)
+        {
+            ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAssemblyResources)}: The resources list is empty!");
+        }
+
         throw new NotImplementedException();
     }
 

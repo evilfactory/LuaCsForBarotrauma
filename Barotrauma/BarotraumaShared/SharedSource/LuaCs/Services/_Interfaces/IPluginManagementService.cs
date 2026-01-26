@@ -35,9 +35,9 @@ public interface IPluginManagementService : IReusableService
     /// <summary>
     /// Loads the provided assembly resources in the order of their dependencies and intra-mod priority load order.
     /// </summary>
-    /// <param name="resource"></param>
+    /// <param name="resources"></param>
     /// <returns>Success/Failure and list of failed resources, if any.</returns>
-    FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resource);
+    FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resources);
 
     /// <summary>
     /// Creates instances of the given type and provides Property Injection and instance reference caching. Disposes of

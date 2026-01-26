@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
+using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
 using FluentResults;
 using Microsoft.Toolkit.Diagnostics;
@@ -212,13 +213,19 @@ public sealed class PackageManagementService : IPackageManagementService
         // get loading order. Note: packages not in the execution order list will load first.
         var loadingOrderedPackages = _loadedPackages.OrderBy(pkg => executionOrder.IndexOf(pkg.Key))
             .ToImmutableArray();
+        var loadOrderByPackage = loadingOrderedPackages.Select(p => p.Key).ToImmutableArray();
+        var toLoadPackagesIndents = loadingOrderedPackages
+            .SelectMany(p => p.Key.AltNames.Union(new []{ p.Key.Name }).ToIdentifiers())
+            .ToImmutableHashSet();
+        
         
         // NOTE: Config/Settings are instanced in LoadPackages()
         
         //lua scripts
-        var luaScripts = loadingOrderedPackages
-            .SelectMany(pkg => pkg.Value.LuaScripts.OrderBy(scr => scr.LoadPriority))
-            .ToImmutableArray();
+        var luaScripts = SelectCompatible(loadingOrderedPackages
+            .SelectMany(pkg => pkg.Value.LuaScripts)
+            .ToImmutableArray(), toLoadPackagesIndents, loadOrderByPackage);
+            
         if (!luaScripts.IsDefaultOrEmpty)
         {
             result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts).Reasons);
@@ -226,9 +233,10 @@ public sealed class PackageManagementService : IPackageManagementService
 
         if (_runConfig.IsCsEnabled)
         {
-            var plugins =
-                loadingOrderedPackages.SelectMany(pkg => pkg.Value.Assemblies.OrderBy(scr => scr.LoadPriority))
-                    .ToImmutableArray();
+            var plugins = SelectCompatible(loadingOrderedPackages
+                .SelectMany(pkg => pkg.Value.Assemblies)
+                .ToImmutableArray(), toLoadPackagesIndents, loadOrderByPackage);
+            
             if (!plugins.IsDefaultOrEmpty)
             {
                 result.WithReasons(_pluginManagementService.LoadAssemblyResources(plugins).Reasons);
@@ -239,10 +247,29 @@ public sealed class PackageManagementService : IPackageManagementService
         {
             _runningPackages[package.Key] = package.Value;
         }
-        
+
+        if (result.IsFailed)
+        {
+            _logger.LogResults(result);
+        }
         return result;
     }
-
+    
+    private static ImmutableArray<T> SelectCompatible<T>(ImmutableArray<T> resources, ImmutableHashSet<Identifier> enabledPackagesIdents, ImmutableArray<ContentPackage> loadingOrder)
+        where T : IBaseResourceInfo
+    {
+        return resources
+            .Where(r => r.SupportedPlatforms.HasFlag(ModUtils.Environment.CurrentPlatform))
+            .Where(r => r.SupportedTargets.HasFlag(ModUtils.Environment.CurrentTarget))
+            .Where(r => !r.Optional || (
+            (r.RequiredPackages.IsDefaultOrEmpty || enabledPackagesIdents.Intersect(r.RequiredPackages).Any()) 
+            && (r.IncompatiblePackages.IsDefaultOrEmpty || enabledPackagesIdents.Intersect(r.IncompatiblePackages).None()))
+        ).OrderBy(r => loadingOrder.IndexOf(r.OwnerPackage))
+        .ThenBy(r => r.LoadPriority)
+        .ToImmutableArray();
+    }
+    
+    
     public FluentResults.Result SyncLoadedPackagesList(ImmutableArray<ContentPackage> packages)
     {
         if (packages.IsDefaultOrEmpty)

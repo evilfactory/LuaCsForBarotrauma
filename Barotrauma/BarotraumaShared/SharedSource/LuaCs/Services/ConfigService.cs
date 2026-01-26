@@ -187,7 +187,7 @@ public sealed partial class ConfigService : IConfigService
             }));
         }
 
-        var taskResults = await Task.WhenAll(taskBuilder.MoveToImmutable());
+        var taskResults = await Task.WhenAll(taskBuilder.ToImmutable());
 
         if (toProcessErrors.Count > 0)
         {

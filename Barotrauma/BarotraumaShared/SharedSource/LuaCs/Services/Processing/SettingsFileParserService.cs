@@ -114,7 +114,7 @@ public sealed class SettingsFileParserService :
             }
         }
         
-        return FluentResults.Result.Ok(parsedInfo.MoveToImmutable());
+        return FluentResults.Result.Ok(parsedInfo.ToImmutable());
         
         // Helpers
 
@@ -196,12 +196,12 @@ public sealed class SettingsFileParserService :
                 {
                     InternalName = profileName,
                     OwnerPackage = res.path.ContentPackage,
-                    ProfileValues = profileValuesBuilder.MoveToImmutable()
+                    ProfileValues = profileValuesBuilder.ToImmutable()
                 });
             }
         }
         
-        return parsedInfo.MoveToImmutable();
+        return parsedInfo.ToImmutable();
 
         FluentResults.Result ReturnFail(string msg)
         {

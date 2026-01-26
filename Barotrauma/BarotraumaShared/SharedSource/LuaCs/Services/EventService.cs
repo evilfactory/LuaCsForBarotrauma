@@ -354,7 +354,7 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
 
     public FluentResults.Result Reset()
     {
-        ((IService)this).CheckDisposed();
+        IService.CheckDisposed(this);
         _subscriptions.Clear();
         _luaSubscriptionFactories.Clear();
         _eventTypeNameAliases.Clear();

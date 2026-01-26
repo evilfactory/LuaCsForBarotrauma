@@ -251,7 +251,7 @@ public class StorageService : IStorageService
         {
             builder.Add((path, LoadPackageData(path, dataLoader)));
         }
-        return builder.MoveToImmutable();
+        return builder.ToImmutable();
     }
 
     public ImmutableArray<(ContentPath, Result<XDocument>)> LoadPackageXmlFiles(ImmutableArray<ContentPath> filePaths)
@@ -317,7 +317,7 @@ public class StorageService : IStorageService
         {
             builder.Add((path, await LoadPackageDataAsync(path, dataLoader)));
         }
-        return builder.MoveToImmutable();
+        return builder.ToImmutable();
     }
     
     public async Task<ImmutableArray<(ContentPath, Result<XDocument>)>> LoadPackageXmlFilesAsync(ImmutableArray<ContentPath> filePaths)
