@@ -172,8 +172,6 @@ public sealed partial class ConfigService : IConfigService
 
         var taskBuilder = ImmutableArray.CreateBuilder<Task<ImmutableArray<IConfigInfo>>>();
         var toProcessErrors = new ConcurrentStack<IError>();
-
-        var taskCtx = TaskScheduler.FromCurrentSynchronizationContext();
         
         foreach (var resource in configResources)
         {
