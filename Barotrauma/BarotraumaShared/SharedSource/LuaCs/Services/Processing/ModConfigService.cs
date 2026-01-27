@@ -225,40 +225,144 @@ public sealed class ModConfigService : IModConfigService
     
     private async Task<Result<IModConfigInfo>> CreateFromLegacyAsync(ContentPackage src)
     {
-        List<ILuaScriptResourceInfo> luaScripts = new List<ILuaScriptResourceInfo>();
-
-        if (_storageService.DirectoryExists(Path.Combine(src.Path, "Lua", "Autorun")) is { IsSuccess: true, Value: true })
-        {
-            var result = _storageService.FindFilesInPackage(src, "Lua/Autorun", "*.lua", true);
-            if (result.IsSuccess)
-            {
-                List<ContentPath> contentPaths = new List<ContentPath>();
-
-                foreach (var path in result.Value)
-                {
-                    contentPaths.Add(ContentPath.FromRaw(src, $"%ModDir%/{Path.GetFullPath(path, src.Dir)}"));
-                }
-
-                luaScripts.Add(new LuaScriptsResourceInfo()
-                {
-                    IsAutorun = true,
-                    SupportedPlatforms = Platform.Any,
-                    SupportedTargets = Target.Any,
-                    InternalName = "legacy",
-                    OwnerPackage = src,
-                    IncompatiblePackages = ImmutableArray<Identifier>.Empty,
-                    RequiredPackages = ImmutableArray<Identifier>.Empty,
-                    FilePaths = contentPaths.ToImmutableArray()
-                });
-            }
-        }
-
         return new ModConfigInfo()
         {
             Package = src,
-            Assemblies = ImmutableArray<IAssemblyResourceInfo>.Empty,
-            Configs = ImmutableArray<IConfigResourceInfo>.Empty,
-            LuaScripts = luaScripts.ToImmutableArray()
+            Assemblies = GetAssembliesLegacy(src),
+            Configs = GetConfigsLegacy(src),
+            LuaScripts = GetLuaScriptsLegacy(src)
         };
+
+        ImmutableArray<IAssemblyResourceInfo> GetAssembliesLegacy(ContentPackage src)
+        {
+            var binSearchInd = new (string SubFolder, Target Targets, Platform Platforms)[]
+            {
+                ("bin/Client/Windows", Target.Client, Platform.Windows),
+                ("bin/Client/Linux", Target.Client, Platform.Linux),
+                ("bin/Client/OSX", Target.Client, Platform.OSX),
+                ("bin/Server/Windows", Target.Server, Platform.Windows),
+                ("bin/Server/Linux", Target.Server, Platform.Linux),
+                ("bin/Server/OSX", Target.Server, Platform.OSX)
+            };
+            
+            var builder = ImmutableArray.CreateBuilder<IAssemblyResourceInfo>();
+
+            foreach (var searchPathways in binSearchInd)
+            {
+                if (_storageService.FindFilesInPackage(src, searchPathways.SubFolder, "*.dll",
+                        true) is { IsSuccess: true, Value.IsDefaultOrEmpty: false } result)
+                {
+                    builder.Add(new AssemblyResourceInfo()
+                    {
+                        OwnerPackage = src,
+                        InternalName = searchPathways.SubFolder,
+                        SupportedPlatforms = searchPathways.Platforms,
+                        SupportedTargets = searchPathways.Targets,
+                        LoadPriority = 0,
+                        FilePaths = result.Value.Select(fp => ContentPath.FromRaw(src, $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
+                            .ToImmutableArray(),
+                        FriendlyName = $"{src.Name}.{searchPathways.SubFolder.Replace('/','.')}",
+                        IncompatiblePackages = ImmutableArray<Identifier>.Empty,
+                        RequiredPackages = ImmutableArray<Identifier>.Empty,
+                        IsScript = false
+                    });
+                }
+            }
+
+            var sharedResult = _storageService.FindFilesInPackage(src,
+                Path.Combine(src.Dir, "CSharp/Shared"),
+                "*.cs", true);
+            var sharedFiles = sharedResult.IsSuccess && !sharedResult.Value.IsDefaultOrEmpty 
+                ? sharedResult.Value.Select(fp => 
+                    ContentPath.FromRaw(src, $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
+                    .ToImmutableArray() 
+                : ImmutableArray<ContentPath>.Empty;
+            
+            var srcSearchInd = new (string SubFolder, Target Targets, Platform Platforms)[]
+            {
+                ("CSharp/Client", Target.Client, Platform.Any),
+                ("CSharp/Server", Target.Server, Platform.Any)
+            };
+
+            foreach (var searchPathways in srcSearchInd)
+            {
+                if (_storageService.FindFilesInPackage(src, searchPathways.SubFolder, "*.cs",
+                        true) is { IsSuccess: true, Value.IsDefaultOrEmpty: false } result)
+                {
+                    builder.Add(new AssemblyResourceInfo()
+                    {
+                        OwnerPackage = src,
+                        InternalName = searchPathways.SubFolder,
+                        SupportedPlatforms = searchPathways.Platforms,
+                        SupportedTargets = searchPathways.Targets,
+                        LoadPriority = 0,
+                        FilePaths = result.Value
+                            .Select(fp => ContentPath.FromRaw(src, 
+                                $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
+                            .Concat(sharedFiles).ToImmutableArray(),
+                        FriendlyName = IAssemblyLoaderService.InternalsAwareAssemblyName,
+                        IncompatiblePackages = ImmutableArray<Identifier>.Empty,
+                        RequiredPackages = ImmutableArray<Identifier>.Empty,
+                        IsScript = true
+                    });
+                }
+            }
+
+            return builder.ToImmutable();
+        }
+        
+        ImmutableArray<IConfigResourceInfo> GetConfigsLegacy(ContentPackage src)
+        {
+            return ImmutableArray<IConfigResourceInfo>.Empty;
+        }
+        
+        ImmutableArray<ILuaScriptResourceInfo> GetLuaScriptsLegacy(ContentPackage src)
+        {
+            var builder = ImmutableArray.CreateBuilder<ILuaScriptResourceInfo>();
+
+            if (_storageService.FindFilesInPackage(src, "Lua", "*.lua", true)
+                is { IsSuccess: true, Value.IsDefaultOrEmpty: false } result)
+            {
+                var autorun = result.Value
+                    .Where(fp => fp.CleanUpPathCrossPlatform().Contains("Lua/Autorun/"))
+                    .ToImmutableArray();
+                var autorunFP = autorun.Select(fp => ContentPath.FromRaw(src,
+                        $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
+                    .ToImmutableArray();
+                var reg = result.Value.Except(autorun)
+                    .Select(fp => ContentPath.FromRaw(src, 
+                        $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
+                    .ToImmutableArray();
+                
+                builder.Add(new LuaScriptsResourceInfo()
+                {
+                    OwnerPackage = src,
+                    InternalName = "LegacyAutorun",
+                    SupportedPlatforms = Platform.Any,
+                    SupportedTargets = Target.Any,
+                    LoadPriority = 1,   // autorun should be last to ensure that dependent code in other files are loaded first
+                    FilePaths = autorunFP,
+                    IncompatiblePackages =  ImmutableArray<Identifier>.Empty,
+                    RequiredPackages = ImmutableArray<Identifier>.Empty,
+                    IsAutorun = true,
+                });
+                
+                builder.Add(new LuaScriptsResourceInfo()
+                {
+                    OwnerPackage = src,
+                    InternalName = "Legacy",
+                    SupportedPlatforms = Platform.Any,
+                    SupportedTargets = Target.Any,
+                    LoadPriority = 0,   // should be included first to ensure that dependent code in these files are available
+                    FilePaths = reg,
+                    IncompatiblePackages =  ImmutableArray<Identifier>.Empty,
+                    RequiredPackages = ImmutableArray<Identifier>.Empty,
+                    IsAutorun = false,
+                });
+            }
+            
+            return builder.ToImmutable();
+        }
+        
     }
 }

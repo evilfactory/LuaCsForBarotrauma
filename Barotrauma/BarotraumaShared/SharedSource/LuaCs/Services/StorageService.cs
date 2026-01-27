@@ -12,6 +12,7 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 using FluentResults;
 using FluentResults.LuaCs;
+using Microsoft.CodeAnalysis;
 using Microsoft.Toolkit.Diagnostics;
 using Error = FluentResults.Error;
 using Path = System.IO.Path;
@@ -266,9 +267,10 @@ public class StorageService : IStorageService
         Guard.IsNotNull(package, nameof(package));
         try
         {
+            var cp = ContentPath.FromRaw(package, package.Dir);
             var fullPath = localSubfolder.IsNullOrWhiteSpace()
-                ? Path.GetFullPath(package.Dir)
-                : Path.GetFullPath(package.Dir, localSubfolder);
+                ? Path.GetFullPath(cp.FullPath)
+                : Path.GetFullPath(localSubfolder, cp.FullPath);
             return System.IO.Directory.GetFiles(fullPath, regexFilter, 
                 searchRecursively ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly)
                 .ToImmutableArray();

@@ -41,7 +41,8 @@ public interface IResourceInfo : IPlatformInfo
 {
     /// <summary>
     /// [Optional]
-    /// Allows you to specify the loading order for all assets of the same type (ie. styles, assemblies, etc.).
+    /// Specifies the loading order for all assets of the same type (ie. styles, assemblies, etc.) from
+    /// the same <see cref="ContentPackage"/>. Lower number is higher priority, see <see cref="System.Linq.Enumerable.OrderBy{TSource,TKey}(IEnumerable{TSource}, Func{TSource,TKey})"/>
     /// </summary>
     int LoadPriority { get; }
     
