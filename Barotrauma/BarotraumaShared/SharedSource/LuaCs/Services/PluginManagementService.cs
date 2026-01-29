@@ -152,7 +152,7 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
             ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAssemblyResources)}: The resources list is empty!");
         }
 
-        throw new NotImplementedException();
+        return FluentResults.Result.Fail("not implemented");
     }
 
     public ImmutableArray<Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
