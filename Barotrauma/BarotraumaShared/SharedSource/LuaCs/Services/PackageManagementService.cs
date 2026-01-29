@@ -129,7 +129,11 @@ public sealed class PackageManagementService : IPackageManagementService
         
         IService.CheckDisposed(this);
         var result = new FluentResults.Result();
-        var pkgConfigs = _modConfigService.CreateConfigsAsync([..packages]).ConfigureAwait(false).GetAwaiter().GetResult();
+        var packages2 = packages.OrderBy(pkg => pkg.Name == "LuaCsForBarotrauma" ? 0 : 1) // always run lua cs first.
+            .ThenBy(packages.IndexOf)
+            .ToImmutableArray();
+            
+        var pkgConfigs = _modConfigService.CreateConfigsAsync([..packages2]).ConfigureAwait(false).GetAwaiter().GetResult();
         foreach (var pkgConfig in pkgConfigs)
         {
             result.WithReasons(pkgConfig.Config.Reasons);
@@ -211,7 +215,9 @@ public sealed class PackageManagementService : IPackageManagementService
         var result = new FluentResults.Result();
         
         // get loading order. Note: packages not in the execution order list will load first.
-        var loadingOrderedPackages = _loadedPackages.OrderBy(pkg => executionOrder.IndexOf(pkg.Key))
+        var loadingOrderedPackages = _loadedPackages
+            .OrderBy(pkg => pkg.Key.Name == "LuaCsForBarotrauma" ? 0 : 1) // always run lua cs first.
+            .ThenBy(pkg => executionOrder.IndexOf(pkg.Key))
             .ToImmutableArray();
         var loadOrderByPackage = loadingOrderedPackages.Select(p => p.Key).ToImmutableArray();
         var toLoadPackagesIndents = loadingOrderedPackages
