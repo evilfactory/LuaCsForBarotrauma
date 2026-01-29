@@ -11,6 +11,7 @@ using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Collections.Concurrent;
 
 namespace Barotrauma
 {
@@ -75,7 +76,7 @@ namespace Barotrauma
             return !corrected;
         }
 
-        private static readonly Dictionary<string, string> cachedFileNames = new Dictionary<string, string>();
+        private static readonly ConcurrentDictionary<string, string> cachedFileNames = new ConcurrentDictionary<string, string>();
 
         public static string CorrectFilenameCase(string filename, out bool corrected, string directory = "")
         {
@@ -153,7 +154,7 @@ namespace Barotrauma
                 if (i < subDirs.Length - 1) { filename += "/"; }
             }
 
-            cachedFileNames.Add(originalFilename, filename);
+            cachedFileNames.TryAdd(originalFilename, filename);
             return filename;
         }
 
