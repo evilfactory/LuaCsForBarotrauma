@@ -1,4 +1,5 @@
-﻿using Barotrauma.LuaCs.Services;
+﻿using Barotrauma.LuaCs.Events;
+using Barotrauma.LuaCs.Services;
 using Barotrauma.LuaCs.Services.Compatibility;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Diagnostics;
 
 namespace Barotrauma
 {
-    public class LuaCsTimer : ILuaCsTimer
+    public class LuaCsTimer : ILuaCsTimer, IEventUpdate
     {
         public static double Time => Timing.TotalTime;
         public static double GetTime() => Time;
@@ -55,6 +56,14 @@ namespace Barotrauma
         
         private List<TimedAction> timedActions = new List<TimedAction>();
 
+        private readonly IEventService _eventService;
+
+        public LuaCsTimer(IEventService eventService)
+        {
+            _eventService = eventService;
+            _eventService.Subscribe<IEventUpdate>(this);
+        }
+
         private void AddTimer(TimedAction timedAction)
         {
             if (timedAction == null)
@@ -75,7 +84,29 @@ namespace Barotrauma
             }
         }
 
-        public void Update()
+        public void Clear()
+        {
+            timedActions = new List<TimedAction>();
+        }
+
+        public void Wait(LuaCsAction action, int millisecondDelay)
+        {
+            TimedAction timedAction = new TimedAction(action, millisecondDelay);
+            AddTimer(timedAction);
+        }
+
+        public void NextFrame(LuaCsAction action)
+        {
+            TimedAction timedAction = new TimedAction(action, 0);
+            AddTimer(timedAction);
+        }
+
+        public void Dispose()
+        {
+            _eventService.Unsubscribe<IEventUpdate>(this);
+        }
+
+        public void OnUpdate(double fixedDeltaTime)
         {
             lock (timedActions)
             {
@@ -102,28 +133,6 @@ namespace Barotrauma
                     }
                 }
             }
-        }
-
-        public void Clear()
-        {
-            timedActions = new List<TimedAction>();
-        }
-
-        public void Wait(LuaCsAction action, int millisecondDelay)
-        {
-            TimedAction timedAction = new TimedAction(action, millisecondDelay);
-            AddTimer(timedAction);
-        }
-
-        public void NextFrame(LuaCsAction action)
-        {
-            TimedAction timedAction = new TimedAction(action, 0);
-            AddTimer(timedAction);
-        }
-
-        public void Dispose()
-        {
-            // ignored
         }
 
         public bool IsDisposed => false;

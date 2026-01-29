@@ -93,7 +93,7 @@ public class PluginManagementService : IAssemblyManagementService
     public bool IsDisposed { get; }
     public FluentResults.Result Reset()
     {
-        throw new NotImplementedException();
+        return FluentResults.Result.Fail("Not implemented");
     }
 
     #endregion

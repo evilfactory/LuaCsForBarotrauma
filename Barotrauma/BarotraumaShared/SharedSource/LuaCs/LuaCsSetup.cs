@@ -191,6 +191,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<ILuaCsTimer, LuaCsTimer>(ServiceLifetime.Singleton);
             // TODO: INetworkingService
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);

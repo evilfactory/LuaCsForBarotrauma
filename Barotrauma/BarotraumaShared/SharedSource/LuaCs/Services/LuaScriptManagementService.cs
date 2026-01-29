@@ -45,6 +45,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     private readonly ILoggerService _loggerService;
     private readonly LuaGame _luaGame;
     private readonly ILuaCsHook _luaCsHook;
+    private readonly ILuaCsTimer _luaCsTimer;
     //private readonly ILuaCsNetworking _luaCsNetworking;
     //private readonly ILuaCsUtility _luaCsUtility;
     //private readonly ILuaCsTimer _luaCsTimer;
@@ -54,10 +55,10 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         ILuaScriptLoader loader, 
         ILuaScriptServicesConfig luaScriptServicesConfig,
         LuaGame luaGame,
-        ILuaCsHook luaCsHook
+        ILuaCsHook luaCsHook,
         //ILuaCsNetworking luaCsNetworking,
         //ILuaCsUtility luaCsUtility,
-        //ILuaCsTimer luaCsTimer
+        ILuaCsTimer luaCsTimer
         )
     {
         _luaScriptLoader = loader;
@@ -68,7 +69,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _luaCsHook = luaCsHook;
         //_luaCsNetworking = luaCsNetworking;
         //_luaCsUtility = luaCsUtility;
-        //_luaCsTimer = luaCsTimer;
+        _luaCsTimer = luaCsTimer;
     }
 
     public bool IsDisposed { get; private set; }
@@ -195,7 +196,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         _script.Globals["Game"] = _luaGame;
         _script.Globals["Hook"] = _luaCsHook;
-        //_script.Globals["Timer"] = _luaCsTimer;
+        _script.Globals["Timer"] = _luaCsTimer;
         _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
         //_script.Globals["Networking"] = _luaCsNetworking;
         //_script.Globals["Steam"] = Steam;
@@ -215,11 +216,13 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
             return FluentResults.Result.Fail("Tried to execute Lua scripts without unloading first."); 
         }
 
+        _loggerService.LogMessage("Executing Lua scripts");
+
         SetupEnvironment();
 
-        _isRunning = true;
-
         var result = FluentResults.Result.Ok();
+
+        _isRunning = true;
 
         foreach (ILuaScriptResourceInfo resource in executionOrder.Where(l => l.IsAutorun))
         {
@@ -227,6 +230,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
             {
                 try
                 {
+                    _loggerService.LogMessage($"Run {filePath.Value}");
                     _script?.Call(_script.LoadFile(filePath.FullPath), Path.GetDirectoryName(resource.OwnerPackage.Path));
                 }
                 catch(Exception e)
