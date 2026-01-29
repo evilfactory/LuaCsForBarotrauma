@@ -786,11 +786,6 @@ namespace Barotrauma
 
                 try
                 {
-                    if (luaCs.PerformanceCounter.EnablePerformanceCounter)
-                    {
-                        performanceMeasurement.Start();
-                    }
-
                     var result = tuple.Item1.func(args);
 
                     if (result is DynValue luaResult)
@@ -812,13 +807,6 @@ namespace Barotrauma
                     else
                     {
                         lastResult = (T)result;
-                    }
-
-                    if (luaCs.PerformanceCounter.EnablePerformanceCounter)
-                    {
-                        performanceMeasurement.Stop();
-                        //luaCs.PerformanceCounter.SetHookElapsedTicks(name, key, performanceMeasurement.ElapsedTicks); TODO
-                        performanceMeasurement.Reset();
                     }
                 }
                 catch (Exception e)
