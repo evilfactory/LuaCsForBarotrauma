@@ -184,7 +184,8 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<IEventService, EventService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceResolver<ILuaCsHook>(factory => factory.GetInstance<IEventService>() as ILuaCsHook);
             servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IAssemblyManagementService, PluginManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceResolver<IPluginManagementService>(factory => factory.GetInstance<IAssemblyManagementService>());
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
@@ -252,7 +253,7 @@ namespace Barotrauma
                 SetRunState(RunState.LoadedNoExec);
             }
             
-            PackageManagementService.SyncLoadedPackagesList(packages);
+            this.Logger.LogResults(PackageManagementService.SyncLoadedPackagesList(packages));
             SetRunState(state); // restore
         }
         
