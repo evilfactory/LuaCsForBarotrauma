@@ -20,6 +20,7 @@ using Barotrauma.Networking;
 using Barotrauma.Steam;
 using FluentResults;
 using ImpromptuInterface;
+using LightInject;
 using Microsoft.Toolkit.Diagnostics;
 
 namespace Barotrauma
@@ -181,7 +182,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<ISafeStorageService, SafeStorageService>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<IEventService, EventService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<ILuaCsHook, EventService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceResolver<ILuaCsHook>(factory => factory.GetInstance<IEventService>() as ILuaCsHook);
             servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IPluginManagementService, PluginManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);

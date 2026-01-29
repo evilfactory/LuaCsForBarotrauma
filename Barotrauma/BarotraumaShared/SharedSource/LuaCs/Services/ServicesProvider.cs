@@ -100,6 +100,19 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
+    public void RegisterServiceResolver<TSvcInterface>(Func<ServiceContainer, TSvcInterface> factory) where TSvcInterface : class, IService
+    {
+        try
+        {
+            _serviceLock.EnterReadLock();
+            ServiceContainer.Register<TSvcInterface>(f => factory(ServiceContainer));
+        }
+        finally
+        {
+            _serviceLock.ExitReadLock();
+        }
+    }
+
     public void Compile()
     {
         try

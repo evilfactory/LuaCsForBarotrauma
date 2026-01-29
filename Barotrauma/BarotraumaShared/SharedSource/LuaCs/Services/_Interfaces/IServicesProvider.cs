@@ -37,7 +37,14 @@ public interface IServicesProvider
     /// Args[1]: Implementing type
     /// </summary>
     event System.Action<Type, Type> OnServiceRegistered;
-
+    
+    /// <summary>
+    /// Registers a factory for resolving the service type.
+    /// </summary>
+    /// <param name="factory"></param>
+    /// <typeparam name="TSvcInterface"></typeparam>
+    void RegisterServiceResolver<TSvcInterface>(Func<ServiceContainer, TSvcInterface> factory) where TSvcInterface : class, IService;
+    
     /// <summary>
     /// Runs compilation of registered services.
     /// </summary>
