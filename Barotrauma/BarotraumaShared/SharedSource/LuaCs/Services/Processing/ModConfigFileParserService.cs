@@ -149,7 +149,7 @@ public sealed class ModConfigFileParserService :
             RequiredPackages = src.Required,
             IncompatiblePackages =  src.Incompatible,
             // Type Specific
-            IsAutorun = src.Element.GetAttributeBool("RunFile", false)
+            IsAutorun = src.Element.GetAttributeBool("IsAutorun", false)
         };
     }
 
