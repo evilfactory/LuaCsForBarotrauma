@@ -114,7 +114,7 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
             : FluentResults.Result.Ok(builder.ToImmutable());
     }
 
-    public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false,
+    public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = true,
         bool includeDefaultContext = true)
     {
         if (includeDefaultContext)
