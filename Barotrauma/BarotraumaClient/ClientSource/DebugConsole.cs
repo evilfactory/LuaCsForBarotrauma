@@ -4225,27 +4225,20 @@ namespace Barotrauma
 
             commands.Add(new Command("cl_lua", $"cl_lua: Runs a string on the client.", (string[] args) =>
             {
-                throw new NotImplementedException();
-                /*if (GameMain.Client != null && !GameMain.Client.HasPermission(ClientPermissions.ConsoleCommands))
+                if (GameMain.Client != null && !GameMain.Client.HasPermission(ClientPermissions.ConsoleCommands))
                 {
                     ThrowError("Command not permitted.");
                     return;
                 }
 
-                if (GameMain.LuaCs.Lua == null)
+                if (GameMain.LuaCs.CurrentRunState != RunState.Running)
                 {
                     ThrowError("LuaCs not initialized, use the console command cl_reloadluacs to force initialization.");
                     return;
                 }
 
-                try
-                {
-                    GameMain.LuaCs.Lua.DoString(string.Join(" ", args));
-                }
-                catch(Exception ex)
-                {
-                    LuaCsLogger.HandleException(ex, LuaCsMessageOrigin.LuaMod);
-                }*/
+                var result = GameMain.LuaCs.LuaScriptManagementService.DoString(string.Join(" ", args));
+                GameMain.LuaCs.Logger.LogResults(result.ToResult());
             }));
 
             commands.Add(new Command("cl_reloadlua|cl_reloadcs|cl_reloadluacs", "Re-initializes the LuaCs environment.", (string[] args) =>

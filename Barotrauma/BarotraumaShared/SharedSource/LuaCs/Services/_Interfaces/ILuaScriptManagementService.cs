@@ -17,6 +17,7 @@ public interface ILuaScriptManagementService : IReusableService
     #region Script_Ops
 
     object? GetGlobalTableValue(string tableName);
+    FluentResults.Result<DynValue> DoString(string code);
     
     /// <summary>
     /// Parses and loads script sources (code) into a memory cache without executing it.

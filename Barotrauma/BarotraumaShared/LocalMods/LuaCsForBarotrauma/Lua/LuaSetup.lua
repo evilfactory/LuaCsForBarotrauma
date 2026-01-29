@@ -1,6 +1,6 @@
 LuaSetup = {}
 
-local path, resourcesToExecute = ...
+local path = ...
 
 package.path = {path .. "/Lua/?.lua"}
 
@@ -43,9 +43,3 @@ require("DefaultLib/Utils/SteamApi")
 require("PostSetup")
 
 LuaSetup = nil
-
-for resource in resourcesToExecute do
-    for path in resource.FilePaths do
-        dofile(path)
-    end
-end

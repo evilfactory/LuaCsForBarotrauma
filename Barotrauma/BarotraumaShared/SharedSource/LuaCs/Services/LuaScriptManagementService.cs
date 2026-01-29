@@ -99,6 +99,22 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         return new FluentResults.Result().WithReasons(cacheRes.Value.SelectMany(cr => cr.Item2.Reasons));
     }
 
+    public FluentResults.Result<DynValue> DoString(string code)
+    {
+        IService.CheckDisposed(this);
+        if (_script == null || !IsRunning) { throw new Exception("Disposed"); }
+
+        try
+        {
+            var result = _script.DoString(code);
+            return FluentResults.Result.Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return FluentResults.Result.Fail(new ExceptionalError(ex));
+        }
+    }
+
     private DynValue DoFile(string file, Table? globalContext = null, string? codeStringFriendly = null)
     {
         if (_script == null)
@@ -205,16 +221,13 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         var result = FluentResults.Result.Ok();
 
-        List<ILuaScriptResourceInfo> initializationScripts = executionOrder.Where(x => x.OwnerPackage.Name == "LuaCsForBarotrauma").ToList();
-        List<ILuaScriptResourceInfo> otherScripts = executionOrder.Except(initializationScripts).ToList();
-
-        foreach (ILuaScriptResourceInfo resource in initializationScripts)
+        foreach (ILuaScriptResourceInfo resource in executionOrder.Where(l => l.IsAutorun))
         {
             foreach (ContentPath filePath in resource.FilePaths)
             {
                 try
                 {
-                    _script?.Call(_script.LoadFile(filePath.FullPath), Path.GetDirectoryName(resource.OwnerPackage.Path), otherScripts.ToList());
+                    _script?.Call(_script.LoadFile(filePath.FullPath), Path.GetDirectoryName(resource.OwnerPackage.Path));
                 }
                 catch(Exception e)
                 {

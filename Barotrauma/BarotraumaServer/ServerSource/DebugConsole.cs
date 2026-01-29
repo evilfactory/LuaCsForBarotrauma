@@ -1291,15 +1291,8 @@ namespace Barotrauma
 
             commands.Add(new Command("lua", "lua: Runs a string.", (string[] args) =>
             {
-                try
-                {
-                    throw new NotImplementedException();
-                    //GameMain.LuaCs.Lua.DoString(string.Join(" ", args));
-                }
-                catch (Exception ex)
-                {
-                    LuaCsLogger.HandleException(ex, LuaCsMessageOrigin.LuaMod);
-                }
+                var result = GameMain.LuaCs.LuaScriptManagementService.DoString(string.Join(" ", args));
+                GameMain.LuaCs.Logger.LogResults(result.ToResult());
             }));
 
             commands.Add(new Command("reloadlua|reloadcs|reloadluacs", "Re-initializes the LuaCs environment.", (string[] args) =>
