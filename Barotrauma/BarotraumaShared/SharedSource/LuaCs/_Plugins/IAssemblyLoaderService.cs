@@ -13,6 +13,11 @@ namespace Barotrauma.LuaCs;
 
 public interface IAssemblyLoaderService : IService
 {
+    public interface IFactory : IService
+    {
+        IAssemblyLoaderService CreateInstance(LoaderInitData initData);
+    }
+    
     /// <summary>
     /// Constructor record for instancing.
     /// </summary>
@@ -26,7 +31,6 @@ public interface IAssemblyLoaderService : IService
     /// <param name="OnResolvingManaged"></param>
     /// <param name="OnResolvingUnmanagedDll"></param>
     public record LoaderInitData(
-        [Required][NotNull] IAssemblyManagementService AssemblyManagementService,
         [Required] Guid InstanceId,
         [Required][NotNull] string Name,
         [Required] bool IsReferenceMode,

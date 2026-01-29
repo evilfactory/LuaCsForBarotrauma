@@ -182,7 +182,7 @@ public partial class LoggerService : ILoggerService
             return;
         }
 
-        if (result.Errors.Any())
+        if (result.IsFailed)
         {
             foreach (var error in result.Errors)
             {
@@ -192,7 +192,7 @@ public partial class LoggerService : ILoggerService
                 }
                 else
                 {
-                    LogError(error.Message);
+                    LogError($"FluentResults::IError: {error.Message}");
                 }
 
 

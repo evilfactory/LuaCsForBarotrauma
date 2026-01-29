@@ -24,6 +24,20 @@ using Path = System.IO.Path;
 namespace Barotrauma.LuaCs.Services;
 public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 {
+    public class Factory : IAssemblyLoaderService.IFactory
+    {
+        public IAssemblyLoaderService CreateInstance(IAssemblyLoaderService.LoaderInitData initData)
+        {
+            return new AssemblyLoader(initData);
+        }
+
+        public void Dispose()
+        {
+            //stateless service
+        }
+        public bool IsDisposed => false;
+    }
+    
     public Guid Id { get; init; }
     public ContentPackage OwnerPackage { get; private set; }
     public bool IsReferenceOnlyMode { get; init; }
@@ -55,7 +69,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     private int _operationsRunning;
     
     //internal
-    private readonly IAssemblyManagementService _assemblyManagementService;
     private readonly Action<IAssemblyLoaderService> _onUnload;
     private readonly Func<IAssemblyLoaderService, AssemblyName, Assembly> _onResolvingManaged;
     private readonly Func<Assembly, string, IntPtr> _onResolvingUnmanagedDll;
@@ -68,7 +81,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
     public AssemblyLoader(IAssemblyLoaderService.LoaderInitData initData) 
         : base(isCollectible: true, name: initData.Name)
     {
-        _assemblyManagementService = initData.AssemblyManagementService;
         Id = initData.InstanceId;
         IsReferenceOnlyMode = initData.IsReferenceMode;
         this._onUnload = initData.OnUnload;
@@ -217,7 +229,10 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
                 try
                 {
                     var p = Path.GetFullPath(path.CleanUpPath());
-                    _dependencyResolvers[p] = new AssemblyDependencyResolver(p);
+                    if (!_dependencyResolvers.ContainsKey(p))
+                    {
+                        _dependencyResolvers[p] = new AssemblyDependencyResolver(p);
+                    }                        
                 }
                 catch (Exception ex)
                 {

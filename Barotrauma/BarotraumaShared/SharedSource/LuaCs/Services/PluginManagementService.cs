@@ -7,114 +7,124 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
+using System.Text;
 using System.Threading;
 using Barotrauma.Extensions;
+using Barotrauma.IO;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Events;
 using FluentResults;
 using FluentResults.LuaCs;
 using ImpromptuInterface.Build;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Text;
+using Microsoft.Extensions.Logging;
 using Microsoft.Toolkit.Diagnostics;
 using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class PluginManagementService : IPluginManagementService, IAssemblyManagementService
+public class PluginManagementService : IAssemblyManagementService
 {
-    private readonly Func<IAssemblyLoaderService.LoaderInitData, IAssemblyLoaderService> _assemblyLoaderServiceFactory;
-    private readonly ConcurrentDictionary<ContentPackage, (List<IAssemblyResourceInfo> ResourceInfos, IAssemblyLoaderService Loader)> _packageAssemblyResources = new();
-    private readonly ConcurrentDictionary<ContentPackage, List<IDisposable>> _pluginInstances = new();
-    private readonly Lazy<IEventService> _eventService;
-    private readonly ConditionalWeakTable<IAssemblyLoaderService, ContentPackage> _unloadingAssemblyLoaders = new();
-    private readonly ConditionalWeakTable<Assembly, ConcurrentDictionary<string, Type>> _assemblyTypesCache = new();
+    #region CSHARP_COMPILATION_OPTIONS
 
-    public PluginManagementService(
-        Func<IAssemblyLoaderService.LoaderInitData, 
-            IAssemblyLoaderService> assemblyLoaderServiceFactory,
-        Lazy<IEventService> eventService)
-    {
-        _assemblyLoaderServiceFactory = assemblyLoaderServiceFactory;
-        _eventService = eventService;
-        AppDomain.CurrentDomain.AssemblyLoad += OnAssemblyLoadedGlobal;
-    }
-
-    private void OnAssemblyLoadedGlobal(object sender, AssemblyLoadEventArgs args)
-    {
-        // cache types by name
-        try
+    private static readonly CSharpParseOptions ScriptParseOptions = CSharpParseOptions.Default
+        .WithPreprocessorSymbols(new[]
         {
-            var context = AssemblyLoadContext.GetLoadContext(args.LoadedAssembly);
-            if (context is not IAssemblyLoaderService loaderService)
-                return;
-            _eventService.Value.PublishEvent<IEventAssemblyLoaded>(sub => sub.OnAssemblyLoaded(args.LoadedAssembly));
-            var lookupDict = new ConcurrentDictionary<string, Type>();
-            foreach (var type in args.LoadedAssembly.GetSafeTypes())
-            {
-                lookupDict[type.FullName ??  type.Name] = type;
-            }
-            _assemblyTypesCache.AddOrUpdate(args.LoadedAssembly, lookupDict);
-        }
-        catch (Exception e)
-        {
-            // ignored
-            return;
-        }
-    }
+#if SERVER
+            "SERVER"
+#elif CLIENT
+            "CLIENT"
+#else
+            "UNDEFINED"
+#endif
+#if DEBUG
+            ,"DEBUG"
+#endif
+        });
 
-    private int _isDisposed = 0;
-    public bool IsDisposed
-    {
-        get => ModUtils.Threading.GetBool(ref _isDisposed);
-        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
-    }
+#if WINDOWS
+    private const string PLATFORM_TARGET = "Windows";
+#elif OSX
+    private const string PLATFORM_TARGET = "OSX";
+#elif LINUX
+    private const string PLATFORM_TARGET = "Linux";
+#endif
+
+#if CLIENT
+    private const string ARCHITECTURE_TARGET = "Client";
+#elif SERVER
+    private const string ARCHITECTURE_TARGET = "Server";
+#endif
+
+    private static readonly CSharpCompilationOptions CompilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+        .WithMetadataImportOptions(MetadataImportOptions.All)
+#if DEBUG
+        .WithOptimizationLevel(OptimizationLevel.Debug)
+#else
+        .WithOptimizationLevel(OptimizationLevel.Release)
+#endif
+        .WithAllowUnsafe(true);
+    
+    private static readonly SyntaxTree BaseAssemblyImports = CSharpSyntaxTree.ParseText(
+        new StringBuilder()
+            .AppendLine("using System.Reflection;")
+            .AppendLine("using Barotrauma;")
+            .AppendLine("using System.Runtime.CompilerServices;")
+            .AppendLine("[assembly: IgnoresAccessChecksTo(\"BarotraumaCore\")]")
+#if CLIENT
+            .AppendLine("[assembly: IgnoresAccessChecksTo(\"Barotrauma\")]")
+#elif SERVER
+            .AppendLine("[assembly: IgnoresAccessChecksTo(\"DedicatedServer\")]")
+#endif
+            .ToString(),
+        ScriptParseOptions);
+
+    #endregion
+    
+    #region Disposal
 
     public void Dispose()
     {
         throw new NotImplementedException();
     }
 
+    public bool IsDisposed { get; }
     public FluentResults.Result Reset()
     {
-        if (IsDisposed)
-            return FluentResults.Result.Fail($"{nameof(PluginManagementService)} is disposed!");
-
-        return FluentResults.Result.Fail("not implemented");
+        throw new NotImplementedException();
     }
 
-    public Result<ImmutableArray<Type>> GetImplementingTypes<T>(bool includeInterfaces = false,
-        bool includeAbstractTypes = false, bool includeDefaultContext = true)
+    #endregion
+    
+    private IServicesProvider _serviceProvider;
+    private IAssemblyLoaderService.IFactory _assemblyLoaderFactory;
+    private IStorageService _storageService;
+    private ILoggerService _logger;
+    private readonly ConcurrentDictionary<ContentPackage, IAssemblyLoaderService> _assemblyLoaders = new();
+    private readonly AsyncReaderWriterLock _operationsLock = new();
+    
+    public PluginManagementService(
+        IServicesProvider serviceProvider, 
+        IAssemblyLoaderService.IFactory assemblyLoaderFactory, 
+        IStorageService storageService, 
+        ILoggerService logger)
     {
-        var builder = ImmutableArray.CreateBuilder<Type>();
-
-        if (this._packageAssemblyResources.Any())
-        {
-            foreach (var resource in this._packageAssemblyResources
-                         .Where(res => !res.Value.Loader.IsReferenceOnlyMode))
-            {
-                builder.AddRange(resource.Value.Loader.Assemblies
-                    .SelectMany(assembly => assembly.GetSafeTypes())
-                    .Where(type => type.IsAssignableTo(typeof(T)))
-                    .Where(type => includeInterfaces || !type.IsInterface)
-                    .Where(type => includeAbstractTypes || !type.IsAbstract));
-            }
-        }
-
-        if (includeDefaultContext)
-        {
-            builder.AddRange(AssemblyLoadContext.Default.Assemblies
-                .SelectMany(assembly => assembly.GetSafeTypes())
-                .Where(type => type.IsAssignableTo(typeof(T)))
-                .Where(type => includeInterfaces || !type.IsInterface)
-                .Where(type => includeAbstractTypes || !type.IsAbstract));
-        }
-        
-        return builder.Count == 0 
-            ? FluentResults.Result.Fail($"Failed to find any types that implement {typeof(T).Name})") 
-            : FluentResults.Result.Ok(builder.ToImmutable());
+        Guard.IsNotNull(serviceProvider, nameof(serviceProvider));
+        _serviceProvider = serviceProvider;
+        _assemblyLoaderFactory = assemblyLoaderFactory;
+        _storageService = storageService;
+        _logger = logger;
     }
 
-    public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = true,
+    public Result<ImmutableArray<Type>> GetImplementingTypes<T>(bool includeInterfaces = false, bool includeAbstractTypes = false,
+        bool includeDefaultContext = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false,
         bool includeDefaultContext = true)
     {
         if (includeDefaultContext)
@@ -144,91 +154,197 @@ public class PluginManagementService : IPluginManagementService, IAssemblyManage
         return null;
     }
 
-    public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resources)
-    {
-        IService.CheckDisposed(this);
-        if (resources.IsDefaultOrEmpty)
-        {
-            ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAssemblyResources)}: The resources list is empty!");
-        }
-
-        return FluentResults.Result.Fail("not implemented");
-    }
-
     public ImmutableArray<Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
         bool hostInstanceReference = false) where T : IDisposable
     {
+        throw new NotImplementedException();
+    }
+    
+    public FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resources)
+    {
+        if (resources.IsDefaultOrEmpty)
+        {
+            ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAssemblyResources)} The resource list is empty.)");
+        }
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
+        var orderedContentPacks = resources.GroupBy(res => res.OwnerPackage)
+            .OrderBy(res => resources.FindIndex(r2 => r2.OwnerPackage == res.Key))
+            .ToImmutableArray();
+
+        var result = new FluentResults.Result();
+        
+        return FluentResults.Result.Fail($"{nameof(LoadAssemblyResources)}: Not Implemented!");
+        throw new NotImplementedException();
+        
+        foreach (var contentPack in orderedContentPacks)
+        {
+            LoadBinaries(contentPack);
+            LoadAndCompileScriptAssemblies(contentPack);
+        }
+        
+        return result;
+        
+        // helper methods
+        void LoadBinaries(IGrouping<ContentPackage,IAssemblyResourceInfo> contentPackRes)
+        {
+            var binaries = contentPackRes.Where(cRes => !cRes.IsScript)
+                .OrderBy(bin => bin.LoadPriority)
+                .SelectMany(bin => bin.FilePaths)
+                .ToImmutableArray();
+
+            if (binaries.IsDefaultOrEmpty)
+            {
+                return;
+            }
+            
+            var assemblyLoader = _assemblyLoaders.GetOrAdd(contentPackRes.Key, (cp) => _assemblyLoaderFactory.CreateInstance(
+                new IAssemblyLoaderService.LoaderInitData(
+                    InstanceId: Guid.NewGuid(),
+                    contentPackRes.Key.Name,
+                    IsReferenceMode: false,
+                    OwnerPackage: contentPackRes.Key,
+                    OnUnload: OnAssemblyLoaderUnloading,
+                    OnResolvingManaged: OnAssemblyLoaderResolvingManaged, 
+                    OnResolvingUnmanagedDll: OnAssemblyLoaderResolvingUnmanaged
+                )));
+
+            var dependencyPaths = binaries
+                .Select(bin => System.IO.Path.GetDirectoryName(bin.FullPath))
+                .Distinct()
+                .ToImmutableArray();
+                
+            foreach (var binResource in binaries)
+            {
+                var res = assemblyLoader.LoadAssemblyFromFile(binResource.FullPath, dependencyPaths);
+                result.WithReasons(res.Reasons);
 #if DEBUG
-        return ImmutableArray<Result<(Type, T)>>.Empty;
+                _logger.LogResults(res.ToResult());
 #endif
+                if (res.IsFailed)
+                {
+                    _logger.LogResults(res.ToResult());
+                }
+            }
+        }
+        
+        void LoadAndCompileScriptAssemblies(IGrouping<ContentPackage, IAssemblyResourceInfo> contentPackRes)
+        {
+            var scripts = contentPackRes.Where(cRes => cRes.IsScript)
+                .OrderBy(scr => scr.LoadPriority)
+                .Select(scr => (scr.FriendlyName, scr.FilePaths, scr.UseInternalAccessName))
+                .GroupBy(scr => scr.FriendlyName)
+                .ToImmutableArray();
+
+            if (scripts.IsDefaultOrEmpty)
+            {
+                return;
+            }
+
+            var metadataReferences = GetMetadataReferences();
+            
+            var assemblyLoader = _assemblyLoaders.GetOrAdd(contentPackRes.Key, (cp) => _assemblyLoaderFactory.CreateInstance(
+                new IAssemblyLoaderService.LoaderInitData(
+                    InstanceId: Guid.NewGuid(),
+                    contentPackRes.Key.Name,
+                    IsReferenceMode: false,
+                    OwnerPackage: contentPackRes.Key,
+                    OnUnload: OnAssemblyLoaderUnloading,
+                    OnResolvingManaged: OnAssemblyLoaderResolvingManaged, 
+                    OnResolvingUnmanagedDll: OnAssemblyLoaderResolvingUnmanaged
+                )));
+            
+            // create syntax trees
+            var syntaxTreesBuilder = ImmutableArray.CreateBuilder<SyntaxTree>();
+
+            foreach (var resourceInfo in contentPackRes)
+            {
+                if (resourceInfo.FilePaths.IsDefaultOrEmpty)
+                {
+                    ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAndCompileScriptAssemblies)} The resource list is empty for package {resourceInfo.OwnerPackage}.");
+                }
+
+                var loadRes = GetSourceFilesText(resourceInfo.FilePaths);
+                if (loadRes.IsFailed)
+                {
+                    _logger.LogResults(loadRes.ToResult());
+                    continue;
+                }
+                
+                CancellationToken token = CancellationToken.None;
+                
+                syntaxTreesBuilder.Add(SyntaxFactory.ParseSyntaxTree(
+                    text: loadRes.Value,
+                    options: ScriptParseOptions,
+                    path: null,
+                    encoding: Encoding.Default,
+                    cancellationToken: token
+                    ));
+            }
+            
+            throw new NotImplementedException();
+        }
+        
+        Result<string> GetSourceFilesText(ImmutableArray<ContentPath> resourceInfoFilePaths)
+        {
+            if (_storageService.LoadPackageTextFiles(resourceInfoFilePaths) is not { IsDefaultOrEmpty: false } res)
+            {
+                _logger.LogError($"{nameof(GetSourceFilesText)}: Failed to load source files for ContentPackage {resourceInfoFilePaths.First().ContentPackage?.Name}.");
+                return FluentResults.Result.Fail($"{nameof(GetSourceFilesText)}: Failed to load source files for ContentPackage {resourceInfoFilePaths.First().ContentPackage?.Name}.");
+            }
+
+            var loadRes = new FluentResults.Result();
+            StringBuilder sb = new StringBuilder();
+
+            foreach ((ContentPath Path, Result<string> FileResult) loadResult in res)
+            {
+                if (loadResult.FileResult.IsFailed)
+                {
+                    loadRes.WithErrors(loadResult.FileResult.Errors);
+                    continue;
+                }
+                
+                sb.AppendLine(loadResult.FileResult.Value);
+            }
+
+            if (loadRes.IsFailed)
+            {
+                return loadRes;
+            }
+
+            return sb.ToString();
+        }
+        
+        IEnumerable<MetadataReference> GetMetadataReferences()
+        {
+            return Basic.Reference.Assemblies.Net80.References.All;
+        }
+    }
+
+    private IntPtr OnAssemblyLoaderResolvingUnmanaged(Assembly arg1, string arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Assembly OnAssemblyLoaderResolvingManaged(IAssemblyLoaderService arg1, AssemblyName arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnAssemblyLoaderUnloading(IAssemblyLoaderService loader)
+    {
         throw new NotImplementedException();
     }
 
     public FluentResults.Result UnloadManagedAssemblies()
     {
-        var res = new FluentResults.Result();
-        
-        // cleanup managed plugins
-        if (_pluginInstances.Any())
-        {
-            foreach (var packageInstances in _pluginInstances)
-            {
-                if (!packageInstances.Value.Any())
-                    continue;
-                
-                foreach (var disposable in packageInstances.Value)
-                {
-                    try
-                    {
-                        disposable.Dispose();
-                    }
-                    catch (Exception e)
-                    {
-                        res = res.WithError(new ExceptionalError(e)
-                            .WithMetadata(MetadataType.ExceptionObject, this));
-                    }
-                }
-            }
-            _pluginInstances.Clear();
-        }
-        
-        _assemblyTypesCache.Clear();
-            
-        // cleanup running assembly contexts
-        if (_packageAssemblyResources.Any())
-        {
-            foreach (var resource in _packageAssemblyResources.ToImmutableDictionary())
-            {
-                if (resource.Value.Loader is not null)
-                {
-                    try
-                    {
-                        resource.Value.Loader.Dispose();
-                        _unloadingAssemblyLoaders.AddOrUpdate(resource.Value.Loader, resource.Key);
-                        _packageAssemblyResources.TryRemove(resource);
-                        _packageAssemblyResources.TryAdd(resource.Key, (resource.Value.ResourceInfos, null));
-                    }
-                    catch (Exception e)
-                    {
-                        res = res.WithError(new ExceptionalError(e)
-                            .WithMetadata(MetadataType.ExceptionObject, this));
-                    }
-                }
-            }
-        }
-
-        return res.WithSuccess($"Unloading of managed assemblies started successfully,");
+        return FluentResults.Result.Fail($"{nameof(UnloadManagedAssemblies)}: Not Implemented.");
+        throw new NotImplementedException();
     }
 
     public Result<Assembly> GetLoadedAssembly(OneOf<AssemblyName, string> assemblyName, in Guid[] excludedContexts)
     {
         throw new NotImplementedException();
     }
-
-    public ImmutableArray<MetadataReference> GetDefaultMetadataReferences(bool includeDefaultContext = true)
-    {
-        throw new NotImplementedException();
-    }
-
-    public ImmutableArray<IAssemblyLoaderService> AssemblyLoaderServices { get; }
 }

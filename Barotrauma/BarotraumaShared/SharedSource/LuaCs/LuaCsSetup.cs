@@ -22,6 +22,7 @@ using FluentResults;
 using ImpromptuInterface;
 using LightInject;
 using Microsoft.Toolkit.Diagnostics;
+using AssemblyLoader = Barotrauma.LuaCs.Services.AssemblyLoader;
 
 namespace Barotrauma
 {
@@ -185,6 +186,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceResolver<ILuaCsHook>(factory => factory.GetInstance<IEventService>() as ILuaCsHook);
             servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IAssemblyManagementService, PluginManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceResolver<IPluginManagementService>(factory => factory.GetInstance<IAssemblyManagementService>());
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);

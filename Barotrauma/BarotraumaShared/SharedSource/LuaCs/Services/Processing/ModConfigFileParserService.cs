@@ -79,6 +79,7 @@ public sealed class ModConfigFileParserService :
             // Type Specific
             FriendlyName = src.Element.GetAttributeString("FriendlyName", string.Empty),
             IsScript = src.Element.GetAttributeBool("IsScript", false),
+            UseInternalAccessName = src.Element.GetAttributeBool("UseInternalAccessName", false)
         };
     }
     

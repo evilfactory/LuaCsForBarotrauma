@@ -43,6 +43,7 @@ public record AssemblyResourceInfo : BaseResourceInfo, IAssemblyResourceInfo
 {
     public string FriendlyName { get; init; }
     public bool IsScript { get; init; }
+    public bool UseInternalAccessName { get; init; }
 }
 
 /// <summary>

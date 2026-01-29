@@ -261,7 +261,9 @@ public sealed class PackageManagementService : IPackageManagementService
         return result;
     }
     
-    private static ImmutableArray<T> SelectCompatible<T>(ImmutableArray<T> resources, ImmutableHashSet<Identifier> enabledPackagesIdents, ImmutableArray<ContentPackage> loadingOrder)
+    private static ImmutableArray<T> SelectCompatible<T>(ImmutableArray<T> resources, 
+        ImmutableHashSet<Identifier> enabledPackagesIdents, 
+        ImmutableArray<ContentPackage> loadingOrder)
         where T : IBaseResourceInfo
     {
         return resources
@@ -289,14 +291,22 @@ public sealed class PackageManagementService : IPackageManagementService
 
         var result = new FluentResults.Result();
 
-        result.WithReasons(UnloadPackages(toRemove).Reasons);
+        if (!toRemove.IsDefaultOrEmpty)
+        {
+            result.WithReasons(UnloadPackages(toRemove).Reasons);
+        }
         
         if (result.IsFailed)
         {
             return result;
         }
 
-        return result.WithReasons(LoadPackagesInfo(toAdd).Reasons);
+        if (!toAdd.IsDefaultOrEmpty)
+        {
+            result.WithReasons(LoadPackagesInfo(toAdd).Reasons);
+        }
+
+        return result;
     }
 
     public FluentResults.Result StopRunningPackages()

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -31,6 +32,12 @@ public interface IAssemblyResourceInfo : IBaseResourceInfo
     /// Is this entry referring to a script file collection.
     /// </summary>
     public bool IsScript { get; }
+    
+    /// <summary>
+    /// <b>[Required(IsScript: true)] Whether the internal compiled assembly name should be named to enabled use of the
+    /// <see cref="InternalsVisibleToAttribute"/> attribute.</b>
+    /// </summary>
+    public bool UseInternalAccessName { get; }
 }
 
 

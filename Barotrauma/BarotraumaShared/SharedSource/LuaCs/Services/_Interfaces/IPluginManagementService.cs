@@ -33,13 +33,6 @@ public interface IPluginManagementService : IReusableService
     Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false, bool includeDefaultContext = true);
 
     /// <summary>
-    /// Loads the provided assembly resources in the order of their dependencies and intra-mod priority load order.
-    /// </summary>
-    /// <param name="resources"></param>
-    /// <returns>Success/Failure and list of failed resources, if any.</returns>
-    FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resources);
-
-    /// <summary>
     /// Creates instances of the given type and provides Property Injection and instance reference caching. Disposes of
     /// all references that throw errors on 
     /// </summary>
@@ -50,6 +43,12 @@ public interface IPluginManagementService : IReusableService
     ImmutableArray<FluentResults.Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
         bool hostInstanceReference = false) where T : IDisposable;
     
+    /// <summary>
+    /// Loads the provided assembly resources in the order of their dependencies and intra-mod priority load order.
+    /// </summary>
+    /// <param name="resources"></param>
+    /// <returns>Success/Failure and list of failed resources, if any.</returns>
+    FluentResults.Result LoadAssemblyResources(ImmutableArray<IAssemblyResourceInfo> resources);
     
     /// <summary>
     /// Unloads all managed <see cref="IAssemblyPlugin"/>, <see cref="Assembly"/>, and <see cref="IAssemblyLoaderService"/>s.

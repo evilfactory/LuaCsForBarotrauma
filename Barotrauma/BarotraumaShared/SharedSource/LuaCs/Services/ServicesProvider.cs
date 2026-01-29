@@ -21,6 +21,8 @@ public class ServicesProvider : IServicesProvider
         {
             EnablePropertyInjection = false
         });
+        
+        _serviceContainerInst.Register<IServicesProvider>((f) => this);
     }
     
     public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface
