@@ -323,13 +323,17 @@ public sealed class ModConfigService : IModConfigService
             if (_storageService.FindFilesInPackage(src, "Lua", "*.lua", true)
                 is { IsSuccess: true, Value.IsDefaultOrEmpty: false } result)
             {
-                var autorun = result.Value
-                    .Where(fp => fp.CleanUpPathCrossPlatform().Contains("Lua/Autorun/"))
+                ImmutableArray<string> cleanedResult = result.Value.Select(fp => fp.CleanUpPathCrossPlatform()).ToImmutableArray();
+
+                ImmutableArray<string> autorun = cleanedResult
+                    .Where(fp => fp.Contains("Lua/ForcedAutorun/") || fp.Contains("Lua/Autorun/"))
                     .ToImmutableArray();
-                var autorunFP = autorun.Select(fp => ContentPath.FromRaw(src,
+
+                ImmutableArray<ContentPath> autorunFP = autorun.Select(fp => ContentPath.FromRaw(src,
                         $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
                     .ToImmutableArray();
-                var reg = result.Value.Except(autorun)
+
+                ImmutableArray<ContentPath> reg = cleanedResult.Except(autorun)
                     .Select(fp => ContentPath.FromRaw(src, 
                         $"%ModDir%/{Path.GetRelativePath(src.Dir, fp)}".CleanUpPathCrossPlatform()))
                     .ToImmutableArray();
