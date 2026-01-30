@@ -296,16 +296,11 @@ public sealed class PackageManagementService : IPackageManagementService
             result.WithReasons(UnloadPackages(toRemove).Reasons);
         }
         
-        if (result.IsFailed)
-        {
-            return result;
-        }
-
         if (!toAdd.IsDefaultOrEmpty)
         {
             result.WithReasons(LoadPackagesInfo(toAdd).Reasons);
         }
-
+        
         return result;
     }
 

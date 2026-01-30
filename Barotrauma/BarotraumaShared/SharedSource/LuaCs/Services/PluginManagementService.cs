@@ -181,9 +181,6 @@ public class PluginManagementService : IAssemblyManagementService
 
         var result = new FluentResults.Result();
         
-        return FluentResults.Result.Fail($"{nameof(LoadAssemblyResources)}: Not Implemented!");
-        throw new NotImplementedException();
-        
         foreach (var contentPack in orderedContentPacks)
         {
             LoadBinaries(contentPack);
@@ -237,13 +234,13 @@ public class PluginManagementService : IAssemblyManagementService
         
         void LoadAndCompileScriptAssemblies(IGrouping<ContentPackage, IAssemblyResourceInfo> contentPackRes)
         {
-            var scripts = contentPackRes.Where(cRes => cRes.IsScript)
+            var scriptsGrp = contentPackRes.Where(cRes => cRes.IsScript)
+                .Select(scr => (scr.OwnerPackage, scr.FriendlyName, scr.FilePaths, scr.UseInternalAccessName, scr.LoadPriority))
                 .OrderBy(scr => scr.LoadPriority)
-                .Select(scr => (scr.FriendlyName, scr.FilePaths, scr.UseInternalAccessName))
                 .GroupBy(scr => scr.FriendlyName)
                 .ToImmutableArray();
 
-            if (scripts.IsDefaultOrEmpty)
+            if (scriptsGrp.IsDefaultOrEmpty)
             {
                 return;
             }
@@ -262,69 +259,87 @@ public class PluginManagementService : IAssemblyManagementService
                 )));
             
             // create syntax trees
-            var syntaxTreesBuilder = ImmutableArray.CreateBuilder<SyntaxTree>();
 
-            foreach (var resourceInfo in contentPackRes)
+            foreach (var scripts in scriptsGrp)
             {
-                if (resourceInfo.FilePaths.IsDefaultOrEmpty)
+                var syntaxTreesBuilder = ImmutableArray.CreateBuilder<SyntaxTree>();
+
+                bool hasInternalsAwareBeenAdded = false;
+                bool compileWithInternalName = true; 
+                
+                foreach (var resourceInfo in scripts)
                 {
-                    ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAndCompileScriptAssemblies)} The resource list is empty for package {resourceInfo.OwnerPackage}.");
+                    if (!hasInternalsAwareBeenAdded && resourceInfo.UseInternalAccessName)
+                    {
+                        hasInternalsAwareBeenAdded = true;
+                        syntaxTreesBuilder.Add(BaseAssemblyImports);
+                    }
+                    
+                    if (resourceInfo.FilePaths.IsDefaultOrEmpty)
+                    {
+                        ThrowHelper.ThrowArgumentNullException($"{nameof(LoadAndCompileScriptAssemblies)} The resource list is empty for package {resourceInfo.OwnerPackage}.");
+                    }
+
+                    foreach (var resourcePath in resourceInfo.FilePaths)
+                    {
+                        var loadRes = GetSourceFilesText(resourcePath);
+                        if (loadRes.IsFailed)
+                        {
+                            _logger.LogResults(loadRes.ToResult());
+                            continue;
+                        }
+                    
+                        // this should be the same for the entire collection of src files so we just grab it from the collection
+                        compileWithInternalName = resourceInfo.UseInternalAccessName;
+                
+                        CancellationToken token = CancellationToken.None;
+                
+                        syntaxTreesBuilder.Add(SyntaxFactory.ParseSyntaxTree(
+                            text: loadRes.Value,
+                            options: ScriptParseOptions,
+                            path: null,
+                            encoding: Encoding.Default,
+                            cancellationToken: token
+                        ));
+                    }
                 }
 
-                var loadRes = GetSourceFilesText(resourceInfo.FilePaths);
-                if (loadRes.IsFailed)
+                if (syntaxTreesBuilder.Count < 1)
                 {
-                    _logger.LogResults(loadRes.ToResult());
                     continue;
                 }
                 
-                CancellationToken token = CancellationToken.None;
+#if DEBUG
+                _logger.Log($"[DEBUG] Compiling assembly for {scripts.Key}, in ContentPackage {contentPackRes.Key.Name}");
+#endif
                 
-                syntaxTreesBuilder.Add(SyntaxFactory.ParseSyntaxTree(
-                    text: loadRes.Value,
-                    options: ScriptParseOptions,
-                    path: null,
-                    encoding: Encoding.Default,
-                    cancellationToken: token
-                    ));
+                result.WithReasons(assemblyLoader.CompileScriptAssembly(
+                    assemblyName: scripts.Key,
+                    compileWithInternalAccess: compileWithInternalName,
+                    syntaxTrees: syntaxTreesBuilder.ToImmutable(),
+                    metadataReferences: metadataReferences.ToImmutableArray(),
+                    compilationOptions: CompilationOptions)
+                    .Reasons);
             }
-            
-            throw new NotImplementedException();
         }
         
-        Result<string> GetSourceFilesText(ImmutableArray<ContentPath> resourceInfoFilePaths)
+        Result<string> GetSourceFilesText(ContentPath resourceInfoFilePath)
         {
-            if (_storageService.LoadPackageTextFiles(resourceInfoFilePaths) is not { IsDefaultOrEmpty: false } res)
+            if (_storageService.LoadPackageText(resourceInfoFilePath) is not { IsFailed: false } res)
             {
-                _logger.LogError($"{nameof(GetSourceFilesText)}: Failed to load source files for ContentPackage {resourceInfoFilePaths.First().ContentPackage?.Name}.");
-                return FluentResults.Result.Fail($"{nameof(GetSourceFilesText)}: Failed to load source files for ContentPackage {resourceInfoFilePaths.First().ContentPackage?.Name}.");
+                _logger.LogError($"{nameof(GetSourceFilesText)}: Failed to load source file for ContentPackage {resourceInfoFilePath.ContentPackage?.Name}.");
+                return FluentResults.Result.Fail($"{nameof(GetSourceFilesText)}: Failed to load source files for ContentPackage {resourceInfoFilePath.ContentPackage?.Name}.");
             }
 
-            var loadRes = new FluentResults.Result();
-            StringBuilder sb = new StringBuilder();
-
-            foreach ((ContentPath Path, Result<string> FileResult) loadResult in res)
-            {
-                if (loadResult.FileResult.IsFailed)
-                {
-                    loadRes.WithErrors(loadResult.FileResult.Errors);
-                    continue;
-                }
-                
-                sb.AppendLine(loadResult.FileResult.Value);
-            }
-
-            if (loadRes.IsFailed)
-            {
-                return loadRes;
-            }
-
-            return sb.ToString();
+            return res;
         }
         
         IEnumerable<MetadataReference> GetMetadataReferences()
         {
-            return Basic.Reference.Assemblies.Net80.References.All;
+            return Basic.Reference.Assemblies.Net80.References.All
+                .Union(AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(ass => !ass.Location.IsNullOrWhiteSpace())
+                    .Select(ass => MetadataReference.CreateFromFile(ass.Location)));
         }
     }
 
@@ -345,7 +360,19 @@ public class PluginManagementService : IAssemblyManagementService
 
     public FluentResults.Result UnloadManagedAssemblies()
     {
-        return FluentResults.Result.Fail($"{nameof(UnloadManagedAssemblies)}: Not Implemented.");
+        using var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        if (_assemblyLoaders.Count == 0)
+        {
+            return FluentResults.Result.Ok();
+        }
+
+        foreach (var loaderService in _assemblyLoaders)
+        {
+            
+        }
+
         throw new NotImplementedException();
     }
 
