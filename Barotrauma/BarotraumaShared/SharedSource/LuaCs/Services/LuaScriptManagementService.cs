@@ -169,7 +169,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
 
         RegisterType(typeof(LuaGame));
-        RegisterType(typeof(ILuaCsHook));
+        RegisterType(typeof(EventService));
         RegisterType(typeof(ILuaCsNetworking));
         RegisterType(typeof(ILuaCsUtility));
         RegisterType(typeof(ILuaCsTimer));

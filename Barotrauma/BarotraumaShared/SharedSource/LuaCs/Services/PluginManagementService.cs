@@ -127,6 +127,12 @@ public class PluginManagementService : IAssemblyManagementService
     public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false,
         bool includeDefaultContext = true)
     {
+        if (typeName.StartsWith("out ") || typeName.StartsWith("ref "))
+        {
+            typeName = typeName.Remove(0, 4);
+            isByRefType = true;
+        }
+
         if (includeDefaultContext)
         {
             var type = Type.GetType(typeName, false, false);

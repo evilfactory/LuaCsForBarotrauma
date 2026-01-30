@@ -11,7 +11,7 @@ using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
 
-public class EventService : IEventService, IEventAssemblyContextUnloading
+public partial class EventService : IEventService, IEventAssemblyContextUnloading
 {
     private readonly record struct TypeStringKey : IEqualityComparer<TypeStringKey>, IEquatable<TypeStringKey>
     {
@@ -74,6 +74,8 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
     {
         _pluginManagementService = pluginManagementService ?? throw new ArgumentNullException(nameof(pluginManagementService));
         this.Subscribe<IEventAssemblyContextUnloading>(this);
+
+        InitPatcher();
     }
 
     public bool IsDisposed { get; private set; } = false;
@@ -344,12 +346,8 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
 
     public void Dispose()
     {
+        Reset();
         IsDisposed = true;
-        _subscriptions.Clear();
-        _luaSubscriptionFactories.Clear();
-        _eventTypeNameAliases.Clear();
-        _luaLegacySubscriptionFactories.Clear();
-        _luaOrphanSubscribers.Clear();
         GC.SuppressFinalize(this);
     }
 
@@ -361,6 +359,8 @@ public class EventService : IEventService, IEventAssemblyContextUnloading
         _eventTypeNameAliases.Clear();
         _luaLegacySubscriptionFactories.Clear();
         _luaOrphanSubscribers.Clear();
+        ResetPatcher();
+        InitPatcher();
         return FluentResults.Result.Ok();
     }
 

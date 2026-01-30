@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Barotrauma.LuaCs.Services;
+using HarmonyLib;
+using Microsoft.Xna.Framework;
+using MoonSharp.Interpreter;
+using MoonSharp.Interpreter.Interop;
+using Sigil;
+using Sigil.NonGeneric;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,19 +15,16 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
-using HarmonyLib;
-using Microsoft.Xna.Framework;
-using MoonSharp.Interpreter;
-using MoonSharp.Interpreter.Interop;
-using Sigil;
-using Sigil.NonGeneric;
 
 namespace Barotrauma
 {
     public delegate void LuaCsAction(params object[] args);
     public delegate object LuaCsFunc(params object[] args);
-    public delegate DynValue LuaCsPatchFunc(object instance, LuaCsHook.ParameterTable ptable);
+    public delegate DynValue LuaCsPatchFunc(object instance, EventService.ParameterTable ptable);
+}
 
+namespace Barotrauma.LuaCs.Services
+{
     internal static class SigilExtensions
     {
         /// <summary>
@@ -410,7 +414,7 @@ namespace Barotrauma
         }
     }
 
-    public partial class LuaCsHook
+    partial class EventService
     {
         public enum HookMethodType
         {
@@ -536,13 +540,11 @@ namespace Barotrauma
 
         private Lazy<ModuleBuilder> patchModuleBuilder;
 
-        private readonly Dictionary<string, Dictionary<string, (LuaCsHookCallback, ACsMod)>> hookFunctions = new Dictionary<string, Dictionary<string, (LuaCsHookCallback, ACsMod)>>();
-
         private readonly Dictionary<MethodKey, PatchedMethod> registeredPatches = new Dictionary<MethodKey, PatchedMethod>();
 
         private LuaCsSetup luaCs;
 
-        private static LuaCsHook instance;
+        private static EventService instance;
 
         private struct MethodKey : IEquatable<MethodKey>
         {
@@ -582,21 +584,17 @@ namespace Barotrauma
             };
         }
 
-        internal LuaCsHook(LuaCsSetup luaCs)
+        public void InitPatcher()
         {
             instance = this;
-            this.luaCs = luaCs;
-        }
 
-        public void Initialize()
-        {
             harmony = new Harmony("LuaCsForBarotrauma");
             patchModuleBuilder = new Lazy<ModuleBuilder>(CreateModuleBuilder);
 
             UserData.RegisterType<ParameterTable>();
-            var hookType = UserData.RegisterType<LuaCsHook>();
+            var hookType = UserData.RegisterType<EventService>();
             var hookDesc = (StandardUserDataDescriptor)hookType;
-            typeof(LuaCsHook).GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).ToList().ForEach(m => {
+            typeof(EventService).GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).ToList().ForEach(m => {
                 if (
                     m.Name.Contains("HookMethod") ||
                     m.Name.Contains("UnhookMethod") ||
@@ -607,6 +605,29 @@ namespace Barotrauma
                     hookDesc.AddMember(m.Name, new MethodMemberDescriptor(m, InteropAccessMode.Default));
                 }
             });
+        }
+
+        public void ResetPatcher()
+        {
+            harmony?.UnpatchSelf();
+
+            foreach (var (_, patch) in registeredPatches)
+            {
+                // Remove references stored in our dynamic types so the generated
+                // assembly can be garbage-collected.
+                patch.HarmonyPrefixMethod.DeclaringType
+                    .GetField(FIELD_LUACS, BindingFlags.Public | BindingFlags.Static)
+                    .SetValue(null, null);
+                patch.HarmonyPostfixMethod.DeclaringType
+                    .GetField(FIELD_LUACS, BindingFlags.Public | BindingFlags.Static)
+                    .SetValue(null, null);
+            }
+
+            registeredPatches.Clear();
+            patchModuleBuilder = null;
+
+            compatHookPrefixMethods.Clear();
+            compatHookPostfixMethods.Clear();
         }
 
         private ModuleBuilder CreateModuleBuilder()
@@ -688,143 +709,6 @@ namespace Barotrauma
 
             return moduleBuilder;
         }
-
-        public void Add(string name, LuaCsFunc func, ACsMod owner = null) => Add(name, name, func, owner);
-
-        public void Add(string name, string identifier, LuaCsFunc func, ACsMod owner = null)
-        {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            if (identifier == null) throw new ArgumentNullException(nameof(identifier));
-            if (func == null) throw new ArgumentNullException(nameof(func));
-
-            name = NormalizeIdentifier(name);
-            identifier = NormalizeIdentifier(identifier);
-
-            if (!hookFunctions.ContainsKey(name))
-            {
-                hookFunctions.Add(name, new Dictionary<string, (LuaCsHookCallback, ACsMod)>());
-            }
-
-            hookFunctions[name][identifier] = (new LuaCsHookCallback(name, identifier, func), owner);
-        }
-
-        public bool Exists(string name, string identifier)
-        {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            if (identifier == null) throw new ArgumentNullException(nameof(identifier));
-
-            name = NormalizeIdentifier(name);
-            identifier = NormalizeIdentifier(identifier);
-
-            if (!hookFunctions.ContainsKey(name))
-            {
-                return false;
-            }
-
-            return hookFunctions[name].ContainsKey(identifier);
-        }
-
-        public void Remove(string name, string identifier)
-        {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            if (identifier == null) throw new ArgumentNullException(nameof(identifier));
-
-            name = NormalizeIdentifier(name);
-            identifier = NormalizeIdentifier(identifier);
-
-            if (hookFunctions.ContainsKey(name) && hookFunctions[name].ContainsKey(identifier))
-            {
-                hookFunctions[name].Remove(identifier);
-            }
-        }
-
-        public void Clear()
-        {
-            harmony?.UnpatchSelf();
-
-            foreach (var (_, patch) in registeredPatches)
-            {
-                // Remove references stored in our dynamic types so the generated
-                // assembly can be garbage-collected.
-                patch.HarmonyPrefixMethod.DeclaringType
-                    .GetField(FIELD_LUACS, BindingFlags.Public | BindingFlags.Static)
-                    .SetValue(null, null);
-                patch.HarmonyPostfixMethod.DeclaringType
-                    .GetField(FIELD_LUACS, BindingFlags.Public | BindingFlags.Static)
-                    .SetValue(null, null);
-            }
-
-            hookFunctions.Clear();
-            registeredPatches.Clear();
-            patchModuleBuilder = null;
-
-            compatHookPrefixMethods.Clear();
-            compatHookPostfixMethods.Clear();
-        }
-
-        private Stopwatch performanceMeasurement = new Stopwatch();
-
-        [MoonSharpHidden]
-        public T Call<T>(string name, params object[] args)
-        {
-            if (name == null) throw new ArgumentNullException(name);
-            if (args == null) args = new object[0];
-
-            name = NormalizeIdentifier(name);
-            if (!hookFunctions.ContainsKey(name)) return default;
-
-            T lastResult = default;
-
-            var hooks = hookFunctions[name].ToArray();
-            foreach ((string key, var tuple) in hooks)
-            {
-                if (tuple.Item2 != null && tuple.Item2.IsDisposed)
-                {
-                    hookFunctions[name].Remove(key);
-                    continue;
-                }
-
-                try
-                {
-                    var result = tuple.Item1.func(args);
-
-                    if (result is DynValue luaResult)
-                    {
-                        if (luaResult.Type == DataType.Tuple)
-                        {
-                            bool replaceNil = luaResult.Tuple.Length > 1 && luaResult.Tuple[1].CastToBool();
-
-                            if (!luaResult.Tuple[0].IsNil() || replaceNil)
-                            {
-                                lastResult = luaResult.ToObject<T>();
-                            }
-                        }
-                        else if (!luaResult.IsNil())
-                        {
-                            lastResult = luaResult.ToObject<T>();
-                        }
-                    }
-                    else
-                    {
-                        lastResult = (T)result;
-                    }
-                }
-                catch (Exception e)
-                {
-                    var argsSb = new StringBuilder();
-                    foreach (var arg in args)
-                    {
-                        argsSb.Append(arg + " ");
-                    }
-                    LuaCsLogger.LogError($"Error in Hook '{name}'->'{key}', with args '{argsSb}':\n{e}", LuaCsMessageOrigin.Unknown);
-                    LuaCsLogger.HandleException(e, LuaCsMessageOrigin.Unknown);
-                }
-            }
-
-            return lastResult;
-        }
-
-        public object Call(string name, params object[] args) => Call<object>(name, args);
 
         private static MethodBase ResolveMethod(string className, string methodName, string[] parameters)
         {
@@ -984,8 +868,8 @@ namespace Barotrauma
             // IL: var patchExists = instance.registeredPatches.TryGetValue(patchKey, out MethodPatches patches)
             var patchExists = il.DeclareLocal<bool>("patchExists");
             var patches = il.DeclareLocal<PatchedMethod>("patches");
-            il.LoadField(typeof(LuaCsHook).GetField(nameof(instance), BindingFlags.NonPublic | BindingFlags.Static));
-            il.LoadField(typeof(LuaCsHook).GetField(nameof(registeredPatches), BindingFlags.NonPublic | BindingFlags.Instance));
+            il.LoadField(typeof(EventService).GetField(nameof(instance), BindingFlags.NonPublic | BindingFlags.Static));
+            il.LoadField(typeof(EventService).GetField(nameof(registeredPatches), BindingFlags.NonPublic | BindingFlags.Instance));
             il.LoadLocal(patchKey);
             il.LoadLocalAddress(patches); // out parameter
             il.Call(typeof(Dictionary<MethodKey, PatchedMethod>).GetMethod("TryGetValue"));
