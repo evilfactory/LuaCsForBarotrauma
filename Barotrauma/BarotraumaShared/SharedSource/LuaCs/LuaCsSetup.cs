@@ -347,6 +347,8 @@ namespace Barotrauma
                 DebugServer.Detach(Lua);
             }
 
+            LuaUserData.Clear();
+
             Game?.Stop();
 
             Hook?.Clear();
@@ -416,7 +418,7 @@ namespace Barotrauma
             UserData.RegisterType<LuaCsFile>();
             UserData.RegisterType<LuaCsNetworking>();
             UserData.RegisterType<LuaCsSteam>();
-            UserData.RegisterType<LuaUserData>();
+            var uuid = UserData.RegisterType<LuaUserData>();
             UserData.RegisterType<LuaCsPerformanceCounter>();
             UserData.RegisterType<IUserDataDescriptor>();
 
@@ -433,6 +435,7 @@ namespace Barotrauma
 
             Lua.Globals["Logger"] = UserData.CreateStatic<LuaCsLogger>();
             Lua.Globals["LuaUserData"] = UserData.CreateStatic<LuaUserData>();
+            Lua.Globals["LuaUserDataIUUD"] = uuid;
             Lua.Globals["Game"] = Game;
             Lua.Globals["Hook"] = Hook;
             Lua.Globals["ModStore"] = ModStore;

@@ -7,7 +7,7 @@ package.path = {path .. "/?.lua"}
 setmodulepaths(package.path)
 
 -- Setup Libraries
-require("LuaUserData")
+LuaSetup.LuaUserData = LuaUserData
 
 require("DefaultRegister/RegisterShared")
 
@@ -34,9 +34,6 @@ AddTableToGlobal(require("DefaultLib/LibShared"))
 AddTableToGlobal(require("CompatibilityLib"))
 
 require("DefaultHook")
-
-Descriptors = LuaSetup.LuaUserData.Descriptors
-LuaUserData = LuaSetup.LuaUserData
 
 require("DefaultLib/Utils/Math")
 require("DefaultLib/Utils/String")

@@ -1,14 +1,24 @@
-﻿using System;
+﻿using MoonSharp.Interpreter;
+using MoonSharp.Interpreter.Interop;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using MoonSharp.Interpreter;
-using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma
 {
     partial class LuaUserData
     {
+        public static ReadOnlyDictionary<string, IUserDataDescriptor> Descriptors => new ReadOnlyDictionary<string, IUserDataDescriptor>(descriptors);
+        private static ConcurrentDictionary<string, IUserDataDescriptor> descriptors = new ConcurrentDictionary<string, IUserDataDescriptor>();
+
+        public IUserDataDescriptor this[string index]
+        {
+            get => Descriptors.GetValueOrDefault(index);
+        }
+
         public static Type GetType(string typeName) => LuaCsSetup.GetType(typeName);
 
         public static IUserDataDescriptor RegisterType(string typeName)
@@ -20,7 +30,15 @@ namespace Barotrauma
                 throw new ScriptRuntimeException($"tried to register a type that doesn't exist: {typeName}.");
             }
 
-            return UserData.RegisterType(type);
+            var descriptor = UserData.RegisterType(type);
+            descriptors.TryAdd(typeName, descriptor);
+
+            return descriptor;
+        }
+
+        public static IUserDataDescriptor RegisterTypeBarotrauma(string typeName)
+        {
+            return RegisterType($"Barotrauma.{typeName}");
         }
 
         public static void RegisterExtensionType(string typeName)
@@ -102,7 +120,9 @@ namespace Barotrauma
 
             MethodInfo method = typeof(UserData).GetMethod(nameof(UserData.CreateStatic), 1, new Type[0]);
             MethodInfo generic = method.MakeGenericMethod(type);
-            return generic.Invoke(null, null);
+            var result = generic.Invoke(null, null);
+            AddCallMetaTable(result);
+            return result;
         }
 
         public static object CreateEnumTable(string typeName)
@@ -358,6 +378,48 @@ namespace Barotrauma
             IUserDataDescriptor descriptor = UserData.GetDescriptorForType(desiredType, true);
             descriptor ??= new StandardUserDataDescriptor(desiredType, InteropAccessMode.Default);
             return CreateUserDataFromDescriptor(scriptObject, descriptor);
+        }
+
+        public static void AddCallMetaTable(object userdata)
+        {
+            if (userdata == null) { return; }
+
+            // not sure how to implement this in C#
+            var function = GameMain.LuaCs.Lua.LoadString("""
+            local userdata = ...
+            if userdata == nil then
+                error("Attempted to add a call metatable to a nil value.", 2)
+            end
+
+            if not LuaUserData.HasMember(userdata, ".ctor") then
+                return
+            end
+
+            debug.setmetatable(userdata, {
+                __call = function(obj, ...)
+                	if userdata == nil then
+                		error("userdata was nil.", 2)
+                	end
+
+                	local success, result = pcall(userdata.__new, ...)
+
+
+                	if not success then
+                		error(result, 2)
+                	end
+
+                	return result
+                end
+            })
+            """);
+
+            GameMain.LuaCs.Lua.Call(function, userdata);
+        }
+
+
+        public static void Clear()
+        {
+            descriptors.Clear();
         }
     }
 }
