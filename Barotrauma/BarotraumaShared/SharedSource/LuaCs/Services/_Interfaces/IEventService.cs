@@ -8,11 +8,6 @@ namespace Barotrauma.LuaCs.Services;
 
 public interface IEventService : IReusableService, ILuaEventService
 {
-    FluentResults.Result SetLegacyLuaRunnerFactory<T>(Func<LuaCsFunc, T> runnerFactory) where T : IEvent<T>;
-    void RemoveLegacyLuaRunnerFactory<T>() where T : IEvent<T>;
-    void SetAliasToEvent<T>(string alias) where T : IEvent<T>;
-    void RemoveEventAlias(string alias);
-    void RemoveAllEventAliases<T>() where T : IEvent<T>;
     /// <summary>
     /// 
     /// </summary>

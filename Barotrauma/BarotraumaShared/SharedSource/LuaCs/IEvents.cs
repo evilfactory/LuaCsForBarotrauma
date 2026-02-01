@@ -24,9 +24,7 @@ public interface IEvent<out T> : IEvent where T : IEvent<T>
 {
     static virtual T GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
     {
-        // throw error if not overriden since we don't have 'static abstract'.
-        // Implementers must provide the runner. 
-        throw new NotImplementedException();
+        throw new InvalidOperationException($"Lua runners forbidden for  {typeof(T).Name}");
     }
 }
 
@@ -179,7 +177,7 @@ public interface IEventPluginInitialize : IEvent<IEventPluginInitialize>
     static IEventPluginInitialize IEvent<IEventPluginInitialize>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnInitialize = ReturnVoid.Arguments(() => luaFunc[nameof(Initialize)]())
+        Initialize = ReturnVoid.Arguments(() => luaFunc[nameof(Initialize)]())
     }.ActLike<IEventPluginInitialize>();
 }
 
