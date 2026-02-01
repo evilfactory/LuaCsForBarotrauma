@@ -234,4 +234,9 @@ public interface IEventAssemblyContextUnloading : IEvent<IEventAssemblyContextUn
     void OnAssemblyUnloading(WeakReference<IAssemblyLoaderService> loaderService);
 }
 
+public interface IEventAssemblyUnloading : IEvent<IEventAssemblyUnloading>
+{
+    void OnAssemblyUnloading(Assembly assembly);
+}
+
 #endregion

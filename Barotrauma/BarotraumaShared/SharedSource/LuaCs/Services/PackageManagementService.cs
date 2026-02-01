@@ -246,6 +246,8 @@ public sealed class PackageManagementService : IPackageManagementService
             if (!plugins.IsDefaultOrEmpty)
             {
                 result.WithReasons(_pluginManagementService.LoadAssemblyResources(plugins).Reasons);
+                result.WithReasons(_pluginManagementService.ActivatePluginInstances(
+                    plugins.Select(p => p.OwnerPackage).ToImmutableArray(), false).Reasons);
             }
         }
 
@@ -271,10 +273,11 @@ public sealed class PackageManagementService : IPackageManagementService
             .Where(r => r.SupportedTargets.HasFlag(ModUtils.Environment.CurrentTarget))
             .Where(r => !r.Optional || (
             (r.RequiredPackages.IsDefaultOrEmpty || enabledPackagesIdents.Intersect(r.RequiredPackages).Any()) 
-            && (r.IncompatiblePackages.IsDefaultOrEmpty || enabledPackagesIdents.Intersect(r.IncompatiblePackages).None()))
-        ).OrderBy(r => loadingOrder.IndexOf(r.OwnerPackage))
-        .ThenBy(r => r.LoadPriority)
-        .ToImmutableArray();
+            && (r.IncompatiblePackages.IsDefaultOrEmpty || enabledPackagesIdents.Intersect(r.IncompatiblePackages).None())))
+            .OrderBy(r => r.Optional ? 1 : 0)   // optional content last
+            .ThenBy(r => loadingOrder.IndexOf(r.OwnerPackage))
+            .ThenBy(r => r.LoadPriority)
+            .ToImmutableArray();
     }
     
     

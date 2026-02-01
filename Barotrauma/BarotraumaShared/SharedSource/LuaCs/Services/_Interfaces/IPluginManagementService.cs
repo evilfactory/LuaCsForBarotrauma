@@ -33,15 +33,12 @@ public interface IPluginManagementService : IReusableService
     Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false, bool includeDefaultContext = true);
 
     /// <summary>
-    /// Creates instances of the given type and provides Property Injection and instance reference caching. Disposes of
-    /// all references that throw errors on 
+    /// 
     /// </summary>
-    /// <param name="types">List of Types</param>
-    /// <param name="serviceInjection"></param>
-    /// <param name="hostInstanceReference"></param>
+    /// <param name="executionOrder"></param>
+    /// <param name="excludeAlreadyRunningPackages"></param>
     /// <returns></returns>
-    ImmutableArray<FluentResults.Result<(Type, T)>> ActivateTypeInstances<T>(ImmutableArray<Type> types, bool serviceInjection = true,
-        bool hostInstanceReference = false) where T : IDisposable;
+    FluentResults.Result ActivatePluginInstances(ImmutableArray<ContentPackage> executionOrder, bool excludeAlreadyRunningPackages = true);
     
     /// <summary>
     /// Loads the provided assembly resources in the order of their dependencies and intra-mod priority load order.

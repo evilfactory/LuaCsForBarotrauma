@@ -551,6 +551,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         IsDisposed = true;
         this.Unload();
         this.DisposeInternal();
+        GC.SuppressFinalize(this);
     }
 
     ~AssemblyLoader()
@@ -582,7 +583,6 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
         base.Unloading -= OnUnload;
         this._dependencyResolvers.Clear();
         this._loadedAssemblyData.Clear();
-        GC.SuppressFinalize(this);
     }
 
     protected override Assembly Load(AssemblyName assemblyName)
