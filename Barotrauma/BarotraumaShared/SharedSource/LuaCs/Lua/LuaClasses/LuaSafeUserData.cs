@@ -66,7 +66,7 @@ namespace Barotrauma
                 return false;
             }
 
-            if (!CanBeRegistered(typeName))
+            if (!CanBeRegistered(typeName) && !LuaUserData.IsRegistered(typeName))
             {
                 return false;
             }
