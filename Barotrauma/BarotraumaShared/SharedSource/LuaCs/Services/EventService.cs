@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -56,10 +57,10 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
     /// ---- Key: Either string identifier or subscriber instance pointer<br/>
     /// ---- Value: Subscriber delegate<br/>
     /// </summary>
-    private readonly Dictionary<TypeStringKey, Dictionary<OneOf<string, IEvent>, IEvent>> _subscriptions = new();
-    private readonly Dictionary<string, string> _eventTypeNameAliases = new();
+    private readonly ConcurrentDictionary<TypeStringKey, Dictionary<OneOf<string, IEvent>, IEvent>> _subscriptions = new();
+    private readonly ConcurrentDictionary<string, string> _eventTypeNameAliases = new();
     private readonly Lazy<IPluginManagementService> _pluginManagementService;
-    private readonly Dictionary<TypeStringKey, Action<string, IDictionary<string, LuaCsFunc>>> _luaSubscriptionFactories = new();
+    private readonly ConcurrentDictionary<TypeStringKey, Action<string, IDictionary<string, LuaCsFunc>>> _luaSubscriptionFactories = new();
     /// <summary>
     /// A collection of factories to produce subscribers from a single lua function handle. For legacy Add() API.
     /// </summary>
@@ -192,7 +193,7 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
             return FluentResults.Result.Ok().WithReason(new Success($"The event {type.Name} is already registered."));
         try
         {
-            _luaSubscriptionFactories.Add(type, (ident, funcDict) =>
+            _luaSubscriptionFactories.TryAdd(type, (ident, funcDict) =>
             {
                 var runner = T.GetLuaRunner(funcDict);
                 var dict = _subscriptions.TryGetOrSet(type, () => new Dictionary<OneOf<string, IEvent>, IEvent>());
@@ -214,7 +215,7 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
     public FluentResults.Result UnregisterSafeEvent<T>() where T : IEvent<T>
     {
         ((IService)this).CheckDisposed();
-        _luaSubscriptionFactories.Remove(typeof(T));
+        _luaSubscriptionFactories.TryRemove(typeof(T), out _);
         if (!_subscriptions.TryGetValue(typeof(T), out var dict)) 
             return FluentResults.Result.Ok();
         dict.Values.Where(value => value.IsLuaRunner()).ToImmutableArray().ForEach(Unsubscribe);
@@ -257,7 +258,7 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
 
     public void RemoveEventAlias(string alias)
     {
-        _eventTypeNameAliases.Remove(alias);
+        _eventTypeNameAliases.TryRemove(alias, out _);
     }
 
     public void RemoveAllEventAliases<T>() where T : IEvent<T>
@@ -266,7 +267,7 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
                      .Where(kvp => kvp.Value.IsNullOrWhiteSpace() || kvp.Value == typeof(T).Name)
                      .Select(kvp => kvp.Key).ToImmutableArray())
         {
-            _eventTypeNameAliases.Remove(keys);
+            _eventTypeNameAliases.TryRemove(keys, out _);
         }
     }
 
@@ -296,7 +297,7 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
 
     public void ClearAllEventSubscribers<T>() where T : IEvent 
     {
-        _subscriptions.Remove(typeof(T));
+        _subscriptions.TryRemove(typeof(T), out _);
         if (typeof(IEventAssemblyContextUnloading) == typeof(T))
         {
             this.Subscribe<IEventAssemblyContextUnloading>(this);
@@ -377,8 +378,8 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
                 continue;
             foreach (var type in types)
             {
-                _subscriptions.Remove(type);
-                _luaSubscriptionFactories.Remove(type);
+                _subscriptions.TryRemove(type, out _);
+                _luaSubscriptionFactories.TryRemove(type, out _);
             }
         }
     }
