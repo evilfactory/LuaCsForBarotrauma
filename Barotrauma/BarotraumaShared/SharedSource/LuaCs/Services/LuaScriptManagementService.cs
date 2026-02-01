@@ -17,16 +17,10 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using static Barotrauma.GameSettings;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -39,20 +33,26 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     private List<ILuaScriptResourceInfo> _resourcesInfo = new List<ILuaScriptResourceInfo>();
 
     private readonly AsyncReaderWriterLock _operationsLock = new ();
-    
+
+    private readonly ILuaUserDataService _userDataService;
+    private readonly ISafeLuaUserDataService _safeUserDataService;
+
     private readonly ILuaScriptLoader _luaScriptLoader;
     private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
     private readonly ILoggerService _loggerService;
     private readonly LuaGame _luaGame;
     private readonly ILuaCsHook _luaCsHook;
     private readonly ILuaCsTimer _luaCsTimer;
+    private readonly IDefaultLuaRegistrar _defaultLuaRegistrar;
     //private readonly ILuaCsNetworking _luaCsNetworking;
     //private readonly ILuaCsUtility _luaCsUtility;
-    //private readonly ILuaCsTimer _luaCsTimer;
 
     public LuaScriptManagementService(
-        ILoggerService loggerService, 
-        ILuaScriptLoader loader, 
+        ILoggerService loggerService,
+        ILuaScriptLoader loader,
+        ILuaUserDataService userDataService,
+        ISafeLuaUserDataService safeUserDataService,
+        IDefaultLuaRegistrar defaultLuaRegistrar,
         ILuaScriptServicesConfig luaScriptServicesConfig,
         LuaGame luaGame,
         ILuaCsHook luaCsHook,
@@ -62,6 +62,9 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         )
     {
         _luaScriptLoader = loader;
+        _userDataService = userDataService;
+        _safeUserDataService = safeUserDataService;
+        _defaultLuaRegistrar = defaultLuaRegistrar;
         _luaScriptServicesConfig = luaScriptServicesConfig;
         _loggerService = loggerService;
 
@@ -168,16 +171,15 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
 
-        RegisterType(typeof(LuaGame));
-        RegisterType(typeof(EventService));
-        RegisterType(typeof(ILuaCsNetworking));
-        RegisterType(typeof(ILuaCsUtility));
-        RegisterType(typeof(ILuaCsTimer));
-        RegisterType(typeof(LuaCsFile));
-        RegisterType(typeof(ILuaScriptResourceInfo));
-        RegisterType(typeof(IResourceInfo));
-        RegisterType(typeof(LuaUserData));
-        RegisterType(typeof(IUserDataDescriptor));
+        UserData.RegisterType(typeof(LuaGame));
+        UserData.RegisterType(typeof(EventService));
+        UserData.RegisterType(typeof(ILuaCsNetworking));
+        UserData.RegisterType(typeof(ILuaCsUtility));
+        UserData.RegisterType(typeof(ILuaCsTimer));
+        UserData.RegisterType(typeof(LuaCsFile));
+        UserData.RegisterType(typeof(ILuaScriptResourceInfo));
+        UserData.RegisterType(typeof(IResourceInfo));
+        UserData.RegisterType(typeof(IUserDataDescriptor));
 
         new LuaConverters(_script).RegisterLuaConverters();
 
@@ -193,20 +195,31 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         _script.Globals["dostring"] = (Func<string, Table, string, DynValue>)_script.DoString;
         _script.Globals["load"] = (Func<string, Table, string, DynValue>)_script.LoadString;
-
         _script.Globals["Game"] = _luaGame;
         _script.Globals["Hook"] = _luaCsHook;
         _script.Globals["Timer"] = _luaCsTimer;
         _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
         //_script.Globals["Networking"] = _luaCsNetworking;
         //_script.Globals["Steam"] = Steam;
-        _script.Globals["LuaUserData"] = UserData.CreateStatic<LuaUserData>();
+
+        if (GameMain.LuaCs.IsCsEnabled)
+        {
+            UserData.RegisterType(typeof(LuaUserDataService));
+            _script.Globals["LuaUserData"] = _userDataService;
+        }
+        else
+        {
+            UserData.RegisterType(typeof(SafeLuaUserDataService));
+            _script.Globals["LuaUserData"] = _safeUserDataService;
+        }
 
         _script.Globals["ExecutionNumber"] = 0;
         _script.Globals["CSActive"] = false;
 
         _script.Globals["SERVER"] = LuaCsSetup.IsServer;
         _script.Globals["CLIENT"] = LuaCsSetup.IsClient;
+
+        _defaultLuaRegistrar.RegisterAll();
     }
 
     public FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder)
@@ -291,22 +304,15 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
     public FluentResults.Result Reset()
     {
+        _userDataService.Reset();
         return DisposeAllPackageResources();
     }
 
     public void Dispose()
     {
+        _userDataService.Dispose();
         _luaScriptLoader.Dispose();
         IsDisposed = true;
-    }
-
-    public IUserDataDescriptor RegisterType(Type type)
-    {
-        return UserData.RegisterType(type);
-    }
-    public void UnregisterType(Type type)
-    {
-        UserData.UnregisterType(type, true);
     }
 
     public object? GetGlobalTableValue(string tableName)

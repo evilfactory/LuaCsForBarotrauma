@@ -1,7 +1,7 @@
 local defaultLib = {}
 
-local CreateStatic = LuaSetup.LuaUserData.CreateStatic
-local CreateEnum = LuaSetup.LuaUserData.CreateEnumTable
+local CreateStatic = LuaUserData.CreateStatic
+local CreateEnum = LuaUserData.CreateEnumTable
 
 local localizedStrings = {
     "LocalizedString", "AddedPunctuationLString", "CapitalizeLString", "ConcatLString", "FallbackLString", "FormattedLString", "InputTypeLString", "JoinLString", "LowerLString", "RawLString", "ReplaceLString", "ServerMsgLString", "SplitLString", "TagLString", "TrimLString", "UpperLString", "StripRichTagsLString",

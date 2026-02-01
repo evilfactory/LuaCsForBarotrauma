@@ -58,10 +58,4 @@ public interface ILuaScriptManagementService : IReusableService
 
     #endregion
     
-    #region Type_Registration
-
-    IUserDataDescriptor RegisterType(Type type);
-    void UnregisterType(Type type);
-    
-    #endregion
 }

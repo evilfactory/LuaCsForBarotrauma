@@ -1,3 +1,5 @@
+if true then return end
+
 local descriptor = LuaUserData.RegisterType("Barotrauma.LuaCsSteam")
 
 LuaUserData.AddMethod(descriptor, "GetWorkshopCollection", function (id, callback)

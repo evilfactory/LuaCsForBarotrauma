@@ -1,8 +1,8 @@
 local defaultLib = {}
 
-local AddCallMetaTable = LuaSetup.LuaUserData.AddCallMetaTable
-local CreateStatic = LuaSetup.LuaUserData.CreateStatic
-local CreateEnum = LuaSetup.LuaUserData.CreateEnumTable
+local AddCallMetaTable = LuaUserData.AddCallMetaTable
+local CreateStatic = LuaUserData.CreateStatic
+local CreateEnum = LuaUserData.CreateEnumTable
 
 defaultLib["SByte"] = CreateStatic("Barotrauma.LuaSByte", true)
 defaultLib["Byte"] = CreateStatic("Barotrauma.LuaByte", true)

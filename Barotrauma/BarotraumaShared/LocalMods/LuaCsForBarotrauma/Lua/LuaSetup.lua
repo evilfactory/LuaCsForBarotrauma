@@ -6,17 +6,6 @@ package.path = {path .. "/Lua/?.lua"}
 
 setmodulepaths(package.path)
 
--- Setup Libraries
-LuaSetup.LuaUserData = LuaUserData
-
-require("DefaultRegister/RegisterShared")
-
-if SERVER then
-    require("DefaultRegister/RegisterServer")
-else
-    require("DefaultRegister/RegisterClient")
-end
-
 local function AddTableToGlobal(tbl)
     for k, v in pairs(tbl) do
         _G[k] = v
@@ -35,11 +24,11 @@ AddTableToGlobal(require("CompatibilityLib"))
 
 require("DefaultHook")
 
+Descriptors = LuaSetup.LuaUserData
+
 require("DefaultLib/Utils/Math")
 require("DefaultLib/Utils/String")
 require("DefaultLib/Utils/Util")
 require("DefaultLib/Utils/SteamApi")
-
-require("PostSetup")
 
 LuaSetup = nil

@@ -1,8 +1,8 @@
 local defaultLib = {}
 
-local CreateStatic = LuaSetup.LuaUserData.CreateStatic
-local CreateEnum = LuaSetup.LuaUserData.CreateEnumTable
-local AddCallMetaTable = LuaSetup.LuaUserData.AddCallMetaTable
+local CreateStatic = LuaUserData.CreateStatic
+local CreateEnum = LuaUserData.CreateEnumTable
+local AddCallMetaTable = LuaUserData.AddCallMetaTable
 
 local localizedStrings = {
     "LocalizedString", "LimitLString", "WrappedLString", "AddedPunctuationLString", "CapitalizeLString", "ConcatLString", "FallbackLString", "FormattedLString", "InputTypeLString", "JoinLString", "LowerLString", "RawLString", "ReplaceLString", "ServerMsgLString", "SplitLString", "TagLString", "TrimLString", "UpperLString", "StripRichTagsLString",
@@ -79,13 +79,12 @@ defaultLib["GUI"] = {
     GUIStyle = CreateStatic("Barotrauma.GUIStyle", true),
 }
 
+local guiFallback = defaultLib["GUI"].GUI
+
 setmetatable(defaultLib["GUI"], {
-    __index = function (table, key)
-        return defaultLib["GUI"].GUI[key]
+    __index = function(_, key)
+        return guiFallback[key]
     end
 })
-
-AddCallMetaTable(defaultLib["GUI"].VideoPlayer.VideoSettings)
-AddCallMetaTable(defaultLib["GUI"].VideoPlayer.TextSettings)
 
 return defaultLib
