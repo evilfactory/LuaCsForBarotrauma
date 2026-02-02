@@ -99,13 +99,12 @@ public class PluginManagementService : IAssemblyManagementService
 
     #endregion
     
-    private IServicesProvider _serviceProvider;
     private IAssemblyLoaderService.IFactory _assemblyLoaderFactory;
     private IStorageService _storageService;
     private ILoggerService _logger;
-    private IEventService _eventService;
-    private IConfigService _configService;
-    private ILuaScriptManagementService _luaScriptManagementService;
+    private Lazy<IEventService> _eventService;
+    private Lazy<IConfigService> _configService;
+    private Lazy<ILuaScriptManagementService> _luaScriptManagementService;
     private readonly ConcurrentDictionary<ContentPackage, IAssemblyLoaderService> _assemblyLoaders = new();
     private readonly ConcurrentDictionary<ContentPackage, ImmutableArray<IAssemblyPlugin>> _pluginInstances = new();
     private readonly ConditionalWeakTable<IAssemblyLoaderService, ContentPackage> _unloadingAssemblyLoaders = new();
@@ -113,16 +112,13 @@ public class PluginManagementService : IAssemblyManagementService
     private ServiceContainer _pluginInjectorContainer;
     
     public PluginManagementService(
-        IServicesProvider serviceProvider, 
         IAssemblyLoaderService.IFactory assemblyLoaderFactory, 
         IStorageService storageService, 
         ILoggerService logger, 
-        IEventService eventService, 
-        ILuaScriptManagementService luaScriptManagementService, 
-        IConfigService configService)
+        Lazy<IEventService> eventService, 
+        Lazy<ILuaScriptManagementService> luaScriptManagementService, 
+        Lazy<IConfigService> configService)
     {
-        Guard.IsNotNull(serviceProvider, nameof(serviceProvider));
-        _serviceProvider = serviceProvider;
         _assemblyLoaderFactory = assemblyLoaderFactory;
         _storageService = storageService;
         _logger = logger;
@@ -139,11 +135,11 @@ public class PluginManagementService : IAssemblyManagementService
             
         });
 
-        container.Register<ILoggerService>(fac => _logger, new PerContainerLifetime());
-        container.Register<IStorageService>(fac => _storageService, new PerContainerLifetime());
-        container.Register<IEventService>(fac => _eventService, new PerContainerLifetime());
-        container.Register<ILuaScriptManagementService>(fac => _luaScriptManagementService, new PerContainerLifetime());
-        container.Register<IConfigService>(fac => _configService, new PerContainerLifetime());
+        container.Register<ILoggerService>(fac => _logger);
+        container.Register<IStorageService>(fac => _storageService);
+        container.Register<IEventService>(fac => _eventService.Value);
+        container.Register<ILuaScriptManagementService>(fac => _luaScriptManagementService.Value);
+        container.Register<IConfigService>(fac => _configService.Value);
 
         return container;
     }
@@ -268,21 +264,21 @@ public class PluginManagementService : IAssemblyManagementService
             results.WithReasons(PluginInitRunner(plugin, p => p.PreInitPatching()).Reasons);
         }
 
-        _eventService.PublishEvent<IEventPluginPreInitialize>(sub => sub.PreInitPatching());
+        _eventService.Value.PublishEvent<IEventPluginPreInitialize>(sub => sub.PreInitPatching());
         
         foreach (var plugin in pluginsToInit)
         {
             results.WithReasons(PluginInitRunner(plugin, p => p.Initialize()).Reasons);
         }
         
-        _eventService.PublishEvent<IEventPluginInitialize>(sub => sub.Initialize());
+        _eventService.Value.PublishEvent<IEventPluginInitialize>(sub => sub.Initialize());
         
         foreach (var plugin in pluginsToInit)
         {
             results.WithReasons(PluginInitRunner(plugin, p => p.OnLoadCompleted()).Reasons);
         }
 
-        _eventService.PublishEvent<IEventPluginLoadCompleted>(sub => sub.OnLoadCompleted());
+        _eventService.Value.PublishEvent<IEventPluginLoadCompleted>(sub => sub.OnLoadCompleted());
 
         return results;
 
@@ -527,7 +523,7 @@ public class PluginManagementService : IAssemblyManagementService
 
         foreach (var assembly in loader.Assemblies)
         {
-            _eventService.PublishEvent<IEventAssemblyUnloading>(sub => sub.OnAssemblyUnloading(assembly));
+            _eventService.Value.PublishEvent<IEventAssemblyUnloading>(sub => sub.OnAssemblyUnloading(assembly));
         }
     }
 

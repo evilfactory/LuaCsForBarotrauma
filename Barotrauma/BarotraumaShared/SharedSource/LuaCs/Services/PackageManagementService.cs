@@ -189,7 +189,7 @@ public sealed class PackageManagementService : IPackageManagementService
         }
     }
 
-    public FluentResults.Result ExecuteLoadedPackages(ImmutableArray<ContentPackage> executionOrder)
+    public FluentResults.Result ExecuteLoadedPackages(ImmutableArray<ContentPackage> executionOrder, bool executeCsAssemblies)
     {
         using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         using var executeLock = _executionLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -237,7 +237,7 @@ public sealed class PackageManagementService : IPackageManagementService
             result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts).Reasons);
         }
 
-        if (_runConfig.IsCsEnabled)
+        if (executeCsAssemblies)
         {
             var plugins = SelectCompatible(loadingOrderedPackages
                 .SelectMany(pkg => pkg.Value.Assemblies)

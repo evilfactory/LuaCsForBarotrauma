@@ -14,7 +14,7 @@ public interface IPackageManagementService : IReusableService
 {
     public FluentResults.Result LoadPackageInfo(ContentPackage package);
     public FluentResults.Result LoadPackagesInfo(ImmutableArray<ContentPackage> packages);
-    public FluentResults.Result ExecuteLoadedPackages(ImmutableArray<ContentPackage> executionOrder);
+    public FluentResults.Result ExecuteLoadedPackages(ImmutableArray<ContentPackage> executionOrder, bool executeCsAssemblies);
     public FluentResults.Result SyncLoadedPackagesList(ImmutableArray<ContentPackage> packages);
     public FluentResults.Result StopRunningPackages();
     public FluentResults.Result UnloadPackage(ContentPackage package);      

@@ -330,7 +330,11 @@ namespace Barotrauma
 
                 if (!PackageManagementService.IsAnyPackageRunning())
                 {
-                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+#if DEBUG
+                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), true));
+#else
+                     Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), IsCsEnabled));
+#endif
                 }
                 
                 CurrentRunState = RunState.Running;
