@@ -8,11 +8,12 @@ using Barotrauma.LuaCs.Events;
 using Barotrauma.LuaCs.Services.Compatibility;
 using FluentResults;
 using FluentResults.LuaCs;
+using Microsoft.Toolkit.Diagnostics;
 using OneOf;
 
 namespace Barotrauma.LuaCs.Services;
 
-public partial class EventService : IEventService, IEventAssemblyContextUnloading
+public partial class EventService : IEventService
 {
     private readonly record struct TypeStringKey : IEqualityComparer<TypeStringKey>, IEquatable<TypeStringKey>
     {
@@ -49,338 +50,240 @@ public partial class EventService : IEventService, IEventAssemblyContextUnloadin
         public static implicit operator TypeStringKey(Type type) => new(type);
         public static implicit operator TypeStringKey(string typeName) => new(typeName);
     }
-    /// <summary>
-    /// <para>Contains subscriber delegates by event and identifier.</para>
-    /// Structure:<br/>
-    /// - Key: Type or String, TypeName == String Equality.<br/>
-    /// - Value: Dictionary<br/>
-    /// ---- Key: Either string identifier or subscriber instance pointer<br/>
-    /// ---- Value: Subscriber delegate<br/>
-    /// </summary>
-    private readonly ConcurrentDictionary<TypeStringKey, Dictionary<OneOf<string, IEvent>, IEvent>> _subscriptions = new();
-    private readonly ConcurrentDictionary<string, string> _eventTypeNameAliases = new();
-    private readonly Lazy<IPluginManagementService> _pluginManagementService;
-    private readonly ConcurrentDictionary<TypeStringKey, Action<string, IDictionary<string, LuaCsFunc>>> _luaSubscriptionFactories = new();
-    /// <summary>
-    /// A collection of factories to produce subscribers from a single lua function handle. For legacy Add() API.
-    /// </summary>
-    private readonly Dictionary<TypeStringKey, Action<string, LuaCsFunc>> _luaLegacySubscriptionFactories = new();
-    /// <summary>
-    /// A collection of lua event subscribers from Add() that had neither a valid event name nor an event alias pointing to one.
-    /// Only actionable via Call().
-    /// </summary>
-    private readonly Dictionary<string, Dictionary<string, LuaCsFunc>> _luaOrphanSubscribers = new();
 
-    public EventService(Lazy<IPluginManagementService> pluginManagementService)
-    {
-        _pluginManagementService = pluginManagementService ?? throw new ArgumentNullException(nameof(pluginManagementService));
-        this.Subscribe<IEventAssemblyContextUnloading>(this);
+    private readonly AsyncReaderWriterLock _operationsLock = new();
+    private readonly ConcurrentDictionary<TypeStringKey, ConcurrentDictionary<OneOf<IEvent, string>, IEvent>> _subscribers = new();
+    private readonly ConcurrentDictionary<TypeStringKey, (TypeStringKey Event, Func<LuaCsFunc, IEvent> RunnerFactory)> _luaAliasEventFactory = new();
+    private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, LuaCsFunc>> _luaLegacyEventsSubscribers = new();
 
-        InitPatcher();
-    }
+    #region Disposal
 
-    public bool IsDisposed { get; private set; } = false;
-    
-    #region Compatibility
-
-    [Obsolete("ACsMod is deprecated. Use ILuaEventService.Add() instead.")]
-    void ILuaCsHook.Add(string eventName, string identifier, LuaCsFunc callback, ACsMod mod = null)
+    public void Dispose()
     {
-        Add(eventName, identifier, callback);
-    }
-    [Obsolete("ACsMod is deprecated. Use ILuaEventService.Add() instead.")]
-    void ILuaCsHook.Add(string eventName, LuaCsFunc callback, ACsMod mod = null)
-    {
-        Add(eventName, callback);
-    }
-
-    public bool Exists(string eventName, string identifier)
-    {
-        ((IService)this).CheckDisposed();
-        if (_subscriptions.ContainsKey(eventName) && _subscriptions[eventName].ContainsKey(identifier))
-            return true;
-        if (_luaOrphanSubscribers.ContainsKey(eventName))
-            return true;
-        return false;
-    }
-    
-    [Obsolete("Part of the legacy events API, only works for Lua-only custom events.")]
-    public T Call<T>(string eventName, params object[] args)
-    {
-        ((IService)this).CheckDisposed();
-        if (!_luaOrphanSubscribers.TryGetValue(eventName, out var dict))
-            return default;
-        T returnValue = default;
-        foreach (var sub in dict.Values)
+        using var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        if (!ModUtils.Threading.CheckIfClearAndSetBool(ref _isDisposed))
         {
-            try
-            {
-                var r = sub(args);
-                if (r != default)
-                    returnValue = (T)r;
-            }
-            catch
-            {
-                continue;
-            }
+            return;
         }
-        return returnValue;
+        
+        _luaLegacyEventsSubscribers.Clear();
+        _luaAliasEventFactory.Clear();
+        _subscribers.Clear();
     }
-    
-    [Obsolete("Part of the legacy events API, only works for Lua-only custom events.")]
-    public object Call(string eventName, params object[] args) => Call<object>(eventName, args);
+
+    private int _isDisposed;
+
+    public bool IsDisposed
+    {
+        get => ModUtils.Threading.GetBool(ref _isDisposed);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
+    }
+    public FluentResults.Result Reset()
+    {
+        using var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        _luaLegacyEventsSubscribers.Clear();
+        _luaAliasEventFactory.Clear();
+        _subscribers.Clear();
+        return FluentResults.Result.Ok();
+    }
 
     #endregion
 
+    #region LuaEventSystem
+
     public void Add(string eventName, string identifier, LuaCsFunc callback)
     {
-        var eventKey = eventName;
-        if (_eventTypeNameAliases.TryGetValue(eventName, out var aliasType))
-            eventKey = aliasType;
-        if (_luaLegacySubscriptionFactories.TryGetValue(eventKey, out var factory))
+        Guard.IsNotNullOrWhiteSpace(eventName, nameof(eventName));
+        Guard.IsNotNullOrWhiteSpace(identifier, nameof(identifier));
+        Guard.IsNotNull(callback, nameof(callback));
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        if (_luaAliasEventFactory.TryGetValue(eventName, out var eventFunc))
         {
-            factory(identifier, callback);
-            return;
+            var eventSubs = _subscribers.GetOrAdd(eventFunc.Event, key => new ConcurrentDictionary<OneOf<IEvent, string>, IEvent>());
+            eventSubs[identifier] = eventFunc.RunnerFactory(callback);
         }
-        _luaOrphanSubscribers.TryGetOrSet(eventName, () => new Dictionary<string, LuaCsFunc>())
-            .Add(identifier.IsNullOrWhiteSpace() ? string.Empty : identifier, callback);
+        else
+        {
+            var eventSubs = _luaLegacyEventsSubscribers.GetOrAdd(eventName, key => new ConcurrentDictionary<string, LuaCsFunc>());
+            eventSubs[identifier] = callback;
+        }
     }
 
     public void Add(string eventName, LuaCsFunc callback)
     {
-        Add(eventName, string.Empty, callback);
-    }
-
-    public void Remove(string eventName, string identifier)
-    {
-        if (_luaOrphanSubscribers.TryGetValue(eventName, out var dict))
-            dict.Remove(identifier);
-        if (_subscriptions.TryGetValue(eventName, out var dict2))
-            dict2.Remove(identifier);
-    }
-
-    public void PublishLuaEvent(string interfaceName, LuaCsFunc runner)
-    {
-        ((IService)this).CheckDisposed();
-        if (interfaceName.IsNullOrWhiteSpace())
-            return;
-        if (!_subscriptions.TryGetValue(interfaceName, out var dict))
-            return;
-        
-        var type = _subscriptions
-            .Select(x => x.Key)
-            .FirstOrNull(x => x.Type?.Name == interfaceName)?.Type;
-        
-        var errors = new Queue<IError>();
-        foreach (var eventSub in dict.Values)
-        {
-            try
-            {
-                runner(type is null ? eventSub : Convert.ChangeType(eventSub, type));   // cast if possible
-            }
-            catch
-            {
-                continue;
-            }
-        }
+        // random ident, we hope for no conflicts :barodev:.
+        Add(eventName, Random.Shared.NextInt64().ToString() ,callback); 
     }
     
-    public FluentResults.Result RegisterSafeEvent<T>() where T : IEvent<T>
+    public object Call(string eventName, params object[] args)
     {
-        ((IService)this).CheckDisposed();
-        var type = typeof(T);
-        if (_luaSubscriptionFactories.ContainsKey(type))
-            return FluentResults.Result.Ok().WithReason(new Success($"The event {type.Name} is already registered."));
-        try
+        Guard.IsNotNullOrWhiteSpace(eventName, nameof(eventName));
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        if (!_luaLegacyEventsSubscribers.TryGetValue(eventName, out var eventSubscribers)
+            || eventSubscribers.IsEmpty)
         {
-            _luaSubscriptionFactories.TryAdd(type, (ident, funcDict) =>
-            {
-                var runner = T.GetLuaRunner(funcDict);
-                var dict = _subscriptions.TryGetOrSet(type, () => new Dictionary<OneOf<string, IEvent>, IEvent>());
-                if (!ident.IsNullOrWhiteSpace())
-                    dict[ident] = runner;
-                else
-                    dict[runner] = runner;
-            });
-            return FluentResults.Result.Ok();
-        }
-        catch (NullReferenceException e)
-        {
-            return FluentResults.Result.Fail(new Error($"The lua runner for {type.Name} is not registered.")
-                .WithMetadata(MetadataType.ExceptionObject, this)
-                .WithMetadata(MetadataType.RootObject, type));
-        }
-    }
-
-    public FluentResults.Result UnregisterSafeEvent<T>() where T : IEvent<T>
-    {
-        ((IService)this).CheckDisposed();
-        _luaSubscriptionFactories.TryRemove(typeof(T), out _);
-        if (!_subscriptions.TryGetValue(typeof(T), out var dict)) 
-            return FluentResults.Result.Ok();
-        dict.Values.Where(value => value.IsLuaRunner()).ToImmutableArray().ForEach(Unsubscribe);
-        return FluentResults.Result.Ok();
-    }
-
-    // lua subscribe
-    public void Subscribe(string interfaceName, string identifier, IDictionary<string, LuaCsFunc> callbacks)
-    {
-        ((IService)this).CheckDisposed();
-        if (_luaSubscriptionFactories.TryGetValue(interfaceName, out var subFactory))
-            subFactory(identifier, callbacks);
-    }
-
-    public FluentResults.Result SetLegacyLuaRunnerFactory<T>(Func<LuaCsFunc, T> runnerFactory) where T : IEvent<T>
-    {
-        var type = typeof(T);
-        if (!_luaSubscriptionFactories.TryGetValue(type, out var dict))
-            return FluentResults.Result.Fail(new Error($"Tried to add legacy lua factory for an event not registered for lua subscriptions."));
-        
-        _luaLegacySubscriptionFactories[type] = (ident, func) =>
-        {
-            var runner = runnerFactory(func);
-            _subscriptions.TryGetOrSet(type, () => new Dictionary<OneOf<string, IEvent>, IEvent>())[ident] = runner;
-        };
-        return FluentResults.Result.Ok();
-    }
-
-    public void RemoveLegacyLuaRunnerFactory<T>() where T : IEvent<T>
-    {
-        _luaLegacySubscriptionFactories.Remove(typeof(T));
-    }
-
-    public void SetAliasToEvent<T>(string alias) where T : IEvent<T>
-    {
-        if (alias.IsNullOrWhiteSpace())
-            return;
-        _eventTypeNameAliases[alias] = typeof(T).Name;
-    }
-
-    public void RemoveEventAlias(string alias)
-    {
-        _eventTypeNameAliases.TryRemove(alias, out _);
-    }
-
-    public void RemoveAllEventAliases<T>() where T : IEvent<T>
-    {
-        foreach (var keys in _eventTypeNameAliases
-                     .Where(kvp => kvp.Value.IsNullOrWhiteSpace() || kvp.Value == typeof(T).Name)
-                     .Select(kvp => kvp.Key).ToImmutableArray())
-        {
-            _eventTypeNameAliases.TryRemove(keys, out _);
-        }
-    }
-
-    public FluentResults.Result Subscribe<T>(T subscriber) where T : IEvent<T>
-    {
-        ((IService)this).CheckDisposed();
-        var eventType = typeof(T);
-        var dict = _subscriptions.TryGetOrSet(eventType, () => new Dictionary<OneOf<string, IEvent>, IEvent>());
-        if (dict.ContainsKey(OneOf<string, IEvent>.FromT1(subscriber)))
-        {
-            return FluentResults.Result.Fail(
-                new Error($"The subscriber for {eventType.Name} is already registered to the event.")
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, subscriber));
-        }
-        dict[subscriber] = subscriber;
-        return FluentResults.Result.Ok();
-    }
-
-    public void Unsubscribe<T>(T subscriber) where T : IEvent
-    {
-        ((IService)this).CheckDisposed();
-        if (!_subscriptions.TryGetValue(typeof(T), out var dict))
-            return;
-        dict.Remove(OneOf<string, IEvent>.FromT1(subscriber));
-    }
-
-    public void ClearAllEventSubscribers<T>() where T : IEvent 
-    {
-        _subscriptions.TryRemove(typeof(T), out _);
-        if (typeof(IEventAssemblyContextUnloading) == typeof(T))
-        {
-            this.Subscribe<IEventAssemblyContextUnloading>(this);
-        }
-    }
-    public void ClearAllSubscribers() 
-    {
-        _subscriptions.Clear();
-        this.Subscribe<IEventAssemblyContextUnloading>(this);
-    }
-
-    public FluentResults.Result PublishEvent<T>(Action<T> action) where T : IEvent<T>
-    {
-        ((IService)this).CheckDisposed();
-        var eventType = typeof(T);
-        if (!_subscriptions.TryGetValue(eventType, out var dict))
-        {
-            return FluentResults.Result.Fail(new Error($"The event {eventType.Name} is not registered.")
-                .WithMetadata(MetadataType.ExceptionObject, this));
+            return null;
         }
 
-        var errors = new Queue<IError>();
-        foreach (var eventSub in dict.Values)
+        object returnValue = null;
+
+        foreach (var subscriber in eventSubscribers)
         {
             try
             {
-                action((T)eventSub);
+                returnValue = subscriber.Value.Invoke(args);
             }
             catch (Exception e)
             {
 #if DEBUG
-                throw; //make errors apparent       
+                throw;
 #endif
-                errors.Enqueue(new Error($"Error while executing runner for {eventType.Name} on type {eventSub.GetType().Name}.")
-                    .WithMetadata(MetadataType.ExceptionObject, this)
-                    .WithMetadata(MetadataType.RootObject, eventSub)
-                    .WithMetadata(MetadataType.ExceptionDetails, e.Message)
-                    .WithMetadata(MetadataType.StackTrace, e.StackTrace));
             }
         }
-        
-        var result = errors.Count > 0 ? FluentResults.Result.Fail($"Errors while executing event type {eventType.Name}") : FluentResults.Result.Ok();
-        while (errors.Count > 0)
-            result = result.WithError(errors.Dequeue());
-        return result;
+
+        return returnValue;
     }
 
-    public void Dispose()
+    public void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : IEvent<T>
     {
-        Reset();
-        IsDisposed = true;
-        GC.SuppressFinalize(this);
-    }
-
-    public FluentResults.Result Reset()
-    {
+        Guard.IsNotNullOrWhiteSpace(identifier, nameof(identifier));
+        Guard.IsNotNull(callbacks, nameof(callbacks));
+        Guard.IsNotEmpty(callbacks, nameof(callbacks));
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
-        _subscriptions.Clear();
-        _luaSubscriptionFactories.Clear();
-        _eventTypeNameAliases.Clear();
-        _luaLegacySubscriptionFactories.Clear();
-        _luaOrphanSubscribers.Clear();
-        ResetPatcher();
-        InitPatcher();
+
+        var eventSubs = _subscribers.GetOrAdd(typeof(T), key => new ConcurrentDictionary<OneOf<IEvent, string>, IEvent>());
+        eventSubs[identifier] = T.GetLuaRunner(callbacks);
+    }
+
+    public void Remove(string eventName, string identifier)
+    {
+        Guard.IsNotNullOrWhiteSpace(eventName, nameof(eventName));
+        Guard.IsNotNullOrWhiteSpace(identifier, nameof(identifier));
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+
+        if (!_subscribers.TryGetValue(eventName, out var evtSubscribers))
+        {
+            return;
+        }
+        
+        evtSubscribers.TryRemove(identifier, out _);
+    }
+
+    public void PublishLuaEvent<T>(LuaCsFunc subscriberRunner) where T : IEvent<T>
+    {
+        this.PublishEvent<T>(sub => subscriberRunner(sub));
+    }
+
+    public FluentResults.Result RegisterLuaEventAlias<T>(string luaEventName, string targetMethod) where T : IEvent<T>
+    {
+        Guard.IsNotNullOrWhiteSpace(luaEventName, nameof(luaEventName));
+        Guard.IsNotNullOrWhiteSpace(targetMethod, nameof(targetMethod));
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
+        if (_luaAliasEventFactory.ContainsKey(luaEventName))
+        {
+#if DEBUG
+            ThrowHelper.ThrowInvalidOperationException($"{nameof(RegisterLuaEventAlias)}: An alias already exists for the event of {luaEventName}.");
+#endif   
+            return FluentResults.Result.Fail($"{nameof(RegisterLuaEventAlias)}: An alias already exists for the event of {luaEventName}.");
+        }
+        
+        var eventRunnerFactory = (LuaCsFunc function) => (IEvent)T.GetLuaRunner(new Dictionary<string, LuaCsFunc>
+        {
+            { targetMethod, function }
+        });
+
+        _luaAliasEventFactory[luaEventName] = (Event: typeof(T), RunnerFactory: eventRunnerFactory);
+        // create the group
+        _subscribers.GetOrAdd(typeof(T), key => new ConcurrentDictionary<OneOf<IEvent, string>, IEvent>());
         return FluentResults.Result.Ok();
     }
 
-    public void OnAssemblyUnloading(WeakReference<IAssemblyLoaderService> loaderService)
+    #endregion
+
+    public FluentResults.Result Subscribe<T>(T subscriber) where T : class, IEvent<T>
     {
-        if (!loaderService.TryGetTarget(out var loader))
-            return;
-        foreach (var assembly in loader.Assemblies)
+        Guard.IsNotNull(subscriber, nameof(subscriber));
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        var eventSubs =
+            _subscribers.GetOrAdd(typeof(T), (type) => new ConcurrentDictionary<OneOf<IEvent, string>, IEvent>());
+
+        if (eventSubs.ContainsKey(subscriber))
         {
-            var types = assembly.GetSafeTypes()
-                .Where(t => typeof(IEvent).IsAssignableFrom(t))
-                .ToImmutableArray();
-            if (!types.Any())
-                continue;
-            foreach (var type in types)
+            ThrowHelper.ThrowInvalidOperationException($"{nameof(Subscribe)}: The instance is already registered!");
+        }
+
+        return eventSubs.TryAdd(subscriber, subscriber)
+            ? FluentResults.Result.Ok()
+            : FluentResults.Result.Fail($"{nameof(Subscribe)}: Failed to add subscriber.");
+    }
+
+    public void Unsubscribe<T>(T subscriber) where T : class, IEvent
+    {
+        Guard.IsNotNull(subscriber, nameof(subscriber));
+        using var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        if (!_subscribers.TryGetValue(typeof(T), out var evtSubscribers))
+        {
+            return;
+        }
+        
+        evtSubscribers.TryRemove(subscriber, out _);
+    }
+
+    public void ClearAllEventSubscribers<T>() where T : IEvent
+    {
+        using  var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        _subscribers.TryRemove(typeof(T), out _);
+    }
+
+    public void ClearAllSubscribers()
+    {
+        using  var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        _subscribers.Clear();
+    }
+
+    public FluentResults.Result PublishEvent<T>(Action<T> action) where T : IEvent<T>
+    {
+        Guard.IsNotNull(action, nameof(action));
+        using  var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        if (!_subscribers.TryGetValue(typeof(T), out var subs) || subs.IsEmpty)
+        {
+            return FluentResults.Result.Ok();
+        }
+
+        var results = new FluentResults.Result();
+
+        foreach (var sub in subs)
+        {
+            try
             {
-                _subscriptions.TryRemove(type, out _);
-                _luaSubscriptionFactories.TryRemove(type, out _);
+                action.Invoke((T)sub.Value);
+            }
+            catch (Exception e)
+            {
+                results.WithError(new ExceptionalError(e));
+#if DEBUG
+                throw;
+#endif
+                continue;
             }
         }
+
+        return results;
     }
 }

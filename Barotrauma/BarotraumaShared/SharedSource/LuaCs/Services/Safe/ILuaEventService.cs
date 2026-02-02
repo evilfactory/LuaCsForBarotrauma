@@ -13,7 +13,7 @@ public interface ILuaSafeEventService : ILuaService, ILuaCsHook
     /// <typeparam name="T"></typeparam>
     /// <param name="identifier"></param>
     /// <param name="callbacks">A 'method name'=='signature action' dictionary matching the interface method list.</param>
-    void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks);
+    void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : IEvent<T>;
     /// <summary>
     /// Removes a subscriber from an event that subscribed under the given identifier.
     /// </summary>
@@ -26,7 +26,7 @@ public interface ILuaSafeEventService : ILuaService, ILuaCsHook
     /// <typeparam name="T">Interface type.</typeparam>
     /// <param name="subscriberRunner">Execution runner, the subscriber is provided as the first argument in the lua runner.</param>
     /// <returns></returns>
-    void PublishLuaEvent<T>(LuaCsFunc subscriberRunner);
+    void PublishLuaEvent<T>(LuaCsFunc subscriberRunner) where T : IEvent<T>;
     
     /// <summary>
     /// Defines the target method name for legacy <see cref="ILuaCsHook.Add(string, LuaCsFunc)"/> to target on new <see cref="IEvent{T}"/>

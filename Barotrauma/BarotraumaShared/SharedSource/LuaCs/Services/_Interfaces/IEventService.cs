@@ -14,13 +14,13 @@ public interface IEventService : IReusableService, ILuaEventService
     /// <param name="subscriber"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    FluentResults.Result Subscribe<T>(T subscriber) where T : IEvent<T>;
+    FluentResults.Result Subscribe<T>(T subscriber) where T : class, IEvent<T>;
     /// <summary>
     /// 
     /// </summary>
     /// <param name="subscriber"></param>
     /// <typeparam name="T"></typeparam>
-    void Unsubscribe<T>(T subscriber) where T : IEvent;
+    void Unsubscribe<T>(T subscriber) where T : class, IEvent;
     /// <summary>
     /// Clears all subscribers for a given event type and removes any registration to the type.
     /// </summary>
