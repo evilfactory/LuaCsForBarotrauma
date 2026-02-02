@@ -8,9 +8,11 @@ namespace Barotrauma
     public abstract class ACsMod : IAssemblyPlugin
     {
         private static List<ACsMod> mods = new List<ACsMod>();
+        [Obsolete("$This does nothing. Stop using it!")]
         public static List<ACsMod> LoadedMods { get => mods; }
 
         private const string MOD_STORE = "LocalMods/.modstore";
+        [Obsolete("$This does nothing. Stop using it!")]
         public static string GetStoreFolder<T>() where T : ACsMod
         {
             if (!Directory.Exists(MOD_STORE)) Directory.CreateDirectory(MOD_STORE);
@@ -19,14 +21,7 @@ namespace Barotrauma
             return modFolder;
         }
 
-        public bool IsDisposed { get; private set; }
-
-        /// Mod initialization
-        public ACsMod()
-        {
-            IsDisposed = false;
-            LoadedMods.Add(this);
-        }
+        public bool IsDisposed { get; private set; } = false;
 
         /// <summary>
         /// Called as soon as plugin loading begins, use this for internal setup only.
@@ -54,8 +49,6 @@ namespace Barotrauma
             {
                 LuaCsLogger.HandleException(e, LuaCsMessageOrigin.CSharpMod);
             }
-
-            LoadedMods.Remove(this);
             IsDisposed = true;
         }
         
