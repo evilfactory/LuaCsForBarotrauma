@@ -12,6 +12,7 @@ public interface ILuaCsHook : ILuaCsShim
     // Does anyone use this? TODO: Analyze old Lua mods for usage scenarios.
     //bool Exists(string eventName, string identifier);
     object Call(string eventName, params object[] args);
+    T Call<T>(string eventName, params object[] args);
     
     // Hook/Method Patching
     string Patch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, EventService.HookMethodType hookType = EventService.HookMethodType.Before);

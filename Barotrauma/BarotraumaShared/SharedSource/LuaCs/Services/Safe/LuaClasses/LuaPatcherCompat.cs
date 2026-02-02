@@ -18,8 +18,8 @@ namespace Barotrauma.LuaCs.Services
 {
     partial class EventService
     {
-        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>> compatHookPrefixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>>();
-        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>> compatHookPostfixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>>();
+        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPrefixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
+        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPostfixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
 
         private static void _hookLuaCsPatch(MethodBase __originalMethod, object[] __args, object __instance, out object result, HookMethodType hookType)
         {
@@ -28,7 +28,7 @@ namespace Barotrauma.LuaCs.Services
             try
             {
                 var funcAddr = ((long)__originalMethod.MethodHandle.GetFunctionPointer());
-                HashSet<(string, LuaCsCompatPatchFunc, ACsMod)> methodSet = null;
+                HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet = null;
                 switch (hookType)
                 {
                     case HookMethodType.Before:
@@ -50,10 +50,10 @@ namespace Barotrauma.LuaCs.Services
                         args.Add(@params[i].Name, __args[i]);
                     }
 
-                    var outOfSocpe = new HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>();
+                    var outOfSocpe = new HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>();
                     foreach (var tuple in methodSet)
                     {
-                        if (tuple.Item3 != null && tuple.Item3.IsDisposed)
+                        if (tuple.Item3 != null)
                         {
                             outOfSocpe.Add(tuple);
                         }
@@ -126,7 +126,7 @@ namespace Barotrauma.LuaCs.Services
         private static MethodInfo _miHookLuaCsPatchRetPostfix = typeof(EventService).GetMethod("HookLuaCsPatchRetPostfix", BindingFlags.NonPublic | BindingFlags.Static);
 
         // TODO: deprecate this
-        public void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, HookMethodType hookType = HookMethodType.Before, ACsMod owner = null)
+        public void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, HookMethodType hookType = HookMethodType.Before, IAssemblyPlugin owner = null)
         {
             if (identifier == null || method == null || patch == null)
             {
@@ -155,7 +155,7 @@ namespace Barotrauma.LuaCs.Services
                     }
                 }
 
-                if (compatHookPrefixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc, ACsMod)> methodSet))
+                if (compatHookPrefixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet))
                 {
                     if (identifier != "")
                     {
@@ -166,7 +166,7 @@ namespace Barotrauma.LuaCs.Services
                 }
                 else if (patch != null)
                 {
-                    compatHookPrefixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>() { (identifier, patch, owner) });
+                    compatHookPrefixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>() { (identifier, patch, owner) });
                 }
 
             }
@@ -187,7 +187,7 @@ namespace Barotrauma.LuaCs.Services
                     }
                 }
 
-                if (compatHookPostfixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc, ACsMod)> methodSet))
+                if (compatHookPostfixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet))
                 {
                     if (identifier != "")
                     {
@@ -198,7 +198,7 @@ namespace Barotrauma.LuaCs.Services
                 }
                 else if (patch != null)
                 {
-                    compatHookPostfixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>() { (identifier, patch, owner) });
+                    compatHookPostfixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>() { (identifier, patch, owner) });
                 }
             }
         }
@@ -224,7 +224,7 @@ namespace Barotrauma.LuaCs.Services
         {
             var funcAddr = (long)method.MethodHandle.GetFunctionPointer();
 
-            Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, ACsMod)>> methods;
+            Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> methods;
             if (hookType == HookMethodType.Before) methods = compatHookPrefixMethods;
             else if (hookType == HookMethodType.After) methods = compatHookPostfixMethods;
             else throw null;

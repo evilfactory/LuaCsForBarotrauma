@@ -149,6 +149,11 @@ public partial class EventService : IEventService
         return returnValue;
     }
 
+    public T Call<T>(string eventName, params object[] args)
+    {
+        return (T)Call(eventName, args);
+    }
+
     public void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : IEvent<T>
     {
         Guard.IsNotNullOrWhiteSpace(identifier, nameof(identifier));
