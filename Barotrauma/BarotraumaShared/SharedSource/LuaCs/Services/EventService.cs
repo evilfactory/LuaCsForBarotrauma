@@ -51,6 +51,7 @@ public partial class EventService : IEventService
         public static implicit operator TypeStringKey(string typeName) => new(typeName);
     }
 
+    private ILoggerService _loggerService;
     private readonly AsyncReaderWriterLock _operationsLock = new();
     private readonly ConcurrentDictionary<TypeStringKey, ConcurrentDictionary<OneOf<IEvent, string>, IEvent>> _subscribers = new();
     private readonly ConcurrentDictionary<TypeStringKey, (TypeStringKey Event, Func<LuaCsFunc, IEvent> RunnerFactory)> _luaAliasEventFactory = new();
@@ -72,6 +73,11 @@ public partial class EventService : IEventService
     }
 
     private int _isDisposed;
+
+    public EventService(ILoggerService loggerService)
+    {
+        _loggerService = loggerService;
+    }
 
     public bool IsDisposed
     {
@@ -140,6 +146,7 @@ public partial class EventService : IEventService
             }
             catch (Exception e)
             {
+                _loggerService.LogError(e.Message);
 #if DEBUG
                 throw;
 #endif
@@ -282,6 +289,7 @@ public partial class EventService : IEventService
             catch (Exception e)
             {
                 results.WithError(new ExceptionalError(e));
+                _loggerService.LogError(e.Message);
 #if DEBUG
                 throw;
 #endif
