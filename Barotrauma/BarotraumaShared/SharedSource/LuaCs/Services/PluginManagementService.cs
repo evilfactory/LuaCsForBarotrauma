@@ -151,7 +151,24 @@ public class PluginManagementService : IAssemblyManagementService
     public Result<ImmutableArray<Type>> GetImplementingTypes<T>(bool includeInterfaces = false, bool includeAbstractTypes = false,
         bool includeDefaultContext = true)
     {
+#if !DEBUG
         throw new NotImplementedException();
+#endif
+        var builder = ImmutableArray.CreateBuilder<Type>();
+        
+        foreach (var ass in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            foreach (var type in ass.GetSafeTypes())
+            {
+                if ((includeInterfaces || !type.IsInterface)
+                    && (includeAbstractTypes || !type.IsAbstract))
+                {
+                    builder.Add(type);
+                }
+            }
+        }
+
+        return builder.ToImmutable();
     }
 
     public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false,
@@ -488,6 +505,7 @@ public class PluginManagementService : IAssemblyManagementService
 
     private IntPtr OnAssemblyLoaderResolvingUnmanaged(Assembly arg1, string arg2)
     {
+        // TODO: Implement extern assembly lookup for Native/Unmanaged Assemblies.
         throw new NotImplementedException();
     }
 
