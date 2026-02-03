@@ -124,7 +124,7 @@ public class PluginManagementService : IAssemblyManagementService
             }
         }
         _pluginInstances.Clear();
-        _pluginInjectorContainer.Dispose();
+        _pluginInjectorContainer?.Dispose();
         _pluginInjectorContainer = null;
         
         foreach (var loader in _assemblyLoaders)
@@ -136,12 +136,12 @@ public class PluginManagementService : IAssemblyManagementService
             }
             catch (Exception e)
             {
-                _logger.LogError($"Failed to dispose of {nameof(IAssemblyLoaderService)} for ContentPackage {loader.Key.Name}: \n{e.Message}");
+                _logger?.LogError($"Failed to dispose of {nameof(IAssemblyLoaderService)} for ContentPackage {loader.Key.Name}: \n{e.Message}");
                 if (loader.Value.Assemblies.Any())
                 {
                     foreach (var ass in loader.Value.Assemblies)
                     {
-                        _logger.LogWarning($"{nameof(PluginManagementService)}: Fallback manual unsubscription of assemblies: {ass.GetName()}");
+                        _logger?.LogWarning($"{nameof(PluginManagementService)}: Fallback manual unsubscription of assemblies: {ass.GetName()}");
                         ReflectionUtils.RemoveAssemblyFromCache(ass);
                     }
                 }
