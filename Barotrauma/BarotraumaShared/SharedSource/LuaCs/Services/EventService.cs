@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using Barotrauma.Extensions;
+﻿using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Events;
 using Barotrauma.LuaCs.Services.Compatibility;
 using FluentResults;
 using FluentResults.LuaCs;
+using HarmonyLib;
 using Microsoft.Toolkit.Diagnostics;
 using OneOf;
+using RestSharp;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using System.Reflection;
 
 namespace Barotrauma.LuaCs.Services;
 
@@ -51,13 +54,14 @@ public partial class EventService : IEventService
         public static implicit operator TypeStringKey(string typeName) => new(typeName);
     }
 
-    private ILoggerService _loggerService;
+    private readonly ILoggerService _loggerService;
+    private readonly ILuaPatcher _luaPatcher;
     private readonly AsyncReaderWriterLock _operationsLock = new();
     private readonly ConcurrentDictionary<TypeStringKey, ConcurrentDictionary<OneOf<IEvent, string>, IEvent>> _subscribers = new();
     private readonly ConcurrentDictionary<TypeStringKey, (TypeStringKey Event, Func<LuaCsFunc, IEvent> RunnerFactory)> _luaAliasEventFactory = new();
     private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, LuaCsFunc>> _luaLegacyEventsSubscribers = new();
 
-    #region Disposal
+    #region LifeCycle
 
     public void Dispose()
     {
@@ -70,13 +74,15 @@ public partial class EventService : IEventService
         _luaLegacyEventsSubscribers.Clear();
         _luaAliasEventFactory.Clear();
         _subscribers.Clear();
+        _luaPatcher.Dispose();
     }
 
     private int _isDisposed;
 
-    public EventService(ILoggerService loggerService)
+    public EventService(ILoggerService loggerService, ILuaPatcher luaPatcher)
     {
         _loggerService = loggerService;
+        _luaPatcher = luaPatcher;
     }
 
     public bool IsDisposed
@@ -91,6 +97,7 @@ public partial class EventService : IEventService
         _luaLegacyEventsSubscribers.Clear();
         _luaAliasEventFactory.Clear();
         _subscribers.Clear();
+        _luaPatcher.Reset();
         return FluentResults.Result.Ok();
     }
 
@@ -299,4 +306,41 @@ public partial class EventService : IEventService
 
         return results;
     }
+
+    #region LuaPatcherAdapter
+    public string Patch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
+    {
+        return _luaPatcher.Patch(identifier, className, methodName, parameterTypes, patch, hookType);
+    }
+
+    public string Patch(string identifier, string className, string methodName, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
+    {
+        return _luaPatcher.Patch(identifier, className, methodName, patch, hookType);
+    }
+
+    public string Patch(string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
+    {
+        return _luaPatcher.Patch(className, methodName, parameterTypes, patch, hookType);
+    }
+
+    public string Patch(string className, string methodName, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
+    {
+        return _luaPatcher.Patch(className, methodName, patch, hookType);
+    }
+
+    public bool RemovePatch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsHook.HookMethodType hookType)
+    {
+        return _luaPatcher.RemovePatch(className, methodName, methodName, parameterTypes, hookType);
+    }
+
+    public bool RemovePatch(string identifier, string className, string methodName, LuaCsHook.HookMethodType hookType)
+    {
+        return _luaPatcher.RemovePatch(className, methodName, methodName, hookType);
+    }
+
+    public void HookMethod(string identifier, MethodBase method, LuaCsPatch patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before, IAssemblyPlugin owner = null)
+    {
+        _luaPatcher.HookMethod(identifier, method, patch, hookType, owner);
+    }
+    #endregion
 }

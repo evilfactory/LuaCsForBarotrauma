@@ -1,5 +1,4 @@
-﻿//global using LuaCsHook = Barotrauma.LuaCs.Services.EventService;
-global using LuaCsHook = Barotrauma.LuaCs.Services.Compatibility.ILuaCsHook;
+﻿global using LuaCsHook = Barotrauma.LuaCs.Services.Compatibility.ILuaCsHook;
 
 using System;
 using System.Linq;
@@ -18,8 +17,10 @@ namespace Barotrauma
 
 namespace Barotrauma.LuaCs.Services
 {
-    partial class EventService
+    partial class LuaPatcherService
     {
+        private static LuaPatcherService instance;
+
         private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPrefixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
         private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPostfixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
 
@@ -122,10 +123,10 @@ namespace Barotrauma.LuaCs.Services
             if (result != null) __result = result;
         }
 
-        private static MethodInfo _miHookLuaCsPatchPrefix = typeof(EventService).GetMethod("HookLuaCsPatchPrefix", BindingFlags.NonPublic | BindingFlags.Static);
-        private static MethodInfo _miHookLuaCsPatchPostfix = typeof(EventService).GetMethod("HookLuaCsPatchPostfix", BindingFlags.NonPublic | BindingFlags.Static);
-        private static MethodInfo _miHookLuaCsPatchRetPrefix = typeof(EventService).GetMethod("HookLuaCsPatchRetPrefix", BindingFlags.NonPublic | BindingFlags.Static);
-        private static MethodInfo _miHookLuaCsPatchRetPostfix = typeof(EventService).GetMethod("HookLuaCsPatchRetPostfix", BindingFlags.NonPublic | BindingFlags.Static);
+        private static MethodInfo _miHookLuaCsPatchPrefix = typeof(LuaPatcherService).GetMethod("HookLuaCsPatchPrefix", BindingFlags.NonPublic | BindingFlags.Static);
+        private static MethodInfo _miHookLuaCsPatchPostfix = typeof(LuaPatcherService).GetMethod("HookLuaCsPatchPostfix", BindingFlags.NonPublic | BindingFlags.Static);
+        private static MethodInfo _miHookLuaCsPatchRetPrefix = typeof(LuaPatcherService).GetMethod("HookLuaCsPatchRetPrefix", BindingFlags.NonPublic | BindingFlags.Static);
+        private static MethodInfo _miHookLuaCsPatchRetPostfix = typeof(LuaPatcherService).GetMethod("HookLuaCsPatchRetPostfix", BindingFlags.NonPublic | BindingFlags.Static);
 
         // TODO: deprecate this
         
