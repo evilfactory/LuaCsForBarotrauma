@@ -80,38 +80,45 @@ namespace Barotrauma
         /// <param name="screen">The new game screen.</param>
         public partial void OnScreenSelected(Screen screen)
         {
-            switch (screen)
+            /*Note: This logic needs to be run after the triggering event so that recursion scenarios (ie. resetting the EventService)
+             do not occur, so we delay it by one game tick.*/
+            CoroutineManager.Invoke(() =>
             {
-                // menus and navigation states
-                case MainMenuScreen:
-                case ModDownloadScreen: 
-                case ServerListScreen:
-                    SetRunState(RunState.Unloaded);
-                    SetRunState(RunState.LoadedNoExec);
-                    break;
-                 // running lobby or editor states
-                case CampaignEndScreen:    
-                case CharacterEditorScreen:
-                case EventEditorScreen:
-                case GameScreen:
-                case LevelEditorScreen:
-                case NetLobbyScreen:
-                case ParticleEditorScreen:
-                case RoundSummaryScreen:
-                case SpriteEditorScreen:
-                case SubEditorScreen: 
-                case TestScreen:        // notes: TestScreen is a Linux edge case editor screen and is deprecated.
-                    if (CheckCsEnabled() && this.CurrentRunState >= RunState.Running)
-                    {
+                switch (screen)
+                {
+                    // menus and navigation states
+                    case MainMenuScreen:
+                    case ModDownloadScreen:
+                    case ServerListScreen:
+                        SetRunState(RunState.Unloaded);
                         SetRunState(RunState.LoadedNoExec);
-                    }
-                    SetRunState(RunState.Running);
-                    break;
-                default:
-                    Logger.LogError($"{nameof(LuaCsSetup)}: Received an unknown screen {screen?.GetType().Name ?? "'null screen'"}. Retarding load state to 'unloaded'.");
-                    SetRunState(RunState.Unloaded);
-                    break;
-            }
+                        break;
+                    // running lobby or editor states
+                    case CampaignEndScreen:
+                    case CharacterEditorScreen:
+                    case EventEditorScreen:
+                    case GameScreen:
+                    case LevelEditorScreen:
+                    case NetLobbyScreen:
+                    case ParticleEditorScreen:
+                    case RoundSummaryScreen:
+                    case SpriteEditorScreen:
+                    case SubEditorScreen:
+                    case TestScreen: // notes: TestScreen is a Linux edge case editor screen and is deprecated.
+                        if (CheckCsEnabled() && this.CurrentRunState >= RunState.Running)
+                        {
+                            SetRunState(RunState.LoadedNoExec);
+                        }
+
+                        SetRunState(RunState.Running);
+                        break;
+                    default:
+                        Logger.LogError(
+                            $"{nameof(LuaCsSetup)}: Received an unknown screen {screen?.GetType().Name ?? "'null screen'"}. Retarding load state to 'unloaded'.");
+                        SetRunState(RunState.Unloaded);
+                        break;
+                }
+            }, delay: 0f); // min is one tick delay.
         }
     }
 }

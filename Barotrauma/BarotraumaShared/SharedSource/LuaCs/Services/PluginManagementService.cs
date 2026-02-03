@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Text;
 using System.Threading;
+using System.Xml.Serialization;
 using Barotrauma.Extensions;
 using Barotrauma.IO;
 using Barotrauma.LuaCs.Data;
@@ -92,13 +93,75 @@ public class PluginManagementService : IAssemblyManagementService
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        using var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        if (!ModUtils.Threading.CheckIfClearAndSetBool(ref _isDisposed))
+        {
+            return;
+        }
+
+        UnsafeDisposeResourcesInternal();
+        _assemblyLoaderFactory = null;
+        _storageService = null;
+        _eventService = null;
+        _logger = null;
+        _configService = null;
+        _luaScriptManagementService = null;
+        
+        GC.SuppressFinalize(this);
     }
 
-    public bool IsDisposed { get; }
+    private void UnsafeDisposeResourcesInternal()
+    {
+        foreach (var packPlugin in _pluginInstances.SelectMany(kvp => kvp.Value.Select(pluginInst => (kvp.Key, pluginInst))))
+        {
+            try
+            {
+                packPlugin.pluginInst.Dispose();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error while disposing plugin for ContentPackage {packPlugin.Key.Name}: \n{e.Message}");
+            }
+        }
+        _pluginInstances.Clear();
+        _pluginInjectorContainer.Dispose();
+        _pluginInjectorContainer = null;
+        
+        foreach (var loader in _assemblyLoaders)
+        {
+            try
+            {
+                loader.Value.Dispose();
+                _unloadingAssemblyLoaders.Add(loader.Value, loader.Key);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Failed to dispose of {nameof(IAssemblyLoaderService)} for ContentPackage {loader.Key.Name}: \n{e.Message}");
+                if (loader.Value.Assemblies.Any())
+                {
+                    foreach (var ass in loader.Value.Assemblies)
+                    {
+                        _logger.LogWarning($"{nameof(PluginManagementService)}: Fallback manual unsubscription of assemblies: {ass.GetName()}");
+                        ReflectionUtils.RemoveAssemblyFromCache(ass);
+                    }
+                }
+            }
+        }
+        _assemblyLoaders.Clear();
+    }
+
+    private int _isDisposed = 0;
+    public bool IsDisposed
+    {
+        get => ModUtils.Threading.GetBool(ref _isDisposed);
+        private set => ModUtils.Threading.SetBool(ref _isDisposed, value);
+    }
     public FluentResults.Result Reset()
     {
-        return FluentResults.Result.Fail("Not implemented");
+        using var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        UnsafeDisposeResourcesInternal();
+        return FluentResults.Result.Ok();
     }
 
     #endregion
@@ -536,8 +599,6 @@ public class PluginManagementService : IAssemblyManagementService
 
     private void OnAssemblyLoaderUnloading(IAssemblyLoaderService loader)
     {
-        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
-        
         if (!loader.Assemblies.Any())
         {
             return;
@@ -545,7 +606,7 @@ public class PluginManagementService : IAssemblyManagementService
 
         foreach (var assembly in loader.Assemblies)
         {
-            _eventService.Value.PublishEvent<IEventAssemblyUnloading>(sub => sub.OnAssemblyUnloading(assembly));
+            _eventService?.Value?.PublishEvent<IEventAssemblyUnloading>(sub => sub.OnAssemblyUnloading(assembly));
         }
     }
 
@@ -564,20 +625,11 @@ public class PluginManagementService : IAssemblyManagementService
         results.WithReasons(UnsafeDisposeManagedTypeInstances().Reasons);
         
         ReflectionUtils.ResetCache();
-
-        bool[] targetGcGeneration = new bool[GC.MaxGeneration];
-
-        for (int i = 0; i < targetGcGeneration.Length; i++)
-        {
-            targetGcGeneration[i] = false;
-        }
-        
         foreach (var loaderService in _assemblyLoaders)
         {
             try
             {
                 loaderService.Value.Dispose();
-                targetGcGeneration[GC.GetGeneration(loaderService.Value)] = true;
                 _unloadingAssemblyLoaders.Add(loaderService.Value,  loaderService.Key);
             }
             catch (Exception e)
@@ -587,14 +639,7 @@ public class PluginManagementService : IAssemblyManagementService
         }
 
         _assemblyLoaders.Clear();
-        
-        for (int i = 0; i < targetGcGeneration.Length; i++)
-        {
-            if (!targetGcGeneration[i])
-            {
-                GC.Collect(i, GCCollectionMode.Aggressive, true);
-            }
-        }
+        GC.Collect(GC.MaxGeneration, GCCollectionMode.Aggressive, true);
         
         return results;
     }
