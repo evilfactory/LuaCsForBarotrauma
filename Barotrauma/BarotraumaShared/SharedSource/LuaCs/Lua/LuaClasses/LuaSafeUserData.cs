@@ -183,6 +183,8 @@ namespace Barotrauma
             return LuaUserData.HasMember(obj, memberName);
         }
 
+        public static void AddCallMetaTable(object userdata) { }
+
         public static DynValue CreateUserDataFromDescriptor(DynValue scriptObject, IUserDataDescriptor desiredTypeDescriptor)
         {
             return LuaUserData.CreateUserDataFromDescriptor(scriptObject, desiredTypeDescriptor);

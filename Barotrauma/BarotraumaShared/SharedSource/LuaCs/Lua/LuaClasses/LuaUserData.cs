@@ -121,7 +121,7 @@ namespace Barotrauma
             MethodInfo method = typeof(UserData).GetMethod(nameof(UserData.CreateStatic), 1, new Type[0]);
             MethodInfo generic = method.MakeGenericMethod(type);
             var result = generic.Invoke(null, null);
-            AddCallMetaTable(result);
+
             return result;
         }
 
@@ -380,41 +380,7 @@ namespace Barotrauma
             return CreateUserDataFromDescriptor(scriptObject, descriptor);
         }
 
-        public static void AddCallMetaTable(object userdata)
-        {
-            if (userdata == null) { return; }
-
-            // not sure how to implement this in C#
-            var function = GameMain.LuaCs.Lua.LoadString("""
-            local userdata = ...
-            if userdata == nil then
-                error("Attempted to add a call metatable to a nil value.", 2)
-            end
-
-            if not LuaUserData.HasMember(userdata, ".ctor") then
-                return
-            end
-
-            debug.setmetatable(userdata, {
-                __call = function(obj, ...)
-                	if userdata == nil then
-                		error("userdata was nil.", 2)
-                	end
-
-                	local success, result = pcall(userdata.__new, ...)
-
-
-                	if not success then
-                		error(result, 2)
-                	end
-
-                	return result
-                end
-            })
-            """);
-
-            GameMain.LuaCs.Lua.Call(function, userdata);
-        }
+        public static void AddCallMetaTable(object userdata) { }
 
 
         public static void Clear()
