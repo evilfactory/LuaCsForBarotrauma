@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using LuaCsCompatPatchFunc = Barotrauma.LuaCsPatch;
 
 namespace Barotrauma.LuaCs.Services.Compatibility;
 
@@ -21,4 +23,12 @@ public interface ILuaCsHook : ILuaCsShim
     string Patch(string className, string methodName, LuaCsPatchFunc patch, EventService.HookMethodType hookType = EventService.HookMethodType.Before);
     bool RemovePatch(string identifier, string className, string methodName, string[] parameterTypes, EventService.HookMethodType hookType);
     bool RemovePatch(string identifier, string className, string methodName, EventService.HookMethodType hookType);
+
+    void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, HookMethodType hookType = HookMethodType.Before, IAssemblyPlugin owner = null);
+    
+    
+    public enum HookMethodType
+    {
+        Before, After
+    }
 }

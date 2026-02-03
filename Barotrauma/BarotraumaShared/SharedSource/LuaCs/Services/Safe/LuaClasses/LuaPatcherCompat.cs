@@ -1,10 +1,12 @@
-﻿global using LuaCsHook = Barotrauma.LuaCs.Services.EventService;
+﻿//global using LuaCsHook = Barotrauma.LuaCs.Services.EventService;
+global using LuaCsHook = Barotrauma.LuaCs.Services.Compatibility.ILuaCsHook;
 
 using System;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using System.Collections.Generic;
+using Barotrauma.LuaCs.Services.Compatibility;
 using MoonSharp.Interpreter;
 using LuaCsCompatPatchFunc = Barotrauma.LuaCsPatch;
 
@@ -126,6 +128,11 @@ namespace Barotrauma.LuaCs.Services
         private static MethodInfo _miHookLuaCsPatchRetPostfix = typeof(EventService).GetMethod("HookLuaCsPatchRetPostfix", BindingFlags.NonPublic | BindingFlags.Static);
 
         // TODO: deprecate this
+        
+        public void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, ILuaCsHook.HookMethodType hookType = ILuaCsHook.HookMethodType.Before, IAssemblyPlugin owner = null)
+        {
+            throw new NotImplementedException();
+        }
         public void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, HookMethodType hookType = HookMethodType.Before, IAssemblyPlugin owner = null)
         {
             if (identifier == null || method == null || patch == null)

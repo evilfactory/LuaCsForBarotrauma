@@ -70,8 +70,12 @@ public class PluginManagementService : IAssemblyManagementService
     
     private static readonly SyntaxTree BaseAssemblyImports = CSharpSyntaxTree.ParseText(
         new StringBuilder()
+            .AppendLine("global using LuaCsHook = Barotrauma.LuaCs.Services.Compatibility.ILuaCsHook;")
             .AppendLine("using System.Reflection;")
             .AppendLine("using Barotrauma;")
+            .AppendLine("using Barotrauma.LuaCs;")
+            .AppendLine("using Barotrauma.LuaCs.Services;")
+            .AppendLine("using Barotrauma.LuaCs.Services.Compatibility;")
             .AppendLine("using System.Runtime.CompilerServices;")
             .AppendLine("[assembly: IgnoresAccessChecksTo(\"BarotraumaCore\")]")
 #if CLIENT
