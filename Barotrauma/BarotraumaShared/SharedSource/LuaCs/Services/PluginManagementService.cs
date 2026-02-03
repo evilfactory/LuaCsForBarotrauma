@@ -477,7 +477,7 @@ public class PluginManagementService : IAssemblyManagementService
         IEnumerable<MetadataReference> GetMetadataReferences()
         {
 #if !DEBUG
-            throw new NotImplementedException($"Needs to use publicized barotrauma assemblies.");
+            throw new NotImplementedException($"Needs to use publicized barotrauma assemblies and cache metadata.");
 #endif
             return Basic.Reference.Assemblies.Net80.References.All
                 .Union(AppDomain.CurrentDomain.GetAssemblies()

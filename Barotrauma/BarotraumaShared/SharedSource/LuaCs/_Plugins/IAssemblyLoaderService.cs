@@ -11,6 +11,16 @@ using Microsoft.CodeAnalysis.CSharp;
 
 namespace Barotrauma.LuaCs;
 
+[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+public sealed class IgnoresAccessChecksToAttribute : Attribute
+{
+    public string AssemblyName { get; }
+    public IgnoresAccessChecksToAttribute(string assemblyName)
+    {
+        AssemblyName = assemblyName;
+    }
+}
+
 public interface IAssemblyLoaderService : IService
 {
     public interface IFactory : IService

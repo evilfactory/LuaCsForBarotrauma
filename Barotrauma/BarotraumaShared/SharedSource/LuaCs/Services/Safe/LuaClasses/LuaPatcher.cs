@@ -416,11 +416,6 @@ namespace Barotrauma.LuaCs.Services
 
     partial class EventService
     {
-        public enum HookMethodType
-        {
-            Before, After
-        }
-
         private class LuaCsHookCallback
         {
             public string name;
@@ -805,7 +800,7 @@ namespace Barotrauma.LuaCs.Services
         // If you need to debug this:
         //   - use https://sharplab.io ; it's a very useful for resource for writing IL by hand.
         //   - use il.NewMessage("") or il.WriteLine("") to see where the IL crashes at runtime.
-        private MethodInfo CreateDynamicHarmonyPatch(string identifier, MethodBase original, HookMethodType hookType)
+        private MethodInfo CreateDynamicHarmonyPatch(string identifier, MethodBase original, LuaCsHook.HookMethodType hookType)
         {
             var parameters = new List<DynamicParameterMapping>
             {
@@ -840,9 +835,9 @@ namespace Barotrauma.LuaCs.Services
 
             var luaCsField = typeBuilder.DefineField(FIELD_LUACS, typeof(LuaCsSetup), FieldAttributes.Public | FieldAttributes.Static);
 
-            var methodName = hookType == HookMethodType.Before ? "HarmonyPrefix" : "HarmonyPostfix";
+            var methodName = hookType == LuaCsHook.HookMethodType.Before ? "HarmonyPrefix" : "HarmonyPostfix";
             var il = Emit.BuildMethod(
-                returnType: hookType == HookMethodType.Before ? typeof(bool) : typeof(void),
+                returnType: hookType == LuaCsHook.HookMethodType.Before ? typeof(bool) : typeof(void),
                 parameterTypes: parameters.Select(x => x.HarmonyPatchParamType).ToArray(),
                 type: typeBuilder,
                 name: methodName,
@@ -911,7 +906,7 @@ namespace Barotrauma.LuaCs.Services
             il.NewObject(typeof(ParameterTable), typeof(Dictionary<string, object>));
             il.StoreLocal(ptable);
 
-            if (hasReturnType && hookType == HookMethodType.After)
+            if (hasReturnType && hookType == LuaCsHook.HookMethodType.After)
             {
                 // IL: ptable.OriginalReturnValue = __result;
                 il.LoadLocal(ptable);
@@ -924,7 +919,7 @@ namespace Barotrauma.LuaCs.Services
             var enumerator = il.DeclareLocal<IEnumerator<LuaCsPatch>>("enumerator");
             il.LoadLocal(patches);
             il.CallVirtual(typeof(PatchedMethod).GetMethod(
-                name: hookType == HookMethodType.Before
+                name: hookType == LuaCsHook.HookMethodType.Before
                     ? nameof(PatchedMethod.GetPrefixEnumerator)
                     : nameof(PatchedMethod.GetPostfixEnumerator),
                 bindingAttr: BindingFlags.Public | BindingFlags.Instance));
@@ -1073,7 +1068,7 @@ namespace Barotrauma.LuaCs.Services
             il.EndExceptionBlock(exceptionBlock);
 
             // Only prefixes return a bool
-            if (hookType == HookMethodType.Before)
+            if (hookType == LuaCsHook.HookMethodType.Before)
             {
                 il.LoadLocal(harmonyReturnValue);
             }
@@ -1090,7 +1085,7 @@ namespace Barotrauma.LuaCs.Services
             return type.GetMethod(methodName, BindingFlags.Public | BindingFlags.Static);
         }
 
-        private string Patch(string identifier, MethodBase method, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before)
+        private string Patch(string identifier, MethodBase method, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
         {
             if (method == null) throw new ArgumentNullException(nameof(method));
             if (patch == null) throw new ArgumentNullException(nameof(patch));
@@ -1102,13 +1097,13 @@ namespace Barotrauma.LuaCs.Services
             var patchKey = MethodKey.Create(method);
             if (!registeredPatches.TryGetValue(patchKey, out var methodPatches))
             {
-                var harmonyPrefix = CreateDynamicHarmonyPatch(identifier, method, HookMethodType.Before);
-                var harmonyPostfix = CreateDynamicHarmonyPatch(identifier, method, HookMethodType.After);
+                var harmonyPrefix = CreateDynamicHarmonyPatch(identifier, method, LuaCsHook.HookMethodType.Before);
+                var harmonyPostfix = CreateDynamicHarmonyPatch(identifier, method, LuaCsHook.HookMethodType.After);
                 harmony.Patch(method, prefix: new HarmonyMethod(harmonyPrefix), postfix: new HarmonyMethod(harmonyPostfix));
                 methodPatches = registeredPatches[patchKey] = new PatchedMethod(harmonyPrefix, harmonyPostfix);
             }
 
-            if (hookType == HookMethodType.Before)
+            if (hookType == LuaCsHook.HookMethodType.Before)
             {
                 if (methodPatches.Prefixes.Remove(identifier))
                 {
@@ -1121,7 +1116,7 @@ namespace Barotrauma.LuaCs.Services
                     PatchFunc = patch,
                 });
             }
-            else if (hookType == HookMethodType.After)
+            else if (hookType == LuaCsHook.HookMethodType.After)
             {
                 if (methodPatches.Postfixes.Remove(identifier))
                 {
@@ -1138,31 +1133,31 @@ namespace Barotrauma.LuaCs.Services
             return identifier;
         }
 
-        public string Patch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before)
+        public string Patch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
         {
             var method = ResolveMethod(className, methodName, parameterTypes);
             return Patch(identifier, method, patch, hookType);
         }
 
-        public string Patch(string identifier, string className, string methodName, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before)
+        public string Patch(string identifier, string className, string methodName, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
         {
             var method = ResolveMethod(className, methodName, null);
             return Patch(identifier, method, patch, hookType);
         }
 
-        public string Patch(string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before)
+        public string Patch(string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
         {
             var method = ResolveMethod(className, methodName, parameterTypes);
             return Patch(null, method, patch, hookType);
         }
 
-        public string Patch(string className, string methodName, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before)
+        public string Patch(string className, string methodName, LuaCsPatchFunc patch, LuaCsHook.HookMethodType hookType = LuaCsHook.HookMethodType.Before)
         {
             var method = ResolveMethod(className, methodName, null);
             return Patch(null, method, patch, hookType);
         }
 
-        private bool RemovePatch(string identifier, MethodBase method, HookMethodType hookType)
+        private bool RemovePatch(string identifier, MethodBase method, LuaCsHook.HookMethodType hookType)
         {
             if (identifier == null) throw new ArgumentNullException(nameof(identifier));
             identifier = NormalizeIdentifier(identifier);
@@ -1175,19 +1170,19 @@ namespace Barotrauma.LuaCs.Services
 
             return hookType switch
             {
-                HookMethodType.Before => methodPatches.Prefixes.Remove(identifier),
-                HookMethodType.After => methodPatches.Postfixes.Remove(identifier),
-                _ => throw new ArgumentException($"Invalid {nameof(HookMethodType)} enum value.", nameof(hookType)),
+                LuaCsHook.HookMethodType.Before => methodPatches.Prefixes.Remove(identifier),
+                LuaCsHook.HookMethodType.After => methodPatches.Postfixes.Remove(identifier),
+                _ => throw new ArgumentException($"Invalid {nameof(LuaCsHook.HookMethodType)} enum value.", nameof(hookType)),
             };
         }
 
-        public bool RemovePatch(string identifier, string className, string methodName, string[] parameterTypes, HookMethodType hookType)
+        public bool RemovePatch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsHook.HookMethodType hookType)
         {
             var method = ResolveMethod(className, methodName, parameterTypes);
             return RemovePatch(identifier, method, hookType);
         }
 
-        public bool RemovePatch(string identifier, string className, string methodName, HookMethodType hookType)
+        public bool RemovePatch(string identifier, string className, string methodName, LuaCsHook.HookMethodType hookType)
         {
             var method = ResolveMethod(className, methodName, null);
             return RemovePatch(identifier, method, hookType);

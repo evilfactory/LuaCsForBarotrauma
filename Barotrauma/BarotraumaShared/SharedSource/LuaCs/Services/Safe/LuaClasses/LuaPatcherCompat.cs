@@ -23,7 +23,7 @@ namespace Barotrauma.LuaCs.Services
         private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPrefixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
         private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPostfixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
 
-        private static void _hookLuaCsPatch(MethodBase __originalMethod, object[] __args, object __instance, out object result, HookMethodType hookType)
+        private static void _hookLuaCsPatch(MethodBase __originalMethod, object[] __args, object __instance, out object result, ILuaCsHook.HookMethodType hookType)
         {
             result = null;
 
@@ -33,14 +33,14 @@ namespace Barotrauma.LuaCs.Services
                 HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet = null;
                 switch (hookType)
                 {
-                    case HookMethodType.Before:
+                    case ILuaCsHook.HookMethodType.Before:
                         instance.compatHookPrefixMethods.TryGetValue(funcAddr, out methodSet);
                         break;
-                    case HookMethodType.After:
+                    case ILuaCsHook.HookMethodType.After:
                         instance.compatHookPostfixMethods.TryGetValue(funcAddr, out methodSet);
                         break;
                     default:
-                        throw new ArgumentException($"Invalid {nameof(HookMethodType)} enum value.", nameof(hookType));
+                        throw new ArgumentException($"Invalid {nameof(ILuaCsHook.HookMethodType)} enum value.", nameof(hookType));
                 }
 
                 if (methodSet != null)
@@ -98,16 +98,16 @@ namespace Barotrauma.LuaCs.Services
 
         private static bool HookLuaCsPatchPrefix(MethodBase __originalMethod, object[] __args, object __instance)
         {
-            _hookLuaCsPatch(__originalMethod, __args, __instance, out object result, HookMethodType.Before);
+            _hookLuaCsPatch(__originalMethod, __args, __instance, out object result, ILuaCsHook.HookMethodType.Before);
             return result == null;
         }
 
         private static void HookLuaCsPatchPostfix(MethodBase __originalMethod, object[] __args, object __instance) =>
-            _hookLuaCsPatch(__originalMethod, __args, __instance, out object _, HookMethodType.After);
+            _hookLuaCsPatch(__originalMethod, __args, __instance, out object _, ILuaCsHook.HookMethodType.After);
 
         private static bool HookLuaCsPatchRetPrefix(MethodBase __originalMethod, object[] __args, ref object __result, object __instance)
         {
-            _hookLuaCsPatch(__originalMethod, __args, __instance, out object result, HookMethodType.Before);
+            _hookLuaCsPatch(__originalMethod, __args, __instance, out object result, ILuaCsHook.HookMethodType.Before);
             if (result != null)
             {
                 __result = result;
@@ -118,7 +118,7 @@ namespace Barotrauma.LuaCs.Services
 
         private static void HookLuaCsPatchRetPostfix(MethodBase __originalMethod, object[] __args, ref object __result, object __instance)
         {
-            _hookLuaCsPatch(__originalMethod, __args, __instance, out object result, HookMethodType.After);
+            _hookLuaCsPatch(__originalMethod, __args, __instance, out object result, ILuaCsHook.HookMethodType.After);
             if (result != null) __result = result;
         }
 
@@ -131,10 +131,6 @@ namespace Barotrauma.LuaCs.Services
         
         public void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, ILuaCsHook.HookMethodType hookType = ILuaCsHook.HookMethodType.Before, IAssemblyPlugin owner = null)
         {
-            throw new NotImplementedException();
-        }
-        public void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, HookMethodType hookType = HookMethodType.Before, IAssemblyPlugin owner = null)
-        {
             if (identifier == null || method == null || patch == null)
             {
                 LuaCsLogger.HandleException(new ArgumentNullException("Identifier, Method and Patch arguments must not be null."), LuaCsMessageOrigin.Unknown);
@@ -145,7 +141,7 @@ namespace Barotrauma.LuaCs.Services
             var funcAddr = ((long)method.MethodHandle.GetFunctionPointer());
             var patches = Harmony.GetPatchInfo(method);
 
-            if (hookType == HookMethodType.Before)
+            if (hookType == ILuaCsHook.HookMethodType.Before)
             {
                 if (method is MethodInfo mi && mi.ReturnType != typeof(void))
                 {
@@ -177,7 +173,7 @@ namespace Barotrauma.LuaCs.Services
                 }
 
             }
-            else if (hookType == HookMethodType.After)
+            else if (hookType == ILuaCsHook.HookMethodType.After)
             {
                 if (method is MethodInfo mi && mi.ReturnType != typeof(void))
                 {
@@ -209,7 +205,7 @@ namespace Barotrauma.LuaCs.Services
                 }
             }
         }
-        protected void HookMethod(string identifier, string className, string methodName, string[] parameterNames, LuaCsCompatPatchFunc patch, HookMethodType hookMethodType = HookMethodType.Before)
+        protected void HookMethod(string identifier, string className, string methodName, string[] parameterNames, LuaCsCompatPatchFunc patch, ILuaCsHook.HookMethodType hookMethodType = ILuaCsHook.HookMethodType.Before)
         {
             var method = ResolveMethod(className, methodName, parameterNames);
             if (method == null) return;
@@ -219,26 +215,26 @@ namespace Barotrauma.LuaCs.Services
             }
             HookMethod(identifier, method, patch, hookMethodType);
         }
-        protected void HookMethod(string identifier, string className, string methodName, LuaCsCompatPatchFunc patch, HookMethodType hookMethodType = HookMethodType.Before) =>
+        protected void HookMethod(string identifier, string className, string methodName, LuaCsCompatPatchFunc patch, ILuaCsHook.HookMethodType hookMethodType = ILuaCsHook.HookMethodType.Before) =>
             HookMethod(identifier, className, methodName, null, patch, hookMethodType);
-        protected void HookMethod(string className, string methodName, LuaCsCompatPatchFunc patch, HookMethodType hookMethodType = HookMethodType.Before) =>
+        protected void HookMethod(string className, string methodName, LuaCsCompatPatchFunc patch, ILuaCsHook.HookMethodType hookMethodType = ILuaCsHook.HookMethodType.Before) =>
             HookMethod("", className, methodName, null, patch, hookMethodType);
-        protected void HookMethod(string className, string methodName, string[] parameterNames, LuaCsCompatPatchFunc patch, HookMethodType hookMethodType = HookMethodType.Before) =>
+        protected void HookMethod(string className, string methodName, string[] parameterNames, LuaCsCompatPatchFunc patch, ILuaCsHook.HookMethodType hookMethodType = ILuaCsHook.HookMethodType.Before) =>
             HookMethod("", className, methodName, parameterNames, patch, hookMethodType);
 
 
-        public void UnhookMethod(string identifier, MethodBase method, HookMethodType hookType = HookMethodType.Before)
+        public void UnhookMethod(string identifier, MethodBase method, ILuaCsHook.HookMethodType hookType = ILuaCsHook.HookMethodType.Before)
         {
             var funcAddr = (long)method.MethodHandle.GetFunctionPointer();
 
             Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> methods;
-            if (hookType == HookMethodType.Before) methods = compatHookPrefixMethods;
-            else if (hookType == HookMethodType.After) methods = compatHookPostfixMethods;
+            if (hookType == ILuaCsHook.HookMethodType.Before) methods = compatHookPrefixMethods;
+            else if (hookType == ILuaCsHook.HookMethodType.After) methods = compatHookPostfixMethods;
             else throw null;
 
             if (methods.ContainsKey(funcAddr)) methods[funcAddr]?.RemoveWhere(t => t.Item1 == identifier);
         }
-        protected void UnhookMethod(string identifier, string className, string methodName, string[] parameterNames, HookMethodType hookType = HookMethodType.Before)
+        protected void UnhookMethod(string identifier, string className, string methodName, string[] parameterNames, ILuaCsHook.HookMethodType hookType = ILuaCsHook.HookMethodType.Before)
         {
             var method = ResolveMethod(className, methodName, parameterNames);
             if (method == null) return;

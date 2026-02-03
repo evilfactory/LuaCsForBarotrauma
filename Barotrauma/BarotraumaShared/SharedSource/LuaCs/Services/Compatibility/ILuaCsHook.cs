@@ -17,12 +17,12 @@ public interface ILuaCsHook : ILuaCsShim
     T Call<T>(string eventName, params object[] args);
     
     // Hook/Method Patching
-    string Patch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, EventService.HookMethodType hookType = EventService.HookMethodType.Before);
-    string Patch(string identifier, string className, string methodName, LuaCsPatchFunc patch, EventService.HookMethodType hookType = EventService.HookMethodType.Before);
-    string Patch(string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, EventService.HookMethodType hookType = EventService.HookMethodType.Before);
-    string Patch(string className, string methodName, LuaCsPatchFunc patch, EventService.HookMethodType hookType = EventService.HookMethodType.Before);
-    bool RemovePatch(string identifier, string className, string methodName, string[] parameterTypes, EventService.HookMethodType hookType);
-    bool RemovePatch(string identifier, string className, string methodName, EventService.HookMethodType hookType);
+    string Patch(string identifier, string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before);
+    string Patch(string identifier, string className, string methodName, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before);
+    string Patch(string className, string methodName, string[] parameterTypes, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before);
+    string Patch(string className, string methodName, LuaCsPatchFunc patch, HookMethodType hookType = HookMethodType.Before);
+    bool RemovePatch(string identifier, string className, string methodName, string[] parameterTypes, HookMethodType hookType);
+    bool RemovePatch(string identifier, string className, string methodName, HookMethodType hookType);
 
     void HookMethod(string identifier, MethodBase method, LuaCsCompatPatchFunc patch, HookMethodType hookType = HookMethodType.Before, IAssemblyPlugin owner = null);
     
