@@ -21,8 +21,8 @@ namespace Barotrauma.LuaCs.Services
     {
         private static LuaPatcherService instance;
 
-        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPrefixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
-        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> compatHookPostfixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>>();
+        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc)>> compatHookPrefixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc)>>();
+        private Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc)>> compatHookPostfixMethods = new Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc)>>();
 
         private static void _hookLuaCsPatch(MethodBase __originalMethod, object[] __args, object __instance, out object result, ILuaCsHook.HookMethodType hookType)
         {
@@ -31,7 +31,7 @@ namespace Barotrauma.LuaCs.Services
             try
             {
                 var funcAddr = ((long)__originalMethod.MethodHandle.GetFunctionPointer());
-                HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet = null;
+                HashSet<(string, LuaCsCompatPatchFunc)> methodSet = null;
                 switch (hookType)
                 {
                     case ILuaCsHook.HookMethodType.Before:
@@ -53,40 +53,31 @@ namespace Barotrauma.LuaCs.Services
                         args.Add(@params[i].Name, __args[i]);
                     }
 
-                    var outOfSocpe = new HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>();
                     foreach (var tuple in methodSet)
                     {
-                        if (tuple.Item3 != null)
+                        var _result = tuple.Item2(__instance, args);
+                        if (_result != null)
                         {
-                            outOfSocpe.Add(tuple);
-                        }
-                        else
-                        {
-                            var _result = tuple.Item2(__instance, args);
-                            if (_result != null)
+                            if (_result is DynValue res)
                             {
-                                if (_result is DynValue res)
+                                if (!res.IsNil())
                                 {
-                                    if (!res.IsNil())
+                                    if (__originalMethod is MethodInfo mi && mi.ReturnType != typeof(void))
                                     {
-                                        if (__originalMethod is MethodInfo mi && mi.ReturnType != typeof(void))
-                                        {
-                                            result = res.ToObject(mi.ReturnType);
-                                        }
-                                        else
-                                        {
-                                            result = res.ToObject();
-                                        }
+                                        result = res.ToObject(mi.ReturnType);
+                                    }
+                                    else
+                                    {
+                                        result = res.ToObject();
                                     }
                                 }
-                                else
-                                {
-                                    result = _result;
-                                }
+                            }
+                            else
+                            {
+                                result = _result;
                             }
                         }
                     }
-                    foreach (var tuple in outOfSocpe) { methodSet.Remove(tuple); }
                 }
             }
             catch (Exception ex)
@@ -159,18 +150,18 @@ namespace Barotrauma.LuaCs.Services
                     }
                 }
 
-                if (compatHookPrefixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet))
+                if (compatHookPrefixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc)> methodSet))
                 {
                     if (identifier != "")
                     {
                         methodSet.RemoveWhere(tuple => tuple.Item1 == identifier);
                     }
 
-                    methodSet.Add((identifier, patch, owner));
+                    methodSet.Add((identifier, patch));
                 }
                 else if (patch != null)
                 {
-                    compatHookPrefixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>() { (identifier, patch, owner) });
+                    compatHookPrefixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc)>() { (identifier, patch) });
                 }
 
             }
@@ -191,18 +182,18 @@ namespace Barotrauma.LuaCs.Services
                     }
                 }
 
-                if (compatHookPostfixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)> methodSet))
+                if (compatHookPostfixMethods.TryGetValue(funcAddr, out HashSet<(string, LuaCsCompatPatchFunc)> methodSet))
                 {
                     if (identifier != "")
                     {
                         methodSet.RemoveWhere(tuple => tuple.Item1 == identifier);
                     }
 
-                    methodSet.Add((identifier, patch, owner));
+                    methodSet.Add((identifier, patch));
                 }
                 else if (patch != null)
                 {
-                    compatHookPostfixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>() { (identifier, patch, owner) });
+                    compatHookPostfixMethods.Add(funcAddr, new HashSet<(string, LuaCsCompatPatchFunc)>() { (identifier, patch) });
                 }
             }
         }
@@ -228,7 +219,7 @@ namespace Barotrauma.LuaCs.Services
         {
             var funcAddr = (long)method.MethodHandle.GetFunctionPointer();
 
-            Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc, IAssemblyPlugin)>> methods;
+            Dictionary<long, HashSet<(string, LuaCsCompatPatchFunc)>> methods;
             if (hookType == ILuaCsHook.HookMethodType.Before) methods = compatHookPrefixMethods;
             else if (hookType == ILuaCsHook.HookMethodType.After) methods = compatHookPostfixMethods;
             else throw null;
