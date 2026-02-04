@@ -5,6 +5,7 @@ using FluentResults;
 using FluentResults.LuaCs;
 using HarmonyLib;
 using Microsoft.Toolkit.Diagnostics;
+using MoonSharp.Interpreter;
 using OneOf;
 using RestSharp;
 using System;
@@ -133,6 +134,11 @@ public partial class EventService : IEventService
     
     public object Call(string eventName, params object[] args)
     {
+        return Call<object>(eventName, args);
+    }
+
+    public T Call<T>(string eventName, params object[] args)
+    {
         Guard.IsNotNullOrWhiteSpace(eventName, nameof(eventName));
         using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
@@ -140,16 +146,36 @@ public partial class EventService : IEventService
         if (!_luaLegacyEventsSubscribers.TryGetValue(eventName, out var eventSubscribers)
             || eventSubscribers.IsEmpty)
         {
-            return null;
+            return default;
         }
 
-        object returnValue = null;
+        T returnValue = default;
 
         foreach (var subscriber in eventSubscribers)
         {
             try
             {
-                returnValue = subscriber.Value.Invoke(args);
+                object result = subscriber.Value.Invoke(args);
+                if (result is DynValue luaResult)
+                {
+                    if (luaResult.Type == DataType.Tuple)
+                    {
+                        bool replaceNil = luaResult.Tuple.Length > 1 && luaResult.Tuple[1].CastToBool();
+
+                        if (!luaResult.Tuple[0].IsNil() || replaceNil)
+                        {
+                            returnValue = luaResult.ToObject<T>();
+                        }
+                    }
+                    else if (!luaResult.IsNil())
+                    {
+                        returnValue = luaResult.ToObject<T>();
+                    }
+                }
+                else
+                {
+                    returnValue = (T)result;
+                }
             }
             catch (Exception e)
             {
@@ -161,11 +187,6 @@ public partial class EventService : IEventService
         }
 
         return returnValue;
-    }
-
-    public T Call<T>(string eventName, params object[] args)
-    {
-        return (T)Call(eventName, args);
     }
 
     public void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : IEvent<T>
