@@ -73,12 +73,12 @@ public class SettingEntry<T> : ISettingEntry<T> where T : IEquatable<T>
     public Guid InstanceId { get; }
     public NetSync SyncType { get; }
     public ClientPermissions WritePermissions { get; }
-    public void ReadNetMessage(INetReadMessage message)
+    public void ReadNetMessage(IReadMessage message)
     {
         throw new NotImplementedException();
     }
 
-    public void WriteNetMessage(INetWriteMessage message)
+    public void WriteNetMessage(IWriteMessage message)
     {
         throw new NotImplementedException();
     }

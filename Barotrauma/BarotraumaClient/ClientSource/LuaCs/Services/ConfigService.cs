@@ -7,7 +7,7 @@ using FluentResults;
 
 namespace Barotrauma.LuaCs.Services;
 
-public partial class ConfigService
+public sealed partial class ConfigService
 {
     public ImmutableArray<IDisplayableConfigBase> GetDisplayableConfigs()
     {

@@ -28,14 +28,14 @@ public interface INetworkSyncEntity
     /// machine.
     /// </summary>
     /// <param name="message">Wrapper for the internal type: <see cref="IReadMessage"/></param>
-    void ReadNetMessage(INetReadMessage message);
+    void ReadNetMessage(IReadMessage message);
     
     /// <summary>
     /// Called when a network send-event involving this entity is triggered. Any data expected to be read by the recipient
     /// network object on the other instance(s) should be written to the packet.  
     /// </summary>
     /// <param name="message">Wrapper for the internal type: <see cref="IWriteMessage"/></param>
-    void WriteNetMessage(INetWriteMessage message);
+    void WriteNetMessage(IWriteMessage message);
 }
 
 /// <summary>
