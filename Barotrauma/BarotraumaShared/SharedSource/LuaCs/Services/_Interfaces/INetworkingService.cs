@@ -13,7 +13,7 @@ internal partial interface INetworkingService : IReusableService, ILuaCsNetworki
     bool IsActive { get; }
     bool IsSynchronized { get; }
 
-    public INetWriteMessage Start(Guid netId);
+    public IWriteMessage Start(Guid netId);
     public void Receive(Guid netId, NetMessageReceived action);
 #if SERVER
     public void Send(IWriteMessage netMessage, NetworkConnection connection = null, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable);

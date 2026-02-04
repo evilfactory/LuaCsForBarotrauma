@@ -50,7 +50,7 @@ partial class NetworkingService : INetworkingService
         throw new NotImplementedException();
     }
 
-    public INetWriteMessage Start(Guid netId)
+    public IWriteMessage Start(Guid netId)
     {
         var message = new WriteOnlyMessage();
 
@@ -67,7 +67,7 @@ partial class NetworkingService : INetworkingService
             message.WriteBytes(netId.ToByteArray(), 0, 16);
         }
 
-        return message.ToNetWriteMessage();
+        return message;
     }
 
     public void RequestId(Guid netId)

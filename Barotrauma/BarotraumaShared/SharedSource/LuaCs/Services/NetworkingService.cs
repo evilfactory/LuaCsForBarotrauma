@@ -46,28 +46,6 @@ internal partial class NetworkingService : INetworkingService
 #endif
     }
 
-    public void RegisterNetVar(INetworkSyncEntity netVar)
-    {
-        netVars[netVar.InstanceId] = netVar;
-
-        netReceives[netVar.InstanceId] = (IReadMessage netMessage) =>
-        {
-            INetReadMessage internalMind = new NetReadMessage();
-            internalMind.SetMessage(netMessage);
-            netVar.ReadNetMessage(internalMind);
-        };
-    }
-
-    public void SendNetVar(INetworkSyncEntity netVar)
-    {
-        if (netVars.ContainsKey(netVar.InstanceId))
-        {
-            INetWriteMessage message = Start(netVar.InstanceId);
-            netVar.WriteNetMessage(message);
-            Send(message.Message);
-        }
-    }
-
     public void Receive(Guid netId, NetMessageReceived callback)
     {
 #if SERVER
@@ -124,5 +102,15 @@ internal partial class NetworkingService : INetworkingService
     public void Dispose()
     {
         IsDisposed = true;
+    }
+
+    public void RegisterNetVar(INetworkSyncEntity netVar)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SendNetVar(INetworkSyncEntity netVar)
+    {
+        throw new NotImplementedException();
     }
 }

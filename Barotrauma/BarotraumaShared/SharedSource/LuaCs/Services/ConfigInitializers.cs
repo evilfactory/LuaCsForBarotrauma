@@ -2,6 +2,7 @@
 using System.Numerics;
 using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.Networking;
 using FluentResults;
 using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
@@ -27,15 +28,15 @@ public class ConfigInitializers : IService
     public bool IsDisposed => false;
 
     private Result<ISettingEntry<T>> CreateConfigEntry<T>(IConfigInfo configInfo,
-        Action<SettingEntry<T>, INetReadMessage> readHandler, 
-        Action<SettingEntry<T>, INetWriteMessage> writeHandler)
+        Action<SettingEntry<T>, IReadMessage> readHandler, 
+        Action<SettingEntry<T>, IWriteMessage> writeHandler)
         where T : IEquatable<T>
     {
         throw new NotImplementedException();
     }
     
     private Result<ISettingList<T>> CreateConfigList<T>(IConfigInfo configInfo, 
-        Action<ISettingList<T>, INetReadMessage> readHandler, Action<ISettingList<T>, INetWriteMessage> writeHandler) 
+        Action<ISettingList<T>, IReadMessage> readHandler, Action<ISettingList<T>, IWriteMessage> writeHandler) 
         where T : IEquatable<T>
     {
         throw new NotImplementedException();
