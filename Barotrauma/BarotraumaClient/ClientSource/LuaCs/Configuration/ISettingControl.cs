@@ -6,7 +6,6 @@ public interface ISettingControl : ISettingBase
 {
     event Action<ISettingControl> OnDown;
     KeyOrMouse Value { get; }
-    bool IsAssignable(KeyOrMouse value);
     bool TrySetValue(KeyOrMouse value);
     bool IsDown();
 }

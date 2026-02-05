@@ -11,7 +11,14 @@ public interface INetworkSyncEntity
     /// <summary>
     /// Network-synchronized object ID. Used for networking send/receive message events.
     /// </summary>
-    Guid InstanceId { get; }
+    ulong InstanceId { get; }
+
+    /// <summary>
+    /// Sets the <see cref="IEntityNetworkingService"/> that is currently managing this instance. The <see cref="InstanceId"/>
+    /// is retrieved from here.
+    /// </summary>
+    /// <param name="networkingService">The networking service managing this instance or null to deregister.</param>
+    void SetNetworkOwner(IEntityNetworkingService networkingService);
     
     /// <summary>
     /// Synchronization type. See <see cref="NetSync"/> for more information.

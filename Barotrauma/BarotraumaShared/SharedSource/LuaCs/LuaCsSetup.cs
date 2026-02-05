@@ -106,7 +106,7 @@ namespace Barotrauma
             internal set => _isCsEnabled?.TrySetValue(value);
         }
 
-        private ISettingEntry<bool> _isCsEnabled;
+        private SettingEntry<bool> _isCsEnabled;
 
         /// <summary>
         /// Whether the popup error GUI should be hidden/suppressed.
@@ -116,7 +116,7 @@ namespace Barotrauma
             get => _disableErrorGUIOverlay?.Value ?? false;
             internal set => _disableErrorGUIOverlay?.TrySetValue(value);
         }
-        private ISettingEntry<bool> _disableErrorGUIOverlay;
+        private SettingEntry<bool> _disableErrorGUIOverlay;
 
         /// <summary>
         /// Whether usernames are anonymized or show in logs. 
@@ -126,7 +126,7 @@ namespace Barotrauma
             get => _hideUserNamesInLogs?.Value ?? false;
             internal set => _hideUserNamesInLogs?.TrySetValue(value);
         }
-        private ISettingEntry<bool> _hideUserNamesInLogs;
+        private SettingEntry<bool> _hideUserNamesInLogs;
 
         /// <summary>
         /// The SteamId of the Workshop LuaCs CPackage in use, if available.
@@ -136,7 +136,7 @@ namespace Barotrauma
             get => _luaForBarotraumaSteamId?.Value ?? 0;
             internal set => _luaForBarotraumaSteamId?.TrySetValue(value);
         }
-        private ISettingEntry<ulong> _luaForBarotraumaSteamId;
+        private SettingEntry<ulong> _luaForBarotraumaSteamId;
 
         /// <summary>
         /// TODO: @evilfactory@users.noreply.github.com
@@ -146,7 +146,7 @@ namespace Barotrauma
             get => _restrictMessageSize?.Value ?? false;
             internal set => _restrictMessageSize?.TrySetValue(value);
         }
-        private ISettingEntry<bool> _restrictMessageSize;
+        private SettingEntry<bool> _restrictMessageSize;
 
         /// <summary>
         /// The local save path for all local data storage for mods.
@@ -156,21 +156,21 @@ namespace Barotrauma
             get => _localDataSavePath?.Value ?? Path.Combine(Directory.GetCurrentDirectory(), "/Data/Mods");
             internal set => _localDataSavePath?.TrySetValue(value);
         }
-        private ISettingEntry<string> _localDataSavePath;
+        private SettingEntry<string> _localDataSavePath;
 
         void LoadLuaCsConfig()
         {
-            _isCsEnabled = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
+            _isCsEnabled = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
                 : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            _disableErrorGUIOverlay = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
+            _disableErrorGUIOverlay = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
                 : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            _hideUserNamesInLogs = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
+            _hideUserNamesInLogs = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
                 : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            _luaForBarotraumaSteamId = ConfigService.TryGetConfig<ISettingEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
+            _luaForBarotraumaSteamId = ConfigService.TryGetConfig<SettingEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
                 : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            _restrictMessageSize = ConfigService.TryGetConfig<ISettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
+            _restrictMessageSize = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
                 : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
-            _localDataSavePath = ConfigService.TryGetConfig<ISettingEntry<string>>(ContentPackageManager.VanillaCorePackage, "LocalDataSavePath", out var val8) ? val8
+            _localDataSavePath = ConfigService.TryGetConfig<SettingEntry<string>>(ContentPackageManager.VanillaCorePackage, "LocalDataSavePath", out var val8) ? val8
                 : throw new NullReferenceException($"{nameof(LocalDataSavePath)} cannot be loaded.");
         }
         

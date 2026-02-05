@@ -104,6 +104,11 @@ internal partial class NetworkingService : INetworkingService
         IsDisposed = true;
     }
 
+    public ulong GetNetworkIdForInstance(INetworkSyncEntity entity)
+    {
+        throw new NotImplementedException();
+    }
+
     public void RegisterNetVar(INetworkSyncEntity netVar)
     {
         throw new NotImplementedException();
