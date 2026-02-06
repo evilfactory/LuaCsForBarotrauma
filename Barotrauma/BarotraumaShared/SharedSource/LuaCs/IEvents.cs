@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Barotrauma.LuaCs.Configuration;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs;
 using Barotrauma.Networking;
 using Dynamitey;
 using ImpromptuInterface;

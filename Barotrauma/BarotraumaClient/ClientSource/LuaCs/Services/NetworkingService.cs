@@ -1,10 +1,10 @@
-﻿using Barotrauma.LuaCs.Services;
+﻿using Barotrauma.LuaCs;
 using Barotrauma.Networking;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 
 partial class NetworkingService : INetworkingService
 {

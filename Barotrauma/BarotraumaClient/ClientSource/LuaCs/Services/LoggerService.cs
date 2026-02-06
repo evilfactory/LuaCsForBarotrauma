@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 
 public partial class LoggerService : ILoggerService, IClientLoggerService
 {

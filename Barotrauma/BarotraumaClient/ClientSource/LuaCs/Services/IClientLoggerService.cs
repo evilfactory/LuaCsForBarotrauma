@@ -1,4 +1,4 @@
-﻿namespace Barotrauma.LuaCs.Services;
+﻿namespace Barotrauma.LuaCs;
 
 public interface IClientLoggerService : IReusableService
 {

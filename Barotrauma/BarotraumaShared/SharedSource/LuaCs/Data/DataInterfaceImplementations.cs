@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml.Linq;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs;
 using Barotrauma.Steam;
 using OneOf;
 

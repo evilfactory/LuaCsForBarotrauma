@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.AccessControl;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs;
 using Barotrauma.Networking;
 using FluentResults;
 using OneOf.Types;

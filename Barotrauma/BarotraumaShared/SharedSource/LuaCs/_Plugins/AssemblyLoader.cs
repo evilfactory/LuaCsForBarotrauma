@@ -21,7 +21,7 @@ using Path = System.IO.Path;
 
 [assembly: InternalsVisibleTo(IAssemblyLoaderService.InternalsAwareAssemblyName)]
 
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
 {
     public class Factory : IAssemblyLoaderService.IFactory

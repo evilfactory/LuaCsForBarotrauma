@@ -1,6 +1,6 @@
 ﻿using Barotrauma.Networking;
 
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 
 internal partial interface INetworkingService : IReusableService
 {

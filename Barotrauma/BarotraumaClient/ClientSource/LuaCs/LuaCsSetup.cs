@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Barotrauma.CharacterEditor;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs;
 
 // ReSharper disable ObjectCreationAsStatement
 

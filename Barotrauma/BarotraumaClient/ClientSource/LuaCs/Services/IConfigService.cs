@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs;
 using Barotrauma.Networking;
 
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 
 public partial interface IConfigService
 {

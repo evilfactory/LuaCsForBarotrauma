@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Barotrauma.LuaCs.Configuration;
+namespace Barotrauma.LuaCs.Data;
 
 public interface ISettingControl : ISettingBase
 {

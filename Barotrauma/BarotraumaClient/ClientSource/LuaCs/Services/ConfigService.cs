@@ -5,7 +5,7 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 using FluentResults;
 
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 
 public sealed partial class ConfigService
 {

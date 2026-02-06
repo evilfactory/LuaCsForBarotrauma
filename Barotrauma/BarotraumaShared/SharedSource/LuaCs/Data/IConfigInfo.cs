@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml.Linq;
-using Barotrauma.LuaCs.Services;
+using Barotrauma.LuaCs;
 using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs.Data;

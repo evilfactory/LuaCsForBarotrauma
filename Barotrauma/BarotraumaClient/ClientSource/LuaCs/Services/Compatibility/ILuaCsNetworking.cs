@@ -1,6 +1,6 @@
 ﻿using Barotrauma.Networking;
 
-namespace Barotrauma.LuaCs.Services.Compatibility;
+namespace Barotrauma.LuaCs.Compatibility;
 
 internal partial interface ILuaCsNetworking : ILuaCsShim
 {

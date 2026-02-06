@@ -1,4 +1,4 @@
-using Barotrauma.LuaCs.Configuration;
+using Barotrauma.LuaCs.Data;
 
 namespace Barotrauma.LuaCs.Data;
 

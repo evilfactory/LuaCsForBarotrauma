@@ -1,11 +1,11 @@
-﻿using Barotrauma.LuaCs.Services;
+﻿using Barotrauma.LuaCs;
 using Barotrauma.Networking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 // ReSharper disable once CheckNamespace
-namespace Barotrauma.LuaCs.Services;
+namespace Barotrauma.LuaCs;
 
 partial class NetworkingService : INetworkingService
 {

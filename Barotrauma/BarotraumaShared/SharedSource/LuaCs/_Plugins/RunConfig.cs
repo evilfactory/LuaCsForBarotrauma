@@ -6,6 +6,7 @@ using Barotrauma.LuaCs.Data;
 namespace Barotrauma;
 
 [Serializable]
+[Obsolete($"Use {nameof(IModConfigInfo)} instead. This class exists for legacy compatibility only.")]
 public sealed class RunConfig : IRunConfig
 {
     /// <summary>

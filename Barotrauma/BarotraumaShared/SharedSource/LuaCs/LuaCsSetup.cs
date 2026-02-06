@@ -9,20 +9,16 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs;
-using Barotrauma.LuaCs.Configuration;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Events;
-using Barotrauma.LuaCs.Services;
-using Barotrauma.LuaCs.Services.Compatibility;
-using Barotrauma.LuaCs.Services.Processing;
-using Barotrauma.LuaCs.Services.Safe;
+using Barotrauma.LuaCs.Compatibility;
 using Barotrauma.Networking;
 using Barotrauma.Steam;
 using FluentResults;
 using ImpromptuInterface;
 using LightInject;
 using Microsoft.Toolkit.Diagnostics;
-using AssemblyLoader = Barotrauma.LuaCs.Services.AssemblyLoader;
+using AssemblyLoader = Barotrauma.LuaCs.AssemblyLoader;
 
 namespace Barotrauma
 {
@@ -193,10 +189,11 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<ILuaPatcher, LuaPatcherService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaUserDataService, LuaUserDataService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ISafeLuaUserDataService, SafeLuaUserDataService>(ServiceLifetime.Singleton);
-
+            servicesProvider.RegisterServiceType<ILuaCsInfoProvider, LuaCsInfoProvider>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaCsTimer, LuaCsTimer>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<ISettingsRegistrationProvider, SettingsEntryRegistrar>(ServiceLifetime.Transient);
             // TODO: INetworkingService
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);

@@ -1,6 +1,6 @@
 ﻿extern alias Client;
 extern alias Server;
-using Client::Barotrauma.LuaCs.Services;
+using Client::Barotrauma.LuaCs;
 using Client::Barotrauma; 
 using MoonSharp.Interpreter;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using Server::Barotrauma.LuaCs.Services.Compatibility;
+using Server::Barotrauma.LuaCs.Compatibility;
 using Xunit;
 
 namespace TestProject.LuaCs
