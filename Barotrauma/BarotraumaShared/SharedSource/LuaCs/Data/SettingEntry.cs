@@ -102,7 +102,7 @@ public class SettingEntry<T> : SettingBase, ISettingBase<T>, INetworkSyncEntity 
                 }
             });
 
-        return isFailed || TrySetValue(typeConvertedValue);
+        return !isFailed && TrySetValue(typeConvertedValue);
     }
 
     public override OneOf<string, XElement> GetSerializableValue() => Value.ToString();
