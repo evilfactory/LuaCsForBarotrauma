@@ -64,7 +64,7 @@ public class SettingsEntryRegistrar : ISettingsRegistrationProvider
         Func<OneOf<string, XElement, object>, bool> valueChangePredicate)
     {
         return !info.Element.GetAttributeBool("ReadOnly", false)
-               || !info.EditableStates.HasFlag(_infoProvider?.CurrentRunState ?? RunState.Running)
+               || info.EditableStates < _infoProvider.CurrentRunState 
                || valueChangePredicate is null 
                || valueChangePredicate.Invoke(newValue);
     }

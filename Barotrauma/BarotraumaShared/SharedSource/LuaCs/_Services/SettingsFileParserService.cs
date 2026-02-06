@@ -92,9 +92,9 @@ public sealed class SettingsFileParserService :
                     OwnerPackage = res.path.ContentPackage,
                     DataType = element.GetAttributeString("Type", string.Empty),
                     Element = element,
-                    EditableStates = element.GetAttributeBool("AllowChangesWhileExecuting", true) ? RunState.Running :
-                        element.GetAttributeBool("ReadOnly", false) ? RunState.LoadedNoExec :
-                        RunState.Unloaded,
+                    EditableStates = element.GetAttributeBool("ReadOnly", false) ? RunState.Unloaded :
+                        element.GetAttributeBool("AllowChangesWhileExecuting", true) ? RunState.Running :
+                        RunState.LoadedNoExec,
                     NetSync = element.GetAttributeEnum("NetSync", NetSync.None),
 #if CLIENT
                     DisplayName = $"{packageIdent}.{name}.DisplayName",
