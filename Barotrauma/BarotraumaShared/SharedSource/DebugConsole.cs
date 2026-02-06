@@ -2311,6 +2311,55 @@ namespace Barotrauma
                 NewMessage($"Start item set changed to \"{AutoItemPlacer.DefaultStartItemSet}\"");
             }, isCheat: false));
 
+            commands.Add(new Command("cfg_setvalue", "cfg_setvalue [Content Package] [InternalName] [ValueString]: sets a config.", (string[] args) =>
+            {
+                if (args.Length < 1)
+                {
+                    ThrowError("Please specify the name of the package to set the config.");
+                    return;
+                }
+
+                if (args.Length < 2)
+                {
+                    ThrowError("Please specify the name of the config.");
+                    return;
+                }
+
+                if (args.Length < 3)
+                {
+                    ThrowError("Please specify the value to set the config to.");
+                    return;
+                }
+
+                var package = ContentPackageManager.RegularPackages.FirstOrDefault(p => p.Name == args[0]);
+                if (package == null)
+                {
+                    ThrowError($"Could not find the package {args[0]}!");
+                    return;
+                }
+
+                string internalName = args[1];
+                string valueString = args[2];
+
+                if (!GameMain.LuaCs.ConfigService.TryGetConfig(package, internalName, out LuaCs.Data.ISettingBase setting))
+                {
+                    ThrowError($"Could not get config with name {internalName}");
+                    return;
+                }
+
+                if (setting.TrySetValue(valueString))
+                {
+                    NewMessage($"Set config {internalName} value to {valueString}", Color.Green);
+                }
+                else
+                {
+                    ThrowError($"Failed to set config value");
+                }
+            }, getValidArgs: () => new[]
+            {
+                 ContentPackageManager.RegularPackages.Select(p => p.Name).ToArray()
+            }));
+
             //"dummy commands" that only exist so that the server can give clients permissions to use them
             //TODO: alphabetical order?
             commands.Add(new Command("control", "control [character name]: Start controlling the specified character (client-only).", null, () =>
