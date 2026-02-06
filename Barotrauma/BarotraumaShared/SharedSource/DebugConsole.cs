@@ -2311,6 +2311,41 @@ namespace Barotrauma
                 NewMessage($"Start item set changed to \"{AutoItemPlacer.DefaultStartItemSet}\"");
             }, isCheat: false));
 
+            commands.Add(new Command("cfg_getvalue", "cfg_getvalue [Content Package] [InternalName] [ValueString]: gets a config value.", (string[] args) =>
+            {
+                if (args.Length < 1)
+                {
+                    ThrowError("Please specify the name of the package to set the config.");
+                    return;
+                }
+
+                if (args.Length < 2)
+                {
+                    ThrowError("Please specify the name of the config.");
+                    return;
+                }
+
+                var package = ContentPackageManager.RegularPackages.FirstOrDefault(p => p.Name == args[0]);
+                if (package == null)
+                {
+                    ThrowError($"Could not find the package {args[0]}!");
+                    return;
+                }
+
+                string internalName = args[1];
+
+                if (!GameMain.LuaCs.ConfigService.TryGetConfig(package, internalName, out LuaCs.Data.ISettingBase setting))
+                {
+                    ThrowError($"Could not get config with name {internalName}");
+                    return;
+                }
+
+                NewMessage($"config {internalName} value is {setting.GetStringValue()}", Color.Green);
+            }, getValidArgs: () => new[]
+            {
+                 ContentPackageManager.RegularPackages.Select(p => p.Name).ToArray()
+            }));
+
             commands.Add(new Command("cfg_setvalue", "cfg_setvalue [Content Package] [InternalName] [ValueString]: sets a config.", (string[] args) =>
             {
                 if (args.Length < 1)
