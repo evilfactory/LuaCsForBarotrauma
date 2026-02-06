@@ -223,7 +223,8 @@ public class PluginManagementService : IAssemblyManagementService
             foreach (var type in ass.GetSafeTypes())
             {
                 if ((includeInterfaces || !type.IsInterface)
-                    && (includeAbstractTypes || !type.IsAbstract))
+                    && (includeAbstractTypes || !type.IsAbstract)
+                    && type.IsAssignableTo(typeof(T)))
                 {
                     builder.Add(type);
                 }
