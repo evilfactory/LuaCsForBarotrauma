@@ -33,26 +33,8 @@ namespace Barotrauma
         {
             // == startup
             _servicesProvider = SetupServicesProvider();
-            if (!ValidateLuaCsContent())
-            {
-                Logger.LogError($"{nameof(LuaCsSetup)}: ModConfig.xml missing. Unable to continue.");
-                throw new ApplicationException($"{nameof(LuaCsSetup)}: Lua's ModConfig.xml is missing. Unable to continue.");
-            }
             _runStateMachine = SetupStateMachine();
             SubscribeToLuaCsEvents();
-        }
-        
-        private bool ValidateLuaCsContent()
-        {
-#if DEBUG
-            // TODO: we just wanna boot for now
-            return true;
-#endif
-            // check if /Content/ModConfig.xml exists
-            // if not, try to copy missing files from the Local Mods folder 
-            // if not, try to copy missing files from the Workshop Mods folder
-            // if that fails, throw an error and exit.
-            throw new NotImplementedException();
         }
         
         private void SubscribeToLuaCsEvents()
@@ -102,7 +84,7 @@ namespace Barotrauma
             internal set => _isCsEnabled?.TrySetValue(value);
         }
 
-        private SettingEntry<bool> _isCsEnabled;
+        private ISettingBase<bool> _isCsEnabled;
 
         /// <summary>
         /// Whether the popup error GUI should be hidden/suppressed.
@@ -112,7 +94,7 @@ namespace Barotrauma
             get => _disableErrorGUIOverlay?.Value ?? false;
             internal set => _disableErrorGUIOverlay?.TrySetValue(value);
         }
-        private SettingEntry<bool> _disableErrorGUIOverlay;
+        private ISettingBase<bool> _disableErrorGUIOverlay;
 
         /// <summary>
         /// Whether usernames are anonymized or show in logs. 
@@ -122,7 +104,7 @@ namespace Barotrauma
             get => _hideUserNamesInLogs?.Value ?? false;
             internal set => _hideUserNamesInLogs?.TrySetValue(value);
         }
-        private SettingEntry<bool> _hideUserNamesInLogs;
+        private ISettingBase<bool> _hideUserNamesInLogs;
 
         /// <summary>
         /// The SteamId of the Workshop LuaCs CPackage in use, if available.
@@ -132,7 +114,7 @@ namespace Barotrauma
             get => _luaForBarotraumaSteamId?.Value ?? 0;
             internal set => _luaForBarotraumaSteamId?.TrySetValue(value);
         }
-        private SettingEntry<ulong> _luaForBarotraumaSteamId;
+        private ISettingBase<ulong> _luaForBarotraumaSteamId;
 
         /// <summary>
         /// TODO: @evilfactory@users.noreply.github.com
@@ -142,7 +124,7 @@ namespace Barotrauma
             get => _restrictMessageSize?.Value ?? false;
             internal set => _restrictMessageSize?.TrySetValue(value);
         }
-        private SettingEntry<bool> _restrictMessageSize;
+        private ISettingBase<bool> _restrictMessageSize;
 
         /// <summary>
         /// The local save path for all local data storage for mods.
@@ -152,28 +134,45 @@ namespace Barotrauma
             get => _localDataSavePath?.Value ?? Path.Combine(Directory.GetCurrentDirectory(), "/Data/Mods");
             internal set => _localDataSavePath?.TrySetValue(value);
         }
-        private SettingEntry<string> _localDataSavePath;
+        private ISettingBase<string> _localDataSavePath;
 
         void LoadLuaCsConfig()
         {
-            _isCsEnabled = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "IsCsEnabled", out var val1) ? val1
-                : throw new NullReferenceException($"{nameof(IsCsEnabled)} cannot be loaded.");
-            _disableErrorGUIOverlay = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "DisableErrorGUIOverlay", out var val3) ? val3
-                : throw new NullReferenceException($"{nameof(DisableErrorGUIOverlay)} cannot be loaded.");
-            _hideUserNamesInLogs = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "HideUserNamesInLogs", out var val4) ? val4
-                : throw new NullReferenceException($"{nameof(HideUserNamesInLogs)} cannot be loaded.");
-            _luaForBarotraumaSteamId = ConfigService.TryGetConfig<SettingEntry<ulong>>(ContentPackageManager.VanillaCorePackage, "LuaForBarotraumaSteamId", out var val5) ? val5 
-                : throw new NullReferenceException($"{nameof(LuaForBarotraumaSteamId)} cannot be loaded.");
-            _restrictMessageSize = ConfigService.TryGetConfig<SettingEntry<bool>>(ContentPackageManager.VanillaCorePackage, "RestrictMessageSize", out var val7) ? val7
-                : throw new NullReferenceException($"{nameof(RestrictMessageSize)} cannot be loaded.");
-            _localDataSavePath = ConfigService.TryGetConfig<SettingEntry<string>>(ContentPackageManager.VanillaCorePackage, "LocalDataSavePath", out var val8) ? val8
-                : throw new NullReferenceException($"{nameof(LocalDataSavePath)} cannot be loaded.");
+            var luaCsPackage = ContentPackageManager.EnabledPackages.Regular.FirstOrDefault(cp => cp.NameMatches("LuaCsForBarotrauma"), null)
+                ?? ContentPackageManager.LocalPackages.FirstOrDefault(cp => cp.NameMatches("LuaCsForBarotrauma"))
+                ?? ContentPackageManager.WorkshopPackages.FirstOrDefault(cp => cp.NameMatches("LuaCsForBarotrauma"));
+            
+            _isCsEnabled = 
+                ConfigService.TryGetConfig<ISettingBase<bool>>(luaCsPackage, "IsCsEnabled", out var val1)
+                    ? val1
+                    : null;
+            _disableErrorGUIOverlay =
+                ConfigService.TryGetConfig<ISettingBase<bool>>(luaCsPackage, "DisableErrorGUIOverlay", out var val3)
+                    ? val3
+                    : null;
+            _hideUserNamesInLogs =
+                ConfigService.TryGetConfig<ISettingBase<bool>>(luaCsPackage, "HideUserNamesInLogs", out var val4)
+                    ? val4
+                    : null;
+            _luaForBarotraumaSteamId =
+                ConfigService.TryGetConfig<ISettingBase<ulong>>(luaCsPackage, "LuaForBarotraumaSteamId", out var val5)
+                    ? val5
+                    : null;
+            _restrictMessageSize =
+                ConfigService.TryGetConfig<ISettingBase<bool>>(luaCsPackage, "RestrictMessageSize", out var val7)
+                    ? val7
+                    : null;
+            _localDataSavePath =
+                ConfigService.TryGetConfig<ISettingBase<string>>(luaCsPackage, "LocalDataSavePath", out var val8)
+                    ? val8
+                    : null;
         }
         
         private IServicesProvider SetupServicesProvider()
         {
             var servicesProvider = new ServicesProvider();
             
+            // Base Service
             servicesProvider.RegisterServiceType<ILoggerService, LoggerService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<PerformanceCounterService, PerformanceCounterService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IStorageService, StorageService>(ServiceLifetime.Transient);
@@ -182,9 +181,22 @@ namespace Barotrauma
             servicesProvider.RegisterServiceResolver<ILuaCsHook>(factory => factory.GetInstance<IEventService>() as ILuaCsHook);
             servicesProvider.RegisterServiceType<IPackageManagementService, PackageManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IAssemblyManagementService, PluginManagementService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceResolver<IPluginManagementService>(factory => factory.GetInstance<IAssemblyManagementService>());
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
+            // TODO: INetworkingService
+
+            // Extension/Sub Services
+            servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<ISettingsRegistrationProvider, SettingsEntryRegistrar>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigInfo>, SettingsFileParserService>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigProfileInfo>, SettingsFileParserService>(ServiceLifetime.Transient);
+            
+            // All Lua Extras
             servicesProvider.RegisterServiceType<IDefaultLuaRegistrar, DefaultLuaRegistrar>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaPatcher, LuaPatcherService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaUserDataService, LuaUserDataService>(ServiceLifetime.Singleton);
@@ -193,20 +205,13 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<ILuaScriptLoader, LuaScriptLoader>(ServiceLifetime.Transient);
             servicesProvider.RegisterServiceType<LuaGame, LuaGame>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaCsTimer, LuaCsTimer>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<ISettingsRegistrationProvider, SettingsEntryRegistrar>(ServiceLifetime.Transient);
-            // TODO: INetworkingService
-            servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
-            servicesProvider.RegisterServiceType<IModConfigService, ModConfigService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IAssemblyResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, ILuaScriptResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceAsync<ResourceParserInfo, IConfigResourceInfo>, ModConfigFileParserService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigInfo>, SettingsFileParserService>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigProfileInfo>, SettingsFileParserService>(ServiceLifetime.Transient);
+
             // service config data
             servicesProvider.RegisterServiceType<IStorageServiceConfig, StorageServiceConfig>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<ILuaScriptServicesConfig, LuaScriptServicesConfig>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IConfigServiceConfig, ConfigServiceConfig>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IPackageManagementServiceConfig, PackageManagementServiceConfig>(ServiceLifetime.Singleton);
+
             // gen IL
             servicesProvider.Compile();
             return servicesProvider;
@@ -291,6 +296,7 @@ namespace Barotrauma
                     Logger.LogResults(PackageManagementService.UnloadAllPackages());
                 }
 
+                ConfigService.Reset();
                 LuaScriptManagementService.Reset();
                 PackageManagementService.Reset();
                 EventService.Reset();
@@ -309,9 +315,12 @@ namespace Barotrauma
 
                 if (!PackageManagementService.IsAnyPackageLoaded())
                 {
+                    foreach (var registrationProvider in _servicesProvider.GetAllServices<ISettingsRegistrationProvider>())
+                    {
+                        registrationProvider.RegisterTypeProviders(ConfigService, null);
+                    }
                     Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
-                    // TODO: Implement full xml content necessary for this to work.
-                    //LoadLuaCsConfig();
+                    LoadLuaCsConfig();
                 }
 
                 CurrentRunState = RunState.LoadedNoExec;
@@ -321,9 +330,12 @@ namespace Barotrauma
             {
                 if (!PackageManagementService.IsAnyPackageLoaded())
                 {
+                    foreach (var registrationProvider in _servicesProvider.GetAllServices<ISettingsRegistrationProvider>())
+                    {
+                        registrationProvider.RegisterTypeProviders(ConfigService, null);
+                    }
                     Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
-                    // TODO: Enable later
-                    //LoadLuaCsConfig();
+                    LoadLuaCsConfig();
                 }
 
                 if (!PackageManagementService.IsAnyPackageRunning())

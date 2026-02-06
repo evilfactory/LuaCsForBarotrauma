@@ -86,6 +86,7 @@ public interface ISettingRangeBase<T> : ISettingBase<T> where T : IEquatable<T>,
 /// <typeparam name="T">The value type. See <see cref="ISettingBase{T}"/></typeparam>
 public interface ISettingList<T> : ISettingBase<T> where T : IEquatable<T>, IConvertible
 {
+    bool TrySetValueByIndex(int index);
     IReadOnlyList<T> Options { get; }
     IReadOnlyList<string> StringOptions { get; }
 }

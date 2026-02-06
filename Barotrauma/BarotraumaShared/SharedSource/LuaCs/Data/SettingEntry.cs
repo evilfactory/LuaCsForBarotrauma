@@ -36,18 +36,11 @@ public class SettingEntry<T> : SettingBase, ISettingBase<T>, INetworkSyncEntity 
         try
         {
             Value = (T)Convert.ChangeType(ConfigInfo.Element.GetAttributeString("Value", null), typeof(T));
+            DefaultValue = Value;
         }
         catch (Exception e) when (e is InvalidCastException or ArgumentNullException)
         {
             Value = default(T);
-        }
-        
-        try
-        {
-            DefaultValue = (T)Convert.ChangeType(ConfigInfo.Element.GetAttributeString("Value", null), typeof(T));
-        }
-        catch (Exception e) when (e is InvalidCastException or ArgumentNullException)
-        {
             DefaultValue = default(T);
         }
     }
