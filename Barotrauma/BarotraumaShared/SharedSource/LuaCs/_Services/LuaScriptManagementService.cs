@@ -21,6 +21,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs;
+using Barotrauma.LuaCs.Events;
+using System.Diagnostics;
 
 namespace Barotrauma.LuaCs;
 
@@ -41,9 +43,10 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     private readonly ILuaScriptServicesConfig _luaScriptServicesConfig;
     private readonly ILoggerService _loggerService;
     private readonly LuaGame _luaGame;
-    private readonly ILuaCsHook _luaCsHook;
+    private readonly IEventService _eventService;
     private readonly ILuaCsTimer _luaCsTimer;
     private readonly IDefaultLuaRegistrar _defaultLuaRegistrar;
+    private readonly IPluginManagementService _pluginManagementService;
     //private readonly ILuaCsNetworking _luaCsNetworking;
     //private readonly ILuaCsUtility _luaCsUtility;
 
@@ -54,8 +57,9 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         ISafeLuaUserDataService safeUserDataService,
         IDefaultLuaRegistrar defaultLuaRegistrar,
         ILuaScriptServicesConfig luaScriptServicesConfig,
+        IPluginManagementService pluginManagementService,
         LuaGame luaGame,
-        ILuaCsHook luaCsHook,
+        IEventService eventService,
         //ILuaCsNetworking luaCsNetworking,
         //ILuaCsUtility luaCsUtility,
         ILuaCsTimer luaCsTimer
@@ -67,12 +71,15 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _defaultLuaRegistrar = defaultLuaRegistrar;
         _luaScriptServicesConfig = luaScriptServicesConfig;
         _loggerService = loggerService;
+        _pluginManagementService = pluginManagementService;
 
         _luaGame = luaGame;
-        _luaCsHook = luaCsHook;
+        _eventService = eventService;
         //_luaCsNetworking = luaCsNetworking;
         //_luaCsUtility = luaCsUtility;
         _luaCsTimer = luaCsTimer;
+
+        RegisterLuaEvents();
     }
 
     public bool IsDisposed { get; private set; }
@@ -159,6 +166,11 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         return _script.LoadFile(file, globalContext, codeStringFriendly);
     }
 
+    private void RegisterLuaEvents()
+    {
+        _eventService.RegisterLuaEventAlias<IEventUpdate>("think", "OnUpdate");
+    }
+
     private void SetupEnvironment()
     {
         _script = new Script(CoreModules.Preset_SoftSandbox | CoreModules.Debug | CoreModules.IO | CoreModules.OS_System);
@@ -196,7 +208,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["dostring"] = (Func<string, Table, string, DynValue>)_script.DoString;
         _script.Globals["load"] = (Func<string, Table, string, DynValue>)_script.LoadString;
         _script.Globals["Game"] = _luaGame;
-        _script.Globals["Hook"] = _luaCsHook;
+        _script.Globals["Hook"] = _eventService;
         _script.Globals["Timer"] = _luaCsTimer;
         _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
         //_script.Globals["Networking"] = _luaCsNetworking;
@@ -213,8 +225,25 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
             _script.Globals["LuaUserData"] = _safeUserDataService;
         }
 
+        Table eventsTable = new Table(_script);
+
+        var typesValue = _pluginManagementService.GetImplementingTypes<IEvent>(includeInterfaces: true, includeAbstractTypes: true);
+        if (typesValue.IsSuccess)
+        {
+            foreach (var eventType in typesValue.Value)
+            {
+                if (eventType.IsGenericType) { continue; }
+                if (!eventType.IsInterface) { continue; }
+
+                UserData.RegisterType(eventType);
+                eventsTable[eventType.Name] = UserData.CreateStatic(eventType);
+            }
+        }
+
+        _script.Globals["Events"] = eventsTable;
+
         _script.Globals["ExecutionNumber"] = 0;
-        _script.Globals["CSActive"] = false;
+        _script.Globals["CSActive"] = GameMain.LuaCs.IsCsEnabled;
 
         _script.Globals["SERVER"] = LuaCsSetup.IsServer;
         _script.Globals["CLIENT"] = LuaCsSetup.IsClient;
@@ -305,6 +334,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     public FluentResults.Result Reset()
     {
         _userDataService.Reset();
+        RegisterLuaEvents();
         return DisposeAllPackageResources();
     }
 
