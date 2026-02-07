@@ -5,12 +5,12 @@ using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs;
 
-public interface INetworkSyncEntity
+public interface INetworkSyncVar
 {
     /// <summary>
     /// Network-synchronized object ID. Used for networking send/receive message events.
     /// </summary>
-    ulong InstanceId { get; }
+    Guid InstanceId { get; }
 
     /// <summary>
     /// Sets the <see cref="IEntityNetworkingService"/> that is currently managing this instance. The <see cref="InstanceId"/>

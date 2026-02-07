@@ -9,7 +9,7 @@ using OneOf;
 
 namespace Barotrauma.LuaCs.Data;
 
-public class SettingEntry<T> : SettingBase, ISettingBase<T>, INetworkSyncEntity where T : IEquatable<T>, IConvertible
+public class SettingEntry<T> : SettingBase, ISettingBase<T>, INetworkSyncVar where T : IEquatable<T>, IConvertible
 {
     public class Factory : ISettingBase.IFactory<ISettingBase<T>>
     {
@@ -109,7 +109,7 @@ public class SettingEntry<T> : SettingBase, ISettingBase<T>, INetworkSyncEntity 
     
     // -- Networking
     protected IEntityNetworkingService NetworkingService;
-    public ulong InstanceId => NetworkingService?.GetNetworkIdForInstance(this) ?? 0ul;
+    public Guid InstanceId => NetworkingService?.GetNetworkIdForInstance(this) ?? Guid.Empty;
     public void SetNetworkOwner(IEntityNetworkingService networkingService)
     {
         NetworkingService = networkingService;

@@ -25,7 +25,7 @@ internal partial interface INetworkingService : IReusableService, ILuaCsNetworki
 
 public interface IEntityNetworkingService
 {
-    public ulong GetNetworkIdForInstance(INetworkSyncEntity entity);
-    public void RegisterNetVar(INetworkSyncEntity netVar);
-    public void SendNetVar(INetworkSyncEntity netVar);
+    public Guid GetNetworkIdForInstance(INetworkSyncVar var);
+    public void RegisterNetVar(INetworkSyncVar netVar);
+    public void SendNetVar(INetworkSyncVar netVar);
 }

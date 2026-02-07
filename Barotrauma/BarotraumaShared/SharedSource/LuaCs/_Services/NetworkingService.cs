@@ -22,7 +22,7 @@ internal partial class NetworkingService : INetworkingService
         ReceiveIds
     }
 
-    private Dictionary<Guid, INetworkSyncEntity> netVars = new Dictionary<Guid, INetworkSyncEntity>();
+    private Dictionary<Guid, INetworkSyncVar> netVars = new Dictionary<Guid, INetworkSyncVar>();
     private Dictionary<Guid, NetMessageReceived> netReceives = new Dictionary<Guid, NetMessageReceived>();
     private Dictionary<ushort, Guid> packetToId = new Dictionary<ushort, Guid>();
     private Dictionary<Guid, ushort> idToPacket = new Dictionary<Guid, ushort>();
@@ -104,17 +104,17 @@ internal partial class NetworkingService : INetworkingService
         IsDisposed = true;
     }
 
-    public ulong GetNetworkIdForInstance(INetworkSyncEntity entity)
+    public Guid GetNetworkIdForInstance(INetworkSyncVar var)
     {
         throw new NotImplementedException();
     }
 
-    public void RegisterNetVar(INetworkSyncEntity netVar)
+    public void RegisterNetVar(INetworkSyncVar netVar)
     {
         throw new NotImplementedException();
     }
 
-    public void SendNetVar(INetworkSyncEntity netVar)
+    public void SendNetVar(INetworkSyncVar netVar)
     {
         throw new NotImplementedException();
     }
