@@ -121,6 +121,24 @@ public interface IEventDrawUpdate : IEvent<IEventDrawUpdate>
     }.ActLike<IEventDrawUpdate>();
 }
 
+#if CLIENT
+public interface IEventServerRawNetMessageReceived : IEvent<IEventServerRawNetMessageReceived>
+{
+    void OnReceivedServerNetMessage(IReadMessage netMessage, ServerPacketHeader serverPacketHeader);
+}
+
+public interface IEventConnectedToServer : IEvent<IEventConnectedToServer>
+{
+    void OnConnectedToServer();
+}
+
+#elif SERVER
+public interface IEventClientRawNetMessageReceived : IEvent<IEventClientRawNetMessageReceived>
+{
+    void OnReceivedClientNetMessage(IReadMessage netMessage, ClientPacketHeader serverPacketHeader, NetworkConnection sender);
+}
+#endif
+
 #endregion
 
 #region Networking

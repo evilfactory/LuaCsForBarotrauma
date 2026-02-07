@@ -47,7 +47,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     private readonly ILuaCsTimer _luaCsTimer;
     private readonly IDefaultLuaRegistrar _defaultLuaRegistrar;
     private readonly IPluginManagementService _pluginManagementService;
-    //private readonly ILuaCsNetworking _luaCsNetworking;
+    private readonly INetworkingService _networkingService;
     //private readonly ILuaCsUtility _luaCsUtility;
 
     public LuaScriptManagementService(
@@ -58,9 +58,9 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         IDefaultLuaRegistrar defaultLuaRegistrar,
         ILuaScriptServicesConfig luaScriptServicesConfig,
         IPluginManagementService pluginManagementService,
+        INetworkingService networkingService,
         LuaGame luaGame,
         IEventService eventService,
-        //ILuaCsNetworking luaCsNetworking,
         //ILuaCsUtility luaCsUtility,
         ILuaCsTimer luaCsTimer
         )
@@ -72,6 +72,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _luaScriptServicesConfig = luaScriptServicesConfig;
         _loggerService = loggerService;
         _pluginManagementService = pluginManagementService;
+        _networkingService = networkingService;
 
         _luaGame = luaGame;
         _eventService = eventService;
@@ -192,6 +193,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         UserData.RegisterType(typeof(ILuaScriptResourceInfo));
         UserData.RegisterType(typeof(IResourceInfo));
         UserData.RegisterType(typeof(IUserDataDescriptor));
+        UserData.RegisterType(typeof(INetworkingService));
 
         new LuaConverters(_script).RegisterLuaConverters();
 
@@ -211,7 +213,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["Hook"] = _eventService;
         _script.Globals["Timer"] = _luaCsTimer;
         _script.Globals["File"] = UserData.CreateStatic<LuaCsFile>();
-        //_script.Globals["Networking"] = _luaCsNetworking;
+        _script.Globals["Networking"] = _networkingService;
         //_script.Globals["Steam"] = Steam;
 
         if (GameMain.LuaCs.IsCsEnabled)

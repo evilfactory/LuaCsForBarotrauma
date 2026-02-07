@@ -134,6 +134,22 @@ namespace Barotrauma
                 RegisterHandler(f => (GUITextBlock.ClickableArea.OnClickDelegate)(
                 (a1, a2) => Call(f, a1, a2)));
             }
+
+            Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(NetMessageReceived), v => (NetMessageReceived)((arg1) =>
+            {
+                if (v.Function.OwnerScript == _script)
+                {
+                    Call(v.Function, arg1);
+                }
+            }));
+#elif SERVER
+            Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(NetMessageReceived), v => (NetMessageReceived)((arg1, arg2) =>
+            {
+                if (v.Function.OwnerScript == _script)
+                {
+                    Call(v.Function, arg1, arg2);
+                }
+            }));
 #endif
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Table, typeof(Pair<JobPrefab, int>), v =>

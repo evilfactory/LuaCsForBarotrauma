@@ -1,6 +1,6 @@
 ﻿namespace Barotrauma.LuaCs.Compatibility;
 
-internal partial interface ILuaCsNetworking : ILuaCsShim
+public interface ILuaCsNetworking : ILuaCsShim
 {
     
 }

@@ -184,7 +184,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceResolver<IPluginManagementService>(factory => factory.GetInstance<IAssemblyManagementService>());
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
-            // TODO: INetworkingService
+            servicesProvider.RegisterServiceType<INetworkingService, NetworkingService>(ServiceLifetime.Singleton);
 
             // Extension/Sub Services
             servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
@@ -296,10 +296,11 @@ namespace Barotrauma
                     Logger.LogResults(PackageManagementService.UnloadAllPackages());
                 }
 
+                EventService.Reset();
                 ConfigService.Reset();
                 LuaScriptManagementService.Reset();
                 PackageManagementService.Reset();
-                EventService.Reset();
+                NetworkingService.Reset();
 
                 SubscribeToLuaCsEvents();
 
@@ -343,10 +344,18 @@ namespace Barotrauma
 #if DEBUG
                     Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), true));
 #else
-                     Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), IsCsEnabled));
+                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), IsCsEnabled));
 #endif
                 }
-                
+
+#if CLIENT
+                // Technically not very accurate, but we want to call after we run mods anyway
+                if (GameMain.Client != null)
+                {
+                    EventService.PublishEvent<IEventConnectedToServer>(static p => p.OnConnectedToServer());
+                }
+#endif
+
                 CurrentRunState = RunState.Running;
             }
                 

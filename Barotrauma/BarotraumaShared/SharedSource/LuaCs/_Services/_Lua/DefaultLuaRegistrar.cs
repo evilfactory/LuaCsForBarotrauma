@@ -49,11 +49,8 @@ public class DefaultLuaRegistrar : IDefaultLuaRegistrar
                 continue;
             }
 
-            _loggerService.LogMessage($"Registered {type.FullName}");
-
             _userDataService.RegisterType(type.FullName);
         }
-
 
         _userDataService.RegisterType("Barotrauma.LuaSByte");
         _userDataService.RegisterType("Barotrauma.LuaByte");

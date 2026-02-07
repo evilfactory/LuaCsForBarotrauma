@@ -1,4 +1,4 @@
-﻿using Barotrauma.LuaCs;
+﻿using Barotrauma.LuaCs.Events;
 using Barotrauma.Networking;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace Barotrauma.LuaCs;
 
-partial class NetworkingService : INetworkingService
+partial class NetworkingService : INetworkingService, IEventClientRawNetMessageReceived
 {
     private const int MaxRegisterPerClient = 1000;
 
@@ -15,7 +15,7 @@ partial class NetworkingService : INetworkingService
 
     private ushort currentId = 0;
 
-    public IWriteMessage Start(Guid netId)
+    public IWriteMessage Start(NetId netId)
     {
         var message = new WriteOnlyMessage();
 
@@ -23,42 +23,44 @@ partial class NetworkingService : INetworkingService
 
         if (idToPacket.ContainsKey(netId))
         {
-            message.WriteByte((byte)LuaCsServerToClient.NetMessageId);
+            message.WriteByte((byte)ServerToClient.NetMessageInternalId);
             message.WriteUInt16(idToPacket[netId]);
         }
         else
         {
-            message.WriteByte((byte)LuaCsServerToClient.NetMessageString);
-            message.WriteBytes(netId.ToByteArray(), 0, 16);
+            message.WriteByte((byte)ServerToClient.NetMessageNetId);
+            NetId.Write(message, netId);
         }
 
         return message;
     }
 
-    public void NetMessageReceived(IReadMessage netMessage, ClientPacketHeader header, Client client = null)
+    public void OnReceivedClientNetMessage(IReadMessage netMessage, ClientPacketHeader serverPacketHeader, NetworkConnection sender)
     {
-        if (header != ClientPacketHeader.LUA_NET_MESSAGE)
+        if (serverPacketHeader != ClientPacketHeader.LUA_NET_MESSAGE)
         {
             return;
         }
 
-        LuaCsClientToServer luaCsHeader = (LuaCsClientToServer)netMessage.ReadByte();
+        Client client = GameMain.Server.ConnectedClients.First(c => c.Connection == sender);
+
+        ClientToServer luaCsHeader = (ClientToServer)netMessage.ReadByte();
 
         switch (luaCsHeader)
         {
-            case LuaCsClientToServer.NetMessageString:
+            case ClientToServer.NetMessageNetId:
                 HandleNetMessageString(netMessage, client);
                 break;
 
-            case LuaCsClientToServer.NetMessageId:
+            case ClientToServer.NetMessageInternalId:
                 HandleNetMessageId(netMessage, client);
                 break;
 
-            case LuaCsClientToServer.RequestAllIds:
+            case ClientToServer.RequestAllNetIds:
                 WriteAllIds(client);
                 break;
 
-            case LuaCsClientToServer.RequestSingleId:
+            case ClientToServer.RequestSingleNetId:
                 RequestIdSingle(netMessage, client);
                 break;
         }
@@ -70,7 +72,7 @@ partial class NetworkingService : INetworkingService
 
         if (packetToId.ContainsKey(id))
         {
-            Guid netId = packetToId[id];
+            NetId netId = packetToId[id];
 
             HandleNetMessage(netMessage, netId, client);
         }
@@ -78,12 +80,12 @@ partial class NetworkingService : INetworkingService
         {
             if (GameSettings.CurrentConfig.VerboseLogging)
             {
-                LuaCsLogger.LogError($"Received NetMessage for unknown id {id} from {GameServer.ClientLogName(client)}.");
+                _loggerService.LogError($"Received NetMessage for unknown id {id} from {GameServer.ClientLogName(client)}.");
             }
         }
     }
 
-    private ushort RegisterId(Guid netId)
+    private ushort RegisterId(NetId netId)
     {
         if (idToPacket.ContainsKey(netId))
         {
@@ -92,7 +94,7 @@ partial class NetworkingService : INetworkingService
 
         if (currentId >= ushort.MaxValue)
         {
-            LuaCsLogger.LogError($"Tried to register more than {ushort.MaxValue} network ids!");
+            _loggerService.LogError($"Tried to register more than {ushort.MaxValue} network ids!");
             return 0;
         }
 
@@ -108,7 +110,7 @@ partial class NetworkingService : INetworkingService
 
     private void RequestIdSingle(IReadMessage netMessage, Client client)
     {
-        Guid netId = new Guid(netMessage.ReadBytes(16));
+        NetId netId = NetId.Read(netMessage);
 
         if (!idToPacket.ContainsKey(netId) && client.AccountId.TryUnwrap(out AccountId id))
         {
@@ -121,7 +123,7 @@ partial class NetworkingService : INetworkingService
 
             if (clientRegisterCount[id.StringRepresentation] > MaxRegisterPerClient)
             {
-                LuaCsLogger.Log($"{GameServer.ClientLogName(client)} Tried to register more than {MaxRegisterPerClient} Ids!");
+                _loggerService.Log($"{GameServer.ClientLogName(client)} Tried to register more than {MaxRegisterPerClient} Ids!");
                 return;
             }
         }
@@ -129,38 +131,36 @@ partial class NetworkingService : INetworkingService
         RegisterId(netId);
     }
 
-    private void WriteIdToAll(ushort packet, Guid netId)
+    private void WriteIdToAll(ushort packet, NetId netId)
     {
         WriteOnlyMessage message = new WriteOnlyMessage();
         message.WriteByte((byte)ServerPacketHeader.LUA_NET_MESSAGE);
-        message.WriteByte((byte)LuaCsServerToClient.ReceiveIds);
+        message.WriteByte((byte)ServerToClient.ReceiveNetIds);
 
         message.WriteUInt16(1);
         message.WriteUInt16(packet);
-        message.WriteBytes(netId.ToByteArray(), 0, 16);
+        NetId.Write(message, netId);
 
-        Send(message, null, DeliveryMethod.Reliable);
+        SendToClient(message, null, DeliveryMethod.Reliable);
     }
 
     private void WriteAllIds(Client client)
     {
         WriteOnlyMessage message = new WriteOnlyMessage();
         message.WriteByte((byte)ServerPacketHeader.LUA_NET_MESSAGE);
-        message.WriteByte((byte)LuaCsServerToClient.ReceiveIds);
+        message.WriteByte((byte)ServerToClient.ReceiveNetIds);
 
         message.WriteUInt16((ushort)packetToId.Count());
-        foreach ((ushort packet, Guid netId) in packetToId)
+        foreach ((ushort packet, NetId netId) in packetToId)
         {
             message.WriteUInt16(packet);
-            message.WriteBytes(netId.ToByteArray(), 0, 16);
+            NetId.Write(message, netId);
         }
 
-        Send(message, client.Connection, DeliveryMethod.Reliable);
+        SendToClient(message, client.Connection, DeliveryMethod.Reliable);
     }
 
-    public void ClientWriteLobby(Client client) => GameMain.Server.ClientWriteLobby(client);
-
-    public void Send(IWriteMessage netMessage, NetworkConnection connection = null, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
+    public void SendToClient(IWriteMessage netMessage, NetworkConnection connection = null, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)
     {
         if (connection == null)
         {

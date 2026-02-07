@@ -1,6 +1,7 @@
 ﻿using Barotrauma.Extensions;
 using Barotrauma.IO;
 using Barotrauma.Items.Components;
+using Barotrauma.LuaCs.Events;
 using Barotrauma.Steam;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -603,7 +604,7 @@ namespace Barotrauma.Networking
         {
             ServerPacketHeader header = (ServerPacketHeader)inc.ReadByte();
 
-            GameMain.LuaCs.NetworkingService.NetMessageReceived(inc, header);
+            GameMain.LuaCs.EventService.PublishEvent<IEventServerRawNetMessageReceived>(p => p.OnReceivedServerNetMessage(inc, header));
 
             if (roundInitStatus == RoundInitStatus.WaitingForStartGameFinalize
                 && header is not (

@@ -1,52 +1,88 @@
 ﻿using Barotrauma.LuaCs;
+using Barotrauma.LuaCs.Compatibility;
+using Barotrauma.LuaCs.Events;
 using Barotrauma.Networking;
+using FluentResults;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Barotrauma.LuaCs;
 
-internal partial class NetworkingService : INetworkingService
+public partial class NetworkingService : INetworkingService
 {
-    private enum LuaCsClientToServer
+    public readonly record struct NetId
     {
-        NetMessageId,
-        NetMessageString,
-        RequestSingleId,
-        RequestAllIds,
+        private readonly string _value;
+
+        public NetId(string netId)
+        {
+            _value = netId;
+        }
+
+        public static void Write(IWriteMessage message, NetId netId)
+        {
+            message.WriteString(netId._value);
+        }
+
+        public static NetId Read(IReadMessage message)
+        {
+            return new NetId(message.ReadString());
+        }
     }
 
-    private enum LuaCsServerToClient
+    private enum ClientToServer
     {
-        NetMessageId,
-        NetMessageString,
-        ReceiveIds
+        NetMessageInternalId,
+        NetMessageNetId,
+        RequestSingleNetId,
+        RequestAllNetIds,
     }
 
-    private Dictionary<Guid, INetworkSyncVar> netVars = new Dictionary<Guid, INetworkSyncVar>();
-    private Dictionary<Guid, NetMessageReceived> netReceives = new Dictionary<Guid, NetMessageReceived>();
-    private Dictionary<ushort, Guid> packetToId = new Dictionary<ushort, Guid>();
-    private Dictionary<Guid, ushort> idToPacket = new Dictionary<Guid, ushort>();
+    private enum ServerToClient
+    {
+        NetMessageInternalId,
+        NetMessageNetId,
+        ReceiveNetIds
+    }
+
+    private Dictionary<NetId, NetMessageReceived> netReceives = new Dictionary<NetId, NetMessageReceived>();
+    private Dictionary<ushort, NetId> packetToId = new Dictionary<ushort, NetId>();
+    private Dictionary<NetId, ushort> idToPacket = new Dictionary<NetId, ushort>();
 
     public bool IsActive
     {
         get
         {
-            return GameMain.NetworkMember != null; // ehh?
+            return GameMain.NetworkMember != null;
         }
     }
+
     public bool IsSynchronized { get; private set; }
     public bool IsDisposed { get; private set; }
 
-    public void Initialize()
+    private readonly IEventService _eventService;
+    private readonly ILoggerService _loggerService;
+
+    public NetworkingService(IEventService eventService, ILoggerService loggerService)
     {
+        _eventService = eventService;
+        _loggerService = loggerService;
+
 #if SERVER
         IsSynchronized = true;
-#elif CLIENT
-        SendSyncMessage();
 #endif
+
+        SubscribeToEvents();
     }
 
-    public void Receive(Guid netId, NetMessageReceived callback)
+    public void Receive(string netIdString, NetMessageReceived callback) => Receive(new NetId(netIdString), callback);
+    public void Receive(Guid netIdGuid, NetMessageReceived callback) => Receive(new NetId(netIdGuid.ToString()), callback);
+    public IWriteMessage Start(string netIdString) => Start(new NetId(netIdString));
+    public IWriteMessage Start(Guid netIdGuid) => Start(new NetId(netIdGuid.ToString()));
+
+    public void Receive(NetId netId, NetMessageReceived callback)
     {
 #if SERVER
         RegisterId(netId);
@@ -56,18 +92,21 @@ internal partial class NetworkingService : INetworkingService
         netReceives[netId] = callback;
     }
 
-    private void HandleNetMessage(IReadMessage netMessage, Guid netId, Client client = null)
+    private void HandleNetMessage(IReadMessage netMessage, NetId netId, Client client = null)
     {
         if (netReceives.ContainsKey(netId))
         {
             try
             {
+#if CLIENT
                 netReceives[netId](netMessage);
+#elif SERVER
+                netReceives[netId](netMessage, client.Connection);
+#endif
             }
             catch (Exception e)
             {
-                LuaCsLogger.LogError($"Exception thrown inside NetMessageReceive({netId})", LuaCsMessageOrigin.CSharpMod);
-                LuaCsLogger.HandleException(e, LuaCsMessageOrigin.CSharpMod);
+                _loggerService.LogResults(new ExceptionalError("Exception thrown inside NetMessageReceive({netId})", e));
             }
         }
         else
@@ -75,9 +114,9 @@ internal partial class NetworkingService : INetworkingService
             if (GameSettings.CurrentConfig.VerboseLogging)
             {
 #if SERVER
-                LuaCsLogger.LogError($"Received NetMessage for unknown netid {netId} from {GameServer.ClientLogName(client)}.");
+                _loggerService.LogError($"Received NetMessage for unknown netid {netId} from {GameServer.ClientLogName(client)}.");
 #else
-                LuaCsLogger.LogError($"Received NetMessage for unknown netid {netId} from server.");
+                _loggerService.LogError($"Received NetMessage for unknown netid {netId} from server.");
 #endif
             }
         }
@@ -85,23 +124,19 @@ internal partial class NetworkingService : INetworkingService
 
     private void HandleNetMessageString(IReadMessage netMessage, Client client = null)
     {
-        Guid guid = new Guid(netMessage.ReadBytes(16));
+        NetId netId = NetId.Read(netMessage);
 
-        HandleNetMessage(netMessage, guid, client);
+        HandleNetMessage(netMessage, netId, client);
     }
 
-    public FluentResults.Result Reset()
+    private void SubscribeToEvents()
     {
-        IsSynchronized = false;
-        netReceives = new Dictionary<Guid, NetMessageReceived>();
-        packetToId = new Dictionary<ushort, Guid>();
-        idToPacket = new Dictionary<Guid, ushort>();
-        return FluentResults.Result.Ok();
-    }
-
-    public void Dispose()
-    {
-        IsDisposed = true;
+#if CLIENT
+        _eventService.Subscribe<IEventConnectedToServer>(this);
+        _eventService.Subscribe<IEventServerRawNetMessageReceived>(this);
+#elif SERVER
+        _eventService.Subscribe<IEventClientRawNetMessageReceived>(this);
+#endif
     }
 
     public Guid GetNetworkIdForInstance(INetworkSyncVar var)
@@ -117,5 +152,20 @@ internal partial class NetworkingService : INetworkingService
     public void SendNetVar(INetworkSyncVar netVar)
     {
         throw new NotImplementedException();
+    }
+
+    public FluentResults.Result Reset()
+    {
+        IsSynchronized = false;
+        netReceives = new Dictionary<NetId, NetMessageReceived>();
+        packetToId = new Dictionary<ushort, NetId>();
+        idToPacket = new Dictionary<NetId, ushort>();
+        SubscribeToEvents();
+        return FluentResults.Result.Ok();
+    }
+
+    public void Dispose()
+    {
+        IsDisposed = true;
     }
 }

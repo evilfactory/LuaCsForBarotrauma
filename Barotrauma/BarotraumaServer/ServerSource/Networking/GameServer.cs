@@ -1,19 +1,20 @@
 ﻿using Barotrauma.Extensions;
 using Barotrauma.IO;
 using Barotrauma.Items.Components;
+using Barotrauma.LuaCs.Events;
+using Barotrauma.PerkBehaviors;
 using Barotrauma.Steam;
 using Lidgren.Network;
 using Microsoft.Xna.Framework;
+using MoonSharp.Interpreter;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Xml.Linq;
-using MoonSharp.Interpreter;
-using System.Net;
-using Barotrauma.PerkBehaviors;
 
 namespace Barotrauma.Networking
 {
@@ -836,8 +837,8 @@ namespace Barotrauma.Networking
             using var _ = dosProtection.Start(connectedClient);
 
             ClientPacketHeader header = (ClientPacketHeader)inc.ReadByte();
-            
-            GameMain.LuaCs.NetworkingService.NetMessageReceived(inc, header, connectedClient);
+
+            GameMain.LuaCs.EventService.PublishEvent<IEventClientRawNetMessageReceived>(p => p.OnReceivedClientNetMessage(inc, header, sender));
 
             switch (header)
             {

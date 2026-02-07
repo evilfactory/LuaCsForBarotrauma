@@ -6,26 +6,32 @@ using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs;
 
-internal delegate void NetMessageReceived(IReadMessage netMessage);
+#if CLIENT
+public delegate void NetMessageReceived(IReadMessage netMessage);
+#elif SERVER
+public delegate void NetMessageReceived(IReadMessage netMessage, NetworkConnection connection);
+#endif
 
-internal partial interface INetworkingService : IReusableService, ILuaCsNetworking, IEntityNetworkingService
+public interface INetworkingService : IReusableService, ILuaCsNetworking, IEntityNetworkingService
 {
     bool IsActive { get; }
     bool IsSynchronized { get; }
 
-    public IWriteMessage Start(Guid netId);
-    public void Receive(Guid netId, NetMessageReceived action);
+    IWriteMessage Start(string netId);
+    IWriteMessage Start(Guid netId);
+    void Receive(string netId, NetMessageReceived action);
+    void Receive(Guid netId, NetMessageReceived action);
 #if SERVER
-    public void Send(IWriteMessage netMessage, NetworkConnection connection = null, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable);
+    void SendToClient(IWriteMessage netMessage, NetworkConnection connection = null, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable);
 #elif CLIENT
-    public void Send(IWriteMessage netMessage, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable);
+    void SendToServer(IWriteMessage netMessage, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable);
 #endif
-    
+
 }
 
 public interface IEntityNetworkingService
 {
-    public Guid GetNetworkIdForInstance(INetworkSyncVar var);
-    public void RegisterNetVar(INetworkSyncVar netVar);
-    public void SendNetVar(INetworkSyncVar netVar);
+    Guid GetNetworkIdForInstance(INetworkSyncVar var);
+    void RegisterNetVar(INetworkSyncVar netVar);
+    void SendNetVar(INetworkSyncVar netVar);
 }
