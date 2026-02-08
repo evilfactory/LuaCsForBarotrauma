@@ -5,7 +5,7 @@ using Barotrauma.Networking;
 
 namespace Barotrauma.LuaCs;
 
-public interface INetworkSyncVar
+public interface INetworkSyncVar : IDataInfo
 {
     /// <summary>
     /// Network-synchronized object ID. Used for networking send/receive message events.
