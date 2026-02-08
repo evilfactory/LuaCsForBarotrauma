@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Barotrauma.LuaCs;
 
-public partial class NetworkingService : INetworkingService, IEventConnectedToServer, IEventServerRawNetMessageReceived
+partial class NetworkingService : INetworkingService, IEventConnectedToServer, IEventServerRawNetMessageReceived
 {
     private ConcurrentDictionary<ushort, ConcurrentQueue<IReadMessage>> receiveQueue = new();
 

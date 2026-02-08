@@ -4,13 +4,14 @@ using Barotrauma.LuaCs.Events;
 using Barotrauma.Networking;
 using FluentResults;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Barotrauma.LuaCs;
 
-public partial class NetworkingService : INetworkingService
+internal partial class NetworkingService : INetworkingService
 {
     public readonly record struct NetId
     {
@@ -47,9 +48,12 @@ public partial class NetworkingService : INetworkingService
         ReceiveNetIds
     }
 
-    private Dictionary<NetId, NetMessageReceived> netReceives = new Dictionary<NetId, NetMessageReceived>();
-    private Dictionary<ushort, NetId> packetToId = new Dictionary<ushort, NetId>();
-    private Dictionary<NetId, ushort> idToPacket = new Dictionary<NetId, ushort>();
+
+    private ConcurrentDictionary<INetworkSyncVar, NetId> netVars = [];
+
+    private ConcurrentDictionary<NetId, NetMessageReceived> netReceives = [];
+    private ConcurrentDictionary<ushort, NetId> packetToId = [];
+    private ConcurrentDictionary<NetId, ushort> idToPacket = [];
 
     public bool IsActive
     {
@@ -64,10 +68,12 @@ public partial class NetworkingService : INetworkingService
 
     private readonly IEventService _eventService;
     private readonly ILoggerService _loggerService;
+    private readonly INetworkIdProvider _networkIdProvider;
 
-    public NetworkingService(IEventService eventService, ILoggerService loggerService)
+    internal NetworkingService(IEventService eventService, INetworkIdProvider networkIdProvider, ILoggerService loggerService)
     {
         _eventService = eventService;
+        _networkIdProvider = networkIdProvider;
         _loggerService = loggerService;
 
 #if SERVER
@@ -82,7 +88,7 @@ public partial class NetworkingService : INetworkingService
     public IWriteMessage Start(string netIdString) => Start(new NetId(netIdString));
     public IWriteMessage Start(Guid netIdGuid) => Start(new NetId(netIdGuid.ToString()));
 
-    public void Receive(NetId netId, NetMessageReceived callback)
+    internal void Receive(NetId netId, NetMessageReceived callback)
     {
 #if SERVER
         RegisterId(netId);
@@ -101,7 +107,7 @@ public partial class NetworkingService : INetworkingService
 #if CLIENT
                 netReceives[netId](netMessage);
 #elif SERVER
-                netReceives[netId](netMessage, client.Connection);
+                netReceives[netId](netMessage, client);
 #endif
             }
             catch (Exception e)
@@ -141,25 +147,78 @@ public partial class NetworkingService : INetworkingService
 
     public Guid GetNetworkIdForInstance(INetworkSyncVar var)
     {
-        throw new NotImplementedException();
+        return _networkIdProvider.GetNetworkIdForInstance(var);
     }
 
     public void RegisterNetVar(INetworkSyncVar netVar)
     {
-        throw new NotImplementedException();
+        netVar.SetNetworkOwner(this);
+
+        NetId netId = new NetId(netVar.InstanceId.ToString());
+        netVars[netVar] = netId;
+
+#if CLIENT
+        Receive(netId, (IReadMessage message) =>
+        {
+            if (netVar.SyncType == NetSync.None)
+            {
+                _loggerService.LogWarning($"Received net var from server but {nameof(NetSync)} is {netVar.SyncType.ToString()}");
+                return;
+            }
+
+            netVar.ReadNetMessage(message);
+        });
+#elif SERVER
+        Receive(netId, (IReadMessage message, Client client) =>
+        {
+            if (netVar.SyncType == NetSync.None || netVar.SyncType == NetSync.ServerAuthority)
+            {
+                _loggerService.LogWarning($"Received net var from {GameServer.ClientLogName(client)} but {nameof(NetSync)} is {netVar.SyncType.ToString()}");
+                return;
+            }
+
+            if (!client.HasPermission(netVar.WritePermissions))
+            {
+                _loggerService.LogWarning($"Received net var from {GameServer.ClientLogName(client)} but the client lacks permissions to modify it");
+                return;
+            }
+
+            netVar.ReadNetMessage(message);
+        });
+#endif
     }
 
     public void SendNetVar(INetworkSyncVar netVar)
     {
-        throw new NotImplementedException();
+        if (!netVars.TryGetValue(netVar, out NetId netId))
+        {
+            throw new InvalidOperationException("Tried to send net var across network without registering first");
+        }
+
+        if (netVar.SyncType == NetSync.None) { return; }
+#if CLIENT
+        if (netVar.SyncType == NetSync.ServerAuthority) { return; }
+#elif SERVER
+        if (netVar.SyncType == NetSync.ClientOneWay) { return; }
+#endif
+
+        IWriteMessage message = Start(netId);
+        netVar.WriteNetMessage(message);
+#if CLIENT
+        SendToServer(message);
+#elif SERVER
+        SendToClient(message);
+#endif
     }
 
     public FluentResults.Result Reset()
     {
         IsSynchronized = false;
-        netReceives = new Dictionary<NetId, NetMessageReceived>();
-        packetToId = new Dictionary<ushort, NetId>();
-        idToPacket = new Dictionary<NetId, ushort>();
+        netReceives = new ConcurrentDictionary<NetId, NetMessageReceived>();
+        packetToId = new ConcurrentDictionary<ushort, NetId>();
+        idToPacket = new ConcurrentDictionary<NetId, ushort>();
+        netVars = new ConcurrentDictionary<INetworkSyncVar, NetId>();
+
         SubscribeToEvents();
         return FluentResults.Result.Ok();
     }
