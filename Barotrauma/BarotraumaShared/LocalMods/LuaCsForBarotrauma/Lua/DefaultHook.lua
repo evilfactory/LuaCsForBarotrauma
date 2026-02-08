@@ -1,5 +1,3 @@
-if true then return end
-
 Hook.Patch("Barotrauma.Item", "TryInteract",
 {
     "Barotrauma.Character",
