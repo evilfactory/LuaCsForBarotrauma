@@ -244,10 +244,13 @@ namespace Barotrauma
             {
                 return;
             }
-            
-            var state = CurrentRunState;
-            SetRunState(RunState.Unloaded);
-            SetRunState(state);
+
+            CoroutineManager.Invoke(() =>
+            {
+                var state = CurrentRunState;
+                SetRunState(RunState.Unloaded);
+                SetRunState(state);
+            });
         }
 
         private void ProcessEnabledPackageChanges(ImmutableArray<ContentPackage> packages)
