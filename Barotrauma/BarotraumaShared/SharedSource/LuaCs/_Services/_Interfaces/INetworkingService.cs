@@ -34,4 +34,5 @@ public interface IEntityNetworkingService
     Guid GetNetworkIdForInstance(INetworkSyncVar var);
     void RegisterNetVar(INetworkSyncVar netVar);
     void SendNetVar(INetworkSyncVar netVar);
+    void SendNetVar(INetworkSyncVar netVar, NetworkConnection connection);
 }

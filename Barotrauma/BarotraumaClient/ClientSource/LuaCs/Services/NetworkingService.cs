@@ -47,7 +47,7 @@ partial class NetworkingService : INetworkingService, IEventConnectedToServer, I
 
         WriteOnlyMessage message = new WriteOnlyMessage();
         message.WriteByte((byte)ClientPacketHeader.LUA_NET_MESSAGE);
-        message.WriteByte((byte)ClientToServer.RequestAllNetIds);
+        message.WriteByte((byte)ClientToServer.RequestSync);
         GameMain.Client.ClientPeer.Send(message, DeliveryMethod.Reliable);
     }
 

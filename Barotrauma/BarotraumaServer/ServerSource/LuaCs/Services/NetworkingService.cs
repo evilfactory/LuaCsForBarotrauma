@@ -56,8 +56,8 @@ partial class NetworkingService : INetworkingService, IEventClientRawNetMessageR
                 HandleNetMessageId(netMessage, client);
                 break;
 
-            case ClientToServer.RequestAllNetIds:
-                WriteAllIds(client);
+            case ClientToServer.RequestSync:
+                WriteSync(client);
                 break;
 
             case ClientToServer.RequestSingleNetId:
@@ -144,7 +144,7 @@ partial class NetworkingService : INetworkingService, IEventClientRawNetMessageR
         SendToClient(message, null, DeliveryMethod.Reliable);
     }
 
-    private void WriteAllIds(Client client)
+    private void WriteSync(Client client)
     {
         WriteOnlyMessage message = new WriteOnlyMessage();
         message.WriteByte((byte)ServerPacketHeader.LUA_NET_MESSAGE);
@@ -158,6 +158,12 @@ partial class NetworkingService : INetworkingService, IEventClientRawNetMessageR
         }
 
         SendToClient(message, client.Connection, DeliveryMethod.Reliable);
+
+        // TODO: when we move to using GUIDs for everything, this should combined into a single message
+        foreach (INetworkSyncVar netVar in netVars.Keys)
+        {
+            SendNetVar(netVar, client.Connection);
+        }
     }
 
     public void SendToClient(IWriteMessage netMessage, NetworkConnection connection = null, DeliveryMethod deliveryMethod = DeliveryMethod.Reliable)

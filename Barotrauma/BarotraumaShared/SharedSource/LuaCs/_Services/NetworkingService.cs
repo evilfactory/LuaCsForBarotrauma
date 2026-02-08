@@ -38,7 +38,7 @@ internal partial class NetworkingService : INetworkingService
         NetMessageInternalId,
         NetMessageNetId,
         RequestSingleNetId,
-        RequestAllNetIds,
+        RequestSync,
     }
 
     private enum ServerToClient
@@ -184,11 +184,19 @@ internal partial class NetworkingService : INetworkingService
             }
 
             netVar.ReadNetMessage(message);
+
+            // Sync back to all clients
+            if (netVar.SyncType != NetSync.ClientOneWay)
+            {
+                SendNetVar(netVar);
+            }
         });
 #endif
     }
 
-    public void SendNetVar(INetworkSyncVar netVar)
+    public void SendNetVar(INetworkSyncVar netVar) => SendNetVar(netVar);
+
+    public void SendNetVar(INetworkSyncVar netVar, NetworkConnection connection = null)
     {
         if (!netVars.TryGetValue(netVar, out NetId netId))
         {
