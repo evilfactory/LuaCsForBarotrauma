@@ -375,7 +375,8 @@ namespace Barotrauma
         
         #region LegacyRedirects
 
-        public ILuaCsHook Hook => this.EventService;        
+        public ILuaCsHook Hook => this.EventService;
+        public INetworkingService Networking => this.NetworkingService;
 
         #endregion
 

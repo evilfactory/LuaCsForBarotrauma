@@ -70,7 +70,7 @@ internal partial class NetworkingService : INetworkingService
     private readonly ILoggerService _loggerService;
     private readonly INetworkIdProvider _networkIdProvider;
 
-    internal NetworkingService(IEventService eventService, INetworkIdProvider networkIdProvider, ILoggerService loggerService)
+    public NetworkingService(IEventService eventService, INetworkIdProvider networkIdProvider, ILoggerService loggerService)
     {
         _eventService = eventService;
         _networkIdProvider = networkIdProvider;
@@ -81,6 +81,15 @@ internal partial class NetworkingService : INetworkingService
 #endif
 
         SubscribeToEvents();
+    }
+
+    public void Receive(string netIdString, LuaCsAction callback)
+    {
+#if SERVER
+        Receive(new NetId(netIdString), (IReadMessage message, Client client) => callback(message, client));
+#elif CLIENT
+        Receive(new NetId(netIdString), (IReadMessage message) => callback(message, null));
+#endif
     }
 
     public void Receive(string netIdString, NetMessageReceived callback) => Receive(new NetId(netIdString), callback);
