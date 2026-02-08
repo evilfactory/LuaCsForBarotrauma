@@ -118,6 +118,7 @@ public sealed partial class ConfigService : IConfigService
 
     #endregion
 
+    private const string SaveDataFileName = "SettingData.xml"; 
     
     private readonly ConcurrentDictionary<(ContentPackage OwnerPackage, string InternalName), ISettingBase> 
         _settingsInstances = new();
@@ -129,19 +130,25 @@ public sealed partial class ConfigService : IConfigService
     private IStorageService _storageService;
     private ILoggerService _logger;
     private IEventService _eventService;
+    private ILuaCsInfoProvider _luaCsInfoProvider;
     private IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigInfo> _configInfoParserService;
     private IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigProfileInfo> _configProfileInfoParserService;
 
     public ConfigService(ILoggerService logger, 
         IStorageService storageService, 
         IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigInfo> configInfoParserService, 
-        IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigProfileInfo> configProfileInfoParserService, IEventService eventService)
+        IParserServiceOneToManyAsync<IConfigResourceInfo, IConfigProfileInfo> configProfileInfoParserService, 
+        IEventService eventService, 
+        ILuaCsInfoProvider luaCsInfoProvider)
     {
         _logger = logger;
         _storageService = storageService;
         _configInfoParserService = configInfoParserService;
         _configProfileInfoParserService = configProfileInfoParserService;
         _eventService = eventService;
+        _luaCsInfoProvider = luaCsInfoProvider;
+
+        _storageService.UseCaching = true;
     }
 
 
@@ -257,10 +264,104 @@ public sealed partial class ConfigService : IConfigService
         throw new NotImplementedException();
     }
 
+    public FluentResults.Result LoadSavedValueForConfig(ISettingBase setting)
+    {
+        Guard.IsNotNull(setting, nameof(setting));
+        using var lck = _operationLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+
+        if (_storageService.LoadLocalXml(setting.OwnerPackage, SaveDataFileName) is not { } saveFileResult
+            || saveFileResult is { IsFailed: true })
+        {
+            return FluentResults.Result.Fail(
+                $"{nameof(LoadSavedValueForConfig)}: Could not open save file for setting [{setting.OwnerPackage.Name}.{setting.InternalName}]");
+        }
+
+        if (saveFileResult.Value.Root is not {} rootElement
+            || !string.Equals(rootElement.Name.LocalName, "Configuration", StringComparison.InvariantCultureIgnoreCase))
+        {
+            return FluentResults.Result.Fail($"{nameof(LoadSavedValueForConfig)}: Root invalid for setting [{setting.OwnerPackage.Name}.{setting.InternalName}]");
+        }
+
+        if (rootElement.GetChildElement(setting.OwnerPackage.Name, StringComparison.InvariantCulture)
+            ?.GetChildElement(setting.InternalName, StringComparison.InvariantCulture) is not {} cfgValueElement)
+        {
+            return FluentResults.Result.Fail($"{nameof(LoadSavedValueForConfig)}: Could not find saved value for setting:[{setting.OwnerPackage.Name}.{setting.InternalName}]");
+        }
+
+        return FluentResults.Result.OkIf(setting.TrySetValue(cfgValueElement), new Error($"Failed to set value for [{setting.OwnerPackage.Name}.{setting.InternalName}]"));
+    }
+    
+    public FluentResults.Result LoadSavedConfigsValues()
+    {
+        throw new NotImplementedException();
+    }
+    
+    public FluentResults.Result SaveConfigValue(ISettingBase setting)
+    {
+        XDocument cpCfgValues;
+        if (_storageService.LoadLocalXml(setting.OwnerPackage, SaveDataFileName) is not {} saveFileResult)
+        {
+            return FluentResults.Result.Fail($"{nameof(SaveConfigValue)}: Storage Service Failure while trying to load file for  setting [{setting.OwnerPackage.Name}.{setting.InternalName}]");
+        }
+
+        // get Configuration
+        if (saveFileResult.IsFailed)
+        {
+            cpCfgValues = new XDocument(new XDeclaration("1.0", "utf-8", "yes"), new XElement("Configuration"));
+        }
+        else
+        {
+            cpCfgValues = saveFileResult.Value;
+        }
+
+        if (cpCfgValues.Root is null || cpCfgValues.Root.Name != "Configuration")
+        {
+            return FluentResults.Result.Fail($"{nameof(SaveConfigValue)}: Bad save file format for setting: [{setting.OwnerPackage.Name}.{setting.InternalName}]");
+        }
+
+        XElement currentTarget = GetOrAddElement(cpCfgValues.Root, setting.OwnerPackage.Name, name => new XElement(name));
+        currentTarget = GetOrAddElement(currentTarget, setting.InternalName, name => new XElement(name));
+
+        var ret = setting.GetSerializableValue().Match(str =>
+            {
+                var tgt = currentTarget.Attribute("Value");
+                if (tgt is null)
+                {
+                    var attr = new XAttribute("Value", str);
+                    currentTarget.Add(attr);
+                }
+
+                return FluentResults.Result.Ok();
+            },
+            elem =>
+            {  
+                currentTarget.ReplaceNodes(new XElement("Value", elem));
+                return FluentResults.Result.Ok();
+            });
+
+        ret.WithReasons(_storageService.SaveLocalXml(setting.OwnerPackage, SaveDataFileName, cpCfgValues).Reasons);
+        return ret;
+        
+        XElement GetOrAddElement(XElement containerElement, string elementName, Func<string, XElement> factory)
+        {
+            var element = containerElement.Element(elementName);
+            if (element is null)
+            {
+                element = factory(elementName);
+                containerElement.Add(element);    
+            }
+            return element;
+        }
+    }
+    
+
     public FluentResults.Result DisposePackageData(ContentPackage package)
     {
         Guard.IsNotNull(package, nameof(package));
         using var lck = _operationLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
         ConcurrentBag<ISettingBase> toDispose;
         using (var settingsLck = _settingsByPackageLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult())
         {

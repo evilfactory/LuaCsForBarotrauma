@@ -17,6 +17,9 @@ public partial interface IConfigService : IReusableService, ILuaConfigService
         where T : class, ISettingBase;
     Task<FluentResults.Result> LoadConfigsAsync(ImmutableArray<IConfigResourceInfo> configResources);
     Task<FluentResults.Result> LoadConfigsProfilesAsync(ImmutableArray<IConfigResourceInfo> configProfileResources);
+    FluentResults.Result LoadSavedValueForConfig(ISettingBase setting);
+    FluentResults.Result LoadSavedConfigsValues();
+    FluentResults.Result SaveConfigValue(ISettingBase setting);
     FluentResults.Result DisposePackageData(ContentPackage package);
     FluentResults.Result DisposeAllPackageData();
     bool TryGetConfig<T>(ContentPackage package, string internalName, out T instance) where T : ISettingBase;

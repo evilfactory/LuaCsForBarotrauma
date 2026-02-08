@@ -117,7 +117,7 @@ namespace Barotrauma
         private ISettingBase<ulong> _luaForBarotraumaSteamId;
 
         /// <summary>
-        /// TODO: @evilfactory@users.noreply.github.com
+        /// Whether the maximum message size over the network should be restricted.
         /// </summary>
         public bool RestrictMessageSize
         {
