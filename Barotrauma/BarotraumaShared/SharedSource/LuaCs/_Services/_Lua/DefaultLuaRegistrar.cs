@@ -148,6 +148,12 @@ public class DefaultLuaRegistrar : IDefaultLuaRegistrar
         _userDataService.RegisterType("Microsoft.Xna.Framework.Input.Keys");
         _userDataService.RegisterType("Microsoft.Xna.Framework.Input.KeyboardState");
 
+        _userDataService.RegisterType("Barotrauma.Anchor");
+        _userDataService.RegisterType("Barotrauma.Alignment");
+        _userDataService.RegisterType("Barotrauma.Pivot");
+        _userDataService.RegisterType("Barotrauma.Key");
+        _userDataService.RegisterType("Barotrauma.PlayerInput");
+
 
         _userDataService.RegisterType("Barotrauma.Inventory+SlotReference");
     }
