@@ -185,6 +185,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<ILuaScriptManagementService, LuaScriptManagementService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<INetworkingService, NetworkingService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<INetworkIdProvider, NetworkingIdProvider>(ServiceLifetime.Transient);
 
             // Extension/Sub Services
             servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
