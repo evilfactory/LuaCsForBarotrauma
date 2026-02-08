@@ -339,6 +339,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
     public FluentResults.Result Reset()
     {
+        _luaScriptLoader.ClearCaches();
         _userDataService.Reset();
         RegisterLuaEvents();
         return DisposeAllPackageResources();
