@@ -14,11 +14,12 @@ namespace Barotrauma.LuaCs;
 
 public interface ILuaScriptManagementService : IReusableService
 {
-    #region Script_Ops
+    Script? InternalScript { get; }
 
     object? GetGlobalTableValue(string tableName);
     FluentResults.Result<DynValue> DoString(string code);
-    
+    DynValue? CallFunctionSafe(object luaFunction, params object[] args);
+
     /// <summary>
     /// Parses and loads script sources (code) into a memory cache without executing it.
     /// </summary>
@@ -54,8 +55,5 @@ public interface ILuaScriptManagementService : IReusableService
     /// </summary>
     /// <returns></returns>
     /// <remarks>May be functionally equivalent to <see cref="IReusableService.Reset"/></remarks>
-    FluentResults.Result DisposeAllPackageResources();
-
-    #endregion
-    
+    FluentResults.Result DisposeAllPackageResources();    
 }

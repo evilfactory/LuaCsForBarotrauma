@@ -87,7 +87,7 @@ public class LuaUserDataService : ILuaUserDataService
             throw new ScriptRuntimeException($"tried to register a type that doesn't exist: {typeName}.");
         }
 
-        return UserData.RegisterType(type, new CallableUserDataDescriptor(type));
+        return UserData.RegisterType(type);
     }
 
     public void RegisterExtensionType(string typeName)
@@ -405,36 +405,5 @@ public class LuaUserDataService : ILuaUserDataService
     {
         descriptors.Clear();
         return FluentResults.Result.Ok();
-    }
-}
-
-sealed class CallableUserDataDescriptor : StandardUserDataDescriptor
-{
-    public CallableUserDataDescriptor(Type type)
-        : base(type, InteropAccessMode.Default)
-    {
-    }
-
-    public override DynValue MetaIndex(Script script, object obj, string metaname)
-    {
-        if (metaname == "__call")
-        {
-            return DynValue.NewCallback((ctx, args) =>
-            {
-                var self = args[0];
-
-                var ctor = base.Index(script, obj, DynValue.NewString("__new"), true);
-
-                if (ctor == null || ctor.IsNil())
-                {
-                    throw new ScriptRuntimeException("Attempted to call userdata without __new.");
-                }
-
-                var callArgs = args.GetArray().Skip(1).ToArray();
-                return script.Call(ctor, callArgs);
-            });
-        }
-
-        return base.MetaIndex(script, obj, metaname);
     }
 }

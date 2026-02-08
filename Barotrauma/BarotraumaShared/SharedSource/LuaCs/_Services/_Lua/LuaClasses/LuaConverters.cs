@@ -11,14 +11,14 @@ namespace Barotrauma
 {
     public class LuaConverters
     {
-        private readonly Script _script;
+        private readonly ILuaScriptManagementService _luaScriptManagementService;
 
-        public LuaConverters(Script script)
+        public LuaConverters(ILuaScriptManagementService luaScriptManagementService)
         {
-            _script = script;
+            _luaScriptManagementService = luaScriptManagementService;
         }
 
-        private DynValue Call(object function, params object[] arguments) => _script.Call(function, arguments);
+        private DynValue Call(object function, params object[] arguments) => _luaScriptManagementService.CallFunctionSafe(function, arguments);
 
         public void RegisterLuaConverters()
         {
@@ -34,7 +34,7 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsAction), v => (LuaCsAction)(args =>
             {
-                if (v.Function.OwnerScript == _script)
+                if (v.Function.OwnerScript == _luaScriptManagementService)
                 {
                     Call(v.Function, args);
                 }
@@ -42,7 +42,7 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsFunc), v => (LuaCsFunc)(args =>
             {
-                if (v.Function.OwnerScript == _script)
+                if (v.Function.OwnerScript == _luaScriptManagementService.InternalScript)
                 {
                     return Call(v.Function, args);
                 }
@@ -51,7 +51,7 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsCompatPatchFunc), v => (LuaCsCompatPatchFunc)((self, args) =>
             {
-                if (v.Function.OwnerScript == _script)
+                if (v.Function.OwnerScript == _luaScriptManagementService.InternalScript)
                 {
                     return Call(v.Function, self, args);
                 }
@@ -60,7 +60,7 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsPatchFunc), v => (LuaCsPatchFunc)((self, args) =>
             {
-                if (v.Function.OwnerScript == _script)
+                if (v.Function.OwnerScript == _luaScriptManagementService.InternalScript)
                 {
                     return Call(v.Function, self, args);
                 }
@@ -137,7 +137,7 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(NetMessageReceived), v => (NetMessageReceived)((arg1) =>
             {
-                if (v.Function.OwnerScript == _script)
+                if (v.Function.OwnerScript == _luaScriptManagementService.InternalScript)
                 {
                     Call(v.Function, arg1);
                 }
@@ -145,7 +145,7 @@ namespace Barotrauma
 #elif SERVER
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(NetMessageReceived), v => (NetMessageReceived)((arg1, arg2) =>
             {
-                if (v.Function.OwnerScript == _script)
+                if (v.Function.OwnerScript == _luaScriptManagementService.InternalScript)
                 {
                     Call(v.Function, arg1, arg2);
                 }

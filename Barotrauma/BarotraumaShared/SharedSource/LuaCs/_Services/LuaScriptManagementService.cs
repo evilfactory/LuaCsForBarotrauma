@@ -28,6 +28,8 @@ namespace Barotrauma.LuaCs;
 
 class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 {
+    public Script? InternalScript => _script;
+
     private Script? _script;
     private bool _isRunning;
     [MemberNotNullWhen(true, nameof(_script))]
@@ -184,8 +186,10 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         Script.GlobalOptions.ShouldPCallCatchException = (Exception ex) => { return true; };
 
+        UserData.RegisterType<ILuaCsHook.HookMethodType>();
         UserData.RegisterType(typeof(LuaGame));
-        UserData.RegisterType(typeof(EventService));
+        StandardUserDataDescriptor descriptor = (StandardUserDataDescriptor)UserData.RegisterType(typeof(EventService));
+        descriptor.AddDynValue("HookMethodType", UserData.CreateStatic<ILuaCsHook.HookMethodType>());
         UserData.RegisterType(typeof(ILuaCsNetworking));
         UserData.RegisterType(typeof(ILuaCsUtility));
         UserData.RegisterType(typeof(ILuaCsTimer));
@@ -195,7 +199,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         UserData.RegisterType(typeof(IUserDataDescriptor));
         UserData.RegisterType(typeof(INetworkingService));
 
-        new LuaConverters(_script).RegisterLuaConverters();
+        new LuaConverters(this).RegisterLuaConverters();
 
         var luaRequire = new LuaRequire(_script);
 
@@ -287,7 +291,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         return result;
     }
 
-    public DynValue? CallFunction(DynValue luaFunction, params object[] args)
+    public DynValue? CallFunctionSafe(object luaFunction, params object[] args)
     {
         if (!IsRunning) { return null; }
 

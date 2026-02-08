@@ -794,7 +794,6 @@ namespace Barotrauma.LuaCs
             }
 
             registeredPatches.Clear();
-            patchModuleBuilder = null;
 
             compatHookPrefixMethods.Clear();
             compatHookPostfixMethods.Clear();
