@@ -1,0 +1,11 @@
+<Project>
+    <Target Name="CopyPlublicizedFiles" AfterTargets="Build">
+        <ItemGroup>
+            <PublicizedAssemblies Include="$(TargetDir)\Publicized\**\*.dll"/>
+        </ItemGroup>
+        <Copy
+                SourceFiles="@(PublicizedAssemblies)"
+                DestinationFolder="$(TargetDir)\LocalMods\LuaCsForBarotrauma\Publicized\%(RecursiveDir)"
+        />
+    </Target>
+</Project>
