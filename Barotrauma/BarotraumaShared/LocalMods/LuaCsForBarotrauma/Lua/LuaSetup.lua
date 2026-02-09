@@ -2,10 +2,6 @@ LuaSetup = {}
 
 local path = ...
 
-package.path = {path .. "/Lua/?.lua"}
-
-setmodulepaths(package.path)
-
 local function AddTableToGlobal(tbl)
     for k, v in pairs(tbl) do
         _G[k] = v
@@ -13,22 +9,22 @@ local function AddTableToGlobal(tbl)
 end
 
 if SERVER then
-    AddTableToGlobal(require("DefaultLib/LibServer"))
+    AddTableToGlobal(dofile(path .. "/Lua/DefaultLib/LibServer.lua"))
 else
-    AddTableToGlobal(require("DefaultLib/LibClient"))
+    AddTableToGlobal(dofile(path .. "/Lua/DefaultLib/LibClient.lua"))
 end
 
-AddTableToGlobal(require("DefaultLib/LibShared"))
+AddTableToGlobal(dofile(path .. "/Lua/DefaultLib/LibShared.lua"))
 
-AddTableToGlobal(require("CompatibilityLib"))
+AddTableToGlobal(dofile(path .. "/Lua/CompatibilityLib.lua"))
 
-require("DefaultHook")
+dofile(path .. "/Lua/DefaultHook.lua")
 
 Descriptors = LuaSetup.LuaUserData
 
-require("DefaultLib/Utils/Math")
-require("DefaultLib/Utils/String")
-require("DefaultLib/Utils/Util")
-require("DefaultLib/Utils/SteamApi")
+dofile(path .. "/Lua/DefaultLib/Utils/Math.lua")
+dofile(path .. "/Lua/DefaultLib/Utils/String.lua")
+dofile(path .. "/Lua/DefaultLib/Utils/Util.lua")
+dofile(path .. "/Lua/DefaultLib/Utils/SteamApi.lua")
 
 LuaSetup = nil

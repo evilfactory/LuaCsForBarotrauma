@@ -77,7 +77,7 @@ namespace Barotrauma.LuaCs
                 return false;
             }
             
-            return true;
+            return result.Value;
         }
 
         private void UnsafeLogErrors(string message, FluentResults.Result result = null)

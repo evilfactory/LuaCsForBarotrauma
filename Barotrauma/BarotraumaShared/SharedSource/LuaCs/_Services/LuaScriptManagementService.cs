@@ -268,9 +268,20 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         SetupEnvironment(enableSandbox);
 
+        if (_script == null) { return FluentResults.Result.Ok(); } // never happens
+
         var result = FluentResults.Result.Ok();
 
         _isRunning = true;
+
+        var packages = executionOrder.Select(r => r.OwnerPackage)
+            .Distinct()
+            .Select(p => $"{p.Dir}/Lua/?.lua")
+            .ToArray();
+
+        ((LuaScriptLoader)_luaScriptLoader).ModulePaths = packages;
+        Table package = (Table)_script.Globals["package"];
+        package.Set("path", DynValue.FromObject(_script, packages));
 
         foreach (ILuaScriptResourceInfo resource in executionOrder.Where(l => l.IsAutorun))
         {
@@ -279,7 +290,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
                 try
                 {
                     _loggerService.LogMessage($"Run {filePath.Value}");
-                    _script?.Call(_script.LoadFile(filePath.FullPath), Path.GetDirectoryName(resource.OwnerPackage.Path));
+                    _script.Call(_script.LoadFile(filePath.FullPath), resource.OwnerPackage.Dir);
                 }
                 catch(Exception e)
                 {
