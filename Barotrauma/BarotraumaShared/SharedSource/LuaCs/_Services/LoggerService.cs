@@ -208,17 +208,17 @@ public partial class LoggerService : ILoggerService
 
     public void LogDebug(string message, Color? color = null)
     {
-        throw new NotImplementedException($"@EvilFactory will implement this at the end of development.");
+        Log(message, color ?? Color.Purple);
     }
 
     public void LogDebugWarning(string message)
     {
-        throw new NotImplementedException($"@EvilFactory will implement this at the end of development.");
+        Log(message, Color.Yellow);
     }
 
     public void LogDebugError(string message)
     {
-        throw new NotImplementedException($"@EvilFactory will implement this at the end of development.");
+        Log(message, Color.Red);
     }
 
     public void Dispose() { }
