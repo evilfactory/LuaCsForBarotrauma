@@ -72,10 +72,10 @@ public class PluginManagementService : IAssemblyManagementService
     private static readonly SyntaxTree BaseAssemblyImports = CSharpSyntaxTree.ParseText(
         new StringBuilder()
             .AppendLine("global using LuaCsHook = Barotrauma.LuaCs.Compatibility.ILuaCsHook;")
-            .AppendLine("using System.Reflection;")
-            .AppendLine("using Barotrauma;")
-            .AppendLine("using Barotrauma.LuaCs;")
-            .AppendLine("using Barotrauma.LuaCs.Compatibility;")
+            .AppendLine("global using System.Reflection;")
+            .AppendLine("global using Barotrauma;")
+            .AppendLine("global using Barotrauma.LuaCs;")
+            .AppendLine("global using Barotrauma.LuaCs.Compatibility;")
             .AppendLine("using System.Runtime.CompilerServices;")
             .AppendLine("[assembly: IgnoresAccessChecksTo(\"BarotraumaCore\")]")
 #if CLIENT
@@ -559,10 +559,32 @@ public class PluginManagementService : IAssemblyManagementService
 #if !DEBUG
             throw new NotImplementedException($"Needs to use publicized barotrauma assemblies and cache metadata.");
 #endif
+            var publicizedDir = Path.Combine(Directory.GetCurrentDirectory(), "Publicized");
+
+            string[] publicizedAssemblies =
+            {
+#if CLIENT
+                "Barotrauma",
+#elif SERVER
+                "DedicatedServer",
+#endif
+                "BarotraumaCore"
+            };
+
+            var publicizedRefs = publicizedAssemblies
+                .Select(name => Path.Combine(publicizedDir, $"{name}.dll"))
+                .Where(File.Exists)
+                .Select(path => MetadataReference.CreateFromFile(path));
+
+            var runtimeRefs = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(ass =>
+                    !string.IsNullOrWhiteSpace(ass.Location) &&
+                    !publicizedAssemblies.Contains(ass.GetName().Name))
+                .Select(ass => MetadataReference.CreateFromFile(ass.Location));
+
             return Basic.Reference.Assemblies.Net80.References.All
-                .Union(AppDomain.CurrentDomain.GetAssemblies()
-                    .Where(ass => !ass.Location.IsNullOrWhiteSpace())
-                    .Select(ass => MetadataReference.CreateFromFile(ass.Location)));
+                .Union(runtimeRefs)
+                .Union(publicizedRefs);
         }
     }
 
