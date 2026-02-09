@@ -280,6 +280,30 @@ namespace Barotrauma
             }
             _runStateMachine.GotoState(targetRunState);
         }
+
+        private ImmutableArray<ContentPackage> GetEnabledPackagesList()
+        {
+            var enabledRegular = ContentPackageManager.EnabledPackages.Regular.ToImmutableArray<ContentPackage>();
+            if (!enabledRegular.Any(
+                    p => p.Name.Equals("LuaCsForBarotrauma", StringComparison.InvariantCultureIgnoreCase) 
+                         || p.Name.Equals("Lua for Barotrauma", StringComparison.InvariantCultureIgnoreCase)))
+            {
+                var luaCs = ContentPackageManager.AllPackages.FirstOrDefault(
+                    p => p.Name.Equals("LuaCsForBarotrauma", StringComparison.InvariantCultureIgnoreCase) 
+                         || p.Name.Equals("Lua For Barotrauma", StringComparison.InvariantCultureIgnoreCase));
+                if (luaCs is null)
+                {
+                    DebugConsole.ThrowError($"The 'LuaCsForBarotrauma' mod could not be found. Please subscribe to it and add it to the EnabledPackages List!", 
+                        new NullReferenceException($"The 'LuaCsForBarotrauma' mod could not be found. Please subscribe to it and add it to the EnabledPackages List!"),
+                        createMessageBox: true);
+                    return enabledRegular;
+                }
+
+                enabledRegular = new[] { luaCs }.Concat(enabledRegular).ToImmutableArray();
+            }
+            
+            return enabledRegular;
+        }
         
         private StateMachine<RunState> SetupStateMachine() 
         {
@@ -325,7 +349,7 @@ namespace Barotrauma
                     {
                         registrationProvider.RegisterTypeProviders(ConfigService, null);
                     }
-                    Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+                    Logger.LogResults(PackageManagementService.LoadPackagesInfo(GetEnabledPackagesList()));
                     Logger.LogResults(ConfigService.LoadSavedConfigsValues());
                     LoadLuaCsConfig();
                     
@@ -342,17 +366,13 @@ namespace Barotrauma
                     {
                         registrationProvider.RegisterTypeProviders(ConfigService, null);
                     }
-                    Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+                    Logger.LogResults(PackageManagementService.LoadPackagesInfo(GetEnabledPackagesList()));
                     LoadLuaCsConfig();
                 }
 
                 if (!PackageManagementService.IsAnyPackageRunning())
                 {
-#if DEBUG
-                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), true));
-#else
-                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(ContentPackageManager.EnabledPackages.All.ToImmutableArray(), IsCsEnabled));
-#endif
+                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(GetEnabledPackagesList(), IsCsEnabled));
                 }
 
 #if CLIENT
@@ -362,7 +382,6 @@ namespace Barotrauma
                     EventService.PublishEvent<IEventConnectedToServer>(static p => p.OnConnectedToServer());
                 }
 #endif
-
                 CurrentRunState = RunState.Running;
             }
                 
