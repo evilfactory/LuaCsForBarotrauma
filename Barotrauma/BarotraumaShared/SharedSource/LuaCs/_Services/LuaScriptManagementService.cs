@@ -174,7 +174,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _eventService.RegisterLuaEventAlias<IEventUpdate>("think", "OnUpdate");
     }
 
-    private void SetupEnvironment()
+    private void SetupEnvironment(bool enableSandbox)
     {
         _script = new Script(CoreModules.Preset_SoftSandbox | CoreModules.Debug | CoreModules.IO | CoreModules.OS_System);
         _script.Options.DebugPrint = (string msg) =>
@@ -220,15 +220,15 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["Networking"] = _networkingService;
         //_script.Globals["Steam"] = Steam;
 
-        if (GameMain.LuaCs.IsCsEnabled)
-        {
-            UserData.RegisterType(typeof(LuaUserDataService));
-            _script.Globals["LuaUserData"] = _userDataService;
-        }
-        else
+        if (enableSandbox)
         {
             UserData.RegisterType(typeof(SafeLuaUserDataService));
             _script.Globals["LuaUserData"] = _safeUserDataService;
+        }
+        else
+        {
+            UserData.RegisterType(typeof(LuaUserDataService));
+            _script.Globals["LuaUserData"] = _userDataService;
         }
 
         Table eventsTable = new Table(_script);
@@ -249,7 +249,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["Events"] = eventsTable;
 
         _script.Globals["ExecutionNumber"] = 0;
-        _script.Globals["CSActive"] = GameMain.LuaCs.IsCsEnabled;
+        _script.Globals["CSActive"] = !enableSandbox;
 
         _script.Globals["SERVER"] = LuaCsSetup.IsServer;
         _script.Globals["CLIENT"] = LuaCsSetup.IsClient;
@@ -257,7 +257,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _defaultLuaRegistrar.RegisterAll();
     }
 
-    public FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder)
+    public FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder, bool enableSandbox)
     {        
         if (_isRunning) 
         { 
@@ -266,7 +266,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         _loggerService.LogMessage("Executing Lua scripts");
 
-        SetupEnvironment();
+        SetupEnvironment(enableSandbox);
 
         var result = FluentResults.Result.Ok();
 

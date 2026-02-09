@@ -248,7 +248,7 @@ public sealed class PackageManagementService : IPackageManagementService
             
         if (!luaScripts.IsDefaultOrEmpty)
         {
-            result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts);
+            result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts, enableSandbox: !executeCsAssemblies).Reasons);
         }
 
         foreach (var package in loadingOrderedPackages)

@@ -34,7 +34,7 @@ public interface ILuaScriptManagementService : IReusableService
     /// <param name="executionOrder"></param>
     /// <returns></returns>
     // [Required]
-    FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder);
+    FluentResults.Result ExecuteLoadedScripts(ImmutableArray<ILuaScriptResourceInfo> executionOrder, bool enableSandbox);
     
     /// <summary>
     /// 
