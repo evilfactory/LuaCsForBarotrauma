@@ -442,13 +442,7 @@ public class PluginManagementService : IAssemblyManagementService
             {
                 var res = assemblyLoader.LoadAssemblyFromFile(binResource.FullPath, dependencyPaths);
                 result.WithReasons(res.Reasons);
-#if DEBUG
                 _logger.LogResults(res.ToResult());
-#endif
-                if (res.IsFailed)
-                {
-                    _logger.LogResults(res.ToResult());
-                }
             }
         }
         
