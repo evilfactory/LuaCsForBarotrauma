@@ -1,4 +1,8 @@
-﻿namespace Barotrauma.LuaCs;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Barotrauma.LuaCs;
 
 public sealed class LuaCsInfoProvider : ILuaCsInfoProvider
 {
@@ -15,4 +19,29 @@ public sealed class LuaCsInfoProvider : ILuaCsInfoProvider
     public bool RestrictMessageSize => GameMain.LuaCs.RestrictMessageSize;
     public string LocalDataSavePath =>  GameMain.LuaCs.LocalDataSavePath;
     public RunState CurrentRunState => GameMain.LuaCs.CurrentRunState;
+    public ContentPackage LuaCsForBarotraumaPackage
+    {
+        get
+        {
+            var luaCs = FirstOrDefaultLua(ContentPackageManager.EnabledPackages.All);
+            if (luaCs == null)
+            {
+                luaCs = FirstOrDefaultLua(ContentPackageManager.LocalPackages.Regular);
+            }
+
+            if (luaCs == null)
+            {
+                luaCs = FirstOrDefaultLua(ContentPackageManager.WorkshopPackages.Regular);
+            }
+            
+            return luaCs;
+
+            ContentPackage FirstOrDefaultLua(IEnumerable<ContentPackage> packages)
+            {
+                return packages.FirstOrDefault(p =>
+                    p.Name.Equals("LuaCsForBarotrauma", StringComparison.InvariantCultureIgnoreCase)
+                    || p.Name.Equals("Lua for Barotrauma", StringComparison.InvariantCultureIgnoreCase));
+            }
+        }
+    }
 }

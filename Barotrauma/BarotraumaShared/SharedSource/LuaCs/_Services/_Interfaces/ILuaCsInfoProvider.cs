@@ -39,4 +39,9 @@ public interface ILuaCsInfoProvider : IService
     /// The current state of the Execution State Machine.
     /// </summary>
     public RunState CurrentRunState { get; }
+    
+    /// <summary>
+    /// Returns the best-matching LuaCsForBarotrauma package (enabled list > localMods > WorkshopMods).
+    /// </summary>
+    public ContentPackage LuaCsForBarotraumaPackage { get; }
 }
