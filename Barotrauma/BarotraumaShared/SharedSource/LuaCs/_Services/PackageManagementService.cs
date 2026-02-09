@@ -223,10 +223,24 @@ public sealed class PackageManagementService : IPackageManagementService
         var toLoadPackagesIndents = loadingOrderedPackages
             .SelectMany(p => p.Key.AltNames.Union(new []{ p.Key.Name }).ToIdentifiers())
             .ToImmutableHashSet();
-        
-        
+
+
         // NOTE: Config/Settings are instanced in LoadPackages()
-        
+
+        if (executeCsAssemblies)
+        {
+            var plugins = SelectCompatible(loadingOrderedPackages
+                .SelectMany(pkg => pkg.Value.Assemblies)
+                .ToImmutableArray(), toLoadPackagesIndents, loadOrderByPackage);
+
+            if (!plugins.IsDefaultOrEmpty)
+            {
+                result.WithReasons(_pluginManagementService.LoadAssemblyResources(plugins).Reasons);
+                result.WithReasons(_pluginManagementService.ActivatePluginInstances(
+                    plugins.Select(p => p.OwnerPackage).ToImmutableArray(), false).Reasons);
+            }
+        }
+
         //lua scripts
         var luaScripts = SelectCompatible(loadingOrderedPackages
             .SelectMany(pkg => pkg.Value.LuaScripts)
@@ -234,21 +248,7 @@ public sealed class PackageManagementService : IPackageManagementService
             
         if (!luaScripts.IsDefaultOrEmpty)
         {
-            result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts).Reasons);
-        }
-
-        if (executeCsAssemblies)
-        {
-            var plugins = SelectCompatible(loadingOrderedPackages
-                .SelectMany(pkg => pkg.Value.Assemblies)
-                .ToImmutableArray(), toLoadPackagesIndents, loadOrderByPackage);
-            
-            if (!plugins.IsDefaultOrEmpty)
-            {
-                result.WithReasons(_pluginManagementService.LoadAssemblyResources(plugins).Reasons);
-                result.WithReasons(_pluginManagementService.ActivatePluginInstances(
-                    plugins.Select(p => p.OwnerPackage).ToImmutableArray(), false).Reasons);
-            }
+            result.WithReasons(_luaScriptManagementService.ExecuteLoadedScripts(luaScripts);
         }
 
         foreach (var package in loadingOrderedPackages)
