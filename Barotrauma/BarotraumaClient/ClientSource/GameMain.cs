@@ -1052,6 +1052,7 @@ namespace Barotrauma
                 SoundManager?.Update();
 
                 LuaCs.EventService.PublishEvent<IEventUpdate>(sub => sub.OnUpdate(Timing.Step));
+                LuaCs.Logger.ProcessLogs();
 
                 Timing.Accumulator -= Timing.Step;
 
