@@ -99,12 +99,13 @@ namespace Barotrauma
         public static ContentPath FromRaw(ContentPackage? contentPackage, string? rawValue)
         {
             var newRaw = new ContentPath(contentPackage, rawValue);
-            if (prevCreatedRaw is not null && prevCreatedRaw.ContentPackage == contentPackage &&
+            // Removed as this almost never happens but makes the constructor not thread-safe.
+            /*if (prevCreatedRaw is not null && prevCreatedRaw.ContentPackage == contentPackage &&
                 prevCreatedRaw.RawValue == rawValue)
             {
                 newRaw.cachedValue = prevCreatedRaw.Value;
             }
-            prevCreatedRaw = newRaw;
+            prevCreatedRaw = newRaw;*/
             return newRaw;
         }
         

@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Barotrauma.Extensions;
 using Barotrauma.LuaCs.Data;
@@ -138,7 +139,9 @@ public sealed class PackageManagementService : IPackageManagementService
         {
             result.WithReasons(pkgConfig.Config.Reasons);
             if (pkgConfig.Config.IsSuccess)
+            {
                 result.WithReasons(UnsafeAddPackageInternal(pkgConfig.Source, pkgConfig.Config.Value).Reasons);
+            }
         }
 
         return result;
@@ -152,6 +155,32 @@ public sealed class PackageManagementService : IPackageManagementService
             return FluentResults.Result.Ok();
         }
 
+        // We need to touch ContentPath.Fullpath once in a single-threaded context to make it thread-safe.
+        foreach (var info in config.Assemblies)
+        {
+            TouchMeFullPaths(info);
+        }
+        
+        foreach (var info in config.Configs)
+        {
+            TouchMeFullPaths(info);
+        }
+        
+        foreach (var info in config.LuaScripts)
+        {
+            TouchMeFullPaths(info);
+        }
+
+        // We need to touch ContentPath.Fullpath once in a single-threaded context to make it thread-safe.
+        [MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.PreserveSig)]
+        void TouchMeFullPaths(IBaseResourceInfo info)
+        {
+            foreach (var contentPath in info.FilePaths)
+            {
+                var s = contentPath.FullPath;
+            }
+        }
+        
         _loadedPackages[package] = config;
         try
         {
