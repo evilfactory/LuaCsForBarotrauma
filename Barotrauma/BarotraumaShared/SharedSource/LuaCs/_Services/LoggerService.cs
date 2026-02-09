@@ -195,7 +195,6 @@ public partial class LoggerService : ILoggerService
                     LogError($"FluentResults::IError: {error.Message}");
                 }
 
-
                 if (error.Reasons != null)
                 {
                     foreach (var reason in error.Reasons)
@@ -209,17 +208,17 @@ public partial class LoggerService : ILoggerService
 
     public void LogDebug(string message, Color? color = null)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException($"@EvilFactory will implement this at the end of development.");
     }
 
     public void LogDebugWarning(string message)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException($"@EvilFactory will implement this at the end of development.");
     }
 
     public void LogDebugError(string message)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException($"@EvilFactory will implement this at the end of development.");
     }
 
     public void Dispose() { }

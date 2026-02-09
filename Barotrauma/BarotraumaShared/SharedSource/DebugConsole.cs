@@ -2385,6 +2385,10 @@ namespace Barotrauma
                 if (setting.TrySetValue(valueString))
                 {
                     NewMessage($"Set config {internalName} value to {valueString}", Color.Green);
+                    if (GameMain.LuaCs.ConfigService.SaveConfigValue(setting) is { IsFailed: true } res)
+                    {
+                        NewMessage($"Failed to save new config data to disk. Reasons: {res.ToString()}");
+                    }
                 }
                 else
                 {

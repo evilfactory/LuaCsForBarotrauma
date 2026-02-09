@@ -112,13 +112,14 @@ public sealed partial class ConfigService : IConfigService
         _settingsInstances.Clear();
         _instanceFactory.Clear();
         _settingsInstancesByPackage.Clear();
+        _storageService.PurgeCache();
 
         return result;
     }
 
     #endregion
 
-    private const string SaveDataFileName = "SettingData.xml"; 
+    private const string SaveDataFileName = "SettingsData.xml"; 
     
     private readonly ConcurrentDictionary<(ContentPackage OwnerPackage, string InternalName), ISettingBase> 
         _settingsInstances = new();
@@ -294,7 +295,21 @@ public sealed partial class ConfigService : IConfigService
     
     public FluentResults.Result LoadSavedConfigsValues()
     {
-        throw new NotImplementedException();
+        ImmutableArray<ISettingBase> cfgValues;
+        using (var lck = _operationLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult())
+        {
+            IService.CheckDisposed(this);
+            cfgValues = _settingsInstances.Select(kvp => kvp.Value).ToImmutableArray();
+        }
+
+        var ret = new FluentResults.Result();
+        
+        foreach (var settingBase in cfgValues)
+        {
+            ret.WithReasons(LoadSavedValueForConfig(settingBase).Reasons);
+        }
+
+        return ret;
     }
     
     public FluentResults.Result SaveConfigValue(ISettingBase setting)
@@ -330,6 +345,10 @@ public sealed partial class ConfigService : IConfigService
                 {
                     var attr = new XAttribute("Value", str);
                     currentTarget.Add(attr);
+                }
+                else
+                {
+                    tgt.Value = str;
                 }
 
                 return FluentResults.Result.Ok();

@@ -326,7 +326,9 @@ namespace Barotrauma
                         registrationProvider.RegisterTypeProviders(ConfigService, null);
                     }
                     Logger.LogResults(PackageManagementService.LoadPackagesInfo(ContentPackageManager.EnabledPackages.All.ToImmutableArray()));
+                    Logger.LogResults(ConfigService.LoadSavedConfigsValues());
                     LoadLuaCsConfig();
+                    
                 }
 
                 CurrentRunState = RunState.LoadedNoExec;

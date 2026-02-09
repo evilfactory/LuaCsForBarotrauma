@@ -128,10 +128,9 @@ public class StorageService : IStorageService
         try
         {
             var path = System.IO.Path.GetFullPath(Path.Combine(
-                ConfigData.LocalPackageDataPath.Replace(ConfigData.LocalDataPathRegex, package.ToIdentifier().Value)
-                    .CleanUpPathCrossPlatform(),
-                localFilePath));
-            if (!path.StartsWith(ConfigData.LocalDataSavePath))
+                ConfigData.LocalPackageDataPath.Replace(ConfigData.LocalDataPathRegex, package.Name).CleanUpPathCrossPlatform(),
+                localFilePath.CleanUpPathCrossPlatform()));
+            if (!path.StartsWith(Path.GetFullPath(ConfigData.LocalDataSavePath)))
                 ThrowHelper.ThrowUnauthorizedAccessException($"{nameof(GetAbsolutePathForLocal)}: The local path of '{path}' is not a local path!");
             return path;
         }
@@ -433,7 +432,8 @@ public class StorageService : IStorageService
         {
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
-            System.IO.File.WriteAllText(fp, t, encoding);
+            Directory.CreateDirectory(Path.GetDirectoryName(fp)!);
+            System.IO.File.WriteAllText(fp, t, encoding ?? Encoding.UTF8);
             if (UseCaching)
                 _fsCache[filePath] = t;
             return new FluentResults.Result().WithSuccess($"Saved to file successfully");
@@ -460,6 +460,7 @@ public class StorageService : IStorageService
         {
             var fp = filePath.CleanUpPath();
             fp = System.IO.Path.IsPathRooted(fp) ? fp : System.IO.Path.GetFullPath(fp);
+            Directory.CreateDirectory(Path.GetDirectoryName(fp)!);
             System.IO.File.WriteAllBytes(fp, b);
             if (UseCaching)
                 _fsCache[filePath] = b;
