@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -12,7 +15,14 @@ public class ServicesProvider : IServicesProvider
 {
     private ServiceContainer _serviceContainerInst;
     private ServiceContainer ServiceContainer => _serviceContainerInst;
-    
+    /// <summary>
+    /// Definition: [Key: InterfaceType, Value: ConcreteTypes]
+    /// </summary>
+    private readonly ConcurrentDictionary<Type, ConcurrentBag<Type>> _systemTypeDefs = new();
+    /// <summary>
+    /// Definition: [Key: ConcreteType, Value: TypeInstance]
+    /// </summary>
+    private readonly ConcurrentDictionary<Type, ISystem> _systemInstances = new();
     private readonly ReaderWriterLockSlim _serviceLock = new();
 
     public ServicesProvider()
@@ -27,6 +37,13 @@ public class ServicesProvider : IServicesProvider
     
     public void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface
     {
+        // ISystem services must run as a lifetime singleton
+        if (typeof(TSvcInterface).IsAssignableTo(typeof(ISystem)))
+        {
+            lifetimeInstance = new PerContainerLifetime();
+            _systemTypeDefs.GetOrAdd(typeof(TSvcInterface), (type) => new ConcurrentBag<Type>());
+        }
+        
         if (lifetimeInstance is null)
         {
             switch (lifetime)
@@ -54,7 +71,6 @@ public class ServicesProvider : IServicesProvider
                 ServiceContainer.Register<TSvcInterface, TService>(lifetimeInstance);
             else
                 ServiceContainer.Register<TSvcInterface, TService>();
-            OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
         }
         finally
         {
@@ -68,6 +84,13 @@ public class ServicesProvider : IServicesProvider
         if (name.IsNullOrWhiteSpace())
         {
             throw new ArgumentNullException($"Tried to register a service of type {typeof(TService).Name} but the name provided is null or empty." );
+        }
+        
+        // ISystem services must run as a lifetime singleton
+        if (typeof(TSvcInterface).IsAssignableTo(typeof(ISystem)))
+        {
+            lifetimeInstance = new PerContainerLifetime();
+            _systemTypeDefs.GetOrAdd(typeof(TSvcInterface), (type) => new ConcurrentBag<Type>());
         }
         
         if (lifetimeInstance is null)
@@ -94,7 +117,6 @@ public class ServicesProvider : IServicesProvider
         {
             _serviceLock.EnterReadLock();
             ServiceContainer.Register<TSvcInterface, TService>(name, lifetimeInstance);
-            OnServiceRegistered?.Invoke(typeof(TSvcInterface), typeof(TService));
         }
         finally
         {
@@ -115,20 +137,26 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    public void Compile()
+    public void CompileAndRun()
     {
         try
         {
-            _serviceLock.EnterReadLock();
+            _serviceLock.EnterWriteLock();
             ServiceContainer?.Compile();
+            foreach (var typeDef in _systemTypeDefs.Values.SelectMany(type => type))
+            {
+                if (_systemInstances.ContainsKey(typeDef))
+                {
+                    continue;
+                }
+                _systemInstances[typeDef] = (ISystem)ServiceContainer?.TryGetInstance(typeDef);
+            }
         }
         finally
         {
-            _serviceLock.ExitReadLock();
+            _serviceLock.ExitWriteLock();
         }
     }
-
-    public event Action<Type, Type> OnServiceRegistered;
     
     public void InjectServices<T>(T inst) where T : class
     {
@@ -209,19 +237,32 @@ public class ServicesProvider : IServicesProvider
         }
     }
 
-    [MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.NoInlining)]
+    [MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.Synchronized)]
     public void DisposeAndReset()
     {
         // Plugins should never be allowed to execute this.
         if (Assembly.GetCallingAssembly() != Assembly.GetExecutingAssembly())
         {
             throw new MethodAccessException(
-                $"Assembly {Assembly.GetCallingAssembly().FullName} attempted to call DisposeAllServices().");
+                $"Assembly {Assembly.GetCallingAssembly().FullName} attempted to call {nameof(DisposeAndReset)}().");
         }
 
         try
         {
             _serviceLock.EnterWriteLock();
+            foreach (var system in _systemInstances.Values)
+            {
+                try
+                {
+                    system.Dispose();
+                }
+                catch (Exception e)
+                {
+                    // ignored, no logging services available.
+                }
+            }
+            _systemInstances.Clear();
+            _systemTypeDefs.Clear();
             _serviceContainerInst?.Dispose();
             _serviceContainerInst = new ServiceContainer();
         }

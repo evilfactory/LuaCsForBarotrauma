@@ -4,6 +4,12 @@ using Microsoft.Toolkit.Diagnostics;
 namespace Barotrauma.LuaCs;
 
 /// <summary>
+/// Represents a <see cref="IReusableService"/> that is automatically instantiated at startup for the lifetime of the
+/// <see cref="IServiceProvider"/> instance.
+/// </summary>
+public interface ISystem : IReusableService { }
+
+/// <summary>
 /// Defines a service that can be reset to it's post-constructor state and reused without needing to be disposed.
 /// Intended for persistent services.
 /// </summary>

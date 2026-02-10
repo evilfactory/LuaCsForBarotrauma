@@ -215,7 +215,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<IPackageManagementServiceConfig, PackageManagementServiceConfig>(ServiceLifetime.Singleton);
 
             // gen IL
-            servicesProvider.Compile();
+            servicesProvider.CompileAndRun();
             return servicesProvider;
         }
         

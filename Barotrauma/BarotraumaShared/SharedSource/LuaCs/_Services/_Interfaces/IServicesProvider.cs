@@ -6,7 +6,8 @@ using LightInject;
 namespace Barotrauma.LuaCs;
 
 /// <summary>
-/// Provides instancing and management of IServices.
+/// Provides instancing and management of <see cref="IService"/>, <see cref="IReusableService"/>, and <see cref="ISystem"/>
+/// instances.
 /// </summary>
 public interface IServicesProvider
 {
@@ -15,28 +16,23 @@ public interface IServicesProvider
     /// <summary>
     /// Registers a type as a service for a given interface.
     /// </summary>
-    /// <param name="lifetime"></param>
-    /// <param name="lifetimeInstance"></param>
-    /// <typeparam name="TSvcInterface"></typeparam>
-    /// <typeparam name="TService"></typeparam>
+    /// <remarks>NOTE: <see cref="ISystem"/> services are forced to <see cref="ServiceLifetime.Singleton"/></remarks>
+    /// <param name="lifetime">The <see cref="ServiceLifetime"/> of the service when requested.</param>
+    /// <param name="lifetimeInstance">Custom lifetime instance.</param>
+    /// <typeparam name="TSvcInterface">Service interface.</typeparam>
+    /// <typeparam name="TService">Implementing service type.</typeparam>
     void RegisterServiceType<TSvcInterface, TService>(ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface;
     
     /// <summary>
     /// Registers a type as a service for a given interface that can be requested by name.
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="lifetime"></param>
-    /// <param name="lifetimeInstance"></param>
-    /// <typeparam name="TSvcInterface"></typeparam>
-    /// <typeparam name="TService"></typeparam>
+    /// <remarks>NOTE: <see cref="ISystem"/> services are forced to <see cref="ServiceLifetime.Singleton"/></remarks>
+    /// <param name="name">Name of the service for lookup.</param>
+    /// <param name="lifetime">The <see cref="ServiceLifetime"/> of the service when requested.</param>
+    /// <param name="lifetimeInstance">Custom lifetime instance.</param>
+    /// <typeparam name="TSvcInterface">Service interface.</typeparam>
+    /// <typeparam name="TService">Implementing service type.</typeparam>
     void RegisterServiceType<TSvcInterface, TService>(string name, ServiceLifetime lifetime, ILifetime lifetimeInstance = null) where TSvcInterface : class, IService where TService : class, IService, TSvcInterface;
-
-    /// <summary>
-    /// Called whenever a new service type for a given interface is implemented.
-    /// Args[0]: Interface type
-    /// Args[1]: Implementing type
-    /// </summary>
-    event System.Action<Type, Type> OnServiceRegistered;
     
     /// <summary>
     /// Registers a factory for resolving the service type.
@@ -46,14 +42,14 @@ public interface IServicesProvider
     void RegisterServiceResolver<TSvcInterface>(Func<ServiceContainer, TSvcInterface> factory) where TSvcInterface : class, IService;
     
     /// <summary>
-    /// Runs compilation of registered services.
+    /// Compiles/Generates IL for registered services and instantiates all registered <see cref="ISystem"/> types. 
     /// </summary>
-    public void Compile();
+    public void CompileAndRun();
     
     #endregion
 
     #region Services_Instancing_Injection
-
+    
     /// <summary>
     /// Injects services into the properties of already instanced objects.
     /// </summary>
