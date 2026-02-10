@@ -367,6 +367,7 @@ namespace Barotrauma
                         registrationProvider.RegisterTypeProviders(ConfigService, null);
                     }
                     Logger.LogResults(PackageManagementService.LoadPackagesInfo(GetEnabledPackagesList()));
+                    Logger.LogResults(ConfigService.LoadSavedConfigsValues());
                     LoadLuaCsConfig();
                 }
 
