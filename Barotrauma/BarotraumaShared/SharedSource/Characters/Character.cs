@@ -1433,8 +1433,6 @@ namespace Barotrauma
             }
 #endif
 
-            GameMain.LuaCs.Hook.Call("character.created", new object[] { newCharacter });
-
             return newCharacter;
         }
 
@@ -1889,7 +1887,6 @@ namespace Barotrauma
                 }
             }
             info.Job?.GiveJobItems(this, isPvPMode, spawnPoint);
-            GameMain.LuaCs.Hook.Call("character.giveJobItems", this, spawnPoint, isPvPMode);
         }
 
         public void GiveIdCardTags(WayPoint spawnPoint, bool createNetworkEvent = false)

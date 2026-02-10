@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Runtime.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Barotrauma.LuaCs.Data;
@@ -69,6 +70,69 @@ internal interface IEventSettingInstanceLifetime : IEvent<IEventSettingInstanceL
 
 #region GameEvents
 
+internal interface IEventAfflictionUpdate : IEvent<IEventAfflictionUpdate>
+{
+    void OnAfflictionUpdate(Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime);
+    static IEventAfflictionUpdate IEvent<IEventAfflictionUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        IsLuaRunner = Return<bool>.Arguments(() => true),
+        OnKeyUpdate = ReturnVoid.Arguments((Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime) => luaFunc[nameof(OnAfflictionUpdate)](affliction, characterHealth, targetLimb, deltaTime))
+    }.ActLike<IEventAfflictionUpdate>();
+}
+
+internal interface IEventGiveCharacterJobItems : IEvent<IEventGiveCharacterJobItems>
+{
+    void OnGiveCharacterJobItems(Character character, WayPoint spawnPoint, bool isPvPMode);
+    static IEventGiveCharacterJobItems IEvent<IEventGiveCharacterJobItems>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        IsLuaRunner = Return<bool>.Arguments(() => true),
+        OnKeyUpdate = ReturnVoid.Arguments((Character character, WayPoint spawnPoint, bool isPvPMode) => luaFunc[nameof(OnGiveCharacterJobItems)](character, spawnPoint, isPvPMode))
+    }.ActLike<IEventGiveCharacterJobItems>();
+}
+
+internal interface IEventCharacterCreated : IEvent<IEventCharacterCreated>
+{
+    void OnCharacterCreated(Character character);
+    static IEventCharacterCreated IEvent<IEventCharacterCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        IsLuaRunner = Return<bool>.Arguments(() => true),
+        OnKeyUpdate = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnCharacterCreated)](character))
+    }.ActLike<IEventCharacterCreated>();
+}
+
+/*
+internal interface IEventHumanCPRFailed : IEvent<IEventHumanCPRFailed>
+{
+    void OnHumanCPRFailed(Character character);
+    static IEventHumanCPRFailed IEvent<IEventHumanCPRFailed>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        IsLuaRunner = Return<bool>.Arguments(() => true),
+        OnKeyUpdate = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnHumanCPRFailed)](character))
+    }.ActLike<IEventHumanCPRFailed>();
+}
+
+
+internal interface IEventHumanCPRSuccess : IEvent<IEventHumanCPRSuccess>
+{
+    void OnHumanCPRSuccess(Character character);
+    static IEventHumanCPRSuccess IEvent<IEventHumanCPRSuccess>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        IsLuaRunner = Return<bool>.Arguments(() => true),
+        OnKeyUpdate = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnHumanCPRSuccess)](character))
+    }.ActLike<IEventHumanCPRSuccess>();
+}
+*/
+
+public interface IEventKeyUpdate : IEvent<IEventKeyUpdate>
+{
+    void OnKeyUpdate(double deltaTime);
+    static IEventKeyUpdate IEvent<IEventKeyUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    {
+        IsLuaRunner = Return<bool>.Arguments(() => true),
+        OnKeyUpdate = ReturnVoid.Arguments((double deltaTime) => luaFunc[nameof(OnKeyUpdate)](deltaTime))
+    }.ActLike<IEventKeyUpdate>();
+}
+
 /// <summary>
 /// Called as soon as round begins to load before any loading takes place.
 /// </summary>
@@ -121,31 +185,17 @@ public interface IEventDrawUpdate : IEvent<IEventDrawUpdate>
     }.ActLike<IEventDrawUpdate>();
 }
 
-#if CLIENT
-public interface IEventServerRawNetMessageReceived : IEvent<IEventServerRawNetMessageReceived>
-{
-    void OnReceivedServerNetMessage(IReadMessage netMessage, ServerPacketHeader serverPacketHeader);
-}
-
-public interface IEventConnectedToServer : IEvent<IEventConnectedToServer>
-{
-    void OnConnectedToServer();
-}
-
-#elif SERVER
-public interface IEventClientRawNetMessageReceived : IEvent<IEventClientRawNetMessageReceived>
-{
-    void OnReceivedClientNetMessage(IReadMessage netMessage, ClientPacketHeader serverPacketHeader, NetworkConnection sender);
-}
-#endif
-
 #endregion
 
 #region Networking
 
-
 #region Networking-Server
 #if SERVER
+public interface IEventClientRawNetMessageReceived : IEvent<IEventClientRawNetMessageReceived>
+{
+    void OnReceivedClientNetMessage(IReadMessage netMessage, ClientPacketHeader serverPacketHeader, NetworkConnection sender);
+}
+
 /// <summary>
 /// Called when a client connects to the server and has loaded into the lobby.
 /// </summary>
@@ -163,10 +213,17 @@ interface IEventClientConnected : IEvent<IEventClientConnected>
     }.ActLike<IEventClientConnected>();
 }
 #endif
+
 #endregion
 
 #region Networking-Client
 #if CLIENT
+
+public interface IEventServerRawNetMessageReceived : IEvent<IEventServerRawNetMessageReceived>
+{
+    void OnReceivedServerNetMessage(IReadMessage netMessage, ServerPacketHeader serverPacketHeader);
+}
+
 /// <summary>
 /// Called when the client has connected to the server and loaded to the lobby.
 /// </summary>

@@ -114,6 +114,8 @@ namespace Barotrauma
             GameScreen = new GameScreen();
 
             MainThread = Thread.CurrentThread;
+
+            LuaCs.GetType();
         }
 
         public void Init()
@@ -363,9 +365,6 @@ namespace Barotrauma
                     EosInterface.Core.Update();
                     TaskPool.Update();
                     CoroutineManager.Update(paused: false, (float)Timing.Step);
-
-                    LuaCs.EventService.PublishEvent<IEventUpdate>(sub => sub.OnUpdate(Timing.Step));
-                    LuaCs.Logger.ProcessLogs();
 
                     performanceCounterTimer.Stop();
                     if (GameMain.LuaCs.PerformanceCounter.EnablePerformanceCounter)

@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using Barotrauma.LuaCs;
+using Barotrauma.LuaCs.Compatibility;
+using Barotrauma.LuaCs.Data;
+using Barotrauma.LuaCs.Events;
+using Barotrauma.Networking;
+using FluentResults;
+using ImpromptuInterface;
+using LightInject;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Net.Mime;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using Barotrauma.LuaCs;
-using Barotrauma.LuaCs.Data;
-using Barotrauma.LuaCs.Events;
-using Barotrauma.LuaCs.Compatibility;
-using Barotrauma.Networking;
-using Barotrauma.Steam;
-using FluentResults;
-using ImpromptuInterface;
-using LightInject;
-using Microsoft.Toolkit.Diagnostics;
+using System.Runtime.CompilerServices;
 using AssemblyLoader = Barotrauma.LuaCs.AssemblyLoader;
 
+[assembly: InternalsVisibleTo("ImpromptuInterfaceDynamicAssembly")]
+[assembly: InternalsVisibleTo("Dynamitey")]
 namespace Barotrauma
 {
     internal delegate void LuaCsMessageLogger(string message);
@@ -34,6 +30,9 @@ namespace Barotrauma
             // == startup
             _servicesProvider = SetupServicesProvider();
             _runStateMachine = SetupStateMachine();
+
+            _servicesProvider.GetService<HarmonyEventPatchesService>();
+
             SubscribeToLuaCsEvents();
         }
         
@@ -186,6 +185,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<INetworkingService, NetworkingService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<INetworkIdProvider, NetworkingIdProvider>(ServiceLifetime.Transient);
+            servicesProvider.RegisterServiceType<HarmonyEventPatchesService, HarmonyEventPatchesService>(ServiceLifetime.Singleton);
 
             // Extension/Sub Services
             servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
@@ -379,7 +379,7 @@ namespace Barotrauma
                 // Technically not very accurate, but we want to call after we run mods anyway
                 if (GameMain.Client != null)
                 {
-                    EventService.PublishEvent<IEventConnectedToServer>(static p => p.OnConnectedToServer());
+                    EventService.PublishEvent<IEventServerConnected>(static p => p.OnServerConnected());
                 }
 #endif
                 CurrentRunState = RunState.Running;

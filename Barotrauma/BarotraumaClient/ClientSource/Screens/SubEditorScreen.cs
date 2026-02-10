@@ -1532,8 +1532,6 @@ namespace Barotrauma
         public override void Select()
         {
             Select(enableAutoSave: true);
-
-            GameMain.LuaCs.EventService.PublishEvent<IEventScreenSelected>(sub => sub.OnScreenSelected(this));
         }
 
         public void Select(bool enableAutoSave = true)

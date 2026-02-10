@@ -172,6 +172,11 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     private void RegisterLuaEvents()
     {
         _eventService.RegisterLuaEventAlias<IEventUpdate>("think", "OnUpdate");
+        _eventService.RegisterLuaEventAlias<IEventKeyUpdate>("keyUpdate", "OnKeyUpdate");
+        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.created", "OnCharacterCreated");
+        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.giveJobItems", "OnGiveCharacterJobItems");
+        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("afflictionUpdate", "OnAfflictionUpdate");
+
     }
 
     private void SetupEnvironment(bool enableSandbox)

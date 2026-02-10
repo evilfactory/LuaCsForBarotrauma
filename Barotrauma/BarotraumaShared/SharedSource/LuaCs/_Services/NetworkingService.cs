@@ -147,7 +147,7 @@ internal partial class NetworkingService : INetworkingService
     private void SubscribeToEvents()
     {
 #if CLIENT
-        _eventService.Subscribe<IEventConnectedToServer>(this);
+        _eventService.Subscribe<IEventServerConnected>(this);
         _eventService.Subscribe<IEventServerRawNetMessageReceived>(this);
 #elif SERVER
         _eventService.Subscribe<IEventClientRawNetMessageReceived>(this);

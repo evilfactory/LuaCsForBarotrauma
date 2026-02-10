@@ -297,6 +297,8 @@ namespace Barotrauma
             MainThread = Thread.CurrentThread;
 
             Window.FileDropped += OnFileDropped;
+
+            LuaCs.GetType();
         }
 
         public static void ExecuteAfterContentFinishedLoading(Action action)
@@ -1050,9 +1052,6 @@ namespace Barotrauma
                 TaskPool.Update();
 
                 SoundManager?.Update();
-
-                LuaCs.EventService.PublishEvent<IEventUpdate>(sub => sub.OnUpdate(Timing.Step));
-                LuaCs.Logger.ProcessLogs();
 
                 Timing.Accumulator -= Timing.Step;
 
