@@ -838,8 +838,6 @@ namespace Barotrauma.Networking
 
             ClientPacketHeader header = (ClientPacketHeader)inc.ReadByte();
 
-            GameMain.LuaCs.EventService.PublishEvent<IEventClientRawNetMessageReceived>(p => p.OnReceivedClientNetMessage(inc, header, sender));
-
             switch (header)
             {
                 case ClientPacketHeader.PING_RESPONSE:

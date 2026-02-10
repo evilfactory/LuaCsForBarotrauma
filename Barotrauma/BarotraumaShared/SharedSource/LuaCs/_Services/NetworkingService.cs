@@ -224,7 +224,7 @@ internal partial class NetworkingService : INetworkingService
 #if CLIENT
         SendToServer(message);
 #elif SERVER
-        SendToClient(message);
+        SendToClient(message, connection);
 #endif
     }
 

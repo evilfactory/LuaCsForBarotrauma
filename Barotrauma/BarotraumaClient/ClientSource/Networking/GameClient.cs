@@ -604,8 +604,6 @@ namespace Barotrauma.Networking
         {
             ServerPacketHeader header = (ServerPacketHeader)inc.ReadByte();
 
-            GameMain.LuaCs.EventService.PublishEvent<IEventServerRawNetMessageReceived>(p => p.OnReceivedServerNetMessage(inc, header));
-
             if (roundInitStatus == RoundInitStatus.WaitingForStartGameFinalize
                 && header is not (
                     ServerPacketHeader.STARTGAMEFINALIZE
