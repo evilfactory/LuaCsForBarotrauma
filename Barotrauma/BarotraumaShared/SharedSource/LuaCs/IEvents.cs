@@ -76,7 +76,7 @@ internal interface IEventAfflictionUpdate : IEvent<IEventAfflictionUpdate>
     static IEventAfflictionUpdate IEvent<IEventAfflictionUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnKeyUpdate = ReturnVoid.Arguments((Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime) => luaFunc[nameof(OnAfflictionUpdate)](affliction, characterHealth, targetLimb, deltaTime))
+        OnAfflictionUpdate = ReturnVoid.Arguments((Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime) => luaFunc[nameof(OnAfflictionUpdate)](affliction, characterHealth, targetLimb, deltaTime))
     }.ActLike<IEventAfflictionUpdate>();
 }
 
@@ -86,7 +86,7 @@ internal interface IEventGiveCharacterJobItems : IEvent<IEventGiveCharacterJobIt
     static IEventGiveCharacterJobItems IEvent<IEventGiveCharacterJobItems>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnKeyUpdate = ReturnVoid.Arguments((Character character, WayPoint spawnPoint, bool isPvPMode) => luaFunc[nameof(OnGiveCharacterJobItems)](character, spawnPoint, isPvPMode))
+        OnGiveCharacterJobItems = ReturnVoid.Arguments((Character character, WayPoint spawnPoint, bool isPvPMode) => luaFunc[nameof(OnGiveCharacterJobItems)](character, spawnPoint, isPvPMode))
     }.ActLike<IEventGiveCharacterJobItems>();
 }
 
@@ -96,7 +96,7 @@ internal interface IEventCharacterCreated : IEvent<IEventCharacterCreated>
     static IEventCharacterCreated IEvent<IEventCharacterCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnKeyUpdate = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnCharacterCreated)](character))
+        OnCharacterCreated = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnCharacterCreated)](character))
     }.ActLike<IEventCharacterCreated>();
 }
 
@@ -107,7 +107,7 @@ internal interface IEventHumanCPRFailed : IEvent<IEventHumanCPRFailed>
     static IEventHumanCPRFailed IEvent<IEventHumanCPRFailed>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnKeyUpdate = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnHumanCPRFailed)](character))
+        OnHumanCPRFailed = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnHumanCPRFailed)](character))
     }.ActLike<IEventHumanCPRFailed>();
 }
 
@@ -118,7 +118,7 @@ internal interface IEventHumanCPRSuccess : IEvent<IEventHumanCPRSuccess>
     static IEventHumanCPRSuccess IEvent<IEventHumanCPRSuccess>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
     {
         IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnKeyUpdate = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnHumanCPRSuccess)](character))
+        OnHumanCPRSuccess = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnHumanCPRSuccess)](character))
     }.ActLike<IEventHumanCPRSuccess>();
 }
 */
