@@ -79,7 +79,8 @@ public sealed class ModConfigFileParserService :
             // Type Specific
             FriendlyName = src.Element.GetAttributeString("FriendlyName", string.Empty),
             IsScript = src.Element.GetAttributeBool("IsScript", false),
-            UseInternalAccessName = src.Element.GetAttributeBool("UseInternalAccessName", false)
+            UseInternalAccessName = src.Element.GetAttributeBool("UseInternalAccessName", false),
+            IsReferenceModeOnly = src.Element.GetAttributeBool("IsReferenceModeOnly", false)
         };
     }
     
@@ -211,8 +212,8 @@ public sealed class ModConfigFileParserService :
     private (Platform Platform, Target Target) GetRuntimeEnvironment(XElement element)
     {
         return (
-            Platform: element.GetAttributeEnum("Platform", Platform.Windows |  Platform.Linux | Platform.OSX),
-            Target: element.GetAttributeEnum("Target", Target.Client | Target.Server));
+            Platform: element.GetAttributeEnum("Platform", Platform.Any),
+            Target: element.GetAttributeEnum("Target", Target.Any));
     }
     
     private async Task<ImmutableArray<Result<T>>> TryParseGenericResourcesAsync<T>(IEnumerable<ResourceParserInfo> sources)

@@ -208,6 +208,10 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             AreOperationRunning = true;
             foreach (var data in _loadedAssemblyData.Values)
             {
+                if (data.AssemblyReference is null)
+                {
+                    continue;
+                }
                 yield return data.AssemblyReference;
             }
             AreOperationRunning = false;
@@ -356,10 +360,10 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             if (additionalDependencyPaths.Any())
             {
                 var r = AddDependencyPaths(additionalDependencyPaths);
-                if (!r.IsFailed)
+                if (r.IsFailed)
                 {
                     // we have errors, loading may not work.
-                    return FluentResults.Result.Fail(new Error($"Failed to load dependency paths.")
+                    return FluentResults.Result.Fail(new Error($"Failed to load dependency paths for '{assemblyFilePath}' with paths: {additionalDependencyPaths.Aggregate((s, ac) => $"{ac}| P={s}")}.")
                             .WithMetadata(MetadataType.ExceptionObject, this)
                             .WithMetadata(MetadataType.RootObject, assemblyFilePath))
                         .WithErrors(r.Errors);
@@ -379,7 +383,7 @@ public sealed class AssemblyLoader : AssemblyLoadContext, IAssemblyLoaderService
             try
             {
                 var assembly = LoadFromAssemblyPath(sanitizedFilePath);
-                _loadedAssemblyData[assembly] = new AssemblyData(assembly, sanitizedFilePath);
+                _loadedAssemblyData[assembly] = new AssemblyData(assembly, assembly.Location);
                 return new Result<Assembly>().WithSuccess($"Loaded assembly '{assembly.GetName()}'").WithValue(assembly);
             }
             catch (FileNotFoundException fnfe)

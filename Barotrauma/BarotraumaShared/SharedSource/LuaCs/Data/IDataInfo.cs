@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Barotrauma.LuaCs.Data;
 
@@ -11,6 +12,7 @@ public interface IDataInfo : IEqualityComparer<IDataInfo>, IEquatable<IDataInfo>
     /// <summary>
     /// Internal name unique within the resources inside a package.
     /// </summary>
+    [XmlAttribute("Name")]
     string InternalName { get; }
     /// <summary>
     /// The package this information belongs to.

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using Barotrauma.LuaCs;
 using Barotrauma.Steam;
 using OneOf;
@@ -44,6 +45,7 @@ public record AssemblyResourceInfo : BaseResourceInfo, IAssemblyResourceInfo
     public string FriendlyName { get; init; }
     public bool IsScript { get; init; }
     public bool UseInternalAccessName { get; init; }
+    public bool IsReferenceModeOnly { get; init; }
 }
 
 /// <summary>
@@ -81,9 +83,12 @@ public record ConfigInfo : IConfigInfo
 
 public record ConfigProfileInfo : IConfigProfileInfo
 {
+    /// <summary>
+    /// Profile name.
+    /// </summary>
     public string InternalName { get; init; }
     public ContentPackage OwnerPackage { get; init; }
-    public IReadOnlyList<(string ConfigName, XElement Element)> ProfileValues { get; init; }
+    public IReadOnlyList<(string SettingName, XElement Element)> ProfileValues { get; init; }
 }
 
 #endregion

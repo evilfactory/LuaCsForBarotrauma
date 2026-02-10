@@ -264,7 +264,8 @@ public sealed class ModConfigService : IModConfigService
                         FriendlyName = $"{src.Name}.{searchPathways.SubFolder.Replace('/','.')}",
                         IncompatiblePackages = ImmutableArray<Identifier>.Empty,
                         RequiredPackages = ImmutableArray<Identifier>.Empty,
-                        IsScript = false
+                        IsScript = false,
+                        IsReferenceModeOnly = false
                     });
                 }
             }
@@ -304,7 +305,8 @@ public sealed class ModConfigService : IModConfigService
                         IncompatiblePackages = ImmutableArray<Identifier>.Empty,
                         RequiredPackages = ImmutableArray<Identifier>.Empty,
                         UseInternalAccessName = true,
-                        IsScript = true
+                        IsScript = true,
+                        IsReferenceModeOnly = false
                     });
                 }
             }

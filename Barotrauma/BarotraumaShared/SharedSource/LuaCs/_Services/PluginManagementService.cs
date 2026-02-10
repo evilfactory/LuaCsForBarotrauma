@@ -86,6 +86,29 @@ public class PluginManagementService : IAssemblyManagementService
             .ToString(),
         ScriptParseOptions);
 
+    private ImmutableArray<MetadataReference> _baseMetadataReferences = ImmutableArray<MetadataReference>.Empty;
+    private IEnumerable<MetadataReference> BaseMetadataReferences
+    {
+        get
+        {
+            if (_baseMetadataReferences.IsDefaultOrEmpty)
+            {
+                _baseMetadataReferences = Basic.Reference.Assemblies.Net80.References.All
+                    .Union(AssemblyLoadContext.Default.Assemblies
+                        .Where(ass =>
+                            !ass.IsDynamic &&
+                            !ass.GetName().FullName.EndsWith("Barotrauma.Core") &&
+                            !ass.GetName().FullName.EndsWith("Barotrauma") &&
+                            !ass.GetName().FullName.EndsWith("DedicatedServer"))
+                        .Select(MetadataReference (ass) => MetadataReference.CreateFromFile(ass.Location)))
+                    .Where(ar => ar is not null)
+                    .ToImmutableArray();
+            }
+
+            return _baseMetadataReferences;
+        }
+    }
+    
     #endregion
     
     #region Disposal
@@ -213,14 +236,35 @@ public class PluginManagementService : IAssemblyManagementService
     public Result<ImmutableArray<Type>> GetImplementingTypes<T>(bool includeInterfaces = false, bool includeAbstractTypes = false,
         bool includeDefaultContext = true)
     {
-#if !DEBUG
-        throw new NotImplementedException();
-#endif
+        if (includeInterfaces)
+        {
+            includeAbstractTypes = true;
+        }
+
+        using var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
+        IService.CheckDisposed(this);
+        
         var builder = ImmutableArray.CreateBuilder<Type>();
         
-        foreach (var ass in AppDomain.CurrentDomain.GetAssemblies())
+        if (includeDefaultContext)
         {
-            foreach (var type in ass.GetSafeTypes())
+            foreach (var ass in AssemblyLoadContext.Default.Assemblies)
+            {
+                AddTypesFromAssembly(ass);   
+            }
+        }
+
+        foreach (var ass in _assemblyLoaders.Values.Where(al => !al.IsReferenceOnlyMode).SelectMany(al => al.Assemblies))
+        {
+            AddTypesFromAssembly(ass);
+        }
+
+        return builder.ToImmutable();
+
+        
+        void AddTypesFromAssembly(Assembly assembly)
+        {
+            foreach (var type in assembly.GetSafeTypes())
             {
                 if ((includeInterfaces || !type.IsInterface)
                     && (includeAbstractTypes || !type.IsAbstract)
@@ -230,8 +274,6 @@ public class PluginManagementService : IAssemblyManagementService
                 }
             }
         }
-
-        return builder.ToImmutable();
     }
 
     public Type GetType(string typeName, bool isByRefType = false, bool includeInterfaces = false,
@@ -255,9 +297,21 @@ public class PluginManagementService : IAssemblyManagementService
 
                 return type;
             }
+            
+            foreach (var ass in AssemblyLoadContext.Default.Assemblies)
+            {
+                if (ass.GetType(typeName, false, false) is not {} type2 || (!includeInterfaces && type2.IsInterface))
+                {
+                    continue;
+                }
+
+                return isByRefType ? type2.MakeByRefType() : type2;
+            }
         }
 
-        foreach (var ass in AssemblyLoadContext.All.SelectMany(alc => alc.Assemblies))
+        foreach (var ass in AssemblyLoadContext.All
+                     .Where(alc => alc != AssemblyLoadContext.Default)
+                     .SelectMany(alc => alc.Assemblies))
         {
             if (ass.GetType(typeName, false, false) is not {} type || (!includeInterfaces && type.IsInterface))
             {
@@ -426,7 +480,7 @@ public class PluginManagementService : IAssemblyManagementService
                 new IAssemblyLoaderService.LoaderInitData(
                     InstanceId: Guid.NewGuid(),
                     contentPackRes.Key.Name,
-                    IsReferenceMode: false,
+                    IsReferenceMode: contentPackRes.Any(r => r.IsReferenceModeOnly),
                     OwnerPackage: contentPackRes.Key,
                     OnUnload: OnAssemblyLoaderUnloading,
                     OnResolvingManaged: OnAssemblyLoaderResolvingManaged, 
@@ -465,7 +519,7 @@ public class PluginManagementService : IAssemblyManagementService
                 new IAssemblyLoaderService.LoaderInitData(
                     InstanceId: Guid.NewGuid(),
                     contentPackRes.Key.Name,
-                    IsReferenceMode: false,
+                    IsReferenceMode: contentPackRes.Any(r => r.IsReferenceModeOnly),
                     OwnerPackage: contentPackRes.Key,
                     OnUnload: OnAssemblyLoaderUnloading,
                     OnResolvingManaged: OnAssemblyLoaderResolvingManaged, 
@@ -550,35 +604,13 @@ public class PluginManagementService : IAssemblyManagementService
         
         IEnumerable<MetadataReference> GetMetadataReferences()
         {
-#if !DEBUG
-            throw new NotImplementedException($"Needs to use publicized barotrauma assemblies and cache metadata.");
-#endif
-            var publicizedDir = Path.Combine(Directory.GetCurrentDirectory(), "Publicized");
-
-            string[] publicizedAssemblies =
+            var builder = ImmutableArray.CreateBuilder<MetadataReference>();
+            builder.AddRange(BaseMetadataReferences);
+            foreach (var loaderService in _assemblyLoaders)
             {
-#if CLIENT
-                "Barotrauma",
-#elif SERVER
-                "DedicatedServer",
-#endif
-                "BarotraumaCore"
-            };
-
-            var publicizedRefs = publicizedAssemblies
-                .Select(name => Path.Combine(publicizedDir, $"{name}.dll"))
-                .Where(File.Exists)
-                .Select(path => MetadataReference.CreateFromFile(path));
-
-            var runtimeRefs = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(ass =>
-                    !string.IsNullOrWhiteSpace(ass.Location) &&
-                    !publicizedAssemblies.Contains(ass.GetName().Name))
-                .Select(ass => MetadataReference.CreateFromFile(ass.Location));
-
-            return Basic.Reference.Assemblies.Net80.References.All
-                .Union(runtimeRefs)
-                .Union(publicizedRefs);
+                builder.AddRange(loaderService.Value.AssemblyReferences.Where(ar => ar is not null));
+            }
+            return builder.ToImmutable();
         }
     }
 
