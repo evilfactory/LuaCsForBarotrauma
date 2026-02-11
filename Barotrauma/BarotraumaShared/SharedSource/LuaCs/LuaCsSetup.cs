@@ -30,21 +30,10 @@ namespace Barotrauma
             // == startup
             _servicesProvider = SetupServicesProvider();
             _runStateMachine = SetupStateMachine();
-            _servicesProvider.GetService<EventPatchingService>();
+
+            _servicesProvider.GetService<HarmonyEventPatchesService>();
+
             SubscribeToLuaCsEvents();
-            PatchEventMethods();
-        }
-        
-        private void PatchEventMethods()
-        {
-            if (_servicesProvider.TryGetService<EventPatchingService>(out var svc))
-            {
-                svc.GenerateMethodHooks();
-                Logger.LogDebug($"Patched methods.");
-                return;
-            }
-            
-            Logger.LogError($"Failed to find {nameof(EventPatchingService)}");
         }
         
         private void SubscribeToLuaCsEvents()
@@ -196,7 +185,7 @@ namespace Barotrauma
             servicesProvider.RegisterServiceType<IConfigService, ConfigService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<INetworkingService, NetworkingService>(ServiceLifetime.Singleton);
             servicesProvider.RegisterServiceType<INetworkIdProvider, NetworkingIdProvider>(ServiceLifetime.Transient);
-            servicesProvider.RegisterServiceType<EventPatchingService, EventPatchingService>(ServiceLifetime.Singleton);
+            servicesProvider.RegisterServiceType<HarmonyEventPatchesService, HarmonyEventPatchesService>(ServiceLifetime.Singleton);
 
             // Extension/Sub Services
             servicesProvider.RegisterServiceType<IAssemblyLoaderService.IFactory, AssemblyLoader.Factory>(ServiceLifetime.Transient);
