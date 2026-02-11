@@ -62,9 +62,7 @@ internal class HarmonyEventPatchesService : IService
     {
         _eventService.PublishEvent<IEventEnabledPackageListChanged>(sub => sub.OnEnabledPackageListChanged(EnabledPackages.Core, EnabledPackages.Regular));
     }
-
-
-
+    
 #if CLIENT
     [HarmonyPatch(typeof(GameClient), "ReadDataMessage"), HarmonyPrefix]
     public static void GameClient_ReadDataMessage_Pre(IReadMessage inc)
@@ -126,7 +124,7 @@ internal class HarmonyEventPatchesService : IService
 
     public void Dispose()
     {
-        Harmony.UnpatchSelf();
         IsDisposed = true;
+        Harmony.UnpatchSelf();
     }
 }

@@ -30,9 +30,7 @@ namespace Barotrauma
             // == startup
             _servicesProvider = SetupServicesProvider();
             _runStateMachine = SetupStateMachine();
-
             _servicesProvider.GetService<HarmonyEventPatchesService>();
-
             SubscribeToLuaCsEvents();
         }
         
