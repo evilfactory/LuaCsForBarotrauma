@@ -272,11 +272,6 @@ namespace Barotrauma.LuaCs
 
         public LuaGame()
         {
-#if DEBUG
-            return; // startup testing
-#endif
-            
-            throw new NotImplementedException();
             /*LuaUserData.MakeFieldAccessible(UserData.RegisterType(typeof(GameSettings)), "currentConfig");
             Settings = UserData.CreateStatic(typeof(GameSettings));*/
         }
