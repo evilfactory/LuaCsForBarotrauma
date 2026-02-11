@@ -318,9 +318,6 @@ public partial class EventService : IEventService
             {
                 results.WithError(new ExceptionalError(e));
                 _loggerService.LogError(e.Message);
-#if DEBUG
-                throw;
-#endif
                 continue;
             }
         }
