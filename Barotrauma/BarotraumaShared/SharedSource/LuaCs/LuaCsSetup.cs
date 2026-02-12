@@ -2,9 +2,6 @@
 using Barotrauma.LuaCs.Compatibility;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Events;
-using Barotrauma.Networking;
-using FluentResults;
-using ImpromptuInterface;
 using LightInject;
 using System;
 using System.Collections.Generic;
