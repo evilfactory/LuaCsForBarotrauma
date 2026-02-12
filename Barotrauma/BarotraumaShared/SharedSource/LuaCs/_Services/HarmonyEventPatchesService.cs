@@ -25,7 +25,10 @@ internal class HarmonyEventPatchesService : IService
         Harmony.PatchAll(typeof(HarmonyEventPatchesService));
     }
 
+    // TODO: This causes like hell in Debug.
+#if !DEBUG
     [HarmonyPatch(typeof(CoroutineManager), nameof(CoroutineManager.Update)), HarmonyPostfix]
+#endif
     public static void CoroutineManager_Update_Post()
     {
         _eventService.PublishEvent<IEventUpdate>(x => x.OnUpdate(Timing.TotalTime));

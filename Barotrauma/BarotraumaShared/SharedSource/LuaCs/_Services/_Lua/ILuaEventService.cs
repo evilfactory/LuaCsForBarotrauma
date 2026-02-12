@@ -13,7 +13,7 @@ public interface ILuaSafeEventService : ILuaService, ILuaCsHook
     /// <typeparam name="T"></typeparam>
     /// <param name="identifier"></param>
     /// <param name="callbacks">A 'method name'=='signature action' dictionary matching the interface method list.</param>
-    void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : IEvent<T>;
+    void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : class, IEvent<T>;
     /// <summary>
     /// Removes a subscriber from an event that subscribed under the given identifier.
     /// </summary>
@@ -26,7 +26,7 @@ public interface ILuaSafeEventService : ILuaService, ILuaCsHook
     /// <typeparam name="T">Interface type.</typeparam>
     /// <param name="subscriberRunner">Execution runner, the subscriber is provided as the first argument in the lua runner.</param>
     /// <returns></returns>
-    void PublishLuaEvent<T>(LuaCsFunc subscriberRunner) where T : IEvent<T>;
+    void PublishLuaEvent<T>(LuaCsFunc subscriberRunner) where T : class, IEvent<T>;
     
     /// <summary>
     /// Defines the target method name for legacy <see cref="ILuaCsHook.Add(string, LuaCsFunc)"/> to target on new <see cref="IEvent{T}"/>
@@ -37,7 +37,7 @@ public interface ILuaSafeEventService : ILuaService, ILuaCsHook
     /// <typeparam name="T">The event interface type.</typeparam>
     /// <returns>Operation success.</returns>
     /// <exception cref="ArgumentNullException">The <see cref="luaEventName"/> is <b>null or empty.</b></exception>
-    public FluentResults.Result RegisterLuaEventAlias<T>(string luaEventName, string targetMethod) where T : IEvent<T>;
+    public FluentResults.Result RegisterLuaEventAlias<T>(string luaEventName, string targetMethod) where T : class, IEvent<T>;
 }
 
 public interface ILuaEventService : ILuaSafeEventService

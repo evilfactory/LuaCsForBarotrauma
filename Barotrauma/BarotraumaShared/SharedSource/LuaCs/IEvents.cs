@@ -1,12 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Barotrauma.LuaCs.Data;
-using Barotrauma.LuaCs;
 using Barotrauma.Networking;
-using Dynamitey;
-using ImpromptuInterface;
 
 namespace Barotrauma.LuaCs.Events;
 
@@ -19,9 +15,16 @@ namespace Barotrauma.LuaCs.Events;
 public interface IEvent
 {
     bool IsLuaRunner() => false;
+    
+    public abstract class LuaWrapperBase : IEvent
+    {
+        protected readonly IDictionary<string, LuaCsFunc> LuaFuncs;
+        protected LuaWrapperBase(IDictionary<string, LuaCsFunc> luaFuncs) => LuaFuncs = luaFuncs;
+        public bool IsLuaRunner() => true;
+    }
 }
 
-public interface IEvent<out T> : IEvent where T : IEvent<T>
+public interface IEvent<out T> : IEvent where T : class, IEvent<T>
 {
     static virtual T GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
     {
@@ -73,32 +76,63 @@ internal interface IEventSettingInstanceLifetime : IEvent<IEventSettingInstanceL
 internal interface IEventAfflictionUpdate : IEvent<IEventAfflictionUpdate>
 {
     void OnAfflictionUpdate(Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime);
-    static IEventAfflictionUpdate IEvent<IEventAfflictionUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventAfflictionUpdate IEvent<IEventAfflictionUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) =>
+        new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventAfflictionUpdate
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnAfflictionUpdate = ReturnVoid.Arguments((Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime) => luaFunc[nameof(OnAfflictionUpdate)](affliction, characterHealth, targetLimb, deltaTime))
-    }.ActLike<IEventAfflictionUpdate>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+        
+        public void OnAfflictionUpdate(Affliction affliction, CharacterHealth characterHealth, Limb targetLimb, float deltaTime)
+        {
+            LuaFuncs[nameof(OnAfflictionUpdate)](affliction, characterHealth, targetLimb, deltaTime);
+        }
+    }
 }
 
 internal interface IEventGiveCharacterJobItems : IEvent<IEventGiveCharacterJobItems>
 {
     void OnGiveCharacterJobItems(Character character, WayPoint spawnPoint, bool isPvPMode);
-    static IEventGiveCharacterJobItems IEvent<IEventGiveCharacterJobItems>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventGiveCharacterJobItems IEvent<IEventGiveCharacterJobItems>.GetLuaRunner(
+        IDictionary<string, LuaCsFunc> luaFunc) => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventGiveCharacterJobItems
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnGiveCharacterJobItems = ReturnVoid.Arguments((Character character, WayPoint spawnPoint, bool isPvPMode) => luaFunc[nameof(OnGiveCharacterJobItems)](character, spawnPoint, isPvPMode))
-    }.ActLike<IEventGiveCharacterJobItems>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnGiveCharacterJobItems(Character character, WayPoint spawnPoint, bool isPvPMode)
+        {
+            LuaFuncs[nameof(OnGiveCharacterJobItems)](character, spawnPoint, isPvPMode);
+        }
+    }
 }
 
 internal interface IEventCharacterCreated : IEvent<IEventCharacterCreated>
 {
     void OnCharacterCreated(Character character);
-    static IEventCharacterCreated IEvent<IEventCharacterCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventCharacterCreated IEvent<IEventCharacterCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventCharacterCreated
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnCharacterCreated = ReturnVoid.Arguments((Character character) => luaFunc[nameof(OnCharacterCreated)](character))
-    }.ActLike<IEventCharacterCreated>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+        
+        public void OnCharacterCreated(Character character)
+        {
+            LuaFuncs[nameof(OnCharacterCreated)](character);
+        }
+    }
 }
+
 
 /*
 internal interface IEventHumanCPRFailed : IEvent<IEventHumanCPRFailed>
@@ -126,11 +160,21 @@ internal interface IEventHumanCPRSuccess : IEvent<IEventHumanCPRSuccess>
 public interface IEventKeyUpdate : IEvent<IEventKeyUpdate>
 {
     void OnKeyUpdate(double deltaTime);
-    static IEventKeyUpdate IEvent<IEventKeyUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventKeyUpdate IEvent<IEventKeyUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventKeyUpdate
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnKeyUpdate = ReturnVoid.Arguments((double deltaTime) => luaFunc[nameof(OnKeyUpdate)](deltaTime))
-    }.ActLike<IEventKeyUpdate>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnKeyUpdate(double deltaTime)
+        {
+            LuaFuncs[nameof(OnKeyUpdate)](deltaTime);
+        }
+    }
 }
 
 /// <summary>
@@ -139,11 +183,21 @@ public interface IEventKeyUpdate : IEvent<IEventKeyUpdate>
 public interface IEventRoundStarting : IEvent<IEventRoundStarting>
 {
     void OnRoundStarting();
-    static IEventRoundStarting IEvent<IEventRoundStarting>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventRoundStarting IEvent<IEventRoundStarting>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+    
+    public sealed class LuaWrapper : LuaWrapperBase, IEventRoundStarting
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnRoundStarting = ReturnVoid.Arguments(() => luaFunc[nameof(OnRoundStarting)]()) 
-    }.ActLike<IEventRoundStarting>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnRoundStarting()
+        {
+            LuaFuncs[nameof(OnRoundStarting)]();
+        }
+    }
 }
 
 /// <summary>
@@ -152,11 +206,21 @@ public interface IEventRoundStarting : IEvent<IEventRoundStarting>
 public interface IEventRoundStarted : IEvent<IEventRoundStarted>
 {
     void OnRoundStart();
-    static IEventRoundStarted IEvent<IEventRoundStarted>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventRoundStarted IEvent<IEventRoundStarted>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+    
+    public sealed class LuaWrapper : LuaWrapperBase, IEventRoundStarted
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnRoundStart = ReturnVoid.Arguments(() => luaFunc[nameof(OnRoundStart)]())
-    }.ActLike<IEventRoundStarted>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnRoundStart()
+        {
+            LuaFuncs[nameof(OnRoundStart)]();
+        }
+    }
 }
 
 /// <summary>
@@ -165,11 +229,20 @@ public interface IEventRoundStarted : IEvent<IEventRoundStarted>
 public interface IEventUpdate : IEvent<IEventUpdate>
 {
     void OnUpdate(double fixedDeltaTime);
-    static IEventUpdate IEvent<IEventUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+    static IEventUpdate IEvent<IEventUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+    => new LuaWrapper(luaFunc);
+    
+    public sealed class LuaWrapper : LuaWrapperBase, IEventUpdate
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnUpdate = ReturnVoid.Arguments<double>((fixedDeltaTime) => luaFunc[nameof(OnUpdate)](fixedDeltaTime))
-    }.ActLike<IEventUpdate>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnUpdate(double deltaTime)
+        {
+            LuaFuncs[nameof(OnUpdate)](deltaTime);
+        }
+    }
 }
 
 /// <summary>
@@ -178,11 +251,21 @@ public interface IEventUpdate : IEvent<IEventUpdate>
 public interface IEventDrawUpdate : IEvent<IEventDrawUpdate>
 {
     void OnDrawUpdate(double deltaTime);
-    static IEventDrawUpdate IEvent<IEventDrawUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventDrawUpdate IEvent<IEventDrawUpdate>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+    
+    public sealed class LuaWrapper : LuaWrapperBase, IEventDrawUpdate
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnDrawUpdate = ReturnVoid.Arguments<double>((deltaTime) => luaFunc[nameof(OnDrawUpdate)](deltaTime))
-    }.ActLike<IEventDrawUpdate>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnDrawUpdate(double deltaTime)
+        {
+            LuaFuncs[nameof(OnDrawUpdate)](deltaTime);
+        }
+    }
 }
 
 #endregion
@@ -206,11 +289,21 @@ interface IEventClientConnected : IEvent<IEventClientConnected>
     /// </summary>
     /// <param name="client">The connecting client.</param>
     void OnClientConnected(Client client);
-    static IEventClientConnected IEvent<IEventClientConnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
+
+    static IEventClientConnected IEvent<IEventClientConnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+    
+    public sealed class LuaWrapper : LuaWrapperBase, IEventClientConnected
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnClientConnected = ReturnVoid.Arguments<Client>((client) => luaFunc[nameof(OnClientConnected)](client))
-    }.ActLike<IEventClientConnected>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnClientConnected(Client client)
+        {
+            LuaFuncs[nameof(OnClientConnected)](client);   
+        }
+    }
 }
 #endif
 
@@ -230,11 +323,21 @@ public interface IEventServerRawNetMessageReceived : IEvent<IEventServerRawNetMe
 public interface IEventServerConnected : IEvent<IEventServerConnected>
 {
     void OnServerConnected();
-    static IEventServerConnected IEvent<IEventServerConnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) =>  new
+
+    static IEventServerConnected IEvent<IEventServerConnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+    
+    public sealed class LuaWrapper : LuaWrapperBase, IEventServerConnected
     {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnServerConnected = ReturnVoid.Arguments(() => luaFunc[nameof(OnServerConnected)]())
-    }.ActLike<IEventServerConnected>();
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnServerConnected()
+        {
+            LuaFuncs[nameof(OnServerConnected)]();
+        }
+    }
 }
 #endif
 #endregion
@@ -249,11 +352,6 @@ public interface IEventServerConnected : IEvent<IEventServerConnected>
 public interface IEventPluginInitialize : IEvent<IEventPluginInitialize>
 {
     void Initialize();
-    static IEventPluginInitialize IEvent<IEventPluginInitialize>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
-    {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        Initialize = ReturnVoid.Arguments(() => luaFunc[nameof(Initialize)]())
-    }.ActLike<IEventPluginInitialize>();
 }
 
 /// <summary>
@@ -262,11 +360,6 @@ public interface IEventPluginInitialize : IEvent<IEventPluginInitialize>
 public interface IEventPluginLoadCompleted : IEvent<IEventPluginLoadCompleted>
 {
     void OnLoadCompleted();
-    static IEventPluginLoadCompleted IEvent<IEventPluginLoadCompleted>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
-    {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnLoadCompleted = ReturnVoid.Arguments(() => luaFunc[nameof(OnLoadCompleted)]())
-    }.ActLike<IEventPluginLoadCompleted>();
 }
 
 /// <summary>
@@ -276,11 +369,6 @@ public interface IEventPluginLoadCompleted : IEvent<IEventPluginLoadCompleted>
 public interface IEventPluginPreInitialize : IEvent<IEventPluginPreInitialize>
 {
     void PreInitPatching();
-    static IEventPluginPreInitialize IEvent<IEventPluginPreInitialize>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc) => new
-    {
-        IsLuaRunner = Return<bool>.Arguments(() => true),
-        OnPreInitialize = ReturnVoid.Arguments(() => luaFunc[nameof(PreInitPatching)]())
-    }.ActLike<IEventPluginPreInitialize>();
 }
 
 /// <summary>

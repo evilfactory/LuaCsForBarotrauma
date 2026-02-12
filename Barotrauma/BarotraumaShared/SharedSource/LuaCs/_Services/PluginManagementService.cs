@@ -16,7 +16,6 @@ using Barotrauma.LuaCs.Data;
 using Barotrauma.LuaCs.Events;
 using FluentResults;
 using FluentResults.LuaCs;
-using ImpromptuInterface.Build;
 using LightInject;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;

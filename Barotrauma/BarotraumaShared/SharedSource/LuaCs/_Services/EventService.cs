@@ -1,19 +1,13 @@
-﻿using Barotrauma.Extensions;
-using Barotrauma.LuaCs.Events;
-using Barotrauma.LuaCs.Compatibility;
+﻿using Barotrauma.LuaCs.Events;
 using FluentResults;
-using FluentResults.LuaCs;
-using HarmonyLib;
 using Microsoft.Toolkit.Diagnostics;
 using MoonSharp.Interpreter;
 using OneOf;
-using RestSharp;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Barotrauma.LuaCs;
 
@@ -189,7 +183,7 @@ public partial class EventService : IEventService
         return returnValue;
     }
 
-    public void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : IEvent<T>
+    public void Subscribe<T>(string identifier, IDictionary<string, LuaCsFunc> callbacks) where T : class, IEvent<T>
     {
         Guard.IsNotNullOrWhiteSpace(identifier, nameof(identifier));
         Guard.IsNotNull(callbacks, nameof(callbacks));
@@ -215,12 +209,12 @@ public partial class EventService : IEventService
         evtSubscribers.TryRemove(identifier, out _);
     }
 
-    public void PublishLuaEvent<T>(LuaCsFunc subscriberRunner) where T : IEvent<T>
+    public void PublishLuaEvent<T>(LuaCsFunc subscriberRunner) where T : class, IEvent<T>
     {
         this.PublishEvent<T>(sub => subscriberRunner(sub));
     }
 
-    public FluentResults.Result RegisterLuaEventAlias<T>(string luaEventName, string targetMethod) where T : IEvent<T>
+    public FluentResults.Result RegisterLuaEventAlias<T>(string luaEventName, string targetMethod) where T : class, IEvent<T>
     {
         Guard.IsNotNullOrWhiteSpace(luaEventName, nameof(luaEventName));
         Guard.IsNotNullOrWhiteSpace(targetMethod, nameof(targetMethod));
@@ -281,7 +275,7 @@ public partial class EventService : IEventService
         evtSubscribers.TryRemove(subscriber, out _);
     }
 
-    public void ClearAllEventSubscribers<T>() where T : IEvent
+    public void ClearAllEventSubscribers<T>() where T : class, IEvent
     {
         using  var lck = _operationsLock.AcquireWriterLock().ConfigureAwait(false).GetAwaiter().GetResult();
         IService.CheckDisposed(this);
@@ -295,7 +289,7 @@ public partial class EventService : IEventService
         _subscribers.Clear();
     }
 
-    public FluentResults.Result PublishEvent<T>(Action<T> action) where T : IEvent<T>
+    public FluentResults.Result PublishEvent<T>(Action<T> action) where T : class, IEvent<T>
     {
         Guard.IsNotNull(action, nameof(action));
         using  var lck = _operationsLock.AcquireReaderLock().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -312,7 +306,7 @@ public partial class EventService : IEventService
         {
             try
             {
-                action.Invoke((T)sub.Value);
+                action.Invoke(Unsafe.As<T>(sub.Value));
             }
             catch (Exception e)
             {

@@ -25,7 +25,7 @@ public interface IEventService : IReusableService, ILuaEventService
     /// Clears all subscribers for a given event type and removes any registration to the type.
     /// </summary>
     /// <typeparam name="T">The event type.</typeparam>
-    void ClearAllEventSubscribers<T>() where T : IEvent;
+    void ClearAllEventSubscribers<T>() where T : class, IEvent;
     /// <summary>
     /// Clears all subscribers lists.
     /// </summary>
@@ -36,5 +36,5 @@ public interface IEventService : IReusableService, ILuaEventService
     /// <param name="action"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    FluentResults.Result PublishEvent<T>(Action<T> action) where T : IEvent<T>;
+    FluentResults.Result PublishEvent<T>(Action<T> action) where T : class, IEvent<T>;
 }
