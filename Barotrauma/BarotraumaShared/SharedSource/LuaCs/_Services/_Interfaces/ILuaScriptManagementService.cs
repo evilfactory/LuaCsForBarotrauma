@@ -1,19 +1,20 @@
 ﻿#nullable enable
 
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Reflection;
 using System.Threading.Tasks;
 using Barotrauma.LuaCs.Data;
-using FluentResults;
 using MoonSharp.Interpreter;
-using MoonSharp.Interpreter.Interop;
 
 namespace Barotrauma.LuaCs;
 
 public interface ILuaScriptManagementService : IReusableService
 {
+    /// <summary>
+    /// The running <see cref="Script"/> instance, if available.
+    /// </summary>
+    /// <remarks>
+    /// It is recommended to avoid using this directly if another API is available for the intended purposes.
+    /// </remarks>
     Script? InternalScript { get; }
 
     object? GetGlobalTableValue(string tableName);
