@@ -408,7 +408,6 @@ namespace Barotrauma
 
         public void LoadPreviousSave()
         {
-            GameMain.LuaCs.Hook.Call("roundEnd");
             AchievementManager.OnRoundEnded(this, roundInterrupted: true);
             Submarine.Unload();
             SaveUtil.LoadGame(DataPath);
@@ -761,7 +760,6 @@ namespace Barotrauma
             GUI.PreventPauseMenuToggle = false;
             HintManager.OnRoundStarted();
 
-            GameMain.LuaCs.Hook.Call("roundStart");
             EnableEventLogNotificationIcon(enabled: false);
 
             LogStartRoundStats();
@@ -1089,9 +1087,6 @@ namespace Barotrauma
         {
             RoundEnding = true;
 
-#if CLIENT
-            GameMain.LuaCs.Hook.Call("roundEnd");
-#endif
             //Clear the grids to allow for garbage collection
             Powered.Grids.Clear();
             Powered.ChangedConnections.Clear();
@@ -1109,8 +1104,6 @@ namespace Barotrauma
                 {
                     character.CheckTalents(AbilityEffectType.OnRoundEnd);
                 }
-
-                GameMain.LuaCs.Hook.Call("missionsEnded", missions);
 
 #if CLIENT
                 if (GUI.PauseMenuOpen)

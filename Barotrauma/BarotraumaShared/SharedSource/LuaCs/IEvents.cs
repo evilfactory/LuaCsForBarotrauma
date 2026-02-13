@@ -133,6 +133,25 @@ internal interface IEventCharacterCreated : IEvent<IEventCharacterCreated>
     }
 }
 
+internal interface IEventCharacterDeath : IEvent<IEventCharacterDeath>
+{
+    void OnCharacterDeath(Character character, Affliction causeOfDeathAffliction, CauseOfDeathType causeOfDeathType);
+
+    static IEventCharacterDeath IEvent<IEventCharacterDeath>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventCharacterDeath
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnCharacterDeath(Character character, Affliction causeOfDeathAffliction, CauseOfDeathType causeOfDeathType)
+        {
+            LuaFuncs[nameof(OnCharacterDeath)](character, causeOfDeathAffliction, causeOfDeathType);
+        }
+    }
+}
 
 /*
 internal interface IEventHumanCPRFailed : IEvent<IEventHumanCPRFailed>
@@ -219,6 +238,49 @@ public interface IEventRoundStarted : IEvent<IEventRoundStarted>
         public void OnRoundStart()
         {
             LuaFuncs[nameof(OnRoundStart)]();
+        }
+    }
+}
+
+/// <summary>
+/// Called when a round has ended.
+/// </summary>
+public interface IEventRoundEnded : IEvent<IEventRoundEnded>
+{
+    void OnRoundEnd();
+
+    static IEventRoundEnded IEvent<IEventRoundEnded>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventRoundEnded
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnRoundEnd()
+        {
+            LuaFuncs[nameof(OnRoundEnd)]();
+        }
+    }
+}
+
+internal interface IEventMissionsEnded : IEvent<IEventMissionsEnded>
+{
+    void OnMissionsEnded(IReadOnlyList<Mission> missions);
+
+    static IEventMissionsEnded IEvent<IEventMissionsEnded>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventMissionsEnded
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnMissionsEnded(IReadOnlyList<Mission> missions)
+        {
+            LuaFuncs[nameof(OnMissionsEnded)](missions);
         }
     }
 }

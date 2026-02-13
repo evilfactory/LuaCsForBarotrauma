@@ -3217,8 +3217,6 @@ namespace Barotrauma.Networking
 
             roundStartTime = DateTime.Now;
 
-            GameMain.LuaCs.Hook.Call("roundStart");
-
             startGameCoroutine = null;
             yield return CoroutineStatus.Success;
         }

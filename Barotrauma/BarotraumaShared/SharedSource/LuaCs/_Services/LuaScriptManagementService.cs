@@ -171,11 +171,19 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
     private void RegisterLuaEvents()
     {
-        _eventService.RegisterLuaEventAlias<IEventUpdate>("think", "OnUpdate");
-        _eventService.RegisterLuaEventAlias<IEventKeyUpdate>("keyUpdate", "OnKeyUpdate");
-        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.created", "OnCharacterCreated");
-        _eventService.RegisterLuaEventAlias<IEventGiveCharacterJobItems>("character.giveJobItems", "OnGiveCharacterJobItems");
-        _eventService.RegisterLuaEventAlias<IEventAfflictionUpdate>("afflictionUpdate", "OnAfflictionUpdate");
+        _eventService.RegisterLuaEventAlias<IEventUpdate>("think", nameof(IEventUpdate.OnUpdate));
+        _eventService.RegisterLuaEventAlias<IEventKeyUpdate>("keyUpdate", nameof(IEventKeyUpdate.OnKeyUpdate));
+        _eventService.RegisterLuaEventAlias<IEventAfflictionUpdate>("afflictionUpdate", nameof(IEventAfflictionUpdate.OnAfflictionUpdate));
+
+        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.created", nameof(IEventCharacterCreated.OnCharacterCreated));
+        _eventService.RegisterLuaEventAlias<IEventCharacterDeath>("character.death", nameof(IEventCharacterDeath.OnCharacterDeath));
+        _eventService.RegisterLuaEventAlias<IEventGiveCharacterJobItems>("character.giveJobItems", nameof(IEventGiveCharacterJobItems.OnGiveCharacterJobItems));
+
+        _eventService.RegisterLuaEventAlias<IEventRoundStarted>("roundStart", nameof(IEventRoundStarted.OnRoundStart));
+        _eventService.RegisterLuaEventAlias<IEventRoundEnded>("roundEnd", nameof(IEventRoundEnded.OnRoundEnd));
+        _eventService.RegisterLuaEventAlias<IEventMissionsEnded>("missionsEnded", nameof(IEventMissionsEnded.OnMissionsEnded));
+
+
     }
 
     private void SetupEnvironment(bool enableSandbox)

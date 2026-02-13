@@ -4,6 +4,9 @@ using Barotrauma.Networking;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using static Barotrauma.ContentPackageManager;
 
 namespace Barotrauma.LuaCs;
@@ -23,6 +26,9 @@ internal class HarmonyEventPatchesService : IService
         _loggerService = loggerService;
         Harmony = new Harmony("LuaCsForBarotrauma.Events");
         Harmony.PatchAll(typeof(HarmonyEventPatchesService));
+#if SERVER
+        Harmony.PatchAll(typeof(HarmonyEventPatchesService.Patch_StartGame_End));
+#endif
     }
 
     [HarmonyPatch(typeof(CoroutineManager), nameof(CoroutineManager.Update)), HarmonyPostfix]
@@ -30,6 +36,35 @@ internal class HarmonyEventPatchesService : IService
     {
         _eventService.PublishEvent<IEventUpdate>(x => x.OnUpdate(Timing.TotalTime));
         _loggerService.ProcessLogs();
+    }
+
+#if CLIENT
+    [HarmonyPatch(typeof(GameSession), nameof(GameSession.StartRound), new Type[]
+    {
+        typeof(LevelData), typeof(bool), typeof(SubmarineInfo), typeof(SubmarineInfo)
+    }), HarmonyPostfix]
+    public static void GameSession_StartRound_Post()
+    {
+        _eventService.PublishEvent<IEventRoundStarted>(x => x.OnRoundStart());
+    }
+#endif
+
+    [HarmonyPatch(typeof(GameSession), nameof(GameSession.EndRound)), HarmonyPrefix]
+    public static void GameSession_EndRound_Pre()
+    {
+        _eventService.PublishEvent<IEventRoundEnded>(x => x.OnRoundEnd());
+    }
+
+    [HarmonyPatch(typeof(GameSession), nameof(GameSession.LoadPreviousSave)), HarmonyPrefix]
+    public static void GameSession_LoadPreviousSave_Pre()
+    {
+        _eventService.PublishEvent<IEventRoundEnded>(x => x.OnRoundEnd());
+    }
+
+    [HarmonyPatch(typeof(GameSession), nameof(GameSession.EndMissions)), HarmonyPostfix]
+    public static void GameSession_EndMission_Post(GameSession __instance)
+    {
+        _eventService.PublishEvent<IEventMissionsEnded>(x => x.OnMissionsEnded(__instance.Missions.ToList()));
     }
 
     [HarmonyPatch(typeof(Screen), nameof(Screen.Select)), HarmonyPostfix]
@@ -110,6 +145,12 @@ internal class HarmonyEventPatchesService : IService
         _eventService.PublishEvent<IEventCharacterCreated>(x => x.OnCharacterCreated(__result));
     }
 
+    [HarmonyPatch(typeof(Character), nameof(Character.Kill)), HarmonyPostfix]
+    public static void Character_Kill_Post(Character __instance, Affliction causeOfDeathAffliction, CauseOfDeathType causeOfDeath)
+    {
+        _eventService.PublishEvent<IEventCharacterDeath>(x => x.OnCharacterDeath(__instance, causeOfDeathAffliction, causeOfDeath));
+    }
+
     [HarmonyPatch(typeof(Character), nameof(Character.GiveJobItems)), HarmonyPostfix]
     public static void Character_GiveJobItems_Post(Character __instance, WayPoint spawnPoint, bool isPvPMode)
     {
@@ -127,4 +168,34 @@ internal class HarmonyEventPatchesService : IService
         IsDisposed = true;
         Harmony.UnpatchSelf();
     }
+
+#if SERVER
+    [HarmonyPatch]
+    class Patch_StartGame_End
+    {
+        static MethodBase TargetMethod()
+        {
+            var original = AccessTools.Method(
+                typeof(GameServer),
+                "StartGame"
+            );
+
+            return AccessTools.EnumeratorMoveNext(original);
+        }
+
+        [HarmonyPostfix]
+        static void Postfix(object __instance, bool __result)
+        {
+            if (!__result) { return; }
+
+            var enumerator = __instance as IEnumerator<CoroutineStatus>;
+            if (enumerator == null) { return; }
+
+            if (enumerator.Current == CoroutineStatus.Success)
+            {
+                _eventService.PublishEvent<IEventRoundStarted>(x => x.OnRoundStart());
+            }
+        }
+    }
+#endif
 }
