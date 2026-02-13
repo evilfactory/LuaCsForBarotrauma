@@ -13,14 +13,6 @@ namespace Barotrauma
 {
     partial class LuaCsSetup
     {
-        public void AddToGUIUpdateList()
-        {
-            if (!DisableErrorGUIOverlay)
-            {
-                LuaCsLogger.AddToGUIUpdateList();
-            }
-        }
-
         /// <summary>
         /// 
         /// </summary>

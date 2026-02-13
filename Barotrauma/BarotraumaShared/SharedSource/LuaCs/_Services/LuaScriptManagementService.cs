@@ -191,7 +191,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script = new Script(CoreModules.Preset_SoftSandbox | CoreModules.Debug | CoreModules.IO | CoreModules.OS_System);
         _script.Options.DebugPrint = (string msg) =>
         {
-            _loggerService.Log(msg);
+            _loggerService.LogMessage($"[Lua] {msg}");
         };
         _script.Options.ScriptLoader = _luaScriptLoader;
         _script.Options.CheckThreadAccess = false;
@@ -221,7 +221,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _script.Globals["loadfile"] = (Func<string, Table, string, DynValue>)LoadFile;
         _script.Globals["require"] = (Func<string, Table, DynValue>)luaRequire.Require;
 
-        _script.Globals["printerror"] = (DynValue o) => { LuaCsLogger.LogError(o.ToString()); };
+        _script.Globals["printerror"] = (DynValue o) => { _loggerService.LogError($"[Lua] {o.ToString()}"); };
 
         _script.Globals["dostring"] = (Func<string, Table, string, DynValue>)_script.DoString;
         _script.Globals["load"] = (Func<string, Table, string, DynValue>)_script.LoadString;

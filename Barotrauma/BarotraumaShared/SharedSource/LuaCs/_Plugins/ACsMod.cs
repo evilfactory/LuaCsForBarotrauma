@@ -48,7 +48,7 @@ namespace Barotrauma
             }
             catch (Exception e)
             {
-                LuaCsLogger.HandleException(e, LuaCsMessageOrigin.CSharpMod);
+                GameMain.LuaCs.Logger.HandleException(e);
             }
             IsDisposed = true;
         }

@@ -57,10 +57,12 @@ namespace Barotrauma
         private List<TimedAction> timedActions = new List<TimedAction>();
 
         private readonly IEventService _eventService;
+        private readonly ILoggerService _loggerService;
 
-        public LuaCsTimer(IEventService eventService)
+        public LuaCsTimer(IEventService eventService, ILoggerService loggerService)
         {
             _eventService = eventService;
+            _loggerService = loggerService;
             SubscribeToEvents();
         }
 
@@ -117,7 +119,7 @@ namespace Barotrauma
                         }
                         catch (Exception e)
                         {
-                            LuaCsLogger.HandleException(e, LuaCsMessageOrigin.CSharpMod);
+                            _loggerService.HandleException(e);
                         }
 
                         timedActions.Remove(timedAction);

@@ -74,27 +74,27 @@ namespace Barotrauma.LuaCs
             public static void PrintMessage(string s)
             {
 #if SERVER
-                LuaCsLogger.LogMessage($"[Server] {s}");
+                GameMain.LuaCs.Logger.LogMessage($"{s}");
 #else
-                LuaCsLogger.LogMessage($"[Client] {s}");
+                GameMain.LuaCs.Logger.LogMessage($"{s}");
 #endif
             }
 
             public static void PrintWarning(string s)
             {
 #if SERVER
-                LuaCsLogger.Log($"[Server] {s}", Color.Yellow);
+                GameMain.LuaCs.Logger.Log($"{s}", Color.Yellow);
 #else
-                LuaCsLogger.Log($"[Client] {s}", Color.Yellow);
+                GameMain.LuaCs.Logger.Log($"{s}", Color.Yellow);
 #endif
             }
 
             public static void PrintError(string s)
             {
 #if SERVER
-                LuaCsLogger.LogError($"[Server] {s}");
+                GameMain.LuaCs.Logger.LogError($"{s}");
 #else
-                LuaCsLogger.LogError($"[Client] {s}");
+                GameMain.LuaCs.Logger.LogError($"{s}");
 #endif
             }
         }
