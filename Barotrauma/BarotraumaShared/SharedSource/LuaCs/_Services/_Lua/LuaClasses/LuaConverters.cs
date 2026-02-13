@@ -34,7 +34,7 @@ namespace Barotrauma
 
             Script.GlobalOptions.CustomConverters.SetScriptToClrCustomConversion(DataType.Function, typeof(LuaCsAction), v => (LuaCsAction)(args =>
             {
-                if (v.Function.OwnerScript == _luaScriptManagementService)
+                if (v.Function.OwnerScript == _luaScriptManagementService.InternalScript)
                 {
                     Call(v.Function, args);
                 }

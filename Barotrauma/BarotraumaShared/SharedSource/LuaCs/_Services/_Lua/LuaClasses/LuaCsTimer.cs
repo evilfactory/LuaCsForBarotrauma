@@ -61,7 +61,7 @@ namespace Barotrauma
         public LuaCsTimer(IEventService eventService)
         {
             _eventService = eventService;
-            _eventService.Subscribe<IEventUpdate>(this);
+            SubscribeToEvents();
         }
 
         private void AddTimer(TimedAction timedAction)
@@ -101,11 +101,6 @@ namespace Barotrauma
             AddTimer(timedAction);
         }
 
-        public void Dispose()
-        {
-            _eventService.Unsubscribe<IEventUpdate>(this);
-        }
-
         public void OnUpdate(double fixedDeltaTime)
         {
             lock (timedActions)
@@ -133,6 +128,22 @@ namespace Barotrauma
                     }
                 }
             }
+        }
+
+        private void SubscribeToEvents()
+        {
+            _eventService.Subscribe<IEventUpdate>(this);
+        }
+
+        public FluentResults.Result Reset()
+        {
+            SubscribeToEvents();
+            return FluentResults.Result.Ok();
+        }
+
+        public void Dispose()
+        {
+            _eventService.Unsubscribe<IEventUpdate>(this);
         }
 
         public bool IsDisposed => false;

@@ -174,9 +174,8 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _eventService.RegisterLuaEventAlias<IEventUpdate>("think", "OnUpdate");
         _eventService.RegisterLuaEventAlias<IEventKeyUpdate>("keyUpdate", "OnKeyUpdate");
         _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.created", "OnCharacterCreated");
-        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.giveJobItems", "OnGiveCharacterJobItems");
-        _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("afflictionUpdate", "OnAfflictionUpdate");
-
+        _eventService.RegisterLuaEventAlias<IEventGiveCharacterJobItems>("character.giveJobItems", "OnGiveCharacterJobItems");
+        _eventService.RegisterLuaEventAlias<IEventAfflictionUpdate>("afflictionUpdate", "OnAfflictionUpdate");
     }
 
     private void SetupEnvironment(bool enableSandbox)
@@ -357,6 +356,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
     {
         _luaScriptLoader.ClearCaches();
         _userDataService.Reset();
+        _luaCsTimer.Reset();
         RegisterLuaEvents();
         return DisposeAllPackageResources();
     }
