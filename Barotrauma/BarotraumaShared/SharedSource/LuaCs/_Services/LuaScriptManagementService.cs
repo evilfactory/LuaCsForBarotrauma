@@ -183,7 +183,13 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _eventService.RegisterLuaEventAlias<IEventRoundEnded>("roundEnd", nameof(IEventRoundEnded.OnRoundEnd));
         _eventService.RegisterLuaEventAlias<IEventMissionsEnded>("missionsEnded", nameof(IEventMissionsEnded.OnMissionsEnded));
 
+        _eventService.RegisterLuaEventAlias<IEventSignalReceived>("signalReceived", nameof(IEventSignalReceived.OnSignalReceived));
 
+#if SERVER
+        _eventService.RegisterLuaEventAlias<IEventClientConnected>("client.connected", nameof(IEventClientConnected.OnClientConnected));
+        _eventService.RegisterLuaEventAlias<IEventClientDisconnected>("client.disconnected", nameof(IEventClientDisconnected.OnClientDisconnected));
+        _eventService.RegisterLuaEventAlias<IEventJobsAssigned>("jobsAssigned", nameof(IEventJobsAssigned.OnJobsAssigned));
+#endif
     }
 
     private void SetupEnvironment(bool enableSandbox)

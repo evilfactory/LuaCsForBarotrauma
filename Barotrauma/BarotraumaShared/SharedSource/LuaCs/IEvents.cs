@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Barotrauma.Items.Components;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
 
@@ -330,6 +331,26 @@ public interface IEventDrawUpdate : IEvent<IEventDrawUpdate>
     }
 }
 
+interface IEventSignalReceived : IEvent<IEventSignalReceived>
+{
+    void OnSignalReceived(Signal signal, Connection connection);
+
+    static IEventSignalReceived IEvent<IEventSignalReceived>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventSignalReceived
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnSignalReceived(Signal signal, Connection connection)
+        {
+            LuaFuncs[nameof(OnSignalReceived)](signal, connection);
+        }
+    }
+}
+
 #endregion
 
 #region Networking
@@ -342,7 +363,7 @@ public interface IEventClientRawNetMessageReceived : IEvent<IEventClientRawNetMe
 }
 
 /// <summary>
-/// Called when a client connects to the server and has loaded into the lobby.
+/// Called when a client connects to the server.
 /// </summary>
 interface IEventClientConnected : IEvent<IEventClientConnected>
 {
@@ -364,6 +385,57 @@ interface IEventClientConnected : IEvent<IEventClientConnected>
         public void OnClientConnected(Client client)
         {
             LuaFuncs[nameof(OnClientConnected)](client);   
+        }
+    }
+}
+
+/// <summary>
+/// Called when a client disconnects from the server.
+/// </summary>
+interface IEventClientDisconnected : IEvent<IEventClientDisconnected>
+{
+    /// <summary>
+    /// Called when a client connects to the server.
+    /// </summary>
+    /// <param name="client">The connecting client.</param>
+    void OnClientDisconnected(Client client);
+
+    static IEventClientDisconnected IEvent<IEventClientDisconnected>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventClientDisconnected
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnClientDisconnected(Client client)
+        {
+            LuaFuncs[nameof(OnClientDisconnected)](client);
+        }
+    }
+}
+
+interface IEventJobsAssigned : IEvent<IEventJobsAssigned>
+{
+    /// <summary>
+    /// Called when a client connects to the server.
+    /// </summary>
+    /// <param name="client">The connecting client.</param>
+    void OnJobsAssigned(IReadOnlyList<Client> unassignedClients);
+
+    static IEventJobsAssigned IEvent<IEventJobsAssigned>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventJobsAssigned
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnJobsAssigned(IReadOnlyList<Client> unassignedClients)
+        {
+            LuaFuncs[nameof(OnJobsAssigned)](unassignedClients);
         }
     }
 }

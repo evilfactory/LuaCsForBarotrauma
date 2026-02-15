@@ -1,4 +1,5 @@
-﻿using Barotrauma.LuaCs;
+﻿using Barotrauma.Items.Components;
+using Barotrauma.LuaCs;
 using Barotrauma.LuaCs.Events;
 using Barotrauma.Networking;
 using HarmonyLib;
@@ -126,6 +127,28 @@ internal class HarmonyEventPatchesService : IService
         _eventService.PublishEvent<IEventClientRawNetMessageReceived>(x => x.OnReceivedClientNetMessage(inc, header, sender));
         inc.BitPosition -= 8; // rewind so the game can read the message
     }
+
+    [HarmonyPatch(typeof(GameServer), "OnInitializationComplete"), HarmonyPostfix]
+    public static void GameServer_OnInitializationComplete_Post(GameServer __instance)
+    {
+        Client client = __instance.ConnectedClients.LastOrDefault();
+        if (client == null) { return; }
+        _eventService.PublishEvent<IEventClientConnected>(x => x.OnClientConnected(client));
+    }
+
+    [HarmonyPatch(typeof(GameServer), nameof(GameServer.DisconnectClient), new Type[] { typeof(Client), typeof(PeerDisconnectPacket) }), HarmonyPrefix]
+    public static void GameServer_DisconnectClient_Pre(Client client, PeerDisconnectPacket peerDisconnectPacket)
+    {
+        if (client == null) { return; }
+
+        _eventService.PublishEvent<IEventClientDisconnected>(x => x.OnClientDisconnected(client));
+    }
+
+    [HarmonyPatch(typeof(GameServer), nameof(GameServer.AssignJobs)), HarmonyPostfix]
+    public static void GameServer_AssignJobs_Post(List<Client> unassigned)
+    {
+        _eventService.PublishEvent<IEventJobsAssigned>(x => x.OnJobsAssigned(unassigned));
+    }
 #endif
 
     [HarmonyPatch(typeof(Character), nameof(Character.Create), new[] { 
@@ -161,6 +184,26 @@ internal class HarmonyEventPatchesService : IService
     public static void Affliction_Update_Post(Affliction __instance, CharacterHealth characterHealth, Limb targetLimb, float deltaTime)
     {
         _eventService.PublishEvent<IEventAfflictionUpdate>(x => x.OnAfflictionUpdate(__instance, characterHealth, targetLimb, deltaTime));
+    }
+
+    [HarmonyPatch(typeof(Connection), nameof(Connection.SendSignal)), HarmonyPostfix]
+    public static void Connection_SendSignal_Post(Connection __instance, Signal signal)
+    {
+        foreach (var wire in __instance.Wires)
+        {
+            Connection recipient = wire.OtherConnection(__instance);
+            if (recipient == null) { continue; }
+            if (recipient.Item == __instance.Item || signal.source?.LastSentSignalRecipients.LastOrDefault() == recipient) { continue; }
+
+            _eventService.PublishEvent<IEventSignalReceived>(x => x.OnSignalReceived(signal, recipient));
+            _eventService.Call("signalReceived." + recipient.Item.Prefab.Identifier, signal, recipient);
+        }
+
+        foreach (CircuitBoxConnection connection in __instance.CircuitBoxConnections)
+        {
+            _eventService.PublishEvent<IEventSignalReceived>(x => x.OnSignalReceived(signal, connection.Connection));
+            _eventService.Call("signalReceived." + connection.Connection.Item.Prefab.Identifier, signal, connection.Connection);
+        }
     }
 
     public void Dispose()

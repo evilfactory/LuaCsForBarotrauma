@@ -339,8 +339,6 @@ namespace Barotrauma.Networking
                 SendConsoleMessage("Granted all permissions to " + newClient.Name + ".", newClient);
             }
 
-            GameMain.LuaCs.Hook.Call("client.connected", newClient);
-
             SendChatMessage($"ServerMessage.JoinedServer~[client]={ClientLogName(newClient)}", ChatMessageType.Server, changeType: PlayerConnectionChangeType.Joined);
             ServerSettings.ServerDetailsChanged = true;
 
@@ -2303,7 +2301,6 @@ namespace Barotrauma.Networking
             segmentTable.StartNewSegment(ServerNetSegment.ClientList);
             outmsg.WriteUInt16(LastClientListUpdateID);
 
-            GameMain.LuaCs.Hook.Call("writeClientList", c, outmsg);
             outmsg.WriteByte((byte)Team1Count);
             outmsg.WriteByte((byte)Team2Count);
 
@@ -2329,13 +2326,6 @@ namespace Barotrauma.Networking
                     IsOwner = client.Connection == OwnerConnection,
                     IsDownloading = FileSender.ActiveTransfers.Any(t => t.Connection == client.Connection)
                 };
-
-                var result = GameMain.LuaCs.Hook.Call<TempClient?>("writeClientList.modifyTempClientData", c, client, tempClientData, outmsg);
-
-                if (result != null)
-                {
-                    tempClientData = result.Value;
-                }
                 
                 outmsg.WriteNetSerializableStruct(tempClientData);
                 outmsg.WritePadBits();
@@ -3725,8 +3715,6 @@ namespace Barotrauma.Networking
         {
             if (client == null) return;
 
-            GameMain.LuaCs.Hook.Call("client.disconnected", client);
-
             if (client.Character != null)
             {
                 client.Character.ClientDisconnected = true;
@@ -4660,8 +4648,6 @@ namespace Barotrauma.Networking
                         $"No suitable jobs available for {c.Name} (karma {c.Karma}). Assigning a random job: {c.AssignedJob.Prefab.Name}.");
                 }
             }
-
-            GameMain.LuaCs.Hook.Call("jobsAssigned", unassigned);
         }
 
         public void AssignBotJobs(List<CharacterInfo> bots, CharacterTeamType teamID, bool isPvP)
