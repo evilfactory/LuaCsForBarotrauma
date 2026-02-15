@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Barotrauma.Items.Components;
+﻿using Barotrauma.Items.Components;
 using Barotrauma.LuaCs.Data;
 using Barotrauma.Networking;
+using Microsoft.Xna.Framework;
+using Steamworks.Ugc;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Barotrauma.LuaCs.Events;
 
@@ -347,6 +349,186 @@ interface IEventSignalReceived : IEvent<IEventSignalReceived>
         public void OnSignalReceived(Signal signal, Connection connection)
         {
             LuaFuncs[nameof(OnSignalReceived)](signal, connection);
+        }
+    }
+}
+
+interface IEventItemCreated : IEvent<IEventItemCreated>
+{
+    void OnItemCreated(Item item);
+
+    static IEventItemCreated IEvent<IEventItemCreated>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventItemCreated
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnItemCreated(Item item)
+        {
+            LuaFuncs[nameof(OnItemCreated)](item);
+        }
+    }
+}
+
+interface IEventItemRemoved : IEvent<IEventItemRemoved>
+{
+    void OnItemRemoved(Item item);
+
+    static IEventItemRemoved IEvent<IEventItemRemoved>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventItemRemoved
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public void OnItemRemoved(Item item)
+        {
+            LuaFuncs[nameof(OnItemRemoved)](item);
+        }
+    }
+}
+
+interface IEventItemUse : IEvent<IEventItemUse>
+{
+    bool? OnItemUsed(Item item, Character user, Limb targetLimb, Entity useTarget);
+
+    static IEventItemUse IEvent<IEventItemUse>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventItemUse
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public bool? OnItemUsed(Item item, Character user, Limb targetLimb, Entity useTarget)
+        {
+            var result = LuaFuncs[nameof(OnItemUsed)](item, user, targetLimb, useTarget);
+            if (result is bool b)
+            {
+                return b;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+}
+
+interface IEventItemSecondaryUse : IEvent<IEventItemSecondaryUse>
+{
+    bool? OnItemSecondaryUsed(Item item, Character user);
+
+    static IEventItemSecondaryUse IEvent<IEventItemSecondaryUse>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventItemSecondaryUse
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public bool? OnItemSecondaryUsed(Item item, Character user)
+        {
+            var result = LuaFuncs[nameof(OnItemSecondaryUsed)](item, user);
+            if (result is bool b)
+            {
+                return b;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+}
+
+interface IEventCharacterDamageLimb : IEvent<IEventCharacterDamageLimb>
+{
+    AttackResult? OnCharacterDamageLimb(Character character, Vector2 worldPosition, Limb hitLimb, IEnumerable<Affliction> afflictions, float stun, bool playSound, Vector2 attackImpulse, Character attacker = null, float damageMultiplier = 1, bool allowStacking = true, float penetration = 0f, bool shouldImplode = false);
+
+    static IEventCharacterDamageLimb IEvent<IEventCharacterDamageLimb>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventCharacterDamageLimb
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public AttackResult? OnCharacterDamageLimb(Character character, Vector2 worldPosition, Limb hitLimb, IEnumerable<Affliction> afflictions, float stun, bool playSound, Vector2 attackImpulse, Character attacker = null, float damageMultiplier = 1, bool allowStacking = true, float penetration = 0f, bool shouldImplode = false)
+        {
+            var result = LuaFuncs[nameof(OnCharacterDamageLimb)](character, worldPosition, hitLimb, afflictions, stun, playSound, attackImpulse, attacker, damageMultiplier, allowStacking, penetration, shouldImplode);
+            if (result is AttackResult attackResult)
+            {
+                return attackResult;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+}
+
+interface IEventInventoryPutItem : IEvent<IEventInventoryPutItem>
+{
+    bool? OnInventoryPutItem(Inventory inventory, Item item, Character user, int i, bool removeItem);
+
+    static IEventInventoryPutItem IEvent<IEventInventoryPutItem>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventInventoryPutItem
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public bool? OnInventoryPutItem(Inventory inventory, Item item, Character user, int i, bool removeItem)
+        {
+            var result = LuaFuncs[nameof(OnInventoryPutItem)](inventory, item, user, i, removeItem);
+            if (result is bool b)
+            {
+                return b;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+}
+
+interface IEventInventoryItemSwap : IEvent<IEventInventoryItemSwap>
+{
+    bool? OnInventoryItemSwap(Inventory inventory, Item item, Character user, int i, bool swapWholeStack);
+
+    static IEventInventoryItemSwap IEvent<IEventInventoryItemSwap>.GetLuaRunner(IDictionary<string, LuaCsFunc> luaFunc)
+        => new LuaWrapper(luaFunc);
+
+    public sealed class LuaWrapper : LuaWrapperBase, IEventInventoryItemSwap
+    {
+        public LuaWrapper(IDictionary<string, LuaCsFunc> luaFuncs) : base(luaFuncs)
+        {
+        }
+
+        public bool? OnInventoryItemSwap(Inventory inventory, Item item, Character user, int i, bool swapWholeStack)
+        {
+            var result = LuaFuncs[nameof(OnInventoryItemSwap)](inventory, item, user, i, swapWholeStack);
+            if (result is bool b)
+            {
+                return b;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

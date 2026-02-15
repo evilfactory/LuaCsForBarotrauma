@@ -180,6 +180,20 @@ internal class HarmonyEventPatchesService : IService
         _eventService.PublishEvent<IEventGiveCharacterJobItems>(x => x.OnGiveCharacterJobItems(__instance, spawnPoint, isPvPMode));
     }
 
+    [HarmonyPatch(typeof(Character), nameof(Character.DamageLimb)), HarmonyPrefix]
+    public static bool Character_DamageLimb_Pre(AttackResult __result, Character __instance, Vector2 worldPosition, Limb hitLimb, IEnumerable<Affliction> afflictions, float stun, bool playSound, Vector2 attackImpulse, Character attacker, float damageMultiplier, bool allowStacking, float penetration, bool shouldImplode, bool ignoreDamageOverlay, bool recalculateVitality)
+    {
+        AttackResult? result = null;
+        _eventService.PublishEvent<IEventCharacterDamageLimb>(x => result = x.OnCharacterDamageLimb(__instance, worldPosition, hitLimb, afflictions, stun, playSound, attackImpulse, attacker, damageMultiplier, allowStacking, penetration, shouldImplode));
+        if (result != null)
+        {
+            __result = (AttackResult)result;
+            return false; // skip
+        }
+
+        return true;
+    }
+
     [HarmonyPatch(typeof(Affliction), nameof(Affliction.Update)), HarmonyPostfix]
     public static void Affliction_Update_Post(Affliction __instance, CharacterHealth characterHealth, Limb targetLimb, float deltaTime)
     {
@@ -204,6 +218,91 @@ internal class HarmonyEventPatchesService : IService
             _eventService.PublishEvent<IEventSignalReceived>(x => x.OnSignalReceived(signal, connection.Connection));
             _eventService.Call("signalReceived." + connection.Connection.Item.Prefab.Identifier, signal, connection.Connection);
         }
+    }
+
+    [HarmonyPatch(typeof(Item), MethodType.Constructor, new Type[] { typeof(Rectangle), typeof(ItemPrefab), typeof(Submarine), typeof(bool), typeof(ushort) }), HarmonyPostfix]
+    public static void Item_Ctor_Post(Item __instance)
+    {
+        _eventService.PublishEvent<IEventItemCreated>(x => x.OnItemCreated(__instance));
+    }
+
+    [HarmonyPatch(typeof(Item), nameof(Item.Remove)), HarmonyPostfix]
+    public static void Item_Remove_Post(Item __instance)
+    {
+        _eventService.PublishEvent<IEventItemRemoved>(x => x.OnItemRemoved(__instance));
+    }
+
+    [HarmonyPatch(typeof(Item), nameof(Item.Remove)), HarmonyPostfix]
+    public static void Item_ShallowRemove_Post(Item __instance)
+    {
+        _eventService.PublishEvent<IEventItemRemoved>(x => x.OnItemRemoved(__instance));
+    }
+
+    [HarmonyPatch(typeof(Item), nameof(Item.Use)), HarmonyPrefix]
+    public static bool Item_Use_Pre(Item __instance, Character user, Limb targetLimb, Entity useTarget)
+    {
+        if (__instance.RequireAimToUse && (user == null || !user.IsKeyDown(InputType.Aim)))
+        {
+            return true;
+        }
+
+        if (__instance.Condition <= 0.0f) { return true; }
+
+        bool? result = null;
+        _eventService.PublishEvent<IEventItemUse>(x => result = x.OnItemUsed(__instance, user, targetLimb, useTarget));
+        if (result == true)
+        {
+            return false; // skip
+        }
+
+        return true;
+    }
+
+    [HarmonyPatch(typeof(Item), nameof(Item.SecondaryUse)), HarmonyPrefix]
+    public static bool Item_SecondaryUse_Pre(Item __instance, Character character)
+    {
+        if (__instance.Condition <= 0.0f) { return true; }
+
+        bool? result = null;
+        _eventService.PublishEvent<IEventItemSecondaryUse>(x => result = x.OnItemSecondaryUsed(__instance, character));
+        if (result == true)
+        {
+            return false; // skip
+        }
+
+        return true;
+    }
+
+    [HarmonyPatch(typeof(Inventory), "PutItem"), HarmonyPrefix]
+    public static bool Inventory_PutItem_Prefix(Inventory __instance, Item item, int i, Character user, bool removeItem)
+    {
+        bool? result = null;
+        _eventService.PublishEvent<IEventInventoryPutItem>(x => result = x.OnInventoryPutItem(__instance, item, user, i, removeItem));
+        if (result == true)
+        {
+            return false; // skip
+        }
+
+        return true;
+    }
+
+    [HarmonyPatch(typeof(Inventory), "TrySwapping"), HarmonyPrefix]
+    public static bool Inventory_TrySwapping_Prefix(Inventory __instance, Item item, int index, Character user, bool swapWholeStack, ref bool __result)
+    {
+        // uncomment when we are plugin
+        // if (item?.ParentInventory == null || !__instance.slots[index].Any()) { return false; }
+        // if (__instance.slots[index].Items.Any(it => !it.IsInteractable(user))) { return false; }
+        if (!__instance.AllowSwappingContainedItems) { return false; }
+
+        bool? result = null;
+        _eventService.PublishEvent<IEventInventoryItemSwap>(x => result = x.OnInventoryItemSwap(__instance, item, user, index, swapWholeStack));
+        if (result != null)
+        {
+            __result = (bool)result;
+            return false; // skip
+        }
+
+        return true;
     }
 
     public void Dispose()

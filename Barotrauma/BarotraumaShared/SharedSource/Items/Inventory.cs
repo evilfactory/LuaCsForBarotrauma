@@ -651,11 +651,6 @@ namespace Barotrauma
                 return;
             }
 
-            var should = GameMain.LuaCs.Hook.Call<bool?>("inventoryPutItem", this, item, user, i, removeItem);
-
-            if (should != null && should.Value)
-                return;
-
             if (Owner == null) { return; }
 
             Inventory prevInventory = item.ParentInventory;
@@ -764,11 +759,6 @@ namespace Barotrauma
             if (item?.ParentInventory == null || !slots[index].Any()) { return false; }
             if (slots[index].Items.Any(it => !it.IsInteractable(user))) { return false; }
             if (!AllowSwappingContainedItems) { return false; }
-
-            var should = GameMain.LuaCs.Hook.Call<bool?>("inventoryItemSwap", this, item, user, index, swapWholeStack);
-
-            if (should != null)
-                return should.Value;
 
             //swap to InvSlotType.Any if possible
             Inventory otherInventory = item.ParentInventory;

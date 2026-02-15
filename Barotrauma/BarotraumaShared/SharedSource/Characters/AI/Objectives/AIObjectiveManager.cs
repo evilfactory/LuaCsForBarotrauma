@@ -103,10 +103,6 @@ namespace Barotrauma
 
         public void AddObjective<T>(T objective) where T : AIObjective
         {
-            var result = GameMain.LuaCs.Hook.Call<bool?>("AI.addObjective", this, objective);
-
-            if (result != null && result.Value) return;
-
             if (objective == null)
             {
 #if DEBUG

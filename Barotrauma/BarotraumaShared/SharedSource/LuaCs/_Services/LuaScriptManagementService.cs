@@ -177,6 +177,7 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
 
         _eventService.RegisterLuaEventAlias<IEventCharacterCreated>("character.created", nameof(IEventCharacterCreated.OnCharacterCreated));
         _eventService.RegisterLuaEventAlias<IEventCharacterDeath>("character.death", nameof(IEventCharacterDeath.OnCharacterDeath));
+        _eventService.RegisterLuaEventAlias<IEventCharacterDamageLimb>("character.damageLimb", nameof(IEventCharacterDamageLimb.OnCharacterDamageLimb));
         _eventService.RegisterLuaEventAlias<IEventGiveCharacterJobItems>("character.giveJobItems", nameof(IEventGiveCharacterJobItems.OnGiveCharacterJobItems));
 
         _eventService.RegisterLuaEventAlias<IEventRoundStarted>("roundStart", nameof(IEventRoundStarted.OnRoundStart));
@@ -184,6 +185,14 @@ class LuaScriptManagementService : ILuaScriptManagementService, ILuaDataService
         _eventService.RegisterLuaEventAlias<IEventMissionsEnded>("missionsEnded", nameof(IEventMissionsEnded.OnMissionsEnded));
 
         _eventService.RegisterLuaEventAlias<IEventSignalReceived>("signalReceived", nameof(IEventSignalReceived.OnSignalReceived));
+
+        _eventService.RegisterLuaEventAlias<IEventItemCreated>("item.created", nameof(IEventItemCreated.OnItemCreated));
+        _eventService.RegisterLuaEventAlias<IEventItemRemoved>("item.removed", nameof(IEventItemRemoved.OnItemRemoved));
+        _eventService.RegisterLuaEventAlias<IEventItemUse>("item.use", nameof(IEventItemUse.OnItemUsed));
+        _eventService.RegisterLuaEventAlias<IEventItemSecondaryUse>("item.secondaryUse", nameof(IEventItemSecondaryUse.OnItemSecondaryUsed));
+
+        _eventService.RegisterLuaEventAlias<IEventInventoryPutItem>("inventoryPutItem", nameof(IEventInventoryPutItem.OnInventoryPutItem));
+        _eventService.RegisterLuaEventAlias<IEventInventoryItemSwap>("inventoryItemSwap", nameof(IEventInventoryItemSwap.OnInventoryItemSwap));
 
 #if SERVER
         _eventService.RegisterLuaEventAlias<IEventClientConnected>("client.connected", nameof(IEventClientConnected.OnClientConnected));

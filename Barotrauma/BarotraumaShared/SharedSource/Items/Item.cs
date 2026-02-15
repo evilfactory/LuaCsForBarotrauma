@@ -1411,8 +1411,6 @@ namespace Barotrauma
             if (Components.Any(ic => ic is Wire) && Components.All(ic => ic is Wire || ic is Holdable)) { isWire = true; }
             if (HasTag(Barotrauma.Tags.LogicItem)) { isLogic = true; }
 
-            GameMain.LuaCs.Hook.Call<Item>("item.created", this);
-
             ApplyStatusEffects(ActionType.OnSpawn, 1.0f);
 
             // Set max condition multipliers from campaign settings for RecalculateConditionValues()
@@ -3364,10 +3362,6 @@ namespace Barotrauma
             }
 
             if (condition <= 0.0f) { return; }
-
-            var should = GameMain.LuaCs.Hook.Call<bool?>("item.use", new object[] { this, user, targetLimb, useTarget });
-
-            if (should != null && should.Value) { return; }
         
             bool remove = false;
 
@@ -3399,11 +3393,6 @@ namespace Barotrauma
         public void SecondaryUse(float deltaTime, Character character = null)
         {
             if (condition <= 0.0f) { return; }
-
-            var should = GameMain.LuaCs.Hook.Call<bool?>("item.secondaryUse", this, character);
-
-            if (should != null && should.Value)
-                return;
 
             bool remove = false;
 
@@ -4621,8 +4610,6 @@ namespace Barotrauma
                 body.Remove();
                 body = null;
             }
-
-            GameMain.LuaCs.Hook.Call<Item>("item.removed", this);
         }
 
         public override void Remove()
@@ -4707,8 +4694,6 @@ namespace Barotrauma
             }
 
             RemoveProjSpecific();
-
-            GameMain.LuaCs.Hook.Call<Item>("item.removed", this);
         }
 
         private void RemoveFromLists()
