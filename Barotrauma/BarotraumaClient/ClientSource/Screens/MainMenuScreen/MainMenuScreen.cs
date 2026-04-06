@@ -1081,6 +1081,11 @@ namespace Barotrauma
                     "-language", languageDropdown.SelectedData.ToString()
                 };
 
+                if (enableServerCSharp)
+                {
+                    arguments.Add("-enable-csharp");
+                }
+
                 if (!string.IsNullOrWhiteSpace(passwordBox.Text))
                 {
                     arguments.Add("-password");
@@ -1351,6 +1356,8 @@ namespace Barotrauma
             };
         }
 
+        private bool enableServerCSharp = false;
+
         private void CreateHostServerFields()
         {
             menuTabs[Tab.HostServer].ClearChildren();
@@ -1589,10 +1596,13 @@ namespace Barotrauma
             //spacing
             new GUIFrame(new RectTransform(new Vector2(1.0f, 0.05f), content.RectTransform), style: null);
 
+            bool selectedOption = false;
+
             new GUIButton(new RectTransform(new Vector2(0.4f, 0.07f), content.RectTransform), TextManager.Get("StartServerButton"), style: "GUIButtonLarge")
             {
                 OnClicked = (btn, userdata) =>
                 {
+                    selectedOption = false;
                     CheckServerName();
                     return true;
                 }
@@ -1600,6 +1610,35 @@ namespace Barotrauma
 
             void CheckServerName()
             {
+                if (!selectedOption)
+                {
+                    if (LuaCsSetup.Instance.AlwaysEnableCs)
+                    {
+                        enableServerCSharp = true;
+                    }
+                    else if (LuaCsSetup.Instance.AlwaysDisableCs)
+                    {
+                        enableServerCSharp = false;
+                    }
+                    else
+                    {
+                        LuaCsSetup.Instance.PromptModsWarning(() =>
+                        {
+                            enableServerCSharp = true;
+                            selectedOption = true;
+                            CheckServerName();
+                        },
+                        () =>
+                        {
+                            enableServerCSharp = false;
+                            selectedOption = true;
+                            CheckServerName();
+                        });
+
+                        return;
+                    }
+                }
+
                 string name = serverNameBox.Text;
                 if (string.IsNullOrEmpty(name))
                 {

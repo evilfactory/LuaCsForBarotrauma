@@ -85,16 +85,24 @@ namespace Barotrauma
         public LuaGame Game => _game ??= _servicesProvider.GetService<LuaGame>();
 
         
-        /// <summary>
-        /// Whether C# plugin code is enabled.
-        /// </summary>
-        public bool IsCsEnabled
+        public bool PromptRunCs
         {
-            get => _isCsEnabled?.Value ?? false;
-            internal set => _isCsEnabled?.TrySetValue(value);
+            get => (_csRunPolicy?.Value ?? "Prompt") == "Prompt";
         }
 
-        private ISettingBase<bool> _isCsEnabled;
+        public bool AlwaysEnableCs
+        {
+            get => (_csRunPolicy?.Value ?? "Prompt") == "Enabled";
+        }
+
+        public bool AlwaysDisableCs
+        {
+            get => (_csRunPolicy?.Value ?? "Prompt") == "Disabled";
+        }
+
+        public bool IsCsEnabledForThisSession { get; set; }
+
+        private ISettingBase<string> _csRunPolicy;
 
         /// <summary>
         /// Whether usernames are anonymized or show in logs. 
@@ -123,8 +131,8 @@ namespace Barotrauma
         {
             var luaCsPackage = GetLuaCsPackage();
             
-            _isCsEnabled = 
-                ConfigService.TryGetConfig<ISettingBase<bool>>(luaCsPackage, "IsCsEnabled", out var val1)
+            _csRunPolicy = 
+                ConfigService.TryGetConfig<ISettingBase<string>>(luaCsPackage, "CsRunPolicy", out var val1)
                     ? val1
                     : null;
             _hideUserNamesInLogs =
@@ -357,12 +365,12 @@ namespace Barotrauma
                     LoadLuaCsConfig();
                 }
 
-                string csEnabled = IsCsEnabled ? "enabled" : "disabled";
+                string csEnabled = IsCsEnabledForThisSession ? "enabled" : "disabled";
                 Logger.LogMessage($"LuaCs running state entered. Running under commit {AssemblyInfo.GitRevision}, CSharp is {csEnabled}");
 
                 if (!PackageManagementService.IsAnyPackageRunning())
                 {
-                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(GetEnabledPackagesList(), IsCsEnabled));
+                    Logger.LogResults(PackageManagementService.ExecuteLoadedPackages(GetEnabledPackagesList(), IsCsEnabledForThisSession));
                 }
 
 #if CLIENT
@@ -456,7 +464,7 @@ namespace Barotrauma
         
         void DisposeLuaCsConfig()
         {
-            _isCsEnabled = null;
+            _csRunPolicy = null;
             _hideUserNamesInLogs = null;
         }
     }
