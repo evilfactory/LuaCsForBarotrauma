@@ -15,12 +15,6 @@ partial class LuaCsSetup
         // the server is always in the running state unless explicitly stopped.
         if (screen == UnimplementedScreen.Instance)
             SetRunState(RunState.Unloaded);
-
-        if (GameMain.Server.ServerPeer is LidgrenServerPeer || GameMain.Instance.CommandLineArgs.Contains("-enable-csharp") || AlwaysEnableCs)
-        {
-            IsCsEnabledForThisSession = true;
-        }
-
         SetRunState(RunState.Running);
     }
 }

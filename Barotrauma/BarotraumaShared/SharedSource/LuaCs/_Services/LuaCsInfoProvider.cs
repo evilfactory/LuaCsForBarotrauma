@@ -12,6 +12,7 @@ public sealed class LuaCsInfoProvider : ILuaCsInfoProvider
     }
 
     public bool IsDisposed => false;
+    public bool IsCsEnabled => LuaCsSetup.Instance.IsCsEnabled;
     public bool HideUserNamesInLogs => LuaCsSetup.Instance.HideUserNamesInLogs;
     public bool UseCaching => LuaCsSetup.Instance.UseCaching;
     public RunState CurrentRunState => LuaCsSetup.Instance.CurrentRunState;

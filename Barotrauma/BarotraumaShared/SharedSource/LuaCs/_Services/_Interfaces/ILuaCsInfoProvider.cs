@@ -6,6 +6,11 @@
 public interface ILuaCsInfoProvider : IService
 {
     /// <summary>
+    /// Whether C# plugin code is enabled.
+    /// </summary>
+    public bool IsCsEnabled { get; }
+
+    /// <summary>
     /// Whether usernames are anonymized or show in logs. 
     /// </summary>
     public bool HideUserNamesInLogs { get; }
