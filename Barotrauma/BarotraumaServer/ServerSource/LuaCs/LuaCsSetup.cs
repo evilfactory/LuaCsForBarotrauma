@@ -6,6 +6,11 @@ namespace Barotrauma;
 
 partial class LuaCsSetup
 {
+    partial void CheckReadyToRun(Action onReadyToRun)
+    {
+        onReadyToRun?.Invoke();
+    }
+    
     /// <summary>
     /// Handles changes in game states tracked by screen changes.
     /// </summary>

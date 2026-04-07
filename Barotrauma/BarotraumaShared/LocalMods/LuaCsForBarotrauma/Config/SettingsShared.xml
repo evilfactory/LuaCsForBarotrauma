@@ -2,7 +2,14 @@
 <Configuration>
   <Settings>
     <Setting Name="HideUserNamesInLogs" Type="bool" Value="true"/>
-    <Setting Name="IsCsEnabled" Type="bool" Value="false" AllowChangesWhileExecuting="false"/>
+    <Setting Name="CsRunPolicy" Type="listString" Value="Prompt" AllowChangesWhileExecuting="false">
+      <Values>
+        <Value Value="Disabled"/>
+        <Value Value="Prompt"/>
+        <Value Value="Enabled"/>
+      </Values>
+    </Setting>
     <Setting Name="UseCaching" Type="bool" Value="true" AllowChangesWhileExecuting="false"/>
+    <Setting Name="CsRunPolicySession" Type="bool" AllowChangesWhileExecuting="false" ShowInMenus="false"/>
   </Settings>
 </Configuration>

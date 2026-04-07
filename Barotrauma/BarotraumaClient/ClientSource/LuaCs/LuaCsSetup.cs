@@ -7,6 +7,8 @@ using System.Text;
 using Barotrauma.CharacterEditor;
 using Barotrauma.LuaCs;
 using Barotrauma.LuaCs.Data;
+using Barotrauma.Networking;
+using Microsoft.Xna.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
 
@@ -15,120 +17,147 @@ namespace Barotrauma
     partial class LuaCsSetup
     {
         private bool _isClientPromptActive;
-
-        /// <summary>
-        /// Returns whether execution should continue
-        /// </summary>
-        public bool CheckReadyToRun()
+        private bool _isCsEnabledForSession = false;
+        
+        public void CheckRunConditionalHostingCsEnabled(Action onReadyToRun)
         {
-            // Fast exit if enabled
-            if (this.IsCsEnabled)
+            var res = ReadyToRunNoPrompt();
+            if (res.ShouldRun)
             {
-                return true;
+                onReadyToRun?.Invoke();
+                return;
             }
             
-            StringBuilder sb = new StringBuilder();
-
-            foreach (ContentPackage cp in PackageManagementService.GetLoadedAssemblyPackages())
+            DisplayCsModsPromptClient(res.Item2, (selectedYes) =>
             {
-                if (cp.NameMatches(PackageId))
+                if (selectedYes)
                 {
-                    continue;
+                    onReadyToRun?.Invoke();
                 }
+            });
+        }
 
-                if (cp.UgcId.TryUnwrap(out ContentPackageId id))
-                {
-                    sb.AppendLine($"- {cp.Name} ({id})");
-                }
-                else
-                {
-                    sb.AppendLine($"- {cp.Name} (Not On Workshop)");
-                }
+        private (bool ShouldRun, ImmutableArray<ContentPackage> PromptPackages) ReadyToRunNoPrompt()
+        {            
+            if (this.IsCsEnabled)
+            {
+                return (true, ImmutableArray<ContentPackage>.Empty);
             }
 
-            if (string.IsNullOrEmpty(sb.ToString()))
+            if (!ShouldPromptForCs)
             {
-                return true;
+                return (true, ImmutableArray<ContentPackage>.Empty);
             }
 
-            if (!_isClientPromptActive)
+            ImmutableArray<ContentPackage> contentPackages = PackageManagementService.GetLoadedAssemblyPackages()
+                .Where(p => p.Name != PackageId)
+                .ToImmutableArray();
+
+            return (contentPackages.IsEmpty, contentPackages);
+        }
+
+        partial void CheckReadyToRun(Action onReadyToRun)
+        {
+            var res = ReadyToRunNoPrompt();
+            if (res.ShouldRun)
             {
-                _isClientPromptActive = true;
-                if (GameMain.Client == null || GameMain.Client.IsServerOwner)
+                onReadyToRun?.Invoke();
+                return;
+            }
+            
+            if (GameMain.Client?.ClientPeer is P2POwnerPeer)
+            {
+                SetCsPolicyAndContinue(true);
+                return;
+            }
+
+            DisplayCsModsPromptClient(res.PromptPackages, (selectedYes) =>
+            {
+                SetCsPolicyAndContinue(selectedYes);
+                return;
+            });
+
+            void SetCsPolicyAndContinue(bool csSessionExecutionPolicy)
+            {
+                var prevRunState = this.CurrentRunState;
+                if (CurrentRunState >= RunState.Running)
                 {
-                    DisplayCsModsPromptServer(sb);
+                    SetRunState(RunState.LoadedNoExec);
+                }
+                this._isCsEnabledForSession = csSessionExecutionPolicy;
+                CoroutineManager.Invoke(() =>
+                {
+                    if (CurrentRunState != prevRunState)
+                    {
+                        SetRunState(prevRunState);
+                    }
+                    onReadyToRun?.Invoke();
+                }, 0f);
+            }
+        }
+        
+        void DisplayCsModsPromptClient(ImmutableArray<ContentPackage> contentPackages, Action<bool> onSelection)
+        {
+            if (_isClientPromptActive) { return; }
+
+            _isClientPromptActive = true;
+
+            GUIMessageBox messageBox = new GUIMessageBox(
+                TextManager.Get("warning"),
+                relativeSize: new Vector2(0.3f, 0.55f),
+                minSize: new Point(400, 500),
+                text: string.Empty,
+                buttons: []);
+
+            GUILayoutGroup msgBoxLayout = new GUILayoutGroup(new RectTransform(new Vector2(1f, 0.75f), messageBox.Content.RectTransform), isHorizontal: false, childAnchor: Anchor.TopCenter)
+            {
+                RelativeSpacing = 0.01f,
+                Stretch = true
+            };
+
+            new GUITextBlock(new RectTransform(new Vector2(1.0f, 0.0f), msgBoxLayout.RectTransform), "The following mods contain CSharp code",
+                font: GUIStyle.SubHeadingFont, wrap: true, textAlignment: Alignment.Center);
+
+            GUIListBox packageListBox = new GUIListBox(new RectTransform(new Vector2(1.0f, 0.4f), msgBoxLayout.RectTransform))
+            {
+                CurrentSelectMode = GUIListBox.SelectMode.None
+            };
+
+            foreach (ContentPackage package in contentPackages)
+            {
+                GUIFrame packageFrame = new GUIFrame(new RectTransform(new Vector2(1.0f, 0.15f), packageListBox.Content.RectTransform), style: "ListBoxElement");
+                new GUITextBlock(new RectTransform(new Vector2(1f, 1f), packageFrame.RectTransform), package.Name);
+            }
+
+            new GUITextBlock(new RectTransform(new Vector2(1.0f, 0f), msgBoxLayout.RectTransform), "CSharp mods are not sandboxed, meaning that they have unrestrictive access to your computer, please make sure you trust these mods before you continue. If you are not hosting a server, selecting cancel will only run Lua-mods.", wrap: true)
+            {
+                Wrap = true
+            };
+
+            GUILayoutGroup buttonLayout = new GUILayoutGroup(new RectTransform(new Vector2(1f, 0.25f), messageBox.Content.RectTransform, Anchor.BottomCenter), isHorizontal: false, childAnchor: Anchor.TopCenter);
+
+            new GUIButton(new RectTransform(new Vector2(0.8f, 0.0f), buttonLayout.RectTransform), "Continue")
+            {
+                TextBlock = { AutoScaleHorizontal = true },
+                OnClicked = (btn, userdata) =>
+                {
+                    _isClientPromptActive = false;
+                    onSelection(true);
+                    messageBox.Close();
                     return true;
                 }
-                else
+            };
+
+            new GUIButton(new RectTransform(new Vector2(0.8f, 0.0f), buttonLayout.RectTransform), "Cancel")
+            {
+                OnClicked = (btn, userdata) =>
                 {
-                    DisplayCsModsPromptClient(sb);
-                    return false;
+                    _isClientPromptActive = false;
+                    onSelection(false);
+                    messageBox.Close();
+                    return true;
                 }
-            }
-            else
-            {
-                return false;
-            }
-
-            void DisplayCsModsPromptServer(StringBuilder sb)
-            {
-                var msg = new GUIMessageBox("", $"You have CSharp mods enabled but don't have the CSharp Scripting enabled, " +
-                                      $"those mods might not work, go to the Main Menu, click on LuaCs Settings and check Enable CSharp Scripting.\n\n{sb}");
-                foreach (var button in msg.Buttons)
-                {
-                    var old = button.OnClicked;
-                    button.OnClicked = (btn, obj) =>
-                    {
-                        var ret = old?.Invoke(btn, obj);
-                        _isClientPromptActive = false;
-                        return ret ?? true;
-                    };
-                }
-            }
-
-            void DisplayCsModsPromptClient(StringBuilder sb)
-            {
-                GUIMessageBox msg = new GUIMessageBox(
-                    "Confirm",
-                    $"This server has the following CSharp mods installed: \n{sb}\nDo you wish to run them? Cs mods are not sandboxed so make sure you trust these mods.",
-                    new LocalizedString[2] { "Run", "Don't Run" });
-
-                msg.Buttons[0].OnClicked = (GUIButton button, object obj) =>
-                {
-                    try
-                    { 
-                        this._isClientPromptActive = false;
-                        CoroutineManager.Invoke(() =>
-                        {
-                            SetRunState(RunState.LoadedNoExec);
-                            this.IsCsEnabled = true;
-                            SetRunState(RunState.Running);
-                        }, 0f);
-                        return true;
-                    }
-                    finally
-                    {
-                        msg.Close();
-                    }
-                };
-
-                msg.Buttons[1].OnClicked = (GUIButton button, object obj) =>
-                {
-                    try
-                    {
-                        // avoid a TOCTOU scenario.
-                        this.IsCsEnabled = false;
-                        this._isClientPromptActive = false;
-                        SetRunState(RunState.LoadedNoExec);
-                        SetRunState(RunState.Running);
-                        return true;
-                    }
-                    finally
-                    {
-                        msg.Close();
-                    }
-                };
-            }
+            };
         }
 
         private void SetupServicesProviderClient(IServicesProvider serviceProvider)
@@ -172,16 +201,10 @@ namespace Barotrauma
                     case SpriteEditorScreen:
                     case SubEditorScreen:
                     case TestScreen: // notes: TestScreen is a Linux edge case editor screen and is deprecated.
-                        if (!CheckReadyToRun())
+                        CheckReadyToRun(() =>
                         {
-                            if (CurrentRunState >= RunState.Running)
-                            {
-                                SetRunState(RunState.LoadedNoExec);
-                            }
-                            return;
-                        }
-
-                        SetRunState(RunState.Running);
+                            SetRunState(RunState.Running);
+                        });
                         break;
                     default:
                         Logger.LogError(

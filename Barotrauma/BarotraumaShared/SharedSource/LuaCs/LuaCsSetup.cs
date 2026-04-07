@@ -84,18 +84,22 @@ namespace Barotrauma
         private LuaGame _game;
         public LuaGame Game => _game ??= _servicesProvider.GetService<LuaGame>();
 
-        
+
         /// <summary>
         /// Whether C# plugin code is enabled.
         /// </summary>
         public bool IsCsEnabled
         {
-            get => _isCsEnabled?.Value ?? false;
-            internal set => _isCsEnabled?.TrySetValue(value);
+#if CLIENT
+            get => _csRunPolicy?.Value == "Enabled" || _isCsEnabledForSession;
+#elif SERVER
+            // cs settings cannot be changed on the server after launch
+            get => _csRunPolicy?.Value is "Enabled" or "Prompt";
+#endif
         }
-
-        private ISettingBase<bool> _isCsEnabled;
-
+        private ISettingList<string> _csRunPolicy;
+        private bool ShouldPromptForCs => _csRunPolicy?.Value is "Prompt";
+        
         /// <summary>
         /// Whether usernames are anonymized or show in logs. 
         /// </summary>
@@ -123,8 +127,8 @@ namespace Barotrauma
         {
             var luaCsPackage = GetLuaCsPackage();
             
-            _isCsEnabled = 
-                ConfigService.TryGetConfig<ISettingBase<bool>>(luaCsPackage, "IsCsEnabled", out var val1)
+            _csRunPolicy = 
+                ConfigService.TryGetConfig<ISettingList<string>>(luaCsPackage, "CsRunPolicy", out var val1)
                     ? val1
                     : null;
             _hideUserNamesInLogs =
@@ -379,15 +383,26 @@ namespace Barotrauma
             void RunStateRunning_OnExit(State<RunState> currentState)
             {
                 EventService.Call("stop");
-
+#if CLIENT
+                _isCsEnabledForSession = false;
+#endif
                 Logger.LogResults(PackageManagementService.StopRunningPackages());
-
                 Logger.LogMessage("LuaCs running state exited");
             }
             // ReSharper restore InconsistentNaming
         }
+
+        
+        
+        
         
         #endregion
+        
+        /// <summary>
+        /// Checks for Cs Execution Policy (ie. prompting the user) and then calls the delegate once completed.
+        /// </summary>
+        /// <param name="onReadyToRun"></param>
+        partial void CheckReadyToRun(Action onReadyToRun);
         
         #region LegacyRedirects
 
@@ -456,7 +471,7 @@ namespace Barotrauma
         
         void DisposeLuaCsConfig()
         {
-            _isCsEnabled = null;
+            _csRunPolicy = null;
             _hideUserNamesInLogs = null;
         }
     }
