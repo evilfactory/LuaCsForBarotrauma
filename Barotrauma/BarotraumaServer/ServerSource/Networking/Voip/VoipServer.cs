@@ -107,7 +107,7 @@ namespace Barotrauma.Networking
 
                 if (canUse != null)
                 {
-                    isRadio = canUse;
+                    isRadio = canUse.Value;
                     return canUse.Value;
                 }
 
